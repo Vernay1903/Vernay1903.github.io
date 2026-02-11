@@ -13,11 +13,23 @@
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 
     <style>
-        body {
+        /* CONFIGURAÇÃO DE LAYOUT PARA FIXAR O RODAPÉ NA PARTE INFERIOR */
+        html, body {
+            height: 100%;
             margin: 0;
             font-family: Montserrat, sans-serif;
             background: #0f172a;
             color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body > *:not(footer) {
+            flex-shrink: 0;
+        }
+
+        main {
+            flex: 1; /* ocupa todo o espaço entre header/menu e footer */
         }
 
         /* TOPO */
@@ -25,7 +37,7 @@
             background: #020617;
             padding: 15px 30px;
             display: flex;
-            justify-content: flex-start; /* menu alinhado à esquerda */
+            justify-content: flex-start;
             align-items: center;
         }
 
@@ -86,7 +98,6 @@
             padding: 15px;
             font-size: 14px;
             color: #64748b;
-            margin-top: 80px;
         }
 
         footer a {
@@ -106,28 +117,30 @@
     </nav>
 </header>
 
-<!-- MENU DE ESPORTES (ORDEM ALFABÉTICA) -->
-<div class="sports-menu">
-    <a href="atletismo.html">Atletismo</a>
-    <a href="automobilismo.html">Automobilismo</a>
-    <a href="basquete.html">Basquete</a>
-    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-    <a href="futebol.html">Futebol</a>
-    <a href="futebol-americano.html">Futebol Americano</a>
-    <a href="futsal.html">Futsal</a>
-    <a href="handebol.html">Handebol</a>
-    <a href="lutas.html">Lutas</a>
-    <a href="skate.html">Skate</a>
-    <a href="surf.html">Surf</a>
-    <a href="volei.html">Vôlei</a>
-    <a href="volei-praia.html">Vôlei de Praia</a>
-</div>
+<main>
+    <!-- MENU DE ESPORTES (ORDEM ALFABÉTICA) -->
+    <div class="sports-menu">
+        <a href="atletismo.html">Atletismo</a>
+        <a href="automobilismo.html">Automobilismo</a>
+        <a href="basquete.html">Basquete</a>
+        <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+        <a href="futebol.html">Futebol</a>
+        <a href="futebol-americano.html">Futebol Americano</a>
+        <a href="futsal.html">Futsal</a>
+        <a href="handebol.html">Handebol</a>
+        <a href="lutas.html">Lutas</a>
+        <a href="skate.html">Skate</a>
+        <a href="surf.html">Surf</a>
+        <a href="volei.html">Vôlei</a>
+        <a href="volei-praia.html">Vôlei de Praia</a>
+    </div>
 
-<!-- TEXTO CENTRAL -->
-<div class="hero">
-    <h1>Corte dos Esportes</h1>
-    <p>Selecione um esporte no menu para ver notícias exclusivas.</p>
-</div>
+    <!-- TEXTO CENTRAL -->
+    <div class="hero">
+        <h1>Corte dos Esportes</h1>
+        <p>Selecione um esporte no menu para ver notícias exclusivas.</p>
+    </div>
+</main>
 
 <!-- RODAPÉ -->
 <footer>
@@ -140,7 +153,6 @@
 
 </body>
 </html>
-
 
 
 
