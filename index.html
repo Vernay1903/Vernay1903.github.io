@@ -55,38 +55,39 @@
             color: #1E4BA5;
         }
 
-        /* MENU ESPORTES - RESPONSIVO */
+        /* MENU ESPORTES - RESPONSIVO PREMIUM */
         .sports-menu {
             background: #FFFFFF;
             padding: 15px;
             display: flex;
-            flex-wrap: wrap; /* permite quebrar linhas em telas menores */
+            flex-wrap: wrap; 
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             border-bottom: 1px solid #E5E5E5;
         }
 
         .sports-menu a {
-            flex: 1 1 100px; /* largura mínima para responsividade */
+            flex: 1 1 120px;
             max-width: 150px;
             text-align: center;
-            padding: 10px 5px;
+            padding: 12px 8px;
             border: 1px solid #1E4BA5;
-            border-radius: 8px;
+            border-radius: 10px;
             color: #1E4BA5;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 2px 6px rgba(30,75,165,0.15);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 3px 8px rgba(30,75,165,0.12);
             white-space: nowrap;
+            background-color: #FFFFFF;
         }
 
         .sports-menu a:hover {
             background: #1E4BA5;
             color: #FFFFFF;
-            box-shadow: 0 6px 18px rgba(30,75,165,0.35);
-            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30,75,165,0.35);
+            transform: translateY(-4px) scale(1.05);
         }
 
         /* HERO */
@@ -113,19 +114,19 @@
         .highlight {
             background: #1E4BA5;
             color: #FFFFFF;
-            padding: 14px 26px;
-            border-radius: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
             font-weight: 700;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(30,75,165,0.25);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 14px rgba(30,75,165,0.28);
         }
 
         .highlight:hover {
             background: #0A1E3A;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(10,30,58,0.35);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(10,30,58,0.35);
         }
 
         /* RODAPÉ */
@@ -153,16 +154,16 @@
         /* RESPONSIVIDADE AVANÇADA */
         @media (max-width: 1024px) {
             .sports-menu a {
-                flex: 1 1 120px;
+                flex: 1 1 110px;
                 max-width: 140px;
             }
         }
 
         @media (max-width: 768px) {
             .sports-menu a {
-                flex: 1 1 45%; /* 2 itens por linha em smartphones */
+                flex: 1 1 45%; /* 2 itens por linha em tablets/smartphones médios */
                 max-width: none;
-                margin-bottom: 8px;
+                margin-bottom: 10px;
             }
             .hero {
                 padding: 60px 15px;
@@ -171,7 +172,7 @@
 
         @media (max-width: 480px) {
             .sports-menu a {
-                flex: 1 1 100%; /* 1 item por linha em celulares muito pequenos */
+                flex: 1 1 100%; /* 1 item por linha em celulares pequenos */
             }
             .hero h1 {
                 font-size: 38px;
@@ -229,4 +230,5 @@
 
 </body>
 </html>
+
 
