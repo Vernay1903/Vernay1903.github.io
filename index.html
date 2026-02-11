@@ -14,22 +14,39 @@
             font-family: Montserrat, sans-serif;
             background: #0f172a;
             color: white;
-            text-align: center;
         }
 
         header {
             background: #020617;
-            padding: 20px;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
             font-size: 22px;
             font-weight: bold;
         }
 
+        header nav a {
+            margin-left: 15px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
         .hero {
-            padding: 100px 20px;
+            text-align: center;
+            padding: 80px 20px;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 42px;
             color: #38bdf8;
         }
 
@@ -38,10 +55,38 @@
             color: #94a3b8;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        article {
+            background: #020617;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        article h3 {
+            margin-top: 0;
+            color: #38bdf8;
+        }
+
+        .sidebar {
+            background: #020617;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
         footer {
-            margin-top: 100px;
+            margin-top: 50px;
             padding: 15px;
             background: #020617;
+            text-align: center;
             font-size: 14px;
             color: #64748b;
         }
@@ -51,12 +96,46 @@
 <body>
 
 <header>
-⚽ Corte dos Esportes
+    <div class="logo">⚽ Corte dos Esportes</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Notícias</a>
+        <a href="#">Cortes</a>
+        <a href="#">Contato</a>
+    </nav>
 </header>
 
 <div class="hero">
-    <h1>Site em construção</h1>
-    <p>Em breve notícias, cortes e destaques do mundo esportivo.</p>
+    <h1>Notícias do Esporte</h1>
+    <p>Atualizações, análises e destaques do mundo esportivo.</p>
+</div>
+
+<div class="container">
+    
+    <!-- COLUNA PRINCIPAL -->
+    <div>
+        <article>
+            <h3>Bem-vindo ao Corte dos Esportes</h3>
+            <p>Este site publica notícias, análises e informações esportivas atualizadas.</p>
+        </article>
+
+        <article>
+            <h3>Destaque esportivo do dia</h3>
+            <p>Conteúdo original é essencial para aprovação no Google AdSense.</p>
+        </article>
+
+        <article>
+            <h3>Outra notícia exemplo</h3>
+            <p>Aqui você vai postar notícias reais e ganhar tráfego orgânico.</p>
+        </article>
+    </div>
+
+    <!-- SIDEBAR (ADSENSE AQUI DEPOIS) -->
+    <div class="sidebar">
+        <h3>Publicidade</h3>
+        <p>Espaço reservado para anúncios Google AdSense.</p>
+    </div>
+
 </div>
 
 <footer>
