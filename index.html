@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Corte dos Esportes | Portal Esportivo</title>
+    <title>Corte dos Esportes - Portal de Notícias Esportivas</title>
 
-    <meta name="description" content="Portal Corte dos Esportes com notícias de futebol, basquete, surf, skate e muito mais.">
+    <meta name="description" content="Portal Corte dos Esportes com notícias de futebol, basquete, surf, skate, vôlei, automobilismo e muito mais.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -19,36 +19,9 @@
 
         header {
             background: #020617;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
+            padding: 15px 20px;
             font-size: 22px;
             font-weight: bold;
-        }
-
-        nav a {
-            margin: 5px 10px;
-            color: #38bdf8;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .hero h1 {
-            color: #38bdf8;
         }
 
         .sports-menu {
@@ -62,12 +35,11 @@
         .sports-menu a {
             margin: 5px 10px;
             padding: 6px 12px;
-            background: #020617;
             border: 1px solid #38bdf8;
             border-radius: 5px;
             color: #38bdf8;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .sports-menu a:hover {
@@ -75,23 +47,49 @@
             color: black;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 30px 20px;
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
         }
 
-        article {
+        .hero h1 {
+            font-size: 48px;
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
             background: #020617;
             padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .card a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         footer {
+            margin-top: 50px;
+            padding: 15px;
             background: #020617;
             text-align: center;
-            padding: 15px;
             font-size: 13px;
             color: #64748b;
         }
@@ -107,16 +105,10 @@
 <body>
 
 <header>
-    <div class="logo">⚽ Corte dos Esportes</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="noticias.html">Notícias</a>
-        <a href="contato.html">Contato</a>
-        <a href="politica.html">Privacidade</a>
-    </nav>
+⚽ Corte dos Esportes
 </header>
 
-<!-- MENU DE ESPORTES (ORDEM ALFABÉTICA) -->
+<!-- MENU DE ESPORTES -->
 <div class="sports-menu">
     <a href="atletismo.html">Atletismo</a>
     <a href="automobilismo.html">Automobilismo</a>
@@ -135,14 +127,24 @@
 
 <div class="hero">
     <h1>Portal Corte dos Esportes</h1>
-    <p>Selecione um esporte no menu para ver notícias exclusivas.</p>
+    <p>Notícias, destaques e tendências do mundo esportivo.</p>
 </div>
 
-<div class="container">
-    <article>
-        <h2>Bem-vindo ao Corte dos Esportes</h2>
-        <p>Este portal publica notícias esportivas organizadas por modalidade.</p>
-    </article>
+<!-- CARDS DE ESPORTES -->
+<div class="grid">
+    <div class="card"><a href="atletismo.html">Atletismo</a></div>
+    <div class="card"><a href="automobilismo.html">Automobilismo</a></div>
+    <div class="card"><a href="basquete.html">Basquete</a></div>
+    <div class="card"><a href="esportes-olimpicos.html">Esportes Olímpicos</a></div>
+    <div class="card"><a href="futebol.html">Futebol</a></div>
+    <div class="card"><a href="futebol-americano.html">Futebol Americano</a></div>
+    <div class="card"><a href="futsal.html">Futsal</a></div>
+    <div class="card"><a href="handebol.html">Handebol</a></div>
+    <div class="card"><a href="lutas.html">Lutas</a></div>
+    <div class="card"><a href="skate.html">Skate</a></div>
+    <div class="card"><a href="surf.html">Surf</a></div>
+    <div class="card"><a href="volei.html">Vôlei</a></div>
+    <div class="card"><a href="volei-praia.html">Vôlei de Praia</a></div>
 </div>
 
 <footer>
@@ -153,3 +155,4 @@
 
 </body>
 </html>
+
