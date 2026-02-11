@@ -55,23 +55,20 @@
             color: #1E4BA5;
         }
 
-        /* MENU ESPORTES */
+        /* MENU ESPORTES - todos na mesma linha */
         .sports-menu {
             background: #FFFFFF;
             padding: 15px;
             display: flex;
-            flex-wrap: wrap; /* permite quebrar linha apenas se necessário */
-            justify-content: center;
-            gap: 12px; /* espaçamento uniforme entre esportes */
+            justify-content: space-between; /* distribui uniformemente na linha */
+            gap: 10px;
             border-bottom: 1px solid #E5E5E5;
         }
 
         .sports-menu a {
-            flex: 1 1 auto; /* distribui espaço proporcionalmente */
-            max-width: 150px; /* evita que links fiquem muito largos */
-            min-width: 110px; /* evita que links fiquem muito pequenos */
+            flex: 1 1 0; /* todos se ajustam proporcionalmente */
             text-align: center;
-            padding: 10px 0;
+            padding: 10px 5px;
             border: 1px solid #1E4BA5;
             border-radius: 8px;
             color: #1E4BA5;
@@ -81,6 +78,7 @@
             transition: all 0.3s;
             box-shadow: 0 2px 6px rgba(30,75,165,0.15);
             white-space: nowrap;
+            min-width: 80px; /* evita que fiquem muito estreitos */
         }
 
         .sports-menu a:hover {
@@ -199,5 +197,3 @@
 
 </body>
 </html>
-
-
