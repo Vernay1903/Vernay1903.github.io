@@ -1,100 +1,164 @@
-<style>
-    /* CONFIGURAÇÃO DE LAYOUT PARA FIXAR O RODAPÉ NA PARTE INFERIOR */
-    html, body {
-        height: 100%;
-        margin: 0;
-        font-family: Montserrat, sans-serif;
-        background: #F5F7FA; /* Fundo clean, quase branco */
-        color: #1C1F26; /* Texto principal escuro */
-        display: flex;
-        flex-direction: column;
-    }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Corte dos Esportes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body > *:not(footer) {
-        flex-shrink: 0;
-    }
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    main {
-        flex: 1; /* ocupa todo o espaço entre header/menu e footer */
-    }
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
 
-    /* TOPO */
-    header {
-        background: #0D1F3C; /* Azul profundo e corporativo */
-        padding: 15px 30px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
+    <style>
+        /* CONFIGURAÇÃO DE LAYOUT PARA FIXAR O RODAPÉ NA PARTE INFERIOR */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Montserrat, sans-serif;
+            background: #0B1E3D; /* Fundo azul escuro forte */
+            color: #FFFFFF; /* Texto principal branco */
+            display: flex;
+            flex-direction: column;
+        }
 
-    nav a {
-        margin-left: 15px;
-        text-decoration: none;
-        color: #AFC6E0; /* Azul claro elegante */
-        font-size: 14px;
-    }
+        body > *:not(footer) {
+            flex-shrink: 0;
+        }
 
-    nav a:hover {
-        color: #1E3A66; /* Azul médio para hover */
-    }
+        main {
+            flex: 1; /* ocupa todo o espaço entre header/menu e footer */
+        }
 
-    /* MENU ESPORTES */
-    .sports-menu {
-        background: #E8EBF0; /* Fundo leve para o menu */
-        padding: 15px;
-        text-align: center;
-    }
+        /* TOPO */
+        header {
+            background: #0B1E3D; /* Azul escuro */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
 
-    .sports-menu a {
-        display: inline-block;
-        margin: 5px;
-        padding: 8px 14px;
-        border: 1px solid #1E3A66; /* Azul médio sofisticado */
-        border-radius: 6px;
-        color: #1E3A66; /* Azul médio */
-        text-decoration: none;
-        font-size: 13px;
-    }
+        nav a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #FFD700; /* Dourado para links */
+            font-size: 14px;
+            font-weight: 600;
+        }
 
-    .sports-menu a:hover {
-        background: #AFC6E0; /* Azul claro elegante no hover */
-        color: #0D1F3C; /* Texto escuro no hover */
-    }
+        nav a:hover {
+            color: #FFA500; /* Laranja vibrante no hover */
+        }
 
-    /* HERO */
-    .hero {
-        text-align: center;
-        padding: 80px 20px;
-    }
+        /* MENU ESPORTES */
+        .sports-menu {
+            background: #142C54; /* Azul médio corporativo */
+            padding: 15px;
+            text-align: center;
+        }
 
-    .hero h1 {
-        font-size: 48px;
-        color: #0D1F3C; /* Título principal em azul escuro */
-    }
+        .sports-menu a {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 14px;
+            border: 1px solid #FFD700; /* Borda dourada */
+            border-radius: 6px;
+            color: #FFD700; /* Texto dourado */
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
 
-    .hero p {
-        color: #4B5C73; /* Texto secundário cinza-azulado */
-        font-size: 18px;
-    }
+        .sports-menu a:hover {
+            background: #FFD700; /* Hover dourado */
+            color: #0B1E3D; /* Texto azul escuro no hover */
+        }
 
-    /* RODAPÉ */
-    footer {
-        background: #0D1F3C; /* Azul profundo */
-        text-align: center;
-        padding: 15px;
-        font-size: 14px;
-        color: #AFC6E0; /* Azul claro elegante */
-    }
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
 
-    footer a {
-        color: #4B5C73; /* Azul/cinza médio para links do rodapé */
-        text-decoration: none;
-        margin: 0 10px;
-    }
+        .hero h1 {
+            font-size: 48px;
+            color: #FFD700; /* Título dourado */
+        }
 
-    footer a:hover {
-        color: #FFFFFF; /* Hover branco no rodapé */
-    }
-</style>
+        .hero p {
+            color: #B0C4DE; /* Texto secundário azul claro */
+            font-size: 18px;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: #0B1E3D; /* Azul escuro */
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #FFD700; /* Texto dourado */
+        }
+
+        footer a {
+            color: #FFA500; /* Links laranja */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #FFFFFF; /* Hover branco */
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- TOPO -->
+<header>
+    <nav>
+        <a href="index.html">Início</a>
+    </nav>
+</header>
+
+<main>
+    <!-- MENU DE ESPORTES (ORDEM ALFABÉTICA) -->
+    <div class="sports-menu">
+        <a href="atletismo.html">Atletismo</a>
+        <a href="automobilismo.html">Automobilismo</a>
+        <a href="basquete.html">Basquete</a>
+        <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+        <a href="futebol.html">Futebol</a>
+        <a href="futebol-americano.html">Futebol Americano</a>
+        <a href="futsal.html">Futsal</a>
+        <a href="handebol.html">Handebol</a>
+        <a href="lutas.html">Lutas</a>
+        <a href="skate.html">Skate</a>
+        <a href="surf.html">Surf</a>
+        <a href="volei.html">Vôlei</a>
+        <a href="volei-praia.html">Vôlei de Praia</a>
+    </div>
+
+    <!-- TEXTO CENTRAL -->
+    <div class="hero">
+        <h1>Corte dos Esportes</h1>
+        <p>Selecione um esporte no menu para ver notícias exclusivas.</p>
+    </div>
+</main>
+
+<!-- RODAPÉ -->
+<footer>
+    © 2026 Corte dos Esportes  
+    <a href="politica.html">Privacidade</a> |
+    <a href="contato.html">Contato</a> |
+    <a href="sobre.html">Sobre</a> |
+    <a href="termos.html">Termos de Uso</a>
+</footer>
+
+</body>
+</html>
+
 
 
