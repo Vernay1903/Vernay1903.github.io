@@ -1,155 +1,184 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Corte dos Esportes - Portal de Notícias Esportivas</title>
+<meta charset="UTF-8">
+<title>Corte dos Esportes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Portal Corte dos Esportes com notícias de futebol, basquete, surf, skate, vôlei, automobilismo e muito mais.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SEO -->
+<meta name="description" content="Corte dos Esportes - Portal de notícias esportivas organizado por modalidade.">
+<meta name="keywords" content="esportes, futebol, basquete, surf, vôlei, notícias esportivas">
+<meta name="author" content="Corte dos Esportes">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<!-- Fonte -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Montserrat, sans-serif;
-            background: #0f172a;
-            color: white;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    background: #0f172a;
+    color: white;
+}
 
-        header {
-            background: #020617;
-            padding: 15px 20px;
-            font-size: 22px;
-            font-weight: bold;
-        }
+/* HEADER */
+header {
+    background: #020617;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        .sports-menu {
-            background: #020617;
-            padding: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #38bdf8;
+}
 
-        .sports-menu a {
-            margin: 5px 10px;
-            padding: 6px 12px;
-            border: 1px solid #38bdf8;
-            border-radius: 5px;
-            color: #38bdf8;
-            text-decoration: none;
-            font-size: 14px;
-        }
+/* MENU */
+nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
 
-        .sports-menu a:hover {
-            background: #38bdf8;
-            color: black;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-        }
+nav a:hover {
+    background: #38bdf8;
+    color: black;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            color: #38bdf8;
-        }
+/* HERO */
+.hero {
+    padding: 80px 20px;
+    text-align: center;
+}
 
-        .hero p {
-            font-size: 18px;
-            color: #94a3b8;
-        }
+.hero h1 {
+    font-size: 42px;
+    color: #38bdf8;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 30px;
-            max-width: 1200px;
-            margin: auto;
-        }
+.hero p {
+    font-size: 18px;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: auto;
+}
 
-        .card {
-            background: #020617;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
 
-        .card a {
-            color: #38bdf8;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-        }
+.card {
+    background: #020617;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: 0.2s;
+}
 
-        footer {
-            margin-top: 50px;
-            padding: 15px;
-            background: #020617;
-            text-align: center;
-            font-size: 13px;
-            color: #64748b;
-        }
+.card:hover {
+    transform: scale(1.03);
+}
 
-        footer a {
-            color: #38bdf8;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-    </style>
+.card h3 {
+    color: #38bdf8;
+    font-size: 18px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: #020617;
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+}
+footer a {
+    color: #38bdf8;
+    text-decoration: none;
+    margin: 0 10px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-⚽ Corte dos Esportes
+<div class="logo">Corte dos Esportes</div>
+
+<nav>
+<a href="index.html">Início</a>
+<a href="atletismo.html">Atletismo</a>
+<a href="automobilismo.html">Automobilismo</a>
+<a href="basquete.html">Basquete</a>
+<a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+<a href="futebol.html">Futebol</a>
+<a href="futebol-americano.html">Futebol Americano</a>
+<a href="futsal.html">Futsal</a>
+<a href="handebol.html">Handebol</a>
+<a href="lutas.html">Lutas</a>
+<a href="skate.html">Skate</a>
+<a href="surf.html">Surf</a>
+<a href="volei.html">Vôlei</a>
+<a href="volei-praia.html">Vôlei de Praia</a>
+</nav>
 </header>
 
-<!-- MENU DE ESPORTES -->
-<div class="sports-menu">
-    <a href="atletismo.html">Atletismo</a>
-    <a href="automobilismo.html">Automobilismo</a>
-    <a href="basquete.html">Basquete</a>
-    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-    <a href="futebol.html">Futebol</a>
-    <a href="futebol-americano.html">Futebol Americano</a>
-    <a href="futsal.html">Futsal</a>
-    <a href="handebol.html">Handebol</a>
-    <a href="lutas.html">Lutas</a>
-    <a href="skate.html">Skate</a>
-    <a href="surf.html">Surf</a>
-    <a href="volei.html">Vôlei</a>
-    <a href="volei-praia.html">Vôlei de Praia</a>
+<section class="hero">
+<h1>Corte dos Esportes</h1>
+<p>Selecione um esporte no menu para ver notícias exclusivas.</p>
+</section>
+
+<section class="grid">
+<div class="card">
+<h3>Futebol</h3>
+<p>Últimas notícias, gols, transferências e destaques do futebol mundial.</p>
 </div>
 
-<div class="hero">
-    <h1>Portal Corte dos Esportes</h1>
-    <p>Notícias, destaques e tendências do mundo esportivo.</p>
+<div class="card">
+<h3>Basquete</h3>
+<p>NBA, NBB e basquete internacional com atualizações rápidas.</p>
 </div>
 
-<!-- CARDS DE ESPORTES -->
-<div class="grid">
-    <div class="card"><a href="atletismo.html">Atletismo</a></div>
-    <div class="card"><a href="automobilismo.html">Automobilismo</a></div>
-    <div class="card"><a href="basquete.html">Basquete</a></div>
-    <div class="card"><a href="esportes-olimpicos.html">Esportes Olímpicos</a></div>
-    <div class="card"><a href="futebol.html">Futebol</a></div>
-    <div class="card"><a href="futebol-americano.html">Futebol Americano</a></div>
-    <div class="card"><a href="futsal.html">Futsal</a></div>
-    <div class="card"><a href="handebol.html">Handebol</a></div>
-    <div class="card"><a href="lutas.html">Lutas</a></div>
-    <div class="card"><a href="skate.html">Skate</a></div>
-    <div class="card"><a href="surf.html">Surf</a></div>
-    <div class="card"><a href="volei.html">Vôlei</a></div>
-    <div class="card"><a href="volei-praia.html">Vôlei de Praia</a></div>
+<div class="card">
+<h3>Surf</h3>
+<p>Campeonatos, rankings e ondas históricas do surf.</p>
 </div>
+
+<div class="card">
+<h3>Automobilismo</h3>
+<p>Fórmula 1, MotoGP e corridas ao redor do mundo.</p>
+</div>
+</section>
 
 <footer>
-© 2026 Corte dos Esportes |
-<a href="politica.html">Privacidade</a> |
+© 2026 Corte dos Esportes  
+<br>
+<a href="politica.html">Privacidade</a> | 
 <a href="contato.html">Contato</a>
 </footer>
 
