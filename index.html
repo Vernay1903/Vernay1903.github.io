@@ -2,15 +2,11 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Corte dos Esportes | Notícias e Destaques</title>
+    <title>Corte dos Esportes | Portal Esportivo</title>
 
-    <!-- SEO -->
-    <meta name="description" content="Corte dos Esportes: notícias, análises e destaques do mundo esportivo. Futebol, basquete, UFC e mais.">
-    <meta name="keywords" content="esportes, futebol, notícias esportivas, corte dos esportes">
-    <meta name="author" content="Corte dos Esportes">
+    <meta name="description" content="Portal Corte dos Esportes com notícias de futebol, basquete, surf, skate e muito mais.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -23,77 +19,80 @@
 
         header {
             background: #020617;
-            padding: 15px 30px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
-        header .logo {
+        .logo {
             font-size: 22px;
             font-weight: bold;
         }
 
-        header nav a {
-            margin-left: 15px;
+        nav a {
+            margin: 5px 10px;
             color: #38bdf8;
             text-decoration: none;
             font-size: 14px;
         }
 
-        header nav a:hover {
+        nav a:hover {
             text-decoration: underline;
         }
 
         .hero {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
 
         .hero h1 {
-            font-size: 42px;
             color: #38bdf8;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: #94a3b8;
+        .sports-menu {
+            background: #020617;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .sports-menu a {
+            margin: 5px 10px;
+            padding: 6px 12px;
+            background: #020617;
+            border: 1px solid #38bdf8;
+            border-radius: 5px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .sports-menu a:hover {
+            background: #38bdf8;
+            color: black;
         }
 
         .container {
             max-width: 1200px;
             margin: auto;
-            padding: 40px 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
+            padding: 30px 20px;
         }
 
         article {
             background: #020617;
             padding: 15px;
-            border-radius: 8px;
             margin-bottom: 15px;
-        }
-
-        article h2 {
-            margin-top: 0;
-            color: #38bdf8;
-            font-size: 20px;
-        }
-
-        .sidebar {
-            background: #020617;
-            padding: 15px;
             border-radius: 8px;
         }
 
         footer {
-            margin-top: 50px;
-            padding: 15px;
             background: #020617;
             text-align: center;
-            font-size: 14px;
+            padding: 15px;
+            font-size: 13px;
             color: #64748b;
         }
 
@@ -111,48 +110,44 @@
     <div class="logo">⚽ Corte dos Esportes</div>
     <nav>
         <a href="index.html">Home</a>
-        <a href="index.html">Notícias</a>
+        <a href="noticias.html">Notícias</a>
         <a href="contato.html">Contato</a>
         <a href="politica.html">Privacidade</a>
     </nav>
 </header>
 
+<!-- MENU DE ESPORTES (ORDEM ALFABÉTICA) -->
+<div class="sports-menu">
+    <a href="atletismo.html">Atletismo</a>
+    <a href="automobilismo.html">Automobilismo</a>
+    <a href="basquete.html">Basquete</a>
+    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+    <a href="futebol.html">Futebol</a>
+    <a href="futebol-americano.html">Futebol Americano</a>
+    <a href="futsal.html">Futsal</a>
+    <a href="handebol.html">Handebol</a>
+    <a href="lutas.html">Lutas</a>
+    <a href="skate.html">Skate</a>
+    <a href="surf.html">Surf</a>
+    <a href="volei.html">Vôlei</a>
+    <a href="volei-praia.html">Vôlei de Praia</a>
+</div>
+
 <div class="hero">
-    <h1>Notícias e Destaques do Esporte</h1>
-    <p>Atualizações, análises e informações do mundo esportivo.</p>
+    <h1>Portal Corte dos Esportes</h1>
+    <p>Selecione um esporte no menu para ver notícias exclusivas.</p>
 </div>
 
 <div class="container">
-
-    <!-- COLUNA PRINCIPAL -->
-    <main>
-        <article>
-            <h2>Bem-vindo ao Corte dos Esportes</h2>
-            <p>Publicamos notícias, análises e destaques sobre esportes no Brasil e no mundo.</p>
-        </article>
-
-        <article>
-            <h2>Destaque esportivo do dia</h2>
-            <p>Adicione aqui suas notícias reais para gerar tráfego orgânico.</p>
-        </article>
-
-        <article>
-            <h2>Outra notícia exemplo</h2>
-            <p>Quanto mais conteúdo original, maior aprovação no Google AdSense.</p>
-        </article>
-    </main>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <h3>Publicidade</h3>
-        <p>Espaço reservado para anúncios Google AdSense.</p>
-    </aside>
-
+    <article>
+        <h2>Bem-vindo ao Corte dos Esportes</h2>
+        <p>Este portal publica notícias esportivas organizadas por modalidade.</p>
+    </article>
 </div>
 
 <footer>
-© 2026 Corte dos Esportes - Todos os direitos reservados <br>
-<a href="politica.html">Política de Privacidade</a> |
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
 <a href="contato.html">Contato</a>
 </footer>
 
