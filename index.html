@@ -50,7 +50,7 @@
         }
 
         nav a:hover {
-            color: #2A6F9E; /* Azul mais claro no hover */
+            color: #F08C00; /* Laranja vibrante no hover */
         }
 
         /* MENU ESPORTES */
@@ -70,11 +70,13 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
+            transition: all 0.3s;
         }
 
         .sports-menu a:hover {
-            background: #2A6F9E; /* Azul mais claro no hover */
+            background: #F08C00; /* Laranja vibrante no hover */
             color: #FFFFFF; /* Texto branco no hover */
+            border-color: #F08C00;
         }
 
         /* HERO */
@@ -103,13 +105,30 @@
         }
 
         footer a {
-            color: #B0C4DE; /* Azul claro para links */
+            color: #F08C00; /* Laranja vibrante para links */
             text-decoration: none;
             margin: 0 10px;
+            transition: color 0.3s;
         }
 
         footer a:hover {
             color: #FFFFFF; /* Hover branco */
+        }
+
+        /* BOTÕES OU ELEMENTOS DE DESTAQUE (ex: futuros banners) */
+        .highlight {
+            background: #F08C00; /* Laranja vibrante */
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .highlight:hover {
+            background: #0D3B66; /* Azul metálico forte no hover */
         }
     </style>
 </head>
@@ -145,6 +164,8 @@
     <div class="hero">
         <h1>Corte dos Esportes</h1>
         <p>Selecione um esporte no menu para ver notícias exclusivas.</p>
+        <!-- Exemplo de botão destaque -->
+        <a href="futebol.html" class="highlight">Últimas do Futebol</a>
     </div>
 </main>
 
@@ -159,5 +180,4 @@
 
 </body>
 </html>
-
 
