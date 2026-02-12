@@ -5,12 +5,15 @@
     <title>Corte dos Esportes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- FAVICON COMPLETO -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
 
     <style>
         html, body {
@@ -23,7 +26,13 @@
             flex-direction: column;
         }
 
-        main { flex: 1; }
+        body > *:not(footer) {
+            flex-shrink: 0;
+        }
+
+        main {
+            flex: 1;
+        }
 
         /* HEADER */
         header {
@@ -42,16 +51,18 @@
             font-weight: 700;
         }
 
-        nav a:hover { color: #1E4BA5; }
+        nav a:hover {
+            color: #1E4BA5;
+        }
 
         /* MENU ESPORTES */
         .sports-menu {
             background: #FFFFFF;
-            padding: 12px;
+            padding: 15px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             border-bottom: 1px solid #E5E5E5;
         }
 
@@ -59,90 +70,60 @@
             flex: 1 1 120px;
             max-width: 150px;
             text-align: center;
-            padding: 10px;
+            padding: 12px 8px;
             border: 1px solid #1E4BA5;
             border-radius: 10px;
             color: #1E4BA5;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            background: #FFF;
-            transition: .3s;
+            transition: all 0.3s ease;
+            background-color: #FFFFFF;
         }
 
         .sports-menu a:hover {
             background: #1E4BA5;
-            color: #FFF;
+            color: #FFFFFF;
         }
 
-        /* TÍTULO PRINCIPAL (LOGO ABAIXO DO MENU) */
+        /* TÍTULO CENTRAL */
         .hero-central {
             text-align: center;
-            padding: 20px 10px 10px;
+            padding: 30px 20px 15px;
         }
 
         .hero-central h1 {
-            font-size: 50px;
+            font-size: 48px;
             margin: 0;
         }
 
         .hero-central p {
             font-size: 18px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
-        /* BLOCO AÇÃO */
-        .hero {
-            text-align: center;
-            padding: 20px 10px 60px;
-        }
-
-        .highlight {
-            background: #1E4BA5;
-            color: #FFF;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .highlight:hover {
-            background: #0A1E3A;
-        }
-
-        /* FOOTER */
+        /* RODAPÉ */
         footer {
             background: #0A1E3A;
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            color: #FFF;
+            color: #FFFFFF;
         }
 
         footer a {
-            color: #FFF;
+            color: #FFFFFF;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
         }
 
-        footer a:hover { color: #1E4BA5; }
+        footer a:hover {
+            color: #1E4BA5;
+        }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
-            .sports-menu a {
-                flex: 1 1 45%;
-                max-width: none;
-            }
-
             .hero-central h1 {
-                font-size: 36px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sports-menu a {
-                flex: 1 1 100%;
+                font-size: 38px;
             }
         }
     </style>
@@ -156,37 +137,26 @@
     </nav>
 </header>
 
-<main>
+<div class="sports-menu">
+    <a href="atletismo.html">Atletismo</a>
+    <a href="automobilismo.html">Automobilismo</a>
+    <a href="basquete.html">Basquete</a>
+    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+    <a href="futebol.html">Futebol</a>
+    <a href="futebol-americano.html">Futebol Americano</a>
+    <a href="futsal.html">Futsal</a>
+    <a href="handebol.html">Handebol</a>
+    <a href="lutas.html">Lutas</a>
+    <a href="skate.html">Skate</a>
+    <a href="surf.html">Surf</a>
+    <a href="volei.html">Vôlei</a>
+    <a href="volei-praia.html">Vôlei de Praia</a>
+</div>
 
-    <!-- MENU ESPORTES -->
-    <div class="sports-menu">
-        <a href="atletismo.html">Atletismo</a>
-        <a href="automobilismo.html">Automobilismo</a>
-        <a href="basquete.html">Basquete</a>
-        <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-        <a href="futebol.html">Futebol</a>
-        <a href="futebol-americano.html">Futebol Americano</a>
-        <a href="futsal.html">Futsal</a>
-        <a href="handebol.html">Handebol</a>
-        <a href="lutas.html">Lutas</a>
-        <a href="skate.html">Skate</a>
-        <a href="surf.html">Surf</a>
-        <a href="volei.html">Vôlei</a>
-        <a href="volei-praia.html">Vôlei de Praia</a>
-    </div>
-
-    <!-- TITULO PRINCIPAL -->
-    <section class="hero-central">
-        <h1>Corte dos Esportes</h1>
-        <p>Notícias, destaques e cortes dos principais esportes em um só lugar.</p>
-    </section>
-
-    <!-- BOTÃO -->
-    <section class="hero">
-        <a href="futebol.html" class="highlight">Últimas do Futebol</a>
-    </section>
-
-</main>
+<section class="hero-central">
+    <h1>Corte dos Esportes</h1>
+    <p>Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
+</section>
 
 <footer>
     © 2026 Corte dos Esportes |
@@ -198,8 +168,5 @@
 
 </body>
 </html>
-
-
-
 
 
