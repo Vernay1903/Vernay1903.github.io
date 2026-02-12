@@ -1,301 +1,433 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Corte dos Esportes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Corte dos Esportes | Notícias, agenda e destaques do dia</title>
+  <meta name="description" content="Corte dos Esportes: últimas notícias, destaques e agenda do dia em Futebol, Olimpíadas, Basquete, Vôlei, Surf, Skate e mais.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FAVICON -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="manifest" href="/site.webmanifest">
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: Montserrat, sans-serif;
-            background: #FFFFFF;
-            color: #0A1E3A;
-        }
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        main { flex: 1; }
+    main { flex: 1; }
 
-        header {
-            background: #0A1E3A;
-            padding: 10px 30px;
-            display: flex;
-            align-items: center;
-        }
+    /* HEADER */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+    }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .logo-container img {
-            height: 34px;
-        }
+    .logo-container img { height: 34px; }
 
-        .logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            color: #FFFFFF;
-        }
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+    }
 
-        .sports-menu {
-            background: #FFFFFF;
-            padding: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            border-bottom: 1px solid #E5E5E5;
-        }
+    /* MENU */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+    }
 
-        .sports-menu a {
-            flex: 1 1 120px;
-            max-width: 150px;
-            text-align: center;
-            padding: 12px 8px;
-            border: 1px solid #1E4BA5;
-            border-radius: 10px;
-            color: #1E4BA5;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            background-color: #FFFFFF;
-            transition: 0.3s;
-        }
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
 
-        .sports-menu a:hover {
-            background: #1E4BA5;
-            color: #FFFFFF;
-        }
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
 
-        /* CONTEÚDO */
-        .page {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 10px 40px;
-        }
+    /* CONTEÚDO */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
 
-        .layout {
-            display: grid;
-            grid-template-columns: 2.3fr 330px;
-            gap: 20px;
-            align-items: start;
-        }
+    .hero-central {
+      text-align: center;
+      margin-bottom: 22px;
+    }
 
-        /* HERO CENTRALIZADO */
-        .hero-central {
-            text-align: center;
-            margin-bottom: 25px;
-        }
+    .hero-central h1 {
+      font-size: 54px;
+      margin: 0 0 10px;
+    }
 
-        .hero-central h1 {
-            font-size: 54px;
-            margin: 0 0 10px;
-        }
+    .hero-central p {
+      font-size: 18px;
+      margin: 0;
+    }
 
-        .hero-central p {
-            font-size: 18px;
-            margin: 0;
-        }
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
 
-        .card {
-            background: #FFFFFF;
-            border: 1px solid #E5E5E5;
-            border-radius: 14px;
-            padding: 18px;
-            box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-            margin-bottom: 20px;
-        }
+    aside { margin-right: -10px; }
 
-        .card h2 {
-            margin: 0 0 10px;
-        }
+    /* COMPONENTES */
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
 
-        /* Agenda */
-        aside {
-            margin-right: -10px; /* 🔥 empurra mais para direita */
-        }
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
 
-        .agenda-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-top: 8px;
+    }
 
-        .agenda-list li {
-            display: flex;
-            gap: 12px;
-            padding: 10px 0;
-            border-top: 1px solid #EEF1F5;
-        }
+    /* DESTAQUE PRINCIPAL */
+    .featured-main a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
 
-        .agenda-list li:first-child {
-            border-top: none;
-        }
+    .featured-main h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
 
-        .time {
-            min-width: 60px;
-            font-weight: 700;
-            color: #1E4BA5;
-        }
+    .featured-main p {
+      margin: 0;
+      color: #0A1E3A;
+      line-height: 1.6;
+    }
 
-        .desc {
-            font-size: 14px;
-            line-height: 1.4;
-        }
+    .pill {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1E4BA5;
+      border: 1px solid #1E4BA5;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+    }
 
-        .ad-slot {
-            border: 1px dashed #C9D3E2;
-            background: #F7FAFF;
-            border-radius: 14px;
-            padding: 22px;
-            text-align: center;
-            color: #1E4BA5;
-            font-weight: 700;
-            font-size: 14px;
-        }
+    /* DESTAQUES RÁPIDOS */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
 
-        footer {
-            background: #0A1E3A;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #FFFFFF;
-        }
+    .mini a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
 
-        footer a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 12px;
-        }
+    .mini h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      line-height: 1.35;
+    }
 
-        footer a:hover {
-            color: #1E4BA5;
-        }
+    .mini p {
+      margin: 0;
+      font-size: 13px;
+      color: #31425F;
+      line-height: 1.45;
+    }
 
-        @media (max-width: 1024px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
+    /* LISTA DE NOTÍCIAS */
+    .news-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-            aside {
-                margin-right: 0;
-            }
-        }
+    .news-list li {
+      padding: 12px 0;
+      border-top: 1px solid #EEF1F5;
+    }
 
-        @media (max-width: 768px) {
-            .hero-central h1 {
-                font-size: 38px;
-            }
-        }
+    .news-list li:first-child { border-top: none; padding-top: 0; }
 
-    </style>
+    .news-list a {
+      text-decoration: none;
+      color: #0A1E3A;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .news-list a:hover { color: #1E4BA5; }
+
+    .excerpt {
+      margin: 0;
+      font-size: 14px;
+      color: #31425F;
+      line-height: 1.55;
+    }
+
+    /* AGENDA */
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    /* PLACEHOLDER ADS */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      color: #1E4BA5;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+      .featured-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-central h1 { font-size: 38px; }
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo-container">
-        <img src="logo.png" alt="Corte dos Esportes">
-        <span class="logo-text">Corte dos Esportes</span>
-    </div>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <span class="logo-text">Corte dos Esportes</span>
+  </div>
 </header>
 
 <div class="sports-menu">
-    <a href="atletismo.html">Atletismo</a>
-    <a href="automobilismo.html">Automobilismo</a>
-    <a href="basquete.html">Basquete</a>
-    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-    <a href="futebol.html">Futebol</a>
-    <a href="futebol-americano.html">Futebol Americano</a>
-    <a href="futsal.html">Futsal</a>
-    <a href="handebol.html">Handebol</a>
-    <a href="lutas.html">Lutas</a>
-    <a href="skate.html">Skate</a>
-    <a href="surf.html">Surf</a>
-    <a href="volei.html">Vôlei</a>
-    <a href="volei-praia.html">Vôlei de Praia</a>
-    <a href="tenis.html">Tênis</a>
+  <a href="atletismo.html">Atletismo</a>
+  <a href="automobilismo.html">Automobilismo</a>
+  <a href="basquete.html">Basquete</a>
+  <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+  <a href="futebol.html">Futebol</a>
+  <a href="futebol-americano.html">Futebol Americano</a>
+  <a href="futsal.html">Futsal</a>
+  <a href="handebol.html">Handebol</a>
+  <a href="lutas.html">Lutas</a>
+  <a href="skate.html">Skate</a>
+  <a href="surf.html">Surf</a>
+  <a href="volei.html">Vôlei</a>
+  <a href="volei-praia.html">Vôlei de Praia</a>
+  <a href="tenis.html">Tênis</a>
 </div>
 
 <main>
-    <div class="page">
+  <div class="page">
 
-        <div class="hero-central">
-            <h1>Corte dos Esportes</h1>
-            <p>Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
+    <div class="hero-central">
+      <h1>Corte dos Esportes</h1>
+      <p>Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
+    </div>
+
+    <div class="layout">
+
+      <!-- CENTRO -->
+      <section>
+
+        <!-- DESTAQUE PRINCIPAL -->
+        <div class="card featured-main">
+          <span class="pill">DESTAQUE DO DIA</span>
+          <a href="#">
+            <h2>Título do destaque principal (substitua pelo link da sua notícia)</h2>
+            <p>Resumo curto de 2 linhas para aumentar cliques e segurar o usuário na página.</p>
+          </a>
+          <div class="meta">Atualizado hoje • Categoria: Futebol</div>
         </div>
 
-        <div class="layout">
-
-            <section>
-
-                <div class="card">
-                    <h2>Destaques</h2>
-                    <p>Em breve: destaques principais e notícias mais importantes do dia.</p>
-                </div>
-
-                <div class="card">
-                    <div class="ad-slot">ESPAÇO PARA ANÚNCIO (CENTRO)</div>
-                </div>
-
-            </section>
-
-            <aside>
-
-                <div class="card">
-                    <h2>Agenda do Dia</h2>
-                    <ul class="agenda-list">
-                        <li>
-                            <div class="time">08:00</div>
-                            <div class="desc">Jogos, horários e transmissões principais.</div>
-                        </li>
-                        <li>
-                            <div class="time">16:00</div>
-                            <div class="desc">Evento relevante do dia (Olimpíadas, SLS, etc.).</div>
-                        </li>
-                        <li>
-                            <div class="time">21:30</div>
-                            <div class="desc">Jogo principal (onde assistir / análise).</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="ad-slot">ESPAÇO PARA ANÚNCIO (SIDEBAR)</div>
-
-            </aside>
-
+        <!-- 3 DESTAQUES RÁPIDOS -->
+        <div class="card">
+          <h2 class="section-title">Destaques rápidos</h2>
+          <div class="featured-grid">
+            <div class="mini">
+              <a href="#">
+                <h3>Manchete 1 (rápida)</h3>
+                <p>Resumo bem curto.</p>
+              </a>
+            </div>
+            <div class="mini">
+              <a href="#">
+                <h3>Manchete 2 (rápida)</h3>
+                <p>Resumo bem curto.</p>
+              </a>
+            </div>
+            <div class="mini">
+              <a href="#">
+                <h3>Manchete 3 (rápida)</h3>
+                <p>Resumo bem curto.</p>
+              </a>
+            </div>
+          </div>
         </div>
+
+        <!-- AD NO CENTRO (ótimo para viewability) -->
+        <div class="card">
+          <div class="ad-slot">ESPAÇO PARA ANÚNCIO (CENTRO)</div>
+        </div>
+
+        <!-- ÚLTIMAS NOTÍCIAS -->
+        <div class="card">
+          <h2 class="section-title">Últimas notícias</h2>
+          <ul class="news-list">
+            <!-- Você só duplica esse bloco <li> para postar 20+ notícias -->
+            <li>
+              <a href="#">Título da notícia 1 (link da matéria)</a>
+              <p class="excerpt">Resumo de 1–2 linhas com palavra-chave + contexto (ajuda no clique e SEO).</p>
+              <div class="meta">Hoje • Futebol</div>
+            </li>
+
+            <li>
+              <a href="#">Título da notícia 2 (link da matéria)</a>
+              <p class="excerpt">Resumo de 1–2 linhas com palavra-chave + contexto.</p>
+              <div class="meta">Hoje • Olimpíadas</div>
+            </li>
+
+            <li>
+              <a href="#">Título da notícia 3 (link da matéria)</a>
+              <p class="excerpt">Resumo de 1–2 linhas com palavra-chave + contexto.</p>
+              <div class="meta">Hoje • Vôlei</div>
+            </li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list">
+            <li><div class="time">08:00</div><div class="desc">Jogos, horários e transmissões principais.</div></li>
+            <li><div class="time">16:00</div><div class="desc">Evento relevante do dia (Olimpíadas, SLS, etc.).</div></li>
+            <li><div class="time">21:30</div><div class="desc">Jogo principal (onde assistir / análise).</div></li>
+          </ul>
+          <div class="meta">Atualize todo dia para criar hábito (Google gosta).</div>
+        </div>
+
+        <div class="ad-slot">ESPAÇO PARA ANÚNCIO (SIDEBAR)</div>
+
+      </aside>
 
     </div>
+  </div>
 </main>
 
 <footer>
-    © 2026 Corte dos Esportes |
-    <a href="politica.html">Privacidade</a> |
-    <a href="contato.html">Contato</a> |
-    <a href="sobre.html">Sobre</a> |
-    <a href="termos.html">Termos de Uso</a>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
 </footer>
 
 </body>
 </html>
-
-
 
