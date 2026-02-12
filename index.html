@@ -29,11 +29,8 @@
             flex-direction: column;
         }
 
-        main {
-            flex: 1;
-        }
+        main { flex: 1; }
 
-        /* HEADER COM LOGO */
         header {
             background: #0A1E3A;
             padding: 10px 30px;
@@ -41,11 +38,23 @@
             align-items: center;
         }
 
-        header img {
-            height: 50px;
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
-        /* MENU ESPORTES */
+        .logo-container img {
+            height: 45px;
+            margin-right: 12px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: 0.5px;
+        }
+
         .sports-menu {
             background: #FFFFFF;
             padding: 15px;
@@ -111,12 +120,9 @@
         }
 
         @media (max-width: 768px) {
-            header img {
-                height: 40px;
-            }
-            .hero-central h1 {
-                font-size: 38px;
-            }
+            .logo-container img { height: 38px; }
+            .logo-text { font-size: 18px; }
+            .hero-central h1 { font-size: 38px; }
         }
     </style>
 </head>
@@ -124,13 +130,13 @@
 <body>
 
 <header>
-    <a href="index.html">
+    <div class="logo-container">
         <img src="logo.png" alt="Corte dos Esportes">
-    </a>
+        <span class="logo-text">Corte dos Esportes</span>
+    </div>
 </header>
 
 <main>
-
     <div class="sports-menu">
         <a href="atletismo.html">Atletismo</a>
         <a href="automobilismo.html">Automobilismo</a>
@@ -152,7 +158,6 @@
         <h1>Corte dos Esportes</h1>
         <p>Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
     </section>
-
 </main>
 
 <footer>
@@ -165,4 +170,3 @@
 
 </body>
 </html>
-
