@@ -55,7 +55,7 @@
             color: #1E4BA5;
         }
 
-        /* MENU ESPORTES - RESPONSIVO PREMIUM */
+        /* MENU ESPORTES */
         .sports-menu {
             background: #FFFFFF;
             padding: 15px;
@@ -90,16 +90,27 @@
             transform: translateY(-4px) scale(1.05);
         }
 
-        /* HERO */
-        .hero {
+        /* TITULO CENTRAL (SEO + ADSENSE) */
+        .hero-central {
             text-align: center;
-            padding: 100px 20px;
+            padding: 50px 20px 10px;
         }
 
-        .hero h1 {
-            font-size: 54px;
+        .hero-central h1 {
+            font-size: 50px;
             color: #0A1E3A;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+
+        .hero-central p {
+            font-size: 18px;
+            color: #0A1E3A;
+        }
+
+        /* HERO BOTÃO */
+        .hero {
+            text-align: center;
+            padding: 30px 20px 80px;
         }
 
         .hero p {
@@ -107,10 +118,10 @@
             font-size: 18px;
             line-height: 1.6;
             max-width: 720px;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
         }
 
-        /* BOTÃO DE DESTAQUE */
+        /* BOTÃO */
         .highlight {
             background: #1E4BA5;
             color: #FFFFFF;
@@ -151,34 +162,21 @@
             color: #1E4BA5;
         }
 
-        /* RESPONSIVIDADE AVANÇADA */
-        @media (max-width: 1024px) {
-            .sports-menu a {
-                flex: 1 1 110px;
-                max-width: 140px;
-            }
-        }
-
+        /* RESPONSIVO */
         @media (max-width: 768px) {
             .sports-menu a {
-                flex: 1 1 45%; /* 2 itens por linha em tablets/smartphones médios */
+                flex: 1 1 45%;
                 max-width: none;
-                margin-bottom: 10px;
             }
-            .hero {
-                padding: 60px 15px;
+
+            .hero-central h1 {
+                font-size: 36px;
             }
         }
 
         @media (max-width: 480px) {
             .sports-menu a {
-                flex: 1 1 100%; /* 1 item por linha em celulares pequenos */
-            }
-            .hero h1 {
-                font-size: 38px;
-            }
-            .hero p {
-                font-size: 16px;
+                flex: 1 1 100%;
             }
         }
     </style>
@@ -194,7 +192,8 @@
 </header>
 
 <main>
-    <!-- MENU DE ESPORTES -->
+
+    <!-- MENU ESPORTES -->
     <div class="sports-menu">
         <a href="atletismo.html">Atletismo</a>
         <a href="automobilismo.html">Automobilismo</a>
@@ -211,12 +210,18 @@
         <a href="volei-praia.html">Vôlei de Praia</a>
     </div>
 
-    <!-- HERO -->
-    <div class="hero">
-        <h1>Corte dos Esportes</h1>
-        <p>Selecione um esporte no menu para ver notícias exclusivas.</p>
+    <!-- TITULO PRINCIPAL SEO -->
+    <section class="hero-central">
+        <h1>Corte dos Esportes Central</h1>
+        <p>Notícias, destaques e cortes dos principais esportes em um só lugar.</p>
+    </section>
+
+    <!-- BLOCO DE AÇÃO -->
+    <section class="hero">
+        <p>Selecione um esporte no menu ou veja os destaques abaixo.</p>
         <a href="futebol.html" class="highlight">Últimas do Futebol</a>
-    </div>
+    </section>
+
 </main>
 
 <!-- RODAPÉ -->
