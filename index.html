@@ -16,22 +16,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* LAYOUT PRINCIPAL (RODAPÉ SEMPRE NO FINAL) */
         html, body {
             height: 100%;
             margin: 0;
             font-family: Montserrat, sans-serif;
             background: #FFFFFF;
             color: #0A1E3A;
-            display: flex;
-            flex-direction: column;
         }
 
-        body > *:not(footer) {
-            flex-shrink: 0;
+        body {
+            min-height: 100vh;          /* garante altura de tela */
+            display: flex;
+            flex-direction: column;     /* empilha */
         }
 
         main {
-            flex: 1;
+            flex: 1;                    /* empurra o footer pra baixo */
+            display: block;
         }
 
         /* HEADER */
@@ -77,8 +79,9 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s ease;
             background-color: #FFFFFF;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .sports-menu a:hover {
@@ -93,16 +96,17 @@
         }
 
         .hero-central h1 {
-            font-size: 48px;
+            font-size: 54px;
             margin: 0;
         }
 
         .hero-central p {
             font-size: 18px;
             margin-top: 10px;
+            line-height: 1.6;
         }
 
-        /* RODAPÉ */
+        /* FOOTER */
         footer {
             background: #0A1E3A;
             text-align: center;
@@ -115,6 +119,7 @@
             color: #FFFFFF;
             text-decoration: none;
             margin: 0 12px;
+            font-weight: 500;
         }
 
         footer a:hover {
@@ -122,9 +127,12 @@
         }
 
         @media (max-width: 768px) {
-            .hero-central h1 {
-                font-size: 38px;
-            }
+            .hero-central h1 { font-size: 38px; }
+            .sports-menu a { flex: 1 1 45%; max-width: none; }
+        }
+
+        @media (max-width: 480px) {
+            .sports-menu a { flex: 1 1 100%; }
         }
     </style>
 </head>
@@ -137,27 +145,29 @@
     </nav>
 </header>
 
-<div class="sports-menu">
-    <a href="atletismo.html">Atletismo</a>
-    <a href="automobilismo.html">Automobilismo</a>
-    <a href="basquete.html">Basquete</a>
-    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-    <a href="futebol.html">Futebol</a>
-    <a href="futebol-americano.html">Futebol Americano</a>
-    <a href="futsal.html">Futsal</a>
-    <a href="handebol.html">Handebol</a>
-    <a href="lutas.html">Lutas</a>
-    <a href="skate.html">Skate</a>
-    <a href="surf.html">Surf</a>
-    <a href="volei.html">Vôlei</a>
-    <a href="volei-praia.html">Vôlei de Praia</a>
-    <a href="tenis.html">Tênis</a>
-</div>
+<main>
+    <div class="sports-menu">
+        <a href="atletismo.html">Atletismo</a>
+        <a href="automobilismo.html">Automobilismo</a>
+        <a href="basquete.html">Basquete</a>
+        <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+        <a href="futebol.html">Futebol</a>
+        <a href="futebol-americano.html">Futebol Americano</a>
+        <a href="futsal.html">Futsal</a>
+        <a href="handebol.html">Handebol</a>
+        <a href="lutas.html">Lutas</a>
+        <a href="skate.html">Skate</a>
+        <a href="surf.html">Surf</a>
+        <a href="volei.html">Vôlei</a>
+        <a href="volei-praia.html">Vôlei de Praia</a>
+        <a href="tenis.html">Tênis</a>
+    </div>
 
-<section class="hero-central">
-    <h1>Corte dos Esportes</h1>
-    <p>Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
-</section>
+    <section class="hero-central">
+        <h1>Corte dos Esportes</h1>
+        <p>Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
+    </section>
+</main>
 
 <footer>
     © 2026 Corte dos Esportes |
@@ -169,5 +179,6 @@
 
 </body>
 </html>
+
 
 
