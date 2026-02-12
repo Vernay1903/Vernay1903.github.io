@@ -13,7 +13,6 @@
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 
     <style>
-        /* LAYOUT PRINCIPAL */
         html, body {
             height: 100%;
             margin: 0;
@@ -24,20 +23,13 @@
             flex-direction: column;
         }
 
-        body > *:not(footer) {
-            flex-shrink: 0;
-        }
+        main { flex: 1; }
 
-        main {
-            flex: 1;
-        }
-
-        /* TOPO */
+        /* HEADER */
         header {
             background: #0A1E3A;
             padding: 12px 30px;
             display: flex;
-            justify-content: flex-start;
             align-items: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
@@ -48,21 +40,18 @@
             color: #FFFFFF;
             font-size: 15px;
             font-weight: 700;
-            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #1E4BA5;
-        }
+        nav a:hover { color: #1E4BA5; }
 
         /* MENU ESPORTES */
         .sports-menu {
             background: #FFFFFF;
-            padding: 15px;
+            padding: 12px;
             display: flex;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             border-bottom: 1px solid #E5E5E5;
         }
 
@@ -70,97 +59,74 @@
             flex: 1 1 120px;
             max-width: 150px;
             text-align: center;
-            padding: 12px 8px;
+            padding: 10px;
             border: 1px solid #1E4BA5;
             border-radius: 10px;
             color: #1E4BA5;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 3px 8px rgba(30,75,165,0.12);
-            white-space: nowrap;
-            background-color: #FFFFFF;
+            background: #FFF;
+            transition: .3s;
         }
 
         .sports-menu a:hover {
             background: #1E4BA5;
-            color: #FFFFFF;
-            box-shadow: 0 6px 20px rgba(30,75,165,0.35);
-            transform: translateY(-4px) scale(1.05);
+            color: #FFF;
         }
 
-        /* TITULO CENTRAL (SEO + ADSENSE) */
+        /* TÍTULO PRINCIPAL (LOGO ABAIXO DO MENU) */
         .hero-central {
             text-align: center;
-            padding: 50px 20px 10px;
+            padding: 20px 10px 10px;
         }
 
         .hero-central h1 {
             font-size: 50px;
-            color: #0A1E3A;
-            margin-bottom: 10px;
+            margin: 0;
         }
 
         .hero-central p {
             font-size: 18px;
-            color: #0A1E3A;
+            margin-top: 8px;
         }
 
-        /* HERO BOTÃO */
+        /* BLOCO AÇÃO */
         .hero {
             text-align: center;
-            padding: 30px 20px 80px;
+            padding: 20px 10px 60px;
         }
 
-        .hero p {
-            color: #0A1E3A;
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 720px;
-            margin: 0 auto 20px;
-        }
-
-        /* BOTÃO */
         .highlight {
             background: #1E4BA5;
-            color: #FFFFFF;
+            color: #FFF;
             padding: 14px 28px;
             border-radius: 12px;
             font-weight: 700;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 5px 14px rgba(30,75,165,0.28);
         }
 
         .highlight:hover {
             background: #0A1E3A;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 6px 20px rgba(10,30,58,0.35);
         }
 
-        /* RODAPÉ */
+        /* FOOTER */
         footer {
             background: #0A1E3A;
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            color: #FFFFFF;
-            border-top: 1px solid #1E4BA5;
+            color: #FFF;
         }
 
         footer a {
-            color: #FFFFFF;
+            color: #FFF;
             text-decoration: none;
-            margin: 0 12px;
-            font-weight: 500;
-            transition: color 0.3s;
+            margin: 0 10px;
         }
 
-        footer a:hover {
-            color: #1E4BA5;
-        }
+        footer a:hover { color: #1E4BA5; }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
@@ -184,7 +150,6 @@
 
 <body>
 
-<!-- TOPO -->
 <header>
     <nav>
         <a href="index.html">Início</a>
@@ -210,23 +175,21 @@
         <a href="volei-praia.html">Vôlei de Praia</a>
     </div>
 
-    <!-- TITULO PRINCIPAL SEO -->
+    <!-- TITULO PRINCIPAL -->
     <section class="hero-central">
-        <h1>Corte dos Esportes Central</h1>
+        <h1>Corte dos Esportes</h1>
         <p>Notícias, destaques e cortes dos principais esportes em um só lugar.</p>
     </section>
 
-    <!-- BLOCO DE AÇÃO -->
+    <!-- BOTÃO -->
     <section class="hero">
-        <p>Selecione um esporte no menu ou veja os destaques abaixo.</p>
         <a href="futebol.html" class="highlight">Últimas do Futebol</a>
     </section>
 
 </main>
 
-<!-- RODAPÉ -->
 <footer>
-    © 2026 Corte dos Esportes  
+    © 2026 Corte dos Esportes |
     <a href="politica.html">Privacidade</a> |
     <a href="contato.html">Contato</a> |
     <a href="sobre.html">Sobre</a> |
@@ -235,5 +198,8 @@
 
 </body>
 </html>
+
+
+
 
 
