@@ -2,115 +2,119 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Surf | Corte dos Esportes</title>
-
-    <meta name="description" content="Notícias de Surf no portal Corte dos Esportes. Resultados, atletas, campeonatos e novidades.">
+    <title>Vôlei - Corte dos Esportes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+
     <style>
-        body {
+        html, body {
+            height: 100%;
             margin: 0;
             font-family: Montserrat, sans-serif;
-            background: #0f172a;
-            color: white;
+            background: #FFFFFF;
+            color: #0A1E3A;
+            display: flex;
+            flex-direction: column;
         }
+
+        main { flex: 1; }
 
         header {
-            background: #020617;
-            padding: 10px 20px;
+            background: #0A1E3A;
+            padding: 12px 30px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         nav a {
-            margin: 5px 10px;
-            color: #38bdf8;
             text-decoration: none;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 700;
         }
 
         .sports-menu {
-            background: #020617;
-            padding: 10px;
+            background: #FFFFFF;
+            padding: 15px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 12px;
+            border-bottom: 1px solid #E5E5E5;
         }
 
         .sports-menu a {
-            margin: 5px 10px;
-            padding: 6px 12px;
-            border: 1px solid #38bdf8;
-            border-radius: 5px;
-            color: #38bdf8;
+            flex: 1 1 120px;
+            max-width: 150px;
+            text-align: center;
+            padding: 12px 8px;
+            border: 1px solid #1E4BA5;
+            border-radius: 10px;
+            color: #1E4BA5;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 600;
+            background: #FFFFFF;
+            transition: all 0.35s;
+            box-shadow: 0 3px 8px rgba(30,75,165,0.12);
         }
 
         .sports-menu a:hover {
-            background: #38bdf8;
-            color: black;
+            background: #1E4BA5;
+            color: #FFFFFF;
+            transform: translateY(-3px);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 30px 20px;
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
         }
 
-        h1 {
-            color: #38bdf8;
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
         }
 
-        article {
-            background: #020617;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
+        .hero p {
+            font-size: 18px;
+            max-width: 720px;
+            margin: 0 auto;
         }
 
         footer {
-            background: #020617;
+            background: #0A1E3A;
             text-align: center;
-            padding: 15px;
-            font-size: 13px;
-            color: #64748b;
+            padding: 20px;
+            font-size: 14px;
+            color: #FFFFFF;
+            border-top: 1px solid #1E4BA5;
         }
 
         footer a {
-            color: #38bdf8;
+            color: #FFFFFF;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
         }
+
+        footer a:hover { color: #1E4BA5; }
     </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">⚽ Corte dos Esportes</div>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="noticias.html">Notícias</a>
-        <a href="contato.html">Contato</a>
-        <a href="politica.html">Privacidade</a>
+        <a href="index.html">Início</a>
     </nav>
 </header>
 
-<!-- MENU GLOBAL DE ESPORTES -->
+<main>
+
 <div class="sports-menu">
     <a href="atletismo.html">Atletismo</a>
     <a href="automobilismo.html">Automobilismo</a>
@@ -127,25 +131,19 @@
     <a href="volei-praia.html">Vôlei de Praia</a>
 </div>
 
-<div class="container">
-    <h1>Surf</h1>
-    <p>Últimas notícias, campeonatos, atletas e novidades do Surf.</p>
-
-    <article>
-        <h2>Notícia exemplo de Surf</h2>
-        <p>Conteúdo da notícia aqui. Depois você pode trocar por notícias reais ou automáticas.</p>
-    </article>
-
-    <article>
-        <h2>Outra notícia de Surf</h2>
-        <p>Texto de exemplo para estrutura SEO e AdSense.</p>
-    </article>
+<div class="hero">
+    <h1>Vôlei</h1>
+    <p>Notícias, resultados e destaques do vôlei nacional e internacional.</p>
 </div>
 
+</main>
+
 <footer>
-© 2026 Corte dos Esportes |
-<a href="politica.html">Privacidade</a> |
-<a href="contato.html">Contato</a>
+    © 2026 Corte dos Esportes  
+    <a href="politica.html">Privacidade</a> |
+    <a href="contato.html">Contato</a> |
+    <a href="sobre.html">Sobre</a> |
+    <a href="termos.html">Termos de Uso</a>
 </footer>
 
 </body>
