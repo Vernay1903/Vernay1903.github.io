@@ -1,81 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Sobre - Corte dos Esportes</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Sobre | Corte dos Esportes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    font-family: Montserrat, sans-serif;
-    background: #0f172a;
-    color: white;
-}
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
 
-header {
-    background: #020617;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Montserrat, sans-serif;
+            background: #FFFFFF;
+            color: #0A1E3A;
+            display: flex;
+            flex-direction: column;
+        }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #38bdf8;
-}
+        body > *:not(footer) {
+            flex-shrink: 0;
+        }
 
-nav a {
-    color: #94a3b8;
-    text-decoration: none;
-    margin-left: 15px;
-}
+        main {
+            flex: 1;
+        }
 
-nav a:hover {
-    color: #38bdf8;
-}
+        header {
+            background: #0A1E3A;
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-}
+        nav a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 700;
+        }
 
-h1 {
-    color: #38bdf8;
-}
+        nav a:hover {
+            color: #1E4BA5;
+        }
 
-footer {
-    background: #020617;
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-    color: #64748b;
-    margin-top: 80px;
-}
+        .sports-menu {
+            background: #FFFFFF;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            border-bottom: 1px solid #E5E5E5;
+        }
 
-footer a {
-    color: #38bdf8;
-    text-decoration: none;
-    margin: 0 8px;
-}
-</style>
+        .sports-menu a {
+            flex: 1 1 120px;
+            max-width: 150px;
+            text-align: center;
+            padding: 12px 8px;
+            border: 1px solid #1E4BA5;
+            border-radius: 10px;
+            color: #1E4BA5;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: #FFFFFF;
+        }
+
+        .sports-menu a:hover {
+            background: #1E4BA5;
+            color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        footer {
+            background: #0A1E3A;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #FFFFFF;
+            border-top: 1px solid #1E4BA5;
+        }
+
+        footer a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            color: #1E4BA5;
+        }
+    </style>
 </head>
 
 <body>
 
+<!-- TOPO -->
 <header>
-<div class="logo">Corte dos Esportes</div>
-<nav>
-<a href="index.html">Início</a>
-</nav>
+    <nav>
+        <a href="index.html">Início</a>
+    </nav>
 </header>
 
+<!-- MENU DE ESPORTES -->
+<div class="sports-menu">
+    <a href="atletismo.html">Atletismo</a>
+    <a href="automobilismo.html">Automobilismo</a>
+    <a href="basquete.html">Basquete</a>
+    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+    <a href="futebol.html">Futebol</a>
+    <a href="futebol-americano.html">Futebol Americano</a>
+    <a href="futsal.html">Futsal</a>
+    <a href="handebol.html">Handebol</a>
+    <a href="lutas.html">Lutas</a>
+    <a href="skate.html">Skate</a>
+    <a href="surf.html">Surf</a>
+    <a href="volei.html">Vôlei</a>
+    <a href="volei-praia.html">Vôlei de Praia</a>
+</div>
+
+<main>
 <div class="container">
+
 <h1>Sobre o Corte dos Esportes</h1>
 
 <p>O Corte dos Esportes é um portal digital dedicado à cobertura de notícias esportivas organizadas por modalidade.</p>
@@ -85,15 +148,19 @@ footer a {
 <p>O site foi criado para facilitar o acesso a conteúdos esportivos de forma simples, rápida e organizada, permitindo que o usuário encontre notícias específicas por categoria.</p>
 
 <p>Este portal não representa nenhuma entidade oficial esportiva, liga ou organização, sendo apenas um site informativo.</p>
-</div>
 
+</div>
+</main>
+
+<!-- RODAPÉ -->
 <footer>
-© 2026 Corte dos Esportes  
-<a href="sobre.html">Sobre</a> |
-<a href="termos.html">Termos de Uso</a> |
-<a href="politica.html">Privacidade</a> |
-<a href="contato.html">Contato</a>
+    © 2026 Corte dos Esportes  
+    <a href="politica.html">Privacidade</a> |
+    <a href="contato.html">Contato</a> |
+    <a href="sobre.html">Sobre</a> |
+    <a href="termos.html">Termos de Uso</a>
 </footer>
 
 </body>
 </html>
+
