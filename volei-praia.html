@@ -5,12 +5,8 @@
     <title>Vôlei de Praia | Corte dos Esportes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Favicon -->
     <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
 
     <style>
         html, body {
@@ -23,19 +19,13 @@
             flex-direction: column;
         }
 
-        body > *:not(footer) {
-            flex-shrink: 0;
-        }
+        main { flex: 1; }
 
-        main {
-            flex: 1;
-        }
-
+        /* HEADER */
         header {
             background: #0A1E3A;
             padding: 12px 30px;
             display: flex;
-            justify-content: flex-start;
             align-items: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
@@ -46,20 +36,18 @@
             color: #FFFFFF;
             font-size: 15px;
             font-weight: 700;
-            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #1E4BA5;
-        }
+        nav a:hover { color: #1E4BA5; }
 
+        /* MENU ESPORTES */
         .sports-menu {
             background: #FFFFFF;
-            padding: 15px;
+            padding: 12px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             border-bottom: 1px solid #E5E5E5;
         }
 
@@ -67,63 +55,68 @@
             flex: 1 1 120px;
             max-width: 150px;
             text-align: center;
-            padding: 12px 8px;
+            padding: 10px;
             border: 1px solid #1E4BA5;
             border-radius: 10px;
             color: #1E4BA5;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 3px 8px rgba(30,75,165,0.12);
-            white-space: nowrap;
-            background-color: #FFFFFF;
+            background: #FFF;
+            transition: .3s;
         }
 
         .sports-menu a:hover {
             background: #1E4BA5;
-            color: #FFFFFF;
-            box-shadow: 0 6px 20px rgba(30,75,165,0.35);
-            transform: translateY(-4px) scale(1.05);
+            color: #FFF;
         }
 
-        .hero {
+        /* TITULO CENTRAL */
+        .hero-central {
             text-align: center;
-            padding: 80px 20px;
+            padding: 20px 10px 10px;
         }
 
-        .hero h1 {
-            font-size: 42px;
-            color: #0A1E3A;
-            margin-bottom: 15px;
+        .hero-central h1 {
+            font-size: 48px;
+            margin: 0;
         }
 
-        .hero p {
-            color: #0A1E3A;
+        .hero-central p {
             font-size: 18px;
-            max-width: 700px;
-            margin: auto;
+            margin-top: 8px;
         }
 
+        /* CONTEÚDO */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        article {
+            background: #F5F7FA;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        /* FOOTER */
         footer {
             background: #0A1E3A;
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            color: #FFFFFF;
-            border-top: 1px solid #1E4BA5;
+            color: #FFF;
         }
 
         footer a {
-            color: #FFFFFF;
+            color: #FFF;
             text-decoration: none;
-            margin: 0 12px;
-            font-weight: 500;
+            margin: 0 10px;
         }
 
-        footer a:hover {
-            color: #1E4BA5;
-        }
+        footer a:hover { color: #1E4BA5; }
     </style>
 </head>
 
@@ -135,8 +128,7 @@
     </nav>
 </header>
 
-<main>
-
+<!-- MENU ESPORTES -->
 <div class="sports-menu">
     <a href="atletismo.html">Atletismo</a>
     <a href="automobilismo.html">Automobilismo</a>
@@ -153,15 +145,28 @@
     <a href="volei-praia.html">Vôlei de Praia</a>
 </div>
 
-<div class="hero">
+<!-- TITULO -->
+<section class="hero-central">
     <h1>Vôlei de Praia</h1>
-    <p>Notícias, atletas, campeonatos e tudo sobre o Vôlei de Praia.</p>
-</div>
+    <p>Notícias, campeonatos, atletas e destaques do vôlei de praia mundial.</p>
+</section>
+
+<main class="container">
+
+    <article>
+        <h2>Notícia exemplo de Vôlei de Praia</h2>
+        <p>Conteúdo inicial para estrutura SEO e monetização futura.</p>
+    </article>
+
+    <article>
+        <h2>Outra notícia de Vôlei de Praia</h2>
+        <p>Espaço reservado para análises, resultados e cortes do esporte.</p>
+    </article>
 
 </main>
 
 <footer>
-    © 2026 Corte dos Esportes  
+    © 2026 Corte dos Esportes |
     <a href="politica.html">Privacidade</a> |
     <a href="contato.html">Contato</a> |
     <a href="sobre.html">Sobre</a> |
