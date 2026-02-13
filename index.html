@@ -332,36 +332,24 @@
       <!-- CENTRO -->
       <section>
 
-        <!-- DESTAQUE PRINCIPAL -->
+        <!-- DESTAQUE PRINCIPAL (AUTO) -->
         <div class="card featured-main">
           <span class="pill">DESTAQUE DO DIA</span>
-          <a href="#">
-            <h2>Título do destaque principal (substitua pelo link da sua notícia)</h2>
-            <p>Resumo curto de 2 linhas para aumentar cliques e segurar o usuário na página.</p>
+          <a id="featuredLink" href="#">
+            <h2 id="featuredTitle">Carregando destaque...</h2>
+            <p id="featuredExcerpt">Aguarde...</p>
           </a>
-          <div class="meta">Atualizado hoje • Categoria: Futebol</div>
+          <div class="meta" id="featuredMeta"></div>
         </div>
 
-        <!-- 3 DESTAQUES RÁPIDOS -->
+        <!-- 3 DESTAQUES RÁPIDOS (AUTO) -->
         <div class="card">
           <h2 class="section-title">Destaques rápidos</h2>
-          <div class="featured-grid">
+          <div class="featured-grid" id="quickGrid">
             <div class="mini">
               <a href="#">
-                <h3>Manchete 1 (rápida)</h3>
-                <p>Resumo bem curto.</p>
-              </a>
-            </div>
-            <div class="mini">
-              <a href="#">
-                <h3>Manchete 2 (rápida)</h3>
-                <p>Resumo bem curto.</p>
-              </a>
-            </div>
-            <div class="mini">
-              <a href="#">
-                <h3>Manchete 3 (rápida)</h3>
-                <p>Resumo bem curto.</p>
+                <h3>Carregando...</h3>
+                <p>Aguarde...</p>
               </a>
             </div>
           </div>
@@ -372,27 +360,14 @@
           <div class="ad-slot">ESPAÇO PARA ANÚNCIO (CENTRO)</div>
         </div>
 
-        <!-- ÚLTIMAS NOTÍCIAS -->
+        <!-- ÚLTIMAS NOTÍCIAS (AUTO) -->
         <div class="card">
           <h2 class="section-title">Últimas notícias</h2>
-          <ul class="news-list">
-            <!-- Você só duplica esse bloco <li> para postar 20+ notícias -->
+          <ul class="news-list" id="newsList">
             <li>
-              <a href="#">Título da notícia 1 (link da matéria)</a>
-              <p class="excerpt">Resumo de 1–2 linhas com palavra-chave + contexto (ajuda no clique e SEO).</p>
-              <div class="meta">Hoje • Futebol</div>
-            </li>
-
-            <li>
-              <a href="#">Título da notícia 2 (link da matéria)</a>
-              <p class="excerpt">Resumo de 1–2 linhas com palavra-chave + contexto.</p>
-              <div class="meta">Hoje • Olimpíadas</div>
-            </li>
-
-            <li>
-              <a href="#">Título da notícia 3 (link da matéria)</a>
-              <p class="excerpt">Resumo de 1–2 linhas com palavra-chave + contexto.</p>
-              <div class="meta">Hoje • Vôlei</div>
+              <a href="#">Carregando...</a>
+              <p class="excerpt">Aguarde...</p>
+              <div class="meta"></div>
             </li>
           </ul>
         </div>
@@ -428,6 +403,106 @@
   <a href="termos.html">Termos de Uso</a>
 </footer>
 
+<script>
+  // ====== CONFIG ======
+  const NEWS_JSON_URL = "noticias.json";
+  const MAX_LATEST = 20; // quantas entram em "Últimas notícias"
+  const MAX_QUICK = 3;   // quantas entram em "Destaques rápidos" (após o destaque principal)
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  function toMeta(date, category) {
+    const d = date ? escapeHtml(date) : "Hoje";
+    const c = category ? escapeHtml(category) : "Geral";
+    return `${d} • ${c}`;
+  }
+
+  function renderFeatured(item) {
+    const link = document.getElementById("featuredLink");
+    const title = document.getElementById("featuredTitle");
+    const excerpt = document.getElementById("featuredExcerpt");
+    const meta = document.getElementById("featuredMeta");
+
+    link.href = item.url || "#";
+    title.textContent = item.title || "Sem título";
+    excerpt.textContent = item.excerpt || "";
+    meta.textContent = toMeta(item.date, item.category);
+  }
+
+  function renderQuick(items) {
+    const grid = document.getElementById("quickGrid");
+    if (!items.length) {
+      grid.innerHTML = `<div class="mini"><a href="#"><h3>Sem destaques</h3><p>Adicione mais notícias no noticias.json.</p></a></div>`;
+      return;
+    }
+
+    grid.innerHTML = items.slice(0, MAX_QUICK).map(it => `
+      <div class="mini">
+        <a href="${escapeHtml(it.url || "#")}">
+          <h3>${escapeHtml(it.title || "Sem título")}</h3>
+          <p>${escapeHtml(it.excerpt || "")}</p>
+        </a>
+      </div>
+    `).join("");
+  }
+
+  function renderLatest(items) {
+    const list = document.getElementById("newsList");
+    if (!items.length) {
+      list.innerHTML = `<li><a href="#">Sem notícias</a><p class="excerpt">Adicione notícias no noticias.json.</p><div class="meta"></div></li>`;
+      return;
+    }
+
+    list.innerHTML = items.slice(0, MAX_LATEST).map(it => `
+      <li>
+        <a href="${escapeHtml(it.url || "#")}">${escapeHtml(it.title || "Sem título")}</a>
+        <p class="excerpt">${escapeHtml(it.excerpt || "")}</p>
+        <div class="meta">${toMeta(it.date, it.category)}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadNews() {
+    try {
+      const res = await fetch(NEWS_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar noticias.json");
+      const data = await res.json();
+
+      // Espera um array de objetos
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      if (!items.length) throw new Error("noticias.json vazio");
+
+      // Ordem: mais recente primeiro (você controla a ordem no JSON)
+      renderFeatured(items[0]);
+      renderQuick(items.slice(1));
+      renderLatest(items);
+
+    } catch (e) {
+      // fallback visual
+      document.getElementById("featuredTitle").textContent = "Não foi possível carregar as notícias";
+      document.getElementById("featuredExcerpt").textContent = "Verifique se o arquivo noticias.json está na raiz do site.";
+      document.getElementById("featuredMeta").textContent = "";
+
+      document.getElementById("quickGrid").innerHTML =
+        `<div class="mini"><a href="#"><h3>Erro</h3><p>Arquivo noticias.json não encontrado.</p></a></div>`;
+
+      document.getElementById("newsList").innerHTML =
+        `<li><a href="#">Erro</a><p class="excerpt">Crie o arquivo noticias.json na raiz do repositório.</p><div class="meta"></div></li>`;
+
+      console.error(e);
+    }
+  }
+
+  loadNews();
+</script>
+
 </body>
 </html>
-
