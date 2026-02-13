@@ -6,6 +6,11 @@
   <meta name="description" content="Corte dos Esportes: últimas notícias, destaques e agenda do dia em Futebol, Olimpíadas, Basquete, Vôlei, Surf, Skate e mais.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- (Opcional) reforço anti-cache em alguns navegadores -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
@@ -13,8 +18,22 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Dados estruturados (portal/site) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Corte dos Esportes",
+    "url": "https://cortedosesportes.com.br/"
+  }
+  </script>
 
   <style>
     html, body {
@@ -58,6 +77,7 @@
       color: #FFFFFF;
       letter-spacing: 0.3px;
       line-height: 1;
+      text-decoration: none;
     }
 
     /* MENU (STICKY) */
@@ -69,9 +89,8 @@
       justify-content: center;
       gap: 12px;
       border-bottom: 1px solid #E5E5E5;
-
       position: sticky;
-      top: 54px; /* altura aproximada do header */
+      top: 54px;
       z-index: 999;
     }
 
@@ -92,6 +111,7 @@
     }
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+    .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
 
     /* CONTEÚDO */
     .page {
@@ -114,6 +134,7 @@
     .hero-central p {
       font-size: 18px;
       margin: 0;
+      color: #31425F;
     }
 
     .layout {
@@ -289,7 +310,6 @@
       .layout { grid-template-columns: 1fr; }
       aside { margin-right: 0; }
       .featured-grid { grid-template-columns: 1fr; }
-      .sports-menu { top: 54px; }
     }
 
     @media (max-width: 768px) {
@@ -307,25 +327,26 @@
 <header>
   <div class="logo-container">
     <img src="logo.png" alt="Corte dos Esportes">
-    <span class="logo-text">Corte dos Esportes</span>
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
   </div>
 </header>
 
-<div class="sports-menu">
-  <a href="atletismo.html">Atletismo</a>
-  <a href="automobilismo.html">Automobilismo</a>
-  <a href="basquete.html">Basquete</a>
-  <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-  <a href="futebol.html">Futebol</a>
-  <a href="futebol-americano.html">Futebol Americano</a>
-  <a href="futsal.html">Futsal</a>
-  <a href="handebol.html">Handebol</a>
-  <a href="lutas.html">Lutas</a>
-  <a href="skate.html">Skate</a>
-  <a href="surf.html">Surf</a>
-  <a href="volei.html">Vôlei</a>
-  <a href="volei-praia.html">Vôlei de Praia</a>
-  <a href="tenis.html">Tênis</a>
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio" class="active">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
@@ -342,19 +363,31 @@
       <section>
 
         <!-- DESTAQUE PRINCIPAL (AUTO) -->
-        <div class="card featured-main">
+        <div class="card featured-main" id="featuredMain">
           <span class="pill">DESTAQUE DO DIA</span>
-          <a id="featuredLink" href="#">
-            <h2 id="featuredTitle">Carregando destaque...</h2>
-            <p id="featuredExcerpt">Aguarde...</p>
+          <a href="#">
+            <h2>Carregando destaque...</h2>
+            <p>Aguarde...</p>
           </a>
-          <div class="meta" id="featuredMeta"></div>
+          <div class="meta"></div>
         </div>
 
         <!-- 3 DESTAQUES RÁPIDOS (AUTO) -->
         <div class="card">
           <h2 class="section-title">Destaques rápidos</h2>
-          <div class="featured-grid" id="quickGrid">
+          <div class="featured-grid" id="featuredGrid">
+            <div class="mini">
+              <a href="#">
+                <h3>Carregando...</h3>
+                <p>Aguarde...</p>
+              </a>
+            </div>
+            <div class="mini">
+              <a href="#">
+                <h3>Carregando...</h3>
+                <p>Aguarde...</p>
+              </a>
+            </div>
             <div class="mini">
               <a href="#">
                 <h3>Carregando...</h3>
@@ -364,7 +397,7 @@
           </div>
         </div>
 
-        <!-- AD NO CENTRO -->
+        <!-- AD NO CENTRO (ótimo para viewability) -->
         <div class="card">
           <div class="ad-slot">ESPAÇO PARA ANÚNCIO (CENTRO)</div>
         </div>
@@ -372,7 +405,7 @@
         <!-- ÚLTIMAS NOTÍCIAS (AUTO) -->
         <div class="card">
           <h2 class="section-title">Últimas notícias</h2>
-          <ul class="news-list" id="newsList">
+          <ul class="news-list" id="latestList">
             <li>
               <a href="#">Carregando...</a>
               <p class="excerpt">Aguarde...</p>
@@ -393,7 +426,7 @@
             <li><div class="time">16:00</div><div class="desc">Evento relevante do dia (Olimpíadas, SLS, etc.).</div></li>
             <li><div class="time">21:30</div><div class="desc">Jogo principal (onde assistir / análise).</div></li>
           </ul>
-          <div class="meta">Atualize todo dia para criar hábito (Google gosta).</div>
+          <div class="meta">Atualize todo dia para criar hábito.</div>
         </div>
 
         <div class="ad-slot">ESPAÇO PARA ANÚNCIO (SIDEBAR)</div>
@@ -414,8 +447,24 @@
 
 <script>
   const NEWS_JSON_URL = "noticias.json";
-  const MAX_LATEST = 20;
-  const MAX_QUICK = 3;
+
+  // Mapa fixo categoria -> página (pra linkar certo)
+  const CATEGORY_PAGES = {
+    "Atletismo": "atletismo.html",
+    "Automobilismo": "automobilismo.html",
+    "Basquete": "basquete.html",
+    "Esportes Olímpicos": "esportes-olimpicos.html",
+    "Futebol": "futebol.html",
+    "Futebol Americano": "futebol-americano.html",
+    "Futsal": "futsal.html",
+    "Handebol": "handebol.html",
+    "Lutas": "lutas.html",
+    "Skate": "skate.html",
+    "Surf": "surf.html",
+    "Vôlei": "volei.html",
+    "Vôlei de Praia": "volei-praia.html",
+    "Tênis": "tenis.html"
+  };
 
   function escapeHtml(str) {
     return String(str || "").replace(/[&<>"']/g, s => ({
@@ -427,105 +476,176 @@
     }[s]));
   }
 
-  function toMeta(date, category) {
-    const d = date ? escapeHtml(date) : "Hoje";
-    const c = category ? escapeHtml(category) : "Geral";
-    return `${d} • ${c}`;
+  function norm(str) {
+    return String(str || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
   }
 
-  function renderFeatured(item) {
-    const link = document.getElementById("featuredLink");
-    const title = document.getElementById("featuredTitle");
-    const excerpt = document.getElementById("featuredExcerpt");
-    const meta = document.getElementById("featuredMeta");
+  // Aceita: "2026-02-13" (ideal), "13/02/2026", "13-02-2026"
+  function parseDateAny(s) {
+    const v = String(s || "").trim();
+    if (!v) return null;
 
-    link.href = item.url || "#";
-    title.textContent = item.title || "Sem título";
-    excerpt.textContent = item.excerpt || "";
-    meta.textContent = toMeta(item.date, item.category);
+    // YYYY-MM-DD
+    const iso = v.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
+
+    // DD/MM/YYYY
+    const br1 = v.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+    if (br1) return new Date(Number(br1[3]), Number(br1[2]) - 1, Number(br1[1]));
+
+    // DD-MM-YYYY
+    const br2 = v.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+    if (br2) return new Date(Number(br2[3]), Number(br2[2]) - 1, Number(br2[1]));
+
+    return null;
   }
 
-  function renderQuick(items) {
-    const grid = document.getElementById("quickGrid");
-    const quickItems = items.slice(1, 1 + MAX_QUICK);
+  function getCategoryPage(category) {
+    // tenta bater pelo nome exato
+    if (CATEGORY_PAGES[category]) return CATEGORY_PAGES[category];
 
-    if (!quickItems.length) {
-      grid.innerHTML = `
+    // fallback por normalização
+    const n = norm(category);
+    const key = Object.keys(CATEGORY_PAGES).find(k => norm(k) === n);
+    return key ? CATEGORY_PAGES[key] : "index.html";
+  }
+
+  function sortNews(items) {
+    // mais recente primeiro; se não tiver data válida, vai pro final mantendo ordem relativa
+    return items
+      .map((it, idx) => {
+        const d = parseDateAny(it.date);
+        return { it, idx, d: d ? d.getTime() : null };
+      })
+      .sort((a, b) => {
+        if (a.d !== null && b.d !== null) return b.d - a.d;
+        if (a.d !== null && b.d === null) return -1;
+        if (a.d === null && b.d !== null) return 1;
+        return a.idx - b.idx;
+      })
+      .map(x => x.it);
+  }
+
+  function renderFeaturedMain(item) {
+    const box = document.getElementById("featuredMain");
+    const url = item.url || "#";
+    const title = item.title || "Sem título";
+    const excerpt = item.excerpt || "";
+    const date = item.date || "Hoje";
+    const category = item.category || "";
+    const categoryPage = getCategoryPage(category);
+
+    box.innerHTML = `
+      <span class="pill">DESTAQUE DO DIA</span>
+      <a href="${escapeHtml(url)}">
+        <h2>${escapeHtml(title)}</h2>
+        <p>${escapeHtml(excerpt)}</p>
+      </a>
+      <div class="meta">
+        ${escapeHtml(date)} •
+        Categoria: <a href="${escapeHtml(categoryPage)}" style="color:#1E4BA5; text-decoration:none; font-weight:700;">${escapeHtml(category || "Geral")}</a>
+      </div>
+    `;
+  }
+
+  function renderFeaturedGrid(items) {
+    const grid = document.getElementById("featuredGrid");
+    if (!items.length) {
+      grid.innerHTML = `<div class="mini"><p class="excerpt">Sem destaques no momento.</p></div>`;
+      return;
+    }
+
+    grid.innerHTML = items.slice(0, 3).map(it => {
+      const url = it.url || "#";
+      const title = it.title || "Sem título";
+      const excerpt = it.excerpt || "";
+      return `
         <div class="mini">
-          <a href="#">
-            <h3>Sem destaques</h3>
-            <p>Adicione mais notícias no noticias.json.</p>
+          <a href="${escapeHtml(url)}">
+            <h3>${escapeHtml(title)}</h3>
+            <p>${escapeHtml(excerpt)}</p>
           </a>
         </div>
       `;
+    }).join("");
+  }
+
+  function renderLatestList(items) {
+    const list = document.getElementById("latestList");
+    if (!items.length) {
+      list.innerHTML = `<li><p class="excerpt">Nenhuma notícia encontrada no noticias.json.</p></li>`;
       return;
     }
 
-    grid.innerHTML = quickItems.map(it => `
-      <div class="mini">
-        <a href="${escapeHtml(it.url || "#")}">
-          <h3>${escapeHtml(it.title || "Sem título")}</h3>
-          <p>${escapeHtml(it.excerpt || "")}</p>
-        </a>
-      </div>
-    `).join("");
-  }
+    list.innerHTML = items.slice(0, 30).map(it => {
+      const url = it.url || "#";
+      const title = it.title || "Sem título";
+      const excerpt = it.excerpt || "";
+      const date = it.date || "Hoje";
+      const category = it.category || "Geral";
+      const categoryPage = getCategoryPage(category);
 
-  function renderLatest(items) {
-    const list = document.getElementById("newsList");
-
-    if (!items.length) {
-      list.innerHTML = `
+      return `
         <li>
-          <a href="#">Sem notícias</a>
-          <p class="excerpt">Adicione notícias no noticias.json.</p>
-          <div class="meta"></div>
+          <a href="${escapeHtml(url)}">${escapeHtml(title)}</a>
+          <p class="excerpt">${escapeHtml(excerpt)}</p>
+          <div class="meta">
+            ${escapeHtml(date)} •
+            <a href="${escapeHtml(categoryPage)}" style="color:#1E4BA5; text-decoration:none; font-weight:700;">${escapeHtml(category)}</a>
+          </div>
         </li>
       `;
-      return;
-    }
-
-    list.innerHTML = items.slice(0, MAX_LATEST).map(it => `
-      <li>
-        <a href="${escapeHtml(it.url || "#")}">${escapeHtml(it.title || "Sem título")}</a>
-        <p class="excerpt">${escapeHtml(it.excerpt || "")}</p>
-        <div class="meta">${toMeta(it.date, it.category)}</div>
-      </li>
-    `).join("");
+    }).join("");
   }
 
-  async function loadNews() {
+  async function loadHome() {
     try {
       const res = await fetch(NEWS_JSON_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("Falha ao carregar noticias.json");
       const data = await res.json();
 
+      // aceita array direto ou {items:[...]}
       const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      if (!items.length) throw new Error("noticias.json vazio");
+      const clean = items
+        .filter(x => x && (x.title || x.url))
+        .map(x => ({
+          title: String(x.title || "").trim(),
+          url: String(x.url || "").trim(),
+          excerpt: String(x.excerpt || "").trim(),
+          date: String(x.date || "").trim(),
+          category: String(x.category || "").trim()
+        }));
 
-      renderFeatured(items[0]);
-      renderQuick(items);
-      renderLatest(items);
+      const ordered = sortNews(clean);
+
+      const featured = ordered[0] || null;
+      const quick = ordered.slice(1, 4);
+      const latest = ordered.slice(0); // lista completa
+
+      if (featured) renderFeaturedMain(featured);
+      renderFeaturedGrid(quick);
+      renderLatestList(latest);
 
     } catch (e) {
-      document.getElementById("featuredTitle").textContent = "Não foi possível carregar as notícias";
-      document.getElementById("featuredExcerpt").textContent = "Verifique se o arquivo noticias.json está na raiz do site.";
-      document.getElementById("featuredMeta").textContent = "";
-
-      document.getElementById("quickGrid").innerHTML =
-        `<div class="mini"><a href="#"><h3>Erro</h3><p>Arquivo noticias.json não encontrado.</p></a></div>`;
-
-      document.getElementById("newsList").innerHTML =
-        `<li><a href="#">Erro</a><p class="excerpt">Crie o arquivo noticias.json na raiz do repositório.</p><div class="meta"></div></li>`;
-
       console.error(e);
+      document.getElementById("featuredMain").innerHTML =
+        `<p class="excerpt">Erro ao carregar notícias. Verifique se <b>noticias.json</b> está na raiz do site.</p>`;
+      document.getElementById("featuredGrid").innerHTML =
+        `<p class="excerpt">Erro ao carregar destaques.</p>`;
+      document.getElementById("latestList").innerHTML =
+        `<li><p class="excerpt">Erro ao carregar últimas notícias.</p></li>`;
     }
   }
 
-  loadNews();
+  loadHome();
 </script>
 
 </body>
 </html>
+
 
 
