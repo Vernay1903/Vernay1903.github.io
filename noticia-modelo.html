@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-
-  <!-- SEO BÁSICO -->
-  <title>TÍTULO DA NOTÍCIA AQUI | Corte dos Esportes</title>
-  <meta name="description" content="Resumo curto da notícia (150-160 caracteres), com palavra-chave principal e contexto.">
+  <meta charset="UTF-8" />
+  <title>TÍTULO DA NOTÍCIA | Corte dos Esportes</title>
+  <meta name="description" content="RESUMO CURTO DA NOTÍCIA (1–2 linhas).">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Open Graph (para compartilhar no WhatsApp / redes) -->
-  <meta property="og:title" content="TÍTULO DA NOTÍCIA AQUI">
-  <meta property="og:description" content="Resumo curto da notícia (pode ser igual ao description).">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://cortedosesportes.com.br/SUA-NOTICIA.html">
-  <meta property="og:image" content="https://cortedosesportes.com.br/imagens/sua-imagem.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="TÍTULO DA NOTÍCIA AQUI">
-  <meta name="twitter:description" content="Resumo curto da notícia.">
-  <meta name="twitter:image" content="https://cortedosesportes.com.br/imagens/sua-imagem.jpg">
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -28,7 +13,6 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -48,12 +32,15 @@
 
     main { flex: 1; }
 
-    /* HEADER */
+    /* HEADER (STICKY) */
     header {
       background: #0A1E3A;
       padding: 10px 30px;
       display: flex;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo-container {
@@ -70,9 +57,10 @@
       color: #FFFFFF;
       letter-spacing: 0.3px;
       line-height: 1;
+      text-decoration: none;
     }
 
-    /* MENU */
+    /* MENU (STICKY) */
     .sports-menu {
       background: #FFFFFF;
       padding: 15px;
@@ -81,6 +69,9 @@
       justify-content: center;
       gap: 12px;
       border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
     }
 
     .sports-menu a {
@@ -101,11 +92,17 @@
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
 
-    /* CONTEÚDO */
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
     .page {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 26px 10px 40px;
+      padding: 28px 10px 40px;
       box-sizing: border-box;
     }
 
@@ -127,30 +124,15 @@
       margin-bottom: 16px;
     }
 
-    /* ARTIGO */
-    .breadcrumb {
-      font-size: 13px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
-
-    .breadcrumb a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .breadcrumb a:hover { text-decoration: underline; }
-
     h1 {
+      font-size: 44px;
       margin: 0 0 10px;
-      font-size: 34px;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
-    .subheadline {
+    .subhead {
+      font-size: 18px;
       margin: 0 0 14px;
-      font-size: 16px;
       color: #31425F;
       line-height: 1.5;
     }
@@ -158,89 +140,42 @@
     .meta {
       font-size: 12px;
       color: #5B6B84;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
-    .hero-img {
-      width: 100%;
-      border-radius: 14px;
-      border: 1px solid #E5E5E5;
-      margin: 6px 0 14px;
-      display: block;
-    }
-
-    .img-caption {
-      font-size: 12px;
-      color: #5B6B84;
-      margin: 0 0 14px;
-    }
-
-    .article-body {
-      font-size: 16px;
-      line-height: 1.85;
-      color: #0A1E3A;
-    }
-
-    .article-body p { margin: 0 0 14px; }
-
-    .article-body h2 {
-      font-size: 20px;
-      margin: 22px 0 10px;
-    }
-
-    .keypoints {
-      border-left: 4px solid #1E4BA5;
-      background: #F7FAFF;
-      padding: 12px 14px;
-      border-radius: 12px;
-      margin: 18px 0;
-    }
-
-    .keypoints strong { color: #0A1E3A; }
-
-    /* TAGS */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .tag {
-      border: 1px solid #1E4BA5;
+    .meta a {
       color: #1E4BA5;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
+      text-decoration: none;
       font-weight: 700;
-      text-decoration: none;
     }
 
-    .tag:hover { background:#1E4BA5; color:#fff; }
+    .meta a:hover { text-decoration: underline; }
 
-    /* RELACIONADAS */
-    .related-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      color: #1E4BA5;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 16px 0;
     }
 
-    .related-list li {
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .related-list li:first-child { border-top: none; padding-top: 0; }
-
-    .related-list a {
-      text-decoration: none;
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
       color: #0A1E3A;
-      font-weight: 700;
+      margin: 0 0 16px;
     }
 
-    .related-list a:hover { color: #1E4BA5; }
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
 
-    /* AGENDA */
     .agenda-list {
       list-style: none;
       padding: 0;
@@ -263,18 +198,6 @@
     }
 
     .desc { font-size: 14px; line-height: 1.4; }
-
-    /* ADS PLACEHOLDER */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      text-align: center;
-      color: #1E4BA5;
-      font-weight: 700;
-      font-size: 14px;
-    }
 
     footer {
       background: #0A1E3A;
@@ -301,7 +224,8 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      h1 { font-size: 28px; }
+      .sports-menu { top: 50px; }
+      h1 { font-size: 34px; }
     }
   </style>
 </head>
@@ -311,26 +235,27 @@
 <header>
   <div class="logo-container">
     <img src="logo.png" alt="Corte dos Esportes">
-    <span class="logo-text">Corte dos Esportes</span>
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
   </div>
 </header>
 
-<div class="sports-menu">
-  <a href="index.html">Início</a>
-  <a href="atletismo.html">Atletismo</a>
-  <a href="automobilismo.html">Automobilismo</a>
-  <a href="basquete.html">Basquete</a>
-  <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-  <a href="futebol.html">Futebol</a>
-  <a href="futebol-americano.html">Futebol Americano</a>
-  <a href="futsal.html">Futsal</a>
-  <a href="handebol.html">Handebol</a>
-  <a href="lutas.html">Lutas</a>
-  <a href="skate.html">Skate</a>
-  <a href="surf.html">Surf</a>
-  <a href="volei.html">Vôlei</a>
-  <a href="volei-praia.html">Vôlei de Praia</a>
-  <a href="tenis.html">Tênis</a>
+<!-- MENU COMPLETO (igual home) -->
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
@@ -338,70 +263,25 @@
     <div class="layout">
 
       <!-- ARTIGO -->
-      <article>
-
-        <div class="breadcrumb">
-          <a href="index.html">Home</a> › <a href="futebol.html">Futebol</a> › Notícia
-        </div>
-
+      <section>
         <div class="card">
-          <h1>TÍTULO DA NOTÍCIA AQUI (com palavra-chave)</h1>
-          <p class="subheadline">Subtítulo curto explicando o que aconteceu, com contexto e palavra-chave.</p>
-          <div class="meta">Por Corte dos Esportes • <time datetime="2026-02-12">12/02/2026</time> • Categoria: Futebol</div>
+          <h1 id="articleTitle">TÍTULO DA NOTÍCIA</h1>
+          <p class="subhead" id="articleExcerpt">RESUMO CURTO DA NOTÍCIA (1–2 linhas).</p>
 
-          <!-- Imagem (opcional mas recomendado) -->
-          <img class="hero-img" src="https://via.placeholder.com/1200x630.png?text=Imagem+da+Not%C3%ADcia" alt="Descrição da imagem">
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">DD/MM/AAAA</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
 
-          <p class="img-caption">Legenda da imagem (opcional).</p>
-
-          <!-- ADS 1 (acima/dentro do artigo) -->
           <div class="ad-slot">ESPAÇO PARA ANÚNCIO (ARTIGO - TOPO)</div>
 
-          <div class="article-body">
-            <p>Primeiro parágrafo forte: responda rápido o “o quê, quem, quando e onde”.</p>
-
-            <div class="keypoints">
-              <strong>Resumo rápido:</strong><br>
-              • Ponto 1 importante (1 linha)<br>
-              • Ponto 2 importante (1 linha)<br>
-              • Ponto 3 importante (1 linha)
-            </div>
-
-            <h2>O que aconteceu</h2>
-            <p>Explique com clareza. Parágrafos curtos (2–4 linhas). Isso aumenta tempo de leitura e melhora AdSense.</p>
-
-            <h2>Contexto e próximos passos</h2>
-            <p>Fale do que vem pela frente (próximo jogo, calendário, impacto na tabela etc.).</p>
-
-            <!-- ADS 2 (meio do artigo) -->
-            <div class="ad-slot">ESPAÇO PARA ANÚNCIO (ARTIGO - MEIO)</div>
-
-            <h2>Detalhes e análise</h2>
-            <p>Traga detalhes, números, desempenho, repercussão, declarações (se tiver).</p>
-
-            <p>Feche com um parágrafo final com gancho para outra notícia relacionada.</p>
-
-            <!-- TAGS (ajuda SEO e linkagem) -->
-            <div class="tags">
-              <a class="tag" href="futebol.html">Futebol</a>
-              <a class="tag" href="index.html">Notícias</a>
-              <a class="tag" href="#">Time X</a>
-              <a class="tag" href="#">Campeonato Y</a>
-            </div>
-          </div>
+          <article id="articleBody">
+            <p>Parágrafo 1...</p>
+            <p>Parágrafo 2...</p>
+            <p>Parágrafo 3...</p>
+          </article>
         </div>
-
-        <!-- RELACIONADAS (tráfego interno = dinheiro) -->
-        <div class="card">
-          <h2 class="section-title">Notícias relacionadas</h2>
-          <ul class="related-list">
-            <li><a href="#">Relacionada 1: título chamativo</a></li>
-            <li><a href="#">Relacionada 2: título chamativo</a></li>
-            <li><a href="#">Relacionada 3: título chamativo</a></li>
-          </ul>
-        </div>
-
-      </article>
+      </section>
 
       <!-- SIDEBAR -->
       <aside>
@@ -409,21 +289,12 @@
           <h2 class="section-title">Agenda do Dia</h2>
           <ul class="agenda-list">
             <li><div class="time">08:00</div><div class="desc">Jogos, horários e transmissões principais.</div></li>
-            <li><div class="time">16:00</div><div class="desc">Evento relevante do dia (Olimpíadas, SLS, etc.).</div></li>
-            <li><div class="time">21:30</div><div class="desc">Jogo principal (onde assistir / análise).</div></li>
+            <li><div class="time">16:00</div><div class="desc">Evento relevante do dia.</div></li>
+            <li><div class="time">21:30</div><div class="desc">Jogo principal do dia.</div></li>
           </ul>
         </div>
 
         <div class="ad-slot">ESPAÇO PARA ANÚNCIO (SIDEBAR)</div>
-
-        <div class="card">
-          <h2 class="section-title">Mais lidas</h2>
-          <ul class="related-list">
-            <li><a href="#">Mais lida 1</a></li>
-            <li><a href="#">Mais lida 2</a></li>
-            <li><a href="#">Mais lida 3</a></li>
-          </ul>
-        </div>
       </aside>
 
     </div>
@@ -438,5 +309,29 @@
   <a href="termos.html">Termos de Uso</a>
 </footer>
 
+<script>
+  /*
+    ✅ COMO USAR (em cada notícia):
+    - Troque CATEGORY_SLUG e CATEGORY_NAME
+    - Troque TITLE / EXCERPT / DATE
+    - Corpo da notícia no HTML (articleBody)
+  */
+
+  const CATEGORY_SLUG = "futebol";  // ex: futebol, surf, skate, tenis, etc.
+  const CATEGORY_NAME = "Futebol";  // ex: Futebol, Surf, Skate...
+
+  // Link correto da categoria (resolve o seu problema #1)
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Ativa destaque no menu (e resolve o menu incompleto #2 porque aqui ele é completo)
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+</script>
+
 </body>
 </html>
+
