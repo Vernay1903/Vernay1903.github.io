@@ -377,27 +377,18 @@
           <h2 class="section-title">Destaques rápidos</h2>
           <div class="featured-grid" id="featuredGrid">
             <div class="mini">
-              <a href="#">
-                <h3>Carregando...</h3>
-                <p>Aguarde...</p>
-              </a>
+              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
             </div>
             <div class="mini">
-              <a href="#">
-                <h3>Carregando...</h3>
-                <p>Aguarde...</p>
-              </a>
+              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
             </div>
             <div class="mini">
-              <a href="#">
-                <h3>Carregando...</h3>
-                <p>Aguarde...</p>
-              </a>
+              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
             </div>
           </div>
         </div>
 
-        <!-- AD NO CENTRO (ótimo para viewability) -->
+        <!-- AD NO CENTRO -->
         <div class="card">
           <div class="ad-slot">ESPAÇO PARA ANÚNCIO (CENTRO)</div>
         </div>
@@ -421,12 +412,16 @@
 
         <div class="card">
           <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list">
-            <li><div class="time">08:00</div><div class="desc">Jogos, horários e transmissões principais.</div></li>
-            <li><div class="time">16:00</div><div class="desc">Evento relevante do dia (Olimpíadas, SLS, etc.).</div></li>
-            <li><div class="time">21:30</div><div class="desc">Jogo principal (onde assistir / análise).</div></li>
+
+          <!-- AGENDA (AUTO DO agenda.json) -->
+          <ul class="agenda-list" id="agendaList">
+            <li>
+              <div class="time">--:--</div>
+              <div class="desc">Carregando agenda...</div>
+            </li>
           </ul>
-          <div class="meta">Atualize todo dia para criar hábito.</div>
+
+          <div class="meta">Atualize o arquivo <b>agenda.json</b> e a home muda sozinha.</div>
         </div>
 
         <div class="ad-slot">ESPAÇO PARA ANÚNCIO (SIDEBAR)</div>
@@ -447,8 +442,9 @@
 
 <script>
   const NEWS_JSON_URL = "noticias.json";
+  const AGENDA_JSON_URL = "agenda.json";
 
-  // Mapa fixo categoria -> página (pra linkar certo)
+  // Mapa categoria -> página
   const CATEGORY_PAGES = {
     "Atletismo": "atletismo.html",
     "Automobilismo": "automobilismo.html",
@@ -484,20 +480,16 @@
       .trim();
   }
 
-  // Aceita: "2026-02-13" (ideal), "13/02/2026", "13-02-2026"
   function parseDateAny(s) {
     const v = String(s || "").trim();
     if (!v) return null;
 
-    // YYYY-MM-DD
     const iso = v.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
 
-    // DD/MM/YYYY
     const br1 = v.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
     if (br1) return new Date(Number(br1[3]), Number(br1[2]) - 1, Number(br1[1]));
 
-    // DD-MM-YYYY
     const br2 = v.match(/^(\d{2})-(\d{2})-(\d{4})$/);
     if (br2) return new Date(Number(br2[3]), Number(br2[2]) - 1, Number(br2[1]));
 
@@ -505,17 +497,13 @@
   }
 
   function getCategoryPage(category) {
-    // tenta bater pelo nome exato
     if (CATEGORY_PAGES[category]) return CATEGORY_PAGES[category];
-
-    // fallback por normalização
     const n = norm(category);
     const key = Object.keys(CATEGORY_PAGES).find(k => norm(k) === n);
     return key ? CATEGORY_PAGES[key] : "index.html";
   }
 
   function sortNews(items) {
-    // mais recente primeiro; se não tiver data válida, vai pro final mantendo ordem relativa
     return items
       .map((it, idx) => {
         const d = parseDateAny(it.date);
@@ -602,13 +590,12 @@
     }).join("");
   }
 
-  async function loadHome() {
+  async function loadHomeNews() {
     try {
       const res = await fetch(NEWS_JSON_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("Falha ao carregar noticias.json");
       const data = await res.json();
 
-      // aceita array direto ou {items:[...]}
       const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
       const clean = items
         .filter(x => x && (x.title || x.url))
@@ -624,11 +611,10 @@
 
       const featured = ordered[0] || null;
       const quick = ordered.slice(1, 4);
-      const latest = ordered.slice(0); // lista completa
 
       if (featured) renderFeaturedMain(featured);
       renderFeaturedGrid(quick);
-      renderLatestList(latest);
+      renderLatestList(ordered);
 
     } catch (e) {
       console.error(e);
@@ -641,11 +627,65 @@
     }
   }
 
-  loadHome();
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    // Ordena por horário (HH:MM)
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+
+    } catch (e) {
+      console.error(e);
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda. Verifique o arquivo <b>agenda.json</b>.</div>
+        </li>
+      `;
+    }
+  }
+
+  // Carrega tudo
+  loadHomeNews();
+  loadAgenda();
 </script>
 
 </body>
 </html>
-
-
-
