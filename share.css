@@ -1,0 +1,30 @@
+/* share.css */
+.share-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin: 6px 0 14px;
+}
+
+.share-btn{
+  border:1px solid #1E4BA5;
+  background:#FFFFFF;
+  color:#1E4BA5;
+  font-weight:700;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.2s;
+  font-size:14px;
+}
+
+.share-btn:hover{
+  background:#1E4BA5;
+  color:#FFFFFF;
+}
+
+.share-msg{
+  font-size:12px;
+  color:#5B6B84;
+}
