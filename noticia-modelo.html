@@ -15,6 +15,9 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
   <style>
     html, body {
       height: 100%;
@@ -140,7 +143,7 @@
     .meta {
       font-size: 12px;
       color: #5B6B84;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .meta a {
@@ -239,7 +242,6 @@
   </div>
 </header>
 
-<!-- MENU COMPLETO (igual home) -->
 <div class="sports-menu" id="sportsMenu">
   <a href="index.html" data-slug="inicio">Início</a>
   <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
@@ -273,6 +275,13 @@
             Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
           </div>
 
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
           <div class="ad-slot">ESPAÇO PARA ANÚNCIO (ARTIGO - TOPO)</div>
 
           <article id="articleBody">
@@ -287,10 +296,8 @@
       <aside>
         <div class="card">
           <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list">
-            <li><div class="time">08:00</div><div class="desc">Jogos, horários e transmissões principais.</div></li>
-            <li><div class="time">16:00</div><div class="desc">Evento relevante do dia.</div></li>
-            <li><div class="time">21:30</div><div class="desc">Jogo principal do dia.</div></li>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
           </ul>
         </div>
 
@@ -310,27 +317,90 @@
 </footer>
 
 <script>
-  /*
-    ✅ COMO USAR (em cada notícia):
-    - Troque CATEGORY_SLUG e CATEGORY_NAME
-    - Troque TITLE / EXCERPT / DATE
-    - Corpo da notícia no HTML (articleBody)
-  */
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
 
-  const CATEGORY_SLUG = "futebol";  // ex: futebol, surf, skate, tenis, etc.
-  const CATEGORY_NAME = "Futebol";  // ex: Futebol, Surf, Skate...
+  const AGENDA_JSON_URL = "agenda.json";
 
-  // Link correto da categoria (resolve o seu problema #1)
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
   const categoryLink = document.getElementById("categoryLink");
   categoryLink.textContent = CATEGORY_NAME;
   categoryLink.href = CATEGORY_SLUG + ".html";
 
-  // Ativa destaque no menu (e resolve o menu incompleto #2 porque aqui ele é completo)
+  // Menu ativo
   const menuLinks = document.querySelectorAll("#sportsMenu a");
   menuLinks.forEach(a => {
     if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
   });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
 </script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
 
 </body>
 </html>
