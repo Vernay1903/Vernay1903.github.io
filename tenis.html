@@ -1,174 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Tênis | Corte dos Esportes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Tênis | Corte dos Esportes</title>
+  <meta name="description" content="Últimas notícias, resultados e destaques do Tênis no Corte dos Esportes.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico">
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: Montserrat, sans-serif;
-            background: #FFFFFF;
-            color: #0A1E3A;
-            display: flex;
-            flex-direction: column;
-        }
+  <style>
+    html, body { height:100%; margin:0; font-family:Montserrat,sans-serif; background:#FFF; color:#0A1E3A; }
+    body { min-height:100vh; display:flex; flex-direction:column; }
+    main { flex:1; }
 
-        main { flex: 1; }
+    header{
+      background:#0A1E3A;
+      padding:10px 30px;
+      display:flex;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
 
-        header {
-            background: #0A1E3A;
-            padding: 12px 30px;
-            display: flex;
-            align-items: center;
-        }
+    .logo-container{ display:flex; align-items:center; gap:12px; }
+    .logo-container img{ height:34px; }
 
-        nav a {
-            text-decoration: none;
-            color: #FFFFFF;
-            font-weight: 700;
-        }
+    .logo-text{
+      font-size:20px;
+      font-weight:700;
+      color:#FFF;
+      text-decoration:none;
+    }
 
-        nav a:hover {
-            color: #1E4BA5;
-        }
+    .sports-menu{
+      background:#FFF;
+      padding:15px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+      border-bottom:1px solid #E5E5E5;
+      position:sticky;
+      top:54px;
+      z-index:999;
+    }
 
-        .sports-menu {
-            background: #FFFFFF;
-            padding: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            border-bottom: 1px solid #E5E5E5;
-        }
+    .sports-menu a{
+      flex:1 1 120px;
+      max-width:150px;
+      text-align:center;
+      padding:12px 8px;
+      border:1px solid #1E4BA5;
+      border-radius:10px;
+      color:#1E4BA5;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:600;
+      background:#FFF;
+      transition:.3s;
+      white-space:nowrap;
+    }
 
-        .sports-menu a {
-            flex: 1 1 120px;
-            max-width: 150px;
-            text-align: center;
-            padding: 12px 8px;
-            border: 1px solid #1E4BA5;
-            border-radius: 10px;
-            color: #1E4BA5;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            background-color: #FFFFFF;
-        }
+    .sports-menu a:hover{ background:#1E4BA5; color:#FFF; }
+    .sports-menu a.active{ background:#1E4BA5; color:#FFF; }
 
-        .sports-menu a:hover {
-            background: #1E4BA5;
-            color: #FFFFFF;
-        }
+    .page{ max-width:1200px; margin:0 auto; padding:28px 10px 40px; }
 
-        .hero-central {
-            text-align: center;
-            padding: 30px 20px 15px;
-        }
+    .hero-central{ text-align:center; margin-bottom:22px; }
+    .hero-central h1{ font-size:54px; margin:0 0 10px; }
+    .hero-central p{ font-size:18px; margin:0; color:#31425F; }
 
-        .hero-central h1 {
-            font-size: 48px;
-            margin: 0;
-        }
+    .card{
+      background:#FFF;
+      border:1px solid #E5E5E5;
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(10,30,58,.06);
+      margin-bottom:16px;
+    }
 
-        .hero-central p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
+    .news-list{ list-style:none; padding:0; margin:0; }
+    .news-list li{ padding:14px 0; border-top:1px solid #EEF1F5; }
+    .news-list li:first-child{ border-top:none; padding-top:0; }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-        }
+    .news-list a{
+      text-decoration:none;
+      color:#0A1E3A;
+      font-weight:700;
+      font-size:18px;
+      display:inline-block;
+      margin-bottom:6px;
+    }
 
-        article {
-            background: #F5F7FA;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
+    .news-list a:hover{ color:#1E4BA5; }
 
-        footer {
-            background: #0A1E3A;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #FFFFFF;
-        }
+    .excerpt{ margin:0; font-size:14px; color:#31425F; }
+    .meta{ font-size:12px; color:#5B6B84; margin-top:8px; }
 
-        footer a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 12px;
-        }
+    footer{
+      background:#0A1E3A;
+      text-align:center;
+      padding:20px;
+      font-size:14px;
+      color:#FFF;
+    }
 
-        footer a:hover {
-            color: #1E4BA5;
-        }
-    </style>
+    footer a{ color:#FFF; text-decoration:none; margin:0 12px; }
+
+    @media (max-width:768px){
+      .hero-central h1{ font-size:38px; }
+      header{ padding:10px 18px; }
+      .sports-menu{ top:50px; }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-    <nav>
-        <a href="index.html">Início</a>
-    </nav>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
 </header>
 
-<div class="sports-menu">
-    <a href="atletismo.html">Atletismo</a>
-    <a href="automobilismo.html">Automobilismo</a>
-    <a href="basquete.html">Basquete</a>
-    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-    <a href="futebol.html">Futebol</a>
-    <a href="futebol-americano.html">Futebol Americano</a>
-    <a href="futsal.html">Futsal</a>
-    <a href="handebol.html">Handebol</a>
-    <a href="lutas.html">Lutas</a>
-    <a href="skate.html">Skate</a>
-    <a href="surf.html">Surf</a>
-    <a href="volei.html">Vôlei</a>
-    <a href="volei-praia.html">Vôlei de Praia</a>
-    <a href="tenis.html">Tênis</a>
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
-<section class="hero-central">
-    <h1>Tênis</h1>
-    <p>Notícias, ranking ATP/WTA, Grand Slams e principais torneios do tênis mundial.</p>
-</section>
+<main>
+  <div class="page">
 
-<main class="container">
+    <div class="hero-central">
+      <h1>Tênis</h1>
+      <p>Últimas notícias, resultados e destaques do tênis.</p>
+    </div>
 
-    <article>
-        <h2>Notícia exemplo de Tênis</h2>
-        <p>Conteúdo inicial para estrutura SEO e monetização futura.</p>
-    </article>
+    <div class="card">
+      <ul class="news-list" id="categoryList">
+        <li>
+          <a href="#">Carregando...</a>
+          <p class="excerpt">Aguarde...</p>
+          <div class="meta"></div>
+        </li>
+      </ul>
+    </div>
 
-    <article>
-        <h2>Outra notícia de Tênis</h2>
-        <p>Espaço reservado para análises, resultados e cobertura dos principais torneios.</p>
-    </article>
-
+  </div>
 </main>
 
 <footer>
-    © 2026 Corte dos Esportes |
-    <a href="politica.html">Privacidade</a> |
-    <a href="contato.html">Contato</a> |
-    <a href="sobre.html">Sobre</a> |
-    <a href="termos.html">Termos de Uso</a>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
 </footer>
+
+<script>
+  const NEWS_JSON_URL = "noticias.json";
+  const CATEGORY_SLUG = "tenis";
+  const CATEGORY_NAME = "Tênis";
+  const MAX_ITEMS = 50;
+
+  document.querySelectorAll("#sportsMenu a").forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  function norm(str){
+    return String(str||"").normalize("NFD")
+      .replace(/[\u0300-\u036f]/g,"")
+      .toLowerCase().trim();
+  }
+
+  async function loadCategory(){
+    try{
+      const res = await fetch(NEWS_JSON_URL,{cache:"no-store"});
+      const data = await res.json();
+      const items = Array.isArray(data) ? data : [];
+      const filtered = items.filter(it => norm(it.category) === norm(CATEGORY_NAME));
+
+      const list = document.getElementById("categoryList");
+
+      if(!filtered.length){
+        list.innerHTML = `<li><p>Ainda não há notícias em ${CATEGORY_NAME}.</p></li>`;
+        return;
+      }
+
+      list.innerHTML = filtered.slice(0, MAX_ITEMS).map(it => `
+        <li>
+          <a href="${it.url}">${it.title}</a>
+          <p class="excerpt">${it.excerpt}</p>
+          <div class="meta">${it.date} • ${it.category}</div>
+        </li>
+      `).join("");
+
+    }catch(e){
+      document.getElementById("categoryList").innerHTML =
+        `<li><p>Erro ao carregar notícias.</p></li>`;
+    }
+  }
+
+  loadCategory();
+</script>
 
 </body>
 </html>
+
