@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Corte dos Esportes | Notícias, agenda e destaques do dia</title>
-  <meta name="description" content="Corte dos Esportes: últimas notícias, destaques e agenda do dia em Futebol, Olimpíadas, Basquete, Vôlei, Surf, Skate e mais.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
 
-  <!-- (Opcional) reforço anti-cache em alguns navegadores -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+  <title>Corte dos Esportes | Notícias e cobertura esportiva</title>
+  <meta name="description" content="Portal Corte dos Esportes: notícias, destaques e cobertura completa das principais modalidades esportivas." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -18,22 +14,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Dados estruturados (portal/site) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Corte dos Esportes",
-    "url": "https://cortedosesportes.com.br/"
-  }
-  </script>
 
   <style>
     html, body {
@@ -111,30 +92,19 @@
     }
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-    .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
 
-    /* CONTEÚDO */
+    /* ativa no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
     .page {
       max-width: 1200px;
       margin: 0 auto;
       padding: 28px 10px 40px;
       box-sizing: border-box;
-    }
-
-    .hero-central {
-      text-align: center;
-      margin-bottom: 22px;
-    }
-
-    .hero-central h1 {
-      font-size: 54px;
-      margin: 0 0 10px;
-    }
-
-    .hero-central p {
-      font-size: 18px;
-      margin: 0;
-      color: #31425F;
     }
 
     .layout {
@@ -146,7 +116,6 @@
 
     aside { margin-right: -10px; }
 
-    /* COMPONENTES */
     .card {
       background: #FFFFFF;
       border: 1px solid #E5E5E5;
@@ -156,102 +125,89 @@
       margin-bottom: 16px;
     }
 
-    .section-title {
-      margin: 0 0 12px;
+    .hero-title {
+      font-size: 54px;
+      margin: 14px 0 6px;
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+      text-align: center;
+    }
+
+    .hero-sub {
+      margin: 0 0 18px;
+      text-align: center;
+      color: #31425F;
       font-size: 18px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #C9D3E2;
+      color: #1E4BA5;
+      font-weight: 700;
+      font-size: 12px;
+      background: #F7FAFF;
+      margin-bottom: 10px;
+    }
+
+    .news-title {
+      font-size: 34px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .news-title a {
+      color: #0A1E3A;
+      text-decoration: none;
+    }
+
+    .news-title a:hover { text-decoration: underline; }
+
+    .subhead {
+      font-size: 16px;
+      margin: 0 0 12px;
+      color: #31425F;
+      line-height: 1.6;
     }
 
     .meta {
       font-size: 12px;
       color: #5B6B84;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
-    /* DESTAQUE PRINCIPAL */
-    .featured-main a {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .featured-main h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
-      line-height: 1.25;
-    }
-
-    .featured-main p {
-      margin: 0;
-      color: #0A1E3A;
-      line-height: 1.6;
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
+    .meta a {
       color: #1E4BA5;
-      border: 1px solid #1E4BA5;
-      border-radius: 999px;
-      padding: 6px 10px;
-      margin-bottom: 10px;
-    }
-
-    /* DESTAQUES RÁPIDOS */
-    .featured-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-    }
-
-    .mini a {
       text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .mini h3 {
-      margin: 0 0 6px;
-      font-size: 14px;
-      line-height: 1.35;
-    }
-
-    .mini p {
-      margin: 0;
-      font-size: 13px;
-      color: #31425F;
-      line-height: 1.45;
-    }
-
-    /* LISTA DE NOTÍCIAS */
-    .news-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .news-list li {
-      padding: 12px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .news-list li:first-child { border-top: none; padding-top: 0; }
-
-    .news-list a {
-      text-decoration: none;
-      color: #0A1E3A;
       font-weight: 700;
-      display: inline-block;
-      margin-bottom: 6px;
+    }
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
     }
 
-    .news-list a:hover { color: #1E4BA5; }
+    .ad-slot.center { min-height: 110px; }
+    .ad-slot.sidebar { min-height: 120px; }
 
-    .excerpt {
-      margin: 0;
+    /* SEÇÕES */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .muted {
+      color: #5B6B84;
       font-size: 14px;
-      color: #31425F;
-      line-height: 1.55;
+      margin: 0;
     }
 
     /* AGENDA */
@@ -276,19 +232,27 @@
       color: #1E4BA5;
     }
 
-    .desc { font-size: 14px; line-height: 1.4; }
+    .desc { font-size: 14px; line-height: 1.4; color: #0A1E3A; }
 
-    /* PLACEHOLDER ADS */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      text-align: center;
-      color: #1E4BA5;
-      font-weight: 700;
-      font-size: 14px;
+    /* LISTA ÚLTIMAS */
+    .news-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
+
+    .news-list li {
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+    .news-list li:first-child { border-top: none; padding-top: 0; }
+
+    .news-list a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .news-list a:hover { text-decoration: underline; }
 
     footer {
       background: #0A1E3A;
@@ -309,15 +273,16 @@
     @media (max-width: 1024px) {
       .layout { grid-template-columns: 1fr; }
       aside { margin-right: 0; }
-      .featured-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 44px; }
     }
 
     @media (max-width: 768px) {
-      .hero-central h1 { font-size: 38px; }
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
       .sports-menu { top: 50px; }
+      .hero-title { font-size: 36px; }
+      .news-title { font-size: 28px; }
     }
   </style>
 </head>
@@ -352,57 +317,47 @@
 <main>
   <div class="page">
 
-    <div class="hero-central">
-      <h1>Corte dos Esportes</h1>
-      <p>Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
-    </div>
+    <h1 class="hero-title">Corte dos Esportes</h1>
+    <p class="hero-sub">Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
 
     <div class="layout">
 
-      <!-- CENTRO -->
+      <!-- COLUNA PRINCIPAL -->
       <section>
 
-        <!-- DESTAQUE PRINCIPAL (AUTO) -->
-        <div class="card featured-main" id="featuredMain">
-          <span class="pill">DESTAQUE DO DIA</span>
-          <a href="#">
-            <h2>Carregando destaque...</h2>
-            <p>Aguarde...</p>
-          </a>
-          <div class="meta"></div>
-        </div>
+        <!-- DESTAQUE DO DIA -->
+        <div class="card" id="featuredCard">
+          <span class="badge">DESTAQUE DO DIA</span>
 
-        <!-- 3 DESTAQUES RÁPIDOS (AUTO) -->
-        <div class="card">
-          <h2 class="section-title">Destaques rápidos</h2>
-          <div class="featured-grid" id="featuredGrid">
-            <div class="mini">
-              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
-            </div>
-            <div class="mini">
-              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
-            </div>
-            <div class="mini">
-              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
-            </div>
+          <h2 class="news-title">
+            <a id="featuredLink" href="#">Carregando destaque...</a>
+          </h2>
+
+          <p class="subhead" id="featuredExcerpt">Aguarde.</p>
+
+          <div class="meta">
+            <span id="featuredDate"></span>
+            <span id="featuredCategoryWrap"> · Categoria: <a id="featuredCategory" href="#"></a></span>
           </div>
         </div>
 
-        <!-- AD NO CENTRO -->
+        <!-- DESTAQUES RÁPIDOS -->
         <div class="card">
-          <div class="ad-slot">ESPAÇO PARA ANÚNCIO (CENTRO)</div>
+          <h2 class="section-title">Destaques rápidos</h2>
+          <ul class="news-list" id="quickList"></ul>
+          <p class="muted" id="quickEmpty" style="display:none;">Sem destaques no momento.</p>
         </div>
 
-        <!-- ÚLTIMAS NOTÍCIAS (AUTO) -->
+        <!-- ANÚNCIO CENTRO (SEM TEXTO) -->
+        <div class="card">
+          <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">&nbsp;</div>
+        </div>
+
+        <!-- ÚLTIMAS NOTÍCIAS -->
         <div class="card">
           <h2 class="section-title">Últimas notícias</h2>
-          <ul class="news-list" id="latestList">
-            <li>
-              <a href="#">Carregando...</a>
-              <p class="excerpt">Aguarde...</p>
-              <div class="meta"></div>
-            </li>
-          </ul>
+          <ul class="news-list" id="latestList"></ul>
+          <p class="muted" id="latestEmpty" style="display:none;">Sem notícias no momento.</p>
         </div>
 
       </section>
@@ -412,19 +367,12 @@
 
         <div class="card">
           <h2 class="section-title">Agenda do Dia</h2>
-
-          <!-- AGENDA (AUTO DO agenda.json) -->
-          <ul class="agenda-list" id="agendaList">
-            <li>
-              <div class="time">--:--</div>
-              <div class="desc">Carregando agenda...</div>
-            </li>
-          </ul>
-
-          <div class="meta">Atualize o arquivo <b>agenda.json</b> e a home muda sozinha.</div>
+          <ul class="agenda-list" id="agendaList"></ul>
         </div>
 
-        <div class="ad-slot">ESPAÇO PARA ANÚNCIO (SIDEBAR)</div>
+        <div class="card">
+          <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        </div>
 
       </aside>
 
@@ -441,250 +389,162 @@
 </footer>
 
 <script>
-  const NEWS_JSON_URL = "noticias.json";
-  const AGENDA_JSON_URL = "agenda.json";
-
-  // Mapa categoria -> página
-  const CATEGORY_PAGES = {
-    "Atletismo": "atletismo.html",
-    "Automobilismo": "automobilismo.html",
-    "Basquete": "basquete.html",
-    "Esportes Olímpicos": "esportes-olimpicos.html",
-    "Futebol": "futebol.html",
-    "Futebol Americano": "futebol-americano.html",
-    "Futsal": "futsal.html",
-    "Handebol": "handebol.html",
-    "Lutas": "lutas.html",
-    "Skate": "skate.html",
-    "Surf": "surf.html",
-    "Vôlei": "volei.html",
-    "Vôlei de Praia": "volei-praia.html",
-    "Tênis": "tenis.html"
+  // Mapa de categoria -> slug (para linkar na categoria corretamente)
+  const CATEGORY_TO_SLUG = {
+    "Atletismo": "atletismo",
+    "Automobilismo": "automobilismo",
+    "Basquete": "basquete",
+    "Esportes Olímpicos": "esportes-olimpicos",
+    "Futebol": "futebol",
+    "Futebol Americano": "futebol-americano",
+    "Futsal": "futsal",
+    "Handebol": "handebol",
+    "Lutas": "lutas",
+    "Skate": "skate",
+    "Surf": "surf",
+    "Vôlei": "volei",
+    "Vôlei de Praia": "volei-praia",
+    "Tênis": "tenis"
   };
 
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
+  function safeText(v, fallback = "") {
+    return (typeof v === "string" && v.trim() !== "") ? v.trim() : fallback;
   }
 
-  function norm(str) {
-    return String(str || "")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
+  function makeCategoryLink(categoryName) {
+    const name = safeText(categoryName, "");
+    const slug = CATEGORY_TO_SLUG[name] || "";
+    return slug ? (slug + ".html") : "#";
   }
 
-  function parseDateAny(s) {
-    const v = String(s || "").trim();
-    if (!v) return null;
-
-    const iso = v.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
-
-    const br1 = v.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-    if (br1) return new Date(Number(br1[3]), Number(br1[2]) - 1, Number(br1[1]));
-
-    const br2 = v.match(/^(\d{2})-(\d{2})-(\d{4})$/);
-    if (br2) return new Date(Number(br2[3]), Number(br2[2]) - 1, Number(br2[1]));
-
-    return null;
-  }
-
-  function getCategoryPage(category) {
-    if (CATEGORY_PAGES[category]) return CATEGORY_PAGES[category];
-    const n = norm(category);
-    const key = Object.keys(CATEGORY_PAGES).find(k => norm(k) === n);
-    return key ? CATEGORY_PAGES[key] : "index.html";
-  }
-
-  function sortNews(items) {
-    return items
-      .map((it, idx) => {
-        const d = parseDateAny(it.date);
-        return { it, idx, d: d ? d.getTime() : null };
-      })
-      .sort((a, b) => {
-        if (a.d !== null && b.d !== null) return b.d - a.d;
-        if (a.d !== null && b.d === null) return -1;
-        if (a.d === null && b.d !== null) return 1;
-        return a.idx - b.idx;
-      })
-      .map(x => x.it);
-  }
-
-  function renderFeaturedMain(item) {
-    const box = document.getElementById("featuredMain");
-    const url = item.url || "#";
-    const title = item.title || "Sem título";
-    const excerpt = item.excerpt || "";
-    const date = item.date || "Hoje";
-    const category = item.category || "";
-    const categoryPage = getCategoryPage(category);
-
-    box.innerHTML = `
-      <span class="pill">DESTAQUE DO DIA</span>
-      <a href="${escapeHtml(url)}">
-        <h2>${escapeHtml(title)}</h2>
-        <p>${escapeHtml(excerpt)}</p>
-      </a>
-      <div class="meta">
-        ${escapeHtml(date)} •
-        Categoria: <a href="${escapeHtml(categoryPage)}" style="color:#1E4BA5; text-decoration:none; font-weight:700;">${escapeHtml(category || "Geral")}</a>
-      </div>
-    `;
-  }
-
-  function renderFeaturedGrid(items) {
-    const grid = document.getElementById("featuredGrid");
-    if (!items.length) {
-      grid.innerHTML = `<div class="mini"><p class="excerpt">Sem destaques no momento.</p></div>`;
-      return;
-    }
-
-    grid.innerHTML = items.slice(0, 3).map(it => {
-      const url = it.url || "#";
-      const title = it.title || "Sem título";
-      const excerpt = it.excerpt || "";
-      return `
-        <div class="mini">
-          <a href="${escapeHtml(url)}">
-            <h3>${escapeHtml(title)}</h3>
-            <p>${escapeHtml(excerpt)}</p>
-          </a>
-        </div>
-      `;
-    }).join("");
-  }
-
-  function renderLatestList(items) {
-    const list = document.getElementById("latestList");
-    if (!items.length) {
-      list.innerHTML = `<li><p class="excerpt">Nenhuma notícia encontrada no noticias.json.</p></li>`;
-      return;
-    }
-
-    list.innerHTML = items.slice(0, 30).map(it => {
-      const url = it.url || "#";
-      const title = it.title || "Sem título";
-      const excerpt = it.excerpt || "";
-      const date = it.date || "Hoje";
-      const category = it.category || "Geral";
-      const categoryPage = getCategoryPage(category);
-
-      return `
-        <li>
-          <a href="${escapeHtml(url)}">${escapeHtml(title)}</a>
-          <p class="excerpt">${escapeHtml(excerpt)}</p>
-          <div class="meta">
-            ${escapeHtml(date)} •
-            <a href="${escapeHtml(categoryPage)}" style="color:#1E4BA5; text-decoration:none; font-weight:700;">${escapeHtml(category)}</a>
-          </div>
-        </li>
-      `;
-    }).join("");
-  }
-
-  async function loadHomeNews() {
-    try {
-      const res = await fetch(NEWS_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar noticias.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.title || x.url))
-        .map(x => ({
-          title: String(x.title || "").trim(),
-          url: String(x.url || "").trim(),
-          excerpt: String(x.excerpt || "").trim(),
-          date: String(x.date || "").trim(),
-          category: String(x.category || "").trim()
-        }));
-
-      const ordered = sortNews(clean);
-
-      const featured = ordered[0] || null;
-      const quick = ordered.slice(1, 4);
-
-      if (featured) renderFeaturedMain(featured);
-      renderFeaturedGrid(quick);
-      renderLatestList(ordered);
-
-    } catch (e) {
-      console.error(e);
-      document.getElementById("featuredMain").innerHTML =
-        `<p class="excerpt">Erro ao carregar notícias. Verifique se <b>noticias.json</b> está na raiz do site.</p>`;
-      document.getElementById("featuredGrid").innerHTML =
-        `<p class="excerpt">Erro ao carregar destaques.</p>`;
-      document.getElementById("latestList").innerHTML =
-        `<li><p class="excerpt">Erro ao carregar últimas notícias.</p></li>`;
-    }
-  }
-
-  function renderAgenda(items) {
+  // ---------- AGENDA ----------
+  async function loadAgenda() {
     const list = document.getElementById("agendaList");
 
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
+    // fallback (se agenda.json falhar, não aparece "undefined")
+    const fallback = [
+      { time: "08:00", desc: "Jogos, horários e transmissões principais." },
+      { time: "16:00", desc: "Evento relevante do dia." },
+      { time: "21:30", desc: "Jogo principal do dia." }
+    ];
 
-    // Ordena por horário (HH:MM)
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
-
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
-
-  async function loadAgenda() {
     try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const res = await fetch("agenda.json?v=" + Date.now());
+      if (!res.ok) throw new Error("agenda.json não carregou");
       const data = await res.json();
 
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
+      const items = Array.isArray(data) ? data : [];
+      const useItems = items.length ? items : fallback;
 
-      renderAgenda(clean);
+      list.innerHTML = useItems.slice(0, 3).map(item => {
+        const t = safeText(item.time, "—");
+        const d = safeText(item.desc, "");
+        return `<li><div class="time">${t}</div><div class="desc">${d}</div></li>`;
+      }).join("");
 
     } catch (e) {
-      console.error(e);
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda. Verifique o arquivo <b>agenda.json</b>.</div>
-        </li>
-      `;
+      list.innerHTML = fallback.map(item => {
+        return `<li><div class="time">${item.time}</div><div class="desc">${item.desc}</div></li>`;
+      }).join("");
     }
   }
 
-  // Carrega tudo
-  loadHomeNews();
+  // ---------- NOTÍCIAS (HOME) ----------
+  async function loadNoticias() {
+    const featuredLink = document.getElementById("featuredLink");
+    const featuredExcerpt = document.getElementById("featuredExcerpt");
+    const featuredDate = document.getElementById("featuredDate");
+    const featuredCategory = document.getElementById("featuredCategory");
+
+    const quickList = document.getElementById("quickList");
+    const quickEmpty = document.getElementById("quickEmpty");
+
+    const latestList = document.getElementById("latestList");
+    const latestEmpty = document.getElementById("latestEmpty");
+
+    try {
+      const res = await fetch("noticias.json?v=" + Date.now());
+      if (!res.ok) throw new Error("noticias.json não carregou");
+      const data = await res.json();
+      const items = Array.isArray(data) ? data : [];
+
+      if (!items.length) {
+        // destaque
+        featuredLink.textContent = "Sem notícias publicadas ainda";
+        featuredLink.href = "#";
+        featuredExcerpt.textContent = "Publique sua primeira notícia e ela aparecerá aqui automaticamente.";
+        featuredDate.textContent = "";
+        featuredCategory.textContent = "";
+        featuredCategory.href = "#";
+
+        // listas
+        quickList.innerHTML = "";
+        quickEmpty.style.display = "block";
+        latestList.innerHTML = "";
+        latestEmpty.style.display = "block";
+        return;
+      }
+
+      // Destaque: primeiro item do JSON
+      const top = items[0];
+      const topTitle = safeText(top.title, "Notícia");
+      const topExcerpt = safeText(top.excerpt, "");
+      const topUrl = safeText(top.url, "#");
+      const topDate = safeText(top.date, "");
+      const topCategory = safeText(top.category, "");
+
+      featuredLink.textContent = topTitle;
+      featuredLink.href = topUrl;
+
+      featuredExcerpt.textContent = topExcerpt;
+
+      featuredDate.textContent = topDate ? (topDate + " ·") : "";
+      featuredCategory.textContent = topCategory || "Geral";
+      featuredCategory.href = makeCategoryLink(topCategory);
+
+      // Destaques rápidos: próximos 3 (sem texto “adicione...”)
+      const quickItems = items.slice(1, 4);
+      if (!quickItems.length) {
+        quickList.innerHTML = "";
+        quickEmpty.style.display = "block";
+      } else {
+        quickEmpty.style.display = "none";
+        quickList.innerHTML = quickItems.map(n => {
+          const t = safeText(n.title, "Notícia");
+          const u = safeText(n.url, "#");
+          const d = safeText(n.date, "");
+          return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
+        }).join("");
+      }
+
+      // Últimas notícias: lista completa
+      latestEmpty.style.display = "none";
+      latestList.innerHTML = items.slice(0, 12).map(n => {
+        const t = safeText(n.title, "Notícia");
+        const u = safeText(n.url, "#");
+        const d = safeText(n.date, "");
+        return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
+      }).join("");
+
+    } catch (e) {
+      featuredLink.textContent = "Erro ao carregar notícias";
+      featuredLink.href = "#";
+      featuredExcerpt.textContent = "Verifique se o arquivo noticias.json existe e está válido.";
+      featuredDate.textContent = "";
+      featuredCategory.textContent = "";
+      featuredCategory.href = "#";
+
+      quickList.innerHTML = "";
+      quickEmpty.style.display = "block";
+
+      latestList.innerHTML = "";
+      latestEmpty.style.display = "block";
+    }
+  }
+
+  // Carregar tudo
   loadAgenda();
+  loadNoticias();
 </script>
 
 </body>
