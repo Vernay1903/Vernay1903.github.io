@@ -6,11 +6,6 @@
   <meta name="description" content="Corte dos Esportes: últimas notícias, destaques e agenda do dia em Futebol, Olimpíadas, Basquete, Vôlei, Surf, Skate e mais.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- (Opcional) reforço anti-cache em alguns navegadores -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
@@ -18,22 +13,8 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Dados estruturados (portal/site) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Corte dos Esportes",
-    "url": "https://cortedosesportes.com.br/"
-  }
-  </script>
 
   <style>
     html, body {
@@ -111,7 +92,11 @@
     }
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-    .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
+
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
 
     /* CONTEÚDO */
     .page {
@@ -134,7 +119,6 @@
     .hero-central p {
       font-size: 18px;
       margin: 0;
-      color: #31425F;
     }
 
     .layout {
@@ -278,16 +262,13 @@
 
     .desc { font-size: 14px; line-height: 1.4; }
 
-    /* PLACEHOLDER ADS */
+    /* PLACEHOLDER ADS (SEM TEXTO) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
       border-radius: 14px;
       padding: 22px;
-      text-align: center;
-      color: #1E4BA5;
-      font-weight: 700;
-      font-size: 14px;
+      min-height: 58px;
     }
 
     footer {
@@ -332,7 +313,7 @@
 </header>
 
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio" class="active">Início</a>
+  <a href="index.html" data-slug="inicio">Início</a>
   <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
   <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
   <a href="basquete.html" data-slug="basquete">Basquete</a>
@@ -362,44 +343,39 @@
       <!-- CENTRO -->
       <section>
 
-        <!-- DESTAQUE PRINCIPAL (AUTO) -->
+        <!-- DESTAQUE PRINCIPAL -->
         <div class="card featured-main" id="featuredMain">
           <span class="pill">DESTAQUE DO DIA</span>
-          <a href="#">
-            <h2>Carregando destaque...</h2>
-            <p>Aguarde...</p>
+          <a id="featuredMainLink" href="#">
+            <h2 id="featuredMainTitle">Carregando destaque...</h2>
+            <p id="featuredMainExcerpt">Aguarde.</p>
           </a>
-          <div class="meta"></div>
+          <div class="meta" id="featuredMainMeta"></div>
         </div>
 
-        <!-- 3 DESTAQUES RÁPIDOS (AUTO) -->
+        <!-- 3 DESTAQUES RÁPIDOS -->
         <div class="card">
           <h2 class="section-title">Destaques rápidos</h2>
           <div class="featured-grid" id="featuredGrid">
             <div class="mini">
-              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
-            </div>
-            <div class="mini">
-              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
-            </div>
-            <div class="mini">
-              <a href="#"><h3>Carregando...</h3><p>Aguarde...</p></a>
+              <h3>Sem destaques</h3>
+              <p>Adicione mais notícias no noticias.json.</p>
             </div>
           </div>
         </div>
 
-        <!-- AD NO CENTRO -->
+        <!-- AD NO CENTRO (SEM TEXTO) -->
         <div class="card">
-          <div class="ad-slot">ESPAÇO PARA ANÚNCIO (CENTRO)</div>
+          <div class="ad-slot" aria-label="Espaço para anúncio no centro"></div>
         </div>
 
-        <!-- ÚLTIMAS NOTÍCIAS (AUTO) -->
+        <!-- ÚLTIMAS NOTÍCIAS -->
         <div class="card">
           <h2 class="section-title">Últimas notícias</h2>
-          <ul class="news-list" id="latestList">
+          <ul class="news-list" id="newsList">
             <li>
-              <a href="#">Carregando...</a>
-              <p class="excerpt">Aguarde...</p>
+              <a href="#">Carregando notícias...</a>
+              <p class="excerpt">Aguarde.</p>
               <div class="meta"></div>
             </li>
           </ul>
@@ -412,19 +388,15 @@
 
         <div class="card">
           <h2 class="section-title">Agenda do Dia</h2>
-
-          <!-- AGENDA (AUTO DO agenda.json) -->
           <ul class="agenda-list" id="agendaList">
-            <li>
-              <div class="time">--:--</div>
-              <div class="desc">Carregando agenda...</div>
-            </li>
+            <li><div class="time">08:00</div><div class="desc">Carregando...</div></li>
+            <li><div class="time">16:00</div><div class="desc">Carregando...</div></li>
+            <li><div class="time">21:30</div><div class="desc">Carregando...</div></li>
           </ul>
-
-          <div class="meta">Atualize o arquivo <b>agenda.json</b> e a home muda sozinha.</div>
         </div>
 
-        <div class="ad-slot">ESPAÇO PARA ANÚNCIO (SIDEBAR)</div>
+        <!-- AD SIDEBAR (SEM TEXTO) -->
+        <div class="ad-slot" aria-label="Espaço para anúncio na sidebar"></div>
 
       </aside>
 
@@ -441,250 +413,86 @@
 </footer>
 
 <script>
-  const NEWS_JSON_URL = "noticias.json";
-  const AGENDA_JSON_URL = "agenda.json";
-
-  // Mapa categoria -> página
-  const CATEGORY_PAGES = {
-    "Atletismo": "atletismo.html",
-    "Automobilismo": "automobilismo.html",
-    "Basquete": "basquete.html",
-    "Esportes Olímpicos": "esportes-olimpicos.html",
-    "Futebol": "futebol.html",
-    "Futebol Americano": "futebol-americano.html",
-    "Futsal": "futsal.html",
-    "Handebol": "handebol.html",
-    "Lutas": "lutas.html",
-    "Skate": "skate.html",
-    "Surf": "surf.html",
-    "Vôlei": "volei.html",
-    "Vôlei de Praia": "volei-praia.html",
-    "Tênis": "tenis.html"
-  };
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
-
-  function norm(str) {
-    return String(str || "")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
-  }
-
-  function parseDateAny(s) {
-    const v = String(s || "").trim();
-    if (!v) return null;
-
-    const iso = v.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
-
-    const br1 = v.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-    if (br1) return new Date(Number(br1[3]), Number(br1[2]) - 1, Number(br1[1]));
-
-    const br2 = v.match(/^(\d{2})-(\d{2})-(\d{4})$/);
-    if (br2) return new Date(Number(br2[3]), Number(br2[2]) - 1, Number(br2[1]));
-
-    return null;
-  }
-
-  function getCategoryPage(category) {
-    if (CATEGORY_PAGES[category]) return CATEGORY_PAGES[category];
-    const n = norm(category);
-    const key = Object.keys(CATEGORY_PAGES).find(k => norm(k) === n);
-    return key ? CATEGORY_PAGES[key] : "index.html";
-  }
-
-  function sortNews(items) {
-    return items
-      .map((it, idx) => {
-        const d = parseDateAny(it.date);
-        return { it, idx, d: d ? d.getTime() : null };
-      })
-      .sort((a, b) => {
-        if (a.d !== null && b.d !== null) return b.d - a.d;
-        if (a.d !== null && b.d === null) return -1;
-        if (a.d === null && b.d !== null) return 1;
-        return a.idx - b.idx;
-      })
-      .map(x => x.it);
-  }
-
-  function renderFeaturedMain(item) {
-    const box = document.getElementById("featuredMain");
-    const url = item.url || "#";
-    const title = item.title || "Sem título";
-    const excerpt = item.excerpt || "";
-    const date = item.date || "Hoje";
-    const category = item.category || "";
-    const categoryPage = getCategoryPage(category);
-
-    box.innerHTML = `
-      <span class="pill">DESTAQUE DO DIA</span>
-      <a href="${escapeHtml(url)}">
-        <h2>${escapeHtml(title)}</h2>
-        <p>${escapeHtml(excerpt)}</p>
-      </a>
-      <div class="meta">
-        ${escapeHtml(date)} •
-        Categoria: <a href="${escapeHtml(categoryPage)}" style="color:#1E4BA5; text-decoration:none; font-weight:700;">${escapeHtml(category || "Geral")}</a>
-      </div>
-    `;
-  }
-
-  function renderFeaturedGrid(items) {
-    const grid = document.getElementById("featuredGrid");
-    if (!items.length) {
-      grid.innerHTML = `<div class="mini"><p class="excerpt">Sem destaques no momento.</p></div>`;
-      return;
-    }
-
-    grid.innerHTML = items.slice(0, 3).map(it => {
-      const url = it.url || "#";
-      const title = it.title || "Sem título";
-      const excerpt = it.excerpt || "";
-      return `
-        <div class="mini">
-          <a href="${escapeHtml(url)}">
-            <h3>${escapeHtml(title)}</h3>
-            <p>${escapeHtml(excerpt)}</p>
-          </a>
-        </div>
-      `;
-    }).join("");
-  }
-
-  function renderLatestList(items) {
-    const list = document.getElementById("latestList");
-    if (!items.length) {
-      list.innerHTML = `<li><p class="excerpt">Nenhuma notícia encontrada no noticias.json.</p></li>`;
-      return;
-    }
-
-    list.innerHTML = items.slice(0, 30).map(it => {
-      const url = it.url || "#";
-      const title = it.title || "Sem título";
-      const excerpt = it.excerpt || "";
-      const date = it.date || "Hoje";
-      const category = it.category || "Geral";
-      const categoryPage = getCategoryPage(category);
-
-      return `
-        <li>
-          <a href="${escapeHtml(url)}">${escapeHtml(title)}</a>
-          <p class="excerpt">${escapeHtml(excerpt)}</p>
-          <div class="meta">
-            ${escapeHtml(date)} •
-            <a href="${escapeHtml(categoryPage)}" style="color:#1E4BA5; text-decoration:none; font-weight:700;">${escapeHtml(category)}</a>
-          </div>
-        </li>
-      `;
-    }).join("");
-  }
-
-  async function loadHomeNews() {
-    try {
-      const res = await fetch(NEWS_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar noticias.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.title || x.url))
-        .map(x => ({
-          title: String(x.title || "").trim(),
-          url: String(x.url || "").trim(),
-          excerpt: String(x.excerpt || "").trim(),
-          date: String(x.date || "").trim(),
-          category: String(x.category || "").trim()
-        }));
-
-      const ordered = sortNews(clean);
-
-      const featured = ordered[0] || null;
-      const quick = ordered.slice(1, 4);
-
-      if (featured) renderFeaturedMain(featured);
-      renderFeaturedGrid(quick);
-      renderLatestList(ordered);
-
-    } catch (e) {
-      console.error(e);
-      document.getElementById("featuredMain").innerHTML =
-        `<p class="excerpt">Erro ao carregar notícias. Verifique se <b>noticias.json</b> está na raiz do site.</p>`;
-      document.getElementById("featuredGrid").innerHTML =
-        `<p class="excerpt">Erro ao carregar destaques.</p>`;
-      document.getElementById("latestList").innerHTML =
-        `<li><p class="excerpt">Erro ao carregar últimas notícias.</p></li>`;
-    }
-  }
-
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
-
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
-
-    // Ordena por horário (HH:MM)
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
+  // Ativa "Início" como selecionado
+  (function(){
+    const menuLinks = document.querySelectorAll("#sportsMenu a");
+    menuLinks.forEach(a => {
+      if (a.dataset.slug === "inicio") a.classList.add("active");
     });
+  })();
 
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
+  // Carrega notícias do noticias.json
+  fetch("noticias.json")
+    .then(r => r.json())
+    .then(items => {
+      if (!Array.isArray(items) || items.length === 0) return;
 
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
+      // Ordena por data (dd/mm/aaaa) desc
+      const sorted = items.slice().sort((a,b) => {
+        const pa = (a.date || "").split("/").reverse().join("-");
+        const pb = (b.date || "").split("/").reverse().join("-");
+        return pb.localeCompare(pa);
+      });
 
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
+      // Destaque do dia = 1ª notícia
+      const top = sorted[0];
+      document.getElementById("featuredMainLink").href = top.url || "#";
+      document.getElementById("featuredMainTitle").textContent = top.title || "Sem título";
+      document.getElementById("featuredMainExcerpt").textContent = top.excerpt || "";
+      document.getElementById("featuredMainMeta").textContent =
+        (top.date ? top.date + " · " : "") + "Categoria: " + (top.category || "");
 
-      renderAgenda(clean);
+      // Destaques rápidos = próximas 3 (se existirem)
+      const grid = document.getElementById("featuredGrid");
+      const quick = sorted.slice(1, 4);
+      if (quick.length > 0) {
+        grid.innerHTML = "";
+        quick.forEach(n => {
+          const div = document.createElement("div");
+          div.className = "mini";
+          div.innerHTML = `
+            <a href="${n.url || "#"}">
+              <h3>${n.title || ""}</h3>
+              <p>${n.excerpt || ""}</p>
+            </a>
+          `;
+          grid.appendChild(div);
+        });
+      }
 
-    } catch (e) {
-      console.error(e);
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda. Verifique o arquivo <b>agenda.json</b>.</div>
-        </li>
-      `;
-    }
-  }
+      // Últimas notícias = lista (todas)
+      const list = document.getElementById("newsList");
+      list.innerHTML = "";
+      sorted.forEach(n => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <a href="${n.url || "#"}">${n.title || ""}</a>
+          <p class="excerpt">${n.excerpt || ""}</p>
+          <div class="meta">${(n.date ? n.date + " · " : "")}${n.category || ""}</div>
+        `;
+        list.appendChild(li);
+      });
+    })
+    .catch(() => {});
 
-  // Carrega tudo
-  loadHomeNews();
-  loadAgenda();
+  // Carrega agenda do dia do agenda.json
+  fetch("agenda.json")
+    .then(r => r.json())
+    .then(items => {
+      if (!Array.isArray(items) || items.length === 0) return;
+
+      const list = document.getElementById("agendaList");
+      list.innerHTML = "";
+      items.slice(0, 6).forEach(ev => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <div class="time">${ev.time || ""}</div>
+          <div class="desc">${ev.desc || ""}</div>
+        `;
+        list.appendChild(li);
+      });
+    })
+    .catch(() => {});
 </script>
 
 </body>
