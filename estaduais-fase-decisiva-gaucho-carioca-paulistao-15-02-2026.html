@@ -6,6 +6,7 @@
   <meta name="description" content="Grêmio x Juventude e Inter x Ypiranga abrem as semifinais do Gaúcho; Botafogo x Flamengo agita o Carioca; e o Paulistão chega à rodada que define os classificados.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,6 +14,8 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
   <link rel="stylesheet" href="share.css">
 
   <style>
@@ -32,6 +35,7 @@
 
     main { flex: 1; }
 
+    /* HEADER (STICKY) */
     header {
       background: #0A1E3A;
       padding: 10px 30px;
@@ -54,9 +58,12 @@
       font-size: 20px;
       font-weight: 700;
       color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
       text-decoration: none;
     }
 
+    /* MENU (STICKY) */
     .sports-menu {
       background: #FFFFFF;
       padding: 15px;
@@ -82,24 +89,34 @@
       font-size: 14px;
       font-weight: 600;
       background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
     }
 
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
     .sports-menu a.active {
       background: #1E4BA5;
       color: #FFFFFF;
     }
 
+    /* LAYOUT */
     .page {
       max-width: 1200px;
       margin: 0 auto;
       padding: 28px 10px 40px;
+      box-sizing: border-box;
     }
 
     .layout {
       display: grid;
       grid-template-columns: 2.3fr 330px;
       gap: 20px;
+      align-items: start;
     }
+
+    aside { margin-right: -10px; }
 
     .card {
       background: #FFFFFF;
@@ -112,19 +129,21 @@
 
     h1 {
       font-size: 44px;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      line-height: 1.15;
     }
 
     .subhead {
       font-size: 18px;
-      margin-bottom: 14px;
+      margin: 0 0 14px;
       color: #31425F;
+      line-height: 1.5;
     }
 
     .meta {
       font-size: 12px;
       color: #5B6B84;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
 
     .meta a {
@@ -133,23 +152,29 @@
       font-weight: 700;
     }
 
+    .meta a:hover { text-decoration: underline; }
+
+    /* ANÚNCIOS (SEM TEXTO) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
       border-radius: 14px;
       padding: 22px;
-      margin: 16px 0;
       min-height: 110px;
+      box-sizing: border-box;
+      margin: 16px 0;
     }
 
     article p {
       font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 16px;
+      color: #0A1E3A;
+      margin: 0 0 16px;
     }
 
+    /* SIDEBAR */
     .section-title {
-      margin-bottom: 12px;
+      margin: 0 0 12px;
       font-size: 18px;
     }
 
@@ -166,15 +191,15 @@
       border-top: 1px solid #EEF1F5;
     }
 
-    .agenda-list li:first-child {
-      border-top: none;
-    }
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
 
     .time {
       min-width: 60px;
       font-weight: 700;
       color: #1E4BA5;
     }
+
+    .desc { font-size: 14px; line-height: 1.4; }
 
     footer {
       background: #0A1E3A;
@@ -190,10 +215,20 @@
       margin: 0 12px;
     }
 
+    footer a:hover { color: #1E4BA5; }
+
     @media (max-width: 1024px) {
       .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
     }
 
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+      .sports-menu { top: 50px; }
+      h1 { font-size: 34px; }
+    }
   </style>
 </head>
 
@@ -207,63 +242,92 @@
 </header>
 
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html">Início</a>
-  <a href="futebol.html" class="active">Futebol</a>
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
   <div class="page">
     <div class="layout">
 
+      <!-- ARTIGO -->
       <section>
         <div class="card">
-
-          <h1>Estaduais entram na fase decisiva: semifinais no Gaúcho, clássico no Carioca e rodada final no Paulistão</h1>
-
-          <p class="subhead">
+          <h1 id="articleTitle">Estaduais entram na fase decisiva: semifinais no Gaúcho, clássico no Carioca e rodada final no Paulistão</h1>
+          <p class="subhead" id="articleExcerpt">
             Grêmio x Juventude e Inter x Ypiranga abrem as semifinais do Gaúcho; Botafogo x Flamengo agita o Carioca; e o Paulistão chega à rodada que define os classificados.
           </p>
 
           <div class="meta">
-            Por Corte dos Esportes · 15/02/2026 · Categoria:
-            <a href="futebol.html">Futebol</a>
+            Por Corte dos Esportes · <span id="articleDate">15/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
           </div>
 
-          <!-- ANÚNCIO TOPO LIMPO -->
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <!-- ANÚNCIO (ARTIGO - TOPO) SEM TEXTO -->
           <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
 
-          <article>
+          <article id="articleBody">
             <p>
-              Os estaduais começam a entrar nas fases decisivas, com partidas que valem muito para a temporada.
+              Os estaduais começam a entrar nas suas fases decisivas, com partidas que valem muito para a temporada.
               No Campeonato Gaúcho, começam hoje as semifinais: o Grêmio inicia a decisão em casa contra o Juventude.
-              O Imortal precisa vencer diante da sua torcida e mostrar evolução no trabalho de Luís Castro.
+              O Imortal precisa vencer diante da sua torcida e mostrar evolução no trabalho de Luís Castro, que vem recebendo críticas pela postura e pela tática do time,
+              principalmente após a última partida contra o São Paulo, pelo Campeonato Brasileiro.
             </p>
 
             <p>
-              Já o Internacional começa decidindo fora de casa contra o Ypiranga, que vive boa fase após eliminar o Caxias.
-              O Colorado busca reação no cenário nacional, apesar da melhor campanha no estadual.
+              Já o Internacional começa decidindo fora de casa contra o Ypiranga, que vive uma boa fase após eliminar, fora de casa, o Caxias.
+              O Colorado precisa mostrar reação: no estadual, a campanha é boa, com a melhor pontuação da fase classificatória,
+              mas no Campeonato Brasileiro a situação é difícil — apenas um ponto em nove disputados, com o time na zona de rebaixamento.
             </p>
 
             <p>
-              No Carioca, teremos clássico entre Botafogo e Flamengo pelas quartas de final.
-              No Paulistão, a rodada define os classificados à próxima fase.
+              No Carioca, tem clássico entre Botafogo e Flamengo pelas quartas de final.
+              O Flamengo ainda busca regularidade após iniciar o campeonato com o time sub-20.
+              Já o Botafogo tenta consolidar o modelo de jogo de Martín Anselmi, que segue ajustando a equipe taticamente.
+            </p>
+
+            <p>
+              Pelo Paulistão, chegamos à rodada final da fase classificatória.
+              O Palmeiras enfrenta o Guarani no Allianz Parque; o Corinthians encara o São Bernardo fora de casa;
+              o Santos recebe o Velo Clube na Vila Belmiro; e o São Paulo visita a Ponte Preta.
+              Até aqui, o único já garantido na próxima fase é o Palmeiras.
+              Os outros três grandes precisam vencer para confirmar a classificação e evitar depender de resultados paralelos.
             </p>
           </article>
-
         </div>
       </section>
 
+      <!-- SIDEBAR -->
       <aside>
         <div class="card">
           <h2 class="section-title">Agenda do Dia</h2>
           <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div>Carregando agenda...</div></li>
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
           </ul>
         </div>
 
-          <!-- ANÚNCIO SIDEBAR LIMPO -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
-
+        <!-- ANÚNCIO (SIDEBAR) SEM TEXTO -->
+        <div class="ad-slot" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
       </aside>
 
     </div>
@@ -278,9 +342,94 @@
   <a href="termos.html">Termos de Uso</a>
 </footer>
 
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
+
 </body>
 </html>
+
 
 
 
