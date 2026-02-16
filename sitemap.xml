@@ -33,11 +33,17 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- NOVA PÁGINA SKATE (INSTITUCIONAL/ESPECIAL) -->
   <url>
     <loc>https://cortedosesportes.com.br/rayssa-leal-fenomeno-geracional-skate.html</loc>
     <lastmod>2026-02-16</lastmod>
     <priority>0.8</priority>
+  </url>
+
+  <!-- NOVA MATÉRIA ESPORTES OLÍMPICOS -->
+  <url>
+    <loc>https://cortedosesportes.com.br/lucas-pinheiro-braathen-ouro-olimpiadas-inverno-16-02-2026.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.9</priority>
   </url>
 
   <!-- CATEGORIAS -->
@@ -51,6 +57,12 @@
     <loc>https://cortedosesportes.com.br/skate.html</loc>
     <lastmod>2026-02-16</lastmod>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cortedosesportes.com.br/esportes-olimpicos.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
   </url>
 
   <url>
@@ -99,11 +111,6 @@
   </url>
 
   <url>
-    <loc>https://cortedosesportes.com.br/esportes-olimpicos.html</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
     <loc>https://cortedosesportes.com.br/lutas.html</loc>
     <priority>0.6</priority>
   </url>
@@ -135,6 +142,7 @@
   </url>
 
 </urlset>
+
 
 
 
