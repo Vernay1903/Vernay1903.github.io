@@ -521,7 +521,7 @@
       }
 
       latestEmpty.style.display = "none";
-      latestList.innerHTML = items.slice(0, 12).map(n => {
+      latestList.innerHTML = items.slice(0, 10).map(n => {
         const t = safeText(n.title, "Notícia");
         const u = safeText(n.url, "#");
         const d = safeText(n.date, "");
@@ -551,3 +551,4 @@
 
 </body>
 </html>
+
