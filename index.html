@@ -370,16 +370,8 @@
           <ul class="agenda-list" id="agendaList"></ul>
         </div>
 
-        <!-- ✅ Mantém o anúncio na mesma posição de antes (simetria com anúncio do centro) -->
         <div class="card">
           <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
-        </div>
-
-        <!-- ✅ ÚNICA MUDANÇA: "Mais lidas" vem aqui, alinhando com "Últimas notícias" -->
-        <div class="card">
-          <h2 class="section-title">Mais lidas</h2>
-          <ul class="news-list" id="popularList"></ul>
-          <p class="muted" id="popularEmpty" style="display:none;">Sem destaques no momento.</p>
         </div>
 
       </aside>
@@ -477,9 +469,6 @@
     const latestList = document.getElementById("latestList");
     const latestEmpty = document.getElementById("latestEmpty");
 
-    const popularList = document.getElementById("popularList");
-    const popularEmpty = document.getElementById("popularEmpty");
-
     try {
       const res = await fetch("noticias.json?v=" + Date.now());
       if (!res.ok) throw new Error("noticias.json não carregou");
@@ -498,9 +487,6 @@
         quickEmpty.style.display = "block";
         latestList.innerHTML = "";
         latestEmpty.style.display = "block";
-
-        if (popularList) popularList.innerHTML = "";
-        if (popularEmpty) popularEmpty.style.display = "block";
         return;
       }
 
@@ -542,24 +528,6 @@
         return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
       }).join("");
 
-      // Mais lidas (3) via popular:true
-      if (popularList && popularEmpty) {
-        const popularItems = items.filter(n => n && n.popular === true).slice(0, 3);
-
-        if (!popularItems.length) {
-          popularList.innerHTML = "";
-          popularEmpty.style.display = "block";
-        } else {
-          popularEmpty.style.display = "none";
-          popularList.innerHTML = popularItems.map(n => {
-            const t = safeText(n.title, "Notícia");
-            const u = safeText(n.url, "#");
-            const d = safeText(n.date, "");
-            return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
-          }).join("");
-        }
-      }
-
     } catch (e) {
       featuredLink.textContent = "Erro ao carregar notícias";
       featuredLink.href = "#";
@@ -573,18 +541,17 @@
 
       latestList.innerHTML = "";
       latestEmpty.style.display = "block";
-
-      if (popularList) popularList.innerHTML = "";
-      if (popularEmpty) popularEmpty.style.display = "block";
     }
   }
 
+  // Carregar tudo
   loadAgenda();
   loadNoticias();
 </script>
 
 </body>
 </html>
+
 
 
 
