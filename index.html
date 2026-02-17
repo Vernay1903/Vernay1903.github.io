@@ -370,16 +370,16 @@
           <ul class="agenda-list" id="agendaList"></ul>
         </div>
 
-        <!-- ✅ ÚNICA ALTERAÇÃO: MAIS LIDAS (3) - SIMÉTRICO COM "ÚLTIMAS NOTÍCIAS" -->
+        <!-- ✅ Mantém o anúncio na mesma posição de antes (simetria com anúncio do centro) -->
+        <div class="card">
+          <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        </div>
+
+        <!-- ✅ ÚNICA MUDANÇA: "Mais lidas" vem aqui, alinhando com "Últimas notícias" -->
         <div class="card">
           <h2 class="section-title">Mais lidas</h2>
           <ul class="news-list" id="popularList"></ul>
           <p class="muted" id="popularEmpty" style="display:none;">Sem destaques no momento.</p>
-        </div>
-        <!-- ✅ FIM DA ÚNICA ALTERAÇÃO -->
-
-        <div class="card">
-          <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
         </div>
 
       </aside>
@@ -477,7 +477,6 @@
     const latestList = document.getElementById("latestList");
     const latestEmpty = document.getElementById("latestEmpty");
 
-    // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas
     const popularList = document.getElementById("popularList");
     const popularEmpty = document.getElementById("popularEmpty");
 
@@ -500,10 +499,8 @@
         latestList.innerHTML = "";
         latestEmpty.style.display = "block";
 
-        // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas vazio
         if (popularList) popularList.innerHTML = "";
         if (popularEmpty) popularEmpty.style.display = "block";
-
         return;
       }
 
@@ -545,7 +542,7 @@
         return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
       }).join("");
 
-      // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas (3) usando "popular": true
+      // Mais lidas (3) via popular:true
       if (popularList && popularEmpty) {
         const popularItems = items.filter(n => n && n.popular === true).slice(0, 3);
 
@@ -577,19 +574,18 @@
       latestList.innerHTML = "";
       latestEmpty.style.display = "block";
 
-      // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas em erro
       if (popularList) popularList.innerHTML = "";
       if (popularEmpty) popularEmpty.style.display = "block";
     }
   }
 
-  // Carregar tudo
   loadAgenda();
   loadNoticias();
 </script>
 
 </body>
 </html>
+
 
 
 
