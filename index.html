@@ -374,6 +374,13 @@
           <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
         </div>
 
+        <!-- MAIS LIDAS (TOP 3 manual via noticias.json) -->
+        <div class="card" id="popularCard" style="display:none;">
+          <h2 class="section-title">Mais lidas</h2>
+          <ul class="news-list" id="popularList"></ul>
+          <p class="muted" id="popularEmpty" style="display:none;">Sem seleção no momento.</p>
+        </div>
+
       </aside>
 
     </div>
@@ -436,7 +443,7 @@
       const items = Array.isArray(data) ? data : [];
       const useItems = items.length ? items : fallback;
 
-      // ✅ MOSTRAR TODOS (sem slice 0,3) + ordena por horário
+      // MOSTRAR TODOS + ordena por horário
       const ordered = useItems.slice().sort((a, b) => {
         const ta = safeText(a.time, "");
         const tb = safeText(b.time, "");
@@ -469,6 +476,11 @@
     const latestList = document.getElementById("latestList");
     const latestEmpty = document.getElementById("latestEmpty");
 
+    // Mais lidas (top 3 manual)
+    const popularCard = document.getElementById("popularCard");
+    const popularList = document.getElementById("popularList");
+    const popularEmpty = document.getElementById("popularEmpty");
+
     try {
       const res = await fetch("noticias.json?v=" + Date.now());
       if (!res.ok) throw new Error("noticias.json não carregou");
@@ -485,11 +497,15 @@
 
         quickList.innerHTML = "";
         quickEmpty.style.display = "block";
+
         latestList.innerHTML = "";
         latestEmpty.style.display = "block";
+
+        popularCard.style.display = "none";
         return;
       }
 
+      // Destaque do dia = primeiro item do noticias.json
       const top = items[0];
       const topTitle = safeText(top.title, "Notícia");
       const topExcerpt = safeText(top.excerpt, "");
@@ -506,6 +522,7 @@
       featuredCategory.textContent = topCategory || "Geral";
       featuredCategory.href = makeCategoryLink(topCategory);
 
+      // Destaques rápidos
       const quickItems = items.slice(1, 4);
       if (!quickItems.length) {
         quickList.innerHTML = "";
@@ -520,13 +537,32 @@
         }).join("");
       }
 
+      // Últimas notícias (mantido como está no seu arquivo)
       latestEmpty.style.display = "none";
-      latestList.innerHTML = items.slice(0, 10).map(n => {
+      latestList.innerHTML = items.slice(0, 12).map(n => {
         const t = safeText(n.title, "Notícia");
         const u = safeText(n.url, "#");
         const d = safeText(n.date, "");
         return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
       }).join("");
+
+      // MAIS LIDAS (TOP 3) — manual via "popular": true
+      const popularItems = items.filter(n => n && n.popular === true).slice(0, 3);
+
+      if (!popularItems.length) {
+        popularCard.style.display = "none";
+        popularList.innerHTML = "";
+        popularEmpty.style.display = "none";
+      } else {
+        popularCard.style.display = "block";
+        popularEmpty.style.display = "none";
+        popularList.innerHTML = popularItems.map(n => {
+          const t = safeText(n.title, "Notícia");
+          const u = safeText(n.url, "#");
+          const d = safeText(n.date, "");
+          return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
+        }).join("");
+      }
 
     } catch (e) {
       featuredLink.textContent = "Erro ao carregar notícias";
@@ -541,6 +577,8 @@
 
       latestList.innerHTML = "";
       latestEmpty.style.display = "block";
+
+      popularCard.style.display = "none";
     }
   }
 
@@ -551,6 +589,7 @@
 
 </body>
 </html>
+
 
 
 
