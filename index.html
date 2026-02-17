@@ -17,7 +17,273 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ======= SEU CSS ORIGINAL — NÃO ALTERADO ======= */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* ativa no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    aside { margin-right: -10px; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 54px;
+      margin: 14px 0 6px;
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+      text-align: center;
+    }
+
+    .hero-sub {
+      margin: 0 0 18px;
+      text-align: center;
+      color: #31425F;
+      font-size: 18px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #C9D3E2;
+      color: #1E4BA5;
+      font-weight: 700;
+      font-size: 12px;
+      background: #F7FAFF;
+      margin-bottom: 10px;
+    }
+
+    .news-title {
+      font-size: 34px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .news-title a {
+      color: #0A1E3A;
+      text-decoration: none;
+    }
+
+    .news-title a:hover { text-decoration: underline; }
+
+    .subhead {
+      font-size: 16px;
+      margin: 0 0 12px;
+      color: #31425F;
+      line-height: 1.6;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-top: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+    }
+
+    .ad-slot.center { min-height: 110px; }
+    .ad-slot.sidebar { min-height: 120px; }
+
+    /* SEÇÕES */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .muted {
+      color: #5B6B84;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* AGENDA */
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; color: #0A1E3A; }
+
+    /* LISTA ÚLTIMAS */
+    .news-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .news-list li {
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+    .news-list li:first-child { border-top: none; padding-top: 0; }
+
+    .news-list a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .news-list a:hover { text-decoration: underline; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+      .hero-title { font-size: 44px; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+      .sports-menu { top: 50px; }
+      .hero-title { font-size: 36px; }
+      .news-title { font-size: 28px; }
+    }
   </style>
 </head>
 
@@ -31,7 +297,21 @@
 </header>
 
 <div class="sports-menu" id="sportsMenu">
-  <!-- MENU ORIGINAL SEM ALTERAÇÃO -->
+  <a href="index.html" data-slug="inicio" class="active">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
@@ -68,9 +348,9 @@
           <p class="muted" id="quickEmpty" style="display:none;">Sem destaques no momento.</p>
         </div>
 
-        <!-- ANÚNCIO CENTRO -->
+        <!-- ANÚNCIO CENTRO (SEM TEXTO) -->
         <div class="card">
-          <div class="ad-slot center">&nbsp;</div>
+          <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">&nbsp;</div>
         </div>
 
         <!-- ÚLTIMAS NOTÍCIAS -->
@@ -90,15 +370,16 @@
           <ul class="agenda-list" id="agendaList"></ul>
         </div>
 
-        <!-- ===== NOVO BLOCO SIMÉTRICO ===== -->
+        <!-- ✅ ÚNICA ALTERAÇÃO: MAIS LIDAS (3) - SIMÉTRICO COM "ÚLTIMAS NOTÍCIAS" -->
         <div class="card">
           <h2 class="section-title">Mais lidas</h2>
           <ul class="news-list" id="popularList"></ul>
+          <p class="muted" id="popularEmpty" style="display:none;">Sem destaques no momento.</p>
         </div>
-        <!-- ================================= -->
+        <!-- ✅ FIM DA ÚNICA ALTERAÇÃO -->
 
         <div class="card">
-          <div class="ad-slot sidebar">&nbsp;</div>
+          <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
         </div>
 
       </aside>
@@ -116,7 +397,7 @@
 </footer>
 
 <script>
-
+  // Mapa de categoria -> slug (para linkar na categoria corretamente)
   const CATEGORY_TO_SLUG = {
     "Atletismo": "atletismo",
     "Automobilismo": "automobilismo",
@@ -144,8 +425,47 @@
     return slug ? (slug + ".html") : "#";
   }
 
-  async function loadNoticias() {
+  // ---------- AGENDA ----------
+  async function loadAgenda() {
+    const list = document.getElementById("agendaList");
 
+    // fallback (se agenda.json falhar, não aparece "undefined")
+    const fallback = [
+      { time: "08:00", desc: "Jogos, horários e transmissões principais." },
+      { time: "16:00", desc: "Evento relevante do dia." },
+      { time: "21:30", desc: "Jogo principal do dia." }
+    ];
+
+    try {
+      const res = await fetch("agenda.json?v=" + Date.now());
+      if (!res.ok) throw new Error("agenda.json não carregou");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : [];
+      const useItems = items.length ? items : fallback;
+
+      // ✅ MOSTRAR TODOS (sem slice 0,3) + ordena por horário
+      const ordered = useItems.slice().sort((a, b) => {
+        const ta = safeText(a.time, "");
+        const tb = safeText(b.time, "");
+        return ta.localeCompare(tb);
+      });
+
+      list.innerHTML = ordered.map(item => {
+        const t = safeText(item.time, "—");
+        const d = safeText(item.desc, "");
+        return `<li><div class="time">${t}</div><div class="desc">${d}</div></li>`;
+      }).join("");
+
+    } catch (e) {
+      list.innerHTML = fallback.map(item => {
+        return `<li><div class="time">${item.time}</div><div class="desc">${item.desc}</div></li>`;
+      }).join("");
+    }
+  }
+
+  // ---------- NOTÍCIAS (HOME) ----------
+  async function loadNoticias() {
     const featuredLink = document.getElementById("featuredLink");
     const featuredExcerpt = document.getElementById("featuredExcerpt");
     const featuredDate = document.getElementById("featuredDate");
@@ -157,7 +477,9 @@
     const latestList = document.getElementById("latestList");
     const latestEmpty = document.getElementById("latestEmpty");
 
+    // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas
     const popularList = document.getElementById("popularList");
+    const popularEmpty = document.getElementById("popularEmpty");
 
     try {
       const res = await fetch("noticias.json?v=" + Date.now());
@@ -165,46 +487,110 @@
       const data = await res.json();
       const items = Array.isArray(data) ? data : [];
 
-      if (!items.length) return;
+      if (!items.length) {
+        featuredLink.textContent = "Sem notícias publicadas ainda";
+        featuredLink.href = "#";
+        featuredExcerpt.textContent = "Publique sua primeira notícia e ela aparecerá aqui automaticamente.";
+        featuredDate.textContent = "";
+        featuredCategory.textContent = "";
+        featuredCategory.href = "#";
+
+        quickList.innerHTML = "";
+        quickEmpty.style.display = "block";
+        latestList.innerHTML = "";
+        latestEmpty.style.display = "block";
+
+        // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas vazio
+        if (popularList) popularList.innerHTML = "";
+        if (popularEmpty) popularEmpty.style.display = "block";
+
+        return;
+      }
 
       const top = items[0];
+      const topTitle = safeText(top.title, "Notícia");
+      const topExcerpt = safeText(top.excerpt, "");
+      const topUrl = safeText(top.url, "#");
+      const topDate = safeText(top.date, "");
+      const topCategory = safeText(top.category, "");
 
-      featuredLink.textContent = safeText(top.title, "Notícia");
-      featuredLink.href = safeText(top.url, "#");
-      featuredExcerpt.textContent = safeText(top.excerpt, "");
-      featuredDate.textContent = safeText(top.date, "");
-      featuredCategory.textContent = safeText(top.category, "");
-      featuredCategory.href = makeCategoryLink(top.category);
+      featuredLink.textContent = topTitle;
+      featuredLink.href = topUrl;
 
-      quickList.innerHTML = items.slice(1, 4).map(n => {
-        return `<li><a href="${n.url}">${n.title}</a> <span class="muted">- ${n.date}</span></li>`;
-      }).join("");
+      featuredExcerpt.textContent = topExcerpt;
 
+      featuredDate.textContent = topDate ? (topDate + " ·") : "";
+      featuredCategory.textContent = topCategory || "Geral";
+      featuredCategory.href = makeCategoryLink(topCategory);
+
+      const quickItems = items.slice(1, 4);
+      if (!quickItems.length) {
+        quickList.innerHTML = "";
+        quickEmpty.style.display = "block";
+      } else {
+        quickEmpty.style.display = "none";
+        quickList.innerHTML = quickItems.map(n => {
+          const t = safeText(n.title, "Notícia");
+          const u = safeText(n.url, "#");
+          const d = safeText(n.date, "");
+          return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
+        }).join("");
+      }
+
+      latestEmpty.style.display = "none";
       latestList.innerHTML = items.slice(0, 10).map(n => {
-        return `<li><a href="${n.url}">${n.title}</a> <span class="muted">- ${n.date}</span></li>`;
+        const t = safeText(n.title, "Notícia");
+        const u = safeText(n.url, "#");
+        const d = safeText(n.date, "");
+        return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
       }).join("");
 
-      /* ======== MAIS LIDAS (APENAS 3) ======== */
-      const popularItems = items
-        .filter(n => n.popular === true)
-        .slice(0, 3);
+      // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas (3) usando "popular": true
+      if (popularList && popularEmpty) {
+        const popularItems = items.filter(n => n && n.popular === true).slice(0, 3);
 
-      popularList.innerHTML = popularItems.map(n => {
-        return `<li><a href="${n.url}">${n.title}</a> <span class="muted">- ${n.date}</span></li>`;
-      }).join("");
-      /* ======================================= */
+        if (!popularItems.length) {
+          popularList.innerHTML = "";
+          popularEmpty.style.display = "block";
+        } else {
+          popularEmpty.style.display = "none";
+          popularList.innerHTML = popularItems.map(n => {
+            const t = safeText(n.title, "Notícia");
+            const u = safeText(n.url, "#");
+            const d = safeText(n.date, "");
+            return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
+          }).join("");
+        }
+      }
 
     } catch (e) {
       featuredLink.textContent = "Erro ao carregar notícias";
+      featuredLink.href = "#";
+      featuredExcerpt.textContent = "Verifique se o arquivo noticias.json existe e está válido.";
+      featuredDate.textContent = "";
+      featuredCategory.textContent = "";
+      featuredCategory.href = "#";
+
+      quickList.innerHTML = "";
+      quickEmpty.style.display = "block";
+
+      latestList.innerHTML = "";
+      latestEmpty.style.display = "block";
+
+      // ✅ ÚNICA ALTERAÇÃO (JS): Mais lidas em erro
+      if (popularList) popularList.innerHTML = "";
+      if (popularEmpty) popularEmpty.style.display = "block";
     }
   }
 
+  // Carregar tudo
+  loadAgenda();
   loadNoticias();
-
 </script>
 
 </body>
 </html>
+
 
 
 
