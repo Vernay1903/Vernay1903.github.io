@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- SEO BÁSICO -->
+  <title>Playoffs da Champions League 2026: entenda o novo formato e por que não são as oitavas</title>
+  <meta name="description" content="Entenda por que os playoffs da Champions League 2026 não são as oitavas de final. Veja como funciona o novo formato com 36 times, quem avança direto e quem disputa o mata-mata." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CANONICAL -->
+  <link rel="canonical" href="https://cortedosesportes.com.br/champions-league-2026-playoffs-nao-sao-oitavas-novo-formato.html" />
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- OG / SOCIAL -->
+  <meta property="og:site_name" content="Corte dos Esportes" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Playoffs da Champions League 2026: entenda o novo formato e por que não são as oitavas" />
+  <meta property="og:description" content="Novo formato da Champions League: fase de liga com 36 times, top-8 direto nas oitavas e playoffs do 9º ao 24º. Entenda a diferença e evite confusão." />
+  <meta property="og:url" content="https://cortedosesportes.com.br/champions-league-2026-playoffs-nao-sao-oitavas-novo-formato.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    aside { margin-right: -10px; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    .article-title {
+      font-size: 54px;
+      margin: 8px 0 10px;
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.6;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin: 8px 0 14px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .meta a:hover { text-decoration: underline; }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 10px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid #1E4BA5;
+      background: #FFFFFF;
+      color: #1E4BA5;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+    }
+
+    .ad-slot.center { min-height: 110px; }
+    .ad-slot.sidebar { min-height: 120px; }
+
+    /* TEXTO */
+    .article-content {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #0A1E3A;
+    }
+
+    .article-content h2 {
+      font-size: 22px;
+      margin: 22px 0 10px;
+      line-height: 1.25;
+    }
+
+    .article-content h3 {
+      font-size: 18px;
+      margin: 18px 0 8px;
+      line-height: 1.25;
+    }
+
+    .article-content ul {
+      margin: 10px 0 14px 18px;
+    }
+
+    .highlight {
+      background: #F7FAFF;
+      border: 1px solid #C9D3E2;
+      border-radius: 12px;
+      padding: 14px;
+      margin: 14px 0;
+    }
+
+    .muted {
+      color: #5B6B84;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* AGENDA */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; color: #0A1E3A; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+      .article-title { font-size: 44px; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+      .sports-menu { top: 50px; }
+      .article-title { font-size: 36px; }
+    }
+  </style>
+
+  <!-- DADOS ESTRUTURADOS (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Playoffs da Champions League 2026: entenda o novo formato e por que não são as oitavas",
+    "description": "Entenda por que os playoffs da Champions League 2026 não são as oitavas de final. Veja como funciona o novo formato com 36 times, quem avança direto e quem disputa o mata-mata.",
+    "datePublished": "2026-02-18",
+    "dateModified": "2026-02-18",
+    "author": { "@type": "Organization", "name": "Corte dos Esportes" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Corte dos Esportes",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cortedosesportes.com.br/logo.png"
+      }
+    },
+    "mainEntityOfPage": "https://cortedosesportes.com.br/champions-league-2026-playoffs-nao-sao-oitavas-novo-formato.html"
+  }
+  </script>
+</head>
+
+<body>
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol" class="active">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- COLUNA PRINCIPAL -->
+      <section>
+        <div class="card">
+          <h1 class="article-title">Playoffs da Champions League 2026: entenda o novo formato e por que não são as oitavas</h1>
+
+          <p class="subhead">
+            Muita gente confunde os playoffs com as oitavas por causa do mata-mata. Veja como funciona a fase de liga com 36 clubes, quem avança direto e como surgem os confrontos decisivos.
+          </p>
+
+          <div class="meta">
+            Por Corte dos Esportes · 18/02/2026 · Categoria: <a href="futebol.html">Futebol</a>
+          </div>
+
+          <div class="actions">
+            <button class="btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="btn" id="copyBtn" type="button">Copiar link</button>
+          </div>
+
+          <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">&nbsp;</div>
+
+          <div class="article-content">
+            <p>
+              Muitas pessoas estão confundindo os <strong>playoffs da Champions League 2026</strong>, que começaram em 17/02, com as tradicionais <strong>oitavas de final</strong> da competição, principalmente pelo fato de os jogos já serem em formato mata-mata.
+              Mas por que essa confusão está acontecendo? O <strong>Corte dos Esportes</strong> explica.
+            </p>
+
+            <h2>Por que os playoffs parecem oitavas de final?</h2>
+            <p>
+              A confusão é natural: os playoffs já têm <strong>confrontos de ida e volta</strong>, clima de decisão e jogos grandes. Só que, no novo regulamento, essa etapa é uma “ponte” entre a fase classificatória e as oitavas.
+            </p>
+
+            <div class="highlight">
+              <p class="muted"><strong>Resumo rápido:</strong> Top-8 vai direto às oitavas. Do 9º ao 24º joga playoffs. Os vencedores completam as oitavas.</p>
+            </div>
+
+            <h2>O que mudou no formato da Champions League?</h2>
+            <p>
+              Desde a temporada <strong>2024/2025</strong>, a regra de classificação foi alterada, deixando o torneio mais dinâmico, com mais jogos relevantes e maior chance de clássicos já nas primeiras fases.
+              A antiga fase de grupos foi substituída por uma fase de liga com <strong>36 clubes</strong> em uma <strong>tabela única</strong>.
+            </p>
+
+            <h3>Como funciona a fase de liga (36 times)</h3>
+            <ul>
+              <li>Cada equipe faz <strong>8 jogos</strong> na fase de liga.</li>
+              <li>São <strong>4 partidas em casa</strong> e <strong>4 como visitante</strong>.</li>
+              <li>Os confrontos são definidos por sorteio, mantendo equilíbrio e alto nível técnico.</li>
+              <li>O desempenho gera uma classificação geral em tabela única.</li>
+            </ul>
+
+            <h2>Quem se classifica direto para as oitavas?</h2>
+            <p>
+              Os <strong>8 primeiros colocados</strong> da tabela geral avançam diretamente para as <strong>oitavas de final</strong>. É aqui que a competição passa oficialmente a ser o mata-mata “tradicional” para grande parte do público.
+            </p>
+
+            <h2>O que são os playoffs e quem disputa?</h2>
+            <p>
+              Do <strong>9º ao 24º lugar</strong>, as equipes entram na fase de <strong>playoffs</strong>, que é a etapa que está acontecendo agora. São confrontos eliminatórios (ida e volta) e, ao fim deles, <strong>8 clubes avançam</strong> para completar o chaveamento das oitavas.
+            </p>
+
+            <h2>Classificação por faixas: exemplos com os clubes (imagens)</h2>
+
+            <h3>✅ Classificados direto às oitavas (Top 8)</h3>
+            <ul>
+              <li>Arsenal</li>
+              <li>Bayern München</li>
+              <li>Liverpool</li>
+              <li>Tottenham</li>
+              <li>Barcelona</li>
+              <li>Chelsea</li>
+              <li>Sporting CP</li>
+              <li>Manchester City</li>
+            </ul>
+
+            <h3>🔥 Faixa de playoffs (exemplos mostrados)</h3>
+            <ul>
+              <li>Borussia Dortmund</li>
+              <li>Olympiacos</li>
+              <li>Club Brugge</li>
+              <li>Galatasaray</li>
+              <li>Monaco</li>
+              <li>Qarabağ</li>
+              <li>Bodø/Glimt</li>
+              <li>Benfica</li>
+            </ul>
+
+            <h3>❌ Eliminados (exemplos mostrados)</h3>
+            <ul>
+              <li>Marseille</li>
+              <li>Pafos</li>
+              <li>Union SG</li>
+              <li>PSV</li>
+              <li>Athletic Club</li>
+              <li>Napoli</li>
+              <li>Copenhagen</li>
+              <li>Ajax</li>
+              <li>Frankfurt</li>
+              <li>Slavia Praha</li>
+              <li>Villarreal</li>
+              <li>Kairat Almaty</li>
+            </ul>
+
+            <h2>Depois dos playoffs, quando começam as oitavas?</h2>
+            <p>
+              Após o término dos confrontos de playoffs, os <strong>8 classificados</strong> se juntam aos <strong>8 primeiros</strong> da fase de liga. A partir daí, sim, começam oficialmente as <strong>oitavas de final</strong>.
+            </p>
+
+            <h2>FAQ: dúvidas rápidas sobre o novo formato</h2>
+            <h3>Playoffs e oitavas são a mesma coisa?</h3>
+            <p>
+              Não. Os playoffs definem as últimas vagas. As oitavas começam depois, com 16 clubes (8 diretos + 8 vindos dos playoffs).
+            </p>
+
+            <h3>Por que a UEFA mudou o formato?</h3>
+            <p>
+              Para aumentar o número de jogos relevantes, elevar a competitividade e gerar mais interesse global na Champions League, com mais confrontos grandes ao longo do calendário.
+            </p>
+
+            <div class="highlight">
+              <p class="muted">
+                Se você quer acompanhar a cobertura completa da Champions League e dos mata-matas europeus, veja também a categoria <a href="futebol.html">Futebol</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList"></ul>
+        </div>
+
+        <div class="card">
+          <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  // ---------- SHARE / COPY ----------
+  const shareBtn = document.getElementById("shareBtn");
+  const copyBtn = document.getElementById("copyBtn");
+
+  shareBtn.addEventListener("click", async () => {
+    const url = window.location.href;
+    const title = document.title;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        alert("Link copiado!");
+      }
+    } catch (e) {}
+  });
+
+  copyBtn.addEventListener("click", async () => {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      alert("Link copiado!");
+    } catch (e) {}
+  });
+
+  // ---------- AGENDA ----------
+  async function loadAgenda() {
+    const list = document.getElementById("agendaList");
+
+    const fallback = [
+      { time: "08:00", desc: "Jogos, horários e transmissões principais." },
+      { time: "16:00", desc: "Evento relevante do dia." },
+      { time: "21:30", desc: "Jogo principal do dia." }
+    ];
+
+    function safeText(v, fb = "") {
+      return (typeof v === "string" && v.trim() !== "") ? v.trim() : fb;
+    }
+
+    try {
+      const res = await fetch("agenda.json?v=" + Date.now());
+      if (!res.ok) throw new Error("agenda.json não carregou");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : [];
+      const useItems = items.length ? items : fallback;
+
+      const ordered = useItems.slice().sort((a, b) => {
+        const ta = safeText(a.time, "");
+        const tb = safeText(b.time, "");
+        return ta.localeCompare(tb);
+      });
+
+      list.innerHTML = ordered.map(item => {
+        const t = safeText(item.time, "—");
+        const d = safeText(item.desc, "");
+        return `<li><div class="time">${t}</div><div class="desc">${d}</div></li>`;
+      }).join("");
+
+    } catch (e) {
+      list.innerHTML = fallback.map(item => {
+        return `<li><div class="time">${item.time}</div><div class="desc">${item.desc}</div></li>`;
+      }).join("");
+    }
+  }
+
+  loadAgenda();
+</script>
+
+</body>
+</html>
