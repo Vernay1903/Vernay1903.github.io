@@ -55,9 +55,12 @@
       font-size: 20px;
       font-weight: 700;
       color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
       text-decoration: none;
     }
 
+    /* MENU */
     .sports-menu {
       background: #FFFFFF;
       padding: 15px;
@@ -83,21 +86,26 @@
       font-size: 14px;
       font-weight: 600;
       background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
     }
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
     .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
 
+    /* LAYOUT */
     .page {
       max-width: 1200px;
       margin: 0 auto;
       padding: 28px 10px 40px;
+      box-sizing: border-box;
     }
 
     .layout {
       display: grid;
       grid-template-columns: 2.3fr 330px;
       gap: 20px;
+      align-items: start;
     }
 
     .card {
@@ -112,12 +120,14 @@
     h1 {
       font-size: 44px;
       margin: 0 0 10px;
+      line-height: 1.15;
     }
 
     .subhead {
       font-size: 18px;
       margin: 0 0 14px;
       color: #31425F;
+      line-height: 1.5;
     }
 
     .meta {
@@ -135,7 +145,8 @@
     article p {
       font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 16px;
+      color: #0A1E3A;
+      margin: 0 0 16px;
     }
 
     footer {
@@ -173,7 +184,20 @@
 
 <div class="sports-menu" id="sportsMenu">
   <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
   <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
@@ -182,17 +206,22 @@
 
       <section>
         <div class="card">
-          <h1>Palmeiras confirma favoritismo, goleia o Capivariano e avança à semifinal do Paulistão</h1>
-          <p class="subhead">Vitor Roque marca dois gols e Palmeiras vence por 4 a 0, garantindo vaga na semifinal do Campeonato Paulista.</p>
+          <h1 id="articleTitle">Palmeiras confirma favoritismo, goleia o Capivariano e avança à semifinal do Paulistão</h1>
+
+          <p class="subhead" id="articleExcerpt">
+            Vitor Roque marca dois gols e Palmeiras vence por 4 a 0, garantindo vaga na semifinal do Campeonato Paulista.
+          </p>
 
           <div class="meta">
-            Por Corte dos Esportes · 22/02/2026 · Categoria: <a href="futebol.html">Futebol</a>
+            Por Corte dos Esportes · <span id="articleDate">22/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
           </div>
 
-          <article>
+          <article id="articleBody">
+
             <p>O Palmeiras confirmou o amplo favoritismo e garantiu vaga na semifinal do Campeonato Paulista ao golear o Capivariano por 4 a 0, em partida dominante do início ao fim.</p>
 
-            <p>A grande destaque da noite foi Vitor Roque, que marcou dois gols ainda no primeiro tempo e encaminhou a classificação. O atacante vive bom momento e segue tentando consolidar espaço para a convocação da Seleção Brasileira.</p>
+            <p>A grande destaque da noite foi Vitor Roque, que marcou dois gols ainda no primeiro tempo e encaminhou a classificação. O atacante vive bom momento e segue tentando consolidar espaço para convocação da Seleção Brasileira.</p>
 
             <p>Com a vantagem construída na etapa inicial, o Palmeiras administrou o resultado no segundo tempo, controlou as ações e manteve o ritmo sob domínio. O Capivariano, apesar de organização tática, encontrou dificuldades para criar chances claras e teve atuação discreta ofensivamente.</p>
 
@@ -207,6 +236,7 @@
             <p>A equipe volta a campo na quarta-feira, no Allianz Parque, contra o Fluminense, pelo Campeonato Brasileiro, em busca de manter a liderança da competição nacional.</p>
 
             <p>Com o elenco em alta e desempenho consistente, o Palmeiras segue forte tanto no cenário estadual quanto no nacional.</p>
+
           </article>
 
         </div>
@@ -223,6 +253,11 @@
   <a href="sobre.html">Sobre</a> |
   <a href="termos.html">Termos de Uso</a>
 </footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+</script>
 
 <script src="share.js"></script>
 
