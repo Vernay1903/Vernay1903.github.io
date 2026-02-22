@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rodada decisiva na Premier League, La Liga e Serie A movimenta a Europa | Corte dos Esportes</title>
+  <meta name="description" content="Arsenal encara clássico contra o Tottenham sob pressão do Manchester City; Barcelona pode reassumir liderança na La Liga; Milan, Napoli e Roma disputam posições no G4 da Serie A.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+    .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Rodada decisiva na Premier League, La Liga e Serie A movimenta a Europa</h1>
+
+          <p class="subhead" id="articleExcerpt">
+            Arsenal encara clássico sob pressão do Manchester City; Barcelona pode reassumir liderança; Milan, Napoli e Roma disputam posições no G4 italiano.
+          </p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">22/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <article id="articleBody">
+
+<p>O domingo será de jogos importantes nas principais ligas europeias, com impacto direto na disputa por título, G4 e vagas na próxima Liga dos Campeões.</p>
+
+<h2>Premier League: Arsenal pressionado e clássico londrino em destaque</h2>
+
+<p>A Premier League entra na reta final, restando cerca de dez rodadas para o encerramento da competição. O líder Arsenal, que venceu apenas duas das últimas cinco partidas, busca retomar o ritmo após ver o vice-líder Manchester City reduzir a diferença para apenas dois pontos.</p>
+
+<p>O Arsenal enfrenta o Tottenham, fora de casa, às 13h30, em clássico londrino decisivo. A equipe precisa vencer para manter margem de segurança na liderança.</p>
+
+<p>Mais cedo, às 11h, o Liverpool encara o Nottingham Forest fora de casa. Os Reds tentam se aproximar do G4, enquanto o Forest vive momento irregular, com apenas uma vitória nas últimas cinco partidas.</p>
+
+<h2>La Liga: Barcelona pode reassumir a liderança</h2>
+
+<p>Na Espanha, o tropeço do Real Madrid, derrotado pelo Osasuna, abriu a disputa na ponta da tabela.</p>
+
+<p>O Barcelona recebe o Levante, às 12h15, e pode reassumir a liderança caso vença. A diferença entre os rivais é de apenas dois pontos.</p>
+
+<h2>Serie A: disputa intensa pelo G4</h2>
+
+<p>Na Itália, o G4 entra em campo neste domingo, com exceção da Inter de Milão, que venceu o Lecce por 2 a 0 e segue isolada na liderança.</p>
+
+<p>O Milan enfrenta o Parma, às 14h, buscando reduzir a vantagem da Inter. O Napoli encara a Atalanta fora de casa, às 11h, em confronto direto por vaga na Champions League.</p>
+
+<p>Fechando o G4, a Roma enfrenta a Cremonese, às 16h45, em casa, tentando consolidar sua posição e podendo subir na tabela em caso de combinação favorável de resultados.</p>
+
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+</script>
+
+<script src="share.js"></script>
+
+</body>
+</html>
