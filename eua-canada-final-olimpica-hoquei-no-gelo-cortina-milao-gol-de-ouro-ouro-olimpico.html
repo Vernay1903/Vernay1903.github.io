@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>EUA x Canadá no hóquei no gelo: final olímpica histórica com gol de ouro | Corte dos Esportes</title>
+  <meta name="description" content="EUA x Canadá protagonizam uma final olímpica histórica no hóquei no gelo. Em jogo intenso e equilibrado, os Estados Unidos vencem no gol de ouro e voltam ao topo após 46 anos.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+    .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">EUA x Canadá no hóquei no gelo: a final olímpica que entrou para a história</h1>
+
+          <p class="subhead" id="articleExcerpt">
+            Em um clássico de rivalidade gigante, Estados Unidos vencem o Canadá no gol de ouro e voltam ao topo olímpico após 46 anos.
+          </p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">22/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Esportes Olímpicos</a>
+          </div>
+
+          <article id="articleBody">
+
+            <p>Quando se fala em <strong>rivalidade no esporte mundial</strong>, poucos confrontos carregam tanto peso quanto <strong>Estados Unidos x Canadá no hóquei no gelo</strong>. E foi justamente esse clássico que marcou a última decisão dos Jogos Olímpicos de Inverno disputados em Cortina-Milão, na Itália.</p>
+
+            <p>Em um ginásio completamente lotado, duas das maiores potências da modalidade protagonizaram uma final intensa, técnica e emocional — daquelas que ultrapassam o resultado e entram para a história.</p>
+
+            <p>O hóquei no gelo é um dos esportes mais tradicionais do inverno e também um dos mais intensos. Cada equipe atua com cinco jogadores de linha e um goleiro, divididos em três períodos de 20 minutos. Conhecido pela velocidade, contato físico e até pelas famosas “brigas” entre atletas — que fazem parte da cultura da modalidade —, o esporte exige resistência, estratégia e precisão.</p>
+
+            <h2>Um clássico de altíssimo nível técnico</h2>
+
+            <p>O jogo começou com o Canadá impondo ritmo forte e controlando as ações. Mesmo assim, quem foi mais eficiente no ataque foram os norte-americanos, que aproveitaram a oportunidade e abriram o placar no primeiro período: 1 a 0.</p>
+
+            <p>No segundo período, brilhou a estrela do goleiro americano Hellebuyck. Com atuação digna de MVP, ele realizou defesas decisivas e manteve os Estados Unidos na frente até os momentos finais, quando o Canadá conseguiu o empate. A partir dali, a partida ganhou contornos ainda mais dramáticos.</p>
+
+            <p>O equilíbrio marcou os três períodos. Cada erro poderia custar o ouro olímpico.</p>
+
+            <h2>Pressão histórica e tensão de final</h2>
+
+            <p>Os Estados Unidos chegaram à decisão com campanha dominante, vencendo todas as partidas anteriores com autoridade. Ainda assim, o peso histórico acompanhava a equipe.</p>
+
+            <p>Desde 1980, os americanos não conquistavam a medalha de ouro olímpica no hóquei no gelo. Ao longo das décadas, acumulavam eliminações dolorosas — muitas delas justamente para o Canadá, inclusive em finais.</p>
+
+            <p>Por isso, além da tensão natural de uma decisão olímpica, havia o peso de 46 anos de espera.</p>
+
+            <h2>Prorrogação e o gol de ouro</h2>
+
+            <p>No último período, uma penalidade deixou o Canadá momentaneamente com menos jogadores no gelo. Os EUA tiveram vantagem numérica, mas não conseguiram converter. O empate persistiu e levou o confronto à prorrogação.</p>
+
+            <p>Na prorrogação olímpica, a dinâmica muda completamente: as equipes atuam com apenas três jogadores de linha, tornando o jogo ainda mais rápido e imprevisível. É o cenário perfeito para o chamado “gol de ouro” — quem marca primeiro, encerra a partida.</p>
+
+            <p>E foi exatamente isso que aconteceu.</p>
+
+            <p>Com menos de um minuto de prorrogação, os Estados Unidos encontraram o espaço decisivo e balançaram as redes. Gol de ouro. Fim de jogo. Ouro olímpico confirmado.</p>
+
+            <h2>Um capítulo eterno da maior rivalidade do gelo</h2>
+
+            <p>Depois de 46 anos, os EUA voltaram ao topo olímpico no hóquei no gelo. Mais do que um título, foi um marco histórico diante do maior rival e em um dos confrontos mais emblemáticos do esporte mundial.</p>
+
+            <p>A final de Cortina-Milão não ficará marcada apenas nas Olimpíadas de Inverno, mas também na própria história da modalidade. Porque quando Estados Unidos e Canadá se enfrentam no gelo, não é apenas um jogo — é tradição, identidade e legado em disputa.</p>
+
+            <p>E, desta vez, o ouro atravessou a fronteira.</p>
+
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "esportes-olimpicos";
+  const CATEGORY_NAME = "Esportes Olímpicos";
+</script>
+
+<script src="share.js"></script>
+
+</body>
+</html>
