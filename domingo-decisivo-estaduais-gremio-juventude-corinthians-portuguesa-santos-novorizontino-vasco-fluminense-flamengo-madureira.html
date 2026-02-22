@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Domingo decisivo nos estaduais: Grêmio, Corinthians, Santos e clássicos no Rio entram em campo | Corte dos Esportes</title>
+  <meta name="description" content="Domingo de decisões nos estaduais: Grêmio x Juventude vale vaga na final do Gauchão; Corinthians x Portuguesa e Santos x Novorizontino definem semifinais do Paulistão; Vasco x Fluminense e Flamengo x Madureira movimentam o Carioca.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+    .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Domingo decisivo nos estaduais: Grêmio, Corinthians, Santos e clássicos no Rio entram em campo</h1>
+
+          <p class="subhead" id="articleExcerpt">
+            Rodada decisiva nos estaduais: Grêmio x Juventude vale vaga na final do Gauchão; Corinthians x Portuguesa e Santos x Novorizontino fecham o Paulistão; Vasco x Fluminense e Flamengo x Madureira movimentam o Carioca.
+          </p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">22/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <article id="articleBody">
+
+            <p>O domingo será de decisões importantes nos campeonatos estaduais pelo Brasil. Confrontos eliminatórios e primeiros jogos de semifinal movimentam o cenário do futebol nacional.</p>
+
+            <h2>Gauchão: Grêmio decide vaga contra o Juventude</h2>
+
+            <p>No Rio Grande do Sul, o <strong>Grêmio</strong> enfrenta o <strong>Juventude</strong>, fora de casa, às 18h, valendo vaga na final do Campeonato Gaúcho.</p>
+
+            <p>O jogo de ida terminou empatado em 1 a 1. Quem vencer no tempo normal garante classificação. Em caso de novo empate, a decisão será definida nos pênaltis.</p>
+
+            <p>A equipe comandada por <strong>Luís Castro</strong> busca mostrar evolução, mesmo com desfalques importantes, como William e Tetê, ambos lesionados. A pressão da torcida e da imprensa aumenta nesta reta decisiva da competição.</p>
+
+            <h2>Paulistão: duas vagas em disputa para a semifinal</h2>
+
+            <p>O Campeonato Paulista define as duas últimas vagas nas semifinais.</p>
+
+            <p>O <strong>Corinthians</strong> enfrenta a <strong>Portuguesa</strong>, às 20h30, fora de casa. A Lusa chega organizada após sua reestruturação como SAF e tenta surpreender. Quem vencer avança. Empate leva a decisão para os pênaltis.</p>
+
+            <p>Mais cedo, às 16h, o <strong>Santos</strong> encara o <strong>Novorizontino</strong> fora de casa. O time do interior teve a melhor campanha na fase geral e tenta confirmar o favoritismo. O Santos, que contou com o retorno de Neymar na última partida, busca surpreender e avançar.</p>
+
+            <p><strong>São Paulo e Palmeiras</strong>, já classificados, aguardam os resultados para conhecer seus adversários. Os confrontos das semifinais serão definidos com base na pontuação geral acumulada ao longo da competição.</p>
+
+            <h2>Campeonato Carioca: clássicos e expectativa no Rio</h2>
+
+            <p>Às 18h, em São Januário, <strong>Vasco e Fluminense</strong> fazem o primeiro jogo da semifinal do Campeonato Carioca. As equipes vivem momentos distintos na temporada. O técnico Zubeldía vem consolidando um modelo de jogo mais estável, enquanto Fernando Diniz tenta reorganizar sua equipe após perdas importantes no elenco, como a saída do atacante Ryan para o futebol inglês e a recente decisão de Felipe Coutinho de deixar o clube por motivos pessoais.</p>
+
+            <p>Do outro lado da chave, às 20h30, o <strong>Flamengo</strong> enfrenta o <strong>Madureira</strong>, no Maracanã. O Rubro-Negro pode optar por preservar alguns titulares, considerando o compromisso decisivo no meio da semana contra o <strong>Lanús</strong>, pelo jogo de volta da Recopa Sul-Americana. Na ida, o Flamengo foi derrotado por 1 a 0 e precisa vencer por dois gols de diferença para conquistar o título no tempo normal.</p>
+
+            <p>Com vagas em finais e semifinais em jogo, o domingo promete fortes emoções nos estaduais e impacto direto na sequência da temporada para os principais clubes do país.</p>
+
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+</script>
+
+<script src="share.js"></script>
+
+</body>
+</html>
