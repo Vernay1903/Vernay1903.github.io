@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Milano-Cortina 2026: quadro final de medalhas das Olimpíadas de Inverno | Corte dos Esportes</title>
+  <meta name="description" content="Veja o quadro final de medalhas de Milano-Cortina 2026 e entenda os destaques: hegemonia da Noruega, o ouro histórico dos EUA no hóquei e o legado dos Jogos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    aside { margin-right: -10px; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+      .sports-menu { top: 50px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Milano-Cortina 2026: o quadro de medalhas que redefiniu forças na neve e no gelo</h1>
+          <p class="subhead" id="articleExcerpt">Com tabela completa do quadro final, entenda por que Milano-Cortina 2026 consolidou a Noruega, trouxe o ouro histórico dos EUA no hóquei e mostrou um inverno olímpico cada vez mais global.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">23/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <!-- ANÚNCIO (SEM TEXTO) -->
+          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
+
+          <article id="articleBody">
+            <p>Milano-Cortina 2026 não foi apenas uma edição memorável dos Jogos Olímpicos de Inverno. Foi um retrato claro de como os esportes praticados na neve e no gelo evoluíram — técnica, geográfica e culturalmente.</p>
+
+            <p>Das montanhas alpinas às arenas congeladas, os Jogos italianos consolidaram potências históricas, renovaram protagonistas e mostraram que o inverno olímpico já não pertence apenas ao eixo tradicional europeu-norte-americano.</p>
+
+            <p>Quando a última prova foi disputada, o quadro final de medalhas deixou um mapa preciso do cenário mundial.</p>
+
+            <p><strong>Noruega: hegemonia construída geração após geração</strong></p>
+
+            <p>A Noruega terminou na liderança com <strong>18 medalhas de ouro e 41 no total</strong>, reafirmando sua posição como maior potência histórica dos Jogos de Inverno.</p>
+
+            <p>O país domina tanto provas disputadas em neve — como esqui cross-country, biatlo e combinados nórdicos — quanto modalidades praticadas em pistas e rinques de gelo. Não é acaso. É cultura esportiva integrada ao cotidiano.</p>
+
+            <p>Milano-Cortina não representou surpresa para os noruegueses. Representou continuidade.</p>
+
+            <p><strong>Estados Unidos: o ouro no hóquei que atravessou gerações</strong></p>
+
+            <p>Os Estados Unidos encerraram os Jogos com <strong>33 medalhas</strong>, mas houve um momento que simbolizou muito mais do que números.</p>
+
+            <p>O <strong>ouro no hóquei no gelo masculino</strong>, conquistado após décadas de espera, devolveu ao país um título que não vinha desde outra era do esporte. A vitória resgatou uma memória histórica que atravessou gerações de atletas e torcedores, recolocando os norte-americanos no topo de uma modalidade simbólica do inverno olímpico.</p>
+
+            <p>Mais do que a medalha, foi o peso do tempo que deu dimensão ao feito.</p>
+
+            <p>Além do hóquei, os EUA mantiveram equilíbrio entre modalidades alpinas e esportes disputados em arena, mostrando profundidade e renovação em seu programa olímpico.</p>
+
+            <p><strong>Itália: casa, estrutura e maturidade competitiva</strong></p>
+
+            <p>Como anfitriã, a Itália viveu uma edição especial. Fechou Milano-Cortina com <strong>30 medalhas (10 ouros)</strong>, equilibrando desempenho nas provas alpinas com consistência nas modalidades praticadas em gelo.</p>
+
+            <p>A vantagem de competir em casa não garante medalhas — mas potencializa confiança. O que se viu foi um país preparado, estruturado e tecnicamente competitivo.</p>
+
+            <p>Os Alpes italianos ofereceram cenário histórico. As arenas modernas ofereceram performance.</p>
+
+            <p><strong>O símbolo de expansão global</strong></p>
+
+            <p>Entre os fatos marcantes da edição está a conquista do <strong>primeiro ouro brasileiro em Jogos Olímpicos de Inverno</strong>.</p>
+
+            <p>Historicamente associados a países de clima rigoroso, os esportes de inverno agora apresentam geografia ampliada. A conquista brasileira simboliza uma mudança cultural: treinamento internacionalizado, ciência esportiva acessível e intercâmbio técnico transformaram fronteiras climáticas em desafios superáveis.</p>
+
+            <p>A neve e o gelo tornaram-se territórios globais.</p>
+
+            <p><strong>📊 Quadro Final de Medalhas — Milano-Cortina 2026</strong></p>
+
+            <p>(Ordenado por número de medalhas de ouro)</p>
+
+            <table style="width:100%; border-collapse: collapse; font-size: 14px;">
+              <thead>
+                <tr>
+                  <th style="text-align:left; border-bottom:1px solid #E5E5E5; padding:10px;">Rank</th>
+                  <th style="text-align:left; border-bottom:1px solid #E5E5E5; padding:10px;">País</th>
+                  <th style="text-align:left; border-bottom:1px solid #E5E5E5; padding:10px;">Ouro</th>
+                  <th style="text-align:left; border-bottom:1px solid #E5E5E5; padding:10px;">Prata</th>
+                  <th style="text-align:left; border-bottom:1px solid #E5E5E5; padding:10px;">Bronze</th>
+                  <th style="text-align:left; border-bottom:1px solid #E5E5E5; padding:10px;">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Noruega</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">18</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">12</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">11</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">41</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Estados Unidos</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">12</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">12</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">9</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">33</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Países Baixos</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">10</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">7</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">20</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">4</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Itália</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">10</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">14</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">30</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Alemanha</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">8</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">10</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">8</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">26</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">França</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">8</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">9</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">23</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">7</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Suécia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">8</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">4</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">18</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">8</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Suíça</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">9</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">8</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">23</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">9</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Áustria</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">8</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">18</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">10</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Japão</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">7</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">12</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">24</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">11</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Canadá</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">7</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">9</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">21</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">12</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">China</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">4</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">15</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">13</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Coreia do Sul</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">4</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">10</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">14</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Austrália</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">15</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Grã-Bretanha</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">16</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">República Tcheca</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">17</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Eslovênia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">4</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">18</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Espanha</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">19</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Brasil</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">20</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Cazaquistão</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">21</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Polônia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">4</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">22</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Nova Zelândia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">3</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">23</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Finlândia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">5</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">6</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">24</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Letônia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">25</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Dinamarca</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">26</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Estônia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">27</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Geórgia</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">28</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Atletas Neutros Individuais</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">29</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Bulgária</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">2</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #EEF1F5;">30</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">Bélgica</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">0</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td><td style="padding:10px; border-bottom:1px solid #EEF1F5;">1</td></tr>
+              </tbody>
+            </table>
+
+            <p><strong>O que os números realmente revelam</strong></p>
+
+            <p>O quadro de medalhas não mostra apenas quem ganhou mais.</p>
+
+            <p>Ele revela:</p>
+
+            <p>- Países que dominam modalidades alpinas.<br>
+            - Potências tradicionais das arenas congeladas.<br>
+            - Nações que estruturaram planejamento de longo prazo.<br>
+            - A expansão geográfica dos esportes de inverno.</p>
+
+            <p>Milano-Cortina 2026 confirmou que o inverno olímpico não é estático. É dinâmico, técnico e cada vez mais global.</p>
+
+            <p><strong>Um legado que ultrapassa o pódio</strong></p>
+
+            <p>Se a Noruega consolidou hegemonia e os Estados Unidos recuperaram um ouro histórico no hóquei, o verdadeiro impacto vai além das medalhas.</p>
+
+            <p>Cada ciclo olímpico redefine investimentos, inspira novas gerações e projeta o esporte para novos territórios.</p>
+
+            <p>Milano-Cortina mostrou que a tradição continua forte — mas o futuro está aberto.</p>
+
+            <p>Da neve dos Alpes aos rinques iluminados das arenas, os Jogos deixaram claro: o inverno olímpico é mais amplo, mais competitivo e mais global do que nunca.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <!-- ANÚNCIO (SEM TEXTO) -->
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
