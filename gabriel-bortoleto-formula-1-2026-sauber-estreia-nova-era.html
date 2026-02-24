@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gabriel Bortoleto na Fórmula 1 2026: o brasileiro que chega à Sauber na temporada que pode mudar tudo | Corte dos Esportes</title>
+  <meta name="description" content="Gabriel Bortoleto chega à Fórmula 1 em 2026 pela Sauber em meio à nova era técnica da categoria. Veja a preparação do brasileiro e o que está em jogo na temporada." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    aside { margin-right: -10px; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+      .sports-menu { top: 50px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Gabriel Bortoleto na Fórmula 1 2026: o brasileiro que chega à Sauber na temporada que pode mudar tudo</h1>
+          <p class="subhead" id="articleExcerpt">Gabriel Bortoleto na Fórmula 1 2026: o brasileiro que chega à Sauber na temporada que pode mudar tudo</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">24/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <!-- ANÚNCIO (SEM TEXTO) -->
+          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
+
+          <article id="articleBody">
+            <p>A Fórmula 1 sempre escolhe seus momentos históricos com precisão.
+E 2026 tem todos os elementos para ser um deles.</p>
+
+            <p>Novo regulamento técnico. Nova era de motores. Equilíbrio reiniciado. E, no meio dessa transformação, um brasileiro assume um dos maiores desafios de sua carreira: Gabriel Bortoleto estreia na Fórmula 1 defendendo a Sauber, equipe que vive fase de transição antes da entrada definitiva da Audi no grid.</p>
+
+            <p>Não é apenas uma estreia. É uma convergência perfeita entre mudança técnica e juventude competitiva.</p>
+
+            <p>A oportunidade certa no momento certo</p>
+
+            <p>Toda mudança de regulamento cria uma janela estratégica.</p>
+
+            <p>Em 2026, os carros serão diferentes. A aerodinâmica, a gestão de energia e o comportamento em pista exigirão adaptação rápida. Referências antigas perdem peso. Experiência ajuda, mas não garante vantagem automática.</p>
+
+            <p>E é justamente nesse cenário que um piloto jovem pode crescer.</p>
+
+            <p>Bortoleto chega à Sauber em um momento de reconstrução e preparação para um projeto maior. A equipe já trabalha pensando no futuro com a Audi, o que significa foco em desenvolvimento, evolução constante e investimento técnico.</p>
+
+            <p>Para um brasileiro que vem construindo carreira sólida nas categorias de base europeias, isso não é pressão — é oportunidade.</p>
+
+            <p>A preparação que não aparece na televisão</p>
+
+            <p>Antes da luz verde, existe um processo silencioso.</p>
+
+            <p>Treinos físicos específicos para suportar forças G por quase duas horas.
+Horas intermináveis em simuladores analisando telemetria.
+Reuniões técnicas detalhadas com engenheiros.
+Trabalho mental para manter clareza em ambientes de extrema pressão.</p>
+
+            <p>A Fórmula 1 moderna exige leitura de dados quase tão rápida quanto reflexo de volante.</p>
+
+            <p>Em 2026, com o novo ciclo técnico, esse fator será ainda mais determinante.</p>
+
+            <p>Representar o Brasil na era tecnológica da F1</p>
+
+            <p>O peso histórico sempre acompanha um piloto brasileiro na Fórmula 1.</p>
+
+            <p>Mas o contexto de 2026 é diferente de outras gerações. A categoria hoje é mais analítica, mais estratégica e mais empresarial. O talento precisa ser sustentado por consistência, inteligência técnica e comunicação precisa dentro da equipe.</p>
+
+            <p>Bortoleto representa essa nova abordagem.</p>
+
+            <p>Formado no ambiente europeu, adaptado à cultura de engenharia da F1 e inserido em um projeto estruturado como o da Sauber, ele não chega apenas como promessa — chega como peça de um plano maior.</p>
+
+            <p>O que está realmente em jogo em 2026</p>
+
+            <p>A temporada promete ser imprevisível. Mudanças técnicas reduzem diferenças iniciais e ampliam espaço para surpresas.</p>
+
+            <p>Se a Sauber conseguir interpretar rápido o novo regulamento, um piloto em fase ascendente pode transformar adaptação em protagonismo.</p>
+
+            <p>Não é sobre expectativa exagerada.
+É sobre alinhamento de fatores.</p>
+
+            <p>Nova geração. Novo regulamento. Nova fase de uma equipe tradicional em transição para uma fabricante gigante.</p>
+
+            <p>Para Gabriel Bortoleto, 2026 não é apenas estreia.
+É a chance de iniciar um capítulo que pode redefinir o papel do Brasil na Fórmula 1 contemporânea.</p>
+
+            <p>E na F1, quando talento encontra o momento certo, histórias grandes costumam nascer.</p>
+
+            <p><strong>CONHEÇA AS ETAPAS DA FORMULA 1 2026</strong> - <a href="https://cortedosesportes.com.br/calendario-formula-1-2026-datas-pistas-e-programacao-completa.html">https://cortedosesportes.com.br/calendario-formula-1-2026-datas-pistas-e-programacao-completa.html</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <!-- ANÚNCIO (SEM TEXTO) -->
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "automobilismo";
+  const CATEGORY_NAME = "Automobilismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
