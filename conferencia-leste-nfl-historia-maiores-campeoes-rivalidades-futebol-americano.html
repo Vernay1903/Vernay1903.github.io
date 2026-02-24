@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conferência Leste da NFL: tradição, rivalidades históricas e o peso da herança no futebol americano | Corte dos Esportes</title>
+  <meta name="description" content="Conferência Leste da NFL: tradição, maiores campeões, rivalidades históricas, curiosidades e estádios icônicos que ajudam a definir o futebol americano." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    aside { margin-right: -10px; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+      .sports-menu { top: 50px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Conferência Leste da NFL: tradição, rivalidades históricas e o peso da herança no futebol americano</h1>
+          <p class="subhead" id="articleExcerpt">Conheça a força histórica da Conferência Leste da NFL: maiores campeões, rivalidades que definem temporadas, estádios icônicos e curiosidades que moldaram a divisão.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">24/02/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <!-- ANÚNCIO (SEM TEXTO) -->
+          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
+
+          <article id="articleBody">
+            <p><strong>Conferência Leste da NFL: tradição, rivalidades históricas e o peso da herança no futebol americano</strong></p>
+
+            <p>Falar da Conferência Leste da NFL é falar sobre algumas das franquias mais tradicionais e polarizadoras do futebol americano profissional. Ao longo das décadas, essa divisão construiu identidade própria baseada em rivalidades intensas, estádios icônicos e uma cultura vencedora que ajudou a moldar a própria história da liga.</p>
+
+            <p>A Conferência Leste faz parte da National Football League (NFL) e integra quatro equipes:</p>
+
+            <p>- Dallas Cowboys<br>
+            - Philadelphia Eagles<br>
+            - New York Giants<br>
+            - Washington Commanders</p>
+
+            <p>Mais do que uma simples divisão geográfica, o Leste é um território de pressão, tradição e exposição nacional constante.</p>
+
+            <p><strong>🏆 Os maiores campeões da divisão</strong></p>
+
+            <p>Se existe um peso histórico dentro da Conferência Leste, ele está nos títulos do Super Bowl.</p>
+
+            <p>- Dallas Cowboys – 5 títulos<br>
+            - New York Giants – 4 títulos<br>
+            - Washington – 3 títulos<br>
+            - Philadelphia Eagles – 1 título</p>
+
+            <p>Somadas, são 13 conquistas de Super Bowl apenas dentro dessa divisão — um número que coloca o Leste como uma das regiões mais vencedoras da NFL.</p>
+
+            <p>O Dallas Cowboys, apelidado de “America’s Team”, tornou-se símbolo global da liga. Já os Giants acumularam títulos em eras diferentes, mostrando capacidade de reinvenção. Washington brilhou especialmente nas décadas de 1980 e 1990, enquanto os Eagles consolidaram seu auge recente com um título marcante no século XXI.</p>
+
+            <p><strong>🔥 Rivalidades que definem temporadas</strong></p>
+
+            <p>Na Conferência Leste, não existem jogos comuns.</p>
+
+            <p>Cowboys x Eagles.<br>
+            Giants x Cowboys.<br>
+            Washington x Eagles.</p>
+
+            <p>Esses confrontos costumam decidir títulos divisionais, vagas nos playoffs e, muitas vezes, moldam o rumo de uma temporada inteira. É uma divisão onde campanhas medianas podem virar históricas com uma sequência de vitórias dentro do próprio grupo.</p>
+
+            <p>O equilíbrio é uma marca registrada: mesmo equipes que passam por reconstruções conseguem, frequentemente, surpreender adversários tradicionais.</p>
+
+            <p><strong>🏟️ Estádios icônicos e atmosfera única</strong></p>
+
+            <p>A tradição da Conferência Leste também se manifesta nos palcos.</p>
+
+            <p>- AT&T Stadium (Dallas) – Um dos estádios mais tecnológicos e luxuosos do mundo.<br>
+            - MetLife Stadium (New York) – Casa dos Giants, em uma das maiores regiões metropolitanas do planeta.<br>
+            - Lincoln Financial Field (Philadelphia) – Conhecido pela torcida intensa e clima hostil aos visitantes.<br>
+            - Northwest Stadium (Washington) – Representa décadas de história da franquia.</p>
+
+            <p>A força das torcidas é um diferencial. Em Philadelphia, o ambiente é considerado um dos mais desafiadores para times visitantes. Em Dallas, a exposição midiática transforma cada jogo em espetáculo nacional.</p>
+
+            <p><strong>📊 Cultura de reconstrução e renovação</strong></p>
+
+            <p>Uma característica evergreen da Conferência Leste é o ciclo constante entre tradição e reconstrução.</p>
+
+            <p>Por ser uma das divisões mais midiáticas da NFL, qualquer mudança de técnico, quarterback ou gestão ganha repercussão imediata. Isso cria pressão permanente — mas também gera oportunidades rápidas de virada.</p>
+
+            <p>Ao longo dos anos, a divisão já viu:</p>
+
+            <p>- Reformulações completas resultando em títulos inesperados.<br>
+            - Rivalidades renascendo após períodos de baixa.<br>
+            - Times considerados azarões conquistando a divisão.</p>
+
+            <p>Essa imprevisibilidade mantém o Leste relevante temporada após temporada.</p>
+
+            <p><strong>🌎 Impacto além do campo</strong></p>
+
+            <p>A Conferência Leste tem forte presença internacional. Os Cowboys figuram consistentemente entre as franquias esportivas mais valiosas do mundo. Os Giants carregam o peso da marca “New York”. Os Eagles desenvolveram uma base de fãs extremamente fiel e apaixonada. Washington passa por processo de reestruturação de marca e identidade.</p>
+
+            <p>Ou seja, a influência vai além do desempenho em campo — ela se conecta a mercado, mídia e identidade cultural.</p>
+
+            <p><strong>📌 Por que a Conferência Leste continua tão relevante?</strong></p>
+
+            <p>Porque reúne três fatores raros:</p>
+
+            <p>1. História vencedora<br>
+            2. Rivalidade intensa<br>
+            3. Mercado esportivo de grande alcance</p>
+
+            <p>Mesmo quando não domina estatisticamente a liga, a Conferência Leste raramente passa despercebida.</p>
+
+            <p>Em uma NFL marcada por ciclos de força e equilíbrio competitivo, o Leste permanece como um núcleo tradicional — onde cada temporada pode reescrever capítulos históricos, reacender rivalidades clássicas e recolocar uma franquia no centro do cenário do futebol americano.</p>
+
+            <p>E no futebol americano, tradição nunca sai de moda.</p>
+
+            <p><strong>Leia também:</strong> <a href="futebol-americano.html">Mais notícias de Futebol Americano no Corte dos Esportes</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <!-- ANÚNCIO (SEM TEXTO) -->
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol-americano";
+  const CATEGORY_NAME = "Futebol Americano";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
