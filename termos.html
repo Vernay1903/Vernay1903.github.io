@@ -1,173 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Termos de Uso | Corte dos Esportes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Sobre | Corte dos Esportes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <!-- FAVICON (PADRÃO DO SITE) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: Montserrat, sans-serif;
-            background: #FFFFFF;
-            color: #0A1E3A;
-            display: flex;
-            flex-direction: column;
-        }
-
-        body > *:not(footer) {
-            flex-shrink: 0;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        header {
-            background: #0A1E3A;
-            padding: 12px 30px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        nav a {
-            margin-left: 15px;
-            text-decoration: none;
-            color: #FFFFFF;
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        nav a:hover {
-            color: #1E4BA5;
-        }
-
-        .sports-menu {
-            background: #FFFFFF;
-            padding: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            border-bottom: 1px solid #E5E5E5;
-        }
-
-        .sports-menu a {
-            flex: 1 1 120px;
-            max-width: 150px;
-            text-align: center;
-            padding: 12px 8px;
-            border: 1px solid #1E4BA5;
-            border-radius: 10px;
-            color: #1E4BA5;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            background-color: #FFFFFF;
-        }
-
-        .sports-menu a:hover {
-            background: #1E4BA5;
-            color: #FFFFFF;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        footer {
-            background: #0A1E3A;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #FFFFFF;
-            border-top: 1px solid #1E4BA5;
-        }
-
-        footer a {
-            color: #FFFFFF;
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: 500;
-        }
-
-        footer a:hover {
-            color: #1E4BA5;
-        }
-    </style>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      display: flex;
+      flex-direction: column;
+    }
+    body > *:not(footer) { flex-shrink: 0; }
+    main { flex: 1; }
+    header {
+      background: #0A1E3A;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    nav a:hover { color: #1E4BA5; }
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+    }
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+    .sports-menu a:hover {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .container h1 {
+      font-size: 44px;
+      margin: 0 0 14px;
+      line-height: 1.15;
+      text-align: center;
+    }
+    .container p {
+      margin: 0 0 18px;
+      color: #0A1E3A;
+      font-size: 16px;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+    .container strong { font-weight: 700; }
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+      border-top: 1px solid #1E4BA5;
+    }
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+    }
+    footer a:hover { color: #1E4BA5; }
+    @media (max-width: 768px) {
+      header { padding: 12px 18px; }
+      .container h1 { font-size: 34px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- TOPO -->
 <header>
-    <nav>
-        <a href="index.html">Início</a>
-    </nav>
+  <nav>
+    <a href="index.html">Início</a>
+  </nav>
 </header>
 
-<!-- MENU DE ESPORTES -->
 <div class="sports-menu">
-    <a href="atletismo.html">Atletismo</a>
-    <a href="automobilismo.html">Automobilismo</a>
-    <a href="basquete.html">Basquete</a>
-    <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
-    <a href="futebol.html">Futebol</a>
-    <a href="futebol-americano.html">Futebol Americano</a>
-    <a href="futsal.html">Futsal</a>
-    <a href="handebol.html">Handebol</a>
-    <a href="lutas.html">Lutas</a>
-    <a href="skate.html">Skate</a>
-    <a href="surf.html">Surf</a>
-    <a href="volei.html">Vôlei</a>
-    <a href="volei-praia.html">Vôlei de Praia</a>
+  <a href="atletismo.html">Atletismo</a>
+  <a href="automobilismo.html">Automobilismo</a>
+  <a href="basquete.html">Basquete</a>
+  <a href="esportes-olimpicos.html">Esportes Olímpicos</a>
+  <a href="futebol.html">Futebol</a>
+  <a href="futebol-americano.html">Futebol Americano</a>
+  <a href="futsal.html">Futsal</a>
+  <a href="handebol.html">Handebol</a>
+  <a href="lutas.html">Lutas</a>
+  <a href="skate.html">Skate</a>
+  <a href="surf.html">Surf</a>
+  <a href="volei.html">Vôlei</a>
+  <a href="volei-praia.html">Vôlei de Praia</a>
+  <a href="tenis.html">Tênis</a>
 </div>
 
 <main>
-<div class="container">
+  <div class="container">
 
-<h1>Termos de Uso</h1>
+    <h1>Termos de Uso</h1>
 
-<p>Ao acessar o site Corte dos Esportes, você concorda com estes Termos de Uso. Caso não concorde, não utilize este site.</p>
+    <p>Ao acessar o site Corte dos Esportes, você concorda com estes Termos de Uso. Caso não concorde com qualquer parte destes termos, recomendamos que não utilize este site.</p>
 
-<h2>1. Uso do conteúdo</h2>
-<p>O conteúdo publicado neste site é apenas para fins informativos. Não garantimos a precisão, completude ou atualidade das informações.</p>
+    <p><strong>1. Uso do conteúdo</strong>
+O conteúdo publicado neste site é destinado exclusivamente para fins informativos e jornalísticos. Embora busquemos precisão e atualização constante, não garantimos a exatidão, completude ou atualidade absoluta das informações disponibilizadas.</p>
 
-<h2>2. Propriedade intelectual</h2>
-<p>Todos os textos, logotipos e materiais presentes neste site são protegidos por direitos autorais. É proibida a reprodução sem autorização.</p>
+    <p><strong>2. Propriedade intelectual</strong>
+Todos os textos, logotipos, identidade visual e materiais presentes neste site são protegidos por direitos autorais e demais legislações aplicáveis. É proibida a reprodução total ou parcial do conteúdo sem autorização prévia. Também é vedada a utilização automatizada do conteúdo, incluindo scraping, coleta por robôs ou redistribuição comercial não autorizada.</p>
 
-<h2>3. Limitação de responsabilidade</h2>
-<p>O Corte dos Esportes não se responsabiliza por danos diretos ou indiretos decorrentes do uso das informações deste portal.</p>
+    <p><strong>3. Responsabilidade do usuário</strong>
+O usuário compromete-se a utilizar o site de forma ética e legal, abstendo-se de praticar atividades que possam comprometer a segurança da plataforma ou violar direitos de terceiros.</p>
 
-<h2>4. Links externos</h2>
-<p>O site pode conter links para sites externos. Não somos responsáveis pelo conteúdo ou políticas desses sites.</p>
+    <p><strong>4. Limitação de responsabilidade</strong>
+O Corte dos Esportes não se responsabiliza por danos diretos ou indiretos decorrentes do uso das informações disponibilizadas neste portal.</p>
 
-<h2>5. Modificações</h2>
-<p>Estes termos podem ser alterados a qualquer momento, sem aviso prévio.</p>
+    <p><strong>5. Publicidade</strong>
+Este site pode exibir anúncios por meio de parceiros, incluindo o Google AdSense. A exibição de publicidade não interfere na independência editorial do conteúdo publicado.</p>
 
-</div>
+    <p><strong>6. Links externos</strong>
+O site pode conter links para páginas externas. Não somos responsáveis pelo conteúdo, políticas ou práticas desses sites.</p>
+
+    <p><strong>7. Modificações</strong>
+Estes Termos podem ser alterados a qualquer momento. Recomendamos que o usuário revise esta página periodicamente.</p>
+
+    <p><strong>8. Legislação aplicável</strong>
+Estes Termos são regidos pelas leis da República Federativa do Brasil.</p>
+
+    <p><strong>9. Contato</strong>
+Em caso de dúvidas relacionadas a estes Termos de Uso, o usuário poderá entrar em contato por meio da página oficial de contato disponível no site.</p>
+
+  </div>
 </main>
 
-<!-- RODAPÉ -->
 <footer>
-    © 2026 Corte dos Esportes  
-    <a href="politica.html">Privacidade</a> |
-    <a href="contato.html">Contato</a> |
-    <a href="sobre.html">Sobre</a> |
-    <a href="termos.html">Termos de Uso</a>
+  © 2026 Corte dos Esportes
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
 </footer>
 
 </body>
