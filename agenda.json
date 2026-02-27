@@ -1,19 +1,23 @@
 [
   {
-    "time": "19:00",
-    "desc": "Santos x Vasco - Brasileirão"
+    "time": "16:45",
+    "desc": "Parma x Cagliari - Italiano"
+  },
+  {
+    "time": "17:00",
+    "desc": "Levante x Alavés - LaLiga"
+  },
+  {
+    "time": "17:00",
+    "desc": "Wolves x Aston Villa - Premier League"
+  },
+  {
+    "time": "21:00",
+    "desc": "Pistons x Cavaliers - NBA"
   },
   {
     "time": "21:30",
-    "desc": "Flamengo x Lanús - Recopa"
-  },
-  {
-    "time": "21:30",
-    "desc": "Nets x Spurs - NBA"
-  },
-  {
-    "time": "23:00",
-    "desc": "Suns x Lakers - NBA"
+    "desc": "Celtics x Nets - NBA"
   }
 ]
 
