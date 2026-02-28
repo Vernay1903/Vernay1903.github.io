@@ -28,7 +28,7 @@
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
-      overflow-x: hidden; /* <-- evita rolagem lateral */
+      overflow-x: hidden;
       width: 100%;
       max-width: 100%;
     }
@@ -39,16 +39,13 @@
       display: block;
     }
 
-    /* AdSense/iframes não podem estourar a tela */
     .ad-slot { overflow: hidden; }
     ins.adsbygoogle {
       display: block !important;
       width: 100% !important;
       max-width: 100% !important;
     }
-    .ad-slot iframe {
-      max-width: 100% !important;
-    }
+    .ad-slot iframe { max-width: 100% !important; }
     /* ============================================= */
 
     body {
@@ -68,6 +65,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: padding 0.2s ease;
     }
 
     .logo-container {
@@ -76,7 +74,10 @@
       gap: 12px;
     }
 
-    .logo-container img { height: 34px; }
+    .logo-container img {
+      height: 34px;
+      transition: height 0.2s ease;
+    }
 
     .logo-text {
       font-size: 20px;
@@ -85,7 +86,15 @@
       letter-spacing: 0.3px;
       line-height: 1;
       text-decoration: none;
+      transition: font-size 0.2s ease;
     }
+
+    /* ===== EFEITO "ENCOLHER" AO ROLAR (como estava) ===== */
+    header.compact {
+      padding: 6px 18px;
+    }
+    header.compact .logo-container img { height: 28px; }
+    header.compact .logo-text { font-size: 18px; }
 
     /* MENU (STICKY) */
     .sports-menu {
@@ -97,8 +106,16 @@
       gap: 12px;
       border-bottom: 1px solid #E5E5E5;
       position: sticky;
-      top: 54px;
+      /* top agora é dinâmico via JS (altura real do header) */
+      top: 0;
       z-index: 999;
+      transition: padding 0.2s ease;
+    }
+
+    /* Quando rolar, o menu também "encolhe" um pouco */
+    .sports-menu.compact {
+      padding: 10px 12px;
+      gap: 10px;
     }
 
     .sports-menu a {
@@ -119,7 +136,6 @@
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
 
-    /* ativa no menu */
     .sports-menu a.active {
       background: #1E4BA5;
       color: #FFFFFF;
@@ -143,7 +159,6 @@
       max-width: 100%;
     }
 
-    /* REMOVIDO margin negativo para não estourar no mobile */
     aside { margin-right: 0; }
 
     .card {
@@ -314,7 +329,6 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
       .hero-title { font-size: 36px; }
       .news-title { font-size: 28px; }
     }
@@ -323,7 +337,7 @@
 
 <body>
 
-<header>
+<header id="siteHeader">
   <div class="logo-container">
     <img src="logo.png" alt="Corte dos Esportes">
     <a class="logo-text" href="index.html">Corte dos Esportes</a>
@@ -385,17 +399,17 @@
         <!-- ANÚNCIO CENTRO (SEM TEXTO) -->
         <div class="card">
           <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">
-  <!-- Display-Home-Topo -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4145492637375431"
-       data-ad-slot="7571942911"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+            <!-- Display-Home-Topo -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4145492637375431"
+                 data-ad-slot="7571942911"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
         </div>
 
         <!-- ÚLTIMAS NOTÍCIAS -->
@@ -434,6 +448,29 @@
 </footer>
 
 <script>
+  // ===== MENU "DESCE" E ENC0LHE: TOP DINÂMICO + SHRINK NO SCROLL =====
+  (function () {
+    const header = document.getElementById("siteHeader");
+    const menu = document.getElementById("sportsMenu");
+
+    function setMenuTop() {
+      if (!header || !menu) return;
+      menu.style.top = header.offsetHeight + "px";
+    }
+
+    function onScroll() {
+      const y = window.scrollY || 0;
+      const compact = y > 20; // ajusta aqui se quiser mais/menos "delay"
+      if (header) header.classList.toggle("compact", compact);
+      if (menu) menu.classList.toggle("compact", compact);
+      setMenuTop();
+    }
+
+    window.addEventListener("load", () => { setMenuTop(); onScroll(); }, { passive: true });
+    window.addEventListener("resize", setMenuTop, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+  })();
+
   // Mapa de categoria -> slug (para linkar na categoria corretamente)
   const CATEGORY_TO_SLUG = {
     "Atletismo": "atletismo",
@@ -466,7 +503,6 @@
   async function loadAgenda() {
     const list = document.getElementById("agendaList");
 
-    // fallback (se agenda.json falhar, não aparece "undefined")
     const fallback = [
       { time: "08:00", desc: "Jogos, horários e transmissões principais." },
       { time: "16:00", desc: "Evento relevante do dia." },
@@ -481,7 +517,6 @@
       const items = Array.isArray(data) ? data : [];
       const useItems = items.length ? items : fallback;
 
-      // ✅ MOSTRAR TODOS (sem slice 0,3) + ordena por horário
       const ordered = useItems.slice().sort((a, b) => {
         const ta = safeText(a.time, "");
         const tb = safeText(b.time, "");
@@ -589,7 +624,6 @@
     }
   }
 
-  // Carregar tudo
   loadAgenda();
   loadNoticias();
 </script>
