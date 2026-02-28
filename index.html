@@ -19,13 +19,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== FIX OVERFLOW MOBILE (barra lateral) ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      overflow-x: hidden; /* evita rolagem lateral */
+      max-width: 100%;
     }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* AdSense/iframes não podem estourar a tela */
+    .ad-slot { overflow: hidden; }
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .ad-slot iframe { max-width: 100% !important; }
+    /* ============================================= */
 
     body {
       min-height: 100vh;
@@ -73,7 +94,7 @@
       gap: 12px;
       border-bottom: 1px solid #E5E5E5;
       position: sticky;
-      top: 54px;
+      top: 54px; /* como estava no seu HTML */
       z-index: 999;
     }
 
@@ -116,7 +137,9 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* no seu HTML tinha margin-right:-10px; isso é um dos motivos comuns do overflow.
+       mantendo sem negativo para não criar barra lateral no mobile */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -278,11 +301,25 @@
       .hero-title { font-size: 44px; }
     }
 
+    /* MOBILE: aqui é onde ele "encolhe" como você queria */
     @media (max-width: 768px) {
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      .sports-menu {
+        top: 50px;       /* como estava no seu HTML */
+        padding: 10px;   /* encolhe */
+        gap: 8px;        /* encolhe */
+      }
+
+      .sports-menu a {
+        flex: 1 1 105px;   /* encolhe */
+        max-width: 130px;  /* encolhe */
+        padding: 10px 6px; /* encolhe */
+        font-size: 13px;   /* encolhe */
+      }
+
       .hero-title { font-size: 36px; }
       .news-title { font-size: 28px; }
     }
@@ -352,7 +389,18 @@
 
         <!-- ANÚNCIO CENTRO (SEM TEXTO) -->
         <div class="card">
-          <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">&nbsp;</div>
+          <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">
+            <!-- Display-Home-Topo -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4145492637375431"
+                 data-ad-slot="7571942911"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
         </div>
 
         <!-- ÚLTIMAS NOTÍCIAS -->
