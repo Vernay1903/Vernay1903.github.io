@@ -1,25 +1,44 @@
 [
   {
+    "time": "11:00",
+    "desc": "Como x Lecce - Italiano"
+  },
+  {
+    "time": "11:30",
+    "desc": "Bayer Leverkusen x Mainz - Bundesliga"
+  },
+  {
+    "time": "11:30",
+    "desc": "Hoffenheim x St. Pauli - Bundesliga"
+  },
+  {
+    "time": "12:00",
+    "desc": "Liverpool x West Ham - Premier League"
+  },
+  {
+    "time": "12:15",
+    "desc": "Barcelona x Villarreal - LaLiga"
+  },
+  {
+    "time": "14:00",
+    "desc": "Verona x Napoli - Italiano"
+  },
+  {
+    "time": "14:30",
+    "desc": "Borussia Dortmund x Bayern de Munique - Bundesliga"
+  },
+  {
+    "time": "14:30",
+    "desc": "Leeds x Manchester City - Premier League"
+  },
+  {
     "time": "16:45",
-    "desc": "Parma x Cagliari - Italiano"
+    "desc": "Inter de Milão x Genoa - Italiano"
   },
   {
     "time": "17:00",
-    "desc": "Levante x Alavés - LaLiga"
-  },
-  {
-    "time": "17:00",
-    "desc": "Wolves x Aston Villa - Premier League"
-  },
-  {
-    "time": "21:00",
-    "desc": "Pistons x Cavaliers - NBA"
-  },
-  {
-    "time": "21:30",
-    "desc": "Celtics x Nets - NBA"
+    "desc": "Oviedo x Atlético de Madrid - LaLiga"
   }
 ]
-
 
 
