@@ -264,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -386,7 +389,6 @@
           </ul>
         </div>
 
-        <!-- ANÚNCIO (SIDEBAR) - melhoria: usar o slot correto da sidebar -->
         <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
           <!-- Display-Article-Sidebar -->
           <ins class="adsbygoogle"
