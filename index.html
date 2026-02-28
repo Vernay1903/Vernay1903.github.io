@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== FIX OVERFLOW MOBILE (barra lateral) ===== */
+    /* ===== BASE (SEM OVERFLOW) ===== */
     *, *::before, *::after { box-sizing: border-box; }
 
     html, body {
@@ -28,7 +28,12 @@
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
-      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden; /* não aparece barra lateral */
+    }
+
+    main, header, footer, .page, .layout, section, aside, .card {
       max-width: 100%;
     }
 
@@ -56,7 +61,17 @@
 
     main { flex: 1; }
 
-    /* ===== FIX "MATÉRIAS CORTADAS" (quebra de linha) ===== */
+    /* ===== FIX DEFINITIVO: GRID NÃO PODE ESTOURAR NO MOBILE ===== */
+    .layout > section,
+    .layout > aside {
+      min-width: 0; /* ESSENCIAL: permite encolher e evita corte */
+    }
+
+    .card, .news-title, .subhead, .news-list, .news-list li, .news-list a {
+      min-width: 0;
+    }
+
+    /* Quebra segura (sem hífen automático) */
     .news-title,
     .news-title a,
     .subhead,
@@ -64,9 +79,9 @@
     .desc {
       overflow-wrap: anywhere;
       word-break: break-word;
-      hyphens: auto;
+      hyphens: none;
     }
-    /* ===================================================== */
+    /* =========================================================== */
 
     /* HEADER (STICKY) */
     header {
@@ -83,6 +98,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
     }
 
     .logo-container img { height: 34px; }
@@ -94,6 +110,7 @@
       letter-spacing: 0.3px;
       line-height: 1;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     /* MENU (STICKY) */
@@ -108,6 +125,7 @@
       position: sticky;
       top: 54px;
       z-index: 999;
+      width: 100%;
     }
 
     .sports-menu a {
@@ -123,7 +141,7 @@
       font-weight: 600;
       background-color: #FFFFFF;
       transition: 0.3s;
-      white-space: nowrap; /* desktop como estava */
+      white-space: nowrap; /* desktop */
     }
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
@@ -139,6 +157,7 @@
       margin: 0 auto;
       padding: 28px 10px 40px;
       box-sizing: border-box;
+      width: 100%;
     }
 
     .layout {
@@ -146,9 +165,10 @@
       grid-template-columns: 2.3fr 330px;
       gap: 20px;
       align-items: start;
+      width: 100%;
     }
 
-    /* ✅ remove negativo que causa vazamento/corte */
+    /* >>> REMOVIDO: margin-right negativo (causa overflow/corte) */
     aside { margin-right: 0; }
 
     .card {
@@ -158,6 +178,7 @@
       padding: 18px;
       box-shadow: 0 6px 18px rgba(10,30,58,0.06);
       margin-bottom: 16px;
+      width: 100%;
     }
 
     .hero-title {
@@ -228,6 +249,7 @@
       padding: 22px;
       min-height: 64px;
       box-sizing: border-box;
+      width: 100%;
     }
 
     .ad-slot.center { min-height: 110px; }
@@ -257,6 +279,7 @@
       gap: 12px;
       padding: 10px 0;
       border-top: 1px solid #EEF1F5;
+      min-width: 0;
     }
 
     .agenda-list li:first-child { border-top: none; padding-top: 0; }
@@ -265,20 +288,24 @@
       min-width: 60px;
       font-weight: 700;
       color: #1E4BA5;
+      flex: 0 0 auto;
     }
 
-    .desc { font-size: 14px; line-height: 1.4; color: #0A1E3A; }
+    .desc { font-size: 14px; line-height: 1.4; color: #0A1E3A; min-width: 0; }
 
     /* LISTA ÚLTIMAS */
     .news-list {
       list-style: none;
       padding: 0;
       margin: 0;
+      width: 100%;
     }
 
     .news-list li {
       padding: 10px 0;
       border-top: 1px solid #EEF1F5;
+      width: 100%;
+      min-width: 0;
     }
     .news-list li:first-child { border-top: none; padding-top: 0; }
 
@@ -286,6 +313,7 @@
       color: #1E4BA5;
       text-decoration: none;
       font-weight: 700;
+      display: inline; /* mantém fluxo normal */
     }
     .news-list a:hover { text-decoration: underline; }
 
@@ -301,6 +329,7 @@
       color: #FFFFFF;
       text-decoration: none;
       margin: 0 12px;
+      white-space: nowrap;
     }
 
     footer a:hover { color: #1E4BA5; }
@@ -311,7 +340,7 @@
       .hero-title { font-size: 44px; }
     }
 
-    /* ✅ MOBILE: MENU ALINHADO + SEM CORTAR TEXTO */
+    /* MOBILE: menu alinhado e sem cortar nomes */
     @media (max-width: 768px) {
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
@@ -329,13 +358,12 @@
         width: 100%;
         max-width: none;
         flex: initial;
-        white-space: normal;
-        line-height: 1.1;
+        white-space: normal;     /* permite 2 linhas */
+        word-break: break-word;  /* sem cortar layout */
+        hyphens: none;           /* sem "Auto-mobi-lismo" */
+        line-height: 1.15;
         padding: 10px 6px;
         font-size: 13px;
-        overflow-wrap: anywhere;
-        word-break: break-word;
-        hyphens: auto;
       }
 
       .hero-title { font-size: 36px; }
@@ -408,17 +436,17 @@
         <!-- ANÚNCIO CENTRO (SEM TEXTO) -->
         <div class="card">
           <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">
-  <!-- Display-Home-Topo -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4145492637375431"
-       data-ad-slot="7571942911"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+            <!-- Display-Home-Topo -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4145492637375431"
+                 data-ad-slot="7571942911"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
         </div>
 
         <!-- ÚLTIMAS NOTÍCIAS -->
@@ -489,7 +517,6 @@
   async function loadAgenda() {
     const list = document.getElementById("agendaList");
 
-    // fallback (se agenda.json falhar, não aparece "undefined")
     const fallback = [
       { time: "08:00", desc: "Jogos, horários e transmissões principais." },
       { time: "16:00", desc: "Evento relevante do dia." },
@@ -504,7 +531,6 @@
       const items = Array.isArray(data) ? data : [];
       const useItems = items.length ? items : fallback;
 
-      // ✅ MOSTRAR TODOS + ordena por horário
       const ordered = useItems.slice().sort((a, b) => {
         const ta = safeText(a.time, "");
         const tb = safeText(b.time, "");
@@ -612,7 +638,6 @@
     }
   }
 
-  // Carregar tudo
   loadAgenda();
   loadNoticias();
 </script>
