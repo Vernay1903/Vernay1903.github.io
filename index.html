@@ -56,6 +56,18 @@
 
     main { flex: 1; }
 
+    /* ===== FIX "MATÉRIAS CORTADAS" (quebra de linha) ===== */
+    .news-title,
+    .news-title a,
+    .subhead,
+    .news-list a,
+    .desc {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: auto;
+    }
+    /* ===================================================== */
+
     /* HEADER (STICKY) */
     header {
       background: #0A1E3A;
@@ -116,7 +128,6 @@
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
 
-    /* ativa no menu */
     .sports-menu a.active {
       background: #1E4BA5;
       color: #FFFFFF;
@@ -137,7 +148,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ remove negativo que causa vazamento/corte */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -299,20 +311,31 @@
       .hero-title { font-size: 44px; }
     }
 
-    /* ✅ CORREÇÃO DO MENU NO MOBILE (SEM CORTAR TEXTO) */
+    /* ✅ MOBILE: MENU ALINHADO + SEM CORTAR TEXTO */
     @media (max-width: 768px) {
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
 
-      .sports-menu a{
-        flex: 1 1 calc(33.333% - 12px); /* 3 por linha */
-        max-width: none;                /* sem trava */
-        white-space: normal;            /* permite quebrar */
+      .sports-menu {
+        top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        justify-content: initial;
+      }
+
+      .sports-menu a {
+        width: 100%;
+        max-width: none;
+        flex: initial;
+        white-space: normal;
         line-height: 1.1;
         padding: 10px 6px;
         font-size: 13px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        hyphens: auto;
       }
 
       .hero-title { font-size: 36px; }
@@ -481,7 +504,7 @@
       const items = Array.isArray(data) ? data : [];
       const useItems = items.length ? items : fallback;
 
-      // ✅ MOSTRAR TODOS (sem slice 0,3) + ordena por horário
+      // ✅ MOSTRAR TODOS + ordena por horário
       const ordered = useItems.slice().sort((a, b) => {
         const ta = safeText(a.time, "");
         const tb = safeText(b.time, "");
