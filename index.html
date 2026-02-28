@@ -19,13 +19,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== FIX OVERFLOW MOBILE (barra lateral) ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      overflow-x: hidden; /* <-- evita rolagem lateral */
+      width: 100%;
+      max-width: 100%;
     }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* AdSense/iframes não podem estourar a tela */
+    .ad-slot { overflow: hidden; }
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .ad-slot iframe {
+      max-width: 100% !important;
+    }
+    /* ============================================= */
 
     body {
       min-height: 100vh;
@@ -107,6 +131,7 @@
       margin: 0 auto;
       padding: 28px 10px 40px;
       box-sizing: border-box;
+      width: 100%;
     }
 
     .layout {
@@ -114,9 +139,12 @@
       grid-template-columns: 2.3fr 330px;
       gap: 20px;
       align-items: start;
+      width: 100%;
+      max-width: 100%;
     }
 
-    aside { margin-right: -10px; }
+    /* REMOVIDO margin negativo para não estourar no mobile */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -125,6 +153,7 @@
       padding: 18px;
       box-shadow: 0 6px 18px rgba(10,30,58,0.06);
       margin-bottom: 16px;
+      max-width: 100%;
     }
 
     .hero-title {
@@ -195,6 +224,7 @@
       padding: 22px;
       min-height: 64px;
       box-sizing: border-box;
+      max-width: 100%;
     }
 
     .ad-slot.center { min-height: 110px; }
@@ -224,6 +254,7 @@
       gap: 12px;
       padding: 10px 0;
       border-top: 1px solid #EEF1F5;
+      max-width: 100%;
     }
 
     .agenda-list li:first-child { border-top: none; padding-top: 0; }
@@ -246,6 +277,7 @@
     .news-list li {
       padding: 10px 0;
       border-top: 1px solid #EEF1F5;
+      max-width: 100%;
     }
     .news-list li:first-child { border-top: none; padding-top: 0; }
 
