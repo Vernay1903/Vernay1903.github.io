@@ -28,7 +28,7 @@
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
-      overflow-x: hidden; /* evita rolagem lateral */
+      overflow-x: hidden;
       max-width: 100%;
     }
 
@@ -94,7 +94,7 @@
       gap: 12px;
       border-bottom: 1px solid #E5E5E5;
       position: sticky;
-      top: 54px; /* como estava no seu HTML */
+      top: 54px;
       z-index: 999;
     }
 
@@ -111,7 +111,7 @@
       font-weight: 600;
       background-color: #FFFFFF;
       transition: 0.3s;
-      white-space: nowrap;
+      white-space: nowrap; /* desktop como estava */
     }
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
@@ -137,9 +137,7 @@
       align-items: start;
     }
 
-    /* no seu HTML tinha margin-right:-10px; isso é um dos motivos comuns do overflow.
-       mantendo sem negativo para não criar barra lateral no mobile */
-    aside { margin-right: 0; }
+    aside { margin-right: -10px; }
 
     .card {
       background: #FFFFFF;
@@ -301,23 +299,20 @@
       .hero-title { font-size: 44px; }
     }
 
-    /* MOBILE: aqui é onde ele "encolhe" como você queria */
+    /* ✅ CORREÇÃO DO MENU NO MOBILE (SEM CORTAR TEXTO) */
     @media (max-width: 768px) {
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
+      .sports-menu { top: 50px; }
 
-      .sports-menu {
-        top: 50px;       /* como estava no seu HTML */
-        padding: 10px;   /* encolhe */
-        gap: 8px;        /* encolhe */
-      }
-
-      .sports-menu a {
-        flex: 1 1 105px;   /* encolhe */
-        max-width: 130px;  /* encolhe */
-        padding: 10px 6px; /* encolhe */
-        font-size: 13px;   /* encolhe */
+      .sports-menu a{
+        flex: 1 1 calc(33.333% - 12px); /* 3 por linha */
+        max-width: none;                /* sem trava */
+        white-space: normal;            /* permite quebrar */
+        line-height: 1.1;
+        padding: 10px 6px;
+        font-size: 13px;
       }
 
       .hero-title { font-size: 36px; }
@@ -390,17 +385,17 @@
         <!-- ANÚNCIO CENTRO (SEM TEXTO) -->
         <div class="card">
           <div class="ad-slot center" aria-label="Espaço para anúncio (centro)">
-            <!-- Display-Home-Topo -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-4145492637375431"
-                 data-ad-slot="7571942911"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
+  <!-- Display-Home-Topo -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4145492637375431"
+       data-ad-slot="7571942911"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
         </div>
 
         <!-- ÚLTIMAS NOTÍCIAS -->
