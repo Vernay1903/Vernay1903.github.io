@@ -24,17 +24,39 @@
     .logo-container img{ height:34px; }
     .logo-text{ font-size:20px; font-weight:700; color:#FFF; letter-spacing:.3px; line-height:1; text-decoration:none; }
 
-    .sports-menu{
-      background:#FFF; padding:15px; display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
-      border-bottom:1px solid #E5E5E5; position:sticky; top:54px; z-index:999;
+    /* MENU (IGUAL AO INDEX) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+      width: 100%;
     }
-    .sports-menu a{
-      flex:1 1 120px; max-width:150px; text-align:center; padding:12px 8px;
-      border:1px solid #1E4BA5; border-radius:10px; color:#1E4BA5; text-decoration:none;
-      font-size:14px; font-weight:600; background:#FFF; transition:.3s; white-space:nowrap;
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
     }
-    .sports-menu a:hover{ background:#1E4BA5; color:#FFF; }
-    .sports-menu a.active{ background:#1E4BA5; color:#FFF; }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+    .sports-menu a.active { background: #1E4BA5; color: #FFFFFF; }
 
     .page{ max-width:1200px; margin:0 auto; padding:28px 10px 40px; box-sizing:border-box; }
     .hero-central{ text-align:center; margin-bottom:22px; }
@@ -65,7 +87,29 @@
       header{ padding:10px 18px; }
       .logo-container img{ height:30px; }
       .logo-text{ font-size:18px; }
-      .sports-menu{ top:50px; }
+
+      .sports-menu {
+        top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        justify-content: initial;
+      }
+
+      .sports-menu a {
+        width: 100%;
+        max-width: none;
+        flex: initial;
+        white-space: normal;
+        word-break: break-word;
+        hyphens: none;
+        line-height: 1.15;
+        padding: 10px 6px;
+        font-size: 13px;
+      }
+
+      /* ✅ ÚNICA CORREÇÃO: Automobilismo não quebra no mobile */
+      .sports-menu a[data-slug="automobilismo"] { white-space: nowrap; }
     }
   </style>
 </head>
