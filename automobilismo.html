@@ -17,7 +17,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    html, body { height:100%; margin:0; font-family:Montserrat,sans-serif; background:#FFF; color:#0A1E3A; }
+    /* ✅ MESMO AJUSTE DO ATLETISMO: remover rolagem lateral (igual ao index) */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height:100%;
+      margin:0;
+      font-family:Montserrat,sans-serif;
+      background:#FFF;
+      color:#0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    main, header, footer, .page, .sports-menu, .card { max-width: 100%; }
+    img, video, iframe, embed, object { max-width: 100%; height: auto; }
+    /* ✅ FIM DO AJUSTE */
+
     body { min-height:100vh; display:flex; flex-direction:column; }
     main { flex:1; }
 
@@ -42,7 +59,7 @@
       text-decoration:none;
     }
 
-    /* MENU (STICKY) */
+    /* MENU (IGUAL AO INDEX) */
     .sports-menu{
       background:#FFF;
       padding:15px;
@@ -54,6 +71,7 @@
       position:sticky;
       top:54px;
       z-index:999;
+      width: 100%;
     }
     .sports-menu a{
       flex:1 1 120px;
@@ -86,6 +104,7 @@
       padding:18px;
       box-shadow:0 6px 18px rgba(10,30,58,.06);
       margin-bottom:16px;
+      max-width: 100%;
     }
     .section-title{ margin:0 0 12px; font-size:18px; }
     .meta{ font-size:12px; color:#5B6B84; margin-top:8px; }
@@ -123,7 +142,29 @@
       header{ padding:10px 18px; }
       .logo-container img{ height:30px; }
       .logo-text{ font-size:18px; }
-      .sports-menu{ top:50px; }
+
+      .sports-menu {
+        top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        justify-content: initial;
+      }
+
+      .sports-menu a {
+        width: 100%;
+        max-width: none;
+        flex: initial;
+        white-space: normal;
+        word-break: break-word;
+        hyphens: none;
+        line-height: 1.15;
+        padding: 10px 6px;
+        font-size: 13px;
+      }
+
+      /* ✅ ÚNICA CORREÇÃO: Automobilismo não quebra no mobile */
+      .sports-menu a[data-slug="automobilismo"] { white-space: nowrap; }
     }
   </style>
 </head>
@@ -164,7 +205,7 @@
     </div>
 
     <div class="card">
-      <h2 class="section-title">
+      <h2 class="section-title"></h2>
       <ul class="news-list" id="categoryList">
         <li>
           <a href="#">Carregando...</a>
