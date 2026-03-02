@@ -15,7 +15,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    html, body { height:100%; margin:0; font-family:Montserrat,sans-serif; background:#FFF; color:#0A1E3A; }
+    /* ✅ AJUSTE ÚNICO: remover rolagem lateral (igual ao index) */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height:100%;
+      margin:0;
+      font-family:Montserrat,sans-serif;
+      background:#FFF;
+      color:#0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    main, header, footer, .page, .sports-menu, .card { max-width: 100%; }
+    img, video, iframe, embed, object { max-width: 100%; height: auto; }
+    /* ✅ FIM DO AJUSTE ÚNICO */
+
     body { min-height:100vh; display:flex; flex-direction:column; }
     main { flex:1; }
 
