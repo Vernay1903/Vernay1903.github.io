@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Coppa Italia: história, maiores campeões e a tradição da copa nacional do futebol italiano | Corte dos Esportes</title>
-  <meta name="description" content="Coppa Italia: história, formato, maiores campeões, decisões recentes e curiosidades da tradicional copa nacional do futebol italiano." />
+  <meta name="description" content="Coppa Italia: história, maiores campeões, decisões recentes, recordes e curiosidades da tradicional copa nacional do futebol italiano." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ADSENSE (carregar 1x por página) -->
@@ -19,9 +19,11 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- CSS do compartilhar (único para todas as notícias) -->
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
     *, *::before, *::after { box-sizing: border-box; }
 
     html, body {
@@ -48,13 +50,17 @@
 
     .ad-slot { overflow: hidden; max-width: 100%; }
 
+    /* ESSENCIAL para grid/flex não estourar */
     .layout > section, .layout > aside { min-width: 0; }
 
-    h1, .subhead, .meta, article, article p {
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
       overflow-wrap: anywhere;
       word-break: break-word;
+      hyphens: none;
       max-width: 100%;
     }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -64,6 +70,7 @@
 
     main { flex: 1; }
 
+    /* HEADER (STICKY) */
     header {
       background: #0A1E3A;
       padding: 10px 30px;
@@ -86,9 +93,12 @@
       font-size: 20px;
       font-weight: 700;
       color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
       text-decoration: none;
     }
 
+    /* MENU (STICKY) */
     .sports-menu {
       background: #FFFFFF;
       padding: 15px;
@@ -120,15 +130,18 @@
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
 
+    /* Destaque do esporte atual no menu */
     .sports-menu a.active {
       background: #1E4BA5;
       color: #FFFFFF;
     }
 
+    /* LAYOUT */
     .page {
       max-width: 1200px;
       margin: 0 auto;
       padding: 28px 10px 40px;
+      box-sizing: border-box;
     }
 
     .layout {
@@ -138,6 +151,7 @@
       align-items: start;
     }
 
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
     aside { margin-right: 0; }
 
     .card {
@@ -174,12 +188,16 @@
       font-weight: 700;
     }
 
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
       border-radius: 14px;
       padding: 22px;
       min-height: 64px;
+      box-sizing: border-box;
       margin: 16px 0;
     }
 
@@ -192,10 +210,34 @@
       margin: 0 0 16px;
     }
 
+    /* SIDEBAR */
     .section-title {
       margin: 0 0 12px;
       font-size: 18px;
     }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
 
     footer {
       background: #0A1E3A;
@@ -211,13 +253,22 @@
       margin: 0 12px;
     }
 
-    @media (max-width:1024px){
-      .layout{grid-template-columns:1fr;}
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
     }
 
-    @media (max-width:768px){
-      .sports-menu{position:static;}
-      h1{font-size:34px;}
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
     }
   </style>
 </head>
@@ -233,173 +284,279 @@
 
 <div class="sports-menu" id="sportsMenu">
   <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
   <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
-<div class="page">
-<div class="layout">
+  <div class="page">
+    <div class="layout">
 
-<section>
-<div class="card">
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Coppa Italia: história, maiores campeões e a tradição da copa nacional do futebol italiano</h1>
+          <p class="subhead" id="articleExcerpt">A Coppa Italia é o tradicional torneio de mata-mata do futebol italiano. Conheça a história, os maiores campeões, finais recentes e curiosidades da competição.</p>
 
-<h1 id="articleTitle">Coppa Italia: história, maiores campeões e a tradição da copa nacional do futebol italiano</h1>
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
 
-<p class="subhead" id="articleExcerpt">
-A Coppa Italia é o tradicional torneio de mata-mata do futebol italiano com mais de um século de história e finais marcantes no Estádio Olímpico de Roma.
-</p>
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
 
-<div class="meta">
-Por Corte dos Esportes · <span id="articleDate">04/03/2026</span> ·
-Categoria: <a id="categoryLink" href="#">Futebol</a>
-</div>
+          <!-- ANÚNCIO (ARTIGO - TOPO) -->
+          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+            <!-- Display-Article-Meio -->
+            <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-4145492637375431"
+              data-ad-slot="8702501261"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
 
-<div class="share-wrap">
-<button class="share-btn" id="shareBtn">Compartilhar</button>
-<button class="share-btn" id="copyBtn">Copiar link</button>
-<span class="share-msg" id="shareMsg"></span>
-</div>
+          <article id="articleBody">
+            <p>Coppa Italia: história, maiores campeões e a tradição da copa nacional do futebol italiano</p>
 
-<div class="ad-slot">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-4145492637375431"
-data-ad-slot="8702501261"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+            <p>A Coppa Italia é o tradicional torneio de mata-mata do futebol italiano. Diferente da Serie A, onde o campeão é definido após uma longa temporada de pontos corridos, a copa coloca os clubes frente a frente em confrontos eliminatórios — um formato que costuma produzir jogos tensos, clássicos regionais e campanhas inesperadas.</p>
 
-<article id="articleBody">
+            <p>Disputada desde 1922, a competição reúne equipes de diferentes divisões do futebol italiano e ocupa um espaço importante no calendário da temporada. Além do troféu nacional, o campeão garante vaga na UEFA Europa League da temporada seguinte.</p>
 
-<p>A Coppa Italia é o tradicional torneio de mata-mata do futebol italiano. Diferente da Serie A, onde o campeão é definido após uma longa temporada de pontos corridos, a copa coloca os clubes frente a frente em confrontos eliminatórios — um formato que costuma produzir jogos tensos, clássicos regionais e campanhas inesperadas.</p>
+            <p><strong>Origem da competição</strong></p>
 
-<p>Disputada desde 1922, a competição reúne equipes de diferentes divisões do futebol italiano e ocupa um espaço importante no calendário da temporada. Além do troféu nacional, o campeão garante vaga na UEFA Europa League da temporada seguinte.</p>
+            <p>A primeira edição da Coppa Italia foi realizada em 1922 e terminou com o título do Vado, clube da região da Ligúria. Depois dessa edição inicial, o torneio passou por um longo período sem ser disputado e voltou ao calendário apenas na temporada 1935–36, quando o Torino conquistou o troféu.</p>
 
-<p><strong>Origem da competição</strong></p>
+            <p>A competição foi novamente interrompida durante a Segunda Guerra Mundial, entre 1943 e 1945, e retornou após o conflito, consolidando-se a partir da década de 1950 como a principal copa nacional do futebol italiano.</p>
 
-<p>A primeira edição da Coppa Italia foi realizada em 1922 e terminou com o título do Vado, clube da região da Ligúria. Depois dessa edição inicial, o torneio passou por um longo período sem ser disputado e voltou ao calendário apenas na temporada 1935–36, quando o Torino conquistou o troféu.</p>
+            <p><strong>Como funciona a Coppa Italia</strong></p>
 
-<p>A competição foi novamente interrompida durante a Segunda Guerra Mundial, entre 1943 e 1945, e retornou após o conflito, consolidando-se a partir da década de 1950 como a principal copa nacional do futebol italiano.</p>
+            <p>A competição reúne clubes da Serie A, da Serie B e também representantes das divisões inferiores do futebol italiano.</p>
 
-<div class="ad-slot">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-4145492637375431"
-data-ad-slot="8702501261"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+            <p>O formato segue a lógica clássica das copas europeias: fases iniciais com equipes das ligas menores entrada progressiva dos clubes da elite italiana confrontos eliminatórios até a decisão final disputada em jogo único</p>
 
-<p><strong>Como funciona a Coppa Italia</strong></p>
+            <p>Desde 2008, a final é disputada no Estádio Olímpico de Roma, palco tradicional das decisões da competição.</p>
 
-<p>A competição reúne clubes da Serie A, da Serie B e também representantes das divisões inferiores do futebol italiano.</p>
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-<p>O formato segue a lógica clássica das copas europeias: fases iniciais com equipes das ligas menores, entrada progressiva dos clubes da elite italiana e confrontos eliminatórios até a decisão final disputada em jogo único.</p>
+            <p><strong>Os maiores campeões da Coppa Italia</strong></p>
 
-<p>Desde 2008, a final é disputada no Estádio Olímpico de Roma, palco tradicional das decisões da competição.</p>
+            <p>Alguns clubes construíram uma relação histórica com o torneio e aparecem frequentemente nas decisões.</p>
 
-<p><strong>Os maiores campeões da Coppa Italia</strong></p>
+            <p>Clube Títulos Juventus 15 Roma 9 Inter de Milão 9 Lazio 7 Fiorentina 6 Napoli 6 Milan 5</p>
 
-<p>Alguns clubes construíram uma relação histórica com o torneio e aparecem frequentemente nas decisões.</p>
+            <p>A Juventus lidera a lista de conquistas e ampliou essa vantagem principalmente nas últimas décadas, incluindo uma sequência marcante de títulos entre 2015 e 2018.</p>
 
-<p>Clube — Títulos</p>
-<p>Juventus — 15</p>
-<p>Roma — 9</p>
-<p>Inter de Milão — 9</p>
-<p>Lazio — 7</p>
-<p>Fiorentina — 6</p>
-<p>Napoli — 6</p>
-<p>Milan — 5</p>
+            <p>Roma e Inter também aparecem com frequência nas decisões, enquanto clubes como Lazio, Napoli e Fiorentina acumulam campanhas importantes ao longo da história da competição.</p>
 
-<p>A Juventus lidera a lista de conquistas e ampliou essa vantagem principalmente nas últimas décadas, incluindo uma sequência marcante de títulos entre 2015 e 2018.</p>
+            <p><strong>Decisões recentes</strong></p>
 
-<p>Roma e Inter também aparecem com frequência nas decisões, enquanto clubes como Lazio, Napoli e Fiorentina acumulam campanhas importantes ao longo da história da competição.</p>
+            <p>Nos últimos anos, a Coppa Italia continuou reunindo grandes clubes do futebol italiano em finais disputadas no Estádio Olímpico de Roma. Alguns dos campeões mais recentes da competição foram:</p>
 
-<div class="ad-slot">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-4145492637375431"
-data-ad-slot="8702501261"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+            <p>2023 – Inter de Milão 2 x 1 Fiorentina</p>
+            <p>2022 – Inter de Milão 4 x 2 Juventus (prorrogação)</p>
+            <p>2021 – Juventus 2 x 1 Atalanta</p>
+            <p>2020 – Napoli 0 x 0 Juventus (Napoli campeão nos pênaltis)</p>
+            <p>2019 – Lazio 2 x 0 Atalanta</p>
 
-<p><strong>Decisões recentes</strong></p>
+            <p>Essas decisões mostram como o torneio costuma reunir tanto clubes tradicionais quanto equipes que vivem momentos competitivos fortes no futebol italiano.</p>
 
-<p>Nos últimos anos, a Coppa Italia continuou reunindo grandes clubes do futebol italiano em finais disputadas no Estádio Olímpico de Roma.</p>
+            <p><strong>Quando a Coppa Italia produz surpresas</strong></p>
 
-<p>2023 – Inter de Milão 2 x 1 Fiorentina</p>
-<p>2022 – Inter de Milão 4 x 2 Juventus (prorrogação)</p>
-<p>2021 – Juventus 2 x 1 Atalanta</p>
-<p>2020 – Napoli 0 x 0 Juventus (Napoli campeão nos pênaltis)</p>
-<p>2019 – Lazio 2 x 0 Atalanta</p>
+            <p>Apesar do domínio histórico dos grandes clubes, o formato eliminatório da Coppa Italia também abre espaço para campanhas inesperadas.</p>
 
-<p><strong>Quando a Coppa Italia produz surpresas</strong></p>
+            <p>Clubes que normalmente não disputam o título da Serie A já conseguiram chegar longe no torneio ou eliminar equipes tradicionais ao longo das fases da competição.</p>
 
-<p>Apesar do domínio histórico dos grandes clubes, o formato eliminatório da Coppa Italia também abre espaço para campanhas inesperadas.</p>
+            <p>Um exemplo recente foi a Atalanta, que voltou a disputar finais nas últimas temporadas depois de décadas longe das decisões nacionais, mostrando como a copa pode abrir espaço para novos protagonistas.</p>
 
-<p>Clubes que normalmente não disputam o título da Serie A já conseguiram chegar longe no torneio ou eliminar equipes tradicionais ao longo das fases da competição.</p>
+            <p>Esse tipo de cenário é parte do charme das copas nacionais: em confrontos eliminatórios, uma única partida pode mudar completamente o rumo de uma campanha.</p>
 
-<p>Um exemplo recente foi a Atalanta, que voltou a disputar finais nas últimas temporadas depois de décadas longe das decisões nacionais.</p>
+            <p><strong>Recordes e curiosidades da Coppa Italia</strong></p>
 
-<p><strong>Recordes e curiosidades da Coppa Italia</strong></p>
+            <p>Alguns números ajudam a explicar a tradição da competição no futebol italiano.</p>
 
-<p>Campeão atual: Bologna (2024–25)</p>
-<p>Estádio tradicional da final: Olímpico de Roma</p>
-<p>Maior artilheiro da história do torneio: Alessandro Del Piero</p>
+            <p>Campeão atual: Bologna (2024–25)</p>
+            <p>Estádio tradicional da final: Olímpico de Roma</p>
+            <p>Maior artilheiro da história do torneio: Alessandro Del Piero</p>
 
-<p>Outra curiosidade importante é que o campeão da Coppa Italia disputa na temporada seguinte a Supercoppa Italiana, enfrentando o vencedor da Serie A.</p>
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-<p><strong>A Coppa Italia na cultura do futebol italiano</strong></p>
+            <p>Outra curiosidade importante é que o campeão da Coppa Italia disputa na temporada seguinte a Supercoppa Italiana, enfrentando o vencedor da Serie A.</p>
 
-<p>Embora o título da Serie A seja o principal objetivo da maioria dos clubes, a Coppa Italia mantém um valor importante dentro da temporada italiana.</p>
+            <p><strong>A Coppa Italia na cultura do futebol italiano</strong></p>
 
-<p>Para equipes médias ou em reconstrução, o torneio pode representar um título nacional relevante, classificação para competições europeias e uma campanha histórica para o clube e sua torcida.</p>
+            <p>Embora o título da Serie A seja o principal objetivo da maioria dos clubes, a Coppa Italia mantém um valor importante dentro da temporada italiana. Para equipes médias ou em reconstrução, o torneio pode representar: um título nacional relevante classificação para competições europeias uma campanha histórica para o clube e sua torcida Além disso, as noites decisivas da competição costumam mobilizar torcedores de todo o país, especialmente quando grandes rivalidades entram em campo.</p>
 
-<p>Mais de um século após sua criação, a Coppa Italia continua sendo parte importante da tradição do futebol italiano.</p>
+            <p>Mais de um século após sua criação, a Coppa Italia continua sendo parte importante da tradição do futebol italiano — um torneio onde história, rivalidade e mata-mata seguem produzindo capítulos marcantes temporada após temporada.</p>
 
-<p>Para entender outro mata-mata histórico do futebol europeu, veja também a análise sobre <a href="https://cortedosesportes.com.br/barcelona-atletico-semifinal-copa-del-rey-historia-maiores-campeoes.html">Barcelona x Atlético de Madrid na Copa del Rey</a>.</p>
+            <p>Para comparar com outro mata-mata histórico e manter a linkagem interna conectada ao tema, veja também: <a href="https://cortedosesportes.com.br/barcelona-atletico-semifinal-copa-del-rey-historia-maiores-campeoes.html">Barcelona x Atlético na semifinal da Copa del Rey: história, maiores campeões</a></p>
+          </article>
+        </div>
+      </section>
 
-</article>
-</div>
-</section>
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
 
-<aside>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
 
-<div class="card">
-<h2 class="section-title">Agenda do Dia</h2>
-<ul class="agenda-list" id="agendaList">
-<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-</ul>
-</div>
-
-<div class="ad-slot sidebar">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-4145492637375431"
-data-ad-slot="5521804159"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-</aside>
-
-</div>
-</div>
+    </div>
+  </div>
 </main>
 
 <footer>
-© 2026 Corte dos Esportes |
-<a href="politica.html">Privacidade</a> |
-<a href="contato.html">Contato</a> |
-<a href="sobre.html">Sobre</a> |
-<a href="termos.html">Termos de Uso</a>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
 </footer>
 
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
 
 </body>
