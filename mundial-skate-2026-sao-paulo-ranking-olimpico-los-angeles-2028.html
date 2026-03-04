@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mundial de Skate em São Paulo reúne elite global e abre corrida olímpica rumo a Los Angeles 2028 | Corte dos Esportes</title>
+  <meta name="description" content="Skateboarding World Championships acontece de 1º a 8 de março de 2026 no Parque Cândido Portinari, em São Paulo, com Street e Park, ranking mundial e corrida para Los Angeles 2028." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Mundial de Skate em São Paulo reúne elite global e abre corrida olímpica rumo a Los Angeles 2028</h1>
+          <p class="subhead" id="articleExcerpt">Skateboarding World Championships acontece de 1º a 8 de março de 2026 no Parque Cândido Portinari, em São Paulo, com Street e Park, ranking mundial e a corrida para Los Angeles 2028.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <!-- ANÚNCIO (ARTIGO - TOPO) -->
+          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+            <!-- Display-Article-Meio -->
+            <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-4145492637375431"
+              data-ad-slot="8702501261"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+
+          <article id="articleBody">
+            <p>São Paulo voltou a se transformar no centro do skate mundial. <strong>Entre os dias 1º e 8 de março de 2026</strong>, a capital paulista recebe o <strong>Skateboarding World Championships</strong>, principal campeonato organizado pela World Skate, com as disputas de <strong>Street</strong> e <strong>Park</strong>.</p>
+
+            <p>A competição acontece no <strong>Parque Cândido Portinari</strong>, na zona oeste da cidade, e marca um momento histórico: é a primeira vez que um Campeonato Mundial de Skate é realizado no Brasil reunindo simultaneamente as disputas de Street e Park no mesmo evento.</p>
+
+            <p>Além da disputa pelos títulos mundiais, o campeonato também abre oficialmente o novo ciclo competitivo que leva aos Jogos Olímpicos de Los Angeles 2028, já que os resultados passam a influenciar diretamente o ranking internacional da modalidade.</p>
+
+            <p><strong>Street e Park: como funcionam as disputas</strong></p>
+
+            <p><strong>Street</strong></p>
+            <p>A pista de Street reproduz obstáculos típicos encontrados nas ruas, como corrimãos, escadas, bancos e bordas, simulando o ambiente urbano que marcou a origem do esporte.</p>
+
+            <p>Nas disputas internacionais, cada skatista realiza <strong>duas voltas de 45 segundos</strong>, nas quais percorre toda a pista executando sequências de manobras. Se o atleta cair durante a volta, ele pode se levantar e continuar até o tempo terminar, tentando completar a linha dentro do limite de tempo.</p>
+
+            <p>Depois dessas voltas, os competidores têm <strong>cinco tentativas de manobras individuais</strong>, momento em que executam manobras com maior grau de dificuldade para elevar a nota final.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Park</strong></p>
+            <p>No Park, a disputa acontece em pistas profundas com curvas contínuas, muito semelhantes ao formato de piscinas vazias adaptadas para o skate.</p>
+
+            <p>Cada atleta realiza <strong>três voltas de 45 segundos</strong>, aproveitando a velocidade da pista para executar manobras aéreas e linhas completas pelas transições.</p>
+
+            <p>Diferente do Street, se o skatista cai durante a volta no Park a tentativa é encerrada naquele momento, o que aumenta a pressão para completar a linha sem erros.</p>
+
+            <p><strong>Ranking mundial e início da corrida olímpica</strong></p>
+
+            <p>O campeonato mundial tem grande peso dentro do <strong>World Skateboarding Ranking</strong>, ranking oficial que organiza a classificação global dos atletas.</p>
+
+            <p>Nas principais competições internacionais participam normalmente entre 30 e 40 skatistas por categoria, selecionados de acordo com suas posições no ranking mundial e pelas vagas destinadas a cada federação.</p>
+
+            <p>Além disso, existe um limite de representantes por país. Em eventos desse nível, uma mesma nação costuma ter até três atletas por categoria, evitando que apenas um país domine completamente a disputa.</p>
+
+            <p>Por isso, resultados em campeonatos mundiais podem alterar significativamente o cenário competitivo logo no início do ciclo olímpico.</p>
+
+            <p><strong>Rayssa Leal lidera favoritos brasileiros no Street</strong></p>
+
+            <p>O Brasil chega ao campeonato mundial com nomes fortes principalmente na modalidade Street.</p>
+
+            <p>A principal estrela é <a href="https://cortedosesportes.com.br/rayssa-leal-fenomeno-geracional-skate.html">Rayssa Leal</a>, medalhista olímpica e uma das figuras mais importantes do skate mundial. A brasileira entra na competição entre as favoritas ao título, mantendo presença constante nas primeiras posições do ranking internacional.</p>
+
+            <p>Outro destaque brasileiro é Giovanni Vianna, também competidor do Street, que vem acumulando resultados importantes no circuito profissional e aparece entre os skatistas mais consistentes da atual geração.</p>
+
+            <p><strong>Augusto Akio representa o Brasil no Park</strong></p>
+
+            <p>Na modalidade Park, o principal nome brasileiro é Augusto Akio, medalhista olímpico e presença frequente nas finais das grandes competições internacionais.</p>
+
+            <p>Akio se destacou no circuito pela criatividade ao utilizar toda a extensão da pista, conectando diferentes partes da transição para construir linhas rápidas e técnicas, com manobras aéreas de grande amplitude.</p>
+
+            <p><strong>Park feminino brasileiro chega forte ao Mundial</strong></p>
+
+            <p>No Park feminino, o Brasil também apresenta nomes de peso no cenário internacional.</p>
+
+            <p>Dora Varella e Isadora Pacheco, que já representaram o país nos Jogos Olímpicos, chegam novamente como atletas experientes nas grandes competições.</p>
+
+            <p>Outro destaque é Raicca Ventura, que já conquistou título mundial e aparece como um dos nomes mais competitivos da nova geração do skate feminino.</p>
+
+            <p><strong>Delegação brasileira no Mundial de Skate</strong></p>
+
+            <p><strong>Street masculino</strong></p>
+            <p>- Giovanni Vianna</p>
+            <p>- Kelvin Hoefler</p>
+            <p>- Felipe Gustavo</p>
+            <p>- Ivan Monteiro</p>
+            <p>- Carlos Ribeiro</p>
+
+            <p><strong>Street feminino</strong></p>
+            <p>- Rayssa Leal</p>
+            <p>- Pâmela Rosa</p>
+            <p>- Gabi Mazetto</p>
+            <p>- Marina Gabriela</p>
+
+            <p><strong>Park masculino</strong></p>
+            <p>- Augusto Akio</p>
+            <p>- Pedro Barros</p>
+            <p>- Luigi Cini</p>
+
+            <p><strong>Park feminino</strong></p>
+            <p>- Dora Varella</p>
+            <p>- Isadora Pacheco</p>
+            <p>- Raicca Ventura</p>
+
+            <p><strong>Japão segue como potência mundial do skate</strong></p>
+
+            <p>Se o Brasil chega forte, o Japão continua sendo uma das maiores potências do skate internacional. O país asiático domina boa parte das principais competições do circuito e traz para São Paulo uma geração extremamente técnica.</p>
+
+            <p>Entre os nomes mais aguardados estão Sora Shirai e Momiji Nishiya, campeã olímpica em Tóquio e uma das grandes referências do skate feminino.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Próximas etapas do circuito internacional em 2026</strong></p>
+
+            <p>Depois do Mundial realizado em São Paulo, o circuito da World Skate segue ao longo da temporada com novas etapas que continuam distribuindo pontos para o ranking internacional.</p>
+
+            <p>Entre os eventos previstos para 2026 estão competições em Roma (Itália) em junho, Xangai (China) em setembro e Paris (França) em outubro.</p>
+
+            <p><a href="https://cortedosesportes.com.br/sandro-dias-guinness-predio-70m-porto-alegre.html">Leia também: Sandro Dias entra para o Guinness em manobra em prédio de 70m em Porto Alegre</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "skate";
+  const CATEGORY_NAME = "Skate";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
