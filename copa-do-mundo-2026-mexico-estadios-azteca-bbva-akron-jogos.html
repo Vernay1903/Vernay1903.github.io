@@ -19,9 +19,11 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- CSS do compartilhar (único para todas as notícias) -->
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
     *, *::before, *::after { box-sizing: border-box; }
 
     html, body {
@@ -48,14 +50,17 @@
 
     .ad-slot { overflow: hidden; max-width: 100%; }
 
+    /* ESSENCIAL para grid/flex não estourar */
     .layout > section, .layout > aside { min-width: 0; }
 
+    /* Quebra segura (não “corta” frases) */
     h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
       overflow-wrap: anywhere;
       word-break: break-word;
       hyphens: none;
       max-width: 100%;
     }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -65,6 +70,7 @@
 
     main { flex: 1; }
 
+    /* HEADER (STICKY) */
     header {
       background: #0A1E3A;
       padding: 10px 30px;
@@ -92,6 +98,7 @@
       text-decoration: none;
     }
 
+    /* MENU (STICKY) */
     .sports-menu {
       background: #FFFFFF;
       padding: 15px;
@@ -123,11 +130,13 @@
 
     .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
 
+    /* Destaque do esporte atual no menu */
     .sports-menu a.active {
       background: #1E4BA5;
       color: #FFFFFF;
     }
 
+    /* LAYOUT */
     .page {
       max-width: 1200px;
       margin: 0 auto;
@@ -142,6 +151,7 @@
       align-items: start;
     }
 
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
     aside { margin-right: 0; }
 
     .card {
@@ -180,6 +190,7 @@
 
     .meta a:hover { text-decoration: underline; }
 
+    /* AD SLOTS (sem texto) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
@@ -199,6 +210,7 @@
       margin: 0 0 16px;
     }
 
+    /* SIDEBAR */
     .section-title {
       margin: 0 0 12px;
       font-size: 18px;
@@ -253,6 +265,7 @@
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
 
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
       .sports-menu { top: auto; position: static; }
 
       h1 { font-size: 34px; }
@@ -291,174 +304,210 @@
   <div class="page">
     <div class="layout">
 
+      <!-- ARTIGO -->
       <section>
         <div class="card">
-
           <h1 id="articleTitle">Conheça os estádios da Copa do Mundo 2026 no México: história, capacidade e quais jogos serão disputados</h1>
-
-          <p class="subhead" id="articleExcerpt">
-            Estádio Azteca, BBVA e Akron receberão jogos da Copa do Mundo 2026 no México. Veja história, capacidade e quais partidas serão disputadas em cada estádio.
-          </p>
+          <p class="subhead" id="articleExcerpt">Conheça os estádios da Copa do Mundo 2026 no México e os jogos que serão disputados em cada um deles. O país receberá 13 partidas do Mundial em três cidades: Cidade do México, Guadalajara e Monterrey.</p>
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">05/03/2026</span> ·
             Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
           </div>
 
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
           <div class="share-wrap">
             <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
             <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <!-- ADSENSE TOPO -->
-          <div class="ad-slot">
+          <!-- ANÚNCIO (ARTIGO - TOPO) -->
+          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+            <!-- Display-Article-Meio -->
             <ins class="adsbygoogle"
               style="display:block"
               data-ad-client="ca-pub-4145492637375431"
               data-ad-slot="8702501261"
               data-ad-format="auto"
               data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
           </div>
 
           <article id="articleBody">
+            <p><strong>Conheça os estádios da Copa do Mundo 2026 no México: história, capacidade e quais jogos serão disputados</strong></p>
 
-<p>Conheça os estádios da Copa do Mundo 2026 no México e os jogos que serão disputados em cada um deles. O país receberá 13 partidas do Mundial, distribuídas entre três cidades: Cidade do México, Guadalajara e Monterrey, com jogos nos estádios Azteca, Akron e BBVA.</p>
+            <p>Conheça os estádios da Copa do Mundo 2026 no México e os jogos que serão disputados em cada um deles. O país receberá 13 partidas do Mundial, distribuídas entre três cidades: Cidade do México, Guadalajara e Monterrey, com jogos nos estádios Azteca, Akron e BBVA.</p>
 
-<p>O México possui uma relação especial com a Copa do Mundo. Foi o primeiro país a sediar o torneio duas vezes — em 1970 e 1986 — e voltará ao centro do futebol mundial em 2026, quando receberá partidas novamente ao lado de Estados Unidos e Canadá.</p>
+            <p>O México possui uma relação especial com a Copa do Mundo. Foi o primeiro país a sediar o torneio duas vezes — em 1970 e 1986 — e voltará ao centro do futebol mundial em 2026, quando receberá partidas novamente ao lado de Estados Unidos e Canadá.</p>
 
-<p>Mais do que arenas modernas, os estádios mexicanos carregam história e tradição no futebol internacional. Muitos deles foram palco de momentos marcantes das Copas do Mundo e continuam sendo referências quando se fala em grandes eventos esportivos.</p>
+            <p>Mais do que arenas modernas, os estádios mexicanos carregam história e tradição no futebol internacional. Muitos deles foram palco de momentos marcantes das Copas do Mundo e continuam sendo referências quando se fala em grandes eventos esportivos.</p>
 
-<p><strong>Estádio Azteca — Cidade do México</strong></p>
+            <p><strong>Estádio Azteca — Cidade do México</strong></p>
 
-<p>O Estádio Azteca é um dos palcos mais icônicos da história do futebol mundial.</p>
+            <p>O Estádio Azteca é um dos palcos mais icônicos da história do futebol mundial.</p>
 
-<p>Inaugurado em 1966, o estádio foi cenário de momentos que marcaram as Copas do Mundo. Ali aconteceram duas finais do torneio: em 1970, quando o Brasil de Pelé conquistou o tricampeonato, e em 1986, quando a Argentina de Diego Maradona levantou a taça.</p>
+            <p>Inaugurado em 1966, o estádio foi cenário de momentos que marcaram as Copas do Mundo. Ali aconteceram duas finais do torneio: em 1970, quando o Brasil de Pelé conquistou o tricampeonato, e em 1986, quando a Argentina de Diego Maradona levantou a taça.</p>
 
-<p>Em 2026, o estádio voltará a receber partidas do Mundial e ampliará ainda mais sua presença histórica na competição.</p>
+            <p>Em 2026, o estádio voltará a receber partidas do Mundial e ampliará ainda mais sua presença histórica na competição.</p>
 
-<p><strong>Curiosidades</strong></p>
+            <p><strong>Curiosidades</strong></p>
 
-<p>Capacidade aproximada: 87 mil torcedores</p>
-<p>Altitude: cerca de 2.200 metros acima do nível do mar</p>
-<p>Único estádio da história a sediar duas finais de Copa do Mundo</p>
-<p>Em 2026 será o primeiro estádio a receber jogos em três Copas diferentes.</p>
+            <p>Capacidade aproximada: 87 mil torcedores</p>
 
-<p><strong>Times que jogam no estádio</strong></p>
+            <p>Altitude: cerca de 2.200 metros acima do nível do mar</p>
 
-<p>Club América<br>
-Cruz Azul</p>
+            <p>Único estádio da história a sediar duas finais de Copa do Mundo</p>
 
-<p><strong>Jogos da Copa do Mundo 2026 no Azteca</strong></p>
+            <p>Em 2026 será o primeiro estádio a receber jogos em três Copas diferentes.</p>
 
-<p>O estádio receberá cinco partidas do Mundial.</p>
+            <p><strong>Times que jogam no estádio</strong></p>
 
-<p>11 de junho de 2026<br>
-México x África do Sul — Jogo 1 (abertura da Copa)</p>
+            <p>O Azteca também é casa de dois clubes importantes do futebol mexicano:</p>
 
-<p>17 de junho de 2026<br>
-Uzbequistão x Colômbia — Jogo 24</p>
+            <p>Club América<br>
+            Cruz Azul</p>
 
-<p>24 de junho de 2026<br>
-México x vencedor do playoff D<br>
-(Dinamarca / República Tcheca / Irlanda / Macedônia do Norte) — Jogo 53</p>
+            <p><strong>Jogos da Copa do Mundo 2026 no Azteca</strong></p>
 
-<p>30 de junho de 2026<br>
-Partida eliminatória — Jogo 79 (fase de 32-avos de final)</p>
+            <p>O estádio receberá cinco partidas do Mundial.</p>
 
-<p>5 de julho de 2026<br>
-Partida eliminatória — Jogo 92 (oitavas de final)</p>
+            <p>11 de junho de 2026<br>
+            México x África do Sul — Jogo 1 (abertura da Copa)</p>
 
-<p><strong>O estádio e a cidade</strong></p>
+            <p>17 de junho de 2026<br>
+            Uzbequistão x Colômbia — Jogo 24</p>
 
-<p>Na Cidade do México, o Estádio Azteca faz parte da paisagem esportiva da capital. Ao longo de décadas, o local recebeu finais de campeonato, clássicos do futebol mexicano e partidas históricas de Copa do Mundo, tornando-se um dos estádios mais reconhecidos do futebol internacional.</p>
+            <p>24 de junho de 2026<br>
+            México x vencedor do playoff D<br>
+            (Dinamarca / República Tcheca / Irlanda / Macedônia do Norte) — Jogo 53</p>
 
-<p><strong>Estádio BBVA — Monterrey</strong></p>
+            <p>30 de junho de 2026<br>
+            Partida eliminatória — Jogo 79 (fase de 32-avos de final)</p>
 
-<p>O Estádio BBVA representa a nova geração de arenas do futebol mexicano.</p>
+            <p>5 de julho de 2026<br>
+            Partida eliminatória — Jogo 92 (oitavas de final)</p>
 
-<p>Inaugurado em 2015, o estádio rapidamente se tornou um dos mais modernos da América Latina. Sua arquitetura chama atenção pela vista panorâmica das montanhas da Sierra Madre, que cercam a cidade de Monterrey.</p>
+            <p><strong>O estádio e a cidade</strong></p>
 
-<p><strong>Curiosidades</strong></p>
+            <p>Na Cidade do México, o Estádio Azteca faz parte da paisagem esportiva da capital. Ao longo de décadas, o local recebeu finais de campeonato, clássicos do futebol mexicano e partidas históricas de Copa do Mundo, tornando-se um dos estádios mais reconhecidos do futebol internacional.</p>
 
-<p>Capacidade aproximada: 53 mil lugares</p>
-<p>Considerado um dos estádios mais modernos do continente</p>
-<p>Estrutura projetada para grandes eventos internacionais.</p>
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-<p><strong>Time da casa</strong></p>
+            <p><strong>Estádio BBVA — Monterrey</strong></p>
 
-<p>Monterrey (Rayados)</p>
+            <p>O Estádio BBVA representa a nova geração de arenas do futebol mexicano.</p>
 
-<p><strong>Jogos da Copa do Mundo 2026 no BBVA</strong></p>
+            <p>Inaugurado em 2015, o estádio rapidamente se tornou um dos mais modernos da América Latina. Sua arquitetura chama atenção pela vista panorâmica das montanhas da Sierra Madre, que cercam a cidade de Monterrey.</p>
 
-<p>O estádio receberá quatro partidas da Copa do Mundo.</p>
+            <p><strong>Curiosidades</strong></p>
 
-<p>14 de junho de 2026<br>
-Tunísia x vencedor do playoff B<br>
-(Ucrânia / Suécia / Polônia / Albânia) — Jogo 12</p>
+            <p>Capacidade aproximada: 53 mil lugares</p>
 
-<p>20 de junho de 2026<br>
-Tunísia x Japão — Jogo 36</p>
+            <p>Considerado um dos estádios mais modernos do continente</p>
 
-<p>24 de junho de 2026<br>
-África do Sul x Coreia do Sul — Jogo 54</p>
+            <p>Estrutura projetada para grandes eventos internacionais.</p>
 
-<p>29 de junho de 2026<br>
-Partida eliminatória — Jogo 75 (fase de 32-avos de final)</p>
+            <p><strong>Time da casa</strong></p>
 
-<p><strong>O estádio e a cidade</strong></p>
+            <p>Monterrey (Rayados)</p>
 
-<p>Em Monterrey, o futebol ocupa um lugar central na vida esportiva da cidade. O Estádio BBVA é a casa do Monterrey e recebe regularmente grandes jogos da liga mexicana, além do clássico local contra o Tigres, uma das rivalidades mais conhecidas do país.</p>
+            <p><strong>Jogos da Copa do Mundo 2026 no BBVA</strong></p>
 
-<p><strong>Estádio Akron — Guadalajara</strong></p>
+            <p>O estádio receberá quatro partidas da Copa do Mundo.</p>
 
-<p>O Estádio Akron representa o encontro entre tradição e modernidade no futebol mexicano.</p>
+            <p>14 de junho de 2026<br>
+            Tunísia x vencedor do playoff B<br>
+            (Ucrânia / Suécia / Polônia / Albânia) — Jogo 12</p>
 
-<p>Inaugurado em 2010, ele substituiu o histórico Estádio Jalisco como casa do Chivas Guadalajara e se tornou rapidamente um dos estádios mais importantes do país.</p>
+            <p>20 de junho de 2026<br>
+            Tunísia x Japão — Jogo 36</p>
 
-<p><strong>Curiosidades</strong></p>
+            <p>24 de junho de 2026<br>
+            África do Sul x Coreia do Sul — Jogo 54</p>
 
-<p>Capacidade aproximada: 49 mil torcedores</p>
-<p>Inauguração: 2010</p>
-<p>Design do teto inspirado em um vulcão coberto de grama.</p>
+            <p>29 de junho de 2026<br>
+            Partida eliminatória — Jogo 75 (fase de 32-avos de final)</p>
 
-<p><strong>Time da casa</strong></p>
+            <p><strong>O estádio e a cidade</strong></p>
 
-<p>Chivas Guadalajara</p>
+            <p>Em Monterrey, o futebol ocupa um lugar central na vida esportiva da cidade. O Estádio BBVA é a casa do Monterrey e recebe regularmente grandes jogos da liga mexicana, além do clássico local contra o Tigres, uma das rivalidades mais conhecidas do país.</p>
 
-<p><strong>Jogos da Copa do Mundo 2026 no Estádio Akron</strong></p>
+            <p><strong>Estádio Akron — Guadalajara</strong></p>
 
-<p>O estádio receberá quatro partidas da fase de grupos.</p>
+            <p>O Estádio Akron representa o encontro entre tradição e modernidade no futebol mexicano.</p>
 
-<p>11 de junho de 2026<br>
-Coreia do Sul x vencedor do playoff D<br>
-(Dinamarca / República Tcheca / Irlanda / Macedônia do Norte) — Jogo 2</p>
+            <p>Inaugurado em 2010, ele substituiu o histórico Estádio Jalisco como casa do Chivas Guadalajara e se tornou rapidamente um dos estádios mais importantes do país.</p>
 
-<p>18 de junho de 2026<br>
-México x Coreia do Sul — Jogo 28</p>
+            <p><strong>Curiosidades</strong></p>
 
-<p>23 de junho de 2026<br>
-Colômbia x vencedor do playoff 1<br>
-(República Democrática do Congo / Jamaica / Nova Caledônia) — Jogo 48</p>
+            <p>Capacidade aproximada: 49 mil torcedores</p>
 
-<p>26 de junho de 2026<br>
-Uruguai x Espanha — Jogo 66</p>
+            <p>Inauguração: 2010</p>
 
-<p><strong>O estádio e a cidade</strong></p>
+            <p>Design do teto inspirado em um vulcão coberto de grama.</p>
 
-<p>Em Guadalajara, o futebol tem forte ligação com o Chivas, um dos clubes mais tradicionais do México. O Estádio Akron tornou-se o principal palco da equipe e frequentemente recebe grandes partidas do campeonato mexicano e jogos da seleção nacional.</p>
+            <p><strong>Time da casa</strong></p>
 
-<p>Para entender também <strong>onde a seleção brasileira poderá jogar na Copa do Mundo de 2026</strong>, veja a análise completa dos possíveis estádios nos Estados Unidos nesta matéria especial:<br>
-<a href="https://cortedosesportes.com.br/onde-brasil-vai-jogar-copa-2026-estadios-metlife-lincoln-hard-rock.html">Onde o Brasil pode jogar na Copa de 2026: estádios MetLife, Lincoln Financial Field e Hard Rock</a>.</p>
+            <p>Chivas Guadalajara</p>
 
+            <p><strong>Jogos da Copa do Mundo 2026 no Estádio Akron</strong></p>
+
+            <p>O estádio receberá quatro partidas da fase de grupos.</p>
+
+            <p>11 de junho de 2026<br>
+            Coreia do Sul x vencedor do playoff D<br>
+            (Dinamarca / República Tcheca / Irlanda / Macedônia do Norte) — Jogo 2</p>
+
+            <p>18 de junho de 2026<br>
+            México x Coreia do Sul — Jogo 28</p>
+
+            <p>23 de junho de 2026<br>
+            Colômbia x vencedor do playoff 1<br>
+            (República Democrática do Congo / Jamaica / Nova Caledônia) — Jogo 48</p>
+
+            <p>26 de junho de 2026<br>
+            Uruguai x Espanha — Jogo 66</p>
+
+            <p><strong>O estádio e a cidade</strong></p>
+
+            <p>Em Guadalajara, o futebol tem forte ligação com o Chivas, um dos clubes mais tradicionais do México. O Estádio Akron tornou-se o principal palco da equipe e frequentemente recebe grandes partidas do campeonato mexicano e jogos da seleção nacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Se você também quer saber onde a seleção brasileira pode atuar no Mundial, a matéria <a href="https://cortedosesportes.com.br/onde-brasil-vai-jogar-copa-2026-estadios-metlife-lincoln-hard-rock.html">Onde o Brasil vai jogar na Copa 2026: estádios MetLife, Lincoln Financial Field e Hard Rock</a> detalha os possíveis palcos e o contexto de cada estádio.</p>
           </article>
         </div>
       </section>
 
       <!-- SIDEBAR -->
       <aside>
-
         <div class="card">
           <h2 class="section-title">Agenda do Dia</h2>
           <ul class="agenda-list" id="agendaList">
@@ -466,16 +515,18 @@ Uruguai x Espanha — Jogo 66</p>
           </ul>
         </div>
 
-        <div class="ad-slot sidebar">
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
           <ins class="adsbygoogle"
             style="display:block"
             data-ad-client="ca-pub-4145492637375431"
             data-ad-slot="5521804159"
             data-ad-format="auto"
             data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         </div>
-
       </aside>
 
     </div>
@@ -494,16 +545,86 @@ Uruguai x Espanha — Jogo 66</p>
   const CATEGORY_SLUG = "futebol";
   const CATEGORY_NAME = "Futebol";
 
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
   const categoryLink = document.getElementById("categoryLink");
   categoryLink.textContent = CATEGORY_NAME;
   categoryLink.href = CATEGORY_SLUG + ".html";
 
+  // Menu ativo
   const menuLinks = document.querySelectorAll("#sportsMenu a");
   menuLinks.forEach(a => {
     if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
   });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
 </script>
 
+<!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
 
 </body>
