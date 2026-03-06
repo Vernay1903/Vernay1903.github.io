@@ -1,18 +1,30 @@
 [
   {
+    "time": "17:00",
+    "desc": "Celta de Vigo x Real Madrid - La Liga"
+  },
+  {
     "time": "21:00",
-    "desc": "Magic x Mavericks - NBA"
+    "desc": "Hornets x Heat - NBA"
   },
   {
-    "time": "21:30",
-    "desc": "Heat x Nets - NBA"
-  },
-  {
-    "time": "21:30",
-    "desc": "Rockets x Warriors - NBA"
+    "time": "21:00",
+    "desc": "Celtics x Mavericks - NBA"
   },
   {
     "time": "22:00",
-    "desc": "Spurs x Pistons - NBA"
+    "desc": "Rockets x Trail Blazers - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Nuggets x Knicks - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Suns x Pelicans - NBA"
+  },
+  {
+    "time": "23:30",
+    "desc": "Spurs x Clippers - NBA"
   }
 ]
