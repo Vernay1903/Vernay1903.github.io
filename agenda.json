@@ -1,18 +1,22 @@
 [
   {
-    "time": "18:00",
-    "desc": "Internacional x Grêmio - Final do Campeonato Gaúcho"
-  },
-  {
-    "time": "18:00",
-    "desc": "Fluminense x Flamengo - Final do Campeonato Carioca"
-  },
-  {
-    "time": "18:00",
-    "desc": "Cruzeiro x Atlético-MG - Final do Campeonato Mineiro"
+    "time": "20:00",
+    "desc": "Cavaliers x 76ers - NBA"
   },
   {
     "time": "20:30",
-    "desc": "Novorizontino x Palmeiras - Final do Campeonato Paulista"
+    "desc": "Thunder x Nuggets - NBA"
+  },
+  {
+    "time": "20:30",
+    "desc": "Nets x Grizzlies - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "Jazz x Warriors - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Clippers x Knicks - NBA"
   }
 ]
