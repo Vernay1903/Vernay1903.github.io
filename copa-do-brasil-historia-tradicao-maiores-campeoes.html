@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Copa do Brasil: história, maiores campeões, formato e por que o torneio segue tão relevante no futebol brasileiro | Corte dos Esportes</title>
+  <meta name="description" content="A Copa do Brasil ocupa um lugar diferente no calendário do futebol nacional. É o campeonato em que tradição, pressão e chance de surpresa convivem o tempo todo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Copa do Brasil: história, maiores campeões, formato e por que o torneio segue tão relevante no futebol brasileiro</h1>
+          <p class="subhead" id="articleExcerpt">A Copa do Brasil ocupa um lugar diferente no calendário do futebol nacional. É o campeonato em que tradição, pressão e chance de surpresa convivem o tempo todo.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">12/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Copa do Brasil ocupa um lugar diferente no calendário do futebol nacional. É o campeonato em que tradição, pressão e chance de surpresa convivem o tempo todo. Para os gigantes, vale taça, dinheiro, vaga na Libertadores e resposta imediata ao torcedor. Para clubes de menor investimento, pode ser a oportunidade de ganhar o país no noticiário, fazer caixa e viver uma daquelas noites que entram para a história.</p>
+
+            <p>Ao longo dos anos, a competição cresceu muito. Ficou maior, mais valiosa e mais pesada dentro do planejamento dos clubes. Ainda assim, manteve a característica que a tornou tão popular: no mata-mata, favoritismo ajuda, mas não garante nada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como nasceu a Copa do Brasil</strong></p>
+
+            <p>A Copa do Brasil foi criada em 1989 com uma proposta clara: ampliar o alcance nacional do calendário e abrir espaço para clubes de diferentes estados em uma competição de grande visibilidade. Em um país com dimensões continentais e realidades muito distintas no futebol, o torneio apareceu como uma forma de colocar frente a frente camisas tradicionais e equipes fora do eixo mais forte do Campeonato Brasileiro.</p>
+
+            <p>O primeiro campeão da história foi o Grêmio, vencedor da edição inaugural de 1989. Esse título abriu a galeria de campeões de um torneio que, com o passar do tempo, ganharia enorme peso no futebol nacional.</p>
+
+            <p>Esse ponto ajudou a construir a identidade da competição. Desde o começo, a Copa do Brasil não foi só uma disputa por título. Ela também virou vitrine, fonte de receita e caminho de afirmação para clubes que nem sempre tinham espaço constante no centro do debate nacional.</p>
+
+            <p>Embora a Copa do Brasil tenha nascido só em 1989, o formato de copa nacional carrega tradição muito mais antiga em outros países. Um bom exemplo é a <a href="https://cortedosesportes.com.br/fa-cup-historia-formato-maiores-campeoes-curiosidades.html">FA Cup, considerada a copa de clubes mais antiga do mundo</a>.</p>
+
+            <p><strong>O mata-mata que fez a fama do campeonato</strong></p>
+
+            <p>Se existe uma marca da Copa do Brasil, é o mata-mata. E isso muda tudo.</p>
+
+            <p>No Brasileiro por pontos corridos, um tropeço pode ser corrigido mais adiante. Na Copa do Brasil, muitas vezes não. O erro pesa mais, a pressão chega mais cedo e o ambiente de decisão aparece já nas primeiras fases. É esse clima que dá ao campeonato um peso diferente.</p>
+
+            <p>Também é daí que vem a relação do torcedor com o torneio. A Copa do Brasil sempre teve cara de drama, de jogo tenso, de classificação arrancada no detalhe, de favorito ameaçado e de zebra rondando. Em poucos campeonatos do país a sensação de risco é tão constante.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quando a Copa do Brasil ficou ainda mais valiosa</strong></p>
+
+            <p>Com o passar do tempo, a Copa do Brasil deixou de ser apenas tradicional e passou a ser também uma das competições mais estratégicas do país. A premiação cresceu, a visibilidade aumentou e a vaga na Libertadores elevou ainda mais o tamanho da taça no calendário nacional.</p>
+
+            <p>Hoje, fazer boa campanha na Copa do Brasil não significa só disputar um troféu importante. Significa também reforço de caixa, peso político, moral com a torcida e um atalho esportivo muito relevante. Para muitos clubes, avançar de fase já ajuda a mudar o tom da temporada. Para os grandes, cair cedo costuma gerar cobrança pesada. Para os médios, ir longe pode representar um salto financeiro e institucional.</p>
+
+            <p><strong>Quem é o atual campeão da Copa do Brasil</strong></p>
+
+            <p>O atual campeão da Copa do Brasil é o Corinthians, vencedor da edição de 2025. O título recolocou o clube paulista no grupo dos maiores vencedores do torneio, agora com quatro conquistas.</p>
+
+            <p><strong>Maiores campeões da Copa do Brasil</strong></p>
+
+            <p>Ao longo da história, alguns clubes construíram relação muito forte com o torneio. O Cruzeiro segue como o maior campeão, com seis títulos. Grêmio e Flamengo aparecem logo atrás, com cinco cada. Corinthians e Palmeiras têm quatro conquistas.</p>
+
+            <p><strong>Lista de títulos dos principais campeões</strong></p>
+
+            <p>Cruzeiro — 6 títulos</p>
+
+            <p>Grêmio — 5 títulos</p>
+
+            <p>Flamengo — 5 títulos</p>
+
+            <p>Corinthians — 4 títulos</p>
+
+            <p>Palmeiras — 4 títulos</p>
+
+            <p>Essa lista ajuda a entender um ponto importante: a Copa do Brasil abre espaço para surpresa, mas a repetição de títulos costuma ficar com clubes que conseguem suportar pressão, montar elenco forte e competir bem em mata-mata durante vários anos.</p>
+
+            <p><strong>As zebras que ajudaram a construir o torneio</strong></p>
+
+            <p>Ao mesmo tempo, a Copa do Brasil nunca foi feita só pelos clubes mais ricos ou mais vitoriosos. Parte da alma do campeonato está justamente nas zebras.</p>
+
+            <p>É impossível falar da história do torneio sem lembrar de times que fugiram do roteiro esperado. O Criciúma foi campeão em 1991, o Juventude levantou a taça em 1999, o Santo André chocou o país em 2004 e o Paulista de Jundiaí venceu em 2005. São conquistas que ajudaram a transformar a Copa do Brasil em um campeonato diferente dos outros.</p>
+
+            <p>Esses títulos deixaram uma mensagem que continua viva até hoje: na Copa do Brasil, camisa pesa, investimento conta, mas zebra existe de verdade. E é justamente isso que mantém o torneio tão atraente para quem joga, para quem cobre e para quem torce.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que a Copa do Brasil continua tão relevante hoje</strong></p>
+
+            <p>A força atual da Copa do Brasil passa por três pontos bem claros.</p>
+
+            <p>O primeiro é esportivo. O campeão garante vaga na Libertadores, o que transforma o torneio em um caminho direto para a principal competição da América do Sul.</p>
+
+            <p>O segundo é financeiro. A premiação por fases faz com que cada avanço tenha impacto concreto no orçamento, algo especialmente importante para clubes fora do topo econômico.</p>
+
+            <p>O terceiro é simbólico. Ganhar a Copa do Brasil ainda tem enorme valor para o torcedor porque é um título de mata-mata, com pressão alta, ambiente de decisão e margem pequena para erro. Não é uma taça conquistada no automático.</p>
+
+            <p><strong>A Copa do Brasil no futebol brasileiro de hoje</strong></p>
+
+            <p>Mesmo com calendário apertado e várias competições ao mesmo tempo, a Copa do Brasil segue com um peso próprio. Ela entrega o que o torcedor brasileiro gosta de ver: confronto decisivo, tensão, classificação no detalhe, rivalidade e chance real de surpresa.</p>
+
+            <p>Por isso, continua sendo um dos campeonatos mais respeitados do país. A Copa do Brasil mistura tradição, premiação alta, vaga continental e a velha sensação de que a zebra pode aparecer a qualquer momento. Poucos torneios no futebol brasileiro conseguem juntar tudo isso com tanta força.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
