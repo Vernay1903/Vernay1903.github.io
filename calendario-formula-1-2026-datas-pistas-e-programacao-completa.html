@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>Fórmula 1 2026: mudanças, história e o calendário que vai marcar a nova era | Corte dos Esportes</title>
-  <meta name="description" content="Temporada 2026 da Fórmula 1: novas regras, 24 etapas entre março e dezembro e calendário completo com pistas e datas — incluindo o GP de Madrid (Madring)." />
+  <meta name="description" content="A temporada 2026 da Fórmula 1 chega com novas regras, 24 etapas entre março e dezembro e um calendário global com pistas tradicionais e o novo desafio em Madrid." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -228,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -273,7 +312,7 @@
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">24/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+            Categoria: <a id="categoryLink" href="#">AUTOMOBILISMO</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -283,23 +322,34 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <!-- ANÚNCIO (SEM TEXTO) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
-            <p>Fórmula 1 2026: mudanças, história e o calendário que vai marcar a nova era</p>
-
             <p>A temporada 2026 da Fórmula 1 é um dos marcos mais aguardados da história recente do automobilismo. Além de trazer novas regras técnicas e carros ainda mais eficientes, o campeonato segue sua jornada global com 24 etapas entre março e dezembro — um dos calendários mais longos dos últimos anos.</p>
 
             <p>Nesta temporada, a F1 busca equilíbrio entre tradição e inovação. Circuitos lendários como Silverstone, Monza e Spa-Francorchamps continuam no calendário, enquanto novos desafios, incluindo um GP em Madrid e um mix de pistas clássicas e urbanas, tornam o ano imprevisível.</p>
 
-            <p>🏁 O que está diferente em 2026</p>
+            <p><strong>🏁 O que está diferente em 2026</strong></p>
 
             <p>🔹 Novo ciclo de carros e regras — A temporada marca a consolidação das regras técnicas reformuladas, com destaque para sistemas aerodinâmicos mais avançados e foco em sustentabilidade dos motores.</p>
+
             <p>🔹 Novos circuitos e rota europeia forte — A inclusão do circuito Madring em Madrid renova o interesse do público espanhol, que já viu a F1 no país por décadas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
             <p>🔹 Mistura de tradição e modernidade — Pistas históricas seguem lado a lado com etapas americanas em expansão, como Las Vegas e Miami.</p>
 
-            <p>📅 Calendário completo da Temporada 2026</p>
+            <p><strong>📅 Calendário completo da Temporada 2026</strong></p>
 
             <p>Veja abaixo as 24 etapas confirmadas da temporada — um verdadeiro tour global da velocidade:</p>
 
@@ -315,6 +365,21 @@
             <p>GP da Áustria – 26–28 jun | Red Bull Ring</p>
             <p>GP da Grã-Bretanha – 03–05 jul | Silverstone</p>
             <p>GP da Bélgica – 17–19 jul | Spa-Francorchamps</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
             <p>GP da Hungria – 24–26 jul | Hungaroring</p>
             <p>GP da Holanda – 21–23 ago | Zandvoort</p>
             <p>GP da Itália – 04–06 set | Monza</p>
@@ -330,7 +395,7 @@
 
             <p>Esse percurso leva a F1 por cinco continentes, conectando fãs desde a Ásia até as Américas e Oriente Médio.</p>
 
-            <p>🏆 Por que 2026 é especial — além das corridas</p>
+            <p><strong>🏆 Por que 2026 é especial — além das corridas</strong></p>
 
             <p>O calendário mostra claramente que a F1 não é apenas um esporte de velocidade, mas também de estratégia global:</p>
 
@@ -340,7 +405,21 @@
 
             <p>🏙️ Espanha como novo polo automobilístico — A chegada do Madring em Madrid reforça a aposta em circuitos urbanos modernos, atraindo investimentos e novos públicos.</p>
 
-            <p>🏎️ Expectativas para pilotos e equipes</p>
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>🏎️ Expectativas para pilotos e equipes</strong></p>
 
             <p>A temporada promete rivalidades intensas. Após testes de pré-temporada que destacaram o desempenho da Ferrari em comparação com adversários como Red Bull e Mercedes, a questão que fica é: Quem será o grande protagonista de 2026? Tal dúvida alimenta debates e apostas antes mesmo da primeira bandeirada.</p>
 
@@ -358,8 +437,18 @@
           </ul>
         </div>
 
-        <!-- ANÚNCIO (SEM TEXTO) -->
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
