@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rodada das ligas europeias tem Bayern empatando na Alemanha e Inter tropeçando em casa na Itália | Corte dos Esportes</title>
+  <meta name="description" content="A volta das principais ligadas nacionais da Europa, após uma semana de jogos por Champions League e Europa League, mexeu com a parte de cima da tabela na Alemanha e na Itália." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Rodada das ligas europeias tem Bayern empatando na Alemanha e Inter tropeçando em casa na Itália</h1>
+          <p class="subhead" id="articleExcerpt">A volta das principais ligadas nacionais da Europa, após uma semana de jogos por Champions League e Europa League, mexeu com a parte de cima da tabela na Alemanha e na Itália.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">14/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <!-- ANÚNCIO (ARTIGO - TOPO) -->
+          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+            <!-- Display-Article-Meio -->
+            <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-4145492637375431"
+              data-ad-slot="8702501261"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+
+          <article id="articleBody">
+            <p>A volta das principais ligadas nacionais da Europa, após uma semana de jogos por Champions League e Europa League, mexeu com a parte de cima da tabela na Alemanha e na Itália. Neste sábado, o Bayern de Munique empatou fora de casa com o Bayer Leverkusen pela Bundesliga, enquanto a Inter de Milão também deixou pontos pelo caminho ao ficar no 1 a 1 com a Atalanta, em Milão.</p>
+
+            <p><strong>Bayern empata fora e vê vantagem cair na Bundesliga</strong></p>
+
+            <p>Na Bundesliga, o líder isolado Bayern de Munique enfrentou o Bayer Leverkusen na BayArena, em um dos confrontos mais marcantes das últimas temporadas, especialmente pelo peso recente do time comandado por Xabi Alonso.</p>
+
+            <p>O Leverkusen abriu o placar logo aos 6 minutos, com Aleix García. O Bayern buscou o empate no segundo tempo com Luis Díaz, aos 69 minutos, e saiu da BayArena com um ponto fora de casa. Mesmo longe de seus domínios, o time de Munique terminou a partida com mais posse de bola, registrando 56%, contra 44% do Leverkusen. Em número de finalizações, porém, a equipe da casa foi mais agressiva e fechou o jogo com 18 chutes, contra 10 do Bayern.</p>
+
+            <p><strong>Borussia Dortmund aproveita tropeço do líder</strong></p>
+
+            <p>O empate fez o Bayern perder parte da vantagem na liderança. Isso porque o Borussia Dortmund, vice-líder, venceu o Augsburg por 2 a 0 em casa e reduziu a diferença para nove pontos.</p>
+
+            <p>Ainda assim, a situação segue confortável para o time de Munique. Com 67 pontos, a equipe continua com boa folga na ponta faltando apenas nove rodadas para o fim da Bundesliga, agora com o Borussia Dortmund como principal perseguidor nesta reta final.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Classificação completa da Bundesliga</strong></p>
+
+            <p>1. Bayern – 67 pts</p>
+            <p>2. Borussia Dortmund – 58 pts</p>
+            <p>3. Hoffenheim – 50 pts</p>
+            <p>4. VfB Stuttgart – 47 pts</p>
+            <p>5. RB Leipzig – 47 pts</p>
+            <p>6. Bayer Leverkusen – 45 pts</p>
+            <p>7. Eintracht Frankfurt – 38 pts</p>
+            <p>8. Freiburg – 34 pts</p>
+            <p>9. Augsburg – 31 pts</p>
+            <p>10. Hamburg – 30 pts</p>
+            <p>11. Union Berlin – 28 pts</p>
+            <p>12. Borussia Mönchengladbach – 28 pts</p>
+            <p>13. Colônia – 25 pts</p>
+            <p>14. Werder Bremen – 25 pts</p>
+            <p>15. Mainz 05 – 24 pts</p>
+            <p>16. St. Pauli – 24 pts</p>
+            <p>17. Wolfsburg – 21 pts</p>
+            <p>18. Heidenheim – 14 pts</p>
+
+            <p><strong>Inter tropeça em casa e liga alerta na Serie A</strong></p>
+
+            <p>Na Itália, a líder Inter de Milão recebeu a Atalanta no Stadio Giuseppe Meazza e empatou por 1 a 1, aumentando o sinal de atenção na reta final do campeonato. Além de ter sido eliminada nos playoffs da Champions League, a equipe nerazzurri chegou ao segundo jogo seguido sem vitória na Serie A, o que abre espaço para uma aproximação dos rivais diretos na tabela.</p>
+
+            <p>Apesar do tropeço, a Inter teve números superiores durante o jogo. Foram 58% de posse de bola, contra 42% da Atalanta, além de 16 finalizações contra 7 do adversário. Ainda assim, a equipe visitante conseguiu segurar o empate fora de casa e travar a líder em um momento de maior pressão na temporada.</p>
+
+            <p><strong>Milan pode reduzir diferença para cinco pontos</strong></p>
+
+            <p>Com o empate da Inter, o campeonato italiano ganha um novo elemento de pressão. O Milan, vice-líder com 60 pontos, entra em campo neste domingo contra a Lazio, fora de casa, podendo diminuir a vantagem da rival para cinco pontos.</p>
+
+            <p>A Inter lidera com 68 pontos, mas o momento recente já não transmite a mesma segurança de semanas anteriores, principalmente pelo acúmulo de tropeços e pelo desgaste da sequência decisiva na temporada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Classificação completa da Serie A</strong></p>
+
+            <p>1. Inter – 68 pts</p>
+            <p>2. Milan – 60 pts</p>
+            <p>3. Napoli – 59 pts</p>
+            <p>4. Juventus – 53 pts</p>
+            <p>5. Como – 51 pts</p>
+            <p>6. Roma – 51 pts</p>
+            <p>7. Atalanta – 47 pts</p>
+            <p>8. Bologna – 39 pts</p>
+            <p>9. Sassuolo – 38 pts</p>
+            <p>10. Lazio – 37 pts</p>
+            <p>11. Udinese – 36 pts</p>
+            <p>12. Parma – 34 pts</p>
+            <p>13. Torino – 33 pts</p>
+            <p>14. Genoa – 30 pts</p>
+            <p>15. Cagliari – 30 pts</p>
+            <p>16. Lecce – 27 pts</p>
+            <p>17. Fiorentina – 25 pts</p>
+            <p>18. Cremonese – 24 pts</p>
+            <p>19. Verona – 18 pts</p>
+            <p>20. Pisa – 15 pts</p>
+
+            <p><strong>Rodada recoloca o foco na briga pelo título</strong></p>
+
+            <p>Na Alemanha, o Bayern segue em posição muito favorável mesmo após o empate fora de casa. A vantagem diminuiu, mas o time ainda tem margem segura sobre o Borussia Dortmund e continua com o título nas mãos.</p>
+
+            <p>Na Itália, o cenário é mais delicado para a Inter. A equipe segue na liderança, mas já vê o Milan com a chance de encurtar a distância, o que pode aumentar bastante a pressão para as próximas rodadas.</p>
+
+            <p>Acompanhe mais notícias, análises e atualizações da rodada na página de <a href="https://cortedosesportes.com.br/futebol.html">Futebol do Corte dos Esportes</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
