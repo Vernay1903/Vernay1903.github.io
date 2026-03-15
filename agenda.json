@@ -1,26 +1,30 @@
 [
   {
+    "time": "16:00",
+    "desc": "Internacional x Bahia - Brasileirão"
+  },
+  {
+    "time": "16:00",
+    "desc": "Santos x Corinthians - Brasileirão"
+  },
+  {
+    "time": "16:00",
+    "desc": "Fluminense x Athletico-PR - Brasileirão"
+  },
+  {
     "time": "18:30",
-    "desc": "EC Vitória x Atlético-MG - Brasileirão"
+    "desc": "Palmeiras x Mirassol - Brasileirão"
+  },
+  {
+    "time": "18:30",
+    "desc": "Coritiba x Remo - Brasileirão"
   },
   {
     "time": "20:30",
-    "desc": "Botafogo x Flamengo - Brasileirão"
+    "desc": "Bragantino x São Paulo - Brasileirão"
   },
   {
-    "time": "17:00",
-    "desc": "Real Madrid x Elche - La Liga"
-  },
-  {
-    "time": "14:30",
-    "desc": "Chelsea x Newcastle - Premier League"
-  },
-  {
-    "time": "14:30",
-    "desc": "Arsenal x Everton - Premier League"
-  },
-  {
-    "time": "17:00",
-    "desc": "West Ham x City - Premier League"
+    "time": "20:30",
+    "desc": "Cruzeiro x Vasco da Gama - Brasileirão"
   }
 ]
