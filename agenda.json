@@ -1,30 +1,38 @@
 [
   {
-    "time": "16:00",
-    "desc": "Internacional x Bahia - Brasileirão"
+    "time": "20:00",
+    "desc": "Chapecoense x Grêmio - Brasileirão"
   },
   {
-    "time": "16:00",
-    "desc": "Santos x Corinthians - Brasileirão"
+    "time": "20:00",
+    "desc": "Hawks x Magic - NBA"
   },
   {
-    "time": "16:00",
-    "desc": "Fluminense x Athletico-PR - Brasileirão"
-  },
-  {
-    "time": "18:30",
-    "desc": "Palmeiras x Mirassol - Brasileirão"
-  },
-  {
-    "time": "18:30",
-    "desc": "Coritiba x Remo - Brasileirão"
+    "time": "20:00",
+    "desc": "Wizards x Warriors - NBA"
   },
   {
     "time": "20:30",
-    "desc": "Bragantino x São Paulo - Brasileirão"
+    "desc": "Celtics x Suns - NBA"
   },
   {
     "time": "20:30",
-    "desc": "Cruzeiro x Vasco da Gama - Brasileirão"
+    "desc": "Nets x Trail Blazers - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Pelicans x Mavericks - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Bulls x Grizzlies - NBA"
+  },
+  {
+    "time": "22:30",
+    "desc": "Rockets x Lakers - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Clippers x Spurs - NBA"
   }
 ]
