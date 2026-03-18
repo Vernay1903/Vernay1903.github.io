@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>Seattle Seahawks: história, títulos e curiosidades da franquia bicampeã da NFL | Corte dos Esportes</title>
-  <meta name="description" content="Seattle Seahawks: história, títulos e curiosidades da franquia bicampeã da NFL. Confira origem, torcida, estádio e lista de franquias com mais títulos de Super Bowl.">
+  <meta name="description" content="Seattle Seahawks: história, títulos e curiosidades da franquia bicampeã da NFL. Confira origem, torcida, estádio e lista de franquias com mais títulos de Super Bowl." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -164,6 +200,8 @@
       box-sizing: border-box;
       margin: 16px 0;
     }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
 
     article p {
       font-size: 16px;
@@ -226,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -271,7 +312,7 @@
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">18/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">Futebol Americano</a>
+            Categoria: <a id="categoryLink" href="#">FUTEBOL AMERICANO</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -281,28 +322,38 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
-            <p>Seattle Seahawks: história, títulos e curiosidades da franquia bicampeã da NFL</p>
-
             <p>O Seattle Seahawks é o atual campeão da NFL, conquistando o bicampeonato do Super Bowl, um feito reservado a poucas franquias da liga. O primeiro título da equipe foi conquistado na temporada 2013 (Super Bowl 2014), e agora o clube volta a erguer o troféu máximo do futebol americano.</p>
 
             <p>Mas existem fatos interessantes sobre a franquia que ajudam a entender a dimensão dessa conquista histórica.</p>
 
-            <p>A origem do Seattle Seahawks</p>
+            <p><strong>A origem do Seattle Seahawks</strong></p>
 
             <p>Seguindo a tradição das ligas esportivas norte-americanas, o nome da equipe começa pela cidade-sede. Seattle é uma cidade litorânea e portuária localizada no estado de Washington, no noroeste dos Estados Unidos.</p>
 
             <p>A franquia foi fundada em 1975 e, ao longo de sua história, construiu uma das torcidas mais intensas da NFL.</p>
 
-            <p>A torcida mais barulhenta da NFL</p>
+            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A torcida mais barulhenta da NFL</strong></p>
 
             <p>O estádio Lumen Field, com capacidade para cerca de 68 mil torcedores, já entrou para o Guinness Book como o local com o maior nível de ruído registrado em um evento esportivo.</p>
 
             <p>A torcida dos Seahawks é conhecida por transformar o estádio em uma verdadeira pressão sonora para os adversários.</p>
 
-            <p>O bicampeonato e o seleto grupo da NFL</p>
+            <p><strong>O bicampeonato e o seleto grupo da NFL</strong></p>
 
             <p>Com dois títulos de Super Bowl (2013 e 2025), o Seattle Seahawks passa a integrar o grupo das franquias bicampeãs da NFL.</p>
 
@@ -316,7 +367,21 @@
 
             <p>Isso coloca o Seahawks em um grupo extremamente seleto dentro do futebol americano profissional.</p>
 
-            <p>Lista de franquias com mais títulos de Super Bowl</p>
+            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Lista de franquias com mais títulos de Super Bowl</strong></p>
 
             <p>🏆 6 títulos</p>
 
@@ -362,6 +427,20 @@
 
             <p>Seattle Seahawks</p>
 
+            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
             <p>O bicampeonato do Seattle Seahawks reforça o crescimento da franquia nas últimas décadas e consolida a equipe como uma das forças históricas da NFL.</p>
           </article>
         </div>
@@ -376,7 +455,18 @@
           </ul>
         </div>
 
-        <div class="ad-slot" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
