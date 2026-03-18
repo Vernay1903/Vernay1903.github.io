@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Draft da NFL: história, tradição e impacto de um dos eventos mais importantes do esporte americano | Corte dos Esportes</title>
+  <meta name="description" content="O draft da NFL é mais do que uma seleção de talentos. Ele funciona como ponte entre o futebol americano universitário e a liga profissional, movimenta milhões em atenção, contratos, audiência e mercado." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Draft da NFL: história, tradição e impacto de um dos eventos mais importantes do esporte americano</h1>
+          <p class="subhead" id="articleExcerpt">O draft da NFL é mais do que uma seleção de talentos. Ele funciona como ponte entre o futebol americano universitário e a liga profissional, movimenta milhões em atenção, contratos, audiência e mercado.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">18/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL AMERICANO</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O draft da NFL é mais do que uma seleção de talentos. Ele funciona como ponte entre o futebol americano universitário e a liga profissional, movimenta milhões em atenção, contratos, audiência e mercado, e ajuda a explicar por que o esporte universitário ocupa um lugar tão central na cultura dos Estados Unidos. Ao mesmo tempo, o draft não é só espetáculo: ele também é mecanismo de equilíbrio competitivo, de mobilidade social e de renovação constante da própria NFL.</p>
+
+            <p><strong>Como surgiu o draft e por que ele virou tradição</strong></p>
+
+            <p>O draft foi criado para reduzir a vantagem dos clubes mais fortes financeiramente sobre os mais frágeis. A proposta foi aprovada pelos donos da liga em 1935, e o primeiro Draft da NFL aconteceu em 8 de fevereiro de 1936, na Filadélfia. A lógica era simples e poderosa: em vez de os times mais ricos monopolizarem os melhores jogadores universitários, a seleção passaria a seguir uma ordem pré-definida, favorecendo quem vinha de campanhas piores.</p>
+
+            <p>Esse desenho ajudou a transformar o draft em uma das instituições centrais da NFL. Não é apenas uma cerimônia anual; é uma engrenagem de paridade. A ordem de escolha é baseada no desempenho da temporada anterior, com regras específicas para desempates, playoffs e escolhas compensatórias. Isso faz do draft um instrumento de reconstrução para franquias em crise e, ao mesmo tempo, um evento cercado por expectativa nacional.</p>
+
+            <p><strong>Por que o draft importa tanto no esporte americano</strong></p>
+
+            <p>Em muitas ligas, contratar estrelas depende sobretudo de poder financeiro. Na NFL, o draft limita essa lógica e reforça a ideia de competição mais equilibrada. A equipe que escolhe cedo tem acesso, em tese, aos prospectos mais valiosos. Por isso, uma classe forte de draft pode alterar o rumo de uma franquia por muitos anos.</p>
+
+            <p>É também por isso que o draft virou uma tradição cultural. Nos Estados Unidos, ele é tratado como um grande rito de passagem: jogadores encerram o ciclo universitário, famílias aparecem ao vivo no evento, torcidas acompanham escolhas como se fossem finais, e cada franquia projeta ali seu futuro. O draft mistura análise técnica, esperança e identidade regional, algo raro mesmo entre grandes eventos esportivos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A ligação com bolsas de estudo e o futebol universitário</strong></p>
+
+            <p>Para entender o draft, é preciso olhar antes para o sistema universitário. O caminho clássico para a NFL passa pelo college football, que por sua vez está profundamente ligado ao modelo de bolsas esportivas. Nos Estados Unidos, o esporte universitário funciona como grande vitrine de desenvolvimento atlético, exposição nacional e formação acadêmica. A NCAA exige critérios de elegibilidade acadêmica e de amadorismo para o estudante-atleta competir nesse ambiente.</p>
+
+            <p>Na prática, a bolsa esportiva pode representar acesso à universidade para atletas que, sem o esporte, talvez não chegassem ao mesmo tipo de oportunidade educacional. Esse contexto ajuda a explicar o peso social do draft: ele não começa na noite da seleção, mas anos antes, quando o jogador entra no radar ainda no ensino médio, conquista espaço no college football e tenta converter desempenho universitário em carreira profissional.</p>
+
+            <p>Esse funil, porém, é extremamente seletivo. A própria NCAA estimou que, entre os atletas draft-eligible da Divisão I, apenas 3,8% foram escolhidos no Draft de 2023; entre jogadores da subdivisão FBS, o índice estimado foi de 6,7%. Ou seja, mesmo dentro do alto nível universitário, ser draftado é exceção, não regra.</p>
+
+            <p><strong>Quem pode entrar no draft</strong></p>
+
+            <p>Pelas regras da liga, para ser elegível ao draft o jogador precisa estar fora do ensino médio há pelo menos três anos e ter encerrado sua elegibilidade universitária antes do início da próxima temporada de college football. Jogadores que ainda não esgotaram essa elegibilidade podem pedir autorização para entrar mais cedo.</p>
+
+            <p>Esse detalhe é importante porque mostra que o draft não é simplesmente uma vitrine de jovens promessas. Ele é o ponto final de um processo formal de desenvolvimento, avaliação e transição, que envolve universidade, liga, scouts, treinadores, médicos e agentes.</p>
+
+            <p><strong>O impacto social: mobilidade, identidade e mercado</strong></p>
+
+            <p>O draft tem impacto direto na sociedade americana por pelo menos três razões. A primeira é a mobilidade social. Para muitos atletas, especialmente os que vêm de contextos econômicos difíceis, o football pode abrir portas educacionais e depois profissionais, com efeitos que alcançam família e comunidade. O draft simboliza esse salto.</p>
+
+            <p>A segunda é a força cultural do esporte universitário como espaço de pertencimento. Universidades, estados e cidades se reconhecem em seus programas esportivos. Quando um jogador é draftado, ele carrega consigo a narrativa de sua escola, de sua região e de sua trajetória pessoal. Isso reforça a conexão entre esporte, educação e identidade coletiva.</p>
+
+            <p>A terceira é econômica. O draft movimenta mídia, turismo, publicidade, licenciamento, plataformas digitais e cobertura jornalística em escala nacional. Mesmo fora da temporada regular, a NFL consegue monopolizar a atenção esportiva com um evento de recrutamento, algo que mostra o tamanho do seu poder cultural e comercial.</p>
+
+            <p><strong>Nem sempre os primeiros são os melhores</strong></p>
+
+            <p>Uma das razões pelas quais o draft fascina tanto é que ele nunca é ciência exata. A escolha alta oferece mais prestígio e mais expectativa, mas não garante a melhor carreira. Há erros históricos, acertos improváveis e trajetórias que só fazem sentido anos depois. Isso alimenta a mística do evento: cada franquia tenta projetar o futuro, mas o futuro nem sempre obedece ao consenso do momento.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Por isso, o draft também é um teste permanente de scouting e desenvolvimento. Não basta selecionar bem; é preciso encaixar o atleta no sistema certo, com comissão técnica, elenco e ambiente adequados.</p>
+
+            <p><strong>Jogadores draftados que viraram referência de carreira sólida</strong></p>
+
+            <p>O draft ajudou a colocar na NFL jogadores que sustentaram carreiras longas, vencedoras e de enorme peso histórico. Entre os quarterbacks, Peyton Manning foi a escolha número 1 do Draft de 1998 pelo Indianapolis Colts e construiu uma trajetória de elite que depois ainda teve capítulo de sucesso no Denver Broncos. John Elway, selecionado na primeira posição de 1983 e ligado ao Denver Broncos, virou um dos grandes nomes da história da franquia. Terry Bradshaw, primeira escolha de 1970 pelo Pittsburgh Steelers, também se transformou em símbolo de uma era vitoriosa.</p>
+
+            <p>Mas o draft nunca foi importante apenas para encontrar quarterbacks. Ele também revelou jogadores que deram sustentação técnica e identidade a suas equipes por muitos anos. Orlando Pace, escolhido pelo St. Louis Rams, virou referência na linha ofensiva. Bruce Smith, draftado pelo Buffalo Bills, construiu uma das carreiras defensivas mais respeitadas da liga. Walter Jones, selecionado pelo Seattle Seahawks, Jonathan Ogden, escolhido pelo Baltimore Ravens, Larry Fitzgerald, draftado pelo Arizona Cardinals, Joe Thomas, selecionado pelo Cleveland Browns, e LaDainian Tomlinson, escolha do então San Diego Chargers, são exemplos de jogadores que chegaram pelo draft e se tornaram pilares de suas franquias por muito tempo.</p>
+
+            <p><strong>O draft como espelho do futebol americano</strong></p>
+
+            <p>No fundo, o Draft da NFL resume boa parte do que o futebol americano representa nos Estados Unidos. Ele junta formação universitária, desigualdade de acesso, oportunidade, espetáculo, planejamento e obsessão por desempenho. É ao mesmo tempo uma celebração do mérito esportivo e um lembrete de como esse mérito depende de estrutura, visibilidade e contexto.</p>
+
+            <p>Essa força histórica da NFL também aparece na identidade de suas divisões e franquias mais tradicionais, como mostra o panorama sobre a <a href="https://cortedosesportes.com.br/conferencia-leste-nfl-historia-maiores-campeoes-rivalidades-futebol-americano.html">Conferência Leste da NFL</a>, um dos núcleos mais simbólicos do futebol americano profissional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Por isso o draft permanece tão relevante. Ele não é apenas o começo da carreira profissional de novos jogadores. É uma espécie de espelho anual do sistema inteiro: do ensino médio ao campus, do campus à televisão, da televisão ao mercado, e do mercado à memória coletiva do esporte.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol americano";
+  const CATEGORY_NAME = "FUTEBOL AMERICANO";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
