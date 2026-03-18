@@ -2,9 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>História do Handebol nas Olimpíadas: primeira edição, maiores campeões olímpicos e o ciclo até Los Angeles 2028 | Corte dos Esportes</title>
-  <meta name="description" content="História do handebol nas Olimpíadas: estreia em 1936 em Berlim, consolidação no formato moderno desde 1972, maiores campeões e o ciclo olímpico até Los Angeles 2028." />
+  <title>História do Handebol nas Olimpíadas: primeira edição, maiores campeões olímpicos e o ciclo até Los Angeles 2028| Corte dos Esportes</title>
+  <meta name="description" content="Do handebol de campo em 1936 à consolidação em quadra desde 1972: potências históricas, maiores campeões e o panorama do ciclo olímpico até 2028." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -228,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -283,9 +322,6 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <!-- ANÚNCIO (SEM TEXTO) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
             <p>O handebol é um dos esportes mais antigos dentro das modalidades olímpicas. Com muito dinamismo e ritmo acelerado, tornou-se uma competição capaz de manter o entretenimento do início ao fim — seja pela sequência rápida de gols, seja pelas decisões que acontecem nos últimos segundos de jogo.</p>
 
@@ -293,11 +329,25 @@
 
             <p><strong>Primeira edição do handebol nos Jogos Olímpicos: 1936</strong></p>
 
-            <p>A primeira edição do handebol nas Olimpíadas aconteceu em <strong>1936, em Berlim (Alemanha)</strong>, durante os Jogos Olímpicos de Verão de 1936.</p>
+            <p>A primeira edição do handebol nas Olimpíadas aconteceu em 1936, em Berlim (Alemanha), durante os Jogos Olímpicos de Verão de 1936.</p>
 
-            <p>O formato era diferente do atual: tratava-se do <strong>handebol de campo</strong>, jogado ao ar livre, com 11 jogadores por equipe. Apenas 6 seleções participaram do torneio, e a medalha de ouro ficou com a Alemanha.</p>
+            <p>O formato era diferente do atual: tratava-se do handebol de campo, jogado ao ar livre, com 11 jogadores por equipe. Apenas 6 seleções participaram do torneio, e a medalha de ouro ficou com a Alemanha.</p>
 
             <p>Depois dessa estreia, o esporte deixou o programa olímpico e retornaria apenas em 1972, já completamente reformulado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
             <p><strong>A consolidação do handebol olímpico moderno (desde 1972)</strong></p>
 
@@ -305,10 +355,10 @@
 
             <p>O torneio feminino foi incluído em 1976. Desde então:</p>
 
-            <p>- O handebol olímpico masculino soma <strong>13 edições consecutivas</strong> no formato moderno.<br>
-            - O handebol olímpico feminino já conta com <strong>12 edições</strong>.<br>
-            - A média de gols por partida varia entre <strong>45 e 60</strong>.<br>
-            - Muitas finais foram decididas por diferenças inferiores a <strong>3 gols</strong>.</p>
+            <p>- O handebol olímpico masculino soma 13 edições consecutivas no formato moderno.</p>
+            <p>- O handebol olímpico feminino já conta com 12 edições.</p>
+            <p>- A média de gols por partida varia entre 45 e 60.</p>
+            <p>- Muitas finais foram decididas por diferenças inferiores a 3 gols.</p>
 
             <p>Esse modelo trouxe maior velocidade ao jogo, fortalecimento das defesas e um papel cada vez mais estratégico para os goleiros. O esporte passou a exigir elencos fisicamente preparados e profundidade tática.</p>
 
@@ -316,30 +366,44 @@
 
             <p>Entre os maiores campeões olímpicos no handebol masculino, alguns países construíram verdadeiras dinastias.</p>
 
-            <p>A França lidera a era moderna com <strong>3 ouros olímpicos (2008, 2012 e 2020)</strong>.</p>
+            <p>A França lidera a era moderna com 3 ouros olímpicos (2008, 2012 e 2020).</p>
 
-            <p>A Croácia conquistou <strong>2 ouros (1996 e 2004)</strong> e marcou época pela organização tática.</p>
+            <p>A Croácia conquistou 2 ouros (1996 e 2004) e marcou época pela organização tática.</p>
 
             <p>A Dinamarca também chegou ao topo e mantém presença constante entre as seleções mais fortes do mundo.</p>
 
-            <p>No período da União Soviética, foram <strong>2 títulos olímpicos</strong>, consolidando o Leste Europeu como potência histórica da modalidade.</p>
+            <p>No período da União Soviética, foram 2 títulos olímpicos, consolidando o Leste Europeu como potência histórica da modalidade.</p>
 
             <p><strong>Maiores campeãs do handebol nas Olimpíadas (feminino)</strong></p>
 
-            <p>No handebol olímpico feminino, a Dinamarca fez história ao conquistar <strong>3 ouros consecutivos (1996, 2000 e 2004)</strong> — uma hegemonia rara em esportes coletivos.</p>
+            <p>No handebol olímpico feminino, a Dinamarca fez história ao conquistar 3 ouros consecutivos (1996, 2000 e 2004) — uma hegemonia rara em esportes coletivos.</p>
 
-            <p>A Noruega soma <strong>2 ouros olímpicos</strong> e presença constante em decisões.</p>
+            <p>A Noruega soma 2 ouros olímpicos e presença constante em decisões.</p>
 
             <p>A França assumiu protagonismo nas últimas edições, reforçando o equilíbrio competitivo no cenário feminino.</p>
 
-            <p>Mais de <strong>80% das medalhas olímpicas do handebol moderno foram conquistadas por seleções europeias</strong>, evidenciando o domínio técnico do continente.</p>
+            <p>Mais de 80% das medalhas olímpicas do handebol moderno foram conquistadas por seleções europeias, evidenciando o domínio técnico do continente.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
             <p><strong>O peso da medalha olímpica no handebol</strong></p>
 
             <p>O formato olímpico aumenta o grau de dificuldade:</p>
 
-            <p>- Apenas <strong>12 seleções no masculino</strong><br>
-            - Apenas <strong>12 seleções no feminino</strong></p>
+            <p>- Apenas 12 seleções no masculino</p>
+            <p>- Apenas 12 seleções no feminino</p>
 
             <p>Com fase de grupos intensa e mata-mata direto, qualquer erro pode comprometer anos de preparação. Para muitos atletas, o ouro olímpico representa o ponto máximo da carreira.</p>
 
@@ -349,18 +413,32 @@
 
             <p>O ciclo olímpico envolve:</p>
 
-            <p>- Renovação progressiva de elenco ao longo de quatro anos<br>
-            - Campeonatos mundiais e continentais como termômetro técnico<br>
-            - Torneios classificatórios altamente disputados</p>
+            <p>- Renovação progressiva de elenco ao longo de quatro anos</p>
+            <p>- Campeonatos mundiais e continentais como termômetro técnico</p>
+            <p>- Torneios classificatórios altamente disputados</p>
 
             <p>As tendências apontam para:</p>
 
-            <p>✔ Jogo ainda mais veloz<br>
-            ✔ Uso estratégico do goleiro-linha<br>
-            ✔ Elencos com maior preparo físico e rotação intensa<br>
-            ✔ Manutenção do favoritismo europeu</p>
+            <p>✔ Jogo ainda mais veloz</p>
+            <p>✔ Uso estratégico do goleiro-linha</p>
+            <p>✔ Elencos com maior preparo físico e rotação intensa</p>
+            <p>✔ Manutenção do favoritismo europeu</p>
 
             <p>Os Estados Unidos, como país-sede, tendem a investir na modalidade para ampliar visibilidade interna.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
             <p><strong>O handebol olímpico além de uma edição específica</strong></p>
 
@@ -384,8 +462,18 @@
           </ul>
         </div>
 
-        <!-- ANÚNCIO (SEM TEXTO) -->
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
