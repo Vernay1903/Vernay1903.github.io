@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kelly Slater: por que o americano marcou a história do surfe | Corte dos Esportes</title>
+  <meta name="description" content="Kelly Slater construiu uma trajetória que poucos atletas conseguiram alcançar no esporte individual, com 11 títulos mundiais, longevidade, domínio técnico e legado histórico no surfe." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Kelly Slater: por que o americano marcou a história do surfe</h1>
+          <p class="subhead" id="articleExcerpt">Kelly Slater construiu uma trajetória que poucos atletas conseguiram alcançar no esporte individual.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">18/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Kelly Slater construiu uma trajetória que poucos atletas conseguiram alcançar no esporte individual. No surfe, o americano virou referência máxima de domínio, longevidade e permanência no topo, sustentado por 11 títulos mundiais no circuito principal — recorde absoluto da modalidade masculina e uma marca que, pela duração, pela exigência e pelas diferentes gerações que atravessou, parece cada vez mais difícil de ser igualada.</p>
+
+            <p>Mas o tamanho de Slater não se explica apenas na contagem de títulos. Sua carreira mistura domínio em diferentes épocas, peso simbólico em ondas históricas, respeito construído em ambientes centrais para a cultura do surfe e uma rivalidade que ajudou a marcar uma geração. Poucos nomes conseguiram reunir tanta vitória e, ao mesmo tempo, tanto prestígio esportivo e simbólico dentro da modalidade.</p>
+
+            <p><strong>O campeão que atravessou eras</strong></p>
+
+            <p>Uma das razões para Kelly Slater ocupar um lugar tão alto na história do esporte é o fato de ele não ter sido apenas o melhor de uma fase. Ele foi dominante em momentos muito diferentes do surfe profissional. Venceu quando surgiu como prodígio, seguiu ganhando quando já era o grande nome do circuito e continuou competitivo em uma fase na qual o esporte passou a exigir ainda mais intensidade física, velocidade e renovação técnica.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Esse ponto ajuda a dimensionar sua trajetória. Há atletas que constroem carreiras brilhantes em um ciclo específico. Slater fez mais do que isso: atravessou fases distintas do surfe de elite, enfrentou gerações diferentes e manteve o próprio nome como parâmetro de excelência competitiva. O melhor exemplo está no intervalo entre o primeiro e o último título mundial: campeão pela primeira vez em 1992, aos 20 anos, e novamente em 2011, aos 39, ele transformou a longevidade em uma das marcas mais impressionantes da própria carreira.</p>
+
+            <p><strong>Mais do que títulos, um padrão de excelência</strong></p>
+
+            <p>Os troféus ajudam a explicar a dimensão histórica de Kelly Slater, mas não contam tudo. Ele nunca foi lembrado apenas por ganhar. Também se consolidou como um surfista que elevou o nível de exigência técnica do esporte. Sua leitura de onda, o posicionamento, o repertório de linhas e a capacidade de decidir baterias em condições diferentes fizeram com que fosse admirado não só pelo público, mas também por quem entende o surfe em profundidade.</p>
+
+            <p>Esse é um ponto central para compreender seu legado. Em modalidades nas quais estilo, interpretação e sensibilidade contam tanto quanto o resultado, nem sempre o maior vencedor é o mais respeitado. Com Slater, as duas coisas caminharam juntas. Ele venceu muito e convenceu um meio historicamente exigente de que seu lugar no topo tinha fundamento técnico, competitivo e cultural.</p>
+
+            <p><strong>A rivalidade com Andy Irons que marcou uma geração</strong></p>
+
+            <p>Toda grande lenda do esporte costuma ter um rival à altura. No caso de Kelly Slater, esse papel foi ocupado por Andy Irons. A rivalidade entre os dois ajudou a dar ao surfe uma dimensão dramática que foi além da simples disputa por ranking. Tricampeão mundial, Andy foi o rival que empurrou Slater para alguns dos capítulos mais intensos de sua carreira, em um confronto que misturava choque de estilos, pressão competitiva e enorme carga emocional.</p>
+
+            <p>Slater aparecia muitas vezes como o competidor cerebral, técnico, calculista e obcecado pela execução perfeita. Andy Irons carregava a imagem do havaiano intenso, agressivo, explosivo e emocionalmente carregado dentro d’água. Essa diferença de perfis tornava cada duelo ainda mais forte. Não era só uma disputa entre dois surfistas de elite. Era também um choque de estilos, de energia e de presença competitiva.</p>
+
+            <p>Foi justamente essa tensão que elevou os dois. Andy obrigou Kelly a mostrar uma versão mais humana e pressionada de si mesmo. Kelly, por sua vez, serviu como o alvo máximo a ser derrubado. Quando os dois se enfrentavam, o circuito ganhava um peso diferente. E essa rivalidade se tornou ainda mais marcante com a morte precoce de Andy Irons, em 2010, aos 32 anos, encerrando cedo demais uma das disputas mais emblemáticas da história do surfe e deixando um vazio sentido muito além dos resultados.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O peso simbólico do Havaí na carreira de Slater</strong></p>
+
+            <p>Não dá para medir a grandeza de Kelly Slater sem olhar para o Havaí. Dentro do surfe, poucos lugares concentram tanto peso histórico, espiritual e esportivo. É ali que tradição, dificuldade e legitimidade se encontram de maneira mais dura. No Havaí, especialmente no North Shore, não basta ter nome. É preciso provar dentro d’água.</p>
+
+            <p>Por isso, cada vez que Slater se impôs naquele cenário, seu legado ganhou ainda mais densidade. Pipeline, por exemplo, não consagra qualquer um. É uma onda que exige precisão, coragem, leitura e sangue frio. O currículo de Kelly também passa por esse tipo de palco, o que reforça a ideia de que sua grandeza não foi construída apenas no circuito, mas também em ambientes que carregam a alma do surfe. Não por acaso, seu histórico inclui oito títulos do Pipeline Masters, uma das marcas mais emblemáticas de sua carreira e um peso enorme em um dos palcos mais respeitados do esporte. Um dos capítulos mais simbólicos dessa relação com Pipeline veio em 2022, quando Slater venceu a etapa já aos 49 anos, poucos dias antes de completar 50, reforçando ainda mais a dimensão rara de sua longevidade em um dos cenários mais exigentes e tradicionais do surfe.</p>
+
+            <p><strong>Veja a vitória de Kelly Slater em Pipeline em 2022</strong></p>
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;">
+              <iframe src="https://www.youtube.com/embed/OcAH2xXfVhA" title="Kelly Slater vence em Pipeline em 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+            </div>
+
+            <p>Esse vínculo com o Havaí é importante porque o respeito ali não nasce de marketing nem de fama internacional. Ele vem da performance, da repetição, da entrega e da relação com ondas que moldam a identidade do esporte. Slater conseguiu se tornar um nome gigante também nesse território simbólico, o que amplia ainda mais a força do seu legado.</p>
+
+            <p><strong>Respeito dentro e fora do surfe</strong></p>
+
+            <p>Outro fator que diferencia Kelly Slater é o respeito que ele conquistou para além da bolha do surfe. Seu nome passou a circular como referência em discussões mais amplas sobre longevidade, alta performance e reinvenção no esporte. Não é preciso acompanhar uma bateria para entender o peso de um atleta que seguiu relevante diante de gerações mais jovens e em um ambiente competitivo cada vez mais exigente.</p>
+
+            <p>Dentro do surfe, esse respeito talvez seja ainda mais valioso. O esporte sempre valorizou autenticidade, estilo e personalidade, e nem sempre os recordes por si só garantem unanimidade. No caso de Slater, a admiração veio acompanhada de reconhecimento técnico e histórico. Ele se tornou um nome respeitado por campeões, por veteranos, por novas gerações e até por atletas de outras modalidades que enxergam em sua carreira um raro exemplo de permanência no topo. Entre os nomes que ajudam a dimensionar o peso desse tipo de legado no surfe moderno, vale lembrar também a <a href="https://cortedosesportes.com.br/gabriel-medina-surfista-carreira-titulos.html">trajetória de Gabriel Medina</a>, outro personagem central da modalidade nas últimas décadas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Um legado que segue como referência</strong></p>
+
+            <p>No fim das contas, Kelly Slater não é lembrado apenas porque venceu muito. Ele é lembrado porque reuniu em uma mesma carreira elementos que raramente aparecem juntos com tanta força: recordes, longevidade, domínio técnico, respeito cultural e presença constante nas grandes narrativas do esporte.</p>
+
+            <p>A rivalidade com Andy Irons deu densidade emocional à sua trajetória. O peso do Havaí acrescentou tradição e legitimidade cultural. Os títulos consolidaram o lado histórico. E o respeito geral, dentro e fora do surfe, fez com que Slater deixasse de ser apenas um campeão para se transformar em um parâmetro de grandeza.</p>
+
+            <p>Por isso, Kelly Slater ocupa um espaço tão raro no surfe. Mais do que um recordista ou uma estrela de uma geração, ele se consolidou como um nome que ajuda a explicar o que significa ser dominante, longevo e verdadeiramente histórico dentro do esporte.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
