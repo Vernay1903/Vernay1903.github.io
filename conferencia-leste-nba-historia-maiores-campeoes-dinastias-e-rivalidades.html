@@ -6,6 +6,10 @@
   <meta name="description" content="Conheça a história da Conferência Leste da NBA, seus maiores campeões, dinastias marcantes e rivalidades que ajudaram a moldar o basquete moderno." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -228,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -273,7 +312,7 @@
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">24/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+            Categoria: <a id="categoryLink" href="#">BASQUETE</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -282,9 +321,6 @@
             <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
-
-          <!-- ANÚNCIO (SEM TEXTO) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
 
           <article id="articleBody">
             <p>Falar da Conferência Leste da NBA é falar sobre parte essencial da história do basquete moderno. É no Leste que nasceram algumas das maiores dinastias da liga, rivalidades icônicas e momentos que ajudaram a transformar a NBA em um fenômeno global.</p>
@@ -295,25 +331,39 @@
 
             <p>A Conferência Leste reúne franquias que ajudaram a construir o imaginário da NBA. Entre elas:</p>
 
-            <p>- Boston Celtics<br>
-            - Miami Heat<br>
-            - Chicago Bulls<br>
-            - Milwaukee Bucks<br>
-            - Philadelphia 76ers<br>
-            - Detroit Pistons<br>
-            - Cleveland Cavaliers<br>
-            - New York Knicks<br>
-            - Indiana Pacers<br>
-            - Orlando Magic<br>
-            - Atlanta Hawks<br>
-            - Washington Wizards<br>
-            - Charlotte Hornets<br>
-            - Brooklyn Nets<br>
-            - Toronto Raptors</p>
+            <p>- Boston Celtics</p>
+            <p>- Miami Heat</p>
+            <p>- Chicago Bulls</p>
+            <p>- Milwaukee Bucks</p>
+            <p>- Philadelphia 76ers</p>
+            <p>- Detroit Pistons</p>
+            <p>- Cleveland Cavaliers</p>
+            <p>- New York Knicks</p>
+            <p>- Indiana Pacers</p>
+            <p>- Orlando Magic</p>
+            <p>- Atlanta Hawks</p>
+            <p>- Washington Wizards</p>
+            <p>- Charlotte Hornets</p>
+            <p>- Brooklyn Nets</p>
+            <p>- Toronto Raptors</p>
 
             <p>Alguns dos maiores campeões da história da NBA estão no Leste.</p>
 
-            <p>O <strong>Boston Celtics é o maior campeão da NBA</strong>, acumulando o maior número de títulos da liga e atravessando diferentes eras com equipes dominantes que marcaram gerações. Já o Chicago Bulls ficou eternizado pela <strong>era de Michael Jordan nos anos 1990</strong>, período em que a franquia construiu uma das dinastias mais impactantes da história do esporte mundial.</p>
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>O Boston Celtics é o maior campeão da NBA, acumulando o maior número de títulos da liga e atravessando diferentes eras com equipes dominantes que marcaram gerações. Já o Chicago Bulls ficou eternizado pela era de Michael Jordan nos anos 1990, período em que a franquia construiu uma das dinastias mais impactantes da história do esporte mundial.</p>
 
             <p>O Miami Heat protagonizou ciclos modernos de grande impacto. O Milwaukee Bucks e o Cleveland Cavaliers também escreveram capítulos importantes nos anos recentes, consolidando o Leste como palco constante de decisões históricas.</p>
 
@@ -323,10 +373,10 @@
 
             <p>Se a NBA é espetáculo, o Leste sempre foi palco de confrontos memoráveis.</p>
 
-            <p>- Celtics x 76ers<br>
-            - Bulls x Pistons<br>
-            - Heat x Knicks<br>
-            - Bucks x Celtics</p>
+            <p>- Celtics x 76ers</p>
+            <p>- Bulls x Pistons</p>
+            <p>- Heat x Knicks</p>
+            <p>- Bucks x Celtics</p>
 
             <p>Essas rivalidades ajudaram a definir títulos, consolidar legados e criar narrativas que ultrapassaram o esporte.</p>
 
@@ -336,11 +386,25 @@
 
             <p>A identidade da Conferência Leste também passa pelos seus palcos:</p>
 
-            <p>- TD Garden (Boston)<br>
-            - Madison Square Garden (New York)<br>
-            - United Center (Chicago)<br>
-            - Fiserv Forum (Milwaukee)<br>
-            - Kaseya Center (Miami)</p>
+            <p>- TD Garden (Boston)</p>
+            <p>- Madison Square Garden (New York)</p>
+            <p>- United Center (Chicago)</p>
+            <p>- Fiserv Forum (Milwaukee)</p>
+            <p>- Kaseya Center (Miami)</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
             <p>Esses ginásios carregam décadas de história, atmosfera intensa e conexão profunda com suas cidades.</p>
 
@@ -356,10 +420,24 @@
 
             <p>Isso mantém a conferência imprevisível, competitiva e historicamente relevante dentro da NBA.</p>
 
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
             <p>A cada geração, novas estrelas surgem, velhas rivalidades são reacendidas e a disputa pelo título da Conferência Leste ganha contornos épicos.</p>
 
-            <p>No basquete, talento decide jogos — mas tradição constrói legado.<br>
-            E a Conferência Leste da NBA continua sendo um dos grandes pilares dessa história.</p>
+            <p>No basquete, talento decide jogos — mas tradição constrói legado.</p>
+            <p>E a Conferência Leste da NBA continua sendo um dos grandes pilares dessa história.</p>
           </article>
         </div>
       </section>
@@ -373,8 +451,18 @@
           </ul>
         </div>
 
-        <!-- ANÚNCIO (SEM TEXTO) -->
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
