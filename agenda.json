@@ -1,42 +1,38 @@
 [
   {
-    "time": "09:30",
-    "desc": "Brighton x Liverpool - Premier League"
-  },
-  {
-    "time": "11:30",
-    "desc": "Bayern x Union Berlin - Bundesliga"
-  },
-  {
-    "time": "12:00",
-    "desc": "Fulham x Burnley - Premier League"
-  },
-  {
-    "time": "14:00",
-    "desc": "Milan x Torino - Campeonato Italiano"
-  },
-  {
-    "time": "14:30",
-    "desc": "Everton x Chelsea - Premier League"
+    "time": "10:00",
+    "desc": "Barcelona x Rayo Vallecano - La Liga"
   },
   {
     "time": "16:00",
-    "desc": "Bragantino x Botafogo - Brasileirão Série A"
+    "desc": "Vasco da Gama x Grêmio - Brasileirão Série A"
   },
   {
-    "time": "16:45",
-    "desc": "Juventus x Sassuolo - Campeonato Italiano"
+    "time": "16:00",
+    "desc": "Cruzeiro x Santos - Brasileirão Série A"
   },
   {
-    "time": "17:05",
-    "desc": "Nice x PSG - Campeonato Francês"
+    "time": "16:00",
+    "desc": "Athletico-PR x Coritiba - Brasileirão Série A"
+  },
+  {
+    "time": "16:00",
+    "desc": "Remo x Bahia - Brasileirão Série A"
+  },
+  {
+    "time": "17:00",
+    "desc": "Real Madrid x Atlético Madrid - La Liga"
   },
   {
     "time": "18:30",
-    "desc": "Fluminense x Atlético-MG - Brasileirão Série A"
+    "desc": "EC Vitória x Mirassol - Brasileirão Série A"
   },
   {
-    "time": "21:00",
-    "desc": "São Paulo x Palmeiras - Brasileirão Série A"
+    "time": "18:30",
+    "desc": "Internacional x Chapecoense - Brasileirão Série A"
+  },
+  {
+    "time": "20:30",
+    "desc": "Corinthians x Flamengo - Brasileirão Série A"
   }
 ]
