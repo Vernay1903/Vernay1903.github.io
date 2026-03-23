@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ondas de Nazaré: o fenômeno gigante de Portugal que redefiniu o surfe de ondas grandes | Corte dos Esportes</title>
-  <meta name="description" content="Entenda por que Nazaré virou referência mundial em ondas gigantes: Canhão de Nazaré, recordes, riscos e o protagonismo brasileiro com Burle, Maya Gabeira e Chumbo.">
+  <meta name="description" content="Conheça o fenômeno de Nazaré em Portugal, o Canhão de Nazaré, recordes e o protagonismo brasileiro com Burle, Maya Gabeira e Chumbo." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -154,14 +190,18 @@
 
     .meta a:hover { text-decoration: underline; }
 
+    /* AD SLOTS (sem texto) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
       border-radius: 14px;
       padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
       margin: 16px 0;
-      min-height: 110px;
     }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
 
     article p {
       font-size: 16px;
@@ -224,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -269,7 +312,7 @@
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">25/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">Surf</a>
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -279,15 +322,12 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <!-- ANÚNCIO TOPO (LIMPO) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
             <p>Falar das ondas de Nazaré é falar sobre um dos maiores espetáculos naturais do planeta. Localizada na vila de Nazaré, em Portugal, a Praia do Norte se tornou sinônimo de recordes mundiais, resgates dramáticos e limites humanos levados ao extremo no surfe de ondas gigantes.</p>
 
             <p>Muito além da imagem impactante das montanhas de água, o fenômeno de Nazaré é resultado de uma combinação geográfica rara que transformou a região em laboratório natural para o surfe de ondas grandes.</p>
 
-            <p>📍 O segredo está no fundo do mar: o Canhão de Nazaré</p>
+            <p><strong>📍 O segredo está no fundo do mar: o Canhão de Nazaré</strong></p>
 
             <p>O que diferencia Nazaré de outros picos de ondas grandes é o chamado Canhão de Nazaré, um desfiladeiro submarino com cerca de 200 km de extensão e profundidade que ultrapassa os 5 mil metros.</p>
 
@@ -295,7 +335,21 @@
 
             <p>O resultado é imprevisível: as ondas não vêm em séries organizadas como em praias tradicionais. Elas surgem cruzadas, desordenadas e extremamente potentes — o que torna Nazaré ao mesmo tempo fascinante e perigosa.</p>
 
-            <p>🏆 Recordes que colocaram Nazaré no mapa</p>
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>🏆 Recordes que colocaram Nazaré no mapa</strong></p>
 
             <p>Foi em 2011 que o havaiano Garrett McNamara colocou Nazaré definitivamente no radar mundial ao surfar uma onda estimada em mais de 23 metros. A onda foi posteriormente medida em aproximadamente 23,8 metros, altura equivalente a um prédio de cerca de 8 andares.</p>
 
@@ -303,11 +357,9 @@
 
             <p>Desde então, novos recordes foram registrados na região, consolidando Nazaré como palco das maiores ondas já surfadas no planeta.</p>
 
-            <p>🇧🇷 Brasileiros protagonistas nas gigantes</p>
+            <p><strong>🇧🇷 Brasileiros protagonistas nas gigantes</strong></p>
 
-            <p>O Brasil tem papel central na história recente de Nazaré.</p>
-
-            <p>🌊 Carlos Burle: pioneirismo e resgate dramático</p>
+            <p><strong>🌊 Carlos Burle: pioneirismo e resgate dramático</strong></p>
 
             <p>Carlos Burle foi um dos primeiros brasileiros a se desafiar nas ondas portuguesas. Em 2013, surfou uma onda estimada em mais de 30 metros — marca que, à época, entrou na discussão sobre possível recorde mundial.</p>
 
@@ -315,7 +367,7 @@
 
             <p>No mesmo dia, protagonizou um dos momentos mais emblemáticos de Nazaré: o resgate da compatriota Maya Gabeira, que sofreu um grave acidente após cair em uma das maiores ondas já enfrentadas por uma mulher. Maya ficou submersa por vários segundos e precisou ser retirada inconsciente da água, em um episódio que evidenciou os riscos extremos da modalidade.</p>
 
-            <p>🌊 Maya Gabeira: superação e recorde feminino</p>
+            <p><strong>🌊 Maya Gabeira: superação e recorde feminino</strong></p>
 
             <p>A história de Maya em Nazaré se tornou símbolo de resiliência. Após o acidente, enfrentou críticas médicas e longo processo de recuperação. Anos depois, retornou à Praia do Norte e estabeleceu recordes mundiais no surfe feminino de ondas grandes.</p>
 
@@ -323,7 +375,21 @@
 
             <p>Nazaré deixou de ser apenas palco de risco para se tornar cenário de superação histórica.</p>
 
-            <p>🌊 Lucas “Chumbo” Chianca: nova geração e domínio competitivo</p>
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>🌊 Lucas “Chumbo” Chianca: nova geração e domínio competitivo</strong></p>
 
             <p>A nova geração brasileira também consolidou protagonismo nas ondas gigantes portuguesas. Um dos principais nomes é Lucas Chianca, conhecido como “Chumbo”.</p>
 
@@ -333,7 +399,7 @@
 
             <p>A presença constante de brasileiros nas decisões e disputas por maiores ondas do ano mostra que Nazaré se tornou praticamente um território de protagonismo brasileiro no surfe de ondas grandes.</p>
 
-            <p>⚠️ Perigo real: por que Nazaré é tão desafiadora?</p>
+            <p><strong>⚠️ Perigo real: por que Nazaré é tão desafiadora?</strong></p>
 
             <p>Além da altura impressionante das ondas, outros fatores tornam o local particularmente perigoso:</p>
 
@@ -344,11 +410,25 @@
 
             <p>Por isso, o tow-in (surfe rebocado por jet ski) tornou-se técnica predominante na região. Equipes de resgate ficam posicionadas estrategicamente para agir em caso de queda — uma prática essencial, não opcional.</p>
 
-            <p>🌎 Impacto global e turismo</p>
+            <p><strong>🌎 Impacto global e turismo</strong></p>
 
             <p>Hoje, Nazaré não é apenas destino esportivo, mas também turístico. Durante o inverno europeu, milhares de visitantes se concentram no Forte de São Miguel Arcanjo — ponto privilegiado de observação — para assistir às maiores ondulações do ano.</p>
 
             <p>A vila portuguesa passou de tradicional comunidade pesqueira para referência internacional do surfe extremo, movimentando economia, mídia e documentários ao redor do mundo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
             <p><strong>Conheça também a WSL, o circuito mundial de surf:</strong> <a href="https://cortedosesportes.com.br/wsl-2026-como-funciona-circuito-surf-brasil-brazilian-storm.html">wsl-2026-como-funciona-circuito-surf-brasil-brazilian-storm.html</a></p>
           </article>
@@ -364,8 +444,18 @@
           </ul>
         </div>
 
-        <!-- ANÚNCIO SIDEBAR (LIMPO) -->
-        <div class="ad-slot" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
