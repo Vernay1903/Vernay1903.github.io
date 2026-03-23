@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>WSL 2026: etapas do Championship Tour e a tradição de cada palco da temporada | Corte dos Esportes</title>
+  <meta name="description" content="A temporada de 2026 mantém no roteiro picos de ondas clássicas, abre espaço para novidade, passa por etapa em piscina e termina com a definição do campeão em Pipeline." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">WSL 2026: etapas do Championship Tour e a tradição de cada palco da temporada</h1>
+          <p class="subhead" id="articleExcerpt">A temporada de 2026 mantém no roteiro picos de ondas clássicas, abre espaço para novidade, passa por etapa em piscina e termina com a definição do campeão em Pipeline.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">23/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Na WSL, o circuito começa a ganhar forma pelo peso das etapas e pela capacidade dos surfistas de adaptar seu estilo às características de cada onda. A temporada de 2026 mantém no roteiro picos de ondas clássicas, abre espaço para novidade, passa por etapa em piscina e termina com a definição do campeão em Pipeline, um dos palcos mais sagrados do surfe mundial.</p>
+
+            <p>Mais do que marcar datas, o Championship Tour também mostra desde o início o tipo de exigência que vai impor ao longo do ano. Há etapas em que a linha fala mais alto, outras em que potência, coragem e posicionamento fazem toda a diferença. Ao mesmo tempo, o circuito reforça uma das bases do surfe: a relação direta com a natureza, com a localidade de cada onda e com os diferentes cenários que acompanham a temporada pelo mundo.</p>
+
+            <p><strong>O calendário da WSL 2026</strong></p>
+            <p><strong>Temporada regular</strong></p>
+
+            <p>Etapa 1 – Bells Beach, Austrália — 1 a 11 de abril</p>
+
+            <p>Etapa 2 – Margaret River, Austrália — 16 a 26 de abril</p>
+
+            <p>Etapa 3 – Snapper Rocks, Gold Coast, Austrália — 1 a 11 de maio</p>
+
+            <p>Etapa 4 – Raglan, Nova Zelândia — 15 a 25 de maio</p>
+
+            <p>Etapa 5 – Punta Roca, El Salvador — 5 a 15 de junho</p>
+
+            <p>Etapa 6 – Saquarema, Brasil — 19 a 27 de junho</p>
+
+            <p>Etapa 7 – Teahupo’o, Taiti — 8 a 18 de agosto</p>
+
+            <p>Etapa 8 – Cloudbreak, Fiji — 25 de agosto a 4 de setembro</p>
+
+            <p>Etapa 9 – Lower Trestles, Estados Unidos — 11 a 20 de setembro</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Pós-corte</strong></p>
+
+            <p>Etapa 10 – Abu Dhabi, Emirados Árabes Unidos — 14 a 18 de outubro</p>
+
+            <p>Etapa 11 – Peniche, Portugal — 22 de outubro a 1º de novembro</p>
+
+            <p><strong>Final da temporada</strong></p>
+
+            <p>Etapa 12 – Pipeline, Havaí — 8 a 20 de dezembro</p>
+
+            <p><strong>Bells Beach: tradição pura e o peso de tocar o sino</strong></p>
+
+            <p>Abrir a temporada em Bells Beach ajuda a dar ao circuito uma cara imediatamente clássica. Poucas etapas têm uma relação tão forte com a memória do surfe competitivo. Bells não é só uma onda tradicional do tour. É um palco em que o resultado parece ganhar um valor simbólico maior, justamente porque vencer ali significa entrar em uma linhagem histórica do circuito.</p>
+
+            <p>Existe ainda um ritual que ajuda a explicar esse peso: tocar o sino. Em Bells, o vencedor não leva apenas a lembrança de uma etapa importante. Leva consigo uma das imagens mais tradicionais da WSL. Esse gesto virou parte da cultura do evento e reforça a ideia de que ganhar ali é diferente. Dentro d’água, a onda costuma cobrar leitura, linha e paciência, favorecendo surfistas que sabem construir a bateria com fluidez e aproveitar o desenho do paredão sem pressa.</p>
+
+            <p><strong>Margaret River: potência, leitura e mar de imposição</strong></p>
+
+            <p>Se Bells representa tradição, Margaret River costuma representar autoridade. O oeste australiano entrega uma etapa associada a peso de água, vento, mar mais exigente e necessidade de adaptação. Não é um tipo de palco que costuma aceitar hesitação. Quem vai bem ali geralmente consegue unir força física, leitura rápida das condições e capacidade de encaixar um surfe sólido em ondas menos dóceis.</p>
+
+            <p>Margaret também reforça a importância da perna australiana no começo da temporada. O circuito abre com um bloco forte na Austrália, e isso nunca é detalhe. Essa primeira sequência já testa ritmo, adaptação e repertório técnico em ondas que ajudam a separar rapidamente quem entrou realmente preparado no ano.</p>
+
+            <p><strong>Snapper Rocks: performance em estado puro</strong></p>
+
+            <p>Snapper Rocks recoloca no calendário uma das ondas mais associadas a performance de alto nível. Quando está clássico, o pico oferece longas direitas, conexão de manobras e espaço para baterias muito completas. É uma etapa que costuma agradar quem gosta de surfe progressivo, mas sem abrir mão de linha e controle.</p>
+
+            <p>Dentro da lógica da temporada, Snapper aparece como um contraste interessante no início do circuito. Depois de etapas que cobram leitura mais pesada e adaptação a condições mais exigentes, a Gold Coast surge como palco em que o surfista pode soltar mais o repertório e transformar a bateria em espetáculo técnico. É uma onda que conversa muito bem com o lado mais plástico e competitivo do surfe moderno.</p>
+
+            <p><strong>Raglan: a mudança que altera a rota do tour</strong></p>
+
+            <p>A principal mudança do calendário de 2026 é a entrada de Raglan, na Nova Zelândia, no lugar de Jeffreys Bay. Não se trata apenas de trocar um destino por outro. É uma alteração que mexe no desenho do circuito e na identidade do primeiro bloco da temporada.</p>
+
+            <p>Raglan carrega tradição própria dentro da cultura do surfe, especialmente por Manu Bay e pela reputação de esquerda longa e muito respeitada. A entrada da Nova Zelândia dá um ar de renovação ao tour sem romper com sua essência. Ao contrário: mantém a lógica de valorizar ondas que têm peso real dentro do imaginário do esporte. É uma novidade que parece fazer sentido justamente porque não soa artificial.</p>
+
+            <p><strong>Punta Roca: ritmo, parede e construção de bateria</strong></p>
+
+            <p>El Salvador segue no circuito com Punta Roca, uma onda que se consolidou como etapa de alto nível. O pico favorece ritmo, leitura e conexão de curvas, com uma direita longa que costuma oferecer tempo para o surfista construir a bateria de forma mais estratégica.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Com o passar dos anos, Punta Roca deixou de ser vista apenas como uma parada recente e ganhou respeito como palco confiável do tour. Dentro do calendário, funciona bem porque mantém a lógica de ondas que permitem surfe bem desenhado, sem cair em uma repetição de estilo. É uma etapa em que o competidor precisa saber administrar a onda, e não apenas atacá-la de forma acelerada.</p>
+
+            <p><strong>Saquarema: a etapa brasileira e o peso da torcida</strong></p>
+
+            <p>A etapa brasileira será novamente em Saquarema, na Praia de Itaúna, um dos palcos mais identificados com a energia da torcida dentro do circuito. No calendário da WSL, poucas paradas combinam tão bem performance, pressão externa e identidade local. Itaúna já construiu reputação de onda forte, com mar que pode variar bastante, e de palco em que o apoio ao surfista brasileiro muda completamente o ambiente da competição.</p>
+
+            <p>Existe também um peso cultural evidente. Saquarema virou um ponto de encontro entre elite mundial e paixão brasileira pelo surfe. A etapa costuma ter clima de evento grande, barulho de arquibancada natural e sensação de que a bateria não acontece só dentro d’água. Para o tour, é uma parada importante porque insere a temporada em um dos ambientes mais quentes do circuito.</p>
+
+            <p><strong>Teahupo’o: quando o circuito entra no território do respeito absoluto</strong></p>
+
+            <p>Se há uma etapa que muda a temperatura emocional do tour, é Teahupo’o. O palco do Taiti segue como uma das ondas mais temidas e reverenciadas do mundo. Ali, a discussão deixa de ser apenas manobra ou combinação de notas. Entra em cena a coragem, o posicionamento e a capacidade de competir em uma onda pesada, tubular e extremamente técnica.</p>
+
+            <p>Teahupo’o ajuda a manter viva a dimensão mítica da WSL. Toda temporada precisa de etapas que pareçam inevitáveis, e o Taiti é uma delas. Mesmo quem não acompanha o circuito inteiro costuma parar para ver quando a elite entra naquele reef. Poucos lugares colocam tanta pressão psicológica sobre o atleta antes mesmo do início da bateria.</p>
+
+            <p><strong>Cloudbreak: Fiji e a lógica da excelência</strong></p>
+
+            <p>Poucas ondas do tour carregam tanta aura quanto Cloudbreak. A etapa de Fiji costuma ser tratada como um momento de consagração técnica dentro do calendário. É uma onda que pode oferecer tubos, parede, velocidade e uma exigência altíssima de posicionamento e leitura.</p>
+
+            <p>No desenho da temporada, Cloudbreak funciona quase como um teste de grandeza. Não é só mais uma parada bonita do circuito. É uma daquelas etapas em que o surfista parece precisar provar que consegue competir em um dos cenários mais respeitados do planeta. Quando o mar encaixa, a sensação é de que o circuito entra em sua forma mais nobre.</p>
+
+            <p><strong>Lower Trestles: o fechamento da temporada regular</strong></p>
+
+            <p>A nona etapa será em Lower Trestles, encerrando a temporada regular antes de a reta decisiva ganhar peso total. Trestles é uma onda associada a alta performance e a baterias rápidas, técnicas e muito pontuadas. É um palco que valoriza consistência e repertório, especialmente para quem sabe aproveitar uma onda mais limpa para empilhar manobras.</p>
+
+            <p>Por ser a última parada antes do afunilamento competitivo mais duro, Trestles costuma ganhar ainda mais importância. Não entra só como uma etapa bonita no calendário, mas como um ponto de virada para quem chega pressionado e precisa confirmar posição antes da fase final.</p>
+
+            <p><strong>Abu Dhabi, Peniche e a reta final antes de Pipeline</strong></p>
+
+            <p>Depois das nove primeiras etapas, o tour entra na fase pós-corte e segue para Abu Dhabi e Peniche. Abu Dhabi aparece no calendário como a etapa em piscina da temporada, um cenário bem diferente das ondas naturais que marcam a maior parte do circuito. Já Peniche mantém o peso europeu e a fama de etapa sensível às condições do mar e do vento. As duas paradas antecedem o fechamento do ano e ajudam a separar quem chega realmente forte ao último ato da temporada.</p>
+
+            <p>Essa parte do calendário costuma ser menos romântica e mais estratégica. O circuito já entra em modo de definição, e cada bateria passa a carregar um peso diferente. Não é mais apenas sobre performar bem em uma onda específica, mas sobre sobreviver à reta em que o título começa a ganhar contornos reais.</p>
+
+            <p><strong>Pipeline: o palco final que devolve peso histórico ao título</strong></p>
+
+            <p>A decisão do circuito será em Banzai Pipeline, no Havaí, uma escolha que devolve ao calendário uma carga histórica muito forte. A WSL mantém a lógica de decidir o título por pontos e recoloca Pipeline como o último grande capítulo da temporada. Poucas decisões poderiam parecer mais coerentes com a tradição do esporte.</p>
+
+            <p>Pipeline não é apenas uma onda famosa. É uma referência absoluta do surfe mundial. Fechar o ano ali aproxima o tour de uma ideia mais clássica de consagração, em que o título passa por um dos palcos mais pesados e simbólicos do surfe. Não por acaso, nomes históricos do esporte ajudaram a construir a mística do local, como mostra a trajetória de <a href="https://cortedosesportes.com.br/kelly-slater-historia-surfe-titulos-pipeline.html">Kelly Slater em Pipeline</a>. Existe algo de definitivo em terminar a temporada naquele cenário. Como se o circuito, para coroar seu campeão, precisasse voltar a um dos lugares mais sagrados do mapa do esporte.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que a temporada de 2026 exige dos surfistas</strong></p>
+
+            <p>O circuito de 2026 cobra leitura de mar, adaptação e repertório para atravessar contextos muito diferentes ao longo do ano. Em uma mesma temporada, os atletas vão passar por ondas clássicas, novidade na rota, etapa em piscina e um fechamento em Pipeline, o que muda completamente a forma de competir de uma parada para outra.</p>
+
+            <p>É justamente isso que dá força ao tour. Cada etapa altera a exigência, muda o tipo de bateria e obriga o surfista a encontrar respostas diferentes ao longo da temporada. Em um calendário assim, o campeão não se define apenas pelos resultados, mas pela capacidade de entender a onda certa, no lugar certo, no momento certo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
