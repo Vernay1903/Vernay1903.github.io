@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Libertadores: a história, a mística e a paixão que transformaram a Copa no maior símbolo do futebol sul-americano | Corte dos Esportes</title>
+  <meta name="description" content="Poucos torneios no mundo carregam um peso emocional tão grande quanto a Libertadores. Mais do que uma competição continental, ela se tornou uma linguagem cultural do futebol sul-americano." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Libertadores: a história, a mística e a paixão que transformaram a Copa no maior símbolo do futebol sul-americano</h1>
+          <p class="subhead" id="articleExcerpt">Poucos torneios no mundo carregam um peso emocional tão grande quanto a Libertadores. Mais do que uma competição continental, ela se tornou uma linguagem cultural do futebol sul-americano.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">23/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Poucos torneios no mundo carregam um peso emocional tão grande quanto a Libertadores. Mais do que uma competição continental, ela se tornou uma espécie de linguagem comum do futebol sul-americano, um espaço onde tradição, rivalidade, pressão, orgulho nacional e paixão popular se encontram de forma quase única. Não é por acaso que tanta gente a chama simplesmente de “a Copa”. Em muitos lugares da América do Sul, isso basta. Não é preciso explicar qual.</p>
+
+            <p>Ao longo das décadas, a Libertadores deixou de ser apenas o torneio que aponta o melhor clube do continente. Ela virou também um palco de afirmação cultural. Vencer a competição sempre significou mais do que levantar uma taça: significou derrotar rivais históricos, sobreviver a ambientes hostis, encarar viagens longas, arbitragens tensas, estádios fervendo e jogos que muitas vezes pareciam ir além do próprio futebol. É isso que ajuda a explicar por que a Libertadores ocupa um lugar tão especial na memória coletiva de torcedores de diferentes países.</p>
+
+            <p><strong>O nascimento de uma competição com cara de continente</strong></p>
+
+            <p>A Libertadores surgiu em 1960, num momento em que o futebol sul-americano já carregava enorme força popular, mas ainda buscava uma grande competição de clubes capaz de representar o continente de forma ampla. Desde o começo, o torneio teve um caráter simbólico muito forte. O nome homenageava os líderes da independência da América do Sul e, de certa forma, isso ajudou a dar à competição uma identidade própria, ligada à ideia de pertencimento regional, orgulho nacional e confronto entre escolas diferentes de futebol.</p>
+
+            <p>Com o passar dos anos, a taça deixou de ser apenas um prêmio esportivo. Tornou-se um objeto de desejo cercado por rituais, pressão e mística. A Libertadores cresceu não apenas por causa dos campeões, mas porque foi sendo alimentada por noites dramáticas, rivalidades históricas, decisões intensas e uma atmosfera que poucos torneios conseguem reproduzir.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que a Libertadores sempre foi diferente</strong></p>
+
+            <p>A Libertadores ganhou fama por ser dura, imprevisível e emocionalmente desgastante. Em nenhuma outra competição continental de clubes a atmosfera do jogo pesa tanto como pesa nela. Existe uma sensação constante de que cada detalhe importa mais, de que cada lance pode virar um conflito, de que a pressão das arquibancadas pode alterar o ritmo da partida.</p>
+
+            <p>Isso tem relação direta com a cultura do futebol sul-americano. O continente sempre viveu o esporte de forma intensa, identitária e muitas vezes visceral. Em várias cidades, o clube não representa apenas um time, mas um território, uma classe social, uma memória familiar e um modo de vida. Quando esse sentimento atravessa fronteiras e encontra um rival estrangeiro, a partida ganha outra dimensão.</p>
+
+            <p>Por isso a Libertadores nunca foi só uma disputa técnica. Ela sempre foi também uma disputa emocional. Saber jogar a competição passou a ser quase tão importante quanto saber jogar futebol.</p>
+
+            <p><strong>A era mais violenta e a fama de torneio implacável</strong></p>
+
+            <p>Durante parte importante de sua história, a Libertadores também construiu a reputação de torneio áspero, provocador e, em muitos momentos, violento. Houve décadas em que as partidas eram marcadas por confrontos físicos duríssimos, catimba extrema, pressão psicológica e episódios que hoje seriam vistos com muito menos tolerância.</p>
+
+            <p>Essa imagem ajudou a moldar a identidade da competição. Para muitos torcedores, ganhar a Libertadores significava sobreviver ao ambiente mais hostil do futebol de clubes. Não bastava ter qualidade. Era preciso ter personalidade, casca, resistência mental e capacidade de suportar contextos adversos. A competição ficou associada à ideia de sofrimento, batalha e superação.</p>
+
+            <p>Com o tempo, o futebol mudou, a arbitragem passou a punir mais certos excessos e o torneio foi se modernizando. Ainda assim, a fama de competição implacável nunca desapareceu completamente. Mesmo com mudanças de formato, profissionalização maior e finais em jogo único, a Libertadores continua sendo vista como uma taça que exige algo a mais.</p>
+
+            <p><strong>Brasil x Argentina: a rivalidade que ajudou a definir a Copa</strong></p>
+
+            <p>Se existe um confronto que ajuda a resumir a alma da Libertadores, é a rivalidade entre clubes do Brasil e da Argentina. Durante décadas, esse embate ajudou a construir a narrativa do torneio. Não era apenas uma disputa entre equipes fortes, mas entre tradições, estilos de jogo, escolas táticas e culturas futebolísticas que sempre se enxergaram como centrais no continente.</p>
+
+            <p>Do lado argentino, a Libertadores foi por muito tempo território de domínio, malícia competitiva e tradição copeira. Do lado brasileiro, havia talento, peso de camisa, grandes torcidas e clubes que, em muitos momentos, precisaram aprender a jogar o torneio com mais frieza e maturidade. Essa tensão histórica deu origem a confrontos memoráveis e criou a sensação de que Brasil x Argentina, na Libertadores, nunca é só mais um jogo.</p>
+
+            <p>Essa rivalidade também foi importante para elevar o status da competição. Quando gigantes desses dois países se cruzam em mata-mata, a Libertadores se transforma em um evento continental completo. O jogo ganha repercussão, mobiliza diferentes torcidas e reforça a percepção de que a taça está ligada ao prestígio máximo no futebol sul-americano.</p>
+
+            <p><strong>O longo domínio argentino</strong></p>
+
+            <p>Por muito tempo, a Argentina foi o país que melhor entendeu a lógica da Libertadores. Seus clubes construíram uma relação muito íntima com a competição, acumulando títulos, campanhas marcantes e uma reputação de enorme competitividade. River Plate, Boca Juniors, Independiente, Estudiantes e Racing ajudaram a consolidar essa imagem de tradição copeira.</p>
+
+            <p>O Independiente, por exemplo, transformou-se em um símbolo histórico da competição e segue como o maior campeão da Libertadores. O Boca também ergueu uma identidade fortíssima ligada à Libertadores, com campanhas que misturavam talento, imposição emocional e peso internacional. Já o River conseguiu unir tradição, regularidade e protagonismo em diferentes épocas.</p>
+
+            <p>Esse domínio argentino não se explica apenas pelos títulos. Explica-se pela forma como muitos de seus clubes abraçaram a Libertadores como prioridade máxima, quase como um território natural. Em vários momentos, havia a sensação de que os argentinos sabiam sofrer, travar o jogo e controlar emocionalmente a competição como poucos.</p>
+
+            <p><strong>Os maiores campeões da história</strong></p>
+
+            <p>A história da Libertadores é marcada por clubes que transformaram a competição em parte central de sua identidade.</p>
+
+            <p><strong>Maiores campeões</strong></p>
+
+            <p>Independiente – 7 títulos</p>
+            <p>Boca Juniors – 6 títulos</p>
+            <p>Peñarol – 5 títulos</p>
+            <p>River Plate – 4 títulos</p>
+            <p>Estudiantes – 4 títulos</p>
+            <p>Flamengo – 4 títulos</p>
+            <p>Olimpia – 3 títulos</p>
+            <p>São Paulo – 3 títulos</p>
+            <p>Santos – 3 títulos</p>
+            <p>Grêmio – 3 títulos</p>
+            <p>Palmeiras – 3 títulos</p>
+            <p>Nacional – 3 títulos</p>
+
+            <p>O atual campeão da Libertadores é o Flamengo, vencedor da edição de 2025.</p>
+
+            <p>Essa lista ajuda a mostrar como a Libertadores sempre foi um espaço de peso histórico. Não basta ser grande no cenário local. Para entrar de vez no imaginário continental, quase sempre é preciso ter uma relação forte com essa taça.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Do domínio argentino ao momento brasileiro</strong></p>
+
+            <p>Se a história da Libertadores passou por um longo domínio argentino, o presente recente aponta para uma virada clara de protagonismo. Nos últimos anos, os clubes brasileiros assumiram o controle esportivo da competição com mais força, mais profundidade de elenco, mais investimento e maior capacidade de manter alto rendimento ao longo da temporada.</p>
+
+            <p>O crescimento financeiro do futebol brasileiro, somado à força de mercado, estrutura, elencos mais robustos e maior competitividade interna, ajudou a mudar o eixo da Libertadores. O Brasil deixou de ser apenas um país com clubes gigantes e passou a ser também o país com maior capacidade de dominar tecnicamente e economicamente o torneio em sua fase mais recente.</p>
+
+            <p>Isso não apagou a tradição argentina nem reduziu o peso histórico de seus gigantes. Mas mudou o equilíbrio de forças. Hoje, quando a Libertadores começa, é natural que muitos dos principais favoritos estejam no Brasil. A camisa argentina continua impondo respeito, mas o momento recente do torneio é de forte protagonismo brasileiro.</p>
+
+            <p><strong>A paixão das torcidas pela “Copa”</strong></p>
+
+            <p>Talvez nenhum elemento explique melhor a grandeza da Libertadores do que a maneira como as torcidas a tratam. Em muitos clubes sul-americanos, ganhar a liga nacional é enorme. Ganhar a Libertadores, porém, tem outro sabor. É um título que altera a memória de gerações, redefine o lugar de um time na história e cria uma conexão quase mística entre elenco, torcida e clube.</p>
+
+            <p>A palavra “Copa” carrega justamente esse peso simbólico. Ela sugere algo maior do que um campeonato. Sugere uma conquista épica, um caminho de batalhas, noites difíceis e glória continental. Para muitas torcidas, a Libertadores é a competição que melhor traduz a ideia de sofrimento recompensado. Cada viagem, cada mata-mata, cada jogo fora de casa e cada decisão dramática alimentam a sensação de que o título precisa ser conquistado de forma quase heroica.</p>
+
+            <p>É por isso que tantas campanhas ficam eternizadas mesmo quando não terminam em taça. A Libertadores produz memória como poucas competições produzem. E memória, no futebol sul-americano, vale quase tanto quanto o resultado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que a Libertadores segue sendo única</strong></p>
+
+            <p>Mesmo em um futebol globalizado, mais padronizado e cada vez mais influenciado por dinheiro, calendário e mercado, a Libertadores preserva uma identidade muito própria. Ela continua sendo um torneio em que contexto pesa, ambiente pesa, história pesa e camisa pesa. Não é só uma sequência de partidas. É uma experiência de pressão, tradição e pertencimento.</p>
+
+            <p>A Libertadores sobreviveu a mudanças de formato, a transformações do futebol sul-americano e ao crescimento desigual entre países. Ainda assim, segue ocupando um lugar central porque representa algo que vai além da técnica. Representa a maneira como o continente vive o futebol: com paixão, tensão, rivalidade, memória e orgulho.</p>
+
+            <p>Se na Europa a <a href="https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html">Champions League</a> representa o auge técnico e comercial do futebol de clubes, na América do Sul a Libertadores mantém uma força própria, ligada à tensão, à rivalidade e à paixão das torcidas. No fim, a Libertadores segue tão grande porque nunca foi apenas uma competição. Ela é um símbolo do futebol sul-americano em sua forma mais intensa. E talvez seja justamente por isso que, para tanta gente, basta chamá-la de <strong>a Copa</strong>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
