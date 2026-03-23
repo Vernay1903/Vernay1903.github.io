@@ -1,38 +1,42 @@
 [
   {
-    "time": "10:00",
-    "desc": "Barcelona x Rayo Vallecano - La Liga"
+    "time": "20:00",
+    "desc": "Pistons x Lakers - NBA"
   },
   {
-    "time": "16:00",
-    "desc": "Vasco da Gama x Grêmio - Brasileirão Série A"
+    "time": "20:00",
+    "desc": "76ers x Thunder - NBA"
   },
   {
-    "time": "16:00",
-    "desc": "Cruzeiro x Santos - Brasileirão Série A"
+    "time": "20:00",
+    "desc": "Magic x Pacers - NBA"
   },
   {
-    "time": "16:00",
-    "desc": "Athletico-PR x Coritiba - Brasileirão Série A"
-  },
-  {
-    "time": "16:00",
-    "desc": "Remo x Bahia - Brasileirão Série A"
-  },
-  {
-    "time": "17:00",
-    "desc": "Real Madrid x Atlético Madrid - La Liga"
-  },
-  {
-    "time": "18:30",
-    "desc": "EC Vitória x Mirassol - Brasileirão Série A"
-  },
-  {
-    "time": "18:30",
-    "desc": "Internacional x Chapecoense - Brasileirão Série A"
+    "time": "20:00",
+    "desc": "Heat x Spurs - NBA"
   },
   {
     "time": "20:30",
-    "desc": "Corinthians x Flamengo - Brasileirão Série A"
+    "desc": "Hawks x Grizzlies - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Bulls x Rockets - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "Jazz x Raptors - NBA"
+  },
+  {
+    "time": "22:30",
+    "desc": "Mavericks x Warriors - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Trail Blazers x Nets - NBA"
+  },
+  {
+    "time": "23:30",
+    "desc": "Clippers x Bucks - NBA"
   }
 ]
