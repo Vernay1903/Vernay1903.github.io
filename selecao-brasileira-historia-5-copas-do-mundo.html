@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Os 5 títulos mundiais do Brasil: a história das conquistas que transformaram a Seleção em referência eterna do futebol | Corte dos Esportes</title>
+  <meta name="description" content="Poucas seleções no futebol mundial conseguiram construir uma relação tão forte entre talento, identidade e vitória quanto o Brasil. Os cinco títulos da Copa do Mundo não representam apenas uma coleção de taças." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Os 5 títulos mundiais do Brasil: a história das conquistas que transformaram a Seleção em referência eterna do futebol</h1>
+          <p class="subhead" id="articleExcerpt">Poucas seleções no futebol mundial conseguiram construir uma relação tão forte entre talento, identidade e vitória quanto o Brasil. Os cinco títulos da Copa do Mundo não representam apenas uma coleção de taças.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">24/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Poucas seleções no futebol mundial conseguiram construir uma relação tão forte entre talento, identidade e vitória quanto o Brasil. Os cinco títulos da Copa do Mundo não representam apenas uma coleção de taças. Eles contam a história de gerações diferentes, estilos diferentes e contextos muito distintos, mas que acabaram formando uma mesma imagem: a da Seleção Brasileira como uma das maiores referências da modalidade. Entre 1958 e 2002, o Brasil atravessou mudanças de época, passou por jejuns longos, reinventou seu jeito de competir e consolidou uma tradição que fez da camisa amarela um símbolo global do futebol.</p>
+
+            <p><strong>O primeiro passo para a eternidade</strong></p>
+
+            <p>O título de 1958 mudou tudo. Até então, o Brasil era visto como uma seleção talentosa, mas ainda carregava o peso de não ter conquistado o mundo. A campanha na Suécia representou a ruptura com esse passado e o nascimento de uma potência real. Não foi só a primeira taça: foi a conquista que colocou a Seleção em outro patamar de confiança, respeito e presença internacional.</p>
+
+            <p>Aquele time reuniu nomes decisivos como Didi, Garrincha, Vavá e um jovem Pelé, que aos 17 anos ajudou a transformar o título em um marco histórico. Mais do que ganhar, o Brasil encantou. Na final, venceu a Suécia por 5 a 2 em plena casa do adversário e deu ao país sua primeira Copa do Mundo. Essa combinação entre resultado, contexto e brilho técnico foi determinante para a construção da imagem que acompanharia a Seleção nas décadas seguintes. Pelé tornou-se o mais jovem campeão mundial da história, e a geração de 1958 passou a ser lembrada como a que abriu a porta da grandeza brasileira.</p>
+
+            <p><strong>1962: a confirmação de uma potência</strong></p>
+
+            <p>Se 1958 serviu para apresentar o Brasil ao topo, 1962 mostrou que aquela conquista não tinha sido obra do acaso. Ganhar uma Copa já coloca uma seleção em lugar especial; ganhar duas seguidas muda a escala da conversa. O bicampeonato no Chile consolidou a equipe brasileira como a principal força do futebol mundial naquele momento e reforçou a ideia de que o país havia encontrado um padrão de excelência difícil de igualar.</p>
+
+            <p>Mesmo com problemas físicos de Pelé ao longo do torneio, o Brasil conseguiu manter alto nível competitivo e encontrou em Garrincha uma atuação monumental. A campanha de 1962 reforçou a profundidade daquele elenco e mostrou que a Seleção tinha mais do que um craque isolado: tinha uma estrutura coletiva e técnica capaz de sustentar o protagonismo. Na decisão, a vitória por 3 a 1 sobre a Tchecoslováquia confirmou o bicampeonato e reforçou o tamanho daquela geração. Foi a prova de que o Brasil não era mais um aspirante ao topo, mas uma referência já instalada no centro do futebol mundial.</p>
+
+            <p><strong>1970: o time que virou lenda</strong></p>
+
+            <p>Entre os cinco títulos mundiais do Brasil, o de 1970 talvez seja o que mais se aproximou da ideia de obra-prima. A Seleção que venceu no México atravessou o tempo como sinônimo de excelência técnica, criatividade e domínio. Não foi apenas campeã: virou parâmetro. Quando se fala em grandes times da história do futebol, aquela equipe aparece quase sempre entre as primeiras lembranças.</p>
+
+            <p>Pelé já não era a novidade de 1958, mas sim o centro de uma geração histórica. Ao lado de nomes como Jairzinho, Tostão, Rivellino, Gérson e Carlos Alberto, ele liderou uma equipe que uniu inteligência, repertório ofensivo e identidade de jogo. Na final contra a Itália, o Brasil venceu por 4 a 1 e fechou a campanha mais emblemática de sua história. O tricampeonato deu ao país uma dimensão ainda maior no cenário internacional. A partir dali, não se tratava apenas da seleção que ganhou muito; tratava-se da seleção que ajudou a definir o imaginário do futebol bonito e eficiente. Pelé se tornou o único jogador tricampeão mundial, com títulos em 1958, 1962 e 1970, marca que até hoje segue única.</p>
+
+            <p><strong>O peso de Pelé nas conquistas brasileiras</strong></p>
+
+            <p>Falar dos títulos mundiais do Brasil sem dar a Pelé um espaço central seria diminuir a própria história da Seleção. Ele não foi só o maior nome de uma geração vencedora; foi o personagem que ajudou a transformar o Brasil em mito esportivo global. Seu impacto vai além dos gols, dos dribles e dos títulos. Pelé deu rosto à grandeza brasileira em um período em que o futebol passava a ganhar alcance planetário.</p>
+
+            <p>Seu papel nos títulos de 1958, 1962 e 1970 é decisivo não apenas pela participação técnica, mas pelo valor simbólico. O Brasil encontrou em Pelé um jogador capaz de representar excelência, confiança e genialidade em escala mundial. Não por acaso, o nome dele continua ligado de forma quase inseparável à imagem da Seleção pentacampeã. Quando o mundo passou a olhar para o futebol brasileiro como referência, Pelé estava no centro dessa mudança.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O longo jejum até o tetra</strong></p>
+
+            <p>Depois de 1970, a espera pelo quarto título deu à história da Seleção uma camada nova: a da reconstrução. Foram 24 anos entre o tri e o tetra, um intervalo longo demais para um país acostumado a se enxergar como potência do futebol. Nesse período, o Brasil seguiu produzindo grandes jogadores e seleções marcantes, mas viu a taça escapar em momentos dolorosos. Isso fez com que 1994 tivesse um peso emocional muito diferente dos títulos anteriores.</p>
+
+            <p>Nos Estados Unidos, a Seleção foi campeã em um contexto menos romântico e mais tenso. O brilho existia, mas a urgência do resultado falava mais alto. Romário foi o grande símbolo daquele time, com Bebeto ao seu lado formando uma dupla decisiva. O tetra não entrou para a memória coletiva como o time mais vistoso, mas talvez tenha sido um dos mais necessários. Ele encerrou a ansiedade de uma geração inteira e recolocou o Brasil no topo depois de mais de duas décadas.</p>
+
+            <p><strong>1994: quando vencer voltou a ser urgente</strong></p>
+
+            <p>A campanha do tetra mostrou uma faceta importante da identidade brasileira: a capacidade de adaptação. Ao contrário da equipe de 1970, exaltada pelo brilho quase artístico, o Brasil de 1994 foi lembrado pela competitividade, pela segurança e pelo controle emocional. Era uma seleção que entendia o peso da camisa, mas também o tamanho da cobrança.</p>
+
+            <p>Romário foi o rosto daquela conquista, com sua personalidade e capacidade de decidir jogos grandes. Bebeto também teve papel central, enquanto nomes como Taffarel, Dunga, Branco e Jorginho ajudaram a dar sustentação a uma equipe mais equilibrada do que espetacular. Na final contra a Itália, o empate sem gols levou a decisão para os pênaltis, onde o Brasil confirmou o tetra em uma conquista marcada por tensão máxima. Foi o Brasil campeão em outra linguagem, provando que sua grandeza não dependia de uma única forma de jogar.</p>
+
+            <p><strong>2002: a redenção que levou ao penta</strong></p>
+
+            <p>Se 1994 encerrou um jejum, 2002 devolveu ao Brasil a sensação de superioridade mundial. O penta conquistado na Coreia do Sul e no Japão teve algo de reparação histórica, sobretudo por causa de Ronaldo. Depois da frustração de 1998 e de anos marcados por lesões e dúvidas, ele voltou ao centro do palco como protagonista absoluto. Sua atuação naquela Copa transformou o título em uma narrativa de redenção pessoal e coletiva.</p>
+
+            <p>Mas 2002 não foi só Ronaldo. Rivaldo e Ronaldinho completaram um trio ofensivo de enorme impacto, enquanto Cafu, capitão daquela equipe, virou o símbolo da liderança e da consistência de um elenco muito forte. Na decisão, o Brasil venceu a Alemanha por 2 a 0, com dois gols de Ronaldo, e confirmou o quinto título mundial. O penta recolocou a Seleção sozinha no topo da história das Copas e reforçou seu peso global em uma era já completamente dominada pela televisão, pelo marketing esportivo e pela circulação internacional da imagem dos craques.</p>
+
+            <p><strong>Os ídolos de cada conquista</strong></p>
+
+            <p>Cada título mundial do Brasil também deixou personagens que ajudam a contar a história da Seleção por diferentes ângulos. Em 1958, Pelé surgiu como joia precoce, Garrincha desequilibrou de forma única, Didi comandou o meio-campo e Vavá apareceu como homem de gols. Em 1962, Garrincha assumiu protagonismo ainda maior e simbolizou a capacidade de a Seleção continuar vencedora mesmo diante de adversidades.</p>
+
+            <p>Em 1970, Pelé atingiu o auge simbólico de sua trajetória com a camisa amarela, cercado por uma geração que parecia jogar em sintonia rara. Jairzinho, Tostão, Rivellino, Gérson e Carlos Alberto ajudaram a transformar aquele time em referência permanente. Em 1994, Romário virou o nome mais lembrado, mas Bebeto, Taffarel e Dunga também foram peças incontornáveis da campanha. Em 2002, o protagonismo de Ronaldo foi decisivo, com Rivaldo, Ronaldinho e Cafu completando o núcleo de uma conquista que permanece muito viva na memória do torcedor brasileiro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O tempo entre os títulos e o tamanho da tradição</strong></p>
+
+            <p>A sequência dos títulos brasileiros também ajuda a entender o tamanho da tradição construída pela Seleção. O primeiro e o segundo vieram em intervalo curto, em 1958 e 1962, criando a sensação de domínio. O terceiro, em 1970, levou o Brasil a outro degrau histórico. Depois veio a longa espera de 24 anos até 1994, que deu ao tetra um peso emocional especial. O penta, conquistado apenas oito anos depois, reforçou a capacidade de a Seleção voltar rapidamente ao topo mesmo em um futebol cada vez mais competitivo e globalizado.</p>
+
+            <p>Esse espaçamento entre as conquistas mostra que a história do Brasil em Copas não foi uma linha reta. Houve auge, jejum, reconstrução e retorno. E talvez seja justamente isso que torne a trajetória tão poderosa. Não se trata apenas de ter vencido cinco vezes, mas de ter conseguido se reinventar em épocas diferentes, com estilos diferentes e com gerações capazes de dialogar com as exigências de cada momento. As campanhas campeãs de 1958, 1962, 1970, 1994 e 2002 formam a espinha dorsal dessa herança.</p>
+
+            <p><strong>Por que o Brasil virou referência mundial no futebol</strong></p>
+
+            <p>O Brasil se tornou referência mundial porque seus títulos nunca vieram desacompanhados de identidade. Em cada conquista, a Seleção ofereceu ao futebol internacional algum tipo de marca: ousadia, técnica, criatividade, competitividade, carisma ou capacidade de superação. A camisa brasileira não passou a ser temida apenas porque ganhou cinco Copas, mas porque quase sempre fez isso deixando jogadores, imagens e histórias que ultrapassaram o próprio torneio.</p>
+
+            <p>Esse prestígio internacional também nasce da capacidade de a Seleção produzir ídolos que dialogam com várias gerações. Pelé é o maior exemplo, mas não o único. Garrincha, Romário, Ronaldo e tantos outros ajudaram a formar uma linha histórica que transformou o Brasil em espécie de referência afetiva do futebol mundial. Para muitos torcedores fora do país, falar de Copa do Mundo ainda é, em alguma medida, falar da memória da Seleção Brasileira.</p>
+
+            <p><strong>As cinco estrelas e o peso de uma herança</strong></p>
+
+            <p>Os cinco títulos mundiais da Seleção Brasileira representam mais do que uma superioridade estatística. Eles formam uma herança cultural, esportiva e simbólica que atravessa gerações. Cada conquista teve seu próprio rosto, sua própria atmosfera e seus próprios heróis, mas todas ajudaram a sustentar a mesma ideia: a de que o Brasil construiu com a Copa do Mundo uma relação diferente, profunda e incontornável.</p>
+
+            <p>É por isso que as cinco estrelas seguem tendo tanto peso. Elas não falam apenas do passado, mas de um padrão de grandeza que continua sendo usado como medida para avaliar cada nova geração da Seleção. E essa herança também acompanha o Brasil na caminhada para a Copa do Mundo de 2026, torneio em que a equipe já começa a projetar o caminho que pode percorrer nos <a href="https://cortedosesportes.com.br/onde-brasil-vai-jogar-copa-2026-estadios-metlife-lincoln-hard-rock.html">estádios do Mundial</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Entre o encanto de 1958, a confirmação de 1962, a lenda de 1970, o alívio de 1994 e a redenção de 2002, o Brasil construiu uma das histórias mais fortes que o esporte já produziu.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
