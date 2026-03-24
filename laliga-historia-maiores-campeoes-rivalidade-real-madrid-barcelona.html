@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>LaLiga: história, maiores campeões e por que o torneio espanhol se tornou um dos maiores símbolos do futebol mundial | Corte dos Esportes</title>
+  <meta name="description" content="A LaLiga não se transformou em uma das competições mais admiradas do planeta apenas pela quantidade de craques que passaram por seus gramados." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">LaLiga: história, maiores campeões e por que o torneio espanhol se tornou um dos maiores símbolos do futebol mundial</h1>
+          <p class="subhead" id="articleExcerpt">A LaLiga não se transformou em uma das competições mais admiradas do planeta apenas pela quantidade de craques que passaram por seus gramados.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">24/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A LaLiga não se transformou em uma das competições mais admiradas do planeta apenas pela quantidade de craques que passaram por seus gramados. O peso do torneio espanhol nasce da combinação entre tradição, identidade regional, clubes gigantes, rivalidades históricas e um ambiente cultural que sempre fez o futebol significar algo maior do que os 90 minutos. Fundada em 1929, a liga rapidamente se tornou uma vitrine do futebol espanhol e, com o passar das décadas, consolidou uma marca global capaz de influenciar o jogo, o mercado e a forma como o esporte é consumido em diferentes países.</p>
+
+            <p><strong>Como nasceu a LaLiga</strong></p>
+
+            <p>A origem da LaLiga está ligada ao processo de organização do futebol profissional na Espanha no início do século 20. A criação do campeonato nacional em 1929 deu ao país uma competição de pontos corridos capaz de reunir os principais clubes espanhóis em uma disputa contínua, algo decisivo para fortalecer rivalidades, ampliar a visibilidade do esporte e criar uma narrativa de longo prazo para cada temporada. O torneio inaugural foi vencido pelo Barcelona, detalhe simbólico para uma liga que, desde o início, já mostrava a força de seus clubes históricos.</p>
+
+            <p><strong>A construção de uma liga marcada por tradição e identidade</strong></p>
+
+            <p>Ao longo do tempo, a LaLiga deixou de ser apenas um campeonato nacional forte para se tornar uma competição com personalidade própria. Diferentemente de ligas em que o peso recai quase exclusivamente sobre a parte técnica, o futebol espanhol sempre carregou camadas adicionais de identidade regional, sentimento de pertencimento e memória histórica. Isso ajudou a construir um campeonato em que cada camisa parece representar mais do que um clube: muitas vezes, ela representa uma cidade, uma região, uma tradição política ou uma forma específica de enxergar o futebol.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Os maiores campeões da história da LaLiga</strong></p>
+
+            <p>A história da LaLiga também pode ser observada pela força de seus campeões, com alguns clubes concentrando grande parte dos títulos e ajudando a moldar a identidade do torneio ao longo das décadas.</p>
+
+            <p>Real Madrid – 36 títulos</p>
+            <p>Barcelona – 28 títulos</p>
+            <p>Atlético de Madrid – 11 títulos</p>
+            <p>Athletic Bilbao – 8 títulos</p>
+            <p>Valencia – 6 títulos</p>
+            <p>Atual campeão – Barcelona (temporada 2024/25)</p>
+
+            <p>Essa distribuição ajuda a mostrar duas marcas históricas do campeonato espanhol: de um lado, a força dominante de gigantes que atravessam gerações; de outro, o peso de clubes tradicionais que, mesmo com menos conquistas, seguem essenciais para a construção da história da competição.</p>
+
+            <p><strong>Real Madrid e Barcelona: a rivalidade que ajudou a definir a liga</strong></p>
+
+            <p>Nenhum confronto explica melhor a grandeza da LaLiga do que Real Madrid x Barcelona. El Clásico se transformou em um dos jogos mais famosos do planeta porque nunca foi apenas um duelo entre dois times vencedores. Ele reúne títulos, ídolos, pressão, estética, disputa por hegemonia e uma dimensão simbólica rara no esporte. Durante décadas, o clássico ajudou a definir campeonatos, moldou eras e concentrou a atenção global sobre o futebol espanhol, funcionando quase como um espelho da própria liga: intensa, técnica, dramática e carregada de significado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Muito além do campo: a dimensão cultural de El Clásico</strong></p>
+
+            <p>A força de Real Madrid x Barcelona também nasce do que cada clube passou a representar dentro da sociedade espanhola. O Barcelona foi associado historicamente à identidade catalã, enquanto o Real Madrid, para muitos, passou a simbolizar o centro do poder espanhol e a imagem mais ligada à capital. Essa leitura nunca explica sozinha toda a rivalidade, mas ajuda a entender por que o confronto ganhou dimensão cultural tão profunda. Em muitos períodos, o clássico foi tratado como mais do que um jogo: era a colisão entre visões distintas de país, identidade e pertencimento.</p>
+
+            <p><strong>O peso político da rivalidade</strong></p>
+
+            <p>A dimensão política de El Clásico se fortaleceu especialmente em períodos marcados pela tensão entre o poder central espanhol e as identidades regionais, sobretudo a catalã. Nesse contexto, o Barcelona passou a ser visto por muitos torcedores como uma expressão esportiva da Catalunha, enquanto o Real Madrid acabou associado, no imaginário popular, a uma ideia de centralidade política e institucional. Mesmo que essa leitura nem sempre dê conta de toda a complexidade da rivalidade, ela ajuda a explicar por que o clássico ultrapassou o futebol e se transformou em um confronto carregado de memória, simbolismo e disputas de identidade.</p>
+
+            <p><strong>A liga das grandes camisas e dos estilos marcantes</strong></p>
+
+            <p>Embora Real Madrid e Barcelona concentrem enorme parte da atenção, a força da LaLiga também passa por outros clubes que deram densidade histórica ao campeonato. O Atlético de Madrid consolidou-se como principal força de contestação à dupla dominante em muitas fases da era moderna. O Athletic Bilbao preservou uma identidade singular no futebol europeu com sua política de valorização de jogadores ligados ao País Basco. O Valencia, em diferentes gerações, também mostrou capacidade de competir no topo e construir campanhas marcantes. Essa combinação entre gigantes globais e camisas tradicionais ajudou a dar à liga um perfil único.</p>
+
+            <p><strong>Por que a LaLiga ganhou o mundo</strong></p>
+
+            <p>A projeção internacional da LaLiga não pode ser explicada apenas por resultados esportivos. A competição cresceu globalmente porque soube unir grandes marcas, jogadores históricos, clássicos com apelo mundial e uma narrativa visual fortíssima. O campeonato espanhol exportou ídolos, transformou partidas em eventos globais e consolidou uma presença digital e internacional muito ampla. Esse movimento ampliou o alcance da liga e reforçou sua imagem como produto esportivo de primeira linha, sem que ela perdesse sua base histórica e cultural.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O lugar da LaLiga na história do futebol</strong></p>
+
+            <p>A grandeza da LaLiga está no fato de que ela nunca dependeu de um único elemento para se tornar gigante. Sua força vem do encontro entre tradição, rivalidade, contexto histórico, clubes enormes e capacidade de renovação. É uma liga que ajudou a contar a história do futebol europeu e, ao mesmo tempo, construiu um modo próprio de existir dentro do esporte. Quando se fala em campeonatos que ultrapassaram o papel de simples competição para virar patrimônio cultural do futebol, a liga espanhola aparece inevitavelmente entre os maiores exemplos. Em outras grandes ligas do continente, essa relação entre tradição, identidade e arquibancada também ajudou a moldar a força do torneio, como acontece na <a href="https://cortedosesportes.com.br/bundesliga-historia-hegemonia-bayern-cultura-torcida.html">Bundesliga</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
