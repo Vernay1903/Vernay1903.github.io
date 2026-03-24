@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Judô no Brasil: história, tradição olímpica e a força de uma modalidade que virou caminho de formação e conquista | Corte dos Esportes</title>
+  <meta name="description" content="Ao longo das décadas, a modalidade se consolidou como uma das mais respeitadas do país." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Judô no Brasil: história, tradição olímpica e a força de uma modalidade que virou caminho de formação e conquista</h1>
+          <p class="subhead" id="articleExcerpt">Ao longo das décadas, a modalidade se consolidou como uma das mais respeitadas do país.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">24/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O judô ocupa um lugar especial no esporte brasileiro porque conseguiu unir rendimento de alto nível, tradição olímpica e presença social duradoura. Ao longo das décadas, a modalidade se consolidou como uma das mais respeitadas do país, tanto pela quantidade de atletas relevantes em competições internacionais quanto pela capacidade de formar gerações em academias, clubes, escolas e projetos sociais. No Brasil, o judô nunca foi apenas competição: ele também virou linguagem de disciplina, respeito, autocontrole e oportunidade.</p>
+
+            <p><strong>Como o judô criou raízes no Brasil</strong></p>
+
+            <p>A história do judô brasileiro está profundamente ligada à imigração japonesa e à formação de comunidades que trouxeram para o país não só a prática esportiva, mas também uma filosofia de ensino baseada em hierarquia, repetição, técnica e formação de caráter. Com o tempo, o judô deixou de ser uma prática restrita a núcleos específicos e passou a se espalhar por diferentes regiões, encontrando terreno fértil em clubes e centros de formação. Esse processo ajudou a transformar a modalidade em uma presença constante no esporte nacional.</p>
+
+            <p><strong>O salto olímpico e a consolidação da tradição</strong></p>
+
+            <p>O crescimento do judô no Brasil ganhou ainda mais força quando a modalidade passou a integrar o programa olímpico e o país começou a construir sua própria história nos Jogos. A primeira medalha olímpica veio em 1972, com Chiaki Ishii, bronze em Munique, resultado que abriu caminho para uma trajetória cada vez mais sólida. A partir dali, o judô brasileiro deixou de ser promessa e começou a se afirmar como uma escola capaz de produzir atletas competitivos em diferentes gerações. Não por acaso, a modalidade se transformou na que mais rendeu medalhas olímpicas ao Brasil, com 28 pódios no total: 5 ouros, 4 pratas e 19 bronzes, um dado que ajuda a explicar o peso histórico que o judô conquistou dentro do esporte nacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>As medalhas que ajudaram a construir essa história</strong></p>
+
+            <p>A tradição olímpica do judô brasileiro foi sendo construída de forma contínua, com medalhas espalhadas por várias edições dos Jogos e por diferentes categorias. Entre os pódios mais marcantes estão:</p>
+
+            <p>Chiaki Ishii – bronze em 1972</p>
+            <p>Douglas Vieira – prata em 1984</p>
+            <p>Aurélio Miguel – ouro em 1988</p>
+            <p>Rogério Sampaio – ouro em 1992</p>
+            <p>Tiago Camilo – prata em 2000 e bronze em 2008</p>
+            <p>Carlos Honorato – prata em 2000</p>
+            <p>Leandro Guilheiro – bronze em 2004 e 2008</p>
+            <p>Flávio Canto – bronze em 2004</p>
+            <p>Ketleyn Quadros – bronze em 2008</p>
+            <p>Sarah Menezes – ouro em 2012</p>
+            <p>Felipe Kitadai – bronze em 2012</p>
+            <p>Mayra Aguiar – bronze em 2012, 2016 e 2020</p>
+            <p>Rafael Silva – bronze em 2012 e 2016</p>
+            <p>Rafaela Silva – ouro em 2016</p>
+            <p>Daniel Cargnin – bronze em 2020</p>
+            <p>Beatriz Souza – ouro em 2024</p>
+            <p>Willian Lima – prata em 2024</p>
+            <p>Larissa Pimenta – bronze em 2024</p>
+            <p>Equipe mista – bronze em 2024</p>
+
+            <p>Esse percurso ajuda a explicar por que o judô se tornou uma das modalidades mais confiáveis do Brasil em Jogos Olímpicos. Não se trata de um ciclo isolado, mas de uma presença recorrente no pódio ao longo de muitas décadas.</p>
+
+            <p><strong>Os nomes que marcaram época</strong></p>
+
+            <p>Toda modalidade de tradição longa acaba sendo contada também por seus rostos mais simbólicos, e o judô brasileiro tem muitos. Aurélio Miguel e Rogério Sampaio ajudaram a consolidar a imagem de um Brasil campeão olímpico. Sarah Menezes entrou para a história ao conquistar o ouro em Londres 2012 e abrir um capítulo ainda mais forte para o judô feminino. Rafaela Silva transformou sua medalha de ouro na Rio 2016 em um dos momentos mais emblemáticos do esporte brasileiro naquele ciclo. Mayra Aguiar virou sinônimo de regularidade em alto nível com três bronzes olímpicos. E Beatriz Souza, campeã em Paris 2024, deu sequência a essa linha de excelência e mostrou que a modalidade segue renovando seus protagonistas.</p>
+
+            <p><strong>O peso do judô feminino na história recente</strong></p>
+
+            <p>Se em parte de sua formação o judô brasileiro foi lembrado sobretudo por nomes masculinos, a história mais recente mostrou um equilíbrio cada vez maior, com mulheres ocupando papel central na identidade vencedora da modalidade. Ketleyn Quadros abriu um marco importante ao conquistar a primeira medalha olímpica feminina do judô brasileiro, em 2008. Depois vieram Sarah Menezes, Rafaela Silva, Mayra Aguiar, Larissa Pimenta e Beatriz Souza, consolidando uma fase em que o protagonismo feminino deixou de ser exceção para se tornar parte essencial da força do Brasil no tatame.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Disciplina, respeito e formação para além do resultado</strong></p>
+
+            <p>Uma das razões para a permanência do judô no imaginário esportivo brasileiro está no fato de que a modalidade nunca foi valorizada apenas pelos títulos. O judô sempre carregou uma dimensão formativa muito forte. Em academias e projetos, ele costuma ser associado a disciplina, concentração, hierarquia, respeito ao adversário e controle emocional. Por isso, o esporte ganhou presença duradoura também fora do alto rendimento, sendo visto por muitas famílias e educadores como uma ferramenta de desenvolvimento pessoal.</p>
+
+            <p><strong>O judô como caminho de crescimento social</strong></p>
+
+            <p>No Brasil, o judô também se fortaleceu porque ofereceu, para muitos jovens, uma porta de entrada real para o esporte organizado. Em diferentes contextos, a modalidade serviu como espaço de inclusão, convivência e oportunidade. Para parte dos atletas que chegaram ao topo, o tatame representou não apenas competição, mas também estrutura, pertencimento e perspectiva de futuro. Esse papel social ajuda a explicar por que o judô mantém relevância mesmo em períodos em que o debate esportivo nacional está mais concentrado em outras modalidades.</p>
+
+            <p><strong>Uma potência que se renova</strong></p>
+
+            <p>O judô brasileiro conseguiu algo raro: transformar tradição em continuidade. Em vez de depender de uma única geração histórica, a modalidade foi produzindo novos nomes, novos ciclos e novas medalhas. Isso ficou evidente mais uma vez em Paris 2024, quando o Brasil voltou ao pódio com ouro, prata, bronze individual e bronze por equipes mistas. Esse tipo de renovação ajuda a manter o judô em um grupo seleto de esportes brasileiros que entram em ciclos olímpicos sempre cercados por expectativa real de resultado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O lugar do judô no esporte brasileiro</strong></p>
+
+            <p>Poucas modalidades conseguiram construir no Brasil uma combinação tão sólida entre base, filosofia, tradição competitiva e presença olímpica. O judô virou referência porque soube formar atletas e, ao mesmo tempo, formar cultura esportiva. Sua história passa por imigração, adaptação, disciplina, superação e conquista. E é justamente essa soma que explica por que o judô continua sendo visto como uma das modalidades mais respeitadas do país: não apenas pelo que entregou em medalhas, mas pelo tipo de legado que construiu dentro e fora do tatame.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "lutas";
+  const CATEGORY_NAME = "Lutas";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
