@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campeonato Italiano entra na reta final após a Data Fifa com briga aberta pelo título e disputa forte por Champions| Corte dos Esportes</title>
+  <meta name="description" content="Faltando oito jogos para o fim os times precisam ajustar os últimos detalhes para objetivos diferentes: briga pelo título, corrida por vagas na próxima Champions League e luta contra o rebaixamento." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Campeonato Italiano entra na reta final após a Data Fifa com briga aberta pelo título e disputa forte por Champions</h1>
+          <p class="subhead" id="articleExcerpt">Faltando oito jogos para o fim os times precisam ajustar os últimos detalhes para objetivos diferentes: briga pelo título, corrida por vagas na próxima Champions League e luta contra o rebaixamento.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">25/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Serie A retorna após a pausa para a Data Fifa em um momento decisivo da temporada. Faltando oito jogos para o fim, os clubes voltam a campo a partir de 4 de abril, na abertura da 31ª rodada, precisando ajustar os últimos detalhes para objetivos bem diferentes: briga pelo título, corrida por vagas na próxima Champions League e luta contra o rebaixamento.</p>
+
+            <p>A tabela da Serie A entra na reta final com a disputa pelo título ainda aberta e a corrida por vagas na Champions League bastante apertada. A Inter segue na frente, mas os tropeços recentes impediram qualquer margem de conforto e recolocaram Milan e Napoli na briga. Logo atrás, o Como tenta sustentar a vaga no G4 em uma fase decisiva, enquanto Juventus e Roma aparecem coladas na luta pelas primeiras posições.</p>
+
+            <p><strong>Inter lidera, mas Milan e Napoli seguem na perseguição</strong></p>
+
+            <p>Na parte de cima, a Inter entra na reta final em posição favorável, mas ainda sem conforto real. A vantagem sobre o Milan é de seis pontos, enquanto o Napoli aparece apenas um ponto atrás do rival rossonero, o que mantém a briga completamente aberta nas últimas oito rodadas.</p>
+
+            <p>O momento recente ajuda a explicar essa pressão maior sobre a liderança. A Inter vem de dois empates seguidos, sequência que permitiu a aproximação dos rivais e aumentou o peso da próxima rodada. Agora, o time precisa responder com vitória para evitar que a disputa fique ainda mais apertada. Do outro lado, Napoli e Milan se enfrentam em duelo direto, um resultado que pode alterar bastante o desenho da parte de cima da tabela.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>G4 segue sob disputa direta entre Como, Juventus e Roma</strong></p>
+
+            <p>A zona de classificação para a próxima Champions League está hoje nas mãos de Inter, Milan, Napoli e Como. O time de Como aparece em quarto com 57 pontos, mas sem margem confortável, já que Juventus e Roma vêm logo atrás, ambos com 54.</p>
+
+            <p>Isso deixa a disputa pela última vaga do G4 totalmente aberta. O Como ainda depende apenas de si, mas entra pressionado porque qualquer tropeço pode recolocar Juventus e Roma em igualdade mais clara na reta final. Ao mesmo tempo, a campanha do clube segue como uma das grandes surpresas da temporada, ainda mais porque a equipe chega embalada por cinco vitórias seguidas.</p>
+
+            <p><strong>Rodada 31 também pesa na corrida por Champions</strong></p>
+
+            <p>Além da disputa pelo título, a 31ª rodada também chega carregada de peso na luta pelas primeiras posições. O Como visita a Udinese, em um jogo importante para sustentar seu lugar no G4, enquanto a Roma encara a líder Inter fora de casa sabendo que pontuar pode mexer ao mesmo tempo com a corrida pela Champions e com a ponta da tabela.</p>
+
+            <p>A Juventus também entra pressionada, porque recebe o Genoa e sabe que precisa aproveitar a rodada para não perder contato com os quatro primeiros. Em uma rodada com confronto direto entre Napoli e Milan, a disputa por cima tende a ficar ainda mais apertada.</p>
+
+            <p><strong>Parte de baixo da tabela concentra a disputa mais apertada</strong></p>
+
+            <p>Na briga contra o rebaixamento, o cenário também segue aberto. O Lecce abre a zona de queda em 18º com 27 pontos, mesma pontuação da Cremonese, que aparece logo acima fora do Z3 pelos critérios da tabela. Verona e Pisa, ambos com 18, completam hoje a faixa de descenso.</p>
+
+            <p>A luta, porém, não para nesses três clubes. Fiorentina, Cagliari, Torino e Genoa ainda aparecem em uma zona de atenção, com margens que não permitem tranquilidade nesta reta final. Isso mantém a parte inferior da classificação bastante pressionada, sobretudo porque uma vitória ou derrota pode mudar rapidamente a ordem nesse bloco.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Verona, Pisa e Lecce chegam à reta final sob forte pressão</strong></p>
+
+            <p>Entre os times mais ameaçados, Verona e Pisa vivem a situação mais delicada. Ambos têm 18 pontos e entram nas últimas oito rodadas com margem muito curta para imaginar reação. O Lecce, que hoje abre a zona de rebaixamento, ainda está mais perto da saída, mas também joga sob pressão alta.</p>
+
+            <p>A rodada 31 traz peso direto para esse cenário. O Lecce recebe a Atalanta em casa, o Verona enfrenta a Fiorentina e o Pisa visita o Torino. São jogos que podem apertar ainda mais a luta contra a queda ou recolocar algum desses times no caminho da reação.</p>
+
+            <p><strong>Rodada 31 coloca pressão no topo e na parte de baixo</strong></p>
+
+            <p>A 31ª rodada chega com peso alto para os dois lados da tabela. Na briga pelo título, Inter x Roma e Napoli x Milan concentram as atenções, com impacto direto sobre a liderança e também sobre a corrida pelas primeiras posições.</p>
+
+            <p>Na parte de baixo, Verona, Pisa e Lecce entram em campo pressionados, enquanto a Cremonese tenta sustentar sua posição fora da zona. É uma rodada que pode mudar não só a distância entre os concorrentes, mas também o tamanho da pressão para as semanas finais da temporada. Em outras grandes ligas do continente, o cenário de reta final também já aperta a disputa no topo e na parte inferior da tabela, como mostra a <a href="https://cortedosesportes.com.br/la-liga-rodada-30-briga-titulo-rebaixamento.html">reta decisiva de La Liga</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Tabela completa do Campeonato Italiano</strong></p>
+
+            <p>1. Inter — 69 pts | 30 J | 22 V | 3 E | 5 D | 66 GM | 24 GC | 42 SG</p>
+            <p>2. Milan — 63 pts | 30 J | 18 V | 9 E | 3 D | 47 GM | 23 GC | 24 SG</p>
+            <p>3. Napoli — 62 pts | 30 J | 19 V | 5 E | 6 D | 46 GM | 30 GC | 16 SG</p>
+            <p>4. Como — 57 pts | 30 J | 16 V | 9 E | 5 D | 53 GM | 22 GC | 31 SG</p>
+            <p>5. Juventus — 54 pts | 30 J | 15 V | 9 E | 6 D | 52 GM | 29 GC | 23 SG</p>
+            <p>6. Roma — 54 pts | 30 J | 17 V | 3 E | 10 D | 40 GM | 23 GC | 17 SG</p>
+            <p>7. Atalanta — 50 pts | 30 J | 13 V | 11 E | 6 D | 41 GM | 27 GC | 14 SG</p>
+            <p>8. Lazio — 43 pts | 30 J | 11 V | 10 E | 9 D | 31 GM | 28 GC | 3 SG</p>
+            <p>9. Bologna — 42 pts | 30 J | 12 V | 6 E | 12 D | 38 GM | 36 GC | 2 SG</p>
+            <p>10. Sassuolo — 39 pts | 30 J | 11 V | 6 E | 13 D | 36 GM | 40 GC | -4 SG</p>
+            <p>11. Udinese — 39 pts | 30 J | 11 V | 6 E | 13 D | 35 GM | 42 GC | -7 SG</p>
+            <p>12. Parma — 34 pts | 30 J | 8 V | 10 E | 12 D | 21 GM | 38 GC | -17 SG</p>
+            <p>13. Genoa — 33 pts | 30 J | 8 V | 9 E | 13 D | 36 GM | 42 GC | -6 SG</p>
+            <p>14. Torino — 33 pts | 30 J | 9 V | 6 E | 15 D | 34 GM | 53 GC | -19 SG</p>
+            <p>15. Cagliari — 30 pts | 30 J | 7 V | 9 E | 14 D | 31 GM | 42 GC | -11 SG</p>
+            <p>16. Fiorentina — 29 pts | 30 J | 6 V | 11 E | 13 D | 35 GM | 44 GC | -9 SG</p>
+            <p>17. Cremonese — 27 pts | 30 J | 6 V | 9 E | 15 D | 25 GM | 44 GC | -19 SG</p>
+            <p>18. Lecce — 27 pts | 30 J | 7 V | 6 E | 17 D | 21 GM | 40 GC | -19 SG</p>
+            <p>19. Verona — 18 pts | 30 J | 3 V | 9 E | 18 D | 22 GM | 52 GC | -30 SG</p>
+            <p>20. Pisa — 18 pts | 30 J | 2 V | 12 E | 16 D | 23 GM | 54 GC | -31 SG</p>
+
+            <p><strong>Confrontos da 31ª rodada</strong></p>
+
+            <p>04/04</p>
+            <p>Sassuolo x Cagliari — 10:00</p>
+            <p>Verona x Fiorentina — 13:00</p>
+            <p>Lazio x Parma — 15:45</p>
+
+            <p>05/04</p>
+            <p>Cremonese x Bologna — 10:00</p>
+            <p>Pisa x Torino — 13:00</p>
+            <p>Inter x Roma — 15:45</p>
+
+            <p>06/04</p>
+            <p>Udinese x Como — 07:30</p>
+            <p>Lecce x Atalanta — 10:00</p>
+            <p>Juventus x Genoa — 13:00</p>
+            <p>Napoli x Milan — 15:45</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
