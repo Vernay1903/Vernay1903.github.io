@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pelé: a história do Rei que transformou o futebol brasileiro em referência mundial | Corte dos Esportes</title>
+  <meta name="description" content="Pelé marcou gerações, transformou o Santos em potência global, ajudou a consolidar a Seleção Brasileira como referência mundial e virou a maior medida de grandeza do futebol." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Pelé: a história do Rei que transformou o futebol brasileiro em referência mundial</h1>
+          <p class="subhead" id="articleExcerpt">Pelé marcou gerações, transformou o Santos em potência global, ajudou a consolidar a Seleção Brasileira como referência mundial e virou a maior medida de grandeza do futebol.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">25/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Pelé não é apenas um dos maiores jogadores da história. Para muita gente, ele é o nome que melhor resume a ideia de grandeza no esporte. Sua carreira atravessou gerações, ajudou a consolidar a imagem vencedora da Seleção Brasileira, elevou o Santos a uma dimensão internacional rara para um clube sul-americano e deixou marcas que continuam vivas décadas depois.</p>
+
+            <p>Quando se fala em Pelé, não se fala apenas de títulos, gols ou troféus. Fala-se de um jogador que virou medida de comparação. É por isso que, até hoje, quando alguém atinge um nível extraordinário em outra modalidade, ainda se ouve a expressão: “esse é o Pelé de tal esporte”. Poucos atletas ultrapassaram a fronteira da própria modalidade com tamanha força simbólica.</p>
+
+            <p><strong>Pelé nasceu craque e virou símbolo do futebol mundial</strong></p>
+
+            <p>Edson Arantes do Nascimento surgiu muito cedo como um talento fora do comum. Ainda adolescente, já mostrava uma combinação rara de explosão, inteligência, improviso, técnica e poder de decisão. Não demorou para o futebol perceber que se tratava de um jogador diferente.</p>
+
+            <p>O que fez Pelé ultrapassar o status de promessa, porém, foi a capacidade de transformar genialidade em domínio real. Ele não era apenas brilhante em lances isolados. Era decisivo, regular e completo. Fazia gols, criava jogadas, desmontava defesas, aparecia em finais e sustentava protagonismo em momentos gigantes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Esse conjunto ajuda a explicar por que seu nome passou a ser tratado não só como o de um craque, mas como o de uma referência absoluta do futebol.</p>
+
+            <p><strong>O Santos virou potência global com Pelé no centro de tudo</strong></p>
+
+            <p>Se a Seleção Brasileira deu a Pelé o palco mais grandioso, o Santos foi o lugar onde sua genialidade ganhou rotina. Com a camisa santista, ele construiu a parte mais longa e contínua de sua grandeza, participando de um dos ciclos mais dominantes já vistos no futebol sul-americano.</p>
+
+            <p>O Santos de Pelé não foi apenas um time vencedor. Foi um time temido, admirado e internacionalizado. Em uma era em que a circulação global do futebol era muito menor do que hoje, o clube passou a chamar atenção em diferentes continentes, muito por causa do peso que Pelé carregava dentro de campo.</p>
+
+            <p>Ao longo da trajetória no clube, ele participou de conquistas de enorme peso, como títulos paulistas, brasileiros e continentais, além dos Mundiais que colocaram o Santos entre os grandes esquadrões da história. O time não era grande apenas no Brasil. Tornou-se uma referência planetária de futebol ofensivo, técnico e vencedor.</p>
+
+            <p><strong>Títulos pelo Santos ajudaram a consolidar a lenda</strong></p>
+
+            <p>A carreira de Pelé no Santos foi sustentada por números e troféus que ajudam a dimensionar sua grandeza. Com o clube, ele conquistou 2 Copas Libertadores, 2 Mundiais Interclubes, 6 títulos brasileiros da era Taça Brasil/Torneio Roberto Gomes Pedrosa e 10 Campeonatos Paulistas, além de outras taças importantes no calendário nacional e internacional.</p>
+
+            <p>Mais do que empilhar títulos, Pelé liderou um período em que o Santos deixou de ser apenas um clube forte para virar uma marca histórica do futebol. Era um time que não dependia só do prestígio da camisa: impunha respeito pela qualidade do jogo e pelo peso dos resultados.</p>
+
+            <p>Esse detalhe importa porque ajuda a tirar Pelé do campo da pura mitologia. A lenda existiu, sim, mas foi sustentada por conquistas reais, repetidas e em altíssimo nível.</p>
+
+            <p><strong>Pela Seleção Brasileira, Pelé virou a face de um país campeão</strong></p>
+
+            <p>Se o Santos deu continuidade à sua grandeza, a Seleção Brasileira transformou Pelé em símbolo nacional e mundial. Com a camisa amarela, ele participou diretamente da construção da identidade vencedora do Brasil no futebol.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Pelé conquistou três Copas do Mundo com a Seleção — 1958, 1962 e 1970 — e esse feito, por si só, já o coloca em uma prateleira única. Nenhum outro jogador venceu o Mundial masculino principal três vezes como atleta. Mais do que a quantidade, pesa a dimensão histórica dessas campanhas dentro da trajetória da <a href="https://cortedosesportes.com.br/selecao-brasileira-historia-5-copas-do-mundo.html">Seleção Brasileira nas cinco Copas do Mundo</a>.</p>
+
+            <p>Em 1958, ainda muito jovem, foi decisivo em um título que mudou a imagem do futebol brasileiro diante do mundo. Em 1962, fez parte do grupo campeão em um torneio que consolidou a força da Seleção. Em 1970, liderou um dos times mais celebrados da história, em uma Copa que cristalizou a união entre talento, espetáculo e resultado.</p>
+
+            <p>Pelé não foi apenas um campeão com a Seleção. Foi o rosto mais forte de uma era em que o Brasil passou a ser visto como potência definitiva do futebol.</p>
+
+            <p><strong>1958 foi o início de uma transformação histórica</strong></p>
+
+            <p>A Copa do Mundo de 1958 tem peso especial na história de Pelé e na história do futebol brasileiro. Aquele título não representou só a primeira estrela do Brasil. Representou também a chegada de um jogador de apenas 17 anos que, mesmo tão jovem, já parecia destinado a algo muito maior.</p>
+
+            <p>Pelé marcou seis gols naquela Copa, incluindo gol em semifinal e dois na final. Não era comum ver um jogador de 17 anos decidir em jogos tão grandes com tamanha naturalidade. A partir dali, seu nome passou a circular como sinônimo de fenômeno.</p>
+
+            <p>Também foi naquele momento que o Brasil começou a mudar sua posição no imaginário do futebol mundial. Pelé virou parte central dessa mudança: o garoto genial que ajudava a inaugurar a era de uma seleção campeã.</p>
+
+            <p><strong>1970 eternizou Pelé no time mais celebrado da história</strong></p>
+
+            <p>Se 1958 foi a explosão, 1970 foi a consagração definitiva. A Seleção daquele ano é apontada até hoje como uma das maiores equipes já montadas, e Pelé era o principal elo entre talento individual, inteligência coletiva e peso histórico.</p>
+
+            <p>Naquela campanha, ele não foi apenas um jogador brilhante em campo. Foi também o centro de gravidade de uma equipe lendária. Marcou, criou, articulou e deixou momentos que atravessaram gerações, como o gol na final, a assistência para Carlos Alberto e outras jogadas que se tornaram parte da memória universal do futebol.</p>
+
+            <p>Ali, Pelé deixou de ser apenas um craque monumental. Virou um personagem definitivo da história do esporte.</p>
+
+            <p><strong>O milésimo gol virou um acontecimento nacional</strong></p>
+
+            <p>Entre os marcos mais famosos da carreira, poucos carregam tanto peso simbólico quanto o milésimo gol, marcado em 19 de novembro de 1969, no Maracanã, em cobrança de pênalti contra o Vasco.</p>
+
+            <p>O lance ultrapassou o valor esportivo. Virou evento nacional. O estádio parou, o país acompanhou e o gol entrou para a memória coletiva como um daqueles momentos em que o futebol parece conversar com algo maior do que o jogo.</p>
+
+            <p>O milésimo gol ajudou a reforçar a dimensão pública da figura de Pelé. Ele já era um craque consagrado, campeão mundial e ídolo absoluto. Mas aquele momento deu forma quase oficial à ideia de que o Brasil vivia diante de um personagem histórico.</p>
+
+            <p><strong>O “Rei” não virou apelido por acaso</strong></p>
+
+            <p>Pelé não ganhou o apelido de “Rei” apenas por marketing, exagero ou reverência vazia. O título simbólico foi se impondo porque sua carreira parecia maior do que os critérios normais usados para medir outros jogadores.</p>
+
+            <p>O “Rei” era aquele que vencia, encantava, decidia e permanecia no topo. Era o jogador que unia números gigantes, importância histórica e uma espécie de autoridade natural sobre o jogo. Mesmo em uma modalidade que produziu tantos gênios, Pelé passou a ocupar um lugar singular.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>O vídeo abaixo ajuda a visualizar justamente essa dimensão do apelido, reunindo lances que reforçam por que Pelé passou a ser tratado como uma figura acima do comum no futebol mundial.</p>
+
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;"> <iframe src="https://www.youtube.com/embed/ioA0DwrriWM" title="Pelé skills e highlights" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe> </div>
+
+            <p>Esse apelido resistiu ao tempo porque não ficou preso à emoção de uma geração. Continuou fazendo sentido para quem viu, para quem estudou e para quem cresceu ouvindo que existiu um jogador capaz de reinar sobre o futebol de forma quase incontestável.</p>
+
+            <p><strong>Os números ajudam a explicar a grandeza, mas não dizem tudo</strong></p>
+
+            <p>A carreira de Pelé também impressiona pelo volume. Ele ultrapassou a marca de mil gols somando partidas oficiais e amistosos reconhecidos em sua trajetória, e seu total histórico ficou eternamente associado a uma produção ofensiva fora de escala.</p>
+
+            <p>Pelos critérios mais restritos de partidas oficiais, os números também seguem enormes. Mas, no caso de Pelé, a contagem não basta por si só. O que faz sua carreira ser tão reverenciada não é apenas a quantidade, e sim a combinação entre gols, títulos, influência e contexto.</p>
+
+            <p>Ele brilhou em finais, em Copas, em excursões internacionais, em decisões nacionais e continentais. Era um jogador de repertório gigantesco e impacto permanente. Por isso, os números ajudam a dimensionar o fenômeno, mas não conseguem resumir tudo.</p>
+
+            <p><strong>Pelé virou unidade de comparação para a grandeza</strong></p>
+
+            <p>Poucos atletas alcançam o ponto em que deixam de ser apenas lembrados em sua própria modalidade e passam a funcionar como referência universal. Pelé chegou exatamente a esse lugar.</p>
+
+            <p>É daí que nasce a expressão tão repetida ao longo das décadas: “esse é o Pelé do basquete”, “esse é o Pelé do tênis”, “esse é o Pelé da Fórmula 1”, “esse é o Pelé do futsal”. Em vez de precisar de explicação longa, seu nome virou atalho para definir excelência máxima.</p>
+
+            <p>Esse tipo de comparação diz muito sobre seu legado. Pelé deixou de ser apenas um personagem do futebol e se tornou uma linguagem da grandeza esportiva.</p>
+
+            <p><strong>O legado vai além do jogador</strong></p>
+
+            <p>Pelé não permanece gigante apenas porque foi extraordinário em campo. Permanece porque ajudou a moldar a percepção do mundo sobre o futebol brasileiro, sobre a Seleção Brasileira e sobre o próprio papel do craque na cultura esportiva.</p>
+
+            <p>Seu nome atravessou fronteiras, décadas e gerações. Foi celebrado no Brasil, admirado fora dele e incorporado à memória mundial do esporte. Em torno de sua grandeza, surgiram episódios que ajudaram a ampliar ainda mais sua dimensão simbólica, como a história eternizada de que sua presença com o Santos na África, em 1969, esteve ligada a uma trégua na guerra de Biafra. Verdade histórica em todos os detalhes ou mito ampliado pelo tempo, o fato é que a própria existência dessa narrativa diz muito sobre o tamanho que Pelé alcançou no imaginário do futebol mundial.</p>
+
+            <p>Para muitos, ele é o maior jogador da história. Para outros, pode haver debate sobre esse posto. O que quase não se discute é o tamanho do seu impacto.</p>
+
+            <p><strong>Por que Pelé continua sendo um nome impossível de reduzir</strong></p>
+
+            <p>Pelé segue como um personagem impossível de reduzir porque sua história junta tudo o que define uma lenda: talento raro, títulos gigantes, protagonismo em momentos históricos, força simbólica e alcance global.</p>
+
+            <p>Ele foi campeão do mundo três vezes, marcou o milésimo gol em um dos palcos mais emblemáticos do futebol, transformou o Santos em potência internacional e virou a face mais poderosa de uma Seleção Brasileira campeã. Ao mesmo tempo, deixou algo que vai além dos troféus: a sensação de que o futebol, em seu ponto mais alto, também pode ser representado por um único nome.</p>
+
+            <p>E é por isso que, mesmo tantas décadas depois de seu auge, Pelé continua sendo Pelé. Não apenas um craque histórico, mas a própria medida de grandeza para quase tudo o que o esporte já produziu.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
