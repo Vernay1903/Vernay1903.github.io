@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>Vôlei de Praia: por que o Brasil é potência mundial e como funciona a modalidade olímpica | Corte dos Esportes</title>
-  <meta name="description" content="Entenda por que o Brasil virou potência no vôlei de praia, como funciona a modalidade olímpica, suas regras básicas e o que faz o esporte ser tão decisivo na areia.">
+  <meta name="description" content="Entenda como funciona e por que o país é potência e faz da modalidade ser tão admirada." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -154,7 +190,7 @@
 
     .meta a:hover { text-decoration: underline; }
 
-    /* AD SLOTS (SEM TEXTO) */
+    /* AD SLOTS (sem texto) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
@@ -164,6 +200,8 @@
       box-sizing: border-box;
       margin: 16px 0;
     }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
 
     article p {
       font-size: 16px;
@@ -226,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -267,11 +308,11 @@
       <section>
         <div class="card">
           <h1 id="articleTitle">Vôlei de Praia: por que o Brasil é potência mundial e como funciona a modalidade olímpica</h1>
-          <p class="subhead" id="articleExcerpt">Com sol, areia e partidas decididas no detalhe, o vôlei de praia virou vitrine olímpica do Brasil. Entenda como funciona, por que o país é potência e o que faz a modalidade ser tão decisiva.</p>
+          <p class="subhead" id="articleExcerpt">Entenda como funciona e por que o país é potência e faz da modalidade ser tão admirada.</p>
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">20/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">Vôlei de Praia</a>
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -281,10 +322,8 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
-            <p>Verão, sol forte, praia cheia. A maioria das pessoas pensa imediatamente em esportes aquáticos quando imagina esse cenário. Mas, no Brasil, a areia virou palco de uma modalidade jogada com bola que se tornou símbolo de tradição e excelência: o já consolidado e multicampeão mundial e olímpico vôlei de praia.</p>
+            <p>erão, sol forte, praia cheia. A maioria das pessoas pensa imediatamente em esportes aquáticos quando imagina esse cenário. Mas, no Brasil, a areia virou palco de uma modalidade jogada com bola que se tornou símbolo de tradição e excelência: o já consolidado e multicampeão mundial e olímpico vôlei de praia.</p>
 
             <p>Muito além do lazer de fim de semana, o esporte se transformou em uma das maiores vitrines olímpicas do país. E não foi por acaso.</p>
 
@@ -295,6 +334,20 @@
             <p>Com o passar das décadas, o que era recreação virou competição. O circuito profissional foi ganhando forma, a organização internacional cresceu e, em 1996, a modalidade entrou oficialmente no programa olímpico, nos Jogos de Atlanta.</p>
 
             <p>A partir dali, o esporte mudou de patamar. E o Brasil já estava pronto para assumir protagonismo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
             <p><strong>Como funciona o vôlei de praia</strong></p>
 
@@ -316,6 +369,20 @@
 
             <p>Não é apenas histórico. É consistência.</p>
 
+            <!-- ANÚNCIO (ARTIGO - 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
             <p><strong>Circuito Mundial e competitividade atual</strong></p>
 
             <p>Além dos Jogos Olímpicos, o vôlei de praia é disputado em circuito mundial organizado pela Federação Internacional de Voleibol (FIVB). As etapas acontecem ao longo do ano, reunindo as principais duplas do planeta.</p>
@@ -332,9 +399,24 @@
 
             <p>Entre sol, areia e rivalidades internacionais, o país construiu uma identidade vencedora na modalidade. O vôlei de praia deixou de ser apenas esporte de verão e virou patrimônio esportivo nacional.</p>
 
-            <p>E se depender da tradição, essa história ainda vai render muitos capítulos na areia.</p>
+            <!-- ANÚNCIO (ARTIGO - 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-            <p>Leia mais na categoria: <a href="volei-praia.html">Vôlei de Praia</a>.</p>
+            <p>E se depender da tradição, talentos, renovação de gerações essa história ainda vai render muitos capítulos vitoriosos na areia, com novos ídolos e fortalecimento da modalidade.<p>
+         
+            <p>Leia mais na categoria: <a href="volei-praia.html">Vôlei de Praia</a>.</p></p>
+          
           </article>
         </div>
       </section>
@@ -348,7 +430,18 @@
           </ul>
         </div>
 
-        <div class="ad-slot" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
