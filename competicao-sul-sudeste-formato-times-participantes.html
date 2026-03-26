@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Competição Sul-Sudeste: a nova taça que pode ganhar peso histórico já na primeira edição | Corte dos Esportes</title>
+  <meta name="description" content="Competição Sul-Sudeste chega em 2026 como novidade no calendário do futebol brasileiro." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Competição Sul-Sudeste: a nova taça que pode ganhar peso histórico já na primeira edição</h1>
+          <p class="subhead" id="articleExcerpt">A Competição Sul-Sudeste chega em 2026 como novidade no calendário do futebol brasileiro.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">26/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Competição Sul-Sudeste chega em 2026 como novidade no calendário do futebol brasileiro e já nasce com um atrativo que costuma marcar o início de todo torneio: o valor simbólico do primeiro título. Ser o campeão inaugural não é apenas levantar uma taça nova. É entrar para a história antes de todos os outros, ocupar um espaço que nunca mais poderá ser repetido e transformar uma conquista de estreia em referência permanente para o próprio clube.</p>
+
+            <p><strong>Um torneio novo, mas com cara de oportunidade real</strong></p>
+
+            <p>Em competições recém-criadas, existe sempre uma disputa extra além dos jogos. Os clubes não brigam apenas pelo troféu daquele ano, mas por um lugar de pioneirismo. No caso da Sul-Sudeste, isso pesa ainda mais porque a taça inaugural pode se transformar em marco institucional para equipes que buscam ampliar prestígio, fortalecer identidade competitiva e associar seu nome a um capítulo novo do futebol nacional.</p>
+
+            <p><strong>Os times participantes</strong></p>
+
+            <p>A primeira edição reúne clubes de seis estados, com dois representantes de cada unidade da federação participante. Estão no torneio:</p>
+
+            <p>Minas Gerais: América-MG e Tombense<br>
+            Paraná: Operário-PR e Cianorte<br>
+            Rio de Janeiro: Volta Redonda e Sampaio Corrêa-RJ<br>
+            Rio Grande do Sul: Juventude e Caxias<br>
+            Santa Catarina: Avaí e Chapecoense<br>
+            São Paulo: São Bernardo e Novorizontino</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Esse grupo de participantes ajuda a dar uma cara interessante ao torneio. Há clubes com presença recente em divisões nacionais mais altas, equipes acostumadas a calendário cheio e camisas que enxergam na competição uma chance concreta de ganhar visibilidade e transformar desempenho regional em impulso esportivo para o restante da temporada.</p>
+
+            <p><strong>Como funciona a competição</strong></p>
+
+            <p>A primeira edição da Competição Sul-Sudeste foi montada em formato enxuto, mas com peso real. Os 12 clubes foram divididos em dois grupos de seis equipes, e cada time enfrenta apenas os integrantes da chave oposta, em turno único, somando seis partidas na fase inicial. Ao fim dessa etapa, os dois melhores colocados de cada grupo avançam às semifinais. Dali em diante, o torneio entra em mata-mata, com semifinal e final disputadas em jogos de ida e volta. O formato ajuda a equilibrar calendário, competitividade e relevância esportiva, além de dar ao campeão uma campanha com valor concreto dentro da temporada.</p>
+
+            <p><strong>O peso de ser o primeiro campeão</strong></p>
+
+            <p>Todo campeonato precisa de uma primeira imagem marcante. Na Sul-Sudeste, esse papel será ocupado pelo clube que erguer a taça em 2026. E isso faz diferença. O primeiro campeão costuma ficar associado para sempre ao nascimento da competição, o que amplia o valor histórico da conquista. Para clubes que nem sempre aparecem no centro do debate nacional, esse tipo de feito pode funcionar como patrimônio simbólico duradouro, daqueles que passam a ser lembrados toda vez que o torneio voltar ao calendário.</p>
+
+            <p>Mais do que uma taça, esse título inaugural pode virar argumento de identidade. Para a torcida, é a chance de dizer que o clube abriu a história da competição. Para a instituição, é a oportunidade de agregar um marco pioneiro ao próprio currículo. Em torneios novos, esse tipo de consagração costuma valer mais do que o recorte isolado de uma temporada.</p>
+
+            <p><strong>O impacto esportivo para os clubes</strong></p>
+
+            <p>A Sul-Sudeste não nasce apenas como evento de calendário. Ela oferece consequência prática. O campeão garante vaga na terceira fase da Copa do Brasil de 2027, o que eleva bastante o peso esportivo da campanha. Não é um detalhe pequeno: avançar diretamente para essa etapa significa vantagem competitiva, financeira e de planejamento para o ano seguinte.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Também por isso o torneio pode ser visto como plataforma de afirmação. Para alguns participantes, a competição representa a chance de testar elenco, ganhar casca em jogos de pressão e construir confiança em um ambiente de disputa equilibrado. Para outros, é uma oportunidade de transformar regularidade regional em salto de relevância nacional. Em todos os casos, há um ganho esportivo possível que vai além da medalha.</p>
+
+            <p><strong>Um torneio que pode crescer rápido</strong></p>
+
+            <p>Competições novas dependem muito da primeira impressão. Se a edição inaugural entrega equilíbrio, jogos bons e um campeão de peso simbólico, o torneio tende a ganhar tração mais cedo. A Sul-Sudeste reúne clubes de mercados importantes, estados tradicionais e torcidas acostumadas a acompanhar de perto os movimentos de seus times. Isso cria um cenário favorável para que a competição deixe de ser vista apenas como novidade e passe a ser tratada como objetivo real dentro da temporada.</p>
+
+            <p>Além disso, o torneio surge em um momento em que o calendário brasileiro busca acomodar melhor disputas regionais com algum tipo de recompensa concreta, em uma lógica que ajuda a explicar por que competições de identidade própria, como a <a href="https://cortedosesportes.com.br/copa-do-nordeste-historia-maiores-campeoes-identidade-regional.html">Copa do Nordeste se tornaram símbolo de pertencimento e valorização regional</a>, conseguem ganhar tanto peso entre clubes e torcidas.</p>
+
+            <p><strong>A força da estreia</strong></p>
+
+            <p>Existe um componente emocional que só a primeira edição oferece. Ninguém pode ser bicampeão antes de existir um campeão. Ninguém pode falar em tradição sem que alguém tenha dado o primeiro passo. É exatamente por isso que a Sul-Sudeste começa cercada de curiosidade e de expectativa. O clube que vencer em 2026 não será apenas o melhor daquela campanha. Será o time que inaugurou a linha de honra da competição.</p>
+
+            <p>Esse detalhe, por si só, já torna a disputa diferente. O primeiro título costuma envelhecer bem na memória porque nunca perde o caráter de origem. No futuro, cada nova edição poderá ter seu campeão, mas só um clube poderá dizer que foi o primeiro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma novidade que já nasce com argumento forte</strong></p>
+
+            <p>A Competição Sul-Sudeste ainda está dando seus primeiros passos, mas já reúne elementos suficientes para chamar atenção: clubes competitivos, calendário reservado, consequência esportiva concreta e o apelo histórico do título inaugural. Isso ajuda a explicar por que a primeira edição tem potencial para ser mais do que uma simples estreia. Ela pode ser o início de uma taça com valor crescente no futebol brasileiro.</p>
+
+            <p>No fim, o maior atrativo dessa edição inicial talvez esteja justamente aí. Quem vencer não levará apenas um troféu novo para a sala. Levará o direito de ser lembrado como o clube que abriu a história da competição.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
