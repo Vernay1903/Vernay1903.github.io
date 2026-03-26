@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brasil x França: o histórico de um confronto marcado por talento, trauma e capítulos de Copa | Corte dos Esportes</title>
+  <meta name="description" content="Brasil e França quase sempre que se encontram existe algum peso extra em volta do jogo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Brasil x França: o histórico de um confronto marcado por talento, trauma e capítulos de Copa</h1>
+          <p class="subhead" id="articleExcerpt">Brasil e França quase sempre que se encontram existe algum peso extra em volta do jogo.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">26/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Brasil e França não fazem parte daquela lista de rivalidades mais frequentes do futebol mundial, mas quase sempre que se encontram existe algum peso extra em volta do jogo. Em vez de um duelo repetido à exaustão, trata-se de um confronto construído em capítulos espaçados, com momentos de brilho, tensão e partidas que deixaram marca forte na memória do torcedor.</p>
+
+            <p>É exatamente isso que torna esse encontro diferente. Não é uma rivalidade baseada em quantidade, mas em contexto. Quando Brasil e França cruzam caminhos, quase sempre há uma narrativa pronta: duas escolas tradicionais, jogadores de enorme repertório técnico e, em alguns casos, jogos que ajudam a definir gerações inteiras.</p>
+
+            <p><strong>Um confronto que mistura admiração e incômodo</strong></p>
+
+            <p>Durante décadas, Brasil e França se enfrentaram em cenários variados, de amistosos a jogos de Copa do Mundo. Em vários desses encontros, o peso simbólico foi maior do que a simples estatística. O duelo reúne duas seleções acostumadas a carregar expectativa alta, tradição e talento individual em abundância.</p>
+
+            <p>O Brasil historicamente entrou nesses jogos com o prestígio de sua camisa e de sua produção ofensiva. A França, por sua vez, foi se consolidando como uma potência moderna, capaz de unir força física, organização e jogadores decisivos em diferentes eras. Dessa combinação nasceu um confronto quase sempre tratado como evento, e não apenas como mais uma partida do calendário.</p>
+
+            <p><strong>1958: o primeiro grande capítulo</strong></p>
+
+            <p>Um dos capítulos mais lembrados do histórico entre as duas seleções aconteceu na Copa do Mundo de 1958, quando o Brasil venceu a França por 5 a 2 na semifinal, com gols de Vavá, Didi e Pelé, que marcou três vezes. Aquele jogo ajudou a empurrar a seleção brasileira para a conquista do primeiro título mundial — <a href="https://cortedosesportes.com.br/selecao-brasileira-historia-5-copas-do-mundo.html">o início da trajetória das 5 Copas que transformaram o Brasil em referência eterna no futebol</a> — e entrou para a história como uma das grandes atuações do time que começava a redefinir o futebol brasileiro em escala global.</p>
+
+            <p>Foi um momento importante porque colocou o confronto em outro patamar. Não era apenas um amistoso entre seleções fortes; era um choque de alto nível em Copa do Mundo, com consequências diretas para a história das duas camisas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>1986: a dor de uma eliminação inesquecível</strong></p>
+
+            <p>Se em 1958 o Brasil saiu fortalecido, em 1986 a sensação foi oposta. Na Copa do México, Brasil e França fizeram um dos jogos mais celebrados daquele Mundial. O empate por 1 a 1 levou a decisão para os pênaltis, e a seleção francesa avançou.</p>
+
+            <p>Aquela eliminação mexeu muito com a imagem do confronto porque atingiu uma geração brasileira admirada pelo estilo de jogo, mas que não conseguiu transformar talento em título mundial. A França passou a ocupar, no imaginário brasileiro, o lugar de adversária que aparecia nos momentos sensíveis e sabia complicar o caminho.</p>
+
+            <p><strong>1998: a final que mudou o peso do confronto</strong></p>
+
+            <p>O ponto mais marcante da história entre Brasil e França, porém, continua sendo a final da Copa do Mundo de 1998. A seleção brasileira chegou à decisão cercada por expectativa gigantesca. Era a atual campeã do mundo, tinha Ronaldo como centro das atenções e carregava a sensação de que estava novamente diante do maior palco do futebol. Do outro lado, a França jogava em casa, impulsionada por um ambiente de mobilização nacional e por um time que combinava força coletiva e jogadores capazes de decidir.</p>
+
+            <p>O jogo terminou 3 a 0 para os franceses, com dois gols de Zidane ainda no primeiro tempo e o terceiro já na reta final, em um desfecho que desmontou o plano brasileiro e transformou a noite de Paris em um dos episódios mais traumáticos da história recente da seleção.</p>
+
+            <p>O tamanho daquele resultado vai além do placar. A final de 1998 não foi apenas uma derrota em decisão; foi um choque de expectativa e realidade. O Brasil entrou em campo com aura de favorito e saiu derrotado de forma contundente. Para a França, foi a consagração máxima. Para o torcedor brasileiro, ficou a sensação de interrupção abrupta de um roteiro que parecia preparado para outro final.</p>
+
+            <p>Também por isso esse jogo permanece tão vivo. Ele condensou tensão, peso simbólico e repercussão duradoura. Sempre que Brasil e França se reencontram, a memória de 1998 volta à superfície, porque aquele capítulo redefiniu a maneira como o confronto passou a ser percebido.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>2006: quando a França voltou a ser obstáculo</strong></p>
+
+            <p>O reencontro em mata-mata de Copa do Mundo aconteceu outra vez em 2006. Nas quartas de final, a França venceu por 1 a 0 e eliminou o Brasil novamente.</p>
+
+            <p>Esse resultado reforçou a ideia de que os franceses haviam se tornado um rival especialmente indigesto para a seleção brasileira em grandes torneios. Não era mais apenas a lembrança isolada de 1998. O confronto começava a ganhar um padrão emocional: quando o jogo era grande, a França aparecia como obstáculo real.</p>
+
+            <p><strong>Mais do que retrospecto, um duelo de gerações</strong></p>
+
+            <p>Outra característica interessante de Brasil x França é que cada encontro costuma servir como fotografia de época. Em diferentes décadas, o confronto colocou frente a frente craques de estilos distintos e seleções com identidades próprias. Em alguns momentos, o duelo representou o embate entre talento e organização; em outros, entre duas equipes técnicas, mas moldadas por contextos muito diferentes.</p>
+
+            <p>Isso ajuda a explicar por que o histórico nunca envelhece por completo. Mesmo quando o jogo é amistoso, o passado dá densidade ao presente. O torcedor não olha apenas para os onze titulares do dia, mas para tudo o que aquele escudo já carregou nesse confronto.</p>
+
+            <p><strong>O que esse histórico representa hoje</strong></p>
+
+            <p>Quando Brasil e França entram em campo, existe sempre uma camada extra de interesse porque o duelo reúne prestígio, memória e referência técnica. É um tipo de partida que funciona em dois níveis ao mesmo tempo: serve para observar o estágio atual das equipes, mas também reacende lembranças de capítulos que ajudaram a construir a identidade recente das duas seleções.</p>
+
+            <p>Por isso, o histórico do confronto não depende de uma sequência enorme de partidas para se manter relevante. Bastam alguns jogos certos, nos contextos certos, para transformar um duelo em assunto permanente.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Um confronto que concentra atenções</strong></p>
+
+            <p>Brasil x França é daqueles encontros que dispensam exagero para parecer grande. A história já faz esse trabalho. Há vitórias marcantes, eliminações dolorosas e, acima de tudo, uma final de Copa do Mundo que colocou esse duelo em um espaço especial dentro da memória do futebol.</p>
+
+            <p>É por isso que cada novo capítulo entre Brasil e França carrega tanto passado. Nem sempre será decisivo como 1998 ou dramático como 1986, mas esse confronto também guarda uma das páginas mais simbólicas da história brasileira: quando o Brasil venceu a França por 5 a 2 na semifinal da Copa do Mundo de 1958, no último passo antes da final que terminaria com a conquista do primeiro título mundial. Naquela noite, Pelé, ainda com 17 anos, marcou três gols e deixou uma das primeiras imagens eternas da carreira do jovem que, anos depois, seria eternizado como <a href="https://cortedosesportes.com.br/pele-historia-titulos-santos-selecao-brasileira-rei-futebol.html">Rei do Futebol e maior símbolo da história da Seleção Brasileira</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
