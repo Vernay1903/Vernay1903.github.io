@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lionel Messi: da infância frágil ao gênio que mudou a escala do futebol | Corte dos Esportes</title>
+  <meta name="description" content="A carreira dele junta tudo o que normalmente aparece separado: talento precoce, longevidade, títulos em massa, recordes absurdos, genialidade constante." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Lionel Messi: da infância frágil ao gênio que mudou a escala do futebol</h1>
+          <p class="subhead" id="articleExcerpt">A carreira dele junta tudo o que normalmente aparece separado: talento precoce, longevidade, títulos em massa, recordes absurdos, genialidade constante.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">27/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Falar de Lionel Messi é falar de um jogador que parece ter escapado da lógica comum do esporte. A carreira dele junta tudo o que normalmente aparece separado: talento precoce, longevidade, títulos em massa, recordes absurdos, genialidade constante e uma história de redenção que terminou do jeito que quase toda lenda sonha. Messi não foi apenas um craque extraordinário. Ele virou uma medida de comparação para gerações inteiras.</p>
+
+            <p>O mais impressionante é que essa trajetória não começou cercada apenas de encantamento. Começou também com incerteza física, com um corpo pequeno para a idade e com a sensação de que o talento talvez fosse grande demais para um menino que ainda precisava vencer o próprio crescimento. O resto virou história — e das mais marcantes que o futebol já produziu.</p>
+
+            <p><strong>O começo em Rosario e o problema de crescimento que poderia ter mudado tudo</strong></p>
+
+            <p>Antes de ser o camisa 10 do Barcelona, da Argentina e de qualquer debate sobre o maior da história, Messi era um menino de Rosario, na província de Santa Fe, que já encantava com a bola colada ao pé. O talento aparecia cedo, mas havia um problema real no caminho: ainda criança, ele foi diagnosticado com deficiência do hormônio do crescimento.</p>
+
+            <p>Esse ponto é central na história dele porque não se trata apenas de uma curiosidade biográfica. Sem tratamento, o futuro físico de Messi era uma incógnita. Durante esse período, a família conviveu com custo alto, insegurança e a necessidade de encontrar uma estrutura que bancasse o tratamento e acreditasse no talento do garoto ao mesmo tempo.</p>
+
+            <p>Foi aí que o Barcelona entrou de forma decisiva. O clube catalão não apenas enxergou um talento raro, mas ajudou a viabilizar a continuidade do tratamento. Em outras palavras, a carreira de Messi não nasceu só de dom. Nasceu também de uma aposta enorme em um menino que precisava crescer literalmente para virar profissional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Barcelona: onde o prodígio virou fenômeno</strong></p>
+
+            <p>A explosão com a camisa do Barcelona foi uma daquelas transformações que parecem inevitáveis quando a peça certa encontra o contexto ideal. Messi entrou em um clube que valorizava posse, técnica curta, inteligência de espaço e jogadores capazes de pensar o jogo em ritmo acelerado. Era o ambiente perfeito para ele.</p>
+
+            <p>A estreia no time principal aconteceu em 2004. A consolidação veio rápido. O menino franzino da base se transformou em atacante capaz de decidir em qualquer zona do campo. Com o passar dos anos, deixou de ser promessa, depois deixou de ser só estrela e, em seguida, passou a ocupar aquele nível em que o vocabulário comum do futebol parece pequeno.</p>
+
+            <p>No Barcelona, Messi fez 672 gols oficiais, tornou-se o maior artilheiro da história do clube, conquistou 10 títulos de La Liga, 4 Champions League e uma sequência gigantesca de taças nacionais e internacionais. Mais importante do que isso: ele ajudou a definir uma era.</p>
+
+            <p><strong>O auge no Barcelona e a sensação de inevitabilidade</strong></p>
+
+            <p>O auge de Messi no Barcelona teve algo de raro até para padrões de lenda. Em muitos momentos, parecia que o jogo já começava inclinado a favor dele. Não era apenas porque driblava mais, finalizava melhor ou pensava mais rápido. Era porque conseguia reunir tudo isso ao mesmo tempo.</p>
+
+            <p>Houve temporadas em que ele parecia controlar o ritmo emocional de uma partida inteira. Se o jogo pedia aceleração, ele acelerava. Se pedia pausa, ele pausava. Se a defesa recuava, ele tabelava. Se adiantava, ele infiltrava. Se ninguém aparecia, ele decidia sozinho. Em 2011 e 2012, por exemplo, a impressão era a de que o futebol europeu girava em torno de sua capacidade de criar uma jogada impossível sem esforço visível.</p>
+
+            <p>O ano de 2012 sintetiza bem esse tamanho: Messi marcou 91 gols em jogos oficiais ao longo daquela temporada, um número que virou recorde e entrou para o tipo de marca que parece pertencer mais à fantasia do que ao esporte real.</p>
+
+            <p><strong>Títulos, recordes e a dimensão estatística de uma carreira absurda</strong></p>
+
+            <p>A carreira de Messi não depende de números para parecer gigante, mas os números ajudam a mostrar o tamanho da anomalia.</p>
+
+            <p>Entre os principais feitos da carreira, estão:</p>
+
+            <p>8 Bolas de Ouro</p>
+            <p>6 Chuteiras de Ouro europeias</p>
+            <p>mais de 900 gols na carreira profissional</p>
+            <p>mais de 40 títulos coletivos</p>
+            <p>4 títulos de Champions League</p>
+            <p>10 títulos de La Liga</p>
+            <p>2 títulos de Ligue 1</p>
+            <p>títulos com Barcelona, Paris Saint-Germain, Inter Miami e Argentina</p>
+            <p>maior artilheiro da história do Barcelona</p>
+            <p>maior artilheiro da história da seleção argentina</p>
+            <p>mais de 100 gols pela Argentina</p>
+
+            <p>Esses números impressionam, mas não contam tudo. O mais raro em Messi é a soma entre quantidade e beleza. Ele não empilhou estatísticas como um acumulador frio de gols. Empilhou deixando jogadas que parecem continuar vivas na memória coletiva.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A rivalidade com Cristiano Ronaldo e a era em que o futebol virou comparação permanente</strong></p>
+
+            <p>É impossível falar de Messi sem tocar em Cristiano Ronaldo. Não porque um precise do outro para ser grande, mas porque os dois dividiram uma era que elevou o futebol a um nível de comparação permanente. Durante mais de uma década, o debate sobre quem era melhor foi praticamente um idioma global do esporte.</p>
+
+            <p>Cristiano representava potência, obsessão competitiva, explosão física e capacidade de reinventar a própria máquina. Messi representava fluidez, improviso, visão, drible curto e genialidade quase orgânica. Um parecia esculpir a carreira todos os dias. O outro parecia fazer nascer jogadas de um instinto que mais ninguém possuía.</p>
+
+            <p>Essa rivalidade fez bem aos dois e também ao futebol. Ela empurrou recordes, inflou expectativas e transformou qualquer temporada em disputa de legado. O mais curioso é que, apesar de a comparação ser inevitável, os dois acabaram se tornando gigantes por caminhos muito diferentes. Talvez por isso a rivalidade tenha sido tão forte: ela não colocava dois iguais frente a frente, e sim duas formas distintas de grandeza.</p>
+
+            <p><strong>A frustração com a Argentina e o peso de parecer sempre insuficiente</strong></p>
+
+            <p>Se a carreira em clubes foi marcada por uma sensação de controle quase total, a trajetória com a seleção argentina passou durante muitos anos pelo sentimento oposto. Houve talento, houve brilho, houve finais, mas o título principal insistia em não chegar.</p>
+
+            <p>Messi perdeu a final da Copa do Mundo de 2014 para a Alemanha. Depois, viveu as dores das finais da Copa América de 2015 e 2016, ambas contra o Chile. Por muito tempo, essa sequência produziu uma narrativa injusta e pesada: a de que ele seria um gênio absoluto no clube, mas incompleto com a camisa da Argentina.</p>
+
+            <p>Essa cobrança foi enorme porque, no fundo, tratava Messi não como jogador brilhante, mas como devedor permanente de um país acostumado a medir seus maiores nomes pela seleção. A frustração bateu tão forte que ele chegou a anunciar a aposentadoria da equipe nacional em 2016. Foi um dos momentos mais sensíveis de sua carreira.</p>
+
+            <p><strong>A redenção: Copa América, Copa do Mundo e o fechamento perfeito do roteiro</strong></p>
+
+            <p>A virada da história veio do jeito que toda grande carreira pede: com peso emocional máximo. Em 2021, Messi conquistou a Copa América e encerrou um jejum de 28 anos sem títulos importantes da Argentina. A taça teve enorme valor simbólico, porque não foi apenas um troféu. Foi o rompimento de uma barreira que perseguia o jogador havia mais de uma década.</p>
+
+            <p>Mas a consagração definitiva veio em 2022, no Catar. Messi fez uma Copa do Mundo gigantesca, marcou em fases decisivas, comandou emocionalmente a equipe e terminou levantando o troféu mais cobiçado do futebol. Na final contra a França, marcou duas vezes e atravessou o jogo mais importante da carreira com a autoridade de quem sabia que aquele era o momento de fechar o círculo.</p>
+
+            <p>Depois de tantos anos ouvindo que lhe faltava a Copa, Messi saiu do Mundial não apenas campeão, mas redimido. O debate deixou de ser sobre o que faltava. Passou a ser sobre o tamanho completo da obra.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que torna Messi genial de um jeito tão difícil de replicar</strong></p>
+
+            <p>A genialidade de Messi não está só no drible ou no gol. Está na sensação de que ele vê uma fresta antes de todo mundo. Em campo, sempre pareceu jogar alguns segundos à frente dos demais. É por isso que suas jogadas frequentemente dão a impressão de simplicidade impossível.</p>
+
+            <p>Messi não precisava de movimentos exagerados para desequilibrar. Às vezes, bastava um toque para atrair dois marcadores, outro para quebrar a linha e mais um para deixar alguém na cara do gol. Em outras, resolvia sozinho. O raro é que ele conseguia ser, ao mesmo tempo, o melhor finalizador, o melhor criador e o jogador com maior controle do caos ao redor.</p>
+
+            <p>Poucos atletas da história foram tão capazes de transformar improviso em método.</p>
+
+            <div style="margin: 28px 0;"> <iframe width="100%" height="400" src="https://www.youtube.com/embed/fpkkDHufE-c" title="Lionel Messi Highlights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
+
+            <p><strong>O fim da discussão não está nos números, mas no legado</strong></p>
+
+            <p>Messi será lembrado pelos títulos, pelas Bolas de Ouro, pelos gols e pelos recordes, mas o legado dele vai além disso. Ele mudou o jeito de perceber grandeza no futebol. Mostrou que um jogador pode ser artilheiro brutal, organizador refinado, líder técnico e personagem emocional da própria era sem abrir mão da beleza.</p>
+
+            <p>A história dele tem começo dramático, meio glorioso e fim quase literário. O menino que enfrentou um problema de crescimento virou o maior nome do Barcelona, atravessou a rivalidade mais intensa do futebol moderno, sofreu com a Argentina, voltou, venceu e terminou campeão do mundo.</p>
+
+            <p>No fim, Messi não parece grande apenas porque ganhou muito. Parece grande porque sua carreira tem a estrutura das histórias que o esporte raramente consegue entregar completas. E, quando isso acontece, o jogador deixa de ser apenas ídolo. Vira medida de tempo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
