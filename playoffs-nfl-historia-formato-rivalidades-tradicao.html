@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Playoffs da NFL: por que a pós-temporada virou um campeonato à parte no futebol americano | Corte dos Esportes</title>
+  <meta name="description" content="Os playoffs da NFL ocupam um lugar diferente dentro do esporte porque parecem mudar a temperatura de tudo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Playoffs da NFL: por que a pós-temporada virou um campeonato à parte no futebol americano</h1>
+          <p class="subhead" id="articleExcerpt">Os playoffs da NFL ocupam um lugar diferente dentro do esporte porque parecem mudar a temperatura de tudo.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">27/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Os playoffs da NFL ocupam um lugar diferente dentro do esporte porque parecem mudar a temperatura de tudo. A fase regular constrói campanha, semeia favoritismos e organiza o caminho. A pós-temporada, porém, transforma esse percurso em sobrevivência. Basta um jogo ruim, um erro em terceira descida ou um field goal perdido para uma temporada inteira acabar. É isso que faz os playoffs parecerem um campeonato à parte: menos margem, mais peso e uma sensação constante de que cada posse vale mais do que valia em setembro ou outubro.</p>
+
+            <p><strong>Como essa tradição foi construída</strong></p>
+
+            <p>A história dos playoffs ajuda a explicar por que a fase decisiva ganhou esse tamanho. Antes mesmo de a NFL se consolidar no formato moderno, o futebol americano profissional já tratava os jogos eliminatórios como momentos de definição absoluta. Com o passar das décadas, a liga transformou o mata-mata em uma escada dramática, em que cada rodada concentra mais pressão, mais narrativa e mais memória.</p>
+
+            <p>Esse desenho ajudou a criar uma cultura muito particular. A campanha forte da temporada regular continua importante, mas janeiro sempre parece cobrar outra prova. O time precisa confirmar tudo quando o espaço para erro praticamente desaparece.</p>
+
+            <p><strong>Um formato que favorece tensão o tempo inteiro</strong></p>
+
+            <p>O formato dos playoffs explica parte dessa força. Diferentemente de ligas em que séries longas permitem correção de rota, a NFL trabalha com eliminatórias em jogo único. Isso comprime o drama e aumenta o peso de cada detalhe. Um favorito pode cair em uma tarde ruim, e um time menos cotado pode mudar completamente a própria história em poucas horas.</p>
+
+            <p>Esse tipo de estrutura deixa a pós-temporada mais imprevisível e mais brutal. Ao mesmo tempo em que valoriza a qualidade construída ao longo do campeonato, ela também exige reação imediata, frieza emocional e capacidade de suportar pressão máxima sem segunda chance.</p>
+
+            <p><strong>Como funciona o formato atual dos playoffs</strong></p>
+
+            <p>Hoje, os playoffs da NFL reúnem 14 franquias, divididas igualmente entre as duas conferências: sete na AFC e sete na NFC. Em cada conferência, os quatro campeões de divisão garantem vaga automática, enquanto os três melhores times seguintes, independentemente da divisão, entram como wild cards.</p>
+
+            <p>A equipe de melhor campanha em cada conferência fica com a seed 1 e ganha uma vantagem importante: avança direto para o Divisional Round, sem precisar jogar a rodada inicial. Já as outras seis equipes disputam o Wild Card, sempre em jogo único.</p>
+
+            <p>Nessa primeira rodada, o mando de campo fica com quem fez a campanha melhor. O confronto acontece assim:</p>
+
+            <p>seed 2 x seed 7</p>
+            <p>seed 3 x seed 6</p>
+            <p>seed 4 x seed 5</p>
+
+            <p>Depois disso, o mata-mata segue em jogo único até o fim. No Divisional Round e nas finais de conferência, o mando continua com a franquia de melhor campanha entre as que seguem vivas. Isso faz a temporada regular continuar valendo muito, porque terminar mais acima na classificação pode significar descanso, jogar em casa e enfrentar um caminho teoricamente menos duro.</p>
+
+            <p>Ao mesmo tempo, esse formato mantém a essência dramática dos playoffs. A campanha ajuda, o mando pesa e a seed faz diferença, mas nada disso protege um time de uma eliminação em uma tarde ruim. É exatamente essa mistura entre recompensa e risco que torna a pós-temporada da NFL tão intensa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que parece um campeonato à parte</strong></p>
+
+            <p>Nos playoffs, o jogo muda porque o ambiente muda. Técnicos passam a administrar relógio, quarta descida e posse de bola com outro grau de tensão. Quarterbacks deixam de ser avaliados apenas por jardas e touchdowns e passam a ser lembrados por campanhas decisivas, terceiras descidas longas e finais apertados. Defesas, por sua vez, ganham um peso ainda maior quando um único stop pode decidir a temporada.</p>
+
+            <p>É por isso que tanta gente trata os playoffs quase como outro campeonato. A fase regular separa times bons, ruins, consistentes ou promissores. A pós-temporada separa quem consegue sobreviver quando tudo aperta ao mesmo tempo.</p>
+
+            <p><strong>Torcida, estádio e o ambiente que faz janeiro parecer diferente</strong></p>
+
+            <p>Uma parte importante da identidade dos playoffs está na atmosfera. Em janeiro, os estádios parecem mais pesados, o barulho ganha outro significado e a relação entre torcida e jogo fica ainda mais intensa. O frio em algumas praças tradicionais, a pressão de jogar fora de casa e o clima de “tudo ou nada” ajudam a criar uma sensação que poucas ligas conseguem reproduzir com tanta força.</p>
+
+            <p>Em muitos casos, o ambiente vira personagem. A arquibancada entra no jogo, o estádio parece menor para o ataque visitante, e uma campanha ofensiva de poucos minutos pode parecer muito mais longa por causa do contexto. É também por isso que tanta gente associa playoffs da NFL a imagens muito específicas: torcida em pé o tempo todo, neve, nervosismo, relógio correndo e a impressão de que qualquer detalhe pode mudar tudo. Em algumas praças tradicionais, esse clima parece ainda mais forte, especialmente em divisões carregadas de identidade, como a <a href="https://cortedosesportes.com.br/conferencia-norte-nfl-historia-times-rivalidades-campeoes.html">Conferência Norte da NFL, marcada por rivalidades duras, estádios hostis e jogos que combinam frio, contato e tensão histórica</a>.</p>
+
+            <p><strong>Rivalidades que ganharam outra dimensão em janeiro</strong></p>
+
+            <p>Grande parte da mística dos playoffs também vem das rivalidades que cresceram ali. Em muitos casos, não foram apenas confrontos repetidos, mas jogos que ajudaram a moldar a memória da liga. Packers e Cowboys construíram parte importante dessa história em janeiro, mas não estão sozinhos. Mais recentemente, Chiefs e Bills viraram um dos exemplos mais fortes de rivalidade ampliada pela pós-temporada, com confrontos que passaram a carregar expectativa, trauma e sensação constante de jogo grande.</p>
+
+            <p>Esse é um dos grandes trunfos dos playoffs: eles não só decidem quem avança, mas também redefinem rivalidades. Um duelo marcante em janeiro costuma permanecer mais vivo do que várias vitórias comuns da fase regular. A rivalidade passa a carregar ferida, revanche, trauma ou orgulho de um jeito diferente.</p>
+
+            <p><strong>Remontadas que ajudaram a definir a alma do mata-mata</strong></p>
+
+            <p>Poucos elementos combinam tanto com os playoffs quanto as viradas improváveis. A maior remontada da história da pós-temporada segue sendo a do Buffalo Bills sobre o Houston Oilers em janeiro de 1993, quando o time conseguiu voltar depois de uma desvantagem de 32 pontos. É o tipo de jogo que reforça a ideia de que, na NFL, uma partida eliminatória nunca está realmente encerrada cedo demais.</p>
+
+            <p>Mas a força das viradas não está só no tamanho do placar. Está também no efeito emocional que produzem. A remontada do Kansas City Chiefs sobre o Houston Texans em 2019, depois de sair de um 24 a 0, virou um exemplo mais recente de como um jogo de playoffs pode mudar completamente de rosto em poucos minutos. Quando isso acontece em janeiro, o impacto parece maior porque não existe amanhã garantido. A virada deixa de ser apenas estatística impressionante e passa a ser capítulo de sobrevivência, desses que entram para a memória coletiva da torcida.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Carreiras que mudaram de tamanho nos playoffs</strong></p>
+
+            <p>Outra marca forte da pós-temporada é o poder de redefinir a percepção sobre jogadores e técnicos. Há carreiras ótimas que ganham outro patamar por causa de duas ou três atuações gigantes em janeiro. Há quarterbacks que passam anos sendo vistos como muito bons e só viram nomes realmente históricos depois de conduzirem campanhas memoráveis sob pressão máxima, como aconteceu com <a href="https://cortedosesportes.com.br/tom-brady-historia-draft-titulos-legado-nfl.html">Tom Brady, cujo legado foi construído em grande parte na lógica implacável dos playoffs da NFL</a>.</p>
+
+            <p>O mesmo vale para treinadores. Uma decisão ousada que dá certo, uma defesa ajustada no momento exato ou uma campanha improvável até a final de conferência pode alterar a forma como um técnico é lembrado por anos. Os playoffs têm essa capacidade de comprimir legado em poucas semanas.</p>
+
+            <p><strong>Os times que transformaram janeiro em território familiar</strong></p>
+
+            <p>Os playoffs também ajudam a construir a tradição das franquias mais fortes. Algumas equipes parecem atravessar décadas mantendo uma relação constante com janeiro, seja por presença frequente, seja por campanhas marcantes. Patriots, Steelers, Packers, 49ers e, mais recentemente, Chiefs ajudam a representar bem esse tipo de familiaridade com a pós-temporada.</p>
+
+            <p>Esse tipo de repetição cria a sensação de que certos escudos entram nos playoffs carregando um peso histórico maior, como se já estivessem habituados àquele ambiente. É isso que faz a pós-temporada produzir linhagens. Não se trata apenas de ser campeão uma vez. Trata-se de voltar, competir de novo, sobreviver em rodadas diferentes e fazer com que a torcida associe a própria franquia à ideia de jogo grande. Isso também ajuda a explicar a força de divisões tradicionais como a <a href="https://cortedosesportes.com.br/conferencia-leste-nfl-historia-maiores-campeoes-rivalidades-futebol-americano.html">Conferência Leste, que reúne franquias acostumadas a jogos grandes, rivalidades antigas e capítulos importantes da história da NFL</a>.</p>
+
+            <p><strong>O peso do mando, da campanha e do seed número 1</strong></p>
+
+            <p>Um dos detalhes mais interessantes dos playoffs é que eles valorizam a campanha regular sem torná-la soberana. Ter mando de campo, jogar diante da própria torcida e entrar mais acima no chaveamento continua sendo uma vantagem importante. Mas a história da NFL está cheia de exemplos de times que chegaram embalados em janeiro e derrubaram favoritos com caminho aparentemente mais confortável.</p>
+
+            <p>Esse equilíbrio ajuda a explicar por que o formato continua tão atraente. Ele respeita o que foi feito antes, mas não transforma isso em blindagem. A campanha abre portas. O mata-mata decide quem consegue atravessá-las.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que janeiro pesa tanto na memória do torcedor</strong></p>
+
+            <p>A pós-temporada deixa marcas mais fortes porque condensa emoção e consequência em um espaço muito curto. Para a torcida, isso muda tudo. Uma jogada pode ser lembrada por décadas. Um field goal errado pode virar trauma. Uma interceptação pode atravessar gerações como símbolo de um colapso ou de uma arrancada histórica.</p>
+
+            <p>É por isso que tantos torcedores falam dos playoffs de forma diferente da fase regular. Janeiro não entrega só jogos maiores. Entrega também lembranças mais profundas, dessas que permanecem ligadas à identidade da franquia e ao jeito como cada geração aprendeu a torcer.</p>
+
+            <p><strong>Mais do que fase final, uma tradição própria</strong></p>
+
+            <p>No fim, os playoffs da NFL são especiais porque conseguiram virar mais do que a etapa derradeira do campeonato. Eles têm linguagem própria, estádios com atmosfera única, rivalidades que cresceram de forma definitiva em janeiro, viradas que entraram para a cultura do esporte e carreiras que passaram a ser medidas pelo que aconteceu ali.</p>
+
+            <p>A temporada regular apresenta candidatos. A pós-temporada separa sobreviventes. E, quase sempre, é nesse recorte que o futebol americano parece mais próximo daquilo que o torcedor imagina quando fala em grandeza, pressão e memória.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol-americano";
+  const CATEGORY_NAME = "Futebol Americano";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
