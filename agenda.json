@@ -1,26 +1,38 @@
 [
   {
-    "time": "14:00",
-    "desc": "Escócia x Japão - Amistoso"
-  },
-  {
-    "time": "14:00",
-    "desc": "Canadá x Islândia - Amistoso"
-  },
-  {
-    "time": "14:00",
-    "desc": "Hungria x Eslovênia - Amistoso"
-  },
-  {
     "time": "16:30",
-    "desc": "Estados Unidos x Bélgica - Amistoso"
+    "desc": "Bucks x Clippers - NBA"
   },
   {
-    "time": "21:00",
-    "desc": "Haiti x Tunísia - Amistoso"
+    "time": "18:00",
+    "desc": "Pacers x Heat - NBA"
   },
   {
-    "time": "22:00",
-    "desc": "México x Portugal - Amistoso"
+    "time": "19:00",
+    "desc": "Nets x Kings - NBA"
+  },
+  {
+    "time": "19:00",
+    "desc": "Raptors x Magic - NBA"
+  },
+  {
+    "time": "19:00",
+    "desc": "Trail Blazers x Wizards - NBA"
+  },
+  {
+    "time": "19:00",
+    "desc": "Hornets x Celtics - NBA"
+  },
+  {
+    "time": "20:00",
+    "desc": "Pelicans x Rockets - NBA"
+  },
+  {
+    "time": "20:30",
+    "desc": "Thunder x Knicks - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Nuggets x Warriors - NBA"
   }
 ]
