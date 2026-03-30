@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atletismo nas Olimpíadas: como nasceu a alma dos Jogos e por que a expectativa sempre começa por ele | Corte dos Esportes</title>
+  <meta name="description" content="Falar da história do atletismo nas Olimpíadas é falar da própria espinha dorsal dos Jogos. Desde as corridas que remetem à tradição da Grécia Antiga até o programa amplo e equilibrado da era moderna." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Atletismo nas Olimpíadas: como nasceu a alma dos Jogos e por que a expectativa sempre começa por ele</h1>
+          <p class="subhead" id="articleExcerpt">Falar da história do atletismo nas Olimpíadas é falar da própria espinha dorsal dos Jogos. Desde as corridas que remetem à tradição da Grécia Antiga até o programa amplo e equilibrado da era moderna.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">30/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Falar da história do atletismo nas Olimpíadas é falar da própria espinha dorsal dos Jogos. Desde as corridas que remetem à tradição da Grécia Antiga até o programa amplo e equilibrado da era moderna, o atletismo atravessou todas as transformações do evento e se manteve como uma das modalidades que melhor traduzem a ideia olímpica de disputa, superação e alcance global.</p>
+
+            <p>Não por acaso, quando se aproxima uma nova edição dos Jogos, boa parte da expectativa recai justamente sobre a pista e o campo. É no atletismo que costumam aparecer alguns dos momentos mais simbólicos do programa olímpico: finais explosivas, recordes, nomes históricos e a sensação de que o mundo inteiro está olhando para provas que resumem o esporte em sua forma mais direta.</p>
+
+            <p><strong>As raízes do atletismo dentro do espírito olímpico</strong></p>
+
+            <p>As origens do atletismo estão ligadas de forma profunda aos Jogos da Antiguidade. Os registros sobre a tradição olímpica antiga mostram que as corridas estavam entre as manifestações centrais daquele universo esportivo, ao lado de outras disputas físicas que ajudaram a moldar a ideia de competição em Olympia.</p>
+
+            <p>Quando os Jogos Olímpicos da era moderna foram retomados em Atenas, em 1896, o atletismo já apareceu como um dos eixos principais da programação. Aquela edição inaugural da fase moderna teve 12 provas de atletismo, todas masculinas, marcando o início de uma trajetória que cresceria junto com o próprio tamanho das Olimpíadas. Para entender melhor essa base do evento, vale também revisitar a <a href="https://cortedosesportes.com.br/olimpiadas-historia-tradicao-maiores-campeoes.html">história das Olimpíadas</a> e como os Jogos se transformaram ao longo do tempo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>De 12 provas ao programa mais amplo da história</strong></p>
+
+            <p>A evolução do atletismo olímpico ajuda a contar como os Jogos se expandiram ao longo do tempo. Se em 1896 eram 12 eventos masculinos, nas edições mais recentes o programa chegou a 48 disciplinas, com equilíbrio total entre homens e mulheres como uma das marcas da fase atual.</p>
+
+            <p>Essa transformação não aconteceu de uma vez. As mulheres entraram no atletismo olímpico apenas em 1928, passo decisivo para uma evolução que, com o tempo, ampliou o número de distâncias, formatos e especialidades até o programa que hoje ocupa uma parte central dos Jogos.</p>
+
+            <p>Atualmente, o atletismo reúne provas de velocidade, meio-fundo, fundo, barreiras, revezamentos, saltos, lançamentos, marcha atlética e provas combinadas. Essa amplitude ajuda a explicar por que a modalidade continua sendo uma das mais completas e representativas do programa olímpico.</p>
+
+            <p><strong>A modalidade que mais traduz a ideia de Jogos Olímpicos</strong></p>
+
+            <p>Poucas modalidades carregam tanto a imagem clássica das Olimpíadas quanto o atletismo. Isso acontece porque ele reúne provas fáceis de entender, mas difíceis de dominar no mais alto nível: correr mais rápido, saltar mais longe, lançar mais distante, resistir mais do que os outros.</p>
+
+            <p>Essa simplicidade aparente é justamente uma das grandes forças do atletismo. Em qualquer edição dos Jogos, ele consegue entregar tanto leitura imediata para quem assiste quanto profundidade técnica para quem acompanha de perto. É uma modalidade que conversa com o fã casual e, ao mesmo tempo, produz capítulos históricos que atravessam gerações.</p>
+
+            <p><strong>Feitos que ajudaram a construir a grandeza do atletismo olímpico</strong></p>
+
+            <p>A história olímpica do atletismo é marcada por feitos que ajudaram a definir a memória dos Jogos. Recordes mundiais, tricampeonatos, provas decididas por centésimos e nomes que viraram referência global fazem parte da identidade da modalidade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Mesmo quando o destaque não está em um único atleta, o atletismo costuma ser um retrato poderoso da dimensão olímpica. A modalidade distribui medalhas para diferentes países, revela campeões de perfis variados e mantém uma diversidade competitiva que reforça o quanto se tornou uma vitrine global do esporte de alto rendimento.</p>
+
+            <p>Esse alcance é parte do seu tamanho histórico. O atletismo não vive só de grandes campeões, mas também da capacidade de transformar finais olímpicas em momentos universais, daqueles que ultrapassam o resultado e entram direto para a memória coletiva.</p>
+
+            <p><strong>Por que a expectativa pelos Jogos quase sempre passa pela pista</strong></p>
+
+            <p>Sempre que uma edição olímpica se aproxima, a expectativa em torno do atletismo cresce por um motivo simples: é ali que costumam estar algumas das provas mais aguardadas do evento. Os <a href="https://cortedosesportes.com.br/100-metros-rasos-atletismo-historia-recordes.html">100 metros rasos</a>, os revezamentos, as grandes finais de fundo, os saltos e os lançamentos carregam um peso simbólico que poucas modalidades conseguem replicar.</p>
+
+            <p>Além disso, o atletismo costuma condensar, em poucos segundos ou minutos, a tensão máxima do esporte olímpico. Uma largada, um salto, um arremesso ou uma reta final podem decidir medalhas, derrubar favoritos e criar cenas que passam a representar toda uma edição dos Jogos.</p>
+
+            <p><strong>O presente e o futuro de uma tradição que não perde força</strong></p>
+
+            <p>O atletismo segue como uma das grandes vitrines do programa olímpico também porque consegue se renovar sem perder a essência. O formato cresce, novas provas entram, o equilíbrio entre gêneros avança e a presença global aumenta, mas o núcleo da modalidade continua o mesmo: medir, da forma mais pura possível, quem foi mais rápido, mais forte, mais resistente ou mais eficiente naquele instante.</p>
+
+            <p>Por isso, a tendência é que o atletismo volte a ocupar o centro da conversa sempre que uma nova Olimpíada se aproximar. E isso não acontece por acaso. Em quase toda edição dos Jogos, o atletismo não é apenas uma modalidade importante. Ele é, muitas vezes, o ponto em que as Olimpíadas mais claramente se reconhecem.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma história que acompanha a própria evolução das Olimpíadas</strong></p>
+
+            <p>Do programa enxuto de 1896 ao cenário amplo e equilibrado das últimas edições, o atletismo cresceu junto com os Jogos e ajudou a moldar sua identidade. Sua história passa pelo nascimento da era moderna, pela expansão do número de provas, pela inclusão feminina, pela multiplicação de estilos competitivos e pela capacidade de seguir central mesmo em um evento cada vez maior.</p>
+
+            <p>É por isso que falar da história do atletismo nas Olimpíadas nunca é só revisitar o passado. É entender por que, edição após edição, tanta gente continua olhando para a pista e para o campo como se ali estivesse, de forma concentrada, a essência do maior evento esportivo do mundo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "atletismo";
+  const CATEGORY_NAME = "Atletismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
