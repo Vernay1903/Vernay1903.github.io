@@ -1,38 +1,34 @@
 [
   {
-    "time": "16:30",
-    "desc": "Bucks x Clippers - NBA"
-  },
-  {
-    "time": "18:00",
-    "desc": "Pacers x Heat - NBA"
-  },
-  {
-    "time": "19:00",
-    "desc": "Nets x Kings - NBA"
-  },
-  {
-    "time": "19:00",
-    "desc": "Raptors x Magic - NBA"
-  },
-  {
-    "time": "19:00",
-    "desc": "Trail Blazers x Wizards - NBA"
-  },
-  {
-    "time": "19:00",
-    "desc": "Hornets x Celtics - NBA"
-  },
-  {
     "time": "20:00",
-    "desc": "Pelicans x Rockets - NBA"
+    "desc": "Heat x 76ers - NBA"
   },
   {
     "time": "20:30",
-    "desc": "Thunder x Knicks - NBA"
+    "desc": "Hawks x Celtics - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Spurs x Bulls - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Grizzlies x Suns - NBA"
+  },
+  {
+    "time": "21:30",
+    "desc": "Mavericks x Timberwolves - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "Jazz x Cavaliers - NBA"
+  },
+  {
+    "time": "22:30",
+    "desc": "Thunder x Pistons - NBA"
   },
   {
     "time": "23:00",
-    "desc": "Nuggets x Warriors - NBA"
+    "desc": "Lakers x Wizards - NBA"
   }
 ]
