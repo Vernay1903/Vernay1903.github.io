@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Handebol: os nomes que se confundem com a própria história da modalidade no masculino e no feminino | Corte dos Esportes</title>
+  <meta name="description" content="Nos esportes, sempre existem nomes que parecem maiores do que o próprio contexto em que surgiram. Em alguns casos, o atleta não apenas domina uma era, mas passa a se confundir com a modalidade que pratica." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Handebol: os nomes que se confundem com a própria história da modalidade no masculino e no feminino</h1>
+          <p class="subhead" id="articleExcerpt">Nos esportes, sempre existem nomes que parecem maiores do que o próprio contexto em que surgiram. Em alguns casos, o atleta não apenas domina uma era, mas passa a se confundir com a modalidade que pratica.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">30/03/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">HANDEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Nos esportes, sempre existem nomes que parecem maiores do que o próprio contexto em que surgiram. Em alguns casos, o atleta não apenas domina uma era, mas passa a se confundir com a modalidade que pratica. Há momentos em que, ao entrar em determinado assunto, o nome do jogador vem antes até do esporte em si. No handebol, essa sensação aparece de forma muito clara quando se olha para algumas carreiras que atravessaram Olimpíadas, Mundiais e gerações inteiras.</p>
+
+            <p>A história da modalidade foi construída por talentos muito diferentes entre si. Alguns ficaram marcados pela genialidade técnica, outros pela longevidade, outros pelo acúmulo de medalhas, e há ainda os que representam o presente com força suficiente para já entrar na conversa histórica. No masculino, essa linha passa pelo croata Ivano Balić, pelo francês Nikola Karabatić e pelo dinamarquês Mathias Gidsel. No feminino, pelo nome histórico da iugoslava Svetlana Kitić, pela norueguesa Katrine Lunde e pela também norueguesa Henny Reistad.</p>
+
+            <p><strong>Ivano Balić virou a imagem do gênio no handebol masculino</strong></p>
+
+            <p>Quando o debate gira em torno de talento puro, poucos nomes aparecem com tanto peso quanto o do croata Ivano Balić. Ele foi eleito em votação da IHF como o melhor jogador masculino da história, reconhecimento que ajuda a resumir o impacto que teve na modalidade.</p>
+
+            <p>Mas a força de Balić não ficou apenas na estética do jogo. Ele foi campeão mundial em 2003 e campeão olímpico em 2004, além de ter chegado a outras campanhas profundas com a Croácia em grandes torneios. Ou seja: não foi só um jogador brilhante de highlights, mas alguém que decidiu competições do mais alto peso.</p>
+
+            <p>Até hoje, Balić é lembrado como aquele tipo de armador raro que parecia enxergar o jogo um segundo antes dos outros. Por isso, seu nome segue aparecendo como referência quando o assunto é genialidade no handebol masculino.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Nikola Karabatić transformou regularidade em grandeza histórica</strong></p>
+
+            <p>Se Balić representa o brilho criativo, o francês Nikola Karabatić simboliza a grandeza construída ao longo do tempo. Ele fechou sua carreira internacional com um volume de conquistas que o coloca de forma obrigatória em qualquer lista dos maiores, somando 17 medalhas em grandes competições, com três ouros olímpicos e quatro títulos mundiais.</p>
+
+            <p>Nos Mundiais, Karabatić acumulou seis medalhas, sendo quatro ouros e dois bronzes, além de uma permanência impressionante no mais alto nível da seleção francesa por quase duas décadas.</p>
+
+            <p>Esse peso não veio só da quantidade. Karabatić foi protagonista de uma das seleções mais fortes que o handebol já viu e atravessou diferentes fases da França continuando central. Em esportes coletivos, esse tipo de longevidade costuma separar grandes jogadores de nomes verdadeiramente históricos.</p>
+
+            <p><strong>Mathias Gidsel é o nome contemporâneo que já entrou na discussão dos maiores</strong></p>
+
+            <p>Entre os jogadores atuais, poucos parecem tão destinados a entrar no grupo das lendas quanto o dinamarquês Mathias Gidsel. Ele virou o principal rosto do presente ao alcançar, em 2026, um feito inédito: foi o primeiro jogador a ganhar o prêmio de melhor do mundo por três anos seguidos.</p>
+
+            <p>Nos Mundiais, o impacto já é enorme. Gidsel foi o MVP do Mundial de 2025, competição em que a Dinamarca conquistou o quarto título consecutivo, e chegou a números impressionantes nas primeiras participações no torneio: 163 gols, média de 6,52 por jogo e 72,4% de aproveitamento nos arremessos.</p>
+
+            <p>No cenário olímpico, ele também faz parte do ciclo vencedor da Dinamarca, campeã em Paris 2024. Por isso, mesmo ainda em plena carreira, Gidsel já deixou de ser apenas o grande nome da nova geração para entrar na conversa histórica do handebol masculino.</p>
+
+            <p><strong>Svetlana Kitić é um dos nomes mais simbólicos da história do feminino</strong></p>
+
+            <p>No handebol feminino, um dos nomes mais emblemáticos de todos os tempos é o da iugoslava Svetlana Kitić. Ela foi escolhida em votação da IHF como a melhor jogadora da história, superando outras lendas da modalidade.</p>
+
+            <p>Esse reconhecimento ajuda a explicar por que seu nome continua tão forte mesmo décadas depois do auge. Kitić virou uma figura central da memória do handebol feminino e representa uma era em que a modalidade consolidou algumas de suas primeiras grandes estrelas globais.</p>
+
+            <p>Em textos sobre a grandeza histórica do handebol, ela costuma aparecer como um daqueles nomes que não dependem do presente para continuar relevantes. Sua presença está ligada ao peso simbólico que exerceu sobre gerações inteiras do esporte.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Katrine Lunde transformou longevidade em legado</strong></p>
+
+            <p>Se existe uma jogadora que resume permanência no topo, esse nome é a norueguesa Katrine Lunde. A goleira encerrou sua carreira internacional em 2025 com uma coleção impressionante de resultados: 22 medalhas em grandes competições, incluindo Jogos Olímpicos, Mundiais e Europeus.</p>
+
+            <p>Nos Jogos Olímpicos, Lunde conquistou três ouros: Pequim 2008, Londres 2012 e Paris 2024. Nos Mundiais, fechou a carreira com três títulos, sendo o último em 2025, torneio em que ainda liderou estatísticas de goleiras com 48% de eficiência e 87 defesas, incluindo 14 na final.</p>
+
+            <p>A dimensão da carreira vai além dos números crus. Lunde não foi apenas uma grande goleira; foi uma jogadora que sustentou uma era vencedora da Noruega durante muitos anos. Em esportes coletivos, esse tipo de constância em torneios máximos é um dos sinais mais claros de grandeza histórica.</p>
+
+            <p><strong>Henny Reistad é hoje a grande referência do presente no feminino</strong></p>
+
+            <p>Se Katrine Lunde representa uma lenda consolidada, a norueguesa Henny Reistad é a cara mais forte do presente. Ela também alcançou uma marca rara ao vencer o prêmio de melhor jogadora do mundo por três anos consecutivos, feito confirmado em 2026.</p>
+
+            <p>Nos Mundiais, os números já são de elite. Em três participações, Reistad chegou a 140 gols, depois de marcar 38 em 2021, 52 em 2023 e 50 em 2025 antes da final daquele torneio. Em 2023, teve ainda um dos jogos mais marcantes do ciclo recente ao anotar 15 gols contra a Holanda.</p>
+
+            <p>Ainda em plena ascensão, ela já combina protagonismo, regularidade e reconhecimento individual máximo. É justamente esse conjunto que faz Reistad parecer menos uma estrela passageira e mais um nome destinado a ocupar espaço definitivo na história do handebol feminino.</p>
+
+            <p><strong>Os nomes brasileiros que também deixaram marca no handebol</strong></p>
+
+            <p>Ao olhar para a história da modalidade, o Brasil também tem nomes que merecem espaço nesse tipo de debate. No feminino, um dos recortes mais fortes passa por Alexandra do Nascimento, campeã mundial com a seleção brasileira em 2013 e eleita melhor jogadora do mundo em 2012. O peso da carreira dela ajuda a explicar por que o título mundial daquele grupo segue sendo o maior feito da história do handebol brasileiro. Ao lado dela, nomes como Duda Amorim e Bárbara Arenhart também ganharam lugar definitivo na memória da modalidade por fazerem parte daquela conquista histórica.</p>
+
+            <p>No masculino, o Brasil não tem um campeão mundial ou olímpico colocado nesse patamar histórico, mas já produziu nomes que simbolizam o crescimento recente da seleção. Um dos recortes mais fortes passa pelo canhoto Haniel Langaro, um dos destaques do ciclo que levou o país à sua melhor campanha em Mundiais, com a histórica classificação às quartas de final em 2025. Mais do que representar um nome isolado, Haniel ajuda a marcar o momento em que o handebol masculino brasileiro conseguiu subir de nível e competir de forma mais consistente diante das potências da modalidade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que separa esses nomes do restante</strong></p>
+
+            <p>Em épocas diferentes, todos esses jogadores deixaram marcas muito claras nos recortes mais pesados da modalidade: Jogos Olímpicos e Campeonatos Mundiais. Balić virou símbolo de genialidade. Karabatić transformou medalhas e permanência em grandeza. Gidsel representa um presente que já se aproxima da condição de lenda. No feminino, Kitić preserva o peso simbólico das origens dessa discussão, Lunde se impôs pela longevidade vencedora e Reistad aparece como o maior nome da atualidade.</p>
+
+            <p>É por isso que, no handebol, alguns nomes realmente se confundem com o próprio esporte. Eles não ficam marcados apenas por títulos ou estatísticas. Ficam porque ajudaram a dar rosto, linguagem e memória a uma modalidade que sempre encontrou, nessas carreiras, uma forma clara de contar a própria história.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "handebol";
+  const CATEGORY_NAME = "Handebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
