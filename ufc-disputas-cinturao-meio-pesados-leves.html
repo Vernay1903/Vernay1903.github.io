@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>UFC define próximas disputas de cinturão com título vago nos meio-pesados e defesa nos leves | Corte dos Esportes</title>
+  <meta name="description" content="Em abril, o tcheco Jiří Procházka e o neozelandês Carlos Ulberg se enfrentam pelo título vago dos meio-pesados. Em junho, o georgiano-espanhol Ilia Topuria coloca o cinturão dos leves em jogo contra o norte-americano Justin Gaethje." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">UFC define próximas disputas de cinturão com título vago nos meio-pesados e defesa nos leves</h1>
+          <p class="subhead" id="articleExcerpt">Em abril, o tcheco Jiří Procházka e o neozelandês Carlos Ulberg se enfrentam pelo título vago dos meio-pesados. Em junho, o georgiano-espanhol Ilia Topuria coloca o cinturão dos leves em jogo contra o norte-americano Justin Gaethje.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">01/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="lutas.html">Lutas</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O UFC já tem confirmadas as duas próximas disputas de cinturão do calendário principal. Em abril, o tcheco Jiří Procházka e o neozelandês Carlos Ulberg se enfrentam pelo título vago dos meio-pesados. Em junho, o georgiano-espanhol Ilia Topuria coloca o cinturão dos leves em jogo contra o norte-americano Justin Gaethje, em sua primeira defesa de título na categoria. Juntas, as duas lutas ajudam a desenhar o cenário atual da organização entre renovação, consolidação e disputa pelo topo.</p>
+
+            <p><strong>Jiří Procházka e Carlos Ulberg disputam cinturão vago dos meio-pesados no UFC 327</strong></p>
+
+            <p>A primeira disputa confirmada acontece em 11 de abril de 2026, no UFC 327, no Kaseya Center, em Miami, na Flórida. O duelo principal será entre Jiří Procházka e Carlos Ulberg pelo cinturão vago dos meio-pesados. Ou seja, não se trata de defesa de cinturão de um campeão em atividade, mas de uma luta para definir o novo dono do título da categoria.</p>
+
+            <p>No caso de Procházka, a luta tem peso especial porque o tcheco já foi campeão da divisão. Em 2022, ele conquistou o cinturão ao finalizar Glover Teixeira no quinto round, mas o cenário agora é diferente: a disputa diante de Ulberg será por um título aberto. Por isso, não há contagem de defesas em jogo para ele nesta luta específica.</p>
+
+            <!-- ANÚNCIO (ARTIGO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O cartel de Procházka no UFC e o perfil do ex-campeão</strong></p>
+
+            <p>Jiří Procházka chega à disputa com cartel profissional de 32 vitórias, 5 derrotas e 1 empate. No recorte do UFC, ele soma 8 lutas, com 6 vitórias e 2 derrotas. Dessas seis vitórias na organização, cinco foram por nocaute ou nocaute técnico e uma por finalização; as duas derrotas vieram por KO/TKO, ambas contra Alex Pereira. No cartel geral, Procházka tem 28 vitórias por KO/TKO, 3 por finalização e 1 por decisão.</p>
+
+            <p>Esse histórico ajuda a explicar a imagem que ele carrega na divisão: a de um lutador agressivo, de alta pressão e com inclinação clara para resolver lutas antes do fim. Mesmo quando não chega como campeão, Procházka segue sendo visto como um nome de elite no peso meio-pesado, justamente por manter taxa alta de definição e presença frequente em lutas de topo.</p>
+
+            <p><strong>Ulberg tenta transformar ascensão em título</strong></p>
+
+            <p>Do outro lado estará Carlos Ulberg, neozelandês que chega ao maior momento da carreira. A luta em Miami será a primeira oportunidade de cinturão do atleta no UFC, depois de uma sequência forte na divisão.</p>
+
+            <p>Ulberg aparece com cartel profissional de 14 vitórias e 1 derrota. No UFC, ele soma 10 lutas, com 9 vitórias e 1 derrota. Dentro da organização, suas nove vitórias vieram em 5 nocautes ou nocautes técnicos, 3 decisões e 1 finalização. No cartel geral, ele registra 8 vitórias por KO/TKO, 1 por finalização e 5 por decisão. A única derrota da carreira veio justamente em sua estreia no UFC, contra Kennedy Nzechukwu.</p>
+
+            <p>Esse desenho deixa a luta dos meio-pesados com um contraste interessante: de um lado, um ex-campeão acostumado ao caos ofensivo; do outro, um desafiante em crescimento, mais organizado e em clara trajetória de afirmação. É uma disputa de cinturão com cara de renovação de poder dentro da categoria.</p>
+
+            <!-- ANÚNCIO (ARTIGO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Ilia Topuria e Justin Gaethje fazem luta pelo cinturão dos leves em evento na Casa Branca</strong></p>
+
+            <p>A segunda disputa confirmada será em 14 de junho de 2026, no UFC Freedom 250, evento marcado para o gramado sul da Casa Branca, em Washington, D.C.. A luta principal coloca Ilia Topuria diante de Justin Gaethje pelo cinturão dos leves. Nesse caso, diferentemente do que acontece em Miami, a luta é uma defesa de título de Ilia Topuria, atual campeão da categoria.</p>
+
+            <p>Topuria conquistou o cinturão dos leves em junho de 2025, quando nocauteou Charles Oliveira no primeiro round no UFC 317. A luta contra Gaethje será sua primeira defesa de cinturão como campeão linear dos leves.</p>
+
+            <p><strong>Topuria chega invicto e com sequência de cinturão em duas categorias de peso</strong></p>
+
+            <p>Ilia Topuria entra nessa disputa com cartel profissional de 17 vitórias e nenhuma derrota. No UFC, ele soma 9 lutas e 9 vitórias, mantendo invencibilidade também dentro da organização. Nesse recorte do UFC, Topuria venceu 6 vezes por KO/TKO, 2 por decisão e 1 por finalização. No cartel geral, são 7 vitórias por KO/TKO, 8 por finalização e 2 por decisão.</p>
+
+            <p>A sequência recente ajuda a dimensionar o momento do campeão: ele venceu Alexander Volkanovski, Max Holloway e Charles Oliveira em suas três lutas mais recentes, consolidando um salto grande de patamar. Por isso, a primeira defesa nos leves também funciona como teste de consolidação para um nome que já entrou em 2026 cercado por status de estrela.</p>
+
+            <p><strong>Gaethje volta à rota do cinturão como veterano perigoso da divisão</strong></p>
+
+            <p>Justin Gaethje chega ao UFC Freedom 250 como desafiante e carregando a experiência de quem já circulou várias vezes perto do topo da divisão. O norte-americano já foi duas vezes campeão interino dos leves, com conquistas interinas em 2020 e janeiro de 2026. Agora, ele tentará transformar esse novo impulso em cinturão linear ao encarar Topuria.</p>
+
+            <p>No cartel profissional, Gaethje soma 27 vitórias e 5 derrotas. No UFC, ele entra nessa disputa com 15 lutas, tendo 10 vitórias e 5 derrotas. Dentro da organização, suas 10 vitórias vieram em 6 nocautes ou nocautes técnicos e 4 decisões. As cinco derrotas foram distribuídas entre 3 por KO/TKO e 2 por finalização. No cartel geral, ele aparece com 20 vitórias por KO/TKO, 6 por decisão e 1 por finalização.</p>
+
+            <!-- ANÚNCIO (ARTIGO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Esse histórico mantém Gaethje como um nome relevante mesmo depois de tantos ciclos na categoria. Ele segue sendo um peso-leve de alto impacto, com poder de nocaute, ritmo intenso e repertório suficiente para transformar qualquer luta em evento central. Contra Topuria, o papel dele será o de testar se o novo campeão consegue sustentar o cinturão contra um desafiante mais rodado e acostumado a guerras grandes.</p>
+
+            <p><strong>Duas disputas, dois cenários diferentes</strong></p>
+
+            <p>As próximas duas disputas de cinturão já confirmadas mostram cenários bem distintos dentro do UFC. Nos meio-pesados, Procházka e Ulberg disputam um cinturão vago em uma divisão aberta e ainda em reorganização. Nos leves, Topuria tenta consolidar o próprio reinado em sua primeira defesa diante de um desafiante experiente e com nome forte. Em comum, as duas disputas carregam uma leitura clara: são lutas que podem redefinir o topo de suas categorias ainda no primeiro semestre de 2026.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "lutas";
+  const CATEGORY_NAME = "Lutas";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
