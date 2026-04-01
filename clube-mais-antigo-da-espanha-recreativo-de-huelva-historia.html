@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Recreativo de Huelva: por que o clube mais antigo da Espanha continua sendo um nome especial no futebol | Corte dos Esportes</title>
+  <meta name="description" content="Falar do clube mais antigo da Espanha é falar de uma instituição que sobreviveu ao tempo, às mudanças do futebol e às quedas de divisão sem perder o valor simbólico." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Recreativo de Huelva: por que o clube mais antigo da Espanha continua sendo um nome especial no futebol</h1>
+          <p class="subhead" id="articleExcerpt">Falar do clube mais antigo da Espanha é falar de uma instituição que sobreviveu ao tempo, às mudanças do futebol e às quedas de divisão sem perder o valor simbólico.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">01/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Falar do clube mais antigo da Espanha é falar de uma instituição que sobreviveu ao tempo, às mudanças do futebol e às quedas de divisão sem perder o valor simbólico. O Recreativo de Huelva, fundado em 1889, carrega um peso que vai além dos resultados: ele ocupa um lugar de origem. Em um país dominado por gigantes como Real Madrid, Barcelona e Atlético de Madrid, o Recreativo segue sendo lembrado por outro motivo — foi ele quem chegou antes.</p>
+
+            <p>Mais do que um pioneiro, o clube virou um marco de identidade para Huelva. É um time que não construiu sua fama por colecionar grandes taças, mas por representar uma das raízes do futebol espanhol. E justamente por isso segue despertando curiosidade até hoje.</p>
+
+            <p><strong>O primeiro da Espanha</strong></p>
+
+            <p>O Recreativo de Huelva nasceu no fim do século XIX, num momento em que o futebol ainda começava a se espalhar pelo continente europeu. Sua fundação está ligada à presença britânica no sul da Espanha, especialmente em uma região muito conectada à atividade mineradora e ao contato comercial com o exterior.</p>
+
+            <p>Esse detalhe ajuda a entender por que o clube surgiu tão cedo em comparação com outros times espanhóis. Antes de o futebol se transformar em paixão nacional no país, Huelva já tinha contato com essa cultura esportiva. O Recreativo nasceu desse encontro e acabou entrando para a história como o primeiro clube do futebol espanhol.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Huelva e a força de um clube que representa a cidade</strong></p>
+
+            <p>Nem todo clube antigo consegue manter uma ligação real com sua cidade, mas esse nunca deixou de ser o caso do Recreativo. Em Huelva, o time é visto como parte da identidade local. Não é só um escudo tradicional: é um símbolo de pertencimento.</p>
+
+            <p>Isso explica por que o clube atravessou décadas difíceis sem desaparecer. Mesmo longe do centro do futebol espanhol, o Recreativo continuou sendo tratado como patrimônio esportivo e afetivo. Em uma cidade que não vive o mesmo protagonismo midiático de outras regiões da Espanha, o clube ganhou ainda mais importância como referência local.</p>
+
+            <p><strong>Uma história grande, mesmo sem muitos troféus de elite</strong></p>
+
+            <p>Quem olha apenas para a sala de troféus pode achar que o Recreativo teve uma trajetória discreta, mas isso simplifica demais sua história. O clube nunca foi potência nacional, porém viveu momentos relevantes, especialmente quando conseguiu alcançar a elite e disputar fases mais competitivas do futebol espanhol.</p>
+
+            <p>O principal título de sua trajetória moderna foi a conquista da Segunda Divisão em 2005/06, campanha que garantiu um dos acessos mais marcantes do clube. Outro momento histórico veio em 2003, quando chegou à final da Copa do Rei, um feito importante para uma equipe que tradicionalmente ocupou espaço mais modesto dentro do cenário nacional.</p>
+
+            <p>Ou seja: talvez não seja um clube de coleção pesada, mas certamente não é um clube vazio de feitos.</p>
+
+            <p><strong>As passagens pela primeira divisão</strong></p>
+
+            <p>O Recreativo não foi presença constante em La Liga, mas também não é estranho à elite. Ao longo da história, o clube teve algumas passagens pela primeira divisão espanhola, com o auge mais lembrado vindo nos anos 2000.</p>
+
+            <p>Naquele período, o time conseguiu se firmar por mais tempo na elite e viveu uma fase em que parecia capaz de construir um espaço mais estável no futebol principal do país. Não chegou a virar força de primeira prateleira, mas mostrou que podia competir em nível alto. Para um clube com esse perfil histórico, isso teve peso enorme.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O valor de “El Decano”</strong></p>
+
+            <p>Na Espanha, o Recreativo é chamado de El Decano, expressão que reforça sua condição de clube mais antigo do país. Esse apelido diz muito sobre como o time é visto: menos como um protagonista atual e mais como uma referência histórica permanente.</p>
+
+            <p>É um reconhecimento diferente do que recebem os gigantes. O prestígio do Recreativo não vem do presente nem da força financeira. Vem do respeito por sua antiguidade, por sua continuidade e pelo lugar que ocupa na origem do futebol espanhol.</p>
+
+            <p>Esse tipo de valor não desaparece facilmente. Mesmo quando o clube está distante dos holofotes, o nome Recreativo de Huelva continua carregando peso.</p>
+
+            <p><strong>O clube ainda existe e segue em atividade</strong></p>
+
+            <p>Sim, o Recreativo de Huelva segue em funcionamento. O clube mantém estrutura esportiva, elenco, base e atividade institucional, além de mandar seus jogos no Nuevo Colombino, estádio com capacidade para 21.670 torcedores e que ajuda a reforçar a ligação do time com a cidade e com a comunidade local. Em uma realidade distante da elite, o palco segue como ponto de encontro de uma torcida que vê o Recreativo não apenas como um clube de futebol, mas como parte da identidade de Huelva. Isso reforça uma diferença importante: ele não é apenas um símbolo do passado, mas uma instituição viva.</p>
+
+            <p><strong>Em que divisão o Recreativo de Huelva está hoje?</strong></p>
+
+            <p>Atualmente, o Recreativo de Huelva está fora das principais divisões do futebol espanhol e disputa o quarto nível nacional. Essa posição mostra como a distância entre tradição e realidade esportiva pode ser grande.</p>
+
+            <p>Ainda assim, estar longe da elite não apaga o tamanho histórico do clube. Pelo contrário: parte do fascínio em torno do Recreativo vem justamente desse contraste entre passado fundador e presente modesto. Ele não é lembrado porque domina o futebol espanhol de hoje, mas porque ajudou a formar o futebol espanhol de ontem — e ainda está vivo para contar essa história.</p>
+
+            <!-- ANÚNCIO (ARTIGO - 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que o Recreativo continua sendo especial?</strong></p>
+
+            <p>Porque poucos clubes conseguem reunir três coisas ao mesmo tempo: antiguidade real, identidade forte e permanência. O Recreativo de Huelva não é especial apenas por ser velho. Ele é especial porque continua relevante como símbolo.</p>
+
+            <p>Seu valor não depende de moda, de geração ou de campanha específica. Está no fato de ter atravessado mais de um século sem perder completamente o sentido. Em um futebol cada vez mais acelerado, isso pesa.</p>
+
+            <p>O clube mais antigo da Espanha talvez não esteja no centro das grandes manchetes, mas segue ocupando um lugar raro: o de instituição que representa origem, memória e resistência ao mesmo tempo. O peso histórico do Recreativo de Huelva dentro do futebol espanhol também ajuda a ampliar o olhar sobre os clubes pioneiros que marcaram os primeiros passos do esporte. Nesse contexto, o <a href="https://cortedosesportes.com.br/sheffield-fc-clube-mais-antigo-do-mundo-historia.html">Sheffield FC, reconhecido como o clube mais antigo do mundo</a>, aparece como outra referência clássica quando o assunto é origem, tradição e memória no futebol.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
