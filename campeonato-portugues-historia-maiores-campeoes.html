@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campeonato Português: história, tradição, formação e a ponte cada vez mais forte com o futebol brasileiro | Corte dos Esportes</title>
+  <meta name="description" content="O Campeonato Português ocupa um espaço particular no futebol europeu.Mantendo tradição, competitividade mesmo não estando no grande centro europeu.." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Campeonato Português: história, tradição, formação e a ponte cada vez mais forte com o futebol brasileiro</h1>
+          <p class="subhead" id="articleExcerpt">O Campeonato Português ocupa um espaço particular no futebol europeu.Mantendo tradição, competitividade mesmo não estando no grande centro europeu.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">01/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Campeonato Português ocupa um espaço particular no futebol europeu. Talvez não tenha o mesmo peso financeiro ou midiático das ligas mais ricas do continente, mas construiu ao longo das décadas uma identidade muito própria: tradição, competitividade concentrada nos grandes clubes, forte presença internacional e enorme capacidade de revelar, desenvolver e valorizar jogadores.</p>
+
+            <p>É justamente essa combinação que faz da liga portuguesa algo maior do que um torneio doméstico. Em Portugal, o campeonato virou vitrine, porta de entrada para talentos e uma espécie de elo entre mercados periféricos e o centro do futebol europeu.</p>
+
+            <p><strong>Uma liga com raízes antigas e peso histórico no futebol europeu</strong></p>
+
+            <p>O Campeonato Português tem origem oficial no formato nacional de pontos corridos na temporada 1934/35, quando foi disputada a primeira edição do torneio que deu origem à atual liga principal do país. O primeiro campeão foi o Porto, abrindo uma história que, ao longo das décadas, ajudou a consolidar Portugal como um dos mercados mais tradicionais e estratégicos do futebol europeu. A partir dali, o campeonato passou a construir sua identidade em torno de rivalidades fortes, cultura clubística intensa e uma presença continental que ultrapassou o tamanho do país.</p>
+
+            <p><strong>A tradição europeia faz o campeonato crescer em importância</strong></p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A força do Campeonato Português não pode ser medida apenas pelo que acontece dentro do país. Parte importante de seu prestígio vem da tradição internacional de seus clubes, sobretudo Benfica e Porto, que ajudaram a colocar Portugal em posição respeitada no futebol europeu.</p>
+
+            <p>O Benfica brilhou já nas décadas de 1960, em um período histórico do futebol continental, enquanto o Porto se transformou em referência de competitividade internacional em diferentes gerações. O Sporting, por sua vez, também ajudou a sustentar o peso da liga com sua tradição e sua reputação como formador. Isso fez com que o campeonato português passasse a ser visto como uma liga de transição qualificada, mas também de identidade forte e passado relevante.</p>
+
+            <p><strong>Benfica e Porto moldaram a história do futebol português</strong></p>
+
+            <p>Quando se fala na história do Campeonato Português, dois nomes aparecem acima de todos: Benfica e Porto. Ao longo das décadas, os dois clubes construíram uma disputa que praticamente definiu o topo do futebol português em grande parte das temporadas.</p>
+
+            <p>O Benfica se consolidou como o maior campeão nacional e como uma das marcas mais fortes do esporte em Portugal. Já o Porto cresceu especialmente a partir do fim do século XX e entrou no século XXI como uma potência agressiva, vencedora e muito bem estruturada esportivamente. Entre os dois, formou-se uma espécie de eixo central do campeonato.</p>
+
+            <p>Esse peso histórico moldou o torneio por décadas. O Sporting também tem protagonismo relevante e títulos importantes, mas a sensação recorrente no futebol português foi a de uma alternância mais intensa entre Benfica e Porto, com os demais tentando quebrar esse padrão em momentos específicos.</p>
+
+            <p><strong>Maiores campeões do Campeonato Português</strong></p>
+            <p>Benfica — 38 títulos</p>
+            <p>Porto — 30 títulos</p>
+            <p>Sporting — 21 títulos</p>
+            <p>Belenenses — 1 título</p>
+            <p>Boavista — 1 título</p>
+
+            <p>Atual campeão 2024/2025: Sporting</p>
+
+            <p><strong>Um campeonato marcado pela força dos “três grandes”</strong></p>
+
+            <p>Uma das marcas mais conhecidas do futebol português é justamente a força dos chamados três grandes: Benfica, Porto e Sporting. Eles concentram torcida, mídia, estrutura, investimento e protagonismo histórico.</p>
+
+            <p>Isso não significa que o restante da liga seja irrelevante. Pelo contrário: clubes como Braga, Vitória de Guimarães, Boavista, Belenenses e outros tiveram papéis importantes em diferentes momentos. Mas a lógica do campeonato quase sempre girou em torno da capacidade de um dos grandes impor sua superioridade ao longo da temporada.</p>
+
+            <p>Essa concentração de força é uma das razões pelas quais o Campeonato Português costuma ser visto como uma liga altamente hierarquizada, embora ainda produza boas histórias de resistência, crescimento e surpresa.</p>
+
+            <p><strong>A presença brasileira virou parte da identidade da liga</strong></p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Poucos campeonatos europeus construíram uma relação tão forte com o Brasil quanto o português. A presença de jogadores brasileiros em Portugal deixou de ser apenas frequente e virou praticamente uma característica estrutural da competição.</p>
+
+            <p>A adaptação cultural e linguística facilita esse processo, mas não explica tudo. O que tornou Portugal um destino tão comum para brasileiros foi a combinação entre oportunidade esportiva, visibilidade europeia e chance real de crescimento. Para muitos atletas, o Campeonato Português funciona como primeira porta de entrada no futebol do continente.</p>
+
+            <p>Ao longo dos anos, essa “invasão” brasileira ajudou a moldar o estilo da liga. O campeonato passou a conviver com um fluxo constante de jogadores técnicos, ofensivos e muitas vezes jovens, vindos do Brasil para ganhar espaço, valorização e projeção internacional.</p>
+
+            <p><strong>Portugal virou ponte para o mercado mais competitivo da Europa</strong></p>
+
+            <p>Talvez essa seja uma das maiores forças do Campeonato Português moderno: sua capacidade de funcionar como ponte. Portugal não compete financeiramente com Inglaterra, Espanha ou Alemanha, mas consegue oferecer algo muito valioso — ambiente europeu, bom nível competitivo, visibilidade continental e histórico forte de revenda.</p>
+
+            <p>Na prática, isso transformou a liga em um dos mercados mais eficientes da Europa no desenvolvimento e valorização de atletas. Jogadores chegam jovens, amadurecem taticamente, ganham vitrine e depois seguem para centros maiores. Esse movimento vale para brasileiros, sul-americanos em geral, africanos e até jogadores formados no próprio futebol português.</p>
+
+            <p>O campeonato português, nesse sentido, se especializou em preparar talentos para o salto seguinte.</p>
+
+            <p><strong>A captação de jovens é uma das grandes marcas do futebol português</strong></p>
+
+            <p>Os clubes portugueses desenvolveram ao longo do tempo uma habilidade muito reconhecida no mercado: identificar talento cedo. Essa captação pode acontecer na base local, em países africanos de língua portuguesa, na América do Sul ou em mercados menos explorados da Europa.</p>
+
+            <p>Mais do que contratar, Portugal aprendeu a lapidar. E isso passa por contexto tático, tempo de jogo, vitrine internacional e um modelo de negócios que depende bastante dessa valorização. Não por acaso, muitos jogadores chegam ao país ainda pouco conhecidos e saem prontos para atuar em ligas mais ricas e exigentes.</p>
+
+            <p>Esse modelo virou parte da lógica do campeonato. Em vez de apenas consumir estrelas prontas, a liga portuguesa se especializou em criar valor.</p>
+
+            <p><strong>O campeonato cresceu como vitrine sem perder identidade</strong></p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Existe um risco comum em ligas que viram mercado de exportação: perder personalidade e se transformar apenas em plataforma de negócios. O Campeonato Português conseguiu evitar isso em boa parte porque manteve rivalidades fortes, cultura local intensa e uma atmosfera histórica que ainda pesa muito.</p>
+
+            <p>Benfica, Porto e Sporting continuam sendo clubes de identidade enorme. Seus jogos carregam tensão, tradição e significado. E mesmo os clubes médios ajudam a preservar uma sensação de campeonato enraizado, com cidades, torcidas e contextos próprios.</p>
+
+            <p>Isso faz diferença. Portugal não virou só um corredor de passagem: virou uma liga que forma, vende e, ao mesmo tempo, mantém peso esportivo e emocional.</p>
+
+            <p><strong>Por que o Campeonato Português continua relevante?</strong></p>
+
+            <p>Porque ele reúne elementos que poucas ligas conseguem combinar tão bem: história, tradição europeia, clubes grandes, rivalidade doméstica forte, capacidade de formação e excelente leitura de mercado.</p>
+
+            <p>É um campeonato que talvez não esteja no topo absoluto do futebol europeu em dinheiro ou audiência global, mas continua extremamente relevante na engrenagem do esporte. Quem quer entender o futebol do continente precisa olhar para Portugal não apenas como periferia, mas como peça importante de circulação, formação e competitividade.</p>
+
+            <p>No fim, o Campeonato Português segue sendo isso: uma liga de passado forte, presente estratégico e influência muito maior do que seu tamanho sugere. No cenário europeu, essa combinação entre tradição, rivalidade e peso histórico também aparece em outras ligas relevantes do continente. É o caso de <a href="https://cortedosesportes.com.br/laliga-historia-maiores-campeoes-rivalidade-real-madrid-barcelona.html">LaLiga, marcada pela história, pelos maiores campeões e pela rivalidade entre Real Madrid e Barcelona</a>, outro campeonato que atravessou gerações mantendo força esportiva e identidade própria.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
