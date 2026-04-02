@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cristiano Ronaldo: a história do maior artilheiro da Champions League | Corte dos Esportes</title>
+  <meta name="description" content="O homem que fez história na maior competição de clubes do mundo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Cristiano Ronaldo: a história do maior artilheiro da Champions League</h1>
+          <p class="subhead" id="articleExcerpt">O homem que fez história na maior competição de clubes do mundo</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">02/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Ser o maior artilheiro da Champions League, principal torneio de clubes do futebol mundial, já colocaria qualquer jogador em um lugar especial na história. No caso de Cristiano Ronaldo, esse posto ganha uma dimensão ainda maior porque seus 140 gols não foram construídos apenas com longevidade, mas com protagonismo real em noites grandes, mata-matas pesados e campanhas que ajudaram a transformar sua trajetória em uma das mais marcantes que a competição já viu.</p>
+
+            <p>Ao longo de 19 temporadas, defendendo Manchester United, Real Madrid e Juventus, Cristiano fez da Champions o palco mais emblemático de sua carreira. Mais do que acumular números, ele construiu uma relação de domínio com o torneio, a ponto de seu nome passar a ser associado de forma quase automática à própria história da competição.</p>
+
+            <p><strong>Quantas Champions ele disputou</strong></p>
+
+            <p>Cristiano Ronaldo jogou a Champions ao longo de 19 temporadas, da edição 2003/04 até 2021/22. Nesse intervalo, somou 183 partidas, recorde da competição, com distribuição por clubes de 59 jogos pelo Manchester United, 101 pelo Real Madrid e 23 pela Juventus.</p>
+
+            <p>Isso ajuda a explicar por que seu recorde é tão difícil de derrubar. Não foi uma obra de duas ou três campanhas brilhantes, mas uma soma de longevidade, presença constante em fases agudas e altíssimo poder de decisão em diferentes contextos. Cristiano não só participou muito: ele participou muito quase sempre chegando longe.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Os clubes pelos quais passou e como construiu a artilharia</strong></p>
+
+            <p>A trajetória europeia de Cristiano na Champions pode ser dividida em três atos bem claros. No Manchester United, ele ainda estava se transformando de ponta driblador em goleador de elite. No Real Madrid, virou uma máquina histórica. Na Juventus, já em fase mais madura, manteve produção alta o suficiente para seguir ampliando números que já pareciam fora de alcance.</p>
+
+            <p>Em gols por clube, o panorama principal fica assim:</p>
+
+            <p>Manchester United: 15 gols</p>
+            <p>Real Madrid: 105 gols</p>
+            <p>Juventus: 20 gols</p>
+
+            <p>O número mais impressionante é o do Real Madrid. Fazer 105 gols por um único clube na Champions já seria suficiente para definir uma carreira continental gigantesca. No caso de Cristiano, isso foi apenas a parte central de um total ainda maior.</p>
+
+            <p><strong>Quantas vezes ele venceu a Champions</strong></p>
+
+            <p>Cristiano Ronaldo conquistou a Champions cinco vezes: uma com o Manchester United e quatro com o Real Madrid. Além disso, marcou em três finais da competição e soma quatro gols em decisões.</p>
+
+            <p>Esse panorama ajuda a entender por que a imagem dele ficou tão ligada ao torneio. Cristiano não inflou números apenas em fase de grupos ou em noites periféricas. Ele produziu em mata-mata, em quartas, em semifinais e também nos jogos que decidiam a taça.</p>
+
+            <p><strong>Os gols por edição: como o recorde foi sendo construído</strong></p>
+
+            <p>Uma das formas mais interessantes de olhar para a trajetória de Cristiano na Champions é acompanhar edição por edição. Isso permite perceber como a produção foi crescendo até alcançar níveis raríssimos no auge de sua passagem pelo Real Madrid.</p>
+
+            <p>2003/04: 0 gols</p>
+            <p>2004/05: 0 gols</p>
+            <p>2005/06: 0 gols</p>
+            <p>2006/07: 3 gols</p>
+            <p>2007/08: 8 gols</p>
+            <p>2008/09: 4 gols</p>
+            <p>2009/10: 7 gols</p>
+            <p>2010/11: 6 gols</p>
+            <p>2011/12: 10 gols</p>
+            <p>2012/13: 12 gols</p>
+            <p>2013/14: 17 gols</p>
+            <p>2014/15: 10 gols</p>
+            <p>2015/16: 16 gols</p>
+            <p>2016/17: 12 gols</p>
+            <p>2017/18: 15 gols</p>
+            <p>2018/19: 6 gols</p>
+            <p>2019/20: 4 gols</p>
+            <p>2020/21: 4 gols</p>
+            <p>2021/22: 6 gols</p>
+
+            <p>Em uma trajetória tão longa e dominante, vale ver também a sequência completa de gols que sustentou esse recorde histórico:</p>
+
+            <div class="video-embed"> <iframe width="560" height="315" src="https://www.youtube.com/embed/UK5cu3LJ9qk" title="Todos os gols de Cristiano Ronaldo na Champions League" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe> </div>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A edição mais devastadora</strong></p>
+
+            <p>Se fosse preciso escolher uma temporada para resumir o tamanho de Cristiano Ronaldo na Champions, ela seria 2013/14. Naquele ano, ele marcou 17 gols, recorde de mais gols em uma única edição do torneio.</p>
+
+            <p>A marca continua sendo um dos maiores símbolos do domínio individual de Cristiano na competição. Não é apenas um recorde estatístico: é uma medida de volume, constância e capacidade de aparecer em todas as fases do torneio.</p>
+
+            <p><strong>As temporadas em que ele foi o rei da artilharia</strong></p>
+
+            <p>Cristiano terminou a Champions como artilheiro da edição em sete temporadas, outro recorde. Isso aconteceu em 2007/08, 2012/13, 2013/14, 2014/15, 2015/16, 2016/17 e 2017/18.</p>
+
+            <p>Esse número talvez diga mais sobre sua supremacia do que o total absoluto de gols. Ser o maior artilheiro histórico já é enorme. Ser o maior goleador de uma edição em sete ocasiões diferentes mostra que, por muitos anos, a Champions teve um dono ofensivo recorrente.</p>
+
+            <p><strong>O recorde de gols em uma partida</strong></p>
+
+            <p>O máximo de Cristiano Ronaldo em um único jogo de Champions foi de 4 gols, marca atingida na goleada do Real Madrid por 8 a 0 sobre o Malmö, em dezembro de 2015. Naquela noite, ele também estabeleceu a marca de 11 gols só na fase de grupos daquela edição.</p>
+
+            <p>Ele ainda colecionou 8 hat-tricks na competição, número que o coloca entre os maiores de todos os tempos nesse recorte. Esse é outro indício de como sua produção europeia não se limitava a marcar “um aqui, outro ali”: havia muitas noites de avalanche.</p>
+
+            <p><strong>O peso nos mata-matas</strong></p>
+
+            <p>Se existe um argumento decisivo para explicar por que Cristiano Ronaldo ficou tão associado à Champions, ele está no mata-mata. Ele também é dono do recorde de gols na fase eliminatória, com 67, além de liderar entre os maiores artilheiros das quartas de final, com 25 gols.</p>
+
+            <p>Isso muda completamente a leitura sobre o recorde. Não foi um acumulador de fase de grupos. Foi um atacante que construiu sua reputação justamente quando o torneio endurecia. Em uma competição em que os maiores nomes costumam ser separados pelo que fazem nos confrontos decisivos, Cristiano elevou esse padrão a outro nível.</p>
+
+            <p>Boa parte dessa imagem foi construída justamente em noites como estas, quando a Champions entrava na fase mais pesada e ele respondia com gols em sequência:</p>
+
+            <div class="video-embed"> <iframe width="560" height="315" src="https://www.youtube.com/embed/msTupD1IYtA" title="Os gols de Cristiano Ronaldo no mata-mata da Champions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe> </div>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que o recorde dele parece tão difícil de cair</strong></p>
+
+            <p>Os números de Cristiano Ronaldo na Champions impressionam por três razões ao mesmo tempo: longevidade, explosão e contexto decisivo. Ele jogou muito, marcou muito e marcou muito nas fases mais pesadas. Somar 140 gols, em 183 jogos, com 5 títulos, 7 artilharias de edição, 8 hat-tricks e o recorde de 17 gols em uma só temporada cria um pacote estatístico raro até para padrões de lenda.</p>
+
+            <p>É por isso que o recorde não parece grande apenas no papel. Ele parece grande quando se olha a construção inteira. Cristiano Ronaldo fez da Champions não só a competição em que mais brilhou, mas também aquela em que deixou a assinatura mais difícil de apagar. Para quem gosta de rankings históricos de goleadores em grandes torneios, vale também conferir a matéria com a lista completa dos <a href="https://cortedosesportes.com.br/artilheiros-copa-do-mundo-lista-completa-maior-goleador-historia.html">artilheiros da Copa do Mundo</a> e o maior goleador da história do Mundial.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
