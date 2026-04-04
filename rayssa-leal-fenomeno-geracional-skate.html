@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>Rayssa Leal, aos 18, confirma status de fenômeno geracional e reina no skate mundial | Corte dos Esportes</title>
-  <meta name="description" content="Da ‘Fadinha’ que viralizou aos 7 anos ao topo da SLS e das Olimpíadas: Rayssa Leal consolida uma trajetória de títulos, recordes e inspiração no skate street.">
+  <meta name="description" content="Rayssa Leal consolidou uma trajetória que já mistura títulos, recordes, e marca geracional do esporte." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -154,18 +190,18 @@
 
     .meta a:hover { text-decoration: underline; }
 
+    /* AD SLOTS (sem texto) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
       border-radius: 14px;
       padding: 22px;
-      text-align: center;
-      color: #1E4BA5;
-      font-weight: 700;
-      font-size: 14px;
+      min-height: 64px;
+      box-sizing: border-box;
       margin: 16px 0;
-      min-height: 110px;
     }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
 
     article p {
       font-size: 16px;
@@ -228,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -269,11 +308,11 @@
       <section>
         <div class="card">
           <h1 id="articleTitle">Rayssa Leal, aos 18, confirma status de fenômeno geracional e reina no skate mundial</h1>
-          <p class="subhead" id="articleExcerpt">Da “Fadinha” que viralizou aos 7 anos ao topo da SLS e das Olimpíadas: Rayssa Leal consolida uma trajetória de títulos, recordes e inspiração no skate street.</p>
+          <p class="subhead" id="articleExcerpt">Rayssa Leal consolidou uma trajetória que já mistura títulos, recordes, e marca geracional do esporte.</p>
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">16/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">Skate</a>
+            Categoria: <a id="categoryLink" href="#">SKATE</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -283,57 +322,102 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <!-- ANÚNCIO (sem frase) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
-            <p>
-              Rayssa Leal, com apenas 18 anos (completados em janeiro de 2026), já pode ser considerada uma atleta geracional — independentemente da modalidade.
-              O impacto da maranhense vai muito além do skate: ela se tornou referência de performance, consistência e carisma no esporte brasileiro.
-            </p>
+            <p>Da “Fadinha” que viralizou ainda criança ao topo do skate street mundial, Rayssa Leal consolidou uma trajetória que já mistura títulos, recordes, impacto olímpico e protagonismo raro no esporte brasileiro. Aos 18 anos, completados em janeiro de 2026, a maranhense já se firmou como uma atleta geracional, não apenas dentro do skate, mas no cenário esportivo como um todo.</p>
 
-            <p>
-              A “menina que viralizou” aos 7 anos, natural de Imperatriz (MA), ganhou o mundo com um vídeo em que acerta uma manobra (heelflip) usando fantasia de fada.
-              Ali nasceu o apelido de “Fadinha”, e a repercussão foi tão grande que chamou a atenção de ninguém menos que a lenda Tony Hawk.
-              A partir daí, Rayssa passou a ser acompanhada de perto pelo público e pela mídia esportiva.
-            </p>
+            <p>O que Rayssa construiu até aqui vai além da idade. Sua carreira reúne resultados de elite, constância em alto nível e uma capacidade incomum de seguir relevante temporada após temporada, mesmo já convivendo há anos com pressão, expectativa e exposição.</p>
 
-            <p>
-              Desde a estreia em competições, ela se transformou em uma máquina de vitórias. Rayssa já conquistou duas medalhas olímpicas:
-              prata em Tóquio (na estreia do skate street nos Jogos Olímpicos) e bronze em Paris.
-              Com isso, entrou para um seleto grupo de atletas brasileiras com duas medalhas olímpicas e, naturalmente, já aparece como um dos principais nomes rumo a Los Angeles 2028.
-            </p>
+            <p><strong>Da “Fadinha” viral à projeção mundial</strong></p>
 
-            <p>
-              No cenário internacional, na maior liga do skate street, a SLS (Street League Skateboarding), Rayssa virou “rainha” da modalidade.
-              Com a vitória do último sábado, em 14/02, ela chegou a 7 conquistas de etapas e soma 4 títulos seguidos do Super Crown (o “mundial” da SLS),
-              reforçando um domínio raro em esportes de alto nível.
-            </p>
+            <p>Natural de Imperatriz, no Maranhão, Rayssa ganhou projeção ainda muito nova, quando viralizou com um vídeo acertando uma manobra usando fantasia de fada. O apelido de “Fadinha” nasceu ali, mas o episódio ganhou dimensão ainda maior quando Tony Hawk, um dos nomes mais influentes da história do skate, compartilhou o vídeo e ajudou a colocar a brasileira no radar do esporte mundial.</p>
 
-            <p>
-              A lista de títulos impressiona também em outras competições. Nos X Games, Rayssa tem duas medalhas de ouro.
-              No Mundial de Skate organizado pela World Skate, são mais dois ouros.
-              Ela ainda soma ouro nos Jogos Pan-Americanos, consolidando o currículo em praticamente todas as frentes relevantes do calendário.
-            </p>
+            <p>Aquele momento foi decisivo para transformar uma cena viral em ponto de partida de uma trajetória real no alto nível. Desde então, Rayssa deixou de ser apenas uma promessa encantadora do skate brasileiro e passou a construir, com resultados concretos, uma das trajetórias mais fortes de sua geração. Para entender a dimensão dessa visibilidade e o peso que isso representa dentro da modalidade, é possível conhecer melhor a trajetória na matéria <a href="https://cortedosesportes.com.br/tony-hawk-historia-feitos-legado-skate.html">sobre a história, os feitos e o legado de Tony Hawk</a>.</p>
 
-            <p>
-              No Brasil, o desempenho segue na mesma linha. Pelo STU, Rayssa já venceu cinco vezes a etapa do STU Rio e foi campeã em Porto Alegre no formato STU Pro Tour,
-              que reúne atletas nacionais e internacionais e aumenta ainda mais o nível de exigência.
-              A constância em diferentes pistas e formatos reforça que não se trata de “fase”, mas de excelência.
-            </p>
+            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-            <p>
-              Com todos esses feitos, Rayssa já tem uma vida financeira consolidada e, inclusive, conta com uma pista particular em casa,
-              o que ajuda a manter a rotina de treinos e evolução técnica no mais alto nível.
-              Ainda assim, o que mais chama atenção é o equilíbrio: ela segue com a mesma simplicidade e foco que encantaram o público desde o início.
-            </p>
+            <p><strong>Olimpíadas transformaram Rayssa em referência nacional</strong></p>
 
-            <p>
-              Dono de um psicológico forte, apesar da pouca idade, Rayssa ficou conhecida por virar baterias e decisões na última manobra,
-              mostrando frieza e capacidade de competir sob pressão.
-              Hoje, ela é ídolo de muita gente e, principalmente, inspira e motiva meninas a seguirem seus sonhos com disciplina, foco e persistência.
-              Rayssa Leal prova, na prática, que o esporte pode ser um caminho real para construir sucesso dentro e fora das pistas.
-            </p>
+            <p>A entrada do skate street no programa olímpico ampliou ainda mais o tamanho de Rayssa. Em Tóquio, ela conquistou a medalha de prata e se colocou entre os grandes nomes do esporte brasileiro. Depois, em Paris, voltou ao pódio com o bronze, confirmando que o resultado olímpico inicial não tinha sido obra de um momento isolado.</p>
+
+            <p>Com duas medalhas olímpicas ainda muito jovem, Rayssa entrou em um grupo seleto de atletas brasileiras com múltiplos pódios em Jogos. Ao mesmo tempo, reforçou seu nome como uma das principais referências do país no caminho rumo a Los Angeles 2028.</p>
+
+            <p><strong>Domínio na SLS reforça o tamanho da sua carreira</strong></p>
+
+            <p>Se o palco olímpico ampliou sua imagem para o grande público, foi no circuito profissional que Rayssa consolidou o retrato mais fiel da sua grandeza competitiva. Na Street League Skateboarding, principal liga do skate street mundial, ela construiu um domínio raro.</p>
+
+            <p>Com a vitória conquistada em fevereiro de 2026, Rayssa chegou a sete títulos de etapas da SLS e ampliou sua sequência de quatro conquistas seguidas do Super Crown, a grande final da temporada. É uma marca que ajuda a explicar por que seu nome já aparece com tanto peso quando se fala nas maiores skatistas da história recente da modalidade.</p>
+
+            <p><strong>Títulos em diferentes frentes mostram uma atleta completa</strong></p>
+
+            <p>A força da carreira de Rayssa não está concentrada em um único circuito. Além do sucesso na SLS, ela também acumulou conquistas importantes em outras frentes de alto nível do skate mundial.</p>
+
+            <p>Nos X Games, a brasileira soma duas medalhas de ouro. No Mundial de Skate, organizado pela World Skate, também já conquistou dois ouros. A isso se acrescenta ainda o ouro nos Jogos Pan-Americanos, ampliando um currículo que já atravessa praticamente os principais palcos do skate internacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Esse conjunto de títulos reforça um ponto importante: Rayssa não depende de um contexto específico para render. Ela consegue competir em alto nível em formatos, pistas e eventos diferentes, mantendo regularidade rara mesmo em uma modalidade extremamente técnica e competitiva.</p>
+
+            <p><strong>No Brasil, o domínio também se repete</strong></p>
+
+            <p>O desempenho no cenário nacional acompanha a mesma linha de excelência. No STU, Rayssa já venceu cinco vezes a etapa do STU Rio e também foi campeã em Porto Alegre no formato STU Pro Tour, que reúne nomes nacionais e internacionais e aumenta o nível de exigência da disputa.</p>
+
+            <p>Essa constância em solo brasileiro ajuda a mostrar que sua superioridade não aparece apenas nas grandes vitrines internacionais. Rayssa consegue sustentar protagonismo em diferentes contextos, o que fortalece ainda mais a imagem de uma atleta completa e consolidada.</p>
+
+            <p><strong>Estrutura, maturidade e vida fora das pistas</strong></p>
+
+            <p>Com tantos resultados relevantes ainda tão jovem, Rayssa também construiu uma vida financeira sólida e uma estrutura de treino compatível com o mais alto nível da modalidade. Entre os reflexos disso está a possibilidade de contar com pista particular em casa, algo que contribui para a manutenção da rotina de treinos e da evolução técnica.</p>
+
+            <p>Ainda assim, um dos pontos que mais chamam atenção em sua trajetória é o equilíbrio com que ela lida com tudo isso. Mesmo cercada de visibilidade, títulos e reconhecimento, Rayssa preserva uma imagem de simplicidade, foco e naturalidade que segue sendo uma das marcas mais fortes da sua carreira.</p>
+
+            <p><strong>Mentalidade competitiva virou uma das marcas da Rayssa</strong></p>
+
+            <p>Além da técnica, Rayssa se tornou conhecida pela força mental em momentos decisivos. Ao longo da carreira, acumulou apresentações em que conseguiu virar baterias e decisões na última manobra, mostrando frieza e confiança mesmo sob enorme pressão.</p>
+
+            <p>Esse aspecto ajuda a explicar por que ela já é tratada como referência tão cedo. Não se trata apenas de talento bruto ou de repertório técnico. Rayssa também reúne controle emocional, competitividade e capacidade de resposta nos momentos em que a disputa pesa mais.</p>
+
+            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Mais do que campeã, Rayssa virou inspiração</strong></p>
+
+            <p>Hoje, Rayssa Leal representa mais do que vitórias e medalhas. Ela se transformou em inspiração para crianças, adolescentes e principalmente para meninas que enxergam no esporte um caminho real de crescimento, expressão e conquista.</p>
+
+            <p>Sua história prova que carisma e resultado podem caminhar juntos, mas mostra, acima de tudo, que o sucesso no esporte de elite é construído com talento, disciplina, repetição e força mental. Rayssa Leal já não é apenas a menina que encantou o país com uma fantasia de fada. Ela virou uma potência do skate mundial e um dos rostos mais fortes do esporte brasileiro contemporâneo.</p>
           </article>
         </div>
       </section>
@@ -347,8 +431,18 @@
           </ul>
         </div>
 
-        <!-- ANÚNCIO (sem frase) -->
-        <div class="ad-slot" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
