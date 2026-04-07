@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Regras do handebol: tempo de jogo, quadra, goleiro, faltas, cartões e o que realmente importa para entender a modalidade | Corte dos Esportes</title>
+  <meta name="description" content="Rápido, físico e cheio de detalhes táticos, o handebol parece simples à primeira vista, mas só fica realmente claro quando suas regras são bem entendidas." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Regras do handebol: tempo de jogo, quadra, goleiro, faltas, cartões e o que realmente importa para entender a modalidade</h1>
+          <p class="subhead" id="articleExcerpt">Rápido, físico e cheio de detalhes táticos, o handebol parece simples à primeira vista, mas só fica realmente claro quando suas regras são bem entendidas.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">07/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="handebol.html">HANDEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O handebol é um daqueles esportes que ficam muito mais interessantes quando o espectador entende as regras que organizam a velocidade do jogo. Quem assiste sem esse mapa costuma enxergar só correria, contato e arremessos. Quando as regras entram em foco, a leitura muda: dá para perceber melhor a lógica das trocas, o peso da área do goleiro, o momento exato em que uma posse está “morrendo” e por que certas faltas valem mais do que parecem.</p>
+
+            <p><strong>Quantos jogadores entram em quadra e quanto tempo dura uma partida</strong></p>
+
+            <p>Nas regras oficiais atuais da IHF, cada equipe pode ter até 16 jogadores relacionados, mas só 7 podem estar em quadra ao mesmo tempo. Para a partida começar, o time precisa ter pelo menos 5 jogadores em quadra. No adulto, o tempo normal é de dois tempos de 30 minutos, com intervalo de 10 minutos. Se o regulamento exigir vencedor, a prorrogação padrão é de dois tempos de 5 minutos; se ainda houver empate, a decisão pode ir para o desempate em tiros de 7 metros.</p>
+
+            <p><strong>Como é a quadra do handebol</strong></p>
+
+            <p>A quadra oficial mede 40 metros de comprimento por 20 de largura. O gol tem 3 metros de largura por 2 de altura. Em frente a cada meta fica a área do goleiro, marcada pela linha de 6 metros; mais à frente está a linha tracejada de tiro livre, a 9 metros; e, no centro da ação mais decisiva do jogo, aparece a linha de 7 metros, usada para a cobrança que funciona como o “pênalti” do handebol.</p>
+
+            <p>Essas marcações não são detalhe estético. Elas estruturam quase toda a leitura do jogo. A linha de 6 metros define a área exclusiva do goleiro; a de 9 metros reorganiza a reposição após muitas faltas defensivas; e a de 7 metros entra em cena quando uma chance clara de gol é destruída. É por isso que, no handebol, entender as linhas da quadra vale quase tanto quanto entender a bola.</p>
+
+            <p><strong>O que o jogador pode fazer com a bola</strong></p>
+
+            <p>A regra-base que todo iniciante precisa guardar é simples: o jogador pode segurar a bola por até 3 segundos e dar até 3 passos sem quicá-la. Depois disso, precisa passar, arremessar ou driblar. O drible pode ser repetido e, depois dele, o atleta pode voltar a segurar a bola, mas volta a ficar submetido ao limite de 3 segundos e 3 passos. A IHF também permite jogar a bola com mãos, braços, cabeça, tronco, coxas e joelhos.</p>
+
+            <p>O que não pode é usar o pé ou a perna abaixo do joelho para jogar a bola, salvo quando a bola bate no atleta vinda do adversário. Também não é permitido, depois de controlar a bola, tocá-la de novo antes que ela toque o chão, outro jogador ou o gol. São detalhes que parecem pequenos, mas explicam por que algumas jogadas seguem normalmente e outras viram tiro livre quase instantaneamente.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Substituições: por que o handebol parece tão acelerado</strong></p>
+
+            <p>Uma das razões para o handebol ter ritmo tão intenso é o sistema de substituições. As trocas podem acontecer a qualquer momento e de forma repetida, sem necessidade de avisar mesa, desde que o atleta substituído já tenha deixado a quadra e a entrada ocorra pela linha de substituição da própria equipe. Essa liberdade muda o jogo o tempo todo: acelera transições, permite especializações ofensivas e defensivas e faz o handebol parecer quase uma modalidade em rotação permanente.</p>
+
+            <p><strong>A área do goleiro é uma das regras mais importantes do jogo</strong></p>
+
+            <p>No handebol, só o goleiro pode ocupar a área de gol. Se um atacante invade essa área com posse de bola ou ganha vantagem ao entrar nela, a jogada normalmente termina em tiro de goleiro para o adversário. Se um defensor invade a área e, com isso, destrói uma chance clara de gol, a punição pode ser um tiro de 7 metros. A lógica é simples: a área é protegida porque ela define o espaço exclusivo da defesa final.</p>
+
+            <p>O goleiro, por sua vez, tem privilégios e limites muito próprios. Dentro da área, ele pode defender com qualquer parte do corpo. Mas não pode sair da área com a bola controlada, nem voltar para dentro carregando a bola da zona de jogo. Em cobrança de 7 metros, ele ainda precisa respeitar a linha de restrição de 4 metros até a bola sair da mão do cobrador. É esse conjunto de regras que faz do goleiro do handebol uma peça ao mesmo tempo livre e extremamente regulada.</p>
+
+            <p><strong>O contato é permitido, mas não vale tudo</strong></p>
+
+            <p>O handebol é físico, mas não é vale-tudo. As regras permitem usar braço flexionado para fazer contato corporal e acompanhar o adversário, além do uso do tronco para bloquear espaço na disputa por posição. Isso ajuda a explicar por que o jogo tem tanta colisão sem que toda aproximação seja marcada como falta.</p>
+
+            <p>O que passa do limite é puxar ou bater para arrancar a bola, empurrar, deslocar o rival com braços, mãos ou pernas, segurar o corpo ou uniforme do adversário, ou correr e saltar em cima dele. Quando a ação mira principalmente o corpo do oponente, ou cria risco à integridade física, a punição sobe de nível. É aqui que o handebol mostra sua lógica mais importante: contato é parte do jogo; contato perigoso, não.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Cartões e punições: como funcionam amarelo, 2 minutos e vermelho</strong></p>
+
+            <p>A advertência é mostrada com cartão amarelo. Pela regra, um jogador não deve receber mais de uma advertência, e os jogadores de uma equipe não devem receber mais de três advertências no total; depois disso, a punição mínima já passa a ser suspensão de 2 minutos.</p>
+
+            <p>A suspensão de 2 minutos deixa o time com um jogador a menos em quadra durante esse período. Já a terceira suspensão do mesmo atleta leva automaticamente à desqualificação. A desqualificação é sinalizada com cartão vermelho, vale pelo restante do jogo para o atleta ou oficial punido e, durante o tempo regulamentar, ainda impõe uma redução numérica temporária à equipe.</p>
+
+            <p><strong>O que é jogo passivo e por que essa regra muda a maneira de assistir</strong></p>
+
+            <p>Poucas regras ajudam tanto a entender o handebol quanto a do jogo passivo. Quando os árbitros entendem que o time em posse não está tentando criar uma chance real de arremesso, eles levantam o braço em sinal de advertência. A partir daí, a equipe atacante passa a ter no máximo 4 passes para concluir a posse com um chute ao gol. Se não fizer isso, perde a bola em tiro livre para o adversário.</p>
+
+            <p>Essa regra existe para impedir que o time apenas “cozinhe” o jogo sem atacar de verdade. Para quem assiste, ela muda tudo: quando o braço do árbitro sobe, a posse entra em contagem regressiva e o ataque precisa acelerar de forma visível. É um dos momentos em que o handebol mostra com mais clareza sua mistura de velocidade, leitura espacial e pressão por decisão rápida.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Tiro de 7 metros e time-out: duas regras que costumam gerar dúvida</strong></p>
+
+            <p>O tiro de 7 metros é dado quando uma chance clara de gol é destruída de forma irregular. Na cobrança, o arremessador precisa se posicionar atrás da linha de 7 metros, sem passar dela antes da bola sair da mão, enquanto os demais jogadores ficam fora da linha de tiro livre e os defensores precisam respeitar ao menos 3 metros de distância.</p>
+
+            <p>No time-out de equipe, a regra-base da IHF garante um pedido de 1 minuto por tempo, sem uso na prorrogação. A própria IHF, porém, admite regulamentos com variações: algumas competições trabalham com até 3 time-outs por jogo no tempo normal, limitando a no máximo 2 por tempo e só 1 nos 5 minutos finais. É o tipo de detalhe que costuma confundir porque depende do regulamento adotado em cada torneio.</p>
+
+            <p><strong>Entender a regra é entender melhor o jogo</strong></p>
+
+            <p>O handebol parece simples quando reduzido a “marcar gols com as mãos”, mas sua riqueza está justamente na combinação entre espaço, tempo e contato. Saber por que existe a área do goleiro, como nasce o 7 metros, o que configura jogo passivo e até onde o corpo pode entrar no duelo muda completamente a forma de assistir. E é por isso que, entre os esportes coletivos mais rápidos do programa olímpico, o handebol recompensa tanto quem aprende seus detalhes quanto quem apenas tenta acompanhar o placar.</p>
+
+            <p>Depois de entender as regras que organizam o ritmo, o contato e a dinâmica do jogo, vale olhar também para um dos ambientes em que o handebol se consolidou em mais alto nível. <a href="https://cortedosesportes.com.br/bundesliga-de-handebol-historia-maiores-campeoes-tradicao.html">Veja também a matéria sobre a Bundesliga de handebol e por que o Campeonato Alemão virou uma das ligas mais importantes da modalidade</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "handebol";
+  const CATEGORY_NAME = "HANDEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
