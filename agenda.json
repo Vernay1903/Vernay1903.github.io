@@ -1,38 +1,46 @@
 [
   {
     "time": "16:00",
-    "desc": "Real Madrid x Bayern - Liga dos Campeões"
+    "desc": "Barcelona x Atlético Madrid - Liga dos Campeões"
   },
   {
     "time": "16:00",
-    "desc": "Sporting x Arsenal - Liga dos Campeões"
+    "desc": "PSG x Liverpool - Liga dos Campeões"
   },
   {
     "time": "19:00",
-    "desc": "Deportivo La Guaira x Fluminense - Libertadores"
+    "desc": "Coquimbo Unido x Nacional - Libertadores"
+  },
+  {
+    "time": "19:00",
+    "desc": "Mirassol x Lanús - Libertadores"
+  },
+  {
+    "time": "19:00",
+    "desc": "Deportivo Cuenca x Santos - Sul-Americana"
   },
   {
     "time": "21:00",
-    "desc": "Barcelona SC x Cruzeiro - Libertadores"
+    "desc": "Independiente Medellín x Estudiantes - Libertadores"
   },
   {
     "time": "21:30",
-    "desc": "Universidad Católica x Boca Juniors - Libertadores"
-  },
-  {
-    "time": "19:00",
-    "desc": "Barracas Central x Vasco da Gama - Sul-Americana"
-  },
-  {
-    "time": "19:00",
-    "desc": "Independiente Petrolero x Racing - Sul-Americana"
-  },
-  {
-    "time": "21:00",
-    "desc": "O'Higgins x Millonarios - Sul-Americana"
+    "desc": "Junior x Palmeiras - Libertadores"
   },
   {
     "time": "21:30",
-    "desc": "Boston River x São Paulo - Sul-Americana"
+    "desc": "Cusco x Flamengo - Libertadores"
+  },
+  {
+    "time": "21:30",
+    "desc": "Torque x Grêmio - Sul-Americana"
+  },
+  {
+    "time": "23:00",
+    "desc": "Sporting Cristal x Cerro Porteño - Libertadores"
+  },
+  {
+    "time": "23:00",
+    "desc": "Puerto Cabello x Atlético-MG - Sul-Americana"
   }
 ]
