@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Masters 1000 de Madrid: história, campeões e importância no saibro | Corte dos Esportes</title>
+  <meta name="description" content="O torneio relativamente jovem em comparação á outros do circuito, já criou uma identidade própria e relevância dentro da temporada." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Masters 1000 de Madrid: história, campeões e importância no saibro</h1>
+          <p class="subhead" id="articleExcerpt">O torneio relativamente jovem em comparação á outros do circuito, já criou uma identidade própria e relevância dentro da temporada.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">14/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">TENIS</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Masters 1000 de Madrid é um dos torneios mais importantes da temporada de saibro e ocupa um lugar estratégico no calendário do tênis. Disputado entre o fim de abril e o início de maio, o evento funciona como uma ponte de peso entre os primeiros grandes torneios no piso lento e a chegada de Roland Garros.</p>
+
+            <p>Mais do que uma simples preparação para Paris, Madrid se consolidou como um torneio com identidade própria. A altitude da capital espanhola, o saibro mais rápido e a presença constante dos principais nomes do circuito transformaram a competição em uma das paradas mais interessantes do ano.</p>
+
+            <p><strong>Um torneio jovem, mas já tradicional</strong></p>
+
+            <p>O torneio de Madrid nasceu em 2002 e, no início, tinha uma característica bem diferente da atual. A competição era disputada em quadra dura coberta e fazia parte da reta final da temporada. Com o passar dos anos, mudou de lugar no calendário, trocou de superfície e ganhou um novo papel dentro do circuito.</p>
+
+            <p>A grande virada veio em 2009, quando Madrid passou a ser disputado no saibro e se instalou de vez na Caja Mágica, complexo que virou uma das marcas do torneio. A partir daí, o evento ganhou mais força como etapa essencial da gira europeia antes de Roland Garros.</p>
+
+            <p>Essa mudança também ajudou Madrid a se diferenciar. Enquanto Monte Carlo e Roma carregam um perfil mais clássico do saibro europeu, Madrid passou a ser conhecido por uma condição mais veloz, onde o saque, a agressividade e a adaptação tática têm peso maior. Para entender melhor essa sequência da gira no saibro, vale também conhecer a história e a tradição do <a href="https://cortedosesportes.com.br/masters-1000-monte-carlo-tenis-historia-maiores-campeoes-tradicao.html">Masters 1000 de Monte Carlo</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que Madrid é diferente dos outros torneios no saibro</strong></p>
+
+            <p>O saibro de Madrid não se comporta exatamente como o de outros eventos tradicionais. Por estar a cerca de 650 metros acima do nível do mar, Madrid tem condições diferentes dos outros grandes torneios no saibro. A bola costuma andar mais, o jogo fica um pouco mais rápido e isso favorece tenistas agressivos, com bom saque e capacidade de encurtar os pontos.</p>
+
+            <p>Isso não elimina a importância da consistência típica do saibro, mas muda o equilíbrio. Em Madrid, não basta apenas defender bem. É preciso acelerar, tomar a iniciativa e controlar melhor as variações de altura e velocidade da bola.</p>
+
+            <p>Por isso, o torneio costuma produzir confrontos muito interessantes. Especialistas no saibro continuam fortes, mas jogadores de estilo mais ofensivo também conseguem competir em alto nível. Essa mistura ajuda a explicar por que Madrid se tornou uma etapa tão valorizada no calendário.</p>
+
+            <p><strong>Maiores campeões de Madrid</strong></p>
+
+            <p>Atuais campeões: Casper Ruud no masculino e Aryna Sabalenka no feminino.</p>
+
+            <p>No masculino, a lista tem um peso especial para o público local. Rafael Nadal, maior campeão do torneio, e Carlos Alcaraz, principal nome espanhol da nova geração, reforçam a conexão direta de Madrid com o tênis da Espanha.</p>
+
+            <p><strong>No masculino:</strong></p>
+
+            <p>Rafael Nadal: 5 títulos.</p>
+            <p>Novak Djokovic: 3 títulos.</p>
+            <p>Roger Federer: 3 títulos.</p>
+            <p>Carlos Alcaraz: 2 títulos.</p>
+            <p>Alexander Zverev: 2 títulos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>No feminino:</strong></p>
+
+            <p>Petra Kvitova: 3 títulos.</p>
+            <p>Aryna Sabalenka: 3 títulos.</p>
+            <p>Serena Williams: 2 títulos.</p>
+            <p>Simona Halep: 2 títulos.</p>
+            <p>Iga Swiatek: 1 título.</p>
+
+            <p><strong>A Caja Mágica e o peso do ambiente</strong></p>
+
+            <p>A Caja Mágica virou parte central da identidade do torneio. O complexo moderno, com arquibancadas fortes e clima de grande evento, ajudou Madrid a ganhar uma cara diferente dentro da temporada europeia.</p>
+
+            <p>O público espanhol também tem papel importante. A presença de ídolos locais, especialmente Nadal e depois Alcaraz, aumentou a conexão emocional entre o torneio e a torcida. Em muitos anos, Madrid deixou de ser apenas uma etapa do circuito para se tornar um dos grandes momentos do esporte no país.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Relevância para Roland Garros</strong></p>
+
+            <p>Madrid não define sozinho quem chega favorito a Roland Garros, mas serve como um teste valioso. O torneio coloca os principais nomes do circuito em partidas de alto nível, em uma fase da temporada em que todos buscam ritmo, confiança e adaptação ao saibro.</p>
+
+            <p>Vencer em Madrid significa muito. Além dos pontos importantes no ranking, o título mostra capacidade de competir em um ambiente exigente, contra adversários fortes e em condições que nem sempre favorecem apenas os especialistas no piso.</p>
+
+            <p>Por isso, o torneio é acompanhado com tanta atenção. Um bom desempenho em Madrid pode mudar o clima de um jogador antes de Paris. Uma eliminação precoce, por outro lado, pode acender alertas importantes na preparação para o Grand Slam francês.</p>
+
+            <p><strong>Um evento que une tradição e modernidade</strong></p>
+
+            <p>O Masters 1000 de Madrid ainda é jovem quando comparado a torneios históricos do tênis, mas já criou tradição suficiente para ocupar um espaço nobre no calendário. Sua força está justamente na mistura entre relevância esportiva, estrutura moderna, grandes campeões e condições únicas de jogo.</p>
+
+            <p>Madrid não é apenas mais uma parada no saibro. É um torneio que testa adaptação, coragem ofensiva e capacidade de decisão. Por isso, segue como uma das semanas mais importantes da temporada e uma peça central no caminho até Roland Garros.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "tenis";
+  const CATEGORY_NAME = "TENIS";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
