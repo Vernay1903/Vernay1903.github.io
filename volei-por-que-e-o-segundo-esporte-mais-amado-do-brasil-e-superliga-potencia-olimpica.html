@@ -2,9 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Vôlei: por que é o 2º esporte mais amado do Brasil e como a Superliga sustenta a potência olímpica | Corte dos Esportes</title>
-  <meta name="description" content="Entenda por que o vôlei é o segundo esporte mais amado do Brasil, a força da Superliga feminina e masculina, a relevância olímpica e as gerações marcadas por Bernardinho e José Roberto Guimarães.">
+  <title>Vôlei no Brasil: por que é o segundo esporte mais amado do país | Corte dos Esportes</title>
+  <meta name="description" content="O vôlei brasileiro se consolidou não somente como uma potência mundial, mas como uma paixão nacional dentro do contexto esportivo." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -154,7 +190,7 @@
 
     .meta a:hover { text-decoration: underline; }
 
-    /* AD SLOTS (SEM TEXTO) */
+    /* AD SLOTS (sem texto) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
@@ -164,6 +200,8 @@
       box-sizing: border-box;
       margin: 16px 0;
     }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
 
     article p {
       font-size: 16px;
@@ -226,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -266,12 +307,12 @@
       <!-- ARTIGO -->
       <section>
         <div class="card">
-          <h1 id="articleTitle">Vôlei: por que é o 2º esporte mais amado do Brasil e como a Superliga sustenta a potência olímpica</h1>
-          <p class="subhead" id="articleExcerpt">O vôlei é cultura de ginásio no Brasil. Entenda a força da Superliga feminina e masculina, a relevância olímpica do país e as gerações marcadas por Bernardinho e José Roberto Guimarães.</p>
+          <h1 id="articleTitle">Vôlei no Brasil: por que é o segundo esporte mais amado do país</h1>
+          <p class="subhead" id="articleExcerpt">O vôlei brasileiro se consolidou não somente como uma potência mundial, mas como uma paixão nacional dentro do contexto esportivo.</p>
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">20/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">Vôlei</a>
+            Categoria: <a id="categoryLink" href="volei.html">VOLEI</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -281,68 +322,108 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
-            <p>O segundo esporte mais amado do Brasil é o vôlei. Em muitas cidades — especialmente nas menores — a criança muitas vezes vai primeiro para o ginásio antes de ir a um estádio de futebol. O vôlei faz parte da cultura local, gera identificação com o clube, movimenta a comunidade e cria uma relação que vai além da quadra.</p>
+            <p>O vôlei ocupa um lugar especial na cultura esportiva brasileira. Em muitas cidades, principalmente fora dos grandes centros, o primeiro contato da criança com o esporte acontece no ginásio, antes mesmo de uma ida ao estádio de futebol.</p>
+
+            <p>Essa relação ajuda a explicar por que o vôlei se consolidou como o segundo esporte mais amado do Brasil. Ele está nas escolas, nos clubes, nos projetos sociais, nas transmissões de TV, nas grandes finais da Superliga e na memória olímpica do país.</p>
 
             <p>Não é apenas competição. É pertencimento.</p>
 
-            <p><strong>Masculino e feminino: potência construída em igualdade</strong></p>
+            <p><strong>Uma potência construída no masculino e no feminino</strong></p>
 
-            <p>Poucas modalidades no Brasil conseguiram construir grandeza com equilíbrio entre o masculino e o feminino como o vôlei.</p>
+            <p>Poucas modalidades no Brasil conseguiram crescer com tanta força nos dois lados da quadra. O vôlei masculino e o feminino construíram trajetórias vitoriosas, com gerações diferentes, medalhas olímpicas e presença constante entre as principais seleções do mundo.</p>
 
-            <p>A seleção masculina acumula títulos olímpicos de ouro — como em 1992, 2004 e 2016 — além de pratas e bronzes que consolidaram o país como presença constante nas decisões. Já a seleção feminina transformou sua trajetória em referência mundial com os históricos ouros olímpicos de 2008 e 2012, além de outras medalhas que reforçam a consistência da equipe em ciclos consecutivos.</p>
+            <p>No masculino, o Brasil viveu momentos históricos com os ouros olímpicos de 1992, 2004 e 2016. No feminino, os títulos de 2008 e 2012 consolidaram uma das fases mais marcantes da modalidade.</p>
 
-            <p>Em qualquer grande torneio, o Brasil entra como candidato real ao pódio. E isso vale para os dois lados da quadra.</p>
+            <p>Essa força dos dois programas fez o vôlei brasileiro ser visto como referência mundial. Em grandes competições, o Brasil raramente entra apenas para competir. Entra com expectativa real de brigar por medalha.</p>
 
-            <p><strong>Treinadores que moldaram gerações</strong></p>
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-            <p>Parte desse sucesso passa pelo comando técnico.</p>
+            <p><strong>Bernardinho e José Roberto Guimarães como símbolos</strong></p>
 
-            <p>Bernardinho se tornou símbolo da excelência no vôlei masculino. Sua intensidade, disciplina e mentalidade vencedora ajudaram a consolidar uma geração dominante, acumulando títulos mundiais e olímpicos.</p>
+            <p>A construção dessa mentalidade vencedora passa por dois nomes centrais: Bernardinho e José Roberto Guimarães.</p>
 
-            <p>Do outro lado, José Roberto Guimarães construiu um trabalho histórico à frente da seleção feminina, sendo peça fundamental na conquista dos títulos olímpicos que marcaram época.</p>
+            <p>Bernardinho virou símbolo de intensidade, disciplina e excelência. Seu trabalho à frente da seleção masculina marcou uma era de finais, títulos e protagonismo mundial.</p>
 
-            <p>Ambos representam muito mais que técnicos: são referências de gestão esportiva, formação de atletas e construção de cultura vencedora.</p>
+            <p>José Roberto Guimarães tem uma trajetória ainda mais rara, com conquistas olímpicas tanto no masculino quanto no feminino. Sua importância vai além dos títulos: ele ajudou a formar gerações e a manter o Brasil competitivo por ciclos diferentes.</p>
 
-            <p><strong>A força da Superliga</strong></p>
+            <p>Os dois representam uma cultura de alto rendimento que virou marca do vôlei brasileiro.</p>
 
-            <p>Se as medalhas olímpicas deram visibilidade internacional, é a Superliga que sustenta o vôlei brasileiro por dentro.</p>
+            <p>Essa história também foi construída por ídolos que aproximaram o público da modalidade. No masculino, nomes como Giba, Serginho, Nalbert, Giovane, Maurício, Bruninho e Wallace marcaram gerações. No feminino, atletas como Fofão, Fernanda Venturini, Sheilla, Jaqueline, Paula Pequeno, Fabi, Camila Brait e Gabi ajudaram a transformar a seleção em referência de talento, força e carisma.</p>
 
-            <p>Tanto a Superliga Masculina quanto a Superliga Feminina são consideradas entre as principais ligas do mundo. O nível técnico elevado, a organização dos clubes e a capacidade de revelar talentos mantêm o Brasil como exportador de atletas e referência competitiva.</p>
+            <p><strong>A Superliga como base da potência nacional</strong></p>
 
-            <p>É na Superliga que surgem novos protagonistas, onde rivalidades regionais crescem e onde o torcedor acompanha o esporte ao longo de toda a temporada.</p>
+            <p>Se as Olimpíadas deram visibilidade global, a Superliga sustenta o vôlei brasileiro no dia a dia.</p>
 
-            <p>O vôlei brasileiro não vive apenas de Olimpíadas. Ele tem calendário forte, base estruturada e público fiel.</p>
+            <p>A Superliga Masculina e a Superliga Feminina se consolidaram entre as principais ligas nacionais do mundo. O nível técnico, a estrutura dos clubes, a presença de atletas de seleção e a capacidade de atrair jogadoras e jogadores estrangeiros mantêm o torneio em alto padrão competitivo.</p>
 
-            <p><strong>Relevância olímpica e identidade nacional</strong></p>
+            <p>Essa força também aparece na formação de talentos. É na Superliga que surgem novos nomes, rivalidades ganham força e o torcedor mantém contato com o esporte durante toda a temporada. O campeonato virou vitrine para atletas brasileiros e estrangeiros, além de ser uma das bases que sustentam a tradição olímpica do país.</p>
 
-            <p>Poucas modalidades carregam tanto peso olímpico quanto o vôlei no Brasil.</p>
+            <p>O vôlei brasileiro não vive apenas de grandes campanhas olímpicas. Ele tem calendário, clubes tradicionais, torcida fiel e uma estrutura competitiva que mantém o esporte em evidência.</p>
 
-            <p>A cada ciclo, o debate sobre convocação, renovação e formação de elenco ganha espaço na imprensa e nas redes sociais. O torcedor acompanha, cobra e vibra.</p>
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-            <p>As medalhas — sejam de ouro, prata ou bronze — ajudaram a consolidar uma mentalidade competitiva. O Brasil não entra para “participar”. Entra para disputar.</p>
+            <p><strong>O peso olímpico na identidade do vôlei</strong></p>
 
-            <p><strong>Formação e continuidade</strong></p>
+            <p>A relação do Brasil com o vôlei ficou ainda mais forte por causa das Olimpíadas. As medalhas transformaram a modalidade em uma das principais fontes de orgulho esportivo do país.</p>
 
-            <p>Outro diferencial é a formação de base.</p>
+            <p>Cada geração deixou uma marca. O masculino abriu caminhos, o feminino consolidou conquistas históricas e o Brasil passou a enxergar o vôlei como território de excelência.</p>
 
-            <p>Clubes estruturados, projetos sociais e incentivo escolar mantêm o fluxo de atletas constante. Isso explica por que o país raramente passa por um longo período de reconstrução total.</p>
+            <p>Essa trajetória olímpica ajuda a explicar por que o esporte tem tanta força no imaginário nacional. Para entender melhor esse peso histórico, vale ver também a lista das <a href="https://cortedosesportes.com.br/medalhas-olimpicas-brasil-volei-historia-legado.html">medalhas olímpicas do Brasil no vôlei e o legado da modalidade</a>.</p>
 
-            <p>Sempre surge uma nova geração pronta para assumir protagonismo, tanto no masculino quanto no feminino.</p>
+            <p><strong>Formação, escola e cultura de ginásio</strong></p>
 
-            <p><strong>O presente e o futuro do vôlei brasileiro</strong></p>
+            <p>Outro ponto essencial é a formação. O vôlei cresceu porque encontrou espaço em escolas, clubes, projetos municipais e categorias de base.</p>
 
-            <p>Com o cenário internacional cada vez mais equilibrado, o desafio é manter a consistência.</p>
+            <p>Por ser um esporte praticado em ginásios, ele ganhou força em cidades de diferentes tamanhos. Isso criou uma cultura própria: equipes locais, campeonatos regionais, torcidas próximas da quadra e identificação direta com os atletas.</p>
 
-            <p>Mas o histórico mostra que o Brasil sabe se reinventar. A cultura do vôlei está enraizada, dos ginásios pequenos às grandes arenas olímpicas.</p>
+            <p>Essa presença cotidiana ajuda a manter o vôlei vivo mesmo fora dos grandes eventos. O torcedor acompanha a seleção, mas também cria vínculo com clubes, campeonatos e jogadores da sua região.</p>
 
-            <p>Entre bloqueios decisivos, saques agressivos e finais emocionantes, o vôlei segue como uma das maiores potências esportivas do país.</p>
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-            <p>E se depender da tradição construída ao longo das décadas, a próxima geração já está pronta para manter o Brasil entre os protagonistas do cenário mundial.</p>
+            <p><strong>Um esporte que segue relevante</strong></p>
 
-            <p>Leia mais na categoria: <a href="volei.html">Vôlei</a>.</p>
+            <p>O cenário internacional está cada vez mais equilibrado, mas o Brasil continua sendo uma das grandes referências do vôlei mundial. A concorrência aumentou, as seleções evoluíram e os ciclos ficaram mais difíceis, mas a tradição brasileira segue forte.</p>
+
+            <p>A grande diferença é que o vôlei no Brasil não depende de uma única geração. Ele tem história, base, clubes, técnicos, ídolos e memória olímpica.</p>
+
+            <p>Por isso, o esporte segue ocupando um espaço especial no país. Entre saques decisivos, bloqueios marcantes e ginásios cheios, o vôlei continua sendo uma das maiores expressões esportivas do Brasil.</p>
           </article>
         </div>
       </section>
@@ -356,7 +437,18 @@
           </ul>
         </div>
 
-        <div class="ad-slot" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
@@ -373,7 +465,7 @@
 
 <script>
   const CATEGORY_SLUG = "volei";
-  const CATEGORY_NAME = "Vôlei";
+  const CATEGORY_NAME = "VOLEI";
 
   const AGENDA_JSON_URL = "agenda.json";
 
