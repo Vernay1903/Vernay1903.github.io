@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ayrton Senna: história, títulos e legado do maior ídolo brasileiro da Fórmula 1 | Corte dos Esportes</title>
+  <meta name="description" content="No esporte que era pouco popular na época, o piloto brasileiro conseguiu fazer das corridas aos domingos reunião familiar para acompanhar e torcer." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Ayrton Senna: história, títulos e legado do maior ídolo brasileiro da Fórmula 1</h1>
+          <p class="subhead" id="articleExcerpt">No esporte que era pouco popular na época, o piloto brasileiro conseguiu fazer das corridas aos domingos reunião familiar para acompanhar e torcer.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">16/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">AUTOMOBILISMO</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Ayrton Senna não foi apenas um piloto vencedor. Ele se tornou um símbolo do Brasil. Em uma época em que a Fórmula 1 ocupava as manhãs de domingo de milhões de brasileiros, Senna transformou velocidade em emoção, corrida em identidade nacional e vitória em um momento coletivo.</p>
+
+            <p>Sua história vai além dos números, mas os números ajudam a explicar a dimensão do personagem. Tricampeão mundial, dono de vitórias históricas, poles marcantes e atuações lendárias na chuva, Senna construiu uma carreira que atravessou gerações e segue viva mesmo décadas depois de sua morte.</p>
+
+            <p><strong>O início de uma trajetória diferente</strong></p>
+
+            <p>A relação de Ayrton Senna com a velocidade começou cedo. Antes da Fórmula 1, ele passou pelo kart, pela Fórmula Ford e pela Fórmula 3, sempre carregando uma característica que depois viraria marca: a obsessão por melhorar.</p>
+
+            <p>Senna não era visto apenas como rápido. Era intenso, detalhista e competitivo em um nível raro. Cada volta parecia ter um objetivo. Cada treino tinha valor. Cada classificação era tratada como uma chance de chegar ao limite.</p>
+
+            <p>Esse perfil apareceu com força quando chegou à Fórmula 1, em 1984, pela Toleman. Mesmo em uma equipe pequena, mostrou ao mundo que havia algo diferente ali. A atuação no GP de Mônaco daquele ano, debaixo de chuva, virou uma das primeiras grandes imagens de sua carreira.</p>
+
+            <p><strong>Títulos e números de Ayrton Senna na Fórmula 1</strong></p>
+
+            <p>A carreira de Senna na Fórmula 1 foi curta em comparação com outros campeões, mas extremamente marcante. Seus principais números mostram o tamanho do impacto:</p>
+
+            <p>3 títulos mundiais de Fórmula 1: 1988, 1990 e 1991</p>
+            <p>41 vitórias</p>
+            <p>65 poles positions</p>
+            <p>80 pódios</p>
+            <p>19 voltas mais rápidas</p>
+            <p>161 largadas</p>
+            <p>6 vitórias no GP de Mônaco</p>
+            <p>Equipes na Fórmula 1: Toleman, Lotus, McLaren e Williams</p>
+
+            <p>Os três títulos vieram pela McLaren, período em que Senna atingiu o auge competitivo e protagonizou algumas das disputas mais intensas da história da categoria.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O domínio nas classificações</strong></p>
+
+            <p>Uma das marcas mais fortes de Senna foi a velocidade em volta lançada. As 65 poles positions mostram a capacidade do brasileiro de extrair o máximo do carro em uma única volta.</p>
+
+            <p>Para muitos fãs, o treino classificatório era quase um espetáculo à parte. Senna parecia crescer quando tudo dependia de precisão, coragem e limite. Em uma época sem os recursos tecnológicos atuais, a pole exigia sensibilidade absoluta do piloto.</p>
+
+            <p>Esse talento fez dele uma referência histórica em classificação. Mesmo anos depois, sua imagem segue ligada à ideia de volta perfeita.</p>
+
+            <p><strong>Mônaco, chuva e momentos inesquecíveis</strong></p>
+
+            <p>Senna também ficou conhecido como um dos maiores pilotos da história em pistas difíceis e condições extremas. A chuva parecia ampliar sua vantagem. Quando a aderência diminuía e o carro ficava mais imprevisível, seu controle se tornava ainda mais impressionante.</p>
+
+            <p>Mônaco foi o maior símbolo dessa relação. Senna venceu seis vezes nas ruas do principado, um recorde que reforçou sua ligação com circuitos de alta precisão. Em uma pista estreita, sem margem para erro, ele transformou concentração em domínio.</p>
+
+            <p>Outro momento inesquecível foi o GP do Brasil de 1991, em Interlagos. Senna venceu em casa pela primeira vez na Fórmula 1, mesmo com problemas no câmbio nas voltas finais. A imagem do piloto exausto, emocionado e carregado pela torcida virou uma das cenas mais fortes do esporte brasileiro.</p>
+
+            <p><strong>Rivalidade com Alain Prost</strong></p>
+
+            <p>Não há como contar a história de Senna sem falar de Alain Prost. A rivalidade entre os dois marcou a Fórmula 1 no fim dos anos 1980 e início dos anos 1990.</p>
+
+            <p>Eles foram companheiros de McLaren, campeões, adversários diretos e protagonistas de decisões tensas. A disputa misturava estilos diferentes: Prost era conhecido pela frieza estratégica; Senna, pela intensidade e agressividade controlada.</p>
+
+            <p>Os títulos de 1988, 1990 e 1991 passaram por esse contexto. A rivalidade ajudou a elevar o nível da Fórmula 1 e transformou cada confronto entre os dois em evento mundial.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O ídolo brasileiro</strong></p>
+
+            <p>Ayrton Senna se tornou ídolo porque venceu, mas também porque representou algo maior. Em um país acostumado a buscar símbolos de orgulho, suas vitórias aos domingos tinham impacto emocional profundo.</p>
+
+            <p>O gesto de carregar a bandeira do Brasil após as conquistas virou parte da memória coletiva. Senna fazia o torcedor sentir que o país também estava dentro do cockpit.</p>
+
+            <p>Em uma época sem redes sociais, sua imagem já tinha alcance gigantesco. Ele aproximou milhões de brasileiros da Fórmula 1, aumentou a visibilidade do automobilismo e ajudou a transformar pilotos em personagens populares no país.</p>
+
+            <p><strong>Senna e a inspiração para outras gerações</strong></p>
+
+            <p>O legado de Senna não ficou preso ao Brasil. Ele inspirou pilotos no mundo inteiro e se tornou referência para nomes que vieram depois.</p>
+
+            <p>Lewis Hamilton é um dos exemplos mais conhecidos dessa influência. O heptacampeão mundial cresceu admirando Senna e sempre tratou o brasileiro como uma de suas maiores inspirações. Essa conexão mostra como o impacto de Senna ultrapassou nacionalidade, tempo e estatística.</p>
+
+            <p>Mais do que um campeão, Senna virou um modelo de intensidade competitiva. Para muitos pilotos, ele simboliza coragem, compromisso e busca pelo limite.</p>
+
+            <p><strong>O acidente em Ímola</strong></p>
+
+            <p>O dia 1º de maio de 1994 marcou uma das maiores tragédias da história do esporte. Ayrton Senna morreu após sofrer um acidente na curva Tamburello, durante o GP de San Marino, em Ímola.</p>
+
+            <p>A batida encerrou de forma brutal uma carreira que ainda parecia ter capítulos importantes pela frente. Senna havia acabado de chegar à Williams, equipe dominante nos anos anteriores, e carregava a expectativa de voltar a disputar títulos em alto nível.</p>
+
+            <p>A morte provocou comoção mundial e mudou a Fórmula 1. O acidente expôs a urgência de avanços em segurança e deixou uma marca profunda em pilotos, equipes, torcedores e dirigentes.</p>
+
+            <p>Para o Brasil, foi mais do que a perda de um atleta. Foi a perda de um símbolo nacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que Senna representou para a Fórmula 1</strong></p>
+
+            <p>Senna ajudou a ampliar a Fórmula 1 no Brasil e no mundo. Sua presença elevava o interesse pelas corridas, criava rivalidades, gerava debate e transformava cada fim de semana em expectativa.</p>
+
+            <p>Ele também reforçou a imagem do piloto como artista do limite. Sua forma de guiar combinava técnica, coragem e emoção. Não era apenas sobre vencer. Era sobre como vencer, como buscar a volta perfeita, como enfrentar adversários e como transformar pressão em desempenho.</p>
+
+            <p>Por isso, sua história segue tão presente. Senna pertence a uma categoria rara de atletas que continuam relevantes mesmo para quem não acompanhou sua carreira ao vivo.</p>
+
+            <p><strong>Um legado que vai além das pistas</strong></p>
+
+            <p>Ayrton Senna deixou três títulos mundiais, 41 vitórias e 65 poles. Mas seu legado não cabe apenas em estatísticas.</p>
+
+            <p>Ele deixou uma memória afetiva no Brasil, uma referência técnica para pilotos e uma imagem de dedicação extrema ao esporte. Também deixou um impacto social que seguiu vivo por meio de iniciativas ligadas à educação e ao desenvolvimento de crianças e jovens.</p>
+
+            <p>Senna foi velocidade, mas também foi símbolo. Foi campeão, mas também foi inspiração. Foi piloto, ídolo e personagem histórico de um país que aprendeu a parar nas manhãs de domingo para ver um brasileiro desafiar o mundo. Entre os grandes nomes que moldaram a história da categoria, seu legado conversa com o de outros gigantes, como <a href="https://cortedosesportes.com.br/michael-schumacher-historia-titulos-recordes-legado-formula-1.html">Michael Schumacher e sua trajetória de títulos, recordes e impacto na Fórmula 1</a>.</p>
+
+            <p>Décadas depois, seu nome continua forte porque Ayrton Senna não virou apenas lembrança. Virou legado.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "automobilismo";
+  const CATEGORY_NAME = "Automobilismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
