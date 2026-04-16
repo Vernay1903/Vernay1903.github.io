@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conferência Sul da NFL: história, times, rivalidades e campeões da divisão | Corte dos Esportes</title>
+  <meta name="description" content="A Conferência Sul da NFL com a sua criação muito recente em comparação as demais, mas já construiu uma identidade com campeões de Super Bowl e quarterbacks históricos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Conferência Sul da NFL: história, times, rivalidades e campeões da divisão</h1>
+          <p class="subhead" id="articleExcerpt">A Conferência Sul da NFL com a sua criação muito recente em comparação as demais, mas já construiu uma identidade com campeões de Super Bowl e quarterbacks históricos.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">16/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol Americano</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Conferência Sul da NFL, conhecida internacionalmente como NFC South, é uma das divisões mais recentes da liga, mas já construiu uma identidade forte dentro do futebol americano. Formada por Atlanta Falcons, Carolina Panthers, New Orleans Saints e Tampa Bay Buccaneers, a divisão reúne mercados apaixonados, rivalidades regionais e franquias que marcaram diferentes fases da NFL moderna.</p>
+
+            <p>Criada na reorganização da liga em 2002, a NFC South rapidamente deixou de ser apenas uma divisão nova para se tornar uma das mais competitivas e imprevisíveis da Conferência Nacional.</p>
+
+            <p><strong>O peso do sul dos Estados Unidos na NFL</strong></p>
+
+            <p>A divisão passou a representar uma parte importante do futebol americano no sul dos Estados Unidos. Com cidades de forte identidade esportiva, estádios marcantes e torcidas intensas, a NFC South ganhou personalidade própria em pouco tempo.</p>
+
+            <p>Diferente de divisões mais antigas, que carregam rivalidades centenárias, a Sul construiu sua tradição principalmente no século XXI. E fez isso com jogos decisivos, quarterbacks históricos, campanhas de Super Bowl e mudanças constantes de força entre os times.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Times da Conferência Sul da NFL</strong></p>
+
+            <p>A NFC South é formada por quatro franquias:</p>
+
+            <p>Atlanta Falcons</p>
+            <p>Carolina Panthers</p>
+            <p>New Orleans Saints</p>
+            <p>Tampa Bay Buccaneers</p>
+
+            <p>Cada equipe tem uma relação diferente com a divisão. O Saints se tornou símbolo de regularidade em uma era comandada por Drew Brees e Sean Payton. O Buccaneers viveu grandes momentos com defesas fortes e depois com a chegada de Tom Brady. O Panthers teve campanhas marcantes com defesas físicas e o auge de Cam Newton. Já o Falcons construiu sua história com ataques explosivos, nomes como Michael Vick e Matt Ryan, e presença em grandes jogos.</p>
+
+            <p><strong>Rivalidades da NFC South</strong></p>
+
+            <p>A principal rivalidade da divisão é entre New Orleans Saints e Atlanta Falcons. O confronto tem forte peso regional, torcida intensa e histórico de jogos equilibrados. Mesmo quando um dos times vive fase melhor, o duelo costuma carregar clima de decisão.</p>
+
+            <p>Outra rivalidade importante envolve Buccaneers e Saints, especialmente pelos confrontos recentes em jogos de alto impacto dentro da divisão. A presença de grandes quarterbacks e elencos competitivos aumentou o peso desse duelo nos últimos anos.</p>
+
+            <p>O Panthers também construiu rivalidades relevantes, principalmente contra Falcons e Saints, com partidas que muitas vezes influenciaram diretamente a corrida pelos playoffs.</p>
+
+            <p><strong>Campeões e momentos marcantes</strong></p>
+
+            <p>A NFC South tem uma característica interessante: apesar de ser uma divisão jovem, já viu diferentes franquias chegarem ao Super Bowl.</p>
+
+            <p>O Tampa Bay Buccaneers é o time da divisão com mais títulos de Super Bowl, com conquistas em 2002 e 2020. A primeira veio com uma das defesas mais marcantes da história da NFL. A segunda ganhou peso mundial pela presença de Tom Brady, que levou a franquia ao topo jogando em casa na decisão.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>O New Orleans Saints conquistou o Super Bowl da temporada 2009, em uma campanha que marcou a história da franquia e da cidade. O título teve impacto emocional enorme para New Orleans e consolidou Drew Brees como um dos grandes quarterbacks de sua geração.</p>
+
+            <p>O Atlanta Falcons e o Carolina Panthers também chegaram ao Super Bowl, mas ainda buscam o primeiro título da liga. Mesmo sem a conquista máxima, as duas franquias tiveram temporadas históricas e momentos importantes dentro da NFL.</p>
+
+            <p><strong>O peso da divisão na Conferência Nacional</strong></p>
+
+            <p>A NFC South se tornou uma divisão importante porque raramente permanece previsível por muito tempo. Em diferentes ciclos, quase todos os times já viveram fases de protagonismo, o que mantém a disputa aberta e aumenta o valor dos confrontos internos.</p>
+
+            <p>O equilíbrio também ajuda a dar relevância à divisão. Uma vitória contra rival direto pode mudar completamente a corrida pelos playoffs. Por isso, os jogos entre Falcons, Panthers, Saints e Buccaneers costumam ter peso maior do que uma partida comum da temporada regular.</p>
+
+            <p><strong>Quarterbacks que marcaram a divisão</strong></p>
+
+            <p>A história recente da NFC South passa por grandes quarterbacks. Drew Brees transformou o Saints em potência ofensiva. Tom Brady elevou o Buccaneers imediatamente ao topo. Cam Newton levou o Panthers a uma das fases mais fortes da franquia. Matt Ryan comandou o Falcons em uma era de alto nível ofensivo.</p>
+
+            <p>Além deles, nomes como Michael Vick também ajudaram a dar identidade à divisão, especialmente pela capacidade de mudar jogos com talento atlético e jogadas explosivas.</p>
+
+            <p>Essa presença de quarterbacks marcantes ajudou a NFC South a ganhar visibilidade nacional e a se tornar uma divisão com forte apelo ofensivo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma divisão jovem, mas já tradicional</strong></p>
+
+            <p>A Conferência Sul da NFL não tem a antiguidade de outras divisões, mas construiu relevância rapidamente. Em pouco mais de duas décadas, reuniu campeões de Super Bowl, campanhas históricas, rivalidades regionais e alguns dos principais nomes da liga.</p>
+
+            <p>A força da NFC South está justamente nessa mistura: tradição recente, mercados apaixonados, imprevisibilidade e jogos que costumam ter impacto direto na briga pelos playoffs.</p>
+
+            <p>Por isso, a divisão já ocupa um lugar importante na história moderna da NFL. Mesmo jovem, a Conferência Sul se consolidou como uma das regiões mais interessantes do futebol americano profissional.</p>
+
+            <p>A NFC South tem uma história mais recente, mas já criou rivalidades, campeões e personagens marcantes dentro da NFL. Para comparar com uma divisão mais antiga e tradicional, vale conhecer também a <a href="https://cortedosesportes.com.br/conferencia-norte-nfl-historia-times-rivalidades-campeoes.html">história da Conferência Norte da NFL, com seus times, rivalidades e campeões</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol-americano";
+  const CATEGORY_NAME = "Futebol Americano";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
