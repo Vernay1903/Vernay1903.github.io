@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Liga japonesa de futebol: história, maiores campeões e a identidade da J.League | Corte dos Esportes</title>
+  <meta name="description" content="A liga japonesa deixou de ser apenas um projeto ambicioso para se tornar uma referência asiática." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Liga japonesa de futebol: história, maiores campeões e a identidade da J.League</h1>
+          <p class="subhead" id="articleExcerpt">A liga japonesa deixou de ser apenas um projeto ambicioso para se tornar uma referência asiática.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">20/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A liga japonesa de futebol é um dos casos mais interessantes de crescimento esportivo das últimas décadas. A J.League começou oficialmente em 1993, em um cenário em que o Japão ainda buscava consolidar o futebol como produto nacional forte, e conseguiu em pouco tempo mudar o patamar do esporte no país. Mais do que organizar um campeonato, a liga ajudou a criar cultura de torcida, fortalecer clubes ligados às cidades e dar ao futebol japonês uma base muito mais sólida para competir dentro e fora da Ásia.</p>
+
+            <p>Hoje, a elite do país é a J1 League, que reúne 20 clubes e segue o mesmo formato atual do Campeonato Brasileiro, com disputa em pontos corridos, turno e returno ao longo da temporada. Esse modelo conversa bem com a própria identidade do futebol japonês, muito associada à organização, à disciplina coletiva e à capacidade de sustentar rendimento alto por muitos meses.</p>
+
+            <p><strong>Como nasceu a liga japonesa de futebol</strong></p>
+
+            <p>A criação da J.League marcou uma ruptura importante com o modelo anterior do futebol japonês. Antes da profissionalização, o país ainda vivia uma realidade mais ligada ao esporte corporativo, sem a estrutura de liga moderna que hoje parece natural. Quando a competição foi lançada, a ideia era clara: aproximar os clubes das comunidades, melhorar o nível técnico e transformar o futebol em um produto popular e duradouro.</p>
+
+            <p>O impacto foi rápido. A liga ganhou visibilidade, atraiu atenção internacional e se conectou diretamente ao crescimento do futebol japonês como um todo. Em poucos anos, o país já colhia reflexos na seleção e no desenvolvimento de atletas, enquanto os clubes passavam a construir identidade, rivalidades e projetos mais consistentes. O futebol japonês deixou de ser apenas promissor e começou a parecer estruturado.</p>
+
+            <p>O fortalecimento da J.League ajudou a sustentar a primeira classificação do Japão para uma Copa do Mundo, em 1998, e poucos anos depois o país ainda apareceria como sede da edição de 2002, em parceria com a Coreia do Sul. Esses marcos ajudaram a consolidar a percepção de que o crescimento da liga estava ligado a uma transformação maior do futebol japonês. Esse processo também ajuda a explicar por que o país segue presente no cenário mundial e continuará aparecendo em Copas, como acontecerá novamente em 2026, no grupo detalhado em <a href="https://cortedosesportes.com.br/grupo-f-copa-do-mundo-2026-holanda-japao-suecia-tunisia.html">Grupo F da Copa do Mundo 2026: Holanda, Japão, Suécia e Tunísia</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Maiores campeões da J.League</strong></p>
+
+            <p>Quando o assunto é tradição de títulos, o topo da história da liga japonesa fica assim:</p>
+
+            <p>Kashima Antlers — 9 títulos</p>
+            <p>Yokohama F. Marinos — 5 títulos</p>
+            <p>Kawasaki Frontale — 4 títulos</p>
+            <p>Sanfrecce Hiroshima — 3 títulos</p>
+            <p>Júbilo Iwata — 3 títulos</p>
+
+            <p>Esse ponto é importante porque ajuda a entender que a liga japonesa não ficou presa a um único poder absoluto por décadas. Houve hegemonias, sim, mas também alternância, renovação de protagonismo e evolução de projetos, algo que fortaleceu a competição e deu mais profundidade à sua história.</p>
+
+            <p><strong>A influência brasileira na construção da liga</strong></p>
+
+            <p>É impossível falar da J.League sem passar pelo Brasil. Zico foi um dos nomes mais importantes da fase inicial do campeonato e ajudou a dar peso, visibilidade e prestígio ao futebol japonês. Sua ligação com o Kashima Antlers virou um dos capítulos mais emblemáticos dessa história, e ele ainda entrou para os registros da liga ao marcar o primeiro hat-trick da J.League. Mais do que os gols, sua presença ajudou a transformar a imagem do campeonato em seus anos iniciais e deu ao futebol japonês uma referência técnica e simbólica muito forte.</p>
+
+            <p>Com o passar dos anos, a influência brasileira também apareceu fora das quatro linhas e em outros nomes importantes. Felipão esteve entre os técnicos brasileiros que ajudaram a dar mais peso ao futebol japonês em sua fase de crescimento, enquanto Oswaldo de Oliveira se consolidou como um dos treinadores mais vencedores da história local, especialmente no comando do Kashima Antlers. Seu nome virou referência de trabalho vencedor no país e reforçou como a presença brasileira não ficou restrita à fundação simbólica da liga, mas também ajudou a construir cultura competitiva.</p>
+
+            <p>Essa abertura internacional também foi ampliada por outros nomes de peso. Dunga passou pelo futebol japonês e ajuda a mostrar como a liga atraiu referências do futebol mundial ainda em sua fase de consolidação. Mais adiante, Andrés Iniesta virou outro marco importante dessa relação internacional ao levar ainda mais visibilidade global para a J.League em sua passagem pelo Vissel Kobe. Entre técnicos e jogadores, essa abertura ajudou a elevar o tamanho da liga e reforçou sua conexão com grandes nomes do futebol.</p>
+
+            <p>A presença brasileira no futebol japonês nunca foi apenas decorativa. Ela ajudou a moldar estilos, elevar o nível técnico e criar uma ponte cultural duradoura. Isso vale para jogadores, treinadores e até para a maneira como o Japão passou a olhar o futebol como um esporte de construção mais refinada.</p>
+
+            <p>A liga também ajudou a impulsionar jogadores japoneses para o futebol europeu. Tomiyasu se firmou no Arsenal, enquanto Shinji Okazaki ganhou projeção internacional ao defender o Leicester City, participando de uma das campanhas mais marcantes da história recente do futebol inglês.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Estádios cheios e ambiente forte</strong></p>
+
+            <p>Outro ponto que ajuda a dimensionar a força atual da J.League é o público. A elite japonesa vem trabalhando com média superior a 20 mil torcedores por jogo, número relevante para um campeonato fora do eixo mais tradicional do futebol europeu e sul-americano. Isso mostra que a liga não cresceu apenas em organização, mas também em presença popular.</p>
+
+            <p>Esse ambiente faz diferença. A J.League construiu uma atmosfera muito própria, com torcidas participativas, estádios organizados e clubes fortemente conectados às cidades. O futebol japonês pode não ter o mesmo barulho global de algumas ligas europeias, mas conseguiu formar uma base local muito consistente, o que dá sustentação real ao campeonato.</p>
+
+            <p><strong>Disciplina tática e jogo veloz como marca da liga</strong></p>
+
+            <p>Uma das características mais reconhecíveis da liga japonesa é a disciplina tática. O futebol no país costuma carregar organização coletiva forte, atenção ao posicionamento, intensidade sem bola e boa execução dentro de sistemas bem definidos. Não é um campeonato de caos ou improviso desordenado. Em geral, a impressão é de um jogo treinado, coordenado e pensado em detalhes.</p>
+
+            <p>Ao mesmo tempo, a J.League também costuma ser associada a partidas velozes. Isso tem relação com o perfil de muitos jogadores, frequentemente mais móveis, leves e explosivos, além de tecnicamente confiáveis para jogar em ritmo alto. Essa combinação entre coordenação, aceleração e mobilidade ajuda a explicar por que tantos jogos da liga passam sensação de dinamismo constante.</p>
+
+            <p>Não se trata apenas de correr mais. A velocidade da liga japonesa costuma aparecer na circulação da bola, na troca rápida de corredores, na reação imediata após a perda da posse e na capacidade de acelerar ataques com poucos toques. É um estilo que combina bem com a disciplina tática do futebol japonês e se tornou uma das marcas mais claras da competição.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O time que se espelhou no Grêmio</strong></p>
+
+            <p>Entre as curiosidades mais interessantes da história da liga japonesa está a relação do Kawasaki Frontale com o Grêmio. Em um momento importante de sua formação, o clube japonês buscou inspiração no time gaúcho, inclusive em aspectos visuais e simbólicos. Essa conexão ajudou a alimentar por anos a curiosidade de torcedores brasileiros e japoneses sobre o elo entre os dois clubes.</p>
+
+            <p>Essa história é relevante porque mostra como o futebol japonês, durante sua construção, também olhou para fora em busca de referências. E não fez isso de forma aleatória. O Japão observou modelos, absorveu influências e foi adaptando essas ideias ao seu próprio contexto, até formar uma identidade bastante singular.</p>
+
+            <p><strong>Uma liga que construiu personalidade própria</strong></p>
+
+            <p>No fim das contas, a liga japonesa de futebol chama atenção porque reúne várias camadas interessantes ao mesmo tempo. Ela tem história relativamente recente, mas já acumula tradição. Tem influência estrangeira, mas criou identidade local forte. Tem organização, bom público, cultura de clube e um estilo de jogo que mistura disciplina, técnica e velocidade.</p>
+
+            <p>Por isso, a J.League deixou de ser apenas uma curiosidade do futebol asiático. Ela se transformou em uma competição com rosto próprio, capaz de sustentar campeões marcantes, revelar talentos, atrair interesse internacional e servir como exemplo de crescimento bem planejado. Em um cenário global cada vez mais saturado, esse talvez seja o maior mérito da liga japonesa: ela cresceu sem perder sua personalidade.</p>
+
+            <p>Ao observar a trajetória da J.League, também fica mais fácil perceber como o futebol asiático passou por processos distintos de crescimento, identidade e busca por protagonismo internacional. Em outro recorte importante do continente, a experiência da China seguiu um caminho próprio, com investimentos fortes, presença de brasileiros e curiosidades que ajudam a ampliar essa comparação em <a href="https://cortedosesportes.com.br/liga-chinesa-futebol-historia-curiosidades-jogadores-brasileiros.html">liga chinesa de futebol: história, curiosidades e jogadores brasileiros</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
