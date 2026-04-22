@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mike Tyson: carreira, títulos, polêmicas e legado de uma estrela mundial | Corte dos Esportes</title>
+  <meta name="description" content="Mike Tyson foi muito mais do que um campeão dos pesos-pesados. Entre nocautes devastadores, cinturões mundiais, escândalos fora do ringue, a rivalidade com Evander Holyfield e a entrada definitiva no entretenimento, ele construiu uma das trajetórias mais intensas e reconhecíveis da história do esporte." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Mike Tyson: carreira, títulos, polêmicas e legado de uma estrela mundial</h1>
+          <p class="subhead" id="articleExcerpt">Mike Tyson foi muito mais do que um campeão dos pesos-pesados. Entre nocautes devastadores, cinturões mundiais, escândalos fora do ringue, a rivalidade com Evander Holyfield e a entrada definitiva no entretenimento, ele construiu uma das trajetórias mais intensas e reconhecíveis da história do esporte.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">22/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="lutas.html">LUTAS</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Mike Tyson nasceu no Brooklyn e transformou uma adolescência turbulenta em uma ascensão meteórica no boxe, muito impulsionada pela orientação de Cus D’Amato, que se tornou seu treinador e tutor legal. Depois de uma carreira amadora forte, Tyson virou profissional em 1985 e explodiu em velocidade rara para um peso-pesado, combinando agressividade, defesa em estilo peekaboo e poder de nocaute que rapidamente o colocaram no centro do esporte.</p>
+
+            <p>Os números ajudam a dimensionar o impacto da carreira de Tyson no boxe profissional:</p>
+
+            <p><strong>50 vitórias</strong></p>
+            <p><strong>6 derrotas</strong></p>
+            <p><strong>2 lutas sem resultado</strong></p>
+            <p><strong>44 vitórias por nocaute</strong></p>
+            <p><strong>19 vitórias seguidas por nocaute no início da carreira</strong></p>
+            <p><strong>12 nocautes no primeiro round nesse recorte inicial</strong></p>
+
+            <p>O salto definitivo veio em 22 de novembro de 1986, quando Tyson nocauteou Trevor Berbick no segundo assalto e se tornou, aos 20 anos, o mais jovem campeão mundial dos pesos-pesados da história. Em 1987, ele também conquistou os cinturões da WBA e da IBF, tornando-se campeão reconhecido pelas três principais entidades e o primeiro peso-pesado a reunir WBA, WBC e IBF ao mesmo tempo. Foi esse domínio tão rápido que ajudou a consolidar a imagem de Tyson como uma força quase inevitável no auge dos anos 1980.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Os títulos e o auge de “Iron Mike”</strong></p>
+
+            <p>Tyson não ficou marcado apenas por ganhar cinturões cedo, mas pela maneira como defendeu esse posto. Ele fez 10 defesas bem-sucedidas do título mundial e venceu nomes como Larry Holmes e Michael Spinks, duas vitórias que ajudaram a transformá-lo no rosto do boxe da época.</p>
+
+            <p>No auge, Tyson virou sinônimo de espetáculo global. Suas lutas combinavam expectativa gigantesca e desfechos violentamente rápidos. Dois exemplos ajudam a medir isso: contra Michael Spinks, em 1988, ele venceu em apenas 91 segundos, em uma das lutas mais icônicas da história dos pesos-pesados; antes disso, em 1986, havia demolido Marvis Frazier em 30 segundos, o nocaute mais rápido de sua carreira profissional. O próprio apelo de massa de Tyson cresceu muito por causa dessa capacidade de transformar grandes eventos em destruições relâmpago.</p>
+
+            <p><strong>A queda, as polêmicas e os problemas fora do ringue</strong></p>
+
+            <p>A carreira de Tyson, no entanto, nunca foi linear. Em 1990, ele sofreu uma das maiores zebras da história do boxe ao perder o título para Buster Douglas. Pouco depois, os problemas pessoais passaram a disputar protagonismo com o que ele fazia no ringue. Tyson viveu acusações de abuso no fim do casamento com Robin Givens, teve uma série de problemas legais e, em 1992, foi condenado por estupro, depois de ter sido acusado em 1991. Após cumprir parte da pena, ele foi solto em 1995 e tentou reconstruir a carreira.</p>
+
+            <p>Mesmo depois do retorno, as turbulências continuaram. Tyson voltou a enfrentar problemas de autocontrole, novos episódios judiciais e punições fora do boxe. Esse contraste entre genialidade esportiva e caos pessoal virou parte inseparável da imagem pública do ex-campeão. Tyson era um astro mundial, mas também um personagem cercado de excessos, autodestruição e controvérsia quase permanente.</p>
+
+            <p><strong>A luta com Holyfield e o episódio que marcou sua imagem</strong></p>
+
+            <p>Se existe um capítulo que resume o lado mais explosivo e descontrolado da carreira de Tyson, ele passa pelas lutas contra Evander Holyfield. No primeiro encontro, em novembro de 1996, Tyson era favorito, mas acabou derrotado por nocaute técnico no 11º round. A revanche, em 28 de junho de 1997, entrou para a história por um motivo ainda mais forte: Tyson foi desclassificado depois de morder as orelhas de Holyfield durante a luta. O episódio custou a ele a licença de boxe e se transformou em uma das cenas mais famosas e controversas da história do esporte.</p>
+
+            <p>Essa rivalidade ajudou a reforçar duas imagens que passaram a caminhar juntas em sua trajetória. De um lado, Tyson seguia sendo um nome gigante, capaz de atrair atenção máxima em qualquer grande luta. Do outro, o incidente com Holyfield cristalizou a ideia de que sua carreira também seria lembrada por colapsos emocionais em noites decisivas. Poucos campeões ficaram tão associados ao mesmo tempo à grandeza e ao descontrole quanto ele.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>De campeão do boxe a figura de cultura pop</strong></p>
+
+            <p>Com o passar dos anos, Tyson deixou de ser apenas uma lenda esportiva para se transformar em personagem recorrente da cultura pop. Ele participou de filmes e programas de TV, com destaque para The Hangover, sua sequência e a série animada Mike Tyson Mysteries. Esse movimento ajudou a apresentar Tyson a uma geração que já não o conhecia apenas pelos títulos nos pesos-pesados.</p>
+
+            <p>Além disso, Tyson levou a própria história para os palcos com o espetáculo solo Mike Tyson: Undisputed Truth, apresentado primeiro em Las Vegas, depois na Broadway, e mais tarde adaptado para um especial da HBO dirigido por Spike Lee. Foi assim que a imagem do ex-campeão passou a circular não só como a de um lutador lendário, mas também como a de um nome reconhecido no cinema, na televisão e no palco.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que Mike Tyson continua tão grande</strong></p>
+
+            <p>Mike Tyson segue enorme porque reúne elementos que raramente aparecem juntos na mesma trajetória. Foi campeão jovem demais para o padrão da divisão, reuniu os principais cinturões, dominou uma era de enorme exposição, protagonizou algumas das cenas mais marcantes da história do boxe e depois se reinventou como figura midiática global. Em 2011, essa dimensão esportiva foi formalmente reconhecida com sua entrada no International Boxing Hall of Fame.</p>
+
+            <p>No fim, Tyson permanece como um personagem maior do que o próprio cartel. Sua história mistura glória, medo, carisma, colapso, retorno e fama planetária. É por isso que ele continua sendo lembrado não apenas como um ex-campeão dos pesos-pesados, mas como uma das figuras mais intensas, contraditórias e inesquecíveis que o esporte mundial já produziu.</p>
+
+            <p>Em outro capítulo marcante dos esportes de combate, <a href="https://cortedosesportes.com.br/anderson-silva-nocautes-ufc-defesas-cinturao-legado-mma.html">Anderson Silva também construiu um legado histórico nas artes marciais</a>, trajetória que ajuda a mostrar como grandes nomes atravessam gerações ao combinar domínio técnico, impacto global e influência muito além do próprio ringue ou octógono.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "lutas";
+  const CATEGORY_NAME = "LUTAS";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
