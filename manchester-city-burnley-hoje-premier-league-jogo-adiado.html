@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manchester City joga hoje por liderança da Premier League em duelo adiado contra o Burnley | Corte dos Esportes</title>
+  <meta name="description" content="O Manchester City entra em campo nesta quarta-feira, fora de casa, contra o Burnley, em partida adiada que pode colocar o time de Pep Guardiola na liderança da Premier League restando apenas cinco rodadas para o fim." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Manchester City joga hoje por liderança da Premier League em duelo adiado contra o Burnley</h1>
+          <p class="subhead" id="articleExcerpt">O Manchester City entra em campo nesta quarta-feira, fora de casa, contra o Burnley, em partida adiada que pode colocar o time de Pep Guardiola na liderança da Premier League restando apenas cinco rodadas para o fim.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">22/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Manchester City tem nesta quarta-feira um daqueles compromissos que costumam definir temporadas. A equipe de Pep Guardiola visita o Burnley no Turf Moor, com início às 16h, em jogo adiado da Premier League que ganhou peso extra depois da vitória por 2 a 1 sobre o Arsenal na rodada passada. O confronto não entra em cena como simples acerto de calendário: ele virou a chance concreta de o City transformar a perseguição em ultrapassagem na reta final do campeonato inglês.</p>
+
+            <p>O cenário é claro. O Arsenal lidera com 70 pontos em 33 partidas, enquanto o Manchester City chega com 67 em 32 jogos. Se vencer o Burnley, o City alcança os mesmos 70 pontos, mas passa à frente pelos critérios de desempate. Antes desta rodada, a diferença de saldo era mínima, e o time azul ainda levava vantagem em gols marcados. Na prática, qualquer vitória nesta noite empurra o atual perseguidor para a liderança e deixa os dois clubes com apenas cinco jogos restantes na corrida pelo título.</p>
+
+            <p><strong>Um jogo adiado com cara de final</strong></p>
+
+            <p>A atmosfera em torno da partida mudou completamente depois do confronto direto do último domingo. O City bateu o Arsenal no Etihad, cortou a diferença para três pontos e reabriu uma corrida que parecia bem mais favorável ao time londrino poucas semanas atrás. O próprio Guardiola tratou aquele duelo como uma final, justamente porque uma derrota praticamente encerraria a disputa. Agora, três dias depois, seu elenco entra em campo novamente com sensação parecida: não há espaço para desperdício, porque o prêmio imediato é enorme.</p>
+
+            <p>O peso psicológico da rodada também ajuda a explicar por que o Manchester City costuma ser tão temido nesse trecho da temporada. Guardiola já admitiu que sua equipe precisa ser perfeita até o fim, reconhecendo que os pontos deixados para trás ao longo do campeonato diminuíram a margem de erro. Ainda assim, o histórico recente do clube sob seu comando mostra como o City cresce justamente quando a pressão aperta. Em abril, a equipe venceu 29 dos últimos 32 jogos de liga nesse período e perdeu apenas uma vez. Mais do que estatística, isso reforça a imagem de um time treinado para suportar semanas decisivas sem se desorganizar.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O poder mental do City na reta final</strong></p>
+
+            <p>Quando <a href="https://cortedosesportes.com.br/pep-guardiola-carreira-legado-titulos-estilo-de-jogo.html">Guardiola</a> fala de grandes palcos, ele costuma voltar ao mesmo ponto: não basta ter talento, é preciso ter personalidade. Em outra coletiva desta temporada, o técnico afirmou que o que define os grandes times é a mente dos jogadores, sobretudo nas fases mais pesadas das competições. Essa leitura ajuda a explicar por que o Manchester City construiu reputação tão forte em corridas de chegada. Em 2018/19, por exemplo, o time venceu as últimas 14 partidas da Premier League para ser campeão. Em 2021/22, ganhou sete das nove finais derradeiras. Em 2023/24, fechou a campanha com nove vitórias seguidas. O padrão se repete: quando o calendário aperta, o City costuma responder com sangue frio e sequência.</p>
+
+            <p>Guardiola também deixou claro que a ansiedade pela liderança não pode fazer sua equipe perder equilíbrio. A possibilidade de subir pelo saldo ou pelos gols marcados existe, mas o treinador sinalizou que buscar isso de forma descontrolada seria um erro, porque abrir espaços nesta altura do campeonato pode custar caro. A mensagem é típica de um time acostumado a chegar vivo em abril e maio: mais importante do que atropelar é vencer, manter a estrutura e seguir empilhando rodadas sob controle.</p>
+
+            <p><strong>Prováveis escalações</strong></p>
+
+            <p>No Manchester City, Rodri é desfalque para o jogo desta quarta-feira, enquanto Rúben Dias e Josko Gvardiol seguem fora, com Mateo Kovacic entrando no meio na vaga de Rodri. Provável Manchester City: Donnarumma; Matheus Nunes, Khusanov, Guéhi, Nico O’Reilly; Kovacic, Bernardo Silva, Cherki; Semenyo, Doku e Haaland.</p>
+
+            <p>Provável Burnley: Dubravka; Kyle Walker, Ekdal, Estève, Hartman; Ugochukwu, Josh Laurent, Ward-Prowse; Marcus Edwards, Jaidon Anthony e Flemming.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Burnley aparece como obstáculo e teste de maturidade</strong></p>
+
+            <p>Do outro lado estará um Burnley pressionado pela parte de baixo da tabela e em má fase recente. O time perdeu sete de seus últimos dez jogos de Premier League, o que aumenta o favoritismo do City, ainda mais porque o confronto do primeiro turno terminou em goleada de 5 a 1 para a equipe de Guardiola. Mesmo assim, esse tipo de jogo costuma medir maturidade competitiva: enfrentar um adversário ameaçado, fora de casa, com obrigação total de vencer e com a liderança ao alcance é exatamente o tipo de situação em que qualquer distração pesa dobrado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Por isso, o jogo de hoje tem valor que vai além dos três pontos. Se confirmar o favoritismo, o Manchester City não apenas assumirá a liderança da Premier League, mas também colocará a pressão de volta sobre o Arsenal e fará a reta final passar pelo seu próprio controle. Com só cinco rodadas depois desta noite, cada vitória deixa de ser apenas resultado e vira demonstração de força mental. E poucas equipes, na era recente do futebol inglês, construíram tanta autoridade nesse terreno quanto o time de Pep Guardiola.</p>
+
+            <p>Faltando apenas cinco rodadas para o fim e com a disputa pelo título ainda totalmente aberta, a reta final reforça como cada detalhe pesa no topo da tabela e ajuda a explicar por que a <a href="https://cortedosesportes.com.br/premier-league-historia-campeoes.html">Premier League se consolidou como um dos campeonatos mais influentes do futebol mundial</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
