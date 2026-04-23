@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>História do Grêmio: tradição, títulos, o Imortal e a Batalha dos Aflitos | Corte dos Esportes</title>
+  <meta name="description" content="Fundado em 1903, o Grêmio construiu uma das trajetórias mais fortes do futebol brasileiro com títulos gigantes, fama de time copeiro, rivalidade histórica com o Internacional e episódios que ajudaram a eternizar o apelido de Imortal Tricolor." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">História do Grêmio: tradição, títulos, o Imortal e a Batalha dos Aflitos</h1>
+          <p class="subhead" id="articleExcerpt">Fundado em 1903, o Grêmio construiu uma das trajetórias mais fortes do futebol brasileiro com títulos gigantes, fama de time copeiro, rivalidade histórica com o Internacional e episódios que ajudaram a eternizar o apelido de Imortal Tricolor.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">23/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Grêmio é um daqueles clubes que não cabem numa definição curta. Sua história mistura origem centenária, títulos de enorme peso, noites épicas de mata-mata e uma relação emocional muito forte com a própria ideia de superação. Ao longo do tempo, o clube virou sinônimo de tradição no Sul, ganhou projeção continental e mundial e consolidou duas marcas que dizem muito sobre sua identidade: a de time copeiro e a de Imortal Tricolor.</p>
+
+            <p><strong>Como o Grêmio começou</strong></p>
+
+            <p>A fundação do Grêmio tem um começo que combina bem com a mística do clube. A história oficial conta que tudo nasceu a partir de uma bola de futebol levada por Cândido Dias da Silva, que assistiu em Porto Alegre a uma exibição do <a href="https://cortedosesportes.com.br/clube-mais-antigo-do-brasil-sport-club-rio-grande-historia.html">Sport Club Rio Grande</a> em 7 de setembro de 1903. Quando a bola da partida esvaziou, ele emprestou a sua, recebeu dos jogadores as primeiras lições sobre o esporte e, a partir dali, ajudou a impulsionar a criação de um novo clube. Poucos dias depois, em 15 de setembro de 1903, 32 rapazes se reuniram no Salão Grau, no centro da capital gaúcha, para fundar o Grêmio Foot-Ball Porto Alegrense. Carlos Luiz Böhrer foi eleito o primeiro presidente.</p>
+
+            <p>Esse início ajuda a entender por que o Grêmio costuma ser visto por sua torcida como um clube de identidade muito clara. Ele nasceu cedo no processo de popularização do futebol no Brasil, cresceu em Porto Alegre e se transformou em uma instituição de enorme peso no Rio Grande do Sul. Com o passar das décadas, o clube foi deixando de ser apenas uma força local para se tornar um nome recorrente nas grandes decisões nacionais e sul-americanas.</p>
+
+            <p><strong>Por que o Grêmio ficou conhecido como copeiro e Imortal</strong></p>
+
+            <p>A fama de time copeiro não apareceu por acaso. Ela foi sendo construída porque o Grêmio acumulou títulos importantes justamente em competições de mata-mata, cenário em que sua história costuma crescer. O clube conquistou a primeira edição da Copa do Brasil e três Libertadores em diferentes décadas, além de estar presente sempre no topo quando se fala em estatísticas das competições eliminatórias, e uma coleção que sustenta a imagem de equipe acostumada a enfrentar noites pesadas, ambientes hostis e confrontos de alta pressão.</p>
+
+            <p>Já o apelido de Imortal Tricolor ganhou força porque a trajetória gremista é cheia de partidas em que o time sobreviveu quando parecia derrotado. Esse imaginário não depende apenas de troféus. Ele foi sendo alimentado por campanhas, viradas, resistência emocional e jogos que entraram no folclore do clube. Em poucas equipes brasileiras, a ideia de “não desistir nunca” ficou tão associada à própria identidade quanto no Grêmio.</p>
+
+            <p>Essa identidade também aparece fora do resultado. O Grêmio construiu ao longo do tempo uma das imagens visuais mais reconhecíveis do futebol, com a combinação de azul, preto e branco formando uma estética muito própria e imediatamente associada ao clube. Em um cenário em que muitos times são lembrados mais pelo escudo ou por um uniforme específico, o Grêmio consolidou uma assinatura visual que ajudou a reforçar sua personalidade única dentro e fora do Brasil, a ponto de servir de referência até para clubes de outros mercados do futebol, algo que ajuda a entender conexões curiosas com a própria expansão do esporte em ligas como a <a href="https://cortedosesportes.com.br/liga-japonesa-futebol-historia-maiores-campeoes-jleague.html">liga japonesa</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Maiores títulos do Grêmio</strong></p>
+
+            <p>Entre os principais títulos oficiais do Grêmio, a lista mais forte passa por conquistas que ajudaram a transformar o clube em potência nacional e continental:</p>
+
+            <p><strong>Mundial Interclubes: 1 título, em 1983</strong>
+            <p><strong>Copa Libertadores: 3 títulos, em 1983, 1995 e 2017.</strong>
+            <p><strong>Recopa Sul-Americana: 2 títulos, em 1996 e 2018.</strong>
+            <p><strong>Campeonato Brasileiro: 2 títulos, em 1981 e 1996.</strong>
+            <p><strong>Copa do Brasil: 5 títulos, em 1989, 1994, 1997, 2001 e 2016.</strong>
+            <p><strong>Supercopa do Brasil: 1 título, em 1990.</strong>
+            <p><strong>Campeonato Gaúcho: 44 títulos.</strong>
+
+            <p>Esses números explicam por que a história gremista não se resume a momentos isolados. O Grêmio atravessou épocas diferentes e conseguiu se manter relevante em vários contextos: foi campeão brasileiro nos anos 1980 e 1990, dominou copas em diferentes gerações, venceu a América em três décadas distintas e seguiu ampliando sua galeria estadual com força. É um currículo que ajuda a sustentar a noção de tradição sem depender apenas da nostalgia.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Ídolos que ajudam a explicar o tamanho do Grêmio</strong></p>
+
+            <p>A história do Grêmio também se entende por seus rostos mais simbólicos. No gol, Danrlei virou um dos grandes nomes da era vitoriosa dos anos 1990 e início dos anos 2000. Em homenagem publicada pelo próprio clube quando o ex-goleiro completou 50 anos, o Grêmio registrou que ele conquistou 13 títulos com a camisa tricolor. Entre as conquistas mais marcantes estão três Copas do Brasil, uma Libertadores, uma Recopa Sul-Americana e um Campeonato Brasileiro, o que ajuda a explicar por que ele segue lembrado como um dos goleiros mais emblemáticos da história gremista. Já à beira do campo, Luiz Felipe Scolari foi decisivo para transformar o Grêmio em potência continental novamente, comandando os títulos da Copa do Brasil de 1994, da Libertadores de 1995, do Campeonato Brasileiro de 1996 e da Recopa Sul-Americana de 1996.</p>
+
+            <p>Naquele período, a dupla Paulo Nunes e Jardel ajudou a dar rosto ao ataque gremista. Os dois marcaram fizeram uma dupla de ataque mais emblemática da história do clube,  balançaram as redes na final da Libertadores de 1995, no 3 a 1 sobre o Atlético Nacional no Olímpico. Décadas depois, Pedro Geromel passou a representar outro tipo de liderança: a do zagueiro que virou referência técnica e emocional para uma geração mais recente. Em mais de dez anos de clube, ele disputou 407 jogos e conquistou 14 títulos, entre eles Libertadores, Recopa Sul-Americana e Copa do Brasil.</p>
+
+            <p>E, acima de todos, está Renato Portaluppi. Para grande parte da torcida, ele é o maior ídolo da história do Grêmio porque foi campeão como jogador e como treinador. Em 1983, marcou os dois gols da vitória sobre o Hamburgo na final do Mundial Interclubes e eternizou sua imagem no clube. Décadas depois, voltou a empilhar títulos no banco. Quando deixou o comando técnico, em dezembro de 2024, o Grêmio informou que Renato havia alcançado 805 partidas pelo clube, sendo 542 como treinador; por diferença, isso deixa 263 jogos como atleta. No Gre-Nal, somou 17 vitórias gremistas, com 5 como jogador e 12 como técnico, número que ajuda a dimensionar o tamanho de sua ligação com a história tricolor, recebendo como uma homenagem do clube ainda em vida uma estátua na esplanada da Arena.</p>
+
+            <p><strong>A Batalha dos Aflitos virou parte da alma do clube</strong></p>
+
+            <p>Se existe um jogo que ajuda a explicar por que o Grêmio é chamado de Imortal, esse jogo é a Batalha dos Aflitos. Em 26 de novembro de 2005, diante do Náutico, o time venceu por 1 a 0 e garantiu o retorno à elite como campeão da Série B em uma partida que parece roteiro de filme. O Grêmio terminou com sete jogadores em campo, viu Galatto defender um pênalti e, pouco depois, marcou com Anderson o gol que transformou tensão extrema em uma das cenas mais lendárias do futebol brasileiro.</p>
+
+            <p>Mais do que um acesso, aquela tarde no Recife virou um símbolo emocional. O episódio reforçou de forma definitiva a leitura de que o Grêmio cresce justamente quando tudo parece desabar. A Batalha dos Aflitos não é lembrada apenas pelo troféu da Série B, mas pelo sentido que ganhou dentro da cultura do clube: resistência, nervos fortes, entrega total e uma capacidade quase obsessiva de continuar vivo.</p>
+
+            <p><strong>Gre-Nal: a rivalidade que molda o tamanho do Grêmio</strong></p>
+
+            <p>A história do Grêmio também não pode ser contada sem o Internacional. O Gre-Nal é uma das rivalidades mais intensas do futebol brasileiro e ajuda a definir a identidade dos dois clubes. O primeiro clássico foi disputado em 18 de julho de 1909 e terminou com vitória gremista por 10 a 0, placar que segue como a maior goleada da história do confronto. Desde então, o duelo deixou de ser apenas um jogo para virar parte da cultura esportiva e social do Rio Grande do Sul.</p>
+
+            <p>Para o Grêmio, o Gre-Nal funciona como uma espécie de espelho permanente. É no clássico que tradição, pressão, orgulho regional e memória coletiva se encontram de forma mais intensa. Boa parte da grandeza gremista também passa por essa rivalidade centenária, porque ela obriga o clube a viver em estado constante de exigência. Em Porto Alegre, quase nada é neutro quando se trata de futebol, e isso ajuda a explicar por que o Grêmio carrega uma identidade tão combativa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A torcida como elo entre as eras do clube</strong></p>
+
+            <p>A história do Grêmio também passa pela força de sua torcida, que ajudou a empurrar o clube em diferentes fases e diferentes casas. Da antiga Baixada, passando pelo Olímpico Monumental e chegando à Arena, o apoio das arquibancadas virou parte da identidade gremista e ajudou a sustentar a imagem de um time acostumado a crescer em noites grandes. Cada estádio marcou uma era, mas os três se conectam por um mesmo traço: a sensação de que o Grêmio sempre levou consigo uma atmosfera de pressão, pertencimento e mobilização que faz da torcida um dos pilares de sua história.</p>
+
+            <p><strong>Um clube que se entende melhor pelas noites grandes</strong></p>
+
+            <p>No fim das contas, a história do Grêmio não é só a soma de datas e troféus. Ela faz mais sentido quando se olha para o tipo de narrativa que o clube construiu: um time acostumado a jogar decisões, a sobreviver em cenários extremos e a transformar sofrimento em combustível competitivo. Da fundação em 1903 ao peso continental das Libertadores, da rivalidade com o Internacional à mística da Batalha dos Aflitos, o Grêmio consolidou uma personalidade muito reconhecível no futebol brasileiro.</p>
+
+            <p>É por isso que o clube segue sendo lembrado como copeiro e Imortal. Não apenas porque venceu muito, mas porque criou uma forma própria de vencer e de permanecer relevante. Em um futebol que muda o tempo todo, o Grêmio continua sendo um daqueles clubes cuja história ainda impõe respeito antes mesmo de a bola rolar.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
