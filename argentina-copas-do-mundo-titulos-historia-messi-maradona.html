@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Argentina nas Copas: os 3 títulos mundiais, de Kempes e Maradona à coroação de Messi | Corte dos Esportes</title>
+  <meta name="description" content="Com três Copas do Mundo, finais históricas e uma tradição que atravessa gerações, a Argentina construiu uma das trajetórias mais pesadas do futebol mundial." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Argentina nas Copas: os 3 títulos mundiais, de Kempes e Maradona à coroação de Messi</h1>
+          <p class="subhead" id="articleExcerpt">Com três Copas do Mundo, finais históricas e uma tradição que atravessa gerações, a Argentina construiu uma das trajetórias mais pesadas do futebol mundial. Do primeiro título em 1978 ao triunfo épico sobre a França em 2022, a seleção transformou craques, decisões e campanhas marcantes em parte central de sua identidade.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">23/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A história da Argentina em Copas do Mundo não se explica apenas pelos três títulos. Ela se sustenta por uma combinação rara de talento, personalidade e protagonismo recorrente em grandes campanhas. Poucas seleções conseguiram atravessar tantas eras diferentes mantendo a sensação de que, quando o Mundial chega, a camisa albiceleste volta naturalmente para o centro da conversa. Foi assim com Mario Kempes em 1978, com Diego Maradona em 1986 e com Lionel Messi em 2022. Cada conquista teve um rosto principal, mas todas ajudaram a construir a mesma tradição: a de uma seleção acostumada a jogar com peso histórico nas costas e ainda assim produzir momentos definitivos.</p>
+
+            <p><strong>Uma seleção que aprendeu a conviver com a grandeza</strong></p>
+
+            <p>A Argentina faz parte da elite histórica das Copas porque não aparece apenas como campeã eventual. Ela também esteve em outras finais importantes e transformou o torneio em um espaço constante de afirmação. Além dos títulos de 1978, 1986 e 2022, a seleção ainda foi vice em 1930, 1990 e 2014, o que ajuda a explicar por que seu peso no Mundial vai muito além de uma geração específica. Em diferentes contextos, com estilos distintos e grandes personagens em campo, o país consolidou uma presença de elite no torneio mais importante do futebol.</p>
+
+            <p><strong>Os títulos mundiais da Argentina</strong></p>
+            <p>1978 — campeã em casa após vencer a Holanda por 3 a 1 na final, depois da prorrogação</p>
+            <p>1986 — campeã no México ao derrotar a Alemanha Ocidental por 3 a 2 na decisão</p>
+            <p>2022 — campeã no Catar após empatar por 3 a 3 com a França e vencer por 4 a 2 nos pênaltis na final</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>1978: o primeiro título e a explosão de Kempes</strong></p>
+
+            <p>A primeira Copa do Mundo vencida pela Argentina teve o peso simbólico de um país inteiro esperando por esse momento em casa. Em 1978, a seleção chegou forte, cresceu no momento decisivo e encontrou em Mario Kempes o grande rosto daquela campanha. A final contra a Holanda, em Buenos Aires, foi tensa e carregada de drama, como tantas grandes decisões costumam ser. No tempo normal, o jogo terminou empatado, mas a prorrogação deu à Argentina a noite que faltava para entrar de vez na galeria dos campeões mundiais. O 3 a 1 final transformou Kempes em herói nacional, com dois gols na decisão, e fez de Daniel Passarella o primeiro capitão argentino a erguer a taça.</p>
+
+            <p>A grande força daquele título está no modo como ele inaugurou uma nova dimensão para a seleção. Até ali, a Argentina já era respeitada, mas ainda carregava a ausência do troféu máximo. O Mundial de 1978 mudou isso. Mais do que uma conquista em casa, foi a Copa que abriu uma linha histórica de campeonatos e ídolos. Também ajudou a fixar a ideia de que a Argentina tinha algo especial em Mundiais: competitividade, carga emocional e capacidade de transformar jogos grandes em memória coletiva.</p>
+
+            <p><strong>1986: a Copa de Maradona e a consagração definitiva</strong></p>
+
+            <p>Se 1978 foi o nascimento da Argentina campeã do mundo, 1986 foi a Copa em que a seleção ganhou uma obra-prima individual para representar sua grandeza. Diego Maradona comandou a campanha no México de forma tão marcante que seu nome se confundiu com o torneio. A Argentina foi crescendo ao longo da competição, encontrou maturidade em jogos grandes e chegou à final contra a Alemanha Ocidental com a sensação de que seu camisa 10 estava escrevendo algo acima do normal.</p>
+
+            <p>A campanha de 1986 também ficou eternizada por um dos jogos mais simbólicos da história das Copas. Nas quartas de final contra a Inglaterra, em um duelo carregado de tensão política e emocional poucos anos depois da Guerra das Malvinas, Maradona marcou os dois gols mais famosos de sua carreira. O primeiro entrou para a história como a “Mano de Dios”, após tocar na bola com a mão em um lance que o árbitro validou. O segundo virou o chamado “Gol do Século”, em uma arrancada impressionante desde o meio-campo que resumiu como poucos lances a mistura de talento, ousadia e desequilíbrio que marcou aquela Copa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A final no Estádio Azteca terminou 3 a 2, com gol decisivo de Jorge Burruchaga, e entregou ao país seu segundo título mundial. Mas o que torna 1986 tão especial é que aquela conquista parece condensar tudo o que o futebol argentino gosta de imaginar sobre si mesmo: genialidade, personalidade, sofrimento e resposta no momento crítico. Maradona não foi apenas o capitão do título. Ele foi o centro emocional e técnico da campanha, o jogador que transformou aquela Copa em referência eterna. É por isso que, quando se fala na tradição argentina em Mundiais, 1986 costuma aparecer não só como um título, mas como uma espécie de auge mitológico da seleção.</p>
+
+            <p><strong>2022: a final contra a França e a coroação de Messi</strong></p>
+
+            <p>O título de 2022 devolveu a Argentina ao topo depois de 36 anos e fez isso do jeito mais impactante possível: em uma das finais mais dramáticas da história do torneio. A equipe de Lionel Scaloni fez campanha forte no Catar, superou momentos de pressão e chegou à decisão contra a França com Messi no centro de tudo. Durante boa parte da final, a Argentina parecia caminhar para uma vitória segura, abriu vantagem, controlou o cenário e tinha Di María e Messi como grandes protagonistas. Só que o jogo virou um turbilhão: Mbappé buscou o empate, a prorrogação teve novos gols, e a partida terminou 3 a 3 antes da definição por pênaltis. Na disputa, a Argentina venceu por 4 a 2 e levantou sua terceira taça mundial.</p>
+
+            <p>Foi nessa noite que a imagem de Messi com a Copa ganhou um peso quase inevitável de encerramento simbólico. Ele já era um dos maiores jogadores de todos os tempos, mas o Mundial era a peça que faltava para completar sua trajetória com a seleção principal. Ao conquistar o torneio em uma final tão emocional, contra a então campeã França, Messi não apenas venceu. Ele foi coroado dentro da narrativa mais poderosa que o futebol consegue criar: a do craque genial que enfim alcança o troféu que faltava. Por isso o título de 2022 não é lembrado só como mais uma estrela. Ele é tratado como um dos momentos mais fortes da história argentina no esporte.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Tradição argentina em Mundiais vai além dos títulos</strong></p>
+
+            <p>O que faz a Argentina ser tão associada à Copa do Mundo não é apenas a soma de taças. É a frequência com que a seleção aparece em campanhas grandes, a quantidade de jogadores históricos que o torneio ajudou a eternizar e a força cultural que o Mundial tem no país. Em poucos lugares a Copa parece dialogar tão diretamente com a identidade nacional do futebol. A Argentina entra em cada edição carregando memória, cobrança e expectativa, mas também repertório para responder a isso tudo. Não por acaso, suas grandes conquistas sempre vêm acompanhadas de personagens centrais e finais que ficam marcadas por muito tempo.</p>
+
+            <p>Quando se fala em tradição em Copa do Mundo, a Argentina naturalmente entra na conversa ao lado de outras seleções históricas. E justamente na maior rivalidade entre países no futebol, o <a href="https://cortedosesportes.com.br/selecao-brasileira-historia-5-copas-do-mundo.html">Brasil</a> aparece como a maior referência quando o assunto é Copa, o que ajuda a dimensionar ainda mais o peso da trajetória argentina no torneio.</p>
+
+            <p>Depois de construir uma trajetória tão pesada em Mundiais, a Argentina chega à <a href="https://cortedosesportes.com.br/grupo-j-copa-do-mundo-2026-argentina-argelia-austria-jordania.html">Copa do Mundo de 2026</a> com a ambição de transformar o tri em tetra. O próximo capítulo dessa história já começa a ser desenhado na fase de grupos, onde a atual campeã tenta dar sequência ao legado construído por gerações tão marcantes da seleção albiceleste.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
