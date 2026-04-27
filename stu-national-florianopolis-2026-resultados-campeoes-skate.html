@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>STU Florianópolis consolida força do skate brasileiro | Corte dos Esportes</title>
+  <meta name="description" content="A terceira etapa do STU National 2026 teve arquibancadas cheias, chuva nas finais, alto nível técnico e títulos de Raicca Ventura, Miguel Leal, Maria Lúcia, Sebastian Simonetto e David Soares." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">STU Florianópolis consolida força do skate brasileiro</h1>
+          <p class="subhead" id="articleExcerpt">A terceira etapa do STU National 2026 teve arquibancadas cheias, chuva nas finais, alto nível técnico e títulos de Raicca Ventura, Miguel Leal, Maria Lúcia, Sebastian Simonetto e David Soares.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">27/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Skate</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A etapa de Florianópolis terminou com a sensação de que o skate brasileiro segue vivendo um momento de evolução e consolidação, profundo e competitivo em diferentes frentes. A terceira parada do circuito reuniu nomes de referência nacional e internacional, teve arquibancadas cheias no Skatepark do Abraão, enfrentou atraso por causa da chuva e entregou finais de alto nível no Park, no Street e no Paraskate.</p>
+
+            <p>Mesmo com baixas importantes no Park masculino, como Luigi Cini, Kalani Konig e Gui Khury, a etapa manteve o nível técnico alto. O fim de semana mostrou que o circuito brasileiro tem densidade para sustentar grandes disputas mesmo sem alguns dos nomes mais conhecidos do público. O resultado foi uma sequência de finais equilibradas, notas altas e muitos atletas entrando na casa dos 90 pontos, o famoso “9 gang” do skate.</p>
+
+            <p>A chuva tentou atrapalhar a programação, especialmente no domingo, mas não tirou o brilho das decisões. As finais atrasaram, a pista precisou de cuidado e o público teve de esperar mais, mas o evento conseguiu manter as disputas no mesmo dia. Quando os skatistas voltaram para a pista, a resposta veio com manobras de nível altíssimo, viradas e títulos decididos no detalhe.</p>
+
+            <p><strong>Raicca mantém domínio no Park feminino</strong></p>
+
+            <p>No Park feminino, Raicca Ventura confirmou novamente seu domínio na temporada. A skatista venceu em Florianópolis com 88.66 e manteve 100% de aproveitamento nas três etapas do STU National 2026. Depois de ganhar em <a href="https://cortedosesportes.com.br/stu-national-porto-alegre-2026-resultados-campeoes-skate.html">Porto Alegre</a> e <a href="https://cortedosesportes.com.br/stu-national-criciuma-2026-resultados-campeoes-skate.html">Criciúma</a>, ela voltou a subir no lugar mais alto do pódio e reforçou a condição de principal nome da modalidade no circuito.</p>
+
+            <p>A vitória não veio isolada de contexto. A final teve nomes de peso como Dora Varella, Isadora Pacheco, Fernanda Tonissi, Erica Leguizamon e Yndiara Asp, com notas altas e presença de atletas olímpicas e de nível mundial. Raicca voltou a encontrar a melhor linha no momento certo e saiu de Florianópolis com mais um resultado de positivo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Park masculino tem alternância e decisão apertada</strong></p>
+
+            <p>No Park masculino, a etapa reforçou o peso da modalidade no Brasil. A final teve nomes fortes, notas muito próximas e uma disputa que mostrou o nível mundial da cena brasileira. Miguel Leal venceu com 93.36, com a utilização do "Rev", o atleta pede uma revisão para os juízes, quando considera que a sua volta pode ter uma pontuação maior do que a de um skatista que ficou na sua frente na classificação, e por apenas 0.11 à frente de Nicolas Falcão, que terminou com 93.25. Pedro Barros completou o pódio com 90.89.</p>
+
+            <p>O resultado também mostrou a alternância do Park masculino no circuito. Diferente do domínio de Raicca no feminino, a disputa entre os homens segue mais aberta, com vários skatistas capazes de brigar por vitória. Em Florianópolis, Miguel Leal aproveitou sua melhor volta para vencer uma final em que três atletas passaram dos 90 pontos.</p>
+
+            <p><strong>Maria Lúcia vence de novo no Street feminino</strong></p>
+
+            <p>No Street feminino, Maria Lúcia confirmou a boa fase e conquistou a segunda etapa seguida. Depois de vencer em Criciúma, a gaúcha voltou a ganhar, agora com 80.40, em uma final equilibrada e decidida por margem curta sobre Isabelly Avila, segunda colocada com 79.95.</p>
+
+            <p>A vitória reforça a evolução de Maria Lúcia dentro da temporada. Ela já vinha de pódio na abertura do circuito e agora empilha dois títulos consecutivos, mostrando regularidade em uma modalidade que exige criatividade, precisão e controle emocional. Carla Karolina completou o pódio com 77.18, seguida por Pamela Rosa, Maria Almeida e Duda Ribeiro.</p>
+
+            <p><strong>Sebastian Simonetto decide no Street masculino</strong></p>
+
+            <p>No Street masculino, Sebastian Simonetto venceu com 88.97 conseguindo na última volta e confirmou a força da nova geração. A final foi uma das mais apertadas da etapa: Lucas Rabelo ficou em segundo com 88.67, e Bruno S. Melão terminou em terceiro com 88.63. A diferença mínima entre os três primeiros deixou claro o nível da disputa.</p>
+
+            <p>O pódio também teve Matheus Mendes, Vinicius Costa e Ismael Henrique, em uma final que combinou juventude, experiência e manobras de alto risco. Sebastian precisou buscar a nota decisiva no momento certo, em uma prova em que qualquer detalhe poderia mudar o campeão.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Paraskate também ganha protagonismo</strong></p>
+
+            <p>O Paraskate teve uma final importante em Florianópolis, desta vez no Street, e colocou David Soares no topo. Ele venceu com 93.92, em uma disputa forte contra Tony Alves, segundo colocado com 93.00. Vini Sardi completou o pódio com 87.06.</p>
+
+            <p>A presença do Paraskate dentro da programação reforça um ponto importante do STU: o evento não se limita às disputas tradicionais do Park e do Street. A modalidade tem atletas de alto rendimento, notas fortes e disputas com identidade própria. Em Florianópolis, David Soares saiu campeão em uma final que também teve Italo Romano, Renato Miguel, Bryan Félix, Leo Almeida e Fabrício Nascimento.</p>
+
+            <p><strong>Classificação final do STU Florianópolis</strong></p>
+
+            <p><strong>Park masculino</strong></p>
+            <p>1. Miguel Leal — 93.36</p>
+            <p>2. Nicolas Falcão — 93.25</p>
+            <p>3. Pedro Barros — 90.89</p>
+            <p>4. Thomas Augusto — 90.12</p>
+            <p>5. Victor Ikeda — 89.03</p>
+            <p>6. Vicente Rigobello — 50.00</p>
+
+            <p><strong>Park feminino</strong></p>
+            <p>1. Raicca Ventura — 88.66</p>
+            <p>2. Dora Varella — 85.02</p>
+            <p>3. Isadora Pacheco — 83.53</p>
+            <p>4. Fernanda Tonissi — 81.64</p>
+            <p>5. Erica Leguizamon — 81.00</p>
+            <p>6. Yndiara Asp — 80.00</p>
+
+            <p><strong>Street masculino</strong></p>
+            <p>1. Sebastian Simonetto — 88.97</p>
+            <p>2. Lucas Rabelo — 88.67</p>
+            <p>3. Bruno S. Melão — 88.63</p>
+            <p>4. Matheus Mendes — 88.00</p>
+            <p>5. Vinicius Costa — 87.23</p>
+            <p>6. Ismael Henrique — 73.89</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Street feminino</strong></p>
+            <p>1. Maria Lúcia — 80.40</p>
+            <p>2. Isabelly Avila — 79.95</p>
+            <p>3. Carla Karolina — 77.18</p>
+            <p>4. Pamela Rosa — 73.41</p>
+            <p>5. Maria Almeida — 64.56</p>
+            <p>6. Duda Ribeiro — 55.77</p>
+
+            <p><strong>Paraskate Street</strong></p>
+            <p>1. David Soares — 93.92</p>
+            <p>2. Tony Alves — 93.00</p>
+            <p>3. Vini Sardi — 87.06</p>
+            <p>4. Italo Romano — 75.78</p>
+            <p>5. Renato Miguel — 70.01</p>
+            <p>6. Bryan Félix — 65.18</p>
+            <p>7. Leo Almeida — 51.37</p>
+            <p>8. Fabrício Nascimento — 39.96</p>
+
+            <p><strong>Circuito segue para Curitiba</strong></p>
+
+            <p>Depois de Florianópolis, o STU National segue para Curitiba, próxima etapa do circuito. A parada catarinense deixa mais um saldo positivo: arquibancadas cheias, finais preservadas mesmo com chuva, novas vitórias de atletas em grande fase e mais uma demonstração de profundidade do skate brasileiro.</p>
+
+            <p>A etapa também reforçou que o Brasil tem nomes prontos para competir em alto nível em diferentes modalidades. Do domínio de Raicca no Park feminino à disputa apertada no Park masculino, da sequência de Maria Lúcia no Street ao título de Sebastian Simonetto, Florianópolis entregou um retrato claro do momento atual: o skate nacional segue técnico, competitivo e cheio de protagonistas em evolução contínua e mostrando que o esporte segue ganhando relevância dentro país.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "skate";
+  const CATEGORY_NAME = "Skate";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
