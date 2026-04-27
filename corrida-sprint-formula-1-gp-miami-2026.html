@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sprint volta em Miami e muda rotina da Fórmula 1 | Corte dos Esportes</title>
+  <meta name="description" content="A corrida Sprint volta ao calendário no GP de Miami com prova curta, pontos extras e menos tempo de preparação para equipes e pilotos antes da corrida principal." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Sprint volta em Miami e muda rotina da Fórmula 1</h1>
+          <p class="subhead" id="articleExcerpt">A corrida Sprint volta ao calendário no GP de Miami com prova curta, pontos extras e menos tempo de preparação para equipes e pilotos antes da corrida principal.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">27/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="automobilismo.html">Automobilismo</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Fórmula 1 volta ao formato Sprint no GP de Miami, entre 1º e 3 de maio, e a etapa ganha um peso diferente dentro do calendário. Em vez de um fim de semana tradicional, com longas sessões de treino antes da classificação e da corrida, equipes e pilotos terão menos tempo para ajustar os carros e mais momentos competitivos valendo resultado.</p>
+
+            <p>A Sprint entrou na F1 em 2021, inicialmente como teste para deixar alguns fins de semana mais movimentados. A primeira experiência aconteceu em Silverstone, no GP da Inglaterra, e já nasceu com uma proposta clara: transformar o sábado em um dia mais relevante, com corrida curta, disputa direta e pontos em jogo.</p>
+
+            <p>A presença da Sprint em Miami também faz parte de um pacote limitado dentro da temporada. Em 2026, a Fórmula 1 terá seis fins de semana nesse formato: China, Miami, Canadá, Inglaterra, Holanda e Singapura. A etapa norte-americana será a segunda Sprint do ano, reforçando o peso do GP de Miami no início do campeonato.</p>
+
+            <p>Desde então, o formato passou por ajustes. No começo, a Sprint tinha impacto direto na formação do grid da corrida principal, o que confundia parte do público e gerava debate entre equipes e pilotos. Hoje, o modelo está mais separado: a Sprint tem classificação própria, corrida própria e pontuação própria, mas não define a largada do GP de domingo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Miami recebe fim de semana diferente</strong></p>
+
+            <p>O <a href="https://cortedosesportes.com.br/gp-de-miami-2026-historia-maiores-campeoes-formula-1.html">GP de Miami</a> será disputado no Miami International Autodrome, circuito montado no complexo do Hard Rock Stadium, em Miami Gardens. A etapa já costuma ter forte apelo comercial e visual, mas ganha ainda mais movimento com a presença da Sprint.</p>
+
+            <p>A programação muda a dinâmica desde a sexta-feira. Em vez de duas sessões livres, os pilotos terão apenas um treino antes da classificação Sprint. No sábado, acontece a corrida curta e, depois, a classificação tradicional que define o grid do GP. A corrida principal fica para domingo, às 17h.</p>
+
+            <p>Essa mudança altera completamente a preparação das equipes. Com menos tempo de pista, cada volta do treino ganha mais valor. Um erro de acerto pode comprometer o restante do fim de semana, enquanto quem encontra rapidamente o equilíbrio do carro tende a chegar mais forte tanto para a Sprint quanto para a classificação principal.</p>
+
+            <p><strong>O que é a corrida Sprint</strong></p>
+
+            <p>A Sprint é uma corrida curta, com cerca de 100 km e duração aproximada de 30 minutos. Ela não substitui o Grande Prêmio e também não tem o mesmo peso da prova de domingo. Funciona como uma disputa extra dentro do fim de semana, com pontos para os oito primeiros colocados.</p>
+
+            <p>O vencedor da Sprint soma 8 pontos. O segundo leva 7, o terceiro fica com 6, e a pontuação segue até o oitavo colocado, que recebe 1 ponto. Esses pontos contam para o Mundial de Pilotos e também para o Mundial de Construtores.</p>
+
+            <p>Por ser curta, a Sprint costuma ter uma lógica diferente da corrida principal. Não há tempo para estratégias longas, grandes variações de pneus ou recuperação paciente. O piloto precisa atacar cedo, defender posição com precisão e evitar erros que possam custar caro para o restante da etapa.</p>
+
+            <p><strong>Por que a Sprint mudou desde 2021</strong></p>
+
+            <p>Quando foi criada, a Sprint ainda buscava seu lugar dentro da Fórmula 1. A ideia era boa para o espetáculo, mas o formato original gerava uma dúvida importante: se a corrida curta definia o grid do domingo, ela era uma corrida própria ou apenas uma classificação diferente?</p>
+
+            <p>Com o passar dos anos, a categoria ajustou o modelo. A Sprint deixou de ser uma etapa intermediária para montar o grid do GP e passou a ter identidade mais clara. Hoje, a classificação Sprint define apenas a largada da Sprint. A classificação tradicional continua responsável por formar o grid da corrida principal.</p>
+
+            <p>Essa mudança ajudou a organizar melhor o fim de semana. O torcedor entende que existem duas disputas separadas: uma corrida curta no sábado, com pontos menores, e o Grande Prêmio no domingo, com peso principal para o campeonato.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Menos treino, mais pressão</strong></p>
+
+            <p>O maior impacto do fim de semana Sprint está na redução do tempo de preparação. Em uma etapa normal, as equipes têm três treinos livres para testar o carro, avaliar pneus, simular ritmo de corrida e corrigir problemas. No formato Sprint, esse processo é comprimido.</p>
+
+            <p>Isso aumenta a pressão sobre engenheiros e pilotos. Quem começa o fim de semana com um carro instável tem pouco tempo para encontrar soluções. Quem erra na leitura da pista pode carregar o problema para sessões que já valem posição ou pontos.</p>
+
+            <p>Também há um componente de risco. A Sprint vale pontos, mas qualquer batida pode comprometer a classificação e a corrida principal. Por isso, os pilotos precisam encontrar um equilíbrio difícil: atacar o suficiente para pontuar, mas sem transformar uma corrida curta em prejuízo para o domingo.</p>
+
+            <p><strong>Por que Miami combina com o formato</strong></p>
+
+            <p>Miami é um palco interessante para a Sprint porque o circuito oferece retas longas, freadas fortes e pontos de ultrapassagem. Em uma corrida curta, isso faz diferença. Pistas com pouca chance de ataque podem deixar a Sprint travada, mas em Miami há setores que favorecem disputas diretas.</p>
+
+            <p>Além disso, o evento tem forte apelo de entretenimento. A Sprint ajuda a deixar o fim de semana mais cheio desde a sexta-feira, com menos sensação de espera até a corrida principal. Para o público, são três dias com sessões relevantes. Para a F1, é uma forma de aumentar o valor esportivo e comercial da etapa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma aposta que ainda divide opiniões</strong></p>
+
+            <p>Mesmo mais consolidada, a Sprint ainda divide opiniões. Parte do público gosta do formato porque ele entrega mais ação e mais pontos em jogo. Outra parte prefere o modelo tradicional, com mais treinos e uma construção mais clássica até o domingo.</p>
+
+            <p>Entre as equipes, o debate também passa por risco, custo e preparação. Uma corrida extra aumenta a exposição dos carros, exige mais cuidado com peças e pode influenciar o campeonato em detalhes. Ao mesmo tempo, os pontos da Sprint podem ser decisivos em uma temporada equilibrada.</p>
+
+            <p>No GP de Miami, a Fórmula 1 terá mais uma oportunidade de testar a força desse formato diante de um público amplo e em uma etapa de grande visibilidade. A corrida principal segue como o centro do fim de semana, mas a Sprint deixou de ser apenas uma curiosidade. Desde 2021, ela virou uma peça importante da tentativa da categoria de tornar algumas etapas mais intensas, imprevisíveis e atrativas para novos públicos.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "automobilismo";
+  const CATEGORY_NAME = "Automobilismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
