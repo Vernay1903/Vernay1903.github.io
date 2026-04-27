@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maratona de Londres faz história com recorde abaixo de 2h | Corte dos Esportes</title>
+  <meta name="description" content="Sabastian Sawe venceu a Maratona de Londres rompendo a barreira das duas horas em uma prova oficial e colocou a edição de 2026 entre as mais marcantes da história do atletismo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Maratona de Londres faz história com recorde abaixo de 2h</h1>
+          <p class="subhead" id="articleExcerpt">Sabastian Sawe venceu a Maratona de Londres rompendo a barreira das duas horas em uma prova oficial e colocou a edição de 2026 entre as mais marcantes da história do atletismo.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">27/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="atletismo.html">Atletismo</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Maratona de Londres escreveu um dos capítulos mais importantes da história da corrida de rua. Em uma edição marcada por recordes, grandes atuações e forte presença popular, o queniano Sabastian Sawe venceu a prova masculina em 1:59:30 e se tornou o primeiro atleta a completar uma maratona oficial abaixo de duas horas.</p>
+
+            <p>O feito transforma a edição de 2026 em uma referência histórica. A marca de duas horas era tratada há anos como uma das grandes fronteiras do atletismo de resistência. Até então, o sub-2h já havia sido alcançado em condições especiais, fora de uma competição convencional. Em Londres, porém, o tempo veio dentro de uma prova oficial, com adversários, percurso homologado e cenário competitivo real.</p>
+
+            <p>Mais do que uma vitória, Sawe entregou uma corrida para entrar na memória da modalidade. O queniano acelerou de forma decisiva na parte final, deixou os rivais para trás e cruzou a linha de chegada em The Mall com um tempo que muda o patamar da maratona moderna.</p>
+
+            <p><strong>Uma prova com peso histórico</strong></p>
+
+            <p>A Maratona de Londres não é apenas uma das corridas mais famosas do mundo. Ela se tornou, ao longo das décadas, um encontro entre elite, amadores, histórias pessoais e grandes causas. Desde a primeira edição, em 1981, a prova cresceu até virar um dos eventos mais simbólicos do calendário esportivo britânico.</p>
+
+            <p>O percurso também ajuda a explicar esse prestígio. A corrida passa por pontos marcantes da capital inglesa, como Greenwich, Cutty Sark, Tower Bridge, Canary Wharf, região do Parlamento, Buckingham Palace e The Mall. Para os atletas de elite, é um palco rápido e técnico. Para os corredores populares, é uma travessia por alguns dos cartões-postais mais conhecidos do mundo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Esse equilíbrio entre performance e experiência é um dos segredos da prova. Londres consegue reunir recordistas mundiais e estreantes que correm por superação, memória familiar, causas sociais ou simplesmente pelo desafio dos 42,195 km. No Brasil, essa mistura entre tradição, massa popular e força simbólica também aparece na <a href="https://cortedosesportes.com.br/sao-silvestre-historia-tradicao-maiores-campeoes.html">São Silvestre</a>, uma das corridas mais emblemáticas do calendário nacional.</p>
+
+            <p><strong>Sawe muda o tamanho da maratona</strong></p>
+
+            <p>O tempo de 1:59:30 coloca Sabastian Sawe no centro da história. A marca não representa apenas alguns segundos a menos em uma lista de recordes. Ela simboliza uma mudança de limite. A partir de agora, a maratona masculina passa a ter uma nova referência psicológica e esportiva.</p>
+
+            <p>Além do recorde de Sawe, o pódio masculino reforçou o nível histórico da prova. Yomif Kejelcha, da Etiópia, terminou em segundo lugar com 1:59:41 e também rompeu a barreira das duas horas em uma maratona oficial. Jacob Kiplimo, de Uganda, completou o pódio em 2:00:28, tempo que também ficou abaixo do antigo recorde mundial. A combinação dos três resultados transformou a disputa masculina em uma das mais fortes já vistas nos 42,195 km.</p>
+
+            <p>O desempenho também reforça a evolução da modalidade. A combinação entre preparação científica, estratégia de ritmo, tênis de alta performance, hidratação, pacers e atletas cada vez mais completos tem empurrado a maratona para tempos que pareciam improváveis há poucos anos.</p>
+
+            <p>Mesmo assim, o mérito central continua sendo humano. Em uma prova longa, qualquer oscilação pode comprometer o resultado. Sawe precisou controlar energia, responder aos ataques, manter o ritmo e ainda acelerar no trecho decisivo. Foi uma atuação de força física, leitura de prova e frieza competitiva.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Tigst Assefa também brilha no feminino</strong></p>
+
+            <p>A edição histórica não ficou restrita à disputa masculina. Entre as mulheres, Tigst Assefa venceu em 2:15:41 e estabeleceu um novo recorde mundial em maratona somente feminina. A etíope confirmou a força em Londres e ampliou seu peso entre os grandes nomes da corrida de rua.</p>
+
+            <p>A prova feminina teve nível altíssimo e mostrou como a Maratona de Londres se consolidou como cenário de marcas expressivas. Em diferentes gerações, a corrida já recebeu atuações memoráveis de nomes como Paula Radcliffe, Mary Keitany e Peres Jepchirchir. Agora, Assefa acrescenta mais um capítulo a essa tradição.</p>
+
+            <p><strong>Cadeiras de rodas também têm protagonistas</strong></p>
+
+            <p>A Maratona de Londres também carrega uma história muito forte nas provas em cadeira de rodas. Em 2026, Marcel Hug voltou a fazer história ao conquistar seu oitavo título masculino na prova, igualando David Weir entre os grandes nomes do evento. Catherine Debrunner venceu no feminino e confirmou uma sequência dominante nas ruas londrinas.</p>
+
+            <p>Essa presença das cadeiras de rodas é parte essencial da identidade da prova. Londres sempre deu visibilidade às disputas paralímpicas e transformou esses atletas em protagonistas do mesmo espetáculo, com estratégia, velocidade e finais muitas vezes emocionantes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Um evento que vai além do recorde</strong></p>
+
+            <p>O recorde de Sawe é o grande símbolo da edição, mas a força da Maratona de Londres vai além da elite. A prova é também uma das maiores plataformas de arrecadação beneficente do esporte mundial. Milhares de corredores atravessam a cidade defendendo instituições, homenageando pessoas próximas e transformando esforço físico em impacto social.</p>
+
+            <p>Por isso, a edição de 2026 fica marcada em duas dimensões. No alto rendimento, entrou para a história como a primeira maratona oficial abaixo de duas horas. No aspecto humano, reforçou a essência de Londres como uma corrida em que recordes e histórias pessoais caminham lado a lado.</p>
+
+            <p>A Maratona de Londres já era uma das provas mais tradicionais do mundo. Depois de 2026, ganhou um novo lugar na história. A barreira das duas horas caiu em suas ruas, diante de uma multidão, em uma cidade que fez da maratona um evento esportivo, cultural e emocional.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "atletismo";
+  const CATEGORY_NAME = "Atletismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
