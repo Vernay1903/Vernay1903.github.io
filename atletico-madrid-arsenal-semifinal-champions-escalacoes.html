@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atlético x Arsenal: semifinal da Champions começa em Madri | Corte dos Esportes</title>
+  <meta name="description" content="Atlético de Madrid recebe o Arsenal às 16h, no Metropolitano, pelo jogo de ida da semifinal da Champions League, em duelo marcado por estilos diferentes, pressão inglesa e força espanhola em casa." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Atlético x Arsenal: semifinal da Champions começa em Madri</h1>
+          <p class="subhead" id="articleExcerpt">Atlético de Madrid recebe o Arsenal às 16h, no Metropolitano, pelo jogo de ida da semifinal da Champions League, em duelo marcado por estilos diferentes, pressão inglesa e força espanhola em casa.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">29/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O confronto coloca frente a frente duas equipes com estilos bem diferentes, mas com o mesmo objetivo: sair da capital espanhola em condição real de brigar por uma vaga na grande final.</p>
+
+            <p>Jogando em casa, o Atlético tenta usar o ambiente do Metropolitano como uma de suas principais forças. A equipe espanhola costuma crescer em partidas de mata-mata, especialmente quando consegue transformar o jogo em uma disputa física, intensa e emocional. Para um duelo de semifinal, esse fator pode ser decisivo.</p>
+
+            <p>Do outro lado, o Arsenal chega pressionado pela reta final da temporada. O time de Mikel Arteta ainda disputa objetivos importantes e sabe que precisa sair vivo de Madri para tentar decidir a classificação em Londres. Diante de uma defesa forte e de um adversário acostumado a jogos grandes, os ingleses precisam equilibrar ambição e cuidado.</p>
+
+            <p><strong>Simeone tenta escrever novo capítulo na Champions</strong></p>
+
+            <p>O Atlético de Madrid chega a mais uma semifinal de Champions com Diego Simeone no comando. O treinador argentino está no clube desde dezembro de 2011 e se tornou um dos técnicos mais longevos e identificados com uma equipe no futebol europeu moderno. Sua permanência ajuda a explicar a identidade competitiva do Atlético na última década.</p>
+
+            <p>Sob comando de Simeone, o Atlético nunca conquistou a Champions, mas chegou muito perto. O clube foi finalista em 2014 e 2016, nas duas vezes contra o Real Madrid, e acumulou campanhas marcantes no torneio. Essas trajetórias construíram uma relação forte entre o time espanhol e a competição, mesmo sem o título que ainda falta na galeria.</p>
+
+            <p>O estilo também segue como marca registrada. O Atlético de Simeone não costuma se incomodar em jogar de forma mais reativa, fechar espaços, acelerar em transições e transformar cada bola dividida em parte do plano. Em mata-mata, essa postura costuma ser ainda mais forte.</p>
+
+            <p>Contra o Arsenal, a tendência é de um Atlético tentando controlar o jogo sem necessariamente controlar a posse. A equipe deve buscar intensidade defensiva, pressão em momentos específicos e ataques rápidos com Julián Álvarez e Antoine Griezmann, dois nomes capazes de decidir em poucos toques.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Atlético chega com moral após eliminar o Barcelona</strong></p>
+
+            <p>A confiança do Atlético aumentou depois da classificação contra o Barcelona na fase anterior. Eliminar o rival espanhol deu peso à campanha e reforçou a sensação de que o time de Simeone sabe competir em noites grandes de Champions.</p>
+
+            <p>Julián Álvarez aparece como um dos principais destaques ofensivos. O argentino combina mobilidade, pressão na saída adversária e presença na área, oferecendo ao Atlético uma referência moderna no ataque. Ao lado dele, Griezmann segue como peça cerebral, capaz de circular entre as linhas, conectar jogadas e encontrar espaços mesmo em partidas fechadas.</p>
+
+            <p>O Atlético também deve apostar muito na força dos corredores. Nahuel Molina e Ruggeri podem ser importantes para dar profundidade, enquanto Koke e Llorente ajudam a sustentar o meio-campo. Em casa, a equipe precisa ser agressiva sem perder sua base defensiva, porque qualquer erro contra o Arsenal pode custar caro.</p>
+
+            <p><strong>Arsenal tenta resistir em Madri</strong></p>
+
+            <p>O Arsenal chega à semifinal com um objetivo claro: competir bem fora de casa e levar a decisão aberta para Londres. O time de Mikel Arteta tem qualidade para tentar controlar mais a bola, mas sabe que enfrentará um adversário que costuma se sentir confortável justamente quando o jogo fica travado.</p>
+
+            <p>A pressão sobre os ingleses vem também do contexto da temporada. O Arsenal briga em alto nível, mas chega à reta final com cobrança por transformar evolução em título. Depois de anos de crescimento sob comando de Arteta, a Champions aparece como uma oportunidade enorme para consolidar essa geração.</p>
+
+            <p>Bukayo Saka é uma das principais referências ofensivas. Pela direita, o atacante oferece velocidade, drible e capacidade de decidir em jogadas individuais. Martin Ødegaard também tem peso central na construção, sendo o jogador que organiza o ritmo, aproxima o meio do ataque e tenta encontrar passes entre linhas.</p>
+
+            <p>Declan Rice é outro nome importante. Contra um Atlético forte fisicamente e perigoso em transições, o volante terá papel decisivo para proteger a defesa, vencer duelos no meio-campo e dar equilíbrio a uma equipe que não pode se expor demais em Madri.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Duelo de estilos pode definir o primeiro jogo</strong></p>
+
+            <p>Atlético x Arsenal também é um confronto de ideias. Simeone costuma aceitar momentos sem bola, proteger a área e esperar a oportunidade certa para atacar. Arteta, por outro lado, busca uma equipe mais dominante, com circulação, pressão coordenada e tentativa de controlar o território.</p>
+
+            <p>Esse contraste pode marcar o jogo. Se o Arsenal conseguir acelerar a circulação e evitar perdas perigosas, pode empurrar o Atlético para trás. Se o time espanhol conseguir quebrar o ritmo inglês e transformar a partida em uma sequência de duelos físicos, o cenário fica mais confortável para os donos da casa.</p>
+
+            <p>Por isso, o primeiro gol pode ter peso enorme. Um gol do Atlético aumenta a pressão sobre o Arsenal e fortalece o ambiente no Metropolitano. Um gol inglês, por outro lado, obrigaria os espanhóis a saírem mais e poderia abrir espaços para os visitantes.</p>
+
+            <p>A semifinal promete tensão, intensidade e pouca margem para erro. A Champions costuma premiar detalhes, e este jogo tem todos os elementos para ser decidido em lances mínimos: bola parada, transição rápida, erro na saída ou uma jogada individual dos principais nomes em campo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Noite grande no Metropolitano</strong></p>
+
+            <p>A partida em Madri abre uma semifinal de enorme peso para os dois clubes. O Atlético busca voltar a uma final e manter vivo o sonho de conquistar a Champions pela primeira vez. O Arsenal tenta dar mais um passo em sua reconstrução recente e se aproximar de uma decisão continental que seria histórica para o clube.</p>
+
+            <p>O duelo também reforça o tamanho da <a href="https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html">Champions League</a>, competição em que tradição, momento e detalhe costumam se misturar em noites de grande pressão. Para Atlético e Arsenal, sair bem do primeiro jogo pode ser a diferença entre chegar à volta com controle ou com obrigação de reação.</p>
+
+            <p>Do outro lado da chave, a Champions também já teve uma semifinal histórica, com <a href="https://cortedosesportes.com.br/psg-bayern-5x4-semifinal-champions-gols-destaques.html">PSG x Bayern terminando em 5 a 4 em um jogo de nove gols</a>, resultado que deixou a volta na Alemanha completamente aberta.</p>
+
+            <p><strong>Prováveis escalações</strong></p>
+
+            <p>Atlético de Madrid: Musso; Nahuel Molina, Lenglet, Le Normand e Ruggeri; Llorente, Giuliano Simeone, Koke e Lookman; Julián Álvarez e Griezmann.<br>Técnico: Diego Simeone.</p>
+
+            <p>Arsenal: David Raya; White, Saliba, Gabriel Magalhães e Hincapié; Zubimendi, Declan Rice e Ødegaard; Eze, Gyökeres e Madueke.<br>Técnico: Mikel Arteta.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
