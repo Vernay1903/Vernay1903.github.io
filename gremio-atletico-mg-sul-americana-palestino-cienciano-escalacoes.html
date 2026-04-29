@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grêmio e Atlético-MG jogam fora de casa pela Sul-Americana | Corte dos Esportes</title>
+  <meta name="description" content="Grêmio visita o Palestino no Chile tentando assumir a liderança do Grupo F, enquanto o Atlético-MG encara o Cienciano no Peru pressionado por recuperação na Copa Sul-Americana." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Grêmio e Atlético-MG jogam fora de casa pela Sul-Americana</h1>
+          <p class="subhead" id="articleExcerpt">Grêmio visita o Palestino no Chile tentando assumir a liderança do Grupo F, enquanto o Atlético-MG encara o Cienciano no Peru pressionado por recuperação na Copa Sul-Americana.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">29/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Grêmio e Atlético-MG entram em campo nesta quarta-feira, às 21h30, pela terceira rodada da fase de grupos. Os dois brasileiros  chegam pressionados por objetivos parecidos: somar pontos longe de seus torcedores, melhorar a situação na tabela e evitar que a classificação fique mais complicada na sequência da competição.</p>
+
+            <p>No Chile, o Grêmio enfrenta o Palestino no Estádio La Cisterna, em Santiago. O Tricolor é o segundo colocado do Grupo F, com 3 pontos, três atrás do líder Montevideo City Torque. Uma vitória fora de casa pode recolocar a equipe gaúcha diretamente na briga pela liderança da chave e aumentar a confiança em um momento de cobrança sobre o trabalho de Luís Castro.</p>
+
+            <p>No Peru, o Atlético-MG visita o Cienciano no Estádio Inca Garcilaso de la Vega, em Cusco. O Galo aparece na terceira posição do Grupo B, com 3 pontos, e precisa vencer para se aproximar do topo. O adversário peruano lidera a chave, com 4 pontos, ainda não perdeu na competição e tenta transformar o fator casa em vantagem para se isolar na primeira colocação.</p>
+
+            <p><strong>Grêmio busca liderança e alívio na Sul-Americana</strong></p>
+
+            <p>O Grêmio chega ao jogo contra o Palestino sabendo que a Sul-Americana exige regularidade desde cedo. Diferente de outras competições, apenas o primeiro colocado de cada grupo avança diretamente às oitavas de final. O segundo lugar precisa disputar uma repescagem contra equipes que terminam em terceiro nos grupos da Libertadores, o que adiciona dois jogos a um calendário já apertado.</p>
+
+            <p>Por isso, vencer fora de casa tem peso maior. O <a href="https://cortedosesportes.com.br/gremio-historia-tradicao-titulos-imortal.html">Grêmio é um clube acostumado a noites continentais</a>, mas sabe que não pode deixar a liderança escapar cedo. Em uma temporada de muitos compromissos, terminar a fase de grupos em primeiro significa evitar uma etapa extra e ganhar fôlego para o restante do ano.</p>
+
+            <p>Luís Castro não deve fazer grandes preservações. A ideia é mandar a campo um time competitivo, mesmo com desfalques importantes. A ausência de Amuzu, com dores no tornozelo direito, pesa bastante no ataque. O jogador é um dos principais nomes ofensivos do elenco e vinha atrás apenas de Carlos Vinícius na artilharia do time.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Gabriel Mec ganha espaço como esperança criativa</strong></p>
+
+            <p>Sem Amuzu, o Grêmio precisa reorganizar o setor ofensivo. Tetê surge como opção para ocupar o espaço aberto, enquanto Carlos Vinícius deve começar jogando por estar suspenso do próximo compromisso pelo Brasileirão. O centroavante é a principal esperança de gols em uma partida que pode exigir eficiência nas poucas chances criadas.</p>
+
+            <p>Outro nome importante é Gabriel Mec. O jovem marcou seu primeiro gol como profissional no último domingo, pelo Brasileirão, e chega com moral para ganhar protagonismo. Em um time que ainda busca melhorar o desempenho coletivo, ele aparece como uma das principais esperanças de criatividade no meio-campo.</p>
+
+            <p>A presença de jogadores da base também é um ponto relevante no momento gremista. O time vive uma fase de ajustes e cobrança, e Luís Castro segue pressionado principalmente pelo desempenho. Uma vitória no Chile não resolveria todos os problemas, mas ajudaria a diminuir o peso sobre o treinador e daria mais tranquilidade para seguir trabalhando.</p>
+
+            <p><strong>Palestino joga sobrevivência no grupo</strong></p>
+
+            <p>Do outro lado, o Palestino entra em campo pressionado pela tabela. A equipe chilena soma apenas 1 ponto e ocupa a lanterna do Grupo F. Se não vencer em casa, a classificação ficará muito mais difícil, inclusive para alcançar a segunda posição e permanecer viva na disputa por uma vaga na fase seguinte.</p>
+
+            <p>O clube também vive momento de mudança. Guillermo Farré faz sua estreia no comando técnico depois da saída de Cristián Muñoz. Em casa, o Palestino deve tentar usar a necessidade de reação como combustível, buscando um jogo intenso, direto e com pressão sobre a saída de bola gremista.</p>
+
+            <p>A tendência é de uma partida nervosa. O Grêmio precisa vencer para mirar a liderança, enquanto o Palestino joga para não se complicar de vez. Esse tipo de cenário costuma aumentar a importância dos primeiros minutos, já que um gol cedo pode mudar completamente o plano das duas equipes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Atlético-MG tenta virar a página no Peru</strong></p>
+
+            <p>Enquanto o Grêmio joga no Chile, o Atlético-MG terá um desafio duro na altitude de Cusco. O Galo enfrenta o Cienciano em um momento de pressão, depois da goleada por 4 a 0 sofrida em casa para o Flamengo pelo Brasileirão. O resultado aumentou a cobrança sobre Eduardo Domínguez e deixou o ambiente mais pesado.</p>
+
+            <p>Na Sul-Americana, o Atlético-MG também precisa reagir. O time tem 3 pontos no Grupo B e ocupa a terceira colocação. Uma vitória fora de casa pode recolocar o Galo na briga direta pela liderança, enquanto uma derrota deixaria a equipe em situação delicada antes da segunda metade da fase de grupos.</p>
+
+            <p>Domínguez deve usar uma formação alternativa, com muitos jogadores jovens e parte dos titulares preservados. A escolha aumenta o peso sobre atletas que buscam espaço no elenco. Ao mesmo tempo, também deixa claro que o treinador precisa equilibrar calendário, desgaste e pressão por resultado.</p>
+
+            <p><strong>Cienciano aposta na altitude e na liderança</strong></p>
+
+            <p>O Cienciano chega em condição melhor na tabela. Líder do Grupo B, com 4 pontos, o time peruano ainda não perdeu na competição e vê o jogo contra o Atlético-MG como oportunidade para abrir vantagem importante na chave. Em casa, o fator altitude também pesa e pode ser usado como arma para desgastar o adversário.</p>
+
+            <p>A equipe deve ter força máxima e repetir boa parte da formação das últimas partidas. O time de Horacio Melgarejo chega descansado e tenta aproveitar o momento instável do Atlético para controlar o jogo em Cusco. Para o Galo, a atenção defensiva e a gestão física serão fundamentais.</p>
+
+            <p>A pressão sobre o Atlético-MG é grande porque o time ainda não conseguiu deslanchar na temporada. A oscilação no Brasileirão, somada à necessidade de pontuar na Sul-Americana, faz da partida no Peru um teste importante para o elenco e para o trabalho de Domínguez.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Rodada pode desenhar o caminho dos brasileiros</strong></p>
+
+            <p>A noite é importante para começar a desenhar o futuro de Grêmio e Atlético-MG na Sul-Americana. O Grêmio pode transformar a vitória no Chile em passo decisivo para brigar pelo primeiro lugar do Grupo F. O Atlético-MG, por sua vez, precisa dar uma resposta depois da goleada sofrida no Brasileirão e evitar que o Cienciano abra distância na ponta do Grupo B.</p>
+
+            <p>Nos dois casos, o peso da competição está no detalhe. Ser líder do grupo evita uma fase extra e reduz o desgaste em um calendário cheio. Por isso, vencer fora de casa nesta rodada pode valer muito mais do que três pontos: pode mudar o caminho dos brasileiros na briga por vaga direta nas oitavas.</p>
+
+            <p>A quarta-feira também será de noites continentais para outros brasileiros, com <a href="https://cortedosesportes.com.br/palmeiras-flamengo-libertadores-cerro-porteno-estudiantes-escalacoes.html">Palmeiras e Flamengo jogando fora de casa pela Libertadores</a>, em partidas importantes para a briga pela liderança de seus grupos.</p>
+
+            <p><strong>Prováveis escalações</strong></p>
+
+            <p>Palestino: Pérez; Garguez, Espinoza, Roco e León; Gallegos, Montes e Nicolás Meza; Bryan Carrasco, Nelson Da Silva e César Munder.</p>
+            <p>Técnico: Guillermo Farré.</p>
+
+            <p>Grêmio: Weverton; Pavón, Gustavo Martins, Viery e Pedro Gabriel; Leo Pérez, Arthur, Tetê, Gabriel Mec e Enamorado; Carlos Vinícius.</p>
+            <p>Técnico: Luís Castro.</p>
+
+            <p>Cienciano: Italo Espinoza; Kevin Becerra, Maximiliano Amondaraín e Claudio Núñez; Ademar Robles e Heny Caparó; Marcos Martinich, Cristian Souza e Alejandro Hohberg; Neri Bandiera e Carlos Garcés.</p>
+            <p>Técnico: Horacio Melgarejo.</p>
+
+            <p>Atlético-MG: Everson; Preciado, Junior Alonso, Iván Román e Pascini; Tomás Pérez; Alexsander, Gustavo Scarpa, Alan Minda, Dudu e Cauã Soares.</p>
+            <p>Técnico: Eduardo Domínguez.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
