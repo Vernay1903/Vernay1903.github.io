@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Elite16 de Brasília reúne elite mundial do vôlei de praia | Corte dos Esportes</title>
+  <meta name="description" content="Brasília o Circuito Mundial de Vôlei de Praia entre 29 de abril e 3 de maio, com duplas brasileiras em destaque, grandes nomes estrangeiros e disputa no Parque da Cidade." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Elite16 de Brasília reúne elite mundial do vôlei de praia</h1>
+          <p class="subhead" id="articleExcerpt">Brasília o Circuito Mundial de Vôlei de Praia entre 29 de abril e 3 de maio, com duplas brasileiras em destaque, grandes nomes estrangeiros e disputa no Parque da Cidade.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">29/04/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">VOLEI DE PRAIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Brasília volta ao centro do vôlei de praia mundial nesta semana. Depois de receber a etapa do Circuito Brasileiro, a capital federal agora será palco do Elite16 do Circuito Mundial de Vôlei de Praia, entre 29 de abril e 3 de maio, na arena montada no Parque da Cidade. A competição reúne algumas das principais duplas do mundo e coloca o Brasil novamente em evidência dentro da modalidade.</p>
+
+            <p>A etapa tem peso importante no calendário internacional. O Elite16 é uma das categorias mais fortes do Beach Pro Tour, reunindo duplas de alto nível, atletas olímpicos e parcerias que brigam por protagonismo no circuito. Para o público brasileiro, o torneio também ganha força por ser disputado em casa, com presença de várias duplas nacionais e entrada franca para acompanhar os jogos.</p>
+
+            <p>O Brasil chega com representantes fortes tanto no feminino quanto no masculino. Entre os nomes mais esperados estão Duda e Ana Patrícia, atuais campeãs olímpicas, que vêm embaladas pelo título da etapa nacional disputada também em Brasília. A dupla busca mais uma boa campanha na cidade, onde já teve resultados importantes em temporadas recentes.</p>
+
+            <p><strong>Como funciona o Elite16 de Brasília</strong></p>
+
+            <p>A competição começa com a fase qualificatória, também chamada de qualifying. Nessa etapa, 16 duplas em cada gênero disputam confrontos eliminatórios. Quem vence avança para o torneio principal, enquanto quem perde deixa a disputa.</p>
+
+            <p>A chave principal reúne 24 duplas no feminino e 24 no masculino. Na primeira fase, as equipes são divididas em seis grupos com quatro duplas cada. Dentro dos grupos, as parcerias se enfrentam em busca de vaga na fase eliminatória.</p>
+
+            <p>Avançam às oitavas de final os dois primeiros colocados de cada grupo e os dois melhores terceiros colocados no geral. As outras duplas que terminarem em terceiro ainda disputam uma repescagem por vagas restantes nas oitavas. A partir daí, o torneio entra em sistema eliminatório até semifinais, disputas por medalha e finais.</p>
+
+            <p>Esse formato aumenta o peso de cada jogo. Mesmo na fase de grupos, uma derrota pode complicar o caminho, enquanto uma boa campanha inicial pode dar vantagem no cruzamento eliminatório.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Duplas brasileiras em destaque</strong></p>
+
+            <p>O Brasil terá forte presença em Brasília. No feminino, Duda/Ana Patrícia, Carol Solberg/Rebecca, Thâmela/Vic e Talita/Taiana já entram garantidas na chave principal. São duplas experientes, competitivas e capazes de brigar por pódio em casa.</p>
+
+            <p>Duda e Ana Patrícia chegam como o principal destaque nacional. A dupla vem de título no Circuito Brasileiro e tenta transformar o embalo em resultado também no cenário internacional. Jogar em Brasília, com apoio da torcida, pode ser um fator importante para manter o alto nível.</p>
+
+            <p>Carol Solberg e Rebecca também aparecem entre as atrações brasileiras. A parceria tem experiência, leitura de jogo e histórico competitivo em torneios grandes. Thâmela e Vic chegam em bom momento no cenário nacional, enquanto Talita e Taiana carregam experiência e repertório para partidas decisivas.</p>
+
+            <p>No masculino, André e Renato estão garantidos no torneio principal. A dupla é uma das referências brasileiras da modalidade e terá a chance de competir em casa contra algumas das parcerias mais fortes do mundo.</p>
+
+            <p>Outras duplas brasileiras entram pelo qualifying, buscando vaga na chave principal. No feminino, Verena/Thainara, Carol Horta/Elize Maia, Kyce/Talita Simonetti, Andressa/Tainá e Hegê/Vitória disputam essa etapa. No masculino, Arthur/Adrielson, Mateus/Adelmo, Vinicius/Heitor e Gabriel Zuliani/João Mares também tentam avançar.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Estrangeiros aumentam o nível da etapa</strong></p>
+
+            <p>O Elite16 de Brasília também terá duplas estrangeiras de muito peso. Entre os nomes internacionais em destaque estão os suecos Åhman/Hellvig, os noruegueses Mol/Sørum, as letãs Tina/Anastasija e as norte-americanas Kraft/Cheng.</p>
+
+            <p>A presença dessas duplas aumenta o nível técnico da competição. O torneio coloca frente a frente diferentes estilos de jogo: duplas brasileiras acostumadas ao calor, à areia e ao apoio da torcida, contra equipes europeias e norte-americanas com muita força física, saque agressivo e repertório internacional.</p>
+
+            <p>Esse choque de estilos é um dos atrativos do Circuito Mundial. Em torneios Elite16, não há caminho simples. Desde a fase de grupos, as principais parcerias precisam encarar adversários de alto nível, e qualquer oscilação pode custar uma eliminação precoce.</p>
+
+            <p><strong>Brasília vira capital do vôlei de praia</strong></p>
+
+            <p>A etapa reforça a relação de Brasília com o vôlei de praia. A cidade já recebeu outras edições do circuito internacional e volta a ocupar espaço importante no calendário da modalidade. O Parque da Cidade se transforma em ponto de encontro para torcedores, atletas e equipes durante uma semana decisiva.</p>
+
+            <p>O momento também cria uma sequência especial para a capital federal. Primeiro, Brasília recebeu a etapa do Circuito Brasileiro, vencida por Duda/Ana Patrícia no feminino e Adelmo/Mateus no masculino. Agora, a cidade recebe uma competição internacional, com duplas de vários países e pontuação importante no circuito.</p>
+
+            <p>Essa conexão entre torneio nacional e torneio mundial ajuda a fortalecer o calendário do vôlei de praia no Brasil. Para os atletas brasileiros, competir em casa significa adaptação mais rápida, apoio da arquibancada e chance de pontuar em alto nível sem sair do país.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Onde assistir e sequência do torneio</strong></p>
+
+            <p>A competição terá jogos ao longo da semana, com fase qualificatória, grupos, mata-mata e decisões no domingo. As semifinais e as disputas por medalhas estão marcadas para o último dia de competição, quando serão definidos os campeões da etapa.</p>
+
+            <p>A VBTV transmite toda a competição aumentando a visibilidade da etapa para o público brasileiro.</p>
+
+            <p>A expectativa é de uma semana intensa no Parque da Cidade. Com brasileiras fortes, estrangeiras de alto nível e uma chave masculina também muito competitiva, o Elite16 de Brasília chega como uma das grandes etapas da temporada do vôlei de praia.</p>
+
+            <p>O Brasil também já teve outra etapa importante do Elite16 na temporada, com <a href="https://cortedosesportes.com.br/joao-pessoa-elite16-volei-de-praia-resultados-ranking-mundial-2026.html">João Pessoa recebendo disputas fortes, resultados relevantes e impacto no ranking mundial do vôlei de praia</a>. Agora, Brasília assume esse papel no calendário internacional e volta a colocar o país no centro da modalidade.</p>
+
+            <p>Antes do Circuito Mundial, Brasília já havia recebido uma etapa forte do calendário nacional, com <a href="https://cortedosesportes.com.br/volei-praia-brasilia-etapa-campeoes-ranking.html">campeões definidos no Circuito Brasileiro de Vôlei de Praia</a>. A capital recebe a elite internacional da modalidade, em uma sequência que coloca o Brasil no centro da temporada.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "volei-praia";
+  const CATEGORY_NAME = "VOLEI DE PRAIA";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
