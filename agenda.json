@@ -1,42 +1,34 @@
 [
   {
     "time": "16:00",
-    "desc": "Atlético Madrid x Arsenal - Liga dos Campeões"
+    "desc": "Nottingham Forest x Aston Villa - Liga Europa"
+  },
+  {
+    "time": "16:00",
+    "desc": "Braga x Freiburg - Liga Europa"
+  },
+  {
+    "time": "19:00",
+    "desc": "Bolívar x Fluminense - Libertadores"
   },
   {
     "time": "20:00",
-    "desc": "Detroit Pistons x Orlando Magic - NBA"
-  },
-  {
-    "time": "20:30",
-    "desc": "Cavaliers x Raptors - NBA"
+    "desc": "Hawks x Knicks - NBA"
   },
   {
     "time": "21:00",
-    "desc": "Barcelona SC x Universidad Católica - Libertadores"
+    "desc": "Corinthians x Peñarol - Libertadores"
   },
   {
-    "time": "21:30",
-    "desc": "Cerro Porteño x Palmeiras - Libertadores"
+    "time": "21:00",
+    "desc": "76ers x Celtics - NBA"
   },
   {
-    "time": "21:30",
-    "desc": "Estudiantes x Flamengo - Libertadores"
+    "time": "22:30",
+    "desc": "Timberwolves x Nuggets - NBA"
   },
   {
-    "time": "21:30",
-    "desc": "Cienciano x Atlético-MG - Copa Sul-Americana"
-  },
-  {
-    "time": "21:30",
-    "desc": "Palestino x Grêmio - Copa Sul-Americana"
-  },
-  {
-    "time": "23:00",
-    "desc": "Universitario x Nacional - Libertadores"
-  },
-  {
-    "time": "23:00",
-    "desc": "Lakers x Rockets - NBA"
+    "time": "20:00",
+    "desc": "Magic x Pistons - NBA"
   }
 ]
