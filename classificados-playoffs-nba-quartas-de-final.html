@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knicks, Thunder, Spurs e Timberwolves avançam nos playoffs da NBA | Corte dos Esportes</title>
+  <meta name="description" content="Os 4 times agora aguardam a definição das demais séries para conhecer os adversários da próxima fase." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Knicks, Thunder, Spurs e Timberwolves avançam nos playoffs da NBA</h1>
+          <p class="subhead" id="articleExcerpt">Os 4 times agora aguardam a definição das demais séries para conhecer os adversários da próxima fase.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">01/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="basquete.html">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Os playoffs da NBA já começaram a definir os primeiros classificados para as semifinais de conferência.</p>
+
+            <p>A Conferência Oeste já tem três classificados definidos: Thunder, Spurs e Timberwolves. No Leste, o primeiro time a confirmar vaga foi o Knicks.</p>
+
+            <p>O Oeste já começa a desenhar um caminho forte para as semifinais. <a href="https://cortedosesportes.com.br/conferencia-oeste-nba-historia-times-franquias-dinastias.html">A história da Conferência Oeste mostra como esse lado da NBA costuma reunir séries duras, franquias competitivas e caminhos pesados até as Finais</a>.</p>
+
+            <p><strong>Knicks atropelam Hawks e avançam no Leste</strong></p>
+
+            <p>O New York Knicks confirmou a classificação ao vencer o Atlanta Hawks por 140 a 89 no Jogo 6 e fechar a série em 4 a 2. A vitória teve peso histórico para a franquia, com a maior margem de triunfo dos Knicks em uma partida de playoffs, o maior número de pontos do time em um jogo de pós-temporada e uma vantagem recorde no intervalo.</p>
+
+            <p>O domínio foi construído ainda no primeiro tempo. O Knicks abriu 83 a 36 antes do intervalo, uma vantagem de 47 pontos que entrou para a história dos playoffs. A equipe chegou a liderar por 61 pontos e transformou o jogo de eliminação em uma das atuações mais contundentes da pós-temporada.</p>
+
+            <p>OG Anunoby foi o grande nome da noite. Ele marcou 29 pontos, sendo 26 ainda no primeiro tempo, acertou 11 de 14 arremessos de quadra, pegou sete rebotes e ainda somou quatro roubos de bola. Mikal Bridges também apareceu forte, com 24 pontos, enquanto Jalen Brunson controlou o ritmo com 17 pontos e oito assistências.</p>
+
+            <p>Karl-Anthony Towns completou o pacote com um triplo-duplo: 12 pontos, 11 rebotes e 10 assistências, além de três roubos de bola. Foi o segundo triplo-duplo dele na série.</p>
+
+            <p>Do lado dos Hawks, Jalen Johnson liderou Atlanta com 21 pontos, oito rebotes e seis assistências, mas não conseguiu evitar a eliminação. CJ McCollum terminou com apenas 11 pontos em uma noite difícil, e Atlanta acabou sofrendo a segunda pior derrota de sua história em playoffs.</p>
+
+            <p>O resultado reforça o momento forte de New York na Conferência Leste. A equipe cresceu na série, respondeu depois de ficar pressionada e agora aguarda o vencedor de Boston Celtics x Philadelphia 76ers para conhecer seu adversário nas semifinais de conferência.</p>
+
+            <p>O resultado também reforça o peso da disputa no lado Leste da chave. Em uma conferência marcada por tradição, rivalidades e franquias históricas, <a href="https://cortedosesportes.com.br/conferencia-leste-nba-historia-campeoes-rivalidades.html">a história da Conferência Leste da NBA ajuda a entender por que cada avanço nos playoffs carrega tanto peso para equipes como o Knicks</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Thunder varre Suns e confirma favoritismo</strong></p>
+
+            <p>No Oeste, o Oklahoma City Thunder avançou com autoridade. A equipe eliminou o Phoenix Suns por 4 a 0, e mostrando por que chegou aos playoffs como atual campeã e uma das principais forças da temporada.</p>
+
+            <p>A classificação veio com vitória por 131 a 122 no Jogo 4, em Phoenix. Shai Gilgeous-Alexander foi novamente o grande comandante do Thunder, com 31 pontos e oito assistências. Chet Holmgren também teve papel importante, anotando 24 pontos e dando presença física ao time nos dois lados da quadra.</p>
+
+            <p>Oklahoma City ainda teve produção relevante de Isaiah Hartenstein, que contribuiu com 18 pontos e 12 rebotes, e de Alex Caruso, que saiu do banco para marcar 14 pontos. A profundidade do elenco foi uma das diferenças da série, já que o Thunder conseguiu manter ritmo alto mesmo quando a partida ficou mais equilibrada.</p>
+
+            <p>Phoenix tentou resistir com Devin Booker, que marcou 24 pontos, enquanto Dillon Brooks e Jalen Green fizeram 23 pontos cada. Mesmo assim, os Suns não conseguiram conter o volume ofensivo do Thunder e se despediram da pós-temporada.</p>
+
+            <p>A varrida deixa o Thunder em posição de descanso e preparação enquanto aguarda o vencedor de Los Angeles Lakers x Houston Rockets. A série entre Lakers e Rockets ainda está em aberto, com vantagem de 3 a 2 para Los Angeles.</p>
+
+            <p><strong>Spurs eliminam Blazers e seguem vivos na briga</strong></p>
+
+            <p>O San Antonio Spurs também está classificado. A equipe venceu o Portland Trail Blazers por 114 a 95 no Jogo 5, fechou a série em 4 a 1 e garantiu presença nas semifinais do Oeste, retomando protagonismo em uma fase decisiva da NBA.</p>
+
+            <p>De’Aaron Fox liderou o Spurs com 21 pontos e nove assistências, sendo decisivo principalmente no último quarto. Victor Wembanyama  com 17 pontos, 14 rebotes e seis tocos, protegendo o aro e mudando a forma como Portland atacava a área. Julian Champagnie também foi importante, com 19 pontos.</p>
+
+            <p>A classificação mostrou a força de um Spurs jovem, mas já competitivo. San Antonio não ficou atrás no placar no Jogo 5 e controlou a partida com defesa forte, bom aproveitamento ofensivo e presença física.</p>
+
+            <p>Do lado dos Blazers, Deni Avdija foi o principal nome, com 22 pontos. Ainda assim, Portland sofreu para encontrar regularidade ofensiva. A equipe teve dificuldades no arremesso, não conseguiu sustentar reação e viu Scoot Henderson terminar limitado a apenas cinco pontos.</p>
+
+            <p>A campanha mostrou consistência. Depois de perder o Jogo 2, o Spurs reagiu com três vitórias seguidas e fechou a série sem permitir que Portland levasse o confronto para um sexto jogo. Agora, San Antonio terá pela frente o Minnesota Timberwolves.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Timberwolves derrubam Nuggets</strong></p>
+
+            <p>O Minnesota Timberwolves confirmou uma das classificações mais fortes da primeira rodada ao eliminar o Denver Nuggets por 4 a 2. A vaga veio com vitória por 110 a 98 no Jogo 6, resultado que colocou a equipe nas semifinais da Conferência Oeste.</p>
+
+            <p>Jaden McDaniels foi o grande nome da classificação. Ele marcou 32 pontos, pegou 10 rebotes e ainda teve participação defensiva importante, sendo o cestinha da partida. Terrence Shannon Jr. também foi decisivo:  em meio aos desfalques de Minnesota, marcou 24 pontos, sua melhor marca em playoffs, e acertou uma jogada de três pontos fundamental na arrancada final dos Wolves.</p>
+
+            <p>A classificação teve peso ainda maior porque Minnesota precisou superar ausências importantes, incluindo Anthony Edwards, Donte DiVincenzo, Ayo Dosunmu e Kyle Anderson. Mesmo desfalcado, o time encontrou respostas coletivas e mostrou força para eliminar um adversário de peso.</p>
+
+            <p>Do outro lado, Nikola Jokic voltou a produzir em alto nível. O sérvio terminou com 28 pontos, 10 assistências e nove rebotes, ficando muito perto de um triplo-duplo. Mesmo assim, nem sua atuação foi suficiente para salvar o Nuggets.</p>
+
+            <p>A eliminação do Nuggets chama atenção pelo peso do adversário. Denver entrou nos playoffs com status de equipe forte no Oeste, mas Minnesota conseguiu impor seu ritmo nos momentos decisivos e fechou a série com autoridade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Playoffs começam a ganhar forma</strong></p>
+
+            <p>A definição dos primeiros classificados mostra que os playoffs da NBA já entraram em uma fase mais afunilada. Thunder e Spurs confirmaram favoritismo no Oeste, Timberwolves derrubou um adversário pesado e Knicks mostrou força em uma vitória histórica.</p>
+
+            <p>Com as primeiras vagas definidas, os playoffs entram em uma fase ainda mais decisiva. A pós-temporada é o momento em que campanhas fortes precisam virar resultado, protagonistas são cobrados e cada série passa a construir novos capítulos da liga. <a href="https://cortedosesportes.com.br/playoffs-nba-como-funciona-tradicao-series-historicas.html">A história dos playoffs da NBA ajuda a explicar por que essa fase carrega tanto peso na tradição da liga</a>.</p>
+
+            <p>A partir de agora, cada série ganha ainda mais peso. Quem já avançou ganha tempo para recuperar jogadores, estudar adversários e ajustar detalhes. Quem ainda está vivo na primeira rodada precisa sobreviver a jogos de eliminação para seguir sonhando com as semifinais de conferência.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
