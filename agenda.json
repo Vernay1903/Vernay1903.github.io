@@ -1,34 +1,26 @@
 [
   {
     "time": "16:00",
-    "desc": "Nottingham Forest x Aston Villa - Liga Europa"
+    "desc": "Girona x Mallorca - La Liga"
   },
   {
     "time": "16:00",
-    "desc": "Braga x Freiburg - Liga Europa"
+    "desc": "Leeds x Burnley - Premier League"
   },
   {
     "time": "19:00",
-    "desc": "Bolívar x Fluminense - Libertadores"
-  },
-  {
-    "time": "20:00",
-    "desc": "Hawks x Knicks - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Corinthians x Peñarol - Libertadores"
-  },
-  {
-    "time": "21:00",
-    "desc": "76ers x Celtics - NBA"
-  },
-  {
-    "time": "22:30",
-    "desc": "Timberwolves x Nuggets - NBA"
+    "desc": "Sada Cruzeiro x Minas - Superliga de Vôlei Masculino"
   },
   {
     "time": "20:00",
     "desc": "Magic x Pistons - NBA"
+  },
+  {
+    "time": "20:30",
+    "desc": "Raptors x Cavaliers - NBA"
+  },
+  {
+    "time": "22:30",
+    "desc": "Rockets x Lakers - NBA"
   }
 ]
