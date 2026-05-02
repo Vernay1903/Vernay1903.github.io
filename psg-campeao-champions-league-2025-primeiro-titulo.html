@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>PSG campeão da Champions 2025: história, frustrações e título inédito | Corte dos Esportes</title>
+  <meta name="description" content="Relembre o título inédito do PSG na Champions League, a goleada sobre a Inter de Milão, as frustrações da era de altos investimentos e o trabalho de Luis Enrique na construção de um time mais coletivo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">PSG campeão da Champions 2025: história, frustrações e título inédito</h1>
+          <p class="subhead" id="articleExcerpt">Relembre o título inédito do PSG na Champions League, a goleada sobre a Inter de Milão, as frustrações da era de altos investimentos e o trabalho de Luis Enrique na construção de um time mais coletivo.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">01/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Paris Saint-Germain passou anos perseguindo a Champions League. Com investimentos gigantes, contratações de estrelas mundiais e elencos montados para competir no mais alto nível, o clube francês carregou por muito tempo o peso de um projeto ambicioso que ainda não tinha conseguido alcançar seu principal objetivo.</p>
+
+            <p>Essa história mudou em 2025. O PSG enfim conquistou a Champions League ao vencer a Inter de Milão por 5 a 0 na final, em Munique. Foi uma vitória acachapante, dominante e simbólica. Mais do que levantar a taça, o clube rompeu uma barreira histórica e transformou anos de frustração em consagração.</p>
+
+            <p>O título também teve um peso curioso: ele veio não com o PSG mais estrelado da era recente, mas com uma equipe mais coletiva, intensa e equilibrada. Depois de temporadas marcadas por Neymar, Messi e Mbappé juntos, a conquista chegou em uma versão menos midiática, mais funcional e moldada pela mentalidade de Luis Enrique.</p>
+
+            <p><strong>A longa busca do PSG pela Champions League</strong></p>
+
+            <p>Desde a chegada dos grandes investimentos ao clube, a Champions virou obsessão em Paris. O PSG dominou o futebol francês, empilhou títulos nacionais e contratou jogadores de enorme impacto global. Mesmo assim, a taça europeia continuava escapando.</p>
+
+            <p>O clube viveu eliminações traumáticas, quedas em mata-mata e noites que aumentaram a fama de um projeto forte no papel, mas vulnerável nos momentos decisivos. A cobrança crescia a cada temporada porque o investimento era alto e a expectativa era ainda maior.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A Champions não era apenas mais um título para o PSG. Era a conquista que validaria o projeto em escala continental. Enquanto ela não vinha, todo domínio nacional parecia incompleto.</p>
+
+            <p><strong>A era das estrelas e as frustrações europeias</strong></p>
+
+            <p>O PSG tentou acelerar o caminho até o topo com nomes gigantes. Neymar chegou como contratação histórica. Mbappé virou o rosto esportivo do projeto. Messi completou um trio de apelo mundial e colocou o clube em um patamar midiático raramente visto no futebol europeu.</p>
+
+            <p>No papel, era um ataque capaz de assustar qualquer adversário. Na prática, porém, o encaixe coletivo nem sempre acompanhou o brilho individual. O PSG tinha talento de sobra, mas sofria para encontrar equilíbrio, intensidade sem bola e consistência em jogos de mata-mata.</p>
+
+            <p>O trio Messi, Neymar e Mbappé marcou uma fase de enorme repercussão, mas não entregou a Champions. A presença das estrelas aumentou a visibilidade do clube, mas também ampliou a pressão. Quando o título não veio, ficou claro que só reunir craques não bastava para vencer a competição mais exigente da Europa.</p>
+
+            <p><strong>A derrota de 2020 e o aviso de que faltava algo</strong></p>
+
+            <p>Antes do título, o PSG já havia chegado perto. Em 2020, disputou a final da Champions contra o <a href="https://cortedosesportes.com.br/bayern-munique-6-titulos-champions-league.html">Bayern de Munique</a>, mas perdeu por 1 a 0. Aquela campanha mostrou que o clube podia competir no topo, mas também reforçou a sensação de que ainda faltava um passo.</p>
+
+            <p>A derrota para o Bayern teve peso porque colocou o PSG diante da maior chance de sua história até então. O clube chegou à decisão, teve estrelas em campo e ficou a uma vitória da glória. Mas a taça escapou.</p>
+
+            <p>A partir dali, a cobrança ficou ainda maior. O PSG já não podia ser visto apenas como um clube tentando chegar longe. Ele já tinha chegado. Faltava vencer.</p>
+
+            <p><strong>A mudança de rota com Luis Enrique</strong></p>
+
+            <p>O título de 2025 passou diretamente pela mudança de mentalidade conduzida por Luis Enrique. O treinador espanhol trouxe uma ideia mais coletiva, baseada em pressão, mobilidade, posse com intenção, ocupação de espaços e intensidade constante.</p>
+
+            <p>O PSG campeão não dependia apenas de um craque resolvendo tudo. Era um time mais distribuído, com várias fontes de criação, jogadores jovens assumindo protagonismo e uma estrutura tática mais sólida. A equipe atacava com muitos jogadores, pressionava após perder a bola e conseguia manter ritmo alto durante longos períodos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Luis Enrique também deu ao elenco uma identidade clara. O PSG deixou de parecer um amontoado de estrelas e passou a funcionar como equipe. Essa mudança foi decisiva para transformar potencial em resultado.</p>
+
+            <p><strong>Um PSG menos midiático e mais competitivo</strong></p>
+
+            <p>O PSG campeão da Champions não era “low profile” no sentido financeiro ou estrutural. O clube continuava tendo jogadores caros, talento internacional e enorme poder de investimento. Mas, em comparação com a fase de Messi, Neymar e Mbappé juntos, era uma equipe menos centrada em celebridades globais e mais voltada ao funcionamento coletivo.</p>
+
+            <p>Esse foi o ponto-chave. O protagonismo ficou dividido entre nomes como Dembélé, Vitinha, Hakimi, Nuno Mendes, Marquinhos, Donnarumma, Kvaratskhelia. O time tinha talento, mas não dependia de uma hierarquia tão pesada de superastros.</p>
+
+            <p>Essa versão do PSG parecia mais leve, mais intensa e mais comprometida com o plano de jogo. O título mostrou que, na Champions, elenco forte é indispensável, mas encaixe coletivo costuma ser o que separa uma boa campanha de uma conquista histórica.</p>
+
+            <p><strong>A final acachapante contra a Inter de Milão</strong></p>
+
+            <p>A final contra a Inter de Milão foi o jogo que transformou a narrativa do PSG. O placar de 5 a 0 não deixou margem para discussão. Foi uma atuação dominante, com controle, agressividade, eficiência e superioridade em praticamente todos os setores.</p>
+
+            <p>Achraf Hakimi abriu o caminho. Désiré Doué brilhou com dois gols e participação decisiva no jogo. Kvaratskhelia também deixou sua marca, e Senny Mayulu fechou a goleada. A Inter, acostumada a competir em alto nível, foi completamente superada.</p>
+
+            <p><strong>Relembre os melhores momentos da partida abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fUhS56AF0A8" title="PSG campeão da Champions League - melhores momentos da final contra a Inter de Milão" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>O resultado teve peso histórico porque não foi apenas uma vitória em final. Foi uma goleada em uma decisão de Champions League. O PSG não venceu por detalhe, não precisou sobreviver a uma pressão final e não dependeu de acaso. Dominou.</p>
+
+            <p><strong>Désiré Doué e o símbolo da nova era</strong></p>
+
+            <p>Désiré Doué virou um dos grandes símbolos daquela final. Jovem, técnico, ousado e decisivo, ele representou bem a nova fase do PSG: menos dependente de nomes consagrados e mais aberto a talentos capazes de crescer dentro de uma ideia coletiva.</p>
+
+            <p>Seu desempenho na decisão mostrou coragem e maturidade. Em uma final de Champions, muitos jovens sentem o peso do palco. Doué fez o contrário: assumiu responsabilidade e ajudou a mudar o jogo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Essa imagem combina com o PSG campeão. O clube que antes buscava atalhos com estrelas prontas encontrou o título em uma equipe mais dinâmica, mais plural e mais conectada.</p>
+
+            <p><strong>O título que valida um projeto</strong></p>
+
+            <p>O título da Champions validou o PSG em outro nível. O clube já era dominante na França, já tinha alcance global e já havia contratado alguns dos maiores jogadores do mundo. Mas faltava a taça que mais importava.</p>
+
+            <p>Ganhar a Champions colocou o PSG em uma nova prateleira. O clube deixou de ser apenas o projeto ambicioso que tentava conquistar a Europa e passou a ser campeão europeu. Essa diferença muda tudo: reputação, história, cobrança e legado.</p>
+
+            <p>A conquista também reposicionou Luis Enrique. O treinador confirmou sua capacidade de montar equipes competitivas no mais alto nível e mostrou que sua visão de jogo ainda podia vencer em uma Champions cada vez mais física, intensa e taticamente exigente.</p>
+
+            <p><strong>O legado do PSG campeão</strong></p>
+
+            <p>O PSG campeão de 2025 deixa uma lição importante: no futebol moderno, talento individual continua sendo decisivo, mas só funciona plenamente quando existe estrutura coletiva. O clube teve seus maiores nomes em outras temporadas, mas venceu quando encontrou um time mais equilibrado.</p>
+
+            <p>A taça também muda a forma como a história recente do PSG será lembrada. As frustrações continuam fazendo parte do caminho, mas agora servem como etapas de uma construção que terminou em conquista.</p>
+
+            <p>O 5 a 0 sobre a Inter não apagou os tropeços anteriores. Ele deu sentido a eles. Transformou investimento, pressão, derrotas e mudanças de rota em uma narrativa de consagração.</p>
+
+            <p><strong>PSG e a entrada definitiva na história da Champions</strong></p>
+
+            <p>A Champions League costuma ser cruel com clubes que vivem apenas de expectativa. Ela exige repetição, maturidade, elenco, treinador, mentalidade e noites perfeitas nos momentos certos. O PSG demorou para juntar tudo isso.</p>
+
+            <p>Quando conseguiu, venceu de forma inesquecível.</p>
+
+            <p>O título de 2025 colocou o PSG definitivamente na galeria dos campeões europeus. Não foi apenas a primeira Champions do clube. Foi a conquista que encerrou uma espera, reorganizou a identidade do projeto e mostrou que Paris também podia ser o centro do futebol europeu.</p>
+
+            <p>A conquista parisiense também reforça o peso histórico da competição na construção da grandeza dos clubes europeus. <a href="https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html">A história da Champions League ajuda a explicar por que levantar essa taça coloca qualquer clube em um patamar especial no futebol mundial</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
