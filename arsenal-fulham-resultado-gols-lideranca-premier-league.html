@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arsenal vence Fulham e mantém a liderança na Premier League | Corte dos Esportes</title>
+  <meta name="description" content="Arsenal bate o Fulham por 3 a 0 no Emirates Stadium e chega a 76 pontos mantendo a liderança, enquanto o Manchester City ainda tem dois jogos a menos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Arsenal vence Fulham e mantém a liderança na Premier League</h1>
+          <p class="subhead" id="articleExcerpt">Arsenal bate o Fulham por 3 a 0 no Emirates Stadium e chega a 76 pontos mantendo a liderança, enquanto o Manchester City ainda tem dois jogos a menos.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">02/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Arsenal fez o dever de casa neste sábado, no Emirates Stadium, o time de Mikel Arteta venceu o Fulham por 3 a 0, sem grandes dificuldades, e colocou pressão sobre o Manchester City na reta final da disputa pelo título inglês.</p>
+
+            <p>A vitória levou os Gunners aos 76 pontos em 35 jogos. O City, principal concorrente na briga pela taça, aparece com 70 pontos em 33 partidas, ainda com dois jogos a menos. Mesmo assim, o resultado do Arsenal muda o ambiente da rodada: agora, a equipe de <a href="pep-guardiola-carreira-legado-titulos-estilo-de-jogo.html">Pep Guardiola</a>, precisa responder para não ver a distância na tabela se transformar em peso psicológico.</p>
+
+            <p>O próximo compromisso do Manchester City será contra o Everton, fora de casa, na segunda-feira, às 16h. Até lá, o Arsenal dorme com seis pontos de vantagem na ponta e mantém viva a tentativa de conquistar um título que escapa do clube há mais de duas décadas.</p>
+
+            <p><strong>Arsenal resolve o jogo no primeiro tempo</strong></p>
+
+            <p>O Arsenal não deu margem para o Fulham acreditar em surpresa. Desde o início, o time da casa impôs ritmo, ocupou o campo ofensivo e encontrou espaços para atacar com velocidade. O domínio se transformou em gol logo nos primeiros minutos, quando Bukayo Saka fez boa jogada e serviu Viktor Gyökeres para abrir o placar.</p>
+
+            <p>O gol cedo deixou o jogo confortável para o líder. O Fulham teve dificuldade para sair jogando, pouco ameaçou e viu o Arsenal controlar a posse com maturidade. A equipe de Arteta não precisou acelerar o tempo todo, mas foi eficiente quando teve chance de atacar.</p>
+
+            <p>Ainda na primeira etapa, Saka ampliou a vantagem. O atacante, que voltou a ser decisivo, apareceu como peça importante tanto na criação quanto na finalização. Depois de participar do primeiro gol, marcou o segundo e aumentou a tranquilidade dos Gunners diante da própria torcida.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Nos acréscimos do primeiro tempo, Gyökeres voltou a aparecer. O centroavante marcou de cabeça, fez o segundo dele na partida e fechou o placar em 3 a 0 antes do intervalo. Com o jogo praticamente decidido, o Arsenal pôde administrar a etapa final sem precisar correr riscos desnecessários.</p>
+
+            <p><strong>Veja os melhores momentos da partida abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/81X-v3poGy0" title="Arsenal x Fulham - melhores momentos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+            <p><strong>Gyökeres decide e reforça peso no ataque</strong></p>
+
+            <p>O grande nome da partida foi Viktor Gyökeres. O atacante marcou duas vezes, participou diretamente da construção ofensiva e mostrou presença de área em um momento importante da temporada. Em uma reta final de Premier League, ter um centroavante resolvendo jogos assim vira fator decisivo.</p>
+
+            <p>O desempenho confirmou sua importância dentro de um time que, em algumas rodadas recentes, havia oscilado justamente na capacidade de transformar domínio em gols.</p>
+
+            <p>Saka também merece destaque. O atacante deu assistência, marcou e foi uma das principais válvulas ofensivas do Arsenal. A combinação entre Saka e Gyökeres funcionou bem e deu ao time de Arteta uma vitória segura, sem sofrimento e com cara de equipe que entende o peso da corrida pelo título.</p>
+
+            <p><strong>Liderança aumenta pressão sobre o Manchester City</strong></p>
+
+            <p>O Arsenal havia perdido a liderança recentemente, mas voltou a se colocar em posição de disputa do título. A diferença de seis pontos para o Manchester City na reta final pode virar o fator piscológico.</p>
+
+            <p>Esse é o ponto central da rodada. O Arsenal fez sua parte e transferiu a pressão. Agora, o City precisa vencer o Everton para reduzir a distância e manter o controle matemático da briga. Caso tropece, a vantagem dos Gunners passa a ganhar outro tamanho na tabela e no aspecto emocional da disputa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Reta final do Arsenal na Premier League</strong></p>
+
+            <p>Com apenas três jogos restantes no campeonato, o Arsenal entra na reta final sem margem para tropeços. A sequência dos Gunners ainda terá dois jogos fora de casa e apenas uma partida no Emirates Stadium, o que aumenta o peso de cada resultado na disputa com o Manchester City.</p>
+
+            <p><strong>Próximos jogos do Arsenal</strong></p>
+
+            <p>10 de maio — 12h30</p>
+            <p>West Ham x Arsenal</p>
+            <p>London Stadium</p>
+
+            <p>18 de maio — 16h</p>
+            <p>Arsenal x Burnley</p>
+            <p>Emirates Stadium</p>
+
+            <p>24 de maio — 12h</p>
+            <p>Crystal Palace x Arsenal</p>
+            <p>Selhurst Park</p>
+
+            <p><strong>Arteta ganha confiança para a reta final</strong></p>
+
+            <p>Para Mikel Arteta, a atuação também tem valor além dos três pontos. O Arsenal venceu com autoridade, decidiu cedo e conseguiu administrar forças no segundo tempo. Em uma fase decisiva da temporada, esse tipo de controle é importante para manter o elenco competitivo em diferentes frentes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A vitória também ajuda a recuperar confiança depois de rodadas de maior pressão. Em vez de um jogo travado, nervoso ou decidido nos minutos finais, o líder entregou uma atuação firme, com placar construído cedo e protagonismo de seus principais nomes ofensivos.</p>
+
+            <p><strong>Briga pelo título totalmente aberta</strong></p>
+
+            <p>A Premier League ainda não está resolvida. O Manchester City segue perigoso, tem dois jogos a menos e continua dependendo de si para encostar. Mas o Arsenal fez exatamente o que precisava fazer: venceu em casa, manteve a liderança, ampliou a distância momentânea e jogou a pressão para o rival.</p>
+
+            <p> Arsenal ainda está firme na briga por uma taça que carrega peso global, tradição e ciclos históricos de domínio, como mostra <a href="premier-league-historia-campeoes.html">a história da Premier League</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
