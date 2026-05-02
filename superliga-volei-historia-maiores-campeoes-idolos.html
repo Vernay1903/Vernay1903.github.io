@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Superliga de Vôlei: história, maiores campeões e a tradição no Brasil | Corte dos Esportes</title>
+  <meta name="description" content="Criada nos anos 1990, a Superliga transformou o vôlei brasileiro em produto nacional, revelou ídolos, fortaleceu clubes históricos e virou uma das competições mais importantes do calendário esportivo do país." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Superliga de Vôlei: história, maiores campeões e a tradição no Brasil</h1>
+          <p class="subhead" id="articleExcerpt">Criada nos anos 1990, a Superliga transformou o vôlei brasileiro em produto nacional, revelou ídolos, fortaleceu clubes históricos e virou uma das competições mais importantes do calendário esportivo do país.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">02/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="volei.html">VOLEI</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Superliga de Vôlei é a principal competição de clubes do Brasil e uma das mais competitivas do mundo. Disputada no masculino e no feminino, a liga transformou o calendário nacional, aproximou torcidas dos ginásios, profissionalizou estruturas e ajudou a consolidar o Brasil como uma potência mundial dentro das quadras.</p>
+
+            <p>A competição nasceu oficialmente na temporada 1994/95, substituindo a antiga Liga Nacional. A mudança não foi apenas de nome. A Superliga surgiu como um passo de modernização, com calendário mais organizado, maior apelo comercial, melhor exposição para atletas e clubes, além de um formato capaz de valorizar rivalidades regionais e decisões em alto nível.</p>
+
+            <p>Desde então, o torneio se tornou um dos pilares do <a href="volei-por-que-e-o-segundo-esporte-mais-amado-do-brasil-e-superliga-potencia-olimpica.html">vôlei expandido o alcance e interesse pelo país</a>, reunindo tradição, formação de talentos, grandes torcidas e elencos cada vez mais internacionais.</p>
+
+            <p><strong>Como nasceu a Superliga de Vôlei</strong></p>
+
+            <p>Antes da Superliga, o vôlei brasileiro já tinha campeonatos nacionais, mas ainda buscava um modelo mais forte, profissional e atraente para clubes, patrocinadores e transmissões. A criação da Superliga marcou essa virada e passou a funcionar como uma grande vitrine da modalidade, conectando clubes tradicionais, seleções brasileiras e ídolos que já brilhavam em competições internacionais.</p>
+
+            <p>Na primeira temporada da nova era, o título feminino ficou com o Leite Moça, de Sorocaba, equipe que reunia nomes como Ana Moser, Ana Paula e Fernanda Venturini. No masculino, o campeão foi o Frangosul/Ginástica, de Novo Hamburgo, liderado por Carlão, campeão olímpico com a seleção brasileira.</p>
+
+            <p>Esse começo já mostrava o tamanho do projeto: a Superliga nascia com atletas de seleção, clubes estruturados e uma proposta de transformar o vôlei em espetáculo de temporada inteira, não apenas em evento pontual.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Crescimento e profissionalização da liga</strong></p>
+
+            <p>O crescimento foi acelerado porque o vôlei brasileiro já vivia um ambiente favorável. A seleção masculina tinha conquistado o ouro olímpico em Barcelona 1992, enquanto a seleção feminina se firmava entre as potências mundiais. O campeonato nacional se aproveitou desse momento e virou o palco ideal para manter grandes nomes em atividade no país.</p>
+
+            <p>Com o passar dos anos, os clubes passaram a investir mais em comissão técnica, preparação física, análise de desempenho, categorias de base, estrutura médica e marketing. A Superliga deixou de ser apenas uma competição esportiva e se tornou um produto de entretenimento, com rivalidades, ídolos, ginásios cheios e finais capazes de atrair público além do torcedor tradicional.</p>
+
+            <p>Esse processo também fortaleceu cidades fora do eixo mais óbvio do esporte. Belo Horizonte, Contagem, Uberlândia, Osasco, Bauru, Campinas, Suzano, Florianópolis, Rio de Janeiro e outras praças passaram a formar parte importante da geografia da Superliga.</p>
+
+            <p><strong>Tradição no masculino</strong></p>
+
+            <p>No masculino, a Superliga construiu diferentes ciclos de força. Nos primeiros anos, clubes paulistas, gaúchos, mineiros e catarinenses dividiram protagonismo. Suzano, Banespa, Ulbra, Minas, Cimed e Unisul foram equipes decisivas para elevar o nível técnico e criar rivalidades marcantes.</p>
+
+            <p>Depois, o Sada Cruzeiro assumiu papel dominante. A equipe mineira se tornou a principal potência da era moderna, acumulando títulos nacionais, conquistas continentais e mundiais, além de criar uma identidade forte baseada em elenco competitivo, torcida presente e regularidade em jogos decisivos.</p>
+
+            <p>Outros projetos também marcaram época. A Cimed, de Florianópolis, brilhou com elencos fortes e jogadores de seleção. O Taubaté viveu anos de protagonismo. O Sesi e o Vôlei Renata também ajudaram a manter São Paulo como um centro importante do vôlei masculino nacional.</p>
+
+            <p><strong>Tradição no feminino</strong></p>
+
+            <p>No feminino, a Superliga talvez tenha construído a rivalidade mais longa e simbólica do vôlei brasileiro: Rio de Janeiro contra Osasco. O projeto Rexona/Unilever/Sesc, comandado por Bernardinho durante boa parte de sua trajetória, virou sinônimo de constância, títulos e formação de grandes jogadoras. Do outro lado, Osasco se consolidou como uma das camisas mais fortes do país, com torcidas intensas, grandes elencos e finais históricas.</p>
+
+            <p>Nos anos mais recentes, Minas e Praia Clube transformaram o cenário feminino em uma disputa com forte domínio mineiro. O clássico entre Belo Horizonte e Uberlândia passou a decidir temporadas, criar personagens e ampliar a força da Superliga fora do eixo Rio-São Paulo.</p>
+
+            <p>A ascensão dessas equipes mostra como a liga se renovou. A tradição carioca e paulista segue importante, mas Minas Gerais se tornou um dos centros mais fortes do vôlei feminino brasileiro, com estrutura, investimento e presença constante em decisões.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Maiores campeões da Superliga Masculina</strong></p>
+
+            <p>1. Sada Cruzeiro — 9 títulos</p>
+            <p>2. Minas Tênis Clube — 7 títulos</p>
+            <p>3. Cimed/Florianópolis — 4 títulos</p>
+            <p>4. Suzano — 3 títulos</p>
+            <p>5. Ulbra — 3 títulos</p>
+            <p>6. Sesi-SP/Sesi-Bauru — 2 títulos</p>
+            <p>7. Taubaté — 2 títulos</p>
+
+            <p>O ranking mostra bem a alternância de forças da competição. O Minas teve protagonismo forte em diferentes décadas, a Cimed marcou uma era vitoriosa em Santa Catarina, e o Sada Cruzeiro assumiu o posto de maior potência masculina da Superliga moderna.</p>
+
+            <p><strong>Maiores campeões da Superliga Feminina</strong></p>
+
+            <p>1. Rio de Janeiro/Rexona/Unilever/Sesc — 12 títulos</p>
+            <p>2. Osasco — 6 títulos</p>
+            <p>3. Minas Tênis Clube — 6 títulos</p>
+            <p>4. Leite Moça/Leites Nestlé — 3 títulos</p>
+            <p>5. Praia Clube — 2 títulos</p>
+            <p>6. São Bernardo/Uniban — 1 título</p>
+
+            <p>O feminino tem uma característica marcante: a permanência de projetos fortes por longos ciclos. O Rio dominou boa parte da história, Osasco se manteve como rival permanente, e Minas e Praia assumiram protagonismo recente com elencos competitivos e decisões recorrentes.</p>
+
+            <p><strong>Ídolos que marcaram a competição</strong></p>
+
+            <p>A Superliga também virou palco de alguns dos maiores nomes da história do vôlei brasileiro. No feminino, passaram pela competição atletas como Ana Moser, Fernanda Venturini, Fofão, Virna, Márcia Fu, Walewska, Sheilla, Thaisa, Natália, Camila Brait, Dani Lins, Macris, Gabi e muitas outras jogadoras que ajudaram a conectar clubes e seleção brasileira.</p>
+
+            <p>No masculino, a liga recebeu nomes como Carlão, Maurício, Marcelo Negrão, Nalbert, Giovane, Serginho, Rodrigão, André Nascimento, Bruninho, Wallace, Lucarelli, Lucão e Douglas Souza. Muitos deles construíram carreiras vitoriosas alternando momentos na Superliga, na seleção e em clubes estrangeiros.</p>
+
+            <p>Esse intercâmbio é uma das razões para a força do campeonato. A Superliga sempre foi, ao mesmo tempo, ponto de partida, vitrine e retorno para grandes atletas brasileiros.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Globalização e presença estrangeira</strong></p>
+
+            <p>Com o crescimento da liga, a presença de atletas estrangeiros também se tornou mais comum e mais relevante. A Superliga passou a receber jogadoras e jogadores de diferentes escolas do vôlei mundial, aumentando a diversidade técnica e tática da competição.</p>
+
+            <p>No feminino, nomes como Kim Oden, Rosa García, Destinee Hooker, Yonkaira Peña, Megan Hodge, Danielle Cuttino, Polina Rahimova e outras estrangeiras ajudaram a elevar o nível de ataque, saque, bloqueio e experiência internacional. No masculino, atletas como Yoandy Leal, Facundo Conte, Bruno Lima, Oppenkoski e outros nomes de fora do Brasil também reforçaram o peso global do campeonato.</p>
+
+            <p>A chegada desses atletas muda o ambiente competitivo. Os clubes brasileiros passam a incorporar estilos diferentes de jogo, as jovens promessas enfrentam adversários com bagagem internacional, e o torcedor acompanha uma liga mais rica em repertório.</p>
+
+            <p><strong>Por que a Superliga é tão importante para o vôlei brasileiro</strong></p>
+
+            <p>Continua importante porque sustenta a base de alto rendimento da modalidade no país. Ela mantém atletas em atividade durante boa parte da temporada, dá visibilidade para clubes, forma novos talentos e cria um ambiente de pressão semelhante ao que jogadores e jogadoras encontram em competições internacionais.</p>
+
+            <p>Além disso, ajuda a preservar o vínculo emocional entre o público brasileiro e o vôlei. O torcedor acompanha rivalidades, conhece novos nomes, vê ídolos de seleção atuando por clubes nacionais e cria identificação com projetos regionais.</p>
+
+            <p>A competitividade criada pela Superliga também teve reflexo direto no desempenho internacional do Brasil. Ao reunir atletas de seleção, jovens promessas, técnicos de alto nível e estrangeiros experientes em uma temporada longa e exigente, a liga ajudou a formar um ambiente de pressão constante, parecido com o cenário encontrado em Mundiais, Liga das Nações e Jogos Olímpicos. Essa base competitiva fortaleceu gerações que levaram o país ao topo e se conecta diretamente à história das <a href="medalhas-olimpicas-brasil-volei-historia-legado.html">medalhas olímpicas do Brasil no vôlei</a>.</p>
+
+            <p>É por isso que a Superliga vai além da disputa por taças. Ela é parte da construção da cultura do vôlei no Brasil. Une tradição e renovação, revela talentos, recebe estrelas internacionais e mantém o país em contato direto com o mais alto nível da modalidade.</p>
+
+            <p>Mais de três décadas depois de sua criação, segue como uma das competições mais importantes do esporte brasileiro. No masculino e no feminino, sua história mistura hegemonias, rivalidades, personagens históricos e uma capacidade constante de se reinventar. É esse conjunto que faz da Superliga não apenas o principal campeonato nacional de vôlei, mas uma das grandes vitrines esportivas do Brasil.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "volei";
+  const CATEGORY_NAME = "VOLEI";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
