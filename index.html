@@ -461,7 +461,7 @@
     ];
 
     try {
-      const res = await fetch("agenda.json");
+      const res = await fetch("agenda.json", { cache: "no-store" });
       if (!res.ok) throw new Error("agenda.json não carregou");
       const data = await res.json();
 
@@ -501,7 +501,7 @@
     const latestEmpty = document.getElementById("latestEmpty");
 
     try {
-      const res = await fetch("noticias.json");
+      const res = await fetch("noticias.json", { cache: "no-store" });
       if (!res.ok) throw new Error("noticias.json não carregou");
       const data = await res.json();
       const items = Array.isArray(data) ? data : [];
