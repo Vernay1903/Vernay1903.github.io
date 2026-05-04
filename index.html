@@ -17,6 +17,9 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
+  <!-- PERFORMANCE: conexão antecipada da fonte + carregamento sem bloquear texto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -26,7 +29,7 @@
     html, body {
       height: 100%;
       margin: 0;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat, Arial, Helvetica, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
       width: 100%;
@@ -81,7 +84,7 @@
       min-width: 0;
     }
 
-    .logo-container img { height: 34px; }
+    .logo-container img { height: 34px; width: auto; }
 
     .logo-text {
       font-size: 20px;
@@ -298,7 +301,7 @@
 
 <header>
   <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
+    <img src="logo.png" alt="Corte dos Esportes" width="170" height="34" decoding="async">
     <a class="logo-text" href="index.html">Corte dos Esportes</a>
   </div>
 </header>
@@ -458,7 +461,7 @@
     ];
 
     try {
-      const res = await fetch("agenda.json?v=" + Date.now());
+      const res = await fetch("agenda.json");
       if (!res.ok) throw new Error("agenda.json não carregou");
       const data = await res.json();
 
@@ -498,7 +501,7 @@
     const latestEmpty = document.getElementById("latestEmpty");
 
     try {
-      const res = await fetch("noticias.json?v=" + Date.now());
+      const res = await fetch("noticias.json");
       if (!res.ok) throw new Error("noticias.json não carregou");
       const data = await res.json();
       const items = Array.isArray(data) ? data : [];
@@ -572,8 +575,13 @@
     }
   }
 
-  loadAgenda();
   loadNoticias();
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(loadAgenda, { timeout: 1500 });
+  } else {
+    setTimeout(loadAgenda, 800);
+  }
 </script>
 
 </body>
