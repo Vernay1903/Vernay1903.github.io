@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inter de Milão conquista o Campeonato Italiano e reafirma força histórica na Serie A | Corte dos Esportes</title>
+  <meta name="description" content="Inter de Milão vence o Parma, confirma o 21º título do Campeonato Italiano e transforma uma campanha dominante em mais um capítulo marcante da tradição nerazzurra na Itália." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Inter de Milão conquista o Campeonato Italiano e reafirma força histórica na Serie A</h1>
+          <p class="subhead" id="articleExcerpt">Inter de Milão vence o Parma, confirma o 21º título do Campeonato Italiano e transforma uma campanha dominante em mais um capítulo marcante da tradição nerazzurra na Itália.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Inter de Milão voltou ao topo com a autoridade de quem construiu uma campanha sólida, madura e difícil de contestar. O título da Serie A da temporada 2025/2026 foi confirmado com vitória por 2 a 0 sobre o Parma, em San Siro, em uma partida que sintetizou bem a trajetória nerazzurra: controle, eficiência e capacidade de decidir nos momentos certos.</p>
+
+            <p>Os gols de Marcus Thuram e Henrikh Mkhitaryan garantiram o resultado que faltava para transformar a vantagem na tabela em conquista matemática. Com três rodadas ainda por disputar, a Inter abriu distância suficiente para não ser mais alcançada e confirmou o 21º scudetto de sua história, ampliando seu peso entre os grandes campeões do futebol italiano.</p>
+
+            <p>Mais do que uma taça, o título reforça a identidade de um clube que aprendeu a competir em diferentes eras. A Inter já viveu fases marcadas por elencos estrelados, times pragmáticos, campanhas europeias memoráveis e rivalidades intensas. Nesta conquista, o traço principal foi a regularidade. O time de Cristian Chivu não dependeu apenas de uma noite inspirada ou de uma arrancada pontual. A taça veio pela soma de desempenho, equilíbrio e consistência ao longo da temporada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma campanha construída na regularidade</strong></p>
+
+            <p>A vitória sobre o Parma teve clima de decisão, mas não foi um ponto fora da curva. A Inter chegou à reta final com vantagem confortável porque soube transformar superioridade técnica em pontos. Em um campeonato longo, no qual tropeços costumam pesar muito, a equipe se manteve competitiva contra adversários de diferentes perfis e não deixou a disputa escapar nos momentos de maior pressão.</p>
+
+            <p>O empate do Napoli contra o Como também ajudou a abrir o caminho definitivo para a confirmação matemática, mas a conquista da Inter foi resultado de uma campanha própria. O time chegou ao jogo do título dependendo apenas de si e respondeu com atuação segura diante de sua torcida.</p>
+
+            <p>Thuram abriu o placar ainda no fim do primeiro tempo, em um momento importante para reduzir a ansiedade. Na etapa final, Mkhitaryan marcou o segundo e transformou a expectativa em festa. San Siro, palco de tantas páginas históricas do futebol italiano, voltou a ser cenário de celebração nerazzurra.</p>
+
+            <p><strong>Cristian Chivu dá identidade ao time campeão</strong></p>
+
+            <p>A conquista também passa diretamente pelo trabalho de Cristian Chivu. O técnico assumiu a missão de manter a Inter competitiva depois de uma temporada anterior marcada por frustrações e conseguiu transformar o elenco em uma equipe intensa, organizada e confiável. Sua Inter teve pressão alta, equilíbrio defensivo e capacidade de controlar partidas sem perder agressividade no ataque.</p>
+
+            <p>O título em sua primeira grande campanha à frente do clube reforça o peso do trabalho. Chivu, ex-zagueiro da própria Inter, conhecia a dimensão da camisa e conseguiu conduzir o grupo com personalidade. Em um campeonato longo e exigente como a Serie A, a equipe mostrou maturidade para administrar vantagem, reagir em momentos de pressão e confirmar o favoritismo antes da rodada final.</p>
+
+            <p>O Campeonato Italiano é uma liga em que detalhes defensivos, leitura tática e concentração costumam decidir temporadas. A Inter soube reunir essas características sem abrir mão de presença ofensiva. O resultado foi uma equipe equilibrada, capaz de vencer jogos controlando a posse, acelerando pelos lados ou decidindo em jogadas pontuais.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Lautaro Martínez lidera como capitão e artilheiro</strong></p>
+
+            <p>Dentro de campo, Lautaro Martínez foi o grande nome da campanha. Capitão da Inter, o argentino terminou a caminhada do título como artilheiro do time e também como principal goleador do Campeonato Italiano, reforçando sua importância não apenas como finalizador, mas como referência técnica e emocional do elenco.</p>
+
+            <p>Lautaro não foi decisivo apenas pelos gols. Sua presença deu peso ao ataque, abriu espaços para Marcus Thuram e sustentou a identidade competitiva da equipe. Em uma Inter que teve várias peças importantes, o camisa 10 foi o símbolo maior da conquista: líder, artilheiro e protagonista de uma campanha que recolocou o clube no topo da Itália.</p>
+
+            <p>A parceria ofensiva com Thuram também foi uma das marcas do time campeão. Enquanto Lautaro carregou o peso da liderança e da artilharia, Thuram apareceu como peça agressiva, móvel e decisiva em momentos importantes. O gol contra o Parma, justamente no jogo do título, reforçou a importância do atacante francês em uma campanha construída por mais de um protagonista.</p>
+
+            <p><strong>O peso do 21º scudetto da Inter</strong></p>
+
+            <p>Coloca a Inter em uma posição ainda mais forte na história da Serie A, competição que carrega mais de um século de tradição, rivalidades e domínio de gigantes nacionais <a href="campeonato-italiano-historia-tradicao-maiores-campeoes-rivalidades.html">reforça a sua presença dentro da história</a>. O clube já havia dado um passo simbólico importante ao alcançar a segunda estrela em sua camisa, marca ligada aos 20 títulos nacionais. Agora, com mais um scudetto, reforça sua condição de potência permanente do futebol italiano.</p>
+
+            <p>Esse tipo de conquista tem valor que ultrapassa a temporada. Para o torcedor, representa orgulho, memória e continuidade. Para o clube, fortalece marca, elenco e projeto esportivo. Para a Serie A, reafirma a Inter como uma das instituições centrais da competição, capaz de atravessar ciclos e seguir competitiva em alto nível.</p>
+
+            <p>A campanha também ajuda a consolidar nomes importantes do elenco. Lautaro Martínez manteve o papel de liderança técnica e emocional, Thuram apareceu como peça decisiva no ataque, e jogadores experientes como Mkhitaryan deram resposta em momentos grandes. A Inter venceu porque teve elenco, não apenas um onze inicial forte.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Título com cara de reconstrução e afirmação</strong></p>
+
+            <p>Toda conquista carrega um contexto, e esta tem sabor de afirmação. Depois de temporadas de frustrações, pressão e cobranças, a Inter encontrou no Campeonato Italiano a resposta mais direta possível. Ganhar a Serie A com antecedência é uma demonstração de força, mas também de estabilidade interna.</p>
+
+            <p>O trabalho de Chivu ganha peso justamente por isso. Em um clube acostumado a grandes exigências, conquistar o scudetto exige mais do que boas ideias. É preciso administrar elenco, pressão, calendário, expectativa da torcida e necessidade de resultado. A Inter terminou a caminhada com a imagem de um time competitivo, organizado e mentalmente preparado.</p>
+
+            <p>A equipe também mostrou capacidade de transformar uma temporada em narrativa de domínio. Não foi apenas campeã porque venceu o jogo decisivo contra o Parma. Foi campeã porque sustentou rendimento, impôs distância sobre os rivais e encontrou soluções em diferentes momentos da campanha.</p>
+
+            <p><strong>Uma taça que entra para a memória nerazzurra</strong></p>
+
+            <p>O título não será lembrado apenas pelo placar contra o Parma. A conquista entra para a história pelo conjunto da obra: a vantagem construída, a regularidade mantida, os protagonistas que apareceram e a forma como o clube voltou a transformar ambição em troféu.</p>
+
+            <p>Em uma liga marcada por gigantes, rivalidades e tradição, levantar o scudetto é sempre um feito de enorme peso. Para a Inter, o 21º título reforça uma mensagem clara: o clube segue entre as grandes forças da Itália e continua escrevendo capítulos relevantes em sua história.</p>
+
+            <p>A festa em Milão foi o desfecho natural de uma campanha que teve controle, personalidade e liderança. Mas, como toda conquista verdadeiramente grande, seu valor tende a crescer com o tempo. O scudetto não resume apenas uma temporada vencedora. Ele confirma a Inter como um clube de identidade forte, torcida apaixonada e vocação permanente para disputar o topo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
