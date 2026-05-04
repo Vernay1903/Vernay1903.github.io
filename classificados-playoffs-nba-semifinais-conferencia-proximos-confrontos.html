@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>NBA define classificados e confrontos das semifinais de conferência | Corte dos Esportes</title>
+  <meta name="description" content="Primeira rodada dos playoffs da NBA termina com Jogos 7 decisivos, viradas marcantes e os oito classificados definidos para as semifinais de conferência." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">NBA define classificados e confrontos das semifinais de conferência</h1>
+          <p class="subhead" id="articleExcerpt">Primeira rodada dos playoffs da NBA termina com Jogos 7 decisivos, viradas marcantes e os oito classificados definidos para as semifinais de conferência.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>As primeiras séries dos playoffs da NBA chegaram ao fim com os classificados definidos e um fim de semana de decisões fortes, reforçando o peso de uma fase que costuma transformar campanhas em legado <a href="playoffs-nba-como-funciona-tradicao-series-historicas.html">na história dos playoffs da NBA</a>.</p>
+
+            <p>A definição completa veio depois dos Jogos 7 de sábado e domingo, que fecharam as últimas lacunas do chaveamento. Antes disso, parte dos classificados já havia sido conhecida, com Knicks, Thunder, Spurs e Timberwolves abrindo caminho para as semifinais de conferência <a href="classificados-playoffs-nba-quartas-de-final.html">na primeira leva de equipes garantidas na próxima fase</a>.</p>
+
+            <p>Agora, o mata-mata entra em uma etapa ainda mais pesada. As semifinais de conferência colocam frente a frente times de melhor campanha, franquias tradicionais, elencos em reconstrução acelerada e estrelas que chegam pressionadas para transformar boa temporada em avanço real rumo às finais.</p>
+
+            <p><strong>Jogos 7 deram o tom do fim de semana</strong></p>
+
+            <p>O sábado teve um dos resultados mais fortes da primeira rodada. O Philadelphia 76ers foi até Boston, venceu o Celtics por 109 a 100 e fechou a série em 4 a 3. A classificação teve peso especial porque veio fora de casa e depois de o time virar uma série em que chegou a estar atrás por 3 a 1. O resultado também eliminou uma das camisas mais tradicionais da liga e maior campeão.</p>
+
+            <p>No domingo, outros dois confrontos decisivos completaram o quadro. O Detroit Pistons venceu o Orlando Magic por 116 a 94 no Jogo 7 e confirmou uma classificação de enorme impacto. A equipe também precisou reagir depois de estar em desvantagem na série e transformou a força em casa no empurrão final para voltar às semifinais do Leste.</p>
+
+            <p>Na sequência, o Cleveland Cavaliers superou o Toronto Raptors por 114 a 102 e também fechou sua série em sete jogos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Todos os classificados dos playoffs da NBA</strong></p>
+
+            <p>No Leste, o caminho ficou assim:</p>
+
+            <p><strong>Detroit Pistons eliminou o Orlando Magic por 4 a 3</strong></p>
+            <p><strong>Cleveland Cavaliers eliminou o Toronto Raptors por 4 a 3</strong></p>
+            <p><strong>New York Knicks eliminou o Atlanta Hawks por 4 a 2</strong></p>
+            <p><strong>Philadelphia 76ers eliminou o Boston Celtics por 4 a 3</strong></p>
+
+            <p>No Oeste, os classificados foram:</p>
+
+            <p><strong>Oklahoma City Thunder eliminou o Phoenix Suns por 4 a 0</strong></p>
+            <p><strong>San Antonio Spurs eliminou o Portland Trail Blazers por 4 a 1</strong></p>
+            <p><strong>Minnesota Timberwolves eliminou o Denver Nuggets por 4 a 2</strong></p>
+            <p><strong>Los Angeles Lakers eliminou o Houston Rockets por 4 a 2</strong></p>
+
+            <p>O quadro mostra uma segunda rodada com perfis bem diferentes. O Thunder avançou com campanha dominante e sem perder jogo na primeira rodada. Os Spurs confirmaram a força de um projeto jovem e competitivo. Os Timberwolves passaram por uma série dura contra o Nuggets. Já os Lakers chegaram com peso de camisa, experiência e uma vitória de fechamento que recolocou a equipe em uma rota de confronto pesado no Oeste.</p>
+
+            <p><strong>Próximos confrontos da NBA</strong></p>
+
+            <p>As semifinais de conferência começam com quatro séries fortes:</p>
+
+            <p><strong>Detroit Pistons x Cleveland Cavaliers</strong></p>
+            <p><strong>New York Knicks x Philadelphia 76ers</strong></p>
+            <p><strong>Oklahoma City Thunder x Los Angeles Lakers</strong></p>
+            <p><strong>San Antonio Spurs x Minnesota Timberwolves</strong></p>
+
+            <p>Os primeiros jogos estão marcados assim:</p>
+
+            <p><strong>Segunda, 04/05: Philadelphia 76ers x New York Knicks, às 21:00</strong></p>
+            <p><strong>Segunda, 04/05: Minnesota Timberwolves x San Antonio Spurs, às 22:30</strong></p>
+            <p><strong>Terça, 05/05: Cleveland Cavaliers x Detroit Pistons, às 20:00</strong></p>
+            <p><strong>Terça, 05/05: Los Angeles Lakers x Oklahoma City Thunder, às 21:30</strong></p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Leste tem rivalidade e reconstrução em alta</strong></p>
+
+            <p>No Leste, as duas séries carregam narrativas fortes. Knicks e 76ers colocam frente a frente duas torcidas intensas, mercados grandes e equipes que fazem parte de uma conferência marcada por tradição, rivalidades e franquias históricas <a href="conferencia-leste-nba-historia-times-rivalidades-campeoes.html">na história da Conferência Leste da NBA</a>. O Philadelphia vem de uma virada emocional contra Boston, enquanto New York avançou com uma atuação dominante no Jogo 6 diante do Atlanta.</p>
+
+            <p>Do outro lado, Pistons e Cavaliers fazem uma semifinal com cara de afirmação. Detroit chega depois de uma série longa contra Orlando e tenta transformar uma temporada de crescimento em campanha histórica. Cleveland, por sua vez, sobreviveu ao drama contra Toronto e entra na próxima fase com a missão de confirmar que tem força para ir além.</p>
+
+            <p><strong>Oeste tem Thunder favorito e Lakers no caminho</strong></p>
+
+            <p>No Oeste, o confronto entre Thunder e Lakers chama atenção pelo contraste. Oklahoma City avançou com autoridade, varrendo o Phoenix Suns e mantendo a imagem de um dos times mais fortes da temporada. O Lakers chega com peso de camisa, experiência e tradição em uma conferência que reúne algumas das franquias mais vencedoras da NBA <a href="conferencia-oeste-nba-historia-times-rivalidades-campeoes.html">na história da Conferência Oeste</a>.</p>
+
+            <p>A outra semifinal coloca San Antonio Spurs contra Minnesota Timberwolves. Os Spurs seguem em ascensão, com um projeto que já começa a entregar resultado em playoffs. Minnesota, por sua vez, mostrou força competitiva ao eliminar o Denver Nuggets e chega com um elenco testado em confrontos duros.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Playoffs entram em fase decisiva</strong></p>
+
+            <p>A NBA entra em uma fase em que cada jogo passa a pesar ainda mais. A primeira rodada teve varrida, série em seis partidas, viradas em sete jogos e eliminações de impacto. Agora, as semifinais de conferência começam com chaveamento fechado e confrontos capazes de mudar a leitura da temporada.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
