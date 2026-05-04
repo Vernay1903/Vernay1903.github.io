@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Luana Silva: quem é a brasileira que lidera a WSL | Corte dos Esportes</title>
+  <meta name="description" content="Aos 21 anos, nascida no Havaí e filha de brasileiros, Luana Silva virou uma das grandes histórias da WSL ao assumir a liderança do ranking mundial feminino." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Luana Silva: quem é a brasileira que lidera a WSL</h1>
+          <p class="subhead" id="articleExcerpt">Aos 21 anos, nascida no Havaí e filha de brasileiros, Luana Silva virou uma das grandes histórias da WSL ao assumir a liderança do ranking mundial feminino.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="surf.html">Surf</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Luana Silva entrou de vez no centro do surfe mundial. A surfista brasileira-americana deixou a etapa da Gold Coast como vice-campeã e, mais importante do que isso, assumiu a liderança do ranking feminino da WSL. Em uma temporada que já tinha mostrado sinais fortes de crescimento, a lycra amarela confirmou algo que vinha se desenhando: Luana não é mais apenas uma promessa, mas uma candidata real a brigar no topo.</p>
+
+            <p>Nascida em Honolulu, no Havaí, Luana Coelho Silva cresceu em um dos ambientes mais fortes do planeta para o surfe. Filha de brasileiros, ela carrega uma identidade dividida entre o Havaí, onde foi criada em contato direto com o mar, e o Brasil, país que representa no circuito. Essa mistura ajuda a explicar parte de sua trajetória: formação técnica em ondas havaianas, conexão cultural brasileira e uma competitividade que amadureceu cedo.</p>
+
+            <p>A liderança da WSL não surgiu de repente. O vice em Gold Coast, logo depois de outra final em Margaret River, colocou Luana em uma posição inédita na elite feminina. A brasileira passou a ser vista não apenas como surpresa de início de temporada, mas como uma atleta capaz de sustentar resultado em diferentes tipos de onda. A ascensão também reforça o bom momento do surfe nacional, que saiu da etapa australiana com protagonismo nas duas categorias <a href="resultado-brasileiros-gold-coast-wsl-luana-lider-medina-ranking.html">após os resultados dos brasileiros em Gold Coast</a>.</p>
+
+            <p><strong>Da base havaiana ao caminho brasileiro</strong></p>
+
+            <p>A história de Luana Silva começa no Havaí, mas se conecta diretamente ao Brasil. Crescer em Oahu significa estar perto de uma cultura em que o surfe não é apenas esporte, mas parte da vida cotidiana. Para uma atleta jovem, isso representa contato constante com ondas fortes, referências técnicas e um ambiente competitivo natural.</p>
+
+            <p>Mesmo assim, sua trajetória não se resume ao cenário havaiano. Luana escolheu representar o Brasil e passou a ser tratada como uma peça importante para a renovação do surfe feminino brasileiro. Em uma modalidade que ganhou projeção enorme no país com a geração masculina da Brazilian Storm, sua presença no topo da WSL feminina tem peso simbólico. Ela mostra que o Brasil também pode disputar protagonismo constante entre as mulheres.</p>
+
+            <p>Essa identidade dupla também favorece sua leitura esportiva. Luana tem fluidez, ataque e boa adaptação a diferentes condições. Não é uma surfista presa a um único tipo de mar. Essa característica é fundamental em uma temporada longa, com etapas em ondas de beach break, point break, reef break e palcos históricos do circuito.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como Luana chegou à elite da WSL</strong></p>
+
+            <p>A entrada na elite começou cedo. Ainda adolescente, ela venceu uma etapa do Challenger Series em Portugal, em Ericeira, resultado que abriu caminho para sua classificação ao Championship Tour. Na época, tinha apenas 17 anos e já aparecia como uma das jovens mais promissoras do circuito.</p>
+
+            <p>O caminho, porém, não foi linear. Como acontece com muitos talentos jovens, Luana precisou atravessar fases de adaptação, pressão por resultado e disputa por espaço em uma elite extremamente curta no feminino. O CT não perdoa instabilidade: poucas vagas, calendário forte e adversárias com títulos mundiais, experiência olímpica e histórico de decisões.</p>
+
+            <p>A volta ao circuito ganhou novo impulso quando Luana herdou uma vaga na temporada de 2025 após a ausência de Stephanie Gilmore. Essa oportunidade foi importante porque colocou a brasileira novamente contra as melhores do mundo. A diferença é que, dessa vez, ela aproveitou o espaço para construir resultado, ganhar confiança e se firmar como nome de primeira prateleira.</p>
+
+            <p>Em vez de tratar a vaga como acaso, Luana transformou a chance em vaga definitiva. A temporada seguinte mostrou uma atleta mais madura, mais consistente e mais preparada para finais grandes.</p>
+
+            <p><strong>O que Luana já tinha conquistado antes da liderança</strong></p>
+
+            <p>Antes de vestir a lycra amarela da WSL, Luana já carregava conquistas relevantes. O título do Mundial Júnior da WSL em 2025 foi um dos marcos mais importantes da carreira. A vitória colocou a brasileira em uma lista de talentos globais que usaram a base como ponte para o alto rendimento e reforçou sua condição de nome forte da nova geração.</p>
+
+            <p>Além disso, sua vitória no Challenger Series de Ericeira já havia mostrado que ela tinha capacidade de vencer fora do ambiente havaiano. Esse detalhe importa. Ganhar em Portugal, disputar finais na Austrália e crescer no ranking mundial mostra repertório competitivo. Luana não depende apenas do talento natural: ela já provou que consegue se adaptar e performar em diferentes cenários.</p>
+
+            <p>A participação nos Jogos Olímpicos de Paris também ajudou a ampliar seu perfil internacional. Mesmo antes de liderar a WSL, Luana já era uma atleta observada por torcedores, marcas e pelo próprio circuito. O que mudou em 2026 foi a confirmação esportiva em sequência.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Patrocínio, imagem e novo peso comercial</strong></p>
+
+            <p>O crescimento esportivo veio acompanhado de um avanço fora da água. Luana passou a ter mais atenção do mercado e entrou no radar de projetos comerciais ligados ao surfe brasileiro. A presença no Squad Banco do Brasil foi um passo importante nesse processo, porque colocou a surfista ao lado de nomes já consolidados da modalidade nacional.</p>
+
+            <p>Esse tipo de patrocínio de peso não é apenas apoio financeiro. Ele também sinaliza posicionamento. Marcas buscam atletas com potencial de resultado, identificação com o público e capacidade de representar uma narrativa. No caso de Luana, a narrativa é forte: jovem, brasileira, criada no Havaí, integrante da elite mundial e agora líder do ranking.</p>
+
+            <p>A parceria com uma gestão especializada em patrocínios também mostra que sua carreira entrou em outro estágio. Quando uma atleta passa a disputar finais, liderar ranking e carregar bandeira brasileira no circuito, sua imagem deixa de ser apenas esportiva e passa a ter valor de marca.</p>
+
+            <p><strong>Por que Luana está surpreendendo</strong></p>
+
+            <p>Luana surpreende porque chegou ao topo em um circuito muito competitivo. O feminino da WSL reúne campeãs mundiais, medalhistas olímpicas, surfistas experientes e uma nova geração cada vez mais agressiva. Liderar esse ranking aos 21 anos exige mais do que talento.</p>
+
+            <p>O início de temporada mostra evolução em três pontos: escolha de ondas, controle emocional e consistência em baterias decisivas. Em Gold Coast, mesmo derrotada por Stephanie Gilmore na final, Luana saiu maior do que entrou. Perder para uma das maiores surfistas da história em uma decisão não diminuiu sua campanha. Pelo contrário: reforçou que ela já está dividindo palco com lendas e competindo em nível de título.</p>
+
+            <p>O vice também teve valor estratégico. Em uma temporada de pontos corridos, chegar a finais com frequência pode pesar mais do que uma vitória isolada. Luana acumulou resultado, subiu no ranking e assumiu uma liderança que muda o tom da sua temporada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma candidata real ao título mundial</strong></p>
+
+            <p>A liderança da WSL ainda não garante nada, mas muda tudo. A partir de agora, Luana Silva deixa de ser vista apenas como promessa em ascensão e passa a carregar expectativa de candidata. Cada etapa terá outro peso, cada bateria será observada com mais atenção, e cada resultado será comparado com a corrida pelo título.</p>
+
+            <p>O calendário ainda reserva desafios grandes, com ondas e condições que testam versatilidade. Para acompanhar esse caminho, o restante da temporada da WSL ajuda a medir onde Luana pode confirmar sua força e onde terá os maiores obstáculos <a href="wsl-2026-surf-etapas-tradicao-praias.html">no calendário completo do circuito mundial</a>.</p>
+
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
