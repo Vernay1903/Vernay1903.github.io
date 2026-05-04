@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Uruguai na Copa do Mundo: os títulos, o Maracanazo e a longa espera pelo tri | Corte dos Esportes</title>
+  <meta name="description" content="Primeiro campeão da história da Copa do Mundo, o Uruguai construiu sua lenda com os títulos de 1930 e 1950, mas vive há décadas a busca por uma terceira conquista." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Uruguai na Copa do Mundo: os títulos, o Maracanazo e a longa espera pelo tri</h1>
+          <p class="subhead" id="articleExcerpt">Primeiro campeão da história da Copa do Mundo, o Uruguai construiu sua lenda com os títulos de 1930 e 1950, mas vive há décadas a busca por uma terceira conquista.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Pequeno em território e população, o país se transformou em uma potência simbólica do futebol mundial por causa de duas conquistas que atravessaram gerações: o título inaugural de 1930 e o bicampeonato de 1950, conquistado no Brasil em uma das partidas mais marcantes de todos os tempos.</p>
+
+            <p>Quando se fala em tradição celeste, não se trata apenas de nostalgia. O Uruguai foi o primeiro campeão mundial, venceu uma Copa em casa, silenciou o Maracanã diante da seleção brasileira e criou uma identidade competitiva que segue viva mesmo depois de décadas sem levantar novamente a taça. A camisa azul carrega uma memória pesada, feita de resistência, personalidade e orgulho nacional.</p>
+
+            <p><strong>O primeiro campeão da história</strong></p>
+
+            <p>A primeira Copa do Mundo foi disputada em 1930, justamente no Uruguai. O país vivia um momento de enorme força no futebol internacional e recebeu o torneio como uma potência da época. Em Montevidéu, no Estádio Centenário, a seleção uruguaia confirmou seu favoritismo e entrou para a história como a primeira campeã mundial.</p>
+
+            <p>A final foi contra a Argentina, em um clássico sul-americano que já carregava rivalidade, tensão e enorme significado esportivo. O Uruguai venceu por 4 a 2 e transformou aquele título em marco fundador da Copa. Não era apenas uma conquista nacional. Era o nascimento de uma competição que se tornaria o maior evento do futebol mundial.</p>
+
+            <p>Aquele time ajudou a consolidar a imagem da Celeste como seleção de força mental e capacidade decisiva. O Uruguai não entrou na história por acaso. Entrou como protagonista de um futebol sul-americano que, desde o início, mostrou ao mundo que técnica, raça e identidade podiam caminhar juntas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O bicampeonato no Brasil e o Maracanazo</strong></p>
+
+            <p>Vinte anos depois, o Uruguai escreveu seu capítulo mais famoso. A Copa do Mundo de 1950 foi disputada no Brasil e terminou com uma das maiores viradas emocionais da história do esporte. O Brasil chegou à partida decisiva contra os uruguaios no Maracanã precisando apenas de um empate para ser campeão, em uma trajetória que anos depois transformaria a Seleção Brasileira na maior vencedora da Copa <a href="selecao-brasileira-historia-5-copas-do-mundo.html">com cinco títulos mundiais</a>.</p>
+
+            <p>Mas o Uruguai não aceitou o papel de figurante. Depois de sair atrás no placar, a Celeste reagiu. Schiaffino empatou, Ghiggia virou e o Maracanã, preparado para celebrar o Brasil, ficou em silêncio. O 2 a 1 uruguaio entrou para a história como o Maracanazo, nome que até hoje resume uma das maiores façanhas das Copas.</p>
+
+            <p>Mais do que o bicampeonato, 1950 definiu parte da alma futebolística do Uruguai. Reforçou a imagem de uma seleção que cresce em cenários adversos, enfrenta favoritos e transforma pressão em combustível. Poucos títulos na história do futebol têm tanto peso simbólico quanto aquele.</p>
+
+            <p><strong>A tradição celeste e o peso das estrelas</strong></p>
+
+            <p>Oficialmente, em Copas do Mundo, o Uruguai tem dois títulos: 1930 e 1950. Ainda assim, a camisa uruguaia costuma carregar quatro estrelas, em referência também às conquistas olímpicas de 1924 e 1928, período em que o futebol olímpico tinha peso de campeonato mundial antes da criação da Copa.</p>
+
+            <p>Para o país, a história não começa apenas em 1930. Ela vem de uma era anterior, de afirmação internacional, quando o Uruguai já se colocava entre as grandes forças do futebol. A Copa apenas transformou essa tradição em narrativa global.</p>
+
+            <p>A Celeste se tornou sinônimo de garra, competitividade e orgulho. Mesmo em períodos sem título mundial, o Uruguai raramente foi visto como seleção comum. Há sempre um respeito especial em torno da camisa, justamente porque sua história é feita de feitos improváveis e de uma relação intensa entre futebol e identidade nacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A força do Uruguai também ajuda a explicar o peso sul-americano na história das Copas. Ao lado de Brasil e Argentina, a Celeste faz parte do grupo de seleções do continente que já chegaram ao topo do mundo, em uma tradição que também passa pelos títulos argentinos e por ídolos históricos como Maradona e Messi <a href="argentina-copas-do-mundo-titulos-historia-messi-maradona.html">na história da Argentina em Copas do Mundo</a>.</p>
+
+            <p><strong>Gerações fortes que não chegaram ao tri</strong></p>
+
+            <p>Depois de 1950, o Uruguai viveu uma longa espera pelo terceiro título mundial. A seleção teve boas campanhas, jogadores importantes e momentos de competitividade, mas não conseguiu repetir o auge das primeiras décadas.</p>
+
+            <p>Entre as gerações mais lembradas está a que marcou o fim dos anos 2000 e o início dos anos 2010. Com nomes como Diego Forlán, Luis Suárez, Edinson Cavani, Diego Godín e Fernando Muslera, o Uruguai voltou a ser protagonista em grandes torneios. Foi uma geração de liderança forte, personalidade e identificação profunda com a camisa.</p>
+
+            <p>Na Copa de 2010, na África do Sul, a Celeste chegou à semifinal e terminou em quarto lugar, sua melhor campanha mundial em décadas. Forlán foi um dos grandes nomes daquele torneio, Suárez viveu momentos decisivos, e o time comandado por Óscar Tabárez reacendeu o orgulho de um país acostumado a medir sua seleção pela grandeza do passado.</p>
+
+            <p>Essa geração também conquistou a Copa América de 2011, reforçando que o Uruguai ainda tinha força para competir em alto nível. Mas, em Copas do Mundo, o tri não veio. Em 2014, 2018 e 2022, a seleção teve momentos de esperança, mas não conseguiu transformar talento e experiência em uma nova final.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A longa espera pelo tricampeonato</strong></p>
+
+            <p>A espera pelo terceiro título também coloca o Uruguai em um grupo especial de seleções bicampeãs que seguem buscando ampliar sua história. A França, por exemplo, também tem duas conquistas mundiais, em 1998 e 2018, e construiu seu peso moderno <a href="franca-copas-do-mundo-titulos-1998-2018.html">com gerações campeãs em épocas diferentes</a>.</p>
+
+            <p>Essa espera não diminui a tradição celeste. Pelo contrário, ajuda a tornar a história ainda mais densa. O Uruguai não é lembrado apenas pelo que venceu, mas pela forma como venceu e pela maneira como segue carregando sua identidade. Poucas seleções têm uma relação tão forte entre camisa, memória e caráter competitivo.</p>
+
+            <p>O Uruguai foi o primeiro campeão da Copa do Mundo. Foi também o responsável por um dos maiores choques da história do torneio, no Maracanã. Agora, segue em busca do tricampeonato que recolocaria a Celeste no topo do mundo e encerraria uma espera que já faz parte de sua própria lenda. Na Copa de 2026, essa nova tentativa começa em uma chave de peso, com Espanha, Arábia Saudita e Cabo Verde <a href="grupo-h-copa-do-mundo-2026-espanha-uruguai-arabia-saudita-cabo-verde.html">no Grupo H do Mundial</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
