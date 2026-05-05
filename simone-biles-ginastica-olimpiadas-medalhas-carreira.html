@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simone Biles: a lenda da ginástica que mudou o esporte dentro e fora das arenas | Corte dos Esportes</title>
+  <meta name="description" content="Atleta construiu uma das carreiras mais dominantes da história da ginástica artística, acumulou medalhas olímpicas e mundiais, superou a pressão de ser a maior de sua geração e transformou sua pausa por saúde mental em um dos momentos mais simbólicos do esporte moderno." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Simone Biles: a lenda da ginástica que mudou o esporte dentro e fora das arenas</h1>
+          <p class="subhead" id="articleExcerpt">Atleta construiu uma das carreiras mais dominantes da história da ginástica artística, acumulou medalhas olímpicas e mundiais, superou a pressão de ser a maior de sua geração e transformou sua pausa por saúde mental em um dos momentos mais simbólicos do esporte moderno.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">05/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="esportes-olimpicos.html">ESPORTES OLIMPICOS</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Simone Biles não é apenas uma campeã da ginástica artística. Ela se tornou uma referência para medir o limite do que parecia possível no esporte. Sua trajetória combina potência, precisão, criatividade e uma capacidade rara de transformar dificuldade técnica em domínio competitivo. Em uma modalidade marcada por detalhes mínimos, quedas decisivas e pressão extrema, Biles construiu uma carreira em que a excelência deixou de ser exceção e passou a ser rotina.</p>
+
+            <p>A norte-americana se destacou por elevar o nível técnico da ginástica feminina. Seus saltos, acrobacias e combinações passaram a desafiar não só as rivais, mas também os próprios códigos de pontuação. Em diferentes aparelhos, Biles apresentou elementos de altíssimo grau de dificuldade e consolidou um estilo explosivo, seguro e reconhecível. Por isso, seu nome ultrapassou a ginástica: ela virou símbolo de grandeza esportiva.</p>
+
+            <p><strong>Medalhas olímpicas de Simone Biles</strong></p>
+
+            <p>Simone Biles soma 11 medalhas olímpicas, com conquistas em três edições dos Jogos, sendo:</p>
+
+           <p><strong>7 medalhas de ouro</strong></p>
+           <p><strong>2 medalhas de prata</strong></p>
+           <p><strong>2 medalhas de bronze</strong></p>
+
+            <p>Por edição olímpica, suas medalhas ficaram assim:</p>
+
+            <p>Rio 2016: ouro por equipes, ouro no individual geral, ouro no salto, ouro no solo e bronze na trave.</p>
+            <p>Tóquio 2020: prata por equipes e bronze na trave.</p>
+            <p>Paris 2024: ouro por equipes, ouro no individual geral, ouro no salto e prata no solo.</p>
+
+            <p><strong>Veja abaixo algumas momentos nas olimpíadas dela:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/axUOMKsTQsg" title="Simone Biles - vídeo incorporado" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A campanha de Paris 2024 teve peso especial porque marcou a retomada olímpica de Biles depois do episódio mais simbólico de sua carreira. Ela voltou ao palco principal, venceu novamente e reforçou a ideia de que sua grandeza não dependia apenas de medalhas, mas também da forma como enfrentava o próprio limite.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Medalhas em Campeonatos Mundiais</strong></p>
+
+            <p>Nos Campeonatos Mundiais, Simone Biles construiu uma marca ainda mais impressionante. Ela soma 30 medalhas mundiais, distribuídas da seguinte forma:</p>
+
+            <p><strong>23 medalhas de ouro</strong></p>
+            <p><strong>4 medalhas de prata</strong></p>
+            <p><strong>3 medalhas de bronze</strong></p>
+
+            <p>Entre seus feitos mais fortes nos Mundiais estão:</p>
+
+            <p>6 títulos mundiais no individual geral</p>
+            <p>6 títulos mundiais no solo</p>
+            <p>4 títulos mundiais na trave</p>
+            <p>Títulos por equipes com os Estados Unidos</p>
+            <p>Medalhas em diferentes aparelhos, mostrando domínio completo da modalidade</p>
+
+            <p>Esse volume de conquistas ajuda a explicar por que Biles é tratada como uma das maiores atletas da história, não apenas da ginástica. Poucos nomes, em qualquer esporte, conseguiram unir longevidade, impacto técnico, domínio estatístico e influência cultural em um mesmo pacote.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A pressão de ser a melhor do mundo</strong></p>
+
+            <p>Ser Simone Biles também significou carregar uma pressão incomum. Antes de grandes competições, ela não era vista apenas como candidata ao pódio. Muitas vezes, era tratada como obrigação de ouro. Essa diferença é pesada: para outras atletas, vencer podia ser uma surpresa; para Biles, qualquer resultado abaixo da vitória era interpretado como falha.</p>
+
+            <p>Essa cobrança constante colocou sua carreira em uma dimensão quase desumana. A expectativa sobre ela era de perfeição. Cada apresentação virava um teste público, cada erro ganhava proporção mundial e cada decisão era analisada como se a atleta não tivesse direito à vulnerabilidade. O grande ponto da história de Biles é justamente esse: ela dominou a ginástica em níveis raros, mas também mostrou que até os maiores nomes do esporte precisam proteger a própria saúde.</p>
+
+            <p><strong>A pausa simbólica por saúde mental</strong></p>
+
+            <p>Nos Jogos de Tóquio, Biles viveu um dos momentos mais importantes do esporte moderno ao se retirar de finais para priorizar sua saúde mental. O episódio gerou debate mundial porque quebrou uma lógica antiga: a de que grandes campeões precisam competir a qualquer custo.</p>
+
+            <p>Na ginástica, a questão mental tem relação direta com segurança física. Uma perda de referência no ar pode transformar um movimento em risco real. Ela decidiu parar quando percebeu que não estava em condição segura para executar elementos de altíssima dificuldade. Foi uma decisão difícil, tomada sob pressão máxima, mas que mudou a conversa sobre atletas de elite.</p>
+
+            <p>A pausa não diminuiu sua grandeza. Pelo contrário. Ela abriu espaço para uma discussão mais madura sobre desempenho, cobrança, medo, ansiedade e responsabilidade. Biles mostrou que coragem também pode ser dizer “não” quando o corpo e a mente pedem limite.</p>
+
+            <p><strong>O retorno que reforçou o legado</strong></p>
+
+            <p>Depois de Tóquio, a volta de Simone Biles teve um significado maior do que uma simples retomada competitiva. Ela retornou sem precisar apagar o passado, sem transformar a pausa em vergonha e sem aceitar a narrativa de que precisava provar algo para o mundo. Ainda assim, venceu.</p>
+
+            <p>Em Paris 2024, Biles conquistou novos ouros olímpicos e voltou ao topo em uma fase mais madura da carreira. O retorno mostrou uma atleta mais consciente, com domínio técnico preservado e uma relação mais clara com a própria trajetória. A vitória passou a carregar outro peso: não era só a campeã vencendo de novo, era uma lenda mostrando que a grandeza também pode incluir pausa, cuidado e reconstrução.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma lenda além das medalhas</strong></p>
+
+            <p>As vitórias explicam parte da história de Simone Biles, mas não explicam tudo. Seu impacto está também na forma como ela mudou a conversa sobre pressão no esporte, saúde mental e respeito aos limites dos atletas. Ela ajudou a quebrar a ideia de que vulnerabilidade é fraqueza e reforçou que longevidade esportiva depende de equilíbrio, não apenas de talento.</p>
+
+            <p>Essa dimensão aproxima de outros ícones que ultrapassaram suas modalidades. Assim como <a href="https://cortedosesportes.com.br/shaun-white-snowboard-olimpiadas-x-games-skate.html">Shaun White se tornou uma lenda dos esportes de inverno e marcou gerações no snowboard</a>, Biles ultrapassou os limites da própria modalidade ao transformar excelência, pressão e saúde mental em parte central de seu legado esportivo.</p>
+
+            <p><strong>Por que Simone Biles é uma das maiores da história</strong></p>
+
+            <p>Ela é uma das maiores atletas de todos os tempos porque reuniu feitos que raramente aparecem juntos. Ela venceu muito, por muito tempo, contra as melhores do mundo e com um nível técnico que mudou o padrão da ginástica. Além disso, transformou um momento de vulnerabilidade em legado.</p>
+
+            <p>A trajetória de Biles também ajuda a entender por que <a href="https://cortedosesportes.com.br/olimpiadas-historia-tradicao-maiores-campeoes.html">a história das Olimpíadas é marcada por atletas capazes de mudar o significado dos Jogos</a>, indo além das medalhas para influenciar gerações, debates culturais e a forma como o mundo enxerga o esporte.</p>
+
+            <p>Sua história não é apenas sobre subir ao pódio. É sobre dominar uma modalidade, enfrentar a pressão de ser tratada como imbatível, parar quando era necessário e voltar sem perder a essência competitiva. Ela provou que uma lenda não se constrói apenas com medalhas, mas também com consciência, coragem e impacto duradouro.</p>
+
+            <p>No fim, Simone Biles não mudou apenas o quadro de recordes da ginástica artística. Ela mudou a forma como o esporte olha para seus maiores campeões.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "esportes-olimpicos";
+  const CATEGORY_NAME = "ESPORTES OLIMPICOS";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
