@@ -1,18 +1,30 @@
 [
   {
-    "time": "11:00",
-    "desc": "Chelsea x Nottingham Forest - Premier League"
-  },
-  {
     "time": "16:00",
-    "desc": "Everton x Manchester City - Premier League"
+    "desc": "Arsenal x Atlético Madrid - Liga dos Campeões"
   },
   {
-    "time": "21:00",
-    "desc": "Knicks x 76ers - NBA Playoffs"
+    "time": "19:00",
+    "desc": "Sporting Cristal x Palmeiras - Libertadores"
   },
   {
-    "time": "22:30",
-    "desc": "Spurs x Timberwolves - NBA Playoffs"
+    "time": "19:00",
+    "desc": "Deportivo Riestra x Grêmio - Sul-Americana"
+  },
+  {
+    "time": "19:00",
+    "desc": "Juventud x Atlético-MG - Sul-Americana"
+  },
+  {
+    "time": "20:00",
+    "desc": "Pistons x Cavaliers - NBA Playoffs"
+  },
+  {
+    "time": "21:30",
+    "desc": "Deportivo Recoleta x Santos - Sul-Americana"
+  },
+  {
+    "time": "21:30",
+    "desc": "Thunder x Lakers - NBA Playoffs"
   }
 ]
