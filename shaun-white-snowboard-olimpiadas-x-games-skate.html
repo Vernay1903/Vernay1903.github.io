@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shaun White: a lenda do snowboard que virou símbolo dos esportes de inverno | Corte dos Esportes</title>
+  <meta name="description" content="Tricampeão olímpico no snowboard halfpipe e campeão também no skate nos X Games, transformou talento, estilo e longevidade em uma das carreiras mais marcantes dos esportes radicais." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Shaun White: a lenda do snowboard que virou símbolo dos esportes de inverno</h1>
+          <p class="subhead" id="articleExcerpt">Tricampeão olímpico no snowboard halfpipe e campeão também no skate nos X Games, transformou talento, estilo e longevidade em uma das carreiras mais marcantes dos esportes radicais.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">05/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">ESPORTES OLIMPICOS</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Shaun White é um daqueles atletas que ultrapassam a própria modalidade. Para muita gente, ele não foi apenas um snowboarder dominante. Foi o rosto de uma geração, o nome que ajudou a levar o snowboard para um público maior e uma figura capaz de conectar Olimpíadas de Inverno, X Games, cultura jovem, skate e entretenimento.</p>
+
+            <p>Nascido na Califórnia, em 1986, Shaun White construiu sua carreira entre a neve e as rampas. Antes de se tornar uma lenda olímpica, cresceu como um prodígio dos esportes de ação, competindo cedo, chamando atenção pelo cabelo ruivo que lhe rendeu o apelido de “Flying Tomato” e mostrando uma combinação rara de técnica, coragem e carisma.</p>
+
+            <p>Seu nome ficou eternamente ligado ao snowboard halfpipe, foi ali que White se tornou um dos maiores nomes da história dos Jogos Olímpicos de Inverno.</p>
+
+            <p><strong>O domínio olímpico no snowboard</strong></p>
+
+            <p>A carreira olímpica de Shaun White começou com impacto imediato. Em Turim 2006, ainda jovem, ele conquistou sua primeira medalha de ouro no halfpipe e se apresentou ao mundo como uma estrela em ascensão. A vitória marcou o início de uma trajetória que mudaria a forma como o snowboard era visto dentro do programa olímpico.</p>
+
+            <p>Quatro anos depois, em Vancouver 2010, White confirmou que não era apenas uma promessa. Voltou a vencer o halfpipe e conquistou o bicampeonato olímpico, em uma apresentação que reforçou sua imagem de atleta decisivo em grandes palcos. Sua capacidade de entregar manobras difíceis sob pressão virou uma das marcas da carreira.</p>
+
+            <p>O terceiro ouro veio em PyeongChang 2018, talvez o mais simbólico. Depois de ter ficado fora do pódio em Sochi 2014, White chegou à Coreia do Sul com questionamentos sobre sua capacidade de voltar ao topo. A resposta veio em grande estilo: vitória no halfpipe, terceira medalha olímpica de ouro e um lugar ainda maior na história dos esportes de inverno.</p>
+
+            <p><strong>Veja abaixo o ouro histórico abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/he03dVkhLTM" title="Shaun White - melhores momentos no snowboard" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>Ao todo, Shaun White disputou cinco Olimpíadas de Inverno e venceu três ouros olímpicos, todos no snowboard halfpipe. A longevidade é parte central do legado.</p>
+
+            <p>A trajetória dele também ajuda a mostrar como os esportes de inverno produzem ídolos globais e momentos históricos, algo que ganhou leitura especial para o público brasileiro com o ouro de Lucas Pinheiro Braathen <a href="lucas-pinheiro-braathen-ouro-olimpiadas-inverno-16-02-2026.html">nos Jogos Olímpicos de Inverno</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Mais do que medalhas: um atleta que mudou o esporte</strong></p>
+
+            <p>O impacto de Shaun White não pode ser medido apenas pelo quadro de medalhas. Ele ajudou a transformar o snowboard em um produto global, mais visível e mais próximo do grande público. Suas manobras eram fortes, mas sua presença também contava: cabelo marcante, estilo próprio, presença midiática e uma forma de competir que parecia feita para grandes momentos.</p>
+
+            <p>White surgiu em uma época em que os esportes radicais buscavam mais espaço fora de seus nichos. Com vitórias olímpicas, aparições em eventos internacionais e protagonismo nos X Games, ele virou um símbolo dessa transição. O snowboard deixou de parecer apenas uma cultura alternativa e passou a ser visto também como uma modalidade de elite, com atletas profissionais, grandes patrocinadores e enorme audiência.</p>
+
+            <p><strong>A força nos X Games e o lado skatista</strong></p>
+
+            <p>Antes de ser lembrado principalmente pelas Olimpíadas, Shaun White já era um fenômeno nos X Games. O evento foi um dos palcos mais importantes para sua construção como ícone dos esportes de ação. Nele, White acumulou medalhas no snowboard e também levou sua habilidade para o skate.</p>
+
+            <p>Esse detalhe é fundamental para entender sua grandeza. Shaun White não foi apenas um especialista da neve. Ele também competiu em alto nível no skate vertical, modalidade parecida com a do halfpipe no snowboard.</p>
+
+            <p>Nos X Games, White conquistou ouro no skate vertical, mostrando uma versatilidade rara. Muitos atletas conseguem brilhar em uma modalidade. Poucos conseguem ser relevantes em duas culturas tão exigentes quanto snowboard e skate. Essa capacidade de transitar entre neve e concreto reforçou sua imagem de atleta completo dos esportes radicais.</p>
+
+            <p><strong>Veja abaixo a volta que deu o ouro no skate:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/9Wwi3E1hrVk" title="Shaun White no skate e nos X Games" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>Esse detalhe aproxima Shaun White de outra lenda dos esportes radicais: Tony Hawk, nome que também transformou o skate em fenômeno global e ajudou a levar a modalidade para outro patamar <a href="tony-hawk-historia-feitos-legado-skate.html">na história moderna do skate</a>.</p>
+
+            <p>O currículo nos X Games é um dos mais fortes da história. Somando snowboard e skate, Shaun White construiu uma coleção de medalhas que ajudou a consolidar seu status de lenda. O feito no skate é especialmente importante porque mostra que sua carreira não foi baseada apenas em uma prova olímpica. Ele dominou ambientes diferentes, com adversários diferentes e estilos de competição distintos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A despedida e o peso do legado</strong></p>
+
+            <p>Shaun White encerrou sua trajetória olímpica nos Jogos de Pequim 2022. A despedida não veio com medalha, mas teve peso emocional. Aos 35 anos na época, ele já não precisava provar sua grandeza. Sua presença ali representava o fim de uma era para o snowboard.</p>
+
+            <p>O esporte mudou muito desde sua primeira aparição olímpica. Novas gerações passaram a executar manobras cada vez mais complexas, o nível técnico subiu e atletas mais jovens chegaram empurrando os limites. Mesmo assim, White permaneceu como referência. Sua história virou régua para qualquer competidor que tenta dominar o halfpipe.</p>
+
+            <p>Depois da aposentadoria competitiva, seu nome continuou ligado ao crescimento do snowboard e à profissionalização da modalidade. Isso também faz parte do legado: grandes atletas não deixam marca apenas quando vencem. Eles influenciam a estrutura do esporte, inspiram novos competidores e ajudam a construir o caminho para a próxima geração.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que Shaun White segue sendo uma lenda</strong></p>
+
+            <p>Virou lenda porque uniu resultado, impacto cultural e longevidade. Foi tricampeão olímpico, brilhou nos X Games, venceu também no skate, atravessou diferentes fases do esporte e se tornou um dos nomes mais reconhecidos dos esportes de inverno.</p>
+
+            <p>Sua carreira mostra como um atleta pode mudar a percepção de uma modalidade. O snowboard já existia, já tinha grandes nomes e já era competitivo antes dele. Mas White ajudou a levar esse universo para um palco maior, com audiência global e status de espetáculo olímpico.</p>
+
+            <p>A imagem que fica é a de um competidor decisivo, ousado e capaz de crescer nos grandes momentos. Da primeira medalha olímpica em Turim ao ouro de redenção em PyeongChang, passando pelos X Games e pelo skate vertical, Shaun White construiu uma trajetória que vai além da neve.</p>
+
+            <p>Ele não foi apenas campeão. Foi um personagem central na história moderna dos esportes radicais. Um atleta que transformou o halfpipe em palco, o snowboard em espetáculo e sua carreira em referência para quem tenta voar mais alto.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "esportes-olimpicos";
+  const CATEGORY_NAME = "ESPORTES OLIMPICOS";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
