@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rebeca Andrade: a carreira da maior ginasta brasileira | Corte dos Esportes</title>
+  <meta name="description" content="Ela virou a atleta do Brasil com mais medalhas olímpicas e conquistou o mundo com carisma, simpatia, força mental e uma técnica que colocou a ginástica artística nacional em outro patamar." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Rebeca Andrade: a carreira da maior ginasta brasileira</h1>
+          <p class="subhead" id="articleExcerpt">Ela virou a atleta do Brasil com mais medalhas olímpicas e conquistou o mundo com carisma, simpatia, força mental e uma técnica que colocou a ginástica artística nacional em outro patamar.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">05/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Esportes Olímpicos</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Rebeca Andrade não é apenas uma campeã olímpica. Ela é uma das maiores personagens da história do esporte brasileiro. Em uma modalidade tradicionalmente dominada por potências como Estados Unidos, Rússia, China e Romênia, a brasileira construiu uma trajetória capaz de mudar o lugar do Brasil na ginástica artística mundial.</p>
+
+            <p>Nascida em Guarulhos, em São Paulo, ela transformou talento, disciplina e resistência em uma carreira histórica. Sua caminhada não foi linear. Lesões graves, cirurgias e pausas forçadas fizeram parte do caminho, mas nenhuma delas apagou sua capacidade de voltar melhor, mais madura e mais preparada para competir no mais alto nível.</p>
+
+            <p>O resultado foi uma atleta completa, respeitada pelas rivais, admirada pelo público e reconhecida como símbolo de excelência. Rebeca não conquistou apenas os brasileiros. Ela conquistou o mundo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Medalhas olímpicas de Rebeca Andrade</strong></p>
+
+            <p>Se tornou a atleta brasileira com mais medalhas na história dos Jogos.</p>
+
+            <p><strong>2 medalhas de ouro</strong></p>
+            <p><strong>3 medalhas de prata</strong></p>
+            <p><strong>1 medalha de bronze</strong></p>
+
+            <p><strong>Por edição, suas conquistas foram:</strong></p>
+
+            <p><strong>Tóquio 2020: prata no individual geral.</strong></p>
+            <p><strong>Tóquio 2020: ouro no salto.</strong></p>
+            <p><strong>Paris 2024: bronze por equipes.</strong></p>
+            <p><strong>Paris 2024: prata no individual geral.</strong></p>
+            <p><strong>Paris 2024: prata no salto.</strong></p>
+            <p><strong>Paris 2024: ouro no solo.</strong></p>
+
+            <p><strong>Veja momentos da apresentação abaixo:</strong></p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/eLDAGzSi298" title="Rebeca Andrade - vídeo incorporado" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A campanha de Paris 2024 teve peso especial porque consolidou Rebeca como uma atleta histórica não só para a ginástica, mas para todo o esporte brasileiro. O ouro no solo, conquistado em uma final com Simone Biles, colocou a brasileira no centro de uma das imagens mais marcantes dos Jogos: Biles e Jordan Chiles reverenciando Rebeca no pódio.</p>
+
+            <p>A cena resumiu o tamanho da brasileira. Não foi apenas uma vitória. Foi o reconhecimento internacional de uma atleta que chegou ao topo competindo contra algumas das maiores ginastas de todos os tempos.</p>
+
+            <p><strong>Medalhas em Mundiais</strong></p>
+
+            <p>Nos Campeonatos Mundiais, Rebeca também construiu uma trajetória de elite. Ela soma 9 conquistas:</p>
+
+            <p><strong>3 medalhas de ouro</strong></p>
+            <p><strong>4 medalhas de prata</strong></p>
+            <p><strong>2 medalhas de bronze</strong></p>
+
+            <p><strong>As provas foram:</strong></p>
+
+            <p><strong>2021: ouro no salto.</strong></p>
+            <p><strong>2021: prata nas barras assimétricas.</strong></p>
+            <p><strong>2022: ouro no individual geral.</strong></p>
+            <p><strong>2022: bronze no solo.</strong></p>
+            <p><strong>2023: prata por equipes.</strong></p>
+            <p><strong>2023: prata no individual geral.</strong></p>
+            <p><strong>2023: ouro no salto.</strong></p>
+            <p><strong>2023: bronze na trave.</strong></p>
+            <p><strong>2023: prata no solo.</strong></p>
+
+            <p>Essas conquistas mostram uma característica central de Rebeca: ela não é especialista em apenas um aparelho. A brasileira se tornou competitiva em diferentes provas, com força no salto, elegância no solo, consistência no individual geral e importância decisiva para a equipe brasileira.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Técnica, potência e presença de campeã</strong></p>
+
+            <p>O sucesso de Rebeca Andrade passa por uma combinação rara. Ela tem potência para executar saltos de altíssimo nível, limpeza técnica para disputar finais contra as melhores do mundo e presença de palco para transformar apresentações em momentos memoráveis.</p>
+
+            <p>No solo, sua expressão corporal, musicalidade e controle chamam atenção. No salto, sua explosão a coloca entre as grandes referências da modalidade. No individual geral, sua regularidade mostra uma atleta completa, capaz de competir em todos os aparelhos com nível de medalha.</p>
+
+            <p>Essa combinação explica por que Rebeca se tornou uma ameaça real até para Simone Biles. A norte-americana, maior nome da ginástica moderna, reconheceu publicamente o tamanho da brasileira em diferentes momentos. Em Paris, esse respeito ganhou forma no gesto simbólico do pódio do solo, quando Biles e Chiles se curvaram diante de Rebeca.</p>
+
+            <p><strong>A brasileira que conquistou o mundo</strong></p>
+
+            <p>Parte do impacto de Rebeca vem das medalhas. Outra parte vem da forma como ela se comunica com o público. Seu carisma, sorriso fácil e postura leve ajudaram a aproximar a ginástica artística de milhões de brasileiros que talvez não acompanhassem a modalidade de perto.</p>
+
+            <p>Ela transmite força sem perder doçura. Compete em altíssimo nível, mas não parece distante do torcedor. Sua imagem mistura excelência e simpatia, algo raro em atletas que carregam tanta pressão. Virou ídolo porque vence, mas também porque emociona.</p>
+
+            <p>Essa conexão com o público brasileiro foi ampliada por sua história de superação. As lesões no joelho poderiam ter interrompido sua carreira antes do auge. Em vez disso, viraram parte de uma narrativa de resistência. Rebeca voltou, amadureceu e transformou dor em combustível competitivo.</p>
+
+            <p><strong>O peso de ser referência para o Brasil</strong></p>
+
+            <p>Depois das conquistas olímpicas e mundiais, Rebeca passou a ocupar um lugar diferente. Ela deixou de ser apenas uma atleta de ponta para se tornar uma referência nacional. Cada competição passou a carregar expectativa, comparação e cobrança.</p>
+
+            <p>Esse peso é grande, mas Rebeca aprendeu a lidar com ele sem perder a própria identidade. Sua carreira mostra que a pressão existe, mas não precisa apagar a alegria de competir. A brasileira encontrou um equilíbrio difícil: ser ambiciosa, buscar medalhas, desafiar lendas e, ao mesmo tempo, preservar uma relação saudável com o esporte.</p>
+
+            <p>Nesse ponto, sua trajetória conversa diretamente com a de <a href="https://cortedosesportes.com.br/simone-biles-ginastica-olimpiadas-medalhas-carreira.html">Simone Biles, lenda da ginástica que também marcou a história olímpica ao discutir pressão, excelência e saúde mental</a>. As duas representam uma geração que elevou o nível técnico da modalidade e mostrou que grandes campeãs também são humanas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Um legado que já mudou a ginástica brasileira</strong></p>
+
+            <p>Rebeca Andrade já deixou um legado permanente. Antes dela, a ginástica artística brasileira tinha grandes nomes, momentos marcantes e feitos importantes. Com ela, o Brasil passou a ter uma atleta capaz de disputar o topo do mundo de forma constante.</p>
+
+            <p>Sua influência vai além dos pódios. Rebeca inspira meninas a entrarem na ginástica, amplia o interesse do público pelo esporte e fortalece a ideia de que o Brasil pode formar atletas competitivas em modalidades de altíssima exigência técnica.</p>
+
+            <p>A medalha por equipes em Paris 2024 também reforçou esse impacto coletivo. Rebeca foi protagonista, mas sua presença ajudou a puxar uma geração inteira. O bronze da equipe brasileira mostrou que o crescimento não era apenas individual. Era um avanço estrutural para a modalidade no país.</p>
+
+            <p><strong>Por que Rebeca Andrade é histórica</strong></p>
+
+            <p>Rebeca Andrade é histórica porque venceu onde poucos brasileiros haviam chegado. É histórica porque se tornou a maior ginasta do país. É histórica porque virou a atleta brasileira com mais medalhas olímpicas. E é histórica porque fez tudo isso com técnica, carisma, coragem e uma capacidade rara de se reconstruir.</p>
+
+            <p>No fim, Rebeca representa o que o esporte tem de mais poderoso: talento, superação, beleza técnica e conexão com o público. Ela não apenas venceu. Ela mudou a forma como o Brasil olha para a ginástica.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "esportes-olimpicos";
+  const CATEGORY_NAME = "Esportes Olímpicos";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
