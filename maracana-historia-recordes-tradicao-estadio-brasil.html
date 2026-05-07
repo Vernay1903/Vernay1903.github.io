@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maracanã: história, recordes e tradição do estádio mais emblemático do Brasil | Corte dos Esportes</title>
+  <meta name="description" content="Inaugurado em 1950, o Maracanã virou cartão postal do Rio de Janeiro, palco de duas Copas do Mundo, do Maracanazo, do ouro olímpico do Brasil e de algumas das maiores festas do futebol mundial." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Maracanã: história, recordes e tradição do estádio mais emblemático do Brasil</h1>
+          <p class="subhead" id="articleExcerpt">Inaugurado em 1950, o Maracanã virou cartão postal do Rio de Janeiro, palco de duas Copas do Mundo, do Maracanazo, do ouro olímpico do Brasil e de algumas das maiores festas do futebol mundial.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">07/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Estádio Jornalista Mário Filho não é apenas uma arena esportiva. É cartão postal, ponto turístico, palco de decisões históricas, símbolo da cultura carioca e um dos lugares mais marcantes da memória afetiva do futebol brasileiro.</p>
+
+            <p>Inaugurado em 16 de junho de 1950, foi construído para a Copa do Mundo daquele ano e rapidamente se transformou em um dos estádios mais conhecidos do planeta. Seu nome oficial homenageia o jornalista Mário Filho, um dos grandes defensores da construção do estádio. Mas foi o apelido popular, ligado ao bairro e ao Rio Maracanã, que ganhou o mundo.</p>
+
+            <p>Ao longo de mais de sete décadas, o Maracanã recebeu finais de Copa do Mundo, decisões de Campeonato Carioca, Brasileirão, Libertadores, Mundial de Clubes, Copa América, Jogos Pan-Americanos, Jogos Olímpicos, shows históricos e milhões de torcedores. É um estádio que pertence ao futebol, mas também à cidade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A inauguração do Maracanã</strong></p>
+
+            <p>Nasceu como um projeto grandioso, o Brasil receberia a Copa do Mundo de 1950 e precisava de um estádio à altura da ambição nacional. A ideia era construir uma estrutura capaz de colocar o país no centro do futebol mundial.</p>
+
+            <p>A partida inaugural aconteceu em 16 de junho de 1950, com um jogo entre a Seleção Carioca e a Seleção Paulista. Os paulistas venceram por 3 a 1, mas o primeiro gol da história do estádio foi marcado por Didi, que defendia a equipe carioca. Poucos dias depois, o estádio já estava recebendo jogos da Copa.</p>
+
+            <p>Na época, ele foi projetado para receber multidões. Antes das reformas modernas, o estádio tinha arquibancadas imensas, setor de geral e capacidade muito superior à atual. O antigo era menos confortável, mas tinha uma atmosfera praticamente impossível de reproduzir nos padrões atuais.</p>
+
+            <p><strong>O Maracanã como cartão postal do Rio</strong></p>
+
+            <p>O estádio virou parte da identidade do Rio de Janeiro. Assim como o Cristo Redentor, o Pão de Açúcar e as praias da Zona Sul, o estádio passou a representar a cidade diante do Brasil e do mundo. Para muitos turistas, visitar o Maracanã é uma experiência cultural, mesmo sem jogo.</p>
+
+            <p>Isso acontece porque o estádio vai além do placar ele reúne futebol, arquitetura, história, música, transporte de massa, rivalidade e memória popular. Em dias de jogo grande, a região muda de ritmo. Trem, metrô, bares, ambulantes, camisas, bandeiras e cantos transformam o entorno em uma extensão da arquibancada.</p>
+
+            <p>O estádio também se consolidou como um símbolo da ideia de futebol brasileiro: estádio cheio, torcida barulhenta, clássico quente, jogador decisivo, gol histórico e festa popular. O Maracanã é um lugar onde o futebol parece maior do que o próprio jogo.</p>
+
+            <p><strong>O Maracanazo e a ferida de 1950</strong></p>
+
+            <p>Nenhum episódio marcou tanto o estádio quanto ao jogo em 16 de julho de 195., Brasil e Uruguai se enfrentaram na partida decisiva da Copa do Mundo. A seleção brasileira precisava apenas de um empate para conquistar o título, mas perdeu por 2 a 1 diante de uma multidão.</p>
+
+            <p>O gol de Ghiggia, que virou o jogo para os uruguaios, silenciou o Maracanã e entrou para a história como uma das maiores frustração esportivas do Brasil. A <a href="https://cortedosesportes.com.br/uruguai-copas-do-mundo-titulos-maracanazo-historia.html">história do Uruguai nas Copas passa diretamente pelo Maracanazo</a>, uma conquista que transformou a seleção celeste em personagem permanente da memória do estádio.</p>
+
+            <p>O jogo é lembrado até hoje porque não foi apenas uma derrota. Foi a queda de uma expectativa nacional. O país já se via campeão, o estádio estava lotado, a festa parecia pronta e o resultado mudou a história emocional do futebol brasileiro.</p>
+
+            <p><strong>Duas Copas do Mundo no mesmo palco</strong></p>
+
+            <p>O Maracanã foi protagonista em dois mundiais. Em 1950, recebeu jogos importantes e a partida decisiva entre Brasil e Uruguai. Em 2014, já remodelado, voltou a ser palco de uma decisão mundial, dessa vez entre Alemanha e Argentina.</p>
+
+            <p>Na final de 2014, a Alemanha venceu por 1 a 0 na prorrogação, com gol de Mario Götze, e conquistou o tetracampeonato. A <a href="https://cortedosesportes.com.br/alemanha-copa-do-mundo-titulos-historia-campanhas.html">trajetória da Alemanha nas Copas do Mundo ajuda a explicar o peso daquele título no Maracanã</a>, já que a seleção alemã confirmou no Rio uma das campanhas mais marcantes de sua história.</p>
+
+            <p>Essa ligação com o Mundial é parte central da grandeza do estádio. O Maracanã não é apenas importante para clubes brasileiros. Ele está no mapa dos grandes palcos do futebol mundial, ao lado de estádios que marcaram gerações em diferentes países.</p>
+
+            <p><strong>Recordes de público do Maracanã</strong></p>
+
+            <p>O estádio ficou famoso por seus públicos gigantescos. O maior público associado é o do Brasil x Uruguai de 1950, com cerca de 199 mil pessoas presentes, embora os registros de pagantes variem conforme a metodologia usada.</p>
+
+            <p>Quando se considera público pagante oficial, uma das marcas mais citadas é Brasil x Paraguai, pelas Eliminatórias de 1969, com mais de 183 mil pagantes. Entre clubes, o Fla-Flu de 1963 é um dos grandes símbolos, com público superior a 170 mil pagantes em uma decisão de Campeonato Carioca.</p>
+
+            <p>Esses números ajudam a explicar por que o estádio ganhou apelidos como “Templo do Futebol” e “Maior do Mundo”. Hoje, por questões de segurança, conforto e padrão internacional, a capacidade é muito menor. O Maracanã atual comporta pouco menos de 80 mil torcedores, mas a memória dos públicos gigantes segue como parte essencial da sua lenda.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quantos jogos o Maracanã já recebeu?</strong></p>
+
+            <p>Uma estimativa conservadora coloca na casa de mais de 5 mil partidas, considerando décadas de uso por clubes cariocas, Seleção Brasileira, competições estaduais, nacionais, continentais e eventos internacionais. O número exato pode variar conforme o critério: jogos oficiais, amistosos, rodadas duplas, partidas de base, torneios extintos e eventos especiais.</p>
+
+            <p>O que existe com mais segurança são recortes históricos. Levantamentos apontam que o Maracanã recebeu centenas de partidas com públicos acima de 100 mil torcedores, algo impensável no futebol moderno. Só esse dado já mostra a escala única do estádio dentro da história esportiva brasileira.</p>
+
+            <p><strong>Quantos títulos já foram levantados no Maracanã?</strong></p>
+
+            <p>Um levantamento feito nos 70 anos do estádio apontava o Flamengo como maior vencedor no Maracanã, com 33 títulos conquistados no local, o equivalente a 28,4% do total de voltas olímpicas consideradas naquela metodologia. Isso indica algo próximo de 116 títulos decididos no estádio até 2020.</p>
+
+            <p>Como novas decisões foram disputadas depois disso, é razoável afirmar que o Maracanã já passou da marca de 120 títulos levantados em seu gramado, considerando competições oficiais de clubes e seleções dentro desse recorte. Se forem incluídas categorias de base, torneios menores, taças amistosas e eventos especiais, o número fica ainda maior.</p>
+
+            <p>O dado mais importante, porém, não é apenas a quantidade. O peso está na qualidade das taças: Cariocas históricos, Brasileiros, Libertadores, Mundial de Clubes, Copa América, Copa das Confederações, Copa do Mundo e ouro olímpico.</p>
+
+            <p><strong>Clubes cariocas e a divisão do Maracanã</strong></p>
+
+            <p>O estádio sempre teve uma característica rara: nunca pertenceu emocionalmente a um único clube. Flamengo, Fluminense, Vasco e Botafogo construíram capítulos importantes no estádio. Durante décadas, clássicos cariocas, finais estaduais e jogos decisivos fizeram do Maracanã uma casa compartilhada do futebol do Rio.</p>
+
+            <p>Atualmente, Flamengo e Fluminense são os principais gestores e mandantes do estádio por meio da concessão do Complexo Maracanã. O contrato de concessão assinado com o Governo do Estado do Rio de Janeiro prevê a administração do estádio e do Maracanãzinho pelo consórcio Fla-Flu por 20 anos.</p>
+
+            <p>Na prática esportiva, Flamengo e Fluminense concentram a maior parte dos jogos no estádio. Vasco e Botafogo, que também têm história gigantesca no Maracanã, utilizam o palco em situações específicas, conforme calendário, acordos, demandas de público e disponibilidade.</p>
+
+            <p><strong>Torcidas mistas e a cultura da arquibancada</strong></p>
+
+            <p>O Maracanã também ficou famoso pela convivência entre torcidas. Em muitas fases da história, clássicos cariocas eram marcados por arquibancadas mais misturadas do que as atuais. Famílias divididas por clubes, amigos rivais e torcedores de camisas diferentes faziam parte da paisagem do estádio.</p>
+
+            <p>Com o tempo, a segurança mudou a organização das partidas. Setores separados, carga definida por clube, escoltas e protocolos passaram a fazer parte dos grandes jogos. Ainda assim, o imaginário do Maracanã continua ligado à ideia de pluralidade: rubro-negros, tricolores, cruzmaltinos, alvinegros, turistas e torcedores da seleção já fizeram do estádio um espaço de mistura.</p>
+
+            <p>O Maracanã antigo tinha personagens próprios. Havia o torcedor do radinho de pilha, o geraldino perto do campo, o grito atravessando a arquibancada, o torcedor supersticioso, a bandeira gigante, o grupo que chegava cedo para “guardar lugar” e o canto que começava em um setor e tomava o estádio inteiro.</p>
+
+            <p>Essas caricaturas típicas fazem parte da alma do Maracanã. O estádio moderno perdeu a geral e ganhou conforto, cadeiras, setores premium e padrão internacional. Mas a memória popular ainda mora no barulho, no mosaico improvisado, na vaia coletiva, no grito de gol e na festa que começa muito antes da bola rolar.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Ouro olímpico no Maracanã</strong></p>
+
+            <p>Em 2016, recebeu outro momento inesquecível: o primeiro ouro olímpico do futebol masculino brasileiro. A final contra a Alemanha terminou empatada por 1 a 1 no tempo normal e na prorrogação. Nos pênaltis, o Brasil venceu por 5 a 4, com defesa de Weverton e cobrança decisiva de Neymar.</p>
+
+            <p>A conquista teve forte carga simbólica. O Brasil já havia vencido cinco Copas do Mundo, revelado alguns dos maiores jogadores da história e dominado diferentes gerações do futebol mundial, mas ainda não tinha o ouro olímpico masculino. A vitória no Maracanã fechou essa lacuna.</p>
+
+            <p>O estádio também recebeu cerimônias dos Jogos Olímpicos e Paralímpicos do Rio 2016, reforçando seu papel como palco multiuso. Mesmo sendo conhecido principalmente pelo futebol, o Maracanã também pertence à história olímpica brasileira.</p>
+
+            <p><strong>O Maracanã moderno</strong></p>
+
+            <p>O estádio atual é diferente do estádio inaugurado em 1950. Reformas profundas mudaram arquibancadas, acessos, cobertura, cadeiras, gramado, áreas internas, camarotes e operação. A antiga geral deixou de existir, e o estádio foi adaptado para padrões internacionais de conforto e segurança.</p>
+
+            <p>Essa transformação gerou debates. Para alguns torcedores, o Maracanã perdeu parte da alma popular. Para outros, ganhou estrutura compatível com grandes eventos globais. A verdade é que o estádio mudou porque o futebol mudou. O desafio é manter a força simbólica do antigo Maraca dentro de uma arena moderna.</p>
+
+            <p>Mesmo com as mudanças, ele continua sendo um dos estádios mais emblemáticos do mundo. A mística não está apenas no concreto, nas cadeiras ou na cobertura. Está no que aconteceu ali: gols, lágrimas, títulos, derrotas, multidões, silêncios e festas que atravessaram gerações.</p>
+
+            <p><strong>Por que o Maracanã segue único</strong></p>
+
+            <p> É único porque reúne grandeza esportiva, memória popular e força turística. Poucos estádios conseguem ser, ao mesmo tempo, casa de clubes, palco de seleções, ponto turístico, símbolo urbano e referência mundial.</p>
+
+            <p>Ele já viu o Brasil perder uma Copa diante de quase 200 mil pessoas, a Alemanha levantar uma Copa, o Brasil conquistar o ouro olímpico, clubes cariocas decidirem campeonatos dramáticos, Pelé marcar o milésimo gol, Zico construir sua lenda e torcidas transformarem jogos comuns em eventos históricos.</p>
+
+            <p>Mais do que um estádio, o Maracanã é um arquivo vivo do futebol. Cada geração tem um Maraca para chamar de seu: o da geral, o dos 100 mil, o dos clássicos, o das finais internacionais, o das reformas, o da Olimpíada, o dos shows e o das novas torcidas.</p>
+
+            <p>É por isso que o Maracanã segue sendo mais do que uma arena. Ele é um dos grandes símbolos do esporte mundial e talvez o maior palco da história do futebol brasileiro.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
