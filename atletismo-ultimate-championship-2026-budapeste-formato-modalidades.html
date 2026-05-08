@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ultimate Championship 2026: datas, formato e modalidades | Corte dos Esportes</title>
+  <meta name="description" content="World Athletics Ultimate Championship estreia em Budapeste com formato curto, atletas de elite, provas selecionadas e proposta diferente do Mundial tradicional." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Ultimate Championship 2026: datas, formato e modalidades</h1>
+          <p class="subhead" id="articleExcerpt">World Athletics Ultimate Championship estreia em Budapeste com formato curto, atletas de elite, provas selecionadas e proposta diferente do Mundial tradicional.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">08/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="atletismo.html">Atletismo</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O atletismo terá uma novidade importante no calendário internacional em 2026. Entre os dias 11 e 13 de setembro, Budapeste, na Hungria, receberá a primeira edição do World Athletics Ultimate Championship, competição criada para reunir a elite da modalidade em um formato mais curto, direto e pensado para encerrar a temporada com confrontos de alto nível.</p>
+
+            <p>O evento será disputado no National Athletics Centre, estádio que também recebeu o Mundial de Atletismo de 2023. A escolha de Budapeste reforça a tentativa de transformar a capital húngara em um dos centros recentes do atletismo global, agora com uma competição nova, mais enxuta e diferente do Mundial tradicional.</p>
+
+            <p>A principal diferença está justamente na proposta. O Ultimate Championship não será uma cópia do Mundial de Atletismo outdoor. Ele terá menos dias, menos provas, sessões mais curtas e foco em duelos entre os melhores atletas do ciclo. A ideia é entregar um evento mais concentrado, com finais fortes, ritmo acelerado e presença de nomes já consolidados no cenário internacional.</p>
+
+            <p><strong>Quando será o Ultimate Championship 2026</strong></p>
+
+            <p>O World Athletics Ultimate Championship será disputado de 11 a 13 de setembro de 2026. Serão três noites de competição, sempre com programação concentrada e duração menor do que a de um Mundial tradicional.</p>
+
+            <p>A abertura será na sexta-feira, 11 de setembro. Depois, o evento segue no sábado, 12 de setembro, e termina no domingo, 13 de setembro. Para o público brasileiro, a tendência é que as sessões aconteçam no período da tarde, por causa da diferença de fuso entre Hungria e Brasil.</p>
+
+            <p>Esse formato de três dias é um dos pontos centrais da competição. Em vez de uma programação longa, com eliminatórias espalhadas por mais de uma semana, o Ultimate Championship tenta entregar o atletismo em uma versão mais compacta, com menos espera e mais provas decisivas por sessão.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Onde será disputado</strong></p>
+
+            <p>A sede será o National Athletics Centre, em Budapeste. O estádio foi construído para receber grandes eventos da modalidade e ganhou projeção internacional durante o Mundial de Atletismo de 2023.</p>
+
+            <p>A estrutura é importante para a proposta do Ultimate Championship porque o evento depende de uma experiência forte tanto para quem estiver no estádio quanto para quem assistir pela televisão ou plataformas digitais. A competição foi pensada para ter ritmo, luz, som, dados em tempo real e apresentação mais moderna do produto esportivo.</p>
+
+            <p>Budapeste também aparece como uma escolha estratégica. A cidade já mostrou capacidade de receber o atletismo em grande escala e agora volta ao calendário com um evento que pretende marcar uma nova fase da modalidade.</p>
+
+            <p><strong>Como será o formato diferente</strong></p>
+
+            <p>O Ultimate Championship terá cerca de 400 atletas, vindos de aproximadamente 70 países. A seleção dos participantes será feita com base em critérios de elite: campeões olímpicos, campeões mundiais, vencedores da Diamond League e atletas com grande desempenho no ranking mundial.</p>
+
+            <p>Isso muda a lógica em comparação com o Mundial tradicional. No Mundial outdoor, há delegações maiores, mais etapas, eliminatórias mais amplas e uma estrutura que contempla praticamente todo o programa olímpico do atletismo. Já o Ultimate Championship será mais seletivo. O objetivo é colocar os principais nomes frente a frente em um evento curto, com alto impacto competitivo.</p>
+
+            <p>Outro ponto importante é que não haverá o mesmo volume de provas do Mundial tradicional. A competição terá 28 eventos ao todo: 26 individuais e dois revezamentos. A ideia é concentrar o programa em provas com grande apelo esportivo e televisivo.</p>
+
+            <p><strong>Quais modalidades estarão no programa</strong></p>
+
+            <p>O programa do Ultimate Championship terá provas de pista, campo e revezamentos mistos. Entre as provas de pista, entram disputas de velocidade, meio-fundo, fundo e barreiras. Nas provas de campo, aparecem saltos e lançamentos selecionados.</p>
+
+            <p>Entre as principais provas previstas estão:</p>
+
+            <ul>
+              <li><strong>100m</strong></li>
+              
+              <li><strong>200m</strong></li>
+              
+              <li><strong>400m</strong></li>
+              
+              <li><strong>800m</strong></li>
+
+              <li><strong>1500m</strong></li>
+              
+              <li><strong>5000m</strong></li>
+              
+              <li><strong>100m com barreiras / 110m com barreiras</strong></li>
+              
+              <li><strong>400m com barreiras</strong></li>
+              
+              <li><strong>Salto com vara</strong></li>
+              
+              <li><strong>Salto em altura</strong></li>
+              
+              <li><strong>Salto em distância</strong></li>
+              
+              <li><strong>Salto triplo feminino</strong></li>
+              
+              <li><strong>Lançamento de martelo masculino</strong></li>
+              
+              <li><strong>Lançamento de dardo</strong></li>
+              
+              <li><strong>Revezamento 4x100m misto</strong></li>
+              
+              <li><strong>Revezamento 4x400m misto</strong></li>
+            </ul>
+
+            <p>A presença dos revezamentos mistos é um dos atrativos do evento. O 4x400m misto já ganhou espaço em grandes competições recentes, enquanto o 4x100m misto aparece como novidade pensada para tornar o programa mais dinâmico e diferente.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que o evento muda no calendário do atletismo</strong></p>
+
+            <p>O Ultimate Championship nasce para preencher uma lacuna importante. Em anos sem Jogos Olímpicos e sem Mundial tradicional outdoor, o atletismo muitas vezes fica dependente da Diamond League, de meetings internacionais e de campeonatos continentais para manter suas estrelas em evidência.</p>
+
+            <p>Com o novo evento, a World Athletics tenta criar uma grande final global da temporada. A competição não substitui a Diamond League, mas conversa diretamente com ela, já que vencedores do circuito estarão entre os nomes mais relevantes para a disputa em Budapeste. Para entender melhor esse caminho competitivo, a <a href="https://cortedosesportes.com.br/diamond-league-2026-calendario-etapas-alison-dos-santos.html">Diamond League 2026</a> será uma etapa importante na construção da temporada de vários atletas.</p>
+
+            <p>Na prática, Budapeste pode virar o grande ponto de chegada do ano. O atleta passa pela temporada buscando marcas, ranking, vitórias e consistência, e depois encontra os principais rivais em um evento curto, com premiação alta e status de campeão definitivo daquela disputa.</p>
+
+            <p><strong>Premiação e peso para os atletas</strong></p>
+
+            <p>Um dos grandes diferenciais do Ultimate Championship será a premiação. A competição terá uma bolsa total de US$ 10 milhões, uma das maiores já oferecidas no atletismo, com valores altos para os campeões.</p>
+
+            <p>Isso importa porque o atletismo ainda busca formas de valorizar melhor seus principais nomes fora do ciclo olímpico. Diferentemente de esportes com ligas longas e contratos milionários, muitos atletas dependem de patrocínios, premiações, convites para meetings e resultados em grandes competições.</p>
+
+            <p>Com um evento mais concentrado e uma premiação forte, a World Athletics tenta criar um produto capaz de atrair público, televisão, patrocinadores e atletas ao mesmo tempo. Para os competidores, vencer em Budapeste pode significar prestígio esportivo e retorno financeiro relevante.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que não é o Mundial tradicional</strong></p>
+
+            <p>Apesar do peso no calendário, o Ultimate Championship não deve ser confundido com o Mundial de Atletismo tradicional. O Mundial outdoor segue como a competição mais completa da modalidade fora dos Jogos Olímpicos, com programa mais amplo, mais atletas, mais fases e maior diversidade de provas.</p>
+
+            <p>O evento de Budapeste terá outra função. Ele será uma espécie de supercampeonato seletivo, com foco na elite imediata da temporada. Em vez de reunir delegações amplas, o objetivo é colocar os principais nomes de cada prova em confronto direto.</p>
+
+            <p>Por isso, o formato pode agradar principalmente ao público que quer acompanhar decisões rápidas e grandes estrelas. Ao mesmo tempo, será um teste importante para o atletismo: a modalidade vai tentar equilibrar tradição com inovação, sem perder sua identidade técnica.</p>
+
+            <p><strong>Brasileiros de olho em Budapeste</strong></p>
+
+            <p>Para o Brasil, o Ultimate Championship 2026 ainda depende de ranking, convites e desempenho ao longo da temporada. Como o evento será mais seletivo do que um Mundial tradicional, não basta ter histórico: será preciso estar entre os melhores do ciclo nas provas incluídas no programa.</p>
+
+            <p>O nome brasileiro mais natural nessa projeção é Alison dos Santos. O Piu compete nos 400m com barreiras, prova que estará em Budapeste, e segue como um dos principais atletas do mundo na especialidade. Pela combinação de histórico, presença em finais globais e regularidade contra a elite, ele aparece como o brasileiro com caminho mais forte para entrar na disputa.</p>
+
+            <p>Outros nomes podem depender diretamente da temporada de 2026. Atletas de provas com barreiras, velocidade e revezamentos mistos podem ganhar espaço se conseguirem marcas fortes, bom posicionamento no ranking ou classificação por eventos internacionais. O formato também pode valorizar brasileiros que competem com frequência no circuito europeu e em meetings de alto nível.</p>
+
+            <p>Caio Bonfim merece citação pelo momento histórico do Brasil no atletismo, especialmente depois das medalhas na marcha atlética em Tóquio. Porém, como a marcha não está entre as provas previstas para o Ultimate Championship, sua presença em Budapeste não é uma tendência natural dentro do programa atual. Isso mostra justamente a diferença do novo evento: ele não reúne todas as modalidades do Mundial tradicional, mas seleciona provas específicas para um formato mais curto e comercial.</p>
+
+            <p>Assim, a participação brasileira em Budapeste deve ser menor e mais concentrada. A expectativa principal passa por Alison dos Santos, por possíveis nomes em provas de pista e pela evolução dos revezamentos. Mais do que quantidade, o Brasil precisará chegar com atletas em alto nível exatamente nas provas escolhidas para esse novo modelo de competição.</p>
+
+            <p><strong>O que esperar de Budapeste 2026</strong></p>
+
+            <p>A expectativa é que Budapeste 2026 seja um evento de alto nível, com presença de campeões olímpicos, campeões mundiais, estrelas da Diamond League e atletas que chegam no auge da temporada. Provas como 100m, 200m, 400m com barreiras, salto com vara, salto em altura, 1500m e revezamentos mistos devem estar entre os principais atrativos.</p>
+
+            <p>Para o Brasil, a competição pode ser especialmente interessante em provas com nomes fortes no cenário internacional. Alison dos Santos, por exemplo, é um atleta com perfil para eventos desse tipo, por competir em uma prova de grande apelo e enfrentar regularmente a elite mundial. Outros brasileiros dependerão de ranking, resultados e calendário para entrar na disputa.</p>
+
+            <p>O Ultimate Championship será, acima de tudo, uma experiência nova. Ele não apaga a importância dos Mundiais tradicionais nem dos Jogos Olímpicos, mas cria uma nova vitrine para o atletismo. Se funcionar, pode virar um dos eventos mais aguardados do calendário.</p>
+
+            <p>Budapeste será o primeiro teste. Em três noites, o atletismo tentará mostrar uma versão mais rápida, intensa e comercial, sem deixar de lado aquilo que torna a modalidade especial: grandes nomes, confrontos diretos e resultados decididos no limite do desempenho humano.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "atletismo";
+  const CATEGORY_NAME = "Atletismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
