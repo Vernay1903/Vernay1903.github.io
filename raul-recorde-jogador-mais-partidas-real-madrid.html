@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jogador com mais partidas pelo Real Madrid: Raúl, o eterno camisa 7 | Corte dos Esportes</title>
+  <meta name="description" content="Raúl é o jogador com mais partidas na história do clube merengue e com uma trajetória marcada pela camisa 7, títulos históricos e idolatria no Santiago Bernabéu." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Jogador com mais partidas pelo Real Madrid: Raúl, o eterno camisa 7</h1>
+          <p class="subhead" id="articleExcerpt">Raúl é o jogador com mais partidas na história do clube merengue e com uma trajetória marcada pela camisa 7, títulos históricos e idolatria no Santiago Bernabéu.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">08/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Raúl González Blanco é um Ídolo absoluto do clube espanhol,  se tornando um dos maiores símbolos da história do Santiago Bernabéu. Mais do que um recordista, Raúl representa uma era de identidade, liderança e ligação profunda entre jogador, torcida e clube.</p>
+
+            <p>A marca é ainda mais forte porque não foi construída por um atleta comum. Raúl foi revelado nas categorias de base, chegou cedo ao time principal, virou titular jovem, conquistou títulos nacionais e internacionais e se consolidou como referência técnica e emocional do Real Madrid por mais de uma década. Em um clube acostumado a reunir estrelas mundiais, ele conseguiu algo raro: ser mais do que craque, ser símbolo.</p>
+
+            <p><strong>Quantas partidas Raúl fez pelo Real Madrid?</strong></p>
+
+            <p>Ele disputou 741 partidas oficiais pelo clube. Esse número o coloca no topo da lista histórica de jogadores que mais vezes vestiram a camisa do clube. A marca supera nomes lendários como Iker Casillas, Sergio Ramos, Karim Benzema e Luka Modrić.</p>
+
+            <p>O recorde mostra regularidade e longevidade. Para alcançar 741 jogos em um clube do tamanho do Real Madrid, não basta ter talento. É preciso atravessar temporadas, mudanças de treinador, concorrência interna, pressão por títulos, fases de renovação do elenco e jogos decisivos em diferentes competições. Raúl fez tudo isso mantendo relevância esportiva.</p>
+
+            <p>Além das partidas, seus números ofensivos também impressionam. Foram 323 gols pelo Real Madrid, marca que por muitos anos fez dele o maior artilheiro da história do clube, até ser superado por <a href="https://cortedosesportes.com.br/maior-artilheiro-real-madrid-recorde-cristiano-ronaldo.html">Cristiano Ronaldo, o maior artilheiro da história do time espanhol</a>. Mesmo depois disso, Raúl continuou ocupando uma posição especial: a de jogador que mais entrou em campo pelo clube.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quantas temporadas Raúl jogou pelo Real Madrid?</strong></p>
+
+            <p>Defendeu o time principal do Real Madrid por 16 temporadas. Sua estreia aconteceu em 1994, ainda muito jovem, e sua despedida veio em 2010. Antes disso, ele já havia chegado às categorias de base do clube em 1992, após passagem pela formação do Atlético de Madrid.</p>
+
+            <p>A trajetória no profissional começou de forma impactante. Raúl estreou com apenas 17 anos e rapidamente mostrou personalidade para jogar em um ambiente de enorme pressão. Pouco depois, marcou no clássico contra o Atlético de Madrid, justamente o clube onde havia atuado na base. O roteiro ajudou a criar uma conexão imediata com a torcida madridista.</p>
+
+            <p>Ao longo das temporadas, passou de promessa a titular, de titular a craque, de craque a capitão e de capitão a lenda. Essa evolução é uma das razões pelas quais Raúl é lembrado não apenas como um jogador de muitos jogos, mas como um personagem central na identidade moderna do Real Madrid.</p>
+
+            <p><strong>Qual número de camisa Raúl usou?</strong></p>
+
+            <p>A camisa eternizada por ele foi a número 7. O número se tornou parte inseparável de sua imagem: Raúl, Real Madrid e camisa 7 formam uma associação direta no futebol europeu. Durante boa parte de sua carreira no clube, especialmente a partir da consolidação como protagonista, ele foi o grande dono da 7 merengue.</p>
+
+            <p>No início da carreira, em uma fase de transição e com variações de numeração, Raúl também apareceu associado a outros números em registros históricos, como 13, 14, 16 e 17. Mas esses números pertencem ao começo da trajetória. Para a memória do torcedor e para a história do Real Madrid, a camisa de Raúl é a 7.</p>
+
+            <p>Essa camisa já tinha peso no clube, mas ganhou uma dimensão especial com ele. Depois de Raúl, o número 7 passou a carregar ainda mais responsabilidade. Cristiano Ronaldo, que herdou a camisa após a saída do espanhol, também ajudou a ampliar esse legado. Mas, para muitos torcedores, Raúl segue sendo o camisa 7 que melhor representa o vínculo entre formação, liderança e identidade madridista.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Raúl ganhou títulos pelo Real Madrid?</strong></p>
+
+            <p>Foram muitos os títulos pelo Real Madrid. Entre as principais conquistas estão seis Campeonatos Espanhóis, três Champions League, quatro Supercopas da Espanha, duas Copas Intercontinentais e uma Supercopa da Europa. Ao todo, foram 16 títulos importantes pelo clube.</p>
+
+            <p>As Champions League de 1998, 2000 e 2002 têm peso especial em sua trajetória. A conquista de 1998 encerrou um longo jejum europeu do Real Madrid e recolocou o clube no topo do continente. Depois, Raúl voltou a ser protagonista nas campanhas seguintes, inclusive marcando em finais europeias.</p>
+
+            <p>No Campeonato Espanhol, também foi decisivo. Participou de títulos em diferentes fases do clube, mostrando capacidade de adaptação. Ele esteve presente em um Real Madrid que combinava jogadores formados no clube, craques espanhóis e grandes estrelas internacionais.</p>
+
+            <p><strong>O que fez Raúl ser tão importante?</strong></p>
+
+            <p>A importância dele uniu números, títulos e identificação. Ele não foi apenas um atacante de estatística forte. Era um jogador de inteligência, movimentação, leitura de espaço e presença em jogos grandes. Nem sempre parecia o mais forte fisicamente, nem o mais veloz, mas entendia o jogo como poucos.</p>
+
+            <p>Sua principal marca era a capacidade de estar no lugar certo. Raúl atacava espaços, aproveitava rebotes, finalizava com frieza e participava da construção ofensiva. Também tinha uma postura competitiva muito forte. Em campo, transmitia a sensação de que cada jogo importava.</p>
+
+            <p>Essa entrega combinava perfeitamente com o que a torcida do Real Madrid espera de seus grandes ídolos: talento, personalidade e responsabilidade em noites decisivas. Por isso, mesmo em uma história cheia de astros, Raúl manteve lugar próprio.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Raúl e o Santiago Bernabéu</strong></p>
+
+            <p>Grande parte da história foi construída no Santiago Bernabéu. O estádio foi palco de seus gols, suas comemorações, suas noites europeias e sua relação mais direta com a torcida. Ali, ele deixou de ser apenas um jogador revelado na base para se tornar referência máxima de uma geração.</p>
+
+            <p>O Bernabéu sempre foi um estádio exigente. A torcida do Real Madrid cobra desempenho, títulos e postura. Raúl conseguiu transformar essa exigência em combustível. A cada temporada, reforçava sua imagem de jogador confiável, competitivo e comprometido com o clube.</p>
+
+            <p>Esse vínculo ajuda a explicar por que sua saída, em 2010, marcou tanto os torcedores. Raúl deixou o clube como recordista de jogos, segundo maior artilheiro histórico naquele momento e um dos capitães mais representativos da história merengue.</p>
+
+            <p><strong>Por que Raúl é o recordista de jogos do Real Madrid?</strong></p>
+
+            <p>Porque ele reuniu talento precoce, regularidade, liderança e longevidade. Poucos jogadores conseguem estrear tão cedo, permanecer tantos anos em alto nível e atravessar diferentes ciclos mantendo importância dentro de um clube tão competitivo.</p>
+
+            <p>Seus 741 jogos contam uma história de permanência em um ambiente onde quase ninguém tem estabilidade garantida. O Real Madrid sempre contratou grandes nomes, revelou talentos e passou por mudanças constantes. Ainda assim, Raúl seguiu como referência durante 16 temporadas no time principal.</p>
+
+            <p>Por isso, falar do jogador com mais partidas pelo Real Madrid é falar de muito mais do que uma estatística. É falar de um símbolo da camisa branca, de um capitão histórico e de um atleta que ajudou a moldar a identidade moderna de um clube cuja trajetória ajuda a explicar a força da <a href="https://cortedosesportes.com.br/real-madrid-maior-clube-do-mundo-historia-titulos-champions.html">história do Real Madrid</a> no futebol mundial.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
