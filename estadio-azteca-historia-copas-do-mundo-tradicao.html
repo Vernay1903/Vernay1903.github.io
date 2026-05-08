@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Estádio Azteca: história, tradição e Copas do Mundo | Corte dos Esportes</title>
+  <meta name="description" content="Ícone do futebol mundial, o Estádio Azteca marcou a história das Copas, recebeu Pelé e Maradona campeões do mundo e segue como um dos palcos mais simbólicos do esporte." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Estádio Azteca: história, tradição e Copas do Mundo</h1>
+          <p class="subhead" id="articleExcerpt">Ícone do futebol mundial, o Estádio Azteca marcou a história das Copas, recebeu Pelé e Maradona campeões do mundo e segue como um dos palcos mais simbólicos do esporte.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">08/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Poucos estádios no mundo carregam tanto peso histórico. Localizado na Cidade do México, o gigante mexicano não é apenas uma arena esportiva: é um símbolo cultural, turístico e emocional para o futebol. Inaugurado em 1966, o estádio se tornou conhecido como o “Colosso de Santa Úrsula” e construiu uma reputação que atravessa gerações, clubes, seleções e Copas do Mundo.</p>
+
+            <p>O Azteca é daqueles lugares que não dependem apenas de arquitetura ou capacidade para impressionar. Sua importância vem do que aconteceu ali. Foi palco de finais mundiais, jogos lendários, títulos continentais, decisões nacionais, partidas da seleção mexicana, confrontos de clubes históricos e eventos que transformaram o estádio em ponto de visita obrigatória para fãs de futebol que passam pela capital mexicana.</p>
+
+            <p><strong>Um estádio construído para ser gigante</strong></p>
+
+            <p>O Azteca nasceu em uma época em que o México se preparava para receber grandes eventos internacionais. Sua inauguração aconteceu em 29 de maio de 1966, em um amistoso entre Club América e Torino, da Itália, que terminou empatado em 2 a 2. Desde o início, o projeto já tinha dimensão monumental: a ideia era oferecer ao país um palco compatível com sua paixão pelo futebol e com a projeção internacional que viria nos anos seguintes.</p>
+
+            <p>Com o passar do tempo, o estádio passou por reformas e adaptações, mas manteve sua identidade. Atualmente, sua capacidade fica acima de 80 mil torcedores, variando conforme configuração, modernizações e exigências de competições internacionais. Mesmo com reduções em relação aos tempos de públicos superiores a 100 mil pessoas, segue sendo um dos maiores e mais tradicionais estádios do mundo.</p>
+
+            <p>A imponência também vem da localização. A Cidade do México está em altitude elevada, acima dos 2.000 metros, o que ajudou a criar a fama de ambiente difícil para visitantes. Para a seleção mexicana, jogar no Azteca sempre significou ter um aliado esportivo e psicológico: estádio cheio, pressão constante e um contexto físico pouco comum para adversários de fora do país.</p>
+
+            <p><strong>Casa do América e palco compartilhado</strong></p>
+
+            <p>O clube mais associado ao estádio é o Club América. Desde a inauguração, o América construiu grande parte de sua história no estádio, transformando o local em sua casa esportiva e simbólica. As arquibancadas do Azteca viram títulos, rivalidades, finais nacionais e noites decisivas do clube mais popular e vencedor do futebol mexicano.</p>
+
+            <p>Mas o Azteca nunca foi apenas do América. Ao longo das décadas, também recebeu a seleção mexicana e foi utilizado por outros clubes em diferentes períodos, como Cruz Azul, Atlante, Necaxa e Atlético Español. Em determinados momentos, o estádio funcionou como casa compartilhada, especialmente pela força logística e comercial de ser o grande palco da capital.</p>
+
+            <p>Essa característica ajudou a aumentar ainda mais o volume de jogos realizados no local. Enquanto outros estádios vivem basicamente da agenda de um clube, o Azteca concentrou partidas de liga, copas nacionais, competições continentais, jogos de seleções, amistosos internacionais e eventos especiais. Por isso, entrou para a lista dos estádios mais ativos da história do futebol.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estádio das Copas de Pelé e Maradona</strong></p>
+
+            <p>A grandeza mundial do Azteca passa, principalmente, pelas Copas do Mundo. Em 1970, o estádio recebeu jogos marcantes do Mundial vencido pelo Brasil de Pelé. A final contra a Itália, com vitória brasileira por 4 a 1, ajudou a eternizar o estádio como palco de uma das seleções mais celebradas da história.</p>
+
+            <p>Dezesseis anos depois, em 1986, o estádio voltou a ser centro do mundo. Foi ali que Diego Maradona liderou a Argentina ao título mundial, vencendo a Alemanha Ocidental na final por 3 a 2. Também no Azteca aconteceu Argentina x Inglaterra, jogo que entrou para a história pelos dois gols mais famosos da carreira de Maradona: a “Mão de Deus” e o “Gol do Século”.</p>
+
+            <p>Essa combinação o torna praticamente único no imaginário do futebol. O mesmo estádio viu Pelé e Maradona levantarem a Copa do Mundo. Viu o Brasil de 1970 atingir status de lenda. Viu a Argentina de 1986 transformar Maradona em mito definitivo. Por isso, o estádio não é apenas mexicano: ele pertence à memória coletiva do futebol mundial.</p>
+
+            <p><strong>Quantos jogos o Estádio Azteca já recebeu?</strong></p>
+
+            <p>Não existe uma contagem universal simples, porque o Azteca recebeu partidas oficiais, amistosos, jogos de categorias de base, torneios femininos, jogos de seleções, eventos internacionais e decisões de clubes ao longo de quase seis décadas. Ainda assim, levantamentos históricos apontam para um número aproximado de quase 4 mil partidas de futebol realizadas no estádio.</p>
+
+            <p>Uma estimativa detalhada indica cerca de 3.900 jogos de futebol, considerando partidas oficiais, amistosos de clubes, seleções e competições especiais. Só em Copas do Mundo masculinas, foram 19 jogos entre 1970 e 1986, número que já coloca o Azteca entre os estádios mais relevantes da história do torneio. Com a Copa de 2026, o estádio ampliará ainda mais essa marca e se tornará referência absoluta em longevidade mundialista.</p>
+
+            <p>Essa quantidade ajuda a explicar por que o Azteca tem tanta densidade histórica. Não é um estádio lembrado por uma única noite. É um palco que acumulou décadas de decisões, rivalidades, festas, frustrações, recordes e personagens. Poucos lugares no futebol concentram tantos capítulos importantes em uma mesma gramado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quantos títulos foram levantados no Azteca?</strong></p>
+
+            <p>Também não há um número definitivo simples para “títulos levantados”, porque a contagem depende do critério: finais nacionais, finais internacionais, competições de seleções, torneios FIFA, decisões em jogo único ou partidas de volta. Mas levantamentos históricos ajudam a dimensionar o peso do estádio.</p>
+
+            <p>Até 2021, um levantamento apontava 83 finais relevantes realizadas no Estádio Azteca, considerando clubes de categoria principal, seleções principais e torneios FIFA. Como o estádio continuou recebendo decisões depois disso, é seguro tratar o número como uma base mínima histórica, não como limite final.</p>
+
+            <p>Entre os campeões que já levantaram taças no Azteca aparecem clubes mexicanos de peso, seleções nacionais e equipes históricas. O América é o clube mais associado a conquistas no estádio, mas não é o único. Cruz Azul, León, Atlas, Necaxa, Toluca, Pumas e outros clubes também fazem parte desse mapa de decisões. Entre seleções, Brasil, Argentina e México estão entre os nomes mais marcantes ligados a títulos e finais no estádio.</p>
+
+            <p><strong>Ponto turístico e templo do futebol</strong></p>
+
+            <p>Além de estádio, o Azteca é ponto turístico. Para quem visita a Cidade do México, conhecer o local é uma forma de entrar em contato com a história do futebol mundial. O estádio oferece experiências de visita guiada, explorando áreas internas, memórias históricas e espaços ligados a grandes momentos do esporte.</p>
+
+            <p>Esse aspecto turístico é importante porque o Azteca deixou de ser apenas um lugar de jogo. Ele funciona como monumento esportivo. Assim, nesse mapa de templos históricos, ele reflete diretamente com a grandeza do <a href="https://cortedosesportes.com.br/maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>, outro estádio que ultrapassou o esporte e virou símbolo nacional, turístico e emocional.</p>
+
+            <p>A força do estádio também aparece fora do futebol. O local recebeu shows, eventos religiosos, partidas de futebol americano e grandes encontros populares. Ainda assim, sua alma permanece ligada à bola. O Azteca é lembrado antes de tudo pelas arquibancadas cheias, pelo barulho, pela altitude, pelas Copas e pelos jogadores que marcaram época em seu gramado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Copa do Mundo de 2026</strong></p>
+
+            <p>O mundial deste ano reforçará ainda mais o peso histórico do estádio. O Azteca será novamente utilizado no Mundial e está previsto como palco da abertura do torneio, entrando também no roteiro dos <a href="https://cortedosesportes.com.br/copa-do-mundo-2026-mexico-estadios-azteca-bbva-akron-jogos.html">dos jogos da Copa do Mundo de 2026 no país</a>. Com isso, se tornará o primeiro estádio a receber jogos em três edições diferentes de Copa do Mundo masculina: 1970, 1986 e 2026.</p>
+
+            <p>Esse dado coloca o estádio em uma prateleira especial. Muitos palcos receberam finais, outros sediaram grandes jogos, mas poucos conseguiram atravessar tantas eras mantendo relevância global. O Azteca viu o futebol de Pelé, viu o futebol de Maradona e agora se prepara para receber uma nova geração de estrelas em um Mundial expandido, com mais seleções e alcance global ainda maior.</p>
+
+            <p>A modernização para 2026 busca preservar a essência do estádio enquanto adapta sua estrutura às exigências atuais. A missão é delicada: melhorar conforto, acessibilidade, tecnologia e experiência do torcedor sem apagar o peso histórico do lugar. Afinal, parte da força do Azteca está justamente em sua aura.</p>
+
+            <p><strong>Por que o Estádio Azteca é tão importante?</strong></p>
+
+            <p>Se tornou relevante porque combina situação esportiva, história e simbolismo. Ele é casa de clube, casa de seleção, palco de Copa, atração turística e arquivo vivo do futebol. Poucos estádios conseguem reunir tantos elementos em uma mesma narrativa.</p>
+
+            <p>Sua história passa por Pelé, Maradona, Brasil, Argentina, México, Club América, decisões nacionais, finais internacionais e milhares de partidas. O Azteca não é lembrado apenas pelo tamanho, mas pelo que representou em momentos decisivos do esporte.</p>
+
+            <p>Em um mundo no qual muitos estádios antigos são demolidos, reformados sem identidade ou substituídos por arenas modernas, o Azteca segue como ponte entre passado e futuro. É um estádio que carrega memória, mas continua ativo. Um lugar onde o futebol já foi mito, espetáculo, drama e celebração.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
