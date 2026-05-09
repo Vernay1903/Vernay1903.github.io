@@ -2,9 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Lucas Pinheiro Braathen conquista ouro histórico do Brasil nos Jogos Olímpicos de Inverno | Corte dos Esportes</title>
-  <meta name="description" content="Lucas Pinheiro Braathen conquista a primeira medalha de ouro do Brasil em Jogos Olímpicos de Inverno, no esqui alpino (slalom gigante).">
+  <title>Lucas Pinheiro Braathen conquista ouro histórico para o Brasil nos Jogos de Inverno | Corte dos Esportes</title>
+  <meta name="description" content="A vitória veio no slalom gigante em Milão-Cortina 2026 conquistando a primeira medalha do Brasil na história dos Jogos Olímpicos de Inverno." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -154,17 +190,18 @@
 
     .meta a:hover { text-decoration: underline; }
 
+    /* AD SLOTS (sem texto) */
     .ad-slot {
       border: 1px dashed #C9D3E2;
       background: #F7FAFF;
       border-radius: 14px;
       padding: 22px;
-      text-align: center;
-      color: #1E4BA5;
-      font-weight: 700;
-      font-size: 14px;
+      min-height: 64px;
+      box-sizing: border-box;
       margin: 16px 0;
     }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
 
     article p {
       font-size: 16px;
@@ -227,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -267,8 +307,8 @@
       <!-- ARTIGO -->
       <section>
         <div class="card">
-          <h1 id="articleTitle">Lucas Pinheiro Braathen conquista ouro histórico do Brasil nos Jogos Olímpicos de Inverno</h1>
-          <p class="subhead" id="articleExcerpt">Lucas Pinheiro Braathen conquista a primeira medalha de ouro do Brasil em Jogos Olímpicos de Inverno, no esqui alpino (slalom gigante).</p>
+          <h1 id="articleTitle">Lucas Pinheiro Braathen conquista ouro histórico para o Brasil nos Jogos de Inverno</h1>
+          <p class="subhead" id="articleExcerpt">A vitória veio no slalom gigante em Milão-Cortina 2026 conquistando a primeira medalha do Brasil na história dos Jogos Olímpicos de Inverno.</p>
 
           <div class="meta">
             Por Corte dos Esportes · <span id="articleDate">16/02/2026</span> ·
@@ -282,18 +322,105 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <div class="ad-slot"></div>
-
           <article id="articleBody">
-            <p>O fim de semana foi marcado por um momento histórico para o esporte brasileiro. O atleta Lucas Pinheiro Braathen, neste sábado, dia 14/02, conquistou a primeira medalha de ouro do Brasil em uma edição dos Jogos Olímpicos de Inverno, na modalidade esqui alpino (slalom gigante).</p>
+            <p>Lucas Pinheiro Braathen colocou o Brasil em uma página inédita da história olímpica. No dia 14 de fevereiro de 2026, o esquiador conquistou a medalha de ouro no slalom gigante do esqui alpino nos Jogos Olímpicos de Inverno Milão-Cortina 2026 e se tornou o primeiro atleta brasileiro a subir ao pódio em uma edição de inverno.</p>
 
-            <p>Lucas, que já vinha ganhando relevância nas etapas do circuito mundial da modalidade, consolidou a excelente fase com a medalha de ouro e entrou definitivamente para a história do esporte brasileiro. O resultado representa um marco inédito para o país em competições de inverno, tradicionalmente dominadas por nações europeias.</p>
+            <p>O feito foi ainda maior porque não marcou apenas a primeira medalha do Brasil. Também foi a primeira medalha da América do Sul na história dos Jogos Olímpicos de Inverno. Em uma modalidade tradicionalmente dominada por europeus e norte-americanos, Lucas venceu representando um país tropical e mudou o lugar do Brasil no mapa dos esportes de neve.</p>
 
-            <p>O atleta possui dupla cidadania — brasileira e norueguesa — em virtude do pai norueguês e da mãe brasileira. Apesar da forte ligação com a Noruega, escolheu defender as cores do Brasil. Em entrevista logo após a vitória, afirmou que a medalha “fica do lado do coração brasileiro”, celebrando de forma emocionada e espontânea o feito histórico que comoveu torcedores e admiradores do esporte.</p>
+            <p>A vitória aconteceu na pista Stelvio, em Bormio, na Itália, em uma prova de altíssimo nível técnico. Lucas somou o tempo de 2min25s00 nas duas descidas e superou adversários de elite, incluindo nomes acostumados a dominar o circuito mundial. Mais do que uma surpresa, o ouro confirmou a força de um atleta que já vinha competindo entre os melhores do mundo.</p>
 
-            <p>Nesta segunda-feira, dia 16/02, Lucas voltou às pistas para disputar a prova do slalom. No entanto, sofreu uma queda durante a descida e não conseguiu avançar na competição. O resultado, porém, em nada diminui a magnitude da conquista anterior, que já garantiu seu nome na história olímpica e elevou o Brasil a um novo patamar nos esportes de inverno.</p>
+            <p><strong>Como foi o ouro de Lucas Pinheiro Braathen</strong></p>
 
-            <p>A medalha inédita reforça a importância do investimento no esporte de alto rendimento e inspira uma nova geração de atletas brasileiros a acreditarem que é possível competir e vencer em qualquer modalidade, independentemente das tradições históricas.</p>
+            <p>O slalom gigante é uma das provas mais exigentes do esqui alpino. O atleta precisa descer a montanha em alta velocidade, contornar portas distribuídas pelo percurso e manter equilíbrio entre agressividade, precisão e controle. Qualquer erro de linha, atraso na curva ou perda de estabilidade pode custar décimos preciosos.</p>
+
+            <p>Lucas fez uma prova praticamente perfeita no momento decisivo. Na primeira descida, abriu vantagem importante e colocou pressão nos principais rivais. Na segunda, administrou o cenário sem perder competitividade, manteve velocidade suficiente e cruzou a linha com tempo para garantir o ouro.</p>
+
+            <p>A medalha teve um peso simbólico enorme, por isso, quando Lucas confirmou a vitória, o resultado ultrapassou o limite do esqui alpino e virou um marco para todo o esporte brasileiro.</p>
+
+            <p><strong>Veja a descida que deu o ouro ao Lucas e para o Brasil abaixo:</strong></p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/IRUk0VmNYcI" title="Lucas Pinheiro Braathen - descida do ouro no slalom gigante" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+            
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quem é Lucas Pinheiro Braathen</strong></p>
+
+            <p>Ele nasceu em Oslo, na Noruega, mas tem forte ligação com o Brasil por causa da mãe brasileira. O pai é norueguês, e a formação esportiva aconteceu em um ambiente muito mais tradicional para o esqui do que o cenário brasileiro.</p>
+
+            <p>Essa dupla identidade faz parte central da história do atleta. Lucas já competiu pela Noruega, país com enorme tradição em esportes de inverno, mas escolheu defender o Brasil em uma fase decisiva da carreira. A decisão deu ao país um representante de elite em uma modalidade que, até então, parecia distante da realidade esportiva brasileira.</p>
+
+            <p>A escolha também tornou a conquista ainda mais simbólica. O ouro não foi apenas uma medalha importada por um atleta distante da cultura nacional. Lucas abraçou a bandeira brasileira, celebrou a origem materna e transformou sua trajetória em uma ponte entre dois mundos: a tradição norueguesa na neve e a paixão brasileira por esporte.</p>
+
+            <p><strong>Por que a medalha é tão histórica</strong></p>
+
+            <p>Ela rompe uma barreira que parecia quase impossível. O Brasil já tinha tradição em Jogos Olímpicos de Verão, com conquistas em modalidades como vôlei, futebol, judô, vela, atletismo, ginástica, surfe, boxe e skate. Nos Jogos de Inverno, porém, o país sempre esteve muito longe do pódio.</p>
+
+            <p>Isso acontece por motivos óbvios. O Brasil não tem a mesma estrutura natural para esportes de neve e gelo. Atletas que escolhem esse caminho precisam treinar fora do país, enfrentar custos elevados, buscar calendário internacional e competir contra rivais que crescem em países com centros de treinamento consolidados.</p>
+
+            <p>Por isso, o ouro de Lucas tem impacto maior do que uma vitória isolada. Ele mostra que um atleta representando o país pode vencer em uma modalidade de inverno no nível mais alto do planeta. É uma conquista que muda referência, amplia possibilidades e inspira novas gerações a enxergar os esportes de inverno com outros olhos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que aconteceu depois no slalom</strong></p>
+
+            <p>Dois dias depois do ouro, Lucas voltou às pistas para disputar o slalom, outra prova técnica do esqui alpino. A expectativa era grande, já que ele chegava embalado pela medalha histórica e também tinha qualidade para competir bem na especialidade.</p>
+
+            <p>A disputa, porém, terminou cedo para o brasileiro. Lucas sofreu uma queda na primeira descida e ficou fora da briga por medalha. O resultado impediu a busca por um segundo pódio em Milão-Cortina, mas não diminuiu em nada o tamanho da conquista anterior.</p>
+
+            <p><strong>Um feito além da medalha</strong></p>
+
+            <p>O ouro de Lucas também tem valor cultural. Em um esporte de inverno, vencer pelo Brasil carrega uma força simbólica diferente. A imagem de um atleta brasileiro no topo do pódio em uma prova de neve quebra uma expectativa histórica e mostra que a identidade esportiva do país pode ser mais ampla do que as modalidades tradicionais.</p>
+
+            <p>A conquista também reforça a importância de trajetórias individuais no alto rendimento. Lucas não representa um sistema brasileiro consolidado no esqui alpino, mas sua vitória pode ajudar a chamar atenção para a modalidade, atrair novos olhares e abrir espaço para projetos futuros.</p>
+
+            <p>É claro que uma medalha não transforma automaticamente o Brasil em potência dos esportes de inverno. Mas ela cria referência. Antes o pódio olímpico de inverno era algo distante para o país. Depois dele, passou a existir uma história concreta para inspirar atletas, federações, patrocinadores e torcedores.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que Lucas virou símbolo para o Brasil</strong></p>
+
+            <p>Se tornou um símbolo porque sua história combina resultado, identidade e quebra de limite. Ele venceu onde o Brasil nunca havia vencido. Fez isso em uma modalidade distante da cultura esportiva nacional. E ainda transformou a própria trajetória pessoal em parte da narrativa da medalha.</p>
+
+            <p>O ouro no slalom gigante de Milão-Cortina 2026 não pertence apenas ao esqui alpino. Ele entra na galeria dos maiores feitos individuais do esporte brasileiro em qualquer modalidade. É o tipo de conquista que muda estatística, mas também muda imaginação.</p>
+
+            <p>A partir daquele 14 de fevereiro, o Brasil passou a ter uma medalha de ouro nos Jogos Olímpicos de Inverno. E esse fato carrega um peso enorme. Lucas Pinheiro Braathen não apenas venceu uma prova: ele abriu uma porta que, até então, parecia fechada para o esporte brasileiro.</p>
           </article>
         </div>
       </section>
@@ -307,7 +434,18 @@
           </ul>
         </div>
 
-        <div class="ad-slot"></div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
