@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Felipão: a história de Luiz Felipe Scolari, lenda viva do futebol mundial | Corte dos Esportes</title>
+  <meta name="description" content="Campeão do mundo com a Seleção Brasileira, ídolo de Grêmio e Palmeiras, vencedor em diferentes países, Luiz Felipe Scolari construiu uma das carreiras mais marcantes entre os técnicos brasileiros  e mundiais." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Felipão: a história de Luiz Felipe Scolari, lenda viva do futebol mundial</h1>
+          <p class="subhead" id="articleExcerpt">Campeão do mundo com a Seleção Brasileira, ídolo de Grêmio e Palmeiras, vencedor em diferentes países, Luiz Felipe Scolari construiu uma das carreiras mais marcantes entre os técnicos brasileiros  e mundiais.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">11/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Não somente como técnico, mas é uma das figuras mais marcantes da história do futebol brasileiro. Conhecido mundialmente como Felipão, o treinador construiu uma carreira de enorme impacto, marcada por títulos, liderança, personalidade forte e conquistas em clubes, seleções e continentes diferentes.</p>
+
+            <p>Nascido em Passo Fundo, no Rio Grande do Sul, Felipão foi jogador antes de se tornar treinador. Como atleta, atuava como zagueiro, com perfil combativo e espírito de comando. Essas características acompanharam sua trajetória fora das quatro linhas e ajudaram a moldar a imagem de um técnico intenso, exigente e acostumado a trabalhar com grupos competitivos.</p>
+
+            <p>Ao longo de décadas, ele comandou clubes tradicionais do Brasil, passou pelo futebol europeu, fez história no futebol asiático e alcançou o ponto mais alto da carreira ao conquistar a Copa do Mundo de 2002 com a Seleção Brasileira. Mais do que um técnico campeão, tornou-se um personagem histórico do futebol mundial.</p>
+
+            <p><strong>Ídolo eterno no Grêmio</strong></p>
+
+            <p>A relação de Felipão com o <a href="https://cortedosesportes.com.br/gremio-historia-tradicao-titulos-imortal.html">Grêmio</a>, é uma das mais fortes entre um técnico e uma torcida no futebol brasileiro. Em Porto Alegre, ele comandou uma das fases mais vitoriosas da história gremista e consolidou um estilo que ficou profundamente ligado à identidade do clube: força competitiva, espírito copeiro, intensidade física e enorme capacidade de decidir mata-matas.</p>
+
+            <p>Na década de 1990, ele transformou o Grêmio em uma equipe temida no Brasil e na América do Sul. A conquista da Copa Libertadores de 1995 é um dos grandes símbolos dessa era, dentro de uma competição que carrega enorme peso histórico no continente, <a href="https://cortedosesportes.com.br/libertadores-historia-maiores-campeoes-rivalidades-cultura-torcida.html">entrando na sua história</a>. O time tinha jogadores como Danrlei, Arce, Rivarola, Dinho, Carlos Miguel, Paulo Nunes e Jardel, em uma formação que combinava entrega, imposição e eficiência.</p>
+
+            <p>Além da Libertadores, Felipão também conquistou Campeonato Brasileiro, Copa do Brasil, Recopa Sul-Americana e títulos estaduais pelo clube. Por isso, sua imagem no Grêmio vai além dos troféus. Ele representa uma era de afirmação internacional, de orgulho para a torcida e de uma mentalidade vencedora que segue lembrada como referência.</p>
+
+            <p><strong>Palmeiras também tem Felipão como símbolo</strong></p>
+
+            <p>No clube paulista também virou ídolo. A relação foi construída em diferentes passagens e marcada por conquistas de enorme peso. O ponto mais alto veio em 1999, quando o treinador comandou o Palmeiras no título da Copa Libertadores, o primeiro da história do clube.</p>
+
+            <p>A equipe daquele período tinha nomes como Marcos, Júnior, César Sampaio, Zinho, Alex, Paulo Nunes e Evair. Foi um Palmeiras competitivo, emocionalmente forte e preparado para jogos grandes. A final contra o Deportivo Cali, decidida nos pênaltis, entrou para sempre na memória palmeirense e transformou Felipão em um dos grandes personagens da história alve verde.</p>
+
+            <p>Felipão ainda conquistou a Copa do Brasil e, anos depois, voltou para levantar o <a href="https://cortedosesportes.com.br/campeonato-brasileiro-historia-rivalidades-tradicao-evolucao.html">Campeonato Brasileiro</a>, em 2018. Essa capacidade de vencer em momentos diferentes, com elencos diferentes e em contextos distintos, reforça seu tamanho dentro do Palmeiras.</p>
+
+            <p>Ser ídolo de Grêmio e Palmeiras já seria suficiente para colocar um treinador em lugar especial no futebol brasileiro. Felipão fez isso e ainda levou sua carreira a um patamar mundial.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O pentacampeonato com a Seleção Brasileira</strong></p>
+
+            <p>O maior título da carreira veio em 2002, quando comandou a Seleção Brasileira na conquista do pentacampeonato mundial. A campanha ampliou a galeria de uma camisa que construiu sua grandeza em diferentes gerações dentro da <a href="https://cortedosesportes.com.br/selecao-brasileira-historia-5-copas-do-mundo.html">história dos cinco títulos</a>.</p>
+
+            <p>O Brasil chegou à Copa do Mundo da Coreia do Sul e do Japão depois de um ciclo turbulento, com pressão, desconfiança e muitas dúvidas sobre o desempenho da equipe. Felipão conseguiu montar um grupo forte, unido e competitivo para transformar aquele cenário em uma campanha perfeita.</p>
+
+            <p>A base tinha Marcos no gol, Cafu e Roberto Carlos nas laterais, Lúcio na defesa, além de Rivaldo, Ronaldinho Gaúcho e Ronaldo como protagonistas ofensivos. O Brasil venceu os sete jogos que disputou e confirmou título ao bater a Alemanha na final.</p>
+
+            <p>A conquista de 2002 colocou Felipão em uma prateleira raríssima. Poucos treinadores no mundo podem dizer que foram campeões de uma Copa do Mundo. No caso dele, o título também teve um peso simbólico enorme, porque encerrou um ciclo de incerteza e devolveu ao Brasil o topo do futebol mundial.</p>
+
+            <p><strong>A seleção portuguesa histórica</strong></p>
+
+            <p>Depois do penta, Felipão assumiu Portugal e comandou uma das gerações mais importantes da história da seleção portuguesa. Com jogadores como Luís Figo, Deco, Cristiano Ronaldo, Ricardo Carvalho, Maniche, Costinha, Nuno Gomes e Pauleta, Portugal passou a competir em alto nível contra as principais seleções do mundo.</p>
+
+            <p>Na Eurocopa de 2004, disputada em casa, a equipe chegou à final. A derrota para a Grécia foi uma frustração enorme para o país, mas a campanha marcou uma virada de patamar. Portugal deixou de ser apenas uma seleção talentosa e passou a ser visto como candidato real em grandes torneios.</p>
+
+            <p>Dois anos depois, na Copa do Mundo de 2006, Felipão levou Portugal à semifinal. A equipe terminou entre as quatro melhores do mundo, em uma campanha que reforçou o peso daquele ciclo. Mesmo sem título, a passagem pela seleção portuguesa foi uma das mais relevantes da carreira do treinador e ajudou a consolidar sua reputação internacional.</p>
+
+            <p><strong>A passagem frustrante pelo Chelsea</strong></p>
+
+            <p>A experiência no clube inglês foi o capítulo mais difícil da carreira internacional de Felipão em clubes. Contratado em 2008, ele chegou ao futebol inglês com o prestígio de campeão do mundo e com a responsabilidade de comandar um elenco recheado de estrelas.</p>
+
+            <p>O início teve bons momentos, mas o trabalho perdeu força com o passar da temporada. A adaptação ao ambiente inglês se tornou um desafio importante. O idioma, o ritmo da Premier League, a pressão constante da imprensa e a dinâmica de um vestiário europeu de alto nível criaram obstáculos que o treinador não conseguiu superar naquele momento.</p>
+
+            <p>A saída precoce fez da passagem pelo Chelsea uma frustração dentro de uma trajetória muito mais marcada por conquistas do que por tropeços. Ainda assim, esse episódio também faz parte da dimensão de Felipão: um técnico que se arriscou em grandes centros, enfrentou culturas diferentes e construiu carreira em escala internacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O 7 a 1 e o capítulo mais doloroso da carreira</strong></p>
+
+            <p>Nenhuma trajetória tão longa e vitoriosa passa sem marcas difíceis, e Felipão também carrega um dos resultados mais dolorosos da história do futebol brasileiro. Em 2014, de volta ao comando da Seleção Brasileira, o treinador chegou à semifinal da Copa do Mundo disputada em casa, mas viveu a derrota por 7 a 1 para a Alemanha, no Mineirão.</p>
+
+            <p>O placar entrou para a história como um trauma esportivo nacional. Para Luís Felipe, foi o capítulo mais pesado de uma carreira marcada por conquistas, porque aconteceu dentro de casa, em uma Copa cercada por expectativa enorme e com a Seleção tentando voltar a uma final mundial depois do penta de 2002.</p>
+
+            <p>Aquele resultado não apaga o tamanho do treinador, mas faz parte da leitura completa sobre sua trajetória. Felipão foi o técnico do pentacampeonato, comandou Portugal em grandes campanhas, venceu Libertadores por Grêmio e Palmeiras e empilhou títulos em diferentes países. Ao mesmo tempo, também esteve no banco em uma das derrotas mais marcantes da história da Seleção Brasileira.</p>
+
+            <p>É justamente essa combinação que torna sua carreira tão grande e tão humana: glórias enormes, frustrações profundas e um legado que atravessa diferentes fases do futebol mundial.</p>
+
+            <p><strong>Recordes e marcas históricas</strong></p>
+
+            <p>Além de títulos, ele construiu uma carreira marcada por números que ajudam a explicar seu tamanho no futebol. Na Copa do Brasil, o treinador se tornou uma referência histórica da competição: chegou a cinco finais e conquistou quatro títulos, por Criciúma, Grêmio e Palmeiras. Poucos técnicos simbolizam tão bem o peso do mata-mata nacional quanto ele.</p>
+
+            <p>Na Libertadores, a marca também é expressiva. Felipão é o treinador brasileiro com mais finais disputadas na competição. Foram quatro decisões continentais: campeão com o Grêmio em 1995, campeão com o Palmeiras em 1999, vice novamente com o Palmeiras em 2000 e finalista com o Athletico em 2022.</p>
+
+            <p>Esses números reforçam uma característica central de sua carreira: Felipão sempre teve enorme força em torneios eliminatórios. Seu estilo de comando, baseado em grupo, competitividade, leitura emocional e preparação para decisões, fez dele um técnico especialmente identificado com copas, finais e jogos de alta pressão.</p>
+
+            <p>Em Copas do Mundo, somando a campanha perfeita com o Brasil em 2002 e o início da trajetória com Portugal em 2006, Felipão alcançou uma sequência histórica de 11 vitórias consecutivas em Mundiais como treinador. É mais um dado que amplia sua dimensão internacional e ajuda a explicar por que seu nome ultrapassa o futebol brasileiro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Principais títulos da carreira</strong></p>
+
+            <p>Reúne conquistas em clubes brasileiros, seleções nacionais e no futebol internacional. Além das taças no Brasil, o treinador também venceu no Japão, em um contexto ligado ao crescimento da <a href="https://cortedosesportes.com.br/liga-japonesa-futebol-historia-maiores-campeoes-jleague.html">J.League e à história do Campeonato Japonês</a>, e na China, onde comandou o Guangzhou Evergrande em uma fase de grande investimento do <a href="https://cortedosesportes.com.br/liga-chinesa-futebol-historia-curiosidades-maiores-campeoes-brasileiros.html">Campeonato Chinês</a>. A lista de títulos mostra a força de um treinador que venceu em diferentes contextos e marcou época por onde passou.</p>
+
+            <p><strong>Brasil de Pelotas</strong></p>
+
+            <p><strong>Campeonato do Interior Gaúcho: 1983</strong></p>
+
+            <p><strong>Grêmio</strong></p>
+
+            <p><strong>Campeonato Gaúcho: 1987, 1995 e 1996</strong></p>
+            <p><strong>Copa do Brasil: 1994</strong></p>
+            <p><strong>Copa Libertadores da América: 1995</strong></p>
+            <p><strong>Recopa Sul-Americana: 1996</strong></p>
+            <p><strong>Campeonato Brasileiro: 1996</strong></p>
+
+            <p><strong>Qadsia SC</strong></p>
+
+            <p><strong>Copa do Emir: 1988/89</strong></p>
+            <p><strong>Campeonato Kuwaitiano: 1991/92</strong></p>
+
+            <p><strong>Seleção do Kuwait</strong></p>
+
+            <p><strong>Copa do Golfo: 1990</strong></p>
+
+            <p><strong>Criciúma</strong></p>
+
+            <p><strong>Campeonato Catarinense: 1991</strong></p>
+            <p><strong>Copa do Brasil: 1991</strong></p>
+
+            <p><strong>Júbilo Iwata</strong></p>
+
+            <p><strong>Campeonato Japonês: 1997</strong></p>
+
+            <p><strong>Palmeiras</strong></p>
+
+            <p><strong>Copa do Brasil: 1998 e 2012</strong></p>
+            <p><strong>Copa Mercosul: 1998</strong></p>
+            <p><strong>Copa Libertadores da América: 1999</strong></p>
+            <p><strong>Torneio Rio-São Paulo: 2000</strong></p>
+            <p><strong>Copa dos Campeões: 2000</strong></p>
+            <p><strong>Campeonato Brasileiro: 2018</strong></p>
+
+            <p><strong>Cruzeiro</strong></p>
+
+            <p><strong>Copa Sul-Minas: 2001</strong></p>
+
+            <p><strong>Seleção Brasileira</strong></p>
+
+            <p><strong>Copa do Mundo: 2002</strong></p>
+            <p><strong>Copa das Confederações: 2013</strong></p>
+
+            <p><strong>Bunyodkor</strong></p>
+
+            <p><strong>Campeonato Uzbeque: 2009 e 2010</strong></p>
+            <p><strong>Copa do Uzbequistão: 2010</strong></p>
+
+            <p><strong>Guangzhou Evergrande</strong></p>
+
+            <p><strong>Superliga Chinesa: 2015, 2016 e 2017</strong></p>
+            <p><strong>Liga dos Campeões da AFC: 2015</strong></p>
+            <p><strong>Copa da China: 2016</strong></p>
+            <p><strong>Supercopa da China: 2016 e 2017</strong></p>
+
+            <p><strong>Um treinador de grupo, decisão e mentalidade</strong></p>
+
+            <p>Felipão sempre foi reconhecido por sua capacidade de montar grupos fortes. Seu futebol nem sempre buscou agradar pela estética, mas quase sempre teve uma característica clara: competitividade. Em mata-matas, finais e torneios curtos, essa marca se tornou ainda mais evidente.</p>
+
+            <p>Seus times costumavam carregar intensidade emocional, organização, disciplina e senso de decisão. Felipão entendia como poucos o peso do ambiente, a importância da liderança interna e a necessidade de transformar elencos em grupos comprometidos com uma ideia comum.</p>
+
+            <p>Essa capacidade explica parte de seu sucesso em competições eliminatórias. Libertadores, Copa do Brasil, Copa do Mundo, Eurocopa e torneios continentais exigem mais do que qualidade técnica. Exigem resistência mental, leitura de momento e força coletiva. Felipão fez disso uma assinatura.</p>
+
+            <p><strong>Uma lenda viva do futebol mundial</strong></p>
+
+            <p>Luiz Felipe Scolari ocupa um lugar especial na história do futebol, sua trajetória atravessa gerações.</p>
+
+            <p>Para gremistas, é o técnico de uma era inesquecível. Para palmeirenses, é o comandante da primeira Libertadores e de outros grandes títulos. Para o torcedor brasileiro, é o treinador do penta. Para Portugal, é parte de um ciclo que recolocou a seleção entre as grandes forças do futebol mundial.</p>
+
+            <p>Felipão é daqueles nomes que já não dependem de um último resultado para explicar seu tamanho. Sua carreira está escrita em taças, decisões, noites históricas e lembranças profundas de torcedores que viram seus times vencerem sob seu comando.</p>
+
+            <p>Mais do que um treinador vitorioso, Luiz Felipe Scolari é uma lenda viva do futebol mundial.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
