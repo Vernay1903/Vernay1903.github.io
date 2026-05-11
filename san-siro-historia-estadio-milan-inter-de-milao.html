@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>San Siro: história, tradição e rivalidade no estádio italiano | Corte dos Esportes</title>
+  <meta name="description" content="Casa de Milan e Inter, o San Siro é um dos estádios mais tradicionais do futebol mundial, palco de Copas do Mundo, finais europeias, clássicos históricos e noites inesquecíveis em Milão." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">San Siro: história, tradição e rivalidade no estádio italiano</h1>
+          <p class="subhead" id="articleExcerpt">Casa de Milan e Inter, o San Siro é um dos estádios mais tradicionais do futebol mundial, palco de Copas do Mundo, finais europeias, clássicos históricos e noites inesquecíveis em Milão.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">11/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Poucos estádios no mundo carregam tanta história quanto o San Siro. Localizado em Milão, na Itália,  é casa de dois gigantes do futebol europeu: Milan e Inter. Mais do que um palco esportivo, tornou-se símbolo da cidade, ponto turístico, cenário de decisões internacionais e uma das arenas mais reconhecidas do planeta, em uma prateleira de tradição que também inclui templos como o <a href="https://cortedosesportes.com.br/estadio-wembley-historia-tradicao-copa-do-mundo.html">estádio de Wembley</a> e o <a href="https://cortedosesportes.com.br/maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>.</p>
+
+            <p>Oficialmente chamado de Stadio Giuseppe Meazza, o estádio é conhecido mundialmente pelo nome do bairro onde fica: San Siro. Para muitos torcedores do Milan, San Siro é o nome natural. Para muitos torcedores da Inter, Giuseppe Meazza tem peso especial, já que homenageia um dos maiores jogadores italianos da história, ídolo nerazzurro e também com passagem pelo Milan.</p>
+
+            <p>Essa divisão de nomes já ajuda a explicar a grandeza do lugar. O mesmo estádio abriga duas identidades, duas torcidas, duas culturas e uma das maiores rivalidades da Itália. Em dias de clássico, o Derby della Madonnina transforma o San Siro em um espetáculo visual e emocional, com arquibancadas divididas, mosaicos gigantes e uma atmosfera que ultrapassa o jogo.</p>
+
+            <p><strong>A origem de um estádio feito para o futebol</strong></p>
+
+            <p>Ele foi inaugurado em 1926, em uma época em que muitos estádios ainda eram construídos com pista de atletismo ao redor do campo. A ideia em Milão foi diferente: criar uma arena pensada diretamente para o futebol, com arquibancadas próximas do gramado e ambiente mais intenso para jogadores e torcedores.</p>
+
+            <p>No início, o estádio estava ligado ao Milan. Com o passar dos anos, passou por ampliações, reformas e mudanças de administração. A Inter começou a mandar jogos no local depois, e o San Siro se consolidou como a casa compartilhada dos dois principais clubes da cidade.</p>
+
+            <p>Essa característica é uma das grandes particularidades do estádio. Ao contrário de outras arenas marcadas por um único clube, o San Siro pertence à memória afetiva de duas torcidas rivais. Em uma semana, pode estar completamente vestido de vermelho e preto. Na outra, de azul e preto. O concreto é o mesmo, mas a alma muda conforme o mandante.</p>
+
+            <p><strong>Capacidade e recordes de público do San Siro</strong></p>
+
+            <p>Segue entre os maiores estádios da Europa. Hoje, a capacidade oficial divulgada é de 75.817 lugares, número que faz do estádio o maior da Itália em operação para o futebol. Em algumas fichas históricas, a capacidade máxima aparece próxima de 80 mil lugares, reflexo de diferentes configurações e fases de uso do estádio ao longo do tempo.</p>
+
+            <p>Essa dimensão é parte central da experiência. O San Siro não impressiona apenas pelo passado, mas também pela sensação visual de suas arquibancadas altas, torres, rampas em espiral e anéis sobrepostos. Em jogos grandes, especialmente no Derby della Madonnina ou em noites de Champions League, a pressão de mais de 70 mil torcedores transforma o estádio em um dos ambientes mais intensos do futebol europeu.</p>
+
+            <p>O recorde de público mais citado em registros modernos do estádio é de 83.381 torcedores, em Inter x Schalke 04, pela final da Copa da Uefa de 1997. O número ficou acima da capacidade atual porque pertence a outra fase de regulamentação e configuração de público. Também há registros históricos de públicos próximos ou superiores a 85 mil em jogos antigos, especialmente antes das reduções de capacidade por segurança e modernização.</p>
+
+            <p>Esses números ajudam a explicar por que o San Siro ocupa lugar tão especial entre os grandes estádios do mundo. Não é apenas uma arena tradicional: é um estádio gigantesco, de arquibancada pesada, acostumado a receber multidões e a transformar grandes partidas em acontecimentos coletivos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estádio dividido por Milan e Inter</strong></p>
+
+            <p>Dividir estádio nunca é algo simples no futebol. No caso dos dois times, essa divisão virou parte da tradição. O San Siro é o palco comum de duas histórias gigantescas: de um lado, o Milan, multicampeão europeu e clube que teve em sua trajetória nomes históricos como Gunnar Nordahl, o <a href="https://cortedosesportes.com.br/gunnar-nordahl-recorde-maior-artilheiro-historia-milan-gols.html">maior artilheiro da história do clube</a>; do outro, a Inter, também campeã continental e dona de gerações marcantes.</p>
+
+            <p>Essa convivência criou uma rivalidade muito própria. O jogo entre os dois, não é apenas um clássico entre clubes da mesma cidade. É um dos grandes jogos da <a href="https://cortedosesportes.com.br/campeonato-italiano-historia-tradicao-maiores-campeoes-rivalidades.html">história do Campeonato Italiano</a>.</p>
+
+            <p>A rivalidade fica ainda mais forte porque Milan e Inter não são apenas grandes clubes italianos. São marcas globais do futebol. Já conquistaram títulos nacionais, continentais e mundiais, tiveram alguns dos maiores jogadores da história e fizeram do San Siro um ponto de encontro entre tradição, pressão e espetáculo.</p>
+
+            <p><strong>San Siro e a Copa do Mundo</strong></p>
+
+            <p>Ele também tem peso importante na história das Copas do Mundo. O estádio recebeu jogos do Mundial de 1934, disputado na Itália, incluindo uma semifinal vencida pela seleção italiana contra a Áustria. Aquele torneio terminou com o título da Itália e ajudou a colocar o estádio no mapa dos grandes eventos internacionais.</p>
+
+            <p>Décadas depois, o San Siro voltou a ser protagonista na Copa do Mundo de 1990. O estádio recebeu a partida de abertura entre Argentina e Camarões, um dos jogos mais lembrados daquela edição. A vitória camaronesa sobre os argentinos, então campeões do mundo, entrou para a história como uma das grandes surpresas dos Mundiais.</p>
+
+            <p>Ao todo, o San Siro recebeu três jogos na Copa de 1934 e seis jogos na Copa de 1990. Não foi palco de uma final de Copa do Mundo, mas esteve presente em momentos decisivos, jogos de abertura e fases eliminatórias. Isso basta para colocar o estádio entre os grandes cenários mundialistas do futebol europeu.</p>
+
+            <p><strong>Finais europeias e noites de taça</strong></p>
+
+            <p>A relação do San Siro com decisões continentais também é profunda. O estádio recebeu quatro finais da antiga Copa dos Campeões da Europa ou da Liga dos Campeões: 1965, 1970, 2001 e 2016. Em 1965, a Inter viveu um momento especial ao conquistar o torneio dentro de sua própria casa, em uma das noites mais simbólicas da história nerazzurra.</p>
+
+            <p>Em 1970, o Feyenoord levantou a taça no estádio. Em 2001, foi a vez do Bayern de Munique conquistar a Champions em Milão. Em 2016, o Real Madrid venceu o Atlético de Madrid nos pênaltis em mais uma final europeia disputada no San Siro.</p>
+
+            <p>Essas decisões ajudam a explicar por que o estádio é chamado de “La Scala del Calcio”, uma referência ao prestigiado teatro de ópera de Milão. O apelido não é exagero. O San Siro foi palco de futebol em altíssimo nível, com craques, finais, rivalidades e noites que entraram para a memória do esporte.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quantos jogos já aconteceram no San Siro?</strong></p>
+
+            <p>Não existe uma contagem oficial simples e única que reúna todos os jogos disputados desde 1926. A dificuldade é natural: o estádio recebeu partidas do Milan, da Inter, da seleção italiana, competições nacionais, torneios europeus, amistosos, jogos de Copa do Mundo, Eurocopa, finais neutras e decisões em formatos diferentes ao longo de um século.</p>
+
+            <p>Mesmo assim, a estimativa permite dimensionar o tamanho do feito. Considerando que o Milan manda jogos no San Siro desde os primeiros anos da arena, que a Inter passou a jogar ali de forma regular a partir da segunda metade dos anos 1940, e que os dois clubes disputam campeonatos nacionais, copas e competições europeias, é seguro tratar o estádio como palco de mais de 4 mil partidas de futebol.</p>
+
+            <p>Em temporadas recentes, apenas Milan e Inter podem somar mais de 50 jogos no San Siro em uma mesmo temporada, dependendo de calendário, copas e torneios continentais. Quando esse ritmo é projetado sobre décadas de uso duplo, fica fácil entender por que poucos estádios no mundo acumularam tanta história competitiva no mesmo gramado.</p>
+
+            <p><strong>Quantas taças já foram levantadas no San Siro?</strong></p>
+
+            <p>A contagem de títulos entregues também depende do critério usado. Em finais de jogo único, o dado mais direto passa pelas quatro decisões europeias realizadas no estádio. Mas o número real de taças erguidas ou celebradas ali é muito maior quando entram Supercopas, decisões nacionais, finais em ida e volta, títulos de Milan e Inter confirmados em casa e comemorações oficiais diante da torcida.</p>
+
+            <p>Por isso, o recorte mais correto é tratar o San Siro como um estádio que já viu dezenas de taças serem levantadas ou celebradas. Não se trata apenas de finais europeias. O estádio acompanhou scudetti, copas, noites continentais, títulos históricos de seus dois moradores e decisões que mudaram a trajetória de clubes e jogadores.</p>
+
+            <p>A força do estádio está justamente nessa soma. Ele não é lembrado por uma única final, por um único clube ou por uma única geração. É um estádio de repetição histórica: a cada década, novos craques, novas torcidas, novas taças e novos capítulos foram sendo acrescentados ao mesmo cenário.</p>
+
+            <p><strong>Um ponto turístico de Milão</strong></p>
+
+            <p>O San Siro também é um dos pontos turísticos mais procurados por fãs de futebol em Milão. Mesmo para quem não acompanha de perto o Campeonato Italiano, visitar o estádio significa entrar em um lugar que faz parte da cultura esportiva europeia.</p>
+
+            <p>O tour pelo estádio costuma atrair turistas interessados em conhecer arquibancadas, áreas internas, vestiários, túnel de acesso ao gramado e o museu. O local reúne memórias de Milan e Inter, camisas históricas, imagens de grandes jogadores e registros de partidas marcantes.</p>
+
+            <p>Essa força turística mostra que não pertence apenas aos dias de jogo. Ele vive também nos roteiros de viagem, nas fotos de torcedores estrangeiros, na curiosidade de quem visita Milão e na aura de um estádio que se tornou patrimônio emocional do futebol.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Grandes jogadores e grandes memórias</strong></p>
+
+            <p>A lista de craques que atuaram no estádio é gigantesca. Pelo Milan, passaram nomes como Franco Baresi, Paolo Maldini, Marco van Basten, Ruud Gullit, Kaká, Andriy Shevchenko, Andrea Pirlo, Alessandro Nesta e muitos outros. Pela Inter, o estádio recebeu ídolos como Giuseppe Meazza, Javier Zanetti, Ronaldo, Diego Milito, Lothar Matthäus e nomes de diferentes eras.</p>
+
+            <p>Além dos jogadores dos clubes da casa, o San Siro também viu alguns dos maiores atletas do mundo como visitantes. Em noites de Champions League, Copa da UEFA, Serie A e jogos de seleção, o estádio recebeu estrelas de todas as gerações. Isso ajudou a transformar o gramado em uma espécie de arquivo vivo do futebol mundial.</p>
+
+            <p><strong>O futuro do San Siro</strong></p>
+
+            <p>A evolução do estádio virou tema de debate nos últimos anos. Milan e Inter avançaram em projetos para uma nova arena, mais moderna, com estrutura comercial e padrões atualizados para grandes eventos internacionais. O plano marca uma mudança profunda na relação dos clubes com o San Siro e com a área ao redor do estádio.</p>
+
+            <p>A discussão é sensível porque envolve tradição, memória e necessidade de modernização. Para os clubes, um estádio novo representa receitas maiores, conforto, tecnologia e capacidade de competir melhor com outras potências europeias. Para muitos torcedores e apaixonados por futebol, a possível perda do San Siro como ele é hoje representa o fim de um monumento histórico.</p>
+
+            <p>Mesmo nesse cenário, a importância do estádio não diminui. Pelo contrário. O debate sobre seu futuro mostra o quanto ele significa. Arenas comuns não geram esse tipo de comoção. O San Siro gera porque é parte da história de Milan, Inter, Milão, da Itália e do futebol europeu.</p>
+
+            <p><strong>Sendo mais do que um estádio</strong></p>
+
+            <p>O San Siro é um daqueles lugares em que o futebol parece maior. Ele une arquitetura, rivalidade, turismo, tradição e memória. Foi casa de campeões, palco de Copas do Mundo, cenário de finais europeias e território compartilhado por dois clubes que estão entre os mais importantes do planeta.</p>
+
+            <p>Sua grandeza não está apenas na capacidade de quase 80 mil torcedores, nem somente nas taças levantadas em seu gramado. </p>
+
+            <p>Por isso, o San Siro segue sendo um templo. Seja chamado de San Siro ou Giuseppe Meazza, seja vestido de vermelho e preto ou de azul e preto, o estádio permanece como uma das casas mais lendárias do esporte mundial.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
