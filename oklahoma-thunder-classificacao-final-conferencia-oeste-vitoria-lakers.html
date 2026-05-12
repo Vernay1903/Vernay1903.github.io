@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thunder vencem os Lakers e vão à Final do Oeste na NBA | Corte dos Esportes</title>
+  <meta name="description" content="Atual campeão, Oklahoma City Thunder elimina o Los Angeles Lakers por 4 a 0, segue invicto nos playoffs e aguarda Spurs ou Timberwolves na Final da Conferência Oeste." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Thunder vencem os Lakers e vão à Final do Oeste na NBA</h1>
+          <p class="subhead" id="articleExcerpt">Atual campeão, Oklahoma City Thunder elimina o Los Angeles Lakers por 4 a 0, segue invicto nos playoffs e aguarda Spurs ou Timberwolves na Final da Conferência Oeste.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">12/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="basquete.html">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A franquia de Oklahoma está de volta à Final da Conferência Oeste da NBA. O time confirmou a classificação ao vencer o Los Angeles Lakers por 115 a 110 no Jogo 4 da semifinal, fechando a série em 4 a 0 contra a equipe de LeBron James com uma varrida.</p>
+
+            <p>A classificação reforça o peso da <a href="https://cortedosesportes.com.br/conferencia-oeste-nba-historia-times-franquias-dinastias.html">Conferência Oeste</a>, um dos caminhos mais fortes e tradicionais da liga, especialmente por reunir franquias multicampeãs, rivalidades históricas e algumas das maiores campanhas da <a href="https://cortedosesportes.com.br/nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA</a>.</p>
+
+            <p>A vitória em Los Angeles teve um peso diferente dos jogos anteriores da série. Depois de dominar os três primeiros confrontos com maior controle, o Thunder precisou resistir a uma reação forte dos Lakers no último quarto e decidir nos detalhes finais. Mesmo assim, o resultado manteve Oklahoma perfeito nos playoffs: oito vitórias em oito jogos.</p>
+
+            <p>Com a classificação, o Thunder se coloca novamente entre os quatro melhores times da temporada e agora terá tempo para descansar antes da decisão. O adversário sairá do confronto entre San Antonio Spurs e Minnesota Timberwolves, série que ainda está em andamento.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Shai lidera no jogo da classificação</strong></p>
+
+            <p>O grande nome do Jogo 4 foi Shai Gilgeous-Alexander. O armador marcou 35 pontos, distribuiu 8 assistências e foi o cestinha da partida. Nos minutos finais, também apareceu na linha de lance livre para ajudar o Thunder a confirmar a vitória e evitar que os Lakers forçassem o Jogo 5.</p>
+
+            <p>Ajay Mitchell também teve atuação decisiva, com 28 pontos, 4 assistências e 4 roubos de bola. O desempenho dele reforçou a profundidade do elenco de Oklahoma, que não depende apenas de Shai para vencer jogos grandes.</p>
+
+            <p>Pelo lado dos Lakers, Austin Reaves foi o principal pontuador, com 27 pontos, 7 rebotes e 6 assistências. Rui Hachimura fez 25 pontos, enquanto LeBron James terminou com 24 pontos, 12 rebotes e 3 assistências.</p>
+
+            <p><strong>Lakers lutam, mas Thunder decide no fim</strong></p>
+
+            <p>A partida começou melhor para os Lakers, que venceram o primeiro quarto por 26 a 21. O Thunder respondeu no segundo período, virou o placar antes do intervalo e foi para o intervalo vencendo por 49 a 45.</p>
+
+            <p>No terceiro quarto, Los Angeles teve seu melhor momento. Com Reaves, Hachimura e LeBron mais agressivos, os Lakers marcaram 39 pontos no período e entraram no último quarto à frente por 84 a 80. A reação manteve a torcida no jogo e colocou pressão sobre Oklahoma.</p>
+
+            <p>A decisão veio nos detalhes. Marcus Smart colocou os Lakers na frente por 110 a 109 a 40 segundos do fim, mas Chet Holmgren respondeu com uma enterrada após assistência de Isaiah Hartenstein. Depois, Shai Gilgeous-Alexander e Ajay Mitchell converteram lances livres nos segundos finais para fechar o placar em 115 a 110.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Shai foi o destaque da série</strong></p>
+
+            <p>Mesmo sem precisar carregar sozinho todos os jogos, Shai Gilgeous-Alexander foi o principal nome do Thunder na série contra os Lakers. Ele terminou a semifinal do Oeste como referência ofensiva da equipe, com média de 24,5 pontos por jogo, além de 6,3 assistências.</p>
+
+            <p>O mais importante para Oklahoma foi a forma como o time dividiu responsabilidades. Chet Holmgren teve impacto defensivo e presença no garrafão. Ajay Mitchell cresceu como fator ofensivo, especialmente nos jogos em Los Angeles. A rotação também teve contribuições de Jared McCain, Alex Caruso, Isaiah Hartenstein e outros nomes que mantiveram o nível físico da equipe.</p>
+
+            <p><strong>Campanha do Thunder na temporada</strong></p>
+
+            <ul>
+              <li>Fase regular</li>
+              <li>64 vitórias</li>
+              <li>18 derrotas</li>
+              <li>1º lugar da Conferência Oeste</li>
+              <li>1º lugar geral da NBA</li>
+              
+              <li>Playoffs</li>
+              <li>Jogos contra o Phoenix Suns</li>
+              <li>Thunder 119 x 84 Suns</li>
+              <li>Thunder 120 x 107 Suns</li>
+              <li>Thunder 121 x 109 Suns</li>
+              <li>Thunder 131 x 122 Suns</li>
+              
+              <li>Jogos contra o Los Angeles Lakers</li>
+              <li>Thunder 108 x 90 Lakers</li>
+              <li>Thunder 125 x 107 Lakers</li>
+              <li>Thunder 131 x 108 Lakers</li>
+              <li>Thunder 115 x 110 Lakers</li>
+            </ul>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Atual campeão segue no caminho do bi</strong></p>
+
+            <p>O Thunder chegou aos playoffs com o peso de defender o título da NBA. Campeão da temporada passada, Oklahoma entrou em 2026 com cobrança maior, mas também com a base consolidada de um projeto que amadureceu rápido.</p>
+
+            <p>Até aqui, a resposta tem sido forte. O time varreu o Phoenix Suns na primeira rodada, voltou a varrer na semifinal contra os Lakers. Em uma fase que costuma definir legados, rivalidades e grandes campanhas, como a <a href="https://cortedosesportes.com.br/playoffs-nba-como-funciona-tradicao-series-historicas.html">história dos playoffs da NBA</a>, abrir o mata-mata com 8 a 0 é um sinal claro de força coletiva.</p>
+
+            <p><strong>Descanso pode ser vantagem antes da Final do Oeste</strong></p>
+
+            <p>A varrida também dá ao Thunder um benefício importante: tempo. Enquanto Spurs e Timberwolves ainda disputam a outra semifinal da Conferência Oeste, Oklahoma poderá recuperar fisicamente o elenco, estudar possíveis adversários e chegar mais descansado à próxima fase.</p>
+
+            <p>Esse intervalo pode ser decisivo. Em playoffs, dias extras de descanso ajudam a reduzir desgaste, tratar dores acumuladas e ajustar detalhes táticos. Para um time que já jogou oito vezes e venceu todas, a pausa também serve para manter o foco sem perder ritmo.</p>
+
+            <p>Oklahoma terá mando de quadra na Final do Oeste, independentemente do adversário. Isso significa que a série começará em Oklahoma City e, se necessário, o Jogo 7 também será em casa.</p>
+
+            <p><strong>Lakers encerram temporada com incertezas</strong></p>
+
+            <p>Para o time Los Angeles, a eliminação fecha uma temporada de altos e baixos. O time chegou à semifinal do Oeste depois de passar pelo Houston Rockets na primeira rodada, mas não conseguiu competir no mesmo nível contra o Thunder.</p>
+
+            <p>LeBron James com a derrota colocou novamente seu futuro no centro das discussões. Aos 41 anos e após mais uma longa temporada, o astro encerra os playoffs com dúvidas sobre os próximos passos de uma trajetória que já ocupa lugar central na <a href="https://cortedosesportes.com.br/lebron-james-historia-titulos-recordes-legado.html"> da sua história dentro da NBA</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
