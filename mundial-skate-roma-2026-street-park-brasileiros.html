@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mundial de Skate em Roma abre corrida para Los Angeles 2028 | Corte dos Esportes</title>
+  <meta name="description" content="WST World Cup Rome 2026 terá disputas de Park e Street em junho, com presença brasileira, estrelas mundiais e pontos importantes no ranking olímpico rumo a Los Angeles 2028." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Mundial de Skate em Roma abre corrida para Los Angeles 2028</h1>
+          <p class="subhead" id="articleExcerpt">WST World Cup Rome 2026 terá disputas de Park e Street em junho, com presença brasileira, estrelas mundiais e pontos importantes no ranking olímpico rumo a Los Angeles 2028.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">13/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Skate</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O skate mundial volta a Roma em junho para uma etapa com peso especial no calendário. A WST World Cup Rome 2026 será disputada entre os dias 7 e 21 de junho, reunindo as modalidades Park e Street em duas semanas de competição na capital italiana.</p>
+
+            <p>O evento marca o início da corrida olímpica do skate rumo a Los Angeles 2028. Por isso, a etapa ganha importância além do título. Os resultados contam pontos para o ranking mundial e começam a desenhar o caminho dos principais nomes da modalidade no novo ciclo olímpico.</p>
+
+            <p>A programação será dividida em dois momentos. O Park acontece em Ostia, região litorânea de Roma, com treinos a partir de 7 de junho e competição entre os dias 10 e 14. O Street será disputado no Colle Oppio, parque histórico com vista para o Coliseu, com treinos a partir de 14 de junho e competição entre os dias 17 e 21.</p>
+
+            <p><strong>Roma abre a corrida olímpica de 2026</strong></p>
+
+            <p>A etapa italiana ganha ainda mais peso porque abre oficialmente o calendário de 2026 do World Skateboarding Tour. Antes dela, o Mundial realizado em São Paulo, em Março, foi referente à temporada 2025.</p>
+
+            <p>Por isso, Roma funciona como ponto de largada para uma nova temporada. O desempenho recente no <a href="https://cortedosesportes.com.br/mundial-skate-2026-sao-paulo-ranking-olimpico-los-angeles-2028.html">Mundial de Skate em São Paulo</a>, aumenta o interesse pela sequência da temporada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Brasil chega com nomes fortes no Park</strong></p>
+
+            <p>A equipe brasileira deve ter presenças importantes no masculino. Entre os nomes que aparecem no radar da etapa estão Kalani Konig, Luigi Cini, Gui Khury, Luiz Mariano, Pedro Carvalho, Dan Sabino, Pedro Quintas, Augusto Akio(Japinha) e Pedro Barros.</p>
+
+            <p>Kalani chega depois do vice-campeonato mundial em São Paulo. Ele mostrou força em casa, brigou diretamente pelo título e saiu da competição com ainda mais peso no cenário internacional.</p>
+
+            <p>Luigi Cini e Gui Khury também entram como nomes de grande impacto. Luigi vem se consolidando entre os melhores da modalidade, enquanto Gui carrega uma carreira internacional já consolidada, mesmo ainda tão jovem, com vários recordes já registrados.</p>
+
+            <p>Pedro Barros segue como uma referência do skate brasileiro e mundial. Medalhista olímpico, campeão mundial e um dos nomes mais respeitados da modalidade, ele dá experiência ao grupo e mantém o Brasil competitivo em qualquer pista de Park.</p>
+
+            <p>No feminino, o Brasil também tem representantes relevantes. Raicca Ventura que já foi campeã mundial em Roma mesmo, Dora Varella, Isadora Pacheco, Fernanda Tonissi, Yndiara Asp e Helena Laurino estão entre os nomes brasileiros ligados à disputa. Dora, Yndiara e Isadora Pacheco carregam bagagem olímpica e experiência em grandes eventos.</p>
+
+            <p><strong>Rayssa Leal puxa atenção no Street</strong></p>
+
+            <p> A presença brasileira tem como grande destaque Rayssa Leal. A maranhense segue como um dos principais nomes do skate mundial e chega a Roma em uma etapa importante para retomar ritmo no novo ciclo olímpico.</p>
+
+            <p>Rayssa já é campeã mundial, medalhista olímpica e uma das atletas mais populares do skate. A disputa em Roma coloca a brasileira novamente diante de uma geração japonesa muito forte, que vem dominando várias decisões recentes no Street feminino.</p>
+
+            <p>Além de Rayssa, o Brasil tem nomes importantes no Street feminino, como Gabi Mazetto, Pamela Rosa. Pamela, campeã mundial em sua trajetória, segue como uma das referências da modalidade no país. Gabi também tem experiência olímpica e costuma aparecer em competições de alto nível.</p>
+
+            <p>No masculino, o Brasil aparece com Giovanni Vianna, Wallace Gabriel, Ivan Monteiro, João Lucas, Felipe Gustavo, Kelvin Hoefler, Filipe Mota e Gabryel Aguilar entre os nomes ligados à disputa. Giovanni e Wallace chegam em alta no ranking, enquanto Kelvin e Felipe Gustavo carregam histórico forte em competições internacionais.</p>
+
+            <p>Kelvin Hoefler, medalhista olímpico em Tóquio, segue como um dos nomes mais conhecidos do skate brasileiro fora do país. Felipe Gustavo também tem longa estrada no Street e costuma ser competitivo em pistas técnicas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Japão chega como potência no Street</strong></p>
+
+            <p>A etapa de Roma também terá uma lista pesada de nomes internacionais. No Street masculino, o Japão aparece como força principal com Sora Shirai, Toa Sasaki e Kairi Netsuke entre os atletas de maior destaque.</p>
+
+            <p>Toa Sasaki chega com moral depois de título mundial em São Paulo. Sora Shirai e Kairi Netsuke completam um grupo japonês muito técnico, acostumado a linhas limpas, manobras de alta pontuação e forte regularidade em finais.</p>
+
+            <p>Yuto Horigome, campeão olímpico em Tóquio, também aparece como nome de peso no cenário. Mesmo quando não chega como favorito absoluto, ele sempre muda o nível de atenção de qualquer competição.</p>
+
+            <p>Outros nomes importantes no Street masculino são Angelo Caro, do Peru, Richard Tury, da Eslováquia, Max Berguin, da França, e Jagger Eaton, dos Estados Unidos. É um campo forte, com atletas de estilos diferentes e boa mistura entre experiência e nova geração.</p>
+
+            <p>No Street feminino, o Japão também chega muito forte. Ibuki Matsumoto, Nanami Onishi, Funa Nakayama, Coco Yoshizawa, Yumeka Oda, Momiji Nishiya e Liz Akama formam uma base técnica difícil de superar.</p>
+
+            <p>Ibuki Matsumoto vem de título mundial e aparece como uma das principais referências do momento. Coco Yoshizawa, campeã olímpica em Paris 2024, também é nome central. Chloe Covell, da Austrália, Chenxi Cui, da China, e Daniela Terol, da Espanha, completam um grupo internacional de alto nível.</p>
+
+            <p><strong>Park terá campeões mundiais e medalhistas olímpicos</strong></p>
+
+            <p>No Park masculino, Egoitz Bijueska chega como um dos nomes mais fortes da etapa. O espanhol venceu o Mundial em São Paulo e aparece como líder de uma nova geração que compete com maturidade mesmo ainda muito jovem.</p>
+
+            <p>Tom Schaar, dos Estados Unidos, Yuro Nagahara, do Japão, Taylor Nye, dos Estados Unidos, Keefer Wilson, da Austrália, Gavin Bottger, dos Estados Unidos, e Keegan Palmer, da Austrália, também estão entre os nomes relevantes do Park.</p>
+
+            <p>Keegan Palmer merece atenção especial pelo histórico olímpico. Campeão em Tóquio e Paris, ele segue como um dos principais nomes da modalidade, mesmo em um cenário cada vez mais pressionado por uma nova geração de altíssimo nível.</p>
+
+            <p>No Park feminino, Sky Brown aparece como uma das grandes atrações. A britânica venceu o Mundial em São Paulo e chega a Roma como nome forte para mais uma final. Arisa Trew, da Austrália, Cocona Hiraki e Mizuho Hasegawa, do Japão, Minna Stess, dos Estados Unidos, e Nana Taboulet, da França, também estão entre as principais competidoras.</p>
+
+            <p>A combinação de nomes consagrados e nova geração faz de Roma uma etapa importante para medir o início do ciclo. Não é apenas uma disputa isolada: é o primeiro grande teste para entender quem chega mais preparado para a longa caminhada até Los Angeles.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Formato da competição</strong></p>
+
+            <p> A pontuação combina linhas e manobras individuais, com peso para consistência, dificuldade e execução. </p>
+
+            <p>No Park, os atletas fazem 3 voltas de 45 segundos ou até a queda, com a melhor nota sendo considerada. Nas fases decisivas, a final ainda permite uma volta extra para os melhores colocados, aumentando a chance de virada na reta final.</p>
+
+            <p><strong>Roma vira palco estratégico do skate</strong></p>
+
+            <p>A escolha da capital italiana também ajuda a dar força visual e simbólica à etapa. O Park em Ostia tem ligação com a cultura local do skate, enquanto o Street no Colle Oppio oferece um cenário raro, com a pista montada em uma área histórica próxima ao Coliseu.</p>
+
+            <p>A cidade já virou parada tradicional do World Skateboarding Tour. Para os skatistas, a etapa representa um ambiente competitivo de alto nível. Para o público, entrega uma mistura forte entre esporte urbano, cenário histórico e nomes que já fazem parte da elite mundial.</p>
+
+            <p>A etapa terá entrada gratuita para espectadores e transmissão online, o que amplia o alcance do evento.</p>
+
+            <p>Além do Park e do Street, o calendário internacional do skate também terá atenção em outras frentes, como o <a href="https://cortedosesportes.com.br/mundial-skate-downhill-2026-calendario-etapas-brasil.html">Mundial de Skate Downhill 2026, que terá etapas em diferentes países e presença brasileira</a>. A modalidade reforça a expansão do skate competitivo em formatos distintos, com provas de velocidade, técnica e controle em descidas.</p>
+
+            <p><strong>Lista final ainda depende de confirmação</strong></p>
+
+            <p>A relação definitiva de participantes ainda pode passar por ajustes até o fechamento oficial das inscrições e confirmações. As federações nacionais precisam confirmar atletas pré-classificados e elegíveis por ranking dentro do prazo estabelecido pela organização.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "skate";
+  const CATEGORY_NAME = "Skate";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
