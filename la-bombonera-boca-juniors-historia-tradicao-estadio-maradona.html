@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>La Bombonera: história, mística e tradição do estádio do Boca Juniors | Corte dos Esportes</title>
+  <meta name="description" content="A casa do Boca Juniors, é um dos estádios mais temidos da América do Sul, símbolo das noites de Copa, da proximidade com o campo, da pressão da torcida xeneize e de personagens históricos como Diego Maradona." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">La Bombonera: história, mística e tradição do estádio do Boca Juniors</h1>
+          <p class="subhead" id="articleExcerpt">A casa do Boca Juniors, é um dos estádios mais temidos da América do Sul, símbolo das noites de Copa, da proximidade com o campo, da pressão da torcida xeneize e de personagens históricos como Diego Maradona.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">14/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">FUTEBOL</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Poucos estádios no mundo têm uma identidade tão forte quanto La Bombonera. Oficialmente chamado de Estádio Alberto J. Armando, o campo do Boca Juniors fica no bairro de La Boca, em Buenos Aires, e é muito mais do que a casa de um clube. É um símbolo cultural, turístico, esportivo e emocional da Argentina.</p>
+
+            <p>A fama do estádio não vem apenas dos títulos do clube. Vem da sensação de "alento", do barulho, das arquibancadas verticais, da proximidade entre torcida e gramado e da ideia de que jogar ali é entrar em um território hostil. Na América do Sul, especialmente em noites de Copa Libertadores, poucos ambientes são tão citados como sinônimo de pressão quanto a Bombonera.</p>
+
+            <p>O estádio pertence ao Boca Juniors, que é seu único dono e mandante histórico desde a inauguração. Essa ligação direta entre clube, bairro, torcida e estádio ajuda a explicar por que a Bombonera é tratada como parte da própria identidade xeneize.</p>
+
+            <p><strong>A origem da Bombonera</strong></p>
+
+            <p>O estádio foi inaugurado em 25 de maio de 1940, em um amistoso contra o San Lorenzo. Boca venceu por 2 a 0, com gols de Ricardo Alarcón e Aníbal Tenorio, abrindo oficialmente uma nova fase de sua história.</p>
+
+            <p>Antes da arena de concreto, Boca já jogava naquela região em um estádio de madeira. A construção definitiva nasceu da necessidade de dar ao clube uma casa mais moderna, resistente e compatível com o crescimento da torcida. O projeto ficou marcado pelo formato particular: três lados de arquibancadas altas e um setor mais reto, com camarotes e estrutura vertical.</p>
+
+            <p>O apelido “La Bombonera” surgiu justamente pela semelhança do estádio com uma caixa de bombons. Com o tempo, o nome popular ficou mais forte do que a denominação oficial. Hoje, quando se fala em Bombonera, não se fala apenas de arquitetura. Fala-se de clima, medo, paixão e tradição.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Um estádio temido nas noites de Copa</strong></p>
+
+            <p>A Bombonera ganhou fama continental principalmente pela Libertadores. O Boca construiu parte de sua grandeza internacional dentro de casa, em jogos de pressão extrema, arquibancadas lotadas e atmosfera pesada para qualquer visitante.</p>
+
+            <p>Nas chamadas “noites de Copa”, o estádio parece ganhar outro nível de intensidade. A torcida canta sem parar, as arquibancadas se movimentam, o som fica preso dentro da estrutura e o adversário sente que cada lateral, escanteio ou dividida vira parte de uma batalha emocional.</p>
+
+            <p>Essa mística não é apenas folclore. Boca tem histórico muito forte como mandante em competições sul-americanas, especialmente na Libertadores. A Bombonera virou um dos elementos competitivos do clube: não ganha jogo sozinha, mas muda o cenário. Para muitos times, sair vivo dali já é tratado como resultado importante.</p>
+
+            <p><strong>Proximidade com o campo e pressão no adversário</strong></p>
+
+            <p>Um dos grandes diferenciais é a proximidade da torcida com o campo. O estádio não tem pista de atletismo separando arquibancada e gramado, e sua estrutura vertical faz o público parecer ainda mais perto dos jogadores.</p>
+
+            <p>Essa característica cria uma sensação de pressão permanente. O visitante não vê apenas uma torcida numerosa; vê uma massa muito próxima, em pé, cantando e empurrando o time. Para quem está em campo, a Bombonera pode parecer menor, mais fechada e mais intensa do que outros estádios de capacidade parecida.</p>
+
+            <p>Por isso a frase “La Bombonera não treme, pulsa” virou uma síntese perfeita do estádio. A ideia traduz o efeito da torcida nas arquibancadas: o estádio parece vivo, respondendo ao ritmo do jogo.</p>
+
+            <p><strong>A famosa avalanche xeneize</strong></p>
+
+            <p>Outro símbolo da Bombonera é a avalanche da torcida. Nas arquibancadas populares, principalmente nos momentos de gol, os torcedores se movimentam em bloco, descendo alguns degraus juntos, como uma onda humana.</p>
+
+            <p>A imagem se tornou uma das marcas visuais do estádio. É uma celebração, mas também uma demonstração de força coletiva. A avalanche ajuda a construir a sensação de que a torcida do Boca não apenas assiste ao jogo: ela participa, empurra, intimida e transforma o ambiente.</p>
+
+            <p>Com o passar dos anos, questões de segurança e controle de público mudaram parte da dinâmica das arquibancadas, mas a imagem da avalanche segue associada à Bombonera como uma das manifestações mais conhecidas da cultura xeneize.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Capacidade e recorde de público</strong></p>
+
+            <p>A atual fica em torno de 57 mil torcedores, embora diferentes levantamentos apontem pequenas variações conforme o critério usado entre lugares sentados, setores populares, camarotes e ajustes de segurança.</p>
+
+            <p>O recorde de público é de aproximadamente 57.395 pessoas, registrado na inauguração do estádio, em 1940, no amistoso contra o San Lorenzo. Também existem relatos de públicos superiores em jogos antigos, especialmente em grandes noites de Libertadores, mas esses números variam conforme a fonte e pertencem a períodos em que o controle de público era diferente do atual.</p>
+
+            <p><strong>Quantos jogos já tiveram na Bombonera?</strong></p>
+
+            <p>Já foram disputados mais de 1.700 jogos do Boca Juniors.</p>
+
+            <p>Esse volume reforça a importância da arena para a história xeneize. A Bombonera é o lugar onde o Boca construiu campanhas nacionais, viradas, clássicos, eliminações, conquistas, despedidas e noites que ficaram guardadas na memória da torcida.</p>
+
+            <p>Também por isso, a relação do clube com seu estádio é diferente. A Bombonera não é um cenário neutro. Ela faz parte da narrativa do clube, da autoestima da torcida e da forma como o Boca se enxerga no futebol argentino e sul-americano.</p>
+
+            <p><strong>Títulos levantados na Bombonera</strong></p>
+
+            <p>Boca já consquistou pelo menos 16 títulos no gramado da Bombonera, considerando as consagrações confirmadas no próprio estádio. O número ajuda a explicar por que a arena é tratada como um templo xeneize: além de clássicos e noites de pressão, o estádio também foi palco de voltas olímpicas nacionais e internacionais.</p>
+
+            <p>No plano continental, a Bombonera ganhou ainda mais peso pela relação do Boca com a <a href="/libertadores-historia-maiores-campeoes-rivalidades-cultura-torcida.html">história da Libertadores</a>. Foi nesse ambiente que o clube construiu parte de sua fama como um dos adversários mais difíceis da América do Sul.</p>
+
+            <p>Entre os títulos confirmados ou celebrados na Bombonera estão:</p>
+
+            <p>• Campeonato Argentino de 1940</p>
+            <p>• Campeonato Argentino de 1954</p>
+            <p>• Campeonato Argentino de 1962</p>
+            <p>• Campeonato Argentino de 1965</p>
+            <p>• Metropolitano de 1981</p>
+            <p>• Apertura de 1992</p>
+            <p>• Apertura de 1998</p>
+            <p>• Apertura de 2000</p>
+            <p>• Copa Libertadores de 1978</p>
+            <p>• Copa Libertadores de 2001</p>
+            <p>• Copa Sul-Americana de 2004</p>
+            <p>• Copa Sul-Americana de 2005</p>
+            <p>• Apertura de 2011</p>
+            <p>• Campeonato Argentino de 2015</p>
+            <p>• Superliga Argentina de 2019/20</p>
+            <p>• Liga Profissional de 2022</p>
+
+            <p>A lista reforça a dimensão histórica da Bombonera. Não se trata apenas de um estádio famoso pela pressão da torcida, mas de um palco onde o Boca Juniors transformou domínio local, força continental e identidade popular em conquistas concretas.</p>
+
+            <p><strong>O camarote de Maradona</strong></p>
+
+            <p>Diego Armando Maradona é um personagem inseparável da história da Bombonera. Ele jogou pelo Boca em duas passagens. A ligação entre o estádio, o Boca e o camisa 10 também se conecta à própria <a href="/maradona-historia-gols-titulos-napoli-argentina-boca.html">história do craque argentino</a>.</p>
+
+            <p>Um dos símbolos mais fortes dessa relação é o camarote de Maradona. Durante anos, o espaço foi associado à presença do ídolo no estádio. Depois de sua morte, em 2020, o Boca prestou uma das homenagens mais marcantes: apagou as luzes da Bombonera e deixou iluminado apenas o camarote que Diego costumava frequentar.</p>
+
+            <p>A imagem resumiu o lugar de Maradona na memória xeneize. Ele não foi apenas um jogador que passou pelo clube. Foi um torcedor ilustre, um símbolo popular e uma figura que ajudou a transformar a Bombonera em espaço de culto futebolístico.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Jogos da seleção argentina na Bombonera</strong></p>
+
+            <p>A Bombonera também recebeu jogos importantes da seleção argentina. Um dos mais lembrados é Argentina 2 x 2 Peru, em 31 de agosto de 1969, pelas Eliminatórias para a Copa do Mundo de 1970. A Argentina precisava vencer, mas o empate classificou o Peru e deixou a seleção argentina fora do Mundial do México.</p>
+
+            <p>Aquele jogo virou uma das lembranças mais dolorosas da história da Albiceleste. Justamente por isso, permanece como uma partida relevante na relação entre seleção e Bombonera: um estádio de pressão máxima, em uma noite decisiva, mas com desfecho frustrante para os argentinos.</p>
+
+            <p>Mais recentemente, a seleção também voltou a usar a Bombonera em jogos oficiais. Em 2024, por exemplo, a Argentina venceu o Peru por 1 a 0 pelas Eliminatórias da Copa do Mundo de 2026, com assistência de Lionel Messi e gol de Lautaro Martínez. Foi mais um capítulo da seleção em um estádio que, embora seja casa do Boca, também faz parte da história do futebol argentino.</p>
+
+            <p><strong>Um monumento do futebol sul-americano</strong></p>
+
+            <p>La Bombonera é especial porque reúne arquitetura, torcida, bairro, história e resultado esportivo. Não é o maior estádio da América do Sul, nem o mais moderno, mas é um dos mais reconhecíveis e temidos. Dentro do imaginário sul-americano, sua mística dialoga com outros templos históricos do continente, como o <a href="/maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>.</p>
+
+            <p>A força do estádio está na experiência. A chegada ao bairro de La Boca, as cores azul e amarelo, as arquibancadas inclinadas, os cantos da torcida, o camarote de Maradona, a avalanche e a proximidade com o campo formam um conjunto difícil de replicar.</p>
+
+            <p>Para o Boca Juniors, a Bombonera é casa, arma e identidade. Para os rivais, é um desafio emocional. Para o futebol sul-americano, é um patrimônio esportivo. E para quem acompanha a história do jogo, segue sendo um dos estádios mais simbólicos do mundo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "FUTEBOL";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
