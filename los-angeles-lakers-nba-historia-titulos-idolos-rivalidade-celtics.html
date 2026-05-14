@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Los Angeles Lakers: história, títulos, ídolos e tradição na NBA | Corte dos Esportes</title>
+  <meta name="description" content="Os Lakers são a segunda franquia mais vencedora da NBA, maior campeã da Conferência Oeste e símbolo de dinastias históricas, rivalidade com o Boston Celtics e lendas como Kobe Bryant, Magic Johnson, Kareem Abdul-Jabbar, Shaquille O’Neal e LeBron James." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Los Angeles Lakers: história, títulos, ídolos e tradição na NBA</h1>
+          <p class="subhead" id="articleExcerpt">Os Lakers são a segunda franquia mais vencedora da NBA, maior campeã da Conferência Oeste e símbolo de dinastias históricas, rivalidade com o Boston Celtics e lendas como Kobe Bryant, Magic Johnson, Kareem Abdul-Jabbar, Shaquille O’Neal e LeBron James.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">14/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Poucas franquias representam tanto a NBA quanto o Los Angeles Lakers. O time de roxo e dourado atravessou gerações, mudou de cidade, criou dinastias, revelou ídolos globais e transformou sua camisa em um dos símbolos mais fortes do basquete mundial.</p>
+
+            <p> Com 17 títulos, eles ficam atrás apenas do Boston Celtics, que tem 18 conquistas. Além disso, o time é o maior vencedor da Conferência Oeste, com 19 títulos de conferência, marca que reforça sua presença constante nas decisões da liga e ajuda a entender o peso histórico da franquia dentro da <a href="/conferencia-oeste-nba-historia-times-franquias-dinastias.html">Conferência Oeste</a>.</p>
+
+            <p>A grandeza dos Lakers não está apenas nos números. Está também na forma como o clube construiu sua identidade: estrelas históricas, rivalidades intensas, finais memoráveis, basquete ofensivo, cultura vencedora e uma ligação direta com Hollywood, LA e o espetáculo esportivo dos Estados Unidos.</p>
+
+            <p><strong>Da origem em Minneapolis ao brilho de Los Angeles</strong></p>
+
+            <p>Antes de se tornar um ícone da Califórnia, a franquia nasceu em Minneapolis. O nome “Lakers” vem justamente da ligação de Minnesota com seus muitos lagos. Foi lá que o time construiu sua primeira dinastia, liderado por George Mikan, um dos primeiros grandes pivôs dominantes da história do basquete.</p>
+
+            <p>Com Mikan,  venceram títulos ainda nos primeiros anos da liga e ajudaram a definir o que seria uma equipe dominante na NBA. A franquia conquistou cinco títulos entre 1949 e 1954, período que marcou o início de sua tradição vencedora.</p>
+
+            <p>Em 1960, o time se mudou para Los Angeles. A mudança abriu uma nova era. A franquia deixou para trás a identidade regional de Minneapolis e passou a se conectar com um mercado maior, mais midiático e culturalmente poderoso. Na Califórnia, os Lakers se tornaram mais do que um time: viraram uma marca global.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Todos os títulos dos Lakers na NBA</strong></p>
+
+            <p>A lista mostra como a franquia foi campeã em diferentes épocas, com diferentes elencos e estilos de jogo:</p>
+
+            <p>1949 — Minneapolis Lakers</p>
+            <p>1950 — Minneapolis Lakers</p>
+            <p>1952 — Minneapolis Lakers</p>
+            <p>1953 — Minneapolis Lakers</p>
+            <p>1954 — Minneapolis Lakers</p>
+            <p>1972 — Los Angeles Lakers</p>
+            <p>1980 — Los Angeles Lakers</p>
+            <p>1982 — Los Angeles Lakers</p>
+            <p>1985 — Los Angeles Lakers</p>
+            <p>1987 — Los Angeles Lakers</p>
+            <p>1988 — Los Angeles Lakers</p>
+            <p>2000 — Los Angeles Lakers</p>
+            <p>2001 — Los Angeles Lakers</p>
+            <p>2002 — Los Angeles Lakers</p>
+            <p>2009 — Los Angeles Lakers</p>
+            <p>2010 — Los Angeles Lakers</p>
+            <p>2020 — Los Angeles Lakers</p>
+
+            <p>A lista ajuda a entender por que os Lakers são tratados como uma das maiores instituições do esporte americano. A franquia não viveu apenas uma fase vencedora. Ela venceu nos anos 1940, 1950, 1970, 1980, 2000, 2010 e 2020. Essa capacidade de se reconstruir e voltar ao topo é uma das maiores marcas da franquia e se conecta diretamente com a própria <a href="/nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA</a>.</p>
+
+            <p><strong>As grandes dinastias dos Lakers</strong></p>
+
+            <p>A primeira veio em Minneapolis, com George Mikan. O pivô dominou a liga em uma época na qual o basquete ainda moldava suas regras, seus espaços e sua identidade profissional. A força de Mikan foi tão grande que ajudou a transformar o jogo dos homens altos.</p>
+
+            <p>Depois, já em Los Angeles, os Lakers passaram por uma fase de estrelas como Elgin Baylor, Jerry West e Wilt Chamberlain. O título de 1972 é um dos mais simbólicos da franquia. A equipe venceu 69 jogos na temporada regular, emendou uma sequência histórica de 33 vitórias consecutivas e terminou campeã da NBA. Aquele time consolidou Los Angeles como potência da liga.</p>
+
+            <p>Nos anos 1980, nasceu o “Showtime Lakers”. Com Magic Johnson, Kareem Abdul-Jabbar, James Worthy, Byron Scott, Michael Cooper e o técnico Pat Riley, a franquia criou uma das equipes mais famosas da história do basquete. O estilo era rápido, criativo, ofensivo e espetacular. Não era apenas vencer. Era vencer com show.</p>
+
+            <p>Na virada dos anos 2000, veio outra dinastia marcante. Shaquille O’Neal e Kobe Bryant lideraram o tricampeonato de 2000, 2001 e 2002, sob comando de Phil Jackson. Shaq era força física quase imparável no garrafão. Kobe era talento, obsessão competitiva e refinamento técnico. Juntos, formaram uma das duplas mais dominantes da história da NBA.</p>
+
+            <p>A era Kobe ainda teve um segundo capítulo campeão. Ao lado de Pau Gasol, Lamar Odom, Andrew Bynum e Derek Fisher, Bryant levou os Lakers aos títulos de 2009 e 2010. O bicampeonato teve peso especial porque recolocou Kobe no topo sem Shaquille O’Neal e teve como ápice a vitória sobre o Boston Celtics nas finais de 2010.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Kobe Bryant e o símbolo máximo da mentalidade Lakers</strong></p>
+
+            <p>Entre tantos ídolos, ele ocupa um lugar único na história dos Lakers. Foram 20 temporadas defendendo a mesma franquia, cinco títulos da NBA, duas camisas aposentadas e uma relação emocional profunda com a torcida.</p>
+
+            <p>Kobe representou a mentalidade competitiva dos Lakers como poucos. A busca por evolução constante, a obsessão por detalhes e a capacidade de decidir jogos grandes transformaram sua carreira em referência mundial. Mais do que um astro, ele virou um símbolo cultural do esporte.</p>
+
+            <p>Seu legado também ultrapassa os títulos. Kobe conectou gerações: foi parceiro de Shaquille O’Neal na dinastia do início dos anos 2000, liderou uma nova formação campeã no fim daquela década e influenciou jogadores que vieram depois. Para muitos torcedores, ele é o rosto mais marcante da história moderna da franquia.</p>
+
+            <p><strong>Outros ídolos históricos dos Lakers</strong></p>
+
+            <p>A galeria é uma das mais famosas da NBA. George Mikan abriu o caminho em Minneapolis. Elgin Baylor foi um ala à frente de seu tempo, explosivo e elegante. Jerry West se tornou uma lenda como jogador e dirigente, além de ser associado à própria silhueta histórica da liga.</p>
+
+            <p>Wilt Chamberlain trouxe domínio físico e participou do título de 1972. Kareem Abdul-Jabbar chegou como um dos maiores jogadores de todos os tempos e foi peça central do Showtime. Magic Johnson revolucionou a posição de armador, combinando altura, passe, criatividade e liderança.</p>
+
+            <p>James Worthy virou símbolo de decisão em jogos grandes. Shaquille O’Neal dominou o garrafão como poucos. Pau Gasol foi fundamental para os títulos de 2009 e 2010, dando equilíbrio técnico e inteligência ao time de Kobe. Anthony Davis teve papel decisivo no título de 2020, especialmente pela força defensiva e versatilidade.</p>
+
+            <p>Por último, LeBron James entrou na história da franquia ao liderar o título de 2020 ao lado de Anthony Davis. Mesmo chegando aos Lakers já consagrado por outros times, LeBron colocou seu nome na linhagem de campeões da franquia e ajudou o clube a alcançar o 17º título, empatando naquele momento com o Celtics no topo da NBA. Sua passagem por Los Angeles também se soma a uma carreira que já havia colocado o astro entre os maiores nomes da <a href="/lebron-james-historia-titulos-recordes-legado.html">história não só do basquete, mas no esporte como um todo</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A rivalidade com o Boston Celtics</strong></p>
+
+            <p>Nenhum confronto define melhor a NBA do que Lakers x Celtics. É o confronto entre as duas franquias mais vencedoras da liga, dois estilos, duas cidades, duas culturas esportivas e gerações de estrelas. Ao todo, Lakers e Celtics decidiram 12 finais de NBA, a maior em decisões da história da liga. Boston venceu nove desses confrontos, enquanto os Lakers levaram três, incluindo finais marcantes em 1985, 1987 e 2010.</p>
+
+            <p>Essa disputa ajuda a explicar por que a história da NBA se mistura tantas vezes com o duelo entre roxo e dourado contra verde e branco. O Celtics dominou boa parte dos encontros contra os Lakers nas finais dos anos 1960, com Bill Russell liderando Boston. Nos anos 1980, a rivalidade ganhou novo capítulo com Magic Johnson contra Larry Bird, em uma fase que ajudou a transformar a NBA em produto global e reforçou o peso histórico da <a href="/boston-celtics-historia-titulos-idolos-rivalidades-tradicao.html">história do Boston Celtics</a>.</p>
+
+            <p>A rivalidade voltou com força em 2008 e 2010. Em 2008, Boston venceu a final com o trio Paul Pierce, Kevin Garnett e Ray Allen. Em 2010, os Lakers deram o troco em uma série física, tensa e decidida no jogo 7, com Kobe Bryant conquistando seu quinto título.</p>
+
+            <p>Até hoje, Lakers e Celtics são comparados em quase tudo: títulos, ídolos, tradição, peso histórico e influência cultural. Boston tem 18 títulos, Los Angeles tem 17, mas a disputa entre as duas franquias segue como a maior história da NBA.</p>
+
+            <p><strong>Tradição, espetáculo e peso global</strong></p>
+
+            <p>Os Lakers são uma franquia diferente porque unem resultado esportivo e apelo cultural. Jogar em Los Angeles significa conviver com celebridades na arquibancada, pressão midiática constante e cobrança por grandeza. Para muitos jogadores, vestir a camisa roxa e dourada é lidar com uma tradição que exige protagonismo.</p>
+
+            <p>Essa cultura também explica por que a franquia raramente aceita longos períodos de irrelevância. Quando os Lakers caem, a cobrança aumenta. Quando voltam ao topo, o impacto global é enorme. O time não é apenas observado pela torcida local, mas por fãs de basquete no mundo inteiro.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
