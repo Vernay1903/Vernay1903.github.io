@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Convocados de Ancelotti: como chega cada jogador do Brasil à Copa | Corte dos Esportes</title>
+  <meta name="description" content="Lista de Carlo Ancelotti mistura campeões, veteranos e nomes em alta; veja o recorte da temporada dos 26 jogadores chamados para defender o Brasil." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Convocados de Ancelotti: como chega cada jogador do Brasil à Copa</h1>
+          <p class="subhead" id="articleExcerpt">Lista de Carlo Ancelotti mistura campeões, veteranos e nomes em alta; veja o recorte da temporada dos 26 jogadores chamados para defender o Brasil.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">19/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O técnico italiano fechou a lista do Brasil para a Copa do Mundo com uma convocação que mistura reputação, momento técnico, experiência internacional e perfis diferentes para cada setor do campo. A seleção chega ao Mundial com goleiros rodados, defensores acostumados a jogos grandes, meio-campistas de imposição e um ataque com velocidade, força, criatividade e finalização.</p>
+
+            <p>A lista também ganha ainda mais peso, por carregar a expectativa de buscar recolocar o país no topo depois de um longo jejum de 24 anos. A tradição da camisa passa diretamente pela <a href="https://cortedosesportes.com.br/selecao-brasileira-historia-5-copas-do-mundo.html">história da Seleção Brasileira e dos cinco títulos mundiais</a>.</p>
+
+            <p><strong>Goleiros: partidas, gols sofridos e média defensiva</strong></p>
+
+            <p><strong>Alisson — Liverpool</strong></p>
+
+            <p>Alisson chega como o goleiro mais consolidado da lista. Pela Premier League 2025/26, disputou 25 jogos, sofreu 30 gols e teve média de 1,20 gol sofrido por partida, além de 8 jogos sem sofrer gol.</p>
+
+            <p>O Liverpool não teve uma temporada tão dominante quanto em outros anos, mas Alisson manteve status de goleiro de primeira prateleira. Para a seleção, oferece experiência de duas Copas, liderança, jogo com os pés e costume em partidas de alta pressão.</p>
+
+            <p><strong>Ederson — Fenerbahçe</strong></p>
+
+            <p>Ederson viveu uma temporada de adaptação no Fenerbahçe. Pelo Campeonato Turco, fez 24 jogos, sofreu 24 gols e terminou com média de 1 gol sofrido por partida, também com 8 jogos sem ser vazado.</p>
+
+            <p>O peso da convocação não passa apenas pelos números defensivos. Ederson segue sendo um goleiro com perfil muito específico: boa saída curta, lançamento longo, calma sob pressão e capacidade de iniciar jogadas ainda dentro da área.</p>
+
+            <p><strong>Weverton — Grêmio</strong></p>
+
+            <p>Weverton aparece como uma opção segura para o grupo. Desde janeiro jogando pelo Grêmio, disputou 29 jogos, sofreu 26 gols e teve média aproximada de 0,90 gol sofrido por partida, com 13 jogos sem sofrer gol.</p>
+
+            <p>O recorte mostra o jogador que conhece bem o futebol brasileiro e chega com experiência em competições grandes, sendo o goleiro do primeiro ouro olímpico do Brasil, defendendo penalti na decisão inclusive. Na seleção, entra como alternativa de confiança para um setor em que Ancelotti priorizou segurança e rodagem.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Defensores: força física, disciplina e impacto nos clubes</strong></p>
+
+            <p><strong>Alex Sandro — Flamengo</strong></p>
+
+            <p>Alex Sandro foi chamado pela experiência, leitura defensiva e capacidade de atuar em jogos de pressão. Pelo Flamengo, desde janeiro, participou de 11 jogos no recorte principal, com 0 gol, 0 assistência, 3 cartões amarelos e nenhuma expulsão.</p>
+
+            <p>A produção ofensiva é baixa, mas esse não é o principal papel dele. Alex Sandro oferece equilíbrio pelo lado esquerdo, maturidade tática e possibilidade de compor uma defesa mais protegida quando o Brasil tiver pontas muito agressivos.</p>
+
+            <p><strong>Bremer — Juventus</strong></p>
+
+            <p>Bremer chega como um dos zagueiros brasileiros mais fortes da temporada europeia. Pela Juventus, fez 26 jogos na Serie A 2025/26, com 4 gols, 3 assistências, 21 faltas cometidas, 5 cartões amarelos e nenhuma expulsão.</p>
+
+            <p>O número ofensivo chama atenção para um zagueiro. Bremer foi importante em bolas paradas e manteve regularidade em uma liga de alta exigência defensiva. Para a seleção, entrega imposição física, jogo aéreo e capacidade de defender área.</p>
+
+            <p><strong>Danilo — Flamengo</strong></p>
+
+            <p>Danilo entra na lista pelo peso da carreira, liderança e versatilidade. Pelo Flamengo, no recorte do ano, participou de 3 jogos no Brasileirão, com 0 gol, 0 assistência, baixa média de faltas e 1 cartão vermelho.</p>
+
+            <p>Mesmo com menos partidas que outros defensores, segue sendo um jogador de confiança para torneio curto. Pode atuar como lateral, zagueiro ou defensor em linha de três, algo útil para ajustes durante jogos eliminatórios.</p>
+
+            <p><strong>Douglas Santos — Zenit</strong></p>
+
+            <p>Douglas Santos oferece uma alternativa técnica para a lateral esquerda. Pelo Zenit, no Campeonato Russo 2025/26, disputou 23 jogos, marcou 1 gol, não deu assistência, com 14 faltas cometidas, 3 cartões amarelos e 1 expulsão.</p>
+
+            <p>É um jogador de longa experiência no futebol europeu, com boa saída de bola e perfil mais associativo. O Zenit seguiu competitivo  e Douglas chega com ritmo de temporada completa.</p>
+
+            <p><strong>Gabriel Magalhães — Arsenal</strong></p>
+
+            <p>Gabriel Magalhães chega em altíssimo nível. Pelo Arsenal, na Premier League 2025/26, disputou 30 jogos, marcou 3 gols, deu 4 assistências, com 18 faltas cometidas, 4 cartões amarelos e nenhuma expulsão.</p>
+
+            <p>O dado ofensivo mostra sua força em bolas paradas. Defensivamente, Gabriel se consolidou como um dos pilares de uma equipe que passou a temporada brigando pelo título nacional, estando á uma vitória da conquista e protagonismo europeu. É um dos zagueiros mais prontos da lista.</p>
+
+            <p>A temporada do Arsenal também ajuda a explicar o momento do zagueiro. Gabriel foi peça importante em um time que chegou à decisão continental, com a <a href="https://cortedosesportes.com.br/arsenal-vitoria-atletico-madrid-final-champions-league.html">classificação do Arsenal para a final da Champions League</a>, um dos pontos altos da campanha do clube em 2025/26.</p>
+
+            <p><strong>Ibañez — Al-Ahli</strong></p>
+
+            <p>Ibañez aparece como opção de força, velocidade e cobertura. Na Liga Saudita, disputou 28 jogos, marcou 2 gols, deu 2 assistências, com cerca de 28 faltas cometidas, 3 cartões amarelos e 2 expulsões.</p>
+
+            <p>A agressividade é uma característica importante do seu jogo, mas também exige controle. Em Copa do Mundo, cartões pesam muito. Para Ancelotti, pode ser útil em partidas que exigem defesa em campo aberto e duelos físicos.</p>
+
+            <p><strong>Léo Pereira — Flamengo</strong></p>
+
+            <p>Léo Pereira foi chamado em uma temporada de protagonismo no Flamengo. Desde janeiro, participou de 13 jogos no recorte principal, com 1 gol, 0 assistência, 5 cartões amarelos e nenhuma expulsão.</p>
+
+            <p>É um zagueiro canhoto, com boa bola longa e presença ofensiva em jogadas paradas. O número de cartões mostra um defensor bastante envolvido em duelos, mas sem perder o controle disciplinar a ponto de ser expulso.</p>
+
+            <p><strong>Marquinhos — PSG</strong></p>
+
+            <p>Marquinhos chega como um dos líderes técnicos e emocionais da seleção. Pela Ligue 1, disputou 14 jogos, com boa participação defensiva e 7 partidas sem sofrer gol quando esteve em campo. Na Champions League, fez 14 jogos, marcou 2 gols e recebeu 2 cartões amarelos.</p>
+
+            <p>O PSG terminou a temporada em alto nível competitivo, e Marquinhos mantém o peso de capitão, referência e jogador acostumado a decisões. É uma peça importante não só pelo rendimento, mas pela liderança em um grupo com muitos perfis diferentes.</p>
+
+            <p>A temporada do time francês reforça o peso da convocação de Marquinhos. O zagueiro esteve em um elenco que voltou a disputar o título europeu, com destaque para a <a href="https://cortedosesportes.com.br/psg-classificado-final-champions-bayern-gols.html">classificação do PSG para a final da Champions League</a>, e também fez parte de um ciclo vitorioso no futebol francês, marcado pelo <a href="https://cortedosesportes.com.br/psg-campeao-2026-pentacampeao-ligue-1-titulo-frances-lens.html">título na Ligue 1 em 2026</a>.</p>
+
+            <p><strong>Wesley — Roma</strong></p>
+
+            <p>Wesley é uma das escolhas mais agressivas da defesa. Pela Roma, na Serie A 2025/26, disputou 31 jogos, marcou 5 gols, não deu assistência, com 36 faltas cometidas, 8 cartões amarelos e 2 expulsões.</p>
+
+            <p>O número de gols é alto para um lateral/ala e mostra impacto ofensivo. Ao mesmo tempo, os cartões e expulsões indicam um ponto de atenção. É um jogador de força, chegada e intensidade, mas que precisará controlar melhor o risco em um torneio curto.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Meio-campo: marcação, chegada e controle emocional</strong></p>
+
+            <p><strong>Bruno Guimarães — Newcastle</strong></p>
+
+            <p>Bruno Guimarães chega com temporada de alto impacto. Pelo Newcastle, na Premier League 2025/26, disputou 34 jogos, marcou 9 gols, deu 5 assistências, com 43 faltas cometidas, 5 cartões amarelos e nenhuma expulsão.</p>
+
+            <p>É um volante que ajuda na construção, protege a defesa e chega à área. Mesmo em uma temporada irregular do Newcastle, Bruno manteve protagonismo individual e chega como um dos meio-campistas mais completos da lista.</p>
+
+            <p><strong>Casemiro — Manchester United</strong></p>
+
+            <p>Casemiro chega com números fortes para um volante experiente. Pelo Manchester United, disputou 32 jogos na Premier League, com 9 gols, 2 assistências, cerca de 47 faltas cometidas, alto número de cartões amarelos e 1 expulsão.</p>
+
+            <p>O United terminou a liga em zona de Champions, e Casemiro chega com peso de liderança. A produção ofensiva é relevante para um volante, mas a disciplina precisa ser monitorada. Em mata-mata, uma falta fora de hora pode mudar uma partida.</p>
+
+            <p><strong>Danilo Santos — Botafogo</strong></p>
+
+            <p>Danilo Santos é um dos nomes do futebol brasileiro que chegam mais embalados. Desde janeiro, pelo Botafogo, disputou 18 jogos, marcou 7 gols, deu 2 assistências, recebeu 1 cartão amarelo e não foi expulso.</p>
+
+            <p>Para um meio-campista, a produção ofensiva chama atenção. É um jogador que oferece intensidade, presença na área e capacidade de aparecer como elemento surpresa. Chega como alternativa interessante para uma seleção que precisa ter gols também vindos do meio.</p>
+
+            <p><strong>Fabinho — Al-Ittihad</strong></p>
+
+            <p>Fabinho chega como alternativa de equilíbrio e experiência. Na Liga Saudita 2025/26, disputou 29 jogos, marcou 1 gol, deu 3 assistências, recebeu 5 cartões amarelos e teve 2 expulsões.</p>
+
+            <p>A bagagem pesa a favor. Fabinho conhece jogos grandes, sabe proteger a defesa e pode ser importante em partidas que exigem controle. O alerta está na disciplina, especialmente porque duas expulsões em uma temporada indicam risco em jogos de pressão.</p>
+
+            <p><strong>Lucas Paquetá — Flamengo</strong></p>
+
+            <p>Lucas Paquetá voltou ao futebol brasileiro e rapidamente recuperou protagonismo técnico. Pelo Flamengo, desde janeiro, disputou 9 jogos no recorte principal, marcou 3 gols, não deu assistência, recebeu 1 cartão amarelo e manteve boa intensidade na pressão sem bola.</p>
+
+            <p>Paquetá é um meia de condução, chegada e combate. Para Ancelotti, pode funcionar como articulador, segundo homem de meio ou jogador de pressão mais alta. O diferencial é combinar qualidade técnica com entrega física.</p>
+
+            <p><strong>Atacantes: gols, assistências e diferentes funções</strong></p>
+
+            <p><strong>Endrick — Lyon</strong></p>
+
+            <p>Endrick chega em crescimento. Pelo Lyon, na Ligue 1 2025/26, disputou 25 jogos, marcou 5 gols, deu 7 assistências, recebeu 3 cartões amarelos e teve 1 expulsão.</p>
+
+            <p>O número de assistências mostra evolução no jogo coletivo. Endrick não chega apenas como finalizador, mas como atacante mais participativo. O Lyon brigou por vaga continental na França, e o brasileiro ganhou maturidade em ambiente competitivo europeu.</p>
+
+            <p><strong>Gabriel Martinelli — Arsenal</strong></p>
+
+            <p>Gabriel Martinelli teve uma temporada de menor protagonismo na Premier League, mas ainda aparece como opção importante pelo perfil. Na liga, disputou 24 jogos, marcou 1 gol, deu 3 assistências e recebeu 3 cartões amarelos.</p>
+
+            <p>O recorte muda quando se olha para a Champions League. Na competição europeia, fez 13 jogos, marcou 6 gols e deu 2 assistências. Ou seja: foi mais decisivo no cenário continental do que no campeonato nacional. Para o Brasil, entrega velocidade, pressão e profundidade.</p>
+
+            <p>A força de Martinelli no torneio europeu também aparece dentro do contexto coletivo do Arsenal. Mesmo sem o mesmo protagonismo na Premier League, o atacante fez parte da campanha que levou <a href="https://cortedosesportes.com.br/arsenal-vitoria-atletico-madrid-final-champions-league.html">o clube à decisão</a>.</p>
+
+            <p><strong>Igor Thiago — Brentford</strong></p>
+
+            <p>Igor Thiago chega como o grande artilheiro brasileiro da convocação. Pelo Brentford, na Premier League 2025/26, disputou 34 jogos, marcou 22 gols, deu 1 assistência e recebeu 7 cartões amarelos.</p>
+
+            <p>É uma convocação sustentada por números muito fortes. Igor oferece presença de área, força física e finalização. Em uma seleção cheia de pontas e jogadores móveis, pode ser o atacante de referência que transforma volume ofensivo em gol.</p>
+
+            <p><strong>Luiz Henrique — Zenit</strong></p>
+
+            <p>Luiz Henrique chega com uma temporada sólida no futebol russo. Pelo Zenit, disputou 27 jogos na liga, marcou 5 gols, deu 3 assistências e recebeu 2 cartões amarelos.</p>
+
+            <p>É um ponta de drible, força e um contra um. Pode ser útil em jogos travados, quando o Brasil precisar quebrar marcações pelos lados. O Zenit seguiu competitivo na parte alta da Rússia, e Luiz Henrique chega com sequência e confiança.</p>
+
+            <p><strong>Matheus Cunha — Manchester United</strong></p>
+
+            <p>Matheus Cunha fez uma temporada relevante pelo Manchester United. Na Premier League 2025/26, disputou 33 jogos, marcou 10 gols, deu 2 assistências e recebeu 4 cartões amarelos.</p>
+
+            <p>O United terminou em posição de Champions League, e Matheus chega valorizado por atuar em alto nível. Seu diferencial é a mobilidade: pode jogar como atacante central, segundo atacante ou meia ofensivo, dependendo do desenho da equipe.</p>
+
+            <p><strong>Neymar — Santos</strong></p>
+
+            <p>Neymar é a convocação mais simbólica da lista. Pelo Santos, em 2026, disputou 8 jogos, marcou 4 gols e deu 2 assistências.</p>
+
+            <p>O recorte é menor do que o de outros atacantes, mas a escolha passa pela combinação entre talento, experiência e resposta física recente. Aos 34 anos, Neymar chega para sua quarta Copa e ainda carrega peso técnico enorme. A pergunta não é sobre currículo, mas sobre condição para decidir partidas.</p>
+
+            <p><strong>Raphinha — Barcelona</strong></p>
+
+            <p>Raphinha chega com uma das temporadas mais vitoriosas do grupo. Pelo Barcelona, foi campeão espanhol e também levantou a Supercopa da Espanha. Na LaLiga 2025/26, disputou 35 jogos, marcou 13 gols, deu 3 assistências e recebeu 5 cartões amarelos.</p>
+
+            <p>É um atacante de intensidade sem bola, chute de fora, bola parada, diagonal e agressividade. Em uma seleção com muitos pontas, chega como um dos nomes mais consolidados pelo que fez em um clube grande e vencedor.</p>
+
+            <p>O peso da temporada do Barcelona também favorece Raphinha. O atacante terminou o ciclo como peça de um time campeão nacional, em uma campanha que teve como símbolo a <a href="https://cortedosesportes.com.br/barcelona-vitoria-real-madrid-campeao-la-liga-2026-el-classico.html">vitória do Barcelona sobre o Real Madrid no título da LaLiga 2026</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Rayan — Bournemouth</strong></p>
+
+            <p>Rayan é uma aposta de impacto e futuro, mas já com resposta imediata na Premier League. Pelo Bournemouth, disputou 17 jogos, marcou 5 gols, deu 2 assistências e recebeu 1 cartão amarelo.</p>
+
+            <p>O clube chegou à reta final brigando por vaga continental, e Rayan apareceu como jogador de velocidade, profundidade e capacidade de decidir mesmo sem ser titular absoluto em todos os jogos. É uma opção de energia para mudar ritmo da partida.</p>
+
+            <p><strong>Vini Jr. — Real Madrid</strong></p>
+
+            <p>Vinícius Júnior chega como um dos grandes nomes da seleção. Pela LaLiga 2025/26, disputou 36 jogos, marcou 16 gols, deu 5 assistências, com 8 cartões amarelos e nenhuma expulsão. Na Champions League, somou 14 jogos, 5 gols e 8 assistências.</p>
+
+            <p>É o jogador mais decisivo do Brasil em alto nível europeu. Vini chega ao Mundial como referência ofensiva, acostumado a jogos grandes, marcação pesada e noites de pressão. Para Ancelotti, tende a ser uma das peças centrais da equipe.</p>
+
+            <p><strong>O que a convocação mostra sobre o Brasil de Ancelotti</strong></p>
+
+            <p>A lista mostra uma seleção montada para equilibrar experiência e momento. A defesa tem nomes de liderança, mas também jogadores em alta fisicamente  e técnicamente.</p>
+
+            <p>No meio-campo, a comissão apostou em atletas que não vivem apenas de marcação.</p>
+
+            <p>O ataque é o setor mais variado. Vini Jr. e Raphinha chegam como protagonistas em gigantes europeus. Igor Thiago aparece como artilheiro de peso na Premier League. Matheus Cunha entrega mobilidade. Endrick e Rayan representam juventude com minutos importantes na Europa. Neymar traz talento, experiência e capacidade de decisão.</p>
+
+            <p>Também chama atenção a presença de atletas que atuam no futebol brasileiro. Flamengo, Botafogo, Grêmio e Santos colocam jogadores na lista em um momento diferente da temporada. Enquanto os europeus chegam ao fim do calendário 2025/26, os nomes do Brasil vêm de um ano ainda em andamento, com estaduais, Brasileirão, Libertadores e Copa do Brasil compondo o ano.</p>
+
+            <p><strong>Uma convocação menos óbvia do que parece</strong></p>
+
+            <p>A convocação não é apenas uma soma de nomes conhecidos. Ela revela escolhas de perfil. Ancelotti chamou goleiros experientes, defensores que sabem jogar sob pressão, volantes com capacidade de chegar ao ataque e pontas com características diferentes.</p>
+
+            <p>O Brasil chega à Copa com um grupo forte, mas não sem perguntas. O time terá que transformar produção individual em funcionamento coletivo. Ter artilheiros em boa fase ajuda, mas Copa do Mundo exige encaixe, controle emocional, bola parada, defesa sólida e banco capaz de mudar jogos.</p>
+
+            <p>A lista de Ancelotti fica mais interessante quando vista por esse recorte. Não é só quem foi chamado. É como cada um chega. E, nessa fotografia, o Brasil combina campeões, atletas em ascensão, veteranos de peso e atacantes com números suficientes para fazer da seleção uma candidata real a competir pelo título.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
