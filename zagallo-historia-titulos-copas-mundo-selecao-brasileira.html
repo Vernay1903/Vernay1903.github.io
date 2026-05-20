@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zagallo: história, títulos e legado do Velho Lobo da Seleção Brasileira | Corte dos Esportes</title>
+  <meta name="description" content="Zagallo marcou a história do futebol como campeão mundial pelo Brasil como jogador, técnico e coordenador, tornando-se um dos personagens mais vitoriosos das Copas do Mundo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Zagallo: história, títulos e legado do Velho Lobo da Seleção Brasileira</h1>
+          <p class="subhead" id="articleExcerpt">Zagallo marcou a história do futebol como campeão mundial pelo Brasil como jogador, técnico e coordenador, tornando-se um dos personagens mais vitoriosos das Copas do Mundo.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">20/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Mário Jorge Lobo Zagallo é um dos nomes mais importantes da história do futebol brasileiro e mundial. Mais do que um grande jogador ou um técnico vencedor, ele se tornou um símbolo da Seleção Brasileira, das Copas do Mundo e da cultura vencedora que marcou o Brasil em diferentes gerações.</p>
+
+            <p>Conhecido como Velho Lobo, ele construiu uma trajetória rara. Foi campeão mundial como jogador em 1958 e 1962, técnico da Seleção Brasileira no título de 1970 e coordenador técnico na conquista de 1994. Poucos personagens estiveram tão ligados aos maiores momentos do Brasil em Copas. Sua carreira atravessou décadas, estilos de jogo, gerações de craques e transformações profundas no futebol.</p>
+
+            <p>A relação de Zagallo com a Seleção Brasileira é tão forte que sua história se mistura com a própria <a href="https://cortedosesportes.com.br/selecao-brasileira-historia-5-copas-do-mundo.html">trajetória dos cinco títulos mundiais do Brasil</a>. Ele participou diretamente de quatro dessas conquistas e virou uma espécie de guardião simbólico da camisa amarela.</p>
+
+            <p><strong>O início de Zagallo como jogador</strong></p>
+
+            <p>Nascido em 9 de agosto de 1931, em Atalaia, Alagoas, construiu sua vida esportiva no Rio de Janeiro. Antes de virar um dos nomes mais conhecidos do futebol brasileiro, começou como jogador de lado de campo, atuando principalmente pela ponta esquerda.</p>
+
+            <p>No Flamengo, integrou uma fase importante do clube nos anos 1950 e participou de conquistas estaduais. Depois, no Botafogo, viveu uma das etapas mais fortes da carreira como atleta, em um elenco repleto de craques e com forte ligação com a Seleção Brasileira.</p>
+
+            <p>Como jogador, Zagallo não era lembrado apenas pelo talento ofensivo. Ele ficou marcado por um diferencial tático: era um ponta que também ajudava muito na recomposição defensiva. Em uma época em que muitos atacantes tinham menor obrigação sem a bola, ele se destacava por equilibrar o time, preencher espaços e ajudar o lateral. Essa característica seria importante para entender também sua visão como treinador.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O papel de Zagallo nas Copas de 1958 e 1962</strong></p>
+
+            <p>Ele entrou para a história da Seleção Brasileira nas Copas de 1958 e 1962. Em 1958, na Suécia, fez parte do time que conquistou o primeiro título mundial do Brasil. A equipe tinha nomes como Pelé, Garrincha, Didi, Vavá, Nilton Santos, Djalma Santos e Gilmar, mas Zagallo teve papel tático essencial para o equilíbrio do sistema.</p>
+
+            <p>A presença de Pelé naquele time também ajuda a explicar a dimensão histórica da campanha de 1958. Ainda adolescente, o camisa 10 virou símbolo mundial naquela Copa e iniciou uma trajetória na <a href="https://cortedosesportes.com.br/pele-historia-titulos-santos-selecao-brasileira-rei-futebol.html">pela Seleção Brasileira e seu legado como Rei do Futebol</a>.</p>
+
+            <p>Na final contra a Suécia, o Brasil venceu por 5 a 2, e Zagallo marcou um dos gols da decisão. A conquista colocou o futebol brasileiro em outro patamar e iniciou a mística da camisa amarela em Copas do Mundo.</p>
+
+            <p>Quatro anos depois, no Chile, Zagallo voltou a ser campeão mundial. A conquista de 1962 confirmou a Seleção Brasileira como potência mundial e fez de Zagallo bicampeão como jogador.</p>
+
+            <p><strong>A transição para treinador</strong></p>
+
+            <p>Depois de encerrar a carreira como atleta, Zagallo seguiu no futebol como treinador. A transição fez sentido porque ele já era visto como um jogador de inteligência tática acima da média. Sua forma de entender espaços, equilíbrio e funções coletivas ajudou a construir sua identidade fora de campo.</p>
+
+            <p> Iniciou a carreira de técnico em clubes, especialmente no Botafogo, e rapidamente passou a ser reconhecido como um profissional detalhista, competitivo e muito ligado à ideia de disciplina tática. Ele não era apenas um ex-jogador famoso tentando continuar no futebol. Era alguém que enxergava o jogo com profundidade.</p>
+
+            <p>Essa leitura o levou ao cargo mais importante do país. Em 1970, assumiu a Seleção Brasileira em uma Copa que se tornaria uma das mais emblemáticas da história.</p>
+
+            <p><strong>O título de 1970 como técnico</strong></p>
+
+            <p>A Copa do Mundo de 1970, no México, é um dos pontos mais altos da carreira de Zagallo. Como treinador, ele comandou uma seleção que reuniu alguns dos maiores talentos da história do futebol: Pelé, Tostão, Jairzinho, Rivellino, Gérson, Carlos Alberto Torres e Clodoaldo.</p>
+
+            <p>O desafio era montar um time equilibrado com muitos jogadores criativos. Zagallo conseguiu. A Seleção Brasileira de 1970 ficou marcada por um futebol técnico, ofensivo e coletivo, mas também por organização. O Brasil venceu todos os jogos da campanha e derrotou a Itália por 4 a 1 na final, com o icônico gol de Carlos Alberto Torres fechando a decisão.</p>
+
+            <p>Com esse título, Zagallo se tornou o primeiro homem a conquistar a Copa do Mundo como jogador e como técnico. O feito colocou seu nome em uma categoria raríssima do esporte. Depois dele, apenas poucos nomes conseguiram repetir essa marca, como Franz Beckenbauer e Didier Deschamps.</p>
+
+            <p>Zagallo abriu uma galeria raríssima de técnicos brasileiros campeões do mundo e ajudou a moldar o peso da função na Seleção. Décadas depois, essa tradição voltaria a ganhar força com Luiz Felipe Scolari, personagem central do pentacampeonato e cuja trajetória aparece com mais profundidade na <a href="https://cortedosesportes.com.br/felipao-luiz-felipe-scolari-historia-titulos-carreira.html">história de Felipão</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A volta em 1994 como coordenador</strong></p>
+
+            <p>Zagallo voltou a ter papel central em uma conquista mundial em 1994. Na Copa dos Estados Unidos, foi coordenador técnico da Seleção Brasileira comandada por Carlos Alberto Parreira. O Brasil chegava pressionado por um jejum de 24 anos sem vencer a Copa do Mundo.</p>
+
+            <p>A equipe de 1994 tinha uma proposta diferente da seleção de 1970. Era mais pragmática, forte defensivamente e muito competitiva. Com Romário e Bebeto no ataque, Dunga como líder em campo, Taffarel no gol e uma estrutura sólida, o Brasil voltou a conquistar o mundo ao vencer a Itália nos pênaltis na final.</p>
+
+            <p>Zagallo não era o técnico principal, mas sua presença na comissão deu peso, experiência e conhecimento de Copa. A conquista de 1994 ampliou ainda mais sua ligação com a história da Seleção Brasileira: ele já tinha sido campeão como jogador, técnico e integrante da comissão.</p>
+
+            <p><strong>A Copa de 1998 e o vice na França</strong></p>
+
+            <p>Em 1998, ele voltou a comandar a Seleção Brasileira como técnico em uma Copa do Mundo. O Brasil chegou à final na França com um elenco forte, liderado por Ronaldo, Rivaldo, Bebeto, Roberto Carlos, Cafu, Dunga e Taffarel.</p>
+
+            <p>A campanha levou o time à decisão contra a França, mas a final terminou em derrota por 3 a 0. O jogo ficou marcado também pelo drama envolvendo Ronaldo, que teve problema de saúde antes da partida e ainda assim entrou em campo.</p>
+
+            <p>Mesmo com o vice, a campanha de 1998 reforçou a longevidade de Zagallo no ambiente de Copa. Ele participou de mais uma decisão mundial, desta vez em uma função de comando direto, quatro décadas depois de ter vencido seu primeiro Mundial como jogador.</p>
+
+            <p><strong>Quantas Copas do Mundo Zagallo disputou?</strong></p>
+
+            <p>Ele participou de sete Copas do Mundo pela Seleção Brasileira em diferentes funções. Esse número mostra a dimensão de sua carreira e a raridade de sua presença em tantos ciclos.</p>
+
+            <p>Os Mundiais foram:</p>
+
+            <ul>
+              <li>1958: campeão como jogador;</li>
+              <li>1962: campeão como jogador;</li>
+              <li>1970: campeão como técnico;</li>
+              <li>1974: técnico da Seleção Brasileira;</li>
+              <li>1994: campeão como coordenador técnico;</li>
+              <li>1998: vice-campeão como técnico;</li>
+              <li>2006: coordenador técnico.</li>
+            </ul>
+
+            <p>Essa sequência atravessa quase 50 anos de história da Seleção Brasileira. Poucos personagens do futebol mundial estiveram em tantas Copas, com tanta influência e em funções tão diferentes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Principais títulos de Zagallo</strong></p>
+
+            <p> Acumulou conquistas importantes como jogador, técnico e integrante de comissão. Entre os principais títulos da carreira, estão:</p>
+
+            <ul>
+              <li>Copa do Mundo de 1958 — Campeão como jogador.</li>
+              <li>Copa do Mundo de 1962 — Campeão como jogador.</li>
+              <li>Copa do Mundo de 1970 — Campeão como técnico.</li>
+              <li>Copa do Mundo de 1994 — Campeão como coordenador técnico.</li>
+              <li>Copa América de 1997 — Campeão como técnico.</li>
+              <li>Copa das Confederações de 1997 — Campeão como técnico.</li>
+            </ul>
+
+            <p>Mais do que a quantidade de taças, o que impressiona é o peso delas. Zagallo esteve ligado a conquistas que definiram a imagem do Brasil como país do futebol.</p>
+
+            <p><strong>O estilo de Zagallo como treinador</strong></p>
+
+            <p> Foi um treinador de personalidade forte. Gostava de times competitivos, organizados e comprometidos com a função coletiva. Sua experiência como ponta que ajudava na marcação influenciou a forma como via o jogo: talento era essencial, mas equilíbrio também.</p>
+
+            <p>Na Seleção de 1970, mostrou que era possível organizar um time recheado de craques sem tirar liberdade dos jogadores. Em 1998, comandou uma geração diferente, com outro ritmo e outra exigência física. Em 1994, como coordenador, esteve em uma comissão que priorizou solidez e competitividade para encerrar o jejum brasileiro.</p>
+
+            <p>Seu estilo também incluía frases marcantes, superstição e muita convicção. Zagallo ficou conhecido pelo número 13, por declarações fortes e por uma relação intensa com críticas. A famosa frase “vocês vão ter que me engolir” virou parte da cultura popular brasileira e reforçou sua imagem de personagem carismático, competitivo e resistente.</p>
+
+            <p><strong>O Velho Lobo e a mística da Seleção</strong></p>
+
+            <p>O apelido Velho Lobo combina com a trajetória de Zagallo. Ele era experiente, estratégico e profundamente ligado à Seleção Brasileira. Não foi apenas alguém que passou pelo Brasil em momentos importantes. Foi um personagem recorrente, quase permanente, em diferentes fases da equipe nacional.</p>
+
+            <p>Zagallo viveu o nascimento da era vitoriosa em 1958, a confirmação do domínio em 1962, o auge técnico em 1970, a reconstrução do tetra em 1994 e a pressão global da Copa de 1998. Sua presença ajuda a contar a evolução do futebol brasileiro no século XX e no início do século XXI.</p>
+
+            <p><strong>Legado de Zagallo para o futebol</strong></p>
+
+            <p>Faleceu em 5 de janeiro de 2024, aos 92 anos, mas deixou uma marca que segue viva no futebol. Sua história é única porque atravessa funções diferentes sem perder relevância. Foi campeão dentro de campo, comandou uma das maiores seleções de todos os tempos e participou da comissão que devolveu o Brasil ao topo em 1994.</p>
+
+            <p>Ele também abriu caminho para uma discussão importante sobre grandeza no futebol. Nem todo ídolo precisa ser apenas artilheiro, craque de drible ou treinador de clubes gigantes. Zagallo foi grande porque entendeu o jogo, se adaptou ao tempo e esteve presente nos momentos em que a Seleção Brasileira escreveu seus capítulos mais importantes.</p>
+
+            <p>O Brasil teve muitos craques, muitos técnicos e muitos personagens marcantes. Mas poucos reuniram tudo isso em uma trajetória tão completa. Zagallo é parte da história da bola, da Copa do Mundo e da identidade brasileira.</p>
+
+            <p>Mais do que o Velho Lobo, foi um dos guardiões da grandeza da Seleção. Um personagem que ajudou o Brasil a vencer, ensinou o país a competir e permaneceu como símbolo de uma era em que vestir a camisa amarela significava carregar o peso de ser favorito, campeão e referência mundial.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
