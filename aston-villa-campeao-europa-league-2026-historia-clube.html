@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aston Villa vence Freiburg e é campeão da Europa League | Corte dos Esportes</title>
+  <meta name="description" content="Clube inglês domina a final da Europa League, encerra jejum de 30 anos sem título e dá a Unai Emery o quinto troféu da competição." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Aston Villa vence Freiburg e é campeão da Europa League</h1>
+          <p class="subhead" id="articleExcerpt">Clube inglês domina a final da Europa League, encerra jejum de 30 anos sem título e dá a Unai Emery o quinto troféu da competição.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">20/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Aston Villa voltou a levantar uma taça continental. Em uma final dominante e segura, o clube inglês venceu o Freiburg por 3 a 0 nesta quarta-feira, no Beşiktaş Park, em Istambul, e conquistou a Europa League 2025/26.</p>
+
+            <p>A decisão teve cara de jogo simbólico para o Aston Villa. O Freiburg começou tentando competir, mas o time de Unai Emery controlou os momentos decisivos, cresceu ainda no primeiro tempo e construiu uma vitória sem deixar margem para dúvida.</p>
+
+            <p>Youri Tielemans abriu o placar com um belo voleio após jogada ensaiada em escanteio. Pouco depois, Emi Buendía acertou outro golaço, em chute colocado no ângulo, para ampliar antes do intervalo.</p>
+
+            <p>No início do segundo tempo, Morgan Rogers completou a noite histórica. O atacante apareceu na área, aproveitou boa construção ofensiva com Ollie Watkins e marcou o terceiro gol, praticamente encaminhando o título.</p>
+
+            <p>A partir daí, o Aston Villa administrou a vantagem com maturidade, sem abrir mão de competir, e confirmou um dos maiores capítulos recentes de sua história.</p>
+
+            <p><strong>Aston Villa acaba com jejum de 30 anos</strong></p>
+
+            <p>O título tem um peso enorme porque encerra uma espera que durava desde 1996, quando o clube havia conquistado a Copa da Liga Inglesa.</p>
+
+            <p>A conquista da Europa League também encerra um jejum continental ainda maior. O Villa não vencia um título europeu desde 1982, quando conquistou a antiga Copa dos Campeões da Europa ao derrotar o Bayern de Munique na final.</p>
+
+            <p>Aquela taça é o principal símbolo internacional do clube e coloca o Aston Villa em uma galeria especial do futebol inglês.</p>
+
+            <p>A noite em Istambul foi a retomada de uma identidade vencedora. O Villa voltou a se apresentar ao futebol europeu como um clube de tradição, camisa e história, agora com um projeto moderno conduzido por um técnico especialista em competições continentais.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A campanha do Aston Villa na Europa League</strong></p>
+
+            <p>No mata-mata, a equipe mostrou força principalmente nos momentos de maior pressão.</p>
+
+            <p>Nas quartas de final, eliminou o Bologna com autoridade, vencendo o confronto por 7 a 1 no agregado.</p>
+
+            <p>Na semifinal, teve de reagir contra o Nottingham Forest. Depois de perder o jogo de ida por 1 a 0, respondeu em casa com uma goleada por 4 a 0, fechando a eliminatória em 4 a 1.</p>
+
+            <p>A final contra o Freiburg coroou esse caminho:</p>
+
+            <ul>
+              <li>Venceu o Freiburg por 3 a 0 em Istambul.</li>
+            </ul>
+
+            <p>A campanha também reforça a importância do torneio no calendário europeu. A Europa League muitas vezes funciona como caminho de afirmação para clubes tradicionais que buscam voltar ao protagonismo continental, dentro da <a href="https://cortedosesportes.com.br/liga-europa-historia-maiores-campeoes-relevancia.html">história da competição</a>.</p>
+
+            <p><strong>Unai Emery é o Senhor Europa League</strong></p>
+
+            <p>O título também aumenta a dimensão histórica do treinador espanhol, que chegou ao quinto título de Europa League, ampliando um recorde que já era dele na competição.</p>
+
+            <p>O histórico dele na competição é impressionante:</p>
+
+            <ul>
+              <li>2013/14: campeão com o Sevilla;</li>
+              <li>2014/15: campeão com o Sevilla;</li>
+              <li>2015/16: campeão com o Sevilla;</li>
+              <li>2018/19: vice-campeão com o Arsenal;</li>
+              <li>2020/21: campeão com o Villarreal;</li>
+              <li>2025/26: campeão com o Aston Villa.</li>
+            </ul>
+
+            <p>O feito com o Aston Villa tem um valor especial porque não se trata de um clube acostumado a finais europeias recentes. Emery não apenas venceu mais uma Europa League; ele levou o Villa de volta a uma prateleira continental que o clube não frequentava havia décadas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Um clube tradicional do futebol inglês</strong></p>
+
+            <p>Fundado em 1874, em Birmingham, o clube tem papel histórico na formação do futebol inglês moderno. Foi um dos membros fundadores da Football League, em 1888, e carrega uma ligação forte com a organização das primeiras estruturas profissionais do esporte.</p>
+
+            <p>O Villa não é apenas um clube de passado distante. Sua história inclui títulos nacionais, taças de copa e uma conquista europeia de peso.</p>
+
+            <p>A vitória de 1982 na Copa dos Campeões da Europa segue como um dos momentos mais importantes do futebol inglês fora do eixo mais óbvio de gigantes como Liverpool, Manchester United, Arsenal, Chelsea e Manchester City.</p>
+
+            <p>Entre as conquistas mais importantes do clube, estão:</p>
+
+            <ul>
+              <li>1 Copa dos Campeões da Europa - 1981/82</li>
+              <li>1 Supercopa da Europa - 1982</li>
+              <li>1 Europa League - 2025/26</li>
+              <li>7 títulos do Campeonato Inglês (antes da era Premier League)</li>
+              <li>7 títulos da FA Cup</li>
+              <li>5 títulos da Copa da Liga Inglesa</li>
+            </ul>
+            
+
+            <p><strong>O Aston Villa e a realeza britânica</strong></p>
+
+            <p>O clube também tem uma ligação curiosa com a realeza britânica, tendo um torcedor real muito conhecido: o príncipe William.</p>
+
+            <p>Ele já declarou publicamente sua paixão pelo time e costuma acompanhar jogos importantes da equipe, estando presente na final contra o Freiburg.</p>
+
+            <p>Essa relação dá ao clube uma camada simbólica diferente. Em finais europeias, a presença de William e a repercussão de seu apoio ajudam a reforçar a imagem do Aston Villa como uma instituição tradicional, com alcance nacional e apelo que vai além de Birmingham.</p>
+
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O impacto do título para o projeto</strong></p>
+
+            <p>A Europa League muda o patamar do clube. Já vinha crescendo sob comando de Unai Emery, voltando a disputar competições europeias e se aproximando novamente do topo do futebol inglês.</p>
+
+            <p>Agora, esse crescimento tem uma taça para validar o processo.</p>
+
+            <p>O título também muda o calendário e o peso internacional do clube. Como campeão da Europa League, o clube garante vaga na próxima Champions League, voltando ao torneio mais importante do continente por uma rota de prestígio.</p>
+
+            <p>Para uma equipe que já foi campeã europeia em 1982, esse retorno ganha ainda mais força dentro da <a href="https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html">história da Champions League</a>.</p>
+
+            <p>A conquista também coloca o Aston Villa na disputa da Supercopa da UEFA, torneio que reúne os campeões da Champions League e da Europa League. Para o clube inglês, será mais uma chance de transformar o título continental em novo protagonismo internacional, disputando mais uma final com a <a href="https://cortedosesportes.com.br/recopa-sul-americana-x-supercopa-uefa-diferencas-historia-maiores-campeoes-2026.html">Supercopa da UEFA</a>.</p>
+
+            <p>O título também fortalece o elenco. Jogadores como Emiliano(Dibu) Martínez, Youri Tielemans, Emi Buendía, Morgan Rogers e Ollie Watkins saem da temporada com outro peso histórico.</p>
+
+            <p>Eles deixam de ser apenas peças de um projeto promissor e passam a fazer parte de uma geração campeã continental.</p>
+
+
+            <p><strong>Aston Villa volta ao mapa dos grandes títulos</strong></p>
+
+            <p>A conquista da Europa League 2025/26 é um marco para o clube.</p>
+
+            <p>A taça que reposiciona o clube para o futuro. O Villa deixa de ser apenas um projeto interessante da Premier League e passa a carregar uma conquista recente de peso internacional.</p>
+
+            <p>Em um futebol cada vez mais competitivo, isso muda percepção, ambição e cobrança.</p>
+
+            <p>Para Unai Emery, é mais uma página de uma carreira histórica na Europa League. Para o Aston Villa, é o fim de um jejum e o início de uma nova memória. Para a torcida, é uma noite para guardar por décadas: vitória por 3 a 0, dois golaços, controle absoluto e a taça novamente nas mãos de um clube que nunca deixou de ter história.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
