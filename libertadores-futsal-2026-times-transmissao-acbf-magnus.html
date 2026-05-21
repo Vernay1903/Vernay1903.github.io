@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Libertadores de Futsal 2026: Veja times participantes e formato | Corte dos Esportes</title>
+  <meta name="description" content="Será disputada em Carlos Barbosa, no Rio Grande do Sul, com ACBF jogando em casa, Magnus como potência brasileira e Peñarol defendendo o título continental." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Libertadores de Futsal 2026: Veja times participantes e formato</h1>
+          <p class="subhead" id="articleExcerpt">Será disputada em Carlos Barbosa, no Rio Grande do Sul, com ACBF jogando em casa, Magnus como potência brasileira e Peñarol defendendo o título continental.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">21/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futsal</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Carlos Barbosa será o centro do futsal sul-americano entre os dias 24 e 31 de maio. A cidade gaúcha recebe a Libertadores de Futsal 2026, principal competição de clubes da modalidade na América do Sul, reunindo 12 equipes de diferentes países em uma semana de jogos decisivos.</p>
+
+            <p>O torneio será disputado no Ginásio Sérgio Luis Guerra, casa da ACBF e um dos palcos mais tradicionais do futsal brasileiro. A escolha da sede dá um peso especial à edição. Além de receber clubes históricos do continente, Carlos Barbosa vive um ano simbólico para a própria ACBF, que completa 50 anos de história e terá a chance de disputar a competição diante de sua torcida.</p>
+
+            <p>O Brasil terá dois representantes: ACBF/Carlos Barbosa e Magnus. A equipe gaúcha entra com o fator casa, tradição e história continental. O time de Sorocaba chega como uma das maiores forças recentes do futsal brasileiro e sul-americano. Além do Peñarol, do Uruguai, que é o atual campeão e tenta defender o título conquistado em 2025, quando venceu justamente o Magnus na final.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Carlos Barbosa volta ao centro do futsal continental</strong></p>
+
+            <p>A cidade tem uma ligação profunda com a modalidade e construiu uma identidade esportiva em torno da ACBF. O clube é uma das marcas mais fortes do futsal brasileiro, com tradição nacional, títulos continentais e uma torcida acostumada a grandes noites no ginásio.</p>
+
+            <p>Receber a Libertadores em casa aumenta o tamanho da responsabilidade. A ACBF não chega apenas como participante. Chega como anfitriã, clube histórico e candidata natural ao título.</p>
+
+            <p>O torneio também reforça a importância do Rio Grande do Sul no futsal. A região tem tradição na formação de atletas, clubes competitivos e ginásios com ambiente de pressão. Para uma competição continental, esse cenário ajuda a criar uma atmosfera forte desde a primeira rodada.</p>
+
+            <p><strong>Como será o formato da Libertadores de Futsal</strong></p>
+
+            <p>A competição terá 12 clubes, divididos em três grupos de quatro equipes. A primeira fase será disputada entre os dias 24 e 26 de maio. Avançam ao mata-mata os dois melhores colocados de cada grupo e os dois melhores terceiros colocados.</p>
+
+            <p>A partir daí, a competição entra em fase eliminatória, com quartas de final, semifinais e final. A decisão está marcada para 31 de maio, encerrando uma semana de jogos.</p>
+
+            <p>Esse recorte de mata-mata também aproxima a Libertadores de outras competições importantes do calendário nacional. Jogos decisivos, margem pequena para erro e avanço por fases tem relação direta com o formato da <a href="https://cortedosesportes.com.br/copa-do-brasil-de-futsal-2026-formato-times-historia.html">Copa do Brasil de Futsal 2026</a>, outro torneio em que a força competitiva aparece justamente nos confrontos eliminatórios.</p>
+
+            <p><strong>A história da Libertadores de Futsal</strong></p>
+
+            <p>É a principal competição de clubes da modalidade na América do Sul. O torneio nasceu em 2000, ainda como Campeonato Sul-Americano de Clubes, e passou a ser organizado pela CONMEBOL a partir de 2002. Com o tempo, consolidou-se como o grande palco continental do futsal, reunindo campeões, representantes nacionais e clubes tradicionais de diferentes países.</p>
+
+            <p>Para participar, as equipes chegam por critérios definidos em seus países e pela organização continental, como desempenho em competições nacionais, copas, vagas de federações, atual campeão, representante do país-sede ou convites dentro do regulamento de cada edição. Por isso, o torneio costuma reunir tanto clubes campeões nacionais quanto equipes de grande tradição e força recente.</p>
+
+            <p>O Brasil é o país mais dominante da história da competição. A força brasileira aparece na quantidade de títulos e na presença constante de clubes em finais.</p>
+
+            <p><strong>Os maiores campeões da Libertadores de Futsal:</strong></p>
+
+            <ul>
+              <li>ACBF/Carlos Barbosa — 6 títulos</li>
+              <li>Jaraguá — 6 títulos</li>
+              <li>Magnus — 2 títulos</li>
+              <li>Cascavel — 2 títulos</li>
+              <li>Cerro Porteño — 1 título</li>
+              <li>Peñarol — 1 título</li>
+              <li>San Lorenzo — 1 título</li>
+              <li>Banespa — 1 título</li>
+              <li>Atlântico — 1 título</li>
+              <li>Intelli — 1 título</li>
+              <li>Internacional — 1 título</li>
+            </ul>
+
+            <p>A edição de 2026 ganha ainda mais peso porque coloca a ACBF, uma das maiores campeãs da história, jogando em casa, e o Magnus, potência recente, tentando recuperar o título perdido em 2025. Ao mesmo tempo, o Peñarol chega como atual campeão e símbolo de uma fase mais equilibrada do torneio. Isso transforma em uma competição de tradição, mas também de renovação, com o Brasil ainda forte e rivais sul-americanos cada vez mais competitivos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Grupos da edição 2026</strong></p>
+
+            <p>A competição terá clubes tradicionais de Brasil, Argentina, Uruguai, Paraguai, Bolívia, Venezuela, Peru, Equador, Colômbia e Chile.</p>
+
+            <p><strong>Grupo A</strong></p>
+            <ul>
+              <li>ACBF</li>
+              <li>Boca Juniors</li>
+              <li>Fantasmas Morales Moralitos</li>
+              <li>Peñarol</li>
+            </ul>
+
+            <p><strong>Grupo B</strong></p>
+            <ul>
+              <li>Magnus</li>
+              <li>Centauros</li>
+              <li>Panta Walon</li>
+              <li>Divino Niño</li>
+            </ul>
+
+            <p><strong>Grupo C</strong></p>
+            <ul>
+              <li>Nacional</li>
+              <li>Cerro Porteño</li>
+              <li>Deportivo Lyon Cali</li>
+              <li>Colo-Colo</li>
+            </ul>
+
+            <p><strong>Jogos de ACBF e Magnus na primeira fase</strong></p>
+
+            <p>A tabela da primeira fase coloca os brasileiros em ação logo nos dois primeiros dias de competição, sempre com jogos decisivos para encaminhar classificação.</p>
+
+            <p><strong>ACBF na primeira fase</strong></p>
+            <ul>
+              <li>24/05, 20h: ACBF x Peñarol</li>
+              <li>25/05, 20h: Fantasmas M.M. x ACBF</li>
+              <li>26/05, 20h: ACBF x Boca Juniors</li>
+            </ul>
+
+            <p><strong>Magnus na primeira fase</strong></p>
+            <ul>
+              <li>24/05, 14h: Magnus x Divino Niño</li>
+              <li>25/05, 14h: Panta Walon x Magnus</li>
+              <li>26/05, 14h: Magnus x Centauros</li>
+            </ul>
+
+            <p>Para a ACBF, a estreia já terá cara de decisão. Enfrentar o Peñarol, atual campeão, logo na primeira rodada coloca o time gaúcho em teste pesado desde o início. Além disso, a chave ainda tem o Boca Juniors, clube de camisa forte e tradição em competições sul-americanas.</p>
+
+            <p>O Magnus, por sua vez, terá uma primeira fase em que precisa confirmar favoritismo. O time de Sorocaba tem elenco, histórico recente e peso continental para brigar pelo título, mas competições curtas de futsal costumam punir qualquer queda de concentração.</p>
+
+            <p><strong>Onde assistir à Libertadores de Futsal 2026</strong></p>
+
+            <p>Será transmissão ao vivo e com imagens pelo canal oficial da CONMEBOL Libertadores no YouTube. A cobertura inclui os jogos da competição em Carlos Barbosa, com partidas da fase de grupos, mata-mata e decisão.</p>
+
+            <p>A transmissão pelo YouTube facilita o acesso do torcedor e aumenta a visibilidade de uma competição que reúne clubes de diferentes países da América do Sul. Em uma semana com jogos em sequência entre 24 e 31 de maio, acompanhar o canal oficial da CONMEBOL Libertadores será o caminho direto para ver a disputa continental.</p>
+
+            <p><strong>ACBF joga em casa e mira retomada continental</strong></p>
+
+            <p>A ACBF é uma das grandes potências da história da modalidade dentro do país e fora também.</p>
+
+            <p>Foi campeã em 2002, 2003, 2011, 2017, 2018 e 2019, mostrando capacidade de se manter competitiva em ciclos distintos. Agora, em 2026, tenta voltar ao topo dentro de casa.</p>
+
+            <p>O fator emocional será inevitável. A equipe joga em sua cidade, em seu ginásio, no ano em que celebra meio século de existência. Isso pode servir como combustível, mas também aumenta a pressão. Em torneios desse tamanho, jogar em casa é vantagem quando o time consegue transformar torcida em energia. Quando a ansiedade pesa, pode virar obstáculo.</p>
+
+            <p><strong>Magnus chega como potência recente do Brasil</strong></p>
+
+            <p>O Magnus também entra na Libertadores de Futsal 2026 com ambição real de título. A equipe de Sorocaba foi campeã continental em 2015 e 2024, além de ter chegado à final em 2025, quando perdeu para o Peñarol.</p>
+
+            <p>Esse histórico recente mostra que não é apenas um representante brasileiro. É um dos clubes mais fortes do continente na última década. A equipe se acostumou a disputar decisões, revelou e reuniu jogadores de alto nível e construiu uma estrutura competitiva que a coloca sempre entre os favoritos.</p>
+
+            <p>A derrota na final de 2025 também adiciona um elemento narrativo importante. O Magnus chega à edição de 2026 tentando transformar o vice recente em resposta esportiva. Se avançar bem na primeira fase, pode voltar a cruzar com rivais pesados no mata-mata e buscar o tricampeonato continental.</p>
+
+            <p><strong>Peñarol defende título e desafia hegemonia brasileira</strong></p>
+
+            <p>O Peñarol chega como um dos grandes personagens da competição. Em 2025, o clube uruguaio surpreendeu o Magnus, venceu a final por 3 a 1 e conquistou a Libertadores de Futsal pela primeira vez.</p>
+
+            <p>O título teve peso histórico porque quebrou a força brasileira na competição e colocou o futsal uruguaio em outro patamar continental. Agora, o Peñarol volta ao torneio com outro status. Não será mais apenas um time perigoso. Será o campeão a ser batido.</p>
+
+            <p>A presença do time no mesmo grupo da ACBF torna a primeira fase ainda mais interessante. O duelo de abertura para o time brasileiro coloca frente a frente tradição gaúcha, força uruguaia e duas camisas acostumadas a ambiente quente.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que a Libertadores de Futsal é especial</strong></p>
+
+            <p>É o grande palco continental dos clubes sul-americanos da modalidade. Para equipes brasileiras, vencer o torneio significa confirmar força internacional. Para clubes de outros países, é a chance de desafiar a tradição do Brasil e mostrar evolução técnica.</p>
+
+            <p>O Brasil tem histórico dominante na competição. Ainda assim, os últimos anos mostram que o torneio ficou mais competitivo. O Peñarol campeão em 2025 é o exemplo mais recente disso.</p>
+
+            <p>Essa força brasileira também passa pelo calendário interno. A <a href="https://cortedosesportes.com.br/liga-nacional-futsal-como-funciona-times-formato-lnf.html">Liga Nacional de Futsal</a> ajuda a manter clubes em alto nível competitivo durante a temporada e serve como base para que equipes como ACBF e Magnus cheguem à Libertadores acostumadas a jogos intensos, pressão e decisões.</p>
+
+            <p>A competição também serve como vitrine. Atletas se destacam, treinadores ganham projeção e clubes ampliam sua marca em uma modalidade que ainda busca mais espaço no calendário esportivo. Para o torcedor, é uma chance de acompanhar futsal de alto nível, com jogos intensos e normalmente muito equilibrados.</p>
+
+            <p><strong>Uma edição com peso simbólico para o futsal brasileiro</strong></p>
+
+            <p>A Libertadores de Futsal 2026 tem tudo para ser uma das edições mais interessantes dos últimos anos. A competição será no Brasil, em uma cidade identificada com a modalidade, com a ACBF jogando em casa, o Magnus tentando recuperar o topo.</p>
+
+            <p>O torneio também chega em um momento importante para o futsal brasileiro. A modalidade segue forte em clubes, ginásios e formação de atletas, mas precisa constantemente transformar tradição em visibilidade. Receber uma Libertadores em Carlos Barbosa ajuda a recolocar o futsal no centro da pauta esportiva.</p>
+
+            <p>A Libertadores de Futsal 2026 não será apenas mais um torneio no calendário. Será uma competição com sede simbólica, brasileiros fortes, atual campeão perigoso e uma final que pode recolocar o futsal nacional no topo da América do Sul. Para quem acompanha a modalidade, é semana de entretenimento. Para Carlos Barbosa, é uma semana histórica.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futsal";
+  const CATEGORY_NAME = "Futsal";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
