@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stadion An der Alten Försterei: história do estádio mais antigo da Bundesliga | Corte dos Esportes</title>
+  <meta name="description" content="A casa centenária do Union Berlin, símbolo popular da Bundesliga, com arquibancadas em pé, reconstrução feita por torcedores e uma das atmosferas mais autênticas da Alemanha." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Stadion An der Alten Försterei: história do estádio mais antigo da Bundesliga</h1>
+          <p class="subhead" id="articleExcerpt">A casa centenária do Union Berlin, símbolo popular da Bundesliga, com arquibancadas em pé, reconstrução feita por torcedores e uma das atmosferas mais autênticas da Alemanha.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">21/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Stadion An der Alten Försterei é um dos estádios mais especiais do futebol alemão. Localizado em Köpenick, no sudeste de Berlim, o estádio é a casa do Union Berlin há mais de um século e se tornou um símbolo de identidade popular, resistência, pertencimento e paixão de arquibancada.</p>
+
+            <p>Inaugurado oficialmente em 7 de agosto de 1920, o estádio é um dos palcos mais antigos ainda em uso no futebol de elite da Alemanha. Mas sua importância não está apenas na idade. A Alten Försterei representa uma forma diferente de viver o futebol: menos parecida com uma arena comercial moderna e mais próxima de um espaço comunitário, construído e preservado pela relação entre clube, torcida e bairro.</p>
+
+            <p><strong>A origem do estádio em Köpenick</strong></p>
+
+            <p>A história do estádio começa antes mesmo da fundação do Union Berlin com o nome atual. O clube predecessor, o Union Oberschöneweide, precisava de uma nova casa depois de perder espaço em seu antigo campo. A solução foi se instalar em uma área próxima à Wuhlheide, em Köpenick, região verde e operária de Berlim.</p>
+
+            <p>O primeiro jogo no novo campo aconteceu em março de 1920, contra o Viktoria 89. A inauguração oficial veio em agosto do mesmo ano, em uma partida contra o 1. FC Nürnberg, então campeão alemão. O jogo terminou com vitória do Nürnberg por 2 a 1 diante de cerca de 7 mil pessoas, mas o resultado virou detalhe diante do nascimento de uma casa que atravessaria gerações.</p>
+
+            <p>A longevidade da Alten Försterei ajuda a colocar o estádio sobre os palcos históricos do futebol. <a href="https://cortedosesportes.com.br/sandygate-campo-de-futebol-mais-antigo-do-mundo-historia.html">O Sandygate</a> também pertence á estádios centenários que ainda sobrevivem as arenas modernas da Europa.</p>
+
+            <p>O nome tem origem no entorno. “Alte Försterei” significa algo próximo de “antiga casa do guarda florestal”. A referência vem da antiga construção ligada à administração florestal próxima ao local. Essa ligação com a mata, a Wuhlheide e o ambiente de Köpenick ajuda a explicar por que o estádio tem uma identidade tão diferente de outras arenas urbanas da Europa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estádio e a identidade do Union Berlin</strong></p>
+
+            <p>A Alten Försterei não é apenas o estádio do Union Berlin. Ela é parte do clube. Para muitos torcedores, o estádio vem antes até de símbolos modernos como escudo, marketing ou campanhas de elite. Ele é o ponto fixo de uma história marcada por mudanças políticas, dificuldades financeiras, divisões da Alemanha e crescimento esportivo.</p>
+
+            <p>Se consolidou como um clube de forte identidade popular, especialmente no contexto do leste de Berlim. Sua torcida criou uma relação de pertencimento muito intensa com o estádio. Essa ligação aparece no jeito de torcer, na preservação das arquibancadas em pé e na ideia de que a casa do clube não pode ser tratada apenas como um produto.</p>
+
+            <p>Esse é o grande diferencial da Alten Försterei. Ela não impressiona por luxo, tamanho ou tecnologia. Impressiona por ambiente. O estádio parece menor do que os grandes palcos da Bundesliga, mas isso aumenta a pressão. O campo fica próximo da torcida, o som se concentra, e a arquibancada tem uma presença física muito forte no jogo.</p>
+
+            <p><strong>Capacidade e recordes de público</strong></p>
+
+            <p>Á atual é de 22.012 torcedores. O número combina a grande massa de torcedores em pé com a tribuna principal, que tem 3.617 assentos. Isso faz do estádio uma exceção dentro da elite europeia, onde muitas arenas migraram para modelos quase totalmente sentados.</p>
+
+            <p>O recorde moderno de público é de 22.012 torcedores, registrado em 17 de outubro de 2015, em Union Berlin x St. Pauli, pela 2. Bundesliga. A partida terminou empatada por 3 a 3 e simboliza bem a fase em que o estádio já operava no limite de sua capacidade atual.</p>
+
+            <p>O estádio costuma trabalhar com alta ocupação. Em jogos grandes da Bundesliga, a sensação é de casa cheia permanente. A limitação de capacidade também aumenta o valor simbólico de cada ingresso, porque a demanda da torcida do Union é maior do que o tamanho atual da casa.</p>
+
+            <p><strong>A Segunda Guerra Mundial e a sobrevivência do estádio</strong></p>
+
+            <p>A história da Alten Försterei também passa pela Segunda Guerra Mundial. Durante o conflito, áreas próximas ao estádio e ao bairro tiveram uso militar. Houve posições antiaéreas nas imediações, e a região de Berlim sofreu intensamente nos anos finais da guerra.</p>
+
+            <p>Apesar desse contexto, o estádio escapou de uma destruição total. Ao contrário de outros palcos europeus que precisaram ser reconstruídos quase do zero, a Alten Försterei permaneceu de pé o suficiente para voltar a receber futebol pouco tempo depois do fim do conflito.</p>
+
+            <p>A relação entre guerra, reconstrução e memória também aparece em outros templos do futebol europeu. O <a href="https://cortedosesportes.com.br/estadio-wembley-historia-tradicao-copa-do-mundo.html">Estádio de Wembley</a>, também atravessou períodos de transformação histórica até se consolidar como palco nacional do futebol.</p>
+
+            <p>Esse tipo de sobrevivência histórica ajuda a aproximar a Alten Försterei de outros estádios marcados por camadas políticas, esportivas e culturais. O <a href="https://cortedosesportes.com.br/san-siro-historia-estadio-milan-inter-de-milao.html">San Siro</a>, também mostra como alguns estádios se tornam mais do que locais de jogo: viram parte da memória urbana e emocional de uma cidade.</p>
+
+            <p><strong>Reformas, voluntariado e reconstrução feita por torcedores</strong></p>
+
+            <p>O capítulo mais famoso da história moderna do estádio aconteceu entre 2008 e 2009. Sem dinheiro suficiente para uma reforma completa nos moldes tradicionais, o Union Berlin contou com sua própria torcida para reconstruir a casa.</p>
+
+            <p>Mais de 2.300 voluntários participaram das obras, somando cerca de 140 mil horas de trabalho. Torcedores ajudaram a concretar arquibancadas, reformar setores, melhorar acessos e transformar o estádio em uma estrutura mais adequada ao futebol profissional.</p>
+
+            <p>Esse episódio virou parte central da lenda do Union. Enquanto muitos clubes constroem arenas por meio de grandes investimentos corporativos, o Union preservou sua casa com as mãos de seus torcedores. </p>
+
+            <p>Depois disso, a tribuna principal foi reconstruída entre 2012 e 2013, com inauguração em amistoso contra o Celtic. A reforma modernizou áreas internas, camarotes, imprensa, vestiários e assentos, mas preservou a essência popular do estádio.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quantos jogos já aconteceram na Alten Försterei?</strong></p>
+
+            <p>Não existe uma contagem pública única e definitiva. </p>
+
+            <p>Ainda assim, é possível fazer uma estimativa conservadora. Considerando que o Union joga no local desde 1920, a Alten Försterei já deve ter recebido mais de 2 mil partidas de futebol.</p>
+
+            <p>O mais importante, porém, não é apenas a quantidade. É a continuidade. Poucos estádios conseguem manter por tanto tempo a mesma ligação com o mesmo clube e a mesma comunidade. A Alten Försterei não é um palco alugado por fases. É uma casa permanente.</p>
+
+            <p><strong>A seleção alemã já jogou na Alten Försterei?</strong></p>
+
+            <p>O estádio já recebeu jogos de seleções alemãs de base. Em 2010, a seleção sub-20 da Alemanha enfrentou a Suíça no local. Em 2016, a seleção sub-21 alemã recebeu a Turquia em partida internacional da categoria.</p>
+
+            <p>Esses jogos mostram que a Alten Försterei tem reconhecimento dentro do futebol alemão, mesmo sem ser uma casa frequente da seleção principal. Para categorias de base, o estádio oferece um ambiente forte, tradicional e diferente das grandes arenas nacionais.</p>
+
+            <p><strong>Jogos marcantes da história recente</strong></p>
+
+            <p>A história recente da Alten Försterei na histórica vitória em 31 de agosto de 2019, quando o clube venceu o Borussia Dortmund por 3 a 1 e conquistou sua primeira vitória na Bundesliga. </p>
+
+            <p>Outro jogo marcante aconteceu contra o Hertha Berlin, em novembro de 2019, no primeiro clássico berlinense da Bundesliga entre os clubes. A rivalidade entre Union e Hertha tem peso esportivo, geográfico e cultural, com o Union representando uma identidade muito ligada ao leste e à cultura popular de Köpenick.</p>
+
+            <p>Em 2022, o empate por 1 a 1 contra o Bayern de Munique também teve impacto simbólico. Naquele momento, o Union competia na parte alta da tabela e mostrou que a Alten Försterei poderia ser um ambiente difícil até para o maior clube da Alemanha.</p>
+
+            <p>Em 2023, a vitória por 1 a 0 sobre o Werder Bremen na última rodada da Bundesliga levou o Union à Champions League pela primeira vez em sua história. Embora o clube tenha mandado os jogos da Champions no Olympiastadion por exigências estruturais, a classificação nasceu no clima da Alten Försterei.</p>
+
+            <p><strong>Noites europeias </strong></p>
+
+            <p>A participação do Union Berlin em competições europeias trouxe uma nova camada para a história do estádio. Em 2022, o clube recebeu autorização para disputar jogos de Europa League na Alten Försterei, em um momento especial porque a UEFA passou a permitir testes com setores em pé em partidas continentais.</p>
+
+            <p>Foi um marco para o estádio. A casa do Union pôde receber noites europeias preservando parte importante de sua identidade. Para os torcedores, isso tinha valor enorme: competir na Europa sem abrir mão da própria atmosfera.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estádio dentro de Berlim</strong></p>
+
+            <p>O contexto urbano da Alten Försterei é parte essencial de sua história. O estádio fica em Köpenick, região no sudeste de Berlim, distante da imagem mais turística e central da capital alemã. O entorno tem ligação com áreas verdes, com a Wuhlheide, com o rio Wuhle e com uma vida de bairro mais marcada pela comunidade local.</p>
+
+            <p>Essa localização molda a experiência. Ir à Alten Försterei não é como chegar a uma arena moderna cercada por shopping, hotéis e áreas corporativas. É uma experiência mais orgânica, mais ligada ao caminho do torcedor, ao bairro, aos bares, às ruas próximas e à caminhada até o estádio.</p>
+
+            <p><strong>Natal, torcida e cultura popular</strong></p>
+
+            <p>Um dos eventos mais famosos do estádio é o Weihnachtssingen, encontro anual de cânticos de Natal realizado no nele. O evento começou de forma pequena, com poucos torcedores, e cresceu até se tornar uma das tradições mais conhecidas do Union Berlin.</p>
+
+            <p>O estádio também ficou famoso por ações criativas da torcida, como eventos em telões e encontros coletivos em grandes torneios. Esse uso comunitário reforça a ideia de que a Alten Försterei não funciona apenas em dias de jogo. Ela é um espaço cultural do clube.</p>
+
+            <p><strong>Planos de expansão e o risco de perder a alma</strong></p>
+
+            <p>O Union Berlin trabalha há anos com planos de ampliação da Alten Försterei. A ideia é aumentar a capacidade para atender à demanda crescente da torcida e melhorar a estrutura para competições nacionais e internacionais.</p>
+
+            <p>O desafio é enorme. O clube precisa crescer para competir em alto nível, aumentar receita e atender exigências modernas. Ao mesmo tempo, não pode transformar o estádio em algo genérico. A força da Alten Försterei está justamente na arquibancada em pé, no ambiente apertado, no som da torcida e na sensação de proximidade.</p>
+
+            <p>A expansão, portanto, precisa equilibrar futuro e memória. Se conseguir preservar sua essência, o estádio pode continuar sendo uma das casas mais autênticas da Bundesliga. Se perder a identidade, corre o risco de virar apenas mais uma arena moderna.</p>
+
+            <p><strong>O legado da Alten Försterei</strong></p>
+
+            <p> É um dos estádios mais simbólicos da Alemanha porque representa uma ideia de futebol que resiste à padronização. É antigo, mas não vive apenas do passado. É pequeno para os padrões da elite, mas grande em atmosfera. É popular, mas também moderno o suficiente para acompanhar o crescimento do clube.</p>
+
+            <p>Sua história passa por 1920, Segunda Guerra Mundial, Alemanha Oriental, reunificação, crise financeira, voluntariado, Bundesliga, Europa League e Champions League. Poucos estádios concentram tantas camadas em um espaço tão compacto.</p>
+
+            <p>É por isso que sua história importa. O estádio não é apenas antigo. É vivo. E, enquanto o Union Berlin seguir tratando a Alten Försterei como parte de sua identidade, ela continuará sendo um dos templos mais autênticos da Bundesliga.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
