@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anfield: história, tradição e a mística do estádio do Liverpool | Corte dos Esportes</title>
+  <meta name="description" content="Casa histórica do Liverpool, é um dos palcos mais simbólicos do futebol mundial, marcado pelo Kop, por grandes noites europeias, títulos ingleses e pela força de “You’ll Never Walk Alone”." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Anfield: história, tradição e a mística do estádio do Liverpool</h1>
+          <p class="subhead" id="articleExcerpt">Casa histórica do Liverpool, é um dos palcos mais simbólicos do futebol mundial, marcado pelo Kop, por grandes noites europeias, títulos ingleses e pela força de “You’ll Never Walk Alone”.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">23/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>É um dos palcos mais reconhecidos do futebol mundial, uma casa onde arquibancada, história, identidade local e grandes noites esportivas se misturam há mais de um século.</p>
+
+            <p>Localizado na cidade de Liverpool, na região de Merseyside, o estádio foi inaugurado em 1884 e se tornou casa do Liverpool FC desde a fundação do clube, em 1892. Antes disso, curiosamente, Anfield foi utilizado pelo Everton, rival local que depois se mudou para Goodison Park. Dessa ruptura nasceu uma das histórias mais importantes do futebol inglês: um estádio ficou vazio, um novo clube foi criado para ocupá-lo, e esse clube se transformaria em uma potência mundial.</p>
+
+            <p>Hoje, com capacidade superior a 61 mil torcedores após as expansões recentes, ele continua sendo um estádio moderno sem perder sua alma. O Liverpool cresceu, ganhou títulos nacionais e europeus, mudou gerações de jogadores e treinadores, mas manteve no estádio uma parte central de sua identidade.</p>
+
+            <p><strong>Origem de Anfield e a ligação com o Everton</strong></p>
+
+            <p>A história de Anfield começou antes do Liverpool existir. O estádio foi aberto em 1884 e recebeu inicialmente partidas do Everton. Na época, o futebol inglês ainda estava em processo de organização profissional, e os clubes buscavam campos capazes de receber públicos maiores.</p>
+
+            <p>O Everton jogou em Anfield até 1892, quando uma disputa administrativa e comercial levou o clube a deixar o local e se mudar para Goodison Park. John Houlding, então ligado ao estádio, ficou com o campo sem um time principal. A solução foi criar uma nova equipe para jogar ali: o Liverpool Football Club.</p>
+
+            <p>O primeiro jogo do Liverpool em Anfield aconteceu em 1892, contra o Rotherham Town, em amistoso vencido por 7 a 1. A partir daquele momento, o estádio deixou de ser apenas um campo de futebol e passou a ser a base de construção de um dos clubes mais vencedores da Inglaterra.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A casa histórica do Liverpool</strong></p>
+
+            <p>Anfield acompanhou todas as fases do clube. Viu sair dos primeiros anos no futebol inglês, conquistar seus primeiros títulos de liga, viver altos e baixos, crescer com Bill Shankly, dominar a Europa com Bob Paisley e se reinventar no século XXI com novas gerações.</p>
+
+            <p>O estádio se tornou inseparável da imagem do clube. Quando se fala em Liverpool, não se fala apenas em camisa vermelha, títulos europeus ou grandes jogadores. Fala-se também do túnel, da placa “This Is Anfield”, do Kop, das noites de Champions League e do canto “You’ll Never Walk Alone”.</p>
+
+            <p>Essa ligação explica por que ele nunca foi tratado apenas como uma estrutura física. Mesmo quando o clube estudou alternativas de mudança no passado, a solução que prevaleceu foi ampliar e modernizar o estádio. O Liverpool preferiu preservar o endereço histórico e adaptar a casa às exigências do futebol moderno.</p>
+
+            <p><strong>O Kop e a alma do estádio</strong></p>
+
+            <p>O setor mais famoso é o Spion Kop, conhecido simplesmente como Kop. A arquibancada ganhou esse nome no início do século XX, em referência à Batalha de Spion Kop, na Guerra dos Bôeres, conflito que marcou soldados britânicos, muitos deles ligados à região de Liverpool.</p>
+
+            <p>Com o tempo, o Kop se tornou uma das arquibancadas mais famosas do mundo. Mais do que um setor do estádio, virou símbolo da torcida. É dali que sai boa parte da força sonora de Anfield, especialmente em jogos grandes.</p>
+
+            <p>O canto “You’ll Never Walk Alone” ajuda a explicar essa mística. Cantado antes das partidas, o hino cria uma atmosfera reconhecida por jogadores, treinadores e torcedores adversários. Em noites europeias, principalmente, Anfield costuma ser descrito como um estádio capaz de empurrar o time emocionalmente.</p>
+
+            <p><strong>Quantos jogos e gols Anfield já recebeu</strong></p>
+
+            <p>Considerando apenas o Liverpool, o clube já passou de 6 mil jogos oficiais em sua história. Como é a casa do clube desde 1892, o estádio concentra aproximadamente metade desse arquivo competitivo. Isso coloca o estádio em uma faixa superior a 3 mil partidas oficiais do Liverpool.</p>
+
+            <p>Em gols, a estimativa também é alta. O Liverpool já marcou mais de 10,6 mil gols oficiais ao longo da história. Como o desempenho em casa historicamente costuma ser superior ao desempenho fora, é razoável colocar Anfield em uma faixa aproximada em 6 mil gols marcados pelos Reds em jogos oficiais.</p>
+
+            <p>Esses números ajudam a dimensionar o peso do estádio. Anfield não é apenas um palco de finais ocasionais. É um lugar onde o Liverpool construiu campanhas inteiras, somou pontos decisivos, virou confrontos europeus, confirmou títulos e formou parte essencial de sua memória esportiva.</p>
+
+            <p><strong>Títulos levantados e celebrados em Anfield</strong></p>
+
+            <p>Esses jogos ajudam a explicar o peso emocional de Anfield. O estádio não é o palco da maioria das finais vencidas pelo Liverpool, mas foi cenário de confirmações históricas, apresentações de troféu e celebrações que marcaram gerações de torcedores.</p>
+
+            <p>Alguns exemplos marcantes:</p>
+
+            <p>• 8 de maio de 1979 — Liverpool 3 x 0 Aston Villa: vitória que confirmou o 11º título inglês do clube.</p>
+            
+            <p>• 28 de abril de 1990 — Liverpool 2 x 1 Queens Park Rangers: jogo que garantiu o 18º título da liga inglesa, com gols de Ian Rush e John Barnes.</p>
+            
+            <p>• 1º de maio de 1990 — Liverpool 1 x 0 Derby County: partida em que o Liverpool recebeu o troféu da First Division em Anfield.</p>
+            
+            <p>• 22 de julho de 2020 — Liverpool 5 x 3 Chelsea: noite em que Jordan Henderson levantou a taça da Premier League em Anfield, encerrando a espera de 30 anos pelo título inglês, emblemático por estar sem torcida por causa das restrições sanitárias.</p>
+            
+            <p>• 27 de abril de 2025 — Liverpool 5 x 1 Tottenham: vitória que confirmou o 20º título inglês do clubel.</p>
+            
+            <p>• 25 de maio de 2025 — Liverpool 1 x 1 Crystal Palace: entrega da taça da Premier League em Anfield, a primeira celebração de título de liga com torcida no estádio desde 1990.</p>
+
+            <p><strong>A seleção inglesa em Anfield</strong></p>
+
+            <p>O estádio recebeu jogos da Inglaterra, inclusive em períodos em que a seleção atuava com mais frequência fora de Wembley.</p>
+
+            <p>Um dos primeiros registros marcantes aconteceu em 1889, quando a Inglaterra venceu a Irlanda por 6 a 1. Já no futebol mais moderno, o estádio recebeu amistosos importantes, como Inglaterra x Paraguai em 2002 e Inglaterra x Uruguai em 2006.</p>
+
+            <p>Anfield também teve papel relevante na Euro 1996, disputada na Inglaterra. O estádio recebeu quatro partidas do torneio, incluindo jogos com seleções tradicionais como Itália, França, Holanda. Isso reforça o status internacional do estádio, que vai além da história do Liverpool.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Anfield durante a Segunda Guerra Mundial</strong></p>
+
+            <p>O conflito entre as nações afetou profundamente Liverpool. A cidade era um dos principais portos do Reino Unido e se tornou alvo frequente de bombardeios alemães durante o Liverpool Blitz. A região de Merseyside sofreu destruição imensa, perdas humanas e danos estruturais em larga escala.</p>
+
+            <p>Nesse contexto, Anfield atravessou o período como parte de uma cidade em guerra. O futebol inglês foi reorganizado em competições regionais e partidas de caráter emergencial, com elencos alterados, jogadores servindo nas Forças Armadas e calendário muito diferente do tradicional.</p>
+
+            <p>Ao contrário de estádios que sofreram danos mais graves em outras cidades, Anfield não ficou marcado por uma destruição total. Ainda assim, o impacto da guerra sobre a cidade e sobre o futebol local foi profundo. O estádio permaneceu como ponto de ligação comunitária em uma cidade atingida, preservando uma função simbólica em meio a um período de dificuldade extrema.</p>
+
+            <p><strong>As grandes noites europeias</strong></p>
+
+            <p>A mística de Anfield cresceu principalmente nas competições europeias. O Liverpool construiu parte de sua fama continental com atuações marcantes em casa, viradas improváveis e noites em que o estádio pareceu pesar sobre adversários de elite.</p>
+
+            <p>Jogos contra Saint-Étienne, Chelsea, Borussia Dortmund, Barcelona e tantos outros adversários ajudaram a alimentar a ideia de que Anfield tem um efeito especial em mata-matas europeus. Não se trata apenas de barulho: é a combinação entre estádio compacto, torcida próxima, história acumulada e jogadores acostumados a usar esse ambiente como combustível.</p>
+
+            <p>A virada contra o Barcelona, em 2019, pela semifinal da Champions League, talvez seja o exemplo mais conhecido da era recente. Depois de perder por 3 a 0 na ida, o Liverpool venceu por 4 a 0 em Anfield e avançou à final. A partida virou símbolo moderno da força emocional do estádio.</p>
+
+            <p><strong>Estrutura e modernização</strong></p>
+
+            <p>Ele mudou muito desde 1884. O estádio passou por reformas, ampliações e adaptações ao longo das décadas, mas a modernização mais importante do período recente aconteceu em duas grandes etapas.</p>
+
+            <p>A primeira foi a reforma da Main Stand, inaugurada oficialmente em 9 de setembro de 2016. A obra acrescentou cerca de 8,5 mil lugares e elevou a capacidade do estádio para aproximadamente 54 mil torcedores, além de modernizar áreas internas, espaços de hospitalidade, estrutura de imprensa e circulação do público.</p>
+
+            <p>A segunda etapa foi a ampliação da Anfield Road Stand, concluída para a temporada 2024/25. Essa obra levou a capacidade oficial de Anfield para 61.276 lugares, fazendo o estádio ultrapassar a marca de 60 mil torcedores e estabelecendo uma nova fase para a casa do Liverpool.</p>
+
+            <p>As principais arquibancadas atuais são o Kop, a Main Stand, a Sir Kenny Dalglish Stand e a Anfield Road End. A expansão permitiu aumentar receita, receber mais torcedores e acompanhar a evolução econômica da Premier League sem abandonar seu endereço histórico.</p>
+
+            <p>Esse ponto é importante. Muitos clubes ingleses trocaram estádios antigos por arenas novas. O Liverpool escolheu outro caminho: preservar Anfield, reformar suas estruturas e manter a ligação emocional com o bairro, a torcida e a história.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estádio dentro da cidade de Liverpool</strong></p>
+
+            <p>Está inserido em uma cidade com identidade própria. Liverpool é marcada por cultura operária, tradição portuária, música, imigração, rivalidade local e forte senso comunitário. O estádio reflete tudo isso.</p>
+
+            <p>O futebol na cidade não é apenas entretenimento. Ele faz parte da vida cotidiana, da memória familiar e da identidade regional. A proximidade entre Anfield e Goodison Park, casa histórica do Everton, também mostra como o futebol está concentrado em um território pequeno, mas carregado de significado.</p>
+
+            <p>Em dias de jogo, Anfield transforma o bairro. Ruas, pubs, lojas e arredores do estádio viram extensão da arquibancada. Para muitos torcedores, não é apenas assistir ao Liverpool. É participar de uma tradição passada de geração em geração.</p>
+
+            <p>A força simbólica dele também coloca o estádio no mesmo patamar de outros templos históricos do futebol mundial. Também na Inglaterra, <a href="https://cortedosesportes.com.br/estadio-wembley-historia-tradicao-copa-do-mundo.html">Wembley representa a casa das grandes decisões nacionais e da seleção inglesa</a>. Na Itália, <a href="https://cortedosesportes.com.br/san-siro-historia-estadio-milan-inter-de-milao.html">San Siro marcou gerações como casa dividida por Milan e Inter de Milão</a>.</p>
+
+            <p>Essa comparação ajuda a entender por que Anfield vai além da arquitetura. Assim como o <a href="https://cortedosesportes.com.br/santiago-bernabeu-historia-reforma-estadio-real-madrid.html">Santiago Bernabéu se tornou símbolo da grandeza do Real Madrid</a>, o estádio do Liverpool funciona como uma extensão da identidade do clube. Cada um desses palcos tem uma personalidade própria: Wembley como templo nacional, San Siro como monumento italiano, Bernabéu como casa de um gigante europeu e Anfield como um estádio onde a atmosfera da torcida virou parte da história.</p>
+
+            <p><strong>A importância de Anfield para o futebol mundial</strong></p>
+
+            <p>Ele é um dos estádios que ajudam a explicar por que o futebol inglês tem tanta força simbólica. Ele reúne tradição, ambiente, identidade local e relevância esportiva internacional.</p>
+
+            <p>Mais de 140 anos depois de sua inauguração, Anfield continua vivo, moderno e clássico. O estádio mudou de tamanho, recebeu reformas e se adaptou ao futebol de elite, mas manteve o essencial: a sensação de que ali o Liverpool não apenas joga. Ali o Liverpool se reconhece.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
