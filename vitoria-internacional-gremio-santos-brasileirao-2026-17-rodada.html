@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vitória x Inter e Grêmio x Santos agitam hoje briga contra o Z-4 | Corte dos Esportes</title>
+  <meta name="description" content="Rodada do Brasileirão tem dois confrontos diretos na parte de baixo da tabela, com Vitória x Internacional no Barradão e Grêmio x Santos em Porto Alegre." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Vitória x Inter e Grêmio x Santos agitam hoje briga contra o Z-4</h1>
+          <p class="subhead" id="articleExcerpt">Rodada do Brasileirão tem dois confrontos diretos na parte de baixo da tabela, com Vitória x Internacional no Barradão e Grêmio x Santos em Porto Alegre.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">23/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A 17ª rodada do Brasileirão terá dois jogos de peso direto na parte de baixo da tabela. Colocando frente a frente clubes que tentam se afastar da zona de rebaixamento antes da pausa no calendário, em partidas que podem mudar o ambiente de quatro camisas tradicionais do futebol brasileiro.</p>
+
+            <p>No Barradão, Vitória e Internacional se enfrentam às 17h, em Salvador. Apesar da diferença de posições na tabela, a distância entre os clubes é curta. O Vitória aparece com 19 pontos, apenas um acima da zona de rebaixamento, enquanto o Inter soma 21.</p>
+
+            <p>Mais tarde, às 19h, a Arena do Grêmio recebe um clássico nacional em clima de pressão. Grêmio e Santos chegam com campanhas quase idênticas, ambos com 18 pontos, separados apenas por critérios de desempate e colados no Z-4. O jogo em Porto Alegre tem peso de confronto direto, mas também carrega história e um ambiente de decisão antecipada.</p>
+
+            <p><strong>Vitória x Internacional: duelo direto no Barradão</strong></p>
+
+            <p>O time baiano tenta transformar o fator casa em resposta dentro do Brasileirão, especialmente porque vem de uma sequência irregular na competição, com apenas uma vitória nos últimos cinco jogos.</p>
+
+            <p>A colocação na tabela aumenta a pressão. Mesmo fora do Z-4, o Vitória sabe que a margem é mínima. Uma vitória pode fazer o time subir algumas posições e respirar antes da pausa. Um tropeço, por outro lado, mantém o clube preso na disputa contra a parte mais perigosa da tabela.</p>
+
+            <p>O ambiente no Barradão, no entanto, chega favorável. No meio da semana, o Vitória goleou o ABC por 6 a 2 pela Copa do Nordeste, em uma atuação histórica. O resultado não resolve os problemas no Brasileirão, mas devolve confiança ao elenco e reacende a relação com a torcida antes de um jogo decisivo.</p>
+
+            <p>Além disso, o Vitória tem um dado importante em casa: o time não perde há oito partidas no Barradão, sendo cinco delas pelo Campeonato Brasileiro. Para uma equipe pressionada fora de casa, transformar Salvador em ponto de apoio pode ser o caminho mais curto para se afastar da zona de rebaixamento.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Inter chega embalado e com semana livre</strong></p>
+
+            <p> O time gaúcho não perde há quatro jogos no Brasileirão e atravessa uma invencibilidade geral de sete partidas na temporada, com cinco vitórias nesse recorte. Depois de um começo instável, a equipe encontrou maior regularidade e tenta confirmar a reação fora de casa.</p>
+
+            <p>Outro ponto importante é a preparação. Enquanto o Vitória teve compromisso no meio da semana, o Inter contou com a semana inteira livre para trabalhar. Isso pode pesar fisicamente, especialmente em um jogo de intensidade alta, calor em Salvador e disputa direta por posição.</p>
+
+            <p><strong>Onde assistir Vitória x Internacional</strong></p>
+
+            <p>A partida terá transmissão da Globo e Premiere.</p>
+
+            <p><strong>Prováveis escalações:</strong></p>
+
+            <p>O Vitória deve ter Caíque Gonçalves no meio-campo, já que Zé Vitor está suspenso. Na lateral esquerda, Ramon ainda aparece como dúvida, e Jamerson pode ser opção para o setor.</p>
+
+            <p>Provável Vitória: Lucas Arcanjo; Nathan Mendes, Cacá, Luan Cândido e Ramon (Jamerson); Caíque Gonçalves, Baralhas e Martínez; Matheuzinho, Erick e Renê. Técnico: Jair Ventura.</p>
+
+            <p>O Internacional não terá Rochet, vetado por desconforto na região lombar, e deve manter Anthoni no gol. Carbonero também está fora por suspensão, abrindo espaço para ajustes no ataque.</p>
+
+            <p>Provável Internacional: Anthoni; Vitinho, Bruno Gomes, Mercado, Félix Torres e Matheus Bahia; Villagra, Bruno Henrique e Bernabei; Borré (Allex) e Alerrandro. Técnico: Paulo Pezzolano.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Grêmio x Santos: clássico nacional em clima de pressão</strong></p>
+
+            <p>Na Arena do Grêmio, a rodada coloca frente a frente dois gigantes em situação desconfortável. Grêmio e Santos chegam com 18 pontos e campanhas muito próximas. A diferença para a zona de rebaixamento é mínima, e qualquer tropeço pode aumentar a pressão para a sequência do Brasileirão.</p>
+
+            <p>O Grêmio tem apenas uma vitória nos últimos cinco jogos do campeonato e tenta usar a força da Arena para transformar ambiente em resultado. O clube gaúcho vem de vitória sobre o Palestino pela Copa Sul-Americana, resultado que ajudou a aliviar a semana, mas o Brasileirão exige resposta imediata.</p>
+
+            <p>A expectativa é de casa cheia em Porto Alegre. Vários setores da Arena já aparecem esgotados, e o clube espera grande apoio em uma noite fria na capital gaúcha. </p>
+
+            <p>Para o Grêmio, esse apoio é um fator estratégico. Em uma campanha de oscilação, vencer um rival direto em casa pode representar mais do que subir na tabela: pode reduzir o desgaste interno e recolocar o time em uma posição menos ameaçada antes da pausa.</p>
+
+            <p><strong>Santos tenta reagir longe da Vila</strong></p>
+
+            <p>Assim como o Grêmio, o Peixe tem apenas uma vitória nos últimos cinco jogos do Brasileirão e convive com uma campanha abaixo do peso de sua camisa. O time está colado no Z-4 e entra em campo sabendo que perder para um concorrente direto pode aumentar a crise.</p>
+
+            <p>A semana também não foi simples. No Brasileirão, o Santos veio de derrota dura para o Coritiba. Na Sul-Americana, chegou a abrir vantagem contra o San Lorenzo, mas sofreu o empate e se complicou no torneio continental. Esse contexto coloca ainda mais peso no jogo da Arena.</p>
+
+            <p>O confronto é um clássico nacional com história longa. As duas camisas já se cruzaram em mata-matas importantes, como a semifinal da Libertadores de 2007, quando o Grêmio avançou, e a semifinal da Copa do Brasil de 2010, quando o Santos levou a melhor antes de conquistar o torneio.</p>
+
+            <p>Esses capítulos ajudam a dar outra camada ao jogo. Mesmo em uma rodada marcada pela luta contra o rebaixamento, o encontro carrega tradição, rivalidade interestadual e memória de confrontos decisivos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Onde assistir:</strong></p>
+
+            <p>A partida terá transmissão do Premiere.</p>
+
+            <p><strong>Prováveis escalações:</strong></p>
+
+            <p>O Grêmio terá desfalques importantes. Gabriel Mec e Pedro Gabriel estão suspensos, Caio Paulista deve entrar na lateral esquerda, e Arthur volta de lesão como opção para o meio-campo. A tendência é que Luís Castro aposte em uma formação ofensiva, com Carlos Vinícius como referência.</p>
+
+            <p>Provável Grêmio: Weverton; Pavón, Luis Eduardo, Viery e Caio Paulista; Leo Pérez, Arthur (Noriega), Amuzu, Braithwaite (Riquelme), Enamorado e Carlos Vinícius. Técnico: Luís Castro.</p>
+
+            <p>O Santos também chega com problemas. Neymar está fora por dores na panturrilha, Barreal cumpre suspensão e Rollheiser não viajou. Cuca deve apostar em Rony ao lado de Gabigol no ataque.</p>
+
+            <p>Provável Santos: Gabriel Brazão; Igor Vinicius, Adonís Frías, Lucas Veríssimo e Escobar; William Arão, Gustavo Henrique, Gabriel Bontempo e Miguelito; Rony e Gabigol. Técnico: Cuca.</p>
+
+            <p>Enquanto os quatro times movimentam a parte de baixo da tabela, a mesma rodada também terá peso no outro extremo do Brasileirão. No Maracanã, <a href="https://cortedosesportes.com.br/flamengo-palmeiras-brasileirao-2026-classico-lideranca-onde-assistir.html">Flamengo e Palmeiras fazem confronto direto pela liderança</a>, em um duelo que mostra como a 17ª rodada pode mexer tanto na disputa pelo título quanto na briga contra o Z-4.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
