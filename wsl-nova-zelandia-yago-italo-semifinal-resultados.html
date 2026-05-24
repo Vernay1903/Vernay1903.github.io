@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yago Dora tira nota 10, Italo avança e terá semifinal brasileira na WSL da Nova Zelândia | Corte dos Esportes</title>
+  <meta name="description" content="Os dois brasileiros avançam no New Zealand Pro, agora fazem uma das semifinais e deixa o Brasil vivo na briga pelo título em Raglan." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Yago Dora tira nota 10, Italo avança e terá semifinal brasileira na WSL da Nova Zelândia</h1>
+          <p class="subhead" id="articleExcerpt">Os dois brasileiros avançam no New Zealand Pro, agora fazem uma das semifinais e deixa o Brasil vivo na briga pelo título em Raglan.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">24/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Surf</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Brasil terá um representante garantido na final masculina do New Zealand Pro 2026. Em um dia de alto nível nas esquerdas de Manu Bay, em Raglan, Yago Dora e Italo Ferreira venceram suas baterias nas quartas de final e agora se enfrentam em uma semifinal brasileira na etapa da WSL na Nova Zelândia.</p>
+
+            <p>A rodada também marcou a eliminação de Filipe Toledo e Miguel Pupo. Filipe caiu em uma bateria eletrizante contra Griffin Colapinto, enquanto Miguel perdeu justamente para Italo em duelo brasileiro. Mesmo com as quedas, o Brasil segue forte no evento, já que Yago e Italo chegam às semifinais e chance real de título.</p>
+
+            <p>O Finals Day está marcado para este domingo, com primeira chamada às 16h15 e possível início às 16h35. A sequência masculina terá Griffin Colapinto contra Morgan Cibilic na primeira semifinal e Yago Dora contra Italo Ferreira na segunda. No feminino, Sawyer Lindblad e Carissa Moore disputam o título.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Yago Dora tira nota 10 e vira bateria histórica</strong></p>
+
+            <p>O grande momento do dia foi de Yago Dora. O atual campeão mundial protagonizou uma virada impressionante contra o norte-americano Cole Houshmand e avançou às semifinais com vitória por 17.50 a 17.00.</p>
+
+            <p>A bateria parecia encaminhada para Cole, que surfou em alto nível e colocou duas notas 8.50 no somatório. Com pouco tempo no relógio, Yago precisava de 9.50 para virar. Foi então que o brasileiro encontrou a onda que precisava e executou um aéreo de alto grau de dificuldade.</p>
+
+            <p>A nota veio perfeita: 10.00. Foi a primeira nota máxima da temporada e um dos momentos mais fortes do New Zealand Pro até aqui. Além do aéreo, Yago completou a onda com controle, linha e sequência suficiente para confirmar a virada. O resultado colocou o brasileiro nas semifinais e transformou a bateria em uma das imagens mais marcantes da etapa.</p>
+
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xRwFM5sHdCY" title="Yago Dora tira nota 10 no New Zealand Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A vitória reforça o peso competitivo de Yago em Raglan. Ele já vinha sendo um dos surfistas mais consistentes do evento e, com a virada sobre Cole Houshmand, chega à semifinal embalado por uma onda que pode entrar entre as melhores da temporada.</p>
+
+            <p><strong>Italo vence Miguel Pupo e também vai à semifinal</strong></p>
+
+            <p>Em confronto brasileiro contra Miguel Pupo, o campeão olímpico venceu por 16.63 a 12.17 e garantiu vaga na semifinal. A bateria tinha peso especial porque Miguel vinha em grande momento e havia assumido a liderança provisória do ranking ao vivo após a eliminação de Gabriel Medina.</p>
+
+            <p>Italo começou forte e encontrou uma onda decisiva com nota 9.00. A  vantagem importante para o potiguar, que conseguiu controlar melhor o ritmo da bateria e impedir a reação de Miguel.</p>
+
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/KTs_lEp2lWY" title="Italo Ferreira avança no New Zealand Pro 2026 contra Miguel Pupo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A classificação coloca Italo em uma semifinal brasileira contra Yago Dora. O duelo promete ser um dos pontos altos do Finals Day, porque reúne dois surfistas em alta, ambos com notas expressivas nas quartas e com estilos capazes de aproveitar bem as esquerdas de Manu Bay.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Filipe Toledo cai em duelo intenso contra Griffin Colapinto</strong></p>
+
+            <p> O brasileiro foi superado por Griffin Colapinto por 17.10 a 15.83, em uma das baterias mais movimentadas do dia.</p>
+
+            <p>Griffin começou dominante e abriu vantagem cedo, colocando Filipe em situação complicada. O norte-americano somou notas fortes logo no início, enquanto Filipinho demorou a encontrar ritmo. Depois de algumas quedas, o brasileiro reagiu com uma excelente onda de 8.70, mostrando velocidade, fluidez e manobras fortes de backside.</p>
+
+            <p>A reação, porém, não foi suficiente. Griffin respondeu com outra nota alta e segurou a classificação. Com o resultado, o norte-americano avançou para enfrentar Morgan Cibilic na semifinal, enquanto Filipe deixa a etapa depois de uma campanha marcada pela vitória sobre Gabriel Medina na fase anterior.</p>
+
+            <p><strong>Morgan Cibilic completa semifinal contra Griffin</strong></p>
+
+            <p>A outra vaga na semifinal masculina ficou com Morgan Cibilic. O australiano venceu Rio Waida por 13.60 a 13.50 em uma disputa apertada, decidida praticamente nos segundos finais.</p>
+
+            <p>Rio parecia em boa posição, mas Morgan encontrou uma onda decisiva no fim e conseguiu a nota necessária para virar a bateria. O resultado colocou o australiano contra Griffin Colapinto na primeira semifinal masculina.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como fica a sequência do New Zealand Pro</strong></p>
+
+            <p>O Finals Day define os campeões da etapa da WSL na Nova Zelândia. A primeira chamada será neste domingo, às 16h15, com possibilidade de início às 16h35, dependendo das condições em Manu Bay.</p>
+
+            <p><strong>Semifinais masculinas</strong></p>
+
+            <p>• Griffin Colapinto x Morgan Cibilic</p>
+            <p>• Yago Dora x Italo Ferreira</p>
+
+            <p><strong>Final feminina</strong></p>
+
+            <p>• Sawyer Lindblad x Carissa Moore</p>
+
+            <p><strong>Onde assistir ao New Zealand Pro</strong></p>
+
+            <p>A reta decisiva do New Zealand Pro tem transmissão no Brasil pelo SporTV e pelo Globoplay. A competição também pode ser acompanhada pelo site oficial da WSL e pelo aplicativo da liga.</p>
+
+            <p><strong>Brasil segue forte na reta final</strong></p>
+
+            <p>A etapa da Nova Zelândia começou com vários brasileiros em destaque e chega ao dia decisivo com uma garantia importante: o país terá ao menos um surfista na final masculina. </p>
+
+            <p>O duelo entre Yago Dora e Italo Ferreira também mexe com a leitura da temporada. Os dois chegam embalados, com notas altas e confiança para disputar a lycra amarela. Em uma etapa marcada por esquerdas longas, aéreo, pressão e viradas, a semifinal brasileira coloca a Brazilian Storm novamente no centro da WSL.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
