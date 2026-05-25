@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Italo Ferreira vence na Nova Zelândia e assume liderança da WSL | Corte dos Esportes</title>
+  <meta name="description" content="Surfista brasileiro conquista etapa histórica em Raglan, supera Yago Dora em semifinal marcada por interrupção de segurança e vence Morgan Cibilic na decisão para assumir a liderança da WSL." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Italo Ferreira vence na Nova Zelândia e assume liderança da WSL</h1>
+          <p class="subhead" id="articleExcerpt">Surfista brasileiro conquista etapa histórica em Raglan, supera Yago Dora em semifinal marcada por interrupção de segurança e vence Morgan Cibilic na decisão para assumir a liderança da WSL.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">25/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="surf.html">Surf</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Italo Ferreira voltou ao topo do pódio no Championship Tour em uma das vitórias mais marcantes de sua carreira recente. O surfista potiguar conquistou o título da etapa da Nova Zelândia da WSL, em Raglan, ao derrotar o australiano Morgan Cibilic na final por 17.50 a 15.80, em uma decisão de alto nível técnico, repertório progressivo e muita leitura de onda.</p>
+
+            <p>O resultado teve impacto direto na temporada. Além de levantar o troféu no Corona Cero New Zealand Pro, Italo assumiu a liderança do ranking masculino de 2026 e transformou a etapa neozelandesa em um ponto de virada na corrida pelo título mundial. Para um atleta que já foi campeão mundial e olímpico, a vitória reforça uma característica conhecida: quando encontra ritmo competitivo, Italo muda rapidamente o cenário do circuito.</p>
+
+            <p><strong>Uma vitória com peso de afirmação</strong></p>
+
+            <p>O título em Raglan não foi apenas mais uma etapa vencida. Ele veio em um momento importante da temporada, depois de um início consistente, mas ainda sem troféu. Antes da Nova Zelândia, o melhor resultado de Italo no ano havia sido uma semifinal em Margaret River. Em Manu Bay, ele conseguiu transformar desempenho em título.</p>
+
+            <p>A final mostrou bem por que ele segue entre os surfistas mais perigosos do circuito. O brasileiro combinou velocidade, explosão e variedade de manobras para construir uma somatória alta.</p>
+
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Iq8ZC4t9JnI" title="Italo Ferreira x Yago Dora - semifinal do New Zealand Pro em Raglan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Raglan muda a leitura depois da perna australiana</strong></p>
+
+            <p>A conquista na Nova Zelândia ganhou ainda mais peso porque veio logo depois de uma perna australiana intensa, que mexeu bastante com o topo do circuito. A temporada começou com <a href="miguel-pupo-campeao-bells-beach-yago-dora-medina.html">Miguel Pupo campeão em Bells Beach</a>, em uma final brasileira contra Yago Dora, passou por <a href="gabriel-medina-vice-margaret-river-lider-ranking-wsl.html">Margaret River, onde Gabriel Medina foi vice e assumiu a liderança do ranking</a>, e teve sequência em <a href="resultado-brasileiros-gold-coast-wsl-luana-lider-medina-ranking.html">Gold Coast, etapa que manteve o Brasil em evidência com Luana Silva líder e Medina no topo</a>.</p>
+
+            <p>Nesse contexto, o título de Italo em Raglan não aparece isolado. Ele faz parte de uma sequência de eventos que mostra como a temporada começou aberta, com brasileiros fortes, australianos vencendo em casa e o ranking mudando rapidamente. Para Italo, vencer a quarta etapa foi uma resposta direta a esse cenário: ele saiu da condição de candidato forte para ocupar a liderança e reposicionar seu nome no centro da disputa mundial.</p>
+
+            <p><strong>Semifinal brasileira teve Yago Dora, tensão e paralisação por possível tubarão</strong></p>
+
+            <p>Antes da final, Italo precisou passar por uma semifinal de alto peso contra Yago Dora, em um duelo brasileiro que já carregava valor especial por si só. Yago vinha embalado por uma campanha forte em Raglan e havia protagonizado um dos grandes momentos da etapa ao arrancar uma nota 10 nas quartas de final, resultado que aumentou ainda mais a expectativa para o confronto contra Italo.</p>
+
+            <p>A bateria, porém, ganhou contornos incomuns. O duelo foi interrompido por protocolo de segurança após alerta de possível tubarão na área de competição. A paralisação ocorreu ainda no início da disputa e levou à retirada dos surfistas da água, em uma cena rara para uma semifinal do Championship Tour.</p>
+
+            <p>Quando a disputa foi retomada, Italo mostrou maturidade competitiva. O potiguar conseguiu recolocar energia na bateria, atacou as esquerdas de Raglan com agressividade e avançou para a decisão. A vitória sobre Yago, nesse contexto, teve peso maior do que uma simples semifinal: foi um teste técnico, mental e emocional antes da final contra Cibilic.</p>
+
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dyQHl0BiiJA" title="Italo Ferreira x Yago Dora - semifinal em Raglan com paralisação por possível tubarão" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Raglan valorizou o repertório de Italo</strong></p>
+
+            <p>A etapa da Nova Zelândia também ganha relevância pelo palco. Raglan é uma das regiões mais tradicionais do surfe mundial, conhecida pelas longas esquerdas e por ondas que exigem linha, paciência e precisão. Manu Bay, em especial, oferece uma combinação rara: parede longa para construção de nota, seções de manobra e espaço para criatividade.</p>
+
+            <p>A conquista também dialoga com a identidade do surfista. Italo sempre foi associado a um surfe elétrico, agressivo e emocional, mas sua evolução ao longo dos anos mostra mais do que potência. Ele aprendeu a administrar baterias, escolher melhor as ondas e controlar cenários de pressão sem perder a ousadia que o tornou campeão.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Brasil segue forte no circuito mundial</strong></p>
+
+            <p>A vitória reforça mais um capítulo da Braziliam Storm na elite do surfe. A etapa teve outros nomes do país em evidência, incluindo Yago Dora, que brilhou com uma nota 10 nas quartas de final e depois encontrou Italo em uma semifinal brasileira.</p>
+
+            <p>A liderança do ranking também amplia a leitura sobre 2026. Italo não aparece apenas como um campeão do passado tentando voltar ao topo. Ele entra novamente como protagonista real da corrida mundial, com resultado, performance e repertório compatíveis com a disputa pelo título.</p>
+
+            <p><strong>Um título que conecta presente e legado</strong></p>
+
+            <p>. Campeão mundial em 2019 e primeiro campeão olímpico da modalidade, ele construiu uma trajetória marcada por superação, carisma e competitividade. Ainda assim, títulos como o da Nova Zelândia são importantes porque atualizam esse legado.</p>
+
+            <p>No esporte de alto rendimento, currículo não vence sozinho. Cada temporada exige adaptação, leitura de mar, regularidade e capacidade de lidar com novas gerações. Em Raglan, Italo mostrou que continua competitivo em ondas técnicas, diante de rivais em ascensão e em uma etapa que cobrou resistência mental.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
