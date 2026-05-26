@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>São Paulo e Grêmio jogam por vaga direta na Sul-Americana | Corte dos Esportes</title>
+  <meta name="description" content="Time paulista recebe o Boston River para garantir a liderança do Grupo C, enquanto Grêmio encara o Montevideo City Torque em confronto direto pelo primeiro lugar e vaga direta nas oitavas da Copa Sul-Americana." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">São Paulo e Grêmio jogam por vaga direta na Sul-Americana</h1>
+          <p class="subhead" id="articleExcerpt">Time paulista recebe o Boston River para garantir a liderança do Grupo C, enquanto Grêmio encara o Montevideo City Torque em confronto direto pelo primeiro lugar e vaga direta nas oitavas da Copa Sul-Americana.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">26/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Copa Sul-Americana chega à última rodada da fase de grupos com dois jogos decisivos para brasileiros nesta terça-feira. São Paulo e Grêmio entram em campo às 19h com o mesmo objetivo: terminar em primeiro lugar em suas chaves, avançar diretamente às oitavas de final e evitar os playoffs contra equipes vindas da Libertadores.</p>
+
+            <p>A rodada tem peso esportivo e também estratégico. Na Sul-Americana, apenas os líderes de cada grupo avançam diretamente às oitavas de final. Os segundos colocados precisam disputar os playoffs contra os terceiros colocados da fase de grupos da Libertadores, o que adiciona duas partidas ao calendário e aumenta o risco de eliminação antes das oitavas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>São Paulo precisa vencer</strong></p>
+
+            <p>O clube chega à última rodada como líder do Grupo C, com nove pontos. Millonarios tem oito, O’Higgins soma sete, e o Boston River aparece com três, já sem chance de classificação.</p>
+
+            <p>A conta é simples: se vencer o Boston River, o São Paulo termina em primeiro e vai direto às oitavas. Em caso de empate ou derrota, o Tricolor passa a depender do resultado paralelo entre Millonarios e O’Higgins para saber se mantém a liderança ou se precisará disputar o playoff.</p>
+
+            <p>O cenário é favorável porque o adversário uruguaio apenas cumpre tabela. Ainda assim, o jogo não permite relaxamento. O São Paulo vem de três empates seguidos na Sul-Americana, a sequência manteve a invencibilidade, mas tirou a folga que o time havia construído após vencer as duas primeiras partidas do grupo.</p>
+
+            <p>Por isso, o duelo contra o Boston River tem cara de decisão. O São Paulo não joga apenas para cumprir tabela; joga para transformar uma campanha segura em classificação direta, sem criar um problema extra para o segundo semestre.</p>
+
+            <p><strong>Dorival busca primeira vitória continental nesta volta</strong></p>
+
+            <p>A partida desta terça, será a chance de Dorival conquistar sua primeira vitória continental desde o retorno ao clube. O treinador ainda trabalha em meio a um elenco com desfalques, problemas defensivos e necessidade de recuperar confiança em um momento importante da temporada.</p>
+
+            <p>O São Paulo tem sofrido para sustentar resultados recentes, inclusive com gols tomados nos minutos finais. Por isso, a classificação direta não seria apenas um ganho de calendário. Também funcionaria como alívio competitivo antes da sequência do ano.</p>
+
+            <p><strong>Transmissão e prováveis escalações:</strong></p>
+
+            <ul>
+              <li>Transmissão: ESPN e Disney+</li>
+            </ul>
+
+            <p>Provável escalação do São Paulo:</p>
+            <ul>
+              <li>Rafael; Lucas Ramon, Alan Franco, Osório e Enzo Díaz; Pablo Maia, Danielzinho e Pedro Ferreira; Ferreira, Artur e Calleri.</li>
+              <li>Técnico: Dorival Júnior.</li>
+            </ul>
+
+            <p>Provável escalação do Boston River:</p>
+            <ul>
+              <li>Bruno Antúnez; Juan Manuel Acosta, Mateo Rivero, Kevin Sotto e Ignacio Fernández; Federico Dafonte, Facundo Muñoa, Agustín Amado e Yair González; Leandro Suhr e Alexander González.</li>
+              <li>Técnico: Ignacio Ithurralde.</li>
+            </ul>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Grêmio faz confronto direto pelo primeiro lugar</strong></p>
+
+            <p>Na Arena do Grêmio, o cenário é ainda mais claro. O time gaúcho e o Montevideo City Torque já estão classificados, mas disputam quem vai direto às oitavas e quem terá de passar pelos playoffs.</p>
+
+            <p>O City Torque lidera o Grupo F com 12 pontos. O Grêmio vem logo atrás, com 10. Como a diferença é de dois pontos, uma vitória simples coloca o Tricolor gaúcho na liderança. O empate favorece os uruguaios, que terminariam a fase de grupos na ponta.</p>
+
+            <p>O time chega embalado pela vitória de virada sobre o Santos no Brasileirão, resultado importante para aliviar a pressão interna. Agora, precisa virar a chave rapidamente. A Sul-Americana pede outro tipo de jogo: menos espaço para erro, mais controle emocional e capacidade de decidir em casa diante de um rival direto.</p>
+
+            <p><strong>Grêmio tenta confirmar força continental</strong></p>
+
+            <p>O Grêmio tem uma história construída em noites de competição internacional, e esse tipo de jogo em casa costuma carregar um peso especial para o clube. A partida contra o Torque conversa diretamente com essa identidade, ligada à tradição copeira de um time que construiu parte de sua grandeza em disputas continentais. O contexto se conecta à <a href="gremio-historia-tradicao-titulos-imortal.html">história do clube</a>.</p>
+
+            <p>Dentro de campo, Luís Castro terá novidades e retornos. Willian volta a ficar à disposição, enquanto Gabriel Mec e Pedro Gabriel aparecem como possíveis titulares. Ao mesmo tempo, o time ainda lida com desfalques importantes no setor defensivo.</p>
+
+            <p>A presença de Carlos Vinícius como referência ofensiva, a velocidade pelos lados e a articulação de Arthur no meio-campo podem ser pontos importantes para furar um adversário que chega com vantagem na tabela e pode jogar pelo empate.</p>
+
+            <p><strong>Transmissão e prováveis escalações:</strong></p>
+
+            <ul>
+              <li>Transmissão: ESPN e Disney+</li>
+            </ul>
+
+            <p>Provável escalação do Grêmio:</p>
+            <ul>
+              <li>Weverton; Pavón, Luis Eduardo, Viery e Pedro Gabriel; Leo Pérez, Arthur, Enamorado, Gabriel Mec e Amuzu (Tetê); Carlos Vinícius.</li>
+              <li>Técnico: Luís Castro.</li>
+            </ul>
+
+            <p>Provável escalação do Montevideo City Torque:</p>
+            <ul>
+              <li>Torgnascioli; Romero, Agüero, Kevin Silva, Kagelmacher e Silvera; Lecchini, Pizzichillo, Montes e Obregón; Salomón Rodríguez.</li>
+              <li>Técnico: Marcelo Méndez.</li>
+            </ul>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que terminar em primeiro muda tanto a campanha</strong></p>
+
+            <p>A diferença entre ser primeiro e segundo na fase de grupos da Sul-Americana é enorme. O líder ganha vaga direta nas oitavas e espera o sorteio da próxima fase. O segundo colocado precisa disputar os playoffs contra um time que vem da Libertadores, em confronto de ida e volta.</p>
+
+            <p>Na prática, terminar em primeiro representa descanso, menos risco e mais tempo de preparação. Para clubes brasileiros que também disputam Brasileirão e Copa do Brasil, evitar duas partidas extras pode fazer diferença na gestão física do elenco.</p>
+
+            <p>A última rodada da fase de grupos da Sul-Americana, portanto, não define apenas quem segue vivo. Ela separa quem avança com autoridade de quem ainda precisará sobreviver a uma etapa extra antes das oitavas.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
