@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Camp Nou: história, reformas e o peso de um estádio histórico | Corte dos Esportes</title>
+  <meta name="description" content="A casa do Barcelona, palco de títulos, finais europeias, jogos da seleção espanhola, noites lendárias de Champions League e uma grande reforma que projeta o estádio para uma nova era." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Camp Nou: história, reformas e o peso de um estádio histórico</h1>
+          <p class="subhead" id="articleExcerpt">A casa do Barcelona, palco de títulos, finais europeias, jogos da seleção espanhola, noites lendárias de Champions League e uma grande reforma que projeta o estádio para uma nova era.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">26/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Camp Nou é muito mais do que o estádio do Barcelona. Inaugurado em 1957, o palco se tornou um dos grandes símbolos do futebol europeu, da identidade catalã e da história moderna do clube. Por quase sete décadas, recebeu gerações de torcedores, craques históricos, finais continentais, jogos de Copa do Mundo, decisões olímpicas e algumas das noites mais marcantes da trajetória blaugrana.</p>
+
+            <p>A força do estádio está justamente nessa mistura. Ele é casa de clube, monumento esportivo, ponto turístico, espaço de memória e símbolo político-cultural de uma cidade que enxerga o Barcelona como algo maior do que um time. No Camp Nou, futebol e Catalunha caminham juntos: a arquibancada não carrega apenas apoio esportivo, mas também pertencimento, idioma, tradição e afirmação local.</p>
+
+            <p>Depois de anos como o maior estádio da Europa em capacidade, o Camp Nou entrou em uma profunda transformação. A reforma atual, dentro do projeto Espai Barça, tirou o clube temporariamente de sua casa e abriu uma nova fase para o estádio, agora chamado oficialmente de Spotify Camp Nou por acordo de naming rights.</p>
+
+            <p><strong>Origem do Camp Nou</strong></p>
+
+            <p>Ele nasceu da necessidade de crescimento do Barcelona. O antigo estádio de Les Corts já não comportava a expansão da torcida e a ambição esportiva do clube. A chegada de László Kubala, um dos grandes nomes da história blaugrana, aumentou ainda mais o interesse popular pelo time e reforçou a urgência por uma casa maior.</p>
+
+            <p>A construção começou em 1954 e o estádio foi inaugurado em 24 de setembro de 1957. Inicialmente, o nome oficial era Estadi del FC Barcelona, mas o uso popular de “Camp Nou”, ou “campo novo” em catalão, acabou prevalecendo. O nome só seria oficializado décadas depois, após votação dos sócios no início dos anos 2000.</p>
+
+            <p>Desde o primeiro momento, o estádio nasceu grande. A inauguração reuniu mais de 90 mil pessoas e marcou uma mudança de patamar para o Barcelona. A partir dali, o clube passou a ter uma casa compatível com sua torcida, sua influência social e sua ambição internacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Capacidade e recordes de público</strong></p>
+
+            <p>A ocupação do Camp Nou mudou bastante ao longo da história. Quando foi inaugurado, em 1957, o estádio comportava pouco mais de 93 mil torcedores. Com as adaptações feitas para a Copa do Mundo de 1982, chegou à marca de 120 mil lugares, impulsionado por setores em pé que ainda eram permitidos na época.</p>
+
+            <p>Depois, com novas normas de segurança e a substituição gradual por assentos individuais, a capacidade foi reduzida. Antes da grande reforma atual, o Camp Nou tinha 99.354 lugares e seguia como o maior estádio da Europa.</p>
+
+            <p>A obra do Espai Barça redesenha esse número. Na reabertura parcial, o estádio voltou primeiro com capacidade reduzida. Em uma etapa seguinte, passou a operar com 62.652 lugares liberados. Quando a reforma estiver concluída, o projeto prevê cerca de 105 mil lugares, mantendo o Camp Nou como uma das maiores arenas de futebol do mundo.</p>
+
+            <p>O recorde oficial de público em jogo do Barcelona no estádio aconteceu em 5 de março de 1986, contra a Juventus, pela Copa dos Campeões da Europa. Naquela noite, cerca de 120 mil pessoas estiveram no Camp Nou para assistir à vitória blaugrana por 1 a 0.</p>
+
+            <p>O estádio também tem outros recordes simbólicos. Em 1982, recebeu também 120 mil pessoas em uma missa celebrada pelo Papa João Paulo II. No futebol feminino, o Camp Nou entrou para a história com públicos gigantes em jogos do Barcelona, incluindo mais de 91 mil torcedores em uma partida contra o Wolfsburg pela Champions League feminina.</p>
+
+            <p><strong>A casa do Barcelona e da Catalunha</strong></p>
+
+            <p>Falar do Camp Nou é falar da relação entre Barcelona, clube e Catalunha. O estádio sempre foi um espaço em que o torcedor expressou algo além da paixão pelo futebol. Em diferentes períodos da história espanhola, o Barcelona funcionou como símbolo de identidade catalã, e o Camp Nou virou um dos lugares onde essa ligação aparecia de forma mais visível.</p>
+
+            <p>A frase “més que un club” encontra no estádio uma de suas expressões mais fortes. O Barcelona não se apresenta apenas como uma equipe vencedora, mas como uma instituição ligada à cultura local, à língua catalã, à memória política da região e ao sentimento de pertencimento de sua torcida.</p>
+
+            <p>Dentro de campo, o Camp Nou também ajudou a construir a grandeza esportiva do clube. Foi ali que o clube consolidou gerações marcantes, de Johan Cruyff como jogador e treinador ao Dream Team dos anos 1990, de Ronaldinho ao auge de Messi, Xavi, Iniesta, Busquets e companhia.</p>
+
+            <p>Essa trajetória também se conecta diretamente à <a href="laliga-historia-maiores-campeoes-rivalidade-real-madrid-barcelona.html">história da LaLiga</a>, porque o Camp Nou foi palco central de muitos capítulos que definiram o peso do Barça no campeonato espanhol.</p>
+
+            <p><strong>Quantos jogos o Camp Nou já recebeu</strong></p>
+
+            <p>Em cálculo editorial aproximado,  já passou de 2 mil partidas de futebol desde 1957, considerando os jogos oficiais do Barcelona em LaLiga, Copa do Rei, competições europeias, Supercopas e partidas relevantes de outras competições realizadas no estádio.Isso faz dele um dos palcos mais utilizados e reconhecidos do futebol mundial.</p>
+
+            <p><strong>Títulos e taças levantadas no Camp Nou</strong></p>
+
+            <p>Muitos títulos espanhóis do clube foram comemorados diante da torcida no Camp Nou, reforçando a imagem do estádio como lugar de consagração blaugrana, o mais recente e talvez o mais simbólico, no título confirmado com a vitória no El Clássico contra o Real Madrid na temporada 2025/2026.</p>
+
+            <p>Entre as finais neutras mais relevantes:</p>
+
+            <ul>
+              <li>2 finais da Liga dos Campeões/antiga Copa dos Campeões da Europa: 1989 e 1999</li>
+              <li>2 finais da Recopa Europeia: 1972 e 1982</li>
+              <li>4 finais da Copa do Rei: 1963, 1970, 2010 e 2015</li>
+              <li>2 finais da Copa da Liga: 1983 e 1986</li>
+              <li>Final do torneio olímpico de futebol em 1992</li>
+            </ul>
+
+            <p>Esses eventos mostram que o Camp Nou nunca foi apenas a casa do Barça. O estádio também funcionou como palco europeu e mundial, recebendo jogos que entraram para a história do futebol.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Finais europeias no Camp Nou</strong></p>
+
+            <p> Em 1989, o Milan venceu o Steaua Bucareste por 4 a 0 e levantou a Copa dos Campeões no estádio. Dez anos depois, em 1999, o Manchester United virou de forma histórica sobre o Bayern de Munique nos acréscimos e conquistou a Champions League em uma das finais mais lembradas de todos os tempos.</p>
+
+            <p>A final de 1999 é uma das imagens mais fortes do estádio em competições neutras. O Bayern vencia até os minutos finais, mas o United marcou com Teddy Sheringham e Ole Gunnar Solskjær nos acréscimos, transformando o Camp Nou em cenário de uma das maiores viradas da história da Champions.</p>
+
+            <p>Além disso, o estádio também recebeu finais da Recopa Europeia, competição extinta que reunia campeões de copas nacionais. Isso reforça o peso do Camp Nou como um dos palcos mais importantes da UEFA antes mesmo da era moderna da Champions.</p>
+
+            <p><strong>Copa do Mundo, Euro e Olimpíadas</strong></p>
+
+            <p>O Camp Nou também teve papel relevante em torneios de seleções. Na Copa do Mundo de 1982, disputada na Espanha, o estádio recebeu jogos importantes, incluindo a partida de abertura entre Argentina e Bélgica. Também sediou partidas da segunda fase e uma semifinal, reforçando sua condição de estádio de elite internacional.</p>
+
+            <p>Antes disso, já havia sido usado na Eurocopa de 1964, quando a Espanha sediou a fase final do torneio. Mais tarde, em 1992, o estádio recebeu a final olímpica do futebol masculino nos Jogos de Barcelona.</p>
+
+            <p>A final olímpica teve peso especial para o país: a Espanha venceu a Polônia por 3 a 2 e conquistou o ouro diante de quase 100 mil torcedores. Aquela seleção olímpica tinha nomes ligados ao Barcelona, como Pep Guardiola, Albert Ferrer e outros jogadores que marcaram o futebol espanhol dos anos seguintes.</p>
+
+            <p>Essa ligação com a seleção também aproxima o estádio da <a href="espanha-campea-copa-do-mundo-2010-historia-geracao-legado.html">história da Espanha</a>, porque parte da identidade técnica espanhola sempre teve diálogo direto com a escola formada no Barcelona.</p>
+
+            <p><strong>A seleção espanhola já jogou no Camp Nou?</strong></p>
+
+            <p>Sim. A seleção espanhola já atuou em diferentes momentos, embora o estádio esteja muito mais associado ao Barcelona e à seleção catalã do que à Roja. A Espanha disputou partidas no estádio em competições e amistosos ao longo da história.</p>
+
+            <p>Essa relação, porém, sempre teve um contexto particular. Por causa da força da identidade catalã, jogos da seleção espanhola em Barcelona costumam carregar uma leitura política e cultural diferente de partidas em Madrid, Sevilha, Valência ou Bilbao. O Camp Nou é um estádio espanhol no mapa esportivo, mas profundamente catalão em sua alma.</p>
+
+            <p>Por isso, cada presença da seleção no estádio é mais do que uma escolha logística. Ela também toca na relação complexa entre futebol, região, identidade e representação nacional.</p>
+
+            <p><strong>Reformas e transformações do estádio</strong></p>
+
+            <p>Passou por diferentes fases de reforma e modernização. A primeira grande ampliação veio para a Copa do Mundo de 1982, quando o estádio recebeu melhorias estruturais, novas áreas de imprensa, espaços VIP e aumento de capacidade. Naquele período, o estádio chegou a ultrapassar a marca de 120 mil espectadores, impulsionado também pela existência de setores em pé.</p>
+
+            <p>Nos anos 1993 e 1994, o estádio passou por outra mudança importante. O gramado foi rebaixado, barreiras foram removidas, áreas de segurança foram adaptadas e o estádio avançou para o modelo de assentos individuais, acompanhando exigências modernas de segurança e conforto.</p>
+
+            <p>A transformação mais profunda, porém, é a atual. O projeto Espai Barça começou a remodelar completamente o estádio após a temporada 2022/23. O Barcelona deixou o Camp Nou em 2023 e passou a mandar seus jogos no Estádio Olímpico Lluís Companys, em Montjuïc, enquanto as obras avançavam.</p>
+
+            <p>A reabertura parcial aconteceu em novembro de 2025, com capacidade reduzida. Em 2026, o estádio ainda opera em fases de liberação, enquanto a obra busca levar o Spotify Camp Nou a uma capacidade planejada de cerca de 105 mil lugares, com mais conforto, novas áreas comerciais, melhor circulação, cobertura ampliada e geração maior de receitas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O impacto da reforma para o Barcelona</strong></p>
+
+            <p>A reforma é esportiva, simbólica e financeira. Para o clube, modernizar o estádio significa proteger sua identidade, mas também aumentar receitas em um momento em que o futebol europeu depende cada vez mais de matchday, hospitalidade, turismo, museu, camarotes e experiências premium.</p>
+
+            <p>Durante o período fora de casa, o clube perdeu parte da atmosfera tradicional. Jogar em Montjuïc manteve o time em Barcelona, mas não reproduziu o peso emocional do Camp Nou. O retorno parcial ao estádio, mesmo com obras em andamento, representou uma reconexão importante com os torcedores.</p>
+
+            <p>A nova casa também dialoga com o futuro esportivo do clube. Um estádio maior, mais moderno e mais rentável ajuda o Barcelona a competir financeiramente com gigantes da Premier League, com o Real Madrid renovado no Santiago Bernabéu e com clubes-estados que elevaram o nível econômico do futebol mundial.</p>
+
+            <p><strong>Camp Nou e o futebol feminino</strong></p>
+
+            <p>Ele também entrou para a história do futebol feminino. O Barcelona feminino levou públicos gigantes ao estádio em jogos de Champions League, especialmente em clássicos e fases decisivas europeias. As marcas superiores a 90 mil torcedores ajudaram a transformar a percepção global sobre o potencial comercial e popular do futebol feminino.</p>
+
+            <p>Essas noites mostraram que o estádio não pertence apenas à história masculina do Barça. Ele também virou símbolo de uma nova era do clube, com Alexia Putellas, Aitana Bonmatí e outras estrelas colocando o futebol feminino catalão e espanhol no centro do mundo.</p>
+
+            <p>Para á instituição, esse é um ponto estratégico. O Camp Nou é uma vitrine global, e abrir o estádio para o time feminino em grandes jogos reforça a ideia de que o clube expande esportivamente, não apenas um time masculino de futebol.</p>
+
+            <p><strong>O maior palco do Barcelona</strong></p>
+
+            <p>Ele atravessou décadas como palco de craques, títulos e transformações. Viu Kubala, Cruyff, Maradona, Romário, Ronaldo, Ronaldinho, Messi, Xavi, Iniesta, Neymar, Suárez, e agora com Lamine Yamal e muitas outras gerações. Cada uma deixou uma camada diferente na memória do estádio.</p>
+
+            <p> Não é apenas a capacidade, a arquitetura ou a quantidade de finais. É a sensação de que o Camp Nou acompanhou a evolução do próprio Barcelona: de potência regional e nacional a uma das marcas mais globais do esporte.</p>
+
+            <p>Essa força o coloca no mesmo mapa simbólico de outros estádios lendários do futebol europeu. A comparação com a <a href="santiago-bernabeu-historia-reforma-estadio-real-madrid.html">história do Santiago Bernabéu, casa do maior rival, Real Madrid</a>, e com <a href="anfield-historia-tradicao-estadio-liverpool.html">Anfield, estádio histórico do Liverpool e símbolo de atmosfera no futebol inglês</a>, ajuda a entender como certas arenas ultrapassam a função esportiva e viram parte da identidade dos clubes.</p>
+
+            <p>A reforma atual não apaga essa história. Pelo contrário, tenta prolongá-la. O desafio do novo Spotify Camp Nou é manter a alma do antigo estádio enquanto entrega uma estrutura compatível com o futebol moderno.</p>
+
+            <p>Entre memória e futuro, o Camp Nou segue como uma das casas mais importantes do futebol mundial. É estádio, símbolo catalão, palco europeu, ponto turístico e coração esportivo do Barcelona.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
