@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Copa do Brasil 2026: confrontos definidos das oitavas de finais | Corte dos Esportes</title>
+  <meta name="description" content="Oitavas terá clássico carioca, rivalidades interestaduais, além de histórico de confrontos em edições anteriores, com os jogos após á pausa da Copa do Mundo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Copa do Brasil 2026: confrontos definidos das oitavas de finais</h1>
+          <p class="subhead" id="articleExcerpt">Oitavas terá clássico carioca, rivalidades interestaduais, além de histórico de confrontos em edições anteriores, com os jogos após á pausa da Copa do Mundo.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">26/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O sorteio colocou clássicos, duelos entre clubes da Série A, equipes em momentos opostos no Brasileirão e dois representantes da Série B tentando transformar o torneio em caminho de protagonismo nacional.</p>
+
+            <p>As partidas serão disputadas depois de uma longa pausa no calendário, provocada pela Copa do Mundo. Os jogos de ida estão previstos para 1º e 2 de agosto, enquanto as partidas de volta devem ocorrer em 5 e 6 de agosto. A CBF ainda precisa confirmar a tabela detalhada, com datas específicas, horários de cada confronto.</p>
+
+            <p>A fase também tem peso financeiro e esportivo. Quem chegar às quartas de final receberá nova premiação de R$ 4 milhões e seguirá vivo em uma competição que, além do título, vale vaga na Libertadores.</p>
+
+            <p><strong>Confrontos das oitavas da Copa do Brasil 2026</strong></p>
+
+            <p>• Fluminense x Vasco — Fluminense decide em casa</p>
+            <p>• Corinthians x Internacional — Corinthians decide em casa</p>
+            <p>• Grêmio x Mirassol — Grêmio decide em casa</p>
+            <p>• Vitória x Athletico-PR — Vitória decide em casa</p>
+            <p>• Juventude x Atlético-MG — Juventude decide em casa</p>
+            <p>• Remo x Santos — Remo decide em casa</p>
+            <p>• Cruzeiro x Chapecoense — Cruzeiro decide em casa</p>
+            <p>• Fortaleza x Palmeiras — Fortaleza decide em casa</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Clássico carioca com situações opostas</strong></p>
+
+            <p>O duelo entre Fluminense e Vasco é o confronto de maior apelo regional das oitavas. O tricolor carioca chega em melhor momento no Brasileirão, ocupando a parte alta da tabela e brigando entre os primeiros colocados.</p>
+
+            <p>O Vasco vive uma situação mais apertada. O time aparece perto da zona de rebaixamento no Brasileirão e precisa administrar a Copa do Brasil sem deixar a luta por recuperação no campeonato nacional sair do controle. Para o clube, eliminar o rival seria um impulso enorme de ambiente, torcida e confiança.</p>
+
+            <p>O clássico tem ainda um componente histórico importante, com o Vasco levando vantagem.</p>
+
+            <p>• 2000 — Oitavas de final</p>
+            <p>• Ida: Fluminense 1 x 1 Vasco</p>
+            <p>• Volta: Vasco 2 x 2 Fluminense</p>
+            <p>• Classificado: Fluminense, pelo critério de gols fora.</p>
+            <p>• 2006 — Semifinal</p>
+            <p>• Ida: Vasco 1 x 0 Fluminense</p>
+            <p>• Volta: Fluminense 1 x 1 Vasco</p>
+            <p>• Classificado: Vasco.</p>
+            <p>• 2025 — Semifinal</p>
+            <p>• Ida: Vasco 2 x 1 Fluminense</p>
+            <p>• Volta: Fluminense 1 x 0 Vasco</p>
+            <p>• Pênaltis: Vasco 4 x 3 Fluminense</p>
+            <p>• Classificado: Vasco.</p>
+
+            <p><strong>Rivalidade interestadual: tradição e pressão por resposta</strong></p>
+
+            <p>Corinthians e Internacional fazem um dos confrontos mais equilibrados das oitavas. Os dois clubes aparecem em uma faixa intermediária do Brasileirão, próximos em pontuação e com campanhas que ainda buscam estabilidade.</p>
+
+            <p>Para o Corinthians, a Copa do Brasil tem um peso especial porque o clube é o atual campeão, decide em casa e pode usar a Neo Química Arena como diferencial na volta. O time não vive uma campanha tranquila no Brasileiro, mas segue competitivo em jogos grandes e tem histórico forte em mata-mata nacional.</p>
+
+            <p>O Internacional também chega pressionado por regularidade. O Colorado tem elenco para competir em mais de uma frente, mas precisa transformar nomes fortes em desempenho constante. Passar pelo Corinthians seria uma resposta importante em uma temporada que ainda procura afirmação.</p>
+
+            <p>O confronto também carrega um longo período de rivalidade, iniciando principalmente no brasileirão de 2005, passando também por uma final de Copa do Brasil em 2009.</p>
+
+            <p>• 1992 — Oitavas de final</p>
+            <p>• Ida: Corinthians 0 x 4 Internacional</p>
+            <p>• Volta: Internacional 0 x 0 Corinthians</p>
+            <p>• Classificado: Internacional.</p>
+            <p>• 2009 — Final</p>
+            <p>• Ida: Corinthians 2 x 0 Internacional</p>
+            <p>• Volta: Internacional 2 x 2 Corinthians</p>
+            <p>• Campeão: Corinthians.</p>
+            <p>• 2017 — Quarta fase</p>
+            <p>• Ida: Internacional 1 x 1 Corinthians</p>
+            <p>• Volta: Corinthians 1 x 1 Internacional</p>
+            <p>• Pênaltis: Internacional 4 x 3 Corinthians</p>
+            <p>• Classificado: Internacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Uma das camisas mais pesada da competição contra um time em ascenção</strong></p>
+
+            <p>O Grêmio enfrenta o Mirassol em um duelo que coloca tradição contra urgência. O clube gaúcho está no meio da tabela do Brasileirão, ainda tentando se afastar de qualquer risco de Z4 e, ao mesmo tempo, se aproximar da zona de competições continentais.</p>
+
+            <p>A Copa do Brasil aparece como uma oportunidade importante para o Grêmio. O time decide em casa e tem uma relação histórica forte com a competição sendo dono de 5 títulos. Em uma temporada irregular, avançar às quartas pode mudar o tom do segundo semestre.</p>
+
+            <p>O Mirassol, por outro lado, vive uma situação delicada no Brasileirão. A equipe está na zona de rebaixamento e precisa dividir energia entre a tentativa de permanência na Série A e a chance de fazer uma campanha histórica na Copa do Brasil.</p>
+
+            <p>Na Copa do Brasil, o duelo traz uma lembrança incômoda para o clube gaúcho:</p>
+
+            <p>• 2022 — Primeira fase</p>
+            <p>• Jogo único: Mirassol 3 x 2 Grêmio</p>
+            <p>• Classificado: Mirassol.</p>
+
+            <p><strong>Duelo de rubros negros</strong></p>
+
+            <p>Vitória e Athletico-PR fazem um confronto interessante porque os dois chegam em momentos diferentes no Brasileirão. O Athletico aparece na parte alta da Série A e faz uma campanha sólida, com pontuação de briga direta por vaga em Libertadores.</p>
+
+            <p>O Vitória está em posição intermediária, tentando consolidar distância da zona de rebaixamento e transformar regularidade em ambição maior. Também chega com moral alta depois de eliminar um dos favoritos da competição, após ganhar do Flamengo.</p>
+
+            <p>Na Copa do Brasil, será o primeiro confronto entre os clubes..</p>
+
+            <p><strong>Série B contra um elenco de peso</strong></p>
+
+            <p>O Juventude é um dos dois representantes da Série B nas oitavas. O time vive uma campanha de oscilação no campeonato nacional e aparece no meio da tabela, ainda tentando se aproximar da zona de acesso. A Copa do Brasil, nesse contexto, vira uma chance de mudar o patamar da temporada, o clube também carrega o histórico de uma conquista em 1999 da competição.</p>
+
+            <p>Do outro lado, o Atlético-MG chega com elenco forte, mas não atravessa uma campanha totalmente confortável no Brasileirão. O Galo aparece na metade inferior da tabela e precisa usar a Copa do Brasil também como rota de recuperação esportiva.</p>
+
+            <p>O confronto tem favorito claro pelo investimento e pelo elenco atleticano, mas a Copa do Brasil costuma ser perigosa justamente nesse tipo de cenário. O Juventude decide no Alfredo Jaconi, onde o clima, o campo e a pressão local podem equilibrar parte da diferença técnica.</p>
+
+            <p>A presença do time gaúcho nas oitavas também carrega um peso de surpresa. O clube chegou até aqui depois de uma classificação que entrou nas das zebras do torneio, especialmente pela forma como eliminou um adversário de maior investimento em uma fase anterior. Com a <a href="juventude-elimina-sao-paulo-gols-copa-do-brasil-zebra-2026.html">classificação do sobre o São Paulo</a>, um resultado que reforçou o peso emocional e imprevisível do mata-mata.</p>
+
+            <p>Os dois time também já se encontraram em um mata-mata equilibrado da Copa do Brasil:</p>
+
+            <p>• 2016 — Quartas de final</p>
+            <p>• Ida: Atlético-MG 1 x 0 Juventude</p>
+            <p>• Volta: Juventude 1 x 0 Atlético-MG</p>
+            <p>• Pênaltis: Atlético-MG 4 x 2 Juventude</p>
+            <p>• Classificado: Atlético-MG.</p>
+
+            <p><strong>Confronto de Série A e chance histórica no Norte</strong></p>
+
+            <p>Remo e Santos vivem um confronto com forte carga narrativa. O Remo, de volta à Série A depois de décadas longe da elite, aparece na zona de rebaixamento e enfrenta uma temporada de adaptação pesada. Ainda assim, chegar às oitavas da Copa do Brasil já representa uma campanha de destaque.</p>
+
+            <p>O Santos também está pressionado no Brasileirão. O time está no Z4 e precisa reagir no nacional, mas a Copa do Brasil surge como oportunidade de respiro. A tradição santista pesa, mas o momento exige cuidado.</p>
+
+            <p>Na Copa do Brasil, o confronto já teve goleada santista:</p>
+
+            <p>• 2010 — Segunda fase</p>
+            <p>• Jogo único: Remo 0 x 4 Santos</p>
+            <p>• Classificado: Santos.</p>
+
+            <p><strong>Favoritismo mineiro e urgência catarinense</strong></p>
+
+            <p>O Cruzeiro enfrenta a Chapecoense em um dos duelos com maior diferença de momento no Brasileirão. O clube mineiro está no meio da tabela da Série A, ainda distante dos primeiros colocados, mas com margem para crescer na temporada.</p>
+
+            <p>A Chapecoense vive situação muito mais difícil. O time aparece na lanterna do Brasileirão, e troca recente no comando técnico. A Copa do Brasil pode funcionar como chance de resposta, mas também exige gestão de energia em meio a um cenário nacional delicado.</p>
+
+            <p>Na Copa do Brasil, o retrospecto recente é favorável ao Cruzeiro:</p>
+
+            <p>• 2012 — Segunda fase</p>
+            <p>• Ida: Chapecoense 1 x 1 Cruzeiro</p>
+            <p>• Volta: Cruzeiro 4 x 1 Chapecoense</p>
+            <p>• Classificado: Cruzeiro.</p>
+            <p>• 2017 — Oitavas de final</p>
+            <p>• Ida: Cruzeiro 1 x 0 Chapecoense</p>
+            <p>• Volta: Chapecoense 0 x 0 Cruzeiro</p>
+            <p>• Classificado: Cruzeiro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Fortaleza x Palmeiras: o líder da Série A contra um rival da Série B</strong></p>
+
+            <p>O confronto talvez seja o mais forte em contraste de realidade. O Palmeiras chega como líder do Brasileirão, e status de grande candidato a todos os torneios que disputa. O time entra nas oitavas como um dos favoritos ao título.</p>
+
+            <p>O Fortaleza, por outro lado, disputa a Série B. O clube aparece entre os primeiros colocados da segunda divisão e briga para voltar rapidamente à elite.</p>
+
+            <p>O Palmeiras terá de administrar o favoritismo e o calendário. A equipe deve chegar ao confronto depois da pausa da Copa do Mundo com elenco forte, mas também disputando três competições ao mesmo tempo, incluindo a Libertadores. O Fortaleza, se mantiver boa campanha na Série B, pode usar o mata-mata como palco para reafirmar sua competitividade nacional.</p>
+
+            <p>O fato de o Fortaleza decidir em casa torna o duelo ainda mais interessante. Para o Palmeiras, é obrigação confirmar superioridade. Para o Fortaleza, é uma chance de eliminar o líder da Série A e transformar a Copa do Brasil em vitrine de retomada.</p>
+
+            <p>Os clubes já se enfrentaram recentemente:</p>
+
+            <p>• 2023 — Oitavas de final</p>
+            <p>• Ida: Palmeiras 3 x 0 Fortaleza</p>
+            <p>• Volta: Fortaleza 1 x 0 Palmeiras</p>
+            <p>• Classificado: Palmeiras.</p>
+
+            <p><strong>Situação dos times no Brasileirão</strong></p>
+
+            <p><strong>Por que a pausa muda a leitura das oitavas</strong></p>
+
+            <p>As oitavas serão disputadas depois da Copa do Mundo, e isso torna a fase menos previsível. Até agosto, os elencos podem mudar, jogadores podem sair ou chegar, técnicos podem ganhar ou perder força, e a condição física dos times será diferente da atual.</p>
+
+            <p>A pausa também quebra ritmo. Times que chegam embalados agora terão de reconstruir intensidade depois de semanas sem jogos oficiais no calendário doméstico. Para equipes em má fase, por outro lado, o intervalo pode ser uma chance de reorganizar elenco, recuperar lesionados e ajustar modelo de jogo.</p>
+
+            <p>Esse é um ponto importante para a Copa do Brasil: o sorteio define os duelos agora, mas o estado real de cada equipe será outro quando a bola rolar. Por isso, favoritismo em maio não garante classificação em agosto.</p>
+
+            <p>Os confrontos das oitavas mostram bem a diversidade do torneio. Há clássico estadual, duelo de gigantes, Série A contra Série B, clubes em briga por Libertadores, times pressionados contra o rebaixamento e candidatos que terão de provar força fora de casa. Essa variedade ajuda a explicar por que a <a href="copa-do-brasil-historia-tradicao-maiores-campeoes.html">história da Copa do Brasil e sua tradição</a> está tão ligada a zebras, decisões regionais, estádios cheios e campanhas que mudam a temporada de clubes de diferentes tamanhos.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
