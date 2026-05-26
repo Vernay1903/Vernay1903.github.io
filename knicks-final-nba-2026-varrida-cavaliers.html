@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knicks varrem Cavaliers e voltam à final da NBA após 27 anos | Corte dos Esportes</title>
+  <meta name="description" content="Franquia de Nova York atropela Cleveland no jogo 4, fecha a final do Leste em 4 a 0 e volta à decisão da NBA pela primeira vez desde 1999, em campanha marcada por força coletiva, defesa dominante e protagonismo de Jalen Brunson." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Knicks varrem Cavaliers e voltam à final da NBA após 27 anos</h1>
+          <p class="subhead" id="articleExcerpt">Franquia de Nova York atropela Cleveland no jogo 4, fecha a final do Leste em 4 a 0 e volta à decisão da NBA pela primeira vez desde 1999, em campanha marcada por força coletiva, defesa dominante e protagonismo de Jalen Brunson.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">26/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="basquete.html">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O New York Knicks está de volta às Finais da NBA. Depois de 27 anos de espera, a franquia de Manhattan confirmou o título da Conferência Leste ao vencer o Cleveland Cavaliers por 130 a 93, fora de casa, fechar a série em 4 a 0 e transformar uma campanha forte em uma das histórias mais marcantes dos playoffs de 2026.</p>
+
+            <p>A classificação veio com autoridade. O placar de 37 pontos de diferença no jogo 4 não foi apenas uma vitória ampla: foi uma demonstração de superioridade física, mental e coletiva. Em Cleveland, os Knicks dominaram os rebotes, usaram bem o banco e não deram margem para reação dos Cavaliers, que terminaram a série sem vencer uma partida.</p>
+
+            <p><strong>Um jogo 4 histórico em Cleveland</strong></p>
+
+            <p>O último jogo da série teve cara de atropelo desde cedo. O Cleveland até tentou começar com energia, empurrado pela torcida, mas os Knicks rapidamente tomaram controle da partida. Uma corrida de 20 a 0 no primeiro tempo quebrou o jogo e colocou Nova York em uma posição confortável.</p>
+
+            <p>A partir dali, a diferença só cresceu. Os Knicks venceram por 130 a 93, chegaram a abrir 45 pontos de vantagem e impuseram uma das derrotas mais pesadas da história recente dos Cavaliers em casa nos playoffs.</p>
+
+            <p>Karl-Anthony Towns foi o principal nome dos Knicks no placar, com 19 pontos e 14 rebotes. Foi um duplo-duplo importante, especialmente pela forma como ele controlou o garrafão e ajudou a punir Cleveland nos dois lados da quadra.</p>
+
+            <p>OG Anunoby também teve uma boa atuação, com 17 pontos, 7 rebotes e 4 assistências. Landry Shamet saiu do banco para marcar 16 pontos, com ótimo aproveitamento nos arremessos de três. Jalen Brunson, mesmo sem precisar carregar a pontuação como em outros jogos, terminou com 15 pontos e liderança suficiente para manter o time organizado.</p>
+
+            <p>O cestinha da partida foi Donovan Mitchell, com 31 pontos para os Cavaliers. Mesmo assim, sua atuação individual ficou isolada. Cleveland não teve volume coletivo para acompanhar os Knicks, perdeu a batalha dos rebotes por larga margem e sofreu muito contra a profundidade do elenco de Nova York.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como foi a varrida sobre os Cavaliers</strong></p>
+
+            <p>A final da Conferência Leste começou com um sinal claro de que os Knicks estavam preparados para sofrer e reagir. No jogo 1, em Nova York, o time buscou uma virada improvável depois de estar 22 pontos atrás no último quarto e venceu por 115 a 104 na prorrogação. Foi o resultado que mudou o peso emocional da série.</p>
+
+            <p>A partir dali, Nova York controlou completamente o confronto:</p>
+
+            <ul>
+              <li>Jogo 2: Knicks 109 x 93 Cavaliers, com domínio defensivo e vantagem ampliada na série.</li>
+              <li>Jogo 3: Knicks 121 x 108 Cavaliers, já em Cleveland, mantendo o controle fora de casa.</li>
+              <li>Jogo 4: Knicks 130 x 93 Cavaliers, em atropelo que confirmou a varrida e o título do Leste.</li>
+            </ul>
+
+            <p>A sequência mostra que o 4 a 0 não foi acidental. O Knicks ganhou de formas diferentes: na reação dramática, no controle defensivo, no ataque eficiente e, por fim, no massacre. Cleveland chegou à final do Leste depois de uma batalha de sete jogos contra o Detroit Pistons, mas não conseguiu levar esse ritmo para a série seguinte.</p>
+
+            <p><strong>Destaques da série:</strong></p>
+
+            <ul>
+              <li>MVP da final do Leste: Jalen Brunson.</li>
+              <li>Médias de Brunson na série: 25,5 pontos e 7,8 assistências.</li>
+              <li>Sequência dos Knicks: 11 vitórias consecutivas nos playoffs.</li>
+            </ul>
+
+            <p><strong>Campanha regular dos Knicks em números</strong></p>
+
+            <p>A temporada regular também foi forte e colocou o time como terceiro colocado da Conferência Leste. A equipe terminou com:</p>
+
+            <ul>
+              <li>53 vitórias</li>
+              <li>29 derrotas</li>
+            </ul>
+
+            <p><strong>Como foram os playoffs até a final</strong></p>
+
+            <p>A caminhada começou contra o Atlanta Hawks na primeira rodada. A série foi a mais complicada emocionalmente para os Knicks, que abriram com vitória por 113 a 102, mas perderam os jogos 2 e 3. A partir dali, a equipe virou a chave. Venceu o jogo 4 e atropelou no jogo 5, e fechou a série no jogo 6 com uma vitória histórica por 140 a 89.</p>
+
+            <p><strong>Primeira rodada — Knicks 4 x 2 Hawks</strong></p>
+
+            <ul>
+              <li>Jogo 1: Knicks 113 x 102 Hawks.</li>
+              <li>Jogo 2: Hawks 107 x 106 Knicks.</li>
+              <li>Jogo 3: Hawks 109 x 108 Knicks.</li>
+              <li>Jogo 4: Knicks 114 x 98 Hawks.</li>
+              <li>Jogo 5: Knicks 126 x 97 Hawks.</li>
+              <li>Jogo 6: Knicks 140 x 89 Hawks.</li>
+            </ul>
+
+            <p>Nas semifinais do Leste, o adversário foi o Philadelphia 76ers. A série teve domínio total de Nova York, com uma varrida e consolidou o Knicks como candidato real e mostrou que a equipe estava em outro ritmo.</p>
+
+            <ul>
+              <li>Jogo 1: Knicks 137 x 98 76ers.</li>
+              <li>Jogo 2: Knicks 108 x 102 76ers.</li>
+              <li>Jogo 3: Knicks 108 x 94 76ers.</li>
+              <li>Jogo 4: Knicks 144 x 114 76ers.</li>
+            </ul>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Na final do Leste, veio Cleveland. A série começou com uma virada dramática e terminou com massacre. O roteiro foi simbólico: os Knicks sobreviveram ao teste psicológico no jogo 1 e, depois disso, passaram a controlar completamente o confronto.</p>
+
+            <ul>
+              <li>Jogo 1: Knicks 115 x 104 Cavaliers.</li>
+              <li>Jogo 2: Knicks 109 x 93 Cavaliers.</li>
+              <li>Jogo 3: Knicks 121 x 108 Cavaliers.</li>
+              <li>Jogo 4: Knicks 130 x 93 Cavaliers.</li>
+            </ul>
+
+            <p>Essa sequência reforça a importância dos <a href="playoffs-nba-como-funciona-tradicao-series-historicas.html">playoffs da NBA, seu formato e a tradição das séries de mata-mata</a>, porque cada rodada cobra ajustes diferentes. Os Knicks perderam jogos apertados contra Atlanta, varreram Philadelphia e depois passaram por Cleveland sem derrota, mostrando evolução dentro da própria pós-temporada.</p>
+
+            <p><strong>O peso histórico da volta dos Knicks</strong></p>
+
+            <p>A classificação de 2026 leva o New York  à nona final da NBA de sua história. Agora, volta ao palco principal pela primeira vez no século XXI.</p>
+
+            <p><strong>Finais da NBA disputadas pelos Knicks:</strong></p>
+
+            <ul>
+              <li>1951</li>
+              <li>1952</li>
+              <li>1953</li>
+              <li>1970</li>
+              <li>1972</li>
+              <li>1973</li>
+              <li>1994</li>
+              <li>1999</li>
+              <li>2026</li>
+            </ul>
+
+            <p>Os Knicks têm dois títulos da NBA, conquistados em 1970 e 1973. O primeiro ficou marcado pela liderança de Willis Reed, Walt Frazier e uma das equipes mais simbólicas da história da franquia. O segundo confirmou aquele grupo como uma das gerações mais importantes do basquete de Nova York.</p>
+
+            <p>A conquista da Conferência Leste também adiciona mais um capítulo à <a href="conferencia-leste-nba-historia-maiores-campeoes-dinastias-e-rivalidades.html">história da Conferência Leste</a>, uma disputa marcada por franquias tradicionais, séries históricas e caminhos que costumam definir o peso real de um finalista antes da decisão da liga.</p>
+
+            <p>Desde então, a torcida viveu longos períodos de frustração. A final de 1994 terminou com derrota para o Houston Rockets. A de 1999, contra o San Antonio Spurs, também ficou pelo caminho. Por isso, a volta em 2026 tem peso maior do que uma simples classificação: é o reencontro de uma das marcas mais populares da NBA com o maior palco da liga.</p>
+
+            <p>A história dos Knicks conversa diretamente com a <a href="nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA</a>, porque poucos clubes carregam uma combinação tão forte de tradição, mercado, pressão e cobrança pública.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Madison Square Garden volta ao centro da NBA</strong></p>
+
+            <p>O retorno às Finais também recoloca o Madison Square Garden em uma posição especial. O ginásio é um dos palcos mais clássicos do esporte mundial e tem relação direta com a identidade dos Knicks. Mesmo quando a equipe passou anos longe das grandes decisões, o Garden seguiu como símbolo de basquete, cultura, celebridades e pressão.</p>
+
+            <p>Agora, a arena voltará a receber jogos de final da NBA. Para a torcida dos Knicks, isso significa mais do que mando de quadra: é a recuperação de uma atmosfera que marcou gerações. Nova York sempre cobrou um time à altura do palco. Em 2026, finalmente recebeu uma equipe capaz de transformar essa expectativa em resultado.</p>
+
+            <p><strong>O que vem agora para os Knicks</strong></p>
+
+            <p>Agora aguardam o campeão da Conferência Oeste, que sairá do duelo entre Oklahoma City Thunder e San Antonio Spurs. Os dois times já estavam no radar da temporada por motivos diferentes: o Thunder como atual campeão e equipe de elite, e os Spurs pelo crescimento em torno de Victor Wembanyama.</p>
+
+            <p>Para Nova York, a missão ainda não terminou. A varrida sobre Cleveland garante o título do Leste, mas não encerra a busca pelo troféu Larry O’Brien.</p>
+
+            <p>Os Knicks chegam com confiança, sequência de vitórias e elenco em alta. A final da NBA será outro nível de pressão, mas a campanha até aqui já recolocou a franquia em um lugar que sua torcida esperava há quase três décadas. Nova York está de volta à decisão, e desta vez chega não como surpresa, mas como um time que construiu sua vaga com autoridade.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
