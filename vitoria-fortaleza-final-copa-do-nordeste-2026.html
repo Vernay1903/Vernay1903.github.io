@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vitória e Fortaleza fazem á final da Copa do Nordeste | Corte dos Esportes</title>
+  <meta name="description" content="A edição de 2026 terá final inédita entre os dois clubes, após semifinais marcadas por goleada, virada, reação fora de casa e campanhas que colocam dois dos maiores campeões do torneio frente a frente." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Vitória e Fortaleza fazem á final da Copa do Nordeste</h1>
+          <p class="subhead" id="articleExcerpt">A edição de 2026 terá final inédita entre os dois clubes, após semifinais marcadas por goleada, virada, reação fora de casa e campanhas que colocam dois dos maiores campeões do torneio frente a frente.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">28/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Copa do Nordeste chegou à final com um confronto de peso regional e valor histórico. Vitória e Fortaleza decidirão o título em jogos de ida e volta, nos dias 3 e 7 de junho, depois de semifinais bem diferentes, mas igualmente marcantes. O primeiro jogo será no Castelão, em Fortaleza, e a decisão acontecerá no Barradão, em Salvador, porque o Vitória teve melhor campanha no geral.</p>
+
+            <p>O duelo coloca dois dos maiores campeões do torneio. O Vitória busca o quinto título da Copa do Nordeste e pode igualar o Bahia como maior vencedor da competição. O Fortaleza tenta levantar a taça pela quarta vez e confirmar uma era recente de protagonismo regional, já que venceu as três finais que disputou nos últimos anos.</p>
+
+            <p>A final também tem um detalhe especial: será a primeira decisão de Copa do Nordeste entre Vitória e Fortaleza. Os clubes já se enfrentaram outras vezes na competição, inclusive em mata-mata, mas nunca haviam dividido a última fase do torneio.</p>
+
+            <p><strong>Vitória atropela o ABC e volta à final após 16 anos</strong></p>
+
+            <p>O time chega à final depois de uma semifinal de muitos gols contra o ABC. O Rubro-Negro praticamente encaminhou a classificação no jogo de ida, no Barradão, ao vencer por 6 a 2. A vantagem de quatro gols colocou o time em situação muito confortável para a volta, mas o jogo em Natal ainda teve emoção.</p>
+
+            <p>Na Arena das Dunas, o ABC ficou na frente do placar três vezes, mostrou força ofensiva e tentou transformar a partida em um confronto caótico. Mesmo assim, o Vitória reagiu e venceu novamente, desta vez por 4 a 3. No agregado, a classificação veio com impressionantes 10 a 5.</p>
+
+            <p><strong>Veja os melhores momentos da partida abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/n8fD78kelHQ" title="ABC x Vitória - gols e melhores momentos da Copa do Nordeste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A campanha leva o Vitória de volta a uma final de Copa do Nordeste depois de 16 anos. A última decisão havia sido em 2010, justamente contra o ABC, quando o clube baiano conquistou seu quarto título regional.</p>
+
+            <p>O retorno tem peso simbólico. Durante esse período, o Vitória viu o seu maior rival Bahia se tornar o maior campeão do torneio, com cinco conquistas, e passou por ciclos de instabilidade no futebol brasileiro. Agora, chega a uma nova decisão com a chance de recuperar parte de seu protagonismo histórico no Nordeste.</p>
+
+            <p><strong>Campanha do Vitória até a final</strong></p>
+
+            <p>O caminho até a decisão teve regularidade na fase de grupos, eficiência nas quartas e força ofensiva na semifinal.</p>
+
+            <p><strong>Fase de grupos</strong></p>
+            <p>• Terminou em 1º lugar no Grupo A</p>
+            <p>• Somou 10 pontos</p>
+            <p>• Garantindo o mando de campo nas quartas</p>
+
+            <p><strong>Quartas de final</strong></p>
+            <p>• Vitória 1 x 0 Ceará</p>
+            <p>• Gol decisivo de Renato Kayzer</p>
+            <p>• Classificação em jogo único no Barradão</p>
+
+            <p><strong>Semifinal</strong></p>
+            <p>• Ida: Vitória 6 x 2 ABC</p>
+            <p>• Volta: ABC 3 x 4 Vitória</p>
+            <p>• Placar agregado: Vitória 10 x 5 ABC</p>
+
+            <p>A campanha mostra um time que cresceu no mata-mata. Contra o Ceará, venceu um jogo duro. Contra o ABC, mostrou poder de fogo e capacidade de reação mesmo quando o adversário tentou pressionar na volta.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Fortaleza vira contra o Sport e mantém força em mata-mata</strong></p>
+
+            <p>O tricolor cearense teve um caminho mais dramático na semifinal. O time perdeu o jogo de ida para o Sport por 2 a 1, no Castelão, e chegou à Ilha do Retiro precisando vencer por dois gols de diferença para evitar os pênaltis e avançar direto.</p>
+
+            <p>O cenário parecia favorável ao Sport. Além de ter vencido fora de casa, o clube pernambucano decidiria diante de sua torcida e tinha a vantagem do empate. Mas o Fortaleza mostrou maturidade, jogou com personalidade e venceu por 2 a 0 no Recife.</p>
+
+            <p>Miritello abriu o placar no primeiro tempo, e Vitinho fechou a classificação com um golaço na etapa final. O resultado colocou o Fortaleza na final com 3 a 2 no agregado e reforçou uma marca recente do clube: a capacidade de crescer em jogos eliminatórios da Copa do Nordeste.</p>
+
+            <p><strong>Veja os melhores momentos da partida abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lugS3BXmoRg" title="Sport x Fortaleza - gols e melhores momentos da Copa do Nordeste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A classificação também teve sabor especial porque o Sport havia quebrado um tabu ao vencer no Castelão no jogo de ida. Na volta, porém, o Fortaleza retomou o controle do confronto e eliminou o rival mais uma vez em mata-mata regional.</p>
+
+            <p><strong>Campanha do Fortaleza até a final</strong></p>
+
+            <p>O time chega à decisão depois de uma campanha de altos e baixos, mas com força nos momentos decisivos.</p>
+
+            <p><strong>Fase de grupos</strong></p>
+            <p>• Terminou em 2º lugar no Grupo D</p>
+            <p>• Somou 10 pontos</p>
+            <p>• Avançou em uma chave equilibrada</p>
+
+            <p><strong>Quartas de final</strong></p>
+            <p>• Confiança 1 x 2 Fortaleza</p>
+            <p>• Classificação fora de casa em jogo único</p>
+
+            <p><strong>Semifinal</strong></p>
+            <p>• Ida: Fortaleza 1 x 2 Sport</p>
+            <p>• Volta: Sport 0 x 2 Fortaleza</p>
+            <p>• Placar agregado: Fortaleza 3 x 2 Sport</p>
+
+            <p>O roteiro mostra um time que precisou vencer fora de casa em dois momentos importantes: nas quartas, contra o Confiança, e na semifinal, contra o Sport. Isso dá ao Fortaleza uma bagagem competitiva forte para a decisão, mesmo começando a final em casa e decidindo fora.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Final inédita entre dois campeões do Nordeste</strong></p>
+
+            <p>Vitória e Fortaleza nunca decidiram uma Copa do Nordeste entre si. A final de 2026, portanto, será inédita. Mas, o confronto tem histórico dentro do torneio.</p>
+
+            <p>Os clubes já se enfrentaram dez vezes pela competição regional. O retrospecto geral tem vantagem do Vitória, com cinco vitórias, contra três do Fortaleza e dois empates. O único mata-mata anterior entre eles foi em 2019, pelas quartas de final, quando o Fortaleza goleou por 4 a 0 no Castelão e iniciou a caminhada rumo ao seu primeiro título regional.</p>
+
+            <p>O Vitória também tem uma goleada marcante no histórico do confronto: 4 a 0 sobre o Fortaleza na edição de 1998. Por isso, a final carrega camadas diferentes. Não é apenas a primeira decisão entre eles; é também um encontro entre clubes que já protagonizaram placares fortes no torneio.</p>
+
+            <p><strong>Títulos dos dois clubes na Copa do Nordeste</strong></p>
+
+            <p>O peso da final aumenta porque os times têm tradição real na competição.</p>
+
+            <p><strong>Vitória:</strong></p>
+            <p>• 4 títulos</p>
+            <p>• Campeão em 1997, 1999, 2003 e 2010</p>
+            <p>• Pode empatar com o Bahia como maior campeão do torneio</p>
+
+            <p><strong>Fortaleza:</strong></p>
+            <p>• 3 títulos</p>
+            <p>• Campeão em 2019, 2022 e 2024</p>
+            <p>• Pode empatar com o Vitória em número de conquistas</p>
+
+            <p>A diferença está no tempo histórico de cada trajetória. O Vitória foi potência regional especialmente nas primeiras décadas do torneio. O Fortaleza, por outro lado, representa a força recente, com três títulos em um recorte curto e presença constante em decisões.</p>
+
+            <p><strong>O que está em jogo para o Vitória</strong></p>
+
+            <p>A final é uma chance de retomar uma posição simbólica no Nordeste. O clube foi durante muito tempo uma das principais referências da competição, mas não disputa uma final desde 2010.</p>
+
+            <p>O momento também conversa com o bom desempenho recente do Vitória em jogos eliminatórios. A <a href="vitoria-elimina-flamengo-copa-do-brasil-barradao.html">classificação sobre o Flamengo na Copa do Brasil, no Barradão</a>, já tinha reforçado a força do clube em mata-mata diante de adversários de peso, e agora a final regional aparece como mais uma chance de transformar esse embalo em título.</p>
+
+            <p>Conquistar o título agora significaria encerrar um jejum regional, igualar o Bahia no topo da lista de campeões e reforçar o processo de reconstrução esportiva do clube. Além disso, decidir em casa pode transformar o Barradão em um fator emocional muito forte.</p>
+
+            <p><strong>O que está em jogo para o Fortaleza</strong></p>
+
+            <p>Representa a chance de consolidar uma hegemonia recente. O clube já venceu a Copa do Nordeste em 2019, 2022 e 2024, e agora tenta mais uma taça para confirmar sua força regional no período mais competitivo de sua história.</p>
+
+            <p>O time chega com a moral de quem reverteu uma semifinal difícil fora de casa. A vitória na Ilha do Retiro mostrou maturidade e capacidade de lidar com pressão. Esse tipo de resultado costuma fortalecer um elenco antes de uma decisão.</p>
+
+            <p>Ao mesmo tempo, o Fortaleza terá um desafio grande: fazer vantagem no Castelão antes de decidir no Barradão. Como a segunda partida será em Salvador, o jogo de ida ganha peso estratégico.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A importância da Copa do Nordeste</strong></p>
+
+            <p>A competição tem uma força própria no calendário brasileiro. O torneio mistura rivalidades estaduais, torcidas de massa, jogos de alta intensidade e um senso de identidade regional que poucas competições conseguem oferecer.</p>
+
+            <p>Essa dimensão regional mostra como á força da <a href="copa-do-nordeste-historia-maiores-campeoes-identidade-regional.html">história da Copa do Nordeste</a>, porque a competição não se resume à taça: ela envolve pertencimento, rivalidade, viagem de torcida, estádios cheios e afirmação esportiva para clubes que representam diferentes estados.</p>
+
+            <p>A Copa do Nordeste chega à sua decisão com dois Leões em lados opostos. E, desta vez, a taça regional vai medir não só quem joga melhor em 180 minutos, mas qual projeto consegue transformar tradição, momento e pressão em título.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
