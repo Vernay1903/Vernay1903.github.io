@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rebaixamento e acesso da LaLiga: quem caiu e quem subiu | Corte dos Esportes</title>
+  <meta name="description" content="Temporada 2025/26 teve Real Oviedo, Mallorca e Girona rebaixados, enquanto Racing Santander e Deportivo La Coruña garantiram acesso em retornos históricos; terceira vaga ainda será decidida nos playoffs." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Rebaixamento e acesso da LaLiga: quem caiu e quem subiu</h1>
+          <p class="subhead" id="articleExcerpt">Temporada 2025/26 teve Real Oviedo, Mallorca e Girona rebaixados, enquanto Racing Santander e Deportivo La Coruña garantiram acesso em retornos históricos; terceira vaga ainda será decidida nos playoffs.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">27/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A LaLiga 2025/26 terminou com uma troca importante de personagens para a próxima temporada.</p>
+            <p>O movimento reforça uma das marcas do futebol espanhol. A LaLiga costuma ser lembrada por Barcelona, Real Madrid, Atlético de Madrid e grandes estrelas, mas a parte de baixo da tabela também conta histórias fortes de reconstrução, queda, torcida, orçamento e sobrevivência esportiva.</p>
+
+            <p><strong>Como funciona o rebaixamento na LaLiga</strong></p>
+
+            <p>A competição tem 20 clubes. Ao fim da temporada, os três últimos colocados caem diretamente para a segunda divisão. Não há repescagem para permanência: terminou em 18º, 19º ou 20º, é rebaixado.</p>
+
+            <p><strong>Em 2025/26, os rebaixados foram:</strong></p>
+            <p>• 18º: Girona</p>
+            <p>• 19º: Mallorca</p>
+            <p>• 20º: Real Oviedo</p>
+
+            <p>Na segunda divisão, os dois primeiros colocados sobem diretamente. A terceira vaga fica com o vencedor dos playoffs, disputados entre clubes que terminam logo abaixo da zona de acesso direto.</p>
+
+            <p><strong>Para 2026/27, os promovidos já confirmados são:</strong></p>
+            <p>• Racing Santander — acesso direto</p>
+            <p>• Deportivo La Coruña — acesso direto</p>
+            <p>• Terceira vaga — ainda a definir nos playoffs</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Volta histórica e queda imediata</strong></p>
+
+            <p>O Real Oviedo viveu uma temporada dura na elite. O clube havia retornado à LaLiga em 2025 depois de 24 anos fora da primeira divisão, um acesso muito simbólico para sua torcida e para a cidade. A permanência, porém, não veio.</p>
+
+            <p>A queda na última colocação marca o fim rápido de uma passagem que tinha forte carga emocional. O Oviedo voltou ao lugar que buscava havia décadas, mas encontrou dificuldade para competir em uma liga de alto nível técnico, físico e financeiro.</p>
+
+            <p> O Real Oviedo tem uma história relevante no futebol do país, com longas passagens na primeira divisão em outras épocas. Mas a ausência prolongada fez o retorno recente ganhar peso especial.</p>
+
+            <p>Por isso, o rebaixamento dói mais. Não é apenas uma queda depois de uma temporada ruim; é a interrupção de um projeto que havia acabado de reconectar o clube à LaLiga. Agora, o desafio será não deixar o impacto emocional e financeiro do rebaixamento travar uma nova tentativa de acesso.</p>
+
+            <p><strong>Queda após ciclo estável na primeira divisão</strong></p>
+
+            <p>O Mallorca também caiu, mas em um contexto diferente. O clube vinha de uma sequência mais longa na elite, desde o acesso para a temporada 2021/22. Foram cinco temporadas consecutivas na LaLiga até o rebaixamento deste ano.</p>
+
+            <p>A queda foi dramática porque o clube venceu o Real Oviedo por 3 a 0 na última rodada, mas ainda assim acabou rebaixado. O problema foi a combinação de resultados e os critérios de desempate em uma disputa apertada contra outros clubes que também lutavam contra a queda.</p>
+
+            <p>O Mallorca já viveu idas e vindas entre divisões ao longo de sua história. O clube tem tradição na primeira divisão espanhola, já disputou competições europeias e construiu campanhas marcantes em outros ciclos. Mesmo assim, a realidade recente voltou a mostrar como a permanência na elite exige regularidade constante.</p>
+
+            <p>Na segunda divisão, o Mallorca tende a entrar como um dos clubes favoritos. A experiência de LaLiga, a estrutura recente e o conhecimento de um elenco acostumado à primeira divisão podem ajudar. Mas a segunda divisão espanhola é longa, competitiva e costuma punir clubes que entram achando que o retorno será automático.</p>
+
+            <p><strong>Girona: de sensação europeia ao rebaixamento</strong></p>
+
+            <p>O rebaixamento do Girona talvez seja o mais simbólico. O clube havia se tornado uma das grandes histórias recentes do futebol espanhol, especialmente pela campanha histórica que o levou à Champions League depois de uma temporada espetacular na LaLiga.</p>
+
+            <p>Pouco tempo depois, o cenário mudou completamente. O Girona terminou a temporada dentro da zona de rebaixamento após empatar por 1 a 1 com o Elche na última rodada. Precisava vencer para escapar, mas não conseguiu o gol decisivo.</p>
+
+            <p>A queda encerra uma sequência de quatro temporadas seguidas na elite, iniciada em 2022/23. Nesse período, o clube saiu de projeto emergente para sensação nacional, disputou a parte alta da tabela e ganhou atenção internacional. A descida mostra como ciclos de clubes médios podem ser muito rápidos quando há perda de peças, desgaste competitivo e dificuldade de repetir desempenho.</p>
+            <p> Poucos clubes viveram em tão pouco tempo uma curva tão forte entre auge esportivo e rebaixamento.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Retorno após 14 anos</strong></p>
+
+            <p>Entre os acessos, o Racing Santander carrega uma das histórias mais bonitas. O clube volta à LaLiga depois de 14 anos fora da primeira divisão. O acesso encerra uma longa espera de uma torcida tradicional e recoloca El Sardinero no mapa da elite espanhola.</p>
+
+            <p>O Racing já teve muitas temporadas na primeira divisão e não é estreante. Pelo contrário: é um clube histórico, com identidade forte na Cantábria e presença importante em diferentes fases do futebol espanhol. A ausência prolongada, porém, transformou o retorno em um momento de reconstrução simbólica.</p>
+
+            <p>O acesso foi confirmado em grande estilo, com vitória por 4 a 1 sobre o Valladolid. A campanha mostrou força ofensiva, consistência e capacidade de sustentar o ritmo em uma segunda divisão muito equilibrada.</p>
+
+            <p>Para 2026/27, o desafio será competir sem perder a base que levou o clube de volta. A LaLiga exige outro nível de elenco, profundidade e resistência. O Racing volta com história, torcida e entusiasmo, mas precisará transformar emoção em planejamento.</p>
+
+            <p><strong>Gigante galego volta depois de oito anos</strong></p>
+
+            <p>O Deportivo La Coruña também está de volta. O clube encerrou uma ausência de oito anos na primeira divisão.</p>
+
+            <p>O retorno tem peso enorme porque o clube não é apenas mais um promovido. O clube foi campeão espanhol em 1999/2000, viveu grandes campanhas europeias, disputou Champions League e marcou uma geração no futebol espanhol. A queda posterior, com anos difíceis e até passagem por divisões inferiores, tornou a volta ainda mais significativa.</p>
+
+            <p>O acesso recoloca o Riazor na elite e devolve à LaLiga uma camisa tradicional. Para a torcida galega, é mais do que um acesso: é a recuperação de um espaço que parecia distante durante um período de crise esportiva.</p>
+
+            <p>A próxima temporada será um teste de maturidade. O time volta com nome forte e memória relevante, mas a elite atual é muito diferente daquela em que o clube brilhou no início dos anos 2000. Permanecer será o primeiro grande objetivo.</p>
+
+            <p><strong>Terceira vaga ainda depende dos playoffs</strong></p>
+
+            <p>A LaLiga ainda aguarda a terceira vaga da segunda divisão. A temporada regular da LaLiga Hypermotion ainda está na reta final em andamento, com clubes como Almería, Málaga, Las Palmas, Castellón, Burgos e Eibar brigando pelas posições que levam ao mata-mata.</p>
+
+            <p>O modelo espanhol dá acesso direto aos dois primeiros colocados, enquanto a terceira vaga é decidida em playoffs entre os times que terminam do 3º ao 6º lugar. As semifinais são disputadas em jogos de ida e volta, com o 6º colocado enfrentando o 3º, e o 5º enfrentando o 4º. Os vencedores fazem a final, também em ida e volta, e o melhor colocado na temporada regular decide em casa.</p>
+
+            <p><strong>As datas previstas para os playoffs são:</strong></p>
+
+            <p>• Ida das semifinais: 6 e 7 de junho, às 21h</p>
+            <p>• Volta das semifinais: 9 e 10 de junho, às 21h</p>
+            <p>• Final: entre 14 e 21 de junho, em jogos de ida e volta</p>
+
+            <p><strong>No momento, a briga está concentrada em uma faixa muito apertada da tabela:</strong></p>
+
+            <p>• 3º Almería — 71 pontos</p>
+            <p>• 4º Málaga — 70 pontos</p>
+            <p>• 5º Las Palmas — 70 pontos</p>
+            <p>• 6º Castellón — 69 pontos</p>
+            <p>• 7º Burgos — 69 pontos</p>
+            <p>• 8º Eibar — 67 pontos</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que muda para a LaLiga 2026/27</strong></p>
+
+            <p>A próxima temporada terá dois retornos tradicionais já confirmados. Racing Santander e Deportivo La Coruña trazem torcida, história e estádios importantes de volta à elite. São clubes que ajudam a recuperar parte da memória clássica do futebol espanhol.</p>
+
+            <p>Do lado dos rebaixados, a segunda divisão ganha peso. O Girona cai pouco tempo depois de viver uma campanha histórica na elite. O Mallorca retorna à segunda divisão após cinco temporadas seguidas. O Real Oviedo volta para baixo logo depois de realizar o sonho de retornar após 24 anos.</p>
+
+            <p>Esse tipo de troca mostra que a <a href="laliga-historia-maiores-campeoes-rivalidade-real-madrid-barcelona.html">história da LaLiga, a rivalidade entre Real Madrid e Barcelona</a> não resume sozinha a força do campeonato. A luta por permanência, os acessos históricos e os rebaixamentos dolorosos também explicam a identidade da competição.</p>
+
+            <p>O movimento de sobe e desce entre divisões, mostra como outras grandes ligas europeias também passam por esses momentos de transformação, como nos <a href="rebaixados-promovidos-premier-league-2026-2027.html">rebaixados e promovidos da Premier League para 2026/27</a> e do <a href="rebaixados-promovidos-bundesliga-2026-2027.html">rebaixamento e acesso da Bundesliga para 2026/27</a>. No fim, acesso e rebaixamento não mudam apenas uma tabela: mudam o futuro esportivo, financeiro e emocional de clubes inteiros.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
