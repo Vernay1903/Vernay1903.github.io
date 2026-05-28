@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zidane: carreira, títulos de uma lenda do futebol | Corte dos Esportes</title>
+  <meta name="description" content="Craque francês marcou época como jogador da França, Juventus e Real Madrid, decidiu a final da Copa do Mundo de 1998 contra o Brasil, viveu a expulsão histórica diante da Itália em 2006 e depois virou técnico tricampeão da Champions League." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Zidane: carreira, títulos de uma lenda do futebol</h1>
+          <p class="subhead" id="articleExcerpt">Craque francês marcou época como jogador da França, Juventus e Real Madrid, decidiu a final da Copa do Mundo de 1998 contra o Brasil, viveu a expulsão histórica diante da Itália em 2006 e depois virou técnico tricampeão da Champions League.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">28/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Zinedine Zidane é um dos personagens mais completos da história do futebol. Como jogador, foi campeão mundial pela França, brilhou na Juventus, virou ídolo do Real Madrid e marcou um dos gols mais famosos da história da Champions League. Como técnico, voltou ao clube espanhol e comandou uma sequência histórica de três títulos consecutivos da competição europeia.</p>
+
+            <p>A carreira dele não se resume à elegância com a bola. Ela também passa por decisões, títulos, derrotas marcantes, protagonismo em Copas do Mundo e uma despedida dramática. Da final contra o Brasil em 1998 à cabeçada em Marco Materazzi em 2006, o francês construiu uma trajetória que mistura genialidade, pressão, glória e controvérsia.</p>
+
+            <p><strong>Início da carreira no futebol francês</strong></p>
+
+            <p> Zidane nasceu em junho de 1972, em Marselha, na França. Revelado pelo Cannes, estreou como profissional ainda adolescente, no fim dos anos 1980, e começou a chamar atenção pela técnica acima da média, pela força física e pela capacidade de proteger a bola mesmo sob marcação.</p>
+
+            <p>Depois do Cannes, se transferiu para o Bordeaux, onde atuou entre 1992 e 1996. Foi no clube francês que seu nome começou a ganhar projeção internacional. Na temporada 1995/96 ajudou o clube a chegar à final da Copa da UEFA, perdida para o Bayern de Munique.</p>
+
+            <p>A passagem pelo Bordeaux foi decisiva porque colocou Zidane no radar dos grandes clubes europeus. Ele ainda não era o jogador consagrado que seria anos depois, mas já mostrava as características que marcariam sua carreira: domínio, passe vertical, leitura de espaço, proteção de bola e frieza para jogar sob pressão, além da sua marca registrada, a elegância para jogar.</p>
+
+            <p><strong>Juventus: títulos, finais e afirmação mundial</strong></p>
+
+            <p>Ele chegou ao clube de Turin em 1996, depois da Eurocopa daquele ano, e permaneceu no clube italiano até 2001. Disputou mais de 200 partidas oficiais, marcou 31 gols e se consolidou definitivamente como um dos grandes meias do futebol mundial.</p>
+
+            <p>Pela Juventus, Zidane conquistou seis títulos: o Bi campeonato Italiano de 1996/97 e 1997/98, a Supercopa da Itália de 1997, a Supercopa da UEFA de 1996, a Copa Intercontinental de 1996. Esses troféus fizeram parte de uma Juventus forte, competitiva e presença constante nas fases decisivas do futebol europeu.</p>
+
+            <p>O ponto que faltou na passagem pelo clube italiano foi a Champions League. O francês disputou duas finais consecutivas. Em 1996/97, a Juventus perdeu por 3 a 1 para o Borussia Dortmund, em Munique. Em 1997/98, voltou à decisão e foi derrotada por 1 a 0 pelo Real Madrid, em Amsterdã..</p>
+
+            <p>Mesmo sem conquistar a Champions pela Juventus, Zidane saiu da Itália maior do que chegou. Foi eleito Bola de Ouro em 1998, impulsionado pela temporada no clube italiano e, principalmente, pela campanha histórica com a seleção francesa na Copa do Mundo daquele ano.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>França, Copa de 1998 e a final contra o Brasil</strong></p>
+
+            <p>O ponto mais simbólico da carreira como jogador veio com a seleção francesa. Na Copa do Mundo de 1998, disputada em casa, a França chegou à final contra o Brasil, então atual campeão mundial e dono de uma geração com Ronaldo, Rivaldo, Bebeto, Cafu, Roberto Carlos e Dunga.</p>
+
+            <p>A final disputada no Stade de France, em Saint-Denis. Zidane decidiu o jogo ainda no primeiro tempo. Marcou dois gols de cabeça, Emmanuel Petit fechou o placar nos acréscimos, e a França venceu o Brasil por 3 a 0.</p>
+
+            <p>Aquele resultado deu à França seu primeiro título mundial e transformou Zidane em herói nacional. A imagem do camisa 10 decidindo uma final de Copa do Mundo contra o Brasil com dois gols segue como uma das cenas mais simbólicas da <a href="https://cortedosesportes.com.br/franca-copas-do-mundo-titulos-1998-2018.html"> seleção francesa em mundiais</a>.</p>
+
+            <p>O título de 1998 também mudou o seu patamar histórico. Ele já era um craque de elite, mas a atuação na decisão colocou seu nome entre os grandes protagonistas de Mundiais. A partir dali, Zidane passou a ser visto não apenas como um meia refinado, mas como um jogador capaz de definir uma final do maior torneio do planeta.</p>
+
+            <p><strong>Euro 2000 e auge com a seleção francesa</strong></p>
+
+            <p>Dois anos depois do título mundial, ele liderou a França em mais uma conquista de peso: a Euro 2000. A seleção francesa manteve a base campeã do mundo e confirmou sua força ao vencer também o torneio continental.</p>
+
+            <p>Na campanha, Zidane foi o cérebro da equipe. Atuava entre as linhas, organizava a saída ofensiva e controlava o ritmo dos jogos. A França venceu a Itália por 2 a 1 na final, em Roterdã, com gol de ouro de David Trezeguet na prorrogação.</p>
+
+            <p>Com os títulos da Copa do Mundo de 1998 e da Euro 2000, Zidane se tornou o símbolo técnico da geração mais vitoriosa da França até aquele momento. Ele era o jogador que dava sentido ao time: recebia sob pressão, girava, encontrava o passe certo e aparecia em momentos decisivos.</p>
+
+            <p><strong>Real Madrid: contratação, números e títulos como jogador</strong></p>
+
+            <p>Em 2001, Zidane chegou ao <a href="https://cortedosesportes.com.br/real-madrid-maior-clube-do-mundo-historia-titulos-champions.html">ao clube espanhol</a>, como uma das maiores contratações da era dos Galácticos. Ao lado de Luís Figo, Ronaldo, Roberto Carlos, Raúl e, depois, David Beckham, o francês virou uma das grandes referências técnicas do elenco.</p>
+
+            <p>Pelo Real Madrid, disputou 227 jogos e marcou 49 gols entre 2001 e 2006. Como jogador do clube espanhol, conquistou seis títulos oficiais: a Champions League de 2001/02, a LaLiga de 2002/03, as Supercopas da Espanha de 2001 e 2003, a Supercopa da UEFA de 2002 e a Copa Intercontinental de 2002.</p>
+
+            <p>O título mais simbólico foi a Champions League de 2001/02. A final disputada no Hampden Park, em Glasgow, contra o Bayer Leverkusen. O Real Madrid venceu por 2 a 1. Raúl abriu o placar, Lúcio empatou para o clube alemão, e Zidane decidiu ainda no primeiro tempo com um voleio de esquerda histórico, após cruzamento de Roberto Carlos.</p>
+
+            <p>O gol virou uma das imagens mais famosas da <a href="https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html">Champions League</a>. Mais do que um lance bonito, foi um gol de título, em uma final continental, por um clube que trata a competição como parte central de sua identidade.</p>
+
+            <p> O camisa 5 virou símbolo de elegância, controle e decisão. Sua passagem pelo clube teve títulos nacionais, conquistas internacionais e um dos gols mais importantes da história madridista.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Copa de 2006, final contra a Itália e a expulsão</strong></p>
+
+            <p>A Copa do Mundo de 2006 foi o último torneio da carreira de Zidane como jogador. Depois de ter se aposentado da seleção e retornado para ajudar a França nas Eliminatórias, ele liderou uma equipe experiente, com nomes como Thierry Henry, Patrick Vieira, Lilian Thuram, Claude Makélélé e Fabien Barthez.</p>
+
+            <p>A França cresceu durante o mata-mata. Nas oitavas de final, eliminou a Espanha com vitória por 3 a 1. Nas quartas, venceu o Brasil por 1 a 0, com gol de Thierry Henry após cobrança de falta dele. Na semifinal, passou por Portugal por 1 a 0, com gol de pênalti do próprio Zidane.</p>
+
+            <p>A final contra a Itália foi disputada no Estádio Olímpico de Berlim. Zidane abriu o placar aos 7 minutos, cobrando pênalti com uma cavadinha que bateu no travessão e entrou. Marco Materazzi empatou aos 19 minutos, de cabeça, e o jogo seguiu para a prorrogação.</p>
+
+            <p>Aos 110 minutos, aconteceu a cena mais famosa e controversa da carreira do francês e dos mundiais. Depois de uma troca de palavras com Materazzi, Zidane acertou uma cabeçada no peito do zagueiro italiano e foi expulso. A França perdeu a final nos pênaltis por 5 a 3, depois do empate por 1 a 1 no tempo normal e na prorrogação.</p>
+
+            <p>A cabeçada marcou a despedida de Zidane dos gramados. Foi uma saída dramática, em contraste com o tamanho de sua carreira. Ainda assim, o episódio não apagou seu legado. Pelo contrário: reforçou a complexidade de um jogador genial, competitivo e emocional, capaz de produzir beleza e tensão no mesmo palco.</p>
+
+            <p><strong>Carreira como técnico do Real Madrid</strong></p>
+
+            <p>Depois da aposentadoria, Zidane seguiu ligado ao time merengue. Trabalhou como dirigente, auxiliar e treinador do Castilla, equipe B do clube. Em janeiro de 2016, assumiu o time principal no lugar de Rafa Benítez.</p>
+
+            <p>A resposta foi imediata. Poucos meses depois, levou o Real Madrid ao título da Champions League de 2015/16, vencendo o Atlético de Madrid na final, em Milão. </p>
+
+            <p>Na temporada seguinte, Zidane comandou um time ainda mais forte. Em 2016/17, o Real Madrid conquistou LaLiga e Champions League. Na final europeia, em Cardiff, venceu a Juventus por 4 a 1, com atuação dominante no segundo tempo. Foi a primeira vez que um clube conseguiu defender o título da Champions League desde a criação do formato moderno da competição.</p>
+
+            <p>O auge veio em 2017/18, com a terceira conquista seguida. Na final, disputada em Kiev, o Real Madrid venceu o Liverpool por 3 a 1. Com isso, Zidane se tornou o primeiro técnico a conquistar três edições consecutivas da Champions League no formato moderno do torneio.</p>
+
+            <p>Essa sequência o colocou em um grupo extremamente raro. Além de ter sido campeão como jogador, ele também conquistou a competição como técnico. Na era moderna da competição, Frank Rijkaard é outro exemplo marcante desse feito: campeão como jogador pelo Ajax em 1994/95 e como treinador do Barcelona em 2005/06.</p>
+
+            <p>O número é expressivo porque ele não construiu uma carreira longa como técnico até aqui. Mesmo assim, em poucos anos, alcançou uma marca que muitos treinadores históricos não conseguiram: três Champions League, todas pelo mesmo clube e em sequência.</p>
+
+            <p>Seu mérito não esteve apenas na gestão de estrelas. Zidane soube equilibrar Cristiano Ronaldo, Benzema, Modrić, Kroos, Casemiro, Sergio Ramos, Marcelo e outros nomes decisivos de um elenco vencedor. O Real Madrid de sua primeira passagem talvez não tenha sido lembrado como o time mais revolucionário em estilo, mas foi uma equipe madura, competitiva e extremamente forte em jogos grandes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O legado de Zidane no futebol</strong></p>
+
+            <p>O caminho é raro porque atravessa duas carreiras. Como jogador, foi campeão de praticamente tudo que disputou e sendo protagonista de finais históricas. Pela Seleção, disputou 108 jogos e marcou 31 gols, números que reforçam sua longevidade e importância para a seleção.</p>
+
+            <p>Como meia, representou uma ideia clássica de camisa 10: técnica refinada, controle de ritmo, visão de jogo e capacidade de decidir sem precisar acelerar todas as jogadas. Não foi apenas plástico, era eficiente.</p>
+
+            <p>Como técnico, ampliou a própria lenda. Voltou ao Real Madrid, clube onde já era ídolo como jogador, e comandou uma das maiores sequências da história da Champions League. Transformou prestígio em resultado, algo que nem todo craque consegue fazer depois de deixar os gramados.</p>
+
+            <p>Por isso, Zinedine Zidane permanece como um dos personagens mais fascinantes da história do esporte: um craque que transformou talento em títulos, viveu glórias e quedas no maior palco do mundo e ainda escreveu um segundo capítulo vitorioso fora das quatro linhas.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
