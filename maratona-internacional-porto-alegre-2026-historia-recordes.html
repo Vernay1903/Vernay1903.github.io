@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maratona de Porto Alegre reúne 30 mil atletas em fim de semana histórico | Corte dos Esportes</title>
+  <meta name="description" content="Maratona Internacional da Capital Gaúcha chega à 41ª edição com provas de 5 km, 10 km, meia maratona e 42 km, percurso rápido pela Orla do Guaíba, Centro Histórico e tradição de recordes no calendário brasileiro." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Maratona de Porto Alegre reúne 30 mil atletas em fim de semana histórico</h1>
+          <p class="subhead" id="articleExcerpt">Maratona Internacional da Capital Gaúcha chega à 41ª edição com provas de 5 km, 10 km, meia maratona e 42 km, percurso rápido pela Orla do Guaíba, Centro Histórico e tradição de recordes no calendário brasileiro.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">28/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="atletismo.html">Atletismo</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Mais do que uma corrida de rua, o evento se consolidou como um dos principais símbolos esportivos de Porto Alegre. A prova combina tradição, percurso plano, clima favorável, paisagens urbanas e pontos históricos da cidade, o que ajuda a explicar por que tantos corredores escolhem a maratona gaúcha para buscar recorde pessoal, índice competitivo ou simplesmente completar uma distância marcante.</p>
+
+            <p>A arena principal fica no BarraShoppingSul, na zona sul da cidade, região que também serve como referência para a largada e para a estrutura do evento. A entrega de kits e a Feira da Maratona acontecem no Centro de Eventos do shopping, entre quarta-feira e sábado, preparando a cidade para dois dias de corrida, turismo, trânsito alterado e grande presença de público.</p>
+
+            <p><strong>Como funcionam as corridas no fim de semana</strong></p>
+
+            <p>A programação será dividida em dois dias. No sábado, 30 de maio, entram em cena as distâncias mais curtas e intermediárias. No domingo, 31 de maio, será disputada a prova principal de 42,195 km.</p>
+
+            <p>A organização distribui o evento assim:</p>
+
+            <ul>
+              <p><strong>Sábado, 30 de maio</strong></p>
+              <li>5 km</li>
+              <li>10 km</li>
+              <li>Meia maratona, com 21,097 km</li>
+              <li>Largadas a partir das 7h</li>
+              <li>Arena no BarraShoppingSul</li>
+              <p><strong>Domingo, 31 de maio</strong></p>
+              <li>Maratona, com 42,195 km</li>
+              <li>Largada a partir das 7h</li>
+              <li>Arena no BarraShoppingSul</li>
+            </ul>
+
+            <p>A divisão ajuda a organizar o fluxo de atletas e público. Também dá protagonismo para diferentes perfis de corredores. No sábado, participam iniciantes, atletas de 5 km e 10 km, corredores em busca de tempo forte na meia e pessoas que usam as distâncias menores como porta de entrada para a corrida de rua. No domingo, o foco fica no desafio clássico da maratona.</p>
+
+            <p><strong>Retirada de kits e Feira da Maratona</strong></p>
+
+            <p>Acontece no Centro de Eventos do BarraShoppingSul. O local também recebe a Feira da Maratona, que costuma concentrar expositores, ativações de marcas, retirada de materiais, orientações aos atletas e movimentação intensa nos dias anteriores à prova.</p>
+
+            <p>A programação da entrega de kits é:</p>
+
+            <ul>
+              <li>27, 28 e 29 de maio: das 11h às 20h</li>
+              <li>30 de maio: das 11h às 19h</li>
+              <li>Local: Centro de Eventos do BarraShoppingSul</li>
+            </ul>
+
+            <p>Esse ponto é importante porque o fim de semana da maratona começa antes da largada. Para muitos atletas, a retirada do kit já faz parte da experiência: conferir número de peito, camisa, estrutura, arena, produtos de corrida e clima de prova. Em eventos desse tamanho, a logística pré-prova também é parte central da organização.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Onde assistir à Maratona de Porto Alegre</strong></p>
+
+            <p>A transmissão ao vivo da Maratona Internacional de Porto Alegre 2026 aparece vinculada ao canal da Olympikus no YouTube, caminho mais direto para acompanhar a prova principal pela internet. A marca é naming rights da edição e tem usado seus canais oficiais para cobertura da maratona.</p>
+
+            <p>Como a prova se espalha por ruas, avenidas, Orla e Centro Histórico, a transmissão ajuda a acompanhar a elite e os principais momentos, mas a experiência presencial também tem força. Em diferentes trechos do percurso, a torcida costuma virar parte do cenário da maratona.</p>
+
+            <p><strong>Por que Porto Alegre é uma prova tão rápida</strong></p>
+
+            <p>Ela é conhecida como uma das provas mais rápidas do Brasil. O motivo está em uma combinação difícil de reunir: percurso plano, temperatura normalmente mais amena no fim de maio, avenidas largas, boa estrutura de hidratação e um traçado que favorece ritmo constante.</p>
+
+            <p>Para quem busca recorde pessoal, esse conjunto é decisivo. A maratona não permite muitos erros: qualquer subida forte, vento excessivo, calor intenso ou trecho travado pode custar minutos preciosos. Em Porto Alegre, a prova oferece condições que ajudam o corredor a manter regularidade.</p>
+
+            <p>A organização reforça justamente essa identidade: uma corrida feita para quem quer performar, mas também para quem quer viver a cidade em movimento.</p>
+
+            <p><strong>A cidade dentro da corrida</strong></p>
+
+            <p>A corrida tem uma característica especial: ela usa a própria cidade como narrativa. A Orla do Guaíba, o Centro Histórico, parques e avenidas tradicionais fazem parte da experiência do corredor.</p>
+
+            <p>O Guaíba acompanha trechos importantes da prova e ajuda a criar uma paisagem reconhecível, especialmente para atletas de fora do Rio Grande do Sul. A Orla, remodelada nos últimos anos, virou um dos principais espaços de convivência da cidade e também um cartão-postal esportivo.</p>
+
+            <p>O Mercado Público é outro símbolo importante. Mais do que um ponto turístico, ele representa a vida cotidiana e histórica de Porto Alegre. A presença de trechos próximos ao Centro Histórico reforça a ligação entre a maratona e a identidade da capital gaúcha.</p>
+
+            <p>Essa mistura é uma das razões pelas quais a prova não se resume ao cronômetro. Para muitos corredores, a maratona também é uma forma de conhecer Porto Alegre por dentro, passando por lugares que carregam memória, cultura e pertencimento.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>História da Maratona de Porto Alegre</strong></p>
+
+            <p>Nasceu em 1983 e se tornou uma das provas mais tradicionais do Brasil. Organizada pelo Clube dos Corredores de Porto Alegre, o CORPA, atravessou décadas de crescimento, mudanças de percurso, aumento de estrutura e ampliação de público.</p>
+
+            <p>Ao longo do tempo, a prova ganhou reputação entre corredores amadores e atletas de elite. Para quem corre 42 km, Porto Alegre virou sinônimo de tentativa de melhor marca pessoal. Para a cidade, virou um evento de grande impacto esportivo, turístico e econômico.</p>
+
+            <p>A longevidade também pesa. Em um calendário nacional que mudou muito nas últimas décadas, manter uma maratona por mais de 40 edições é sinal de força institucional, adesão do público e tradição consolidada. A prova cresceu sem perder sua identidade: continua ligada à cidade, ao corredor comum e ao sonho de cruzar a linha de chegada.</p>
+
+            <p><strong>Recordes da prova</strong></p>
+
+            <p>Os tempos ajudam a explicar seu prestígio técnico. No masculino, a melhor marca histórica é de 2h12min59s, obtida por Luiz Carlos da Silva, em 1994. É um recorde longevo e muito respeitado, ainda mais por seguir como referência depois de três décadas.</p>
+
+            <p>No feminino, o recorde é de 2h32min41s, estabelecido pela queniana Ednah Mukhwana, em 2013. A marca mostra que a prova também atraiu atletas internacionais fortes e capazes de colocar a disputa em alto nível.</p>
+
+            <p>Esses números sustentam a fama de Porto Alegre como uma maratona veloz. A cada edição, a combinação de percurso e premiação mantém viva a possibilidade de novas marcas. Em 2026, a organização também reforça esse objetivo ao colocar a busca por melhores tempos como parte central do posicionamento da prova.</p>
+
+            <p>A busca por marcas fortes em Porto Alegre também se conecta a uma tradição maior das corridas de rua. No Brasil, essa cultura tem um de seus símbolos na <a href="sao-silvestre-historia-tradicao-maiores-campeoes.html">história da São Silvestre</a>, enquanto o cenário internacional segue empurrando os limites da modalidade, como mostrou a <a href="maratona-de-londres-faz-historia-com-recorde-abaixo-de-2h.html">Maratona de Londres ao fazer história com recorde abaixo de 2h</a>. Nesse contexto, a prova de Porto Alegre aparece como uma das principais rotas brasileiras para quem busca desempenho, regularidade e tempo forte nos 42,195 km.</p>
+
+            <p><strong>Maiores campeões e brasileiros vencedores</strong></p>
+
+            <p>A competição já teve muitos brasileiros campeões. Isso é importante porque a prova não foi apenas palco para estrangeiros dominarem a elite. Atletas nacionais construíram capítulos fortes dentro da história.</p>
+
+            <p>Entre os grandes nomes, Geni Mascarello ocupa lugar especial. A corredora gaúcha é a maior vencedora da história da prova, com sete títulos: 1984, 1985, 1986, 1988, 1989, 1992 e 1993. Sua trajetória marcou os primeiros anos da maratona e transformou seu nome em referência permanente da competição.</p>
+
+            <p>Outra brasileira importante é Márcia Narloch, tricampeã em 1998, 1999 e 2000. Em 2000, ela venceu com 2h34min18s, uma das marcas femininas mais fortes já feitas por uma atleta brasileira em solo nacional.</p>
+
+            <p>Mais recentemente, a presença brasileira voltou a aparecer no topo com força. Em 2025, Wendell Jerônimo de Souza, do Mato Grosso, venceu a prova masculina em 2h15min47s, superando adversários africanos em uma chegada emocionante. No feminino, a queniana Vivian Kiplagati venceu novamente, reforçando o caráter internacional da disputa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A importância econômica e turística da maratona</strong></p>
+
+            <p>Com cerca de 30 mil atletas esperados em 2026, também movimenta a cidade fora do percurso. Hotéis, restaurantes, transporte, comércio, turismo e serviços sentem o impacto de um evento que atrai corredores, familiares, equipes, assessorias e visitantes.</p>
+
+            <p>Esse efeito é comum nas grandes maratonas do mundo. O atleta viaja para correr, mas também consome cidade. Ele se hospeda, visita pontos turísticos, circula por restaurantes, compra produtos e muitas vezes leva acompanhantes. A corrida vira uma porta de entrada para Porto Alegre.</p>
+
+            <p>A Orla, o Centro Histórico, o Mercado Público, os parques e a cultura local ajudam a completar essa experiência. Para uma cidade que busca se reposicionar em eventos, turismo e ocupação urbana, a maratona funciona como vitrine.</p>
+
+            <p><strong>Uma prova para elite e amadores</strong></p>
+
+            <p>A força da Maratona de Porto Alegre está justamente em atender públicos diferentes. Para a elite, é chance de correr forte, buscar pódio, premiação e marcas expressivas. Para o amador experiente, é oportunidade de tentar recorde pessoal em um percurso favorável. Para o iniciante, os 5 km e 10 km permitem entrar no evento sem enfrentar logo os 42 km.</p>
+
+            <p>A meia maratona também tem papel central. Os 21 km atraem corredores que já passaram da fase inicial e buscam uma prova exigente, mas menos extrema do que a maratona completa. Em um fim de semana com quatro distâncias, o evento vira uma celebração ampla da corrida de rua.</p>
+
+            <p>Essa diversidade aumenta o alcance da prova. Nem todo mundo quer pódio. Nem todo mundo quer índice. Mas quase todo corredor quer cruzar uma linha de chegada que tenha significado.</p>
+
+            <p><strong>A Capital Gaúcha corre junto</strong></p>
+
+            <p>A 41ª Maratona Internacional de Porto Alegre chega com cara de grande evento urbano. A cidade se prepara para receber atletas, reorganizar trânsito, ocupar ruas e transformar o fim de semana em uma celebração esportiva.</p>
+
+            <p>A prova tem história, recordes, campeões brasileiros, presença internacional e um percurso que valoriza a capital gaúcha. Passa pela Orla, dialoga com o Centro Histórico, movimenta o BarraShoppingSul e reafirma Porto Alegre como uma das cidades mais importantes da corrida de rua no Brasil.</p>
+
+            <p>Para quem corre, é chance de buscar tempo, superação ou estreia. Para quem assiste, é oportunidade de ver a cidade tomada por esporte. E para Porto Alegre, é mais uma edição de uma tradição que já passou dos 40 anos e continua crescendo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "atletismo";
+  const CATEGORY_NAME = "Atletismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
