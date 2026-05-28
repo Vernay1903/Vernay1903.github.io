@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mineirão: história e tradição de um estádio lendário | Corte dos Esportes</title>
+  <meta name="description" content="Ele virou o grande palco do futebol mineiro, dividiu capítulos históricos entre Cruzeiro e Atlético, recebeu finais continentais, taças nacionais, jogos da Seleção Brasileira e o traumático 7 a 1 contra a Alemanha na Copa do Mundo de 2014." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Mineirão: história e tradição de um estádio lendário</h1>
+          <p class="subhead" id="articleExcerpt">Ele virou o grande palco do futebol mineiro, dividiu capítulos históricos entre Cruzeiro e Atlético, recebeu finais continentais, taças nacionais, jogos da Seleção Brasileira e o traumático 7 a 1 contra a Alemanha na Copa do Mundo de 2014.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">28/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Mineirão é mais do que um estádio de Belo Horizonte. Inaugurado em 5 de setembro de 1965, o Estádio Governador Magalhães Pinto se tornou o grande palco do futebol de Minas Gerais, transformou a força de Cruzeiro e Atlético em espetáculo de massa e entrou para a história do esporte brasileiro por jogos, títulos, recordes de público e episódios traumáticos.</p>
+
+            <p>Durante décadas, o estádio foi uma casa dividida. O Cruzeiro construiu ali boa parte de sua identidade moderna, com títulos nacionais e internacionais. O Atlético também viveu noites decisivas no Gigante da Pampulha. Essa convivência entre rivais fez do Mineirão um caso especial no futebol brasileiro, em uma semelhança que lembra outros palcos compartilhados, como o <a href="https://cortedosesportes.com.br/san-siro-historia-estadio-milan-inter.html">San Siro, estádio marcado pela divisão histórica entre Milan e Inter de Milão</a>.</p>
+
+            <p>A partir de 2023, com a inauguração oficial da Arena MRV, o Atlético passou a ter sua própria casa. Ainda assim, o Mineirão não perdeu sua importância. Pelo contrário: passou a carregar com ainda mais força o peso de quase seis décadas em que o futebol mineiro se acostumou a decidir sua história no mesmo gramado.</p>
+
+            <p><strong>A inauguração do Mineirão em 1965</strong></p>
+
+            <p>Ele começou a ser construído em 1960, em um terreno cedido pela Universidade Federal de Minas Gerais, na região da Pampulha. A ideia era dar a Belo Horizonte um estádio compatível com o crescimento do futebol mineiro e com a necessidade de receber grandes públicos.</p>
+
+            <p>A inauguração aconteceu em 5 de setembro de 1965, com vitória da Seleção Mineira sobre o River Plate, da Argentina, por 1 a 0. O primeiro gol da história do estádio foi marcado por Buglê, jogador do Atlético. Dois dias depois, a Seleção Brasileira participou das festividades de inauguração, em partida contra o Uruguai.</p>
+
+            <p>Quando abriu as portas, o Mineirão tinha capacidade para cerca de 130 mil torcedores, número gigantesco para a época. A chegada do estádio mudou o patamar do futebol local. Cruzeiro, Atlético e América passaram a ter um palco capaz de rivalizar em estrutura e público com os grandes centros de Rio de Janeiro e São Paulo.</p>
+
+            <p>Em 1966, o estádio deixou oficialmente de ser apenas “Estádio Minas Gerais” e passou a se chamar Estádio Governador Magalhães Pinto. O apelido Mineirão, no entanto, já havia vencido. Foi esse nome popular que atravessou gerações e virou sinônimo de futebol em Belo Horizonte.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A divisão entre os dois clubes</strong></p>
+
+            <p>Poucos estádios brasileiros foram tão marcados por uma rivalidade quanto o Mineirão. Desde o primeiro clássico entre Atlético e Cruzeiro no estádio, em 24 de outubro de 1965, o Gigante da Pampulha virou o principal cenário do confronto.</p>
+
+            <p>Naquele primeiro clássico, o Cruzeiro venceu por 1 a 0, com gol de Tostão. A partida terminou em confusão generalizada e já indicava o tamanho emocional que o duelo teria naquele palco. Com o passar dos anos, o estádio virou território de disputas por estaduais, Brasileiros, Copas do Brasil, Libertadores e jogos de enorme importância.</p>
+
+            <p>O recorte histórico do próprio estádio mostra a força dessa divisão. Entre 1965 e 2025, foram mais de 250 clássicos entre Cruzeiro e Atlético no Mineirão. Até esse período, a vantagem geral no palco era cruzeirense, com mais vitórias e gols no confronto, mas o Atlético também construiu capítulos decisivos, especialmente em finais recentes e conquistas continentais.</p>
+
+            <p>O Mineirão foi, por muito tempo, um estádio de duas memórias. Para o cruzeirense, é o palco de Tostão, Dirceu Lopes, Piazza, Ronaldo, Alex, Fábio, Libertadores, Copas do Brasil e campanhas históricas. Para o atleticano, é o estádio de Reinaldo, Éder, Cerezo, Marques, Ronaldinho, Victor, Hulk, Libertadores, Recopa e da taça brasileira erguida depois de 50 anos de espera.</p>
+
+            <p>Essa convivência faz do estádio um palco raro dentro do futebol brasileiro, assim como no <a href="https://cortedosesportes.com.br/maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>. No Rio de Janeiro, o Maracanã virou palco dos 4 grandes clubes carioca e da Seleção. Em Minas, o Mineirão se transformou principalmente no centro emocional da rivalidade entre Cruzeiro e Atlético, mesmo também tendo recebido América, Seleção Brasileira.</p>
+
+            <p><strong>A mudança com a Arena MRV</strong></p>
+
+            <p>A divisão histórica começou a mudar em 2023. Em 27 de agosto daquele ano, o Atlético inaugurou oficialmente a Arena MRV em jogos oficiais. A partir dali, o clube passou a ter um estádio próprio, algo que alterou a geografia emocional do futebol mineiro.</p>
+
+            <p>Antes disso, mesmo quando mandava partidas no Independência ou em outros estádios, o Atlético tinha no Mineirão seu grande palco de massa. Foi lá que viveu decisões continentais, finais estaduais e jogos de enorme apelo popular. Com a Arena MRV, o Galo ganhou uma casa exclusiva, enquanto o Cruzeiro passou a ficar ainda mais associado ao Mineirão como principal palco de seus grandes jogos.</p>
+
+            <p>Isso não apaga a história atleticana no Gigante. Pelo contrário: torna o período anterior ainda mais simbólico. A Libertadores de 2013, a Recopa de 2014, a Copa do Brasil de 2014 contra o próprio Cruzeiro e a comemoração do Brasileiro de 2021 seguem como marcas alvinegras profundas no estádio.</p>
+
+            <p><strong>Reformas e transformação do estádio</strong></p>
+
+            <p>Ele passou por várias mudanças ao longo da história. Em 1996, ficou fechado por meses para troca de gramado. Depois recebeu melhorias em drenagem, irrigação, iluminação, vestiários, placar eletrônico e estrutura de arquibancadas.</p>
+
+            <p>Nos anos 2000, o estádio começou a se adaptar a novas exigências de segurança, conforto e operação. Cadeiras numeradas foram instaladas em setores antes ocupados por arquibancadas tradicionais, reduzindo a capacidade, mas aproximando o Mineirão do padrão exigido para jogos internacionais.</p>
+
+            <p>A transformação mais profunda veio para a Copa do Mundo de 2014. O estádio fechou em junho de 2010, após Atlético x Ceará pelo Campeonato Brasileiro, e foi entregue reformado em 21 de dezembro de 2012. A modernização rebaixou o gramado, remodelou áreas internas, criou nova esplanada, reorganizou acessos e reduziu a capacidade para cerca de 62 mil pessoas.</p>
+
+            <p>Hoje, o Mineirão tem campo em padrão internacional, com 105m x 68m, arquibancadas em dois níveis, setores divididos por cores, camarotes, esplanada de grande circulação e estrutura preparada para futebol, shows e eventos. O estádio deixou de ser o caldeirão bruto de mais de 100 mil pessoas, mas ganhou operação moderna e se consolidou como arena multiuso.</p>
+
+            <p><strong>Recordes de público</strong></p>
+
+            <p>O maior público presente registrado na história do estádio aconteceu em 22 de junho de 1997, quando 132.834 torcedores acompanharam Cruzeiro x Villa Nova, partida em que o Cruzeiro venceu e conquistou o bicampeonato mineiro. É um número de outra era do futebol brasileiro, antes da transformação dos estádios em arenas com cadeiras, setores controlados e limites rígidos de segurança.</p>
+
+            <p>Nos clássicos entre Cruzeiro e Atlético, o maior público histórico foi de 123.351 torcedores, em 4 de maio de 1969, em vitória cruzeirense por 1 a 0 pelo Campeonato Mineiro. Já no Mineirão reformado, os recordes passaram a ficar acima de 60 mil pessoas, com marcas recentes superiores a 61 mil torcedores em clássicos e decisões.</p>
+
+            <p>Esses números ajudam a explicar por que ele virou um estádio de memória coletiva. Não foi apenas o lugar onde Cruzeiro e Atlético jogaram. Foi o lugar onde gerações de torcedores viram o futebol mineiro em escala monumental.</p>
+
+            <p><strong>Quantos jogos o Mineirão já recebeu?</strong></p>
+
+            <p>A conta já passou da marca de 3.900 partidas realizadas. Em levantamento divulgado em 2025, o estádio somava aproximadamente 3.939 jogos, sendo 3.386 antes da reforma para a Copa do Mundo de 2014 e mais de 550 na fase moderna.</p>
+
+            <p>O número de público acumulado também impressiona: mais de 70 milhões de pessoas já passaram pelo estádio em jogos e eventos ao longo da história. Poucos palcos brasileiros concentram uma combinação tão forte de futebol, shows, decisões estaduais, finais nacionais, Libertadores, jogos da Seleção e eventos internacionais.</p>
+
+            <p>A conta de gols também é gigantesca. Quando o Mineirão chegou a 500 jogos pós-reforma, o total histórico já superava 10,5 mil gols. É um volume que transforma o estádio em arquivo vivo do futebol mineiro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Títulos levantados no Mineirão</strong></p>
+
+            <p>Foi palco de dezenas de taças ao longo da história. Só em Campeonato Mineiro, o estádio já recebeu mais de 50 comemorações de título estadual, considerando finais, jogos decisivos e partidas que encerraram campanhas campeãs.</p>
+
+            <p>Entre os principais títulos levantados no estádio, alguns se destacam pelo peso histórico:</p>
+
+            <p><strong>Cruzeiro</strong></p>
+            
+            <p>• Taça Brasil de 1966: vitória histórica sobre o Santos de Pelé, com goleada por 6 a 2 no jogo de ida da decisão.</p>
+            
+            <p>• Supercopa Libertadores de 1991</p>
+            
+            <p>• Copa do Brasil de 1993: conquista que marcou o início da relação do clube com o torneio.</p>
+            
+            <p>• Libertadores de 1997: vitória sobre o Sporting Cristal na final e segundo título continental do clube.</p>
+            
+            <p>• Copa do Brasil de 2000: taça conquistada em decisão marcante contra o São Paulo.</p>
+            
+            <p>• Copa do Brasil de 2003: parte da temporada da Tríplice Coroa, uma das maiores da história do clube.</p>
+            
+            <p>• Campeonato Brasileiro de 2003: campanha dominante, com título nacional confirmado em ano histórico.</p>
+            
+            <p>• Campeonato Brasileiro de 2014</p>
+            
+            <p>• Copa do Brasil de 2017: título decidido contra o Flamengo.</p>
+
+            <p><strong>Atlético </strong></p>
+            
+            <p>• Copa Conmebol de 1997: conquista internacional que marcou a geração de Marques e companhia.</p>
+            
+            <p>• Libertadores de 2013: título mais importante da história atleticana, decidido nos pênaltis contra o Olimpia.</p>
+            
+            <p>• Recopa Sul-Americana de 2014: virada dramática contra o Lanús, em uma das noites mais intensas do estádio.</p>
+            
+            <p>• Copa do Brasil de 2014: título conquistado sobre o Cruzeiro, em final histórica entre os maiores rivais de Minas.</p>
+            
+            <p>• Campeonato Brasileiro de 2021: taça erguida no Mineirão após o Atlético encerrar um jejum de 50 anos sem o título nacional.</p>
+
+            <p>O estádio também recebeu conquistas estaduais de América e Ipatinga.</p>
+
+            <p>Essa quantidade de taças reforça o papel de como principal palco do futebol mineiro e um dos gramados mais importantes da história do futebol brasileiro.</p>
+
+            <p><strong>Jogos históricos de clubes no Mineirão</strong></p>
+
+            <p>Em 7 de março de 1976, Cruzeiro e Internacional fizeram um dos jogos mais lembrados da Libertadores no estádio. A vitória cruzeirense por 5 a 4 virou símbolo de uma época ofensiva e dramática do futebol sul-americano.</p>
+
+            <p>No mesmo ano, em 21 de dezembro de 1976, recebeu Cruzeiro x Bayern de Munique pela decisão do Mundial Interclubes. O empate por 0 a 0 confirmou o título do clube alemão, que havia vencido a primeira partida, mas colocou o estádio em uma final de dimensão mundial.</p>
+
+            <p>Em 1978, o Atlético perdeu para o São Paulo nos pênaltis a decisão do Campeonato Brasileiro, mesmo terminando a campanha invicto. A partida virou uma das feridas históricas do clube alvinegro e mostra como o Mineirão também guardou frustrações profundas.</p>
+
+            <p>Em 2009, o Cruzeiro perdeu a decisão da Libertadores para o Estudiantes. </p>
+
+            <p><strong>A marca da Copa do Mundo de 2014</strong></p>
+
+            <p>Nenhum jogo internacional marcou tanto o Mineirão quanto Brasil 1 x 7 Alemanha, em 8 de julho de 2014, pela semifinal da Copa do Mundo. A partida entrou para a história como a maior derrota da Seleção Brasileira em Mundiais e ficou conhecida como Mineiraço.</p>
+
+            <p>O trauma foi ampliado pelo contexto. O Brasil era sede da Copa, jogava em casa e buscava voltar a uma final mundial depois de 12 anos. Em poucos minutos, a Alemanha desmontou a Seleção com uma sequência de gols que chocou o estádio e o planeta. O placar de 7 a 1 virou um símbolo de colapso esportivo, emocional e estrutural.</p>
+
+            <p>Mas a Copa de 2014 no Mineirão não se resume ao 7 a 1. O estádio recebeu seis partidas no torneio: Colômbia 3 x 0 Grécia, Bélgica 2 x 1 Argélia, Argentina 1 x 0 Irã, Costa Rica 0 x 0 Inglaterra, Brasil 1 x 1 Chile com classificação brasileira nos pênaltis.</p>
+
+            <p>O jogo contra o Chile, pelas oitavas de final, também foi dramático. O Brasil avançou nos pênaltis após empate por 1 a 1, em uma partida marcada por tensão, bola chilena no travessão no fim da prorrogação e defesa decisiva de Júlio César. Dez dias depois, o mesmo estádio viveria a noite mais dolorosa da história da Seleção.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Seleção Brasileira, Copa América e outros grandes jogos</strong></p>
+
+            <p>Também recebeu jogos importantes da Seleção Brasileira fora da Copa do Mundo. Em 1969, o Atlético, representando a Federação Mineira, venceu a Seleção Brasileira por 2 a 1, em um episódio curioso e simbólico para o futebol local.</p>
+
+            <p>Em 2016, o Brasil venceu a Argentina por 3 a 0 no Mineirão, pelas Eliminatórias da Copa do Mundo de 2018, em uma das grandes atuações da Seleção na era recente. Em 2019, novamente contra a Argentina, o estádio recebeu a semifinal da Copa América. O Brasil venceu por 2 a 0 e avançou para a decisão do torneio.</p>
+
+            <p>O estádio também foi usado nos Jogos Olímpicos de 2016, recebeu partidas internacionais, amistosos, competições femininas e eventos de grande porte. Fora do futebol, tornou-se palco de shows históricos de artistas como Paul McCartney, Pearl Jam, Elton John.</p>
+
+            <p>Essa capacidade de reunir esporte, cultura e memória urbana ajuda a explicar por que o Mineirão é mais do que um estádio de clube. Ele é um equipamento simbólico de Belo Horizonte.</p>
+
+            <p><strong>O legado do Mineirão</strong></p>
+
+            <p>É um dos grandes estádios da história do futebol brasileiro porque conseguiu reunir rivalidade, títulos e memória. Foi construído para elevar Minas Gerais no mapa esportivo nacional e cumpriu esse papel desde os primeiros anos.</p>
+
+            <p>Para o Cruzeiro, virou território de conquistas históricas, de Tostão a Alex, de Dirceu Lopes a Fábio, de finais nacionais a Libertadores. Para o Atlético, foi palco de dores antigas e glórias enormes, da geração de Reinaldo à Libertadores de Ronaldinho e Victor, da Recopa à comemoração do Brasileiro de 2021.</p>
+
+            <p>Por isso, o Mineirão permanece como um estádio indispensável para entender o futebol brasileiro. Ele não é apenas o Gigante da Pampulha. É um arquivo de concreto, grama, torcida, taça, trauma e identidade.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
