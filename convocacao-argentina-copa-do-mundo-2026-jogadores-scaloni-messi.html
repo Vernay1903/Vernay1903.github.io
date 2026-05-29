@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Convocados da Argentina: Veja lista completa e destaques | Corte dos Esportes</title>
+  <meta name="description" content="Atual campeã Mundial, divulga lista dos 26 convocados com Messi liderando os nomes escolhidos por Scaloni." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Convocados da Argentina: Veja lista completa e destaques</h1>
+          <p class="subhead" id="articleExcerpt">Atual campeã Mundial, divulga lista dos 26 convocados com Messi liderando os nomes escolhidos por Scaloni.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">29/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Argentina está convocada para defender o título mundial na Copa do Mundo de 2026. Lionel Scaloni fechou a lista de 26 jogadores com a base campeã no Catar, Lionel Messi como grande referência técnica e simbólica, além de nomes que representam a renovação albiceleste para o novo ciclo.</p>
+
+            <p>A convocação mistura experiência, continuidade e ajustes pontuais. Dibu Martínez segue como goleiro titular, Otamendi permanece como liderança defensiva, De Paul, Enzo Fernández e Alexis Mac Allister sustentam o meio-campo, enquanto Messi, Lautaro Martínez e Julián Álvarez mantêm o peso ofensivo de uma seleção que chega novamente entre as favoritas.</p>
+
+            <p>A lista também mostra um movimento importante para o futuro. Valentín Barco, Nicolás Paz, Giuliano Simeone e José López aparecem como nomes capazes de ampliar repertório, dar energia ao elenco e reduzir a dependência da geração campeã de 2022. Ela não chega à Copa apenas tentando repetir o passado; chega tentando estender uma era vencedora.</p>
+
+            <p><strong>Argentina chega como atual campeã mundial</strong></p>
+
+            <p>A convocação tem um peso diferente porque parte de um ponto raro: a seleção entra no Mundial de 2026 como atual campeã. O título conquistado no Catar, em 2022, encerrou uma espera de 36 anos e colocou Messi definitivamente no centro da <a href="https://cortedosesportes.com.br/argentina-copas-do-mundo-titulos-historia-messi-maradona.html">história da Argentina nas Copas do Mundo</a>, ao lado das gerações de 1978 e 1986.</p>
+
+            <p>Scaloni manteve parte importante desse grupo. A base emocional e competitiva continua presente, mas a lista também deixa claro que o treinador precisou fazer escolhas duras. Ángel Di María já havia se despedido da seleção após a Copa América de 2024, enquanto nomes como Marcos Acuña e Paulo Dybala ficaram fora da relação final.</p>
+
+            <p>O grande símbolo da convocação, naturalmente, é Messi. Aos 38 anos, o camisa 10 vai para sua sexta Copa do Mundo, algo que reforça a dimensão histórica de sua carreira. Mesmo em uma seleção mais coletiva e madura, a presença dele muda o peso em qualquer cenário, especialmente por tudo que sua trajetória representa na <a href="https://cortedosesportes.com.br/messi-historia-barcelona-titulos-recordes-copa-2022.html">história que construiu dentro do esporte</a>.</p>
+
+            <p><strong>Como foi a composição da lista</strong></p>
+
+            <p>A Argentina vai ao Mundial com uma distribuição equilibrada entre setores. Scaloni chamou três goleiros, oito defensores, sete meio-campistas e oito atacantes. A lista preserva a espinha dorsal campeã, mas abre espaço para jogadores mais jovens e peças de características diferentes.</p>
+
+            <p>O Atlético de Madrid é o clube com maior presença na convocação. Juan Musso, Nahuel Molina, Thiago Almada, Nicolás González, Giuliano Simeone e Julián Álvarez aparecem na lista, formando um bloco importante da Argentina no futebol espanhol.</p>
+
+            <p>O Olympique de Marselha também aparece como time fornecedor, com Gerónimo Rulli, Leonardo Balerdi e Facundo Medina. Já o Inter Miami aparece com Messi e Rodrigo De Paul, dois nomes centrais para a estrutura emocional e competitiva da equipe.</p>
+
+            <p>A Premier League segue forte no núcleo argentino, com Dibu Martínez no Aston Villa, Lisandro Martínez no Manchester United, Cuti Romero no Tottenham, Enzo Fernández no Chelsea e Alexis Mac Allister no Liverpool. É uma convocação espalhada por ligas de alto nível, mas com um detalhe importante: a Argentina chega com muitos jogadores já acostumados ao ambiente da seleção.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A lista completa para a busca do Tetra Campeonato</strong></p>
+
+            <p><strong>Goleiros</strong></p>
+            <p>• Emiliano Martínez — Aston Villa</p>
+            <p>• Gerónimo Rulli — Olympique de Marselha</p>
+            <p>• Juan Musso — Atlético de Madrid</p>
+
+            <p><strong>Defensores</strong></p>
+            <p>• Gonzalo Montiel — River Plate</p>
+            <p>• Nahuel Molina — Atlético de Madrid</p>
+            <p>• Lisandro Martínez — Manchester United</p>
+            <p>• Leonardo Balerdi — Olympique de Marselha</p>
+            <p>• Nicolás Otamendi — Benfica</p>
+            <p>• Cristian Romero — Tottenham</p>
+            <p>• Facundo Medina — Olympique de Marselha</p>
+            <p>• Nicolás Tagliafico — Lyon</p>
+
+            <p><strong>Meio-campistas</strong></p>
+            <p>• Leandro Paredes — Boca Juniors</p>
+            <p>• Rodrigo De Paul — Inter Miami</p>
+            <p>• Exequiel Palacios — Bayer Leverkusen</p>
+            <p>• Enzo Fernández — Chelsea</p>
+            <p>• Alexis Mac Allister — Liverpool</p>
+            <p>• Valentín Barco — Strasbourg</p>
+            <p>• Giovani Lo Celso — Real Betis</p>
+            <p>• Nicolás Paz — Como</p>
+
+            <p><strong>Atacantes</strong></p>
+            <p>• Lionel Messi — Inter Miami</p>
+            <p>• Thiago Almada — Atlético de Madrid</p>
+            <p>• Nicolás González — Atlético de Madrid</p>
+            <p>• Giuliano Simeone — Atlético de Madrid</p>
+            <p>• Julián Álvarez — Atlético de Madrid</p>
+            <p>• Lautaro Martínez — Inter de Milão</p>
+            <p>• José López — Palmeiras</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Goleiros: Dibu segue como dono da posição</strong></p>
+
+            <p>A convocação não traz mistério no gol. Emiliano Martínez segue como titular absoluto e um dos pilares da era Scaloni. O goleiro do Aston Villa foi decisivo na Copa de 2022, especialmente nos pênaltis e em momentos de pressão, e chega a 2026 como uma das maiores lideranças da seleção.</p>
+
+            <p>Gerónimo Rulli e Juan Musso completam o setor. Rulli oferece experiência internacional e vivência em competições europeias, enquanto Musso aparece como alternativa segura dentro de um elenco que não deve mudar a hierarquia da posição durante o torneio.</p>
+
+            <p><strong>Defesa: experiência, força física e dúvidas na lateral</strong></p>
+
+            <p>A defesa argentina mantém nomes importantes do ciclo campeão. Cuti Romero segue como zagueiro de imposição, agressividade e liderança técnica. Otamendi, mesmo veterano, continua como referência de experiência e comando dentro da área.</p>
+
+            <p>Lisandro Martínez amplia as opções pela esquerda da defesa, enquanto Leonardo Balerdi e Facundo Medina dão alternativas para diferentes formatos. A presença de Medina também ajuda Scaloni a compensar a ausência de Marcos Acuña, já que o jogador pode atuar em funções mais abertas pela esquerda.</p>
+
+            <p>Nas laterais, Nahuel Molina e Gonzalo Montiel oferecem caminhos diferentes pela direita. Molina tende a dar mais profundidade e volume ofensivo, enquanto Montiel carrega experiência de jogos grandes e memória decisiva, inclusive pelo pênalti que confirmou o título mundial de 2022.</p>
+
+            <p>Pela esquerda, Nicolás Tagliafico aparece como o lateral mais natural da lista. Valentín Barco, embora listado no meio-campo, também pode ser peça importante para dar saída, profundidade e qualidade técnica no setor.</p>
+
+            <p><strong>Meio-campo: o coração da Argentina de Scaloni</strong></p>
+
+            <p> Rodrigo De Paul, Enzo Fernández e Alexis Mac Allister formam a base mais forte do setor, com combinação de intensidade, passe, chegada e leitura tática.</p>
+
+            <p>De Paul continua sendo um jogador de equilíbrio emocional e físico. É o meio-campista que pressiona, cobre espaço, protege Messi e dá energia ao time. Enzo Fernández oferece condução, passe vertical e capacidade de organizar a saída. Mac Allister completa o setor com inteligência, chegada na área e boa tomada de decisão.</p>
+
+            <p>Leandro Paredes retorna como opção de controle e passe longo. Exequiel Palacios amplia o repertório com intensidade e chegada de segunda linha. Giovani Lo Celso, que ficou fora da Copa de 2022 por lesão, ganha uma nova chance em Mundial e pode ser peça importante para jogos em que a Argentina precise de mais criatividade por dentro.</p>
+
+            <p>Nicolás Paz é uma das novidades mais interessantes da lista. Jovem, técnico e com boa capacidade de jogar entre linhas, ele representa uma Argentina que já começa a olhar além da geração campeã.</p>
+
+            <p><strong>Ataque: Messi, Lautaro, Julián e novas alternativas</strong></p>
+
+            <p>Messi segue como nome central. Mesmo sem a mesma explosão física dos anos anteriores, continua sendo o jogador mais capaz de mudar uma partida com passe, bola parada, finalização ou leitura de espaço.</p>
+
+            <p>Lautaro Martínez e Julián Álvarez dão a Scaloni duas opções de altíssimo nível para o comando ofensivo. Lautaro é mais referência de área, agressivo na finalização e forte na pressão. Julián entrega mobilidade, intensidade, associação com Messi e capacidade de atuar em diferentes zonas do ataque.</p>
+
+            <p>Thiago Almada aparece como alternativa criativa, com boa condução e capacidade de acelerar por dentro. Nicolás González e Giuliano Simeone dão força pelos lados, recomposição e profundidade. Flaco López, do Palmeiras, surge como novidade de peso para o público brasileiro e oferece uma opção de centroavante diferente dentro do elenco.</p>
+
+            <p>A ausência de Dybala deixa claro que Scaloni preferiu equilíbrio físico, versatilidade e encaixe coletivo. A Argentina não levou apenas nomes conhecidos; levou jogadores que se encaixam no plano do treinador.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Calendário da Argentina na fase de grupos</strong></p>
+
+            <p>A seleção está no <a href="https://cortedosesportes.com.br/grupo-j-copa-do-mundo-2026-argentina-argelia-austria-jordania.html">Grupo J</a>. A estreia será contra a Argélia, em Kansas City. Depois, a seleção encara Áustria e Jordânia em Dallas.</p>
+            <p>É um grupo em que a Argentina entra como favorita, mas com perfis diferentes de adversários. </p>
+
+            <p><strong>O que a convocação mostra sobre a Argentina</strong></p>
+
+            <p>A lista de Scaloni mostra uma seleção que não rompeu com sua era vencedora. Pelo contrário: manteve o núcleo campeão e adicionou peças para sustentar o nível físico e técnico em uma Copa maior, mais longa e mais exigente.</p>
+
+            <p>No cenário das grandes seleções, a convocação argentina também entra em comparação direta com outras favoritas já definidas, como a <a href="https://cortedosesportes.com.br/convocados-ancelotti-brasil-copa-do-mundo-2026-jogadores.html">convocação do Brasil feita por Carlo Ancelotti</a> e a <a href="https://cortedosesportes.com.br/convocados-franca-copa-do-mundo-2026-jogadores.html">lista de convocados da França de Didier Deschamps</a>. São elencos que ajudam a medir o peso da Argentina na briga pelo título.</p>
+
+            <p>O grande desafio será administrar idade, desgaste e expectativa. A Argentina entra em 2026 com o peso de atual campeã, com Messi em provável última Copa e com uma geração tentando provar que o título de 2022 não foi o ponto final, mas parte de um ciclo ainda vivo.</p>
+
+            <p>Essa convocação reforça exatamente isso: chega para defender a coroa, mas também para preparar a transição. Entre campeões do mundo, jovens em ascensão e jogadores de função bem definida, Scaloni montou uma lista com cara de continuidade, ambição e responsabilidade histórica.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
