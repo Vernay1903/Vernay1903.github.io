@@ -1,0 +1,663 @@
+Segue em texto bruto, sem renderização:
+
+```text
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Libertadores 2026: confrontos das oitavas e caminho dos brasileiros | Corte dos Esportes</title>
+  <meta name="description" content="Foi definido os confrontos das oitavas de final, com clássico brasileiro, confronto que já havia ocorrida na fase de grupos, e rivalidade Brasil x Argentina." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Libertadores 2026: confrontos das oitavas e caminho dos brasileiros</h1>
+          <p class="subhead" id="articleExcerpt">Foi definido os confrontos das oitavas de final, com clássico brasileiro, confronto que já havia ocorrida na fase de grupos, e rivalidade Brasil x Argentina.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">29/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O sorteio colocou seis brasileiros no mata-mata, confirmou um duelo nacional entre Flamengo e Cruzeiro, repetiu encontros recentes da fase de grupos e abriu caminhos diferentes para Corinthians, Palmeiras, Fluminense e Mirassol.</p>
+
+            <p>A fase eliminatória começa em agosto e marca a entrada definitiva da competição em seu período mais pesado. A partir de agora, tradição, elenco, mando de campo, viagem, experiência continental e controle emocional passam a pesar tanto quanto a campanha construída na fase de grupos.</p>
+
+            <p>Entre os classificados, há favoritos claros, campeões recentes, estreantes em mata-mata e confrontos com histórico importante na <a href="https://cortedosesportes.com.br/libertadores-historia-maiores-campeoes-rivalidades-cultura-torcida.html">história da Libertadores</a>.</p>
+
+            <p><strong>Confrontos das oitavas da Libertadores 2026</strong></p>
+
+            <p>Os líderes de grupo decidem a vaga em casa, enquanto os segundos colocados fazem a primeira partida como mandantes.</p>
+
+            <p><strong>Oitavas de final:</strong></p>
+
+            <ul>
+              <li>Universidad Católica x Estudiantes<br>Ida: Estudiantes x Universidad Católica<br>Volta: Universidad Católica x Estudiantes</li>
+              
+              <li>LDU x Mirassol<br>Ida: Mirassol x LDU<br>Volta: LDU x Mirassol</li>
+              
+              <li>Independiente Rivadavia x Fluminense<br>Ida: Fluminense x Independiente Rivadavia<br>Volta: Independiente Rivadavia x Fluminense</li>
+              
+              <li>Independiente del Valle x Tolima<br>Ida: Tolima x Independiente del Valle<br>Volta: Independiente del Valle x Tolima</li>
+              
+              <li>Flamengo x Cruzeiro<br>Ida: Cruzeiro x Flamengo<br>Volta: Flamengo x Cruzeiro</li>
+              
+              <li>Coquimbo Unido x Platense<br>Ida: Platense x Coquimbo Unido<br>Volta: Coquimbo Unido x Platense</li>
+              
+              <li>Cerro Porteño x Palmeiras<br>Ida: Palmeiras x Cerro Porteño<br>Volta: Cerro Porteño x Palmeiras</li>
+              
+              <li>Corinthians x Rosario Central<br>Ida: Rosario Central x Corinthians<br>Volta: Corinthians x Rosario Central</li>
+            </ul>
+
+            <p>As datas-base das oitavas vão de 11 a 20 de agosto. A CONMEBOL ainda deve detalhar dias, horários e ordem definitiva das partidas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Brasileiros nas oitavas</strong></p>
+
+            <p>O Brasil colocou seis clubes e manteve sua força recente no torneio. O país vem de uma sequência dominante na Libertadores, com campeões brasileiros em todas as edições desde 2019.</p>
+
+            <p>O Flamengo chega como atual campeão continental e com a melhor campanha geral da fase de grupos. O Palmeiras mantém uma sequência histórica de presença no mata-mata. O Corinthians voltou a uma fase decisiva internacional. O Cruzeiro retorna ao protagonismo continental. O Fluminense tenta sustentar o status recente de campeão da América. O Mirassol, por sua vez, vive uma campanha histórica entre os 16 melhores do continente em sua primeira Libertadores.</p>
+
+            <p><strong>Quantos campeões estão se classificaram</strong></p>
+
+            <p>As oitavas de 2026 terão sete clubes que já foram campeões. Juntos, eles somam 16 títulos continentais.</p>
+
+            <p><strong>Campeões ainda vivos:</strong></p>
+
+            <ul>
+              <li>Flamengo: 4 títulos</li>
+              
+              <li>Estudiantes: 4 títulos</li>
+              
+              <li>Palmeiras: 3 títulos</li>
+              
+              <li>Cruzeiro: 2 títulos</li>
+              
+              <li>Corinthians: 1 título</li>
+              
+              <li>Fluminense: 1 título</li>
+              
+              <li>LDU: 1 título</li>
+            </ul>
+
+            <p>Esse número aumenta o peso da fase. Não é apenas uma oitava com bons times; é uma fase com campeões recentes, campeões históricos e clubes acostumados a jogar sob pressão continental.</p>
+
+            <p>O Flamengo chega defendendo o título conquistado em 2025. O Palmeiras aparece como uma das equipes mais regulares da Libertadores na última década. O Estudiantes carrega tradição pesada na Argentina. Cruzeiro, Corinthians, Fluminense e LDU também entram com a memória de conquistas que ajudam a medir o tamanho de cada confronto.</p>
+
+            <p><strong>Duelo brasileiro e reencontro continental</strong></p>
+
+            <p>Flamengo x Cruzeiro é o confronto de maior apelo nacional das oitavas. Coloca frente a frente o atual campeão da Libertadores e um clube bicampeão do torneio, em um mata-mata que já nasce com clima de decisão antecipada.</p>
+
+            <p>O Flamengo fez a melhor campanha geral, com cinco vitórias e um empate. Isso dá ao Rubro-Negro a vantagem de decidir no Maracanã não apenas nas oitavas, mas em todos os mata-matas até uma eventual semifinal, caso avance. É uma vantagem esportiva importante para um time acostumado a transformar o Maracanã em fator de pressão para o adversário.</p>
+
+            <p>A Raposa tem uma história forte na competição, com títulos em 1976 e 1997, além de finais marcantes. O reencontro com o Flamengo também carrega memória recente: em 2018, os clubes se enfrentaram também nas oitavas da Libertadores, e o Cruzeiro avançou depois de vencer por 2 a 0 no Maracanã e administrar a vantagem no Mineirão.</p>
+
+            <p>O duelo de 2026, portanto, mistura presente e passado. O Flamengo entra como favorito pela campanha, elenco e mando de volta. O Cruzeiro entra com peso histórico, tradição continental e lembrança positiva do último mata-mata de Libertadores contra o rival carioca.</p>
+
+            <p><strong>Palmeiras x Cerro Porteño: rivalidade repetida na Libertadores</strong></p>
+
+            <p>É um dos confrontos mais conhecidos da Libertadores recente. As equipes já se enfrentaram várias vezes na competição, inclusive em mata-mata. Para o torcedor palmeirense, o retrospecto recente é favorável e ajuda a aumentar a confiança.</p>
+
+            <p>O Palmeiras eliminou o Cerro Porteño também nas oitavas de 2018 e também nessa fase em 2022. Além disso, enfrentou o clube paraguaio em fases de grupos de outras edições, tornando esse duelo um dos mais repetidos da competição entre equipes de países diferentes.</p>
+
+            <p>A classificação palmeirense em 2026 também reforça uma marca de regularidade. O clube chega às oitavas pela 10ª edição consecutiva, considerando a sequência iniciada em 2017. É uma das maiores séries recentes da Libertadores e confirma como o Palmeiras se transformou em presença quase fixa nas fases decisivas.</p>
+
+            <p>O ponto de atenção é o mando. Ao contrário de outras campanhas em que avançou como líder, o Palmeiras decidirá fora de casa. A ida será no Brasil, e a volta será no Paraguai. Isso muda o peso do primeiro jogo: o time de Abel Ferreira precisa construir vantagem ou, no mínimo, viajar vivo para Assunção.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Corinthians x Rosario Central: tradição contra Di María</strong></p>
+
+            <p>O confronto reúne uma equipe brasileira campeã da Libertadores em 2012 e um adversário argentino com camisa tradicional, ambiente forte e a presença de Ángel Di María como nome de maior impacto.</p>
+
+            <p>O Corinthians avançou como líder do grupo e por isso decide a vaga em casa. Esse detalhe pode ser decisivo, especialmente em uma competição em que jogos na Argentina costumam ser de alta pressão, estádio quente e margem pequena para erro.</p>
+
+            <p>O Rosario Central chega como um rival perigoso. Não tem o mesmo peso histórico continental de Boca, River, Estudiantes ou Independiente, mas carrega tradição argentina e um fator técnico importante com Di María. Em mata-mata de Libertadores, esse tipo de jogador muda o nível de atenção.</p>
+
+            <p><strong>LDU x Mirassol: campeão continental contra estreante histórico</strong></p>
+
+            <p>É um dos duelos mais interessantes pelo contraste. De um lado, a LDU, campeã da Libertadores em 2008 e acostumada a competições internacionais. Do outro, o Mirassol, estreante na competição e vivendo a maior campanha continental de sua história.</p>
+
+            <p>A LDU decide em Quito, onde altitude, ambiente e tradição costumam pesar. O clube equatoriano já mostrou ao longo dos anos que sabe competir em mata-mata internacional, seja na Libertadores, na Sul-Americana ou na Recopa.</p>
+
+            <p>O Mirassol chega como uma das grandes histórias da edição. Estar nas oitavas já é um feito enorme para um clube que saiu de um contexto de crescimento recente no futebol brasileiro e agora se vê diante de um campeão continental.</p>
+
+            <p>O confronto também é repetição da fase de grupos. Isso reduz um pouco o fator surpresa, porque os times já se conhecem. Ainda assim, mata-mata é outra competição.</p>
+
+            <p><strong>Independiente Rivadavia x Fluminense: reencontro da fase de grupos</strong></p>
+
+            <p>Outro confronto que repete a fase de grupos. O Tricolor abre em casa e decide fora, já que o time argentino avançou como líder.</p>
+
+            <p>O triocolor carioca carrega o peso do título de 2023 e de uma geração que mudou o patamar recente do clube na Libertadores. Mesmo com ajustes de elenco e oscilações naturais de ciclo, o time entra no mata-mata com mais bagagem continental do que o rival.</p>
+
+            <p>O Independiente Rivadavia, por outro lado, fez campanha forte e avançou em primeiro. Isso dá ao clube argentino o direito de decidir a volta em casa, um fator que pode pesar bastante. Em jogos contra argentinos, especialmente fora de casa, o controle emocional costuma ser parte central do confronto.</p>
+
+            <p><strong>Independiente del Valle x Tolima: duelo de projetos competitivos</strong></p>
+
+            <p>Talvez não tenha o mesmo apelo popular, mas é um confronto de alto interesse competitivo.</p>
+
+            <p>O Independiente del Valle é um dos projetos mais consistentes do futebol sul-americano nos últimos anos. O clube equatoriano cresceu com formação de atletas, identidade de jogo, boa leitura de mercado e presença constante em competições continentais. Ainda busca sua primeira Libertadores, mas já se consolidou como adversário difícil para qualquer gigante.</p>
+
+            <p>O Tolima chega como representante colombiano e terá a missão de equilibrar o confronto antes da volta no Equador. A chave exige atenção porque o Independiente del Valle costuma ser forte em casa e sabe acelerar partidas em momentos específicos.</p>
+
+            <p><strong>Coquimbo Unido x Platense: oportunidade histórica</strong></p>
+
+            <p>É o confronto mais aberto das oitavas. São dois clubes sem título de Libertadores e sem o peso continental dos favoritos, mas justamente por isso a chave ganha valor: para ambos, avançar às quartas seria um feito enorme.</p>
+
+            <p>O Coquimbo decide em casa. O clube chileno fez uma campanha de afirmação e agora tem a chance de transformar uma boa fase inicial em campanha histórica.</p>
+
+            <p>O Platense chega como representante argentino, em uma chave sem favorito absoluto, o detalhe pode pesar: bola parada, desgaste, viagem e eficiência nas poucas chances.</p>
+
+            <p><strong>Chaveamento até as quartas e possíveis duelos brasileiros</strong></p>
+
+            <p>O sorteio também definiu o caminho do mata-mata até a final. A chave ficou dividida de forma equilibrada entre os brasileiros.</p>
+
+            <p><strong>Possíveis quartas de final:</strong></p>
+
+            <ul>
+              <li>Vencedor de Universidad Católica e Estudiantes X vencedor de Corinthians e Rosario Central</li>
+              
+              <li>Vencedor de Flamengo e Cruzeiro e X vencedor de Independiente del Valle e Tolima</li>
+              
+              <li>Vencedor de LDU e Mirassol X vencedor de Cerro Porteño e Palmeiras</li>
+              
+              <li>Vencedor de Coquimbo Unido e Platense X vencedor de Independiente Rivadavia e Fluminense</li>
+            </ul>
+
+            <p>O sorteio da Libertadores também se conecta com a outra competição continental que também definiu o seu mata a mata da <a href="https://cortedosesportes.com.br/sul-americana-2026-playoffs-chaveamento-oitavas-brasileiros.html">Sul-Americana 2026, que já tem playoffs, chaveamento das oitavas e caminhos dos brasileiros no mata-mata</a>. As duas competições entram no segundo semestre em ritmo de decisão, com clubes brasileiros espalhados por rotas diferentes e confrontos que podem impactar calendário, elenco e prioridade de temporada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Datas da fase final da Libertadores 2026</strong></p>
+
+            <p><strong>Calendário-base do mata-mata:</strong></p>
+
+            <ul>
+              <li>Oitavas de final: 11 a 20 de agosto</li>
+              
+              <li>Quartas de final: 8 a 17 de setembro</li>
+              
+              <li>Semifinais: 14 a 22 de outubro</li>
+              
+              <li>Final: 28 de novembro</li>
+            </ul>
+
+            <p>A decisão está marcada para 28 de novembro, em Montevidéu, no Uruguai. Até lá, a Libertadores terá uma sequência de mata-matas com brasileiros em todos os lados da chave e a possibilidade de novos confrontos nacionais nas fases seguintes.</p>
+
+            <p><strong>Libertadores entra em modo mais clássico</strong></p>
+
+            <p>Chega às oitavas com todos os elementos que fazem o torneio ser diferente: campeões tradicionais, brasileiros fortes, argentinos competitivos, altitude, reencontros recentes, rivalidades repetidas e clubes tentando escrever capítulos inéditos.</p>
+
+            <p>A partir de agora, cada jogo muda o tamanho da temporada. A Libertadores deixa para trás a lógica de recuperação da fase de grupos e passa a punir qualquer queda de concentração. É nesse ambiente que os grandes favoritos precisam confirmar força, e que os azarões encontram espaço para mudar a história.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
+```
