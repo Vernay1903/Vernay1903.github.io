@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campeonato Francês: quem caiu e quem subiu na Ligue 1 | Corte dos Esportes</title>
+  <meta name="description" content="Nantes e Metz foram os rebaixados, enquanto Troyes e Le Mans garantiram acesso direto à Ligue 1; Nice escapou no playoff contra o Saint-Étienne e permaneceu na elite." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Campeonato Francês: quem caiu e quem subiu na Ligue 1</h1>
+          <p class="subhead" id="articleExcerpt">Nantes e Metz foram os rebaixados, enquanto Troyes e Le Mans garantiram acesso direto à Ligue 1; Nice escapou no playoff contra o Saint-Étienne e permaneceu na elite.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">30/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Campeonato Francês 2025/26 terminou com mudanças importantes para a próxima temporada da Ligue 1.</p>
+
+            <p>No topo, o PSG confirmou mais um título nacional em uma temporada de domínio francês, como mostra a <a href="https://cortedosesportes.com.br/psg-campeao-2026-pentacampeao-ligue-1-titulo-frances-lens.html">campanha do PSG campeão francês de 2026</a>. Mas, na parte de baixo da tabela, a Ligue 1 também teve drama, crise, queda de clubes tradicionais e uma repescagem decidida apenas no jogo de volta.</p>
+
+            <p><strong>Quem caiu e quem subiu</strong></p>
+
+            <p><strong>Rebaixados para a Ligue 2</strong></p>
+            <ul>
+              <li>Nantes</li>
+              <li>Metz</li>
+            </ul>
+
+            <p><strong>Promovidos para a Ligue 1</strong></p>
+            <ul>
+              <li>Troyes</li>
+              <li>Le Mans</li>
+            </ul>
+
+            <p><strong>Permaneceu na Ligue 1 pelo playoff</strong></p>
+            <ul>
+              <li>Nice</li>
+            </ul>
+
+            <p><strong>Ficou na Ligue 2 após perder o playoff</strong></p>
+            <ul>
+              <li>Saint-Étienne</li>
+            </ul>
+
+            <p><strong>Como funciona o rebaixamento na Ligue 1</strong></p>
+
+            <p>A liga tem 18 clubes. Ao fim da temporada, os dois últimos colocados caem diretamente para a Ligue 2. O 16º colocado disputa um playoff contra uma equipe da segunda divisão, em jogos de ida e volta.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Queda após 13 anos na elite</strong></p>
+
+            <p>O rebaixamento do Nantes foi um dos pontos mais simbólicos da temporada francesa. O clube caiu para a Ligue 2 depois de 13 anos consecutivos na primeira divisão, encerrando um ciclo que teve momentos de estabilidade, mas também muitas temporadas de risco.</p>
+
+            <p>A queda foi confirmada após derrota por 1 a 0 para o Lens, fora de casa, na reta final do campeonato. O resultado acabou com as chances de permanência e colocou um dos clubes mais tradicionais da França de volta à segunda divisão.</p>
+
+            <p>O peso histórico é grande. O Nantes é oito vezes campeão francês e carrega uma identidade forte no futebol do país. A geração dos anos 1990, marcada por estilo coletivo e formação de jogadores, ainda sustenta parte da imagem histórica do clube. Mais recentemente, o time havia conquistado a Copa da França de 2022 e disputado competições europeias.</p>
+
+            <p>A temporada 2025/26, no entanto, foi marcada por instabilidade. O Nantes trocou de comando, conviveu com crise esportiva, teve dificuldade ofensiva e passou boa parte do campeonato preso à zona de risco. O fim foi traumático, com a queda confirmada antes da última rodada e clima pesado entre torcida, elenco e direção.</p>
+
+            <p><strong>Mais uma queda no clube ioiô francês</strong></p>
+
+            <p>O Metz também caiu diretamente para a Ligue 2. A diferença é que, no caso do clube grená, o rebaixamento reforça uma tendência recente: a dificuldade de se firmar na elite.</p>
+
+            <p>O clubehavia voltado à Ligue 1 depois de passar pelo playoff de acesso na temporada anterior, mas durou apenas um ano na primeira divisão. Em 2025/26, terminou na última colocação, com campanha muito frágil, defesa muito vazada e longa sequência sem vitórias.</p>
+
+            <p>A queda também tem um dado histórico forte. O Metz chegou ao 12º rebaixamento para a segunda divisão em sua história, marca superior à de qualquer outro clube francês. Além disso, foi o oitavo rebaixamento do clube no século XXI, reforçando a imagem de equipe que alterna acessos e quedas com frequência.</p>
+
+            <p><strong>Escape no playoff e queda evitada</strong></p>
+
+            <p>O Nice viveu uma temporada muito abaixo do esperado, mas conseguiu evitar o rebaixamento na última chance. O clube terminou a Ligue 1 em 16º lugar e precisou disputar a repescagem contra o Saint-Étienne.</p>
+
+            <p>O jogo de ida, no Stade Geoffroy-Guichard, terminou 0 a 0. A decisão ficou para a volta, no Allianz Riviera. Em casa, o Nice venceu por 4 a 1 e confirmou permanência na primeira divisão.</p>
+
+            <p>A vitória foi construída no segundo tempo. Jonathan Clauss abriu o placar, o Saint-Étienne empatou com Zuriko Davitashvili em cobrança de pênalti, mas o Nice retomou o controle com Kaïl Boudache e dois gols de Elye Wahi nos minutos finais.</p>
+
+            <p>Para o Nice, a permanência evita um desastre esportivo. O clube vinha de temporadas com ambições maiores, chegou a disputar posições europeias em ciclos recentes e tem estrutura para algo mais alto do que uma briga contra a queda. A salvação no playoff, porém, não apaga o alerta: a campanha mostrou desgaste, instabilidade e uma distância grande em relação ao bloco competitivo da Ligue 1.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Saint-Étienne bate na trave</strong></p>
+
+            <p>O time ficou muito perto de voltar à elite, mas continuará na Ligue 2. O clube terminou a segunda divisão na terceira colocação e passou por uma disputa dramática antes de enfrentar o Nice.</p>
+
+            <p>Na fase anterior do playoff, o Saint-Étienne eliminou o Rodez após empate por 0 a 0 e vitória nos pênaltis por 7 a 6, diante de um Geoffroy-Guichard lotado e em clima de decisão. A classificação manteve vivo o sonho do retorno à primeira divisão.</p>
+
+            <p>Contra o Nice, porém, o time não conseguiu transformar o bom momento em acesso. Segurou o empate sem gols em casa, mas foi superado na volta por 4 a 1. O resultado deixou a sensação de oportunidade perdida, especialmente por se tratar de um dos clubes mais populares e tradicionais da França.</p>
+
+            <p>O Saint-Étienne já havia caído recentemente e tentava acelerar sua reconstrução. O clube seguirá na Ligue 2 com pressão, porque sua torcida, sua história e seu tamanho nacional tornam a permanência na segunda divisão um incômodo permanente.</p>
+
+            <p><strong>Volta à Ligue 1 após três anos</strong></p>
+
+            <p>O Troyes foi o campeão da Ligue 2 e garantiu acesso direto.. O retorno acontece após três anos fora da primeira divisão, período em que o clube precisou reconstruir competitividade e estabilidade.</p>
+
+            <p>A confirmação matemática do acesso veio com vitória por 3 a 0 sobre o Saint-Étienne, fora de casa. O resultado teve peso duplo: colocou o Troyes de volta à elite e mostrou força justamente contra um adversário direto na briga pelo acesso.</p>
+
+            <p>O clube chega à primeira divisão com a missão de não repetir ciclos recentes de sobe e desce. O desafio será transformar a boa campanha do acesso em uma base capaz de competir contra equipes mais fortes, elencos mais caros e jogos de maior exigência física.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Retorno histórico depois de longa reconstrução</strong></p>
+
+            <p>O Le Mans é a grande história entre os promovidos. O clube voltou à Ligue 1 pela primeira vez desde a temporada 2009/10, encerrando uma espera de 16 anos longe da elite francesa.</p>
+
+            <p>O acesso teve um capítulo incomum. A partida contra o Bastia, na última rodada da Ligue 2, foi interrompida depois que sinalizadores foram atirados no gramado. O Le Mans vencia por 2 a 0 nos acréscimos, resultado que garantia o segundo lugar. Depois, a liga confirmou oficialmente o placar e o acesso do clube.</p>
+
+            <p>O retorno é ainda mais marcante pela trajetória recente. O clube passou por crise financeira, caiu para divisões inferiores e chegou a disputar níveis muito abaixo do futebol profissional de elite. A reconstrução foi longa, e a volta à primeira divisão transforma a campanha em uma das maiores histórias recentes do futebol francês.</p>
+
+            <p>O clube também ganhou atenção por novos investidores e por uma narrativa de reconstrução esportiva. Mais do que subir, o Le Mans volta à Ligue 1 carregando o peso de uma recuperação institucional.</p>
+
+            <p>O cenário francês também se encaixa em um movimento mais amplo das grandes ligas europeias para a temporada 2026/27. Outros campeonatos também já definiram mudanças importantes, como os <a href="https://cortedosesportes.com.br/rebaixados-promovidos-times-laliga-2026-2027.html">rebaixados da LaLiga</a>, os <a href="https://cortedosesportes.com.br/rebaixados-promovidos-premier-league-2026-2027.html">clubes que caíram e subiram na Premier League</a> e os <a href="https://cortedosesportes.com.br/rebaixados-promovidos-bundesliga-2026-2027.html"> times rebaixados e que subiram da Bundesliga</a>. Esse recorte ajuda a mostrar como a virada de temporada redesenha a elite do futebol europeu antes do novo calendário.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
