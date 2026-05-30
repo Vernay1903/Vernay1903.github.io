@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arsenal x PSG: final da Champions em clima de Copa do Mundo | Corte dos Esportes</title>
+  <meta name="description" content="Times decidem a Champions League 2025/26 em Budapeste, em uma final que reúne atuais campeões nacionais, elencos cheios de jogadores convocados para a Copa do Mundo e estilos ofensivos comandados por Mikel Arteta e Luis Enrique." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Arsenal x PSG: final da Champions em clima de Copa do Mundo</h1>
+          <p class="subhead" id="articleExcerpt">Times decidem a Champions League 2025/26 em Budapeste, em uma final que reúne atuais campeões nacionais, elencos cheios de jogadores convocados para a Copa do Mundo e estilos ofensivos comandados por Mikel Arteta e Luis Enrique.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">30/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Arsenal e Paris Saint-Germain decidem neste sábado, 30 de maio, às 13h, na Puskás Arena, em Budapeste, na Hungria. A final coloca frente a frente dois campeões nacionais, dois projetos ofensivos e dois elencos que chegam ao jogo mais importante da temporada poucos dias antes da Copa do Mundo.</p>
+
+            <p>Para o Arsenal, é uma noite esperada há 20 anos. O clube não disputava uma final de Champions desde 2006, quando perdeu para o Barcelona. Agora, volta ao palco máximo europeu embalado pelo título da Premier League, conquistado após uma espera de 22 anos, e tenta levantar a taça continental pela primeira vez em sua história.</p>
+
+            <p>Para o PSG, o peso é outro. O clube francês chega como atual campeão da Champions e busca o bicampeonato consecutivo. Na era moderna do torneio, desde 1992/93, apenas um clube conseguiu ganhar a competição em sequência: o Real Madrid, que foi tricampeão entre 2015/16 e 2017/18. Por isso, uma vitória em Budapeste colocaria o PSG em um território raríssimo dentro da <a href="https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html">história da Champions League</a>.</p>
+
+            <p>A chegada dos dois finalistas também carrega caminhos bem diferentes até Budapeste. O <a href="https://cortedosesportes.com.br/arsenal-vitoria-atletico-madrid-final-champions-league.html">Arsenal voltou à final ao eliminar o Atlético de Madrid</a>, enquanto o <a href="https://cortedosesportes.com.br/psg-classificado-final-champions-bayern-gols.html">PSG confirmou vaga na decisão depois de eliminar o Bayern em um confronto histórico europeu</a>. As campanhas até a final ajudam a explicar por que a decisão reúne não apenas dois campeões nacionais, mas dois times que atravessaram mata-matas pesados para chegar ao jogo do título.</p>
+
+            <p><strong>Onde assistir Arsenal x PSG</strong></p>
+
+            <p>A final da Champions League 2025/26 terá transmissão no Brasil em TV aberta, TV fechada e streaming.</p>
+
+            <ul>
+              <li>Transmissão: SBT, +SBT, TNT e HBO Max</li>
+            </ul>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Um duelo entre campeões nacionais</strong></p>
+
+            <p>A final também tem valor simbólico porque reúne os campeões de duas das principais ligas europeias. O Arsenal chega como campeão da Premier League. O PSG chega como campeão francês. Não é apenas uma decisão entre dois bons elencos; é um encontro entre os times que dominaram seus campeonatos nacionais na temporada.</p>
+
+            <p>O Arsenal venceu a Premier League pela primeira vez em 22 anos e tenta transformar a temporada em uma dobradinha histórica. O clube já era grande na Inglaterra, mas ainda carrega uma ausência pesada no cenário europeu: nunca conquistou a Champions League.</p>
+
+            <p>O PSG vive outro estágio. Depois de anos perseguindo a taça, enfim conquistou a Champions em 2024/25. Agora, tenta provar que o título não foi um ponto isolado, mas o início de uma era europeia. Defender a taça é um desafio maior do que conquistá-la pela primeira vez, porque todos entram contra o campeão com outro nível de atenção.</p>
+
+            <p><strong>A final com cara de Copa do Mundo</strong></p>
+
+            <p>A decisão também será uma vitrine para o mundial que começará daqui á duas semanas. Somando os dois elencos, há 30 jogadores já convocados para seleções que disputarão o Mundial: 16 do Arsenal e 14 do PSG.</p>
+
+            <p>No Arsenal, o peso da seleção inglesa aparece com quatro nomes na <a href="https://cortedosesportes.com.br/convocacao-inglaterra-copa-do-mundo-2026-jogadores.html">convocação da Inglaterra para a Copa do Mundo</a>. A base inglesa ajuda a explicar a força do projeto de Mikel Arteta, que chega à decisão com identidade nacional forte e elenco valorizado.</p>
+
+            <p>O recorte brasileiro também aparece dos dois lados. Gabriel Magalhães e Gabriel Martinelli representam o Arsenal, enquanto Marquinhos é uma das lideranças do PSG. São nomes que conectam a final europeia ao cenário da <a href="https://cortedosesportes.com.br/convocados-ancelotti-brasil-copa-do-mundo-2026-jogadores.html">convocação do Brasil feita por Carlo Ancelotti</a>, reforçando como a decisão da Champions reúne atletas que chegarão ao Mundial em alto nível competitivo.</p>
+
+            <p>No PSG, a França tem presença ainda mais forte. Ousmane Dembélé, Lucas Hernández, Warren Zaïre-Emery, Bradley Barcola e Désiré Doué fazem parte de uma base francesa que mantém o clube ligado diretamente à <a href="https://cortedosesportes.com.br/convocados-franca-copa-do-mundo-2026-jogadores.html">lista de convocados da França de Didier Deschamps</a>. Para o torcedor francês, a final também funciona como uma prévia emocional do peso que esses jogadores podem carregar no Mundial.</p>
+
+            <p><strong>Arsenal com jogadores convocados:</strong></p>
+
+            <ul>
+              <li>Inglaterra: Bukayo Saka, Declan Rice, Eberechi Eze e Noni Madueke</li>
+              <li>Espanha: David Raya, Mikel Merino e Martín Zubimendi</li>
+              <li>Brasil: Gabriel Magalhães e Gabriel Martinelli</li>
+              <li>França: William Saliba</li>
+              <li>Alemanha: Kai Havertz</li>
+              <li>Holanda: Jurriën Timber</li>
+              <li>Noruega: Martin Ødegaard</li>
+              <li>Suécia: Viktor Gyökeres</li>
+              <li>Bélgica: Leandro Trossard</li>
+            </ul>
+
+            <p><strong>PSG com jogadores convocados:</strong></p>
+
+            <ul>
+              <li>França: Ousmane Dembélé, Lucas Hernández, Warren Zaïre-Emery, Bradley Barcola e Désiré Doué</li>
+              <li>Portugal: Nuno Mendes, João Neves, Vitinha e Gonçalo Ramos</li>
+              <li>Marrocos: Achraf Hakimi</li>
+              <li>Brasil: Marquinhos</li>
+              <li>Espanha: Fabián Ruiz</li>
+              <li>Senegal: Ibrahim Mbaye</li>
+              <li>Coreia do Sul: Kang-In Lee</li>
+            </ul>
+
+            <p>Esse recorte dá outra dimensão à partida. Não é apenas uma final de clubes. É também um choque entre jogadores que, em poucos dias, estarão defendendo seleções em um Mundial.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Arsenal: 20 anos de espera e uma chance inédita</strong></p>
+
+            <p>Chega à final em um momento especial. O título da Premier League quebrou uma espera longa e confirmou a evolução do projeto de Mikel Arteta. O time passou de promessa competitiva para campeão nacional e agora tem a chance de fechar a temporada com a taça que ainda falta na história do clube.</p>
+
+            <p>A última final de Champions do Arsenal foi em 2006. Naquela decisão, o time de Arsène Wenger saiu na frente contra o Barcelona, mesmo com Jens Lehmann expulso ainda no primeiro tempo, mas sofreu a virada e perdeu por 2 a 1. Desde então, a Champions virou uma ferida aberta para o torcedor.</p>
+
+            <p>A geração atual chega com outro perfil. É um Arsenal mais físico, mais maduro e mais equilibrado. O time de Arteta combina pressão alta, saída organizada, força pelos lados e uma defesa que foi uma das mais sólidas da Champions. </p>
+
+            <p><strong>PSG: atual campeão europeu</strong></p>
+
+            <p>O clube francês chega a Budapeste defendendo o título e tentando fazer algo que quase ninguém conseguiu na era moderna da Champions. O clube francês conquistou a taça de 2024/25 e agora busca o segundo título consecutivo.</p>
+
+            <p>O contexto muda a pressão sobre Luis Enrique. Na temporada passada, ele comandou o clube na conquista que encerrava uma obsessão histórica. Agora, tenta transformar esse título em hegemonia. Se vencer novamente, o clube deixa de ser apenas um campeão inédito recente e passa a ser tratado como força dominante do continente.</p>
+
+            <p>Luis Enrique também carrega peso próprio. Campeão da Champions pelo Barcelona em 2014/15 e pelo PSG em 2024/25, o treinador tenta ampliar sua marca em uma competição que exige mais do que elenco forte. Seu trabalho em Paris consolidou um time menos dependente de uma estrela isolada e mais baseado em circulação, amplitude, pressão e ocupação de espaços.</p>
+
+            <p><strong>Dois ataques fortes, duas defesas testadas</strong></p>
+
+            <p>A final reúne dois times ofensivos, mas não irresponsáveis. Arsenal e PSG gostam de atacar com muitos jogadores, pressionar a saída rival e ocupar o campo adversário. A diferença está na forma como cada um controla o risco.</p>
+
+            <p>O Arsenal de Arteta tende a ser mais posicional. O time constrói com paciência, usa laterais por dentro ou por fora conforme o jogo pede, protege bem a perda da bola e transforma bolas paradas em arma letal. A dupla Saliba e Gabriel é central para esse equilíbrio, enquanto Rice dá sustentação física e leitura defensiva no meio.</p>
+
+            <p>O PSG de Luis Enrique é mais fluido. O time circula a bola com qualidade, tem meio-campistas confortáveis sob pressão e pontas capazes de atacar no um contra um. Dembélé, Kvaratskhelia, Doué  dão profundidade, improviso e agressividade. Vitinha e João Neves ajudam a controlar o ritmo por dentro.</p>
+
+            <p>A tensão está justamente aí. Os dois times gostam de ter iniciativa. Em final única, porém, o erro pesa mais. A tendência é que os estilos permaneçam, mas com ajustes de segurança. Arteta dificilmente abrirá mão da organização defensiva. Luis Enrique dificilmente abrirá mão da bola e da agressividade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Números da temporada antes da final</strong></p>
+
+            <p>Os números ajudam a explicar por que a final promete equilíbrio entre ataque e defesa.</p>
+
+            <ul>
+              <li>120 gols marcados em todas as competições</li>
+              <li>42 gols sofridos em todas as competições</li>
+              <li>29 gols marcados na Champions</li>
+              <li>6 gols sofridos na Champions</li>
+              <li>11 vitórias e 3 empates na Champions</li>
+              <li>Invicto na campanha europeia</li>
+            </ul>
+
+            <p><strong>PSG</strong></p>
+
+            <ul>
+              <li>127 gols marcados em todas as competições</li>
+              <li>57 gols sofridos em todas as competições</li>
+              <li>44 gols marcados na Champions</li>
+              <li>22 gols sofridos na Champions</li>
+            </ul>
+
+            <p><strong>Prováveis escalações</strong></p>
+
+            <ul>
+              <li>PSG: Safonov; Hakimi, Marquinhos, Willian Pacho e Nuno Mendes; Zaïre-Emery, Vitinha e João Neves; Doué, Dembélé e Kvaratskhelia. Técnico: Luis Enrique.</li>
+              <li>Arsenal: Raya; Timber, Saliba, Gabriel e Calafiori; Rice, Lewis-Skelly e Ødegaard; Saka, Gyökeres e Trossard. Técnico: Mikel Arteta.</li>
+            </ul>
+
+            <p>As escalações ainda dependem das últimas avaliações físicas. No PSG, Dembélé e Hakimi chegaram a ser tratados como pontos de atenção, mas estão no grupo para a final. No Arsenal, Ben White está fora, enquanto Timber foi liberado para jogar.</p>
+
+            <p><strong>O peso emocional da final</strong></p>
+
+            <p>Para o Arsenal, a final é a chance de mudar uma parte importante da própria história. O clube tem tradição, torcida global, títulos ingleses e grandes gerações, mas ainda falta a Champions. Ganhar em Budapeste significaria tirar esse peso e transformar a temporada em uma das maiores da história dos Gunners.</p>
+
+            <p>Para o PSG, a final é uma oportunidade de consolidação. Ganhar uma Champions foi histórico. Ganhar duas seguidas seria mudar o patamar do clube no futebol europeu. O projeto de Paris deixaria de ser lembrado apenas pela busca obsessiva da taça e passaria a ser visto como potência capaz de defender o trono.</p>
+
+            <p>Também existe um contraste interessante entre os técnicos. Arteta tenta seu primeiro título de europeu como treinador e busca coroar um projeto construído com paciência. Luis Enrique já sabe o que é vencer a competição e tenta confirmar que seu PSG não depende de um ciclo isolado.</p>
+
+            <p><strong>Uma final para marcar época</strong></p>
+
+            <p>Arsenal x PSG tem todos os elementos de uma grande decisão: campeão inglês contra campeão francês, um clube buscando título inédito, outro tentando bicampeonato europeu, elencos cheios de jogadores que estarão na Copa do Mundo e dois técnicos com ideias ofensivas.</p>
+
+            <p>A Champions chega ao fim com uma decisão que olha para o passado e para o futuro ao mesmo tempo. Para o Arsenal, é a chance de encerrar uma espera de 20 anos por outra final e conquistar uma taça inédita. Para o PSG, é a chance de defender o título e entrar no pequeno grupo de clubes que marcaram uma era europeia.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
