@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spurs vencem o Thunder e voltam à final da NBA após 12 anos | Corte dos Esportes</title>
+  <meta name="description" content="San Antonio ganha do atual campeão Oklahoma City Thunder fora de casa no jogo 7, e volta à decisão da NBA pela primeira vez desde 2014, em campanha marcada pelo impacto de Victor Wembanyama e força coletiva." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Spurs vencem o Thunder e voltam à final da NBA após 12 anos</h1>
+          <p class="subhead" id="articleExcerpt">San Antonio ganha do atual campeão Oklahoma City Thunder fora de casa no jogo 7, e volta à decisão da NBA pela primeira vez desde 2014, em campanha marcada pelo impacto de Victor Wembanyama e força coletiva.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">31/05/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Os Spurs estão de volta às Finais da NBA. Depois de 12 anos longe da decisão, a franquia texana confirmou o título da Conferência Oeste ao vencer o Oklahoma City Thunder por 111 a 103, fora de casa, no jogo 7, fechar a série em 4 a 3 e eliminar o atual campeão da liga em pleno Paycom Center.</p>
+
+            <p>A classificação veio com peso histórico. Não foi apenas uma vitória fora de casa: foi um triunfo no jogo mais pesado da temporada, contra o dono da melhor campanha do Oeste, diante de uma equipe que defendia o título da NBA e em uma série que exigiu resposta emocional, física e tática até o último quarto.</p>
+
+            <p><strong>Um jogo 7 histórico em Oklahoma</strong></p>
+
+            <p>Os Spurs começaram melhor, venceram a parcial inicial por 32 a 25 e obrigaram o Thunder a correr atrás do placar. O Oklahoma reagiu no segundo período, diminuiu a diferença e foi para o intervalo perdendo por apenas três pontos: 56 a 53.</p>
+
+            <p>A partida continuou equilibrada no terceiro quarto. San Antonio não conseguiu abrir uma vantagem definitiva, mas também não deixou o Thunder virar a pressão do mando de quadra em controle emocional. Os Spurs entraram no último período vencendo por 80 a 77, com o jogo completamente aberto.</p>
+
+            <p>Foi no quarto final que a classificação ganhou forma. San Antonio venceu a parcial por 31 a 26, resistiu às tentativas de reação do Thunder e fechou o jogo em 111 a 103. Em uma noite em que qualquer erro poderia mudar a série, os Spurs foram mais estáveis nos minutos decisivos.</p>
+
+            <p><strong>Shai foi o cestinha, mas os Spurs tiveram mais respostas</strong></p>
+
+            <p> Shai Gilgeous-Alexander, com 35 pontos, 4 rebotes, 9 assistências. O astro do Thunder carregou boa parte da criação ofensiva de Oklahoma City e ficou perto de um triplo-duplo, mas sua atuação individual não bastou para salvar o atual campeão.</p>
+
+            <p>A diferença esteve no coletivo de San Antonio. Victor Wembanyama marcou 22 pontos e pegou 7 rebotes. Julian Champagnie fez 20 pontos, com seis bolas de três. De’Aaron Fox terminou com 15 pontos e 5 assistências.</p>
+
+            <p>Sete jogadores dos Spurs terminaram em dígitos duplos. Em um jogo 7 fora de casa, esse dado explica muito da classificação. San Antonio não dependeu de uma atuação isolada de Wembanyama, nem precisou que o francês tivesse uma noite estatisticamente absurda. O time venceu porque encontrou pontos em diferentes setores, manteve espaçamento, puniu as ajudas defensivas e teve mais alternativas quando o jogo ficou travado.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Wembanyama mudou a série</strong></p>
+
+            <p>O francês atraiu marcação, alterou arremessos, abriu espaço para os companheiros e deu a San Antonio uma referência permanente dos dois lados da quadra. Em noites de playoffs, o domínio nem sempre aparece apenas na pontuação. No caso de Wembanyama, a simples presença muda a geometria do jogo.</p>
+
+            <p>Na série, o peso dele foi ainda maior. Wembanyama foi eleito MVP da final da Conferência Oeste.</p>
+
+            <p>O ponto mais forte é o contexto. O francês chegou à sua primeira final de NBA já como líder técnico de uma equipe campeã de conferência. Isso muda o tamanho da narrativa. Ele não é mais apenas promessa, fenômeno físico ou projeto de domínio futuro. Em 2026, já virou jogador capaz de conduzir uma franquia tradicional de volta à disputa pelo título.</p>
+
+            <p><strong>Como foi a série contra o Thunder</strong></p>
+
+            <p>A final da Conferência Oeste foi a série mais pesada da caminhada dos Spurs. Começou vencendo fora de casa, perdeu o controle em alguns momentos, ficou contra a parede depois do jogo 5 e precisou responder com duas vitórias seguidas para eliminar o atual campeão.</p>
+
+            <p>A série teve viradas de momento, jogos de placar alto, atuação histórica de Wembanyama no jogo 1, reação forte do Thunder e uma resposta definitiva dos Spurs nos dois últimos confrontos.</p>
+
+            <p><strong>Final do Oeste — Spurs 4 x 3 Thunder</strong></p>
+
+            <ul>
+              <li>Jogo 1: Spurs 122 x 115 Thunder, em Oklahoma City, após duas prorrogações.</li>
+              <li>Jogo 2: Thunder 122 x 113 Spurs, em Oklahoma City.</li>
+              <li>Jogo 3: Thunder 123 x 108 Spurs, em San Antonio.</li>
+              <li>Jogo 4: Spurs 103 x 82 Thunder, em San Antonio.</li>
+              <li>Jogo 5: Thunder 127 x 114 Spurs, em Oklahoma City.</li>
+              <li>Jogo 6: Spurs 118 x 91 Thunder, em San Antonio.</li>
+              <li>Jogo 7: Spurs 111 x 103 Thunder, em Oklahoma City.</li>
+            </ul>
+
+            <p>A sequência mostra por que a classificação não pode ser tratada como surpresa. Os Spurs venceram duas vezes fora de casa na série, incluindo o jogo 1 e o jogo 7. Também tiveram força para reagir depois de ficarem atrás por 3 a 2, quando o Thunder parecia mais perto da final.</p>
+
+            <p>No jogo 6, San Antonio respondeu com uma vitória dominante por 118 a 91. No jogo 7, venceu de outra forma: não por atropelo, mas por controle, frieza e profundidade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Campanha regular dos Spurs em números</strong></p>
+
+            <p>A temporada regular já indicava que San Antonio tinha deixado de ser apenas um projeto em desenvolvimento. A equipe terminou com:</p>
+
+            <ul>
+              <li>62 vitórias</li>
+              <li>20 derrotas</li>
+              <li>2ª colocação da Conferência Oeste</li>
+              <li>29 vitórias fora de casa</li>
+            </ul>
+
+            <p>A diferença entre os dois times na temporada regular foi pequena. Oklahoma City teve duas vitórias a mais e ficou com o mando de quadra. San Antonio, no entanto, levou a decisão até o limite e venceu justamente onde a vantagem do Thunder deveria pesar mais.</p>
+
+            <p><strong>Como foram os playoffs até a final</strong></p>
+
+            <p>A caminhada dos Spurs até a decisão começou contra o Portland Trail Blazers. San Antonio entrou na série como favorito, mas precisou lidar com uma derrota em casa no jogo 2 antes de assumir o controle. A resposta veio com três vitórias consecutivas e a primeira série vencida pela franquia nos playoffs desde 2017.</p>
+
+            <p><strong>Primeira rodada — Spurs 4 x 1 Trail Blazers</strong></p>
+
+            <ul>
+              <li>Jogo 1: Spurs 111 x 98 Trail Blazers.</li>
+              <li>Jogo 2: Trail Blazers 106 x 103 Spurs.</li>
+              <li>Jogo 3: Spurs 120 x 108 Trail Blazers.</li>
+              <li>Jogo 4: Spurs 114 x 93 Trail Blazers.</li>
+              <li>Jogo 5: Spurs 114 x 95 Trail Blazers.</li>
+            </ul>
+
+            <p>Nas semifinais do Oeste, o adversário foi o Minnesota Timberwolves. A série foi mais dura. Minnesota venceu o jogo 1 em San Antonio, colocando pressão nos Spurs. A resposta veio com uma vitória por 133 a 95 no jogo 2, uma das atuações mais fortes do time nos playoffs.</p>
+
+            <p><strong>Semifinal do Oeste — Spurs 4 x 2 Timberwolves</strong></p>
+
+            <ul>
+              <li>Jogo 1: Timberwolves 104 x 102 Spurs.</li>
+              <li>Jogo 2: Spurs 133 x 95 Timberwolves.</li>
+              <li>Jogo 3: Spurs 115 x 108 Timberwolves.</li>
+              <li>Jogo 4: Timberwolves 114 x 109 Spurs.</li>
+              <li>Jogo 5: Spurs 126 x 97 Timberwolves.</li>
+              <li>Jogo 6: Spurs 139 x 109 Timberwolves.</li>
+            </ul>
+
+            <p>A série contra Minnesota teve um ponto importante para a construção da campanha: Wembanyama fez 39 pontos, 15 rebotes e 5 tocos no jogo 3, em uma atuação que colocou seu nome em um grupo histórico dos playoffs.</p>
+
+            <p> Essa sequência reforça a importância da <a href="playoffs-nba-como-funciona-tradicao-series-historicas.html">história dos playoffs da NBA</a>, porque cada rodada exigiu uma resposta diferente.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O peso histórico da volta dos Spurs</strong></p>
+
+            <p>A classificação de 2026 leva San Antonio à sétima final da NBA de sua história. Agora, volta ao palco principal pela primeira vez desde o último título.</p>
+
+            <p>Finais disputadas pelos Spurs:</p>
+
+            <ul>
+              <li>1999</li>
+              <li>2003</li>
+              <li>2005</li>
+              <li>2007</li>
+              <li>2013</li>
+              <li>2014</li>
+              <li>2026</li>
+            </ul>
+
+            <p>Os Spurs têm cinco títulos da NBA. Foram campeões em 1999, 2003, 2005, 2007 e 2014. A dinastia construída com Tim Duncan, Gregg Popovich, David Robinson, Tony Parker e Manu Ginóbili transformou em uma das franquias mais respeitadas da liga moderna.</p>
+
+            <p>A volta em 2026 tem outro sabor. Não é a continuidade daquela dinastia, mas o início de uma nova tentativa de domínio. A franquia que ficou anos reconstruindo agora volta à decisão com uma estrela geracional, jovens importantes e veteranos capazes de sustentar noites de pressão.</p>
+
+            <p>A conquista também adiciona mais um capítulo à <a href="conferencia-oeste-nba-historia-times-rivalidades-campeoes.html">história da Conferência Oeste da NBA</a>, marcada por dinastias, rivalidades longas e finais que muitas vezes funcionam como uma decisão antecipada. Derrubar o atual campeão em sete jogos, fora de casa, coloca essa campanha dos Spurs em um patamar especial.</p>
+
+            <p><strong>De reconstrução acelerada a candidato real ao título</strong></p>
+
+            <p>O detalhe mais importante da temporada dos Spurs é a velocidade da virada. San Antonio não voltou às finais depois de um processo longo de consolidação gradual. A equipe saltou de projeto promissor para campeã de conferência em uma temporada de afirmação.</p>
+
+            <p>Wembanyama é o centro dessa transformação, mas não está sozinho. Stephon Castle cresceu como peça de impacto. Dylan Harper deu profundidade. De’Aaron Fox acrescentou criação e agressividade. Devin Vassell, Keldon Johnson e Julian Champagnie deram pontos importantes em diferentes momentos da campanha.</p>
+
+            <p>No jogo 7 contra o Thunder, essa construção apareceu com clareza. Wembanyama foi o nome principal da série, mas Champagnie foi decisivo no perímetro. Castle produziu em pontos, rebotes e assistências. Fox ajudou na criação. Harper veio do banco com contribuição relevante. Vassell e Keldon mantiveram o ataque vivo.</p>
+
+            <p><strong>Final reedita duelo histórico</strong></p>
+
+            <p>Agora, San Antonio enfrenta o New York Knicks nas Finais da NBA. O confronto carrega memória direta para as duas franquias. Em 1999, Spurs e Knicks decidiram o título, e San Antonio venceu a série por 4 a 1 para conquistar o primeiro campeonato de sua história.</p>
+
+            <p>Vinte e sete anos depois, os Knicks também voltam à final em uma campanha de enorme peso histórico. A <a href="knicks-final-nba-2026-varrida-cavaliers.html">classificação do New York Knicks para a final da NBA</a> veio com uma varrida sobre o Cleveland Cavaliers na decisão do Leste, colocando Nova York novamente no centro da liga.</p>
+
+            <p>O reencontro entre as franquias se consolida também na <a href="nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA</a>. De um lado, uma franquia que marcou a era moderna com títulos, cultura vencedora e regularidade. Do outro, uma das marcas mais populares da liga, tentando encerrar um jejum que atravessa gerações.</p>
+
+            <p><strong>O que vem agora para os Spurs</strong></p>
+
+            <p>San Antonio está a quatro vitórias de seu sexto título da NBA. A final contra os Knicks será outro nível de pressão, porque a equipe deixa de ser a sensação que derrubou o campeão do Oeste e passa a disputar o troféu Larry O’Brien.</p>
+
+            <p>A vitória sobre o Thunder não valeu apenas uma vaga na final. Ela marca o retorno de San Antonio ao centro da NBA. Depois de 12 anos sem disputar o título, os Spurs voltam com uma nova geração, uma estrela capaz de mudar o equilíbrio da liga e uma campanha que já entra como uma das mais importantes da história recente da franquia.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
