@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Como 1907: história, cidade e ascensão à Champions League | Corte dos Esportes</title>
+  <meta name="description" content="O clube saiu da quarta divisão italiana, foi comprado por investidores indonésios, voltou à Serie A após mais de duas décadas e viveu campanha histórica com Cesc Fàbregas ao garantir vaga direta na Champions League." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Como 1907: história, cidade e ascensão à Champions League</h1>
+          <p class="subhead" id="articleExcerpt">O clube saiu da quarta divisão italiana, foi comprado por investidores indonésios, voltou à Serie A após mais de duas décadas e viveu campanha histórica com Cesc Fàbregas ao garantir vaga direta na Champions League.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">01/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Como 1907 virou uma das histórias mais improváveis e fascinantes do futebol europeu recente. Um clube de uma cidade turística, estádio à beira do lago, passado marcado por falências e divisões inferiores, de repente passou a competir com Milan, Juventus, Roma, Napoli e Inter por espaço no topo do Campeonato Italiano.</p>
+
+            <p>A campanha de 2025/26 transformou o clube em fenômeno. O Como terminou a Serie A em 4º lugar, com 71 pontos, garantiu vaga direta na Champions e alcançou a melhor colocação de sua história na elite italiana. Para um time que estava na Serie D poucos anos antes, a subida foi muito mais do que uma boa temporada: foi a confirmação de um projeto esportivo, financeiro e de marca.</p>
+
+            <p>Comandado por Cesc Fàbregas, o Como deixou de ser apenas uma curiosidade exótica do futebol italiano. Tornou-se um caso de reconstrução moderna, combinando investimento forte, identidade de jogo, cidade de apelo mundial, estádio histórico e um elenco montado para competir com ambição.</p>
+
+            <p><strong>A origem do Como e a ligação com a cidade</strong></p>
+
+            <p>Foi fundado em 1907, em uma cidade localizada na Lombardia, no norte da Itália, às margens do Lago de Como. Essa geografia é parte central da identidade do clube. Diferente de gigantes urbanos como Milan e Inter, o Como carrega uma imagem ligada à beleza natural, ao turismo, à elegância e ao estilo de vida de uma das regiões mais conhecidas da Itália.</p>
+
+            <p>A cidade de Como tem pouco mais de 84 mil habitantes, número que ajuda a dimensionar o tamanho da campanha do clube. Não se trata de uma potência urbana como Milão, Roma, Turim ou Nápoles, mas de uma cidade média da Lombardia, conhecida mundialmente pelo lago, pelas vilas históricas, pelas montanhas, pelo turismo de luxo e pela proximidade com Milão e a Suíça. Isso dá ao clube uma característica rara: ele não é apenas uma equipe de futebol tentando crescer esportivamente; é também uma marca ligada a um destino turístico global.</p>
+
+            <p>Nos últimos anos, essa conexão foi explorada de forma mais clara. O Como passou a trabalhar futebol, moda, turismo, mídia, experiência de estádio e imagem internacional como partes do mesmo projeto. A ideia não era apenas subir divisões, mas transformar o clube em uma plataforma ligada à cidade.</p>
+
+            <p>Esse ponto ajuda a explicar por que o Como se tornou tão comentado fora da Itália. O clube tem apelo visual, narrativa de reconstrução e uma localização que favorece a criação de uma marca global. Em um futebol cada vez mais comercial, isso pesa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estádio à beira do lago</strong></p>
+
+            <p>O Como manda seus jogos no Stadio Giuseppe Sinigaglia, inaugurado em 1927 e localizado às margens do Lago de Como. Poucos estádios europeus têm uma relação tão direta com a paisagem da cidade. O estádio fica em uma região central, próximo à água, com montanhas ao fundo e forte vínculo urbano.</p>
+
+            <p>A capacidade atual gira em torno de 12 mil a 13 mil lugares, dependendo do critério usado após reformas e adequações. É um estádio pequeno para o padrão da Champions League, mas justamente por isso tem um charme muito particular. Não é uma arena moderna de grande porte; é um palco histórico, integrado à cidade e carregado de identidade local.</p>
+
+            <p>A classificação para a Champions também acelerou um debate importante: o Sinigaglia precisa se adaptar às exigências da UEFA. O clube já apresentou planos de reforma e modernização, com fases previstas para os próximos anos. A intenção é preservar a relação histórica do estádio com a cidade, mas transformar a estrutura em algo compatível com o novo nível competitivo do Como.</p>
+
+            <p>Esse desafio resume bem o momento do clube. O Como cresceu esportivamente mais rápido do que sua estrutura física. Agora, precisa fazer o estádio acompanhar a ambição do projeto sem perder justamente aquilo que o torna especial.</p>
+
+            <p><strong>Falências, queda e recomeço</strong></p>
+
+            <p>O clube já passou por momentos importantes na elite italiana, mas também viveu crises profundas. Depois de disputar a Serie A em diferentes períodos do século XX, enfrentou dificuldades financeiras, rebaixamentos e falências.</p>
+
+            <p>A crise mais recente levou o clube a recomeçar em divisões inferiores. Em 2017, após problemas financeiros, o Como precisou partir de novo na Serie D, a quarta divisão italiana. Para um clube centenário, foi um golpe duro, mas também acabou abrindo caminho para uma reconstrução.</p>
+
+            <p>A virada começou de fato em 2019, quando o clube foi adquirido pelo grupo ligado aos irmãos Hartono, bilionários indonésios associados ao conglomerado Djarum. A partir daí, o Como passou a ter estabilidade financeira, estrutura corporativa e um projeto mais ambicioso de crescimento.</p>
+
+            <p>A subida foi rápida. O clube venceu a Serie D, voltou ao futebol profissional, conquistou acesso à Serie B e, na temporada 2023/24, garantiu o retorno à Serie A depois de mais de duas décadas fora da elite.</p>
+
+            <p><strong>Os investidores e a nova ambição do clube</strong></p>
+
+            <p>O clube passou a ser tratado como uma das equipes com maior potencial financeiro do futebol italiano, não apenas pelo dinheiro disponível, mas pela visão de marca por trás do projeto.</p>
+
+            <p>Os irmãos Hartono assumiram o clube quando ele ainda estava muito distante da elite. O crescimento posterior foi acelerado, mas não se resumiu a contratar jogadores. O Como passou a investir em estrutura, imagem, turismo, comunicação, categorias de base, estádio e experiência de torcedor.</p>
+
+            <p>Outro ponto importante foi a entrada de nomes conhecidos do futebol mundial. Cesc Fàbregas chegou primeiro como jogador e acionista minoritário. Thierry Henry também passou a fazer parte do grupo de investidores. Essa presença de figuras internacionais ajudou a dar credibilidade e visibilidade ao projeto.</p>
+
+            <p>A diferença do Como para outros projetos de investimento é o encaixe entre clube e cidade. O clube não tenta apenas virar potência esportiva; tenta se vender como experiência. Camisa, estádio, lago, turismo e futebol passaram a fazer parte da mesma narrativa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A chegada de Cesc Fàbregas</strong></p>
+
+            <p>Fàbregas chegou ao Como em 2022, já no fim da carreira como jogador. Campeão mundial pela Espanha, ídolo no Arsenal, vencedor no Barcelona e com passagem pelo Chelsea, ele trouxe ao clube um nome de peso global.</p>
+
+            <p>Depois de se aposentar, Fàbregas passou rapidamente para o lado técnico. Trabalhou na base, foi auxiliar, assumiu funções provisórias e depois se tornou treinador principal. Sua ascensão coincidiu com a própria mudança de patamar do clube.</p>
+
+            <p>O trabalho de Fàbregas chamou atenção porque o time não subiu apenas por investimento. O Como passou a ter uma ideia de jogo clara: construção desde trás, posse de bola, agressividade, pressão, uso de jovens talentos e coragem para competir contra equipes maiores.</p>
+
+            <p>Na Serie A 2025/26, esse modelo ganhou corpo. O Como não jogou como azarão satisfeito em sobreviver. Jogou como equipe capaz de propor, pressionar e controlar partidas. A vaga na Champions nasceu dessa mudança de mentalidade.</p>
+
+            <p><strong>A campanha histórica na Serie A</strong></p>
+
+            <p>A temporada 2025/26 foi a maior da história no Campeonato Italiano. O clube terminou em 4º lugar, com 20 vitórias, 11 empates e 7 derrotas em 38 rodadas. Marcou 65 gols e sofreu apenas 29, fechando a competição com 71 pontos.</p>
+
+            <p>O dado defensivo é um dos mais importantes. O Como sofreu apenas 29 gols, mostra um time muito organizado. Para um clube que vinha de reconstrução recente, competir com solidez contra os grandes da Itália mostrou que o projeto não era apenas ofensivo ou midiático.</p>
+
+            <p>A classificação também teve peso histórico porque superou a melhor campanha anterior do clube na Serie A, que havia sido o 6º lugar em 1949/50. Ou seja: o Como não apenas voltou à elite; alcançou seu melhor resultado nacional em mais de um século de história.</p>
+
+            <p><strong>Como o Como chegou à Champions League</strong></p>
+
+            <p>A vaga direta veio em uma disputa pesada. O Como terminou à frente de Milan e Juventus, dois gigantes do futebol italiano e europeu. Em uma liga marcada por tradição, orçamento, camisa e pressão, esse detalhe aumenta o tamanho do feito.</p>
+
+            <p>A classificação coloca o clube em uma nova prateleira. A Champions League não é apenas uma recompensa esportiva. Ela muda receitas, exposição, mercado de transferências, prestígio e cobrança. Para o Como, significa entrar no torneio de clubes mais importante do mundo em um momento de crescimento acelerado, dentro de uma edição que já começa a ganhar forma com os <a href="https://cortedosesportes.com.br/champions-league-2026-27-times-classificados-datas.html">times classificados para á edição 2026/27</a>.</p>
+
+            <p>O feito também se conecta diretamente com o cenário maior da <a href="https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html">história da Champions League</a>. O Como chega ao torneio sem tradição em competições europeias, mas com uma narrativa forte o bastante para atrair atenção internacional.</p>
+
+            <p>A temporada também conversa com o redesenho do próprio futebol italiano. Enquanto alguns clubes tradicionais oscilaram, o Como ocupou espaço com organização, juventude, investimento e um treinador em ascensão. É uma mudança relevante para entender a nova Serie A.</p>
+
+            <p><strong>Um time jovem, internacional e competitivo</strong></p>
+
+            <p>Com um elenco jovem, internacional e de alto potencial de mercado. O projeto não se apoia em uma única estrela veterana, mas em jogadores capazes de crescer dentro de uma ideia coletiva.</p>
+
+            <p>Nico Paz virou um dos nomes centrais da equipe. Revelado pelo Real Madrid, o meia argentino ganhou protagonismo sob o comando de Fàbregas, tornou-se peça técnica importante e terminou a temporada como um dos destaques do Campeonato Italiano.</p>
+
+            <p>O ataque também teve boa produção. Anastasios Douvikas, Jesús Rodríguez, Assane Diao, Nicolas Kühn, Álvaro Morata e outros nomes ajudaram a dar profundidade ao elenco. No meio, jogadores como Máximo Perrone, Lucas Da Cunha e Martin Baturina reforçaram a proposta de um time com capacidade de circular a bola, pressionar e atacar espaços.</p>
+
+            <p>O perfil é claro: quer ser competitivo, mas também quer valorizar atletas. O clube não se comporta como um pequeno tentando apenas sobreviver. Age como um projeto que busca formar, comprar bem, desenvolver e disputar espaço com clubes maiores.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estilo de Fàbregas</strong></p>
+
+            <p>O time do espanhol reflete muito da carreira do treinador como jogador. Há influência espanhola na circulação de bola, na valorização do meio-campo e no uso da posse como ferramenta de controle. Mas também existe uma agressividade mais direta, ligada à experiência dele na Premier League.</p>
+
+            <p>O time tenta construir desde a defesa, mas não fica preso a uma posse estéril. Quando encontra espaço, acelera. Quando perde a bola, tenta recuperar rápido. A equipe cresceu porque conseguiu equilibrar beleza e competitividade.</p>
+
+            <p>Esse equilíbrio explica os números. Marcar 65 gols em uma Serie A tão tática é relevante. Sofrer apenas 29 é ainda mais forte. O Como não chegou à Champions apenas porque jogou bonito; chegou porque foi sólido, eficiente e constante.</p>
+
+            <p>Para Fàbregas, a temporada também representa uma afirmação individual. Ele deixou de ser apenas um ex-craque tentando virar técnico. Passou a ser visto como um treinador de elite em formação, capaz de liderar um projeto complexo e entregar resultado imediato.</p>
+
+            <p><strong>A Champions muda o tamanho do projeto</strong></p>
+
+            <p>A entrada na competição continental muda tudo. O clube passa a atrair outro tipo de jogador, outro tipo de patrocínio e outro tipo de cobrança. Também precisará lidar com calendário mais pesado, viagens internacionais e jogos contra adversários de altíssimo nível.</p>
+
+            <p>O desafio será não perder a identidade. Muitos clubes crescem rápido e se desorganizam quando entram em competições maiores. O Como precisa transformar a Champions em plataforma, não em armadilha.</p>
+
+            <p>A questão do estádio também entra nesse ponto. O Sinigaglia é lindo, simbólico e central para a marca do clube, mas precisa responder às exigências de competições europeias. A modernização será parte importante da próxima fase do projeto.</p>
+
+            <p>Se conseguir equilibrar crescimento esportivo, obra estrutural e gestão de elenco, pode deixar de ser apenas “a surpresa de uma temporada” e se tornar uma força nova no futebol italiano.</p>
+
+            <p>O clube agora passa a ser observado de outra forma. Antes, era a história charmosa do time do lago. Depois, virou o promovido ambicioso. Agora, é um classificado para a Champions. Cada etapa aumenta a régua.</p>
+
+            <p>Para a torcida, é um salto geracional. Muitos acompanharam queda, falência, divisões inferiores e incerteza. Agora, verão o clube disputar a principal competição europeia. Poucas histórias recentes do futebol italiano têm contraste tão forte.</p>
+
+            <p>Para a cidade, o impacto também é grande. Como já era destino global. Agora, ganha uma vitrine esportiva internacional. O clube passa a levar o nome do lago para transmissões, sorteios, jogos europeus e debates sobre o futuro do futebol italiano.</p>
+
+            <p>Para Fàbregas, é a confirmação de um início de carreira técnico muito acima da média. Para os investidores, é a prova de que o projeto ganhou densidade real. Para o futebol europeu, é mais um caso de como dinheiro, gestão, cidade, marca e ideia de jogo podem mudar rapidamente o destino de um clube.</p>
+
+            <p>Ainda assim, a história recente já está escrita. De clube quebrado e rebaixado à quarta divisão a classificado para a Champions League em poucos anos, o Como se tornou um dos projetos mais interessantes do futebol europeu. E, pela primeira vez em muito tempo, a cidade do lago entra no mapa do futebol não apenas pela paisagem, mas pelo que seu time faz dentro de campo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
