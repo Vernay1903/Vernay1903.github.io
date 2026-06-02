@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>GP de Interlagos: história, tradição e os campeões do circuito | Corte dos Esportes</title>
+  <meta name="description" content="O palco mais tradicional da Fórmula 1 no Brasil, recebeu a primeira vitória de Emerson Fittipaldi em casa, viu triunfos históricos de Ayrton Senna, decisões de título, corridas caóticas e se consolidou como um dos circuitos mais especiais do calendário." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">GP de Interlagos: história, tradição e os campeões do circuito</h1>
+          <p class="subhead" id="articleExcerpt">O palco mais tradicional da Fórmula 1 no Brasil, recebeu a primeira vitória de Emerson Fittipaldi em casa, viu triunfos históricos de Ayrton Senna, decisões de título, corridas caóticas e se consolidou como um dos circuitos mais especiais do calendário.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">02/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="automobilismo.html">Automobilismo</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Mais do que a etapa brasileira do calendário, o circuito paulistano virou um palco de identidade nacional, decisões dramáticas, corridas imprevisíveis e vitórias que atravessaram gerações.</p>
+
+            <p>Oficialmente chamado de Autódromo José Carlos Pace, Interlagos carrega uma combinação rara. É um circuito antigo, urbano, ondulado, de sentido anti-horário, com arquibancadas próximas, clima instável e uma torcida que transforma o fim de semana em evento. Mesmo em uma Fórmula 1 cada vez mais global, moderna e voltada a grandes estruturas, o traçado de São Paulo segue com alma própria.</p>
+
+            <p>A prova também está diretamente ligada aos maiores nomes do automobilismo brasileiro. Emerson Fittipaldi venceu a primeira edição válida pelo Mundial de Fórmula 1 no Brasil, em 1973. Carlos Pace ganhou em casa em 1975. Ayrton Senna transformou Interlagos em palco de duas de suas vitórias mais emocionantes. Felipe Massa também marcou época com triunfos e uma das decisões mais dramáticas da história recente da categoria.</p>
+
+            <p><strong>A origem de Interlagos</strong></p>
+
+            <p>O Autódromo foi inaugurado em 1940, na zona sul de São Paulo. O nome popular vem da localização entre duas represas, Guarapiranga e Billings, em uma região que se desenvolveu ao redor do bairro de Interlagos.</p>
+
+            <p>Antes da chegada definitiva da Fórmula 1, o circuito já era um centro importante do automobilismo brasileiro. Recebeu provas nacionais, corridas de longa duração, eventos de turismo, competições de protótipos e se tornou referência para pilotos brasileiros em formação.</p>
+
+            <p>O traçado original era muito maior do que o atual. Interlagos tinha quase 8 km e um desenho mais longo, rápido e desgastante. Com o tempo, as exigências da Fórmula 1 moderna levaram a reformas profundas. No fim dos anos 1980 e início dos anos 1990, o circuito foi encurtado para pouco mais de 4,3 km, mantendo a essência técnica, mas adaptando o autódromo ao padrão internacional da categoria.</p>
+
+            <p>Em 1985, o autódromo passou a se chamar oficialmente José Carlos Pace, em homenagem ao piloto brasileiro vencedor do GP do Brasil de 1975 e falecido em acidente aéreo em 1977.</p>
+
+            <p><strong>O primeiro vencedor do GP do Brasil</strong></p>
+
+            <p>A primeira prova válida pelo Mundial de Fórmula 1 foi disputado em 1973, em Interlagos. E o vencedor não poderia ter sido mais simbólico: Emerson Fittipaldi, então campeão mundial, ganhou a prova com a Lotus.</p>
+
+            <p>A vitória de Emerson transformou a estreia brasileira no calendário em uma celebração nacional. O país ainda vivia o impacto do título mundial conquistado por ele em 1972, e a Fórmula 1 começava a se popularizar com força no Brasil.</p>
+
+            <p>Ele ainda voltou a vencer no ano seguinte, em 1974, agora pela McLaren. Com isso, o GP do Brasil nasceu marcado por protagonismo brasileiro. Nos três primeiros anos da prova como etapa do Mundial, o país viu vitórias de Emerson em 1973 e 1974, e de Carlos Pace em 1975.</p>
+
+            <p>Esse início ajudou a criar uma ligação emocional forte entre Interlagos e a torcida brasileira. O autódromo não era apenas sede de uma corrida internacional; era o lugar onde o Brasil se via competitivo no maior campeonato de automobilismo do mundo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O traçado atual de Interlagos</strong></p>
+
+            <p>O circuito tem 4,309 km, 15 curvas e corrida de 71 voltas na Fórmula 1. A distância total do GP é de 305,879 km.</p>
+
+            <p>Começa com a descida para o S do Senna, uma das sequências mais famosas da Fórmula 1. Depois, os carros mergulham em direção à Curva do Sol e à Reta Oposta. A parte intermediária, com curvas como Descida do Lago, Ferradura, Laranjinha, Pinheirinho, Bico de Pato e Mergulho, exige tração, equilíbrio e bom acerto mecânico.</p>
+
+            <p>A volta termina com a Junção e a subida dos boxes, um trecho de aceleração forte em que o motor trabalha pesado por causa da altitude de São Paulo. Essa combinação faz de Interlagos um circuito curto, mas completo: tem reta, curva lenta, mudança de inclinação, trecho travado, frenagem forte e desgaste físico.</p>
+
+            <p><strong>Por que Interlagos gera corridas tão boas</strong></p>
+
+            <p>Costuma produzir corridas marcantes por vários fatores. O primeiro é o próprio desenho do circuito. Como a volta é curta, os carros ficam próximos, o tráfego aparece mais cedo e as estratégias podem mudar rapidamente.</p>
+
+            <p>Outro ponto é o clima. São Paulo tem histórico de chuva repentina, variação de temperatura e mudanças rápidas de condição de pista. Isso já transformou várias corridas em provas caóticas, com safety car, escolhas arriscadas de pneu e reviravoltas no fim.</p>
+
+            <p>A pista também favorece disputa. A Reta Oposta e a subida dos boxes criam boas chances de ataque, enquanto o S do Senna é uma das zonas mais importantes para ultrapassagem. Mesmo não sendo um circuito de retas gigantes, Interlagos permite uma corrida mais aberta do que muitos traçados urbanos.</p>
+
+            <p>Por isso, o GP brasileiro costuma ser aguardado com expectativa, pois raramente uma corrida é totalmente previsível.</p>
+
+            <p><strong>Senna e Interlagos: emoção, dor e imortalidade</strong></p>
+
+            <p>A história de Ayrton Senna no GP tem um peso sagrado para o torcedor brasileiro. Ele venceu em casa duas vezes, em 1991 e 1993, ambas pela McLaren, e transformou essas conquistas em parte central de seu legado.</p>
+
+            <p>A vitória de 1991 é uma das mais emocionantes da história da Fórmula 1. Senna liderava a prova, mas enfrentou problemas no câmbio e terminou a corrida praticamente preso em uma marcha. Exausto, com dores e enorme desgaste físico, cruzou a linha de chegada em primeiro e mal conseguia levantar o troféu no pódio.</p>
+
+            <p>A cena virou símbolo de superação. Não foi apenas uma vitória técnica. Foi uma vitória emocional, física e nacional. Senna venceu em casa pela primeira vez em um contexto único, diante de uma torcida que esperava aquele momento havia anos.</p>
+
+            <p>Em 1993, Senna voltou a vence, em uma corrida marcada por chuva e mudanças de ritmo. A vitória reforçou sua ligação com o circuito e consolidou o autódromo como um dos palcos mais importantes da carreira do tricampeão.</p>
+
+            <p>A dimensão desse vínculo se conecta na <a href="https://cortedosesportes.com.br/ayrton-senna-historia-titulos-legado-formula-1.html">história dele</a>, porque Interlagos é parte indispensável para entender por que ele virou mais do que um piloto para o Brasil.</p>
+
+            <p><strong>O S do Senna</strong></p>
+
+            <p>Uma das marcas mais famosas do circuito é a sequência de curvas logo após a reta principal. O trecho foi incluído no redesenho que preparou Interlagos para o retorno da Fórmula 1 a São Paulo em 1990 e recebeu influência direta de Ayrton Senna em sua concepção.</p>
+
+            <p>O S do Senna é importante tecnicamente porque define boa parte da volta. Uma boa saída da reta principal e uma freada precisa na primeira perna da curva podem abrir ataque ou defesa. Como vem logo depois de uma zona de DRS, o trecho se tornou ponto central para ultrapassagens.</p>
+
+            <p>Também é um símbolo. Poucas curvas no calendário carregam nome e memória tão ligados a um piloto. Em Interlagos, Senna está no traçado, nas arquibancadas, na torcida e na própria narrativa do GP.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Maiores vencedores</strong></p>
+
+            <p>Outra lenda do esporte Michael Schumacher, continua como maior campeão da prova no circuito brasileiro, com quatro vitórias conquistadas em 1994, 1995, 2000 e 2002.</p>
+
+            <p>Outros campeões com mais de um vitória no traçado:</p>
+            <ul>
+              <li>Carlos Reutemann: 4 vitórias, incluindo edição fora do Mundial</li>
+              <li>Sebastian Vettel: 3 vitórias</li>
+              <li>Lewis Hamilton: 3 vitórias</li>
+              <li>Max Verstappen: 3 vitórias</li>
+            </ul>
+
+            <p>Brasileiros que ganharam:</p>
+            <ul>
+              <li>Emerson Fittipaldi: 2 vitórias</li>
+              <li>Carlos Pace: 1 vitórias</li>
+              <li>Nelson Piquet: 2 vitórias</li>
+              <li>Ayrton Senna: 2 vitórias</li>
+              <li>Felipe Massa: 2 vitórias</li>
+            </ul>
+
+            <p>Esse recorte mostra a força brasileira na história da prova. Poucos países têm uma relação tão emocional com sua etapa nacional quanto o Brasil teve em Interlagos.</p>
+
+            <p><strong>Corridas históricas</strong></p>
+
+            <p>O autódromo acumulou algumas das corridas mais lembradas da Fórmula 1 moderna, como algumas abaixo:</p>
+
+            <ul>
+              <li>1991: Senna vence pela primeira vez em casa;<br>Foi a vitória da resistência. Com problemas no câmbio, segurou Riccardo Patrese e venceu diante da torcida brasileira.</li>
+              <li>1993: Senna domina em corrida de chuva;<br>Em uma prova instável, aproveitou o caos, venceu novamente em casa e levou Interlagos ao delírio.</li>
+              <li>2006: Massa vence no Brasil pela primeira vez;<br>Pela Ferrari e se tornou o primeiro brasileiro desde Senna a vencer o GP em casa.</li>
+              <li>2008: Massa vence, mas Hamilton é campeão;<br>Uma das decisões mais dramáticas da história da Fórmula 1. Massa venceu a corrida e chegou a ser campeão por alguns segundos, mas Lewis Hamilton ultrapassou Timo Glock na última curva e ficou com o título mundial.</li>
+              <li>2009: Button confirma o título da temporada;<br>Garantiu em Interlagos o título de 2009 pela Brawn GP, uma das histórias mais improváveis da F1 moderna.</li>
+              <li>2012: Vettel confirma tricampeonato;<br>O piloto alemão sobreviveu a uma corrida caótica e confirmou o terceiro título mundial.</li>
+              <li>2016: Verstappen impressiona na chuva;<br>Max Verstappen fez uma das atuações mais marcantes do início da sua carreira, com ultrapassagens na pista molhada que reforçaram sua imagem de fenômeno.</li>
+              <li>2021: Hamilton vence em fim de semana épico;<br>Piloto fez uma das provas mais fortes de sua carreira recente, em um fim de semana marcado por punições, recuperação e vitória em São Paulo.</li>
+              <li>2024: Verstappen vence após largar no fim do grid;<br>Em uma corrida com chuva, ele produziu uma atuação dominante saindo de trás e reforçou sua fama em condições difíceis.</li>
+            </ul>
+
+            <p>Essas provas ajudam a explicar a tradição de Interlagos. O circuito não é lembrado apenas por existir há muito tempo. É lembrado porque repetidamente entregou momentos decisivos.</p>
+
+            <p><strong>O papel de Felipe Massa em Interlagos</strong></p>
+
+            <p>O piloto brasileiro também tem lugar especial na história do GP. Em 2006, venceu pela primeira vez em casa, pela Ferrari, usando um macacão verde e amarelo que ficou marcado na memória da torcida.</p>
+
+            <p>Em 2008, viveu o capítulo mais dramático de sua carreira. Massa venceu o GP do Brasil e, por alguns segundos, parecia campeão mundial. A ultrapassagem de Hamilton sobre Glock na última curva tirou o título do brasileiro, mas não apagou a grandeza daquele fim de semana.</p>
+
+            <p>A imagem da Ferrari comemorando e depois percebendo que o título havia escapado virou uma das cenas mais famosas da F1. Para o Brasil, foi uma mistura de orgulho e dor: Massa fez tudo que precisava, venceu em casa, mas perdeu o campeonato por um ponto.</p>
+
+            <p><strong>Interlagos e a torcida brasileira</strong></p>
+
+            <p>A torcida é parte essencial da identidade do GP. O público brasileiro costuma transformar o autódromo em ambiente de festa, com arquibancadas cheias, bandeiras, buzinas, música e energia própria.</p>
+
+            <p>Mesmo em anos sem brasileiros competitivos na Fórmula 1, o GP manteve forte apelo. Isso mostra que a relação do país com a categoria vai além de um piloto específico. Senna, Piquet, Emerson, Pace, Barrichello e Massa ajudaram a construir esse vínculo, mas a tradição permaneceu.</p>
+
+            <p>Com a chegada de novos nomes brasileiros ao radar da F1, como Gabriel Bortoleto, o interesse nacional ganha nova expectativa. Interlagos continua sendo o palco ideal para qualquer brasileiro sentir o peso de correr em casa.</p>
+
+            <p><strong>De GP do Brasil a GP de São Paulo</strong></p>
+
+            <p>A etapa brasileira passou a ser chamada oficialmente de GP de São Paulo a partir de 2021, após um novo acordo para manter a Fórmula 1 em Interlagos. Mesmo assim, para grande parte do público, a prova segue sendo lembrada como o GP do Brasil.</p>
+
+            <p>A mudança de nome não diminuiu a tradição. Pelo contrário: reforçou a ligação da cidade de São Paulo com o evento e manteve Interlagos no calendário em uma fase de grande competição entre países e circuitos interessados em receber a Fórmula 1.</p>
+
+            <p>Em um calendário cada vez mais disputado, permanecer na F1 é um feito relevante. Interlagos conserva valor porque entrega história, público, corrida competitiva e uma atmosfera única.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que Interlagos é diferente</strong></p>
+
+            <p>O diferencial está em não depender apenas de luxo, estrutura moderna ou apelo comercial. Seu valor vem da mistura entre história e imprevisibilidade.</p>
+
+            <p>A pista é curta, mas completa. O clima muda. A torcida pressiona. A classificação importa, mas a corrida pode virar. O desgaste físico aparece por causa do sentido anti-horário e das mudanças de elevação. O erro cobra caro, mas a pista permite recuperação.</p>
+
+            <p>Além disso, Interlagos tem uma memória esportiva muito forte. Emerson, Pace, Senna, Massa, Schumacher, Hamilton, Verstappen, Button e Vettel escreveram capítulos importantes ali. Poucos circuitos do calendário carregam tantas camadas narrativas.</p>
+
+            <p><strong>Interlagos como patrimônio da Fórmula 1</strong></p>
+
+            <p>Ele representa uma parte essencial da história da categoria fora da Europa. O Brasil foi um dos países que mais ajudaram a popularizar a F1 mundialmente, especialmente pela força de seus campeões e pela audiência apaixonada.</p>
+
+            <p>Interlagos faz parte de um grupo cada vez mais valioso de circuitos antigos que ainda conseguem produzir história na Fórmula 1 moderna. Assim como o <a href="https://cortedosesportes.com.br/circuito-monaco-formula-1-historia-tradicao-maiores-campeoes.html">Circuito de Mônaco</a>, o traçado brasileiro preserva identidade própria em um calendário cada vez mais globalizado. São pistas diferentes em estilo, mas parecidas em significado: carregam memória, exigem precisão e continuam dando à Fórmula 1 algo que os circuitos novos nem sempre conseguem fabricar rapidamente.</p>
+
+            <p>O autódromo também simboliza uma forma mais clássica de corrida. Em uma era de pistas novas, largas e desenhadas para grandes eventos corporativos, o traçado preserva imperfeições que tornam a prova especial. O asfalto, as ondulações, o relevo e o clima criam uma identidade que não se fabrica facilmente.</p>
+
+            <p>Por isso, vencer em Interlagos ainda pesa no currículo. Não é apenas mais uma etapa. É uma prova que conecta técnica, emoção, tradição e história brasileira.</p>
+
+            <p><strong>Um circuito que ainda entrega grandes histórias</strong></p>
+
+            <p>Interlagos atravessou décadas, reformas, mudanças de nome, gerações de pilotos e transformações profundas da Fórmula 1. Mesmo assim, segue relevante. Continua sendo um dos circuitos mais aguardados do calendário e uma das pistas mais queridas por pilotos e torcedores.</p>
+
+            <p>O GP do Brasil segue vivo porque ainda produz contexto esportivo. Em São Paulo, a Fórmula 1 encontra história, torcida, risco e emoção. E é exatamente isso que mantém o circuito entre os grandes palcos do automobilismo mundial.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "automobilismo";
+  const CATEGORY_NAME = "Automobilismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
