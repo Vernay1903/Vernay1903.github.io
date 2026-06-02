@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>UFC na Casa Branca: card completo, cinturões, brasileiros e transmissão | Corte dos Esportes</title>
+  <meta name="description" content="UFC Freedom 250 será realizado na Casa Branca, em Washington, com disputa de cinturão e presença de brasileiros no card histórico das comemorações dos 250 anos dos Estados Unidos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">UFC na Casa Branca: card completo, cinturões, brasileiros e transmissão</h1>
+          <p class="subhead" id="articleExcerpt">UFC Freedom 250 será realizado na Casa Branca, em Washington, com disputa de cinturão e presença de brasileiros no card histórico das comemorações dos 250 anos dos Estados Unidos.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">02/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="lutas.html">Lutas</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O maior evento de lutas marciais do mundo, terá uma das noites mais simbólicas de sua história em 14 de junho de 2026, quando realiza o UFC Freedom 250 na Casa Branca. O octógono será montado no gramado sul da sede do governo norte-americano e faz parte das comemorações pelos 250 anos da independência dos EUA.</p>
+
+            <p>A proposta torna o card diferente de qualquer outro já realizado pela organização. Não se trata apenas de uma arena tradicional, uma edição numerada ou uma luta em estádio. O UFC levará o octógono para um dos espaços políticos mais conhecidos do mundo, em uma noite com duas disputas de cinturão, três nomes ligados ao Brasil e um card cheio de apelo comercial e histórico.</p>
+
+            <p>A luta principal será entre Ilia Topuria x Justin Gaethje, pelo cinturão dos pesos-leves. No coevento, Alex Poatan enfrenta Ciryl Gane pelo cinturão interino dos pesos-pesados.</p>
+
+            <p><strong>UFC Freedom 250: data, horário, local e transmissão</strong></p>
+
+            <ul>
+              <li>Data: domingo, 14 de junho de 2026</li>
+              <li>Local: Casa Branca, em Washington, Estados Unidos</li>
+              <li>Pré-show: 20h</li>
+              <li>Card principal: 21h</li>
+              <li>Transmissão no Brasil: Paramount+</li>
+            </ul>
+
+            <p>O evento será realizado em formato especial, com capacidade limitada para convidados no entorno do octógono e uma grande Fan Fest no Parque Ellipse, próximo à Casa Branca. A estrutura montada para o card tem caráter temporário e foi planejada para transformar o gramado sul em uma arena ao ar livre.</p>
+
+            <p>Esse ponto dá um peso diferente. O evento não terá a atmosfera de uma T-Mobile Arena, Madison Square Garden ou Etihad Arena. A imagem principal será o octógono tendo a Casa Branca como cenário, algo pensado para gerar impacto visual e simbólico.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Card completo</strong></p>
+
+            <p>Tem sete lutas anunciadas. A ordem pode sofrer ajustes até a semana do evento, mas a estrutura principal já está definida.</p>
+
+            <ul>
+              <li>Peso-leve: Ilia Topuria x Justin Gaethje — cinturão</li>
+              <li>Peso-pesado: Alex Poatan x Ciryl Gane — cinturão interino</li>
+              <li>Peso-galo: Sean O’Malley x Aiemann Zahabi</li>
+              <li>Peso-pesado: Josh Hokit x Derrick Lewis</li>
+              <li>Peso-leve: Maurício Ruffy x Michael Chandler</li>
+              <li>Peso-médio: Bo Nickal x Kyle Daukaus</li>
+              <li>Peso-pena: Diego Lopes x Steve Garcia</li>
+            </ul>
+
+            <p>A presença de duas disputas de cinturão coloca o evento em um patamar especial. Topuria x Gaethje carrega valor esportivo imediato pela unificação dos leves, enquanto Poatan x Gane pode produzir uma das marcas individuais mais importantes da história recente do UFC.</p>
+
+            <p><strong>Cinturão dos leves como luta principal</strong></p>
+
+            <p>Ilia Topuria chega como campeão dos pesos-leves e encara Justin Gaethje, campeão interino da categoria. É uma luta com apelo técnico e comercial forte, porque reúne um campeão invicto, agressivo e em ascensão contra um dos atletas mais violentos e populares da divisão.</p>
+
+            <p>Topuria chega ao UFC Freedom 250 com cartel profissional de 17 vitórias e nenhuma derrota. O número impressiona ainda mais pelo perfil das vitórias: são 7 por nocaute ou nocaute técnico, 8 por finalização e apenas 2 por decisão. Ou seja, além de invicto, o campeão construiu carreira com alto índice de definição antes do fim do combate.</p>
+
+            <p>Gaethje tem um histórico muito diferente, mas igualmente pesado. O norte-americano soma 27 vitórias e 5 derrotas no MMA profissional. Foram 19 vitórias por nocaute ou nocaute técnico, 2 por finalização e 6 por decisão. As derrotas também explicam seu estilo: três vieram por nocaute técnico e duas por finalização, reflexo de uma carreira construída em lutas abertas, violentas e de alto desgaste.</p>
+
+            <p>Esse contraste aumenta á espectativa da luta. Topuria é mais técnico, frio e completo entre trocação e chão. Gaethje é explosivo, resistente e acostumado a transformar qualquer combate em guerra. A diferença está no risco: Topuria costuma controlar melhor as entradas e saídas; Gaethje aceita mais dano para devolver potência.</p>
+
+            <p>Em uma noite feita para ser histórica, a escolha dos leves como luta principal é coerente: é uma divisão rápida, técnica, popular e com alto potencial de nocaute.</p>
+
+            <p><strong>Alex Poatan x Ciryl Gane: chance de feito inédito</strong></p>
+
+            <p>O coevento principal talvez seja o ponto mais importante para o público brasileiro. Alex Poatan enfrenta Ciryl Gane pelo cinturão interino dos pesos-pesados. A luta pode colocar o brasileiro em uma posição inédita na história do UFC.</p>
+
+            <p>Poatan chega com cartel de 13 vitórias e 3 derrotas no MMA profissional. O dado mais forte está na forma como vence: são 11 vitórias por nocaute ou nocaute técnico, nenhuma por finalização e apenas 2 por decisão. As três derrotas vieram uma por nocaute técnico, uma por finalização e uma por decisão.</p>
+
+            <p>Esse histórico resume o tipo de ameaça que Poatan representa. Ele não é um peso-pesado tradicional de volume ou grappling. É um striker de elite, com potência de um golpe só, leitura de distância e experiência de kickboxing em nível mundial. A ida para os pesados aumenta o risco, mas também amplia o tamanho do possível feito.</p>
+
+            <p>Gane, por outro lado, tem um cartel de 13 vitórias, 2 derrotas e 1 luta sem resultado. O francês venceu 6 vezes por nocaute ou nocaute técnico, 3 por finalização e 4 por decisão. Suas derrotas vieram uma por finalização e uma por decisão. Esse equilíbrio mostra um peso-pesado mais técnico e completo do que explosivo.</p>
+
+            <p>A luta coloca frente a frente dois caminhos diferentes. Poatan é mais letal em poucos golpes. Gane é mais móvel, trabalha melhor a distância longa e tem experiência natural na categoria. O brasileiro carrega a chance de se tornar o primeiro lutador da história do UFC campeão em três divisões diferentes; o francês tenta recuperar o status de campeão interino e voltar ao centro da disputa dos pesados.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Brasileiros no UFC Freedom 250</strong></p>
+
+            <p>Além de Alex Poatan, Maurício Ruffy e Diego Lopes também integram o card histórico:</p>
+
+            <ul>
+              <li>Maurício Ruffy: encara Michael Chandler em luta de enorme visibilidade nos leves.</li>
+              <li>Diego Lopes: abre caminho no card contra Steve Garcia, em duelo de peso-pena.</li>
+            </ul>
+
+            <p>Poatan é o nome de maior peso histórico. Sua luta pode render uma marca inédita e aumentar ainda mais sua condição de estrela global. Ruffy tem talvez a maior oportunidade de exposição da carreira ao enfrentar Michael Chandler, ex-campeão do Bellator e veterano conhecido por lutas de alta intensidade. Diego Lopes, por sua vez, encara Steve Garcia em confronto importante para seguir relevante no topo do peso-pena.</p>
+
+            <p><strong>Maurício Ruffy x Michael Chandler: vitrine para subir de patamar</strong></p>
+
+            <p>Uma luta de alto risco e alta recompensa. Enfrentar Michael Chandler em um card na Casa Branca significa entrar em uma vitrine enorme. Chandler é veterano, explosivo, ex-campeão do Bellator e já dividiu o octógono com alguns dos nomes mais populares dos leves.</p>
+
+            <p>Para Ruffy, a luta pode acelerar sua trajetória. Vencer Chandler em um evento dessa dimensão colocaria o brasileiro em outro nível de reconhecimento dentro da categoria. O desafio é que Chandler ainda oferece perigo: começa forte, bate pesado, tem wrestling e costuma transformar lutas em trocação aberta.</p>
+
+            <p><strong>Peso-pena com ritmo alto</strong></p>
+
+            <p>Diego Lopes enfrenta Steve Garcia. É um confronto que promete intensidade, porque os dois chegam com estilo agressivo e capacidade de produzir trocação franca.</p>
+
+            <p>Lopes já disputou espaço importante na categoria e se tornou um nome popular pelo volume, criatividade no chão e disposição para aceitar lutas difíceis. Garcia chega embalado por sequência positiva e com reputação de finalizador perigoso.</p>
+
+            <p><strong>Ex-campeão contra sequência positiva</strong></p>
+
+            <p>No peso-galo, Sean O’Malley enfrenta Aiemann Zahabi. O’Malley é ex-campeão da categoria e um dos nomes mais reconhecíveis do UFC pelo estilo, pela imagem e pela capacidade de atrair público.</p>
+
+            <p>Zahabi chega como adversário perigoso justamente porque não entra apenas como nome de composição. O canadense vive uma sequência positiva e tem a chance de vencer um ex-campeão em um dos cards mais vistos do ano.</p>
+
+            <p><strong>Derrick Lewis, Bo Nickal e o apelo norte-americano</strong></p>
+
+            <p>O card também tem nomes com forte apelo para o público dos Estados Unidos. Derrick Lewis enfrenta Josh Hokit no peso-pesado. Lewis é um dos maiores nocauteadores da história do UFC e sempre carrega expectativa de fim rápido de luta.</p>
+
+            <p>Bo Nickal enfrenta Kyle Daukaus no peso-médio. Nickal ainda é tratado como um projeto importante pela combinação de wrestling de elite, carisma esportivo e potencial de crescimento. Em um evento montado para dialogar com a cultura esportiva norte-americana, sua presença faz sentido.</p>
+
+            <p>Essas lutas completam o card com atletas reconhecíveis para o público dos EUA e ajudam o evento a ter apelo além das duas disputas de cinturão.</p>
+
+            <p><strong>A estreia da Casa Branca</strong></p>
+
+            <p>Esse é justamente o ponto que torna o evento tão incomum. O UFC Freedom 250 será a primeira grande experiência da organização nesse espaço, e o evento é tratado como algo único dentro do calendário.</p>
+
+            <p>A Casa Branca tem tradição política, cerimonial e diplomática, não esportiva. Por isso, não existe um retrospecto de grandes combates realizados ali, como acontece com Madison Square Garden, MGM Grand, T-Mobile Arena ou outras sedes clássicas do UFC e do boxe.</p>
+
+            <p>O que existe é uma tentativa de criar uma nova imagem histórica: a do octógono montado em um cenário institucional dos Estados Unidos. É uma decisão que transforma o evento em espetáculo esportivo e político ao mesmo tempo.</p>
+
+            <p><strong>O que significa o nome do evento</strong></p>
+
+            <p>UFC Freedom 250 está ligado às comemorações dos 250 anos da independência dos Estados Unidos, e não ao antigo UFC 250 do calendário tradicional, realizado em 2020. Esse detalhe é importante porque evita confusão.</p>
+
+            <p>O UFC já teve eventos numerados históricos, como UFC 100, UFC 200 e UFC 300. Cada um deles foi usado como marco de fase da organização. O Freedom 250 segue outra lógica: é um evento especial, temático, montado para dialogar com uma data nacional norte-americana.</p>
+
+            <p>A organização transforma a data em produto esportivo. O evento não é apenas sobre ranking e cinturão. É também sobre imagem, transmissão, patrocínio, palco e narrativa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>UFC 100, 200, 300 e a tradição dos grandes marcos</strong></p>
+
+            <p>O UFC tem tradição em eventos de grande marco. O UFC 100, em 2009, teve Brock Lesnar, Georges St-Pierre e uma enorme audiência para a época. O UFC 200, em 2016, ficou marcado por card estrelado e pela vitória de Amanda Nunes sobre Miesha Tate, conquista que abriu uma das maiores fases da carreira da brasileira. O UFC 300, em 2024, teve Alex Poatan na luta principal e o nocaute inesquecível de Max Holloway sobre Justin Gaethje pelo cinturão BMF.</p>
+
+            <p>O Freedom 250 tenta entrar nessa galeria de eventos especiais, mas por outro caminho. Ele não será lembrado apenas por ser um card forte. Será lembrado pelo local. Se as lutas entregarem grandes momentos, a combinação entre cenário e resultado pode transformar a noite em um dos eventos mais marcantes da história do UFC.</p>
+
+            <p><strong>Por que o UFC levou o octógono à Casa Branca</strong></p>
+
+            <p>A Organização cresceu justamente por saber transformar luta em espetáculo. Ela saiu de um produto marginalizado nos anos 1990 para se tornar uma das principais ligas esportivas do mundo. Nesse processo, construiu marca, ranking, cinturões, estrelas globais, contratos de transmissão e presença internacional.</p>
+
+            <p>Essa chegada à Casa Branca também simboliza uma etapa extrema da evolução do MMA como produto global. O caminho que passou pelo Pride, pela consolidação do UFC, pela ascensão de lendas brasileiras e pelo crescimento do MMA feminino ajuda a explicar como a modalidade saiu de um ambiente mais restrito para ocupar palcos cada vez maiores, tema aprofundado sobre <a href="https://cortedosesportes.com.br/lutas-do-pride-ao-ufc-brasileiros-lendas-e-ascensao-do-mma-feminino.html">a trajetória das lutas do Pride ao UFC</a>. Nesse contexto, ter nomes do Brasil em um card montado em um dos locais mais icônicos do mundo reforça como o país acompanhou a modalidade desde suas fases de formação até o ápice comercial e simbólico do esporte.</p>
+
+            <p>Levar um card à Casa Branca é uma extensão dessa lógica. Busca criar um evento visualmente único, com enorme repercussão de mídia e forte valor simbólico. A escolha do local também conversa com a relação histórica entre Dana White, Donald Trump e o crescimento político-cultural do UFC nos Estados Unidos.</p>
+
+            <p>Do ponto de vista comercial, é um card feito para circular fora da bolha do MMA. Mesmo quem não acompanha o esporte tende a prestar atenção em um evento na Casa Branca. Esse é o tipo de palco que amplia alcance, atrai marcas e cria assunto para além do resultado das lutas.</p>
+
+            <p><strong>O peso esportivo do card</strong></p>
+
+            <p>Apesar do componente de espetáculo, o evento tem peso esportivo também. Duas disputas de cinturão sustentam o card.</p>
+
+            <p>Ou seja: não é apenas um evento simbólico. Há consequências esportivas importantes para várias divisões.</p>
+
+            <p><strong>Uma noite de risco</strong></p>
+
+            <p>Fazer uma luta ao ar livre em Washington envolve clima, segurança, logística, transmissão, iluminação, estrutura temporária e controle de público. A montagem no gramado sul exige adaptação completa, diferente de uma arena fechada já preparada para eventos de combate.</p>
+
+            <p>O card curto também aumenta a pressão. Em uma noite com poucas lutas, cada combate precisa funcionar. Se houver quedas de ritmo, decisões mornas ou problemas técnicos, a percepção do evento pode ser afetada. Por outro lado, se as lutas entregarem nocautes, drama e grandes performances, o UFC terá criado um dos maiores cartões-postais de sua história.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "lutas";
+  const CATEGORY_NAME = "Lutas";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
