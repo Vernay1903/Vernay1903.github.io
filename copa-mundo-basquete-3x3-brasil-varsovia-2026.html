@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Copa do Mundo de Basquete 3x3: Brasil busca reação em Varsóvia | Corte dos Esportes</title>
+  <meta name="description" content="Brasileiros perderam para Porto Rico e Lituânia na estreia da Copa do Mundo de Basquete 3x3, em Varsóvia, e enfrenta Bélgica e França precisando reagir para seguir vivo na briga por vaga no Play-In." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Copa do Mundo de Basquete 3x3: Brasil busca reação em Varsóvia</h1>
+          <p class="subhead" id="articleExcerpt">Brasileiros perderam para Porto Rico e Lituânia na estreia da Copa do Mundo de Basquete 3x3, em Varsóvia, e enfrenta Bélgica e França precisando reagir para seguir vivo na briga por vaga no Play-In.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">03/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="esportes-olimpicos.html">esportes olimpicos</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Seleção Brasileira masculina de basquete 3x3 volta à quadra em situação decisiva na Copa do Mundo da modalidade, disputada em Varsóvia, na Polônia. Depois de duas derrotas apertadas na estreia, o Brasil enfrenta Bélgica e França precisando reagir para seguir com chances de classificação ao Play-In.</p>
+
+            <p>O torneio começou com tom de frustração para a equipe brasileira. Contra Porto Rico, o Brasil levou o jogo para a prorrogação, mas caiu por 19 a 17. Depois, diante da Lituânia, uma das seleções mais fortes da chave e medalhista olímpica, voltou a competir até a última bola, mas perdeu por 22 a 20.</p>
+
+            <p>O cenário ficou difícil, mas não definitivo. A competição tem formato curto, jogos rápidos e margem pequena para erro. Uma bola de dois pontos muda tudo. Uma sequência de ataques bem executados pode recolocar uma seleção na briga. Para o Brasil, a missão agora é: precisa vencer os dois jogos restantes e depender da combinação da chave para buscar vaga no mata-mata.</p>
+
+            <p><strong>Jogos do Brasil na Copa do Mundo 3x3</strong></p>
+
+            <p>A seleção brasileira está no Grupo D, ao lado de Lituânia, França, Bélgica e Porto Rico. A chave é uma das mais equilibradas da competição, com seleções fortes, estilos físicos e alto nível de arremesso.</p>
+
+            <p><strong>Resultados do Brasil:</strong></p>
+            <ul>
+              <li>Brasil 17 x 19 Porto Rico</li>
+              <li>Brasil 20 x 22 Lituânia</li>
+            </ul>
+
+            <p><strong>Próximos jogos:</strong></p>
+            <ul>
+              <li>Brasil x Bélgica<br>Data: 4 de junho<br>Horário: 8h20<br>Transmissão: CazéTV</li>
+              <li>Brasil x França<br>Data: 4 de junho<br>Horário: 10h10<br>Transmissão: CazéTV</li>
+            </ul>
+
+            <p>Depois da fase de grupos, a competição segue com Play-In, quartas de final, semifinais e final entre 5 e 7 de junho.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como foi a estreia contra Porto Rico</strong></p>
+
+            <p>O primeiro jogo deixou a sensação de que o Brasil poderia ter saído com vitória. A partida contra Porto Rico foi equilibrada do começo ao fim, com as equipes alternando bons momentos e o placar chegando empatado ao fim dos 10 minutos.</p>
+
+            <p>No basquete 3x3, quando o jogo termina empatado, a prorrogação é decidida por morte súbita parcial: vence quem marcar dois pontos primeiro. Foi aí que Porto Rico decidiu, com uma bola de dois pontos logo no primeiro ataque extra, fechando o placar em 19 a 17.</p>
+
+            <p>O resultado pesou porque era o tipo de jogo que poderia mudar a campanha brasileira. Em uma chave tão difícil, vencer a estreia teria dado margem para enfrentar Lituânia, Bélgica e França com menos pressão.</p>
+
+            <p><strong>Brasil compete contra a Lituânia, mas cai no detalhe</strong></p>
+
+            <p>Contra a Lituânia, os brasileiros fez uma partida de alto nível competitivo. A seleção europeia é uma das potências do 3x3 e chegou ao torneio com peso de favorita na chave. Mesmo assim, o Brasil conseguiu equilibrar o jogo e chegou aos minutos finais com chance de vitória.</p>
+
+            <p>O placar ficou em 20 a 20. No 3x3, a partida termina automaticamente quando uma equipe chega a 21 pontos ou mais dentro do tempo regulamentar. A Lituânia encontrou a bola decisiva de dois pontos e venceu por 22 a 20.</p>
+
+            <p>A derrota foi dura, mas mostrou que o Brasil tem nível para competir. O problema é que, em uma Copa do Mundo curta, jogar bem e perder ainda deixa um impacto pesado na tabela. A Seleção saiu de duas partidas equilibradas com duas derrotas por detalhes.</p>
+
+            <p><strong>Quem defende o Brasil no Mundial</strong></p>
+
+            <p>A seleção manteve a base que conquistou a classificação para a Copa do Mundo no torneio qualificatório. O elenco tem jogadores acostumados à dinâmica específica do 3x3, modalidade que exige tomada de decisão rápida, força física, arremesso de longa distância e resistência em jogos de alta intensidade.</p>
+
+            <p><strong>Elenco do Brasil no 3x3:</strong></p>
+            <ul>
+              <li>Léo Branquinho</li>
+              <li>Jonatas Mello</li>
+              <li>Will Weihermann</li>
+              <li>Leandro Silva</li>
+              <li>Técnico: Mauro Macedo</li>
+            </ul>
+
+            <p>A equipe chega ao Mundial depois de uma campanha importante no qualificatório, quando venceu República Tcheca, Cingapura e Itália, perdendo apenas para a Nova Zelândia na última bola. O grupo também vinha de pódio na Copa América, com o terceiro lugar.</p>
+
+            <p>Esse contexto mostra que a presença brasileira no Mundial não é casual. O Brasil chegou por mérito competitivo, mas agora precisa transformar essa evolução em resultado dentro da chave.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como funciona a Copa do Mundo de Basquete 3x3</strong></p>
+
+            <p>A competição reúne 20 seleções masculinas, divididas em quatro grupos de cinco equipes. Na primeira fase, os times se enfrentam dentro da própria chave.</p>
+
+            <p><strong>Formato completo:</strong></p>
+            <ul>
+              <li>20 seleções</li>
+              <li>4 grupos com 5 equipes</li>
+              <li>Todos jogam contra todos dentro do grupo</li>
+              <li>O 1º colocado de cada chave avança direto às quartas de final</li>
+              <li>O 2º e o 3º colocados disputam o Play-In</li>
+              <li>O Play-In define os últimos classificados para as quartas</li>
+              <li>Depois, a competição segue em mata-mata</li>
+            </ul>
+
+            <p>Para o Brasil, terminar em primeiro ficou muito difícil depois das duas derrotas iniciais. O caminho mais realista passa por buscar o segundo ou terceiro lugar do grupo e tentar vaga nas quartas pelo Play-In.</p>
+
+            <p><strong>O que o Brasil precisa fazer para avançar</strong></p>
+
+            <p>Depois de perder para Porto Rico e Lituânia, é ncessário vencer Bélgica e França para chegar vivo à disputa por classificação. Uma vitória isolada pode não ser suficiente, porque a chave tem confronto direto, saldo e pontuação como fatores de desempate.</p>
+
+            <p>O primeiro objetivo é bater a Bélgica. Esse jogo funciona como sobrevivência. Se perder, o Brasil praticamente se despede da chance de mata-mata. Se vencer, chega ao duelo contra a França ainda com possibilidade de brigar por vaga.</p>
+
+            <p>Contra a França, a dificuldade tende a aumentar. Os franceses têm tradição na modalidade, força física e jogadores acostumados ao circuito internacional. Para o Brasil, será necessário controlar melhor os detalhes que escaparam contra Porto Rico e Lituânia: bolas de dois pontos, rebote defensivo e execução nos últimos ataques.</p>
+
+            <p><strong>Como funciona o basquete 3x3</strong></p>
+
+            <p>Possui uma lógica própria e não deve ser lido apenas como uma versão reduzida do basquete tradicional. A modalidade é disputada em meia quadra, com uma cesta, três jogadores em ação por equipe e um reserva no banco.</p>
+
+            <p>A partida tem duração máxima de 10 minutos, mas pode acabar antes. Vence quem chegar primeiro a 21 pontos ou quem estiver na frente quando o relógio zerar. Em caso de empate, há prorrogação, e ganha o time que fizer dois pontos primeiro no tempo extra.</p>
+
+            <p><strong>Regras básicas do basquete 3x3:</strong></p>
+            <ul>
+              <li>Tempo de jogo: 10 minutos</li>
+              <li>Pontuação-limite: vence quem chegar primeiro a 21 pontos</li>
+              <li>Quadra: meia quadra, com apenas uma cesta</li>
+              <li>Equipe: três jogadores em quadra e um reserva</li>
+              <li>Arremesso dentro do arco: vale 1 ponto</li>
+              <li>Arremesso fora do arco: vale 2 pontos</li>
+              <li>Lance livre: vale 1 ponto</li>
+              <li>Relógio de posse: 12 segundos</li>
+              <li>Empate: prorrogação, com vitória para quem fizer 2 pontos primeiro</li>
+              <li>Após cesta sofrida: o time que levou a cesta repõe rapidamente e precisa sair com a bola para fora do arco antes de atacar</li>
+              <li>Após rebote defensivo ou roubo de bola: a equipe precisa “limpar” a jogada, levando a bola para fora do arco antes de tentar pontuar</li>
+            </ul>
+
+            <p>Essa dinâmica deixa o jogo muito mais acelerado. Como o relógio de posse é de apenas 12 segundos, quase não existe tempo para ataques longos. A equipe precisa decidir rápido: infiltrar, jogar no contato, acionar bloqueios curtos ou buscar a bola de dois pontos.</p>
+
+            <p>A pontuação também muda completamente o peso das escolhas. No basquete tradicional, a bola de três vale 50% a mais do que a de dois. No 3x3, a bola de fora vale o dobro da bola de dentro. Por isso, uma sequência de arremessos de dois pontos pode virar uma partida em poucos segundos.</p>
+
+            <p>Esse detalhe ajuda a explicar as derrotas brasileiras na estreia. Contra Porto Rico, o jogo foi para a prorrogação e terminou em uma bola de dois pontos. Contra a Lituânia, o placar estava empatado em 20 a 20, e novamente uma bola longa decidiu.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Basquete 3x3 e ciclo olímpico</strong></p>
+
+            <p>Se tornou modalidade olímpica desde Tóquio 2020 e segue no programa dos Jogos. Por isso, a Copa do Mundo não é apenas uma competição isolada: ela também serve como termômetro de ciclo, ranking, desenvolvimento e preparação para Los Angeles 2028.</p>
+
+            <p>Para o Brasil, disputar esse tipo de torneio é essencial. A modalidade tem um caminho próprio de classificação olímpica, muito ligado a ranking, competições internacionais e consistência em eventos oficiais. Quanto mais o país participa de torneios fortes, mais ganha casca competitiva e exposição.</p>
+
+            <p> O basquete 3x3 é rápido, urbano, televisivo e tem potencial de crescimento no Brasil, especialmente porque combina tradição do basquete com formato mais curto e fácil de consumir.</p>
+
+            <p><strong>Uma modalidade que pode crescer no país</strong></p>
+
+            <p>O Brasil já tem tradição no basquete, mas o 3x3 ainda busca mais espaço de público. A Copa do Mundo ajuda nesse processo porque coloca a modalidade em vitrine global, com jogos curtos, transmissão acessível e possibilidade de acompanhar várias partidas em sequência.</p>
+
+            <p>O crescimento da modalidade também conecta com a evolução mais ampla do basquete brasileiro. Enquanto o formato olímpico busca ampliar público, calendário e presença internacional, o basquete tradicional tem no <a href="https://cortedosesportes.com.br/nbb-historia-formato-maiores-campeoes-basquete-brasileiro.html">NBB e sua história</a> uma base importante de visibilidade nacional, formação de atletas e fortalecimento comercial da modalidade no país. A diferença é que o 3x3 precisa construir uma identidade própria, sem ser tratado apenas como uma versão reduzida do jogo de cinco contra cinco.</p>
+
+            <p>O formato também favorece engajamento. O torcedor entende rápido a lógica: jogo curto, placar dinâmico, contato físico, arremessos decisivos e margem pequena para erro. Isso torna a modalidade atrativa para transmissão digital e para novos públicos.</p>
+
+            <p>A presença brasileira em Varsóvia é importante mesmo não avançando. O país precisa jogar mais competições desse nível, formar mais atletas especializados e consolidar calendário interno forte. O 3x3 não pode ser tratado apenas como versão reduzida do basquete tradicional. É uma modalidade própria, com exigências específicas.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "esportes-olimpicos";
+  const CATEGORY_NAME = "esportes olimpicos";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
