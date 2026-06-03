@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>NFL no Maracanã: Cowboys x Ravens terá jogo histórico no Rio em 2026 | Corte dos Esportes</title>
+  <meta name="description" content="As duas franquias tradicionais se enfrentam no Maracanã, pela Semana 3 da NFL, no primeiro jogo da liga no Rio de Janeiro e o terceiro evento no Brasil." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">NFL no Maracanã: Cowboys x Ravens terá jogo histórico no Rio em 2026</h1>
+          <p class="subhead" id="articleExcerpt">As duas franquias tradicionais se enfrentam no Maracanã, pela Semana 3 da NFL, no primeiro jogo da liga no Rio de Janeiro e o terceiro evento no Brasil.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">03/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol-americano.html">futebol americano</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A NFL terá um capítulo histórico no Brasil em 2026. Dallas Cowboys e Baltimore Ravens se enfrentam no Maracanã, no Rio de Janeiro, em 27 de setembro, às 17h25. Será o primeiro jogo oficial da liga no Rio e a primeira partida da NFL disputada no estádio mais famoso do futebol brasileiro.</p>
+
+            <p>O confronto coloca frente a frente duas franquias tradicionais, dois mercados fortes e dois quarterbacks de grande apelo. De um lado, os Cowboys, uma das marcas mais populares e valiosas do esporte mundial. Do outro, os Ravens, bicampeões do Super Bowl e liderados por Lamar Jackson, duas vezes MVP da NFL.</p>
+
+            <p>A partida também confirma o Brasil como peça importante na expansão internacional da liga. Depois dos jogos em São Paulo em 2024 e 2025, a NFL muda de cidade, leva o evento para o Maracanã e amplia sua presença no país em uma temporada que terá número recorde de jogos internacionais.</p>
+
+            <p><strong>Venda de ingressos e expectativa</strong></p>
+
+            <p>A venda geral de ingressos está marcada para 9 de junho, às 10h, pela Ticketmaster. Antes disso, foram abertas janelas de pré-venda para públicos específicos, como associados American Express e clientes XP.</p>
+
+            <p>O jogo deve ter alta procura. Além de ser o primeiro da NFL no Rio, o evento reúne duas franquias de grande apelo e será disputado em um estádio com enorme valor simbólico. O <a href="https://cortedosesportes.com.br/maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a> já recebeu finais de Copa do Mundo, cerimônias olímpicas, decisões continentais e alguns dos maiores eventos esportivos da história do Brasil.</p>
+
+            <p>Agora, o estádio entra também no mapa do futebol americano. Para a NFL, o Maracanã oferece mais do que capacidade de público. Oferece imagem global, peso cultural e uma conexão imediata com o esporte brasileiro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que o jogo no Rio é tão importante para a NFL</strong></p>
+
+            <p>O Rio Game 2026 não é apenas uma partida fora dos Estados Unidos. É parte de uma estratégia mais ampla de internacionalização da liga.</p>
+
+            <p>O Brasil já recebeu dois jogos de temporada regular, ambos em São Paulo. Em 2024, Philadelphia Eagles e Green Bay Packers fizeram o primeiro jogo oficial da liga no país. Em 2025, Kansas City Chiefs e Los Angeles Chargers mantiveram o Brasil no calendário. Agora, a ida ao Rio amplia o alcance geográfico e comercial da operação.</p>
+
+            <p>A NFL trata o Brasil como um de seus principais mercados internacionais. O país tem mais de 36 milhões de fãs da liga e aparece como um dos territórios mais relevantes fora dos Estados Unidos. A presença no Rio reforça esse movimento e mostra que a liga não quer limitar sua operação brasileira a uma única cidade.</p>
+
+            <p>Além disso, a temporada 2026 terá nove jogos internacionais, passando por mercados como Londres, Madri, Melbourne, Cidade do México, Munique, Paris e Rio de Janeiro. O Brasil entra nesse pacote como uma das vitrines mais importantes da expansão global.</p>
+
+            <p><strong>Cowboys: a marca mais popular da NFL chega ao Maracanã</strong></p>
+
+            <p>O time será o mandante da partida no Rio. A franquia texana é uma das mais conhecidas do esporte mundial e carrega o apelido de “America’s Team”, expressão que reforça seu alcance nacional e internacional.</p>
+
+            <p>Os Cowboys têm cinco títulos de Super Bowl, conquistados em 1971, 1977, 1992, 1993 e 1995. A franquia viveu sua era mais dominante nos anos 1990, quando venceu três Super Bowls em quatro temporadas e consolidou uma geração histórica.</p>
+
+            <p>Apesar do peso da camisa, Dallas busca voltar a uma decisão de conferência e ao Super Bowl depois de um longo jejum. Essa é uma das marcas da narrativa recente da equipe: enorme popularidade, grande valor comercial e cobrança constante por resultados mais fortes nos playoffs.</p>
+
+            <p>Para o público brasileiro, será uma chance rara de ver uma das franquias mais famosas da NFL em temporada regular, com titulares e peso real de classificação.</p>
+
+            <p><strong>Ravens: Lamar Jackson leva estrela ao Rio</strong></p>
+
+            <p>O Baltimore Ravens chega ao Rio com uma identidade diferente. A franquia é mais jovem que os Cowboys, mas já tem uma história muito vitoriosa. O time conquistou o Super Bowl em 2000 e 2012, construiu tradição defensiva forte e virou uma das organizações mais respeitadas da NFL moderna.</p>
+
+            <p>O grande nome atual é Lamar Jackson. O quarterback foi MVP da NFL em 2019 e 2023, e mudou a forma como a posição é analisada. Jackson é perigoso lançando, mas também é uma das maiores ameaças terrestres da história recente da liga.</p>
+
+            <p>Essa característica torna o jogo mais atrativo para o público novo. Lamar é um jogador fácil de reconhecer mesmo para quem acompanha pouco futebol americano: explosivo, imprevisível e capaz de decidir uma partida com uma corrida longa ou um passe em movimento.</p>
+
+            <p>Baltimore também tem nomes fortes em torno dele, como Derrick Henry, Mark Andrews e Zay Flowers, formando um ataque de muito impacto físico e velocidade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Histórico entre Cowboys e Ravens</strong></p>
+
+            <p>As fraquias não se enfrentam com frequência, porque pertencem a conferências diferentes. Dallas está na NFC, enquanto Baltimore está na AFC. Isso torna o confronto internacional ainda mais interessante.</p>
+
+            <p>O histórico recente favorece Baltimore, que lidera o retrospecto contra Dallas, com vantagem ampla. A única vitória dos Cowboys no confronto aconteceu em 2016, por 27 a 17. O encontro mais recente foi em 2024, quando os Ravens venceram por 28 a 25.</p>
+
+            <p>Esse dado dá mais peso ao jogo no Maracanã. Para Dallas, será uma chance de reduzir uma desvantagem histórica contra um adversário pouco comum. Para Baltimore, é oportunidade de manter o domínio no confronto em um palco internacional.</p>
+
+            <p><strong>Um jogo com cara de evento global</strong></p>
+
+            <p>A NFL sempre transformou seus jogos internacionais em eventos maiores do que a partida em si. O jogo no Rio deve seguir essa lógica. Além do confronto no Maracanã, a expectativa é de uma semana com ativações, experiências para torcedores, venda de produtos oficiais, eventos de marca e ações ligadas ao crescimento do futebol americano no Brasil.</p>
+
+            <p>Esse tipo de operação ajuda a explicar o interesse da liga no país. A NFL não quer apenas vender ingresso para um jogo. Quer criar comunidade, aproximar marcas, expandir o flag football, fortalecer transmissões e transformar fãs ocasionais em consumidores recorrentes da liga.</p>
+
+            <p>O Maracanã favorece essa estratégia. O estádio já é um símbolo esportivo mundial e pode entregar imagens fortes para transmissão, redes sociais e campanhas internacionais. Para a NFL, jogar ali significa usar um palco que já tem história própria.</p>
+
+            <p><strong>O impacto do flag football e Los Angeles 2028</strong></p>
+
+            <p>A expansão da NFL no Brasil também conversa com o crescimento do flag football, versão sem contato físico direto que fará sua estreia olímpica nos Jogos de Los Angeles 2028.</p>
+
+            <p>Esse detalhe é importante porque cria uma ponte entre a NFL e o ambiente olímpico. Ao promover jogos, clínicas, eventos comunitários e programas de base, a liga ajuda a aumentar o interesse pelo futebol americano em diferentes níveis.</p>
+
+            <p>O flag football pode ser uma das portas de entrada mais fortes para jovens brasileiros. Exige menos estrutura do que o futebol americano equipado, tem regras mais acessíveis e pode crescer em escolas, projetos sociais e competições amadoras.</p>
+
+            <p><strong>Por que Cowboys x Ravens é uma boa escolha</strong></p>
+
+            <p>A NFL poderia levar ao Maracanã uma partida de menor apelo. Mas Cowboys x Ravens tem peso esportivo, comercial e narrativo.</p>
+
+            <p>Os Cowboys também carregam o peso da <a href="https://cortedosesportes.com.br/conferencia-leste-nfl-historia-maiores-campeoes-rivalidades-futebol-americano.html">NFC Leste</a>, uma das divisões mais tradicionais da NFL, marcada por rivalidades históricas, grandes mercados e franquias de enorme torcida. Do outro lado, os Ravens representam a <a href="https://cortedosesportes.com.br/conferencia-norte-nfl-historia-times-rivalidades-campeoes.html">AFC Norte</a>, divisão conhecida por rivalidades físicas, defesas duras e confrontos de alta intensidade. Esse contraste ajuda a explicar por que Cowboys x Ravens é uma escolha forte para levar ao Maracanã: junta marca global, peso competitivo e duas tradições diferentes da liga.</p>
+
+            <p>Os Cowboys trazem audiência, camisa, torcida global e força de marca. Os Ravens trazem competitividade recente, Lamar Jackson e uma identidade de jogo muito atraente. A combinação é boa para o público casual e para quem já acompanha a liga.</p>
+
+            <p>Além disso, o horário de 17h25 favorece o público brasileiro. A partida será em um domingo, em uma faixa acessível para transmissão e presença no estádio, sem depender de madrugada ou horários pouco comerciais.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>O jogo também tem valor para os Estados Unidos. Será uma partida oficial de temporada regular, com impacto real na campanha das equipes. Não é amistoso, não é exibição e não é pré-temporada. O resultado entra na tabela e pode pesar na briga por playoffs.</p>
+
+            <p><strong>O que o torcedor pode esperar</strong></p>
+
+            <p>Será um evento com cara de Super Bowl em escala menor. Não pelo peso esportivo da decisão, mas pela lógica de entretenimento. A NFL costuma trabalhar com entrada de jogadores, shows, ativações, lojas, telões, mascotes, experiências de patrocinadores e uma atmosfera muito diferente do futebol tradicional.</p>
+
+            <p>Mesmo sendo disputado no Brasil, o jogo vale pela temporada regular e entra diretamente na campanha das duas franquias. Cada vitória pode pesar na briga por playoffs e no caminho até o <a href="https://cortedosesportes.com.br/super-bowl-historia-maiores-campeoes-negocio-bilionario.html">Super Bowl, a grande final da NFL e um dos eventos esportivos mais valiosos do mundo</a>.</p>
+
+            <p>Dentro de campo, o jogo promete estilos fortes. Dallas tende a apostar no jogo aéreo de Dak Prescott e no peso de sua linha ofensiva. Baltimore deve explorar a mobilidade de Lamar Jackson, o jogo corrido e a força física que marca a franquia.</p>
+
+            <p>A adaptação ao gramado, ao clima, à viagem e ao ambiente também será parte da história. Jogos internacionais sempre exigem logística diferente. Viagem longa, fuso, rotina de treinos, vestiários e preparação precisam ser ajustados.</p>
+
+            <p><strong>Maracanã entra no mapa da NFL</strong></p>
+
+            <p>O estádio já faz parte da história do futebol mundial. Agora, também será palco de um jogo oficial da NFL. Esse cruzamento entre símbolos esportivos é o que torna Cowboys x Ravens uma pauta tão relevante dentro do esporte em geral.</p>
+
+            <p>Para o Rio, o evento representa visibilidade internacional e movimento turístico. Para a NFL, é uma chance de consolidar um mercado que já demonstrou força. Para o torcedor brasileiro, é a oportunidade de ver futebol americano de temporada regular em um dos estádios mais importantes do país.</p>
+
+            <p>A partida ainda está a meses de distância, mas já tem peso de evento histórico. Cowboys x Ravens no Maracanã não será apenas mais um jogo da Semana 3. Será o teste mais ambicioso da NFL no Brasil até agora.</p>
+
+            <p>Se o evento corresponder à expectativa, o Rio pode se firmar como novo ponto fixo da liga fora dos Estados Unidos. E o Brasil, que já era visto como mercado promissor, passa a ocupar um lugar ainda maior na expansão global do futebol americano.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol-americano";
+  const CATEGORY_NAME = "futebol americano";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
