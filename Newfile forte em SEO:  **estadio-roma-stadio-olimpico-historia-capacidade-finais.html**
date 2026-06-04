@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stadio Olimpico: história do estádio da Roma e Lazio | Corte dos Esportes</title>
+  <meta name="description" content="Um dos palcos mais históricos da Europa, com Olimpíada, Copa do Mundo, Eurocopas, finais europeias e décadas de futebol e memórias dos torcedores." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Stadio Olimpico: história do estádio da Roma e Lazio</h1>
+          <p class="subhead" id="articleExcerpt">Um dos palcos mais históricos da Europa, com Olimpíada, Copa do Mundo, Eurocopas, finais europeias e décadas de futebol e memórias dos torcedores.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Stadio Olimpico é muito mais do que a casa da Roma e Lazio. O estádio é um dos grandes símbolos esportivos da capital italiana e ocupa um lugar raro no futebol europeu: ao mesmo tempo em que recebe jogos semanais de clube, também carrega história olímpica, decisões de Copa do Mundo, finais de Champions League, Eurocopas, partidas da seleção italiana, rugby, atletismo e grandes eventos culturais.</p>
+
+            <p>Localizado no Foro Italico, complexo esportivo ao norte de Roma, o estádio é compartilhado por Roma e Lazio desde os anos 1950. Essa convivência faz do Olimpico um caso especial. Diferente de arenas modernas ligadas a um único clube, o estádio romano pertence a uma tradição maior: é um palco da cidade, da seleção, do futebol italiano e do esporte europeu.</p>
+
+            <p>Essa característica aproxima o Olimpico de outros estádios históricos que não pertencem simbolicamente a apenas um clube. Localizado também na Itália, o <a href="https://cortedosesportes.com.br/san-siro-historia-estadio-milan-inter.html">San Siro, é marcado pela convivência entre Milan e Inter de Milão</a>, outro palco em que rivalidade, identidade urbana e grandes decisões internacionais se misturam em uma mesma arquibancada.</p>
+
+            <p>O Olimpico não tem apenas arquibancadas, gramado e capacidade alta. Ele tem camadas de tempo. Nasceu dentro de um projeto esportivo dos anos 1930, foi interrompido pela Segunda Guerra Mundial, ganhou forma no pós-guerra, virou sede olímpica, foi reformado para a Copa do Mundo de 1990 e se manteve relevante no calendário internacional até hoje.</p>
+
+            <p><strong>Origem no Foro Italico</strong></p>
+
+            <p>A história do Stadio Olimpico começa antes da inauguração oficial. Ele nasceu dentro do antigo Foro Mussolini, atual Foro Italico, um grande complexo esportivo idealizado nas décadas de 1920 e 1930. O projeto tinha ambição de transformar aquela área de Roma em um centro de prática esportiva, eventos públicos e grandes competições.</p>
+
+            <p>Antes de se chamar pelo nome atual, o local foi associado a nomes como Stadio dei Cipressi e Stadio dei Centomila. O segundo nome explicava a ambição original: criar um estádio capaz de receber cerca de 100 mil pessoas, em uma época em que muitos públicos ainda eram acomodados em setores de pé e as normas de segurança eram muito diferentes das atuais.</p>
+
+            <p>A construção, porém, não seguiu um caminho simples. O desenvolvimento foi afetado pela Segunda Guerra Mundial, que interrompeu obras, mudou prioridades e atrasou a consolidação do estádio. Depois do conflito, o Comitê Olímpico Italiano assumiu papel central na conclusão do projeto, já em outro contexto político e esportivo.</p>
+
+            <p>A inauguração oficial aconteceu em 17 de maio de 1953, com Itália x Hungria. A Hungria venceu por 3 a 0, com gol de Nándor Hidegkuti e dois de Puskás. O detalhe dá mais peso ao jogo: a abertura do estádio não foi uma festa tranquila da seleção italiana, mas uma derrota para uma das maiores equipes nacionais da época, a chamada geração dourada húngara.</p>
+
+            <p>Pouco depois, Roma e Lazio passaram a usar o estádio como casa para suas partidas. A partir dali, o Olimpico deixou de ser apenas uma obra de arquitetura esportiva e passou a ser um palco vivo da cidade.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Capacidade do estádio</strong></p>
+
+            <p>Atualmente fica na faixa dos 68 mil a 70 mil lugares, dependendo da configuração, operação e tipo de evento. No mapa de setores usado pela Roma, o total informado é de 68.530 lugares, distribuídos entre Tribuna Monte Mario, Tribuna Tevere, Distinti, Curva Sud e Curva Nord.</p>
+
+            <p>A divisão das arquibancadas também ajuda a explicar a identidade do estádio. A Curva Sud é tradicionalmente associada à torcida da Roma. A Curva Nord é ligada à Lazio. Como os dois clubes dividem o mesmo estádio, o mando de campo muda a operação, a atmosfera e o protagonismo visual de cada setor.</p>
+
+            <p>O Olimpico já teve capacidade maior no passado. Na fase do Stadio dei Centomila, o projeto chegou a ser associado a públicos próximos de 100 mil pessoas. Com o tempo, a instalação de cadeiras, as regras modernas de segurança, as reformas para grandes competições e a reorganização de setores reduziram a capacidade bruta, mas melhoraram conforto, controle, visibilidade e operação.</p>
+
+            <p>Essa transformação é comum em estádios antigos. O número absoluto de torcedores diminui, mas o estádio se adapta às exigências do futebol moderno, sem perder o peso histórico.</p>
+
+            <p><strong>Reformas e modernização</strong></p>
+
+            <p>Ele passou por diferentes fases de transformação. A primeira grande consolidação veio para os Jogos Olímpicos de Roma, em 1960, quando o estádio ganhou projeção mundial como centro da competição. A partir daquele momento, o nome Olimpico passou a representar não apenas o estádio, mas a própria memória olímpica da cidade.</p>
+
+            <p>Nos Jogos daquele ano, o estádio recebeu as cerimônias de abertura e encerramento, além das provas de atletismo. Esse detalhe é importante porque o Olimpico não virou “olímpico” apenas por nome comercial ou simbólico: ele realmente foi um dos palcos centrais de uma edição dos Jogos.</p>
+
+            <p>A reforma mais marcante veio para a Copa do Mundo de 1990. O estádio foi profundamente remodelado para receber jogos do torneio e, principalmente, a final. As arquibancadas foram modernizadas, parte da estrutura foi reconstruída, as curvas foram aproximadas do campo e a cobertura passou a envolver o estádio, dando á aparência mais próxima da atual.</p>
+
+            <p>Esse processo mudou o estádio de forma clara. Antes, ele era majoritariamente aberto, com exceção de setores específicos. Depois da reforma para o Mundial, virou uma arena coberta, mais adequada ao padrão internacional da época, com novos recursos para imprensa, autoridades, segurança e eventos de grande escala.</p>
+
+            <p>Houve também ajustes posteriores, incluindo melhorias para receber a final da Champions League de 2009. Como todo estádio antigo em uso constante, o Olimpico não é uma peça congelada no tempo. Ele continua sendo adaptado, mas sem perder a base histórica que o torna reconhecível.</p>
+
+            <p><strong>O estádio e a guerra mundial</strong></p>
+
+            <p> O impacto da Segunda Guerra Mundial no Stadio Olimpico está ligado principalmente à interrupção e ao atraso do projeto.</p>
+
+            <p>A estrutura original fazia parte de uma visão esportiva iniciada antes da guerra, mas o conflito mudou completamente o ritmo das obras. O estádio só foi concluído e inaugurado oficialmente no pós-guerra, em 1953. Por isso, a história do Olimpico é também uma história de transição: nasce de um projeto dos anos 1930, atravessa o trauma europeu da guerra e se afirma como símbolo esportivo da Itália republicana.</p>
+
+            <p>Esse detalhe é importante porque diferencia o Olimpico de estádios modernos construídos do zero em poucos anos. Ele carrega marcas de diferentes períodos da Itália: a origem no complexo do Foro Italico, a interrupção da guerra, a retomada no pós-guerra, a afirmação olímpica em 1960 e a modernização para 1990.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Copa do Mundo</strong></p>
+
+            <p>O Stadio Olimpico teve papel central na Mundial de 1990. Roma recebeu seis jogos do torneio, incluindo cinco partidas da seleção italiana e a grande final.</p>
+
+            <p>A Itália jogou contra Áustria, Estados Unidos e Tchecoslováquia na fase de grupos. Depois, voltou ao estádio nas oitavas de final contra o Uruguai e nas quartas de final contra a Irlanda. Em todos esses jogos, a Azzurra venceu sem sofrer gols.</p>
+
+            <p>Esse recorte mostra por que o estádio foi tão importante para a seleção italiana naquela Copa. O Olimpico funcionou como a principal casa da seleção no torneio, até a semifinal contra a Argentina, que foi disputada em Nápoles.</p>
+
+            <p>A final também aconteceu no Olimpico em 8 de julho. A Alemanha Ocidental venceu a Argentina por 1 a 0, com gol de pênalti de Andreas Brehme nos minutos finais. A partida ficou marcada pelo clima tenso, pelas expulsões argentinas e por ser uma revanche da final de 1986, quando a Argentina havia derrotado os alemães no México.</p>
+
+            <p>Para o estádio, aquela decisão consolidou o Olimpico como um dos grandes palcos do futebol mundial. Poucos estádios podem dizer que receberam Olimpíada, final de Copa do Mundo, Eurocopa e finais de Champions. O de Roma pode.</p>
+
+            <p><strong>Seleção italiana no Olimpico</strong></p>
+
+            <p>A seleção nacional tem uma relação forte com o estádio, recebeu a inauguração oficial com Itália 0 a 3 Hungria, em 1953, e depois se tornou um dos principais palcos da Azzurra em Roma.</p>
+
+            <p> Na Euro 2020, disputada em 2021, a seleção voltou a usar o Olimpico como ponto de partida: venceu Turquia por 3 a 0 na abertura, bateu a Suíça por 3 a 0 e depois derrotou o País de Gales por 1 a 0.</p>
+
+            <p>Esses jogos mostram que o Olimpico não é apenas uma arena de clubes. É também um estádio de seleção. Quando a Itália joga em Roma, o estádio funciona como ponto de encontro entre a tradição da capital, a camisa azul e a memória esportiva dos torcedores.</p>
+
+            <p><strong>Eurocopas no estádio</strong></p>
+
+            <p>Também recebeu jogos importantes de Eurocopas em diferentes épocas. Na Euro 1968, o estádio foi decisivo para a primeira conquista continental da Itália porque recebeu as duas partidas da final contra a Iugoslávia.</p>
+
+            <p>O primeiro jogo terminou 1 a 1, em 8 de junho de 1968. Como o regulamento previa replay em caso de empate na decisão, Itália e Iugoslávia voltaram ao estádio dois dias depois. No segundo jogo, a Itália venceu por 2 a 0, com gols de Luigi Riva e Pietro Anastasi, e conquistou sua primeira Eurocopa.</p>
+
+            <p>Na Euro 1980, o estádio voltou a receber a decisão. A Alemanha Ocidental venceu a Bélgica por 2 a 1, com dois gols de Horst Hrubesch, e conquistou o título continental em Roma.</p>
+
+            <p><strong>Finais europeias e grandes decisões</strong></p>
+
+            <p>O Stadio Olimpico tem um currículo pesado em finais europeias. Recebeu decisões da antiga Copa dos Campeões da Europa e da Champions League, além de partidas decisivas de outras competições internacionais.</p>
+
+            <p>Entre as finais mais marcantes estão Liverpool 3 a 1 Borussia Mönchengladbach, em 1977.</p>
+
+            <p>A final de 1984 é especialmente lembrada pela ligação com a cidade. A Roma chegou à decisão em casa, diante de sua torcida, contra o Liverpool. O jogo terminou empatado em 1 a 1, com gol romanista de Roberto Pruzzo, mas o clube inglês venceu a disputa por pênaltis. Para o estádio, foi uma noite histórica; para a Roma, uma ferida esportiva que atravessa gerações.</p>
+
+            <p>Em 1996, a Juventus conquistou a Champions no Olimpico contra o Ajax. Em 2009, o Barcelona de Lionel Messi, Xavi, Iniesta e Guardiola venceu o Manchester United por 2 a 0, com gols de Samuel Eto’o e Messi, e fechou uma das temporadas mais marcantes da história recente do clube catalão.</p>
+
+            <p><strong>Olimpíada, atletismo e grandes eventos</strong></p>
+
+            <p>O Olimpico também recebeu eventos importantes do atletismo mundial e europeu. Foi palco do Europeu de Atletismo de 1974, do Mundial de Atletismo de 1987 e voltou a receber o Europeu em 2024. Além disso, abriga o Golden Gala, uma das etapas mais tradicionais do atletismo internacional.</p>
+
+            <p>Essa diversidade de eventos dá ao estádio uma dimensão rara. Ele não pertence apenas à memória da Roma ou da Lazio. Pertence também à história da Itália, da UEFA, dos Jogos Olímpicos, do atletismo e de grandes competições internacionais.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quantas partidas já aconteceram no estádio?</strong></p>
+
+            <p>É seguro afirmar que o estádio já recebeu de mais de três mil jogos.</p>
+
+            <p>Essa estimativa ajuda a entender a grandeza do estádio. Ele não é lembrado apenas por noites específicas. Ele é um palco de rotina histórica, usado semana após semana por dois clubes grandes, além de receber eventos nacionais e internacionais por mais de 70 anos.</p>
+
+            <p><strong>Títulos levantados</strong></p>
+
+            <p>O estádio já viu títulos de seleção, como a Euro 1968 da Itália, a Euro 1980 da Alemanha Ocidental e a Copa do Mundo de 1990 também da Alemanha Ocidental. Também recebeu finais europeias vencidas por Liverpool, Juventus e Barcelona.</p>
+
+            <p>No futebol italiano, o Olimpico tem peso ainda maior porque recebe decisões de Coppa Italia e Supercoppa Italiana. Desde 2008, a final da Coppa Italia passou a ser disputada de forma recorrente no estádio, o que aumentou o número de taças nacionais erguidas no gramado romano.</p>
+
+            <p>No contexto da cidade, Roma e Lazio também tiveram momentos de celebração marcantes no estádio. A Lazio também celebrou conquistas centrais de sua trajetória, incluindo o primeiro Scudetto de sua história, confirmado no estádio em 1974.</p>
+
+            <p><strong>Recordes de público</strong></p>
+
+            <p>O número é associado a Lazio x Foggia, em 12 de maio de 1974. A Lazio venceu por 1 a 0, com gol de pênalti de Giorgio Chinaglia, e confirmou o primeiro título italiano de sua história. O público registrado foi de 78.886 pessoas.</p>
+
+            <p>Esse número mostra a diferença entre o estádio antigo e o estádio atual. Hoje, com cadeiras, normas de segurança e setores mais controlados, o Olimpico trabalha com capacidade menor. Nos anos 1970, a configuração permitia públicos maiores, especialmente em jogos de enorme apelo popular.</p>
+
+            <p><strong>O Derby della Capitale</strong></p>
+
+            <p>Poucos jogos explicam melhor o Stadio Olimpico do que, Roma x Lazio, pois não é apenas um clássico local. É uma disputa de território simbólico dentro do mesmo estádio.</p>
+
+            <p>Quando a Roma é mandante, a Curva Sud assume o centro emocional da partida. Quando a Lazio é mandante, a Curva Nord ganha protagonismo. O gramado é o mesmo, a cidade é a mesma, mas o estádio muda de atmosfera conforme o clube que recebe o jogo.</p>
+
+            <p>Esse detalhe dá ao Olimpico uma característica rara. Em muitos lugares, o estádio é uma extensão de um clube. Em Roma, ele é um palco de disputa permanente entre duas identidades. Isso aumenta a tensão, a beleza e a complexidade do estádio como patrimônio esportivo.</p>
+
+            <p><strong>Maior artilheiro</strong></p>
+
+            <p>Ciro Immobile marcou 120 gols no estádio. O número tem peso especial porque coloca um jogador da Lazio no topo de uma arena compartilhada também pela Roma e usada por tantos grandes nomes do futebol italiano.</p>
+
+            <p>No recorte específico da Roma, Francesco Totti é o nome mais simbólico. Ele não é apenas o maior ídolo moderno do clube, mas também um personagem inseparável do Olimpico. Grande parte de sua carreira, de seus gols e de sua relação com a torcida aconteceu naquele estádio.</p>
+
+            <p>Essa diferença é importante: Immobile aparece como referência estatística do estádio, enquanto Totti representa a memória romanista mais forte dentro dele.</p>
+
+            <p><strong>Além do futebol</strong></p>
+
+            <p>O Stadio Olimpico também é relevante fora do futebol. O estádio recebeu provas olímpicas, campeonatos mundiais e europeus de atletismo, o tradicional Golden Gala e partidas de rugby da seleção italiana, especialmente no contexto do Seis Nações.</p>
+
+            <p>Além disso, é um dos grandes palcos de shows da Itália. Artistas nacionais e internacionais já transformaram o estádio em arena cultural, reforçando sua função como espaço multiuso da capital.</p>
+
+            <p>Essa versatilidade aumenta a importância dele. Ele não é apenas um estádio antigo preservado por nostalgia. É uma estrutura que continua funcionando em alto nível para futebol, rugby, atletismo, entretenimento e eventos internacionais.</p>
+
+            <p><strong>Por que o Stadio Olimpico é tão importante</strong></p>
+
+            <p>Porque concentra várias histórias em um só lugar. Ele nasceu de um projeto esportivo antigo, foi concluído no pós-guerra, virou símbolo olímpico, recebeu Copa do Mundo, Eurocopas, finais europeias e se manteve como casa de dois clubes grandes da Serie A.</p>
+
+            <p>Poucos estádios têm essa combinação. Alguns são mais modernos. Outros são mais confortáveis. Outros pertencem de forma mais clara a um único clube. O Olimpico, porém, tem algo difícil de replicar: ele é um estádio de cidade, de seleção, de rivalidade, de eventos globais e de memória coletiva.</p>
+
+            <p>No Brasil, o <a href="https://cortedosesportes.com.br/estadio-mineirao-historia-recordes-cruzeiro-atletico-7a1.html">Mineirão construiu parte de sua grandeza como estádio de Cruzeiro, Atlético, Seleção Brasileira e decisões históricas</a>, mostrando como algumas arenas ultrapassam a identidade de um único clube e passam a representar uma cidade inteira.</p>
+
+            <p>Para a Roma, é casa. Para a Lazio, também. Para a seleção italiana, é um dos palcos mais tradicionais. Para o futebol europeu, é um estádio de finais. Para o esporte olímpico, é parte da história. Para o torcedor, é um lugar onde o peso do passado aparece em cada jogo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
