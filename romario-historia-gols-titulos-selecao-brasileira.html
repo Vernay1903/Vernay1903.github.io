@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Romário: história, gols, títulos e o legado do Baixinho | Corte dos Esportes</title>
+  <meta name="description" content="Marcou época como um dos maiores centroavantes da história, brilhou por Vasco, PSV, Barcelona, Flamengo e Seleção Brasileira, foi protagonista do tetra em 1994 e construiu uma carreira cercada por gols, títulos, rivalidades e personalidade única." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Romário: história, gols, títulos e o legado do Baixinho</h1>
+          <p class="subhead" id="articleExcerpt">Marcou época como um dos maiores centroavantes da história, brilhou por Vasco, PSV, Barcelona, Flamengo e Seleção Brasileira, foi protagonista do tetra em 1994 e construiu uma carreira cercada por gols, títulos, rivalidades e personalidade única.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">04/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Romário de Souza Faria não foi apenas um centroavante goleador. Foi um personagem completo do futebol brasileiro: decisivo, provocador, técnico, frio, popular e quase sempre impossível de ignorar. Poucos jogadores na história conseguiram transformar a área em território particular como ele. Dentro do campo, parecia economizar movimentos para gastar tudo no momento exato do gol. Fora dele, falava com a mesma naturalidade com que finalizava: direto, sem filtro e muitas vezes polêmico.</p>
+
+            <p>Nascido no Rio de Janeiro, em 29 de janeiro de 1966, Romário saiu das categorias de base do Vasco para virar ídolo em diferentes camisas. Foi artilheiro no Brasil, ídolo no PSV, peça decisiva do Dream Team do Barcelona, protagonista da Seleção Brasileira no tetra de 1994 e um dos atacantes mais eficientes que o futebol já viu.</p>
+
+            <p>A carreira dele também carrega debates que nunca morrem: quantos gols marcou de verdade, qual foi o peso do milésimo, o que teria acontecido se fosse à Copa de 2002, como seria lembrado se tivesse ficado mais tempo na Europa e até onde sua personalidade ajudou ou atrapalhou.</p>
+
+            <p><strong>O início no Vasco e a formação do goleador</strong></p>
+
+            <p>Romário começou a aparecer para o futebol brasileiro no clube de São Januário, ainda nos anos 1980. Baixo para os padrões de um centroavante, compensava a estatura com explosão curta, controle de corpo, equilíbrio e uma leitura rara de espaço dentro da área.</p>
+
+            <p>O apelido “Baixinho” não era apenas uma referência física. Virou parte da marca do jogador. Romário tem cerca de 1,69 m, mas jogava como gigante no último terço do campo. Sabia se esconder entre os zagueiros, atacava o primeiro pau, dominava de costas, girava rápido e finalizava antes que o defensor entendesse a jogada.</p>
+
+            <p>No Vasco, Romário também conviveu com uma referência pesada de artilharia. Ainda jovem, dividiu ambiente com <a href="https://cortedosesportes.com.br/roberto-dinamite-maior-artilheiro-campeonato-brasileiro.html">Roberto Dinamite</a>, maior ídolo vascaíno e um dos maiores goleadores do futebol brasileiro. Essa ligação ajuda a entender como o clube cruzmaltino virou parte central da identidade do Baixinho.</p>
+
+            <p>No Vasco, conquistou estaduais, virou artilheiro e ganhou projeção internacional. A Olimpíada de Seul, em 1988, foi um divisor de águas: Romário terminou como artilheiro do torneio, com sete gols em seis jogos, e ajudou o Brasil a ficar com a medalha de prata. Logo depois, foi para o PSV, da Holanda, onde sua carreira entrou em outro patamar.</p>
+
+            <p><strong>Gols por clube e seleção</strong></p>
+
+            <p>A contagem de gols de Romário exige contexto. O próprio jogador e a contagem ligada ao milésimo consideram gols oficiais, amistosos, categorias de base e jogos festivos. Por isso, o total de 1.002 gols é diferente de rankings que contam apenas partidas oficiais profissionais.</p>
+
+            <p>Na contagem histórica usada na campanha do milésimo, os números ficam assim:</p>
+
+            <ul>
+              <li>Vasco: 326 gols em 410 jogos</li>
+              <li>Flamengo: 204 gols em 240 jogos</li>
+              <li>PSV: 165 gols em 167 jogos</li>
+              <li>Seleção Brasileira: 71 gols em 85 jogos</li>
+              <li>Barcelona: 53 gols em 84 jogos</li>
+              <li>Fluminense: 48 gols em 77 jogos</li>
+              <li>Miami FC: 22 gols em 29 jogos</li>
+              <li>Valencia: 14 gols em 21 jogos</li>
+              <li>Adelaide United: 1 gol em 4 jogos</li>
+              <li>Divisões de base: 77 gols</li>
+              <li>Jogos festivos: 21 gols</li>
+            </ul>
+
+            <p>Essa lista explica a polêmica e, ao mesmo tempo, a grandeza. Mesmo quando se reduz o critério para jogos oficiais, Romário segue entre os maiores goleadores da história. Quando se usa a contagem ampliada, ele entra no grupo simbólico dos atacantes que ultrapassaram a barreira dos mil gols.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O PSV e a explosão na Europa</strong></p>
+
+            <p>Foi essencial para Romário deixar de ser uma promessa brasileira e se tornar um atacante de elite mundial. Na Holanda, ele encontrou um futebol ofensivo, com espaços, ritmo forte e muitos jogos em que sua capacidade de decisão fazia diferença.</p>
+
+            <p>Foram 165 gols em 167 jogos na contagem histórica do período. Mais importante do que o volume foi a forma como ele se impôs. Romário não era um centroavante de choque, nem um atacante que dependia de força física. Ele vivia do tempo da jogada. Bastava um passe entre zagueiros, um rebote curto ou uma bola atravessada na área para transformar uma jogada comum em gol.</p>
+
+            <p>No PSV, conquistou títulos nacionais, virou ídolo e chamou atenção do Barcelona. A passagem pela Holanda também mostrou uma característica que acompanharia toda a carreira: Romário podia parecer desligado durante longos minutos, mas raramente estava fora do jogo. Ele apenas esperava o instante certo.</p>
+
+            <p><strong>Barcelona, Dream Team e a temporada perfeita</strong></p>
+
+            <p>Em 1993, Romário chegou ao clube catalão de Johan Cruyff. A equipe já era conhecida como "Dream Team" e tinha nomes como Hristo Stoichkov, Michael Laudrup, Ronald Koeman, Guardiola e outros jogadores de enorme qualidade técnica.</p>
+
+            <p>Romário encaixou como a peça final daquele ataque. Em sua primeira temporada, marcou 30 gols em 33 jogos de La Liga e foi artilheiro do campeonato. O Barcelona conquistou o título espanhol de 1993/94, e o brasileiro virou uma das grandes figuras do futebol europeu.</p>
+
+            <p>O símbolo máximo dessa passagem foi o clássico contra o Real Madrid, vencido pelo Barcelona por 5 a 0, com hat-trick de Romário. Um dos gols, com giro rápido sobre o marcador e finalização precisa, virou imagem definitiva do seu repertório: domínio curto, corpo entre bola e zagueiro, execução em fração de segundo.</p>
+
+            <p>A passagem pela Espanha, porém, também mostrou o outro lado do Baixinho. Depois da Copa de 1994, conflitos, atrasos e desgaste com Cruyff reduziram sua permanência no clube. Romário saiu cedo demais para quem tinha talento de sobra para dominar a Europa por mais anos. Ainda assim, o impacto foi tão forte que sua passagem curta pelo Barcelona segue lembrada como uma das mais marcantes de um brasileiro no clube.</p>
+
+            <p><strong>O tetra e o auge pela Seleção Brasileira</strong></p>
+
+            <p>A Copa do Mundo de 1994 é o ponto mais alto da carreira. O Brasil chegava pressionado, sem ganhar Mundial desde 1970, e com uma equipe mais pragmática do que brilhante. O time de Carlos Alberto Parreira era forte defensivamente, competitivo no meio e dependia muito da dupla Romário e Bebeto para decidir no ataque.</p>
+
+            <p>Romário assumiu esse peso. Marcou cinco gols na Copa, participou de jogadas decisivas e foi eleito o melhor jogador do torneio. Fez gol contra Rússia, Camarões, Suécia na fase de grupos, Holanda nas quartas e novamente Suécia na semifinal. Na final contra a Itália, não balançou a rede no tempo normal, mas converteu sua cobrança na disputa por pênaltis.</p>
+
+            <p>O tetra não foi apenas mais um título para a Seleção. Foi a reconquista da autoestima brasileira em Copas depois de 24 anos. E Romário foi o rosto técnico daquela campanha. Bebeto foi parceiro fundamental, Dunga liderou o meio, Taffarel brilhou nos pênaltis e a defesa foi sólida, mas o jogador que deu ao Brasil a sensação de que o gol poderia sair a qualquer momento foi Romário.</p>
+
+            <p><strong>O Baixinho e os gols de cabeça</strong></p>
+
+            <p>O apelido “Baixinho” cria uma ironia interessante: Romário, mesmo sem altura de centroavante clássico, também marcou gols importantes de cabeça.</p>
+
+            <p>A explicação está no posicionamento. Romário não precisava vencer todos os duelos aéreos. Ele precisava chegar antes na bola certa. Seu cabeceio dependia menos de impulsão dominante e mais de leitura, deslocamento curto, antecipação e tempo de ataque ao espaço.</p>
+
+            <p>O melhor exemplo é a Copa de 1994. Na semifinal contra a Suécia, Romário decidiu de cabeça, aparecendo entre defensores mais altos para marcar o gol que levou o Brasil à final. O lance resume sua inteligência: ele não era grande na estatura, mas era enorme na leitura da área.</p>
+
+            <p>Essa é a diferença entre altura e presença. Ele tinha presença. Sabia onde a bola cairia, atacava o primeiro movimento antes do zagueiro e transformava cruzamentos comuns em chances claras. Por isso, os gols de cabeça não contradizem o apelido. Eles reforçam o tamanho futebolístico do Baixinho.</p>
+
+            <p><strong>Romário e o Maracanã</strong></p>
+
+            <p>O estádio foi palco de gols por Vasco, Flamengo, Fluminense e Seleção Brasileira, além de algumas das noites mais marcantes da carreira do atacante.</p>
+
+            <p>O Baixinho aparece entre os maiores artilheiros da história do Maracanã, com 190 gols no estádio. A divisão ajuda a mostrar como sua carreira atravessou diferentes camisas do futebol carioca: foram 73 gols pelo Flamengo, 70 pelo Vasco, 38 pelo Fluminense, oito pela Seleção Brasileira e um pela seleção carioca.</p>
+
+            <p>No ranking histórico do <a href="https://cortedosesportes.com.br/maracana-historia-recordes-tradicao-estadio-brasil.html"> Maracanã</a>, ele fica atrás apenas de Zico e Roberto Dinamite, dois personagens profundamente ligados ao estádio. A presença dele nesse pódio reforça como sua carreira não foi apenas nacional ou internacional: também foi construída em noites decisivas no principal palco do futebol brasileiro.</p>
+
+            <p>O Maracanã também foi cenário de um dos jogos mais simbólicos de Romário pela Seleção. Em 1993, contra o Uruguai, ele fez os dois gols da vitória por 2 a 0 que classificou o Brasil para a Copa de 1994.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O milésimo gol</strong></p>
+
+            <p>O feito aconteceu em 20 de maio de 2007, em São Januário, pelo Vasco, contra o Sport, pelo Campeonato Brasileiro. O gol saiu de pênalti e transformou o jogo em evento histórico.</p>
+
+            <p>A marca foi celebrada como um dos grandes momentos da carreira do atacante, mas também reacendeu a discussão sobre critérios. A contagem de Romário incluía gols na base, amistosos e jogos festivos, o que não é aceito por todos os levantamentos estatísticos. Ainda assim, o impacto simbólico foi enorme, porque colocou o Baixinho em uma conversa que, no imaginário popular, sempre teve <a href="https://cortedosesportes.com.br/pele-historia-titulos-santos-selecao-brasileira-rei-futebol.html">Pelé</a> como grande referência.</p>
+
+            <p>Mesmo com a polêmica, a discussão não diminui o peso do momento. O milésimo gol coroou uma carreira construída sobre obsessão pela rede. Romário sempre foi movido por gols. Não por participação tática, não por discursos coletivos, não por números de pressão ou recomposição. O centro do seu futebol era simples: colocar a bola dentro do gol.</p>
+
+            <p><strong>A frustração do corte em 2002</strong></p>
+
+            <p>A ausência de Romário na Copa de 2002 é uma das maiores discussões da história da Seleção Brasileira. Ele tinha 36 anos, ainda marcava muitos gols e contava com forte apoio popular. Mesmo assim, Luiz Felipe Scolari decidiu não convocá-lo.</p>
+
+            <p>A frustração foi enorme porque Romário ainda parecia capaz de decidir jogos. A Seleção que foi ao Mundial tinha Ronaldo, Rivaldo e Ronaldinho Gaúcho como protagonistas ofensivos, e acabou conquistando o pentacampeonato. O sucesso do time reduziu o espaço para contestação posterior, mas não apagou a pergunta: Romário poderia ter feito parte daquele grupo?</p>
+
+            <p>O corte também tem camadas de bastidor. A relação com a comissão técnica já estava desgastada, especialmente depois de episódios envolvendo convocações anteriores e questões disciplinares. A decisão de Felipão não foi apenas técnica; envolveu também confiança, grupo e controle de ambiente.</p>
+
+            <p>Para Romário, ficou a ferida. Para a história, ficou o contraste: o herói absoluto de 1994 não esteve no elenco que conquistou o penta em 2002.</p>
+
+            <p><strong>Estilo de jogo</strong></p>
+
+            <p>Romário foi um dos maiores especialistas da história em jogar dentro da área. Ele não precisava tocar várias vezes na bola. Bastavam três participações certas para mudar uma partida.</p>
+
+            <p>Suas principais características eram:</p>
+
+            <ul>
+              <li>explosão curta nos primeiros metros;</li>
+              <li>domínio orientado dentro da área;</li>
+              <li>finalização rápida, muitas vezes de bico;</li>
+              <li>frieza diante do goleiro;</li>
+              <li>proteção de bola usando o corpo;</li>
+              <li>antecipação sobre zagueiros;</li>
+              <li>leitura de rebotes;</li>
+              <li>capacidade de decidir com pouco espaço;</li>
+              <li>movimentação curta para sair da marcação.</li>
+            </ul>
+
+            <p>Romário não era um atacante de grandes arrancadas longas. Também não era um camisa 9 fixo de área tradicional. Ele se movimentava o suficiente para confundir a defesa, mas sem gastar energia desnecessária. Sua genialidade estava na economia.</p>
+
+            <p>Essa é uma das razões pelas quais envelheceu marcando gols. Mesmo perdendo velocidade com o passar dos anos, manteve o instinto. E, para um centroavante como ele, o instinto era a ferramenta principal.</p>
+
+            <p><strong>O estilo fora de campo</strong></p>
+
+            <p>Fora dos gramados, foi tão marcante quanto dentro dele. Falava muito, provocava adversários, cobrava técnicos, comprava brigas públicas e raramente tentava parecer diplomático.</p>
+
+            <p>Essa personalidade tinha dois efeitos. De um lado, reforçava sua aura de craque. Romário transmitia confiança, chamava responsabilidade e muitas vezes usava a provocação como combustível. De outro, criou desgastes em clubes, com treinadores e na Seleção.</p>
+
+            <p>No PSV, no Barcelona, no Flamengo, no Vasco e na Seleção, o padrão se repetiu: quando estava feliz e motivado, era decisivo; quando se sentia contrariado, o ambiente podia virar problema. Romário nunca foi um jogador neutro. Ele exigia espaço, bola, protagonismo e liberdade.</p>
+
+            <p>Essa combinação ajuda a explicar por que sua carreira teve picos tão altos e algumas rupturas bruscas. O mesmo ego que o fazia decidir finais também criava conflitos.</p>
+
+            <p><strong>Renato Gaúcho e a rivalidade de personalidades</strong></p>
+
+            <p>A rivalidade entre os dois, não foi uma rivalidade estatística como Messi x Cristiano Ronaldo, nem uma disputa direta de posição por muitos anos. Foi, acima de tudo, uma rivalidade de personagens.</p>
+
+            <p>Nos anos 1990, especialmente no Rio de Janeiro, Romário e Renato representavam dois estilos de craque provocador. Ambos falavam muito, gostavam de palco e entendiam o peso da frase antes e depois dos clássicos. Quando Flamengo e Fluminense se cruzavam, esse tempero aumentava.</p>
+
+            <p>Renato era mais expansivo, teatral e ligado ao jogo de lado de campo, ao drible, à assistência e à provocação pública. Romário era mais frio, mais goleador e mais direto. Um construía cena; o outro encerrava jogadas. A rivalidade funcionava porque os dois sabiam vender o espetáculo.</p>
+
+            <p>Para o futebol carioca, isso tinha valor. Em uma época de menos redes sociais e mais peso da televisão, as frases de Romário e Renato ajudavam a transformar clássicos em eventos.</p>
+
+            <p><strong>O “melhor ataque do mundo”</strong></p>
+
+            <p>A relação com Edmundo teve ainda mais camadas. Os dois foram parceiros, rivais, desafetos e protagonistas de ataques que ficaram no imaginário do torcedor.</p>
+
+            <p>Em 1995, o Flamengo montou um trio com Romário, Sávio e Edmundo para o ano do centenário. A expectativa foi tão alta que o ataque ganhou o apelido de “melhor ataque do mundo”. No papel, fazia sentido: Romário era o centroavante campeão mundial, Sávio era uma das grandes promessas do futebol brasileiro e Edmundo vinha de uma fase explosiva.</p>
+
+            <p>Na prática, a história foi mais complicada. O trio não entregou tudo o que se esperava, e o Flamengo viveu um ano abaixo da expectativa criada. Por isso, o “melhor ataque do mundo” ficou mais como símbolo de promessa, marketing e frustração do que como uma linha ofensiva realmente dominante.</p>
+
+            <p>Anos depois, Romário e Edmundo voltaram a se cruzar no Vasco, especialmente no Mundial de Clubes de 2000. A vitória por 3 a 1 sobre o Manchester United, no Maracanã, com os dois em campo, virou um dos grandes jogos de clubes brasileiros contra europeus. Romário marcou, Edmundo brilhou e o Vasco passou por uma equipe inglesa cheia de estrelas.</p>
+
+            <p>Mas a parceria também teve ruído. Eram dois atacantes geniais, temperamentais e acostumados ao protagonismo. Quando funcionava, era espetáculo. Quando não funcionava, virava atrito.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Títulos conquistados</strong></p>
+
+            <p>Romário ganhou títulos importantes por clubes e pela Seleção Brasileira. A lista mostra como sua carreira teve impacto em diferentes países e contextos.</p>
+
+            <p><strong>Pelo Vasco:</strong></p>
+            <ul>
+              <li>Campeonato Carioca: 1987 e 1988</li>
+              <li>Campeonato Brasileiro: 2000</li>
+              <li>Copa Mercosul: 2000</li>
+            </ul>
+
+            <p><strong>Pelo PSV:</strong></p>
+            <ul>
+              <li>Campeonato Holandês: 1988/89, 1990/91 e 1991/92</li>
+              <li>Copa da Holanda: 1988/89 e 1989/90</li>
+              <li>Supercopa da Holanda: 1992</li>
+            </ul>
+
+            <p><strong>Pelo Barcelona:</strong></p>
+            <ul>
+              <li>Campeonato Espanhol: 1993/94</li>
+              <li>Supercopa da Espanha: 1994</li>
+            </ul>
+
+            <p><strong>Pelo Flamengo:</strong></p>
+            <ul>
+              <li>Campeonato Carioca: 1996 e 1999</li>
+              <li>Copa Mercosul: 1999</li>
+            </ul>
+
+            <p><strong>Pelo Al Sadd:</strong></p>
+            <ul>
+              <li>Copa do Príncipe Herdeiro do Catar: 2003</li>
+            </ul>
+
+            <p><strong>Pelo America-RJ:</strong></p>
+            <ul>
+              <li>Segunda Divisão do Campeonato Carioca: 2009</li>
+            </ul>
+
+            <p><strong>Pela Seleção Brasileira:</strong></p>
+            <ul>
+              <li>Campeonato sul-Americano Sub-20: 1985</li>
+              <li>Medalha de prata olímpica: 1988</li>
+              <li>Copa América: 1989 e 1997</li>
+              <li>Copa das Confederações: 1997</li>
+              <li>Copa do Mundo: 1994</li>
+            </ul>
+
+            <p><strong>Principais prêmios individuais:</strong></p>
+            <ul>
+              <li>Melhor jogador da Copa do Mundo de 1994</li>
+              <li>Melhor jogador do mundo pela FIFA em 1994</li>
+              <li>Artilheiro da Olimpíada de 1988</li>
+              <li>Artilheiro do Campeonato Espanhol em 1993/94</li>
+              <li>Artilheiro em diferentes edições de competições nacionais e estaduais</li>
+              <li>Integrante do FIFA 100, lista histórica divulgada em 2004</li>
+            </ul>
+
+            <p><strong>O retorno ao Brasil e a longevidade</strong></p>
+
+            <p>Depois da Europa, Romário voltou ao país e continuou empilhando gols. Jogou por Flamengo, Vasco, Fluminense e ainda passou por mercados alternativos, como Catar, Estados Unidos e Austrália.</p>
+
+            <p>O retorno ao Vasco em 2000 foi especialmente marcante. Romário foi protagonista do título brasileiro e da Copa Mercosul, além de ter papel central em uma temporada ofensivamente forte. Mesmo já veterano, continuava decidindo jogos grandes.</p>
+
+            <p>No Miami FC e no Adelaide United, levou sua marca para ligas menos tradicionais. A carreira terminou com a imagem de um atacante que nunca perdeu completamente o poder de finalizar.</p>
+
+            <p>A longevidade dele não veio de preparo físico exemplar aos moldes modernos. Veio de inteligência de jogo. Ele não precisava correr mais que os zagueiros durante 90 minutos. Precisava pensar antes deles.</p>
+
+            <p><strong>O legado do Baixinho</strong></p>
+
+            <p>Romário ocupa um lugar especial na história do futebol porque foi um atacante de essência pura. Em tempos diferentes, sistemas diferentes e países diferentes, ele repetiu a mesma arte: receber, dominar e fazer gol.</p>
+
+            <p>Seu legado não depende apenas do milésimo, nem apenas do tetra, nem apenas do Barcelona. Depende do conjunto. Romário foi ídolo no Vasco, artilheiro histórico no Flamengo, fenômeno no PSV, estrela no Barcelona e protagonista da Seleção Brasileira em uma Copa do Mundo.</p>
+
+            <p>Também foi um jogador que dividiu opiniões. Para alguns, poderia ter sido ainda maior se tivesse sido mais disciplinado. Para outros, justamente essa personalidade fazia parte do pacote. Romário sem marra talvez não fosse Romário.</p>
+
+            <p>O fato é que poucos atacantes entenderam a área como ele. Poucos tiveram tanta frieza diante do goleiro. Poucos transformaram tão bem baixa estatura em vantagem competitiva. O Baixinho foi pequeno só no apelido. Na história do futebol, Romário é gigante.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
