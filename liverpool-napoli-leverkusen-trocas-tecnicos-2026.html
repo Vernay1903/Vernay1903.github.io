@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Liverpool, Napoli e Leverkusen trocam técnicos e abrem novos ciclos na Europa | Corte dos Esportes</title>
+  <meta name="description" content="Os três times entram em novos ciclos técnicos após saídas de Arne Slot, Antonio Conte e Kasper Hjulmand, em movimentos que mostram como clubes de elite tentam equilibrar resultado, identidade e reconstrução." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Liverpool, Napoli e Leverkusen trocam técnicos e abrem novos ciclos na Europa</h1>
+          <p class="subhead" id="articleExcerpt">Os três times entram em novos ciclos técnicos após saídas de Arne Slot, Antonio Conte e Kasper Hjulmand, em movimentos que mostram como clubes de elite tentam equilibrar resultado, identidade e reconstrução.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">05/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O mercado de técnicos na Europa ganhou peso especial com mudanças importantes em três clubes relevantes. As trocas não têm o mesmo tamanho simbólico da <a href="https://cortedosesportes.com.br/pep-guardiola-despedida-manchester-city-titulos-legado.html">despedida de Pep Guardiola do Manchester City</a>, mas seguem a mesma lógica de fundo: clubes grandes tentando reorganizar projeto, identidade e competitividade depois de ciclos que terminaram por motivos diferentes.</p>
+
+            <p>No Liverpool, Arne Slot sai depois de duas temporadas, um título inglês e uma segunda campanha abaixo do esperado. Andoni Iraola chega como aposta em intensidade, pressão alta e retomada de uma energia mais próxima do que Anfield se acostumou a ver nos anos de Jürgen Klopp.</p>
+
+            <p>No Napoli, Antonio Conte se despede após dois anos, dois títulos e mais uma passagem curta, intensa e vencedora. O clube italiano perde um técnico de currículo enorme, mas também abre espaço para uma nova etapa depois de uma relação marcada por exigência, desgaste e resultados fortes.</p>
+
+            <p>No Bayer Leverkusen, a troca tem outro perfil. Kasper Hjulmand deixa o clube após uma temporada, e Carles Martínez Novell chega como aposta em desenvolvimento, posse de bola e reconstrução. É uma mudança menos midiática, mas importante para entender como o clube tenta seguir competitivo depois do ciclo histórico iniciado na era Xabi Alonso.</p>
+
+            <p>As três situações mostram que trocar técnico não é apenas escolher outro nome. É decidir que tipo de futebol o clube quer jogar, qual cultura pretende preservar e quanto risco aceita correr para continuar vencendo. O contexto também conversa com a transição do Manchester City, detalhada na matéria sobre <a href="https://cortedosesportes.com.br/manchester-city-novo-ciclo-enzo-maresca-tecnico.html">o novo ciclo com Enzo Maresca como favorito após Guardiola</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Liverpool troca Arne Slot por Andoni Iraola</strong></p>
+
+            <p>O Liverpool oficializou Andoni Iraola como novo técnico para a temporada 2026/27. O espanhol chega para substituir Arne Slot, que deixou o clube depois de duas temporadas no comando.</p>
+
+            <p>Slot havia assumido o Liverpool em junho de 2024, com uma missão pesada: suceder Jürgen Klopp, um dos maiores treinadores da história recente do clube. O início foi excelente. Na primeira temporada, levou o Liverpool ao 20º título inglês, igualando o recorde histórico de conquistas nacionais no topo do futebol inglês.</p>
+
+            <p>Também chegou à final da Copa da Liga Inglesa e levou o time às oitavas de final da Champions League. O desempenho rendeu reconhecimento individual, incluindo o prêmio de melhor técnico da temporada pela associação de treinadores.</p>
+
+            <p>A segunda temporada, porém, mudou o ambiente. O Liverpool não conseguiu manter o mesmo nível, teve queda de rendimento, acumulou derrotas importantes e terminou sem repetir a força competitiva esperada para um elenco caro e pressionado por títulos. A saída de Slot mostra como, em clubes desse tamanho, um título recente pode não ser suficiente quando o projeto dá sinais de perda de direção.</p>
+
+            <p>A mudança no banco também acontece em um momento de despedidas importantes no elenco. Mohamed Salah deixará o Liverpool ao fim da temporada 2025/26, encerrando um ciclo de nove anos, 255 gols em 435 jogos e títulos como Champions League, Mundial de Clubes e duas Premier League. Até agora, o atacante egípcio ainda não tem novo clube oficialmente confirmado. Sem Salah e com Iraola chegando, <a href="https://cortedosesportes.com.br/anfield-historia-tradicao-estadio-liverpool.html">Europa League</a>. passa a receber o início de outra história, em um estádio cuja mística sempre pesou na reconstrução de grandes times.</p>
+
+            <p><strong>Os números de Arne Slot</strong></p>
+
+            <p>A passagem dele pelo Liverpool foi curta, mas relevante.</p>
+
+            <p><strong>Resumo das temporadas:</strong></p>
+
+            <p>• Período: junho de 2024 a maio de 2026</p>
+            <p>• Temporadas: 2</p>
+            <p>• Jogos: 113</p>
+            <p>• Vitórias: 66</p>
+            <p>• Empates: 18</p>
+            <p>• Derrotas: 29</p>
+            <p>• Aproveitamento: 58,4%</p>
+            <p>• Principal título: Campeonato Inglês 2024/25</p>
+            <p>• Outros destaques: final da Copa da Liga Inglesa e oitavas da Champions League</p>
+
+            <p>O número mais forte é o título inglês. Slot não fracassou no Liverpool no sentido histórico, porque entregou uma conquista enorme logo no primeiro ano. O problema foi a sequência. A segunda temporada criou a percepção de que o time precisava de outro tipo de estímulo, especialmente em intensidade, agressividade sem bola e resposta emocional.</p>
+
+            <p><strong>Para onde vai Arne Slot?</strong></p>
+
+            <p>Até agora, não tem novo clube oficialmente anunciado. O nome dele apareceu ligado a possibilidades no futebol inglês e até à seleção holandesa, mas nada foi confirmado como destino fechado.</p>
+
+            <p>Isso é relevante porque Slot sai do Liverpool com mercado. Ele não deixa Anfield como um técnico sem prestígio. Sai desgastado por uma segunda temporada ruim, mas com um título de Premier League no currículo recente, além do trabalho forte anterior no Feyenoord.</p>
+
+            <p><strong>Quem é Andoni Iraola</strong></p>
+
+            <p>Ele chega ao Liverpool em momento de alta na carreira. Ex-lateral do Athletic Bilbao, onde fez mais de 500 jogos, ele construiu sua trajetória como treinador em etapas bem definidas: começou no AEK Larnaca, passou por Mirandés, cresceu no Rayo Vallecano e ganhou projeção na Premier League com o Bournemouth.</p>
+
+            <p><strong>O currículo como técnico:</strong></p>
+            <p>• AEK Larnaca: 2018 a janeiro de 2019</p>
+            <p>• Mirandés: 2019/20</p>
+            <p>• Rayo Vallecano: 2020 a 2023</p>
+            <p>• Bournemouth: 2023 a 2026</p>
+            <p>• Liverpool: a partir de 2026/27</p>
+
+            <p>No AEK Larnaca, conquistou a Supercopa do Chipre. No Mirandés, chamou atenção ao levar um clube de menor investimento à semifinal da Copa do Rei, eliminando equipes mais fortes no caminho. No Rayo Vallecano, conseguiu o acesso à primeira divisão espanhola e manteve o clube competitivo em LaLiga.</p>
+
+            <p>No Bournemouth, fez seu trabalho mais vistoso. Em três campanhas de Premier League, levou um clube de uma estrutura menor a competir em nível alto, terminou em sexto lugar e classificou a equipe para a <a href="https://cortedosesportes.com.br/europa-league-2026-27-times-classificados-datas.html">Europa League</a> pela primeira vez na história.</p>
+
+            <p><strong>Os números de Iraola antes do Liverpool</strong></p>
+
+            <p>A carreira dele mostra evolução gradual, sem não ter sido testado e ir direto para um gigante.</p>
+
+            <p><strong>Números por clube como treinador principal:</strong></p>
+            <p>• AEK Larnaca: 29 jogos, 13 vitórias, 8 empates e 8 derrotas</p>
+            <p>• Mirandés: 49 jogos, 18 vitórias, 17 empates e 14 derrotas</p>
+            <p>• Rayo Vallecano: 136 jogos, 56 vitórias, 30 empates e 50 derrotas</p>
+            <p>• Bournemouth: 127 jogos, 48 vitórias, 38 empates e 41 derrotas</p>
+
+            <p>O número bruto no Bournemouth não impressiona como o de um técnico de clube grande, mas precisa ser lido pelo contexto. Iraola comandava uma equipe com menos orçamento, menos profundidade de elenco e menor obrigação histórica. Ainda assim, levou o time ao melhor patamar recente e colocou o clube em competição europeia.</p>
+
+            <p>Esse é o ponto que atrai o Liverpool: não apenas resultados, mas processo. Iraola conseguiu criar uma equipe agressiva, intensa e competitiva sem ter o elenco mais caro do campeonato.</p>
+
+            <p><strong>Como joga Iraola</strong></p>
+
+            <p>O estilo de jogo dele é associado a pressão alta, ritmo forte, ataques rápidos e recuperação agressiva da bola. Ele é frequentemente ligado à escola de Marcelo Bielsa, com quem trabalhou como jogador no Athletic Bilbao.</p>
+
+            <p><strong>Principais características:</strong></p>
+            <p>• pressão alta;</p>
+            <p>• marcação agressiva após perda;</p>
+            <p>• intensidade sem bola;</p>
+            <p>• laterais participativos;</p>
+            <p>• transições rápidas;</p>
+            <p>• coragem para atacar adversários maiores;</p>
+            <p>• compactação para recuperar a posse em zonas avançadas;</p>
+            <p>• jogo vertical quando há espaço.</p>
+
+            <p>Para o Liverpool, essa escolha tem sentido esportivo e emocional. A torcida se acostumou a ver um time intenso, capaz de sufocar adversários em Anfield. Slot tinha ideias de organização e controle, mas Iraola parece oferecer um retorno mais claro à energia competitiva que marcou o clube na última década.</p>
+
+            <p>O desafio será adaptar esse estilo a um elenco de estrelas. Pressionar com Bournemouth é uma coisa; comandar jogadores de elite, calendário europeu, cobrança por títulos e ambiente global é outra. Iraola chega com ideias fortes, mas precisará provar que consegue implantar o seu método.</p>
+
+            <p><strong>Napoli se despede de Antonio Conte</strong></p>
+
+            <p>Conte deixa o clube com títulos e com impacto direto na história do time napolitano. Sai depois de recolocar o Napoli no topo da Itália e conquistar também a Supercopa Italiana.</p>
+
+            <p>Conte chegou ao Napoli em junho de 2024, com contrato até 30 de junho de 2027.</p>
+
+            <p>Em sua primeira temporada, levou o Napoli ao quarto título italiano da história do clube. Foi mais uma prova de sua capacidade de transformar rapidamente ambientes competitivos. Depois, ainda conquistou a Supercopa Italiana.</p>
+
+            <p>Esse título também coloca Conte em um recorte histórico importante do futebol italiano. Depois de ser campeão nacional por Juventus, Inter de Milão e Napoli, o treinador reforçou sua presença na história recente da <a href="https://cortedosesportes.com.br/campeonato-italiano-historia-tradicao-maiores-campeoes-rivalidades.html">Serie A</a>.</p>
+
+            <p>A despedida antes do fim do contrato, porém, também combina com o perfil da carreira de Conte. Ele é um treinador intenso, exigente, vencedor e, muitas vezes, de ciclos curtos. Seus trabalhos costumam produzir impacto rápido, mas também alto nível de desgaste.</p>
+
+            <p><strong>Os números de Conte no Napoli:</strong></p>
+
+            <p>• Chegada: junho de 2024</p>
+            <p>• Saída: junho de 2026</p>
+            <p>• Contrato original: até junho de 2027</p>
+            <p>• Temporadas: 2</p>
+            <p>• Jogos: 91</p>
+            <p>• Vitórias: 54</p>
+            <p>• Empates: 19</p>
+            <p>• Derrotas: 18</p>
+            <p>• Aproveitamento: 59,3%</p>
+            <p>• Títulos: Serie A e Supercopa Italiana</p>
+
+            <p>Na temporada 2025/26, os números também mostram competitividade, mesmo com queda em relação ao ano do título: foram 50 jogos, 28 vitórias, 9 empates e 13 derrotas. Deixou time classificado para á <a href="https://cortedosesportes.com.br/champions-league-2026-27-times-classificados-datas.html">Champions League 2026/27</a></p>
+
+            <p><strong>Para onde vai Antonio Conte?</strong></p>
+
+            <p>Até agora, não tem novo clube oficialmente anunciado. O nome dele aparece ligado à seleção italiana e a outros projetos de elite, mas a saída do Napoli ainda não foi acompanhada por uma confirmação de destino.</p>
+
+            <p>O ponto de atenção é o custo emocional do método. Conte costuma exigir muito de elenco, diretoria e ambiente. Quando há sintonia, os resultados aparecem rápido. Quando a relação começa a desgastar, o ciclo costuma encurtar.</p>
+
+            <p>Conte tem uma das carreiras mais vitoriosas entre técnicos italianos da era recente.</p>
+
+            <p><strong>Clubes:</strong></p>
+            <p>• Arezzo: 2006 e 2007</p>
+            <p>• Bari: 2007 a 2009</p>
+            <p>• Atalanta: 2009 a 2010</p>
+            <p>• Siena: 2010/11</p>
+            <p>• Juventus: 2011 a 2014</p>
+            <p>• Seleção Italiana: 2014 a 2016</p>
+            <p>• Chelsea: 2016 a 2018</p>
+            <p>• Inter de Milão: 2019 a 2021</p>
+            <p>• Tottenham: 2021 a 2023</p>
+            <p>• Napoli: 2024 a 2026</p>
+
+            <p><strong>Principais títulos:</strong></p>
+
+            <p>• Serie B com Bari</p>
+            <p>• Serie A com Juventus</p>
+            <p>• Premier League com Chelsea</p>
+            <p>• Copa da Inglaterra com Chelsea</p>
+            <p>• Serie A com Inter de Milão</p>
+            <p>• Serie A com Napoli</p>
+            <p>• Supercopa Italiana com Napoli</p>
+
+            <p><strong>O que o Napoli perde com Conte</strong></p>
+
+            <p>O Napoli perde mais do que um técnico. Perde uma figura de comando. Conte é um treinador que mexe na cultura diária: treino, cobrança, comportamento defensivo, intensidade, concentração e postura.</p>
+
+            <p>Seu futebol nem sempre é o mais vistoso, mas costuma ser eficiente. As equipes de Conte geralmente têm:</p>
+
+            <p>• linha defensiva bem treinada;</p>
+            <p>• alas com função intensa;</p>
+            <p>• meio-campo físico e disciplinado;</p>
+            <p>• transições bem definidas;</p>
+            <p>• cobrança mental alta;</p>
+            <p>• competitividade em jogos grandes;</p>
+            <p>• forte identidade tática.</p>
+
+            <p>O próximo técnico do Napoli terá que lidar com uma comparação complicada. Não basta fazer o time jogar de forma mais leve. Será preciso preservar competitividade. A torcida viu Conte ganhar. Qualquer projeto novo começará medido por essa régua.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Bayer Leverkusen troca Hjulmand por Carles Martínez Novell</strong></p>
+
+            <p>No clube alemão, a troca tem menos barulho internacional, mas é importante no contexto da Bundesliga. O clube anunciou Carles Martínez Novell como novo técnico para assumir em 1º de julho de 2026, com contrato até 30 de junho de 2028.</p>
+
+            <p>Ele chega para substituir Kasper Hjulmand, que deixa o clube após uma temporada. O dinamarquês havia assumido em setembro de 2025, depois de uma passagem curta de Erik ten Hag, e tinha contrato até 2027.</p>
+
+            <p>Hjulmand não teve uma passagem desastrosa, mas também não conseguiu recolocar o Leverkusen no patamar de excelência que o clube buscava após a era recente de grande competitividade. A equipe terminou a Bundesliga em sexto lugar, chegou à semifinal da Copa da Alemanha e às oitavas da Champions League.</p>
+
+            <p>O problema foi o contexto. O Leverkusen ainda vivia a sombra do ciclo de Xabi Alonso, campeão alemão e símbolo de um futebol moderno, agressivo e organizado. Depois de uma era tão marcante, qualquer queda de rendimento pesa mais.</p>
+
+            <p><strong>Os números de Kasper Hjulmand:</strong></p>
+            <p>• Chegada: setembro de 2025</p>
+            <p>• Saída: fim da temporada 2025/26</p>
+            <p>• Jogos: 48</p>
+            <p>• Vitórias: 24</p>
+            <p>• Empates: 12</p>
+            <p>• Derrotas: 12</p>
+            <p>• Aproveitamento aproximado em vitórias: 50%</p>
+            <p>• Bundesliga: 32 jogos, 17 vitórias, 7 empates e 8 derrotas</p>
+            <p>• Champions League: oitavas de final</p>
+            <p>• Copa da Alemanha: semifinal</p>
+
+            <p>O aproveitamento não é baixo para um clube em reconstrução, mas o Leverkusen se acostumou a uma régua mais alta. A saída mostra que a diretoria queria acelerar uma nova etapa, com outro perfil de trabalho.</p>
+
+            <p><strong>Para onde vai Kasper Hjulmand?</strong></p>
+
+            <p>Ainda não tem novo clube oficialmente confirmado. Ele deixa o Leverkusen com reputação de técnico organizado, bom formador de ambiente e experiência internacional, especialmente pela passagem pela seleção dinamarquesa.</p>
+
+            <p>Antes do Bayer, Hjulmand treinou Lyngby, Nordsjaelland, Mainz e Dinamarca. Seu ponto mais marcante foi levar a seleção dinamarquesa à semifinal da Euro 2020, disputada em 2021, em uma campanha de forte impacto emocional e esportivo</p>
+
+            <p><strong>Quem é Carles Martínez Novell</strong></p>
+
+            <p>É uma aposta de perfil diferente. Espanhol, nascido em Barcelona, ele construiu carreira com forte ligação à formação de jogadores antes de se afirmar como técnico principal no Toulouse.</p>
+
+            <p><strong>A trajetória dele passa por:</strong></p>
+            <p>• categorias de base do Granollers;</p>
+            <p>• funções na base do Espanyol;</p>
+            <p>• categorias de base do Barcelona;</p>
+            <p>• trabalho no Al-Rayyan;</p>
+            <p>• seleção de base do Kuwait;</p>
+            <p>• auxiliar no Toulouse;</p>
+            <p>• técnico principal do Toulouse;</p>
+            <p>• Bayer Leverkusen a partir de 2026/27.</p>
+
+            <p>Como técnico principal do Toulouse, comandou 120 jogos e teve média de 1,35 ponto por partida. Na temporada 2025/26, fez 38 jogos, com 16 vitórias, 8 empates e 14 derrotas.</p>
+
+            <p>O retrospecto não é de técnico consagrado por taças, mas de treinador em crescimento. Como comandante principal, ainda não tem um grande título. O valor da contratação está mais no perfil metodológico, na formação, no trabalho de desenvolvimento e na ideia de jogo.</p>
+
+            <p><strong>Como joga Carles Martínez Novell</strong></p>
+
+            <p>O modelo é associado a um futebol de posse, organização, desenvolvimento individual e controle do jogo. Sua formação em base ajuda a explicar esse perfil. Ele tende a valorizar estrutura, progressão com bola e crescimento de jogadores dentro de funções bem definidas.</p>
+
+            <p><strong>Características esperadas:</strong></p>
+            <p>• posse de bola;</p>
+            <p>• saída trabalhada;</p>
+            <p>• organização posicional;</p>
+            <p>• estímulo à evolução individual;</p>
+            <p>• equipe propositiva;</p>
+            <p>• pressão coordenada;</p>
+            <p>• uso de jovens;</p>
+            <p>• adaptação a diferentes fases do jogo.</p>
+
+            <p>Para o Leverkusen, a escolha faz sentido se o clube quer reconstruir sem abandonar uma ideia moderna. O Bayer não está contratando um técnico de choque, nem um treinador de curto prazo apenas para resultado imediato. Está apostando em desenvolvimento.</p>
+
+            <p>Esse é o risco e a virtude da decisão. Martínez pode ajudar o clube a criar um novo ciclo com identidade, mas também terá que provar rapidamente que consegue competir em uma liga de pressão, contra Bayern, Dortmund, Leipzig e outros rivais fortes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Três trocas, três tipos de transição</strong></p>
+
+            <p>Liverpool, Napoli e Leverkusen fazem movimentos diferentes.</p>
+
+            <p>O Liverpool troca um técnico campeão por outro de perfil intenso, tentando recuperar agressividade e energia. É uma decisão de estilo e ambiente.</p>
+
+            <p>O Napoli perde um treinador vencedor, mas também encerra um ciclo naturalmente desgastante. É uma troca de comando após sucesso, não apenas após crise.</p>
+
+            <p>O Leverkusen muda para tentar reabrir um projeto de médio prazo. É menos sobre impacto midiático e mais sobre reconstrução metodológica.</p>
+
+            <p>Essas trocas ajudam a entender o futebol europeu atual. O cargo de técnico virou cada vez mais instável, mas também mais estratégico. Não basta vencer uma vez. É preciso manter energia, estilo, comunicação, elenco comprado pelo projeto e capacidade de evolução.</p>
+
+            <p>As três decisões mostram que clubes grandes estão menos pacientes com queda de rendimento, mesmo quando há currículo recente. Slot ganhou a liga inglesa e saiu um ano depois. Conte venceu no Napoli e deixou o cargo antes do fim do contrato. Hjulmand teve números competitivos, mas não sustentou a expectativa do Leverkusen.</p>
+
+            <p>O futebol europeu vive uma lógica de ciclos mais curtos. Técnicos precisam vencer, desenvolver jogadores, administrar elenco, representar a cultura do clube e ainda entregar uma identidade reconhecível.</p>
+
+            <p>Para o torcedor, essas mudanças são mais do que notícias de bastidor. Elas definem como os times vão jogar, que jogadores podem ganhar espaço, quais contratações farão sentido e que tipo de cobrança virá na próxima temporada.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
