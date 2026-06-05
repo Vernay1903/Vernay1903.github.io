@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>MorumBIS: história, recordes e grandes jogos do estádio do São Paulo | Corte dos Esportes</title>
+  <meta name="description" content="É um dos palcos do futebol mais históricos do Brasil, com títulos internacionais, jogos da Seleção Brasileira, grandes shows e uma ligação profunda com a identidade do tricolor paulista." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">MorumBIS: história, recordes e grandes jogos do estádio do São Paulo</h1>
+          <p class="subhead" id="articleExcerpt">É um dos palcos do futebol mais históricos do Brasil, com títulos internacionais, jogos da Seleção Brasileira, grandes shows e uma ligação profunda com a identidade do tricolor paulista.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">05/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O MorumBIS é mais do que o estádio do São Paulo. É um dos grandes monumentos esportivos do futebol brasileiro. Oficialmente chamado de Estádio Cícero Pompeu de Toledo, o antigo Morumbi nasceu de um projeto ambicioso, atravessou décadas de construção, virou símbolo da força do clube e se consolidou como um dos principais palcos de jogos, decisões, shows e eventos do país.</p>
+
+            <p>A importância do estádio não está apenas na capacidade ou na arquitetura. Está na quantidade de histórias que aconteceram ali. Ele recebeu finais estaduais, decisões de Libertadores, títulos nacionais, jogos da Seleção Brasileira, Copa América, Mundial de Clubes, clássicos paulistas, recordes de público e apresentações de artistas globais.</p>
+
+            <p>É um estádio de clube, mas também é um estádio da cidade. Ao lado de palcos como o <a href="https://cortedosesportes.com.br/maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>, o MorumBIS ajuda a contar a história de uma época em que as arenas gigantes eram construídas para receber multidões e marcar gerações.</p>
+
+            <p><strong>A origem do MorumBIS</strong></p>
+
+            <p>A história do estádio começa no início dos anos 1950. O São Paulo buscava uma casa à altura de suas ambições e comprou terrenos na região do Morumbi, então uma área muito menos urbanizada do que hoje. O projeto era ousado: erguer um grande estádio particular, capaz de colocar o clube em outro patamar estrutural.</p>
+
+            <p>A figura central dessa construção foi Cícero Pompeu de Toledo, presidente do São Paulo e grande idealizador do estádio. Ele comandou o clube em um período decisivo e deu nome oficial ao estádio ainda antes de vê-lo pronto. Cícero morreu em 1959, um ano antes da inauguração parcial, e por isso não presenciou o sonho realizado.</p>
+
+            <p>A obra não foi simples. O clube precisou vender cadeiras cativas, mobilizar campanhas, buscar recursos, administrar etapas de construção e sustentar um projeto que levou anos para ficar completo. O Morumbi foi erguido com ambição de um estádio gigante, em uma época em que capacidade elevada era sinal de grandeza esportiva e popular.</p>
+
+            <p><strong>Inauguração e primeiro gol</strong></p>
+
+            <p>Oficialmente aconteceu em 2 de outubro de 1960, em um amistoso internacional entre São Paulo e Sporting, de Portugal. O Tricolor venceu por 1 a 0, e o primeiro gol da história do estádio foi marcado por Peixinho, de cabeça, aos 12 minutos do primeiro tempo.</p>
+
+            <p>Esse detalhe é simbólico porque abriu a história do MorumBIS com vitória são-paulina e com um gol que virou memória permanente. O estádio ainda não estava totalmente concluído, mas já mostrava sua vocação para grandes públicos. A partida teve mais de 64 mil pessoas presentes e inaugurou oficialmente o novo palco tricolor.</p>
+
+            <p>A conclusão definitiva veio em 1970. O jogo festivo foi contra o Porto, também de Portugal, e terminou empatado em 1 a 1. Naquele momento, o estádio já tinha capacidade projetada para mais de 140 mil pessoas, refletindo a lógica dos grandes estádios brasileiros da época.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Capacidade de público</strong></p>
+
+            <p>A capacidade atual fica na faixa dos 67 mil lugares. Esse número é bem menor do que o projeto original, mas isso tem explicação. O estádio foi pensado em uma era de arquibancadas mais abertas, menos cadeiras individuais e regras de segurança diferentes das atuais.</p>
+
+            <p>Com o tempo, a instalação de assentos, camarotes, áreas premium, setores de imprensa, ajustes de segurança e mudanças operacionais reduziram a capacidade máxima.</p>
+
+            <p>Mesmo assim, o MorumBIS continua entre os maiores estádios do Brasil e é considerado o maior estádio particular do país. Essa condição reforça sua singularidade: não se trata de uma arena municipal compartilhada por vários clubes, mas de uma casa própria ligada diretamente ao São Paulo.</p>
+
+            <p><strong>Reformas e modernização</strong></p>
+
+            <p>O estádio passou por várias fases de modernização. Ao longo dos anos, recebeu melhorias estruturais, ajustes de segurança, reformas em setores internos, camarotes, iluminação, gramado, vestiários, áreas comerciais e espaços de hospitalidade.</p>
+
+            <p>Uma das reformas mais importantes aconteceu entre os anos 1990 e 2000, quando o estádio passou por adaptações estruturais e ganhou novos recursos para seguir recebendo grandes jogos e eventos. Mais recentemente, o estádio também passou por mudanças visuais, melhorias no gramado e novos projetos comerciais.</p>
+
+            <p><strong>A mudança de nome para MorumBIS</strong></p>
+
+            <p>Á alteração de nome do estádio entrou em vigor em janeiro de 2024, após o São Paulo vender os naming rights do Morumbi para a Mondelēz, dona da marca Bis. Com isso, o Estádio Cícero Pompeu de Toledo passou a ser chamado comercialmente de MorumBIS.</p>
+
+            <p>O contrato foi assinado por três anos, com validade até dezembro de 2026. Ao todo, o acordo prevê R$ 75 milhões ao São Paulo, cerca de R$ 25 milhões por temporada. Para o clube, a negociação representou uma nova etapa na exploração comercial do estádio, aproximando o Morumbi do modelo de arenas que buscam receita recorrente além da bilheteria.</p>
+
+            <p>A mudança não apagou o nome histórico. Para boa parte da torcida e da memória do futebol brasileiro, o estádio segue sendo o Morumbi. Mas, no uso comercial, em transmissões, eventos e comunicação oficial, o nome MorumBIS passou a marcar a fase mais recente da arena.</p>
+
+            <p>Esse ponto é importante porque mostra como o estádio tenta equilibrar tradição e modernização. O Morumbi nasceu como um projeto monumental do São Paulo no século XX; o MorumBIS representa a tentativa de manter esse patrimônio competitivo no futebol atual, em que naming rights, shows, camarotes e eventos viraram parte essencial da receita dos clubes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estádio do São Paulo</strong></p>
+
+            <p>Ele é inseparável da identidade do São Paulo. Foi ali que o clube construiu parte decisiva de sua grandeza moderna. O estádio virou cenário de títulos paulistas, campanhas brasileiras, noites de Libertadores, jogos internacionais e atuações de alguns dos maiores ídolos da história tricolor.</p>
+
+            <p>Telê Santana, Raí, Müller, Cafu, Zetti, Rogério Ceni, Luís Fabiano, Kaká, Lugano, Lucas Moura e muitos outros nomes passaram pelo estádio em momentos marcantes. Cada geração são-paulina tem sua própria memória do MorumBIS.</p>
+
+            <p><strong>Maior artilheiro do MorumBIS</strong></p>
+
+            <p>Serginho Chulapa marcou 135 gols pelo clube no estádio e ocupa o topo da artilharia histórica tricolor dentro da casa são-paulina.</p>
+
+            <p>O número é expressivo por dois motivos. Primeiro, porque Serginho foi goleador em uma era de futebol físico, com marcação dura e menos proteção aos atacantes. Segundo, porque o MorumBIS sempre teve grande variedade de protagonistas ofensivos, mas ninguém marcou tanto ali quanto ele.</p>
+
+            <p>A lista de grandes goleadores do estádio também passa por nomes como França, Müller, Careca, Luís Fabiano, Raí e Rogério Ceni. O caso de Rogério, aliás, é uma curiosidade à parte: um goleiro entre os grandes artilheiros de um estádio gigante, reflexo de sua carreira única nas cobranças de falta e pênalti.</p>
+
+            <p><strong>Quantos jogos já aconteceram no estádio</strong></p>
+
+            <p>É seguro tratar o estádio como palco de mais de 2 mil partidas de futebol.</p>
+            <p>Somente o São Paulo já ultrapassou a marca de 1.900 jogos no estádio.</p>
+
+            <p>Esse dado ajuda a entender o peso do estádio. O MorumBIS não é lembrado apenas por um jogo específico. Ele é um palco de rotina histórica: domingo após domingo, decisão após decisão, década após década.</p>
+
+            <p><strong>Quantos títulos foram levantados</strong></p>
+
+            <p>Ele já viu dezenas de taças serem levantadas por diferentes clubes. No recorte do São Paulo, o estádio tem peso especial porque foi palco de pelo menos 20 conquistas tricolores, número que chegou a 21 com a Copa do Brasil de 2023.</p>
+
+            <p>Entre os títulos mais simbólicos do São Paulo no estádio estão:</p>
+            <p>• Campeonato Paulista de 1971</p>
+            <p>• Campeonato Paulista de 1975</p>
+            <p>• Campeonato Paulista de 1980</p>
+            <p>• Campeonato Paulista de 1981</p>
+            <p>• Campeonato Paulista de 1985</p>
+            <p>• Campeonato Paulista de 1987</p>
+            <p>• Campeonato Paulista de 1989</p>
+            <p>• Campeonato Paulista de 1991</p>
+            <p>• Campeonato Paulista de 1992</p>
+            <p>• Copa Libertadores de 1992</p>
+            <p>• Supercopa da Libertadores de 1993</p>
+            <p>• Campeonato Brasileiro de 2006</p>
+            <p>• Campeonato Brasileiro de 2007</p>
+            <p>• Copa Sul-Americana de 2012</p>
+            <p>• Campeonato Paulista de 2021</p>
+            <p>• Copa do Brasil de 2023</p>
+
+            <p>Nem todos os títulos do São Paulo foram decididos no MorumBIS, claro. Os Mundiais foram conquistados no Japão, outras taças vieram fora de casa e algumas competições de pontos corridos tiveram confirmação em diferentes estádios. Mas o Morumbi foi o palco central de várias festas tricolores.</p>
+
+            <p>A Libertadores de 1992 talvez seja a mais simbólica. O São Paulo venceu o Newell’s Old Boys no Morumbi e conquistou sua primeira Libertadores, abrindo caminho para o Mundial daquele ano contra o Barcelona. Em 2012, a Sul-Americana também foi confirmada no estádio, em uma noite marcante contra o Tigre. Em 2023, a Copa do Brasil colocou o MorumBIS novamente no centro de uma conquista nacional histórica.</p>
+
+            <p><strong>Seleção Brasileira no estádio</strong></p>
+
+            <p>A Seleção tem uma relação importante com o MorumBIS. O primeiro jogo do Brasil no estádio aconteceu em 1963, contra a Argentina, pela Copa Roca. A Seleção perdeu por 3 a 2, resultado que ficou marcado como a única derrota brasileira no estádio dentro do recorte histórico registrado pelo São Paulo até 2018.</p>
+
+            <p>Depois disso, o Brasil construiu uma longa invencibilidade. O estádio recebeu jogos contra Peru, Chile, Bulgária, Áustria, Iugoslávia, Romênia, Venezuela, Bolívia, Uruguai, África do Sul e Sérvia, entre outros adversários.</p>
+
+            <p>Algumas partidas se destacam:</p>
+
+            <p>• Brasil 5 x 0 Chile, em 1970, com dois gols de Pelé, antes da Copa do México</p>
+            <p>• Brasil 1 x 1 Áustria, em 1971, jogo de despedida de Pelé da Seleção</p>
+            <p>• Brasil 5 x 0 Venezuela, em 1989, pelas Eliminatórias, com quatro gols de Careca</p>
+            <p>• Brasil 2 x 1 Uruguai, em 2007, pelas Eliminatórias, com dois gols de Luís Fabiano</p>
+            <p>• Brasil 3 x 0 Bolívia, em 2019, na abertura da Copa América</p>
+
+            <p>A Copa América de 2019 reforçou a vocação internacional do estádio. O MorumBIS recebeu a abertura do torneio, com vitória brasileira sobre a Bolívia, em uma noite que recolocou a Seleção no palco são-paulino em competição oficial.</p>
+            <p>A comparação com outros palcos brasileiros entra nesse cenário com a seleção. O <a href="https://cortedosesportes.com.br/estadio-mineirao-historia-recordes-cruzeiro-atletico-7a1.html">Mineirão, por exemplo, construiu parte de sua história também com jogos de Copa do Mundo e episódios marcantes da Seleção Brasileira</a>.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Copa América e Mundial de Clubes</strong></p>
+
+            <p>Além de jogos da Seleção Brasileira, o MorumBIS também recebeu partidas relevantes de torneios internacionais.</p>
+
+            <p>Em 2000, foi uma das sedes do Mundial de Clubes da FIFA. O torneio reuniu equipes de diferentes continentes e colocou o estádio no calendário de uma competição global de clubes. Mesmo que aquela edição tenha formato diferente do Mundial atual, ela faz parte da história internacional do Morumbi.</p>
+
+            <p>Em 2019, a Copa América levou o estádio novamente ao centro do futebol de seleções. A abertura entre Brasil e Bolívia teve vitória brasileira por 3 a 0 e marcou mais um capítulo do MorumBIS como palco de grandes eventos internacionais.</p>
+
+            <p>Esses torneios reforçam uma característica do estádio: mesmo sem Copa do Mundo, ele sempre teve escala para receber eventos de grande porte.</p>
+
+            <p><strong>Recorde de público</strong></p>
+
+            <p>Aconteceu em 9 de outubro de 1977, no segundo jogo da final do Campeonato Paulista entre Corinthians e Ponte Preta. A partida teve 146.082 pessoas no total, sendo 138.032 pagantes, e terminou com vitória da Ponte Preta por 2 a 1.</p>
+
+            <p>O jogo é curioso porque o maior público da história do estádio não foi em uma partida do São Paulo. Foi em uma decisão estadual envolvendo dois outros clubes. Isso mostra como o Morumbi, durante décadas, funcionou também como grande palco neutro do futebol paulista.</p>
+
+            <p><strong>Clássicos paulistas no estádio</strong></p>
+
+            <p>O MorumBIS também é palco de clássicos que atravessam gerações. São Paulo x Palmeiras, São Paulo x Corinthians e São Paulo x Santos ganharam capítulos importantes no estádio.</p>
+
+            <p>O Choque-Rei tem peso especial porque várias decisões estaduais passaram pelo Morumbi. O título paulista de 1971, por exemplo, foi conquistado pelo São Paulo contra o Palmeiras no estádio, em uma vitória por 1 a 0. O clássico também aparece em noites de Libertadores, Copa do Brasil, Brasileirão e Paulistão.</p>
+
+            <p>Contra o Corinthians, o MorumBIS viveu jogos de enorme público, tensão e rivalidade. Contra o Santos, recebeu duelos com craques de diferentes gerações. Essa rotina de clássicos reforça a função do estádio como uma das principais arenas do futebol paulista.</p>
+
+            <p><strong>Além do futebol</strong></p>
+
+            <p>O estádio também é um dos principais palcos de entretenimento do Brasil. Já recebeu shows de artistas e bandas de escala mundial, como Queen, Paul McCartney, U2, Madonna, Michael Jackson, Kiss e outros grandes nomes.</p>
+
+            <p>Essa dimensão ajuda a explicar o valor econômico do MorumBIS para o São Paulo. O estádio não é apenas casa de jogos. É também unidade de negócios, espaço para eventos, camarotes corporativos, experiências de torcedor, tour, loja, alimentação e projetos comerciais.</p>
+
+            <p>Essa diversificação é cada vez mais importante para clubes modernos. Um estádio histórico precisa seguir relevante fora dos 90 minutos. O MorumBIS conseguiu fazer isso sem perder sua identidade de casa tricolor.</p>
+
+            <p><strong>Por que é tão importante</strong></p>
+
+            <p>Porque reúne três dimensões: estádio de clube, palco nacional e patrimônio esportivo da cidade de São Paulo.</p>
+
+            <p>Como estádio de clube, é a casa do São Paulo e cenário de títulos fundamentais. Como palco nacional, recebeu Seleção Brasileira, decisões estaduais, torneios internacionais e grandes clássicos. Como patrimônio da cidade, é uma obra arquitetônica e cultural ligada ao crescimento urbano da região do Morumbi e à história esportiva paulista.</p>
+
+            <p>Ele não é o estádio mais moderno do Brasil, nem nasceu com os padrões das arenas recentes. Mas justamente por isso tem valor histórico. Carrega a marca de uma época em que os clubes pensavam grande, construíam arquibancadas monumentais e queriam reunir multidões.</p>
+
+            <p><strong>Um estádio de memória e futuro</strong></p>
+
+            <p>O MorumBIS continua sendo um estádio em transformação. A modernização comercial, os naming rights, os camarotes, os eventos e as reformas mostram que a arena precisa se adaptar para seguir competitiva.</p>
+
+            <p>É a casa do São Paulo, mas também é parte da história do futebol brasileiro. Um estádio que não recebeu Copa do Mundo, mas recebeu multidões, taças, Seleção Brasileira, finais continentais, shows históricos e gerações de torcedores.</p>
+
+            <p>No fim, essa é a força do MorumBIS: não ser apenas concreto, arquibancada e gramado. É memória viva. É um estádio que nasceu de um projeto gigantesco e segue como um dos grandes símbolos esportivos do Brasil.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
