@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rodney Mullen: história, manobras e o legado de quem revolucionou o skate moderno | Corte dos Esportes</title>
+  <meta name="description" content="Ele transformou o skate com manobras que viraram base do street, dominou o freestyle, atravessou a mudança de época do esporte e construiu um legado técnico que ainda aparece em praticamente toda sessão da modalidade atual." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Rodney Mullen: história, manobras e o legado de quem revolucionou o skate moderno</h1>
+          <p class="subhead" id="articleExcerpt">Ele transformou o skate com manobras que viraram base do street, dominou o freestyle, atravessou a mudança de época do esporte e construiu um legado técnico que ainda aparece em praticamente toda sessão da modalidade atual.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">05/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Skate</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Rodney Mullen é um dos nomes mais importantes da história do skate. Não apenas porque venceu campeonatos, apareceu em vídeos clássicos ou influenciou gerações, mas porque ajudou a criar a linguagem que o esporte usa até hoje. Quando um skatista manda um kickflip, um heelflip, um 360 flip, um impossible ou qualquer variação técnica no chão, está usando parte de um vocabulário que Mullen ajudou a inventar, organizar e transformar em padrão.</p>
+
+            <p>Chamado muitas vezes de “padrinho do street skate”, Mullen não foi um campeão tradicional. Ele não construiu sua grandeza em pistas. Sua revolução veio de outro lugar: chão plano, garagem, repetição obsessiva, criatividade solitária e uma capacidade rara de entender o skate como sistema de movimentos.</p>
+
+            <p>O mais impressionante é que a influência dele atravessou mudanças profundas. Mullen nasceu no freestyle, uma modalidade técnica, coreografada e muito forte no fim dos anos 1970 e nos anos 1980. Depois, quando o freestyle perdeu espaço e o street virou o centro da cultura do skate, ele conseguiu adaptar sua técnica para ruas, bordas, corrimãos e gaps. Poucos atletas mudaram tanto uma modalidade sem depender apenas de títulos.</p>
+
+            <p><strong>Quem é Rodney Mullen</strong></p>
+
+            <p>Ele nasceu em 17 de agosto de 1966, em Gainesville, na Flórida, nos Estados Unidos. Começou a andar de skate ainda criança e, desde cedo, desenvolveu uma relação muito particular com a prática. Em vez de buscar apenas velocidade, altura ou impacto visual, ele se interessou por controle, equilíbrio, rotação do shape e movimentos que pareciam quase impossíveis.</p>
+
+            <p>A origem na Flórida também ajuda a explicar seu estilo. Mullen não cresceu no centro da cultura californiana do skate, onde vert, piscinas e bowls dominavam boa parte da cena. Sem tanto acesso aos mesmos espaços, passou muito tempo treinando em superfícies planas, garagens e áreas abertas. Essa limitação virou vantagem criativa.</p>
+
+            <p>Enquanto muitos skatistas da época buscavam transições, rampas e velocidade, Mullen transformou o chão plano em laboratório. O que parecia simples virou complexo. O que parecia pequeno virou revolucionário.</p>
+
+            <p><strong>O domínio no freestyle</strong></p>
+
+            <p>Antes de virar referência do street, Rodney Mullen foi um fenômeno competitivo no freestyle. Aos 14 anos, venceu seu primeiro campeonato mundial da modalidade. Na década seguinte, construiu uma das sequências mais dominantes da história do skate: venceu 34 de 35 competições de freestyle.</p>
+
+            <p>Esse número é fundamental para entender o tamanho dele. Mullen não foi apenas um inventor genial que não competia. Ele competia, ganhava e fazia isso com regularidade absurda. Seu domínio vinha da combinação entre consistência, originalidade e dificuldade técnica.</p>
+
+            <p>No freestyle, os atletas eram avaliados por manobras executadas no chão, controle do shape, criatividade, sequência, equilíbrio e precisão. Era uma modalidade em que errar uma rotação, pisar fora ou perder o ritmo podia custar a vitória. Mullen se destacava justamente por parecer imune ao erro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Principais resultados e marcos competitivos</strong></p>
+
+            <p>A carreira competitiva dele é marcada mais pelo domínio prolongado do que por um único título isolado.</p>
+
+            <p>Entre os mais importantes estão:</p>
+
+            <ul>
+              <li>virou profissional ainda muito jovem, no início dos anos 1980;</li>
+              <li>tornou-se uma das principais figuras da Bones Brigade, equipe histórica da Powell Peralta;</li>
+              <li>foi eleito Skater of the Year pelos leitores da TransWorld Skateboarding em 2002;</li>
+              <li>entrou para o Skateboarding Hall of Fame em 2013.</li>
+            </ul>
+
+            <p>Esse conjunto mostra duas fases diferentes: primeiro, o competidor dominante; depois, o criador que seguiu influenciando o esporte mesmo quando os campeonatos deixaram de ser o centro de sua carreira.</p>
+
+            <p><strong>As manobras que mudaram o skate</strong></p>
+
+            <p>Rodney Mullen é creditado por algumas das manobras mais importantes da história. Nem sempre o debate sobre invenção no skate é simples, porque movimentos podem surgir em variações, ser adaptados por outros skatistas e evoluir com o tempo. Mas, no caso dele, a influência é amplamente reconhecida.</p>
+
+            <p>Entre as manobras associadas a ele estão:</p>
+
+            <ul>
+              <li>ollie no chão;</li>
+              <li>kickflip;</li>
+              <li>heelflip;</li>
+              <li>impossible;</li>
+              <li>360 flip;</li>
+              <li>darkslide;</li>
+              <li>kickflip underflip;</li>
+              <li>variações de flip, shove-it e manobras de freestyle.</li>
+            </ul>
+
+            <p>O ponto central não é apenas a quantidade. É a utilidade. Muitas manobras inventadas ou popularizadas por ele viraram base para milhares de outras variações. O kickflip, por exemplo, deixou de ser uma curiosidade técnica e virou uma das manobras mais essenciais do street. O mesmo vale para o heelflip, o 360 flip.</p>
+
+            <p><strong>Vídeo: manobras de Rodney Mullen</strong></p>
+
+            <p>Para entender melhor a dimensão técnica basta observar a forma como ele controla o shape em manobras de freestyle e street. O vídeo abaixo mostra uma mínima parte desse repertório que ajudou a transformar o skate moderno.</p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/olv1tqGmDdo" title="Rodney Mullen - manobras e estilo no skate" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>O ollie no chão e a base do street</strong></p>
+
+            <p>O ollie já existia no skate vertical, associado a Alan Gelfand, que fazia subir em transições. A revolução de Mullen foi adaptar o movimento para o chão plano. Esse detalhe mudou tudo.</p>
+
+            <p>Com o ollie no chão, o skatista passou a poder saltar sem usar rampa. A rua virou obstáculo. Guias, escadas, bancos, corrimãos, gaps e muretas passaram a fazer parte do repertório. O skate deixou de depender tanto de estruturas específicas e ganhou liberdade urbana.</p>
+
+            <p>Essa é uma das razões pelas quais Mullen é tão importante. Ele não apenas criou manobras bonitas. Ele ajudou a abrir a possibilidade de um novo tipo de skate. O street moderno depende do ollie como ponto de partida. Sem ele, boa parte do que se vê hoje em vídeos, campeonatos e pistas simplesmente não existiria da mesma forma.</p>
+
+            <p><strong>O inventor do vocabulário moderno</strong></p>
+
+            <p>Quando se diz que Mullen é o “inventor” de manobras, a ideia não é colocá-lo como único responsável por tudo que existe no skate. O esporte sempre evoluiu coletivamente. Mas ele tem um papel raro: ele criou fundamentos.</p>
+
+            <p>Há uma diferença entre inventar uma manobra isolada e criar movimentos que viram linguagem. O kickflip não é apenas uma manobra. É uma porta para variações. O heelflip também. O 360 flip combina rotação e flip de forma que inspirou outras manobras técnicas. O impossible virou símbolo de controle e estilo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O estilo particular</strong></p>
+
+            <p>O estilo de Rodney Mullen sempre foi muito diferente. Ele não parecia apenas executar manobras; parecia estudar a física delas. Seus movimentos tinham precisão, silêncio e um tipo de controle quase matemático.</p>
+
+            <p>Algumas características definem seu skate:</p>
+
+            <ul>
+              <li>extrema precisão dos pés;</li>
+              <li>controle do shape em rotações complexas;</li>
+              <li>equilíbrio em posições incomuns;</li>
+              <li>criatividade em sequências no chão;</li>
+              <li>uso de manobras encadeadas;</li>
+              <li>baixa dependência de velocidade;</li>
+              <li>domínio de flip tricks;</li>
+              <li>capacidade de transformar erro em nova possibilidade.</li>
+            </ul>
+
+            <p>Ele também tinha um jeito particular de se mover. Muitas vezes parecia estar conversando com o skate, não apenas andando sobre ele. O corpo acompanhava em pequenos ajustes, rotações e correções. Era menos explosivo e mais cirúrgico.</p>
+
+            <p><strong>O contexto da época</strong></p>
+
+            <p>Para entender Rodney Mullen, é preciso entender o skate dos anos 1970 e 1980. A modalidade ainda buscava identidade. Havia vert, bowls, piscinas, downhill, slalom, freestyle e, aos poucos, o street começava a ganhar força.</p>
+
+            <p>O freestyle era muito respeitado naquele momento. As apresentações tinham sequência, tempo, controle e julgamento técnico. Mas, com o passar dos anos, a cultura do skate mudou. O street cresceu, os vídeos passaram a ter enorme influência, as marcas buscaram uma imagem mais urbana e o freestyle perdeu espaço comercial.</p>
+
+            <p>Mullen viveu exatamente essa transição. Ele era o maior nome de uma modalidade que estava deixando de ser o centro das atenções. Poderia ter ficado preso ao passado. Em vez disso, levou sua técnica para o street.</p>
+
+            <p>Essa passagem é uma das partes mais importantes da história dele. Mullen não apenas sobreviveu à mudança de época. Ele ajudou a moldar a nova época.</p>
+
+            <p><strong>Da Bones Brigade ao street</strong></p>
+
+            <p>A Bones Brigade foi uma das equipes mais importantes da história do skate. Reuniu nomes como Tony Hawk, Steve Caballero, Lance Mountain, Mike McGill e Rodney Mullen, entre outros. Era um time que ajudou a transformar o skate em cultura visual, com vídeos, identidade, produtos e uma geração de ídolos.</p>
+
+            <p>Mullen entrou nesse universo ainda jovem e se tornou a referência técnica do freestyle dentro da equipe. Enquanto Tony Hawk era o grande nome do vertical, Mullen representava outro tipo de genialidade: a do chão plano.</p>
+
+            <p>Depois, com a decadência comercial do freestyle, sua carreira passou por uma virada. A ida para a Plan B foi decisiva. Nos vídeos da marca, especialmente no início dos anos 1990, Mullen começou a mostrar como suas manobras podiam funcionar em ambientes de rua. Esse movimento aproximou definitivamente seu repertório do street moderno.</p>
+
+            <p><strong>Plan B e a reinvenção</strong></p>
+
+            <p>A transição para a Plan B marcou um novo capítulo. A marca tinha uma equipe forte, linguagem moderna e papel importante na evolução do skate em vídeo. Mullen passou a ser apresentado não apenas como um mestre do freestyle, mas como alguém capaz de aplicar aquela técnica em bordas, slides e obstáculos urbanos.</p>
+
+            <p>O impacto foi enorme. Ao misturar flip, grinds, slides e manobras de freestyle, ele mostrou que o street podia ser ainda mais técnico. Não era apenas descer corrimão ou saltar escada. Também era controlar em rotações inesperadas e criar linhas complexas.</p>
+
+            <p>Essa fase ajudou a legitimar o caminho técnico do street. Muitos skatistas passaram a enxergar que criatividade e precisão podiam ser tão importantes quanto agressividade e tamanho do obstáculo.</p>
+
+            <p><strong>Patrocínios, marcas e empreendedorismo</strong></p>
+
+            <p>Também teve papel importante fora das sessões e competições. Sua trajetória passa por marcas que ajudaram a definir fases do skate.</p>
+
+            <p>Entre as principais ligações da carreira estão:</p>
+
+            <ul>
+              <li>Walker Skateboards, no início da trajetória;</li>
+              <li>Powell Peralta e Bones Brigade, na fase de consolidação;</li>
+              <li>World Industries, em uma etapa mais rebelde e empresarial do skate;</li>
+              <li>Plan B, na transição para o street moderno;</li>
+              <li>Almost Skateboards, marca que ajudou a fundar com Daewon Song.</li>
+            </ul>
+
+            <p>Além das marcas de skate, Mullen também virou referência no mercado de tênis. Sua relação com a Globe gerou modelos associados ao seu nome, incluindo linhas como os clássicos Rodney Mullen Signature e releituras posteriores pensadas para controle do skate, conforto e durabilidade. Esse ponto reforça como sua influência ultrapassou as manobras: o estilo técnico também ajudou a inspirar produtos voltados para skatistas.</p>
+
+            <p>A World Industries é especialmente relevante porque representou uma virada na indústria. Foi uma das marcas que ajudaram a quebrar a lógica mais tradicional das empresas de skate, aproximando o negócio da linguagem real das ruas, dos vídeos e da juventude dos anos 1990.</p>
+
+            <p>Depois, com a Almost, Mullen seguiu ligado à inovação, inclusive em pesquisa de shapes, materiais e tecnologia aplicada ao skate. Isso mostra que sua contribuição não ficou só nas manobras. Ele também pensou o skate como produto, cultura e ferramenta de evolução.</p>
+
+            <p><strong>A relação com Tony Hawk e a cultura popular</strong></p>
+
+            <p>Ele também ficou conhecido por uma geração que talvez não o tenha visto competir: a geração dos games. Sua presença em jogos da série Tony Hawk ajudou a levar seu nome para milhões de pessoas fora do núcleo mais técnico do skate.</p>
+
+            <p>Esse detalhe importa porque Mullen sempre teve uma aura quase misteriosa. Não era o personagem mais midiático, nem o atleta mais explosivo para televisão. Mas, nos jogos, muitos descobriram suas manobras, seu nome e sua importância.</p>
+
+            <p>A relação simbólica com Tony Hawk também ajuda a explicar dois caminhos do skate. Hawk virou o rosto mais popular do vertical e da expansão comercial do esporte. Mullen virou a referência técnica profunda, o inventor silencioso por trás de movimentos que todos usam. Os dois são gigantes, mas por razões diferentes.</p>
+
+            <p>Essa diferença torna a comparação ainda mais rica. Enquanto <a href="https://cortedosesportes.com.br/tony-hawk-historia-feitos-legado-skate.html">Tony Hawk ajudou a levar o skate ao grande público</a>, Rodney Mullen mudou a base técnica da modalidade. Um ampliou a visibilidade global do esporte; o outro reorganizou a linguagem das manobras que sustentam o street moderno.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O impacto no skate moderno</strong></p>
+
+            <p>Hoje é praticamente impossível de imaginar sem Rodney Mullen. O street, modalidade mais praticada e mais visível no mundo, depende de manobras que passam diretamente por sua contribuição.</p>
+
+            <p>Em campeonatos atuais, vídeos de rua, pistas públicas e sessões amadoras, o repertório técnico tem raízes no que Mullen desenvolveu. Kickflips, heelflips, variações de shove-it, 360 flips, flips em gaps, flips para grind, flips para slide: tudo isso dialoga com a base construída por ele.</p>
+
+            <p>Mesmo no skate olímpico, onde o formato competitivo é outro, a influência aparece. O atleta que combina manobras de borda com flip está, de alguma forma, usando uma linguagem que Mullen ajudou a criar.</p>
+
+            <p>Essa herança aparece com força na geração atual do street competitivo. Skatistas como <a href="https://cortedosesportes.com.br/nyjah-huston-historia-sls-nine-club-skate-olimpiadas.html">Nyjah Huston, símbolo da era moderna da SLS</a>, competem em um cenário muito diferente do freestyle dos anos 1980, mas ainda usam uma base técnica que passa por flips, controle, precisão e combinações que Mullen ajudou a popularizar.</p>
+
+            <p><strong>A genialidade da repetição</strong></p>
+
+            <p>Uma parte importante do legado está na relação com o treino. Ele sempre foi associado a uma prática obsessiva, solitária e detalhista. Seu skate não nasceu de improviso puro. Nasceu de repetição.</p>
+
+            <p>Essa repetição, porém, não era mecânica. Era investigativa. Mullen parecia testar possibilidades: o que acontece se o pé tocar a borda do shape de outro jeito? E se a rotação mudar meio segundo antes? E se uma manobra de freestyle for levada para uma borda? E se o erro virar movimento novo?</p>
+
+            <p>Essa mentalidade explica por que ele também passou a ser valorizado fora do skate, em palestras e debates sobre criatividade, inovação e aprendizado. Mullen virou exemplo de como tentativa, queda, ajuste e repetição podem criar algo novo.</p>
+
+            <p><strong>Um legado que não envelhece</strong></p>
+
+            <p>Rodney Mullen pertence a uma era anterior ao skate olímpico, anterior às redes sociais e anterior ao modelo atual de grandes eventos globais. Mesmo assim, sua influência continua atual.</p>
+
+            <p>Isso acontece porque ele não depende apenas de nostalgia. As manobras que desenvolveu ainda são praticadas. O modo como pensou ainda inspira. A transição do freestyle para o street ainda é uma das histórias mais importantes do esporte.</p>
+
+            <p>Mullen é um daqueles nomes que ajudam a explicar o presente. Não é apenas uma lenda do passado. É uma peça da engrenagem que faz o skate existir como existe hoje.</p>
+
+            <p> O “inventor” do skate moderno não deve ser entendido como alguém que criou tudo sozinho, mas como o nome que mais ajudou a organizar a base técnica do street.</p>
+
+            <p>O skate é uma cultura coletiva, feita por milhares de pessoas, lugares, marcas, vídeos e gerações. Mas alguns nomes viram eixo. Rodney Mullen é um deles.</p>
+
+            <p>No fim, sua grandeza está em ter transformado limitações em linguagem. Sem grandes rampas, sem multidões no começo e sem depender da força física, ele usou chão plano, repetição e imaginação para mudar um esporte inteiro.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "skate";
+  const CATEGORY_NAME = "Skate";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
