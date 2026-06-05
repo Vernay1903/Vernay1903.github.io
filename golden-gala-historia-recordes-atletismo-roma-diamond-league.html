@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Golden Gala: história, tradição e prestígio do meeting de Roma | Corte dos Esportes</title>
+  <meta name="description" content="Evento se tornou o principal meeting de atletismo da Itália, faz parte da Diamond League, já recebeu recordes mundiais, lendas olímpicas e segue como uma das noites mais tradicionais do circuito internacional." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Golden Gala: história, tradição e prestígio do meeting de Roma</h1>
+          <p class="subhead" id="articleExcerpt">Evento se tornou o principal meeting de atletismo da Itália, faz parte da Diamond League, já recebeu recordes mundiais, lendas olímpicas e segue como uma das noites mais tradicionais do circuito internacional.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">05/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="atletismo.html">Atletismo</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Golden Gala Pietro Mennea é um dos meetings mais tradicionais do atletismo mundial. Realizado normalmente no Stadio Olimpico, em Roma, o evento reúne velocistas, saltadores, arremessadores, fundistas e grandes nomes do circuito internacional em uma noite que mistura prestígio, história e pontuação importante na Diamond League.</p>
+
+            <p>A força do evento está justamente nessa combinação. Não é um campeonato de vários dias, como um Mundial ou uma Olimpíada. É uma reunião de elite em formato concentrado: poucas horas, provas selecionadas, atletas convidados e confrontos diretos entre alguns dos melhores do mundo.</p>
+
+            <p>Por isso, o meeting de Roma se tornou uma data especial no calendário. Vencer no Golden Gala não vale uma medalha global, mas pesa no currículo. É uma vitória em uma pista histórica, diante de público tradicional e dentro do principal circuito anual do atletismo. Para muitos atletas, é também uma etapa estratégica no caminho para a final da Diamond League.</p>
+
+            <p><strong>Como nasceu o Golden Gala</strong></p>
+
+            <p>Ele foi criado em 1980 por Primo Nebiolo, então presidente da Federação Italiana de Atletismo. A ideia surgiu em um contexto muito específico: naquele ano, vários países boicotaram os Jogos Olímpicos de Moscou, e muitos atletas ficaram sem a chance de competir no maior palco do esporte.</p>
+
+            <p>Roma apareceu como alternativa. O Golden Gala nasceu para reunir grandes nomes, criar disputas fortes e oferecer ao público italiano uma noite de atletismo de altíssimo nível. A primeira edição teve Pietro Mennea e Sara Simeoni entre os grandes atrativos e levou cerca de 60 mil pessoas ao Stadio Olimpico.</p>
+
+            <p>Desde o início, portanto, o evento carregou uma marca de grandeza. Não era apenas mais um meeting europeu. Era uma tentativa de colocar Roma no centro do atletismo internacional em um momento sensível da história olímpica.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que o evento leva o nome de Pietro Mennea</strong></p>
+
+            <p>Desde 2013, o meeting passou a se chamar Golden Gala Pietro Mennea. A homenagem veio após a morte do velocista italiano, uma das maiores lendas do esporte no país.</p>
+
+            <p>Mennea foi campeão olímpico dos 200m em Moscou 1980 e antigo recordista mundial da distância. Também teve ligação direta com o próprio Golden Gala: participou da primeira edição e venceu os 200m em 1980, repetindo a vitória na prova três anos depois.</p>
+
+            <p>O nome de Mennea dá ao evento uma identidade ainda mais forte. Não é apenas uma marca comercial. É uma forma de ligar o meeting à memória do maior velocista italiano e a uma tradição de pista que marcou gerações.</p>
+
+            <p><strong>O Golden Gala dentro da Diamond League</strong></p>
+
+            <p>Desde 2010, o evento italiano faz parte do principal circuito anual de meetings do atletismo. Isso aumentou ainda mais sua importância esportiva.</p>
+
+            <p>Na prática, os atletas não competem apenas por vitória isolada. Nas provas válidas pela Diamond League, eles também somam pontos para tentar se classificar à final da temporada. O sistema premia os oito primeiros colocados de cada modalidade nas etapas regulares: o vencedor recebe oito pontos, o segundo recebe sete, o terceiro recebe seis, e assim por diante até o oitavo lugar, que soma um ponto.</p>
+
+            <p>Ao fim da fase regular, os melhores avançam para a final. O número de classificados varia conforme a prova: seis em eventos de campo, oito em provas de pista de 100m a 800m, e dez em provas de 1500m e distâncias mais longas.</p>
+
+            <p>Esse formato ajuda a explicar por que o Golden Gala tem tanto peso. Uma vitória em Roma pode impulsionar a campanha de um atleta no circuito. Um pódio também pode ser decisivo. E uma ausência de pontuação pode complicar o caminho para a final.</p>
+
+            <p><strong>Como funciona a participação</strong></p>
+
+            <p>O Golden Gala não é uma competição aberta comum. O atleta não simplesmente se inscreve como em uma prova popular ou torneio nacional. A participação depende de convite, ranking, nível técnico, momento da temporada, relevância internacional e também do programa de provas escolhido para aquela edição.</p>
+
+            <p><strong>Nomes que marcaram o Golden Gala</strong></p>
+
+            <p>O prestígio é construído por vitórias, recordes, participações históricas e duelos entre estrelas. Ainda assim, alguns nomes ficaram diretamente ligados à memória do meeting de Roma.</p>
+
+            <p>Entre os principais personagens estão:</p>
+
+            <ul>
+              <li>Pietro Mennea: venceu os 200m na primeira edição, em 1980, e voltou a ganhar a prova em 1983. Desde 2013, dá nome oficial ao evento.</li>
+              <li>Sara Simeoni: uma das grandes atrações da primeira edição, reforçando o peso italiano do meeting desde a origem.</li>
+              <li>Hicham El Guerrouj: transformou Roma em palco de história ao quebrar recordes mundiais nos 1500m e na milha.</li>
+              <li>Sergey Bubka: marcou a tradição do salto com vara no evento, em uma época de grandes duelos e recordes.</li>
+              <li>Yelena Isinbayeva: também levou o salto com vara ao centro das atenções, com marca mundial em Roma.</li>
+              <li>Usain Bolt: venceu os 100m em 2011 e 2012, levando o maior nome da velocidade moderna ao público italiano.</li>
+              <li>Justin Gatlin: derrotou Bolt em 2013, em uma das provas mais simbólicas da fase recente do meeting.</li>
+              <li>Faith Kipyegon: com recorde nos 1500m femininos.</li>
+              <li>Armand Duplantis: representa a nova geração de estrelas globais que mantém o evento conectado ao presente da modalidade.</li>
+            </ul>
+
+            <p>Entre essas presenças, Bolt é o nome que melhor conecta o Golden Gala ao imaginário popular da velocidade. Suas vitórias em Roma ajudaram a levar ainda mais atenção ao meeting, <a href="https://cortedosesportes.com.br/usain-bolt-historia-100m-titulos-recordes-legado.html">dentro de uma carreira</a> que mudou a escala das provas rápidas.</p>
+
+            <p>Também passaram pelo Golden Gala nomes como Carl Lewis, Michael Johnson, Kenenisa Bekele, Tyson Gay, Asafa Powell, Shelly-Ann Fraser-Pryce, Allyson Felix e Shericka Jackson. A lista mostra a força do evento: em diferentes épocas, Roma recebeu campeões olímpicos, recordistas mundiais e atletas que ajudaram a definir o rumo do atletismo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Recordes que aumentaram o prestígio</strong></p>
+
+            <p>Parte da reputação do evento vem dos recordes. O meeting não se consolidou apenas por reunir grandes nomes, mas também por entregar marcas históricas em provas diferentes.</p>
+
+            <p>Entre os mais importantes estão:</p>
+
+            <ul>
+              <li>1500m masculino — Hicham El Guerrouj: em 1998, o marroquino fez 3min26s00, marca que virou referência absoluta do meio-fundo.</li>
+              <li>Milha masculina — Hicham El Guerrouj: em 1999, voltou a brilhar em Roma com 3min43s13, outro recorde mundial histórico.</li>
+              <li>100m masculino — Usain Bolt: em 2012, venceu com 9s76, então recorde do meeting e uma das grandes marcas da história recente do evento.</li>
+              <li>1500m feminino — Faith Kipyegon: na edição realizada em Florença dentro da história do Golden Gala, a queniana quebrou o recorde mundial e recolocou o meeting no centro das manchetes globais.</li>
+            </ul>
+
+            <p>A marca de Bolt em Roma reforça por que os <a href="https://cortedosesportes.com.br/100-metros-rasos-atletismo-historia-recordes.html">100m têm peso tão especial</a> dentro do atletismo. A prova é curta, direta e altamente simbólica, concentrando alguns dos maiores nomes e recordes da modalidade.</p>
+
+            <p>Esses recordes ajudam a explicar por que o Golden Gala tem tanto prestígio. Em meetings de um dia, nem sempre o público vê uma marca histórica. Em Roma, isso aconteceu em diferentes gerações, em provas de velocidade, meio-fundo e campo.</p>
+
+            <p>O resultado é uma identidade própria: o evento não vive apenas de tradição. Ele também entrega desempenho de elite. Cada edição carrega a possibilidade de uma marca relevante, um duelo direto entre campeões ou uma performance capaz de entrar para a história do atletismo.</p>
+
+            <p><strong>O palco das provas</strong></p>
+
+            <p>O cenário também faz diferença. O <a href="https://cortedosesportes.com.br/estadio-roma-stadio-olimpico-historia-capacidade-finais.html"> Stadio Olimpico</a> de Roma não é um estádio qualquer. É um palco olímpico, de Copa do Mundo, Eurocopas, finais europeias, jogos da seleção italiana, partidas de Roma e Lazio e grandes competições de atletismo.</p>
+
+            <p>Quando o Golden Gala acontece ali, o evento ganha uma camada histórica. O atleta não está competindo apenas em uma pista. Está competindo em um estádio que carrega memória esportiva de várias décadas.</p>
+
+            <p>Essa atmosfera ajuda a explicar o prestígio. A Diamond League tem etapas fortes em diferentes cidades, mas Roma oferece um contexto especial: tradição olímpica, arquibancada grande, cenário histórico e ligação direta com a cultura esportiva italiana.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que torna  diferente</strong></p>
+
+            <p>O evento se diferencia por três elementos principais: história, qualidade técnica e regularidade no calendário.</p>
+
+            <p>A história vem desde 1980, com a criação em um momento marcado pelo boicote olímpico. A qualidade técnica aparece nos nomes que já passaram pelo meeting e nos recordes estabelecidos. A regularidade vem da presença no circuito internacional por décadas, primeiro em formatos anteriores da elite mundial de meetings e depois na Diamond League.</p>
+
+            <p>Outro ponto importante é o equilíbrio entre tradição local e impacto global. O Golden Gala é o principal meeting de atletismo da Itália, mas não é um evento apenas italiano. Ele atrai atletas de todos os continentes e vale pontos em uma competição mundial.</p>
+
+            <p>Essa mistura dá ao evento um valor raro. Para o público italiano, é a grande noite anual do atletismo no país. Para os atletas, é uma etapa relevante da temporada. Para o circuito, é uma vitrine europeia de prestígio.</p>
+
+            <p><strong>O peso para atletas italianos</strong></p>
+
+            <p>Para eles, competir no evento tem um significado especial. É a chance de enfrentar a elite mundial em casa, diante da própria torcida e em um estádio simbólico.</p>
+
+            <p>Nem sempre a vitória italiana é o resultado mais provável, porque o nível do meeting é altíssimo. Mas uma boa atuação em Roma pode ter enorme impacto de imagem. Para um atleta local, bater recorde pessoal, vencer uma prova ou subir ao pódio no Golden Gala costuma ter peso emocional e midiático maior do que em muitas outras etapas.</p>
+
+            <p>Isso ajuda a aproximar o público italiano do atletismo. O torcedor vê estrelas internacionais, mas também acompanha seus próprios atletas em confronto direto com campeões olímpicos e mundiais.</p>
+
+            <p><strong>Como o público deve entender o evento</strong></p>
+
+            <p>Para quem acompanha atletismo apenas em Olimpíadas e Mundiais, o Golden Gala pode parecer uma competição menor. Mas essa leitura é incompleta. O meeting de Roma faz parte da rotina de excelência do esporte.</p>
+
+            <p>É nesse tipo de evento que os melhores se enfrentam fora dos grandes campeonatos. É onde surgem marcas fortes, duelos diretos e pistas sobre quem chega melhor aos torneios principais. Também é onde atletas constroem pontos, confiança e prestígio ao longo da temporada.</p>
+
+            <p>O Golden Gala não decide sozinho quem é o melhor do mundo, mas ajuda a contar essa história. Uma vitória em Roma pode confirmar favoritismo. Uma derrota pode acender alerta. Um recorde pode transformar a temporada.</p>
+
+            <p><strong>Por que segue relevante</strong></p>
+
+            <p>Porque ocupa um lugar específico no atletismo mundial. É a principal vitrine italiana da modalidade, uma etapa importante da Diamond League e um meeting com histórico de recordes e grandes confrontos.</p>
+
+            <p>Para o atleta, vencer em Roma significa mais do que somar pontos. Significa vencer em uma pista com memória. Para o público, acompanhar o evento é ver de perto o atletismo em sua forma mais direta: prova rápida, confronto forte e resultado imediato.</p>
+
+            <p>O meeting também ajuda a manter o atletismo vivo fora do ciclo olímpico. Entre uma Olimpíada e outra, eventos como esse sustentam rivalidades, criam narrativas e mostram quem realmente se mantém no topo.</p>
+
+            <p>Por isso, o Golden Gala Pietro Mennea não é apenas uma etapa do calendário. É uma tradição do atletismo. Um palco onde lendas já correram, saltaram, lançaram, quebraram recordes e ajudaram a escrever parte importante da história do esporte.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "atletismo";
+  const CATEGORY_NAME = "Atletismo";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
