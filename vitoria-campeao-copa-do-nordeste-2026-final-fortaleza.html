@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vitória vira no Barradão e conquista a Copa do Nordeste | Corte dos Esportes</title>
+  <meta name="description" content="Clube baiano vence o Fortaleza por 2 a 1 no Barradão lotado, conquista a Copa do Nordeste de 2026, encerra jejum de 16 anos no torneio e iguala o Bahia como maior campeão da competição." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Vitória vira no Barradão e conquista a Copa do Nordeste</h1>
+          <p class="subhead" id="articleExcerpt">Clube baiano vence o Fortaleza por 2 a 1 no Barradão lotado, conquista a Copa do Nordeste de 2026, encerra jejum de 16 anos no torneio e iguala o Bahia como maior campeão da competição.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">06/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Vitória voltou ao topo do Nordeste. Em um Barradão lotado, com clima de decisão e roteiro dramático, o Rubro-Negro venceu o Fortaleza por 2 a 1 neste sábado, confirmou o título da Copa do Nordeste 2026 e encerrou um jejum de 16 anos sem levantar a taça regional.</p>
+
+            <p>O título veio com autoridade, mas com sofrimento também. Assim como no jogo de ida, o Vitória saiu atrás no placar. Luiz Fernando abriu o marcador para o Fortaleza no primeiro tempo e, naquele momento, o resultado levava a decisão para os pênaltis. A equipe baiana precisava reagir para não deixar escapar a vantagem construída no Castelão.</p>
+
+            <p>A resposta veio no segundo tempo. Martínez empatou, Renato Kayzer virou e o Barradão explodiu. Com o novo 2 a 1, o Vitória repetiu o placar da ida, fechou a final em 4 a 2 no agregado e conquistou o quinto título da Copa do Nordeste.</p>
+
+            <p>A taça tem peso histórico. Agora, com o penta, iguala o Bahia no topo da lista de maiores campeões da competição e recoloca o clube em uma prateleira simbólica do futebol regional.</p>
+
+            <p><strong>Barradão lotado para a decisão</strong></p>
+
+            <p>A final teve o cenário que uma decisão pede. O Barradão recebeu carga esgotada para o jogo decisivo. A capacidade total informada era de 30.793 torcedores.</p>
+
+            <p>Esse ambiente ajudou a dar tamanho ao jogo. O Vitória entrou em campo com vantagem, mas também com pressão. Jogava em casa, diante de sua torcida, com chance de conquistar uma taça que não vinha há 16 anos. O Fortaleza, por outro lado, precisava vencer para levar a decisão aos pênaltis e manter vivo o sonho do tetracampeonato regional.</p>
+
+            <p>A arquibancada teve papel importante porque a final oscilou emocionalmente. Quando Luiz Fernando fez 1 a 0 para o Fortaleza, o jogo ficou mais tenso. A vantagem rubro-negra desaparecia no agregado, e o título passava a ficar em detalhes. A reação no segundo tempo, portanto, não foi apenas técnica. Foi também mental.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como foi a final no Barradão</strong></p>
+
+            <p>O Vitória começou tentando controlar a partida, mas o Fortaleza foi perigoso quando encontrou espaço. O time cearense apostou em velocidade e conseguiu abrir o placar aos 27 minutos do primeiro tempo. Rodriguinho levantou a bola na área, Luiz Fernando apareceu sem marcação e cabeceou para fazer 1 a 0.</p>
+
+            <p>O gol mudou o contexto da decisão. Como o Vitória havia vencido a ida por 2 a 1, o placar no Barradão deixava tudo empatado no agregado: 2 a 2. Se o resultado permanecesse assim, a Copa do Nordeste seria decidida nos pênaltis.</p>
+
+            <p>O Vitória sentiu o golpe, mas não desabou. Ainda no primeiro tempo, tentou responder com Renê e Zé Vitor, mas não conseguiu empatar antes do intervalo. A equipe foi para o vestiário com o título ameaçado e a obrigação de reagir.</p>
+
+            <p>Na etapa final, o time voltou mais agressivo. O empate saiu aos 26 minutos. Após cobrança rasteira de escanteio, Martínez apareceu livre e finalizou para deixar tudo igual. O gol devolveu a vantagem ao Vitória no agregado e mudou novamente o clima do Barradão.</p>
+
+            <p>A virada veio na reta final. Renato Kayzer, personagem importante também no jogo de ida, marcou o segundo e confirmou o título. O atacante transformou uma final que caminhava para drama em festa rubro-negra.</p>
+
+            <p><strong>Dois jogos parecidos na emoção</strong></p>
+
+            <p>A final teve uma curiosidade forte: os dois confrontos seguiram roteiros parecidos em suas nuances.</p>
+
+            <p>No Castelão, o Fortaleza também saiu na frente. O Vitória buscou a reação na reta final, empatou e virou por 2 a 1, com gols decisivos de Renato Kayzer e Diego Tarzia. <a href="https://cortedosesportes.com.br/vitoria-fortaleza-final-copa-do-nordeste-2026-jogo-ida.html">A virada fora de casa</a>. colocou o Rubro-Negro em vantagem para decidir no Barradão, em uma partida de ida que já havia indicado o tom dramático da decisão.</p>
+
+            <p>No jogo de volta, a história se repetiu. O Fortaleza abriu o placar, colocou pressão, levou o confronto para um cenário de pênaltis, mas viu o Vitória reagir novamente no segundo tempo.</p>
+
+            <p>Essa repetição ajuda a explicar o título. O Vitória não foi campeão apenas por jogar melhor em um trecho específico. Foi campeão porque soube lidar com adversidade nos dois jogos da decisão. Saiu perdendo nas duas partidas e virou ambas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O tamanho do título do Vitória</strong></p>
+
+            <p>A Copa do Nordeste de 2026 tem valor especial por três motivos principais.</p>
+
+            <p>O primeiro é o jejum. O clube não conquistava o torneio desde 2010. Voltar a vencer depois de 16 anos recoloca o Vitória em um lugar histórico na competição.</p>
+
+            <p>O segundo é o contexto da final. O título veio contra o Fortaleza, adversário tradicional, acostumado a decisões recentes e em busca de mais uma taça regional. Superar o rival em dois jogos, com duas viradas por 2 a 1, aumenta o peso da conquista.</p>
+
+            <p>O terceiro é a marca histórica. Com o quinto título, o Vitória iguala o Bahia como maior campeão da Copa do Nordeste. Para um clube que carrega rivalidade direta com o Tricolor baiano, esse detalhe transforma a taça em mais do que um troféu: é também reposicionamento simbólico no futebol nordestino.</p>
+
+            <p>Com a conquista de 2026, chega ao pentacampeonato. O clube já havia levantado a taça em 1997, 1999, 2003 e 2010.</p>
+
+            <p>Agora, soma o título de 2026 e iguala o Bahia, que também tem cinco conquistas. A disputa histórica entre os rivais baianos ganha mais um capítulo, agora no recorte regional.</p>
+
+            <p>A marca também reforça o peso regional da conquista. <a href="https://cortedosesportes.com.br/copa-do-nordeste-historia-maiores-campeoes-identidade-regional.html">A Copa do Nordeste</a> carrega identidade própria, rivalidades fortes e uma história que vai além da taça de uma temporada .</p>
+
+            <p><strong>Campanha completa do Vitória</strong></p>
+
+            <p>A campanha teve tropeço na estreia, correção de rota, força ofensiva no mata-mata e 100% de aproveitamento nas fases eliminatórias.</p>
+
+            <p><strong>Fase de grupos:</strong></p>
+            <ul>
+              <li>Vitória 1 x 2 Botafogo-PB</li>
+              <li>CRB 2 x 4 Vitória</li>
+              <li>Vitória 4 x 1 Juazeirense</li>
+              <li>Vitória 3 x 1 Piauí</li>
+              <li>Confiança 2 x 2 Vitória</li>
+            </ul>
+
+            <p><strong>Quartas de final:</strong></p>
+            <ul>
+              <li>Vitória 1 x 0 Ceará</li>
+            </ul>
+
+            <p><strong>Semifinal:</strong></p>
+            <ul>
+              <li>Vitória 6 x 2 ABC</li>
+              <li>ABC 3 x 4 Vitória</li>
+              <li>Agregado: Vitória 10 x 5 ABC</li>
+            </ul>
+
+            <p><strong>Final:</strong></p>
+            <ul>
+              <li>Fortaleza 1 x 2 Vitória</li>
+              <li>Vitória 2 x 1 Fortaleza</li>
+              <li>Agregado: Vitória 4 x 2 Fortaleza</li>
+            </ul>
+
+            <p>A trajetória mostra um time que cresceu no momento certo. Depois da derrota na estreia para o Botafogo-PB, o Vitória ajustou a rota, avançou na fase de grupos e virou uma equipe muito forte no mata-mata. Eliminou o Ceará, atropelou o ABC no agregado e venceu os dois jogos da final.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Fortaleza deixou escapar duas vezes</strong></p>
+
+            <p>A final também deixa uma leitura dura para o Fortaleza. O time de Thiago Carpini saiu na frente nos dois jogos, mas não conseguiu sustentar o resultado em nenhum deles.</p>
+
+            <p>No Castelão, abriu vantagem e sofreu a virada nos minutos finais. No Barradão, fez 1 a 0, levou a decisão para o cenário de pênaltis e novamente não segurou. Em jogos grandes, esse tipo de repetição pesa.</p>
+
+            <p>O Fortaleza jogou bem em trechos importantes, especialmente no primeiro tempo da volta. Mas a queda de concentração, a dificuldade para matar a decisão e a resposta forte do Vitória custaram o título.</p>
+
+            <p><strong>Premiação do título</strong></p>
+
+            <p>Além da taça, o Vitória também garantiu uma premiação importante na Copa do Nordeste.</p>
+
+            <p>Pela tabela oficial de cotas, o clube estava no Grupo 1 de distribuição financeira. A soma da campanha ficou assim:</p>
+
+            <ul>
+              <li>Primeira fase, parcela 1: R$ 1,25 milhão</li>
+              <li>Primeira fase, parcela 2: R$ 1,25 milhão</li>
+              <li>Quartas de final: R$ 500 mil</li>
+              <li>Semifinal: R$ 600 mil</li>
+              <li>Campeão: R$ 1 milhão</li>
+              <li>Total acumulado pelo Vitória na competição: R$ 4,6 milhões.</li>
+            </ul>
+
+            <p>Esse valor considera as cotas esportivas previstas por fase. Não inclui bilheteria, acordos comerciais, possíveis bonificações internas ou efeitos indiretos da conquista.</p>
+
+            <p>Para o clube, é um título com impacto esportivo e financeiro. A Copa do Nordeste entrega visibilidade regional, receita, calendário competitivo e uma taça de peso para o torcedor.</p>
+
+            <p><strong>O que esse título representa para Jair Ventura</strong></p>
+
+            <p> O técnico conduziu uma campanha que começou com derrota, mas terminou com título, viradas e mata-mata perfeito.</p>
+
+            <p>A conquista tem valor porque o Vitória chegou à final pressionado pelo favoritismo. Jogava a volta em casa, tinha vencido a ida e enfrentava a obrigação de confirmar a taça diante de estádio lotado. Quando saiu atrás, o cenário ficou perigoso. A reação no segundo tempo mostrou leitura de jogo, ajustes e capacidade de manter o grupo mentalmente ativo.</p>
+
+            <p>Em um clube de massa, título regional importa. Ainda mais quando vem depois de 16 anos. Para o treinador, a taça dá respaldo e ajuda a consolidar o trabalho em uma temporada que segue com outros desafios.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
