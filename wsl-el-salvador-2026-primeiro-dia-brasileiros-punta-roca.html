@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yago Dora avança, Miguel e Alejo caem na estréia da WSL em El Salvador | Corte dos Esportes</title>
+  <meta name="description" content="Primeiro dia do Surf City El Salvador Pro teve ondas fortes em Punta Roca, Yago Dora classificado às oitavas, Miguel Pupo e Alejo Muniz eliminados, Luana Silva com estreia definida e mais brasileiros ainda vivos na etapa." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Yago Dora avança, Miguel e Alejo caem na estréia da WSL em El Salvador</h1>
+          <p class="subhead" id="articleExcerpt">Primeiro dia do Surf City El Salvador Pro teve ondas fortes em Punta Roca, Yago Dora classificado às oitavas, Miguel Pupo e Alejo Muniz eliminados, Luana Silva com estreia definida e mais brasileiros ainda vivos na etapa.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">06/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Surf</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Brasil viveu um primeiro dia de contraste no Surf City El Salvador Pro, quinta etapa do Championship Tour da WSL 2026. Em Punta Roca, com ondas fortes e longas paredes abrindo espaço para manobras de força.</p>
+
+            <p>O dia colocou em disputa o Round 1 masculino, o Round 1 feminino e as seis primeiras baterias do Round 2 masculino. Na prática, isso significa que parte dos brasileiros ainda nem entrou no mar pela fase eliminatória.</p>
+
+            <p>A etapa começou com peso especial para o Brasil. O país chegou a El Salvador com nove surfistas no masculino e Luana Silva como representante no feminino. Além disso, o momento brasileiro no ranking aumenta a pressão: Italo Ferreira lidera o circuito, Miguel Pupo, Gabriel Medina e Yago Dora também aparecem no bloco de elite, enquanto Luana segue entre as principais forças da temporada feminina, dando ainda mais consistência para a Braziliam Storm.</p>
+
+            <p><strong>Como foi o primeiro dia</strong></p>
+
+            <p>Punta Roca entregou um cenário clássico para abrir a etapa. As ondas apareceram com tamanho, pressão e paredes suficientes para os surfistas com leitura rápida, potência e boa escolha de linha.</p>
+
+            <p>O início da etapa também mostrou que El Salvador pode ser um ponto decisivo do calendário. A direita de Punta Roca exige posicionamento, controle de borda, força nas manobras e paciência para escolher as melhores séries. Em um circuito tão apertado, uma eliminação precoce pesa muito.</p>
+
+            <p>Para o Brasil, o saldo do primeiro dia ficou misto: um classificado direto às oitavas, dois eliminados e sete surfistas ainda vivos esperando suas próximas baterias.</p>
+
+            <p><strong>Situação após o primeiro dia</strong></p>
+
+            <p><strong>Classificado às oitavas:</strong></p>
+            <ul>
+              <li>Yago Dora</li>
+            </ul>
+
+            <p><strong>Eliminados:</strong></p>
+            <ul>
+              <li>Miguel Pupo</li>
+              <li>Alejo Muniz</li>
+            </ul>
+
+            <p><strong>Ainda vão competir no Round 2 masculino:</strong></p>
+            <ul>
+              <li>Samuel Pupo x Joel Vaughan</li>
+              <li>Mateus Herdy x Leonardo Fioravanti</li>
+              <li>Italo Ferreira x Ramzi Boukhiam</li>
+              <li>Filipe Toledo x Kauli Vaast</li>
+              <li>João Chianca x George Pittar</li>
+              <li>Gabriel Medina x Seth Moniz</li>
+            </ul>
+
+            <p><strong>No feminino:</strong></p>
+            <ul>
+              <li>Luana Silva x Nadia Erostarbe</li>
+            </ul>
+
+            <p>Esse quadro mostra que o primeiro dia não definiu a etapa para o Brasil, mas já acendeu alertas. Miguel Pupo era um dos nomes mais fortes do ranking e caiu cedo. Alejo Muniz também se despediu. Agora, o peso da sequência passa para os demais brasileiros.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Yago confirma favoritismo e avança</strong></p>
+
+            <p>Atual campeão mundial e um dos surfistas mais consistentes da temporada, ele entrou na sexta bateria do Round 2 masculino contra Luke Thompson e venceu com autoridade nos momentos decisivos.</p>
+
+            <p>A bateria não foi simples. O ritmo demorou a engrenar, Thompson chegou a ameaçar a virada e a disputa ficou mais tensa na parte final. Mas Yago soube controlar melhor as escolhas, achou notas suficientes para retomar a liderança e garantiu a vaga nas oitavas.</p>
+
+            <p>Agora, o brasileiro enfrentará Marco Mignot na próxima fase. O francês avançou depois de derrotar Rio Waida e chega embalado para tentar frear o atual campeão mundial. Para Yago, a bateria vale mais do que uma vaga. El Salvador é uma etapa importante para seguir na briga pelo topo do ranking e defender a condição de protagonista do circuito.</p>
+
+            <p>Confirma os melhores momentos da bateria abaixo:</p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ne3UmwmCsCw" title="Yago Dora na WSL de El Salvador" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>Miguel Pupo cai para Eli Hanneman</strong></p>
+
+            <p>A eliminação de Miguel Pupo foi o resultado mais pesado para o Brasil no primeiro dia. Vice-líder do ranking antes da etapa, Miguel enfrentou Eli Hanneman no Round 2 e não conseguiu acompanhar o ritmo do havaiano.</p>
+
+            <p>Hanneman começou forte, encaixou boas ondas e construiu uma vantagem difícil de buscar. Miguel ainda respondeu com uma nota 6.83, mas ficou abaixo do somatório necessário para virar a bateria. O placar final foi 16.16 a 12.16 para Hanneman.</p>
+
+            <p>A derrota pesa porque Miguel vinha em excelente fase na temporada. Uma eliminação tão cedo limita a pontuação em El Salvador e abre espaço para rivais diretos no ranking. Em uma temporada na qual o Brasil ocupa posições na parte de cima, cada etapa pode mexer bastante na disputa pelo título mundial.</p>
+
+            <p><strong>Alejo Muniz também se despede</strong></p>
+
+            <p>Foi o outro brasileiro eliminado no primeiro dia. Em seu último ano como profissional, ele enfrentou Kanoa Igarashi no Round 2 e acabou derrotado por 14.17 a 12.03.</p>
+
+            <p>A bateria foi equilibrada, mas Kanoa encontrou notas mais consistentes e segurou a vantagem. Alejo começou com ondas medianas, tentou se manter vivo na disputa e ainda teve margem para pressionar, mas não conseguiu a virada.</p>
+
+            <p>A eliminação encerra cedo a participação de Alejo em Punta Roca e tira do Brasil uma opção experiente na chave. Para o japonês, a vitória valeu vaga nas oitavas, onde enfrentará Eli Hanneman, algoz de Miguel Pupo.</p>
+
+            <p><strong>Luana Silva estreia contra Nadia Erostarbe</strong></p>
+
+            <p>No feminino, Luana ainda não entrou no mar. A brasileira, vice-líder do ranking, fará sua estreia no Round 2 contra Nadia Erostarbe, da Espanha.</p>
+
+            <p>A bateria merece atenção porque Luana chega em posição forte no circuito e precisa pontuar bem para seguir pressionando a liderança. A etapa de El Salvador pode ser importante no equilíbrio da temporada feminina, especialmente porque Punta Roca exige leitura, potência e paciência para escolher as melhores ondas.</p>
+
+            <p>Nadia avançou no Round 1 ao vencer Francisca Veselko. Isso significa que a espanhola já sentiu o mar da competição, enquanto Luana chega descansada, mas ainda sem ritmo competitivo na etapa. Esse detalhe pode pesar nos primeiros minutos da bateria.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Italo Ferreira ainda vai estrear na fase eliminatória</strong></p>
+
+            <p>Líder do ranking e campeão da etapa anterior em Raglan, Italo ainda tem bateria pela frente no Round 2. O brasileiro enfrentará Ramzi Boukhiam, do Marrocos.</p>
+
+            <p>A <a href="https://cortedosesportes.com.br/italo-ferreira-campeao-nova-zelelandia-lider-ranking-wsl.html">vitória na Nova Zelândia</a> o colocou novamente no centro da temporada e reforçou sua condição de candidato ao título mundial.</p>
+
+            <p>A bateria chama atenção por dois motivos. Primeiro, porque Italo chega como principal nome do circuito neste momento. Segundo, porque Boukhiam começou bem em Punta Roca e venceu sua bateria de Round 1, mostrando adaptação rápida às condições.</p>
+
+            <p>Italo também chega cercado por atenção depois de sofrer um acidente durante treinamento em El Salvador. Mesmo assim, segue confirmado na disputa. Se estiver inteiro fisicamente, continua sendo um dos favoritos da etapa, especialmente em ondas que permitem manobras explosivas e leitura criativa.</p>
+
+            <p><strong>Medina, Filipe, João, Samuel e Mateus ainda vivos</strong></p>
+
+            <p>Outros cinco brasileiros ainda aguardam suas baterias no Round 2 masculino.</p>
+
+            <p>Gabriel Medina enfrentará Seth Moniz. O havaiano venceu sua bateria de Round 1 e chega com confiança, mas Medina tem histórico de crescimento em etapas com ondas fortes, especialmente quando a bateria exige tomada de decisão rápida.</p>
+
+            <p>Filipe Toledo enfrentará Kauli Vaast. É uma bateria de alto nível técnico, com dois surfistas capazes de acelerar em ondas longas e transformar pequenas oportunidades em notas altas.</p>
+
+            <p>João Chianca pegará George Pittar. Chumbinho chega como um dos nomes mais intensos do Brasil e precisa usar potência, pressão e agressividade para avançar.</p>
+
+            <p>Samuel Pupo enfrentará Joel Vaughan, enquanto Mateus Herdy terá pela frente Leonardo Fioravanti. São duas baterias importantes para ampliar a presença brasileira nas oitavas e reduzir o impacto das quedas de Miguel e Alejo.</p>
+
+            <p>O chaveamento ainda pode ganhar peso para o Brasil conforme os confrontos avançarem. Com tantos brasileiros na parte masculina, há chance de o país chegar forte às oitavas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Onde assistir ao Surf City El Salvador Pro</strong></p>
+
+            <p>A etapa tem transmissão pelo site e canal da WSL no YouTube, além da cobertura do SporTV no Brasil. Pelo YouTube, a exibição fica disponível até as oitavas de final. A partir das quartas, a reta decisiva passa a ter transmissão pelos canais fechados, com SporTV e Globoplay.</p>
+
+            <p>O round 2 tem início programado para hoje, sabado 06/06, as 10hs.</p>
+
+            <p><strong>Punta Roca pode mexer no ranking</strong></p>
+
+            <p>El Salvador tem potencial para alterar bastante o ranking da WSL. A etapa chega em um momento em que o Brasil domina a parte alta masculina e tenta consolidar essa vantagem antes da sequência do calendário, que será no Brasil com a etapa de Saquarema.</p>
+
+            <p>Punta Roca já mostrou no primeiro dia que não será apenas mais uma parada do calendário. A onda exige, o ranking pesa e cada bateria pode mudar o rumo da temporada. Para o Brasil, El Salvador começou com vitória, perdas importantes e muita coisa ainda em jogo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
