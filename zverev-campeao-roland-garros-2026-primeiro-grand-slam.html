@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zverev vence Cobolli e conquista Roland Garros | Corte dos Esportes</title>
+  <meta name="description" content="Alexander Zverev supera Flavio Cobolli em final de cinco sets, conquista o saibro francês e encerra uma espera marcada por três vice-campeonatos de Grand Slam." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Zverev vence Cobolli e conquista Roland Garros</h1>
+          <p class="subhead" id="articleExcerpt">Alexander Zverev supera Flavio Cobolli em final de cinco sets, conquista o saibro francês e encerra uma espera marcada por três vice-campeonatos de Grand Slam.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">07/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="tenis.html">Tenis</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Finalmente quebrou a barreira que faltava em sua carreira. Aos 29 anos, o alemão venceu Flavio Cobolli na final masculina de Roland Garros 2026 e conquistou o primeiro Grand Slam da sua trajetória profissional.</p>
+
+            <p>A vitória tem peso enorme porque Zverev já carregava um currículo consistente antes de Paris. Era campeão olímpico, bicampeão do ATP Finals, múltiplo vencedor de Masters 1000 e presença constante no topo do ranking. Mas faltava o título de Grand Slam, justamente o troféu que separa grandes campeões de personagens históricos do tênis.</p>
+
+            <p>Antes da conquista em Roland Garros, Zverev havia disputado e perdido três finais de Slam. Na quarta tentativa, contra um adversário estreante em finais desse nível, o alemão sofreu, oscilou, viu Cobolli forçar o quinto set, mas dominou a parcial decisiva e enfim levantou a taça em Paris.</p>
+
+            <p><strong>Primeiro Grand Slam</strong></p>
+
+            <p>O título de Roland Garros encerra uma cobrança antiga sobre Zverev. Por anos, ele foi citado como um dos jogadores mais fortes da geração sem Grand Slam. Agora, essa frase deixa de fazer sentido.</p>
+
+            <p>O alemão já tinha vencido em praticamente todos os níveis importantes do circuito: ATP 250, ATP 500, Masters 1000, ATP Finals e Jogos Olímpicos. Faltava o maior palco. Ao vencer em Paris, completou a coleção mais simbólica da carreira.</p>
+
+            <p>A conquista também recoloca Zverev em uma posição histórica no tênis alemão. Ele se torna o primeiro homem da Alemanha a vencer um Grand Slam desde Boris Becker, no Australian Open de 1996. Em Roland Garros, o peso é ainda maior: o país não tinha um campeão masculino em simples desde Gottfried von Cramm, em 1937.</p>
+
+            <p><strong>Como foi a final</strong></p>
+
+            <p>Começou com domínio claro de Zverev. O alemão entrou mais sólido, sacou bem, atacou o segundo saque de Cobolli e fechou o primeiro set por 6/1. Naquele momento, parecia que a experiência poderia transformar a decisão em um jogo controlado.</p>
+
+            <p>Cobolli, porém, não desanimou. O italiano respondeu no segundo set, passou a variar melhor, sustentou trocas longas e encontrou coragem para acelerar nos momentos certos. Com mais agressividade e melhor leitura, venceu a parcial por 6/4 e recolocou tensão na final.</p>
+
+            <p>No terceiro set, Zverev voltou a assumir o controle dos pontos importantes. Não foi uma parcial tranquila, mas o alemão conseguiu ser mais eficiente nas chances decisivas e fechou por 6/4, ficando a um set do título.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>O quarto set foi o trecho mais dramático da partida. Cobolli resistiu, levou a disputa ao tie-break e venceu por 7/5, forçando o quinto set. Para Zverev, aquele era o tipo de momento que poderia reabrir fantasmas de finais perdidas. Para Cobolli, era a chance de transformar a primeira final de Slam em virada histórica.</p>
+
+            <p>No set decisivo, porém, Zverev respondeu como campeão. Voltou mais firme, abriu vantagem cedo, reduziu os erros e fechou em 6/1. Depois de mais uma final dura, o alemão finalmente atravessou a linha que faltava.</p>
+
+            <p><strong>Os pontos importantes da decisão</strong></p>
+
+            <p>A final teve cinco momentos que ajudam a explicar o título.</p>
+
+            <ul>
+              <li>Zverev largou muito forte e venceu o primeiro set por 6/1.</li>
+              <li>Cobolli reagiu no segundo set e quebrou a sensação de controle alemão.</li>
+              <li>O terceiro set virou a parcial mais estratégica, com Zverev retomando a liderança do placar.</li>
+              <li>Cobolli venceu o tie-break do quarto set por 7/5 e levou a decisão ao limite.</li>
+              <li>Zverev dominou o quinto set por 6/1, mostrando força física e mental no trecho mais pesado da final.</li>
+            </ul>
+
+            <p>Esse roteiro dá valor à conquista. Zverev não venceu uma final simples. Ele teve que lidar com reação, pressão, tie-break perdido e a necessidade de jogar um quinto set carregando o histórico de três finais de Grand Slam sem título.</p>
+
+            <p><strong>Flavio Cobolli vende caro a derrota</strong></p>
+
+            <p> O italiano disputava a primeira final de Grand Slam da carreira e conseguiu levar Zverev a cinco sets em Roland Garros.</p>
+
+            <p>Cobolli entrou no torneio como cabeça de chave 10 e número 14 do mundo. A campanha já era a melhor de sua carreira antes da final. Mesmo sem título, chegar ao último jogo de Roland Garros e empurrar um jogador do nível de Zverev ao set decisivo muda sua posição dentro do circuito.</p>
+
+            <p>O italiano mostrou intensidade, coragem e repertório para competir em uma decisão grande. O problema é que, no quinto set, a diferença de experiência apareceu. Zverev já tinha vivido finais, derrotas dolorosas e jogos longos de enorme pressão. Cobolli estava estreando nesse tipo de ambiente.</p>
+
+            <p>A derrota foi dura, mas a campanha é um salto. Ele deixa Paris como vice-campeão de Grand Slam e novo integrante do top 10.</p>
+
+            <p><strong>As finais de Grand Slam de Zverev</strong></p>
+
+            <p>Antes de vencer Roland Garros, já havia batido na trave três vezes:</p>
+
+            <ul>
+              <li>US Open 2020: vice-campeão</li>
+              <li>Roland Garros 2024: vice-campeão</li>
+              <li>Australian Open 2025: vice-campeão</li>
+            </ul>
+
+            <p>Essa sequência ajuda a explicar o peso emocional do título. Zverev não era um campeão improvável. Era um jogador que já tinha chegado perto várias vezes e carregava a cobrança de transformar presença em conquista.</p>
+            <p>Em 2026, a oportunidade apareceu novamente. Desta vez, ele aproveitou.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Campanha completa de Zverev em Roland Garros</strong></p>
+
+            <p>Foi uma campanha sólida até o título, com vitórias em diferentes tipos de jogo e uma final decidida apenas no quinto set.</p>
+
+            <ul>
+              <li>1ª rodada: venceu Benjamin Bonzi por 6/3, 6/4 e 6/2</li>
+              <li>2ª rodada: venceu Tomas Machac por 6/4, 6/2 e 6/2</li>
+              <li>3ª rodada: venceu Quentin Halys por 6/4, 6/3, 5/7 e 6/2</li>
+              <li>Oitavas de final: venceu Jesper de Jong por 7/6(3), 6/4 e 6/1</li>
+              <li>Quartas de final: venceu Rafael Jodar por 7/6(3), 6/1 e 6/3</li>
+              <li>Semifinal: venceu Jakub Mensik por 7/5, 6/2, 3/6 e 6/3</li>
+              <li>Final: venceu Flavio Cobolli por 6/1, 4/6, 6/4, 6/7(5) e 6/1</li>
+            </ul>
+
+            <p>A campanha teve um ponto importante: Zverev não chegou à final desgastado por batalhas extremas, mas também não atravessou o torneio sem testes. Halys tirou um set na terceira rodada, De Jong e Jodar levaram parciais ao tie-break, Mensik exigiu quatro sets na semifinal e Cobolli empurrou a decisão ao quinto set.</p>
+
+            <p>O alemão foi construindo o título com regularidade e experiência. Não precisou jogar o tênis mais brilhante de sua vida em todos os dias, mas soube vencer os pontos que importavam.</p>
+
+            <p><strong>Os títulos de Zverev na carreira</strong></p>
+
+            <p>Com Roland Garros, ele chega a 25 títulos profissionais de simples. Antes da final em Paris, ele já tinha 24 conquistas no circuito.</p>
+
+            <p><strong>Títulos por nível:</strong></p>
+
+            <ul>
+              <li>Grand Slam: 1 — Roland Garros 2026</li>
+              <li>Jogos Olímpicos: 1 — Tóquio 2021</li>
+              <li>ATP Finals: 2 — 2018 e 2021</li>
+              <li>Masters 1000: 7 — Roma 2017, Canadá 2017, Madri 2018, Madri 2021, Cincinnati 2021, Roma 2024 e Paris 2024</li>
+              <li>ATP 500: 6 — Washington 2017, Washington 2018, Acapulco 2021, Viena 2021, Hamburgo 2023 e Munique 2025</li>
+              <li>ATP 250: 8 — São Petersburgo 2016, Montpellier 2017, Munique 2017, Munique 2018, Genebra 2019, Colônia 1 2020, Colônia 2 2020 e Chengdu 2023</li>
+            </ul>
+
+            <p>Essa lista mostra por que o título de Roland Garros era tão cobrado. Zverev não era um jogador sem conquistas grandes. Ele já tinha vencido torneios pesados, derrotado campeões históricos e sustentado anos de elite. O Grand Slam era a lacuna.</p>
+
+            <p><strong>Ranking após o título</strong></p>
+
+            <p>Mesmo com o título, Zverev permanece como número 3 no ranking ao vivo da ATP, com 7.305 pontos. A diferença para Jannik Sinner e Carlos Alcaraz ainda mantém o alemão atrás dos dois primeiros colocados.</p>
+
+            <p>Mas o impacto do título vai além da posição imediata. Zverev soma 2.000 pontos como campeão, defende uma campanha forte e sua presença na parte alta do ranking. Também ganha peso na corrida da temporada e passa a entrar nos próximos Grand Slams com outro status: não mais como candidato que busca o primeiro Slam, mas como campeão de Grand Slam.</p>
+
+            <p><strong>Ranking de Cobolli após a final</strong></p>
+
+            <p>Flavio Cobolli também muda de patamar. Com a campanha até a final, o italiano aparece como número 10 no ranking ao vivo da ATP, com 3.540 pontos.</p>
+
+            <p>É uma subida grande. Cobolli entrou em Roland Garros como número 14 e sai projetado dentro do top 10, a melhor posição de sua carreira. Para um jogador de 24 anos que ainda buscava sua primeira final de Grand Slam, o resultado em Paris abre calendário, respeito e expectativa.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Premiação de Zverev e Cobolli</strong></p>
+
+            <p>Além do troféu e dos pontos, Roland Garros entregou uma premiação pesada aos finalistas.</p>
+
+            <p><strong>Premiação da final:</strong></p>
+
+            <ul>
+              <li>Alexander Zverev, campeão: € 2,8 milhões</li>
+              <li>Flavio Cobolli, vice-campeão: € 1,4 milhão</li>
+            </ul>
+
+            <p>A bolsa total de Roland Garros 2026 foi de € 61,723 milhões, com premiação igual para homens e mulheres em simples.</p>
+
+            <p>Para Zverev, o valor acompanha o maior título da carreira. Para Cobolli, a premiação também tem impacto enorme: um vice de Grand Slam muda planejamento, estrutura, equipe, calendário e poder de negociação comercial.</p>
+
+            <p><strong>O peso histórico em Roland Garros</strong></p>
+
+            <p>Roland Garros sempre foi um torneio de paciência, resistência e construção. Vencer em Paris exige mais do que potência. Exige suportar dias longos, bolas altas, trocas extensas, variações de ritmo e pressão emocional.</p>
+
+            <p>Para Zverev, conquistar o primeiro Grand Slam justamente no saibro francês tem uma camada especial. Foi na Philippe-Chatrier que ele sofreu uma grave lesão em 2022, em semifinal contra Rafael Nadal. Foi também em Paris que perdeu a final de 2024. Agora, o mesmo cenário vira local de consagração.</p>
+
+            <p>A<a href="https://cortedosesportes.com.br/roland-garros-historia-maiores-campeoes-tradicao.html">A tradição do torneio</a> ajuda a dimensionar o feito. Em uma competição marcada por campeões históricos e finais de enorme desgaste, Zverev entra na galeria de vencedores do saibro francês.</p>
+
+            <p><strong>Uma final que encerra uma espera</strong></p>
+
+            <p>A final masculina de Roland Garros 2026 foi dura, longa e emocional. Zverev começou dominante, Cobolli reagiu, o jogo oscilou e o quarto set parecia abrir espaço para uma virada italiana. No momento decisivo, porém, o alemão jogou como quem não queria desperdiçar outra chance.</p>
+
+            <p>O título de Zverev também completou um fim de semana de campeões inéditos em Paris. <a href="https://cortedosesportes.com.br/andreeva-campea-roland-garros-2026-primeiro-grand-slam.html">No feminino, Mirra Andreeva</a> já havia levantado seu primeiro Grand Slam aos 19 anos, em uma final que marcou a ascensão definitiva da russa no circuito.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "tenis";
+  const CATEGORY_NAME = "Tenis";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
