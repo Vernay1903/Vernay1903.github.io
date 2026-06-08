@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Transferências no futebol europeu: jogadores que encerram ciclos para 2026/27 | Corte dos Esportes</title>
+  <meta name="description" content="Salah, Robertson, Bernardo Silva, John Stones, Lewandowski, Goretzka e Vlahovic deixam clubes onde marcaram época, venceram títulos e ajudam a explicar a nova fase do futebol europeu." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Transferências no futebol europeu: jogadores que encerram ciclos para 2026/27</h1>
+          <p class="subhead" id="articleExcerpt">Salah, Robertson, Bernardo Silva, John Stones, Lewandowski, Goretzka e Vlahovic deixam clubes onde marcaram época, venceram títulos e ajudam a explicar a nova fase do futebol europeu.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">08/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A temporada 2025/26 marcou o fim de ciclos importantes em alguns dos principais clubes da Europa. Não se trata apenas de jogadores trocando de camisa no mercado. Em vários casos, são atletas que passaram anos no mesmo clube, venceram títulos, participaram de reconstruções esportivas e se tornaram parte da identidade recente de suas equipes.</p>
+
+            <p>O recorte é forte principalmente na Premier League, onde Liverpool e Manchester City encerram fases com nomes diretamente ligados às maiores conquistas recentes dos clubes.</p>
+
+            <p>Fora da Inglaterra, Robert Lewandowski deixa o Barcelona depois de quatro temporadas em que foi referência ofensiva e ajudou o clube catalão a retomar protagonismo doméstico. Na Bundesliga, Leon Goretzka encerra oito anos no Bayern de Munique, período em que fez parte de uma das fases mais vencedoras do clube alemão. Na Serie A italiana, Dusan Vlahovic também entra no radar como uma saída de impacto na Juventus, mesmo sem carregar o mesmo peso simbólico de um ídolo histórico.</p>
+
+            <p><strong>Saídas confirmadas</strong></p>
+
+            <p>O mercado ainda pode mudar bastante nas próximas semanas, mas algumas despedidas já estão definidas. A diferença entre rumor e fato confirmado é essencial nesse tipo de pauta, porque muitos nomes aparecem ligados a outros clubes antes de qualquer anúncio oficial.</p>
+
+            <p>Jogadores com saída confirmada em 2026:</p>
+
+            <ul>
+              <li>Mohamed Salah: deixa o Liverpool após nove temporadas</li>
+              <li>Andy Robertson: deixa o Liverpool e já está acertado com o Tottenham</li>
+              <li>Ibrahima Konaté: deixa o Liverpool após cinco temporadas</li>
+              <li>Bernardo Silva: deixa o Manchester City após nove temporadas</li>
+              <li>John Stones: deixa o Manchester City após dez temporadas</li>
+              <li>Robert Lewandowski: deixa o Barcelona após quatro temporadas</li>
+              <li>Leon Goretzka: deixa o Bayern de Munique após oito temporadas</li>
+              <li>Dusan Vlahovic: deixa a Juventus após mais de quatro temporadas</li>
+            </ul>
+
+            <p>O ponto comum entre esses nomes é o peso esportivo. Todos passaram tempo suficiente para deixar marca, venceram títulos importantes ou fazer parte de ciclos relevantes. Alguns saem como lendas absolutas, caso de Salah. Outros deixam o clube como peças centrais de uma era vencedora, como Bernardo Silva, Stones e Goretzka. Há ainda casos de impacto mais curto, mas ainda relevante, como Lewandowski no Barcelona e Vlahovic na Juventus.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Salah deixa o Liverpool como lenda de Anfield</strong></p>
+
+            <p>Mohamed Salah é o nome de maior impacto da lista. O egípcio chegou ao Liverpool em 2017 e transformou sua passagem em uma das histórias individuais mais fortes da era moderna do clube. Em nove temporadas, tornou-se um dos maiores artilheiros da história dos Reds e participou diretamente da reconstrução que recolocou o Liverpool no topo da Inglaterra e da Europa.</p>
+
+            <p>Números pelo Liverpool:</p>
+            <ul>
+              <li>Temporadas: 9</li>
+              <li>Jogos: 435</li>
+              <li>Gols: 255</li>
+              <li>Assistências: 119</li>
+              <li>Gols na Premier League: 189</li>
+              <li>Títulos: 2 Premier Leagues, Champions League, FA Cup, 2 Copas da Liga, Mundial de Clubes e Supercopa da UEFA</li>
+              <li>Marca histórica: terceiro maior artilheiro da história do Liverpool, atrás de <a href="ian-rush-maior-artilheiro-historia-liverpool.html">Ian Rush</a> e Roger Hunt</li>
+            </ul>
+
+            <p>O peso de Salah vai além da estatística. Ele foi protagonista de uma era em que o Liverpool voltou a ser campeão inglês, campeão europeu e referência mundial. Ao lado de Mané, Firmino, Van Dijk, Alisson, Henderson e Robertson, virou símbolo de intensidade, velocidade e decisão.</p>
+
+            <p><strong>Robertson troca Liverpool pelo Tottenham</strong></p>
+
+            <p>Andy Robertson também encerra uma passagem de nove anos, mas com uma diferença importante: seu próximo clube já está definido. O lateral escocês assinou com o Tottenham após o fim do contrato com os Reds.</p>
+
+            <p>Números pelo Liverpool:</p>
+            <ul>
+              <li>Temporadas: 9</li>
+              <li>Jogos: 378</li>
+              <li>Gols: 14</li>
+              <li>Assistências: 69</li>
+              <li>Títulos: 8</li>
+              <li>Próximo clube: Tottenham</li>
+              <li>Perfil da passagem: lateral símbolo da era Klopp, com intensidade, liderança e presença ofensiva constante</li>
+            </ul>
+
+            <p>Robertson foi uma peça essencial no Liverpool de Jürgen Klopp. Chegou sem o status de estrela, cresceu dentro do projeto e se tornou um dos laterais-esquerdos mais marcantes da Premier League recente. Sua energia, profundidade pelo lado esquerdo e regularidade ajudaram a dar forma ao time que pressionava alto e atacava com muita força pelos corredores.</p>
+
+            <p>A ida ao Tottenham também abre uma nova leitura para a temporada 2026/27. O clube londrino recebe um jogador experiente, multicampeão e acostumado a jogos grandes. Para o Liverpool, a saída fecha mais uma parte da estrutura que sustentou o período mais vencedor do clube nas últimas décadas.</p>
+
+            <p><strong>Konaté sai em momento de reformulação do Liverpool</strong></p>
+
+            <p>Ibrahima Konaté não tem o mesmo peso simbólico de Salah ou Robertson, mas sua saída também é relevante no processo de reformulação do clube. O zagueiro francês deixa <a href="anfield-historia-tradicao-estadio-liverpool.html">Anfield</a> após cinco temporadas, período em que foi peça frequente da rotação defensiva e parceiro de Virgil van Dijk em fases importantes.</p>
+
+            <p>Números pelo Liverpool:</p>
+
+            <ul>
+              <li>Temporadas: 5</li>
+              <li>Jogos: 183</li>
+              <li>Gols: 7</li>
+              <li>Títulos: Premier League, FA Cup, 2 Copas da Liga e Community Shield</li>
+              <li>Chegada: contratado do RB Leipzig em 2021</li>
+            </ul>
+
+            <p>Sua passagem teve bons momentos, especialmente quando conseguiu sequência física. Ele ofereceu força, imposição, velocidade de recuperação e presença em bolas aéreas. Ao mesmo tempo, lesões e oscilações impediram que ele tivesse o mesmo peso histórico de outros nomes da defesa recente do Liverpool.</p>
+
+            <p><strong>Bernardo Silva fecha era histórica no Manchester City</strong></p>
+
+            <p>Bernardo Silva deixa o clube como um dos jogadores mais representativos da <a href="pep-guardiola-despedida-manchester-city-titulos-legado.html">era Guardiola</a>. Contratado em 2017, o português atravessou nove temporadas no clube e foi importante em diferentes versões do time: aberto pelo lado, por dentro como meia, em função livre e como liderança técnica.</p>
+
+            <p>Números pelo City:</p>
+            <ul>
+              <li>Temporadas: 9</li>
+              <li>Jogos: 451</li>
+              <li>Gols: 76</li>
+              <li>Assistências: 77</li>
+              <li>Títulos principais: 19</li>
+              <li>Premier Leagues: 6</li>
+              <li>Champions League: 1</li>
+            </ul>
+
+            <p>Sua importância não está apenas nos números. Bernardo foi um jogador de sistema, intensidade e inteligência tática. Em um City que exigia precisão, pressão pós-perda e leitura coletiva, ele se tornou um dos nomes mais confiáveis de Guardiola.</p>
+
+            <p>O português deixa o clube como parte direta da fase mais dominante da história do clube. Foi importante no time dos Centurions, na sequência de títulos ingleses, no tetracampeonato nacional e na conquista da Champions League. Sua saída representa o fim de uma era técnica, emocional e competitiva no Etihad.</p>
+
+            <p><strong>John Stones e a transformação tática do City</strong></p>
+
+            <p>Stones também encerra um ciclo longo no Manchester City. O zagueiro chegou em 2016 e passou dez temporadas no clube, atravessando praticamente toda a era Guardiola. Seu caso é especial porque ele não foi apenas um defensor vencedor: virou uma peça tática que ajudou a mudar a forma como o time jogava.</p>
+
+            <p>Números pelo City:</p>
+            <ul>
+              <li>Temporadas: 10</li>
+              <li>Jogos: 293</li>
+              <li>Gols: 19</li>
+              <li>Assistências: 9</li>
+              <li>Títulos principais: 19</li>
+              <li>Premier Leagues: 6</li>
+              <li>Champions League: 1</li>
+            </ul>
+
+            <p>O auge dessa transformação veio quando Stones passou a atuar em uma função híbrida, saindo da defesa para ocupar zonas de meio-campo. Esse papel foi decisivo para o equilíbrio do City campeão europeu, porque permitia ao time construir com mais controle, proteger melhor a transição defensiva e ocupar o campo adversário com superioridade numérica.</p>
+
+            <p>Stones deixa o City como um dos símbolos da evolução tática de Guardiola na Inglaterra. Sua saída, somada à de Bernardo Silva, não representa apenas perda de elenco. Representa a despedida de dois jogadores que ajudaram a transformar uma equipe dominante em uma potência continental.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Lewandowski deixa o Barcelona</strong></p>
+
+            <p>Robert Lewandowski não passou tanto tempo no Barcelona quanto Salah no Liverpool, mas seus quatro anos no clube catalão tiveram impacto direto. Ele chegou em 2022, vindo do Bayern, para ser referência ofensiva em um Barça que tentava recuperar competitividade depois de anos de instabilidade esportiva e financeira.</p>
+
+            <p>Números pelo Barcelona:</p>
+            <ul>
+              <li>Temporadas: 4</li>
+              <li>Jogos: 192</li>
+              <li>Gols: 120</li>
+              <li>Peso histórico: entrou no grupo dos maiores artilheiros estrangeiros recentes do clube</li>
+            </ul>
+
+            <p>Lewandowski entregou o que se esperava dele: gols, presença de área, liderança e peso competitivo. Seu ciclo não teve a profundidade emocional de uma década de clube, mas teve impacto esportivo claro. Foi o nome que sustentou o ataque em uma fase de transição e ajudou o Barcelona a voltar a competir por títulos domésticos.</p>
+
+            <p>A saída também abre espaço para uma nova fase no ataque catalão. O clube passa a precisar de outro camisa 9 capaz de manter presença na área, decisão em jogos grandes e regularidade de gols.</p>
+
+            <p><strong>Goretzka encerra oito anos no Bayern</strong></p>
+
+            <p>Leon Goretzka deixa o gigante da Baviera após oito temporadas. O meio-campista chegou em 2018 e participou de uma fase extremamente vitoriosa do clube, incluindo Bundesliga, Copa da Alemanha, Supercopa, Champions League, Supercopa da UEFA e Mundial de Clubes.</p>
+
+            <p>Números pelo Bayern:</p>
+            <ul>
+              <li>Temporadas: 8</li>
+              <li>Jogos: 312</li>
+              <li>Gols: 51</li>
+              <li>Títulos: 15</li>
+              <li>Bundesligas: 7</li>
+              <li>Champions League: 1</li>
+              <li>Marca coletiva: integrante do Bayern campeão do sexteto em 2020</li>
+            </ul>
+
+            <p>Seu auge esteve ligado ao Bayern intenso, físico e dominante que marcou o futebol europeu no início da década. Goretzka foi importante pela chegada à área, força no meio-campo, capacidade de pressão e presença em jogos grandes.</p>
+
+            <p>A saída representa o encerramento de um ciclo natural. O Bayern costuma renovar elenco sem abandonar competitividade, e a despedida de Goretzka se encaixa nesse processo. Ele não sai apenas como mais um meio-campista que passou pelo clube, mas como parte de uma geração que venceu tudo.</p>
+
+            <p><strong>Vlahovic também entra no recorte Italiano</strong></p>
+
+            <p>Na Serie A italiana, o nome mais relevante deste recorte é Dusan Vlahovic. O atacante encerra seu ciclo na Juventus depois de mais de quatro temporadas, período em que chegou como contratação de impacto, assumiu protagonismo ofensivo e marcou o gol do título da Copa da Itália de 2023/24 contra a Atalanta.</p>
+
+            <p>Números na Juventus:</p>
+            <ul>
+              <li>Chegada: janeiro de 2022</li>
+              <li>Origem: Fiorentina</li>
+              <li>Custo registrado pela Juventus com encargos e bônus: acima de €80 milhões</li>
+              <li>Jogos pela Juventus: 168</li>
+              <li>Gols pela Juventus: 68</li>
+              <li>Título de maior peso: Copa da Itália de 2023/24</li>
+            </ul>
+
+            <p>A saída não tem o mesmo peso simbólico de uma despedida como a de Salah no Liverpool, mas é importante para entender a reformulação da Juventus. Vlahovic foi o camisa 9 de maior investimento recente do clube, atravessou anos de instabilidade esportiva e deixa Turim em um momento em que a equipe tenta reorganizar elenco, folha salarial e projeto competitivo.</p>
+
+            <p>O caso também ajuda a explicar uma diferença editorial importante dentro do mercado europeu. Nem toda saída de jogador relevante significa despedida de ídolo. Em alguns casos, como Vlahovic, o peso está mais ligado à reconstrução esportiva, ao custo da aposta e ao fim de um ciclo que não entregou tudo o que se esperava quando a contratação foi feita.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Saídas de jogadores acompanham mudanças nas casamatas</strong></p>
+
+            <p>As movimentações de jogadores não acontecem isoladas. Em vários clubes, o fim de ciclos dentro de campo aparece junto de mudanças no comando técnico, novos projetos esportivos e reformulações de elenco para a temporada 2026/27.</p>
+
+            <p><a href="liverpool-napoli-leverkusen-trocas-tecnicos-2026.html">Liverpool, Napoli e Leverkusen </a> também vivem esse contexto de troca de liderança, com novos treinadores assumindo projetos que exigem ajustes imediatos.</p>
+
+            <p>Esse encaixe é importante porque ajuda a leitura da temporada. Um clube que troca técnico e perde jogadores históricos não está apenas fazendo ajustes pontuais. Está redesenhando hierarquia, estilo de jogo e liderança interna. Por isso, saídas como as de Salah, Robertson, Bernardo, Stones, Lewandowski, Goretzka e Vlahovic precisam ser vistas dentro de um cenário maior de reconstrução no futebol europeu.</p>
+
+            <p><strong>Por que essas despedidas importam</strong></p>
+
+            <p>Mostram como o futebol europeu está entrando em uma nova fase. Liverpool e Manchester City, especialmente, passam por mudanças profundas após anos em que seus elencos foram moldados por jogadores de ciclo longo. Quando nomes como Salah, Robertson, Bernardo e Stones saem, não muda apenas a escalação. Muda parte da memória recente dos clubes.</p>
+
+            <p>No Barcelona, a saída de Lewandowski marca o fim de uma solução de curto prazo que deu resultado. No Bayern, Goretzka representa a passagem de uma geração vencedora para outra. Na Juventus, Vlahovic simboliza o encerramento de uma aposta ofensiva cara em um momento de reorganização esportiva e financeira. São movimentos diferentes, mas todos carregam a mesma ideia: clubes grandes precisam renovar sem apagar o que construíram.</p>
+
+            <p>Para o torcedor, esse tipo de despedida costuma pesar mais do que uma transferência comum. São jogadores associados a títulos, noites europeias, reconstruções, finais e momentos de identidade. Por isso, a temporada 2025/26 não será lembrada apenas por campeões e classificações, mas também pelo fim de ciclos que marcaram a história recente de alguns dos clubes mais importantes da Europa.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
