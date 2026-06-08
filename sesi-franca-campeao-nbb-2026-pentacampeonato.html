@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sesi Franca é campeão do NBB e amplia dinastia com pentacampeonato inédito | Corte dos Esportes</title>
+  <meta name="description" content="Time venceu o Pinheiros no Jogo 4, fechou a final do NBB em 3 a 1, teve Georginho como MVP da temporada e das finais, e consolidou uma das maiores dinastias do basquete brasileiro." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Sesi Franca é campeão do NBB e amplia dinastia com pentacampeonato inédito</h1>
+          <p class="subhead" id="articleExcerpt">Time venceu o Pinheiros no Jogo 4, fechou a final do NBB em 3 a 1, teve Georginho como MVP da temporada e das finais, e consolidou uma das maiores dinastias do basquete brasileiro.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">08/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="basquete.html">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Sesi Franca confirmou mais um capítulo histórico no basquete brasileiro. Diante do Pinheiros, no Ginásio Pedrocão lotado, a equipe venceu o Jogo 4 da final do NBB 2026 por 85 a 76, fechou a série decisiva em 3 a 1 e conquistou o quinto título consecutivo da competição. O resultado transformou a sequência francana em uma marca inédita na era NBB e reforçou o clube como uma potência nacional de longa tradição.</p>
+
+            <p><strong>Como foi o Jogo 4</strong></p>
+
+            <p>A partida que decidiu o título teve tensão de final e começou com o Pinheiros disposto a alongar a série. A equipe visitante venceu o primeiro quarto por 24 a 18, mostrando intensidade defensiva, coragem nas ações ofensivas e boa resposta emocional depois da vitória no Jogo 3. Para o Franca, o início exigiu paciência: era uma final em casa, com chance de título, mas contra um adversário que já havia provado que não estava apenas cumprindo tabela.</p>
+
+            <p>A virada começou no segundo quarto. O Franca aumentou a pressão defensiva, forçou decisões mais difíceis do Pinheiros e venceu a parcial por 32 a 22, indo para o intervalo à frente por 50 a 46. No terceiro período, o jogo ficou mais travado, com poucos pontos e muita disputa física. O Franca levou o quarto por 10 a 8 e entrou nos dez minutos finais vencendo por 60 a 54.</p>
+
+            <p>O Pinheiros ainda reagiu no último quarto e chegou a empatar a partida no começo da parcial, mas o Franca teve mais controle nas posses decisivas. Com Lucas Dias agressivo, David Jackson eficiente e Georginho comandando ritmo, rebotes e criação, o time de Helinho Garcia abriu vantagem na reta final e sustentou o 85 a 76 até o estouro do cronômetro.</p>
+
+            <p><strong>Cestinha do jogo do título</strong></p>
+
+            <p> Lucas Dias foi o cestinha do Franca e da partida, com 22 pontos. David Jackson terminou com 18 pontos, enquanto Georginho registrou 17 pontos, 8 rebotes e 8 assistências em uma atuação completa. Pelo Pinheiros, David Sloan e Yan Djalo terminaram com 15 pontos cada, mas a equipe não conseguiu manter o nível ofensivo dos melhores momentos da série.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como foi a série final contra o Pinheiros</strong></p>
+
+            <p>A decisão começou com vitória francana no Pedrocão. No Jogo 1, o Sesi Franca bateu o Pinheiros por 82 a 73, em uma partida na qual a equipe sofreu no primeiro quarto, mas mudou o ritmo defensivo no segundo tempo e construiu vantagem principalmente com um terceiro período forte, vencido por 26 a 11.</p>
+
+            <p>No Jogo 2, no Ginásio do Ibirapuera, o Franca venceu por 78 a 75. A equipe chegou a abrir grande vantagem, viu o Pinheiros reagir no último quarto, mas sustentou o resultado fora de casa. Lucas Dias foi o grande destaque ofensivo, com 26 pontos, 7 rebotes e 5 assistências.</p>
+
+            <p>O Pinheiros evitou a varrida no Jogo 3, também no Ibirapuera, ao vencer por 94 a 92. Foi a partida mais aberta da série, com Betinho marcando 30 pontos pelo time da capital e o Franca tendo Bennett, Rodriguez e Georginho como principais nomes ofensivos. A vitória deixou a final em 2 a 1 e levou a decisão de volta ao Pedrocão.</p>
+
+            <p>No Jogo 4, o Franca fechou a conta com o 85 a 76, confirmou o 3 a 1 na série e transformou a final contra o Pinheiros em mais uma etapa de uma dinastia que já ocupa lugar especial na história do NBB.</p>
+
+            <p><strong>Campanha do Franca nos playoffs</strong></p>
+
+            <p>O caminho até o título mostrou que precisou de maturidade para atravessar séries de perfis diferentes. A equipe teve uma varrida nas oitavas, duas séries longas em seguida e fechou a final contra o Pinheiros em quatro jogos.</p>
+
+            <p><strong>Campanha no mata-mata do NBB:</strong></p>
+
+            <p>• Oitavas de final: Franca 3 x 0 Botafogo</p>
+            <p>• Quartas de final: Franca 3 x 2 Mogi</p>
+            <p>• Semifinal: Franca 3 x 2 Brasília</p>
+            <p>• Final: Franca 3 x 1 Pinheiros</p>
+            <p>• Total nos playoffs: 12 vitórias e 5 derrotas</p>
+
+            <p>Esse recorte ajuda a dimensionar o peso da conquista. O Franca não teve um caminho automático até o troféu, mas confirmou força mental, elenco profundo e capacidade de adaptação. Depois de passar por duas séries decididas no limite, chegou à final mais preparado para lidar com pressão, oscilação e jogos apertados.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Números na fase regular</strong></p>
+
+            <p>Na fase de classificação, o Sesi Franca terminou em primeiro lugar, com 70 pontos, 38 jogos, 32 vitórias, 6 derrotas, campanha de 16-3 em casa, 16-3 fora, 3.451 pontos marcados, 2.922 sofridos, saldo positivo de 529 pontos e aproveitamento de 84,2%.</p>
+
+            <p><strong>MVP da temporada e das finais</strong></p>
+
+            <p>Georginho foi o grande nome individual da campanha francana. Além de comandar o ritmo do time em boa parte da temporada, o armador foi decisivo na final e terminou o NBB com os principais reconhecimentos individuais.</p>
+
+            <p><strong>Prêmios:</strong></p>
+
+            <p>• MVP da temporada regular</p>
+            <p>• MVP das finais</p>
+            <p>• Também eleito o melhor armador da temporada</p>
+            <p>• Médias nas finais: 14,7 pontos, 9,2 rebotes e 6,0 assistências</p>
+            <p>• Destaque geral: líder do Franca em impacto, criação de jogo, rebotes para a posição e controle das posses decisivas</p>
+
+            <p>O peso de Georginho foi além da pontuação. Ele deu equilíbrio ao Franca em momentos de pressão, acelerou quando o jogo permitiu, cadenciou quando a equipe precisou controlar o placar e apareceu como referência técnica em uma campanha que combinou talento individual, profundidade de elenco e continuidade coletiva.</p>
+
+            <p><strong>Cestinhas do Franca na final e na temporada</strong></p>
+
+            <p>Lucas Dias foi o principal nome ofensivo na decisão. Além de ser o cestinha do time no Jogo 4, ele também terminou como o maior pontuador francano na soma dos quatro jogos da final.</p>
+
+            <p><strong>Cestinhas na final do NBB:</strong></p>
+
+            <p>• Jogo do título: Lucas Dias, com 22 pontos no Jogo 4</p>
+            <p>• Maior pontuador do Franca na final: Lucas Dias, com 66 pontos somados</p>
+            <p>• Jogo 1: Lucas Dias fez 8 pontos na vitória por 82 a 73</p>
+            <p>• Jogo 2: Lucas Dias fez 26 pontos na vitória por 78 a 75</p>
+            <p>• Jogo 3: Lucas Dias fez 10 pontos na derrota por 94 a 92</p>
+            <p>• Jogo 4: Lucas Dias fez 22 pontos na vitória por 85 a 76</p>
+            <p>• Média na final: 16,5 pontos por jogo</p>
+
+            <p>Na temporada regular, o principal nome ofensivo do Franca por média foi Georginho, com 17,4 pontos por jogo, além de 8,7 rebotes, 5,5 assistências e 24,8 de eficiência. O dado reforça o tamanho da campanha individual do armador, que terminou o NBB como MVP da temporada, melhor armador e MVP das finais.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Helinho Garcia e a continuidade de uma dinastia</strong></p>
+
+            <p>O título também reforçou o peso do técnico como um dos personagens centrais da história do Franca. Antes de comandar o time à beira da quadra, ele já tinha construído uma trajetória forte como jogador. Natural de Franca, Helinho foi armador, passou por Vasco, Franca e Uberlândia, foi seis vezes campeão brasileiro, disputou dois Mundiais pela Seleção Brasileira e fez parte da equipe campeã dos Jogos Pan-Americanos de Winnipeg, em 1999.</p>
+
+            <p>Esse histórico ajuda a explicar por que o pentacampeonato tem um peso maior do que apenas a soma de cinco taças. Helinho não é um treinador externo que chegou para comandar uma fase vencedora. Ele faz parte da cultura do basquete francano: viveu o clube como jogador, conhece o peso da cidade no esporte e transformou essa ligação em liderança técnica.</p>
+
+            <p>À frente do Franca desde a temporada 2016/17, Helinho comandou a reconstrução do protagonismo nacional da equipe. O trabalho passou por títulos estaduais, Copa Super 8, Liga Sul-Americana, BCLA, Copa Intercontinental e, principalmente, pela sequência de cinco conquistas consecutivas do NBB. Com o penta, ele se isolou como o treinador mais vencedor da história da competição.</p>
+
+            <p>A trajetória ainda carrega um componente familiar relevante para a identidade do basquete em Franca. Helinho é filho de Hélio Rubens Garcia, um dos grandes nomes da história do basquete brasileiro como jogador e técnico. Por isso, a conquista também amplia uma linhagem esportiva diretamente ligada à cidade, ao Pedrocão e à construção do Franca como maior referência nacional da modalidade.</p>
+
+            <p>Mais do que empilhar taças, o Franca consolidou uma identidade: elenco profundo, protagonismo de jogadores experientes, força em casa, leitura de jogo nas decisões e continuidade técnica. Para entender melhor o peso dessa conquista dentro da liga, a trajetória se conecta diretamente à <a href="https://cortedosesportes.com.br/nbb-historia-formato-maiores-campeoes-basquete-brasileiro.html">história do NBB</a>.</p>
+
+            <p><strong>Maior campeão</strong></p>
+
+            <p>Com a conquista, o Sesi Franca ampliou sua marca como maior campeão brasileiro de basquete, chegando a 16 títulos nacionais. No recorte específico do NBB, o feito mais importante foi o pentacampeonato consecutivo, algo inédito desde a criação da liga.</p>
+
+            <p>O vice do Pinheiros também teve peso esportivo. A equipe chegou à decisão com um projeto jovem, competitivo e de identidade clara, terminou a fase regular em segundo lugar e confirmou que pode permanecer como força relevante nas próximas temporadas. Ainda assim, o título ficou com o time que melhor representa a estabilidade recente do basquete brasileiro: o Franca, campeão de novo, agora com um penta que já nasce histórico.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
