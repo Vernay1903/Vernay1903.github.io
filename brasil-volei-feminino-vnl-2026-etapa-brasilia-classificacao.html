@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brasil fecha primeira etapa da VNL invicto e ganha força com nova geração | Corte dos Esportes</title>
+  <meta name="description" content="Seleção brasileira feminina venceu os quatro jogos da etapa de Brasília da Liga das Nações de Vôlei, derrubou a invencibilidade da Itália e assumiu a liderança geral da competição." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Brasil fecha primeira etapa da VNL invicto e ganha força com nova geração</h1>
+          <p class="subhead" id="articleExcerpt">Seleção brasileira feminina venceu os quatro jogos da etapa de Brasília da Liga das Nações de Vôlei, derrubou a invencibilidade da Itália e assumiu a liderança geral da competição.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">08/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="volei.html">Volei</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A seleção brasileira feminina de vôlei começou a Liga das Nações de 2026 com uma campanha forte, simbólica e cheia de sinais positivos para a temporada. Jogando no Ginásio Nilson Nelson, em Brasília, o Brasil venceu Holanda, República Dominicana, Bulgária e Itália, fechou a primeira etapa com 100% de aproveitamento e assumiu a liderança geral da VNL.</p>
+
+            <p>Mais do que os resultados, a etapa deixou uma leitura importante: o time comandado por José Roberto Guimarães conseguiu vencer jogos de perfis diferentes. Teve estreia com susto, reação depois de perder o primeiro set, vitória dominante e, no fechamento, um triunfo de peso contra a Itália, atual potência do vôlei feminino e dona de uma longa sequência invicta.</p>
+
+            <p>A campanha também reforçou a transição da seleção. Ao lado de jogadoras mais experientes, nomes como Julia Bergmann, Júlia Kudiess, Ana Cristina e Tainara ganharam protagonismo em momentos importantes. O Brasil saiu da etapa não apenas com vitórias, mas com sinais de profundidade de elenco, força física e alternativas para uma temporada que ainda terá muitos testes.</p>
+
+            <p><strong>Campanha do Brasil na etapa de Brasília</strong></p>
+
+            <p>Seleção fez quatro jogos na primeira semana da Liga das Nações e venceu todos. A equipe somou três vitórias por 3 sets a 1 ou 3 a 0 e fechou a etapa com um jogo de cinco sets contra a Itália.</p>
+
+            <p><strong>Resultados na primeira etapa da VNL feminina:</strong></p>
+
+            <p>• Brasil 3 x 1 Holanda — 25/17, 25/15, 25/27 e 25/23</p>
+            <p>• Brasil 3 x 1 República Dominicana — 23/25, 25/18, 25/11 e 25/15</p>
+            <p>• Brasil 3 x 0 Bulgária — 25/23, 25/17 e 25/13</p>
+            <p>• Brasil 3 x 2 Itália — 25/15, 25/22, 22/25, 24/26 e 15/12</p>
+
+            <p>A campanha foi valiosa porque não teve um único padrão. Contra a Holanda, o Brasil começou muito bem, abriu 2 a 0, perdeu o terceiro set em uma parcial longa e precisou controlar a reação adversária no quarto. Contra a República Dominicana, saiu atrás, reorganizou o passe e dominou os três sets seguintes. Diante da Bulgária, venceu com autoridade. Já contra a Itália, precisou de força emocional para fechar no tie-break depois de ver as italianas empatarem a partida.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Vitória sobre a Itália foi o ponto alto</strong></p>
+
+            <p>O resultado mais importante da etapa veio no último jogo. O Brasil venceu a Itália por 3 sets a 2, em uma partida de alto nível e com peso especial para a sequência da competição. As italianas chegaram ao confronto com 39 vitórias consecutivas, uma marca que mostrava o tamanho do desafio brasileiro.</p>
+
+            <p>A seleção começou em ritmo forte e venceu os dois primeiros sets por 25/15 e 25/22. A Itália reagiu, cresceu no ataque e buscou o empate com parciais de 25/22 e 26/24. No tie-break, o Brasil voltou a ter agressividade, sustentou melhor a recepção nos momentos decisivos e fechou em 15/12.</p>
+
+            <p>Esse jogo teve um valor maior do que uma vitória isolada de fase classificatória. A Itália vinha de domínio recente no cenário internacional, com um ciclo de altíssimo rendimento, e derrubar essa sequência logo na primeira etapa da VNL dá ao Brasil confiança competitiva. Para uma seleção que ainda busca o título inédito da Liga das Nações, vencer uma rival desse peso ajuda a medir o nível real do grupo.</p>
+
+            <p><strong>Destaques individuais do Brasil</strong></p>
+
+            <p>A etapa de Brasília mostrou uma seleção mais distribuída ofensivamente, sem depender de uma única jogadora para decidir os jogos. Esse ponto é importante para uma competição longa, com 12 partidas na fase preliminar e necessidade de rotação de elenco.</p>
+
+            <p><strong>Principais destaques na etapa:</strong></p>
+
+            <p>• Julia Bergmann: liderou o ataque brasileiro na estreia contra a Holanda, com 23 pontos, sendo uma das principais referências ofensivas do time.</p>
+            <p>• Tainara: foi decisiva contra a República Dominicana, quando marcou 20 pontos e liderou a virada brasileira depois da perda do primeiro set.</p>
+            <p>• Tainara novamente: também foi a maior pontuadora do Brasil contra a Bulgária, com 14 pontos, mostrando consistência em jogos consecutivos.</p>
+            <p>• Ana Cristina: apareceu bem na vitória sobre a Bulgária, com 13 pontos, e foi peça importante na construção ofensiva da seleção.</p>
+            <p>• Júlia Kudiess: ganhou destaque pelo bloqueio, presença no meio de rede e impacto emocional, especialmente na vitória contra a Itália.</p>
+            <p>• Macris: deu ritmo à distribuição, ajudando o Brasil a variar mais as bolas entre pontas, opostas e centrais.</p>
+            <p>• Nyeme: sustentou momentos importantes no fundo de quadra, principalmente quando o Brasil precisou estabilizar passe e defesa.</p>
+
+            <p>O ponto mais forte da etapa foi a combinação entre juventude e experiência. O Brasil teve energia, altura e potência com as jogadoras mais novas, mas também contou com controle de jogo em momentos de pressão. Em uma VNL que serve como laboratório e vitrine internacional, essa mistura é essencial.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A nova geração ganha espaço</strong></p>
+
+            <p>A etapa também reforçou uma mudança importante no vôlei feminino brasileiro. A seleção ainda tem nomes consagrados no ciclo, mas a base jovem já não aparece apenas como promessa. Ela começa a decidir jogos relevantes.</p>
+
+            <p>Julia Bergmann é um exemplo claro desse processo. A ponteira já vinha sendo observada como peça importante pela capacidade ofensiva, pelo alcance no ataque e pela experiência acumulada no vôlei internacional. Na estreia, assumiu protagonismo e mostrou que pode ser uma opção real de pontuação em jogos grandes.</p>
+
+            <p>Júlia Kudiess também tem papel estratégico. Em uma seleção que historicamente sempre valorizou centrais fortes, a presença dela dá ao Brasil bloqueio, bola rápida e imposição física. Contra adversárias de alto nível, essa capacidade no meio de rede pode mudar o ritmo de uma partida.</p>
+
+            <p>Ana Cristina entra nesse mesmo recorte de renovação. Com potência e boa leitura ofensiva, ela amplia o leque de alternativas de Zé Roberto. Tainara, por sua vez, ganhou peso pela regularidade nos primeiros jogos e mostrou capacidade de pontuar em cenários diferentes.</p>
+
+            <p>Essa geração não elimina a importância das veteranas. Ao contrário: cresce melhor quando tem ao lado jogadoras capazes de organizar a equipe em momentos de instabilidade. O Brasil mostrou em Brasília que pode formar uma seleção mais profunda, menos previsível e com mais opções de virada ao longo de uma partida.</p>
+
+            <p><strong>Como ficou a classificação da VNL feminina</strong></p>
+
+            <p>Com a campanha perfeita em Brasília, o Brasil terminou a primeira etapa na liderança geral da Liga das Nações. A seleção somou 11 pontos, mesma pontuação do Japão, mas ficou à frente nos critérios de desempate.</p>
+
+            <p><strong>Top 8 da classificação após a primeira etapa:</strong></p>
+
+            <p>• 1º lugar: Brasil — 4 vitórias, 0 derrotas, 11 pontos</p>
+            <p>• 2º lugar: Japão — 4 vitórias, 0 derrotas, 11 pontos</p>
+            <p>• 3º lugar: Itália — 3 vitórias, 1 derrota, 10 pontos</p>
+            <p>• 4º lugar: Tchéquia — 3 vitórias, 1 derrota, 9 pontos</p>
+            <p>• 5º lugar: Estados Unidos — 3 vitórias, 1 derrota, 8 pontos</p>
+            <p>• 6º lugar: China — 3 vitórias, 1 derrota, 8 pontos</p>
+            <p>• 7º lugar: Polônia — 3 vitórias, 1 derrota, 7 pontos</p>
+            <p>• 8º lugar: Canadá — 2 vitórias, 2 derrotas, 7 pontos</p>
+
+            <p>A classificação é relevante porque a fase preliminar da VNL funciona em sistema de pontos corridos. Cada seleção disputa 12 partidas ao longo de três semanas, e as oito melhores avançam à fase final. Começar com quatro vitórias coloca o Brasil em posição confortável, mas ainda não resolve a classificação. A próxima etapa terá adversárias fortes e pode redefinir o topo da tabela.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Próxima etapa do Brasil na Liga das Nações</strong></p>
+
+            <p>Depois da etapa em Brasília, o Brasil volta à quadra na segunda semana da VNL, em Ancara, na Turquia. Serão mais quatro partidas, agora longe da torcida brasileira e contra rivais de perfis diferentes.</p>
+
+            <p><strong>Próximos jogos do Brasil na VNL feminina:</strong></p>
+
+            <p>• 17/06: Brasil x França, às 10h</p>
+            <p>• 18/06: Brasil x Bélgica, às 10h</p>
+            <p>• 20/06: Brasil x China, às 10h</p>
+            <p>• 21/06: Brasil x Alemanha, às 10h</p>
+
+            <p>A sequência contra China e Alemanha deve ser o trecho mais exigente da etapa. A China começou bem a competição e costuma oferecer um jogo físico, com bloqueio forte e ataque alto. A Alemanha, por sua vez, pode testar a consistência brasileira em ralis mais longos e em momentos de pressão no saque.</p>
+
+            <p>Para o Brasil, a missão será confirmar que a etapa de Brasília não foi apenas embalo de estreia em casa. A seleção precisa manter o nível de recepção, reduzir oscilações dentro dos sets e seguir dando rodagem às jogadoras que fazem parte da renovação.</p>
+
+            <p><strong>O que a etapa significa para a seleção</strong></p>
+
+            <p>A primeira etapa da VNL deixa o Brasil em uma posição excelente, mas o principal ganho talvez esteja no conteúdo da campanha. O time venceu, liderou a classificação, derrubou uma potência invicta e ainda testou peças importantes da nova geração.</p>
+
+            <p>Esse tipo de início tem impacto esportivo e psicológico. A seleção passa a segunda etapa com margem na tabela, confiança no elenco e uma vitória de referência contra a Itália. Para um grupo que busca transformar potencial em título, isso importa.</p>
+
+            <p>A VNL ainda está longe da fase decisiva, mas Brasília entregou uma mensagem clara: o Brasil começou competitivo, mais profundo e com jovens assumindo responsabilidade. A sequência da campanha, mostra porque o torneio se tornou um dos principais termômetros da seleção feminina no calendário internacional. Para entender melhor o peso da competição, seu formato e a relevância dentro do vôlei mundial, a campanha brasileira se conecta diretamente à <a href="volleyball-nations-league-2026-formato-datas-selecoes.html">história da Liga das Nações de Vôlei</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "volei";
+  const CATEGORY_NAME = "Volei";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
