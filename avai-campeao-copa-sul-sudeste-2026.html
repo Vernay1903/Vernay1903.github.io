@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Avaí vence nos pênaltis e é campeão da Copa Sul-Sudeste | Corte dos Esportes</title>
+  <meta name="description" content="Time superou a Chapecoense no clássico catarinense, conquistou a primeira edição da Copa Sul-Sudeste, garantiu vaga na Copa do Brasil de 2027 e ampliou sua galeria de títulos nacionais." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Avaí vence nos pênaltis e é campeão da Copa Sul-Sudeste</h1>
+          <p class="subhead" id="articleExcerpt">Time superou a Chapecoense no clássico catarinense, conquistou a primeira edição da Copa Sul-Sudeste, garantiu vaga na Copa do Brasil de 2027 e ampliou sua galeria de títulos nacionais.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">08/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Avaí escreveu um capítulo novo em sua história ao conquistar a primeira edição da Copa Sul-Sudeste. O título veio na Arena Condá, em Chapecó, após uma final dramática contra a Chapecoense, decidida nos pênaltis depois de dois jogos com placares idênticos: 3 a 0 para o Avaí na Ressacada e 3 a 0 para a Chape na volta.</p>
+
+            <p>A taça teve peso esportivo, financeiro e simbólico. Além de colocar o clube como o primeiro campeão da competição criada para reunir equipes das regiões que dão nome ao torneio, a conquista garantiu ao Leão da Ilha uma vaga direta na terceira fase da Copa do Brasil de 2027. Em uma temporada longa, com disputa de Série B e pressão por resultados, o título também funcionou como resposta competitiva de um elenco que precisou sofrer fora de casa para levantar a taça.</p>
+
+            <p><strong>O contexto da final na Arena Condá</strong></p>
+
+            <p>O Avaí chegou ao jogo de volta com uma vantagem que parecia confortável. Na ida, na Ressacada, havia vencido por 3 a 0 e aberto uma margem para administrar o placar em Chapecó. Só que a final ganhou contornos dramáticos na Arena Condá, em um clássico catarinense jogado sob pressão, com a torcida da casa empurrando a Chape e o Leão tentando proteger a vantagem construída em Florianópolis.</p>
+
+            <p>A Chapecoense começou a reação ainda no primeiro tempo. João Paulo abriu o placar aos 23 minutos, recolocando o time da casa na disputa e mudando o clima da decisão. O gol obrigou o Avaí a lidar com um cenário mais desconfortável: a vantagem no agregado ainda era boa, mas a partida já não permitia relaxamento.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>No segundo tempo, a pressão aumentou. João Paulo voltou a marcar aos 30 minutos da etapa final e deixou o agregado em 3 a 2 para o Avaí. A partir daí, a final virou um teste emocional. A Chapecoense passou a jogar com o estádio inflamado, enquanto o Avaí precisava resistir para não deixar escapar uma taça que parecia encaminhada depois do jogo de ida.</p>
+
+            <p>O momento mais dramático veio nos acréscimos. Bruno Pacheco marcou o terceiro gol da Chapecoense, aos 46 minutos do segundo tempo, devolveu o 3 a 0 da Ressacada e empatou o placar agregado em 3 a 3. Para aumentar a tensão, o Avaí ainda teve Wallison expulso na reta final, o que reforçou o peso psicológico da decisão.</p>
+
+            <p>Com o agregado empatado, a taça foi para os pênaltis. O Avaí, que havia perdido a vantagem construída no tempo normal, precisou mostrar frieza no momento mais pesado da final. Nas cobranças, o time converteu todas as batidas, venceu por 5 a 4 e transformou uma tarde de sofrimento em título histórico.</p>
+
+            <p><strong>Veja os melhores momentos da partida abaixo:</strong></p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XSXLC2Vgh4s" title="Chapecoense x Avaí - melhores momentos da final da Copa Sul-Sudeste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>O título não veio em uma campanha linear, mas em uma trajetória de recuperação. O Avaí oscilou na fase classificatória, cresceu no mata-mata e chegou à final com força suficiente para abrir 3 a 0 no primeiro jogo contra a Chapecoense.</p>
+
+            <p><strong>Números gerais da campanha:</strong></p>
+
+            <ul>
+              <li>Jogos: 10</li>
+              <li>Vitórias: 6</li>
+              <li>Empates: 2</li>
+              <li>Derrotas: 3</li>
+              <li>Gols marcados: 18</li>
+              <li>Gols sofridos: 13</li>
+              <li>Posição na primeira fase: 1º lugar do Grupo B</li>
+            </ul>
+
+            <p><strong>Todos os jogos do Avaí:</strong></p>
+
+            <ul>
+              <li>1ª rodada: Tombense 3 x 2 Avaí</li>
+              <li>2ª rodada: Avaí 2 x 2 Cianorte</li>
+              <li>3ª rodada: Chapecoense 2 x 1 Avaí</li>
+              <li>4ª rodada: Avaí 1 x 0 Caxias</li>
+              <li>5ª rodada: Novorizontino 1 x 2 Avaí</li>
+              <li>6ª rodada: Avaí 2 x 0 Sampaio Corrêa-RJ</li>
+              <li>Semifinal ida: Volta Redonda 2 x 2 Avaí</li>
+              <li>Semifinal volta: Avaí 3 x 0 Volta Redonda</li>
+              <li>Final ida: Avaí 3 x 0 Chapecoense</li>
+              <li>Final volta: Chapecoense 3 x 0 Avaí — Avaí campeão nos pênaltis</li>
+            </ul>
+
+            <p>A lista ajuda a explicar o peso da conquista. O Avaí perdeu dois jogos na primeira fase, empatou fora na semifinal, resolveu a vaga em casa com autoridade e construiu na ida da final o placar que manteve a equipe viva mesmo depois da pressão sofrida na Arena Condá.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A premiação do campeão e do vice</strong></p>
+
+            <p>A Copa Sul-Sudeste teve dois tipos de recompensa importantes para o Avaí. A principal, prevista esportivamente, foi a vaga direta na terceira fase da Copa do Brasil de 2027. Esse ponto é estratégico porque evita fases iniciais, encurta o caminho no torneio nacional e coloca o clube em uma etapa de maior visibilidade e maior potencial de receita.</p>
+
+            <p>Nos valores divulgados para a competição, o campeão teve direito a R$ 500 mil pela conquista, além de cotas acumuladas ao longo da campanha. Como o Avaí também recebeu cota de participação e premiação por chegar à semifinal, o valor total acumulado pelo clube chegou a R$ 900 mil. A Chapecoense, como vice-campeã, acumulou R$ 650 mil.</p>
+
+            <p>Essa vaga é tão relevante quanto a premiação imediata. Em 2026, clubes da Série B que chegaram à terceira fase da Copa do Brasil receberam R$ 1,53 milhão nessa etapa. O valor de 2027 ainda dependerá da tabela de premiação da próxima edição, mas a vaga já coloca o Avaí em uma posição esportiva e financeira melhor para o calendário do ano seguinte. A conquista se conecta diretamente ao peso histórico da <a href="copa-do-brasil-historia-tradicao-maiores-campeoes.html">Copa do Brasil</a>.</p>
+
+            <p><strong>O que o título vale além da taça</strong></p>
+
+            <p>A conquista entrega ao Avaí algo que vai além do troféu. Primeiro, porque o clube passa a ser o campeão inaugural da Copa Sul-Sudeste. Toda competição nova cria sua própria memória, e o primeiro campeão carrega sempre um valor especial no registro histórico.</p>
+
+            <p>Segundo, porque o título veio contra um rival catarinense, fora de casa, em um jogo de enorme pressão. O Avaí perdeu por 3 a 0 no tempo normal, viu a vantagem desaparecer, mas teve maturidade para acertar todas as cobranças de pênalti. Esse tipo de vitória tem peso emocional para torcida, elenco e comissão técnica.</p>
+
+            <p>Terceiro, porque a vaga na Copa do Brasil de 2027 muda o planejamento. O clube ganha calendário nacional garantido em uma fase mais avançada e passa a ter uma possibilidade concreta de receita adicional. Para um time que disputa a Série B, esse tipo de premiação pode influenciar montagem de elenco, metas esportivas e orçamento da temporada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Os títulos nacional</strong></p>
+
+            <p>O grande título nacional do Avaí era o Campeonato Brasileiro da Série C de 1998. Aquela conquista marcou o clube no cenário nacional e é simbolizada pela estrela amarela no escudo avaiano.</p>
+
+            <p>Por isso, a Copa Sul-Sudeste de 2026 entra em uma prateleira importante. Não tem o mesmo peso estrutural de uma divisão nacional do Campeonato Brasileiro, mas é uma competição oficial organizada pela CBF, com clubes de duas regiões tradicionais do futebol brasileiro e com vaga direta na Copa do Brasil. Para a história do clube, é mais um título nacional no currículo profissional.</p>
+
+            <p><strong>Avaí coloca o nome na história da Copa Sul-Sudeste</strong></p>
+
+            <p>A primeira edição nasceu com um papel claro no calendário: criar uma competição regional para clubes das regiões que não estavam em torneios continentais, oferecendo jogos oficiais, premiação e uma vaga relevante na Copa do Brasil. Para entender o desenho do torneio, o título do Avaí ganha ainda mais peso dentro da <a href="competicao-sul-sudeste-formato-times-participantes.html">da primeira edição da competição</a>.</p>
+
+            <p>Ao vencer a Chapecoense nos pênaltis, o Avaí não apenas ganhou uma final. O clube se tornou o primeiro nome gravado na galeria de campeões do torneio. Fez isso com goleada na ida, sofrimento na volta, precisão nas penalidades e uma campanha que misturou oscilação, reação e eficiência no mata-mata.</p>
+
+            <p>Para uma equipe centenária, campeã nacional da Série C, multicampeã catarinense e agora campeã da primeira edição de uma competição nacional, a taça representa mais um marco de identidade: o Avaí voltou a levantar um título com roteiro dramático, longe de casa e com a assinatura emocional que costuma transformar uma conquista em memória permanente para a torcida.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
