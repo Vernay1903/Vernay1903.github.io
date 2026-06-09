@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Títulos do Grêmio na Copa do Brasil: tradição, campanhas e finais marcantes | Corte dos Esportes</title>
+  <meta name="description" content="Tricolor gaúcho se tornou PentaCampeão, foi o primeiro campeão do torneio e construiu uma das trajetórias mais fortes da competição." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Títulos do Grêmio na Copa do Brasil: tradição, campanhas e finais marcantes</h1>
+          <p class="subhead" id="articleExcerpt">Tricolor gaúcho se tornou PentaCampeão, foi o primeiro campeão do torneio e construiu uma das trajetórias mais fortes da competição.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">09/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Grêmio tem uma relação direta com a história da Copa do Brasil. O clube não apenas venceu o torneio cinco vezes, como também foi o primeiro campeão da competição, em 1989. Desde a edição inaugural, o Tricolor gaúcho construiu uma identidade forte em mata-mata, marcada por campanhas invictas, decisões fora de casa, grandes atuações em finais e personagens que ajudaram a consolidar a fama copeira do clube.</p>
+
+            <p>Cada conquista teve um peso próprio. A primeira colocou o Grêmio na galeria inaugural da competição. A segunda reafirmou a força do clube no início dos anos 1990. A terceira veio em pleno Maracanã, contra o Flamengo. A quarta consolidou o Tricolor como primeiro tetracampeão da Copa do Brasil. A quinta encerrou um jejum nacional de 15 anos e deu a Arena do Grêmio, o primeiro grande título dentro da nova casa.</p>
+
+            <p>Essa sequência ajuda a explicar por que é tratado como um dos clubes mais simbólicos da Copa do Brasil. A competição combina bem com a tradição gremista: jogos eliminatórios, pressão, vantagem construída fora de casa, força defensiva, capacidade de decisão e jogadores acostumados a partidas grandes.</p>
+
+            <p>O peso dessa trajetória fica ainda mais claro quando ela é lida dentro da <a href="copa-do-brasil-historia-tradicao-maiores-campeoes.html">história da Copa do Brasil</a>, competição que virou uma das mais importantes do calendário brasileiro.</p>
+
+            <p><strong>Os títulos</strong></p>
+
+            <p>Três taças vieram de forma invicta: 1989, 1994 e 1997. As outras duas, em 2001 e 2016, tiveram campanhas mais duras, mas com finais de enorme peso histórico.</p>
+
+            <p><strong>Adversários dos títulos:</strong></p>
+            <p>• 1989: campeão contra o Sport</p>
+            <p>• 1994: campeão contra o Ceará</p>
+            <p>• 1997: campeão contra o Flamengo</p>
+            <p>• 2001: campeão contra o Corinthians</p>
+            <p>• 2016: campeão contra o Atlético-MG</p>
+
+            <p>A lista mostra a diversidade das conquistas. O Grêmio venceu finais contra clubes do Nordeste, do Rio de Janeiro, de São Paulo e de Minas Gerais. Também decidiu títulos em contextos diferentes: no antigo Olímpico, no Maracanã, no Morumbi e na Arena do Grêmio.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>1989: o primeiro campeão da Copa do Brasil</strong></p>
+
+            <p>A edição inaugural reunia campeões e vices estaduais em formato eliminatório, com jogos de ida e volta. Para o vencedor, além do título nacional, havia também a vaga na Libertadores.</p>
+
+            <p>O Grêmio fez uma campanha dominante e invicta. Passou por Ibiraçu, Mixto, Bahia, Flamengo e Sport. O momento mais marcante antes da final foi a semifinal contra o Flamengo. Depois de empatar por 2 a 2 no Maracanã, o Tricolor atropelou por 6 a 1 no Olímpico e avançou à decisão.</p>
+
+            <p><strong>Campanha completa de 1989:</strong></p>
+            <p>• Grêmio 1 x 0 Ibiraçu</p>
+            <p>• Grêmio 6 x 0 Ibiraçu</p>
+            <p>• Grêmio 5 x 0 Mixto</p>
+            <p>• Grêmio 1 x 0 Mixto — W.O.</p>
+            <p>• Grêmio 2 x 0 Bahia</p>
+            <p>• Grêmio 1 x 0 Bahia</p>
+            <p>• Grêmio 2 x 2 Flamengo</p>
+            <p>• Grêmio 6 x 1 Flamengo</p>
+            <p>• Grêmio 0 x 0 Sport</p>
+            <p>• Grêmio 2 x 1 Sport</p>
+
+            <p>Na final, o primeiro jogo contra o Sport terminou empatado por 0 a 0 em Recife. Na volta, o Olímpico recebeu a decisão que inaugurou a galeria de campeões da competição. O Grêmio venceu por 2 a 1, com gols de Assis e Cuca. O gol pernambucano foi contra, marcado por Mazaropi.</p>
+
+            <p><strong>Números da campanha:</strong></p>
+            <p>• Jogos: 10</p>
+            <p>• Vitórias: 8</p>
+            <p>• Empates: 2</p>
+            <p>• Derrotas: 0</p>
+            <p>• Gols marcados: 26</p>
+            <p>• Gols sofridos: 4</p>
+            <p>• Artilheiro gremista na campanha: Cuca, com 6 gols</p>
+
+            <p>O título de 1989 colocou o Grêmio em uma posição única: o clube virou o primeiro campeão da Copa do Brasil e, desde o início, ajudou a dar identidade ao torneio.</p>
+
+            <p><strong>1994: bicampeonato invicto com Felipão</strong></p>
+
+            <p>Cinco anos depois, voltou a conquistar a competição. A campanha de 1994 também foi invicta e teve <a href="felipao-luiz-felipe-scolari-historia-titulos-carreira.html">Luiz Felipe Scolari</a> no comando. O título reforçou a imagem do clube como time de mata-mata e abriu caminho para a Libertadores de 1995, que também terminaria com taça.</p>
+
+            <p>O Grêmio enfrentou Criciúma, Corinthians, Vitória, Vasco e Ceará. A equipe mostrou equilíbrio competitivo: não perdeu, sofreu poucos gols e soube administrar confrontos difíceis contra adversários tradicionais.</p>
+
+            <p><strong>Campanha de 1994:</strong></p>
+            <p>• Grêmio 2 x 2 Criciúma</p>
+            <p>• Grêmio 2 x 1 Criciúma</p>
+            <p>• Grêmio 2 x 0 Corinthians</p>
+            <p>• Grêmio 2 x 2 Corinthians</p>
+            <p>• Grêmio 1 x 0 Vitória</p>
+            <p>• Grêmio 1 x 0 Vitória</p>
+            <p>• Grêmio 0 x 0 Vasco</p>
+            <p>• Grêmio 2 x 1 Vasco</p>
+            <p>• Grêmio 0 x 0 Ceará</p>
+            <p>• Grêmio 1 x 0 Ceará</p>
+
+            <p>A final contra o Ceará foi dura. O primeiro jogo terminou 0 a 0 em Fortaleza. Na volta, no Olímpico, Nildo marcou logo no início e fez o gol do título. O placar de 1 a 0 confirmou o bicampeonato gremista.</p>
+
+            <p><strong>Números da campanha de 1994:</strong></p>
+            <p>• Jogos: 10</p>
+            <p>• Vitórias: 6</p>
+            <p>• Empates: 4</p>
+            <p>• Derrotas: 0</p>
+            <p>• Gols marcados: 13</p>
+            <p>• Gols sofridos: 3</p>
+
+            <p>A conquista teve valor esportivo e simbólico. Além de ampliar a história do Grêmio na Copa do Brasil, ela colocou o clube novamente na Libertadores, competição que o Tricolor venceria no ano seguinte.</p>
+
+            <p><strong>1997: título no Maracanã e Paulo Nunes artilheiro</strong></p>
+
+            <p>O título de 1997 é um dos mais lembrados da história gremista na Copa do Brasil. O Grêmio voltou a ser campeão invicto e decidiu a taça contra o Flamengo, no <a href="maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>, diante de mais de 100 mil pessoas. A final teve peso especial porque o adversário era forte, tinha Romário em campo, o palco era gigante e o desfecho veio fora de casa.</p>
+
+            <p>Antes da decisão, o Grêmio passou por Fortaleza, Portuguesa, Vitória e Corinthians. A campanha teve mais empates do que vitórias, mas o time mostrou maturidade em mata-mata e enorme capacidade de competir longe de Porto Alegre.</p>
+
+            <p><strong>Campanha de 1997:</strong></p>
+            <p>• Grêmio 3 x 2 Fortaleza</p>
+            <p>• Grêmio 3 x 1 Fortaleza</p>
+            <p>• Grêmio 2 x 1 Portuguesa</p>
+            <p>• Grêmio 1 x 1 Portuguesa</p>
+            <p>• Grêmio 2 x 0 Vitória</p>
+            <p>• Grêmio 3 x 3 Vitória</p>
+            <p>• Grêmio 2 x 1 Corinthians</p>
+            <p>• Grêmio 1 x 1 Corinthians</p>
+            <p>• Grêmio 0 x 0 Flamengo</p>
+            <p>• Grêmio 2 x 2 Flamengo</p>
+
+            <p>Na final, o primeiro jogo terminou 0 a 0 no Olímpico. No Maracanã, o Flamengo saiu na frente, mas o Grêmio buscou o resultado. João Antônio e Carlos Miguel marcaram para o Tricolor, enquanto Lúcio e Romário fizeram para os cariocas. O empate por 2 a 2 deu o título ao Grêmio pelo critério de gols fora.</p>
+
+            <p>A noite também ficou marcada pela presença da torcida gremista em um Maracanã tomado por rubro-negros. Mesmo em minoria, os gremistas transformaram a conquista em um dos capítulos mais simbólicos da identidade copeira do clube. O canto “Ah, eu sou gaúcho” ecoou no estádio e virou parte da memória afetiva daquela decisão.</p>
+
+            <p><strong>Números da campanha de 1997:</strong></p>
+            <p>• Jogos: 10</p>
+            <p>• Vitórias: 5</p>
+            <p>• Empates: 5</p>
+            <p>• Derrotas: 0</p>
+            <p>• Gols marcados: 19</p>
+            <p>• Gols sofridos: 12</p>
+            <p>• Artilheiro gremista: Paulo Nunes, com 9 gols</p>
+            <p>• Técnico: Evaristo de Macedo</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>Paulo Nunes foi o grande nome individual da campanha. Além de liderar a artilharia gremista, terminou como artilheiro da competição. O título de 1997 consolidou o atacante como personagem central da história do Grêmio.</p>
+
+            <p><strong>2001: o tetra contra o Corinthians no Morumbi</strong></p>
+
+            <p>Em 2001, conquistou pela quarta vez. Diferentemente dos títulos de 1989, 1994 e 1997, a campanha não foi invicta. Mesmo assim, talvez tenha sido uma das trajetórias mais fortes do clube pela sequência de adversários e pela forma como a final foi decidida.</p>
+
+            <p>Com Tite no comando, o Grêmio eliminou Villa Nova, Santa Cruz, Fluminense, São Paulo e Coritiba antes de enfrentar o Corinthians na final. A campanha teve jogos de muitos gols, viradas de cenário e uma decisão marcante fora de casa.</p>
+
+            <p><strong>Campanha de 2001:</strong></p>
+            <p>• Villa Nova 3 x 2 Grêmio</p>
+            <p>• Grêmio 4 x 1 Villa Nova</p>
+            <p>• Santa Cruz 1 x 0 Grêmio</p>
+            <p>• Grêmio 3 x 1 Santa Cruz</p>
+            <p>• Grêmio 1 x 0 Fluminense</p>
+            <p>• Fluminense 0 x 0 Grêmio</p>
+            <p>• Grêmio 2 x 1 São Paulo</p>
+            <p>• São Paulo 3 x 4 Grêmio</p>
+            <p>• Grêmio 3 x 1 Coritiba</p>
+            <p>• Coritiba 0 x 1 Grêmio</p>
+            <p>• Grêmio 2 x 2 Corinthians</p>
+            <p>• Corinthians 1 x 3 Grêmio</p>
+
+            <p>A final começou com empate por 2 a 2 no Olímpico. O Corinthians abriu 2 a 0, mas o Grêmio reagiu e manteve viva a disputa. Na volta, no Morumbi, o Tricolor venceu por 3 a 1, com gols de Marinho, Zinho e Marcelinho Paraíba. Ewerthon marcou para o Corinthians.</p>
+
+            <p><strong>Números da campanha de 2001:</strong></p>
+            <p>• Jogos: 12</p>
+            <p>• Vitórias: 8</p>
+            <p>• Empates: 2</p>
+            <p>• Derrotas: 2</p>
+            <p>• Gols marcados: 25</p>
+            <p>• Gols sofridos: 14</p>
+            <p>• Artilheiro gremista: Marcelinho Paraíba, com 6 gols</p>
+            <p>• Técnico: Tite</p>
+
+            <p>A conquista fez do Grêmio o primeiro tetracampeão da Copa do Brasil. Também marcou uma das grandes noites do clube fora do Rio Grande do Sul, com vitória dominante em São Paulo contra um adversário de enorme peso nacional.</p>
+
+            <p><strong>2016: o penta, a Arena e o fim do jejum nacional</strong></p>
+
+            <p>O título de 2016 encerrou um intervalo de 15 anos sem conquistas nacionais de grande expressão para o Grêmio, além de se tornar também o primeiro PentaCampeão. A campanha começou nas oitavas de final, porque o clube entrou na competição já em fase avançada. A trajetória foi curta em número de jogos, mas pesada em dificuldade.</p>
+
+            <p>O Grêmio passou por Athletico-PR, Palmeiras, Cruzeiro e Atlético-MG. No meio do caminho, houve mudança de comando. Renato Portaluppi assumiu durante a campanha e transformou o time em uma equipe mais confiante, competitiva e decisiva.</p>
+
+            <p><strong>Campanha de 2016:</strong></p>
+            <p>• Athletico-PR 0 x 1 Grêmio</p>
+            <p>• Grêmio 0 x 1 Athletico-PR — Grêmio avançou nos pênaltis</p>
+            <p>• Grêmio 2 x 1 Palmeiras</p>
+            <p>• Palmeiras 1 x 1 Grêmio</p>
+            <p>• Cruzeiro 0 x 2 Grêmio</p>
+            <p>• Grêmio 0 x 0 Cruzeiro</p>
+            <p>• Atlético-MG 1 x 3 Grêmio</p>
+            <p>• Grêmio 1 x 1 Atlético-MG</p>
+
+            <p>A final contra o Atlético-MG foi definida principalmente no Mineirão. No jogo de ida, o Grêmio venceu por 3 a 1, com dois gols de Pedro Rocha e um de Everton. Gabriel descontou para o time mineiro. A atuação fora de casa deu ao Tricolor uma vantagem enorme para decidir em Porto Alegre.</p>
+
+            <p>Na volta, a Arena do Grêmio recebeu uma noite histórica. Bolaños marcou para o Tricolor já no fim da partida, Cazares empatou para o Atlético-MG, e o 1 a 1 confirmou o pentacampeonato gremista. Foi o primeiro grande título conquistado pelo clube em sua nova casa.</p>
+
+            <p><strong>Números da campanha de 2016:</strong></p>
+            <p>• Jogos: 8</p>
+            <p>• Vitórias: 4</p>
+            <p>• Empates: 3</p>
+            <p>• Derrotas: 1</p>
+
+            <p>O título de 2016 teve efeito direto na história recente do clube. Além de recolocar o Grêmio no topo nacional, garantiu vaga na Libertadores de 2017, competição que terminaria com o tricampeonato continental.</p>
+
+            <p><strong>O maior artilheiro gremista na Copa do Brasil</strong></p>
+
+            <p>Paulo Nunes esta no topo da artilharia com 15 gols. O dado reforça o tamanho do atacante dentro da relação do clube com a competição. Ele não foi apenas campeão em 1997; foi também o artilheiro daquela edição, com 9 gols.</p>
+
+            <p><strong>Maiores artilheiros do Grêmio na Copa do Brasil:</strong></p>
+            <p>• Paulo Nunes: 15 gols</p>
+            <p>• Gilson: 10 gols</p>
+            <p>• Pedro Rocha: 9 gols</p>
+            <p>• Jonas e Paulo Egídio: 8 gols</p>
+            <p>• Carlinhos, Caio e Cuca: 7 gols</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A lista também ajuda a entender diferentes ciclos. Paulo Egídio e Cuca aparecem ligados ao título inaugural de 1989. Paulo Nunes simboliza a fase copeira dos anos 1990. Pedro Rocha marcou seu nome no penta de 2016, especialmente pela atuação decisiva no Mineirão.</p>
+
+            <p><strong>Jogadores que venceram mais de uma vez pelo Grêmio</strong></p>
+
+            <p>A história do clube na Copa do Brasil também tem jogadores que participaram de mais de uma conquista. O caso mais marcante envolve nomes que atravessaram o ciclo dos anos 1990 e início dos anos 2000.</p>
+
+            <p>Danrlei e Roger são dois personagens emblemáticos. Ambos estiveram nas campanhas campeãs de 1994, 1997 e 2001, formando uma ponte entre o time de Felipão, a conquista no Maracanã e o tetra de Tite. Isso dá aos dois um peso especial dentro da história gremista na competição.</p>
+
+            <p>Carlos Miguel também aparece como nome importante no ciclo de 1994 e 1997. Mauro Galvão, por sua vez, esteve ligado aos títulos de 1997 e 2001, ajudando a conectar duas equipes campeãs em momentos diferentes.</p>
+
+            <p><strong>Personagens de mais de uma conquista:</strong></p>
+            <p>• Danrlei: campeão em 1994, 1997 e 2001</p>
+            <p>• Roger: campeão em 1994, 1997 e 2001</p>
+            <p>• Carlos Miguel: campeão em 1994 e 1997</p>
+            <p>• Mauro Galvão: campeão em 1997 e 2001</p>
+
+            <p>Esse tipo de continuidade é importante para explicar a cultura copeira do Grêmio. Não se trata apenas de campanhas isoladas, mas de ciclos com jogadores que conheciam o peso da camisa em mata-mata.</p>
+
+            <p><strong>O que torna a história especial</strong></p>
+
+            <p>A trajetória do Grêmio na Copa do Brasil é especial por vários motivos. O clube foi o primeiro campeão, venceu três vezes de forma invicta, decidiu títulos em palcos históricos e teve personagens marcantes em diferentes gerações.</p>
+
+            <p>Também há uma relação clara entre essas conquistas e outros grandes momentos do clube. O título de 1994 abriu caminho para a Libertadores de 1995. O título de 2016 recolocou o Grêmio em uma rota vencedora que passou pela Libertadores de 2017. Para entender esse peso dentro da identidade tricolor, a <a href="gremio-historia-tradicao-titulos-imortal.html">história do Grêmio, sua tradição, seus títulos e a cultura do Imortal</a> ajuda a explicar por que o clube criou uma imagem tão forte em jogos decisivos.</p>
+
+            <p>Poucos clubes têm uma coleção tão diversa de decisões marcantes no torneio.</p>
+
+            <p><strong>Uma história de identidade copeira</strong></p>
+
+            <p>Os cinco títulos contam uma história de força em mata-mata.</p>
+
+            <p>Essa sequência explica por que o Grêmio ocupa um lugar tão forte na memória da competição. A Copa do Brasil combina com noites decisivas, tensão, vantagem mínima, gols fora de casa, pênaltis, estádios lotados e personagens que crescem sob pressão. Poucos clubes traduzem esse espírito tão bem quanto o Grêmio.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
