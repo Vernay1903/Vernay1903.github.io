@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Títulos do Flamengo na Copa do Brasil: título e campanhas marcantes no mata a mata | Corte dos Esportes</title>
+  <meta name="description" content="Rubro-negro carioca venceu cinco vezes a competição, chegou a dez finais e construiu uma trajetória marcada por Maracanã, decisões nacionais e grandes personagens." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Títulos do Flamengo na Copa do Brasil: título e campanhas marcantes no mata a mata</h1>
+          <p class="subhead" id="articleExcerpt">Rubro-negro carioca venceu cinco vezes a competição, chegou a dez finais e construiu uma trajetória marcada por Maracanã, decisões nacionais e grandes personagens.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">09/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Flamengo tem uma das histórias mais fortes da Copa do Brasil. O clube chegou ao pentacampeonato em 2024 e se consolidou entre os maiores vencedores da competição. A trajetória rubro-negra no torneio mistura títulos invictos, decisões contra rivais históricos, noites marcantes no Maracanã, protagonismo de artilheiros e campanhas que ajudam a explicar diferentes fases do clube.</p>
+
+            <p>Essa sequência mostra como a Copa do Brasil acompanha fases muito diferentes do Flamengo. Há o time de <a href="junior-jogador-que-mais-jogou-pelo-flamengo.html">Júnior</a>, Zinho, Gaúcho e Renato Gaúcho em 1990; o elenco de 2006, com Renato Abreu, Obina, Léo Moura e Juan; o Flamengo de 2013, embalado por Hernane, Elias e pela força da torcida; o grupo multicampeão de 2022; e o time de 2024, já em outra etapa, com Filipe Luís assumindo a reta final como técnico e Gabigol vivendo seus últimos grandes momentos pelo clube.</p>
+
+            <p>O peso dessa trajetória também se conecta diretamente à <a href="copa-do-brasil-historia-tradicao-maiores-campeoes.html">história da Copa do Brasil</a>, competição que se tornou uma das mais valiosas e disputadas do calendário nacional.</p>
+
+            <p><strong>Os títulos</strong></p>
+
+            <p>A primeira taça veio de forma invicta. As demais tiveram contextos bem diferentes, mas todas com finais de forte apelo nacional.</p>
+
+            <p><strong>Taças e adversários das finais:</strong></p>
+            <ul>
+              <li>1990: campeão contra o Goiás</li>
+              <li>2006: campeão contra o Vasco</li>
+              <li>2013: campeão contra o Athletico-PR</li>
+              <li>2022: campeão contra o Corinthians</li>
+              <li>2024: campeão contra o Atlético-MG</li>
+            </ul>
+
+            <p>A lista mostra a variedade da história no torneio. O Flamengo decidiu contra clubes do Centro-Oeste, do Rio de Janeiro, do Paraná, de São Paulo e de Minas Gerais. Também foi campeão em contextos distintos: fora de casa, em clássicos estaduais, em retomadas simbólicas no Maracanã e em ciclos recentes de elenco forte.</p>
+
+            <p><strong>1990: o primeiro título rubro-negro</strong></p>
+
+            <p>O troféu veio em 1990, na segunda edição do torneio. A campanha foi invicta e teve um peso importante para o clube, colocando entre os primeiros campeões da competição e garantiu vaga na Libertadores do ano seguinte.</p>
+
+            <p>O Flamengo passou por Capelense, Taguatinga, Bahia e Náutico antes da final contra o Goiás. A equipe teve uma trajetória segura, com goleadas nas primeiras fases, equilíbrio nos confrontos mais duros e maturidade para administrar a vantagem na decisão.</p>
+
+            <p><strong>Campanha de 1990:</strong></p>
+            <ul>
+              <li>Flamengo 5 x 1 Capelense</li>
+              <li>Capelense 0 x 4 Flamengo</li>
+              <li>Flamengo 2 x 0 Taguatinga</li>
+              <li>Taguatinga 1 x 1 Flamengo</li>
+              <li>Bahia 1 x 1 Flamengo</li>
+              <li>Flamengo 1 x 0 Bahia</li>
+              <li>Flamengo 3 x 0 Náutico</li>
+              <li>Náutico 2 x 2 Flamengo</li>
+              <li>Flamengo 1 x 0 Goiás</li>
+              <li>Goiás 0 x 0 Flamengo</li>
+            </ul>
+
+            <p>Na final, o Flamengo venceu o primeiro jogo por 1 a 0, com gol de Fernando, em Juiz de Fora. A vantagem permitiu ao time jogar pelo empate na volta, no Serra Dourada. O 0 a 0 em Goiânia confirmou a conquista e fechou uma campanha sem derrotas.</p>
+
+            <p><strong>Números da campanha de 1990:</strong></p>
+            <ul>
+              <li>Jogos: 10</li>
+              <li>Vitórias: 6</li>
+              <li>Empates: 4</li>
+              <li>Derrotas: 0</li>
+              <li>Gols marcados: 20</li>
+              <li>Gols sofridos: 5</li>
+              <li>Artilheiro rubro-negro na campanha: Gaúcho, com 5 gols</li>
+              <li>Técnico: Jair Pereira</li>
+            </ul>
+
+            <p>A conquista também marcou uma fase importante para nomes como Júnior, Zinho, Gaúcho e Renato Gaúcho. O Flamengo não tinha apenas um elenco forte; tinha jogadores de personalidade para lidar com mata-mata, viagens e decisões fora do Rio de Janeiro.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>2006: título contra o Vasco e a primeira final carioca</strong></p>
+
+            <p>O bicampeonato veio em 2006, em uma edição histórica. Pela primeira vez, a Copa do Brasil foi decidida por dois clubes do mesmo estado. Flamengo e Vasco fizeram uma final carioca, com os dois jogos no Maracanã e enorme carga emocional para as duas torcidas.</p>
+
+            <p>Antes da decisão, o Flamengo eliminou ASA, ABC, Guarani, Atlético-MG e Ipatinga. A campanha teve uma derrota, mas também vitórias fortes em jogos de ida que encaminharam classificações importantes.</p>
+
+            <p><strong>Campanha de 2006:</strong></p>
+            <ul>
+              <li>ASA 1 x 1 Flamengo</li>
+              <li>Flamengo 2 x 1 ASA</li>
+              <li>ABC 0 x 1 Flamengo</li>
+              <li>Flamengo 4 x 0 ABC</li>
+              <li>Flamengo 5 x 1 Guarani</li>
+              <li>Guarani 1 x 0 Flamengo</li>
+              <li>Flamengo 4 x 1 Atlético-MG</li>
+              <li>Atlético-MG 0 x 0 Flamengo</li>
+              <li>Ipatinga 1 x 1 Flamengo</li>
+              <li>Flamengo 2 x 1 Ipatinga</li>
+              <li>Flamengo 2 x 0 Vasco</li>
+              <li>Vasco 0 x 1 Flamengo</li>
+            </ul>
+
+            <p>A final foi controlada pelo Flamengo. No primeiro jogo, vitória por 2 a 0, com gols de Obina e Luizão. Na volta, o Rubro-Negro voltou a vencer, desta vez por 1 a 0, com gol de Juan. O agregado de 3 a 0 confirmou o bicampeonato e fez daquela decisão uma das mais simbólicas da história recente do clube.</p>
+
+            <p><strong>Números da campanha de 2006:</strong></p>
+            <ul>
+              <li>Jogos: 12</li>
+              <li>Vitórias: 8</li>
+              <li>Empates: 3</li>
+              <li>Derrotas: 1</li>
+              <li>Gols marcados: 24</li>
+              <li>Gols sofridos: 7</li>
+              <li>Artilheiro rubro-negro: Renato Abreu, com 6 gols</li>
+              <li>Técnico na final: Ney Franco</li>
+            </ul>
+
+            <p>O título teve peso também por recolocar o Flamengo em uma conquista nacional após anos de instabilidade. A Copa do Brasil de 2006 não foi apenas mais uma taça; foi uma afirmação emocional para a torcida e uma vitória direta sobre o maior rival histórico.</p>
+
+            <p><strong>2013: o Maracanã, Hernane e o reencontro com a torcida</strong></p>
+
+            <p>O tricampeonato teve um significado especial. O Flamengo voltou a conquistar a Copa do Brasil em um ano marcado pelo reencontro com o <a href="maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>, recém-reformado para a Copa do Mundo de 2014. O estádio virou peça central da campanha, especialmente a partir das oitavas de final.</p>
+
+            <p>O time começou a competição em fases anteriores e construiu uma trajetória longa. Passou por Remo, Campinense, ASA, Cruzeiro, Botafogo, Goiás e Athletico-PR. O caminho teve virada de cenário contra o Cruzeiro, goleada sobre o Botafogo e uma final decidida com força no segundo jogo.</p>
+
+            <p><strong>Campanha de 2013:</strong></p>
+            <ul>
+              <li>Remo 0 x 1 Flamengo</li>
+              <li>Flamengo 3 x 0 Remo</li>
+              <li>Campinense 1 x 2 Flamengo</li>
+              <li>Flamengo 2 x 1 Campinense</li>
+              <li>ASA 0 x 2 Flamengo</li>
+              <li>Flamengo 2 x 1 ASA</li>
+              <li>Cruzeiro 2 x 1 Flamengo</li>
+              <li>Flamengo 1 x 0 Cruzeiro</li>
+              <li>Botafogo 1 x 1 Flamengo</li>
+              <li>Flamengo 4 x 0 Botafogo</li>
+              <li>Goiás 1 x 2 Flamengo</li>
+              <li>Flamengo 2 x 1 Goiás</li>
+              <li>Athletico-PR 1 x 1 Flamengo</li>
+              <li>Flamengo 2 x 0 Athletico-PR</li>
+            </ul>
+
+            <p>A final começou em Curitiba, com empate por 1 a 1. Amaral marcou o gol rubro-negro, resultado que deixou a decisão aberta para o Maracanã. Na volta, o Flamengo venceu por 2 a 0, com gols de Elias e Hernane, e levantou a taça diante de sua torcida.</p>
+
+            <p><strong>Números da campanha de 2013:</strong></p>
+            <ul>
+              <li>Jogos: 14</li>
+              <li>Vitórias: 11</li>
+              <li>Empates: 2</li>
+              <li>Derrotas: 1</li>
+              <li>Gols marcados: 26</li>
+              <li>Gols sofridos: 9</li>
+              <li>Artilheiro da campanha e da competição: Hernane, com 8 gols</li>
+              <li>Técnico: Jayme de Almeida</li>
+            </ul>
+
+            <p>Hernane, o Brocador, virou o grande símbolo individual da conquista. Ele foi artilheiro do torneio, marcou no jogo do título e representou um Flamengo mais operário, menos estrelado, mas extremamente conectado com a arquibancada.</p>
+
+            <p><strong>2022: título nos pênaltis contra o Corinthians</strong></p>
+
+            <p>O tetracampeonato em uma campanha pesada. O Flamengo entrou na terceira fase e eliminou Altos, Atlético-MG, Athletico-PR, São Paulo e Corinthians. A trajetória teve adversários de primeira prateleira e exigiu resposta em momentos de pressão.</p>
+
+            <p>A virada de chave aconteceu nas oitavas, contra o Atlético-MG. Depois de perder por 2 a 1 no Mineirão, o Flamengo venceu por 2 a 0 no Maracanã e avançou. A partir dali, o time ganhou corpo no mata-mata.</p>
+
+            <p><strong>Campanha de 2022:</strong></p>
+            <ul>
+              <li>Altos 1 x 2 Flamengo</li>
+              <li>Flamengo 2 x 0 Altos</li>
+              <li>Atlético-MG 2 x 1 Flamengo</li>
+              <li>Flamengo 2 x 0 Atlético-MG</li>
+              <li>Flamengo 0 x 0 Athletico-PR</li>
+              <li>Athletico-PR 0 x 1 Flamengo</li>
+              <li>São Paulo 1 x 3 Flamengo</li>
+              <li>Flamengo 1 x 0 São Paulo</li>
+              <li>Corinthians 0 x 0 Flamengo</li>
+              <li>Flamengo 1 x 1 Corinthians — Flamengo campeão nos pênaltis</li>
+            </ul>
+
+            <p>A final contra o Corinthians foi tensa. O primeiro jogo terminou 0 a 0 em São Paulo. Na volta, no Maracanã, Pedro abriu o placar cedo, mas Giuliano empatou no segundo tempo. A decisão foi para os pênaltis, e Rodinei converteu a cobrança que confirmou o título rubro-negro por 6 a 5.</p>
+
+            <p><strong>Números da campanha de 2022:</strong></p>
+            <ul>
+              <li>Jogos: 10</li>
+              <li>Vitórias: 6</li>
+              <li>Empates: 3</li>
+              <li>Derrotas: 1</li>
+              <li>Gols marcados: 13</li>
+              <li>Gols sofridos: 5</li>
+              <li>Técnico: Dorival Júnior</li>
+            </ul>
+
+            <p>O título de 2022 teve peso especial porque fez parte de uma temporada de alto impacto. Poucos dias depois, o Flamengo também conquistaria a Libertadores. A Copa do Brasil, nesse contexto, reforçou a força de um elenco multicampeão e acostumado a decisões.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>2024: o penta contra o Atlético-MG</strong></p>
+
+            <p> Foi uma campanha de solidez defensiva, com poucos gols sofridos e enorme eficiência nos confrontos eliminatórios. O Flamengo passou por Amazonas, Palmeiras, Bahia, Corinthians e Atlético-MG.</p>
+
+            <p>A campanha também teve troca de comando. Tite esteve à frente em boa parte do caminho, mas Filipe Luís assumiu a reta decisiva e conduziu o time ao título nas semifinais e finais. A conquista colocou o ex-lateral em um lugar simbólico: campeão da Copa do Brasil como jogador em 2022 e como técnico em 2024.</p>
+
+            <p><strong>Campanha de 2024:</strong></p>
+            <ul>
+              <li>Flamengo 1 x 0 Amazonas</li>
+              <li>Amazonas 0 x 1 Flamengo</li>
+              <li>Flamengo 2 x 0 Palmeiras</li>
+              <li>Palmeiras 1 x 0 Flamengo</li>
+              <li>Bahia 0 x 1 Flamengo</li>
+              <li>Flamengo 1 x 0 Bahia</li>
+              <li>Flamengo 1 x 0 Corinthians</li>
+              <li>Corinthians 0 x 0 Flamengo</li>
+              <li>Flamengo 3 x 1 Atlético-MG</li>
+              <li>Atlético-MG 0 x 1 Flamengo</li>
+            </ul>
+
+            <p>Na final, o Flamengo abriu grande vantagem no Maracanã ao vencer o Atlético-MG por 3 a 1. Arrascaeta marcou o primeiro gol, e Gabigol fez dois, em uma atuação que ganhou peso ainda maior por marcar sua despedida simbólica em decisões pelo clube.</p>
+
+            <p>Na volta, na Arena MRV, o Flamengo venceu novamente, agora por 1 a 0, com gol de Gonzalo Plata. O agregado de 4 a 1 confirmou o pentacampeonato rubro-negro.</p>
+
+            <p><strong>Números da campanha de 2024:</strong></p>
+            <ul>
+              <li>Jogos: 10</li>
+              <li>Vitórias: 8</li>
+              <li>Empates: 1</li>
+              <li>Derrotas: 1</li>
+              <li>Gols marcados: 11</li>
+              <li>Gols sofridos: 2</li>
+              <li>Técnico na reta decisiva: Filipe Luís</li>
+            </ul>
+
+            <p>O título de 2024 teve duas marcas fortes. A primeira foi coletiva: o Flamengo se tornou pentacampeão da Copa do Brasil. A segunda foi narrativa: Gabigol, Arrascaeta, Plata e Filipe Luís escreveram capítulos importantes em uma conquista que misturou fim de ciclo, afirmação de elenco e força competitiva.</p>
+
+            <p><strong>Os vices do Flamengo na Copa do Brasil</strong></p>
+
+            <p>As finais não conquistadas também ajudam a dimensionar o peso do clube na competição. O Flamengo chegou a dez finais.</p>
+
+            <p><strong>Vices na Copa do Brasil:</strong></p>
+            <ul>
+              <li>1997: vice contra o <a href="gremio-titulos-copa-do-brasil-campanhas-finais.html">Grêmio</a></li>
+              <li>2003: vice contra o Cruzeiro</li>
+              <li>2004: vice contra o Santo André</li>
+              <li>2017: vice contra o Cruzeiro</li>
+              <li>2023: vice contra o São Paulo</li>
+            </ul>
+
+            <p>O vice de 1997 veio contra o Grêmio, em uma decisão definida pelo critério de gols fora após empate por 0 a 0 no Olímpico e 2 a 2 no Maracanã. Em 2003, o Flamengo caiu diante do Cruzeiro, que vivia uma temporada dominante. Em 2004, perdeu para o Santo André em uma das maiores surpresas da história do torneio.</p>
+
+            <p>Em 2017, o Cruzeiro voltou a ser algoz, desta vez nos pênaltis, após dois empates. Em 2023, o Flamengo perdeu para o São Paulo, com derrota no Maracanã e empate no Morumbi. Essas finais não tiram o peso dos títulos, mas mostram como o clube se manteve presente em diferentes épocas da Copa do Brasil.</p>
+
+            <p><strong>Romário é o maior artilheiro rubro-negro na Copa do Brasil</strong></p>
+
+            <p><a href="romario-historia-gols-titulos-selecao-brasileira.html">Romário</a> ocupa o posto de maior artilheiro com 22 gols. O dado mostra como o Baixinho também teve impacto no torneio, mesmo sem ter sido campeão pelo clube na competição.</p>
+
+            <p>A artilharia histórica rubro-negra na Copa do Brasil passa por diferentes gerações. Romário lidera a lista, Sávio marcou época nos anos 1990, Renato Abreu foi decisivo no título de 2006, Hernane comandou a conquista de 2013, e Pedro e Gabigol ganharam protagonismo no ciclo recente.</p>
+
+            <p>Esse recorte ajuda a entender a força do Flamengo no torneio. O clube teve artilheiros em fases diferentes e, em várias campanhas, contou com jogadores capazes de decidir jogos grandes.</p>
+
+            <p><strong>Jogadores que venceram mais de uma vez pelo Flamengo</strong></p>
+
+            <p>A Copa do Brasil também tem personagens rubro-negros que participaram de mais de um título. Léo Moura é um dos nomes mais marcantes nesse sentido. O lateral foi campeão em 2006 e 2013, atravessando duas fases diferentes do clube.</p>
+
+            <p>Filipe Luís merece um destaque à parte. Ele foi campeão como jogador em 2022 e voltou a levantar a Copa do Brasil em 2024, agora como técnico. Essa transição aumenta o peso do personagem dentro da história recente do clube.</p>
+
+            <p><strong>Jogadores com mais de uma conquista rubro-negra na Copa do Brasil:</strong></p>
+            <ul>
+              <li>Léo Moura: campeão em 2006 e 2013</li>
+              <li>Gabigol: campeão em 2022 e 2024</li>
+              <li>Arrascaeta: campeão em 2022 e 2024</li>
+              <li>Pedro: campeão em 2022 e 2024</li>
+              <li>Bruno Henrique: campeão em 2022 e 2024</li>
+              <li>Léo Pereira: campeão em 2022 e 2024</li>
+              <li>David Luiz: campeão em 2022 e 2024</li>
+              <li>Filipe Luís: campeão como jogador em 2022 e técnico em 2024</li>
+            </ul>
+
+            <p>Essa continuidade mostra que parte da força recente do Flamengo está na manutenção de uma base vencedora. A Copa do Brasil premia elenco, profundidade, experiência e capacidade de lidar com pressão. O Flamengo reuniu esses elementos em seus ciclos mais vitoriosos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que torna a história do Flamengo especial</strong></p>
+
+            <p>A relação com á Copa do Brasil é especial porque atravessa décadas. O clube foi campeão em 1990, voltou a vencer em 2006, reencontrou o caminho do título em 2013 e depois construiu um ciclo moderno com conquistas em 2022 e 2024.</p>
+            <p>Também chama atenção a variedade de personagens. Cada título tem um rosto, um contexto e uma memória própria.</p>
+
+            <p>Outro ponto importante é a força do Maracanã. Muitas decisões passaram pelo estádio, seja como palco de título, reação, festa ou frustração. Para o Flamengo, a Copa do Brasil tem uma ligação direta com sua torcida, com jogos de grande público e com noites em que o ambiente pesou tanto quanto o desempenho técnico.</p>
+
+            <p>A trajetória também dialoga com a <a href="gremio-historia-tradicao-titulos-imortal.html">história do Grêmio, também pentacampeão</a>, outro clube que construiu identidade muito forte na Copa do Brasil. Esse tipo de comparação ajuda a mostrar como a competição criou uma galeria própria de camisas copeiras.</p>
+
+            <p>A competição combina com o Flamengo por vários motivos: grandes públicos, decisões nacionais, rivalidades fortes, elencos marcantes e jogadores acostumados a assumir protagonismo. Por isso, os títulos rubro-negros na Copa do Brasil não são apenas uma lista de taças. Eles formam um retrato de diferentes gerações do clube em noites históricas.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
