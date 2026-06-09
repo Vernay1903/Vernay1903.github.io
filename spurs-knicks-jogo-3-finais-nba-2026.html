@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spurs vencem no Garden e sobrevivem nas Finais da NBA | Corte dos Esportes</title>
+  <meta name="description" content="San Antonio venceu o New York Knicks no Jogo 3, diminuiu a série para 2 a 1 e estragou a volta do Madison Square Garden à decisão após 27 anos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Spurs vencem no Garden e sobrevivem nas Finais da NBA</h1>
+          <p class="subhead" id="articleExcerpt">San Antonio venceu o New York Knicks no Jogo 3, diminuiu a série para 2 a 1 e estragou a volta do Madison Square Garden à decisão após 27 anos.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">09/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="basquete.html">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Os Spurs ainda respiram nas Finais da NBA. Depois de perder os dois primeiros jogos em casa, a equipe texana reagiu em um Madison Square Garden lotado, venceu o New York Knicks por 115 a 111 no Jogo 3 e reduziu a vantagem nova-iorquina na série para 2 a 1.</p>
+
+            <p>A vitória teve peso enorme para o contexto da decisão. Se perdesse, o Spurs ficaria atrás por 3 a 0, uma situação historicamente quase impossível de reverter em playoffs da NBA. Em vez disso, o time de San Antonio suportou a pressão do Garden, controlou melhor o quarto período e voltou para a série em uma noite de grande atuação de Victor Wembanyama.</p>
+
+            <p>O francês foi o grande nome do jogo, com 32 pontos, 8 rebotes, 6 assistências, 3 tocos e 2 roubos de bola. Do outro lado, Jalen Brunson também marcou 32 pontos, mas os Knicks perderam força na reta final e viram cair uma sequência de 13 vitórias seguidas nestes playoffs.</p>
+
+            <p><strong>O contexto do Jogo 3</strong></p>
+
+            <p>O Jogo 3 tinha um peso simbólico raro para Nova York. O Madison Square Garden recebia uma partida de Finais da NBA pela primeira vez desde 1999, justamente contra o Spurs, o mesmo adversário daquela decisão. Foram 27 anos sem uma final da liga no Garden, o que transformou a noite em um evento esportivo e emocional para a torcida dos Knicks e para toda cidade.</p>
+
+            <p>O clima era de festa. O Knicks chegava com 2 a 0 na série depois de vencer duas vezes em San Antonio: 105 a 95 no Jogo 1 e 105 a 104 no Jogo 2. A equipe também carregava uma sequência impressionante de vitórias na pós-temporada, o que aumentava a expectativa por um passo quase definitivo rumo ao título.</p>
+
+            <p>Mas o Spurs entraram com outra postura. A equipe sabia que precisava vencer para evitar uma situação de risco na série. San Antonio começou melhor, fez 33 a 22 no primeiro quarto e mostrou agressividade desde o início. O Knicks reagiu com força no segundo período, venceu a parcial por 42 a 24 e foi para o intervalo na frente, mas não conseguiu sustentar o mesmo controle no segundo tempo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como o Spurs construiu a vitória</strong></p>
+
+            <p>O terceiro quarto foi decisivo para recolocar o time no jogo. San Antonio venceu a parcial por 35 a 27, voltou a ter mais fluidez ofensiva e entrou no último período com vantagem. Nos minutos finais, o time teve mais organização, protegeu melhor a bola e aproveitou erros dos Knicks para pontuar em transição.</p>
+
+            <p>Resumo do placar por quarto:</p>
+            <ul>
+              <li>1º quarto: Spurs 33 x 22 Knicks</li>
+              <li>2º quarto: Knicks 42 x 24 Spurs</li>
+              <li>3º quarto: Spurs 35 x 27 Knicks</li>
+              <li>4º quarto: Spurs 23 x 20 Knicks</li>
+              <li>Placar final: Spurs 115 x 111 Knicks</li>
+            </ul>
+
+            <p>Um dado ajuda a explicar a diferença: o Spurs terminou com 28 assistências, contra 18 dos Knicks. San Antonio também teve vantagem de 21 a 7 em pontos após erros do adversário, estatística importante em um jogo decidido por apenas quatro pontos.</p>
+
+            <p>Na reta final, os Knicks sofreram no perímetro. A equipe terminou o quarto período sem converter bolas de três, enquanto o Spurs encontrou pontos importantes com Wembanyama, Stephon Castle e De’Aaron Fox. O resultado foi uma vitória de sobrevivência, construída com controle emocional em um ambiente hostil.</p>
+
+            <p><strong>Cestinhas dos Spurs</strong></p>
+
+            <p>Victor Wembanyama foi o principal nome de San Antonio e entregou uma atuação completa. Além dos 32 pontos, impactou o jogo como protetor de aro, passador e referência ofensiva. Stephon Castle também foi decisivo, especialmente pelo suporte nos momentos em que o Spurs precisava de outra fonte de pontuação.</p>
+
+            <p>Destaques do San Antonio Spurs:</p>
+            <ul>
+              <li>Victor Wembanyama: 32 pontos, 8 rebotes, 6 assistências, 3 tocos e 2 roubos</li>
+              <li>Stephon Castle: 23 pontos, 5 rebotes e 5 assistências</li>
+              <li>De’Aaron Fox: 10 pontos e 8 assistências</li>
+            </ul>
+
+            <p>A atuação de Wembanyama também teve um peso histórico. Ele se tornou um dos jogadores mais jovens a registrar uma linha de 30 pontos, 5 rebotes e 5 assistências em um jogo de Finais. Para um Spurs que precisava de resposta imediata depois de duas derrotas em casa, foi a performance de liderança que a série exigia.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Cestinhas dos Knicks</strong></p>
+
+            <p>Pelo lado de NY, Jalen Brunson manteve o padrão de protagonismo. O armador marcou 32 pontos e tentou carregar o ataque em mais uma noite de pressão. OG Anunoby também teve grande atuação, com 28 pontos e eficiência alta nos arremessos.</p>
+
+            <p>Destaques do New York Knicks:</p>
+            <ul>
+              <li>Jalen Brunson: 32 pontos</li>
+              <li>OG Anunoby: 28 pontos</li>
+              <li>Karl-Anthony Towns: 11 pontos, 8 rebotes, 3 roubos e 2 tocos</li>
+            </ul>
+
+            <p>A baixa pontuação de Karl-Anthony Towns também pesou. Depois de ter sido um dos nomes mais importantes dos Knicks nos dois primeiros jogos, ele terminou o Jogo 3 com apenas 11 pontos. Em uma partida decidida no detalhe, a falta de uma terceira força ofensiva constante acabou fazendo diferença.</p>
+
+            <p><strong>O que a vitória muda na série</strong></p>
+
+            <p>Antes do Jogo 3, os Knicks tinham chance de abrir 3 a 0 e deixar San Antonio em situação praticamente desesperadora. Agora, a série está em 2 a 1, com o Jogo 4 novamente no Madison Square Garden.</p>
+
+            <p>Para o Spurs, o resultado traz confiança e recoloca pressão sobre Nova York. A equipe mostrou que pode vencer fora de casa, mesmo em um ambiente pesado, e que Wembanyama tem condição de ser o jogador mais decisivo da série. Para os Knicks, a derrota serve como alerta: a vantagem ainda existe, mas o controle emocional da série já não é o mesmo.</p>
+
+            <p>Esse tipo de virada de cenário faz parte da história das Finais. <a href="nba-historia-maiores-campeoes-playoffs-conferencias.html">A NBA é marcada</a> por séries em que um jogo muda completamente a percepção do confronto, principalmente quando uma equipe evita o 3 a 0 e devolve pressão ao adversário.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Próximos jogos das Finais da NBA</strong></p>
+
+            <p>O Jogo 4 será novamente em Nova York. Para os Knicks, é a chance de abrir 3 a 1 e ficar a uma vitória do título. Para o Spurs, é a oportunidade de empatar a série e transformar a final em uma melhor de sete.</p>
+
+            <p>Calendário da série:</p>
+            <ul>
+              <li>Jogo 4: Spurs x Knicks — quarta-feira, 10/06, às 21h30, em Nova York</li>
+              <li>Jogo 5: Knicks x Spurs — sábado, 13/06, às 21h30, em San Antonio</li>
+              <li>Jogo 6: Spurs x Knicks — terça-feira, 16/06, às 21h30, em Nova York, se necessário</li>
+              <li>Jogo 7: Knicks x Spurs — sexta-feira, 19/06, às 21h30, em San Antonio, se necessário</li>
+            </ul>
+
+            <p>A série segue favorável aos Knicks, mas o Jogo 3 mudou a energia da decisão. O Spurs sobreviveu onde a pressão era máxima, venceu no Garden e mostrou que ainda tem força para transformar uma final que parecia escapar em uma disputa aberta pelo título da NBA.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
