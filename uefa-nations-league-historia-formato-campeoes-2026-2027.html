@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nations League: história, formato e importância no futebol europeu | Corte dos Esportes</title>
+  <meta name="description" content="Criada para dar mais competitividade às datas Fifa, á competição transformou amistosos em jogos oficiais, criou acesso e rebaixamento entre seleções e mantém rivalidades fortes no calendário europeu." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Nations League: história, formato e importância no futebol europeu</h1>
+          <p class="subhead" id="articleExcerpt">Criada para dar mais competitividade às datas Fifa, á competição transformou amistosos em jogos oficiais, criou acesso e rebaixamento entre seleções e mantém rivalidades fortes no calendário europeu.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">09/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A Nations League nasceu para resolver um problema antigo do calendário de seleções: o excesso de amistosos sem peso competitivo. Antes da criação do torneio, muitas datas Fifa eram ocupadas por jogos de preparação que, apesar de úteis para testes, nem sempre entregavam intensidade, interesse do público ou impacto real para as seleções.</p>
+
+            <p>O torneio não tem o mesmo peso de uma Eurocopa. A Euro segue como a principal competição de seleções da Europa, com tradição, peso histórico e impacto global muito maior. Mas a Nations League encontrou um espaço próprio: mantém rivalidades vivas entre seleções, aumenta a importância das datas Fifa e dá ao calendário europeu uma competição regular entre grandes equipes.</p>
+
+            <p><strong>Por que a Nations League foi criada</strong></p>
+
+            <p>A principal razão para a criação foi tornar as datas Fifa mais competitivas. Em vez de amistosos espalhados, muitas vezes sem grande valor esportivo, a UEFA passou a organizar confrontos oficiais com pontuação, tabela e consequência.</p>
+
+            <p>Isso mudou a forma como as seleções encaram esses períodos. Um jogo entre Portugal e Espanha, França e Alemanha, Itália e Holanda ou Croácia e França por exemplo, dentro da Nations League não é apenas preparação. Vale classificação, ranking, permanência em uma divisão, vaga em fase decisiva e, em alguns casos, caminho alternativo para repescagens de torneios maiores.</p>
+
+            <p>Para o torcedor, a mudança também é clara. A competição cria contexto. Em vez de um amistoso isolado, o jogo faz parte de uma campanha. A seleção pode subir, cair, chegar às finais ou perder espaço. Esse elemento competitivo ajuda a manter o interesse mesmo fora de Eurocopa e Copa do Mundo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como funciona o formato</strong></p>
+
+            <p>A Nations League é organizada em divisões chamadas ligas. As seleções são distribuídas conforme nível técnico e desempenho anterior. As melhores ficam na Liga A, enquanto as demais disputam as Ligas B, C e D.</p>
+
+            <p>O sistema é parecido com uma pirâmide. Quem vai bem pode subir. Quem vai mal pode cair. Isso cria objetivos diferentes para cada faixa de seleção.</p>
+
+            <p><strong>Estrutura básica:</strong></p>
+
+            <p>• Liga A: reúne as seleções mais fortes e define o campeão geral</p>
+            <p>• Ligas B, C e D: reúnem seleções de níveis inferiores, com briga por acesso e permanência</p>
+            <p>• Fase de grupos: seleções enfrentam adversários da mesma liga</p>
+            <p>• Acesso: campeões de grupos das ligas inferiores sobem de divisão</p>
+            <p>• Rebaixamento: últimos colocados caem para a liga abaixo</p>
+            <p>• Playoffs: em algumas situações, seleções disputam acesso ou permanência em confrontos extras</p>
+            <p>• Fase final: as melhores seleções da Liga A disputam o título</p>
+
+            <p>Na edição 2024/25, a UEFA adicionou uma fase de quartas de final na Liga A. Com isso, os vencedores e segundos colocados dos grupos passaram a disputar mata-mata antes do torneio final. A mudança aumentou o número de jogos decisivos e deu mais continuidade entre a fase de grupos e a decisão.</p>
+
+            <p><strong>Como funcionam os mandos de campo</strong></p>
+
+            <p>A Nations League não é disputada inteira em sede única. Na fase de liga, o torneio segue o modelo de ida e volta: cada seleção joga uma partida em casa e outra fora contra os adversários do próprio grupo. Isso ajuda a manter o equilíbrio esportivo e dá às torcidas a chance de receber jogos oficiais durante as datas Fifa.</p>
+
+            <p><strong>Mandos na fase de liga:</strong></p>
+
+            <p>• Ligas A, B e C: grupos com quatro seleções, cada equipe faz seis jogos</p>
+            <p>• Liga D: grupos com três seleções, cada equipe faz quatro jogos</p>
+            <p>• Modelo: jogos em casa e fora contra os rivais do grupo</p>
+
+            <p>Nas fases eliminatórias, o critério também mantém ida e volta em parte do caminho. As quartas de final da Liga A são disputadas em dois jogos, com mando para cada seleção. O mesmo vale para os playoffs de acesso e rebaixamento, quando aplicáveis.</p>
+
+            <p>A sede única aparece apenas na fase final. A Final Four reúne semifinal, decisão de terceiro lugar e final em um país-sede escolhido pela UEFA, normalmente entre os classificados. Ou seja: a Nations League tem uma fase inicial espalhada por vários países, mas termina com um mini-torneio concentrado, em formato curto e decisivo.</p>
+
+            <p><strong>Seleções da próxima Nations League</strong></p>
+
+            <p>A próxima edição da Nations League já tem grupos definidos. A fase de liga da temporada 2026/27 começa em setembro de 2026, com as seleções novamente divididas em Ligas A, B, C e D.</p>
+
+            <p><strong>Liga A</strong></p>
+            <p>• Grupo A1: França, Itália, Bélgica e Turquia</p>
+            <p>• Grupo A2: Alemanha, Países Baixos, Sérvia e Grécia</p>
+            <p>• Grupo A3: Espanha, Croácia, Inglaterra e Chéquia</p>
+            <p>• Grupo A4: Portugal, Dinamarca, Noruega e País de Gales</p>
+
+            <p><strong>Liga B</strong></p>
+            <p>• Grupo B1: Escócia, Suíça, Eslovênia e Macedônia do Norte</p>
+            <p>• Grupo B2: Hungria, Ucrânia, Geórgia e Irlanda do Norte</p>
+            <p>• Grupo B3: Israel, Áustria, República da Irlanda e Kosovo</p>
+            <p>• Grupo B4: Polônia, Bósnia e Herzegovina, Romênia e Suécia</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Liga C</strong></p>
+            <p>• Grupo C1: Albânia, Finlândia, Belarus e San Marino</p>
+            <p>• Grupo C2: Montenegro, Armênia, Chipre e Letônia</p>
+            <p>• Grupo C3: Cazaquistão, Eslováquia, Ilhas Faroé e Moldávia</p>
+            <p>• Grupo C4: Islândia, Bulgária, Estônia e Luxemburgo</p>
+
+            <p><strong>Liga D</strong></p>
+            <p>• Grupo D1: Gibraltar, Malta e Andorra</p>
+            <p>• Grupo D2: Lituânia, Azerbaijão e Liechtenstein</p>
+
+            <p>Esse desenho reforça o valor competitivo da próxima edição. A Liga A terá grupos fortes, como Espanha, Croácia e Inglaterra no A3, além de França, Itália, Bélgica e Turquia no A1. Portugal, atual campeão, entra no A4 contra Dinamarca, Noruega e País de Gales, em uma chave que mistura tradição, força física e seleções em crescimento.</p>
+
+            <p><strong>Acesso e rebaixamento dão peso ao torneio</strong></p>
+
+            <p>Os critérios de desempenho são uma das maiores diferenças da Nations League em relação aos antigos amistosos. Uma seleção não joga apenas para testar jogadores. Ela joga para manter status, subir de nível ou evitar queda.</p>
+
+            <p>Para seleções grandes, cair da Liga A seria um sinal esportivo negativo. Para seleções médias, subir para enfrentar adversários mais fortes representa prestígio, visibilidade e evolução competitiva. Para seleções menores, vencer grupo na Liga D ou na Liga C pode significar uma das campanhas mais importantes de sua história recente.</p>
+
+            <p>Esse modelo também evita muitos confrontos desequilibrados. Em vez de uma seleção muito forte enfrentar constantemente uma muito fraca em amistosos sem grande contexto, a Nations League aproxima equipes de nível semelhante. Isso tende a gerar jogos mais competitivos e úteis para treinadores.</p>
+
+            <p><strong>Campeões da Nations League</strong></p>
+
+            <p>Ainda é uma competição jovem, mas já tem uma galeria de campeões relevante. Portugal venceu a primeira edição, a França ficou com o título seguinte, a Espanha conquistou a taça em 2023 e Portugal voltou a ganhar em 2025, tornando-se a primeira seleção bicampeã.</p>
+
+            <p><strong>Lista Campeões:</strong></p>
+            <p>• 2018/19: Portugal</p>
+            <p>• 2020/21: França</p>
+            <p>• 2022/23: Espanha</p>
+            <p>• 2024/25: Portugal</p>
+
+            <p>A lista mostra que o torneio já foi levado a sério por seleções de elite. Portugal, França e Espanha são campeãs europeias ou mundiais recentes, o que reforça o nível competitivo da fase final. Mesmo sem o peso histórico da Eurocopa, a Nations League já virou uma taça desejada no calendário europeu.</p>
+
+            <p>É importante colocar a competição no tamanho certo. Ela não substitui a Eurocopa e não tem o mesmo impacto emocional, histórico ou midiático. A Euro é disputada em ciclo próprio, reúne semanas de torneio concentrado e carrega décadas de tradição.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A hierarquia do futebol de seleções continua clara: a Copa do Mundo está no topo global, a Eurocopa é o principal torneio continental europeu, e a Nations League ocupa um espaço intermediário, importante para manter competitividade entre ciclos. Esse contexto ajuda a entender por que a competição não substitui os grandes torneios, mas melhora o calendário entre eles. Dentro dessa lógica, a Nations League também se conecta ao peso histórico da <a href="copa-do-mundo-2026-historia-impacto-global-e-o-que-muda-no-mundial.html">Copa do Mundo</a>.</p>
+
+            <p>A competição tem outro papel. Ela preenche o calendário entre grandes torneios, mantém seleções em ritmo competitivo e cria jogos oficiais em datas que antes seriam ocupadas por amistosos. Seu valor está mais na regularidade e na qualidade dos confrontos do que no peso absoluto da taça.</p>
+
+            <p><strong>Rivalidades seguem vivas nas datas Fifa</strong></p>
+
+            <p>Um dos maiores méritos da Nations League é manter rivalidades entre seleções em ambiente competitivo.</p>
+
+            <p>Esse ponto é essencial para a visibilidade europeia. As seleções não dependem apenas de Eurocopa, Eliminatórias ou Copa do Mundo para disputar jogos de alto interesse. A Nations League cria novas noites relevantes no calendário e ajuda a manter grandes rivalidades em circulação.</p>
+
+            <p>Para a televisão, para os torcedores e para as próprias seleções, isso tem valor. Jogos oficiais entre potências geram audiência, teste real de elenco e pressão competitiva. Ao mesmo tempo, seleções menores também ganham partidas com objetivo claro, em vez de amistosos pouco atrativos.</p>
+
+            <p><strong>O impacto para seleções médias e menores</strong></p>
+
+            <p>A Nations League não serve apenas às grandes seleções. Para países médios e pequenos, talvez o torneio seja ainda mais importante. O sistema de ligas permite que essas equipes enfrentem adversários mais próximos de seu nível, o que aumenta a chance de vitórias, campanhas consistentes e evolução real.</p>
+
+            <p>Uma seleção que raramente teria destaque em Eliminatórias pode ganhar grupo, subir de divisão e construir uma geração mais confiante. Além disso, o torneio já teve ligação com caminhos alternativos para repescagens de grandes competições, aumentando ainda mais o valor de uma boa campanha.</p>
+
+            <p>Isso faz a Nations League funcionar como ferramenta de desenvolvimento competitivo. Ela não apenas coroa campeões. Também organiza melhor o ecossistema das seleções europeias.</p>
+
+            <p><strong>Por que a competição ganhou espaço</strong></p>
+
+            <p>Porque entregou algo que faltava ao calendário: consequência. O torcedor entende melhor um jogo quando há tabela, pontuação, risco e recompensa. A seleção também entra em campo com mais responsabilidade quando sabe que pode cair, subir ou chegar a uma fase final.</p>
+
+            <p>Outro ponto é a vitrine. A competição coloca seleções fortes frente a frente com frequência, mas também dá palco para equipes que normalmente apareceriam menos. Em um calendário internacional cada vez mais disputado, essa organização ajuda a manter o futebol de seleções relevante fora dos grandes torneios.</p>
+
+            <p>A Nations League também conversa com a evolução do próprio futebol europeu. Clubes dominam boa parte da atenção durante a temporada, mas seleções ainda carregam identidade nacional, rivalidade histórica e peso emocional. O torneio aproveita isso e transforma janelas antes mornas em disputas com narrativa.</p>
+
+            <p><strong>Uma competição nova, mas já necessária</strong></p>
+
+            <p>A Nations League ainda está em construção histórica. Ela não tem décadas de tradição, nem o peso acumulado de Eurocopa e Copa do Mundo. Mesmo assim, já parece difícil imaginar o calendário europeu voltando ao antigo modelo, com tantas datas ocupadas por amistosos sem grande consequência.</p>
+
+            <p>O torneio deu função às datas Fifa, criou acesso e rebaixamento entre seleções, manteve rivalidades em ambiente competitivo e abriu espaço para campeões oficiais em ciclos mais curtos. Portugal, França e Espanha já levantaram a taça, e a tendência é que a competição ganhe mais identidade a cada edição.</p>
+
+            <p>Seu maior valor está no equilíbrio: a Nations League não tenta ser maior do que a Eurocopa, mas também não é apenas um amistoso com nome bonito. É uma competição oficial que melhora o calendário, dá sentido aos jogos e mantém o futebol europeu de seleções competitivo entre os grandes torneios.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
