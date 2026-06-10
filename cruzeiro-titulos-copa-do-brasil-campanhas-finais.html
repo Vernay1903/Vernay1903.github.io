@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Títulos do Cruzeiro na Copa do Brasil: campanhas e finais históricas | Corte dos Esportes</title>
+  <meta name="description" content="Maior campeão da competição, o time mineiro se tornou hexacampeão, construiu uma relação histórica jogando no Mineirão e virou referência no mata-mata nacional." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Títulos do Cruzeiro na Copa do Brasil: campanhas e finais históricas</h1>
+          <p class="subhead" id="articleExcerpt">Maior campeão da competição, o time mineiro se tornou hexacampeão, construiu uma relação histórica jogando no Mineirão e virou referência no mata-mata nacional.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">10/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Cruzeiro tem a trajetória mais vitoriosa da história da Copa do Brasil. Com seis títulos, o clube mineiro virou a principal referência do torneio, se misturando com a própria historia de time e competição.</p>
+
+            <p>A marca ganha peso porque é uma competição de margem miníma para erros. Não basta ter elenco forte. É preciso saber jogar fora de casa, administrar placares, sobreviver a decisões apertadas e crescer em noites de pressão. Nesse cenário, o Cruzeiro construiu uma identidade muito forte: a de clube que sabe disputar copas.</p>
+
+            <p>A relação da Raposa com o torneio também ajuda a explicar a importância da <a href="copa-do-brasil-historia-tradicao-maiores-campeoes.html">história da Copa do Brasil</a>. Desde 1989, a competição se tornou um dos caminhos mais valorizados do futebol brasileiro, reunindo tradição, premiação alta, vaga na Libertadores e finais capazes de marcar gerações.</p>
+
+            <p><strong>As conquistas do Cruzeiro:</strong></p>
+            <p>• 1993 — campeão contra o Grêmio</p>
+            <p>• 1996 — campeão contra o Palmeiras</p>
+            <p>• 2000 — campeão contra o São Paulo</p>
+            <p>• 2003 — campeão contra o Flamengo</p>
+            <p>• 2017 — campeão contra o Flamengo</p>
+            <p>• 2018 — campeão contra o Corinthians</p>
+
+            <p>Além dos seis títulos, o clube também foi vice-campeão em 1998, contra o Palmeiras, e em 2014, contra o Atlético-MG. Ao todo, são oito finais disputadas, um número que reforça a presença constante do Cruzeiro entre os grandes personagens da competição.</p>
+
+            <p>Esse recorte coloca o clube em um patamar especial. Grêmio e Flamengo também têm histórias enormes no torneio, com campanhas e finais marcantes, mas a coleção celeste segue como uma das mais fortes do mata-mata nacional. O peso dessa comparação aparece nas trajetórias dos rivais, com os <a href="gremio-titulos-copa-do-brasil-campanhas-finais.html"> 5 títulos do Grêmio</a> e o <a href="flamengo-titulos-copa-do-brasil-campanhas-finais.html">também Penta Campeão  Flamengo</a>.Consolidando os três clubes como os mais vencedores da competição, somando incríveis 16 títulos.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>1993: o primeiro título contra o Grêmio</strong></p>
+
+            <p>A conquista teve valor duplo: colocou o clube mineiro no mapa dos campeões da competição e abriu uma relação que se tornaria histórica nas décadas seguintes.</p>
+
+            <p>A final contra o Grêmio também é simbólica porque envolveu o primeiro campeão da Copa do Brasil. O Tricolor havia vencido a edição inaugural, em 1989, e já carregava uma identidade forte em torneios eliminatórios. Ao superar esse adversário, o Cruzeiro iniciou sua própria trajetória de força no mata-mata.</p>
+
+            <p><strong>Campanha completa de1993:</strong></p>
+            <p>• 1ª fase: Desportiva 1 x 1 Cruzeiro</p>
+            <p>• 1ª fase: Cruzeiro 5 x 0 Desportiva</p>
+            <p>• Oitavas de final: Náutico 1 x 0 Cruzeiro</p>
+            <p>• Oitavas de final: Cruzeiro 2 x 0 Náutico</p>
+            <p>• Quartas de final: São Paulo 1 x 2 Cruzeiro</p>
+            <p>• Quartas de final: Cruzeiro 2 x 2 São Paulo</p>
+            <p>• Semifinal: Cruzeiro 3 x 1 Vasco</p>
+            <p>• Semifinal: Vasco 1 x 1 Cruzeiro</p>
+            <p>• Final: Grêmio 0 x 0 Cruzeiro</p>
+            <p>• Final: Cruzeiro 2 x 1 Grêmio</p>
+
+            <p><strong>Números da campanha:</strong></p>
+            <p>• 10 jogos</p>
+            <p>• 5 vitórias</p>
+            <p>• 4 empates</p>
+            <p>• 1 derrota</p>
+            <p>• 18 gols marcados</p>
+            <p>• 8 gols sofridos</p>
+
+            <p>A conquista marcou o início de uma coleção que, anos depois, colocaria a Raposa no topo do ranking de campeões. Não foi apenas um título isolado: foi o primeiro passo de um clube que passaria a tratar a Copa do Brasil como território especial.</p>
+
+            <p><strong>1996: o título contra o Palmeiras e o peso fora de casa</strong></p>
+
+            <p>A final ficou marcada pelo peso do confronto e pelo desfecho fora de casa, em um cenário de alta pressão.</p>
+
+            <p>O Palmeiras tinha uma equipe forte, comandada por Vanderlei Luxemburgo, e era um dos clubes mais competitivos do país naquele período. Mesmo assim, o Cruzeiro conseguiu uma vitória que virou uma das grandes noites da história celeste na competição. O título de 1996 reforçou uma característica que se repetiria em outros anos: a capacidade do clube de competir em ambientes hostil.</p>
+
+            <p><strong>Campanha em 1996:</strong></p>
+            <p>• 2ª fase: Juventus-AC 1 x 1 Cruzeiro</p>
+            <p>• 2ª fase: Cruzeiro 4 x 0 Juventus-AC</p>
+            <p>• Oitavas de final: Vasco 2 x 6 Cruzeiro</p>
+            <p>• Oitavas de final: Cruzeiro 1 x 1 Vasco</p>
+            <p>• Quartas de final: Cruzeiro 4 x 0 Corinthians</p>
+            <p>• Quartas de final: Corinthians 3 x 2 Cruzeiro</p>
+            <p>• Semifinal: Flamengo 1 x 1 Cruzeiro</p>
+            <p>• Semifinal: Cruzeiro 0 x 0 Flamengo</p>
+            <p>• Classificação: avançou pelo gol marcado fora de casa</p>
+            <p>• Final: Cruzeiro 1 x 1 Palmeiras</p>
+            <p>• Final: Palmeiras 1 x 2 Cruzeiro</p>
+
+            <p><strong>Números da campanha:</strong></p>
+            <p>• 10 jogos</p>
+            <p>• 4 vitórias</p>
+            <p>• 5 empates</p>
+            <p>• 1 derrota</p>
+            <p>• 22 gols marcados</p>
+            <p>• 10 gols sofridos</p>
+
+            <p>Esse bicampeonato mostrou que a conquista de 1993 não havia sido acaso. Em apenas quatro edições disputadas, o Cruzeiro já tinha dois títulos e começava a construir a imagem de especialista em Copa do Brasil.</p>
+
+            <p><strong>2000: Cruzeiro supera o São Paulo e chega ao tri</strong></p>
+
+            <p> A final colocou frente a frente dois clubes de enorme peso nacional, acostumados a decisões e grandes campanhas.</p>
+
+            <p>Para o Cruzeiro, a conquista teve valor estratégico. O clube chegou ao tricampeonato e se consolidou de vez entre os maiores vencedores da Copa do Brasil. A partir dali, a Raposa não era mais apenas um time com bom retrospecto no torneio: já era uma potência histórica da competição.</p>
+
+            <p><strong>Campanha em 2000:</strong></p>
+            <p>• 1ª fase: Gama 1 x 1 Cruzeiro</p>
+            <p>• 1ª fase: Cruzeiro 4 x 1 Gama</p>
+            <p>• 2ª fase: Paraná 0 x 2 Cruzeiro</p>
+            <p>• Classificação: eliminou o jogo de volta ao vencer fora por dois gols de diferença</p>
+            <p>• 3ª fase: Caxias 1 x 3 Cruzeiro</p>
+            <p>• 3ª fase: Cruzeiro 6 x 1 Caxias</p>
+            <p>• Oitavas de final: Cruzeiro 2 x 1 Athletico-PR</p>
+            <p>• Oitavas de final: Athletico-PR 2 x 2 Cruzeiro</p>
+            <p>• Quartas de final: Cruzeiro 3 x 2 Botafogo</p>
+            <p>• Quartas de final: Botafogo 0 x 0 Cruzeiro</p>
+            <p>• Semifinal: Cruzeiro 2 x 0 Santos</p>
+            <p>• Semifinal: Santos 2 x 2 Cruzeiro</p>
+            <p>• Final: São Paulo 0 x 0 Cruzeiro</p>
+            <p>• Final: Cruzeiro 2 x 1 São Paulo</p>
+
+            <p><strong>Números da campanha:</strong></p>
+
+            <p>• 13 jogos</p>
+            <p>• 8 vitórias</p>
+            <p>• 5 empates</p>
+            <p>• Nenhuma derrota</p>
+            <p>• 29 gols marcados</p>
+            <p>• 12 gols sofridos</p>
+
+            <p>A final contra o São Paulo teve drama até o fim. No Mineirão, o Cruzeiro venceu por 2 a 1, com gol decisivo de Geovanni nos minutos finais. O título contra um adversário tradicional reforçou a importância do estádio como palco de decisão e colocou a Raposa no grupo dos tricampeões da Copa do Brasil.</p>
+
+            <p><strong>2003: Copa do Brasil, Flamengo e a Tríplice Coroa</strong></p>
+
+            <p>Naquele ano, a equipe comandada por Vanderlei Luxemburgo venceu a Copa do Brasil contra o Flamengo e abriu caminho para uma temporada histórica.</p>
+
+            <p>A conquista fez parte da Tríplice Coroa celeste. O Cruzeiro venceu o Campeonato Mineiro, a Copa do Brasil e o Campeonato Brasileiro no mesmo ano, feito raro no futebol nacional. A equipe tinha um elenco marcante, com nomes como Alex, Aristizábal, Deivid.</p>
+
+            <p><strong>Campanha em 2003:</strong></p>
+            <p>• 1ª fase: Rio Branco-ES 2 x 4 Cruzeiro</p>
+            <p>• Classificação: eliminou o jogo de volta ao vencer fora por dois gols de diferença</p>
+            <p>• 2ª fase: Coríntians-RN 2 x 2 Cruzeiro</p>
+            <p>• 2ª fase: Cruzeiro 7 x 0 Coríntians-RN</p>
+            <p>• Oitavas de final: Cruzeiro 2 x 0 Vila Nova-GO</p>
+            <p>• Oitavas de final: Vila Nova-GO 1 x 2 Cruzeiro</p>
+            <p>• Quartas de final: Cruzeiro 2 x 1 Vasco</p>
+            <p>• Quartas de final: Vasco 1 x 1 Cruzeiro</p>
+            <p>• Semifinal: Goiás 2 x 3 Cruzeiro</p>
+            <p>• Semifinal: Cruzeiro 2 x 1 Goiás</p>
+            <p>• Final: Flamengo 1 x 1 Cruzeiro</p>
+            <p>• Final: Cruzeiro 3 x 1 Flamengo</p>
+
+            <p><strong>Números da campanha:</strong></p>
+            <p>• 11 jogos</p>
+            <p>• 8 vitórias</p>
+            <p>• 3 empates</p>
+            <p>• Nenhuma derrota</p>
+            <p>• 29 gols marcados</p>
+            <p>• 12 gols sofridos</p>
+
+            <p>Dentro dessa campanha, a Copa do Brasil teve papel essencial. O título contra o Flamengo confirmou a força de uma geração que combinava técnica, poder ofensivo e maturidade competitiva. Alex virou o grande símbolo daquele time, não apenas pelos gols e assistências, mas pela capacidade de comandar o ritmo de uma equipe dominante.</p>
+
+            <p>O ano de 2003 também ajuda a explicar por que o Cruzeiro é tratado como um dos grandes clubes copeiros do Brasil. A Raposa não venceu apenas uma competição de mata-mata; ela encaixou esse título dentro de uma temporada praticamente perfeita.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>2017: decisão nos pênaltis contra o Flamengo</strong></p>
+
+            <p>Depois de mais de uma década sem levantar a Copa do Brasil, o Cruzeiro voltou ao topo em 2017. A decisão foi contra o Flamengo e teve todos os ingredientes de uma grande final: equilíbrio, pressão, Mineirão lotado e disputa por pênaltis.</p>
+
+            <p>O título teve peso especial porque recolocou o clube no centro das grandes conquistas nacionais. A equipe comandada por Mano Menezes soube jogar uma final tensa, de poucos espaços e muito controle emocional.</p>
+
+            <p><strong>Campanha em 2017:</strong></p>
+            <p>• 1ª fase: Volta Redonda 1 x 2 Cruzeiro</p>
+            <p>• Classificação: avançou em jogo único fora de casa</p>
+            <p>• 2ª fase: Cruzeiro 6 x 0 São Francisco-PA</p>
+            <p>• Classificação: avançou em jogo único no Mineirão</p>
+            <p>• 3ª fase: Murici 0 x 2 Cruzeiro</p>
+            <p>• 3ª fase: Cruzeiro 3 x 0 Murici</p>
+            <p>• 4ª fase: São Paulo 0 x 2 Cruzeiro</p>
+            <p>• 4ª fase: Cruzeiro 1 x 2 São Paulo</p>
+            <p>• Oitavas de final: Cruzeiro 1 x 0 Chapecoense</p>
+            <p>• Oitavas de final: Chapecoense 0 x 0 Cruzeiro</p>
+            <p>• Quartas de final: Palmeiras 3 x 3 Cruzeiro</p>
+            <p>• Quartas de final: Cruzeiro 1 x 1 Palmeiras</p>
+            <p>• Classificação: avançou pelo gol marcado fora de casa</p>
+            <p>• Semifinal: Grêmio 1 x 0 Cruzeiro</p>
+            <p>• Semifinal: Cruzeiro 1 x 0 Grêmio</p>
+            <p>• Classificação: avançou nos pênaltis</p>
+            <p>• Final: Flamengo 1 x 1 Cruzeiro</p>
+            <p>• Final: Cruzeiro 0 x 0 Flamengo</p>
+
+            <p><strong>Números da campanha:</strong></p>
+            <p>• 14 jogos</p>
+            <p>• 7 vitórias</p>
+            <p>• 5 empates</p>
+            <p>• 2 derrotas</p>
+            <p>• 23 gols marcados</p>
+            <p>• 9 gols sofridos</p>
+
+            <p>O goleiro Fábio foi um dos personagens centrais daquela campanha. Ídolo histórico do clube, ele representou liderança, segurança e identificação com a torcida. Em decisões por pênaltis, esse tipo de presença pesa ainda mais.</p>
+
+            <p>A conquista de 2017 também reforçou a conexão entre Cruzeiro e Mineirão. O estádio, que já havia sido palco de outras noites importantes, voltou a ser cenário de título nacional.</p>
+
+            <p><strong>2018: bicampeonato seguido e título contra o Corinthians</strong></p>
+
+            <p>Em 2018, o Cruzeiro fez algo ainda mais difícil: voltou a vencer a Copa do Brasil no ano seguinte. A decisão foi contra o Corinthians, outro clube de enorme tradição nacional, e confirmou a força da equipe de Mano Menezes em mata-mata.</p>
+
+            <p>O bicampeonato de 2017 e 2018 é um dos capítulos mais importantes da relação do Cruzeiro com a competição. Ganhar uma Copa do Brasil já exige regularidade, elenco competitivo e controle emocional. Ganhar duas em sequência exige algo a mais: repetição de desempenho em jogos grandes.</p>
+
+            <p><strong>Campanha em 2018:</strong></p>
+            <p>• Oitavas de final: Athletico-PR 1 x 2 Cruzeiro</p>
+            <p>• Oitavas de final: Cruzeiro 1 x 1 Athletico-PR</p>
+            <p>• Quartas de final: Santos 0 x 1 Cruzeiro</p>
+            <p>• Quartas de final: Cruzeiro 1 x 2 Santos</p>
+            <p>• Classificação: avançou nos pênaltis</p>
+            <p>• Semifinal: Palmeiras 0 x 1 Cruzeiro</p>
+            <p>• Semifinal: Cruzeiro 1 x 1 Palmeiras</p>
+            <p>• Final: Cruzeiro 1 x 0 Corinthians</p>
+            <p>• Final: Corinthians 1 x 2 Cruzeiro</p>
+            <p><strong>Números da campanha:</strong></p>
+            <p>• 8 jogos</p>
+            <p>• 5 vitórias</p>
+            <p>• 2 empates</p>
+            <p>• 1 derrota</p>
+            <p>• 10 gols marcados</p>
+            <p>• 6 gols sofridos</p>
+
+            <p>A final contra o Corinthians também teve personagens marcantes. Thiago Neves, Arrascaeta, Dedé e Fábio fizeram parte de um grupo experiente, acostumado a decisões e forte defensivamente. A equipe talvez não tivesse o mesmo brilho ofensivo do time de 2003, mas era extremamente competitiva.</p>
+
+            <p>Com o título de 2018, o Cruzeiro chegou ao sexto troféu e se isolou como maior campeão da Copa do Brasil. A conquista fechou um ciclo histórico: da primeira taça em 1993 ao bicampeonato seguido em 2018, a Raposa se firmou como o clube mais vitorioso do torneio.</p>
+
+            <p><strong>O Mineirão como palco da história celeste</strong></p>
+
+            <p>A história do Cruzeiro na Copa do Brasil passa diretamente pelo <a href="estadio-mineirao-historia-recordes-cruzeiro-atletico-7a1.html">Mineirão</a>. O estádio não é apenas a casa do clube em Belo Horizonte; é parte da memória das decisões, das viradas, das festas e das noites em que a torcida empurrou a equipe em jogos de alta pressão.</p>
+
+            <p>O retrospecto em finais de Copa do Brasil no estádio ajuda a medir esse peso. Considerando as decisões disputadas no estádio, a Raposa tem oito jogos, com cinco vitórias, dois empates e uma derrota. Foram 10 gols marcados e cinco sofridos nesse recorte.</p>
+
+            <p>A lista mostra como o estádio esteve presente em praticamente toda a construção da hegemonia celeste no torneio: vitória sobre o Grêmio em 1993, empate com o Palmeiras em 1996, vitória sobre o Palmeiras em 1998, vitória sobre o São Paulo em 2000, vitória sobre o Flamengo em 2003, derrota para o Atlético-MG em 2014, empate com o Flamengo em 2017 e vitória sobre o Corinthians em 2018.</p>
+
+            <p>Esse retrospecto explica por que o Mineirão pesa tanto na memória da Copa do Brasil para o Cruzeiro. Mesmo quando a taça não foi decidida apenas em Belo Horizonte, o estádio apareceu como ponto central das campanhas. Nas seis conquistas celestes, sempre houve um capítulo importante no Mineirão.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Fábio, Alex, Fred e os personagens das conquistas</strong></p>
+
+            <p>Os seis títulos atravessam diferentes gerações. Por isso, a lista de personagens é ampla e ajuda a contar a história do clube no torneio.</p>
+
+            <p>Alex é o grande símbolo do time de 2003. Em uma temporada histórica, o camisa 10 liderou uma equipe ofensiva, dominante e campeã de tudo no cenário nacional. A Copa do Brasil daquele ano foi parte fundamental da Tríplice Coroa.</p>
+
+            <p><a href="fabio-carreira-recorde-jogos-libertadores-goleiro-mais-velho.html">Fábio</a> representa o ciclo mais longo. O goleiro esteve nas conquistas de 2017 e 2018 e se consolidou como um dos maiores ídolos da história do Cruzeiro. Em um torneio de mata-mata, ter um goleiro decisivo é quase uma condição para chegar longe.</p>
+
+            <p>Fred também precisa aparecer nessa lista. Mesmo sem ter sido campeão da Copa do Brasil pelo Cruzeiro, o atacante é o maior artilheiro celeste do torneio. Em 2005, marcou 15 gols com a camisa da Raposa, campanha que terminou na semifinal, mas deixou uma marca histórica na competição.</p>
+
+            <p>O dado é forte porque Fred não virou apenas personagem do Cruzeiro na Copa do Brasil: ele se tornou o maior artilheiro da história do torneio somando todos os clubes por onde passou. No caso celeste, a campanha de 2005 segue como o principal recorte individual de gols do clube na competição.</p>
+
+            <p>Mano Menezes também tem lugar importante nessa história. O treinador comandou o bicampeonato de 2017 e 2018, montando equipes fortes defensivamente, experientes e preparadas para jogos de detalhe. O Cruzeiro daquele período talvez não fosse sempre dominante em volume ofensivo, mas sabia competir como poucos.</p>
+
+            <p>O domínio do Cruzeiro na Copa do Brasil não se explica apenas pelo número de títulos. A Raposa venceu decisões contra adversários de diferentes perfis e tamanhos: Grêmio, Palmeiras, São Paulo, Flamengo e Corinthians. Essa sequência mostra que o clube não construiu sua história em cima de um único ciclo ou de um único contexto.</p>
+
+            <p>Outro ponto importante é a distribuição das conquistas. O Cruzeiro venceu em 1993, voltou ao topo em 1996, confirmou força em 2000, viveu o auge técnico em 2003 e depois reconstruiu sua presença nacional com o bicampeonato de 2017 e 2018. São títulos espalhados por 25 anos, o que mostra continuidade histórica.</p>
+
+            <p>Esse é o principal argumento de autoridade da Raposa no torneio. Muitos clubes tiveram grandes campanhas, mas poucos sustentaram protagonismo por tanto tempo. O Cruzeiro não foi apenas campeão; ele voltou a ser campeão em gerações diferentes.</p>
+
+            <p><strong>Uma história que define o tamanho do clube</strong></p>
+
+            <p>Os títulos ajudam a explicar o tamanho do clube no futebol brasileiro. A competição exige elenco, camisa, estratégia e capacidade de decidir sob pressão. A Raposa reuniu esses elementos em diferentes épocas.</p>
+
+            <p>A galeria com seis taças coloca o clube no topo da história do torneio e mantém a Copa do Brasil como uma parte central da identidade cruzeirense. Para a torcida, cada conquista tem uma memória própria: a primeira taça, a vitória fora de casa, a Tríplice Coroa, os pênaltis no Mineirão e o bicampeonato seguido.</p>
+
+            <p>Mais do que uma lista de títulos, a trajetória do Cruzeiro na Copa do Brasil é uma síntese da força do clube em jogos grandes. É a história de um time que aprendeu a vencer mata-mata, transformou decisões em patrimônio esportivo e construiu a maior coleção de taças da competição.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
