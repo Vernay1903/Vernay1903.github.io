@@ -2,9 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Copa do Mundo 2026: formato, tabela e todos os grupos definidos | Corte dos Esportes</title>
-  <meta name="description" content="Entenda o formato da Copa do Mundo FIFA 2026 com 48 seleções: 12 grupos de 4, classificação dos melhores terceiros e mata-mata desde os 16 avos. Veja todos os grupos definidos." />
+  <title>Copa do Mundo 2026: grupos, formato, chaveamento e caminho até a final | Corte dos Esportes</title>
+  <meta name="description" content="Mundial terá 48 seleções, 12 grupos, classificação dos melhores terceiros e mata-mata a partir da fase de 32; veja todos os grupos e entenda os cruzamentos até a decisão." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,13 +23,44 @@
   <link rel="stylesheet" href="share.css">
 
   <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Montserrat, sans-serif;
       background: #FFFFFF;
       color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
 
     body {
       min-height: 100vh;
@@ -116,7 +151,8 @@
       align-items: start;
     }
 
-    aside { margin-right: -10px; }
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
 
     .card {
       background: #FFFFFF;
@@ -228,7 +264,10 @@
       header { padding: 10px 18px; }
       .logo-container img { height: 30px; }
       .logo-text { font-size: 18px; }
-      .sports-menu { top: 50px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
       h1 { font-size: 34px; }
     }
   </style>
@@ -268,12 +307,12 @@
       <!-- ARTIGO -->
       <section>
         <div class="card">
-          <h1 id="articleTitle">Copa do Mundo 2026: formato, tabela e todos os grupos definidos</h1>
-          <p class="subhead" id="articleExcerpt">A Copa do Mundo FIFA 2026 terá 48 seleções e novo formato: 12 grupos com 4 equipes, melhores terceiros avançando e mata-mata desde os 16 avos. Veja todos os grupos.</p>
+          <h1 id="articleTitle">Copa do Mundo 2026: grupos, formato, chaveamento e caminho até a final</h1>
+          <p class="subhead" id="articleExcerpt">Mundial terá 48 seleções, 12 grupos, classificação dos melhores terceiros e mata-mata a partir da fase de 32; veja todos os grupos e entenda os cruzamentos até a decisão.</p>
 
           <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">24/02/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+            Por Corte dos Esportes · <span id="articleDate">11/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
           </div>
 
           <!-- COMPARTILHAR (CARREGA DO share.js) -->
@@ -283,115 +322,288 @@
             <span class="share-msg" id="shareMsg" aria-live="polite"></span>
           </div>
 
-          <!-- ANÚNCIO (SEM TEXTO) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">&nbsp;</div>
-
           <article id="articleBody">
-            <p>Copa do Mundo 2026: formato, tabela e todos os grupos definidos</p>
+            <p>A Copa do Mundo de 2026 será a maior edição da história do torneio. Pela primeira vez, o Mundial terá 48 seleções e uma fase eliminatória começando antes das oitavas de final. A mudança aumenta o número de jogos, amplia as possibilidades de classificação e transforma a leitura da tabela em uma parte essencial da competição.</p>
 
-            <p>A Copa do Mundo FIFA 2026 será a maior edição da história do torneio, com 48 seleções e organização conjunta de Estados Unidos, Canadá e México, sob responsabilidade da FIFA.</p>
+            <p>O torneio será disputado em Estados Unidos, México e Canadá, com 104 partidas no total. A fase de grupos segue com três jogos para cada seleção, mas o caminho até o título será mais longo: depois da primeira fase, o campeão terá que passar por fase de 32, oitavas de final, quartas, semifinal e final.</p>
 
-            <p>Além da ampliação no número de participantes, a principal mudança está no formato da fase de grupos — e isso impacta diretamente a leitura da tabela e o caminho até o mata-mata.</p>
+            <p>Além dos grupos e do chaveamento, a Copa de 2026 também representa uma mudança histórica no tamanho e no alcance do Mundial. Será a primeira edição com 48 seleções, três países-sede e 104 partidas, <a href="copa-do-mundo-2026-historia-impacto-global-e-o-que-muda-no-mundial.html">ampliando o peso esportivo, comercial e global do torneio</a>.</p>
 
-            <p>📊 Como funciona a tabela na Copa 2026</p>
+            <p><strong>A classificação funciona assim:</strong></p>
+            <p>• 1º colocado de cada grupo: avança para a fase de 32</p>
+            <p>• 2º colocado de cada grupo: avança para a fase de 32</p>
+            <p>• 3º colocado de cada grupo: apenas os oito melhores avançam</p>
+            <p>• 4º colocado de cada grupo: eliminado</p>
 
-            <p>48 seleções</p>
-            <p>12 grupos com 4 equipes cada</p>
-            <p>Classificam-se os 2 primeiros de cada grupo</p>
-            <p>Avançam também os 8 melhores terceiros colocados</p>
-            <p>A fase eliminatória começa nos 16 avos de final</p>
+            <p>Ao todo, 32 seleções passam para o mata-mata: 24 vindas das duas primeiras posições de cada grupo e mais oito classificadas entre os terceiros colocados.</p>
 
-            <p>A pontuação segue o modelo tradicional:</p>
+            <p><strong>A pontuação segue o modelo tradicional:</strong></p>
+            <p>• Vitória: 3 pontos</p>
+            <p>• Empate: 1 ponto</p>
+            <p>• Derrota: 0 ponto</p>
 
-            <p>3 pontos por vitória</p>
-            <p>1 ponto por empate</p>
-            <p>0 ponto por derrota</p>
+            <p>Os critérios de desempate também ganham importância maior, especialmente para definir os melhores terceiros colocados. Saldo de gols, gols marcados, confronto direto e fair play podem pesar diretamente na sobrevivência de uma seleção.</p>
 
-            <p>Critérios de desempate:</p>
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
 
-            <p>Saldo de gols</p>
-            <p>Gols marcados</p>
-            <p>Confronto direto</p>
-            <p>Fair play</p>
+            <p><strong>Por que os melhores terceiros mudam a Copa</strong></p>
 
-            <p>Com mais vagas para terceiros colocados, a tabela ganha ainda mais importância estratégica.</p>
+            <p>A entrada dos oito melhores terceiros colocados é uma das maiores mudanças do novo formato. Isso faz com que uma seleção ainda possa avançar mesmo sem terminar entre as duas primeiras do grupo.</p>
 
-            <p>🏆 Grupos da Copa do Mundo 2026</p>
+            <p>Esse detalhe também muda a forma de acompanhar a Copa. O torcedor não precisa olhar apenas para o grupo da própria seleção. Será necessário comparar campanhas entre grupos diferentes, principalmente na última rodada da primeira fase.</p>
 
-            <p>🔹 Grupo A</p>
-            <p>México</p>
-            <p>África do Sul</p>
-            <p>Coreia do Sul</p>
-            <p>Vencedor do Playoff Europeu D</p>
+            <p><strong>Todos os grupos da Copa do Mundo 2026</strong></p>
 
-            <p>🔹 Grupo B</p>
-            <p>Canadá</p>
-            <p>Vencedor do Playoff Europeu A</p>
-            <p>Catar</p>
-            <p>Suíça</p>
+            <p><strong><a href="grupo-a-copa-do-mundo-2026-mexico-africa-do-sul-coreia-do-sul-republica-tcheca.html">Grupo A</a></strong></p>
+            <p>• México</p>
+            <p>• África do Sul</p>
+            <p>• Coreia do Sul</p>
+            <p>• Tchéquia</p>
 
-            <p>🔹 Grupo C</p>
-            <p>Brasil</p>
-            <p>Marrocos</p>
-            <p>Haiti</p>
-            <p>Escócia</p>
+            <p><strong><a href="grupo-b-copa-do-mundo-2026-canada-bosnia-catar-suica.html">Grupo B</a></strong></p>
+            <p>• Canadá</p>
+            <p>• Bósnia e Herzegovina</p>
+            <p>• Catar</p>
+            <p>• Suíça</p>
 
-            <p>🔹 Grupo D</p>
-            <p>Estados Unidos</p>
-            <p>Paraguai</p>
-            <p>Austrália</p>
-            <p>Vencedor do Playoff Europeu C</p>
+            <p><strong><a href="grupo-c-copa-do-mundo-2026-brasil-marrocos-haiti-escocia.html">Grupo C</a></strong></p>
+            <p>• Brasil</p>
+            <p>• Marrocos</p>
+            <p>• Haiti</p>
+            <p>• Escócia</p>
 
-            <p>🔹 Grupo E</p>
-            <p>Alemanha</p>
-            <p>Curaçao</p>
-            <p>Costa do Marfim</p>
-            <p>Equador</p>
+            <p><strong><a href="grupo-d-copa-do-mundo-2026-estados-unidos-paraguai-australia-turquia.html">Grupo D</a></strong></p>
+            <p>• Estados Unidos</p>
+            <p>• Paraguai</p>
+            <p>• Austrália</p>
+            <p>• Turquia</p>
 
-            <p>🔹 Grupo F</p>
-            <p>Holanda</p>
-            <p>Japão</p>
-            <p>Tunísia</p>
-            <p>Vencedor do Playoff Europeu B</p>
+            <p><strong><a href="grupo-e-copa-do-mundo-2026-alemanha-curacao-equador-costa-do-marfim.html">Grupo E</a></strong></p>
+            <p>• Alemanha</p>
+            <p>• Curaçao</p>
+            <p>• Costa do Marfim</p>
+            <p>• Equador</p>
 
-            <p>🔹 Grupo G</p>
-            <p>Bélgica</p>
-            <p>Egito</p>
-            <p>Irã</p>
-            <p>Nova Zelândia</p>
+            <p><strong><a href="grupo-f-copa-do-mundo-2026-holanda-japao-suecia-tunisia.html">Grupo F</a></strong></p>
+            <p>• Holanda</p>
+            <p>• Japão</p>
+            <p>• Suécia</p>
+            <p>• Tunísia</p>
 
-            <p>🔹 Grupo H</p>
-            <p>Espanha</p>
-            <p>Uruguai</p>
-            <p>Arábia Saudita</p>
-            <p>Cabo Verde</p>
+            <p><strong><a href="grupo-g-copa-do-mundo-2026-belgica-egito-ira-nova-zelandia.html">Grupo G</a></strong></p>
+            <p>• Bélgica</p>
+            <p>• Egito</p>
+            <p>• Irã</p>
+            <p>• Nova Zelândia</p>
 
-            <p>🔹 Grupo I</p>
-            <p>França</p>
-            <p>Senegal</p>
-            <p>Noruega</p>
-            <p>Vencedor do Playoff Intercontinental 2</p>
+            <p><strong><a href="grupo-h-copa-do-mundo-2026-espanha-uruguai-arabia-saudita-cabo-verde.html">Grupo H</a></strong></p>
+            <p>• Espanha</p>
+            <p>• Cabo Verde</p>
+            <p>• Arábia Saudita</p>
+            <p>• Uruguai</p>
 
-            <p>🔹 Grupo J</p>
-            <p>Argentina</p>
-            <p>Argélia</p>
-            <p>Áustria</p>
-            <p>Jordânia</p>
+            <p><strong><a href="grupo-i-copa-do-mundo-2026-franca-senegal-noruega-iraque.html">Grupo I</a></strong></p>
+            <p>• França</p>
+            <p>• Senegal</p>
+            <p>• Iraque</p>
+            <p>• Noruega</p>
 
-            <p>🔹 Grupo K</p>
-            <p>Portugal</p>
-            <p>Uzbequistão</p>
-            <p>Colômbia</p>
-            <p>Vencedor do Playoff Intercontinental 1</p>
+            <p><strong><a href="grupo-j-copa-do-mundo-2026-argentina-argelia-austria-jordania.html">Grupo J</a></strong></p>
+            <p>• Argentina</p>
+            <p>• Argélia</p>
+            <p>• Áustria</p>
+            <p>• Jordânia</p>
 
-            <p>🔹 Grupo L</p>
-            <p>Inglaterra</p>
-            <p>Croácia</p>
-            <p>Gana</p>
-            <p>Panamá</p>
+            <p><strong><a href="grupo-k-copa-do-mundo-2026-portugal-colombia-uzbequistao-rd-congo.html">Grupo K</a></strong></p>
+            <p>• Portugal</p>
+            <p>• República Democrática do Congo</p>
+            <p>• Uzbequistão</p>
+            <p>• Colômbia</p>
 
-            <p><strong>Leia também:</strong> <a href="futebol.html">Mais notícias de Futebol no Corte dos Esportes</a></p>
-            <p><strong>Conheça também a história da Copa do Mundo:</strong> <a href="https://cortedosesportes.com.br/copa-do-mundo-2026-historia-impacto-global-e-o-que-muda-no-mundial.html">Copa do Mundo 2026: história, impacto global e o que muda no Mundial</a></p>
+            <p><strong><a href="grupo-l-copa-do-mundo-2026-inglaterra-croacia-gana-panama.html">Grupo L</a></strong></p>
+            <p>• Inglaterra</p>
+            <p>• Croácia</p>
+            <p>• Gana</p>
+            <p>• Panamá</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Os confrontos definidos por posição serão estes:</strong></p>
+
+            <p>Jogo 73</p>
+            <p>• 2º do Grupo A x 2º do Grupo B</p>
+
+            <p>Jogo 74</p>
+            <p>• 1º do Grupo E x 3º dos grupos A/B/C/D/F</p>
+
+            <p>Jogo 75</p>
+            <p>• 1º do Grupo F x 2º do Grupo C</p>
+
+            <p>Jogo 76</p>
+            <p>• 1º do Grupo C x 2º do Grupo F</p>
+
+            <p>Jogo 77</p>
+            <p>• 1º do Grupo I x 3º dos grupos C/D/F/G/H</p>
+
+            <p>Jogo 78</p>
+            <p>• 2º do Grupo E x 2º do Grupo I</p>
+
+            <p>Jogo 79</p>
+            <p>• 1º do Grupo A x 3º dos grupos C/E/F/H/I</p>
+
+            <p>Jogo 80</p>
+            <p>• 1º do Grupo L x 3º dos grupos E/H/I/J/K</p>
+
+            <p>Jogo 81</p>
+            <p>• 1º do Grupo D x 3º dos grupos B/E/F/I/J</p>
+
+            <p>Jogo 82</p>
+            <p>• 1º do Grupo G x 3º dos grupos A/E/H/I/J</p>
+
+            <p>Jogo 83</p>
+            <p>• 2º do Grupo K x 2º do Grupo L</p>
+
+            <p>Jogo 84</p>
+            <p>• 1º do Grupo H x 2º do Grupo J</p>
+
+            <p>Jogo 85</p>
+            <p>• 1º do Grupo B x 3º dos grupos E/F/G/I/J</p>
+
+            <p>Jogo 86</p>
+            <p>• 1º do Grupo J x 2º do Grupo H</p>
+
+            <p>Jogo 87</p>
+            <p>• 1º do Grupo K x 3º dos grupos D/E/I/J/L</p>
+
+            <p>Jogo 88</p>
+            <p>• 2º do Grupo D x 2º do Grupo G</p>
+
+            <p>Os confrontos contra terceiros colocados não têm um adversário fixo antes do fim da primeira fase. Isso acontece porque apenas oito dos 12 terceiros avançam, e a combinação final depende de quais grupos colocarem seus terceiros entre os classificados.</p>
+
+            <p>Por exemplo: o campeão do Grupo E pode enfrentar um terceiro vindo de A, B, C, D ou F. O campeão do Grupo A pode pegar um terceiro vindo de C, E, F, H ou I. O campeão do Grupo K pode enfrentar um terceiro de D, E, I, J ou L.</p>
+
+            <p>Isso aumenta a imprevisibilidade. Uma seleção pode terminar a primeira fase sabendo sua posição, mas ainda depender de outros grupos para descobrir o adversário no mata-mata.</p>
+
+            <p><strong>Oitavas de final</strong></p>
+
+            <p>Depois da fase de 32, restam 16 seleções. A partir daí, a Copa volta ao desenho mais conhecido, com oitavas, quartas, semifinais e final.</p>
+
+            <p><strong>Os cruzamentos das oitavas serão estes:</strong></p>
+            <p>Jogo 89</p>
+            <p>• Vencedor do Jogo 74 x vencedor do Jogo 77</p>
+
+            <p>Jogo 90</p>
+            <p>• Vencedor do Jogo 73 x vencedor do Jogo 75</p>
+
+            <p>Jogo 91</p>
+            <p>• Vencedor do Jogo 76 x vencedor do Jogo 78</p>
+
+            <p>Jogo 92</p>
+            <p>• Vencedor do Jogo 79 x vencedor do Jogo 80</p>
+
+            <p>Jogo 93</p>
+            <p>• Vencedor do Jogo 83 x vencedor do Jogo 84</p>
+
+            <p>Jogo 94</p>
+            <p>• Vencedor do Jogo 81 x vencedor do Jogo 82</p>
+
+            <p>Jogo 95</p>
+            <p>• Vencedor do Jogo 86 x vencedor do Jogo 88</p>
+
+            <p>Jogo 96</p>
+            <p>• Vencedor do Jogo 85 x vencedor do Jogo 87</p>
+
+            <p><strong>Quartas de final</strong></p>
+
+            <p>As quartas reduzem o Mundial de oito para quatro seleções. É a fase em que o chaveamento começa a mostrar, de forma mais clara, quais caminhos foram mais pesados.</p>
+
+            <p>Jogo 97</p>
+            <p>• Vencedor do Jogo 89 x vencedor do Jogo 90</p>
+
+            <p>Jogo 98</p>
+            <p>• Vencedor do Jogo 93 x vencedor do Jogo 94</p>
+
+            <p>Jogo 99</p>
+            <p>• Vencedor do Jogo 91 x vencedor do Jogo 92</p>
+
+            <p>Jogo 100</p>
+            <p>• Vencedor do Jogo 95 x vencedor do Jogo 96</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>As semifinais definem os dois finalistas. Cada seleção que chegar até aqui já terá sobrevivido à fase de grupos e a três partidas eliminatórias.</p>
+
+            <p>Jogo 101</p>
+            <p>• Vencedor do Jogo 97 x vencedor do Jogo 98</p>
+
+            <p>Jogo 102</p>
+            <p>• Vencedor do Jogo 99 x vencedor do Jogo 100</p>
+
+            <p><strong>Decisão do terceiro lugar</strong></p>
+
+            <p>Jogo 103</p>
+            <p>• Perdedor do Jogo 101 x perdedor do Jogo 102</p>
+
+            <p><strong>Final da Copa do Mundo</strong></p>
+
+            <p>A final da Copa do Mundo de 2026 será o Jogo 104. A decisão está marcada para 19 de julho, no New York New Jersey Stadium, em East Rutherford, na região de Nova York/Nova Jersey.</p>
+
+            <p>Jogo 104</p>
+            <p>• Vencedor do Jogo 101 x vencedor do Jogo 102</p>
+
+            <p><strong>O caminho do Brasil no Grupo C</strong></p>
+
+            <p>O Brasil está no Grupo C, ao lado de Marrocos, Haiti e Escócia. A posição final da Seleção na chave muda completamente o caminho no mata-mata.</p>
+
+            <p>Se terminar em primeiro lugar, o Brasil entra no Jogo 76, contra o segundo colocado do Grupo F. Esse grupo tem Holanda, Japão, Suécia e Tunísia. Ou seja: mesmo vencendo a própria chave, a Seleção pode encontrar um adversário competitivo logo na fase de 32.</p>
+
+            <p>Se terminar em segundo lugar, o Brasil entra no Jogo 75, contra o campeão do Grupo F. Nesse cenário, o caminho pode ficar mais pesado, porque a Seleção enfrentaria uma equipe que venceu uma chave difícil.</p>
+
+            <p>Se terminar em terceiro lugar, o Brasil só avança se estiver entre os oito melhores terceiros colocados. Nesse caso, pode cair em rotas diferentes, dependendo da combinação final dos terceiros classificados.</p>
+
+            <p>Por isso, o Grupo C não vale apenas pela classificação. Vale também pelo caminho. Terminar em primeiro pode evitar um cruzamento ainda mais duro e colocar a Seleção em uma posição mais favorável para avançar no mata-mata.</p>
+
+            <p><strong>O que muda para as grandes seleções</strong></p>
+
+            <p>O novo formato reduz o risco de eliminação precoce para algumas seleções grandes, porque os melhores terceiros também avançam. Ao mesmo tempo, aumenta o número de jogos e cria uma fase eliminatória extra.</p>
+
+            <p>Por isso, entender os grupos e o chaveamento é essencial para acompanhar a Copa. Em 2026, cada ponto, cada gol e cada posição na tabela podem mudar completamente o caminho até a final.</p>
           </article>
         </div>
       </section>
@@ -405,8 +617,18 @@
           </ul>
         </div>
 
-        <!-- ANÚNCIO (SEM TEXTO) -->
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">&nbsp;</div>
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </aside>
 
     </div>
