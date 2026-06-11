@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knicks vencem Spurs no fim e ficam a uma vitória do título da NBA | Corte dos Esportes</title>
+  <meta name="description" content="Com cesta de Anunoby a 1,2 segundo do fim, New York bate San Antonio por 107 a 106, abre 3 a 1 nas Finais e transforma uma noite quase perdida em uma das maiores viradas da história da liga." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Knicks vencem Spurs no fim e ficam a uma vitória do título da NBA</h1>
+          <p class="subhead" id="articleExcerpt">Com cesta de Anunoby a 1,2 segundo do fim, New York bate San Antonio por 107 a 106, abre 3 a 1 nas Finais e transforma uma noite quase perdida em uma das maiores viradas da história da liga.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">11/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="basquete.html">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O resultado, por si só, já seria enorme: 3 a 1 na série, Madison Square Garden em festa e a franquia de Nova York perto de encerrar um jejum que vem desde 1973. Mas o peso da partida vai além do placar. Os Knicks buscaram uma desvantagem de 29 pontos e decidiram o jogo com um tapinha de OG Anunoby a 1,2 segundo do fim, em uma das viradas mais marcantes já vistas em uma final da liga.</p>
+
+            <p><strong>O jogo</strong></p>
+
+            <p>O início foi todo dos Spurs. San Antonio abriu 41 a 22 no primeiro quarto, manteve o ritmo no segundo período e foi para o intervalo vencendo por 76 a 49. A vantagem de 27 pontos no intervalo foi histórica: a maior já construída por um visitante em uma partida de Finais. O domínio texano parecia completo, principalmente porque os Spurs chegaram ao intervalo com 14 bolas de três convertidas, recorde para um primeiro tempo em Finais da NBA.</p>
+
+            <p>A diferença chegou a 29 pontos no terceiro quarto, quando San Antonio abriu 81 a 52. Até ali, a noite caminhava para empatar a série em 2 a 2 e devolver o controle emocional aos Spurs. O histórico também jogava contra os Knicks: desde que a NBA passou a registrar play-by-play detalhado por todos os quartos, em 1997, nenhuma equipe havia virado uma desvantagem maior que 24 pontos em uma partida de Finais. A referência anterior era a reação do Boston Celtics contra o Los Angeles Lakers em 2008.</p>
+
+            <p><strong>A reação que mudou a final</strong></p>
+
+            <p>A virada começou na defesa. Os Knicks limitaram os Spurs a apenas 14 pontos no terceiro quarto, com San Antonio acertando 4 de 20 arremessos no período. A diferença ainda era grande, mas o jogo mudou de temperatura. Nova York venceu o terceiro quarto por 26 a 14 e entrou no último período perdendo por 90 a 75.</p>
+
+            <p>No quarto período, os Knicks transformaram pressão em caos. Venceram a parcial final por 32 a 16, aceleraram a rotação defensiva, atacaram melhor o rebote ofensivo e tiraram dos Spurs a fluidez que havia aparecido no primeiro tempo. San Antonio, que começou a partida em ritmo quase perfeito do perímetro, caiu drasticamente depois do intervalo: após acertar 11 das primeiras 16 bolas de três, fez apenas 3 de 17 no segundo tempo.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O Garden como personagem da virada</strong></p>
+
+            <p>A vitória também ganha peso pelo palco. O Madison Square Garden não é apenas a casa dos Knicks; é um dos ginásios mais simbólicos do esporte mundial. O “The Garden”, tratado há décadas como uma das grandes mecas do basquete e localizado no coração de Manhattan, o ginásio carrega uma mistura rara de história, pressão, celebridades, tradição e arquibancada pressionando no jogo. Em uma final de NBA, esse ambiente pesa ainda mais.</p>
+
+            <p>No Jogo 4, o Garden começou a noite em choque com o domínio dos Spurs, mas virou parte da reação no segundo tempo. A cada erro de San Antonio, a cada bola importante dos Knicks e a cada posse defensiva vencida, a arena cresceu junto com o time. Depois da cesta de Anunoby, a explosão foi de jogo histórico: uma virada de 29 pontos, em casa, nas Finais, diante de uma torcida que espera por um título desde 1973.</p>
+
+            <p>A presença de celebridades, executivos, ex-jogadores e torcedores históricos dos Knicks reforçou o tamanho do evento. Mas o centro da noite não foi o tapete vermelho à beira da quadra. Foi a atmosfera de decisão. O Madison Square Garden virou personagem porque o jogo saiu de uma derrota quase certa para uma das vitórias mais importantes da história da franquia.</p>
+
+            <p><strong>Anunoby faz a partida da vida</strong></p>
+
+            <p>OG Anunoby foi o nome da noite. O ala terminou com 33 pontos, 4 rebotes, 1 assistência, 1 roubo e 1 bloqueio. A eficiência foi absurda para um jogo de final: 10 acertos em 15 arremessos de quadra, 7 de 9 nas bolas de três e 6 de 6 nos lances livres. Em uma partida decidida por um ponto, cada detalhe da atuação de Anunoby pesou.</p>
+
+            <p>Mais importante do que a pontuação foi a variedade do impacto. Anunoby espaçou a quadra, puniu os Spurs do perímetro, segurou defensivamente posses decisivas e ainda apareceu no rebote ofensivo que definiu a partida. Não foi apenas uma grande noite de aproveitamento. Foi uma atuação completa em contexto histórico: Finais da NBA, série pendendo para 3 a 1 e um Madison Square Garden que saiu do silêncio para o delírio.</p>
+
+            <p>O lance final confirma o tamanho da noite. Depois de os Spurs retomarem a liderança por 106 a 105, Brunson recebeu a bola na última posse dos Knicks e tentou uma bola de três longa. O arremesso bateu na frente do aro. Anunoby atacou o rebote, subiu no tempo certo e completou com a mão direita. A cesta saiu com 1,2 segundo no relógio e virou o placar para 107 a 106.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Brunson lidera a reconstrução do jogo</strong></p>
+
+            <p>O armador marcou 36 pontos, deu 7 assistências, pegou 5 rebotes e ainda somou 3 roubos de bola. Mesmo sem converter a bola final, foi dele a criação da jogada que terminou no rebote ofensivo de Anunoby.</p>
+
+            <p>A presença de Brunson no segundo tempo foi decisiva porque os Knicks precisavam de controle, não só de pressa. Em uma virada desse tamanho, o risco é transformar ansiedade em arremessos ruins. Brunson sustentou o ataque com infiltrações, faltas cavadas, leitura de dobra e distribuição. Quando San Antonio tentou diminuir o ritmo, ele encontrou pontos suficientes para manter o Garden dentro da partida.</p>
+
+            <p><strong>Towns e Hart ajudam sem a bola</strong></p>
+
+            <p>Karl-Anthony Towns não teve uma noite de volume ofensivo, mas foi importante para manter os Knicks funcionais. O pivô terminou com 13 pontos e 10 rebotes, acertando 4 de 5 arremessos de quadra e 4 de 4 nos lances livres. Mesmo limitado por faltas no começo, voltou a ter peso no controle do garrafão e na presença física em uma partida cada vez mais tensa.</p>
+
+            <p>Josh Hart também foi útil na estrutura coletiva. Não foi uma partida construída para ele dominar a pontuação, mas Hart participou da reação com energia, rebote, defesa e circulação de bola. A virada dos Knicks teve Brunson e Anunoby como protagonistas, mas também dependeu de peças que mantiveram a posse viva e sustentaram a intensidade.</p>
+
+            <p><strong>Wembanyama não foi suficiente pra vitória</strong></p>
+
+            <p>Pelo lado dos Spurs, o francês terminou com 24 pontos, 13 rebotes e 3 tocos. A linha mostra presença e volume, mas também revela o problema: o francês acertou apenas 9 de 25 arremessos de quadra. Ele foi dominante em momentos do primeiro tempo, especialmente pela proteção de aro e pela ameaça constante no ataque, mas perdeu eficiência quando os Knicks aumentaram o contato e fecharam melhor os espaços.</p>
+
+            <p>Wembanyama também ficou marcado por dois lances livres desperdiçados a 1min47s do fim, quando San Antonio ainda vencia por 104 a 103. Em uma derrota por um ponto, esse tipo de detalhe vira parte central da leitura do jogo. Não foi uma atuação ruim do principal nome dos Spurs, mas foi uma atuação insuficiente para segurar uma vantagem que chegou a parecer definitiva.</p>
+
+            <p><strong>Fox, Vassell, Castle e Harper dão suporte</strong></p>
+
+            <p>San Antonio teve uma produção espalhada. De’Aaron Fox fez 18 pontos, Devin Vassell também marcou 18, Stephon Castle recolocou os Spurs na frente nos segundos finais com dois lances livres, e Dylan Harper saiu do banco para fazer 21 pontos. O problema é que os Spurs não conseguiram transformar essa produção em controle no segundo tempo.</p>
+
+            <p>O banco também teve papel importante com Harper, principal nome da segunda unidade texana. Ainda assim, San Antonio perdeu o controle coletivo. O time que parecia confortável no primeiro tempo virou uma equipe pressionada, apressada e sem a mesma qualidade na seleção de arremessos. A queda não foi apenas técnica. Foi emocional, física e tática.</p>
+
+            <p><strong>Os números explicam o colapso dos Spurs</strong></p>
+
+            <p>O placar final mostra equilíbrio, mas a distribuição dos quartos conta a história da partida. San Antonio fez 41 pontos no primeiro período e 35 no segundo, totalizando 76 no intervalo. Depois, marcou apenas 14 no terceiro e 16 no quarto. A queda foi brutal: 76 pontos no primeiro tempo, 30 no segundo. New York fez o caminho inverso: 49 pontos antes do intervalo e 58 depois.</p>
+
+            <p>Nos números gerais, os Spurs começaram a noite em ritmo de recorde, especialmente nas bolas de três. Só que a eficiência desabou quando os Knicks aumentaram a pressão defensiva e passaram a disputar cada posse como se fosse a última.</p>
+
+            <p><strong>A maior virada das Finais</strong></p>
+
+            <p>A marca histórica é o centro da noite. Os Knicks saíram de 29 pontos atrás e venceram. Nenhum time havia buscado uma desvantagem maior em uma partida de Finais. A NBA já teve reações memoráveis em playoffs, mas em Finais o peso é outro: cada posse muda legado, anel, narrativa e pressão para o jogo seguinte.</p>
+
+            <p>A dimensão da virada também conversa com a própria <a href="nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA</a>. As Finais são o palco em que marcas individuais, dinastias, colapsos e jogos memoráveis deixam de ser apenas estatística e passam a fazer parte da memória do basquete. A reação dos Knicks contra os Spurs entra nesse tipo de capítulo: uma franquia tradicional, em busca de encerrar um jejum desde 1973, vencendo uma partida praticamente perdida em um dos ginásios mais simbólicos do esporte.</p>
+
+            <p>A comparação mais próxima é a virada de 24 pontos do Celtics sobre o Lakers em 2008. Os Knicks superaram essa referência em uma situação ainda mais dramática: dentro de casa, com a série em 2 a 1, contra um time jovem que havia dominado completamente o primeiro tempo. O resultado transforma o Jogo 4 em um candidato imediato a clássico histórico da franquia.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que muda na série</strong></p>
+
+            <p>Com a vitória, os Knicks abriram 3 a 1 nas Finais. New York agora tem três chances de fechar a série e conquistar o primeiro título da franquia desde 1973. O Jogo 5 será em San Antonio, e os Spurs precisam vencer para manter a final viva. Historicamente, a missão é pesada: apenas o Cleveland Cavaliers de 2016 conseguiu virar uma desvantagem de 3 a 1 em Finais da NBA.</p>
+
+            <p>Para os Knicks, o Jogo 4 entrega mais do que vantagem. O time sobreviveu ao pior primeiro tempo possível, segurou uma avalanche de bolas de três, encarou Wembanyama, apagou 29 pontos e venceu no último rebote ofensivo da noite. Para os Spurs, a derrota exige resposta emocional imediata. O time teve a partida nas mãos, fez um primeiro tempo histórico e mesmo assim saiu do Garden a uma derrota da eliminação.</p>
+
+            <p><strong>Próxima partida</strong></p>
+
+            <p>Data: sábado, 13 de junho de 2026</p>
+            <p>Horário: 21h30, de Brasília</p>
+            <p>Local: Frost Bank Center, em San Antonio</p>
+            <p>Série: Knicks lideram por 3 a 1</p>
+            <p>Transmissão: Prime Video e NBA League Pass</p>
+
+            <p><strong>Uma noite que pode definir um título</strong></p>
+
+            <p>O Jogo 4 das Finais da NBA teve todos os elementos de uma partida que atravessa gerações: placar apertado, virada histórica, estrela em ascensão do outro lado, atuação decisiva de coadjuvante de luxo, cesta a 1,2 segundo do fim e uma franquia tradicional perto de encerrar um jejum de mais de cinco décadas.</p>
+
+            <p>Anunoby sai como o grande personagem da noite. Brunson sai como o líder da reação. Wembanyama sai como o astro que produziu, mas não conseguiu impedir o colapso. E os Knicks saem com uma vitória que pode ser lembrada, daqui a muitos anos, como o jogo que abriu definitivamente o caminho para o título.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
