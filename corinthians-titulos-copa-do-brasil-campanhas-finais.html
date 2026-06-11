@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Títulos do Corinthians na Copa do Brasil: finais e o tetracampeonato | Corte dos Esportes</title>
+  <meta name="description" content="Clube paulista conquistou a competição quatro vezes em diferentes décadas, com finais contra Grêmio, Brasiliense, Internacional e Vasco, em uma trajetória marcada por mata-mata, decisões fora de casa e personagens históricos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Títulos do Corinthians na Copa do Brasil: finais e o tetracampeonato</h1>
+          <p class="subhead" id="articleExcerpt">Clube paulista conquistou a competição quatro vezes em diferentes décadas, com finais contra Grêmio, Brasiliense, Internacional e Vasco, em uma trajetória marcada por mata-mata, decisões fora de casa e personagens históricos.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">11/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O clube conquistou o torneio em 1995, 2002, 2009 e 2025, formando uma trajetória marcada por campanhas de mata-mata, finais de peso nacional, títulos decididos longe de casa e personagens que atravessam diferentes gerações da torcida.</p>
+
+            <p>A competição também combina com parte da identidade corintiana. A Copa do Brasil exige resistência, elenco competitivo, leitura emocional, força em jogos eliminatórios e capacidade de decidir sob pressão. O Timão teve tudo isso em suas quatro conquistas: foi campeão invicto em 1995, confirmou uma geração técnica em 2002, transformou a taça de 2009 em símbolo de reconstrução e voltou ao topo em 2025, encerrando um jejum de 16 anos no torneio.</p>
+
+            <p>Para medir o peso do torneio no calendário nacional, juntamente com a tradição corintiana, pois as duas coisas se misturam naturalmente na <a href="copa-do-brasil-historia-tradicao-maiores-campeoes.html">história da Copa do Brasil</a>.</p>
+
+            <p><strong>Os quatro títulos da Copa do Brasil:</strong></p>
+            <ul>
+              <li>1995: campeão contra o Grêmio</li>
+              <li>2002: campeão contra o Brasiliense</li>
+              <li>2009: campeão contra o Internacional</li>
+              <li>2025: campeão contra o Vasco</li>
+            </ul>
+
+            <p>Além das conquistas, o clube também soma finais perdidas. O Timão foi vice em 2001, contra o Grêmio; em 2008, contra o Sport; em 2018, contra o Cruzeiro; e em 2022, contra o Flamengo. Esse histórico reforça a presença recorrente do Corinthians nas decisões do principal mata-mata nacional.</p>
+
+            <p><strong>1995: o primeiro título</strong></p>
+
+            <p><strong>Campanha completa:</strong></p>
+            <p><strong>Primeira fase</strong></p>
+            <ul>
+              <li>Operário-MT 1 x 1 Corinthians</li>
+              <li>Corinthians 4 x 0 Operário-MT</li>
+            </ul>
+            <p><strong>Oitavas de final</strong></p>
+            <ul>
+              <li>Rio Branco-AC 0 x 3 Corinthians</li>
+              <li>Corinthians 2 x 0 Rio Branco-AC</li>
+            </ul>
+            <p><strong>Quartas de final</strong></p>
+            <ul>
+              <li>Paraná 0 x 0 Corinthians</li>
+              <li>Corinthians 2 x 1 Paraná</li>
+            </ul>
+            <p><strong>Semifinal</strong></p>
+            <ul>
+              <li>Vasco 0 x 1 Corinthians</li>
+              <li>Corinthians 5 x 0 Vasco</li>
+            </ul>
+            <p><strong>Final</strong></p>
+            <ul>
+              <li>Corinthians 2 x 1 Grêmio</li>
+              <li>Grêmio 0 x 1 Corinthians</li>
+            </ul>
+
+            <p><strong>A final contra o Grêmio</strong></p>
+
+            <p>Foi uma conquista de enorme valor simbólico porque colocou o clube no mapa da competição e confirmou uma equipe que já tinha força técnica, personalidade e poder de decisão.</p>
+
+            <p>O título também ganhou peso pela campanha invicta. O Corinthians não perdeu nenhum jogo no torneio e chegou à decisão depois de uma semifinal dominante contra o Vasco</p>
+
+            <p>Na final, o adversário era o Grêmio de Luiz Felipe Scolari, uma das equipes mais fortes do país naquele período. O time gaúcho havia vencido a Copa do Brasil no ano anterior e conquistaria a Libertadores de 1995. Isso aumentou o tamanho da conquista corintiana.</p>
+
+            <p>No jogo de ida, no Pacaembu, o Corinthians venceu por 2 a 1. Viola abriu o caminho, e Marcelinho Carioca marcou um gol decisivo de falta para garantir a vantagem. Na volta, no Olímpico, em Porto Alegre, o Timão venceu por 1 a 0, novamente com Marcelinho, e confirmou o título fora de casa.</p>
+
+            <p>A taça de 1995 abriu a relação do Corinthians com a Copa do Brasil em grande estilo: título invicto, final contra um rival de peso, decisão fora de casa e um protagonista que ficaria eternamente ligado à memória da torcida.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>2002: o bicampeonato contra o Brasiliense</strong></p>
+
+            <p><strong>Campanha completa:</strong></p>
+            <p><strong>Primeira fase</strong></p>
+            <ul>
+              <li>River-PI 1 x 2 Corinthians</li>
+              <li>Corinthians 2 x 0 River-PI</li>
+            </ul>
+            <p><strong>Segunda fase</strong></p>
+            <ul>
+              <li>Americano-RJ 2 x 6 Corinthians</li>
+            </ul>
+            <p><strong>Oitavas de final</strong></p>
+            <ul>
+              <li>Corinthians 2 x 2 Cruzeiro</li>
+              <li>Cruzeiro 2 x 3 Corinthians</li>
+            </ul>
+            <p><strong>Quartas de final</strong></p>
+            <ul>
+              <li>Corinthians 3 x 1 Paraná</li>
+              <li>Paraná 1 x 0 Corinthians</li>
+            </ul>
+            <p><strong>Semifinal</strong></p>
+            <ul>
+              <li>São Paulo 0 x 2 Corinthians</li>
+              <li>Corinthians 1 x 2 São Paulo</li>
+            </ul>
+            <p><strong>Final</strong></p>
+            <ul>
+              <li>Corinthians 2 x 1 Brasiliense</li>
+              <li>Brasiliense 1 x 1 Corinthians</li>
+            </ul>
+
+            <p>O segundo título em 2002, com uma campanha que confirmou a força de uma geração técnica e experiente. O Corinthians tinha um elenco com nomes como Dida, Fábio Luciano, Kléber, Vampeta, Ricardinho, Gil, entre outros, além do comando de Carlos Alberto Parreira.</p>
+
+            <p>A decisão foi contra o Brasiliense, grande surpresa daquela edição. O clube do Distrito Federal chegou à final depois de eliminar adversários tradicionais e entrou na decisão como uma zebra perigosa, capaz de transformar qualquer erro corintiano em drama.</p>
+
+            <p>No primeiro jogo, no Morumbi, o Corinthians venceu por 2 a 1. Deivid marcou duas vezes e foi decisivo para abrir vantagem. O Brasiliense descontou e manteve a final viva para a partida de volta.</p>
+
+            <p>No segundo jogo, no Serejão, em Taguatinga, o Brasiliense saiu na frente e aumentou a pressão. O Corinthians reagiu no segundo tempo, empatou com Deivid e segurou o 1 a 1 até o fim. O placar agregado de 3 a 2 garantiu o bicampeonato.</p>
+
+            <p>Deivid foi o grande nome da campanha. O atacante terminou como artilheiro da competição, com 13 gols, e decidiu a final com três gols no confronto de ida e volta. Foi uma das maiores campanhas individuais de um jogador do Corinthians na história da Copa do Brasil.</p>
+
+            <p>O título de 2002 também teve peso esportivo direto: garantiu ao clube vaga na Libertadores de 2003 e consolidou o Timão como uma das forças mais constantes da competição naquele período.</p>
+
+            <p><strong>2009: Ronaldo, Mano Menezes e a taça da reconstrução</strong></p>
+
+            <p><strong>Campanha completa:</strong></p>
+            <p><strong>Primeira fase</strong></p>
+            <ul>
+              <li>Itumbiara 0 x 2 Corinthians</li>
+            </ul>
+            <p><strong>Segunda fase</strong></p>
+            <ul>
+              <li>Misto-MS 0 x 2 Corinthians</li>
+            </ul>
+            <p><strong>Oitavas de final</strong></p>
+            <ul>
+              <li>Athletico-PR 3 x 2 Corinthians</li>
+              <li>Corinthians 2 x 0 Athletico-PR</li>
+            </ul>
+            <p><strong>Quartas de final</strong></p>
+            <ul>
+              <li>Corinthians 1 x 0 Fluminense</li>
+              <li>Fluminense 2 x 2 Corinthians</li>
+            </ul>
+            <p><strong>Semifinal</strong></p>
+            <ul>
+              <li>Vasco 1 x 1 Corinthians</li>
+              <li>Corinthians 0 x 0 Vasco</li>
+            </ul>
+            <p><strong>Final</strong></p>
+            <ul>
+              <li>Corinthians 2 x 0 Internacional</li>
+              <li>Internacional 2 x 2 Corinthians</li>
+            </ul>
+
+            <p><strong>A final contra o Internacional</strong></p>
+
+            <p>O título de 2009 talvez seja o mais simbólico da lista pelo contexto. O Corinthians vinha de um processo de reconstrução depois do rebaixamento de 2007 e do retorno à Série A em 2008. Sob o comando de Mano Menezes, o clube montou um time competitivo, organizado e com enorme apelo popular pela presença de Ronaldo Fenômeno.</p>
+
+            <p>A final contra o Internacional teve peso esportivo e emocional. O time gaúcho chegava forte, com elenco qualificado, enquanto o Corinthians buscava transformar a temporada em confirmação definitiva de retomada.</p>
+
+            <p>No primeiro jogo, no Pacaembu, o Corinthians venceu por 2 a 0. Jorge Henrique abriu o placar, e Ronaldo marcou o segundo, em uma das imagens mais lembradas daquela conquista. A vitória em casa deu ao Timão uma vantagem importante para decidir no Beira-Rio.</p>
+
+            <p>Na volta, em Porto Alegre, o Corinthians começou em alto nível e abriu 2 a 0 ainda no primeiro tempo, com gols de Jorge Henrique e André Santos. O Internacional reagiu, empatou por 2 a 2, mas não conseguiu mudar o destino da final. O agregado de 4 a 2 confirmou o tricampeonato corintiano.</p>
+
+            <p>A conquista levou o Corinthians de volta à Libertadores e virou símbolo da reconstrução. Em menos de dois anos, o clube saiu da Série B para uma taça nacional relevante, com Ronaldo como personagem central e Mano Menezes como treinador de um dos ciclos mais marcantes da história recente alvinegra.</p>
+
+            <p>O elenco também teve nomes fundamentais além de Ronaldo: Felipe, Alessandro, Chicão, André Santos, Cristian, Elias, Douglas, Jorge Henrique e Dentinho formaram a base de um time intenso, competitivo e maduro para jogos de mata-mata.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>2025: o tetracampeonato contra o Vasco</strong></p>
+
+            <p><strong>Campanha completa:</strong></p>
+            <p><strong>Terceira fase</strong></p>
+            <ul>
+              <li>Novorizontino 0 x 1 Corinthians</li>
+              <li>Corinthians 1 x 0 Novorizontino</li>
+            </ul>
+            <p><strong>Oitavas de final</strong></p>
+            <ul>
+              <li>Corinthians 1 x 0 Palmeiras</li>
+              <li>Palmeiras 0 x 2 Corinthians</li>
+            </ul>
+            <p><strong>Quartas de final</strong></p>
+            <ul>
+              <li>Athletico-PR 0 x 1 Corinthians</li>
+              <li>Corinthians 2 x 0 Athletico-PR</li>
+            </ul>
+            <p><strong>Semifinal</strong></p>
+            <ul>
+              <li>Cruzeiro 0 x 1 Corinthians</li>
+              <li>Corinthians 1 x 2 Cruzeiro</li>
+              <li>Corinthians classificado nos pênaltis</li>
+            </ul>
+            <p><strong>Final</strong></p>
+            <ul>
+              <li>Corinthians 0 x 0 Vasco</li>
+              <li>Vasco 1 x 2 Corinthians</li>
+            </ul>
+
+            <p><strong>A final contra o Vasco</strong></p>
+
+            <p>O quarto título veio em 2025, encerrando um jejum de 16 anos do clube na Copa do Brasil. A decisão contra o Vasco teve peso nacional, segundo jogo no Maracanã e uma carga simbólica: o Timão voltava a uma final do torneio depois de frustrações recentes e buscava transformar uma temporada irregular em título de grande impacto.</p>
+
+            <p>A partida de ida, na Neo Química Arena, terminou empatada por 0 a 0. O resultado deixou a decisão aberta para o Maracanã, com o Vasco tendo o mando do segundo jogo e o Corinthians precisando decidir fora de casa.</p>
+
+            <p>Na volta, o Corinthians venceu por 2 a 1. Yuri Alberto abriu o placar no primeiro tempo. O Vasco empatou com Nuno Moreira antes do intervalo. No segundo tempo, Memphis Depay marcou o gol do título após jogada que passou por Breno Bidon, Matheuzinho e Yuri Alberto.</p>
+
+            <p>A final também teve Hugo Souza como personagem importante. O goleiro apareceu na reta final, especialmente quando o Vasco pressionou em busca do empate, e ajudou a sustentar o placar até o apito final.</p>
+
+            <p>O <a href="maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a> recebeu mais de 67 mil torcedores e uma renda superior a R$ 13 milhões, números que reforçam o tamanho da decisão. Para o Corinthians, o título teve peso duplo: encerrou o jejum na Copa do Brasil e garantiu vaga na fase de grupos da Libertadores de 2026. O tetracampeonato também recolocou o clube em uma prateleira importante do torneio. Depois dos títulos de 1995, 2002 e 2009, a taça de 2025 atualizou a história corintiana na competição e ampliou a conexão do clube com decisões nacionais.</p>
+
+            <p><strong>Os números das campanhas campeãs</strong></p>
+
+            <p>As campanhas dos quatro títulos mostram perfis diferentes de Corinthians na Copa do Brasil.</p>
+
+            <ul>
+              <li>1995: campanha invicta e primeiro título do clube no torneio</li>
+              <li>2002: bicampeonato com Deivid como artilheiro da competição</li>
+              <li>2009: tricampeonato em ano de reconstrução e retorno à Libertadores</li>
+              <li>2025: tetracampeonato com vitórias fora de casa em todas as fases disputadas</li>
+            </ul>
+
+            <p>A campanha de 1995 se destaca pela invencibilidade. A de 2002 teve o maior peso ofensivo, muito puxado pelos gols de Deivid. A de 2009 teve o valor simbólico da reconstrução e da presença de Ronaldo. A de 2025 foi marcada pela força como visitante, pela eliminação de rivais e pela decisão vencida no Maracanã.</p>
+
+            <p><strong>Os personagens dos títulos</strong></p>
+
+            <p>A galeria corintiana na Copa do Brasil passa por diferentes gerações.</p>
+
+            <p>Em 1995, Marcelinho Carioca foi o grande nome técnico e decisivo. O meia marcou nas duas finais contra o Grêmio e virou símbolo da primeira conquista do clube no torneio. Viola também teve papel marcante, principalmente pela atuação contra o Vasco na semifinal.</p>
+
+            <p>Em 2002, Deivid foi o personagem central. Os 13 gols na competição fizeram do atacante o artilheiro daquela edição e um dos nomes mais lembrados da história corintiana na Copa do Brasil. Além dele, Dida, Ricardinho, Vampeta, Kléber e Gil sustentaram uma equipe tecnicamente forte.</p>
+
+            <p>Em 2009, Ronaldo transformou a campanha em um capítulo especial. O Fenômeno marcou na final, atraiu atenção nacional e deu ao título uma dimensão simbólica enorme. Jorge Henrique, André Santos, Chicão, Elias, Cristian e Dentinho também foram fundamentais.</p>
+
+            <p>Em 2025, Yuri Alberto e Memphis Depay decidiram a final no Maracanã. Yuri marcou o primeiro gol e participou da jogada do segundo. Memphis apareceu no momento mais importante para definir a taça. Hugo Souza também teve papel decisivo ao segurar a pressão vascaína na reta final.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>As finais perdidas também fazem parte da história</strong></p>
+
+            <p>A história do Corinthians na Copa do Brasil não é feita apenas de títulos. As derrotas em finais também ajudam a explicar a relação intensa do clube com o torneio.</p>
+
+            <p>Em 2001, o Timão foi vice para o Grêmio. Em 2008, perdeu a decisão para o Sport. Em 2018, ficou com o vice contra o Cruzeiro. Em 2022, voltou à final e caiu para o Flamengo nos pênaltis, no Maracanã.</p>
+
+            <p>Essas derrotas dão mais peso às conquistas. A Copa do Brasil é um torneio que costuma marcar clubes pela soma de glórias e frustrações. No caso do Corinthians, os vices ampliam a presença do clube na história da competição e reforçam sua frequência em decisões nacionais.</p>
+
+            <p><strong>A relação com Grêmio e Flamengo no torneio</strong></p>
+
+            <p>A trajetória corintiana cruza diretamente com outros gigantes da Copa do Brasil. O Grêmio foi adversário em decisões importantes. O Corinthians venceu o Tricolor gaúcho na final de 1995, mas <a href="gremio-titulos-copa-do-brasil-campanhas-finais.html">perdeu a decisão de 2001</a>. Essa rivalidade dentro do torneio ajuda a explicar a força histórica dos dois clubes no mata-mata nacional.</p>
+
+            <p>O Flamengo também aparece como referência recente. O clube carioca venceu o Corinthians na <a href="flamengo-titulos-copa-do-brasil-campanhas-finais.html">final de 2022</a> e construiu uma das histórias mais fortes da competição, com títulos em diferentes décadas. A comparação entre os clubes mostra como a Copa do Brasil se tornou um torneio de peso para as maiores camisas do país.</p>
+
+            <p><strong>O que torna a história do Corinthians especial</strong></p>
+
+            <p>Porque atravessa fases muito diferentes do clube. O título de 1995 veio em campanha invicta e abriu a trajetória alvinegra no torneio. O de 2002 confirmou uma geração técnica e eficiente. O de 2009 simbolizou reconstrução, retorno à elite e força nacional. O de 2025 encerrou um jejum e recolocou o Timão no topo da competição.</p>
+
+            <p>Poucos torneios expõem tanto o emocional de um clube quanto a Copa do Brasil. O Corinthians venceu finais fora de casa, decidiu contra adversários tradicionais, sofreu derrotas marcantes e construiu personagens que ficaram na memória da torcida. Em cada título, houve uma marca diferente: invencibilidade, artilharia histórica, retomada nacional e vitória em palco histórico.</p>
+
+            <p>De Marcelinho Carioca a Deivid, de Ronaldo a Memphis, de Pacaembu a Maracanã, a trajetória corintiana no torneio reúne camisas pesadas, gols decisivos e finais de grande impacto. A Copa do Brasil não é apenas mais uma taça na galeria alvinegra. É parte da identidade competitiva do clube.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
