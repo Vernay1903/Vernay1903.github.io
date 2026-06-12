@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>WSL mantém El Salvador Pro parado pelo segundo dia e mira reta final da janela | Corte dos Esportes</title>
+  <meta name="description" content="Competição teve novo day off em Punta Roca, com próxima chamada marcada para sábado; janela termina na segunda-feira e o evento pode ser encerrado assim que as condições melhorarem." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">WSL mantém El Salvador Pro parado pelo segundo dia e mira reta final da janela</h1>
+          <p class="subhead" id="articleExcerpt">Competição teve novo day off em Punta Roca, com próxima chamada marcada para sábado; janela termina na segunda-feira e o evento pode ser encerrado assim que as condições melhorarem.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">12/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="surf.html">Surf</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Surf City El Salvador Pro entrou no segundo dia seguido de espera. A WSL manteve a competição parada e adiou novamente a sequência do evento, que já está no fim da janela de competição. A próxima chamada será feita apenas neste sábado, com a janela oficial se encerrando na segunda-feira.</p>
+
+            <p> Com a maior parte do chaveamento já avançada e poucos dias restantes na janela, a organização pode tentar finalizar o evento assim que encontrar uma condição competitiva suficiente. Se Punta Roca entregar séries consistentes  e parede limpa, a etapa pode acabar já na próxima chamada.</p>
+
+            <p>O cenário é típico de uma janela de surfe: o evento não depende apenas do calendário, mas da combinação entre swell, vento, maré e qualidade da bancada. Em Punta Roca, uma das direitas mais conhecidas da América Central, a diferença entre um dia histórico e um dia de espera pode estar em poucas horas de vento.</p>
+
+            <p><strong>Segundo day off</strong></p>
+
+            <p>O novo day off pesa porque a janela do Surf City El Salvador Pro termina na segunda-feira. Isso deixa a WSL com pouco espaço para escolher o dia. A prioridade passa a ser escolher o melhor encaixe para completar as baterias finais.</p>
+
+            <p>Punta Roca já entregou dias fortes nesta etapa, com ondas sólidas, seções longas e momentos de alto nível técnico. Mas o fato de a competição ficar parada pelo segundo dia seguido mostra que a organização não quer que uma fase decisiva seja resolvida em condições abaixo do ideal.</p>
+
+            <p>Esse cuidado tem lógica esportiva. Nas fases finais, qualquer bateria pode mudar ranking, confiança, disputa por título e construção de temporada. Colocar os melhores surfistas do mundo em um mar inconsistente e mexido, pode distorcer o nível da disputa. Por isso, a WSL costuma usar a janela até o limite quando ainda há chance de melhora.</p>
+
+            <p><strong>Condições de hoje</strong></p>
+
+            <p>As condições desta sexta-feira não foram suficientes para recolocar a competição na água. O mar apresentou tamanho bom, mas sem estar o mar ideal para a WSL acelerar uma reta final de evento.</p>
+
+            <p>Punta Roca trabalha melhor com swell de sul/sudoeste e vento mais limpo, especialmente nas primeiras horas do dia. Nesta janela, a previsão indica ondas na faixa de 3 a 4 pés em parte do dia, com momentos de condição limpa pela manhã, mas com tendência de vento mais lateral ou menos favorável no decorrer das horas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que esperar dos próximos três dias</strong></p>
+
+            <p>A reta final da janela ainda oferece possibilidades. O ponto principal é que o swell de sul/sudoeste deve seguir ativo, com variações de tamanho e vento ao longo dos próximos dias.</p>
+
+            <p>Sábado aparece como o primeiro dia realmente importante para uma retomada. A previsão indica ondas inicialmente na faixa de 3 a 4 pés, com possibilidade de subir para 4 a 5 pés ou mais em alguns momentos. Se o vento colaborar, pode ser o dia ideal para recolocar o evento na água.</p>
+
+            <p>Domingo também entra no radar. A tendência é de ondas por volta de 4 a 5 pés, mas com maior atenção ao vento no meio do dia. Se a organização encontrar uma janela limpa pela manhã ou no fim da tarde, pode ser suficiente para avançar bastante ou até fechar a etapa.</p>
+
+            <p>Segunda-feira é o limite da janela. A previsão ainda mostra mar na faixa de 3 a 5 pés, o que mantém a possibilidade de competição. Mas, por ser o último dia, a margem estratégica diminui. Se o evento não terminar antes, a WSL terá menos espaço para esperar a condição perfeita.</p>
+
+            <p><strong>Competição pode terminar na próxima chamada</strong></p>
+
+            <p>A possibilidade de a etapa acabar já na próxima chamada existe porque o campeonato está na fase final e a janela ficou curta. Se sábado amanhecer com Punta Roca alinhada, a WSL pode optar por rodar uma sequência longa de baterias e encerrar o evento no mesmo dia.</p>
+
+            <p>Isso depende de três fatores: tamanho suficiente, vento controlado e tempo útil de maré. Punta Roca é uma direita longa, com seções que podem oferecer variedade de manobras quando está encaixada. Em condição boa, o pico permite baterias fortes, notas altas e ritmo de competição.</p>
+
+            <p>A organização também precisa considerar a transmissão, o intervalo entre baterias e a segurança dos atletas. Se o mar crescer demais, ficar mexido ou perder formação, a decisão pode ser empurrada. Mas, com a janela terminando na segunda, a tendência é que qualquer condição boa seja aproveitada.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que Punta Roca é tão importante</strong></p>
+
+            <p>É uma das ondas mais importantes da América Central. Localizada em La Libertad, ela é conhecida por suas direitas longas, fundo de pedras e potencial para ondas rápidas, fortes e com seções de manobra e tubo. Quando o swell entra no ângulo certo e o vento ajuda, a onda pode oferecer uma combinação rara de velocidade, parede e extensão.</p>
+
+            <p>Essa característica explica por que El Salvador virou parada relevante no calendário mundial. A etapa não está ali apenas por estrutura turística. Punta Roca entrega onda de alto nível e tem capacidade real de separar surfistas completos de surfistas apenas regulares.</p>
+
+            <p><strong>La Libertad virou vitrine de El Salvador</strong></p>
+
+            <p>O contexto da cidade também ajuda a entender a força da etapa. La Libertad é uma região costeira pequena em população, mas enorme em importância turística para El Salvador. A área tem cerca de 45 mil habitantes e se consolidou como um dos principais polos de praia, pesca, gastronomia e surfe do país.</p>
+
+            <p>Historicamente ligada ao porto e à economia local de pesca e serviços, La Libertad passou a ganhar novo peso com o crescimento do turismo. O projeto Surf City transformou a costa salvadorenha em vitrine internacional, com investimento em infraestrutura, promoção turística, eventos esportivos e valorização das praias.</p>
+
+            <p>Esse movimento colocou El Salvador no mapa do surfe mundial. A presença da WSL, de eventos da ISA e de competições internacionais reforça a estratégia do país de usar o surfe como motor de imagem, turismo e desenvolvimento econômico. O resultado é uma cidade que não recebe apenas um campeonato: recebe uma vitrine global.</p>
+
+            <p><strong>Turismo cresce junto com o surfe</strong></p>
+
+            <p>O crescimento do turismo em El Salvador é um dos pontos centrais dessa transformação. O país passou a atrair mais visitantes internacionais nos últimos anos, impulsionado por melhora na percepção de segurança, promoção global e investimento em destinos de praia.</p>
+
+            <p>La Libertad aparece dentro desse processo como um símbolo. A região reúne praias conhecidas, ondas consistentes, restaurantes, hotéis, comércio local e espaços turísticos que ajudam a movimentar a economia. Para uma cidade costeira, receber uma etapa da WSL significa ocupação hoteleira, circulação de visitantes, exposição internacional e fortalecimento da marca Surf City.</p>
+
+            <p>Esse contexto torna o El Salvador Pro mais do que uma etapa esportiva. Ele também funciona como peça de posicionamento turístico. Cada transmissão mostra Punta Roca, o litoral de La Libertad e a imagem de El Salvador como destino de surfe.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que está em jogo na reta final</strong></p>
+
+            <p>Com a competição perto do fim, o peso esportivo aumenta. Cada bateria restante pode mexer no ranking, abrir caminho para nomes embalados e mudar a leitura da temporada. Em um circuito longo, vencer uma etapa como El Salvador pode significar pontos decisivos, confiança e vantagem psicológica para a sequência.</p>
+
+            <p>A paralisação também vem depois de um <a href="wsl-el-salvador-2026-dia-5-italo-medina-quartas.html">quinto dia importante para os brasileiros</a>. A etapa havia avançado com Ítalo Ferreira e Gabriel Medina classificado. Esse cenário deixou a reta final ainda mais relevante para o Brasil e ajuda a explicar o peso da próxima chamada.</p>
+
+            <p>A espera também mexe com os atletas. Day off pode ser descanso, mas também pode gerar ansiedade. O surfista precisa manter foco, rotina, alimentação, prancha pronta e leitura de mar, sem saber exatamente quando será chamado. Em eventos com janela apertada, essa paciência vira parte da competição.</p>
+
+            <p><strong>Próxima chamada:</strong></p>
+            <ul>
+              <li>Data: sábado(13/06)</li>
+              <li>Horário local: 6h30</li>
+              <li>Horário de Brasília: 9h30</li>
+              <li>Situação: competição em espera após segundo day off</li>
+              <li>Janela: até segunda-feira</li>
+              <li>Transmissão:  Site World Surf League, app da WSL, e Sportv</li>
+            </ul>
+
+            <p><strong>Uma espera que pode anteceder o dia decisivo</strong></p>
+
+            <p>O segundo day off aumenta a ansiedade, mas também pode valorizar o final do Surf City El Salvador Pro. A etapa já teve dias fortes em Punta Roca e chega à reta decisiva com a possibilidade de fechar em condição melhor do que a disponível hoje.</p>
+
+            <p>A WSL está diante de uma escolha clássica do surfe profissional: correr para cumprir calendário ou esperar o mar certo para decidir uma etapa importante. Com a janela terminando na segunda-feira, essa decisão ficou mais apertada.</p>
+
+            <p>Se as previsões se confirmarem, os próximos dias podem entregar exatamente o que a competição precisa: ondas suficientes, swell ativo e uma chance real de finalização. Depois de dois dias parada, Punta Roca pode voltar a ser o centro do surfe mundial já na próxima chamada.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
