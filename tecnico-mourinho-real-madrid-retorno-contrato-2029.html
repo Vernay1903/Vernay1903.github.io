@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mourinho é anunciado pelo Real Madrid e volta ao clube após treze anos | Corte dos Esportes</title>
+  <meta name="description" content="Técnico português foi oficializado em 11 de junho de 2026, assina por três temporadas e inicia sua segunda passagem pelo clube em meio a uma nova reconstrução no futebol merengue." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Mourinho é anunciado pelo Real Madrid e volta ao clube após treze anos</h1>
+          <p class="subhead" id="articleExcerpt">Técnico português foi oficializado em 11 de junho de 2026, assina por três temporadas e inicia sua segunda passagem pelo clube em meio a uma nova reconstrução no futebol merengue.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">14/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>José Mourinho está de volta ao Real Madrid. O clube espanhol anunciou oficialmente o treinador português com contrato por três temporadas, até 30 de junho de 2029. A reapresentação ao trabalho está prevista para 13 de julho, data marcada para o início da pré-temporada.</p>
+
+            <p>O retorno recoloca Mourinho em um dos cargos mais pesados do futebol mundial. Mais de uma década depois de sua primeira passagem pelo Santiago Bernabéu, o técnico volta a Madrid com uma missão clara: reorganizar o elenco, recuperar competitividade e devolver ao Real uma identidade forte em um momento de mudança.</p>
+
+            <p>A escolha também tem peso simbólico. Mourinho não é apenas mais um treinador contratado. Ele já comandou o clube, viveu uma das fases mais intensas da rivalidade contra o Barcelona e construiu uma passagem marcada por títulos, confrontos fortes, tensão pública e cobrança extrema.</p>
+
+            <p>O retorno de Mourinho entra em um cenário maior de mudanças nas grandes casamatas do continente. <a href="liverpool-napoli-leverkusen-trocam-tecnicos-novos-ciclos-europa.html">Liverpool, Napoli e Leverkusen</a> também passam por novos ciclos técnicos, em um movimento que mostra como a temporada europeia abriu espaço para reformulações profundas em clubes de peso.</p>
+
+            <p> O vínculo que vai até Junho de 2029, indica que o clube não trata a escolha como solução emergencial, mas como projeto de médio prazo.</p>
+
+            <p>A contratação também marca o retorno de um nome conhecido pela torcida. Mourinho deixou o Real em 2013, depois de três temporadas, e volta agora em outro contexto: mais experiente, com carreira ainda mais longa e diante de um futebol europeu que mudou muito desde sua primeira passagem por Madrid.</p>
+
+            <p>Mourinho volta ao Madrid porque ainda carrega um tipo de autoridade rara no futebol. Ele é um treinador acostumado a clubes gigantes, ambientes de pressão, elencos estrelados e disputas de vestiário.</p>
+
+            <p>Á volta significa assumir um dos cargos mais pesados do esporte. O clube não carrega apenas pressão por resultados; <a href="real-madrid-maior-clube-do-mundo-historia-titulos-champions.html">carrega uma história</a> construída por Champions League, ídolos globais, ciclos vencedores e uma cobrança permanente por protagonismo. É esse tamanho que faz o retorno de Mourinho ganhar outra escala dentro do futebol europeu e ajuda a dimensionar a responsabilidade que o português reassume.</p>
+
+            <p>O português representa comando forte, discurso direto, foco competitivo e obsessão por resultado. Em um clube onde vencer não é suficiente por muito tempo se não vier com títulos grandes, esse tipo de treinador sempre entra carregando expectativa imediata.</p>
+
+            <p>A volta também conversa com a própria história recente do Real. O clube costuma alternar fases de futebol mais associativo e períodos de maior pragmatismo. Mourinho chega para tentar recolocar ordem competitiva, intensidade defensiva e mentalidade de mata-mata.</p>
+
+            <p>Essa é a grande pergunta do retorno: o Mourinho de 2026 ainda consegue produzir impacto em um elenco de elite como fazia em seus ciclos mais fortes?</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A primeira passagem</strong></p>
+
+            <p>Mourinho comandou o Real Madrid entre 2010 e 2013. A passagem foi intensa, vitoriosa em parte, turbulenta em outra e muito marcada pelo duelo com o Barcelona de Pep Guardiola.</p>
+
+            <p>O português chegou ao clube depois de conquistar a Champions League com a Inter de Milão. Na época, o Real buscava um treinador capaz de enfrentar o domínio do Barça e recolocar o clube em condição de competir com mais força na Europa.</p>
+
+            <p>Durante sua primeira passagem, Mourinho conquistou três títulos:</p>
+            <p>• Copa do Rei de 2010/11</p>
+            <p>• Campeonato Espanhol de 2011/12</p>
+            <p>• Supercopa da Espanha de 2012</p>
+
+            <p>O título espanhol de 2011/12 foi o ponto mais alto. Aquele Real Madrid terminou La Liga com 100 pontos e 121 gols marcados, números que deram enorme peso à campanha. Foi uma equipe vertical, agressiva, veloz e construída para machucar adversários em transição.</p>
+
+            <p>Cristiano Ronaldo, Benzema, Di María, Özil, Xabi Alonso, Sergio Ramos, Pepe, Casillas, Marcelo e outros nomes formavam um elenco de enorme qualidade. Mourinho deu a esse grupo uma identidade competitiva muito clara: pressão emocional, velocidade, imposição física e uma postura de confronto direto com o Barcelona.</p>
+
+            <p><strong>A Champions ficou faltando</strong></p>
+
+            <p>Apesar dos títulos, a Champions League ficou como a grande ausência da primeira era Mourinho no Real Madrid. O técnico levou o clube a três semifinais consecutivas, mas não conseguiu chegar à final.</p>
+
+            <p>Esse detalhe explica parte da leitura sobre sua passagem. Mourinho devolveu competitividade europeia ao Real, mas não entregou a taça que mais pesa no Bernabéu. A obsessão pela Champions é parte da identidade do clube, e qualquer treinador em Madrid é medido por ela.</p>
+
+            <p>A volta em 2026, portanto, carrega esse peso. Mourinho já venceu a Champions por Porto e Inter de Milão, mas nunca pelo Real Madrid. Se conseguir mudar isso na segunda passagem, a história dele no clube ganha outro tamanho.</p>
+
+            <p><strong>Uma relação de tensão e resultado</strong></p>
+
+            <p>Poucos treinadores combinam tanto com ambientes de pressão quanto Mourinho. E poucos clubes pressionam tanto quanto o Real Madrid.</p>
+
+            <p>A primeira passagem teve vitórias importantes, mas também conflitos. Mourinho sempre foi um treinador de gestão forte, discurso frontal e relação intensa com imprensa, elenco e torcida. Em Madrid, tudo isso ganha proporção maior.</p>
+
+            <p>Essa característica pode ser virtude e risco. Virtude porque o Real muitas vezes precisa de um comando capaz de enfrentar ruído, proteger o grupo e estabelecer hierarquia. Risco porque o mesmo estilo pode gerar desgaste rápido se os resultados não vierem.</p>
+
+            <p>O retorno só faz sentido se o clube estiver disposto a comprar o pacote inteiro. Mourinho não chega para ser figura neutra. Chega para mandar, tensionar, cobrar e tentar criar uma equipe com personalidade.</p>
+
+            <p><strong>O que mudou desde 2013</strong></p>
+
+            <p>O futebol europeu mudou muito desde o término da primeira passagem. A pressão alta virou linguagem comum. A construção desde a defesa ficou mais sofisticada. Laterais passaram a ocupar zonas internas. Meias e atacantes precisam trabalhar sem bola com intensidade maior.</p>
+
+            <p>Mourinho também mudou. Depois de sair do Real, passou por Chelsea, Manchester United, Tottenham, Roma, Fenerbahçe e Benfica. Teve títulos, quedas, boas campanhas, desgaste e períodos de contestação.</p>
+
+            <p>Por isso, a segunda passagem não pode ser analisada como simples repetição da primeira. O Real de 2026 não é o Real de 2010. Mourinho também não é o mesmo. A questão central é como o treinador vai adaptar sua visão de jogo ao elenco atual e ao futebol de hoje.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Os títulos que Mourinho venceu desde que saiu do Real</strong></p>
+
+            <p>Desde que deixou o Real em 2013, Mourinho viveu ciclos bem diferentes, com títulos, desgaste e passagens de alto impacto. O português não repetiu o domínio de seus melhores anos, mas continuou levantando taças importantes.</p>
+
+            <p>Títulos de Mourinho desde a saída do Real Madrid:</p>
+            <p>• Chelsea — Campeonato Inglês 2014/15</p>
+            <p>• Chelsea — Copa da Liga Inglesa 2014/15</p>
+            <p>• Manchester United — Supercopa da Inglaterra 2016</p>
+            <p>• Manchester United — Copa da Liga Inglesa 2016/17</p>
+            <p>• Manchester United — Liga Europa 2016/17</p>
+            <p>• Roma — Liga Conferência Europa 2021/22</p>
+
+            <p>O mais pesado deles foi a Liga Europa com o Manchester United, mas o mais simbólico talvez tenha sido a Conference League com a Roma, porque encerrou um jejum europeu do clube italiano e reforçou a capacidade de Mourinho de competir em mata-mata mesmo em projetos fora do topo absoluto da Europa.</p>
+
+            <p>Esse recorte ajuda a explicar a aposta do Real. Mourinho não volta como o treinador mais dominante do continente, mas também não volta como um nome sem lastro recente. Ele retorna com uma carreira mais desgastada, porém ainda marcada por taças, finais e experiência em ambientes de pressão.</p>
+
+            <p><strong>O impacto no elenco </strong></p>
+
+            <p>A chegada de Mourinho muda imediatamente a leitura sobre o elenco. Jogadores de ataque terão cobrança defensiva maior. Meio-campistas precisarão responder fisicamente. Zagueiros e laterais serão exigidos em concentração, duelos e controle de espaço.</p>
+
+            <p>Em sua carreira, Mourinho sempre gostou de equipes fortes mentalmente, com jogadores capazes de suportar jogos grandes sem se desorganizar. No Real, essa exigência aumenta porque o elenco reúne nomes de alto peso técnico e midiático.</p>
+
+            <p>A relação com estrelas será um dos pontos mais observados. Mourinho já comandou elencos cheios de grandes nomes e sabe lidar com ambientes desse tipo. Mas também costuma exigir adesão total. Quem comprar a ideia pode crescer. Quem não comprar pode perder espaço rapidamente.</p>
+
+            <p><strong>Como foi a última temporada antes da volta</strong></p>
+
+            <p>A última temporada de Mourinho antes do retorno foi no Benfica. O trabalho terminou sem título, mas com uma campanha curiosa: a equipe se manteve invicta, porém ficou apenas na terceira colocação do Campeonato Português.</p>
+
+            <p>Esse contraste resume bem o momento do treinador. O time era difícil de vencer, competitivo e organizado, mas não transformou solidez em domínio. Para um clube como o Real Madrid, isso é um ponto central da análise: empatar demais, controlar sem decidir e competir sem levantar taça não basta.</p>
+
+            <p>A volta ao Real, portanto, também funciona como prova de atualidade. Mourinho chega a um clube em que a exigência é diferente. Em Madrid, não basta montar uma equipe resistente. É preciso ganhar, convencer em jogos grandes e transformar autoridade em título.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O peso histórico</strong></p>
+
+            <p>Mourinho é um dos técnicos mais vitoriosos do século XXI. Foi campeão europeu com Porto e Inter de Milão, venceu ligas nacionais em diferentes países e construiu uma carreira marcada por títulos em contextos variados.</p>
+
+            <p>Sua trajetória tem um traço raro: ele venceu em clubes gigantes, mas também elevou equipes que não eram favoritas máximas. O Porto campeão da Champions em 2004 e a Inter campeã europeia em 2010 são dois exemplos que sustentam sua aura histórica.</p>
+
+            <p>A segunda passagem será mais um teste para seu legado. Se der certo, pode reabrir a discussão sobre sua capacidade de se reinventar. Se der errado, reforçará a leitura de que o futebol atual exige outros caminhos.</p>
+
+            <p><strong>Por que o anúncio mexe com a Europa</strong></p>
+
+            <p>O anúncio de Mourinho não impacta apenas o Real Madrid. Ele mexe com o tabuleiro europeu porque recoloca um treinador de enorme peso em um dos clubes mais influentes do mundo.</p>
+
+            <p>Quando o Real muda de técnico, o mercado reage. Jogadores entram no radar, outros perdem espaço, rivais recalculam forças e a imprensa internacional passa a acompanhar cada sinal de vestiário, escalação e coletiva.</p>
+
+            <p>A volta de Mourinho também aumenta a carga narrativa de competições como La Liga e Champions League. O português é personagem. Ele gera tensão, rivalidade, manchete e atenção global. Em um futebol cada vez mais disputado também fora de campo, isso tem valor.</p>
+
+            <p>Para a temporada 2026/27, o Real volta a ter um treinador que naturalmente vira centro de debate. Isso pode ser útil se o time responder em campo. Pode ser pesado se os resultados demorarem.</p>
+
+            <p>O reencontro com a torcida também passará pelo Bernabéu. O estádio foi palco de parte importante da primeira passagem de Mourinho e agora aparece como símbolo de uma cobrança ainda maior. O Real chega a esse novo ciclo depois de duas temporadas sem levantar um grande troféu, algo raro para um clube acostumado a empilhar conquistas. Por isso, o retorno ao <a href="santiago-bernabeu-historia-reforma-estadio-real-madrid.html">Santiago Bernabéu</a>, não será apenas uma volta para casa: será uma cobrança imediata por taças.</p>
+
+            <p>O contrato até 2029 indica confiança. A história indica cobrança. O elenco indicará o caminho. E o campo vai responder se o retorno é uma aposta nostálgica ou o início de uma nova era competitiva em Madrid.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
