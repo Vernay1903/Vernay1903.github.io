@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brasil empata com Marrocos na estreia da Copa do Mundo | Corte dos Esportes</title>
+  <meta name="description" content="Seleção saiu atrás após início ruim, buscou o 1 a 1 com golaço de Vini Jr. e agora precisa vencer Haiti e Escócia para brigar pela liderança da chave no Mundial." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Brasil empata com Marrocos na estreia da Copa do Mundo</h1>
+          <p class="subhead" id="articleExcerpt">Seleção saiu atrás após início ruim, buscou o 1 a 1 com golaço de Vini Jr. e agora precisa vencer Haiti e Escócia para brigar pela liderança da chave no Mundial.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">14/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="futebol.html">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Brasil estreou na Copa do Mundo de 2026 com um empate que acendeu um alerta. A Seleção ficou no 1 a 1 com Marrocos, neste sábado, no New York New Jersey Stadium, em East Rutherford, em uma partida marcada por começo nervoso, domínio marroquino nos primeiros minutos, golaço de Vini Jr. e um segundo tempo de poucas chances claras.</p>
+
+            <p>O resultado não prejudica a campanha, mas muda a visão do Grupo C. O Brasil entrou em campo com a pressão natural de quem busca o hexacampeonato, enfrentou o adversário mais forte da chave logo na primeira rodada e saiu com apenas um ponto. Agora, precisa vencer Haiti e Escócia, de preferência construindo saldo, para tentar terminar em primeiro lugar e evitar um cruzamento mais pesado na próxima fase.</p>
+
+            <p>A estreia também deixou uma sensação incômoda: o empate foi justo pelo que o jogo mostrou, mas o Brasil ficou devendo mais do que o placar. Marrocos começou melhor, achou um golaço em transição rápida e expôs problemas de saída de bola, meio-campo e concentração. A resposta veio em uma jogada individual de Vini Jr., não em uma construção coletiva dominante.</p>
+
+            <p>A partida já carregava um <a href="brasil-marrocos-estreia-copa-do-mundo-2026.html">peso simbólico</a> antes mesmo de a bola rolar. A estreia brasileira reunia o reencontro com Marrocos, o retorno da Seleção ao mesmo complexo esportivo onde conquistou o tetra em 1994 e a tentativa de iniciar uma caminhada rumo ao hexa em um grupo que não permite relaxamento e que ajuda a explicar por que o empate teve um impacto maior do que um simples 1 a 1 de primeira rodada.</p>
+
+            <p><strong>Marrocos começou muito melhor</strong></p>
+
+            <p>O primeiro terço do jogo foi o ponto mais preocupante para o Brasil. Marrocos entrou mais ligado, com mais intensidade e mais confiança para rodar a bola. A Seleção parecia nervosa, errava passes simples e tinha dificuldade para sair do campo de defesa com qualidade.</p>
+
+            <p>A posse de bola no início ajudou a contar essa história. O Brasil não conseguiu transformar seus momentos com a bola em controle real do jogo, enquanto Marrocos ocupava melhor os espaços e acelerava quando encontrava o lado direito brasileiro desprotegido. A equipe africana não precisava ficar com a bola por longos períodos para ser perigosa. Bastava roubar, acelerar e atacar o espaço.</p>
+
+            <p>Os passes errados brasileiros também pesaram. A Seleção tentou sair jogando, mas perdeu bolas em zonas ruins e deu ao Marrocos o cenário que o adversário queria: campo aberto, defesa brasileira exposta e Brahim Díaz com espaço para pensar.</p>
+
+            <p><strong>Estatísticas que explicam o empate</strong></p>
+
+            <p><strong>Primeiro tempo</strong></p>
+            <ul>
+              <li>Posse de bola: Brasil 52% x 48% Marrocos</li>
+            </ul>
+
+            <p><strong>Jogo completo</strong></p>
+            <ul>
+              <li>Posse de bola: Brasil 51,4% x 48,6% Marrocos</li>
+              <li>Finalizações: Brasil 12 x 14 Marrocos</li>
+              <li>Passes certos do Brasil: 448</li>
+              <li>Aproveitamento de passes do Brasil: 87%</li>
+              <li>Passes errados do Brasil: cerca de 67</li>
+              <li>Passes certos de Marrocos: 421</li>
+              <li>Aproveitamento de passes de Marrocos: 86%</li>
+              <li>Passes errados de Marrocos: cerca de 69</li>
+            </ul>
+
+            <p>A diferença, portanto, não esteve apenas na quantidade de erros, mas no local em que eles aconteceram. O Brasil errou bolas que deixaram a equipe aberta, principalmente na saída e na transição defensiva. Marrocos aproveitou esse cenário para acelerar, atacar espaço e criar o lance do gol.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>O gol marroquino nasceu justamente dessa lógica. Depois de uma perda de bola brasileira, Marrocos acelerou em poucos passes. Brahim Díaz encontrou Ismael Saibari entre os zagueiros, e o atacante finalizou com categoria, encobrindo Alisson. Foi um golaço, mas também foi um gol que revelou uma falha coletiva: pouca proteção, distância entre setores e linha defensiva vulnerável.</p>
+
+            <p><strong>Brasil pareceu sentir a estreia</strong></p>
+
+            <p>A Seleção demorou para entrar emocionalmente no jogo. A estreia de Copa costuma carregar um peso diferente, e isso apareceu no comportamento da equipe. Havia pressa em algumas decisões, erros técnicos incomuns e pouca conexão entre meio e ataque.</p>
+
+            <p>A formação de Carlo Ancelotti não encontrou encaixe no começo. A Seleção tinha dificuldades para aproximar jogadores por dentro, dependia demais de ações individuais pelos lados e não conseguia sustentar pressão após perder a bola. Marrocos, ao contrário, parecia mais confortável no plano de jogo.</p>
+
+            <p>Esse contraste foi preocupante porque a partida valia mais do que três pontos. Era a estreia da maior campeã do mundo, contra uma seleção que chegou à semifinal da última Copa e que já não pode ser tratada como surpresa. O Brasil precisava impor autoridade. Em vez disso, passou boa parte do primeiro tempo tentando se reorganizar.</p>
+
+            <p>A melhora veio aos poucos, especialmente depois da pausa para hidratação e de ajustes de posicionamento. Ainda assim, a reação brasileira nasceu muito mais da qualidade de Vini Jr. do que de uma superioridade coletiva clara.</p>
+
+            <p><strong>Vini Jr. faz golaço e salva o Brasil</strong></p>
+
+            <p>O empate veio em uma jogada de craque. Vini Jr. recebeu pela esquerda, partiu para cima da marcação, clareou o lance dentro da área e acertou um chute forte, cruzado, sem chance para Bounou. Foi o tipo de gol que muda o humor de uma partida e impede que uma estreia ruim vire desastre.</p>
+
+            <p>O lance também reforça o peso de Vini na Seleção. Em Copas, ele vem se tornando cada vez mais decisivo. O camisa 7 participou diretamente de três dos últimos seis gols do Brasil em Mundiais: marcou contra a Coreia do Sul em 2022, deu assistência para Lucas Paquetá naquela mesma partida e voltou a marcar agora contra Marrocos.</p>
+
+            <p>Essa sequência diz muito sobre o novo papel de Vini Jr. na Seleção. Em 2022, ele ainda dividia protagonismo com Neymar e outros nomes mais experientes. Em 2026, chega com outra responsabilidade. O gol contra Marrocos não foi apenas bonito. Foi um lance de liderança técnica em uma noite em que o Brasil precisava de alguém para quebrar o jogo.</p>
+
+            <p>O problema é que depender de um lance individual não pode ser o plano principal de uma campanha de Copa. Vini decidiu a jogada do empate, mas o Brasil precisa oferecer mais estrutura para que ele não seja obrigado a resolver tudo sozinho.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Segundo tempo teve melhora, mas poucas chances</strong></p>
+
+            <p>O Brasil voltou melhor para o segundo tempo em relação a si mesmo. A equipe ficou menos exposta, cometeu menos erros grosseiros na saída e conseguiu afastar Marrocos de Alisson por mais tempo. A postura foi mais equilibrada.</p>
+
+            <p>Ainda assim, a melhora não se transformou em volume ofensivo suficiente. O segundo tempo teve poucas chances claras. Marrocos baixou um pouco o ritmo, pareceu satisfeito com o empate em alguns momentos e passou a proteger melhor os espaços. O Brasil teve mais controle territorial, mas continuou com dificuldade para entrar na área em condições reais de finalização.</p>
+
+            <p>Ancelotti mexeu no time para tentar dar mais segurança e mobilidade, mas a Seleção não encontrou um caminho consistente. O ataque ficou preso, as combinações pelos lados apareceram pouco e a bola não chegou limpa com frequência aos jogadores de frente.</p>
+
+            <p>Foi uma atuação de recuperação parcial, não de convencimento. O Brasil melhorou porque deixou de ser tão vulnerável, mas não melhorou o suficiente para vencer.</p>
+
+            <p><strong>Escalações e substituições</strong></p>
+
+            <p><strong>Brasil</strong></p>
+
+            <p><strong>Escalação inicial</strong></p>
+            <ul>
+              <li>1 — Alisson</li>
+              <li>24 — Roger Ibañez</li>
+              <li>4 — Marquinhos</li>
+              <li>3 — Gabriel Magalhães</li>
+              <li>16 — Douglas Santos</li>
+              <li>5 — Casemiro</li>
+              <li>8 — Bruno Guimarães</li>
+              <li>20 — Lucas Paquetá</li>
+              <li>11 — Raphinha</li>
+              <li>7 — Vini Jr.</li>
+              <li>25 — Igor Thiago</li>
+            </ul>
+
+            <p>Técnico: Carlo Ancelotti</p>
+
+            <p><strong>Substituições</strong></p>
+            <ul>
+              <li>Danilo entrou no lugar de Roger Ibañez</li>
+              <li>Fabinho entrou no lugar de Casemiro</li>
+              <li>Matheus Cunha entrou no lugar de Lucas Paquetá</li>
+              <li>Luiz Henrique entrou no lugar de Igor Thiago</li>
+              <li>Danilo Santos entrou no lugar de Bruno Guimarães</li>
+            </ul>
+
+            <p><strong>Marrocos</strong></p>
+
+            <p><strong>Escalação inicial</strong></p>
+            <ul>
+              <li>1 — Bounou</li>
+              <li>2 — Hakimi</li>
+              <li>14 — Issa Diop</li>
+              <li>18 — Chadi Riad</li>
+              <li>3 — Mazraoui</li>
+              <li>6 — Bouaddi</li>
+              <li>24 — El Aynaoui</li>
+              <li>10 — Brahim Díaz</li>
+              <li>8 — Ounahi</li>
+              <li>23 — El Khannouss</li>
+              <li>11 — Ismael Saibari</li>
+            </ul>
+
+            <p>Técnico: Mohamed Ouahbi</p>
+
+            <p><strong>Substituições</strong></p>
+            <ul>
+              <li>Chemsdine Talbi entrou no lugar de Brahim Díaz</li>
+              <li>Samir El Mourabet entrou no lugar de Ounahi</li>
+              <li>Anass Salah-Eddine entrou no lugar de Mazraoui</li>
+              <li>Ayoube Amaimouni-Echghouyab entrou no lugar de El Khannouss</li>
+              <li>Soufiane Rahimi entrou no lugar de Saibari</li>
+            </ul>
+
+            <p><strong>O empate muda a visão no Grupo C</strong></p>
+
+            <p>O empate deixa o Brasil em uma situação desconfortável no <a href="grupo-c-copa-do-mundo-2026-brasil-marrocos-haiti-escocia.html">na chave</a>. Com apenas um ponto na estreia, a Seleção passa a ter obrigação prática de vencer os dois próximos jogos para brigar pela liderança.</p>
+
+            <p>Ganhar de Haiti e Escócia não basta apenas pelo resultado. O saldo de gols também pode virar fator importante. Se Marrocos vencer seus próximos compromissos, ou se a Escócia sustentar vantagem após largar bem, o Brasil pode precisar construir placares mais confortáveis para terminar em primeiro.</p>
+
+            <p>Essa diferença é relevante porque o novo formato da Copa aumenta as possibilidades de classificação, mas também muda o peso da posição final no grupo. Os dois primeiros avançam diretamente, e os melhores terceiros também seguem vivos. Só que avançar em primeiro pode evitar um caminho mais duro logo de cara.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O caminho até a final</strong></p>
+
+            <p>Em Copa do Mundo, o caminho importa. Terminar em primeiro, segundo ou terceiro pode mudar completamente o nível do adversário na fase seguinte. Por isso, o empate na estreia não deve ser tratado como detalhe.</p>
+
+            <p>A Seleção entrou no Mundial pensando em controlar o grupo para seguir uma rota mais favorável no mata-mata. O tropeço contra Marrocos obriga o Brasil a acelerar contra Haiti e Escócia para não depender de combinação paralela. Dentro da <a href="tabela-copa-do-mundo-2026-formato-grupos-e-classificacao-completa.html">tabela da Copa do Mundo 2026</a>, perder o primeiro lugar pode significar pegar um confronto teoricamente mais pesado já na fase de 32.</p>
+
+            <p>Para uma seleção que tenta construir a campanha do sexto título, a primeira resposta precisa vir imediatamente.</p>
+
+            <p><strong>A busca pelo hexa começou com aviso</strong></p>
+
+            <p>A Seleção mostrou talento individual, especialmente com Vini Jr., mas também revelou problemas que podem custar caro contra adversários mais fortes: saída de bola insegura, meio-campo pouco dominante, laterais expostos e dependência de lampejos.</p>
+
+            <p>A história brasileira em Copas mostra que os títulos costumam nascer de times que crescem durante o torneio. A Seleção não precisa estar pronta no primeiro jogo, mas precisa aprender rápido. O projeto do sexto título passa justamente por transformar uma estreia irregular em ponto de correção, não em padrão.</p>
+
+            <p>A caminhada atual conversa diretamente com a memória das conquistas anteriores. Para seguir buscando o hexa, o Brasil carrega o peso da <a href="selecao-brasileira-historia-5-copas-do-mundo.html">história dos cinco títulos da Seleção Brasileira na Copa do Mundo</a>, mas essa história não joga sozinha.</p>
+
+            <p>Contra Marrocos, o passado não bastou. Vini Jr. salvou o empate. Agora, o time precisa jogar melhor.</p>
+
+            <p><strong>Melhores momentos de Brasil x Marrocos</strong></p>
+
+            <p>Confira os melhores momentos do empate entre Brasil e Marrocos na estreia da Copa do Mundo:</p>
+
+            <p><strong>Veja os melhores momentos da partida abaixo:</strong></p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/SY1xlwKkbgk" title="Brasil x Marrocos - melhores momentos da Copa do Mundo 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>Próximos jogos do Brasil</strong></p>
+
+            <p><strong>Brasil x Haiti</strong></p>
+
+            <ul>
+              <li>Data: 19 de junho</li>
+              <li>Horário: 21h30, de Brasília</li>
+              <li>Local: Lincoln Financial Field, na Filadélfia</li>
+            </ul>
+
+            <p><strong>Escócia x Brasil</strong></p>
+
+            <ul>
+              <li>Data: 24 de junho</li>
+              <li>Horário: 19h, de Brasília</li>
+              <li>Local: Hard Rock Stadium, em Miami</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
