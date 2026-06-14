@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mundial de Skate em São Paulo reúne elite global e abre corrida olímpica rumo a Los Angeles 2028 | Corte dos Esportes</title>
+  <meta name="description" content="Skateboarding World Championships acontece de 1º a 8 de março de 2026 no Parque Cândido Portinari, em São Paulo, com Street e Park, ranking mundial e corrida para Los Angeles 2028." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Knicks vencem os Spurs, encerram jejum histórico e conquistam o título da NBA</h1>
+          <p class="subhead" id="articleExcerpt">New York bateu San Antonio por 94 a 90 no Jogo 5 das Finais, fechou a série em 4 a 1 e voltou a ser campeão da NBA pela primeira vez desde 1973, com Jalen Brunson como dono da noite e MVP das Finais.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">14/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Basquete</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>Os Knicks voltaram ao topo da NBA. Depois de mais de cinco décadas de espera, a franquia venceu o San Antonio Spurs fora de casa, conquistando o terceiro título de sua história.</p>
+
+            <p>A taça veio em uma noite de baixa pontuação, jogo físico, ataque travado e uma atuação individual gigantesca de Jalen Brunson. O armador marcou 45 pontos, carregou quase metade da produção ofensiva dos Knicks e foi eleito o MVP das Finais. Em uma partida em que praticamente todos os outros nomes importantes de New York tiveram dificuldade para pontuar com volume, Brunson foi a diferença entre o fim do jejum e mais uma frustração histórica.</p>
+
+            <p>O título também tem peso simbólico pela revanche. A última final de NBA disputada pelos Knicks havia sido justamente contra os Spurs, em 1999, quando San Antonio venceu a série e ficou com o troféu. Em 2026, o reencontro terminou do outro lado: New York derrotou a nova geração texana de Victor Wembanyama e devolveu à torcida uma conquista que não vinha desde 1973.</p>
+
+            <p>Para entender melhor o peso desse título dentro da liga, a <a href="nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA</a>, mostra como conquistar o troféu e o anel são algo raro.</p>
+
+            <p><strong>O jogo 5: vitória dura, placar baixo e Brunson gigante</strong></p>
+
+            <p>Os Spurs tiveram bons momentos, abriram vantagem e chegaram a parecer mais confortáveis em parte da noite. Mas, como aconteceu em outros jogos da série, San Antonio não conseguiu sustentar o controle até o fim.</p>
+
+            <p>Os Knicks venceram por 94 a 90 em uma partida de placar baixo, muito diferente de jogos mais abertos da temporada. O ataque de New York não fluiu coletivamente. Karl-Anthony Towns teve problemas com faltas, produziu pouco ofensivamente e passou longe de uma noite de estrela. OG Anunoby, herói do Jogo 4, também sofreu com faltas e não repetiu a explosão ofensiva da partida anterior.</p>
+
+            <p>Foi aí que Brunson tomou conta. O armador fez 45 dos 94 pontos dos Knicks. O restante do time somou apenas 49. Em uma final, essa dependência poderia ser um problema. Na prática, virou solução porque Brunson respondeu em todos os momentos de pressão.</p>
+
+            <p>Ele pontuou no primeiro tempo para manter New York vivo, acelerou no segundo tempo e assumiu a reta final. No quarto período, foi o jogador que organizou, decidiu posses, atacou o garrafão, cavou faltas e converteu arremessos de média distância em momentos decisivos. O título dos Knicks passou diretamente pelas mãos dele.</p>
+
+            <p>Ele terminou as Finais como MVP de forma incontestável. A atuação de 45 pontos no jogo do título foi o ponto mais alto. Durante toda a série, ele foi o jogador mais confiável dos Knicks em momentos de meia quadra, pressão e fim de jogo.</p>
+
+            <p>Brunson virou o rosto da reconstrução de New York. Desde sua chegada, os Knicks deixaram de ser um time apenas competitivo para virar uma equipe com identidade clara: intensidade defensiva, casca emocional, elenco profundo e um armador capaz de resolver jogos grandes.</p>
+
+            <p>Nas Finais, essa identidade ficou ainda mais forte. O time de Mike Brown teve problemas ofensivos, sofreu contra Wembanyama, viu Towns e Anunoby oscilarem, mas sempre encontrou uma resposta no controle de Brunson.</p>
+
+            <p>O MVP das Finais fecha uma narrativa poderosa. New York não venceu com um supertime tradicional. Venceu com um líder pequeno para os padrões físicos da NBA moderna, mas enorme no controle do jogo. Brunson transformou uma série apertada em afirmação pessoal e histórica.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Wembanyama tentou, mas os Spurs não sustentaram</strong></p>
+
+            <p>Victor Wembanyama saiu das Finais derrotado, mas não apagado. O francês terminou o Jogo 5 com 19 pontos, 14 rebotes e 5 tocos, números fortes para uma primeira experiência em decisão da NBA. Ele protegeu o aro, mudou arremessos, incomodou Towns e mostrou por que San Antonio já é tratado como uma das forças do futuro da liga.</p>
+
+            <p>O problema é que os Spurs precisavam de mais ao redor dele. Dylan Harper foi o principal pontuador da equipe no jogo decisivo, com 25 pontos, mas outros nomes ficaram abaixo. Stephon Castle teve uma noite muito ruim, sem conseguir converter arremessos de quadra. De’Aaron Fox também ficou longe do nível necessário para uma final.</p>
+
+            <p>San Antonio teve domínio em trechos importantes da série, mas não teve maturidade para fechar partidas. Esse foi o ponto central. Os Spurs lideraram em boa parte dos jogos, abriram vantagens e mesmo assim viram New York voltar repetidas vezes.</p>
+
+            <p>A final de 2026 mostrou o tamanho do futuro dos Spurs, mas também expôs o preço da inexperiência. Wembanyama já parece pronto para disputar títulos. O time, como conjunto, ainda precisou aprender da forma mais dura.</p>
+
+            <p><strong>A série final</strong></p>
+
+            <p>As Finais foram mais apertadas do que o 4 a 1 sugere. Todos os jogos tiveram tensão, os Spurs lideraram por longos períodos e os Knicks precisaram buscar viradas em praticamente todas as vitórias.</p>
+
+            <p>• Jogo 1: Knicks 105 x 95 Spurs</p>
+            <p>• Jogo 2: Knicks 105 x 104 Spurs</p>
+            <p>• Jogo 3: Spurs 115 x 111 Knicks</p>
+            <p>• Jogo 4: Knicks 107 x 106 Spurs</p>
+            <p>• Jogo 5: Knicks 94 x 90 Spurs</p>
+
+            <p>A série teve um ponto de virada claro: <a href="knicks-spurs-jogo-4-finais-nba-virada-historica.html">o Jogo 4 no Madison Square Garden</a>. New York saiu de uma desvantagem de 29 pontos, buscou uma virada histórica e venceu com uma cesta decisiva de OG Anunoby nos segundos finais. Aquela noite mudou completamente a pressão da final, colocou os Knicks em vantagem de 3 a 1 e deixou os Spurs emocionalmente encurralados.</p>
+
+            <p>O título veio depois daquele choque no Garden. San Antonio ainda tinha chance de sobreviver em casa, mas New York entrou no Jogo 5 com outra energia: a de um time que já havia descoberto que podia arrancar uma vitória mesmo quando tudo parecia perdido.</p>
+
+            <p><strong>A campanha dos Knicks nos playoffs</strong></p>
+
+            <p>O título foi construído com uma campanha dominante nos playoffs. New York terminou a pós-temporada com 16 vitórias e apenas 3 derrotas.</p>
+
+            <p><strong>Campanha completa:</strong></p>
+            <p>• Primeira rodada: Knicks 4 x 2 Hawks</p>
+            <p>• Semifinal do Leste: Knicks 4 x 0 76ers</p>
+            <p>• Final do Leste: Knicks 4 x 0 Cavaliers</p>
+            <p>• Finais da NBA: Knicks 4 x 1 Spurs</p>
+
+            <p>Recorde nos playoffs: 16 vitórias e 3 derrotas</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p>A campanha mostra que o título não foi obra de uma série isolada. Os Knicks cresceram ao longo dos playoffs, atropelaram adversários no Leste e chegaram às Finais com confiança, ritmo e uma sequência forte de vitórias.</p>
+
+            <p>A varrida sobre os Cavaliers na final da Conferência Leste foi especialmente simbólica. New York chegou às Finais sem carregar desgaste excessivo e com Brunson em alto nível. A equipe não foi apenas campeã. Foi dominante no caminho.</p>
+
+            <p><strong>Fase regular dos Knicks em 2025/26:</strong></p>
+            <p>• Campanha: 53 vitórias e 29 derrotas</p>
+            <p>• Conferência: 3º lugar no Leste</p>
+            <p>• Principal cestinha do time: Jalen Brunson</p>
+            <p>• Média de Brunson: 26,0 pontos por jogo</p>
+            <p>• Assistências de Brunson: 6,8 por jogo</p>
+
+            <p>A fase regular já mostrava um time sólido, mas não necessariamente tratado como favorito absoluto ao título. Os Knicks foram fortes, venceram 53 jogos e entraram nos playoffs com mando em algumas séries, mas a consagração veio mesmo na pós-temporada.</p>
+
+            <p>O detalhe da NBA Cup também agrega valor à temporada. New York venceu San Antonio na decisão do torneio de meio de temporada e, meses depois, voltou a derrotar os Spurs nas Finais da NBA.</p>
+
+            <p><strong>MVP das Finais e MVP da fase regular</strong></p>
+
+            <p>Jalen Brunson foi o MVP das Finais. A escolha veio depois de uma série em que o armador foi o motor ofensivo de New York e decidiu o jogo do título com uma atuação histórica.</p>
+
+            <p>O MVP da fase regular foi Shai Gilgeous-Alexander, do Oklahoma City Thunder. O prêmio reforça uma temporada individual brilhante de SGA, mas a coroa coletiva ficou com os Knicks. Essa diferença é parte da lógica da NBA: a fase regular premia consistência individual ao longo de 82 jogos; os playoffs premiam quem consegue sobreviver ao peso das séries.</p>
+
+            <p>Brunson não foi o MVP da temporada, mas terminou o ano como o jogador mais importante do momento mais importante. Para a história dos Knicks, isso vale mais do que qualquer debate de votação individual.</p>
+
+            <p><strong>Towns e Anunoby: noite difícil, temporada enorme</strong></p>
+
+            <p>O Jogo 5 não foi uma noite brilhante para Karl-Anthony Towns. O pivô teve problemas com faltas, ficou limitado em minutos e terminou com baixa pontuação. Em uma final, esse tipo de atuação poderia custar caro. Só não custou porque Brunson carregou o ataque e porque os Knicks compensaram com defesa, rebote e posse decisiva.</p>
+
+            <p>Ainda assim, Towns foi peça importante da campanha. Sua presença abriu espaço ofensivo, deu tamanho ao time e obrigou defesas a respeitarem sua capacidade de pontuar longe da cesta. Mesmo quando não pontuou bem no jogo do título, ele fez parte da estrutura que levou New York até ali.</p>
+
+            <p>OG Anunoby também viveu uma noite de altos e baixos no Jogo 5. Ele não repetiu a atuação ofensiva do Jogo 4, quando marcou 33 pontos e decidiu a virada histórica no Garden, mas seguiu importante defensivamente. Sua capacidade de marcar várias posições foi fundamental para que New York sobrevivesse contra um time grande, atlético e com Wembanyama como referência.</p>
+
+            <p>O título dos Knicks não se explica apenas por Brunson, embora o armador tenha sido o personagem central. Towns, Anunoby, Mikal Bridges, Josh Hart, Mitchell Robinson e o banco construíram o ambiente para que Brunson pudesse decidir.</p>
+
+            <p><strong>Mike Brown e o título que muda a carreira</strong></p>
+
+            <p>Ele entra para a história dos Knicks como o técnico do fim do jejum. Sua missão não era simples: organizar um elenco com estrelas, controlar expectativas de uma torcida pressionada por décadas de frustração e transformar uma boa equipe em campeã.</p>
+
+            <p>O título muda a leitura sobre sua carreira. Brown sempre foi visto como treinador experiente, com passagens por grandes contextos e conhecimento defensivo. Em New York, encontrou o equilíbrio certo entre disciplina, liberdade para Brunson e competitividade coletiva.</p>
+
+            <p>Os Knicks venceram porque defenderam, resistiram e souberam jogar os minutos finais melhor do que os Spurs. Isso tem muito de elenco, mas também tem muito de comando. Em uma final tão apertada, preparação emocional e ajustes de rotação fazem diferença.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A revanche contra os Spurs</strong></p>
+
+            <p>A conquista também fecha uma ferida antiga. Em 1999, os Knicks chegaram às Finais como azarões e perderam para os Spurs de Tim Duncan e David Robinson. San Antonio venceu aquela série por 4 a 1 e abriu caminho para uma dinastia que marcaria as décadas seguintes.</p>
+
+            <p>Em 2026, a história virou. Os Spurs chegaram com Wembanyama, a nova grande promessa da liga, mas os Knicks foram mais maduros. New York fechou a série também em 4 a 1, agora do lado vencedor.</p>
+
+            <p>Essa revanche não apaga 1999, mas reorganiza a memória. Para a torcida dos Knicks, vencer San Antonio tem um peso especial porque o último trauma em Finais também havia passado pelos Spurs. O título de 2026 não foi apenas uma volta ao topo. Foi uma resposta histórica.</p>
+
+            <p><strong>Títulos dos Knicks na NBA</strong></p>
+            <p>• 1970</p>
+            <p>• 1973</p>
+            <p>• 2026</p>
+
+            <p>O intervalo entre 1973 e 2026 é o que torna essa taça tão pesada. Foram mais de cinco décadas de espera, reconstruções frustradas, elencos promissores que não chegaram lá, crises, mudanças de direção e pressão constante no Madison Square Garden.</p>
+
+            <p>Poucas franquias carregam uma mistura tão forte de mercado global, torcida apaixonada e jejum longo. Por isso, o título dos Knicks tem impacto além da quadra. Ele muda o humor esportivo de Nova York e recoloca uma das marcas mais populares da NBA no centro da liga.</p>
+
+            <p><strong>O peso histórico para a NBA</strong></p>
+
+            <p>O título dos Knicks é relevante para a própria liga. New York é um dos mercados mais importantes do basquete mundial. Quando os Knicks são competitivos, a NBA ganha audiência, narrativa e força cultural.</p>
+
+            <p>A conquista também fortalece uma tendência recente da liga: campeões diferentes em sequência, mais equilíbrio e menos dinastias absolutas. O título de New York veio em cima de um San Antonio jovem, que parece pronto para voltar, e em uma temporada em que o MVP da fase regular jogou em Oklahoma City. A NBA segue espalhando protagonismo.</p>
+
+            <p>Para os Knicks, porém, o que importa é o fim da espera. A franquia deixou de viver apenas de memória antiga e passou a ter uma conquista moderna para colocar ao lado das taças de 1970 e 1973.</p>
+
+            <p><strong>O que fica para os Spurs</strong></p>
+
+            <p>San Antonio perdeu, mas não sai tendo que reconstruir do zero para a próxima temporada. Os Spurs chegaram às Finais com uma base jovem, Wembanyama como estrela geracional e um núcleo que ainda pode crescer muito. A derrota dói porque o time teve chances reais de vencer mais jogos da série, mas também funciona como aprendizado.</p>
+
+            <p>Wembanyama mostrou que pode ser o jogador central de um finalista. Dylan Harper teve momentos fortes. Castle, mesmo mal no Jogo 5, segue como peça importante para o futuro. De’Aaron Fox terá cobrança maior depois de uma final abaixo do necessário.</p>
+
+            <p><strong>Uma taça para mudar a história </strong></p>
+
+            <p>O título de 2026 transforma a história recente dos Knicks. A franquia não é mais apenas uma potência de mercado tentando reviver o passado. Agora, tem uma equipe campeã, um MVP das Finais, um técnico vencedor e uma base com legitimidade.</p>
+
+            <p>Brunson virou ídolo definitivo. Towns e Anunoby ganharam um título que muda a leitura sobre suas carreiras. Bridges e Hart reforçaram o peso da química de elenco. Mike Brown colocou seu nome em um capítulo que ficará para sempre na memória do Madison Square Garden.</p>
+
+            <p>New York venceu uma final difícil, contra um adversário tradicional, depois de uma virada histórica no Garden e com uma atuação individual gigantesca no jogo do título. É o tipo de conquista que não cabe só no placar.</p>
+
+            <p>Os Knicks são campeões da NBA de novo. E, depois de 53 anos, essa frase voltou a fazer sentido.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "basquete";
+  const CATEGORY_NAME = "Basquete";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
