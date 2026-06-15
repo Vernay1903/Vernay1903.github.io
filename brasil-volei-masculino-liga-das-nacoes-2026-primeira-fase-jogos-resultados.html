@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seleção masculina do Brasil fecha primeira etapa da VNL invicto | Corte dos Esportes</title>
+  <meta name="description" content="Brasil venceu Irã, Bélgica, Sérvia e Argentina em Brasília, terminou a primeira semana da Liga das Nações com 100% de aproveitamento e mostrou força coletiva em uma virada de cinco sets no clássico sul-americano." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Seleção masculina do Brasil fecha primeira etapa da VNL invicto</h1>
+          <p class="subhead" id="articleExcerpt">Brasil venceu Irã, Bélgica, Sérvia e Argentina em Brasília, terminou a primeira semana da Liga das Nações com 100% de aproveitamento e mostrou força coletiva em uma virada de cinco sets no clássico sul-americano.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">15/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="volei.html">Vôlei</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O Brasil fechou a primeira etapa da Liga das Nações Masculina de Vôlei com quatro vitórias em quatro jogos e um recado importante para a sequência da competição: a seleção de Bernardinho começou a VNL 2026 com resultado, reação e elenco participativo.</p>
+
+            <p>Em Brasília, no Ginásio Nilson Nelson, a campanha teve jogos de controle, momentos de oscilação e terminou com chave de ouro em um clássico sul-americano de cinco sets, no qual o Brasil saiu perdendo por 2 a 0, reagiu e virou sobre os argentinos por 3 sets a 2.</p>
+
+            <p>A leitura da semana não deve ser apenas de placar. A primeira etapa serviu para testar nomes, recuperar ritmo de seleção, medir respostas sob pressão e mostrar que o Brasil tem alternativas além dos titulares. Foi uma largada forte em uma competição longa, de 12 jogos na fase classificatória.</p>
+
+            <p>O roteiro lembra o início da seleção feminina na mesma competição. Assim como as <a href="brasil-volei-feminino-vnl-2026-etapa-brasilia-classificacao.html">mulheres fecharam a etapa de Brasília invictas</a> e ganharam força com uma nova geração, a equipe masculina também saiu da capital com confiança ampliada, elenco em movimento e resultados que sustentam o começo do projeto.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Quatro jogos, quatro vitórias</strong></p>
+
+            <p>A campanha brasileira em Brasília foi construída com consistência. O Brasil estreou batendo o Irã por 3 sets a 1, repetiu o placar contra a Bélgica, passou pela Sérvia por 3 sets a 0 e fechou a semana com uma virada enorme contra a Argentina.</p>
+
+            <p>Resultados na primeira etapa da VNL masculina:</p>
+            <p>• Brasil 3 x 1 Irã — 25/21, 23/25, 25/15 e 25/23</p>
+            <p>• Brasil 3 x 1 Bélgica — 25/19, 23/25, 25/15 e 25/20</p>
+            <p>• Brasil 3 x 0 Sérvia — 25/22, 25/18 e 25/22</p>
+            <p>• Brasil 3 x 2 Argentina — 18/25, 24/26, 25/19, 25/23 e 15/9</p>
+
+            <p>O dado mais importante é o conjunto. A seleção venceu jogos diferentes entre si. Contra Irã e Bélgica, precisou absorver sets perdidos e retomar o controle. Contra a Sérvia, teve atuação mais limpa e impôs autoridade. Contra a Argentina, mostrou o tipo de reação que costuma valer muito em uma competição curta e acumulativa.</p>
+
+            <p>A primeira semana termina, portanto, com uma base positiva: invencibilidade, liderança entre os principais candidatos, 11 pontos somados e uma sensação de que o grupo respondeu bem ao primeiro teste da temporada.</p>
+
+            <p><strong>A virada contra a Argentina foi o ponto alto</strong></p>
+
+            <p>O clássico contra os argentinos foi o jogo mais marcante da semana. A seleção brasileira perdeu os dois primeiros sets, viu o rival crescer, encarou pressão e precisou buscar soluções durante a partida.</p>
+
+            <p>A Argentina abriu 25/18 e 26/24. O Brasil parecia desconfortável, especialmente na relação entre passe, distribuição e definição de ataque. O cenário era perigoso: último jogo da etapa, ginásio cheio, rival sul-americano e risco de fechar a semana com uma derrota depois de três vitórias seguidas.</p>
+
+            <p>Foi aí que o banco virou parte central da história. Bernardinho mexeu, a seleção ganhou energia e a reação veio ponto a ponto. O Brasil venceu o terceiro set por 25/19, levou o quarto por 25/23 e dominou o tie-break por 15/9.</p>
+
+            <p>Mais do que o resultado, a virada mostrou recurso competitivo.  A competição é longa, desgastante e feita para testar elenco. Ganhar quando tudo flui é uma coisa. Ganhar quando o jogo ameaça escapar é outra.</p>
+
+            <p><strong>Judson cresceu no jogo grande</strong></p>
+
+            <p>O central pontuou em todos os fundamentos e terminou como maior pontuador brasileiro do clássico, com 15 pontos.</p>
+
+            <p>Esse tipo de atuação tem peso porque mostra que o Brasil não depende apenas dos nomes mais óbvios do ataque. Em uma competição de três semanas, com viagens, trocas, desgaste físico e adversários diferentes, ter centrais produtivos muda o patamar da equipe.</p>
+
+            <p>Judson já vinha aparecendo bem na etapa. Contra a Sérvia, também teve destaque em uma partida de imposição brasileira. Ao terminar a semana como peça importante, reforça a disputa interna e dá a Bernardinho mais alternativas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Darlan, Lucarelli, Adriano e Douglas mantêm o ataque vivo</strong></p>
+
+            <p>A semana também foi importante para o ataque brasileiro. Darlan começou a VNL como referência ofensiva, foi o maior pontuador contra o Irã, com 18 pontos, e voltou a aparecer forte contra a Bélgica.</p>
+
+            <p>Lucarelli também teve papel relevante. Experiente, ajudou na leitura de jogo, no ataque e no equilíbrio da equipe. Em uma seleção que mistura jogadores rodados e nomes em afirmação, esse tipo de presença ajuda a dar estabilidade.</p>
+
+            <p>Adriano foi outro nome importante no início da campanha. Ele apareceu bem na estreia e reforçou a ideia de que o Brasil precisa construir ritmo coletivo sem depender de uma única solução.</p>
+
+            <p>Douglas Souza também entrou no recorte da semana. Sua presença amplia o repertório da seleção, dá mais opções nas pontas e reforça uma disputa saudável por espaço. Em ano de VNL, esse tipo de profundidade é essencial.</p>
+
+            <p><strong>Bernardinho testou e ganhou respostas</strong></p>
+
+            <p> Mais do que vencer quatro jogos, o treinador conseguiu observar respostas em cenários diferentes.</p>
+
+            <p>O Brasil foi testado em jogos com sets perdidos, em duelo de controle contra a Sérvia e em uma virada emocional contra a Argentina. Isso dá material para análise. Não é apenas treino, nem amistoso. É competição oficial, com pontos, tabela, pressão e adversários tentando se afirmar.</p>
+
+            <p>A vitória sobre a Argentina, principalmente, reforça a importância do banco. Quando a seleção precisou mudar o rumo da partida, as trocas funcionaram. Esse é um dado forte para o restante da VNL.</p>
+
+            <p>Em uma competição com 12 partidas na fase classificatória, ninguém sustenta alto nível usando sempre o mesmo grupo. O Brasil vai precisar rodar elenco, manter intensidade e encontrar formações diferentes. Brasília mostrou que esse caminho começou bem.</p>
+
+            <p>A <a href="volleyball-nations-league-2026-formato-datas-selecoes.html">Liga das Nações</a> virou uma competição central no calendário do vôlei. Ela não serve apenas para levantar taça. Serve para testar elenco, somar ranking, dar rodagem internacional e preparar seleções para torneios maiores.</p>
+
+            <p>Por isso, a largada do Brasil masculino tem valor além da invencibilidade. A equipe saiu de Brasília com pontos, confiança e informações importantes para o ciclo.</p>
+
+            <p>O Brasil ainda terá jogos duros pela frente. A primeira semana foi positiva, mas não define a competição. A VNL cobra regularidade. Uma seleção pode começar bem e cair se não sustentar nível nas próximas etapas. Também pode crescer durante o torneio, ajustar peças e chegar mais forte à fase final.</p>
+
+            <p>O ponto positivo é que o Brasil começou com margem. Quatro vitórias dão tranquilidade, mas também aumentam a expectativa.</p>
+
+            <p><strong>Brasília fortaleceu o ambiente da seleção</strong></p>
+
+            <p>Jogar em casa ajudou. A etapa no Ginásio Nilson Nelson deu energia ao Brasil, aproximou a seleção da torcida e criou um ambiente de pressão favorável.</p>
+
+            <p>Isso apareceu especialmente contra a Argentina. Quando a equipe saiu perdendo por 2 sets a 0, a reação não veio apenas da quadra. O ginásio também entrou no jogo. A virada em clássico, diante da torcida, tem impacto emocional maior do que uma vitória comum.</p>
+
+            <p>A seleção masculina vinha buscando reconstruir confiança e ritmo em um novo momento do ciclo. Fechar a primeira etapa invicta, em casa, com uma virada contra a Argentina, é um pacote forte para sustentar o discurso interno.</p>
+
+            <p>Também há um valor simbólico. O vôlei brasileiro sempre teve ligação forte com grandes jogos em casa, ginásios cheios e rivalidades continentais. Ganhar da Argentina dessa forma ajuda a reacender essa energia.</p>
+
+            <p>A seleção masculina saiu de Brasília com uma campanha que conversa diretamente com o que a equipe feminina já havia feito na mesma competição. Assim como o <a href="brasil-volei-feminino-vnl-2026-etapa-brasilia-classificacao.html">Brasil feminino fechou a etapa da VNL invicto</a>, o time de Bernardinho também usou a primeira semana para somar vitórias, testar alternativas e criar confiança para a sequência da Liga das Nações.</p>
+
+            <p>No masculino, o tom é parecido, mas com outro desenho. A equipe de Bernardinho mostrou experiência, força de banco e capacidade de reação. A virada sobre a Argentina funcionou como o equivalente emocional da etapa: o jogo que dá identidade à campanha.</p>
+
+            <p> O Brasil não teve apenas uma boa semana isolada no feminino ou no masculino. Teve duas seleções usando a VNL para ganhar corpo, testar alternativas e reforçar a presença do país no cenário internacional.</p>
+
+            <p>A conexão também reforça o tamanho do vôlei brasileiro. A modalidade segue como uma das principais forças esportivas do país, com tradição olímpica, base forte e capacidade de competir nos dois naipes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>O que vem agora para o Brasil</strong></p>
+
+            <p>Depois da etapa de Brasília, a seleção masculina segue para a segunda semana da VNL em Liubliana, na Eslovênia.</p>
+
+            <p>Próximos jogos do Brasil na VNL masculina:</p>
+            <p>• 24 de junho — Brasil x Ucrânia — 11h30</p>
+            <p>• 26 de junho — Brasil x Itália — 15h</p>
+            <p>• 27 de junho — Brasil x Eslovênia — 15h30</p>
+            <p>• 28 de junho — Brasil x Canadá — 11h30</p>
+
+            <p>A segunda etapa deve elevar o nível de cobrança. Itália e Eslovênia são testes fortes, enquanto Ucrânia e Canadá também exigem atenção. A invencibilidade dá confiança, mas não permite relaxamento.</p>
+
+            <p>A meta agora é transformar a boa largada em regularidade. Na VNL, cada vitória conta para a classificação, mas o desempenho também conta para entender até onde a equipe pode chegar.</p>
+
+            <p><strong>Uma semana para dar confiança</strong></p>
+
+            <p>O Brasil masculino fechou a primeira etapa da Liga das Nações com o melhor roteiro possível: quatro jogos, quatro vitórias, liderança, torcida mobilizada e uma virada marcante contra a Argentina.</p>
+
+            <p>Não foi uma semana perfeita em todos os fundamentos, nem precisa ser tratada assim. Houve oscilações, sets perdidos e momentos de pressão. Mas justamente por isso a campanha ganha valor. A seleção venceu quando controlou e venceu quando precisou reagir.</p>
+
+            <p>A VNL ainda está no começo. Mas a seleção masculina saiu de Brasília com uma base sólida para seguir competindo, crescer na segunda etapa e mirar a fase final com autoridade.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "volei";
+  const CATEGORY_NAME = "Vôlei";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
