@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Título do Vasco na Copa do Brasil: A campanha de 2011 | Corte dos Esportes</title>
+  <meta name="description" content="Clube carioca conquistou o seu primeiro e único título da competição, ao superar o Coritiba em uma final dramática decidida pelos critérios de desempate, Alecsandro decisivo e uma campanha marcada na história cruzmaltina." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Título do Vasco na Copa do Brasil: A campanha de 2011</h1>
+          <p class="subhead" id="articleExcerpt">Clube carioca conquistou o seu primeiro e único título da competição, ao superar o Coritiba em uma final dramática decidida pelos critérios de desempate, Alecsandro decisivo e uma campanha marcada na história cruzmaltina.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">15/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Futebol</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A conquista veio em 2011, em uma campanha que marcou a retomada do clube no cenário nacional e recolocou na Libertadores depois de uma decisão dramática contra o Coritiba.</p>
+
+            <p>Como é a única taça vascaína no torneio, o título de 2011 ganha ainda mais peso dentro da história do clube. Não foi uma campanha de domínio absoluto em todos os mata-matas, mas foi uma trajetória consistente, com vitórias fora de casa, empates administrados, poder de reação e jogadores que cresceram nos momentos de maior pressão.</p>
+
+            <p>Comandado por Ricardo Gomes, o Vasco tinha uma base forte com Fernando Prass, Dedé, Felipe, Diego Souza, Éder Luís e Alecsandro. O time soube misturar experiência, força física e eficiência ofensiva para atravessar uma Copa do Brasil que ainda era disputada no primeiro semestre.</p>
+
+            <p><strong>O início com goleada</strong></p>
+
+            <p>A caminhada começou de forma contundente. Na primeira fase, o Vasco foi até Campo Grande e goleou o Comercial-MS por 6 a 1, eliminando a necessidade do jogo de volta.</p>
+
+            <p>Fellipe Bastos abriu o placar, Marcel marcou duas vezes, Jéferson também deixou o dele, Éder Luís ampliou no segundo tempo e Rômulo fechou a conta para o Cruzmaltino. Anderson descontou para o Comercial-MS.</p>
+
+            <p>A estreia foi importante não apenas pelo placar, mas pelo recado competitivo. Em torneio mata-mata, vencer fora por larga vantagem reduzia desgaste, evitava jogo extra e dava confiança para um elenco que ainda buscava afirmação nacional naquela temporada.</p>
+
+            <p><strong>ABC deu trabalho</strong></p>
+
+            <p>Na segunda fase, o Vasco enfrentou o ABC. O jogo de ida, no Frasqueirão, terminou empatado por 0 a 0. O resultado deixou a vaga aberta e levou a decisão para São Januário.</p>
+
+            <p>Na volta, o ABC saiu na frente com Cascata e colocou pressão no confronto. O Vasco reagiu com Alecsandro, de pênalti, e virou com Bernardo no segundo tempo, vencendo por 2 a 1.</p>
+
+            <p>Foi uma classificação menos confortável que a estreia, mas importante para mostrar uma característica que acompanharia o time até o título: a capacidade de sobreviver em jogos travados e decidir nos detalhes.</p>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Vitória com autoridade nos Aflitos</strong></p>
+
+            <p>Nas oitavas de final, o Vasco construiu a classificação logo no primeiro jogo. Fora de casa, venceu o Náutico por 3 a 0 nos Aflitos, com gols de Dedé, Alecsandro e Bernardo.</p>
+
+            <p>O placar deu enorme vantagem para a volta. Em São Januário, o 0 a 0 confirmou a vaga sem grandes sustos.</p>
+
+            <p>A eliminatória contra o Náutico foi uma das mais sólidas da campanha. O Vasco foi eficiente fora, não sofreu gol na soma dos dois jogos e chegou às quartas com a sensação de que poderia competir pelo título.</p>
+
+            <p><strong>Quartas com drama e peso do regulamento</strong></p>
+
+            <p>As quartas de final contra o Atlético-PR foi um dos pontos mais tensos da campanha. No jogo de ida, em Curitiba, o Vasco empatou por 2 a 2. Alecsandro e Diego Souza marcaram, enquanto Guerrón e Paulo Baier fizeram os gols do time paranaense.</p>
+
+            <p>O empate fora de casa foi valioso porque, pelo regulamento da época, os gols como visitante eram critério de desempate. Isso deu ao Vasco uma vantagem estratégica para o jogo de volta.</p>
+
+            <p>Em São Januário, o Atlético-PR saiu na frente com Nieto e passou a ameaçar a classificação vascaína. O alívio veio com Elton, que empatou de cabeça e fez o gol que colocou o Vasco na semifinal. O 1 a 1 bastou porque o Cruzmaltino havia marcado duas vezes fora de casa na ida.</p>
+
+            <p>Essa eliminatória resumiu bem o torneio do Vasco: não foi uma campanha sem sofrimento, mas foi uma campanha de leitura de mata-mata. O time soube usar o regulamento, controlar o placar agregado e encontrar gols decisivos quando esteve pressionado.</p>
+
+            <p><strong>Avaí fez jogo duro pela classificação</strong></p>
+
+            <p>Na semifinal, o adversário foi o Avaí. O primeiro jogo, em São Januário, terminou 1 a 1. Julinho marcou para o time catarinense, e Diego Souza empatou para o Vasco nos acréscimos, de pênalti.</p>
+
+            <p>O gol no fim teve um peso enorme. Sem ele, o Vasco viajaria para Florianópolis em situação muito mais desconfortável. Com o empate, manteve o confronto vivo e levou a decisão para a Ressacada em condições melhores.</p>
+
+            <p>No jogo de volta, o Vasco fez uma de suas atuações mais maduras na campanha. Venceu por 2 a 0, com gol contra de Revson e outro de Diego Souza. A vitória fora de casa colocou na final da Copa do Brasil pela segunda vez em sua história.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>A final</strong></p>
+
+            <p>A decisão foi contra o Coritiba, que também fazia uma grande campanha e tinha um time ofensivo. O primeiro jogo aconteceu em São Januário. O Vasco venceu por 1 a 0, com gol de Alecsandro, e abriu uma vantagem mínima para a volta.</p>
+
+            <p>No Couto Pereira, a final virou um jogo histórico. O Vasco saiu na frente com Alecsandro, mas o Coritiba virou com gols de Bill e Davi. No segundo tempo, Éder Luís marcou e recolocou o título nas mãos vascaínas. Willian ainda fez o terceiro do Coritiba, mas o 3 a 2 não foi suficiente para tirar a taça do Vasco.</p>
+
+            <p>No agregado, a decisão terminou 3 a 3. O Vasco ficou com o título pelo critério de gols fora de casa, já que marcou duas vezes em Curitiba. Foi uma conquista com cara de mata-mata: vantagem curta na ida, pressão enorme fora, sofrimento até o fim e taça decidida no detalhe.</p>
+
+            <p><strong>Os artilheiros do Vasco na campanha</strong></p>
+
+            <p>Alecsandro foi o principal goleador vascaíno na Copa do Brasil de 2011, com cinco gols. Ele marcou em momentos decisivos, incluindo os dois jogos da final contra o Coritiba.</p>
+
+            <p>Diego Souza também teve papel central. Fez gols importantes contra Atlético-PR e Avaí, além de ser uma das referências técnicas do time no meio-campo.</p>
+
+            <p>A distribuição dos gols mostra que o Vasco não dependeu apenas de um jogador. Alecsandro foi o finalizador mais constante, mas o time teve participação decisiva de meias, atacantes e até defensores em diferentes fases.</p>
+
+            <p><strong>Os vices do Vasco na Copa do Brasil</strong></p>
+
+            <p>Antes do título de 2011, o Vasco já havia chegado perto da taça. Em 2006, o clube foi vice-campeão em uma final carioca contra o rival Flamengo. <a href="/titulos-do-flamengo-na-copa-do-brasil.html">O Rubro-Negro venceu os dois jogos da decisão</a> e ficou com o título.</p>
+
+            <p>O clube também voltou a decidir recentemente a Copa do Brasil, em 2025, contra o <a href="corinthians-titulos-copa-do-brasil-campanhas-finais.html">Corinthians</a>, mas novamente ficou com o vice-campeonato. A nova final reforçou a relação do Vasco com o torneio: apesar de ter apenas um título, o clube aparece entre os times que já chegaram mais de uma vez à decisão e mantém a competição como uma das frentes mais relevantes de sua história recente.</p>
+
+            <p>Esse histórico ajuda a dimensionar melhor o peso de 2011. Não foi apenas uma taça isolada. Foi o momento em que o Vasco, depois de já ter batido na trave, conseguiu transformar uma campanha de mata-mata em título nacional.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Por que o título de 2011 é tão importante</strong></p>
+
+            <p>Tem um peso especial porque veio em um momento de reconstrução esportiva. O Vasco havia passado por anos instáveis, rebaixamentos e buscava voltar a disputar grandes competições com protagonismo.</p>
+
+            <p>A conquista também abriu caminho para a Libertadores de 2012, competição em que o clube voltou a enfrentar adversários internacionais e viveu jogos de grande repercussão. Por isso, o título não ficou restrito ao troféu: ele teve impacto direto no calendário, na autoestima da torcida e na imagem competitiva do time.</p>
+
+            <p><strong>O legado da conquista</strong></p>
+
+            <p>O título permanece como uma das conquistas mais celebradas do Vasco no século. A final contra o Coritiba é lembrada pelo drama, mas a campanha inteira ajuda a explicar por que aquela taça teve tanto valor.</p>
+
+            <p>Alecsandro foi decisivo, Diego Souza comandou tecnicamente, Dedé virou símbolo defensivo, Fernando Prass transmitiu segurança e Ricardo Gomes deu equilíbrio a um time que soube competir em todos os cenários.</p>
+
+            <p>Para a história vascaína, a conquista de 2011 representa mais do que uma taça nacional. Representa uma campanha de afirmação, superação e eficiência em mata-mata. É o título que coloca o Vasco no grupo dos campeões da competição e segue como referência sempre que o clube volta a mirar protagonismo no torneio. Para entender melhor o peso nacional desse título dentro da <a href="/historia-da-copa-do-brasil.html">história da Copa do Brasil</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "futebol";
+  const CATEGORY_NAME = "Futebol";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
