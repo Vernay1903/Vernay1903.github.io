@@ -1,29 +1,23 @@
+
 [
-{
-"time": "13:00",
-"desc": "Espanha x Cabo Verde - Copa do Mundo"
-},
-{
-"time": "16:00",
-"desc": "Bélgica x Egito - Copa do Mundo"
-},
-{
-"time": "19:00",
-"desc": "Arábia Saudita x Uruguai - Copa do Mundo"
-},
-{
-"time": "21:00",
-"desc": "Criciúma x Ceará - Brasileiro Série B"
-},
-{
-"time": "21:00",
-"desc": "Londrina x Avaí - Brasileiro Série B"
-},
-{
-"time": "22:00",
-"desc": "Irã x Nova Zelândia - Copa do Mundo"
-}
+  {
+    "time": "16h",
+    "desc": "França x Senegal - Copa do Mundo"
+  },
+  {
+    "time": "19h",
+    "desc": "Iraque x Noruega - Copa do Mundo"
+  },
+  {
+    "time": "20h",
+    "desc": "Fortaleza x América-MG - Brasileiro Série B"
+  },
+  {
+    "time": "22h",
+    "desc": "Argentina x Argélia - Copa do Mundo"
+  }
 ]
+
 
 
 
