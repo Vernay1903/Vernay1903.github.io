@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rio Pro da WSL começa com Braziliam Storm dominando, mas com baixas importantes | Corte dos Esportes</title>
+  <meta name="description" content="Primeiro dia da janela em Itaúna já teve baterias decisivas, mar pesado, brasileiros avançando e eliminações pesadas, com torcida em peso na areia." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Rio Pro da WSL começa com Braziliam Storm dominando, mas com baixas importantes</h1>
+          <p class="subhead" id="articleExcerpt">Primeiro dia da janela em Itaúna já teve baterias decisivas, mar pesado, brasileiros avançando e eliminações pesadas, com torcida em peso na areia.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">19/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Surf</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>A etapa brasileira da WSL começou em Saquarema e logo no primeiro dia da janela, os atletas já foram para a água na Praia de Itaúna, confirmando o cenário que já aparecia na <a href="rio-pro-wsl-2026-saquarema-itauna-19-27-junho.html">prévia do Rio Pro 2026</a>: mar com força, torcida na areia e uma etapa com peso direto na briga pelo topo do ranking mundial.</p>
+
+            <p>E o primeiro dia da chave masculina foi forte. O Brasil colocou Italo Ferreira, Yago Dora, João Chianca e os irmão Pupo nas oitavas de final, mas também perdeu nomes de peso logo de cara. Gabriel Medina, tricampeão mundial e uma das maiores referências do surfe brasileiro, voltou a sair de Saquarema sem o título que ainda falta no currículo. Filipe Toledo, tetracampeão da etapa brasileira, também foi eliminado na estreia. No feminino, Luana Silva ainda não entrou na água: a brasileira aguarda sua estreia já no Round 2, em bateria contra Isabella Nichols ou Francisca Veselko.</p>
+
+            <p><strong>Medina segue sem vencer em casa</strong></p>
+
+            <p>O brasileiro começou atrás contra Matthew McGillivray, cresceu na disputa, encaixou duas notas na casa dos seis pontos e virou o confronto. O problema é que o sul-africano respondeu no trecho final e tirou Medina do Rio Pro por 13.53 a 13.13.</p>
+
+            <p>A derrota pesa pelo contexto. Medina já venceu em praticamente todos os grandes cenários do circuito, tem três títulos mundiais, medalhista olímpico e segue como um dos nomes mais influentes do esporte, mas ainda não conseguiu transformar a etapa brasileira em título. Em Saquarema, mais uma vez, a campanha terminou antes da torcida ver o tricampeão levantando o título.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/NCc1Cp4M02Q" title="Gabriel Medina x Matthew McGillivray no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>Filipe Toledo também cai cedo</strong></p>
+
+            <p>Outro resultado pesado do dia foi a eliminação de Filipinho. Bicampeão mundial e dono de quatro títulos em etapas da WSL no Brasil, ele chegou a Saquarema com histórico forte no país, mas parou em Callum Robson. O australiano abriu a bateria com uma nota alta, colocou pressão desde cedo e venceu por 14.93 a 13.00.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/4hFg2Q5UA7M" title="Filipe Toledo x Callum Robson no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Italo confirma a liderança</strong></p>
+
+            <p>Atual líder do ranking, Italo Ferreira entrou com a lycra amarela e fez o que se esperava de quem chega ao Brasil como referência da temporada. O potiguar derrotou Ramzi Boukhiam por 14.33 a 10.97, com 7.83 na melhor onda e controle da bateria.</p>
+
+            <p>A vitória mantém o brasileiro em posição forte na corrida pelo título e dá ao Rio Pro um dos confrontos mais interessantes das oitavas: ele encara Kauli Vaast na próxima fase. Depois da <a href="italo-medina-wsl-el-salvador-punta-roca-final-ranking.html">final em El Salvador</a>, etapa em que o brasileiro seguiu no topo mesmo ficando com o vice, Saquarema virou um ponto-chave para sustentar a liderança.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/itFeH2KI3To" title="Italo Ferreira x Ramzi Boukhiam no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>Yago Dora segue para as oitavas</strong></p>
+
+            <p>Também avançou, mas precisou resolver a bateria no limite. Atual campeão mundial, o brasileiro estava pressionado contra Eli Hannemann e precisava de nota nos minutos finais. A resposta veio em uma esquerda bem aproveitada, com duas manobras suficientes para virar o confronto: 13.83 a 12.90.</p>
+
+            <p>Esse tipo de vitória tem valor além da vaga. Em uma etapa com torcida brasileira, ranking embolado no alto e nomes fortes caindo cedo, Yago manteve vivo o peso competitivo de quem carrega o título mundial da temporada passada.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/WW3aH8umNIE" title="Yago Dora x Eli Hanneman no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>João Chianca domina bateria</strong></p>
+
+            <p>Chumbinho foi um dos grandes nomes do dia. Surfando em casa, com leitura clara de Itaúna, ele achou tubos para a direita, arrancou uma das maiores notas do primeiro dia e eliminou Griffin Colapinto por 14.84 a 7.17.</p>
+
+            <p>O resultado reforça o peso local de João em Saquarema. Em uma bateria de Round 2, ele não apenas passou: mostrou domínio de onda, escolha de prioridade e leitura de mar.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hWYU2vmJVxs" title="João Chianca x Griffin Colapinto no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Samuel Pupo também domina bateria</strong></p>
+
+            <p>Samuca abriu bem o caminho brasileiro no Round 2. Contra Alan Cleland, o paulista encontrou melhor as esquerdas de Itaúna, administrou a bateria e venceu por 11.07 a 8.50. Foi uma vitória sem explosão de notas altas, mas importante pela leitura: Samuel soube escolher ondas suficientes para controlar a vantagem e evitar risco no fim.</p>
+
+            <p>Nas oitavas, ele terá um teste maior contra Jack Robinson, um dos surfistas mais perigosos do circuito.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/A3e-v899t5Y" title="Samuel Pupo x Alan Cleland no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>Miguel Pupo avança em bateria brasileira</strong></p>
+
+            <p>O fechamento da fase masculina teve duelo brasileiro. Miguel Pupo enfrentou Mateus Herdy e avançou em uma bateria decidida por 12.97 a 10.94. Herdy teve bons momentos, mas Miguel cresceu na parte final, virou a disputa e confirmou mais um brasileiro nas oitavas.</p>
+
+            <p>A classificação também mantém Miguel dentro de uma etapa importante para o ranking. Em um ano em que o Brasil empilha nomes no topo da temporada, sobreviver ao primeiro dia em Saquarema vale mais do que apenas passar de fase.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RHIOzXycK14" title="Miguel Pupo x Mateus Herdy no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p><strong>Alejo Muniz cai para Ethan Ewing</strong></p>
+
+            <p>O brasileiro perdeu para Ethan Ewing por 12.66 a 10.30 e não conseguiu avançar às oitavas. Em uma temporada simbólica para o surfista, que está em seu último ano no Championship Tour, a queda em Saquarema encerra cedo uma das etapas mais emocionais do calendário para a torcida brasileira.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-zDKoX-f6xo" title="Ethan Ewing x Alejo Muniz no Rio Pro 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como ficaram as oitavas masculinas do Rio Pro</strong></p>
+
+            <p>Com os resultados do primeiro dia, a próxima fase masculina terá cinco brasileiros ainda vivos:</p>
+            <ul>
+              <li>Jack Robinson x Samuel Pupo</li>
+              <li>Leonardo Fioravanti x Liam O'Brien</li>
+              <li>Morgan Cibilic x Matthew McGillivray</li>
+              <li>João Chianca x Griffin Colapinto</li>
+              <li>Italo Ferreira x Kauli Vaast</li>
+              <li>Ethan Ewing x Kanoa Igarashi</li>
+              <li>Yago Dora x Marco Mignot</li>
+              <li>Callum Robson x Miguel Pupo</li>
+            </ul>
+
+            <p>A chave mostra bem o tamanho do primeiro dia em Itaúna. O Brasil perdeu Medina, Filipe Toledo, Alejo Muniz, Mateus Herdy, Weslley Dantas e Lucas Chumbo, mas segue com força suficiente para brigar pelo título. Italo entra como líder do ranking, Yago como atual campeão mundial, Chumbinho como nome local embalado pela melhor leitura de tubos do dia, e os irmãos Pupo mantêm a consistência em uma etapa que costuma premiar quem entende a variação de Itaúna.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
