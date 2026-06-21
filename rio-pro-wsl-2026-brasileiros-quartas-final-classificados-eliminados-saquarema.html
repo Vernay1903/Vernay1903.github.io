@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mundial de Skate em São Paulo reúne elite global e abre corrida olímpica rumo a Los Angeles 2028 | Corte dos Esportes</title>
+  <meta name="description" content="Skateboarding World Championships acontece de 1º a 8 de março de 2026 no Parque Cândido Portinari, em São Paulo, com Street e Park, ranking mundial e corrida para Los Angeles 2028." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ADSENSE (carregar 1x por página) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+    crossorigin="anonymous"></script>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS do compartilhar (único para todas as notícias) -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      background: #FFFFFF;
+      color: #0A1E3A;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ins.adsbygoogle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .ad-slot { overflow: hidden; max-width: 100%; }
+
+    /* ESSENCIAL para grid/flex não estourar */
+    .layout > section, .layout > aside { min-width: 0; }
+
+    /* Quebra segura (não “corta” frases) */
+    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: none;
+      max-width: 100%;
+    }
+    /* ✅ FIM DA CORREÇÃO */
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1; }
+
+    /* HEADER (STICKY) */
+    header {
+      background: #0A1E3A;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img { height: 34px; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* MENU (STICKY) */
+    .sports-menu {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #E5E5E5;
+      position: sticky;
+      top: 54px;
+      z-index: 999;
+    }
+
+    .sports-menu a {
+      flex: 1 1 120px;
+      max-width: 150px;
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid #1E4BA5;
+      border-radius: 10px;
+      color: #1E4BA5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+
+    /* Destaque do esporte atual no menu */
+    .sports-menu a.active {
+      background: #1E4BA5;
+      color: #FFFFFF;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2.3fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+    aside { margin-right: 0; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    .subhead {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: #31425F;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #5B6B84;
+      margin-bottom: 10px;
+    }
+
+    .meta a {
+      color: #1E4BA5;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta a:hover { text-decoration: underline; }
+
+    /* AD SLOTS (sem texto) */
+    .ad-slot {
+      border: 1px dashed #C9D3E2;
+      background: #F7FAFF;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 64px;
+      box-sizing: border-box;
+      margin: 16px 0;
+    }
+
+    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+
+    article p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #0A1E3A;
+      margin: 0 0 16px;
+    }
+
+    /* SIDEBAR */
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .agenda-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF1F5;
+    }
+
+    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+
+    .time {
+      min-width: 60px;
+      font-weight: 700;
+      color: #1E4BA5;
+    }
+
+    .desc { font-size: 14px; line-height: 1.4; }
+
+    footer {
+      background: #0A1E3A;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    footer a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    footer a:hover { color: #1E4BA5; }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { margin-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 18px; }
+      .logo-container img { height: 30px; }
+      .logo-text { font-size: 18px; }
+
+      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+      .sports-menu { top: auto; position: static; }
+
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corte dos Esportes">
+    <a class="logo-text" href="index.html">Corte dos Esportes</a>
+  </div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+  <a href="index.html" data-slug="inicio">Início</a>
+  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+  <a href="basquete.html" data-slug="basquete">Basquete</a>
+  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+  <a href="futebol.html" data-slug="futebol">Futebol</a>
+  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+  <a href="futsal.html" data-slug="futsal">Futsal</a>
+  <a href="handebol.html" data-slug="handebol">Handebol</a>
+  <a href="lutas.html" data-slug="lutas">Lutas</a>
+  <a href="skate.html" data-slug="skate">Skate</a>
+  <a href="surf.html" data-slug="surf">Surf</a>
+  <a href="volei.html" data-slug="volei">Vôlei</a>
+  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+  <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+  <div class="page">
+    <div class="layout">
+
+      <!-- ARTIGO -->
+      <section>
+        <div class="card">
+          <h1 id="articleTitle">Brasil mantém quatro nomes nas quartas do WSL em Saquarema</h1>
+          <p class="subhead" id="articleExcerpt">Yago Dora, João Chianca e os irmão Pupo avançam no masculino; Luana Silva cai nas quartas, Tati Weston-Webb e Italo Ferreira também se despedem da etapa brasileira.</p>
+
+          <div class="meta">
+            Por Corte dos Esportes · <span id="articleDate">21/06/2026</span> ·
+            Categoria: <a id="categoryLink" href="#">Surf</a>
+          </div>
+
+          <!-- COMPARTILHAR (CARREGA DO share.js) -->
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+          </div>
+
+          <article id="articleBody">
+            <p>O segundo dia do Rio Pro, neste sábado em Saquarema deixou o Brasil vivo na briga pelo título masculino, mas encerrou a participação feminina do país na etapa brasileira do Championship Tour. Depois de <a href="rio-pro-wsl-2026-surf-primeiro-dia-classificados-eliminados-saquarema.html">um primeiro dia de Rio Pro com brasileiros classificados, eliminações importantes e mar exigente em Saquarema</a>, o sábado trouxe uma peneira ainda mais dura na Praia de Itaúna.</p>
+
+            <p>O dia também teve eliminações importantes. Italo Ferreira, líder do ranking, caiu nas oitavas diante de Kauli Vaast. Luana Silva venceu uma bateria no limite, avançou às quartas, mas parou em Sawyer Lindblad. Tati Weston-Webb também foi eliminada nas oitavas, em sua volta à competição depois da maternidade.</p>
+
+            <p><strong>Luana Silva vira nas oitavas, mas para nas quartas</strong></p>
+
+            <p>A jovem surfista viveu um dos momentos mais fortes do sábado em Itaúna. Nas oitavas, ela ficou atrás de Isabella Nichols durante boa parte da bateria, mas encontrou uma esquerda no último minuto, encaixou as manobras necessárias e virou com uma nota 6.20. Foi o tipo de vitória que muda o clima da praia, porque colocou a brasileira de volta no evento quando a eliminação parecia próxima.</p>
+
+            <p>Nas quartas, a história quase se repetiu. Luana voltou a buscar a virada contra Sawyer Lindblad, conseguiu uma nota 7.93 na parte final da bateria, mas não encontrou a segunda onda que precisava para completar o resultado. A derrota por 12.86 a 12.26 deixou o Brasil sem representantes no feminino, mas não apaga o contexto da campanha: Luana saiu de Saquarema ainda como uma das surfistas mais fortes da temporada e subindo no ranking provisório.</p>
+
+             <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/7QdWLVKhpDQ" title="Luana Silva em Saquarema no WSL Brasil 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <!-- ANÚNCIO (ARTIGO - TOPO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Tati Weston-Webb volta a competir</strong></p>
+
+            <p>Tati também teve um dia simbólico em Saquarema. A brasileira voltou a competir depois da maternidade, recebeu convite para a etapa e passou pela primeira bateria com uma virada sobre Tyler Wright. Foi uma vitória importante pelo contexto físico, emocional e competitivo.</p>
+
+            <p>Na sequência, porém, Tati enfrentou Caroline Marks e caiu por 14.00 a 13.00. O placar apertado mostra que a brasileira voltou em nível competitivo, mas a derrota encerrou cedo a campanha em Itaúna. </p>
+
+            <p><strong>Samuel Pupo vence com autoridade</strong></p>
+
+            <p> Contra Jack Robinson, ele não apenas venceu: controlou a bateria com duas notas altas, 8.17 e 7.67, para somar 15.84.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ANjUIb4YS8o" title="Samuel Pupo vence em Saquarema no WSL Brasil 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A vitória coloca Samuel nas quartas contra Leonardo Fioravanti, um dos nomes mais perigosos do evento até aqui. O italiano teve o maior somatório da etapa no sábado, com 16.50, e chega embalado. Para Samuel, a bateria vale mais do que vaga na semifinal: vale também força na corrida por posicionamento no ranking.</p>
+
+            <p><strong>João Chianca confirma força local com virada em Itaúna</strong></p>
+
+            <p>Chumbinho venceu uma bateria com cara de Saquarema. Contra George Pittar, o brasileiro precisou reagir, encontrou uma direita no momento decisivo e virou com três manobras fortes. O 14.30 a 13.26 teve peso de vitória de título porque manteve vivo um dos nomes mais conectados com a praia.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/J8ksFjHjADU" title="João Chianca vira bateria em Saquarema no WSL Brasil 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>João encara Morgan Cibilic nas quartas.</p>
+
+            <!-- ANÚNCIO (ARTIGO - MEIO) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Yago Dora segue como candidato ao título</strong></p>
+
+            <p>O atual campeão mundial passou por Marco Mignot com 15.00 a 10.33 e mostrou novamente por que é um dos brasileiros mais completos do circuito. Ele surfou com variedade, atacou o lip, buscou manobras aéreas e construiu a vitória sem depender de uma única onda excelente.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/nnn2QwycvYs" title="Yago Dora vence bateria em Saquarema no WSL Brasil 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>A classificação de Yago também mexe com a parte de cima do ranking. Com Italo eliminado e Medina fora desde o primeiro dia, cada bateria vencida em Saquarema vale muito na corrida pelo título mundial. Yago entra no Finals Day com chance de transformar a etapa brasileira em virada de temporada.</p>
+
+            <p><strong>Miguel Pupo vence algoz de Filipe Toledo e garante duelo brasileiro</strong></p>
+
+            <p>Miguel fechou a participação brasileira nas oitavas com vitória sobre Callum Robson por 14.03 a 12.17. O resultado teve contexto extra: o australiano havia eliminado Filipe Toledo no primeiro dia, e Miguel entrou com a missão de manter mais um brasileiro vivo na chave.</p>
+            
+            <p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dkhCwHGuJcg" title="Miguel Pupo vence em Saquarema no WSL Brasil 2026" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <p>Com a vitória, Miguel garantiu um duelo brasileiro nas quartas contra Yago Dora. Isso já coloca o Brasil com pelo menos um nome na semifinal. Ao mesmo tempo, cria uma bateria pesada para a torcida, porque dois surfistas em grande fase vão se eliminar antes da disputa pelo título.</p>
+
+            <p><strong>Italo Ferreira cai em duelo olímpico, mas segue no topo</strong></p>
+
+            <p>A eliminação de Italo foi o resultado mais duro para o Brasil no masculino. Líder do ranking e campeão da etapa em 2024, ele perdeu para Kauli Vaast por 14.17 a 12.87. O confronto tinha peso de duelo olímpico e foi decidido em detalhes, com Italo buscando a virada nos minutos finais.</p>
+
+            <p>Mesmo fora de Saquarema, Italo segue como referência da temporada. A diferença é que a liderança fica mais pressionada. Fioravanti, Yago, Medina, Miguel e Samuel aparecem no bolo de cima do ranking, e a etapa brasileira passa a ter impacto direto na briga pelo título mundial.</p>
+
+            <!-- ANÚNCIO (ARTIGO - FINAL) -->
+            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+              <!-- Display-Article-Meio -->
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4145492637375431"
+                data-ad-slot="8702501261"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            <p><strong>Como ficaram as quartas masculinas:</strong></p>
+
+            <p>Samuel Pupo x Leonardo Fioravanti</p>
+
+            <p>Morgan Cibilic x João Chianca</p>
+
+            <p>Kauli Vaast x Ethan Ewing</p>
+
+            <p>Yago Dora x Miguel Pupo</p>
+
+            <p><strong>Nova chamada fica para segunda</strong></p>
+
+            <p>A organização colocou o domingo como day off em Saquarema. A próxima chamada está marcada para segunda-feira, às 8:30, no horário de Brasília. A expectativa é definir a reta final da etapa, com as baterias masculinas de quartas em diante e a sequência decisiva do feminino.</p>
+
+            <p>A previsão do mar indica uma janela mais instável do que a do sábado. Itaúna começou o domingo menor e com vento atrapalhando mais, o que ajuda a explicar a pausa. Para segunda, a tendência é de melhora suficiente para nova avaliação pela manhã, com ondas consistentes e possibilidade de andamento do Finals Day. A terça aparece como outro ponto de atenção na janela, com mais energia no mar, mas também com risco maior de vento e instabilidade.</p>
+
+            <p><strong>O que o segundo dia deixa para a etapa brasileira</strong></p>
+
+            <p>O sábado em Saquarema reorganizou a etapa. O Brasil perdeu nomes grandes, ficou sem representantes no feminino. Mas também manteve quatro surfistas nas quartas, garantiu um brasileiro na semifinal e colocou Yago Dora, João Chianca, Samuel Pupo e Miguel Pupo em posição de título.</p>
+
+            <p>O Finals Day passa a ter peso duplo: decidir o campeão do Vivo Rio Pro e mexer diretamente na corrida pelo título mundial. Para o Brasil, a etapa ainda está muito viva. Só não permite mais erro.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h2 class="section-title">Agenda do Dia</h2>
+          <ul class="agenda-list" id="agendaList">
+            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+          </ul>
+        </div>
+
+        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+          <!-- Display-Article-Sidebar -->
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4145492637375431"
+            data-ad-slot="5521804159"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Corte dos Esportes |
+  <a href="politica.html">Privacidade</a> |
+  <a href="contato.html">Contato</a> |
+  <a href="sobre.html">Sobre</a> |
+  <a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+  const CATEGORY_SLUG = "surf";
+  const CATEGORY_NAME = "Surf";
+
+  const AGENDA_JSON_URL = "agenda.json";
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[s]));
+  }
+
+  // Categoria
+  const categoryLink = document.getElementById("categoryLink");
+  categoryLink.textContent = CATEGORY_NAME;
+  categoryLink.href = CATEGORY_SLUG + ".html";
+
+  // Menu ativo
+  const menuLinks = document.querySelectorAll("#sportsMenu a");
+  menuLinks.forEach(a => {
+    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+  });
+
+  // Agenda automática
+  function renderAgenda(items) {
+    const list = document.getElementById("agendaList");
+
+    if (!items.length) {
+      list.innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Agenda ainda não cadastrada.</div>
+        </li>
+      `;
+      return;
+    }
+
+    const ordered = items.slice().sort((a,b) => {
+      const ta = String(a.time || "").trim();
+      const tb = String(b.time || "").trim();
+      return ta.localeCompare(tb);
+    });
+
+    list.innerHTML = ordered.slice(0, 12).map(it => `
+      <li>
+        <div class="time">${escapeHtml(it.time || "--:--")}</div>
+        <div class="desc">${escapeHtml(it.desc || "")}</div>
+      </li>
+    `).join("");
+  }
+
+  async function loadAgenda() {
+    try {
+      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+      const data = await res.json();
+
+      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+      const clean = items
+        .filter(x => x && (x.time || x.desc))
+        .map(x => ({
+          time: String(x.time || "").trim(),
+          desc: String(x.desc || "").trim()
+        }));
+
+      renderAgenda(clean);
+    } catch (e) {
+      document.getElementById("agendaList").innerHTML = `
+        <li>
+          <div class="time">--:--</div>
+          <div class="desc">Erro ao carregar agenda.</div>
+        </li>
+      `;
+    }
+  }
+
+  loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+
+</body>
+</html>
