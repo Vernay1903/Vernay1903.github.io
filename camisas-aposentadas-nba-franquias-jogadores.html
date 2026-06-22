@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8" />
+ <title>Camisas aposentadas na NBA: jogadores homenageados e o peso de cada história | Corte dos Esportes</title>
+ <meta name="description" content="As camisas aposentadas contam a história das franquias por meio de números que deixaram de ser apenas uniformes e viraram símbolos de títulos, eras vencedoras, lealdade, tragédias, reconstruções e identidade." />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- ADSENSE (carregar 1x por página) -->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+ crossorigin="anonymous"></script>
+ <!-- FAVICON -->
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="icon" href="/favicon.ico">
+ <link rel="manifest" href="/site.webmanifest">
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+ <!-- CSS do compartilhar (único para todas as notícias) -->
+ <link rel="stylesheet" href="share.css">
+ <style>
+ /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+ *, *::before, *::after { box-sizing: border-box; }
+ html, body {
+ height: 100%;
+ margin: 0;
+ font-family: Montserrat, sans-serif;
+ background: #FFFFFF;
+ color: #0A1E3A;
+ width: 100%;
+ max-width: 100%;
+ overflow-x: hidden;
+ }
+ img, video, iframe, embed, object {
+ max-width: 100%;
+ height: auto;
+ }
+ ins.adsbygoogle {
+ display: block !important;
+ width: 100% !important;
+ max-width: 100% !important;
+ }
+ .ad-slot { overflow: hidden; max-width: 100%; }
+ /* ESSENCIAL para grid/flex não estourar */
+ .layout > section, .layout > aside { min-width: 0; }
+ /* Quebra segura (não “corta” frases) */
+ h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+ overflow-wrap: anywhere;
+ word-break: break-word;
+ hyphens: none;
+ max-width: 100%;
+ }
+ /* ✅ FIM DA CORREÇÃO */
+ body {
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ }
+ main { flex: 1; }
+ /* HEADER (STICKY) */
+ header {
+ background: #0A1E3A;
+ padding: 10px 30px;
+ display: flex;
+ align-items: center;
+ position: sticky;
+ top: 0;
+ z-index: 1000;
+ }
+ .logo-container {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+ .logo-container img { height: 34px; }
+ .logo-text {
+ font-size: 20px;
+ font-weight: 700;
+ color: #FFFFFF;
+ letter-spacing: 0.3px;
+ line-height: 1;
+ text-decoration: none;
+ }
+ /* MENU (STICKY) */
+ .sports-menu {
+ background: #FFFFFF;
+ padding: 15px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 12px;
+ border-bottom: 1px solid #E5E5E5;
+ position: sticky;
+ top: 54px;
+ z-index: 999;
+ }
+ .sports-menu a {
+ flex: 1 1 120px;
+ max-width: 150px;
+ text-align: center;
+ padding: 12px 8px;
+ border: 1px solid #1E4BA5;
+ border-radius: 10px;
+ color: #1E4BA5;
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 600;
+ background-color: #FFFFFF;
+ transition: 0.3s;
+ white-space: nowrap;
+ }
+ .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+ /* Destaque do esporte atual no menu */
+ .sports-menu a.active {
+ background: #1E4BA5;
+ color: #FFFFFF;
+ }
+ /* LAYOUT */
+ .page {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 28px 10px 40px;
+ box-sizing: border-box;
+ }
+ .layout {
+ display: grid;
+ grid-template-columns: 2.3fr 330px;
+ gap: 20px;
+ align-items: start;
+ }
+ /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+ aside { margin-right: 0; }
+ .card {
+ background: #FFFFFF;
+ border: 1px solid #E5E5E5;
+ border-radius: 14px;
+ padding: 18px;
+ box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+ margin-bottom: 16px;
+ }
+ h1 {
+ font-size: 44px;
+ margin: 0 0 10px;
+ line-height: 1.15;
+ }
+ .subhead {
+ font-size: 18px;
+ margin: 0 0 14px;
+ color: #31425F;
+ line-height: 1.5;
+ }
+ .meta {
+ font-size: 12px;
+ color: #5B6B84;
+ margin-bottom: 10px;
+ }
+ .meta a {
+ color: #1E4BA5;
+ text-decoration: none;
+ font-weight: 700;
+ }
+ .meta a:hover { text-decoration: underline; }
+ /* AD SLOTS (sem texto) */
+ .ad-slot {
+ border: 1px dashed #C9D3E2;
+ background: #F7FAFF;
+ border-radius: 14px;
+ padding: 22px;
+ min-height: 64px;
+ box-sizing: border-box;
+ margin: 16px 0;
+ }
+ .ad-slot.sidebar { min-height: 120px; margin: 0; }
+ article p {
+ font-size: 16px;
+ line-height: 1.8;
+ color: #0A1E3A;
+ margin: 0 0 16px;
+ }
+ /* SIDEBAR */
+ .section-title {
+ margin: 0 0 12px;
+ font-size: 18px;
+ }
+ .agenda-list {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ }
+ .agenda-list li {
+ display: flex;
+ gap: 12px;
+ padding: 10px 0;
+ border-top: 1px solid #EEF1F5;
+ }
+ .agenda-list li:first-child { border-top: none; padding-top: 0; }
+ .time {
+ min-width: 60px;
+ font-weight: 700;
+ color: #1E4BA5;
+ }
+ .desc { font-size: 14px; line-height: 1.4; }
+ footer {
+ background: #0A1E3A;
+ text-align: center;
+ padding: 20px;
+ font-size: 14px;
+ color: #FFFFFF;
+ }
+ footer a {
+ color: #FFFFFF;
+ text-decoration: none;
+ margin: 0 12px;
+ }
+ footer a:hover { color: #1E4BA5; }
+ @media (max-width: 1024px) {
+ .layout { grid-template-columns: 1fr; }
+ aside { margin-right: 0; }
+ }
+ @media (max-width: 768px) {
+ header { padding: 10px 18px; }
+ .logo-container img { height: 30px; }
+ .logo-text { font-size: 18px; }
+ /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+ .sports-menu { top: auto; position: static; }
+ h1 { font-size: 34px; }
+ }
+ </style>
+</head>
+<body>
+<header>
+ <div class="logo-container">
+ <img src="logo.png" alt="Corte dos Esportes">
+ <a class="logo-text" href="index.html">Corte dos Esportes</a>
+ </div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+ <a href="index.html" data-slug="inicio">Início</a>
+ <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+ <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+ <a href="basquete.html" data-slug="basquete">Basquete</a>
+ <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+ <a href="futebol.html" data-slug="futebol">Futebol</a>
+ <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+ <a href="futsal.html" data-slug="futsal">Futsal</a>
+ <a href="handebol.html" data-slug="handebol">Handebol</a>
+ <a href="lutas.html" data-slug="lutas">Lutas</a>
+ <a href="skate.html" data-slug="skate">Skate</a>
+ <a href="surf.html" data-slug="surf">Surf</a>
+ <a href="volei.html" data-slug="volei">Vôlei</a>
+ <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+ <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+ <div class="page">
+ <div class="layout">
+ <!-- ARTIGO -->
+ <section>
+ <div class="card">
+ <h1 id="articleTitle">Camisas aposentadas na NBA: jogadores homenageados e o peso de cada história</h1>
+ <p class="subhead" id="articleExcerpt">As camisas aposentadas contam a história das franquias por meio de números que deixaram de ser apenas uniformes e viraram símbolos de títulos, eras vencedoras, lealdade, tragédias, reconstruções e identidade.</p>
+ <div class="meta">
+ Por Corte dos Esportes · <span id="articleDate">22/06/2026</span> ·
+ Categoria: <a id="categoryLink" href="#">Basquete</a>
+ </div>
+ <!-- COMPARTILHAR (CARREGA DO share.js) -->
+ <div class="share-wrap">
+ <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+ <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+ <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+ </div>
+ <article id="articleBody">
+ 
+ <p>Aposentar uma camisa é uma das maiores honrarias que um jogador pode receber de uma franquia da NBA. O número deixa de ser usado por novos atletas e passa a representar uma história específica: um título inesquecível, uma dinastia, um recorde, uma liderança ou uma relação emocional com a torcida.</p>
+ <p>A lista abaixo mostra as camisas aposentadas de todas as franquias da NBA. O número 6 de Bill Russell foi aposentado em toda a NBA em 2022, em homenagem ao seu impacto como 11 vezes campeão, ícone do Boston Celtics e pioneiro fora das quadras, se tornando uma das maiores homenagens do esporte.<br>A href="https://cortedosesportes.com.br/nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA</a> mostra como a liga se tornou uma referência do esporte com atitudes que entram na memória e no imaginário dos torcedores.</p>
+ <!-- ANÚNCIO (ARTIGO - TOPO) -->
+ <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+ <!-- Display-Article-Meio -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="8702501261"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ <p><strong>Atlanta Hawks</strong></p>
+ <ul>
+ <li>9 — Bob Pettit<br>Tempo na franquia: 11 temporadas.<br>Campeão da NBA em 1958, duas vezes MVP, 11 vezes All-Star e uma das primeiras grandes estrelas da liga. Embora tenha brilhado principalmente quando a franquia ainda jogava em St. Louis, Pettit é parte fundamental da identidade histórica dos Hawks.</li>
+ <li>21 — Dominique Wilkins<br>Tempo na franquia: 12 temporadas.<br>Nove vezes All-Star, integrante do NBA 75 e um dos maiores pontuadores da história da franquia. “The Human Highlight Film” virou o grande rosto dos Hawks em Atlanta, com enterradas icônicas e duelos memoráveis nos anos 1980 e 1990.</li>
+ <li>23 — Lou Hudson<br>Tempo na franquia: 11 temporadas.<br>Seis vezes All-Star e um dos maiores cestinhas da história dos Hawks. Hudson foi ponte entre a fase de St. Louis e a consolidação em Atlanta.</li>
+ <li>44 — Pete Maravich<br>Tempo na franquia: 4 temporadas.<br>Dois All-Star Games pelos Hawks e um estilo de jogo revolucionário. “Pistol Pete” foi um dos jogadores mais criativos da história do basquete.</li>
+ <li>55 — Dikembe Mutombo<br>Tempo na franquia: 5 temporadas.<br>Quatro vezes All-Star por Atlanta e duas vezes Defensor do Ano durante sua passagem. Mutombo deu aos Hawks uma identidade forte de proteção de aro e presença defensiva.</li>
+ </ul>
+ <p><strong>Boston Celtics</strong></p>
+ <ul>
+ <li>00 — Robert Parish<br>Tempo na franquia: 14 temporadas.<br>Tricampeão da NBA pelos Celtics e pivô titular da era Larry Bird. Foi símbolo de longevidade, consistência e presença física.</li>
+ <li>3 — Dennis Johnson<br>Tempo na franquia: 7 temporadas.<br>Bicampeão por Boston, defensor de elite e peça essencial no equilíbrio dos Celtics dos anos 1980.</li>
+ <li>5 — Kevin Garnett<br>Tempo na franquia: 6 temporadas.<br>Campeão em 2008, Defensor do Ano e líder emocional da reconstrução que devolveu Boston ao topo.</li>
+ <li>6 — Bill Russell<br>Tempo na franquia: 13 temporadas.<br> 11 títulos da NBA, cinco MVPs e maior vencedor da história da liga. O número 6 também foi aposentado em toda a NBA.</li>
+ <li>10 — Jo Jo White<br>Tempo na franquia: 10 temporadas.<br>Bicampeão da NBA e MVP das Finais de 1976. Foi um dos grandes armadores da fase pós-dinastia Russell.</li>
+ <li>14 — Bob Cousy<br>Tempo na franquia: 13 temporadas.<br>Seis vezes campeão, MVP e um dos armadores mais influentes da história.</li>
+ <li>15 — Tom Heinsohn<br>Tempo na franquia: 9 temporadas.<br>Oito títulos como jogador, Novato do Ano e depois campeão também como técnico.</li>
+ <li>16 — Satch Sanders<br>Tempo na franquia: 13 temporadas.<br>Oito títulos da NBA e papel importante como defensor e jogador de rotação em uma dinastia histórica.</li>
+ <li>17 — John Havlicek<br>Tempo na franquia: 16 temporadas.<br>Oito títulos, MVP das Finais e um dos jogadores mais completos da história dos Celtics.</li>
+ <li>18 — Dave Cowens<br>Tempo na franquia: 10 temporadas.<br>Tricampeão, MVP da temporada e pivô de enorme intensidade nos anos 1970.</li>
+ <li>19 — Don Nelson<br>Tempo na franquia: 11 temporadas.<br>Cinco títulos como jogador e uma trajetória marcante antes de virar técnico histórico da NBA.</li>
+ <li>21 — Bill Sharman<br>Tempo na franquia: 10 temporadas.<br>Quatro títulos, oito All-Star Games e um dos melhores arremessadores de sua era.</li>
+ <li>22 — Ed Macauley<br>Tempo na franquia: 6 temporadas.<br>Seis vezes All-Star em Boston e nome importante nos primeiros anos da franquia.</li>
+ <li>23 — Frank Ramsey<br>Tempo na franquia: 9 temporadas.<br>Sete vezes campeão e um dos primeiros grandes sextos homens da NBA.</li>
+ <li>24 — Sam Jones<br>Tempo na franquia: 12 temporadas.<br>10 títulos da NBA e arremessos decisivos em várias finais.</li>
+ <li>25 — K.C. Jones<br>Tempo na franquia: 9 temporadas.<br>Oito títulos como jogador e depois campeão como treinador dos Celtics.</li>
+ <li>31 — Cedric Maxwell<br>Tempo na franquia: 8 temporadas.<br>Bicampeão e MVP das Finais de 1981.</li>
+ <li>32 — Kevin McHale<br>Tempo na franquia: 13 temporadas.<br>Tricampeão, sete vezes All-Star e um dos maiores alas-pivôs da história.</li>
+ <li>33 — Larry Bird<br>Tempo na franquia: 13 temporadas.<br>Três títulos, três MVPs, dois MVPs das Finais e rosto máximo da era moderna dos Celtics.</li>
+ <li>34 — Paul Pierce<br>Tempo na franquia: 15 temporadas.<br>Campeão e MVP das Finais de 2008. “The Truth” foi o grande ídolo de Boston entre o fim dos anos 1990 e a era Garnett.</li>
+ <li>35 — Reggie Lewis<br>Tempo na franquia: 6 temporadas.<br>All-Star e líder em ascensão. A camisa foi aposentada de forma póstuma após sua morte precoce.</li>
+ <li>LOSCY — Jim Loscutoff<br>Tempo na franquia: 9 temporadas.<br>Sete títulos. A homenagem aparece pelo apelido porque ele pediu que o número 18 continuasse disponível na época.</li>
+ </ul>
+ <p><strong>Brooklyn Nets</strong></p>
+ <ul>
+ <li>3 — Drazen Petrovic<br>Tempo na franquia: 3 temporadas.<br>Um dos grandes arremessadores europeus da história. Morreu em acidente de carro ainda no auge, e sua camisa foi aposentada de forma póstuma.</li>
+ <li>5 — Jason Kidd<br>Tempo na franquia: 7 temporadas.<br>Levou os Nets a duas Finais da NBA, foi cinco vezes All-Star pela franquia e mudou o patamar competitivo do time em New Jersey.</li>
+ <li>15 — Vince Carter<br>Tempo na franquia: 5 temporadas.<br>Três vezes All-Star pelos Nets, foi o grande nome ofensivo da equipe na metade dos anos 2000.</li>
+ <li>23 — John Williamson<br>Tempo na franquia: 4 temporadas.<br>Destaque da fase ABA, importante na construção da história da franquia antes da NBA.</li>
+ <li>25 — Bill Melchionni<br>Tempo na franquia: fase ABA.<br>Armador importante dos New York Nets, bicampeão da ABA ao lado de Julius Erving.</li>
+ <li>32 — Julius Erving<br>Tempo na franquia: fase ABA.<br>Duas vezes campeão da ABA pelos Nets, três vezes MVP da ABA e um dos jogadores mais influentes da história do basquete.</li>
+ <li>52 — Buck Williams<br>Tempo na franquia: 8 temporadas.<br>Novato do Ano, três vezes All-Star e um dos maiores reboteiros da história da franquia.</li>
+ </ul>
+ <p><strong>Charlotte Hornets</strong></p>
+ <ul>
+ <li>13 — Bobby Phills<br>Tempo na franquia: 3 temporadas.<br>Jogador respeitado por defesa, liderança e profissionalismo. Morreu em acidente de carro enquanto ainda defendia os Hornets, e a homenagem virou símbolo emocional da franquia.</li>
+ <li>30 — Dell Curry<br>Tempo na franquia: 10 temporadas.<br>Sexto Homem do Ano em 1993/94, maior arremessador da história inicial dos Hornets e um dos atletas mais queridos pela torcida de Charlotte.</li>
+ </ul>
+ <p><strong>Chicago Bulls</strong></p>
+ <ul>
+ <li>1 — Derrick Rose<br>Tempo na franquia: 7 temporadas.<br>MVP mais jovem da história da NBA, Novato do Ano e três vezes All-Star. Rose reacendeu a paixão dos Bulls depois da era Jordan.</li>
+ <li>4 — Jerry Sloan<br>Tempo na franquia: 10 temporadas.<br>Dois All-Star Games e identidade defensiva forte. Foi o primeiro jogador a ter camisa aposentada pelos Bulls.</li>
+ <li>10 — Bob Love<br>Tempo na franquia: 9 temporadas.<br>Três vezes All-Star e um dos maiores pontuadores da história da franquia antes de Michael Jordan.</li>
+ <li>23 — Michael Jordan<br>Tempo na franquia: 13 temporadas.<br>Seis títulos, seis MVPs das Finais, cinco MVPs da temporada regular, Defensor do Ano e maior jogador da história da franquia e um dos maiores da história do esporte.</li>
+ <li>33 — Scottie Pippen<br>Tempo na franquia: 12 temporadas.<br>Seis títulos ao lado de Jordan, sete vezes All-Star e um dos jogadores mais completos da história da NBA.</li>
+ </ul>
+ <p><strong>Cleveland Cavaliers</strong></p>
+ <ul>
+ <li>7 — Bingo Smith<br>Tempo na franquia: 10 temporadas.<br>Um dos primeiros grandes nomes da história dos Cavaliers.</li>
+ <li>11 — Zydrunas Ilgauskas<br>Tempo na franquia: 12 temporadas.<br>Duas vezes All-Star, símbolo de superação após lesões graves e peça importante da primeira era LeBron James.</li>
+ <li>22 — Larry Nance<br>Tempo na franquia: 8 temporadas.<br>Dois All-Star Games pelos Cavs e referência defensiva.</li>
+ <li>25 — Mark Price<br>Tempo na franquia: 9 temporadas.<br>Quatro vezes All-Star, armador de elite e um dos melhores arremessadores de lance livre da história.</li>
+ <li>34 — Austin Carr<br>Tempo na franquia: 9 temporadas.<br> All-Star e ídolo dos primeiros anos da franquia.</li>
+ <li>42 — Nate Thurmond<br>Tempo na franquia: 2 temporadas.<br>Passagem curta, mas simbólica. Lenda da NBA e presença importante no início da história dos Cavs.</li>
+ <li>43 — Brad Daugherty<br>Tempo na franquia: 8 temporadas.<br>Cinco vezes All-Star e principal pivô da era competitiva do fim dos anos 1980 e início dos anos 1990.</li>
+ </ul>
+ <p><strong>Dallas Mavericks</strong></p>
+ <ul>
+ <li>12 — Derek Harper<br>Tempo na franquia: 12 temporadas.<br>Armador histórico, forte defensor e uma das figuras centrais dos Mavericks nos anos 1980 e 1990.</li>
+ <li>15 — Brad Davis<br>Tempo na franquia: 12 temporadas.<br>Símbolo dos primeiros anos da franquia, com longa ligação também fora das quadras.</li>
+ <li>22 — Rolando Blackman<br>Tempo na franquia: 11 temporadas.<br>Quatro vezes All-Star e um dos maiores pontuadores da história de Dallas.</li>
+ <li>24 — Mark Aguirre<br>Tempo na franquia: 8 temporadas.<br>Três vezes All-Star e estrela ofensiva da franquia nos anos 1980.</li>
+ <li>24 — Kobe Bryant<br>Tempo na franquia: não jogou pelo Dallas Mavericks.<br>Conquistas e legado: o número 24 foi preservado de forma simbólica por decisão da franquia após a morte de Kobe, em respeito ao impacto global do ídolo dos Lakers.</li>
+ <li>41 — Dirk Nowitzki<br>Tempo na franquia: 21 temporadas.<br>Campeão da NBA em 2011, MVP das Finais, MVP da temporada regular e maior jogador da história dos Mavericks.</li>
+ </ul>
+ <p><strong>Denver Nuggets</strong></p>
+ <ul>
+ <li>2 — Alex English<br>Tempo na franquia: 11 temporadas.<br>Oito vezes All-Star e maior nome ofensivo da história dos Nuggets antes da era Jokic.</li>
+ <li>12 — Fat Lever<br>Tempo na franquia: 6 temporadas.<br>Duas vezes All-Star e armador completo, famoso por pontos, rebotes, assistências e roubos.</li>
+ <li>33 — David Thompson<br>Tempo na franquia: 6 temporadas.<br>Três vezes All-Star pelos Nuggets e um dos atletas mais explosivos de sua geração.</li>
+ <li>40 — Byron Beck<br>Tempo na franquia: longa ligação com a fase inicial.<br>Símbolo da era ABA e dos primeiros anos da franquia em Denver.</li>
+ <li>44 — Dan Issel<br>Tempo na franquia: 9 temporadas.<br> All-Star, grande cestinha e figura importante também como técnico e dirigente.</li>
+ <li>55 — Dikembe Mutombo<br>Tempo na franquia: 5 temporadas.<br> Defensor do Ano, três vezes All-Star por Denver e líder da histórica zebra contra o Seattle SuperSonics nos playoffs de 1994.</li>
+ </ul>
+ <p><strong>Detroit Pistons</strong></p>
+ <ul>
+ <li>1 — Chauncey Billups<br>Tempo na franquia: 8 temporadas.<br>Campeão em 2004, MVP das Finais e cérebro do time que marcou a defesa da era moderna.</li>
+ <li>3 — Ben Wallace<br>Tempo na franquia: 9 temporadas.<br>Campeão em 2004, quatro vezes Defensor do Ano e rosto da identidade defensiva dos Pistons.</li>
+ <li>4 — Joe Dumars<br>Tempo na franquia: 14 temporadas.<br>Bicampeão, MVP das Finais de 1989 e um dos grandes jogadores two-way da história da franquia.</li>
+ <li>10 — Dennis Rodman<br>Tempo na franquia: 7 temporadas.<br>Bicampeão e duas vezes Defensor do Ano em Detroit.</li>
+ <li>11 — Isiah Thomas<br>Tempo na franquia: 13 temporadas.<br>Bicampeão, MVP das Finais de 1990 e maior jogador da história dos Pistons.</li>
+ <li>15 — Vinnie Johnson<br>Tempo na franquia: 10 temporadas.<br>Bicampeão e sexto homem decisivo, conhecido como “The Microwave”.</li>
+ <li>16 — Bob Lanier<br>Tempo na franquia: 10 temporadas.<br>Sete vezes All-Star por Detroit e um dos maiores pivôs da história da franquia.</li>
+ <li>21 — Dave Bing<br>Tempo na franquia: 9 temporadas.<br>Seis vezes All-Star pelos Pistons, Novato do Ano e integrante do NBA 75.</li>
+ <li>32 — Richard Hamilton<br>Tempo na franquia: 9 temporadas.<br>Campeão em 2004, três vezes All-Star e símbolo ofensivo do time de Larry Brown.</li>
+ <li>40 — Bill Laimbeer<br>Tempo na franquia: 13 temporadas.<br>Bicampeão, quatro vezes All-Star e uma das caras dos “Bad Boys”.</li>
+ </ul>
+ <p><strong>Golden State Warriors</strong></p>
+ <ul>
+ <li>9 — Andre Iguodala<br>Tempo na franquia: 8 temporadas.<br>Quatro títulos, MVP das Finais de 2015 e peça essencial da dinastia de Stephen Curry.</li>
+ <li>13 — Wilt Chamberlain<br>Tempo na franquia: 6 temporadas.<br>MVP, Novato do Ano e números estatísticos absurdos ainda na fase Philadelphia/San Francisco Warriors.</li>
+ <li>14 — Tom Meschery<br>Tempo na franquia: 6 temporadas.<br> All-Star e nome importante da transição da franquia.</li>
+ <li>16 — Al Attles<br>Tempo na franquia: 11 temporadas.<br>Jogador, técnico campeão em 1975, dirigente e embaixador. Poucos nomes representam tanto os Warriors quanto Attles.</li>
+ <li>17 — Chris Mullin<br>Tempo na franquia: 13 temporadas.<br>Cinco vezes All-Star e estrela da era “Run TMC”.</li>
+ <li>24 — Rick Barry<br>Tempo na franquia: 8 temporadas.<br>Campeão e MVP das Finais de 1975. Um dos grandes pontuadores e competidores da história.</li>
+ <li>42 — Nate Thurmond<br>Tempo na franquia: 11 temporadas.<br>Sete vezes All-Star pelos Warriors e um dos maiores defensores e reboteiros da NBA.</li>
+ </ul>
+ <p><strong>Houston Rockets</strong></p>
+ <ul>
+ <li>11 — Yao Ming<br>Tempo na franquia: 8 temporadas.<br>Oito vezes All-Star, fenômeno global e principal ponte da NBA com o mercado chinês.</li>
+ <li>22 — Clyde Drexler<br>Tempo na franquia: 4 temporadas.<br>Campeão em 1995 ao lado de Hakeem Olajuwon e peça decisiva no bicampeonato dos Rockets.</li>
+ <li>23 — Calvin Murphy<br>Tempo na franquia: 13 temporadas.<br> All-Star, grande pontuador e um dos maiores ídolos da primeira fase da franquia.</li>
+ <li>24 — Moses Malone<br>Tempo na franquia: 6 temporadas.<br>Duas vezes MVP pelos Rockets, dominante nos rebotes e no garrafão.</li>
+ <li>34 — Hakeem Olajuwon<br>Tempo na franquia: 17 temporadas.<br>Bicampeão, dois MVPs das Finais, MVP da temporada, duas vezes Defensor do Ano e maior jogador da história da franquia.</li>
+ <li>44 — Elvin Hayes<br>Tempo na franquia: 7 temporadas.<br>Quatro vezes All-Star por Houston e estrela desde os tempos de San Diego Rockets.</li>
+ <li>45 — Rudy Tomjanovich<br>Tempo na franquia: 11 temporadas.<br>Cinco vezes All-Star como jogador e técnico dos dois títulos da franquia nos anos 1990.</li>
+ </ul>
+ <p><strong>Indiana Pacers</strong></p>
+ <ul>
+ <li>30 — George McGinnis<br>Tempo na franquia: passagem marcante entre ABA e NBA.<br>Campeão da ABA, MVP da ABA e um dos grandes nomes da fase pré-NBA dos Pacers.</li>
+ <li>31 — Reggie Miller<br>Tempo na franquia: 18 temporadas.<br>Cinco vezes All-Star, maior jogador da história dos Pacers e símbolo de lealdade e bolas decisivas.</li>
+ <li>34 — Mel Daniels<br>Tempo na franquia: fase ABA.<br>Três vezes campeão da ABA, duas vezes MVP da ABA e referência absoluta da era mais vitoriosa dos Pacers.</li>
+ <li>35 — Roger Brown<br>Tempo na franquia: fase ABA.<br>Três vezes campeão da ABA e jogador decisivo em playoffs. É uma das grandes lendas fundadoras da franquia.</li>
+ </ul>
+ <p><strong>Los Angeles Lakers</strong></p>
+ <ul>
+ <li>8 — Kobe Bryant<br>Tempo na franquia: 20 temporadas.<br>Cinco títulos, MVP da temporada, dois MVPs das Finais e 18 vezes All-Star. A <a href="https://cortedosesportes.com.br/kobe-bryant-historia-titulos-legado-lakers-nba.html">história de Kobe Bryant nos Lakers</a> é tão grande que a franquia aposentou dois números do mesmo jogador.</li>
+ <li>24 — Kobe Bryant<br>Tempo na franquia: 20 temporadas.<br>Representa a segunda metade da carreira de Kobe, com os títulos de 2009 e 2010, os dois prêmios de MVP das Finais e a consolidação como ícone mundial.</li>
+ <li>13 — Wilt Chamberlain<br>Tempo na franquia: 5 temporadas.<br>Campeão em 1972 e MVP das Finais. Foi peça central de um dos maiores times da história.</li>
+ <li>16 — Pau Gasol<br>Tempo na franquia: 7 temporadas.<br>Bicampeão em 2009 e 2010, parceiro perfeito de Kobe e um dos grandes pivôs internacionais da NBA.</li>
+ <li>21 — Michael Cooper<br>Tempo na franquia: 12 temporadas.<br>Cinco títulos e Defensor do Ano em 1987. Foi o especialista defensivo do Showtime.</li>
+ <li>22 — Elgin Baylor<br>Tempo na franquia: 14 temporadas.<br>11 vezes All-Star e um dos pontuadores mais espetaculares da história.</li>
+ <li>25 — Gail Goodrich<br>Tempo na franquia: 9 temporadas.<br>Campeão em 1972 e peça importante de uma das equipes mais dominantes da liga.</li>
+ <li>32 — Magic Johnson<br>Tempo na franquia: 13 temporadas.<br>Cinco títulos, três MVPs, três MVPs das Finais e maestro do Showtime.</li>
+ <li>33 — Kareem Abdul-Jabbar<br>Tempo na franquia: 14 temporadas.<br>Cinco títulos pelos Lakers, três MVPs como jogador da franquia e um dos maiores jogadores da história.</li>
+ <li>34 — Shaquille O’Neal<br>Tempo na franquia: 8 temporadas.<br>Tricampeão consecutivo, MVP e três vezes MVP das Finais.</li>
+ <li>42 — James Worthy<br>Tempo na franquia: 12 temporadas.<br>Tricampeão, MVP das Finais de 1988 e ala decisivo do Showtime.</li>
+ <li>44 — Jerry West<br>Tempo na franquia: 14 temporadas.<br>Campeão em 1972, MVP das Finais de 1969 e símbolo eterno da NBA.</li>
+ <li>52 — Jamaal Wilkes<br>Tempo na franquia: 8 temporadas.<br>Tricampeão pelos Lakers e peça valiosa da transição para o Showtime.</li>
+ <li>99 — George Mikan<br>Tempo na franquia: era Minneapolis Lakers.<br>Primeira grande estrela dominante do basquete profissional e líder da dinastia inicial dos Lakers.</li>
+ </ul>
+ <p><strong>Memphis Grizzlies</strong></p>
+ <ul>
+ <li>9 — Tony Allen<br>Tempo na franquia: 7 temporadas.<br>Defensor de elite e coração do “Grit and Grind”, a fase mais identificável da história dos Grizzlies.</li>
+ <li>33 — Marc Gasol<br>Tempo na franquia: 11 temporadas.<br>Defensor do Ano, três vezes All-Star e pivô cerebral do melhor período da franquia.</li>
+ <li>50 — Zach Randolph<br>Tempo na franquia: 8 temporadas.<br>Duas vezes All-Star por Memphis e principal rosto emocional do “Grit and Grind”.</li>
+ </ul>
+ <p><strong>Miami Heat</strong></p>
+ <ul>
+ <li>1 — Chris Bosh<br>Tempo na franquia: 6 temporadas.<br>Bicampeão e peça decisiva do “Big Three” ao lado de LeBron James e Dwyane Wade.</li>
+ <li>3 — Dwyane Wade<br>Tempo na franquia: 15 temporadas.<br>Três títulos, MVP das Finais de 2006 e maior jogador da história do Miami Heat.</li>
+ <li>10 — Tim Hardaway<br>Tempo na franquia: 6 temporadas.<br>Líder ofensivo dos anos 1990, duas vezes All-Star por Miami e referência antes da era Wade.</li>
+ <li>23 — Michael Jordan<br>Tempo na franquia: não jogou pelo Heat.<br>Número aposentado por Pat Riley em homenagem ao impacto de Jordan no basquete mundial.</li>
+ <li>32 — Shaquille O’Neal<br>Tempo na franquia: 4 temporadas.<br>Campeão em 2006 e peça fundamental no primeiro título da história do Heat.</li>
+ <li>33 — Alonzo Mourning<br>Tempo na franquia: 11 temporadas.<br>Campeão em 2006, duas vezes Defensor do Ano e ídolo máximo da defesa em Miami.</li>
+ <li>40 — Udonis Haslem<br>Tempo na franquia: 20 temporadas.<br>Três títulos, liderança de vestiário e símbolo máximo da cultura do Heat.</li>
+ </ul>
+ <!-- ANÚNCIO (ARTIGO - MEIO) -->
+ <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+ <!-- Display-Article-Meio -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="8702501261"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ <p><strong>Milwaukee Bucks</strong></p>
+ <ul>
+ <li>1 — Oscar Robertson<br>Tempo na franquia: 4 temporadas.<br>Campeão em 1971 e peça que completou o time de Kareem Abdul-Jabbar.</li>
+ <li>2 — Junior Bridgeman<br>Tempo na franquia: 10 temporadas.<br>Jogador consistente, respeitado e símbolo de profissionalismo.</li>
+ <li>4 — Sidney Moncrief<br>Tempo na franquia: 10 temporadas.<br>Duas vezes Defensor do Ano e cinco vezes All-Star.</li>
+ <li>8 — Marques Johnson<br>Tempo na franquia: 7 temporadas.<br>Quatro vezes All-Star e um dos melhores alas da história dos Bucks.</li>
+ <li>10 — Bob Dandridge<br>Tempo na franquia: 9 temporadas.<br>Campeão em 1971 e peça essencial no primeiro título da franquia.</li>
+ <li>14 — Jon McGlocklin<br>Tempo na franquia: 8 temporadas.<br>Campeão em 1971 e um dos nomes mais populares dos primeiros Bucks.</li>
+ <li>16 — Bob Lanier<br>Tempo na franquia: 5 temporadas.<br>All-Star por Milwaukee e liderança veterana.</li>
+ <li>32 — Brian Winters<br>Tempo na franquia: 8 temporadas.<br>Duas vezes All-Star e um dos principais arremessadores da franquia.</li>
+ <li>33 — Kareem Abdul-Jabbar<br>Tempo na franquia: 6 temporadas.<br>Campeão em 1971, MVP das Finais, três vezes MVP como Buck e maior jogador da história inicial da franquia.</li>
+ </ul>
+ <p><strong>Minnesota Timberwolves</strong></p>
+ <ul>
+ <li>2 — Malik Sealy<br>Tempo na franquia: 2 temporadas.<br>Jogador querido, respeitado pelo elenco e pela torcida. A camisa foi aposentada após sua morte em um acidente de carro.</li>
+ <li>Flip — Flip Saunders<br>Tempo na franquia: técnico e dirigente.<br>Não é camisa de jogador, mas é uma das maiores homenagens da franquia. Saunders foi o técnico mais importante da história dos Wolves.</li>
+ </ul>
+ <p><strong>New Orleans Pelicans</strong></p>
+ <ul>
+ <li>7 — Pete Maravich<br>Tempo na franquia: homenagem à história do basquete na Louisiana.<br>Maravich brilhou pelo New Orleans Jazz, antecessor histórico ligado à cidade antes da franquia se mudar para Utah. O número foi preservado pelos Pelicans como reconhecimento ao seu impacto no basquete local.</li>
+ </ul>
+ <p><strong>New York Knicks</strong></p>
+ <ul>
+ <li>10 — Walt Frazier<br>Tempo na franquia: 10 temporadas.<br>Bicampeão, sete vezes All-Star e um dos maiores armadores defensivos da história.</li>
+ <li>12 — Dick Barnett<br>Tempo na franquia: 9 temporadas.<br>Bicampeão e peça importante nos títulos de 1970 e 1973.</li>
+ <li>15 — Dick McGuire<br>Tempo na franquia: 8 temporadas.<br>Cinco vezes All-Star pelos Knicks e um dos grandes armadores da fase inicial.</li>
+ <li>15 — Earl Monroe<br>Tempo na franquia: 9 temporadas.<br>Campeão em 1973 e parceiro de Frazier em uma das duplas mais elegantes da NBA.</li>
+ <li>19 — Willis Reed<br>Tempo na franquia: 10 temporadas.<br>Bicampeão, MVP da temporada e duas vezes MVP das Finais. Seu jogo lesionado nas Finais de 1970 é um dos momentos mais famosos da liga.</li>
+ <li>22 — Dave DeBusschere<br>Tempo na franquia: 6 temporadas.<br>Bicampeão, defensor de elite e peça final da engrenagem campeã.</li>
+ <li>24 — Bill Bradley<br>Tempo na franquia: 10 temporadas.<br>Bicampeão e símbolo de inteligência dentro e fora das quadras.</li>
+ <li>33 — Patrick Ewing<br>Tempo na franquia: 15 temporadas.<br>11 vezes All-Star, Novato do Ano e maior jogador dos Knicks na era moderna.</li>
+ </ul>
+ <p><strong>Oklahoma City Thunder / Seattle SuperSonics</strong></p>
+ <ul>
+ <li>1 — Gus Williams<br>Tempo na franquia: 6 temporadas.<br>Campeão em 1979 e grande armador da história dos SuperSonics.</li>
+ <li>4 — Nick Collison<br>Tempo na franquia: 14 temporadas.<br>Primeiro número aposentado pelo Thunder em Oklahoma City. Ídolo por lealdade, entrega e liderança silenciosa.</li>
+ <li>10 — Nate McMillan<br>Tempo na franquia: 12 temporadas.<br>Defensor forte, armador organizador e depois técnico da franquia.</li>
+ <li>19 — Lenny Wilkens<br>Tempo na franquia: 4 temporadas como jogador.<br>All-Star, técnico histórico e figura central da história do basquete em Seattle.</li>
+ <li>24 — Spencer Haywood<br>Tempo na franquia: 5 temporadas.<br>Quatro vezes All-Star e jogador dominante no início dos anos 1970.</li>
+ <li>32 — Fred Brown<br>Tempo na franquia: 13 temporadas.<br>Campeão em 1979 e um dos grandes arremessadores dos SuperSonics.</li>
+ <li>43 — Jack Sikma<br>Tempo na franquia: 9 temporadas.<br>Campeão em 1979, sete vezes All-Star e pivô técnico de enorme importância.</li>
+ </ul>
+ <p><strong>Orlando Magic</strong></p>
+ <ul>
+ <li>32 — Shaquille O’Neal<br>Tempo na franquia: 4 temporadas.<br> Novato do Ano, quatro vezes All-Star por Orlando e responsável por levar o Magic à primeira Final da NBA, em 1995.</li>
+ <li>6 — The Sixth Man<br>Tempo na franquia: homenagem à torcida.<br>Não é camisa de jogador. Representa os fãs do Magic como “sexto homem”.</li>
+ </ul>
+ <p><strong>Philadelphia 76ers</strong></p>
+ <ul>
+ <li>2 — Moses Malone<br>Tempo na franquia: 5 temporadas.<br>Campeão em 1983, MVP da temporada e MVP das Finais.</li>
+ <li>3 — Allen Iverson<br>Tempo na franquia: 12 temporadas.<br> MVP, Novato do Ano, quatro vezes cestinha da NBA e ídolo absoluto da Filadélfia moderna.</li>
+ <li>4 — Dolph Schayes<br>Tempo na franquia: 15 temporadas.<br>Campeão em 1955 ainda na era Syracuse Nationals e 12 vezes All-Star.</li>
+ <li>6 — Julius Erving<br>Tempo na franquia: 11 temporadas.<br>Campeão em 1983, MVP e um dos jogadores mais influentes da história.</li>
+ <li>10 — Maurice Cheeks<br>Tempo na franquia: 11 temporadas.<br>Campeão em 1983, quatro vezes All-Star e armador essencial do título.</li>
+ <li>13 — Wilt Chamberlain<br>Tempo na franquia: 4 temporadas.<br>Campeão em 1967, três vezes MVP pela franquia e parte de um dos maiores times da história.</li>
+ <li>15 — Hal Greer<br>Tempo na franquia: 15 temporadas.<br>Campeão em 1967, 10 vezes All-Star e um dos maiores pontuadores dos Sixers.</li>
+ <li>24 — Bobby Jones<br>Tempo na franquia: 8 temporadas.<br>Campeão em 1983, Sexto Homem do Ano e defensor de elite.</li>
+ <li>32 — Billy Cunningham<br>Tempo na franquia: 9 temporadas.<br>Campeão como jogador e depois técnico campeão em 1983.</li>
+ <li>34 — Charles Barkley<br>Tempo na franquia: 8 temporadas.<br>Seis vezes All-Star pelos Sixers e uma das forças ofensivas e físicas mais dominantes da liga.</li>
+ </ul>
+ <p><strong>Phoenix Suns</strong></p>
+ <ul>
+ <li>5 — Dick Van Arsdale<br>Tempo na franquia: 9 temporadas.<br>Três vezes All-Star e conhecido como “o primeiro Sun”.</li>
+ <li>6 — Walter Davis<br>Tempo na franquia: 11 temporadas.<br> Novato do Ano, seis vezes All-Star e grande pontuador.</li>
+ <li>7 — Kevin Johnson<br>Tempo na franquia: 12 temporadas.<br>Três vezes All-Star e armador central dos Suns fortes do início dos anos 1990.</li>
+ <li>9 — Dan Majerle<br>Tempo na franquia: 8 temporadas.<br>Três vezes All-Star e ídolo pela energia, defesa e bolas de três.</li>
+ <li>13 — Steve Nash<br>Tempo na franquia: 10 temporadas.<br>Dois MVPs e líder da era “Seven Seconds or Less”.</li>
+ <li>24 — Tom Chambers<br>Tempo na franquia: 5 temporadas.<br>Três vezes All-Star por Phoenix e pontuador de elite.</li>
+ <li>31 — Shawn Marion<br>Tempo na franquia: 9 temporadas.<br>Quatro vezes All-Star, defensor versátil e peça essencial da era Nash.</li>
+ <li>32 — Amar’e Stoudemire<br>Tempo na franquia: 8 temporadas.<br>Novato do Ano, cinco vezes All-Star por Phoenix e força explosiva no garrafão.</li>
+ <li>33 — Alvan Adams<br>Tempo na franquia: 13 temporadas.<br>Novato do Ano, All-Star e símbolo de longevidade.</li>
+ <li>34 — Charles Barkley<br>Tempo na franquia: 4 temporadas.<br> MVP de 1993 e líder do time finalista da NBA naquele ano.</li>
+ <li>42 — Connie Hawkins<br>Tempo na franquia: 5 temporadas.<br>Quatro vezes All-Star por Phoenix e jogador de estilo muito à frente do seu tempo.</li>
+ <li>44 — Paul Westphal<br>Tempo na franquia: 6 temporadas.<br>Quatro vezes All-Star pelos Suns e depois técnico da franquia.</li>
+ </ul>
+ <p><strong>Portland Trail Blazers</strong></p>
+ <ul>
+ <li>13 — Dave Twardzik<br>Tempo na franquia: 4 temporadas.<br>Campeão em 1977 e armador importante no primeiro título.</li>
+ <li>14 — Lionel Hollins<br>Tempo na franquia: 5 temporadas.<br>Campeão em 1977, All-Star e defensor forte.</li>
+ <li>15 — Larry Steele<br>Tempo na franquia: 9 temporadas.<br>Campeão em 1977 e jogador de longa identificação com Portland.</li>
+ <li>20 — Maurice Lucas<br>Tempo na franquia: 5 temporadas.<br>Campeão em 1977, três vezes All-Star e líder físico da equipe.</li>
+ <li>22 — Clyde Drexler<br>Tempo na franquia: 12 temporadas.<br>Oito vezes All-Star por Portland e maior jogador da história da franquia.</li>
+ <li>30 — Bob Gross<br>Tempo na franquia: 7 temporadas.<br>Campeão em 1977 e ala eficiente.</li>
+ <li>30 — Terry Porter<br>Tempo na franquia: 10 temporadas.<br>Duas vezes All-Star e armador dos times finalistas de 1990 e 1992.</li>
+ <li>32 — Bill Walton<br>Tempo na franquia: 4 temporadas.<br>Campeão em 1977, MVP das Finais e MVP da temporada.</li>
+ <li>36 — Lloyd Neal<br>Tempo na franquia: 7 temporadas.<br>Campeão em 1977 e presença consistente no garrafão.</li>
+ <li>45 — Geoff Petrie<br>Tempo na franquia: 6 temporadas.<br>Novato do Ano, duas vezes All-Star e primeiro grande pontuador da franquia.</li>
+ </ul>
+ <!-- ANÚNCIO (ARTIGO - FINAL) -->
+ <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+ <!-- Display-Article-Meio -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="8702501261"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ <p><strong>Sacramento Kings</strong></p>
+ <ul>
+ <li>1 — Tiny Archibald<br>Tempo na franquia: 6 temporadas.<br>Três vezes All-Star pela franquia e um dos poucos jogadores a liderar a NBA em pontos e assistências na mesma temporada.</li>
+ <li>2 — Mitch Richmond<br>Tempo na franquia: 7 temporadas.<br>Seis vezes All-Star e principal estrela dos Kings nos anos 1990.</li>
+ <li>4 — Chris Webber<br>Tempo na franquia: 7 temporadas.<br>Quatro vezes All-Star por Sacramento e líder do time mais empolgante da era moderna da franquia.</li>
+ <li>11 — Bob Davies<br>Tempo na franquia: 7 temporadas.<br>Campeão em 1951 na era Rochester Royals e Hall da Fama.</li>
+ <li>12 — Maurice Stokes<br>Tempo na franquia: 3 temporadas.<br> Novato do Ano, três vezes All-Star e carreira interrompida tragicamente por problemas de saúde.</li>
+ <li>14 — Oscar Robertson<br>Tempo na franquia: 10 temporadas.<br>MVP, Novato do Ano e lenda máxima da fase Cincinnati Royals.</li>
+ <li>16 — Peja Stojakovic<br>Tempo na franquia: 8 temporadas.<br>Três vezes All-Star e um dos grandes arremessadores da história da NBA.</li>
+ <li>21 — Vlade Divac<br>Tempo na franquia: 6 temporadas.<br> All-Star, líder técnico e emocional do melhor Sacramento Kings.</li>
+ <li>27 — Jack Twyman<br>Tempo na franquia: 11 temporadas.<br>Seis vezes All-Star e figura enorme também por sua lealdade a Maurice Stokes.</li>
+ <li>44 — Sam Lacey<br>Tempo na franquia: 12 temporadas.<br>All-Star e um dos grandes pivôs da história da franquia.</li>
+ <li>6 — Sixth Man<br>Tempo na franquia: homenagem à torcida.<br>Não é jogador; representa os fãs dos Kings.</li>
+ </ul>
+ <p><strong>San Antonio Spurs</strong></p>
+ <ul>
+ <li>00 — Johnny Moore<br>Tempo na franquia: 9 temporadas.<br>Armador clássico da franquia e grande passador.</li>
+ <li>6 — Avery Johnson<br>Tempo na franquia: 10 temporadas.<br>Campeão em 1999 e autor de arremesso decisivo na final contra os Knicks.</li>
+ <li>9 — Tony Parker<br>Tempo na franquia: 17 temporadas.<br>Quatro títulos, MVP das Finais de 2007 e armador da dinastia moderna.</li>
+ <li>12 — Bruce Bowen<br>Tempo na franquia: 8 temporadas.<br>Tricampeão e especialista defensivo.</li>
+ <li>13 — James Silas<br>Tempo na franquia: 5 temporadas.<br>Ídolo da fase ABA e começo da história dos Spurs.</li>
+ <li>20 — Manu Ginobili<br>Tempo na franquia: 16 temporadas.<br>Quatro títulos, Sexto Homem do Ano e um dos jogadores internacionais mais importantes da NBA.</li>
+ <li>21 — Tim Duncan<br>Tempo na franquia: 19 temporadas.<br>Cinco títulos, dois MVPs, três MVPs das Finais e maior jogador da história dos Spurs.</li>
+ <li>32 — Sean Elliott<br>Tempo na franquia: 11 temporadas.<br>Campeão em 1999 e autor do lendário “Memorial Day Miracle”.</li>
+ <li>44 — George Gervin<br>Tempo na franquia: 9 temporadas.<br>Nove vezes All-Star pelos Spurs e um dos maiores cestinhas da história.</li>
+ <li>50 — David Robinson<br>Tempo na franquia: 14 temporadas.<br>Bicampeão, MVP, Defensor do Ano e referência da transição para a era Duncan.</li>
+ </ul>
+ <p><strong>Toronto Raptors</strong></p>
+ <ul>
+ <li>15 — Vince Carter<br>Tempo na franquia: 7 temporadas.<br> Novato do Ano, cinco vezes All-Star por Toronto e jogador que colocou os Raptors no mapa mundial com seu impacto atlético, midiático e cultural.</li>
+ </ul>
+ <p><strong>Utah Jazz</strong></p>
+ <ul>
+ <li>4 — Adrian Dantley<br>Tempo na franquia: 7 temporadas.<br>Seis vezes All-Star por Utah e um dos pontuadores mais eficientes da história.</li>
+ <li>7 — Pete Maravich<br>Tempo na franquia: 6 temporadas.<br>Três vezes All-Star pelo Jazz e gênio criativo da fase New Orleans Jazz.</li>
+ <li>12 — John Stockton<br>Tempo na franquia: 19 temporadas.<br>Líder histórico da NBA em assistências e roubos, 10 vezes All-Star e símbolo máximo de lealdade.</li>
+ <li>14 — Jeff Hornacek<br>Tempo na franquia: 7 temporadas.<br>Arremessador decisivo dos times finalistas de 1997 e 1998.</li>
+ <li>32 — Karl Malone<br>Tempo na franquia: 18 temporadas.<br>Dois MVPs, 14 vezes All-Star e segundo grande pilar da era Stockton-Malone.</li>
+ <li>35 — Darrell Griffith<br>Tempo na franquia: 10 temporadas.<br>Novato do Ano e um dos primeiros grandes ídolos do Jazz em Utah.</li>
+ <li>53 — Mark Eaton<br>Tempo na franquia: 11 temporadas.<br>Duas vezes Defensor do Ano e um dos maiores bloqueadores da história da NBA.</li>
+ </ul>
+ <p><strong>Washington Wizards</strong></p>
+ <ul>
+ <li>10 — Earl Monroe<br>Tempo na franquia: 5 temporadas.<br> Novato do Ano, duas vezes All-Star pela franquia e estrela da fase Baltimore Bullets.</li>
+ <li>11 — Elvin Hayes<br>Tempo na franquia: 9 temporadas.<br>Campeão em 1978, oito vezes All-Star pela franquia e um dos maiores alas-pivôs da história.</li>
+ <li>25 — Gus Johnson<br>Tempo na franquia: 9 temporadas.<br>Cinco vezes All-Star, força física impressionante e nome essencial dos Bullets dos anos 1960.</li>
+ <li>41 — Wes Unseld<br>Tempo na franquia: 13 temporadas.<br>Campeão em 1978, MVP, MVP das Finais e maior jogador da história da franquia.</li>
+ <li>45 — Phil Chenier<br>Tempo na franquia: 9 temporadas.<br>Campeão em 1978, três vezes All-Star e pontuador importante da era Bullets.</li>
+ </ul>
+ <p><strong>O que as camisas aposentadas mostram sobre a história da NBA</strong></p>
+ <p>A lista deixa claro que cada franquia tem um critério próprio. Algumas aposentam apenas camisas de campeões. Outras valorizam pioneiros, ídolos regionais, jogadores de impacto cultural ou trajetórias interrompidas de forma trágica. O Boston Celtics e o Los Angeles Lakers têm verdadeiras galerias de dinastias. O Miami Heat mistura títulos, cultura e homenagens simbólicas. O Toronto Raptors abriu sua galeria com Vince Carter. O Los Angeles Clippers, por outro lado, ainda aguarda o primeiro jogador da própria franquia a ter o número retirado.</p>
+ <p>No fim, uma camisa aposentada não fala apenas de estatísticas. Ela resume o tipo de memória que uma franquia escolhe preservar. Na NBA, os números no teto dos ginásios são quase capítulos oficiais da história: quando o torcedor olha para cima, vê quem transformou uma equipe em algo maior do que uma temporada.</p>
+ </article>
+ </div>
+ </section>
+ <!-- SIDEBAR -->
+ <aside>
+ <div class="card">
+ <h2 class="section-title">Agenda do Dia</h2>
+ <ul class="agenda-list" id="agendaList">
+ <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+ </ul>
+ </div>
+ <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+ <!-- Display-Article-Sidebar -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="5521804159"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ </aside>
+ </div>
+ </div>
+</main>
+<footer>
+ © 2026 Corte dos Esportes |
+ <a href="politica.html">Privacidade</a> |
+ <a href="contato.html">Contato</a> |
+ <a href="sobre.html">Sobre</a> |
+ <a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+ const CATEGORY_SLUG = "basquete";
+ const CATEGORY_NAME = "Basquete";
+ const AGENDA_JSON_URL = "agenda.json";
+ function escapeHtml(str) {
+ return String(str || "").replace(/[&<>"']/g, s => ({
+ "&": "&amp;",
+ "<": "&lt;",
+ ">": "&gt;",
+ '"': "&quot;",
+ "'": "&#39;"
+ }[s]));
+ }
+ // Categoria
+ const categoryLink = document.getElementById("categoryLink");
+ categoryLink.textContent = CATEGORY_NAME;
+ categoryLink.href = CATEGORY_SLUG + ".html";
+ // Menu ativo
+ const menuLinks = document.querySelectorAll("#sportsMenu a");
+ menuLinks.forEach(a => {
+ if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+ });
+ // Agenda automática
+ function renderAgenda(items) {
+ const list = document.getElementById("agendaList");
+ if (!items.length) {
+ list.innerHTML = `
+ <li>
+ <div class="time">--:--</div>
+ <div class="desc">Agenda ainda não cadastrada.</div>
+ </li>
+ `;
+ return;
+ }
+ const ordered = items.slice().sort((a,b) => {
+ const ta = String(a.time || "").trim();
+ const tb = String(b.time || "").trim();
+ return ta.localeCompare(tb);
+ });
+ list.innerHTML = ordered.slice(0, 12).map(it => `
+ <li>
+ <div class="time">${escapeHtml(it.time || "--:--")}</div>
+ <div class="desc">${escapeHtml(it.desc || "")}</div>
+ </li>
+ `).join("");
+ }
+ async function loadAgenda() {
+ try {
+ const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+ if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+ const data = await res.json();
+ const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+ const clean = items
+ .filter(x => x && (x.time || x.desc))
+ .map(x => ({
+ time: String(x.time || "").trim(),
+ desc: String(x.desc || "").trim()
+ }));
+ renderAgenda(clean);
+ } catch (e) {
+ document.getElementById("agendaList").innerHTML = `
+ <li>
+ <div class="time">--:--</div>
+ <div class="desc">Erro ao carregar agenda.</div>
+ </li>
+ `;
+ }
+ }
+ loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
