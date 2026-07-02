@@ -31,6 +31,18 @@
     main, header, footer, .page, .layout, section, aside, .card { max-width: 100%; }
     img { max-width: 100%; height: auto; display: block; }
 
+    .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+     
     /* AdSense/iframes não podem estourar a tela */
     .ad-slot { overflow: hidden; }
     ins.adsbygoogle {
@@ -347,7 +359,7 @@
 <main>
   <div class="page">
 
-    <h1 class="hero-title">Corte dos Esportes</h1>
+    <h1 class="sr-only">Corte dos Esportes</h1>
     <p class="hero-sub">Notícias, destaques e cobertura completa das principais modalidades esportivas.</p>
 
     <div class="layout">
