@@ -160,16 +160,25 @@
  }
  .meta a:hover { text-decoration: underline; }
  /* AD SLOTS (sem texto) */
- .ad-slot {
- border: 1px dashed #C9D3E2;
- background: #F7FAFF;
- border-radius: 14px;
- padding: 22px;
+.ad-slot {
+ margin: 16px 0;
+ padding: 0;
+ border: none;
+ background: transparent;
+ box-shadow: none;
+ display: flex;
+ justify-content: center;
+ align-items: center;
  min-height: 64px;
  box-sizing: border-box;
- margin: 16px 0;
- }
+ max-width: 100%;
+ overflow: hidden;
+}
  .ad-slot.sidebar { min-height: 120px; margin: 0; }
+  .ad-slot ins.adsbygoogle {
+ display: block !important;
+ margin: 0 auto !important;
+}
  article p {
  font-size: 16px;
  line-height: 1.8;
