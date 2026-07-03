@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8" />
+ <title>Portugal vence a Croácia  e vai às oitavas da Copa do Mundo 2026 | Corte dos Esportes</title>
+ <meta name="description" content="Cristiano Ronaldo marcou pela primeira vez em um mata-mata de Copa, Gonçalo Ramos decidiu nos acréscimos e a Croácia ainda teve um empate anulado pela tecnologia em um final eletrizante." />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- ADSENSE (carregar 1x por página) -->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+ crossorigin="anonymous"></script>
+ <!-- FAVICON -->
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+ <link rel="icon" href="/favicon.ico">
+ <link rel="manifest" href="/site.webmanifest">
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+ <!-- CSS do compartilhar (único para todas as notícias) -->
+ <link rel="stylesheet" href="share.css">
+ <style>
+ /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+ *, *::before, *::after { box-sizing: border-box; }
+ html, body {
+ height: 100%;
+ margin: 0;
+ font-family: Montserrat, sans-serif;
+ background: #FFFFFF;
+ color: #0A1E3A;
+ width: 100%;
+ max-width: 100%;
+ overflow-x: hidden;
+ }
+ img, video, iframe, embed, object {
+ max-width: 100%;
+ height: auto;
+ }
+ ins.adsbygoogle {
+ display: block !important;
+ width: 100% !important;
+ max-width: 100% !important;
+ }
+ .ad-slot { overflow: hidden; max-width: 100%; }
+ /* ESSENCIAL para grid/flex não estourar */
+ .layout > section, .layout > aside { min-width: 0; }
+ /* Quebra segura (não “corta” frases) */
+ h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+ overflow-wrap: anywhere;
+ word-break: break-word;
+ hyphens: none;
+ max-width: 100%;
+ }
+ /* ✅ FIM DA CORREÇÃO */
+ body {
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ }
+ main { flex: 1; }
+ /* HEADER (STICKY) */
+ header {
+ background: #0A1E3A;
+ padding: 10px 30px;
+ display: flex;
+ align-items: center;
+ position: sticky;
+ top: 0;
+ z-index: 1000;
+ }
+ .logo-container {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+ .logo-container img { height: 34px; }
+ .logo-text {
+ font-size: 20px;
+ font-weight: 700;
+ color: #FFFFFF;
+ letter-spacing: 0.3px;
+ line-height: 1;
+ text-decoration: none;
+ }
+ /* MENU (STICKY) */
+ .sports-menu {
+ background: #FFFFFF;
+ padding: 15px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 12px;
+ border-bottom: 1px solid #E5E5E5;
+ position: sticky;
+ top: 54px;
+ z-index: 999;
+ }
+ .sports-menu a {
+ flex: 1 1 120px;
+ max-width: 150px;
+ text-align: center;
+ padding: 12px 8px;
+ border: 1px solid #1E4BA5;
+ border-radius: 10px;
+ color: #1E4BA5;
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 600;
+ background-color: #FFFFFF;
+ transition: 0.3s;
+ white-space: nowrap;
+ }
+ .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+ /* Destaque do esporte atual no menu */
+ .sports-menu a.active {
+ background: #1E4BA5;
+ color: #FFFFFF;
+ }
+ /* LAYOUT */
+ .page {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 28px 10px 40px;
+ box-sizing: border-box;
+ }
+ .layout {
+ display: grid;
+ grid-template-columns: 2.3fr 330px;
+ gap: 20px;
+ align-items: start;
+ }
+ /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+ aside { margin-right: 0; }
+ .card {
+ background: #FFFFFF;
+ border: 1px solid #E5E5E5;
+ border-radius: 14px;
+ padding: 18px;
+ box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+ margin-bottom: 16px;
+ }
+ h1 {
+ font-size: 44px;
+ margin: 0 0 10px;
+ line-height: 1.15;
+ }
+ .subhead {
+ font-size: 18px;
+ margin: 0 0 14px;
+ color: #31425F;
+ line-height: 1.5;
+ }
+ .meta {
+ font-size: 12px;
+ color: #5B6B84;
+ margin-bottom: 10px;
+ }
+ .meta a {
+ color: #1E4BA5;
+ text-decoration: none;
+ font-weight: 700;
+ }
+ .meta a:hover { text-decoration: underline; }
+ /* AD SLOTS (sem texto) */
+ .ad-slot {
+ border: 1px dashed #C9D3E2;
+ background: #F7FAFF;
+ border-radius: 14px;
+ padding: 22px;
+ min-height: 64px;
+ box-sizing: border-box;
+ margin: 16px 0;
+ }
+ .ad-slot.sidebar { min-height: 120px; margin: 0; }
+ article p {
+ font-size: 16px;
+ line-height: 1.8;
+ color: #0A1E3A;
+ margin: 0 0 16px;
+ }
+ /* SIDEBAR */
+ .section-title {
+ margin: 0 0 12px;
+ font-size: 18px;
+ }
+ .agenda-list {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ }
+ .agenda-list li {
+ display: flex;
+ gap: 12px;
+ padding: 10px 0;
+ border-top: 1px solid #EEF1F5;
+ }
+ .agenda-list li:first-child { border-top: none; padding-top: 0; }
+ .time {
+ min-width: 60px;
+ font-weight: 700;
+ color: #1E4BA5;
+ }
+ .desc { font-size: 14px; line-height: 1.4; }
+ footer {
+ background: #0A1E3A;
+ text-align: center;
+ padding: 20px;
+ font-size: 14px;
+ color: #FFFFFF;
+ }
+ footer a {
+ color: #FFFFFF;
+ text-decoration: none;
+ margin: 0 12px;
+ }
+ footer a:hover { color: #1E4BA5; }
+ @media (max-width: 1024px) {
+ .layout { grid-template-columns: 1fr; }
+ aside { margin-right: 0; }
+ }
+ @media (max-width: 768px) {
+ header { padding: 10px 18px; }
+ .logo-container img { height: 30px; }
+ .logo-text { font-size: 18px; }
+ /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
+ .sports-menu { top: auto; position: static; }
+ h1 { font-size: 34px; }
+ }
+ </style>
+</head>
+<body>
+<header>
+ <div class="logo-container">
+ <img src="logo.png" alt="Corte dos Esportes">
+ <a class="logo-text" href="index.html">Corte dos Esportes</a>
+ </div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+ <a href="index.html" data-slug="inicio">Início</a>
+ <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+ <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+ <a href="basquete.html" data-slug="basquete">Basquete</a>
+ <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+ <a href="futebol.html" data-slug="futebol">Futebol</a>
+ <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+ <a href="futsal.html" data-slug="futsal">Futsal</a>
+ <a href="handebol.html" data-slug="handebol">Handebol</a>
+ <a href="lutas.html" data-slug="lutas">Lutas</a>
+ <a href="skate.html" data-slug="skate">Skate</a>
+ <a href="surf.html" data-slug="surf">Surf</a>
+ <a href="volei.html" data-slug="volei">Vôlei</a>
+ <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+ <a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+ <div class="page">
+ <div class="layout">
+ <!-- ARTIGO -->
+ <section>
+ <div class="card">
+ <h1 id="articleTitle">Portugal vence a Croácia  e vai às oitavas da Copa do Mundo 2026</h1>
+ <p class="subhead" id="articleExcerpt">Cristiano Ronaldo marcou pela primeira vez em um mata-mata de Copa, Gonçalo Ramos decidiu nos acréscimos e a Croácia ainda teve um empate anulado pela tecnologia em um final eletrizante.</p>
+ <div class="meta">
+ Por Corte dos Esportes · <span id="articleDate">03/07/2026</span> ·
+ Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
+ </div>
+ <!-- COMPARTILHAR (CARREGA DO share.js) -->
+ <div class="share-wrap">
+ <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+ <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+ <span class="share-msg" id="shareMsg" aria-live="polite"></span>
+ </div>
+ <article id="articleBody">
+ <p>Portugal está nas oitavas de final da Copa do Mundo de 2026. Em uma partida dramática, que saiu de um primeiro tempo amarrado para um segundo tempo caótico, a seleção portuguesa venceu a Croácia por 2 a 1, em Toronto, e manteve vivo o sonho de Cristiano Ronaldo no Mundial. Ivan Perišić abriu o placar para os croatas, Cristiano Ronaldo empatou de pênalti, após revisão do VAR, e Gonçalo Ramos marcou o gol da classificação aos 49 minutos do segundo tempo.</p>
+ <p>O jogo também teve um peso simbólico enorme. De um lado, Cristiano Ronaldo, aos 41 anos, tentando prolongar sua sexta Copa do Mundo. Do outro, Luka Modrić, aos 40, líder da geração croata que foi vice-campeã mundial em 2018 e terceira colocada em 2022. O duelo entre dois dos maiores jogadores do século terminou com Portugal classificado e com a sensação de que o futebol pode ter visto a despedida de Modrić em Copas.</p>
+ <!-- ANÚNCIO (ARTIGO - TOPO) -->
+ <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+ <!-- Display-Article-Meio -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="8702501261"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ <p><strong>Um primeiro tempo travado e com poucas chances</strong></p>
+ <p>A primeira etapa teve mais tensão do que brilho. Portugal tentou assumir o controle da posse, circulou a bola no campo de ataque e buscou acelerar pelos lados, mas encontrou uma Croácia bem organizada, compacta e confortável em baixar as linhas para fechar espaços.</p>
+ <p>A seleção croata repetiu uma característica que marcou suas últimas campanhas em Mundiais: paciência, disciplina e capacidade de transformar o jogo em uma disputa de resistência. Modrić e Kovacic tentaram dar ritmo ao meio-campo, enquanto Portugal dependia de arrancadas pelos lados e de bolas levantadas para Cristiano Ronaldo.</p>
+ <p>Apesar da posse portuguesa em alguns momentos, as chances claras foram poucas. O jogo ficou preso entre intermediárias, com muitas disputas físicas, faltas táticas e dificuldade das duas seleções para entrar na área em condições limpas. A Croácia praticamente não se expôs, e Portugal, mesmo com mais iniciativa, não conseguiu transformar presença ofensiva em domínio real.</p>
+ <p><strong>Perišić abre o placar e muda o jogo</strong></p>
+ <p>O segundo tempo começou em outro ritmo. A Croácia voltou mais agressiva, encontrou espaços e passou a atacar com mais coragem. Aos 8 minutos da etapa final, Ivan Perišić apareceu como personagem decisivo. O veterano recebeu na área, finalizou com precisão e colocou os croatas em vantagem.</p>
+ <p>O gol teve força simbólica. Perišić é um dos ícones da geração croata, parceiro de grandes jornadas ao lado de Modrić e peça importante em campanhas históricas da seleção. Em uma noite que poderia marcar o fim de um ciclo, foi justamente um nome ligado a essa era que colocou a Croácia na frente.</p>
+ <p>A partir dali, a partida ficou completamente aberta. Portugal precisou se lançar mais ao ataque, a Croácia encontrou campo para contra-atacar e Diogo Costa passou a ter papel decisivo. O goleiro português apareceu em momentos importantes para evitar que os croatas ampliassem a vantagem.</p>
+ <p><strong>VAR, pênalti e o gol histórico </strong></p>
+ <p>Portugal chegou ao empate em um lance de bola parada e revisão de vídeo. Após disputa dentro da área, o árbitro foi chamado pelo VAR e marcou pênalti para a seleção portuguesa. Cristiano Ronaldo assumiu a cobrança e bateu com frieza para fazer 1 a 1.</p>
+ <p>O gol entrou para a história. Foi o primeiro de Cristiano Ronaldo em uma fase mata-mata de Copa do Mundo. Também foi o 11º gol do português em Mundiais e o terceiro dele na Copa de 2026. A FIFA registrou ainda que Ronaldo, com 41 anos e 147 dias, se tornou o jogador de linha mais velho a atuar em um mata-mata de Copa do Mundo; na mesma partida, ele e Modrić protagonizaram o primeiro duelo entre dois jogadores de linha acima dos 40 anos na história do torneio.</p>
+ <p>O momento foi gigante não apenas pelo peso do empate, mas pelo que representava na carreira de Cristiano. O português já havia marcado em fases de grupos de diferentes Copas, acumulado recordes por clubes e seleção, conquistado Eurocopa e Liga das Nações, mas ainda carregava a ausência de um gol em mata-mata de Mundial. Contra a Croácia, essa marca finalmente caiu.</p>
+ <p><strong>Croácia quase para a prorrogação</strong></p>
+ <p>Mesmo depois do empate, a Croácia não desmontou. Pelo contrário: manteve sua identidade competitiva e quase empurrou Portugal para mais uma prorrogação. Essa é uma marca recente da seleção croata em Copas. Em 2018 e 2022, o time se acostumou a sobreviver em jogos longos, levar confrontos ao limite e crescer emocionalmente em cenários de desgaste.</p>
+ <p>Contra Portugal, o roteiro quase se repetiu. A equipe de Zlatko Dalić passou a criar mais no segundo tempo, explorou cruzamentos, bolas pelo alto e finalizações de média distância. Diogo Costa foi exigido, a defesa portuguesa sofreu e a partida ganhou clima de decisão interminável.</p>
+ <p>Portugal, por sua vez, também mudou. Roberto Martínez apostou no banco e tirou Cristiano Ronaldo na reta final, decisão forte em um jogo desse tamanho. A escolha buscava dar mais equilíbrio ao meio-campo e fôlego à equipe. Pouco depois, a classificação veio justamente com um jogador que saiu do banco.</p>
+ <!-- ANÚNCIO (ARTIGO - MEIO) -->
+ <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+ <!-- Display-Article-Meio -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="8702501261"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ <p><strong>Gonçalo Ramos decide no fim </strong></p>
+ <p>Aos 49 minutos do segundo tempo, Portugal encontrou o gol da virada. Rafael Leão recebeu pela esquerda, ganhou espaço e cruzou na medida. Gonçalo Ramos atacou a área, antecipou a marcação e marcou de cabeça para fazer 2 a 1.</p>
+ <p>Foi um gol com cara de classificação. Ramos, que já havia vivido noite histórica por Portugal em Copa do Mundo ao substituir Cristiano Ronaldo e marcar três vezes contra a Suíça em 2022, voltou a aparecer em um mata-mata com peso decisivo.  Foi uma cabeçada curta, no fim, em um jogo apertado e emocionalmente pesado.</p>
+ <p>O gol também reforçou a profundidade do elenco português. Mesmo com Cristiano Ronaldo como centro das atenções, Portugal encontrou a vitória com uma combinação de banco, velocidade e presença de área. Rafael Leão deu a assistência, Gonçalo Ramos finalizou, e a seleção sobreviveu a uma das partidas mais duras de sua campanha.</p>
+ <p><strong>Gol croata anulado pela tecnologia </strong></p>
+ <p>O fim do jogo ainda reservou o lance mais polêmico da partida. A Croácia colocou a bola na rede nos acréscimos e chegou a comemorar o que seria o empate por 2 a 2. O lance, porém, foi revisado pela tecnologia.</p>
+ <p>A decisão apontou toque de Igor Matanović na bola antes da finalização de Gvardiol, o que mudou a leitura do impedimento e anulou o gol croata. O detalhe chamou atenção porque o contato foi mínimo, quase imperceptível em tempo real, a ponto de virar o grande debate da classificação portuguesa.</p>
+ <p>O lance gerou revolta croata. Dalić criticou a arbitragem após o jogo, embora tenha reconhecido que sua equipe não poderia usar a decisão como única explicação para a eliminação. Para Portugal, foi o alívio definitivo. Para a Croácia, a confirmação cruel de uma queda decidida por centímetros, tecnologia e um detalhe quase invisível.</p>
+ <p><strong>Quase 20 minutos de acréscimo e final eletrizante</strong></p>
+ <p>A partida terminou com um clima raro até para mata-mata de Copa. Entre revisões, atendimento, substituições, reclamações e o gol anulado, o tempo adicional se estendeu muito além dos 90 minutos. A sensação foi de um jogo que não acabava, com Portugal tentando segurar a vantagem e a Croácia empurrando todos os jogadores possíveis para a área.</p>
+ <p>Esse final eletrizante tornou o confronto ainda mais marcante. Portugal esteve perto de ver a classificação escapar no último lance. A Croácia esteve a um detalhe de forçar a prorrogação e repetir um roteiro que virou assinatura da seleção em Mundiais recentes. No fim, a tecnologia confirmou o impedimento, o árbitro encerrou a partida e os portugueses puderam comemorar.</p>
+ <!-- ANÚNCIO (ARTIGO - FINAL) -->
+ <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+ <!-- Display-Article-Meio -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="8702501261"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ <p><strong>O possível adeus de Modrić às Copas</strong></p>
+ <p>A eliminação croata carrega um peso emocional maior por causa de Luka Modrić. Aos 40 anos, o meio-campista dificilmente voltará a disputar uma Copa do Mundo. Dalić admitiu depois da partida que este provavelmente foi o último Mundial do capitão e falou no fim de uma era maravilhosa para o futebol croata.</p>
+ <p>Modrić deixa uma herança gigantesca. Foi o cérebro da Croácia vice-campeã em 2018, quando o país chegou à final contra a França, e também liderou a seleção na campanha do terceiro lugar em 2022. Sua longevidade, leitura de jogo, liderança e resistência transformaram a Croácia em uma das seleções mais respeitadas do futebol mundial.</p>
+ <p>A derrota para Portugal não apaga esse legado. Pelo contrário: reforça o tamanho de uma geração que competiu até o limite, incomodou gigantes e fez de um país pequeno uma potência recorrente em Copas.</p>
+ <p><strong>Portugal segue vivo e pega a Espanha nas oitavas</strong></p>
+ <p>Com a vitória, Portugal avança para as oitavas de final e terá pela frente <a href="https://cortedosesportes.com.br/espanha-austria-classificacao-oitavas-copa-mundo-2026.html">a Espanha</a>, em um clássico ibérico de enorme peso histórico e técnico. A classificação veio com drama, sofrimento e alerta, mas também com sinais importantes: Cristiano Ronaldo quebrou uma marca histórica, Diogo Costa sustentou o time em momentos decisivos, Rafael Leão foi determinante no fim e Gonçalo Ramos mostrou novamente poder de decisão em mata-mata.</p>
+ <p>A atuação não foi perfeita. Portugal sofreu no segundo tempo, permitiu chances à Croácia e precisou sobreviver a um gol anulado no limite. Mas Copa do Mundo também se vence assim: com resistência, banco forte, estrela individual e frieza nos momentos mais tensos.</p>
+ <p>A Croácia quase levou o jogo para mais uma prorrogação. Modrić quase ganhou mais uma sobrevida em Copas. Perišić quase virou o símbolo de uma nova noite histórica. Mas quem segue é Portugal. E Cristiano Ronaldo, depois de enfim marcar em mata-mata de Mundial, continua perseguindo o único troféu que falta em sua coleção. A sequência do torneio já começa a desenhar confrontos gigantes nas <a href="https://cortedosesportes.com.br/oitavas-copa-mundo-2026-confrontos-datas-horarios.html">oitavas da Copa do Mundo de 2026</a>.</p>
+ </article>
+ </div>
+ </section>
+ <!-- SIDEBAR -->
+ <aside>
+ <div class="card">
+ <h2 class="section-title">Agenda do Dia</h2>
+ <ul class="agenda-list" id="agendaList">
+ <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+ </ul>
+ </div>
+ <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+ <!-- Display-Article-Sidebar -->
+ <ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-4145492637375431"
+ data-ad-slot="5521804159"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
+ <script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+ </div>
+ </aside>
+ </div>
+ </div>
+</main>
+<footer>
+ © 2026 Corte dos Esportes |
+ <a href="politica.html">Privacidade</a> |
+ <a href="contato.html">Contato</a> |
+ <a href="sobre.html">Sobre</a> |
+ <a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+ const CATEGORY_SLUG = "futebol";
+ const CATEGORY_NAME = "Futebol";
+ const AGENDA_JSON_URL = "agenda.json";
+ function escapeHtml(str) {
+ return String(str || "").replace(/[&<>"']/g, s => ({
+ "&": "&amp;",
+ "<": "&lt;",
+ ">": "&gt;",
+ '"': "&quot;",
+ "'": "&#39;"
+ }[s]));
+ }
+ // Categoria
+ const categoryLink = document.getElementById("categoryLink");
+ categoryLink.textContent = CATEGORY_NAME;
+ categoryLink.href = CATEGORY_SLUG + ".html";
+ // Menu ativo
+ const menuLinks = document.querySelectorAll("#sportsMenu a");
+ menuLinks.forEach(a => {
+ if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+ });
+ // Agenda automática
+ function renderAgenda(items) {
+ const list = document.getElementById("agendaList");
+ if (!items.length) {
+ list.innerHTML = `
+ <li>
+ <div class="time">--:--</div>
+ <div class="desc">Agenda ainda não cadastrada.</div>
+ </li>
+ `;
+ return;
+ }
+ const ordered = items.slice().sort((a,b) => {
+ const ta = String(a.time || "").trim();
+ const tb = String(b.time || "").trim();
+ return ta.localeCompare(tb);
+ });
+ list.innerHTML = ordered.slice(0, 12).map(it => `
+ <li>
+ <div class="time">${escapeHtml(it.time || "--:--")}</div>
+ <div class="desc">${escapeHtml(it.desc || "")}</div>
+ </li>
+ `).join("");
+ }
+ async function loadAgenda() {
+ try {
+ const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+ if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+ const data = await res.json();
+ const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+ const clean = items
+ .filter(x => x && (x.time || x.desc))
+ .map(x => ({
+ time: String(x.time || "").trim(),
+ desc: String(x.desc || "").trim()
+ }));
+ renderAgenda(clean);
+ } catch (e) {
+ document.getElementById("agendaList").innerHTML = `
+ <li>
+ <div class="time">--:--</div>
+ <div class="desc">Erro ao carregar agenda.</div>
+ </li>
+ `;
+ }
+ }
+ loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
