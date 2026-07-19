@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Regras do UFC: como funciona, pontuação, rounds, categorias de peso e golpes proibidos | Corte dos Esportes</title>
+<meta name="description" content="A dinâmica dos combates vai muito além dos socos, chutes e caídas, para os critérios que os juízes usam, a diferença entre nocaute e nocaute técnico, as categorias de peso, as decisões e as principais faltas do MMA." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Regras do UFC: como funciona, pontuação, rounds, categorias de peso e golpes proibidos</h1>
+<p class="subhead" id="articleExcerpt">A dinâmica dos combates vai muito além dos socos, chutes e caídas, para os critérios que os juízes usam, a diferença entre nocaute e nocaute técnico, as categorias de peso, as decisões e as principais faltas do MMA.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">19/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Lutas</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/01-luta-ufc-octogono.jpg",
+  "caption": "Luta entre Yoislandy Izquierdo e Reza Madadi no UFC 148.",
+  "description": "Lutadores em combate dentro do octógono do UFC.",
+  "width": 1000,
+  "height": 691,
+  "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Yoislandy_Izquierdo_VS_Reza_Madadi_at_UFC_148.jpg",
+  "creditText": "Foto: Judokickbox/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Judokickbox"
+  },
+  "copyrightNotice": "Judokickbox"
+}
+</script>
+
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="01-luta-ufc-octogono.jpg"
+       alt="Lutadores em combate dentro do octógono do UFC."
+       width="1000"
+       height="691"
+       fetchpriority="high"
+       decoding="async"
+       style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">
+    Luta entre Yoislandy Izquierdo e Reza Madadi no UFC 148. Foto: Judokickbox/Wikimedia Commons.
+  </figcaption>
+</figure>
+<p>O UFC parece simples para quem assiste pela primeira vez: dois atletas entram no Octógono e tentam vencer usando golpes em pé, quedas, controle no chão e finalizações. Por trás dessa dinâmica, porém, existe um conjunto detalhado de regras que determina o tempo de luta, a pontuação, as formas de vitória, os limites de peso e as técnicas proibidas.</p>
+
+<p>Compreender essas regras muda completamente a experiência de assistir a um evento. Uma queda, por exemplo, não vale uma quantidade fixa de pontos. Permanecer por cima no chão também não garante automaticamente a vitória no round. O que os juízes procuram é a efetividade das ações ofensivas, especialmente o impacto produzido pelos golpes e pelo grappling.</p>
+
+<p>Também é importante separar dois conceitos frequentemente confundidos. MMA é o esporte. UFC é uma organização que promove os eventos. Da mesma forma que existem diferentes campeonatos de futebol, existem diversas organizações de artes marciais mistas, cada uma com seus atletas, cinturões e eventos.</p>
+
+<p>MMA é a sigla para Mixed Martial Arts, ou artes marciais mistas. Trata-se de uma modalidade que combina técnicas de diferentes esportes de combate, como boxe, muay thai, wrestling, jiu-jítsu, judô, caratê e kickboxing.</p>
+
+<p>O UFC, sigla de Ultimate Fighting Championship, é uma empresa promotora de eventos de combate. Portanto, UFC e MMA não são sinônimos: o atleta pratica MMA e pode competir no UFC.</p>
+
+<p>Em seus eventos, o UFC segue as Regras Unificadas do MMA e as determinações da comissão atlética responsável pela regulamentação do local onde o card é realizado. A redação oficial atual das Regras Unificadas contempla duração dos rounds, critérios de julgamento, faltas, equipamentos, procedimentos médicos e formas de encerramento da luta.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Como funciona uma luta</strong></p>
+
+<p>Em pé, os competidores utilizam socos, chutes, joelhadas e cotoveladas dentro dos limites permitidos. No clinch, eles lutam agarrados, normalmente junto à grade, tentando aplicar golpes curtos, controlar a posição ou preparar uma queda.</p>
+
+<p>No chão, entram em cena o ground and pound, as passagens de guarda, as raspagens, o controle posicional e as tentativas de finalização. Estrangulamentos e chaves articulares podem encerrar a luta imediatamente quando o adversário desiste, perde a consciência ou sofre uma lesão que impede a continuidade.</p>
+
+<p>A função do árbitro central é controlar a ação, interromper faltas, avaliar a capacidade de defesa dos lutadores e parar o combate quando houver risco desnecessário. Pelas Regras Unificadas, o árbitro é a única pessoa autorizada a encerrar oficialmente a luta durante a ação, embora o médico e o córner possam provocar uma interrupção pelos procedimentos correspondentes.</p>
+
+<p><strong>Quantidade de rounds</strong></p>
+
+<p>Uma luta comum do UFC é programada para três rounds de cinco minutos. As disputas de cinturão e, em regra, as lutas principais dos eventos são programadas para cinco rounds de cinco minutos.</p>
+
+<p>Entre os rounds existe um intervalo de um minuto. Assim, uma luta de três rounds pode chegar a 15 minutos de combate, enquanto uma luta de cinco rounds pode atingir 25 minutos.</p>
+
+<p>O padrão é:</p>
+
+<ul>
+<li>Luta comum: três rounds de cinco minutos</li>
+<li>Luta principal: cinco rounds de cinco minutos</li>
+<li>Disputa de cinturão: cinco rounds de cinco minutos</li>
+<li>Intervalo: um minuto entre os rounds</li>
+</ul>
+
+<p>O UFC pode programar uma luta sem cinturão para cinco rounds, sobretudo quando ela ocupa o evento principal. Em situações especiais, outras lutas também podem receber essa duração. As Regras Unificadas permitem combates profissionais com até cinco rounds e estabelecem o limite máximo de 25 minutos de luta.</p>
+
+<p><strong>A pontuação</strong></p>
+
+<p>Quando não há nocaute, nocaute técnico, finalização, desclassificação ou outro encerramento antecipado, a luta vai para a decisão dos juízes.</p>
+
+<p>Normalmente, três juízes avaliam cada round separadamente por meio do sistema conhecido como 10-Point Must System. O vencedor do round recebe dez pontos, enquanto o perdedor recebe nove ou menos. Um round completamente equilibrado pode ser pontuado como 10 a 10, mas isso é raro.</p>
+
+<p>As pontuações mais importantes são:</p>
+
+<ul>
+<li>10 a 9: um lutador venceu o round por margem pequena ou moderada</li>
+<li>10 a 8: um lutador venceu por grande margem, produzindo dano, domínio e duração ofensiva relevantes</li>
+<li>10 a 7: um lutador dominou completamente o adversário durante o round</li>
+<li>10 a 10: não houve vantagem perceptível para nenhum dos dois</li>
+</ul>
+
+<p>Em uma luta de três rounds, um placar de 29 a 28 significa, normalmente, que determinado lutador ganhou dois assaltos e perdeu um. Um resultado de 30 a 27 indica que ele venceu os três rounds por 10 a 9. Caso consiga um round 10 a 8, pode aparecer uma pontuação como 29 a 27.</p>
+
+<p>Nas lutas de cinco rounds, são comuns placares como 48 a 47, quando um atleta vence três rounds e perde dois, ou 50 a 45, quando ganha os cinco por 10 a 9. Deduções aplicadas pelo árbitro também modificam o resultado final.</p>
+
+<p><strong>O que os juízes analisam</strong></p>
+
+<p>O principal critério é a efetividade da luta em pé e do grappling. Isso significa avaliar o resultado das ações ofensivas, e não apenas contar golpes, quedas ou minutos de controle.</p>
+
+<p>Na prática, os juízes observam principalmente:</p>
+
+<ul>
+<li>Dano ou efeito produzido por golpes legais</li>
+<li>Knockdowns e golpes que alteram claramente o comportamento do adversário</li>
+<li>Tentativas de finalização realmente perigosas</li>
+<li>Quedas que geram consequência ofensiva</li>
+<li>Passagens, reversões e posições vantajosas usadas para atacar</li>
+<li>Domínio ofensivo</li>
+<li>Tempo durante o qual a ofensividade efetiva foi mantida</li>
+</ul>
+
+<p>O dano é o componente mais valorizado. Um lutador que acerta menos golpes pode vencer o round caso suas ações sejam mais contundentes e tenham maior efeito sobre o oponente. Golpes que provocam knockdowns, cortes, inchaços, perda de equilíbrio, redução da capacidade física ou necessidade imediata de defesa possuem grande peso na avaliação.</p>
+
+<p>A agressividade efetiva aparece como critério secundário. Ela representa a iniciativa consistente para atacar e buscar o fim da luta. O controle da área de combate, como pressionar o adversário contra a grade ou determinar onde a ação acontece, ocupa um nível posterior.</p>
+
+<p>Agressividade e controle do Octógono só devem decidir o round quando os juízes não conseguem identificar vantagem na efetividade dos golpes e do grappling. Apenas andar para a frente não significa vencer. Da mesma maneira, recuar e contra-atacar com maior impacto pode ser suficiente para ganhar o assalto.</p>
+
+<p><strong>As quedas</strong></p>
+
+<p>Não existe uma pontuação fixa para. O MMA não funciona como um sistema no qual cada takedown vale dois ou três pontos.</p>
+
+<p>A queda é avaliada pelo efeito que produz. Derrubar o adversário, avançar de posição, aplicar golpes e criar uma finalização perigosa representa uma sequência ofensiva relevante. Derrubar e permanecer parado, sem ataques ou progressão, tem valor muito menor.</p>
+
+<p>O mesmo raciocínio vale para o controle no chão. Ficar vários minutos por cima não garante o round se o lutador não produz golpes, tentativas de finalização ou avanço posicional. As orientações atuais destacam que apenas manter uma posição dominante não deve ser o fator principal; os juízes precisam avaliar o que o atleta fez com essa posição.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Decisão unânime, dividida ou majoritária</strong></p>
+
+<p>Cada juiz entrega seu próprio placar. O resultado depende da combinação dos três cartões.</p>
+
+<p><strong>Decisão unânime:</strong></p>
+
+<p>Acontece quando os três juízes apontam o mesmo lutador como vencedor. Os placares individuais não precisam ser iguais. Um juiz pode marcar 30 a 27 e os outros dois, 29 a 28, desde que todos escolham o mesmo vencedor.</p>
+
+<p><strong>Decisão dividida:</strong></p>
+
+<p>Ocorre quando dois juízes dão a vitória para um lutador e o terceiro escolhe o adversário. Um competidor pode vencer, por exemplo, com dois cartões de 29 a 28, enquanto o rival recebe um cartão de 29 a 28.</p>
+
+<p><strong>Decisão majoritária:</strong></p>
+
+<p>Dois juízes apontam o mesmo vencedor, enquanto o terceiro marca empate. Um exemplo seria 29 a 28, 29 a 28 e 28 a 28.</p>
+
+<p>Também existem empates. No empate majoritário, dois juízes marcam igualdade e o terceiro escolhe um vencedor. No empate dividido, um juiz escolhe cada lutador e o terceiro registra empate.</p>
+
+<p><strong>Nocaute e nocaute técnico</strong></p>
+
+<p>O nocaute, identificado pela sigla KO, acontece quando um golpe legal deixa o lutador sem condições imediatas de continuar. O caso mais evidente ocorre quando o atleta perde a consciência, mas também pode haver nocaute quando ele fica incapaz de se defender de maneira inteligente após o golpe.</p>
+
+<p>O nocaute técnico, ou TKO, acontece quando o combate é interrompido para proteger um atleta que ainda pode estar consciente, mas não está se defendendo adequadamente ou não tem condições seguras de continuar.</p>
+
+<p>O TKO pode ocorrer por:</p>
+
+<ul>
+<li>Interrupção do árbitro após uma sequência de golpes</li>
+<li>Interrupção médica</li>
+<li>Corte ou lesão</li>
+<li>Interrupção solicitada pelo córner</li>
+<li>Lutador que não retorna para o round seguinte</li>
+</ul>
+
+<p>A diferença central está na situação do competidor. No KO, ele geralmente fica completamente incapacitado pela ação. No TKO, a luta é encerrada preventivamente porque sua defesa deixou de ser inteligente ou porque uma condição física tornou a continuidade insegura.</p>
+
+<p><strong>As finalizações</strong></p>
+
+<p>A finalização ocorre quando um lutador aplica um estrangulamento ou uma chave e obriga o adversário a desistir.</p>
+
+<p>A desistência pode ser indicada por tapas no corpo do oponente ou no chão, pelo chamado “tap”. Ela também pode ser verbal, quando o competidor informa ao árbitro que não consegue continuar ou grita de dor.</p>
+
+<p>Existe ainda a finalização técnica. Ela acontece quando a técnica provoca inconsciência, fratura, luxação ou outra consequência que exige o encerramento mesmo sem desistência consciente. Um atleta que apaga em um estrangulamento, por exemplo, perde por finalização técnica.</p>
+
+<p><strong>Outras formas de terminar uma luta</strong></p>
+
+<p>Além de decisão, KO, TKO e finalização, o combate pode acabar por:</p>
+
+<p>Desclassificação: aplicada quando uma falta intencional causa uma lesão grave, quando há reincidência ou quando o lutador ignora claramente as regras e as ordens do árbitro.</p>
+
+<p>No contest: significa “sem resultado”. Pode ocorrer quando uma falta acidental provoca o encerramento antes de haver rounds suficientes para recorrer aos cartões, entre outras situações previstas pela regulamentação.</p>
+
+<p>Decisão técnica: pode ser utilizada quando uma falta acidental impede a continuidade depois que uma parte mínima da luta já foi concluída. Nesse caso, os cartões dos juízes determinam o vencedor.</p>
+
+<p>Empate técnico: pode surgir em determinadas interrupções por falta quando os cartões não permitem apontar um vencedor.</p>
+
+<p>As consequências dependem do momento da interrupção, da intenção da falta e da regulamentação da comissão atlética responsável pelo evento.</p>
+
+<p><strong>Categorias de peso do UFC</strong></p>
+
+<p>As divisões existem para evitar diferenças excessivas de tamanho entre os competidores. Na estrutura regular atual, o UFC possui oito categorias masculinas e três femininas em suas páginas de rankings e campeões.</p>
+
+<p><strong>Masculino:</strong></p>
+
+<ul>
+<li>Peso-mosca: até 125 libras, aproximadamente 56,7 kg</li>
+<li>Peso-galo: até 135 libras, aproximadamente 61,2 kg</li>
+<li>Peso-pena: até 145 libras, aproximadamente 65,8 kg</li>
+<li>Peso-leve: até 155 libras, aproximadamente 70,3 kg</li>
+<li>Peso meio-médio: até 170 libras, aproximadamente 77,1 kg</li>
+<li>Peso-médio: até 185 libras, aproximadamente 83,9 kg</li>
+<li>Peso meio-pesado: até 205 libras, aproximadamente 93 kg</li>
+<li>Peso-pesado: até 265 libras, aproximadamente 120,2 kg</li>
+</ul>
+
+<p><strong>Feminino:</strong></p>
+
+<ul>
+<li>Peso-palha: até 115 libras, aproximadamente 52,2 kg</li>
+<li>Peso-mosca: até 125 libras, aproximadamente 56,7 kg</li>
+<li>Peso-galo: até 135 libras, aproximadamente 61,2 kg</li>
+</ul>
+
+<p>O UFC também já promoveu disputas no peso-pena feminino, com limite de 145 libras. A divisão, porém, não aparece atualmente entre as categorias regulares das páginas de rankings e campeões da organização.</p>
+
+<p><strong>A pesagem</strong></p>
+
+<p>Os atletas passam pela pesagem oficial antes do evento. Em lutas sem cinturão, é permitido pesar até uma libra acima do limite normal da categoria.</p>
+
+<p>Isso significa que um peso-leve pode marcar até 156 libras em uma luta comum. Em uma disputa de cinturão, porém, o limite precisa ser respeitado sem essa tolerância: o atleta deve pesar no máximo 155 libras.</p>
+
+<p>A mesma lógica vale para as demais divisões. Um peso-mosca pode pesar 126 libras em uma luta comum, mas precisa registrar 125 ou menos quando o cinturão está em jogo.</p>
+
+<p>Quando um lutador não bate o peso, diferentes medidas podem ser adotadas:</p>
+
+<ul>
+<li>Perda de uma porcentagem da bolsa para o adversário</li>
+<li>Continuidade da luta em peso casado</li>
+<li>Cancelamento do confronto</li>
+<li>Alteração das condições de uma disputa de cinturão</li>
+<li>Retirada ou vacância do título em situações específicas</li>
+</ul>
+
+<p>A decisão depende da diferença registrada, do acordo entre as partes, da avaliação médica, da comissão atlética e da organização.</p>
+
+<p><strong>As disputas de cinturão</strong></p>
+
+<p>Cada categoria possui um campeão reconhecido pela organização. O UFC escolhe os desafiantes considerando posição no ranking, sequência de resultados, desempenho, disponibilidade, interesse esportivo e planejamento dos eventos.</p>
+
+<p>A disputa de cinturão é programada para cinco rounds. Para conquistar o título, o desafiante precisa vencer por decisão, nocaute, nocaute técnico, finalização ou desclassificação. Em caso de empate, o campeão normalmente mantém o cinturão, pois não houve vitória do desafiante.</p>
+
+<p>Quando o título está vago, dois atletas disputam a condição de novo campeão. A vacância pode ocorrer por aposentadoria, mudança de categoria, renúncia, longo período de inatividade, descumprimento de obrigações ou decisão da organização.</p>
+
+<p>Também existe o cinturão interino. Ele costuma ser criado quando o campeão linear permanece indisponível e o UFC decide manter a categoria em movimento. O campeão interino geralmente enfrenta o campeão principal posteriormente em uma luta de unificação.</p>
+
+<p>O cinturão interino não deve ser confundido com um simples prêmio simbólico. Ele representa um campeonato reconhecido pela organização, embora subordinado à existência de um campeão linear ou incontestável.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Os golpes proibidos</strong></p>
+
+<p>O MMA permite uma grande variedade de ataques, mas não é uma modalidade sem regras. As Regras Unificadas apresentam uma lista extensa de faltas destinadas a proteger os competidores.</p>
+
+<p>Entre as principais ações proibidas estão:</p>
+
+<ul>
+<li>Dar cabeçada</li>
+<li>Colocar os dedos nos olhos</li>
+<li>Avançar com os dedos estendidos em direção ao rosto do adversário</li>
+<li>Morder ou cuspir no oponente</li>
+<li>Puxar o cabelo</li>
+<li>Colocar dedos na boca, nariz, orelhas, cortes ou outras cavidades</li>
+<li>Atacar a garganta ou agarrar a traqueia</li>
+<li>Golpear a coluna ou a parte de trás da cabeça</li>
+<li>Atacar a região genital</li>
+<li>Chutar ou dar joelhada na cabeça de um oponente no chão</li>
+<li>Pisar em um adversário caído</li>
+<li>Projetar intencionalmente o oponente sobre a cabeça ou o pescoço no movimento conhecido como pile-driving</li>
+<li>Torcer dedos individuais</li>
+<li>Segurar a luva ou o calção do adversário</li>
+<li>Agarrar a grade para impedir uma queda ou mudar de posição</li>
+<li>Atacar depois do sinal de encerramento do round</li>
+<li>Atacar durante uma pausa</li>
+<li>Golpear um adversário que já está sob os cuidados do árbitro</li>
+<li>Ignorar deliberadamente as ordens do árbitro</li>
+<li>Receber interferência indevida do córner</li>
+</ul>
+
+<p>Empurrar a grade com a mão ou apoiar o pé nela pode ser permitido. O que configura a falta é agarrar a estrutura com os dedos das mãos ou dos pés para controlar a própria posição ou impedir a movimentação do adversário.</p>
+
+<p>Pelas Regras Unificadas atuais, um competidor é considerado no chão quando qualquer parte do corpo, além das mãos ou dos pés, está em contato com o piso.</p>
+
+<p>Isso significa que apoiar apenas uma ou as duas mãos no chão não transforma automaticamente o atleta em um oponente caído. Um joelho, antebraço, cotovelo, quadril ou outra parte do corpo no piso caracteriza a posição.</p>
+
+<p>A definição é fundamental porque joelhadas e chutes na cabeça de um oponente no chão são proibidos. Joelhadas e chutes no corpo podem ser legais, desde que não atinjam outra área proibida. Como eventos podem estar sujeitos à adoção específica da comissão local, árbitros e atletas recebem orientações antes de cada card.</p>
+
+<p><strong>Cotovelada de cima para baixo</strong></p>
+
+<p>A cotovelada conhecida como “12 para 6”, executada em trajetória vertical de cima para baixo, foi durante muitos anos uma falta nas Regras Unificadas. Essa proibição foi retirada da redação atual após mudanças aprovadas em 2024.</p>
+
+<p>Por isso, o golpe não aparece na lista vigente de faltas das Regras Unificadas de 2025. Isso não significa que qualquer cotovelada seja permitida: o ataque continua ilegal quando atinge nuca, coluna, garganta ou um adversário depois da interrupção.</p>
+
+<p>Também é necessário considerar a regulamentação adotada pela comissão que sanciona o evento, pois mudanças nas regras podem ser implementadas em momentos diferentes conforme a jurisdição.</p>
+
+<p><strong>O que ocorre numa falta</strong></p>
+
+<p>O árbitro pode advertir o infrator, interromper a ação, retirar pontos ou desclassificar o lutador. A punição considera a intenção, a gravidade, a reincidência e a influência que a infração teve sobre o combate.</p>
+
+<p>Em casos de golpe na região genital ou dedo no olho, o atleta atingido pode receber até cinco minutos para se recuperar. O médico pode ser chamado para avaliar sua visão, o corte ou a condição física.</p>
+
+<p>Se uma falta intencional causar uma lesão grave e impedir imediatamente a continuidade, o responsável pode perder por desclassificação. Se a falta for acidental, o resultado dependerá do número de rounds concluídos. A luta pode terminar sem resultado ou seguir para uma decisão técnica baseada nos cartões.</p>
+
+<p><strong>Por que conhecer as regras muda a forma de assistir as lutas</strong></p>
+
+<p>Quem entende a pontuação deixa de avaliar uma luta apenas pelo número de quedas, pelo tempo junto à grade ou pela quantidade total de golpes mostrada nas estatísticas.</p>
+
+<p>O MMA premia efetividade. Um golpe capaz de abalar o adversário pode ter mais valor do que vários ataques sem impacto. Uma tentativa de finalização que coloca a luta perto do fim pode valer mais do que minutos de controle improdutivo. Uma queda seguida de ataque tem mais importância do que uma queda sem consequência.</p>
+
+<p>Esse conjunto de regras transforma cada confronto em uma disputa técnica entre estilos. Strikers tentam controlar a distância e produzir dano em pé. Wrestlers procuram quedas e posições ofensivas. Especialistas em jiu-jítsu trabalham para criar finalizações. Lutadores completos combinam todas essas dimensões.</p>
+
+<p>É justamente essa mistura que faz o MMA funcionar: a vitória não depende de uma única arte marcial, mas da capacidade de aplicar técnicas legais, produzir efeito real e tomar as melhores decisões durante cada round.</p>
+
+<p>Conhecer as regras também melhora a experiência em outras modalidades, já que cada esporte possui critérios próprios para organizar o tempo, as faltas e as decisões da arbitragem. No jogo de quadra, entender as <a href="https://cortedosesportes.com.br/regras-do-futsal-tempo-de-jogo-faltas-acumuladas-goleiro-linha.html">regras do futsal</a> ajuda a acompanhar as faltas acumuladas, o goleiro-linha e as substituições, enquanto as <a href="https://cortedosesportes.com.br/regras-do-handebol-tempo-de-jogo-faltas-cartoes-tiro-de-7-metros.html">regras do handebol</a> explicam situações como jogo passivo, exclusões de dois minutos e tiro de sete metros. Para quem acompanha esportes norte-americanos, as <a href="https://cortedosesportes.com.br/regras-futebol-americano-nfl-como-funciona.html"> regras do futebol americano</a> detalha descidas, jardas, pontuação e controle do cronômetro.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "lutas";
+const CATEGORY_NAME = "Lutas";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
