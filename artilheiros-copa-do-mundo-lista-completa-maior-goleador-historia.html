@@ -1,630 +1,843 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Artilheiros da Copa do Mundo: lista completa desde 1930 e o maior goleador da história | Corte dos Esportes</title>
-  <meta name="description" content="Se você quer saber quem foram os artilheiros de todas as Copas do Mundo desde 1930 e quem é o jogador com mais gols na história do torneio, aqui está a lista completa." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
-
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
-
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
-
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    .ad-slot { overflow: hidden; max-width: 100%; }
-
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
-
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main { flex: 1; }
-
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-container img { height: 34px; }
-
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
-
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
-
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
-
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
-
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
-
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
-
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .meta a:hover { text-decoration: underline; }
-
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
-
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
-
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
-
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
-
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
-
-    .desc { font-size: 14px; line-height: 1.4; }
-
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
-
-    footer a:hover { color: #1E4BA5; }
-
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
-
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
-
-      h1 { font-size: 34px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Artilheiros da Copa do Mundo: ranking histórico atualizado após 2026 | Corte dos Esportes</title>
+<meta name="description" content="Kylian Mbappé assumiu a liderança entre os maiores goleadores da história das Copas, e ainda conquistou a artilharia do Mundial de 2026. Veja o ranking atualizado e todos os artilheiros desde 1930." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
-
 <body>
-
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
-</header>
-
-<div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474" decoding="async">
+</picture>
+</a>
 </div>
-
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
 <main>
-  <div class="page">
-    <div class="layout">
-
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">Artilheiros da Copa do Mundo: lista completa desde 1930 e o maior goleador da história</h1>
-          <p class="subhead" id="articleExcerpt">Se você quer saber quem foram os artilheiros de todas as Copas do Mundo desde 1930 e quem é o jogador com mais gols na história do torneio, aqui está a lista completa.</p>
-
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">03/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
-          </div>
-
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
-
-          <article id="articleBody">
-            <p>A artilharia da Copa do Mundo sempre ocupou um espaço especial na memória do futebol. Em um torneio que transforma grandes atuações em legado, marcar gols em sequência no maior palco do esporte é um feito reservado a poucos. Ao longo da história, a disputa pela chuteira de ouro reuniu alguns dos maiores atacantes de todos os tempos e ajudou a eternizar nomes que atravessaram gerações.</p>
-
-            <p>Mais do que decidir partidas, os artilheiros das Copas acabam simbolizando o espírito de cada edição. Em alguns anos, o destaque ficou concentrado em um goleador dominante. Em outros, a artilharia foi dividida, mostrando o equilíbrio do torneio.</p>
-
-            <p>Entre 1938 e 1950, a Copa do Mundo teve uma pausa. As edições de 1942 e 1946 foram canceladas por causa da Segunda Guerra Mundial, e o torneio só voltou a ser disputado em 1950, no Brasil.</p>
-
-            <p><strong>Todos os artilheiros da Copa do Mundo por edição</strong></p>
-
-            <p><strong>Copa do Mundo 1930 – Guillermo Stábile (Argentina)</strong></p>
-            <p><strong>8 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1934 – Oldřich Nejedlý (Tchecoslováquia)</strong></p>
-            <p><strong>5 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1938 – Leônidas da Silva (Brasil)</strong></p>
-            <p><strong>7 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1950 – Ademir de Menezes (Brasil)</strong></p>
-            <p><strong>9 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1954 – Sándor Kocsis (Hungria)</strong></p>
-            <p><strong>11 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1958 – Just Fontaine (França)</strong></p>
-            <p><strong>13 gols</strong></p>
-            <p><strong>Recorde de gols em uma única edição.</strong></p>
-
-            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p><strong>Copa do Mundo 1962 – artilharia compartilhada</strong></p>
-            <p><strong>4 gols cada</strong></p>
-            <p><strong>Garrincha (Brasil)</strong></p>
-            <p><strong>Vavá (Brasil)</strong></p>
-            <p><strong>Dražan Jerković (Iugoslávia)</strong></p>
-            <p><strong>Leonel Sánchez (Chile)</strong></p>
-            <p><strong>Valentin Ivanov (URSS)</strong></p>
-            <p><strong>Flórián Albert (Hungria)</strong></p>
-
-            <p><strong>Copa do Mundo 1966 – Eusébio (Portugal)</strong></p>
-            <p><strong>9 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1970 – Gerd Müller (Alemanha Ocidental)</strong></p>
-            <p><strong>10 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1974 – Grzegorz Lato (Polônia)</strong></p>
-            <p><strong>7 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1978 – Mario Kempes (Argentina)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1982 – Paolo Rossi (Itália)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1986 – Gary Lineker (Inglaterra)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1990 – Salvatore Schillaci (Itália)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1994 – Oleg Salenko (Rússia) e Hristo Stoichkov (Bulgária)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 1998 – Davor Šuker (Croácia)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 2002 – Ronaldo (Brasil)</strong></p>
-            <p><strong>8 gols</strong></p>
-
-            <p><strong>Copa do Mundo 2006 – Miroslav Klose (Alemanha)</strong></p>
-            <p><strong>5 gols</strong></p>
-
-            <p><strong>Copa do Mundo 2010 – artilharia compartilhada</strong></p>
-            <p><strong>5 gols cada</strong></p>
-            <p><strong>Thomas Müller (Alemanha)</strong></p>
-            <p><strong>Diego Forlán (Uruguai)</strong></p>
-            <p><strong>Wesley Sneijder (Holanda)</strong></p>
-            <p><strong>David Villa (Espanha)</strong></p>
-
-            <p><strong>Copa do Mundo 2014 – James Rodríguez (Colômbia)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 2018 – Harry Kane (Inglaterra)</strong></p>
-            <p><strong>6 gols</strong></p>
-
-            <p><strong>Copa do Mundo 2022 – Kylian Mbappé (França)</strong></p>
-            <p><strong>8 gols</strong></p>
-
-            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p><strong>Quais países mais tiveram artilheiros da Copa do Mundo?</strong></p>
-
-            <p>Além dos nomes individuais, a lista dos artilheiros também mostra quais seleções mais conseguiram colocar jogadores no topo da artilharia do torneio. Considerando as edições em que um país teve ao menos um atleta entre os artilheiros da Copa, o ranking histórico é o seguinte:</p>
-
-            <p>Brasil – 4 edições</p>
-            <p>Alemanha – 3 edições</p>
-            <p>Argentina – 2 edições</p>
-            <p>França – 2 edições</p>
-            <p>Hungria – 2 edições</p>
-            <p>Itália – 2 edições</p>
-            <p>Inglaterra – 2 edições</p>
-
-            <p>Também já tiveram artilheiros da Copa do Mundo as seleções de Tchecoslováquia, Iugoslávia, Chile, URSS, Portugal, Polônia, Rússia, Bulgária, Croácia, Uruguai, Holanda, Espanha e Colômbia.</p>
-
-            <p>Esse recorte ajuda a mostrar como algumas escolas tradicionais do futebol conseguiram manter presença frequente entre os principais goleadores do Mundial, enquanto outras tiveram campanhas mais pontuais, mas igualmente marcantes.</p>
-
-            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p><strong>Quem é o maior artilheiro da história da Copa do Mundo?</strong></p>
-
-            <p>O jogador com mais gols somando todas as edições da Copa do Mundo é:</p>
-
-            <p>Miroslav Klose (Alemanha) – 16 gols</p>
-
-            <p>Klose marcou em quatro Copas do Mundo diferentes: 2002, 2006, 2010 e 2014. Foi justamente no Mundial de 2014 que ele superou Ronaldo e se tornou o maior goleador da história do torneio.</p>
-
-            <p><strong>Ranking dos maiores artilheiros da história das Copas</strong></p>
-
-            <p>Miroslav Klose – 16 gols</p>
-            <p>Ronaldo (Brasil) – 15 gols</p>
-            <p>Gerd Müller – 14 gols</p>
-            <p>Just Fontaine – 13 gols</p>
-            <p>Pelé – 12 gols</p>
-            <p>Sándor Kocsis – 11 gols</p>
-            <p>Jürgen Klinsmann – 11 gols</p>
-            <p>Helmut Rahn – 10 gols</p>
-            <p>Gary Lineker – 10 gols</p>
-            <p>Thomas Müller – 10 gols</p>
-
-            <p><strong>Recordes importantes da artilharia das Copas</strong></p>
-
-            <p>A história dos artilheiros da Copa do Mundo também ajuda a entender o peso de alguns recordes que atravessaram décadas e continuam sendo referência no torneio.</p>
-
-            <p>Recorde em uma única edição: Just Fontaine, com 13 gols em 1958</p>
-            <p>Maior artilheiro da história: Miroslav Klose, com 16 gols</p>
-            <p>Brasileiro com mais gols em Copas: Ronaldo, com 15 gols</p>
-            <p>Artilheiro mais jovem campeão: Pelé, campeão do mundo aos 17 anos em 1958</p>
-
-            <p><strong>Por que a artilharia da Copa tem tanto peso?</strong></p>
-
-            <p>Ser artilheiro de uma Copa do Mundo não significa apenas terminar um torneio com bons números. Em muitos casos, significa decidir partidas grandes, marcar em jogos eliminatórios e deixar a própria marca em uma competição que reúne os maiores jogadores do planeta.</p>
-
-            <p>É por isso que a lista dos artilheiros das Copas mistura atacantes lendários, campanhas inesquecíveis e recordes que se tornaram parte da própria história do futebol. Em um torneio tão curto, cada gol pesa muito. E exatamente por isso a artilharia continua sendo um dos feitos mais valorizados do futebol internacional.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
-
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
-
-    </div>
-  </div>
-</main>
-
-<footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
-</footer>
-
-<script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "FUTEBOL";
-
-  const AGENDA_JSON_URL = "agenda.json";
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
-
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
-
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
-
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
-
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
-
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
-
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
-
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
-
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
-
-  loadAgenda();
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Artilheiros da Copa do Mundo: ranking histórico atualizado após 2026</h1>
+<p class="subhead" id="articleExcerpt">Kylian Mbappé assumiu a liderança entre os maiores goleadores da história das Copas, e ainda conquistou a artilharia do Mundial de 2026. Veja o ranking atualizado e todos os artilheiros desde 1930.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">20/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/01-mbappe-comemora-gol-copa-2026.jpg",
+  "caption": "Mbappé comemora gol contra a Suécia na Copa de 2026.",
+  "description": "Kylian Mbappé comemora gol pela França na Copa do Mundo de 2026.",
+  "width": 4798,
+  "height": 3199,
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Kylian_Mbappe_-10_France_v_Sweden_at_2026_Fifa_World_Cup_by_YantsImages_01.jpg",
+  "creditText": "Foto: YantsImages/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Asatur Yesayants"
+  },
+  "copyrightNotice": "YantsImages/Asatur Yesayants"
+}
 </script>
 
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="01-mbappe-comemora-gol-copa-2026.jpg"
+       alt="Kylian Mbappé comemora gol pela França na Copa do Mundo de 2026."
+       width="4798"
+       height="3199"
+       fetchpriority="high"
+       decoding="async"
+       style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">
+    Mbappé comemora gol contra a Suécia na Copa de 2026. Foto: YantsImages/Wikimedia Commons.
+  </figcaption>
+</figure>
+<p>A Copa do Mundo de 2026 provocou uma mudança histórica no ranking de goleadores do torneio. Depois de 12 anos com o alemão Miroslav Klose na liderança, a competição passou a ter dois novos nomes no topo: Kylian Mbappé e <a href="https://cortedosesportes.com.br/messi-historia-barcelona-titulos-recordes-copa-2022.html">Lionel Messi</a>.</p>
+
+<p>Mbappé marcou dez gols na edição disputada nos Estados Unidos, no Canadá e no México, conquistou a Chuteira de Ouro pela segunda Copa consecutiva e chegou a 22 gols em Mundiais. O francês terminou a competição uma bola na rede à frente de Messi, que fez oito gols em 2026 e encerrou sua participação no torneio com 21 no total.</p>
+
+<p>Além de alterar o ranking individual, a Copa de 2026 ampliou a quantidade de partidas e oportunidades para os atacantes. Foi o primeiro Mundial com 48 seleções, 12 grupos de quatro equipes, uma fase de 32 avos de final com o total de 104 jogos. As seleções que chegaram à decisão disputaram oito partidas, uma a mais do que no formato utilizado até 2022.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p>O atacante francês participou de três edições e construiu uma média impressionante:</p>
+
+<ul>
+<li>Copa de 2018 — 4 gols</li>
+<li>Copa de 2022 — 8 gols</li>
+<li>Copa de 2026 — 10 gols</li>
+<li>Total — 22 gols em 22 partidas</li>
+</ul>
+
+<p>Mbappé chegou à Copa de 2026 com 12 gols e ainda fora das três primeiras posições do ranking histórico. Durante o torneio, ultrapassou <a href="https://cortedosesportes.com.br/pele-historia-titulos-santos-selecao-brasileira-rei-futebol.html">Pelé</a>, Just Fontaine, Gerd Müller, Ronaldo, Miroslav Klose e Lionel Messi.</p>
+
+<p>Os dois gols marcados na disputa do terceiro lugar contra a Inglaterra, em 18 de julho de 2026, levaram o francês aos 22. Messi ainda poderia recuperar a primeira posição na <a href="https://cortedosesportes.com.br/espanha-campea-copa-do-mundo-2026-campanha-completa.html"> final contra a Espanha</a>, mas passou em branco na derrota <a href="https://cortedosesportes.com.br/argentina-derrota-final-copa-mundo-2026-messi.html"> argentina por 1 a 0, na prorrogação</a>.</p>
+
+<p>A campanha que levou à Chuteira de Ouro começou com uma grande atuação. Logo na estreia, o atacante marcou duas vezes na <a href="https://cortedosesportes.com.br/vitoria-franca-senegal-mbappe-gols-copa-do-mundo-2026.html">vitória da França sobre Senegal</a>.</p>
+
+<p><strong>Ranking dos maiores artilheiros das Copas:</strong></p>
+
+<ul>
+<li>Kylian Mbappé, França — 22 gols</li>
+<li>Lionel Messi, Argentina — 21 gols</li>
+<li>Miroslav Klose, Alemanha — 16 gols</li>
+<li>Ronaldo, Brasil — 15 gols</li>
+<li>Gerd Müller, Alemanha Ocidental — 14 gols</li>
+<li>Harry Kane, Inglaterra — 14 gols</li>
+<li>Just Fontaine, França — 13 gols</li>
+<li>Pelé, Brasil — 12 gols</li>
+<li>Sándor Kocsis, Hungria — 11 gols</li>
+<li>Jürgen Klinsmann, Alemanha — 11 gols</li>
+<li>Helmut Rahn, Alemanha Ocidental — 10 gols</li>
+<li>Gary Lineker, Inglaterra — 10 gols</li>
+<li>Gabriel Batistuta, Argentina — 10 gols</li>
+<li>Teófilo Cubillas, Peru — 10 gols</li>
+<li>Grzegorz Lato, Polônia — 10 gols</li>
+<li>Thomas Müller, Alemanha — 10 gols</li>
+<li>Cristiano Ronaldo, Portugal — 10 gols</li>
+</ul>
+
+<p>A Copa de 2026 também levou Harry Kane ao grupo dos maiores goleadores. O inglês marcou seis vezes na campanha do <a href="https://cortedosesportes.com.br/inglaterra-franca-terceiro-lugar-copa-do-mundo-2026.html">terceiro lugar</a> e chegou a 14 gols, empatando com <a href="https://cortedosesportes.com.br/gerd-muller-maior-artilheiro-bayern-de-munique-gols-recordes.html">Gerd Müller</a>. Kane ultrapassou Gary Lineker e tornou-se o maior artilheiro da Inglaterra em Copas.</p>
+
+<p><strong>Messi se despede das Copas</strong></p>
+
+<p>Craque argentino foi o primeiro jogador a superar o recorde de Miroslav Klose durante o Mundial de 2026. Ele começou a competição com 13 gols, marcou oito vezes e chegou a ocupar isoladamente a liderança, com 21.</p>
+
+<p>A trajetória de Messi em Copas:</p>
+
+<ul>
+<li>Copa de 2006 — 1 gol</li>
+<li>Copa de 2010 — nenhum gol</li>
+<li>Copa de 2014 — 4 gols</li>
+<li>Copa de 2018 — 1 gol</li>
+<li>Copa de 2022 — 7 gols</li>
+<li>Copa de 2026 — 8 gols</li>
+</ul>
+
+<p>Um dos grandes momentos de sua última campanha foi o <a href="https://cortedosesportes.com.br/vitoria-argentina-argelia-messi-hat-trick-copa-do-mundo-2026.html">hat-trick contra a Argélia</a>. Aos 38 anos naquele momento, ele tornou-se o jogador mais velho a marcar três gols em uma partida do torneio.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Todos os artilheiros das Copas:</strong></p>
+
+<p><strong>Copa do Mundo de 1930</strong></p>
+<ul>
+<li>Guillermo Stábile, Argentina — 8 gols</li>
+</ul>
+<p>Stábile marcou oito vezes em apenas quatro partidas e conduziu a Argentina até a final da primeira Copa, vencida pelo Uruguai.</p>
+
+<p><strong>Copa do Mundo de 1934</strong></p>
+<ul>
+<li>Oldřich Nejedlý, Tchecoslováquia — 5 gols</li>
+</ul>
+<p>O atacante foi decisivo na campanha que levou os tchecoslovacos à decisão contra a Itália.</p>
+
+<p><strong>Copa do Mundo de 1938</strong></p>
+<ul>
+<li>Leônidas da Silva, Brasil — 7 gols</li>
+</ul>
+<p>O Diamante Negro liderou o Brasil até o terceiro lugar, que naquele momento representava a melhor campanha da seleção na história do torneio.</p>
+
+<p><strong>Copa do Mundo de 1950</strong></p>
+<ul>
+<li>Ademir de Menezes, Brasil — 9 gols</li>
+</ul>
+<p>Ademir foi o principal nome ofensivo do Brasil, mas a seleção terminou com o vice após a derrota para o Uruguai no Maracanã.</p>
+
+<p><strong>Copa do Mundo de 1954</strong></p>
+<ul>
+<li>Sándor Kocsis, Hungria — 11 gols</li>
+</ul>
+<p>Kocsis liderou a poderosa seleção húngara, que chegou à final invicta, mas acabou derrotada pela Alemanha Ocidental.</p>
+
+<p><strong>Copa do Mundo de 1958</strong></p>
+<ul>
+<li>Just Fontaine, França — 13 gols</li>
+</ul>
+<p>Fontaine estabeleceu o recorde de gols em uma única edição. Mesmo com o aumento do número de partidas em 2026, sua marca de 13 gols permaneceu intacta.</p>
+
+<p><strong>Copa do Mundo de 1962</strong></p>
+<ul>
+<li>Flórián Albert, Hungria — 4 gols</li>
+<li>Garrincha, Brasil — 4 gols</li>
+<li>Valentin Ivanov, União Soviética — 4 gols</li>
+<li>Dražan Jerković, Iugoslávia — 4 gols</li>
+<li>Leonel Sánchez, Chile — 4 gols</li>
+<li>Vavá, Brasil — 4 gols</li>
+</ul>
+<p>Foi a edição com o maior número de jogadores empatados no topo da artilharia. Garrincha e Vavá também foram protagonistas do bicampeonato brasileiro.</p>
+
+<p><strong>Copa do Mundo de 1966</strong></p>
+<ul>
+<li>Eusébio, Portugal — 9 gols</li>
+</ul>
+<p>O Pantera Negra comandou Portugal até o terceiro lugar, ainda a melhor campanha da seleção portuguesa em Copas.</p>
+
+<p><strong>Copa do Mundo de 1970</strong></p>
+<ul>
+<li>Gerd Müller, Alemanha Ocidental — 10 gols</li>
+</ul>
+<p>Müller marcou dez vezes em seis partidas. A Alemanha ficou em terceiro, enquanto o Brasil de Pelé conquistou o tricampeonato.</p>
+
+<p><strong>Copa do Mundo de 1974</strong></p>
+<ul>
+<li>Grzegorz Lato, Polônia — 7 gols</li>
+</ul>
+<p>Lato liderou uma das melhores gerações da história do futebol polonês, responsável pelo terceiro lugar no Mundial disputado na Alemanha Ocidental.</p>
+
+<p><strong>Copa do Mundo de 1978</strong></p>
+<ul>
+<li>Mario Kempes, Argentina — 6 gols</li>
+</ul>
+<p>Além de artilheiro, Kempes marcou dois gols na final contra a Holanda e conduziu a Argentina ao seu primeiro título mundial.</p>
+
+<p><strong>Copa do Mundo de 1982</strong></p>
+<ul>
+<li>Paolo Rossi, Itália — 6 gols</li>
+</ul>
+<p>Rossi marcou os três gols da vitória sobre o Brasil, fez dois na semifinal contra a Polônia e voltou a balançar a rede na decisão diante da Alemanha Ocidental.</p>
+
+<p><strong>Copa do Mundo de 1986</strong></p>
+<ul>
+<li>Gary Lineker, Inglaterra — 6 gols</li>
+</ul>
+<p>A Inglaterra caiu diante da Argentina nas quartas de final, mas Lineker terminou como o maior goleador da edição.</p>
+
+<p><strong>Copa do Mundo de 1990</strong></p>
+<ul>
+<li>Salvatore Schillaci, Itália — 6 gols</li>
+</ul>
+<p>Schillaci começou o torneio sem status de titular absoluto, ganhou espaço durante a campanha e transformou-se no símbolo da seleção italiana que terminou em terceiro.</p>
+
+<p><strong>Copa do Mundo de 1994</strong></p>
+<ul>
+<li>Oleg Salenko, Rússia — 6 gols</li>
+<li>Hristo Stoichkov, Bulgária — 6 gols</li>
+</ul>
+<p>Salenko marcou cinco vezes em uma única partida, na vitória da Rússia sobre Camarões. Stoichkov levou a Bulgária até uma histórica semifinal.</p>
+
+<p><strong>Copa do Mundo de 1998</strong></p>
+<ul>
+<li>Davor Šuker, Croácia — 6 gols</li>
+</ul>
+<p>Em sua primeira Copa como país independente, a Croácia alcançou o terceiro lugar com Šuker como grande referência ofensiva.</p>
+
+<p><strong>Copa do Mundo de 2002</strong></p>
+<ul>
+<li>Ronaldo, Brasil — 8 gols</li>
+</ul>
+<p>Marcou os dois gols da vitória por 2 a 0 sobre a Alemanha na final.</p>
+
+<p><strong>Copa do Mundo de 2006</strong></p>
+<ul>
+<li>Miroslav Klose, Alemanha — 5 gols</li>
+</ul>
+<p>Klose conquistou a artilharia jogando em casa e começou a caminhada que o levaria ao antigo recorde de 16 gols em Copas.</p>
+
+<p><strong>Copa do Mundo de 2010</strong></p>
+<ul>
+<li>Thomas Müller, Alemanha — 5 gols</li>
+<li>David Villa, Espanha — 5 gols</li>
+<li>Wesley Sneijder, Holanda — 5 gols</li>
+<li>Diego Forlán, Uruguai — 5 gols</li>
+</ul>
+<p>Os quatro jogadores marcaram cinco vezes. Thomas Müller recebeu oficialmente a Chuteira de Ouro pelos critérios de desempate, que consideravam assistências e, posteriormente, o menor número de minutos em campo.</p>
+
+<p><strong>Copa do Mundo de 2014</strong></p>
+<ul>
+<li>James Rodríguez, Colômbia — 6 gols</li>
+</ul>
+<p>James marcou em todas as partidas disputadas pela Colômbia e fez um dos gols mais lembrados do torneio, contra o Uruguai, no <a href="https://cortedosesportes.com.br/maracana-historia-recordes-tradicao-estadio-brasil.html">Maracanã</a>.</p>
+
+<p><strong>Copa do Mundo de 2018</strong></p>
+<ul>
+<li>Harry Kane, Inglaterra — 6 gols</li>
+</ul>
+<p>Kane liderou a Inglaterra até a semifinal e conquistou a primeira Chuteira de Ouro de sua carreira.</p>
+
+<p><strong>Copa do Mundo de 2022</strong></p>
+<ul>
+<li>Kylian Mbappé, França — 8 gols</li>
+</ul>
+<p>Mbappé marcou três vezes na final contra a Argentina. A França ficou com o vice nos pênaltis, mas o atacante superou Messi na disputa pela artilharia.</p>
+
+<p><strong>Copa do Mundo de 2026</strong></p>
+<ul>
+<li>Kylian Mbappé, França — 10 gols</li>
+</ul>
+<p>Mbappé voltou a terminar no topo e tornou-se o primeiro jogador a liderar a artilharia em duas Copas consecutivas. Messi ficou em segundo, com oito gols, enquanto Jude Bellingham e Erling Haaland marcaram sete vezes cada.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Os artilheiros das seleções seleções</strong></p>
+
+<p>Considerando cada edição em que uma seleção teve pelo menos um jogador empatado no topo da lista de goleadores, o Brasil continua na primeira posição.</p>
+
+<ul>
+<li>Brasil — 4 edições: 1938, 1950, 1962 e 2002</li>
+<li>Alemanha — 3 edições: 1970, 2006 e 2010</li>
+<li>França — 3 edições: 1958, 2022 e 2026</li>
+<li>Argentina — 2 edições: 1930 e 1978</li>
+<li>Hungria — 2 edições: 1954 e 1962</li>
+<li>Itália — 2 edições: 1982 e 1990</li>
+<li>Inglaterra — 2 edições: 1986 e 2018</li>
+</ul>
+
+<p>A França foi a seleção que mais avançou nesse recorte em 2026. As artilharias consecutivas de Mbappé fizeram o país igualar a Alemanha, embora o Brasil ainda lidere com quatro edições diferentes.</p>
+
+<p>A Espanha, mesmo bicampeã mundial após o título de 2026, nunca teve o artilheiro isolado de uma Copa. A conquista mais recente voltou a mostrar que um campeão não precisa necessariamente depender de um goleador dominante. A equipe espanhola venceu a Argentina por 1 a 0 e terminou o torneio com uma produção ofensiva distribuída entre diferentes jogadores.</p>
+
+<p><strong>Principais recordes de gols nas Copas</strong></p>
+
+<ul>
+<li>Maior artilheiro da história — Kylian Mbappé, com 22 gols</li>
+<li>Segundo maior artilheiro — Lionel Messi, com 21 gols</li>
+<li>Recorde em uma única edição — Just Fontaine, com 13 gols em 1958</li>
+<li>Maior artilheiro brasileiro — Ronaldo, com 15 gols</li>
+<li>Maior artilheiro alemão — Miroslav Klose, com 16 gols</li>
+<li>Maior artilheiro argentino — Lionel Messi, com 21 gols</li>
+<li>Maior artilheiro inglês — Harry Kane, com 14 gols</li>
+<li>Maior artilheiro português — Cristiano Ronaldo, com 10 gols</li>
+<li>Mais gols em uma partida — Oleg Salenko, com cinco contra Camarões em 1994</li>
+<li>Mais gols em fases eliminatórias — Kylian Mbappé, com 12</li>
+<li>Mais gols em finais — Kylian Mbappé, com quatro</li>
+</ul>
+
+<p><strong>Os hat-tricks da história das Copas</strong></p>
+
+<p>Marcar três gols em uma partida de Copa do Mundo é um feito raro. Em um torneio curto e de enorme pressão, um hat-trick pode decidir uma classificação, impulsionar uma campanha de artilharia ou eternizar uma atuação individual.</p>
+
+<p><strong>Primeiro hat-trick da história:</strong></p>
+
+<p>Bert Patenaude, dos Estados Unidos, marcou três gols na vitória por 3 a 0 sobre o Paraguai, na Copa do Mundo de 1930. Ele é reconhecido como o autor do primeiro hat-trick da história da competição.</p>
+
+<p><strong>Mais gols de um jogador em uma partida:</strong></p>
+
+<p>Oleg Salenko estabeleceu um recorde ainda não superado ao marcar cinco vezes na goleada da Rússia por 6 a 1 sobre Camarões, em 1994.</p>
+
+<p><strong>Jogadores com dois hat-tricks em Copas:</strong></p>
+
+<p>Quatro jogadores conseguiram marcar três ou mais gols em duas partidas diferentes do Mundial:</p>
+
+<ul>
+<li>Sándor Kocsis, pela Hungria, em 1954</li>
+<li>Just Fontaine, pela França, em 1958</li>
+<li>Gerd Müller, pela Alemanha Ocidental, em 1970</li>
+<li>Gabriel Batistuta, pela Argentina, em 1994 e 1998</li>
+</ul>
+
+<p>Batistuta é o único jogador a conseguir dois hat-tricks em edições diferentes. O argentino marcou três vezes contra a Grécia, em 1994, e repetiu o feito diante da Jamaica, em 1998.</p>
+
+<p><strong>Hat-tricks em finais de Copa do Mundo:</strong></p>
+
+<ul>
+<li>Geoff Hurst, pela Inglaterra contra a Alemanha Ocidental, em 1966</li>
+<li>Kylian Mbappé, pela França contra a Argentina, em 2022</li>
+</ul>
+
+<p>Hurst ajudou a Inglaterra a vencer por 4 a 2 e conquistar seu <a href="https://cortedosesportes.com.br/inglaterra-campea-copa-do-mundo-1966-historia-titulo.html">primeiro e único título mundial</a>. Mbappé marcou três vezes no empate por 3 a 3, mas a França perdeu a decisão nos pênaltis.</p>
+
+<p><strong>Jogador mais jovem a marcar um hat-trick</strong></p>
+
+<p>Pelé tinha 17 anos e 244 dias quando marcou três gols na vitória do Brasil por 5 a 2 sobre a França, na semifinal da Copa de 1958.</p>
+
+<p>O Rei ainda fez dois gols na decisão contra a Suécia e terminou sua primeira participação em Mundiais como <a href="https://cortedosesportes.com.br/selecao-brasileira-historia-5-copas-do-mundo.html">campeão</a>.</p>
+
+<p><strong>Jogador mais velho a marcar um hat-trick</strong></p>
+
+<p>Lionel Messi tornou-se o jogador mais velho a fazer três gols em uma partida de Copa durante o Mundial de 2026.</p>
+
+<p>Aos 38 anos, o argentino fez os três gols da vitória por 3 a 0 sobre a Argélia e superou a marca de Cristiano Ronaldo, que tinha 33 anos quando marcou três vezes no empate de Portugal com a Espanha, em 2018.</p>
+
+<p>Os hat-tricks ajudam a contar a história ofensiva das Copas. De Patenaude e Pelé a Salenko, Batistuta, Mbappé e Messi, cada atuação reuniu eficiência, protagonismo e capacidade de decidir no maior palco do futebol mundial.</p>
+
+<p>Mesmo com o formato ampliado, os 13 gols marcados por Just Fontaine em 1958 continuam sendo uma das marcas mais difíceis da história do futebol.</p>
+
+<p>Fontaine precisou de apenas seis partidas para atingir o número. Mbappé teve oito jogos à disposição em 2026 e terminou com dez. Gerd Müller também chegou a dez em 1970, mas nenhum jogador conseguiu alcançar os 11 de Kocsis em 1954 ou os 13 do francês.</p>
+
+<p>O aumento no número de partidas torna a quebra do recorde mais possível do que no formato anterior. Para isso, porém, um atacante precisa permanecer saudável, avançar até os últimos jogos e sustentar uma média superior a um gol por partida contra adversários de níveis diferentes.</p>
+
+<p><strong>O que a Copa de 2026 mudou na história da artilharia</strong></p>
+
+<p>A edição não ficou marcada apenas pela expansão para 48 seleções ou pelo segundo título da Espanha. Ela encerrou a era em que Miroslav Klose aparecia isolado como o maior goleador das Copas.</p>
+
+<p>Klose liderou o ranking entre 2014, quando ultrapassou Ronaldo no Mundial do Brasil, e junho de 2026, ficando no topo por 3 edições.</p>
+
+<p>A edição também consolidou Harry Kane no grupo dos maiores, apresentou Erling Haaland como candidato a subir rapidamente no ranking e colocou Jude Bellingham entre os principais goleadores de um único Mundial. Cristiano Ronaldo, mesmo sem disputar a artilharia, chegou a dez gols e passou a integrar o grupo de jogadores com dois dígitos em Copas.</p>
+
+<p>A disputa pelos maiores artilheiros das Copas entrou, portanto, em uma nova fase. Mbappé assumiu a liderança ainda em idade competitiva, Messi encerrou sua trajetória com um número que parecia impossível poucos anos antes e nomes de diferentes gerações passaram a dividir as primeiras posições.</p>
+
+<p>Mais do que uma sequência de números, o ranking registra a evolução do próprio torneio. Stábile marcou oito vezes na primeira edição, Fontaine construiu uma marca quase inalcançável em 1958, Ronaldo liderou o pentacampeonato brasileiro em 2002, Klose transformou regularidade em recorde e Mbappé levou a artilharia a um novo patamar em 2026. Cada gol mudou uma partida; juntos, eles ajudam a contar a história da Copa do Mundo.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
 <!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
-
 </body>
 </html>
