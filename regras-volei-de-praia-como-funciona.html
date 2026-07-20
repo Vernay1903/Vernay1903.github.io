@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Regras do vôlei de praia: entenda como funciona a dinâmica das partidas | Corte dos Esportes</title>
+<meta name="description" content="A modalidade muitas vezes gera uma confusão pela semelhança com o esporte praticado nas quadras, mas estratégias das duplas são baseada em normas muitos diferentes, deixando de semelhança somente os fundamentos, bola e rede." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474" decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Regras do vôlei de praia: entenda como funciona a dinâmica das partidas</h1>
+<p class="subhead" id="articleExcerpt">A modalidade muitas vezes gera uma confusão pela semelhança com o esporte praticado nas quadras, mas estratégias das duplas são baseada em normas muitos diferentes, deixando de semelhança somente os fundamentos, bola e rede.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">20/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Volei de Praia</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/01-partida-volei-praia-paris-2024.jpg",
+  "caption": "Partida de vôlei de praia nos Jogos de Paris 2024.",
+  "description": "Jogadoras disputam a bola junto à rede em uma partida de vôlei de praia.",
+  "width": 5184,
+  "height": 3888,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Woman_beach_volley_at_Paris_2024_olympics_France_vs_Germany28_07_2024_group_stage.jpg",
+  "creditText": "Foto: Zen 38/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Zen 38"
+  },
+  "copyrightNotice": "Zen 38"
+}
+</script>
+
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="01-partida-volei-praia-paris-2024.jpg"
+       alt="Jogadoras disputam a bola junto à rede em uma partida de vôlei de praia."
+       width="5184"
+       height="3888"
+       fetchpriority="high"
+       decoding="async"
+       style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">
+    Partida de vôlei de praia nos Jogos de Paris 2024. Foto: Zen 38/Wikimedia Commons.
+  </figcaption>
+</figure>
+<p>As regras do vôlei de praia parecem simples à primeira vista: duas duplas separadas por uma rede tentam fazer a bola tocar a areia no campo adversário. No entanto, a modalidade possui detalhes próprios que mudam completamente a dinâmica do jogo, especialmente no bloqueio, no levantamento, na ordem de saque e na troca de lado.</p>
+
+<p>Abaixo as Regras Oficiais de Vôlei de Praia da FIVB para o ciclo 2025–2028, aprovadas pelo Congresso Mundial da entidade e aplicadas às competições desde 1º de janeiro de 2025. Também considera as orientações atuais de arbitragem utilizadas para interpretar contatos duplos e levantamentos.</p>
+
+<p>Apesar de ser chamado de vôlei de praia, o jogo não precisa necessariamente acontecer ao lado do mar. A exigência esportiva é uma quadra de areia que atenda às dimensões e condições estabelecidas pelo regulamento.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>As equipes</strong></p>
+
+<p>Cada uma é formada exclusivamente por dois jogadores. Os dois atletas registrados na súmula devem permanecer disponíveis para jogar durante toda a partida, e um deles é identificado como capitão da dupla.</p>
+
+<p>Não existe líbero, reserva ou jogador especializado apenas em determinada função. Os dois integrantes precisam sacar, receber, levantar, atacar, defender e bloquear. Essa característica exige atletas completos e faz com que a comunicação entre os parceiros seja decisiva.</p>
+
+<p>No vôlei de praia também não há posições fixas obrigatórias dentro da quadra. Os jogadores podem se posicionar livremente antes do saque, desde que estejam em seu próprio campo. O que precisa ser respeitado é a ordem de serviço definida para cada set.</p>
+
+<p><strong>Como funciona a pontuação</strong></p>
+
+<p>O sistema utilizado é o rally point, no qual toda jogada concluída gera um ponto. Quando a dupla que está sacando vence, soma o ponto e continua no saque. Quando a equipe que estava recebendo vence, soma o ponto e conquista o direito de sacar.</p>
+
+<p>Não é necessário estar sacando para pontuar. Essa regra torna o placar mais dinâmico e reduz a possibilidade de partidas excessivamente longas por sucessivas trocas de serviço sem alteração na pontuação.</p>
+
+<p><strong>Quantos sets tem uma partida</strong></p>
+
+<p>Uma partida é jogada em melhor de três sets. Isso significa que vence o confronto a primeira dupla que ganhar dois sets.</p>
+
+<p>Os dois primeiros sets são disputados até 21 pontos. Caso cada dupla vença um set, o jogo vai para o terceiro e decisivo set, conhecido como tie-break, disputado até 15 pontos. Em todos os casos, é obrigatória uma vantagem mínima de dois pontos para fechar a parcial.</p>
+
+<p>Assim, os resultados possíveis de uma partida são:</p>
+
+<ul>
+<li>2 sets a 0;</li>
+<li>2 sets a 1.</li>
+</ul>
+
+<p><strong>Desempate no set</strong></p>
+
+<p>Se o placar chegar a 20 a 20 no primeiro ou no segundo set, a parcial não termina no 21º ponto. O jogo continua até que uma dupla abra dois pontos de vantagem.</p>
+
+<p>Um set pode acabar, por exemplo, em 22 a 20, 23 a 21, 26 a 24 ou qualquer outro placar que apresente dois pontos de diferença.</p>
+
+<p>No tie-break, a mesma lógica é aplicada a partir do empate em 14 a 14. O terceiro set pode terminar em 16 a 14, 18 a 16, 22 a 20 e assim por diante. Não existe limite máximo de pontos.</p>
+
+<p><strong>Quantos toques cada dupla pode dar</strong></p>
+
+<p>Cada uma tem direito a no máximo três toques para devolver a bola ao campo adversário. Contatos intencionais e involuntários entram nessa contagem. Se a equipe tocar quatro vezes antes de enviar a bola por cima da rede, comete a falta de quatro toques.</p>
+
+<p>A sequência mais comum é:</p>
+
+<ul>
+<li>Primeiro toque: recepção ou defesa;</li>
+<li>Segundo toque: levantamento;</li>
+<li>Terceiro toque: ataque.</li>
+</ul>
+
+<p>A dupla não é obrigada a utilizar os três contatos. É permitido devolver a bola no primeiro ou no segundo toque, desde que a ação respeite as regras técnicas.</p>
+
+<p>Quando dois companheiros tocam a bola simultaneamente, a jogada normalmente é contabilizada como dois contatos. Se ambos tentam alcançar a bola, mas somente um efetivamente a toca, conta apenas um. A principal exceção ocorre no bloqueio.</p>
+
+<p><strong>O bloqueio conta como um dos três toques</strong></p>
+
+<p>Sim. Esta é uma das regras mais importantes do vôlei de praia: o contato no bloqueio conta como o primeiro toque da dupla.</p>
+
+<p>Depois que a bola toca o bloqueador, restam apenas mais dois contatos para organizar a devolução. O próprio atleta que bloqueou pode realizar o toque seguinte sem que isso seja considerado um contato duplo irregular.</p>
+
+<p>Exemplo: um jogador toca a bola no bloqueio, faz a defesa logo em seguida e o parceiro ataca. A sequência é legal porque o bloqueio foi o primeiro toque, a defesa do bloqueador foi o segundo e o ataque foi o terceiro.</p>
+
+<p>No vôlei de quadra, o bloqueio não entra na contagem dos três toques. Essa diferença altera bastante a construção ofensiva na areia, pois um bloqueio amortecido já reduz imediatamente as possibilidades da dupla.</p>
+
+<p><strong>Como funcionam o toque e o levantamento</strong></p>
+
+<p>A bola pode tocar qualquer parte do corpo, mas não pode ser agarrada, carregada ou lançada. O contato deve produzir um rebote, ainda que sua duração possa variar de acordo com a situação da jogada.</p>
+
+<p>No levantamento feito por cima com os dedos, o árbitro observa principalmente se houve dois contatos claramente consecutivos ou se a bola foi conduzida. As orientações de arbitragem da FIVB determinam que o contato duplo só deve ser marcado quando for evidente e que o giro da bola, sozinho, não pode servir como motivo automático para a marcação da falta.</p>
+
+<p>Isso significa que uma bola girando após o levantamento não representa necessariamente uma infração. A decisão deve considerar o contato efetivamente realizado pelas mãos.</p>
+
+<p>No primeiro toque da equipe, contatos consecutivos em uma única ação podem ser aceitos quando a bola não é jogada por cima com os dedos. É o caso de uma recepção em que a bola toca rapidamente os braços e outra parte do corpo durante o mesmo movimento. Porém, quando o primeiro contato é realizado por cima com os dedos, a bola não pode tocar as mãos de forma consecutiva.</p>
+
+<p>Existe ainda uma tolerância específica para a defesa de uma bola atacada com força. Nessa situação, o contato pode ser momentaneamente prolongado, inclusive em uma defesa realizada por cima com os dedos. A regra existe porque o defensor tem pouco tempo para reagir a uma cortada potente.</p>
+
+<p><strong>É permitido atacar de mão aberta</strong></p>
+
+<p>A tradicional “largadinha” feita empurrando a bola com os dedos abertos não é permitida no vôlei de praia. É falta completar um ataque usando uma ação de dedos com a mão aberta ou com as pontas dos dedos que não estejam rígidas e juntas.</p>
+
+<p>Os jogadores costumam recorrer a alternativas legais, como:</p>
+
+<ul>
+<li>Ataque com a palma da mão;</li>
+<li>Contato com os nós dos dedos;</li>
+<li>Toque com as pontas dos dedos rígidas e juntas;</li>
+<li>Cortada;</li>
+<li>Bola colocada com um toque firme.</li>
+</ul>
+
+<p>Também é possível enviar a bola diretamente ao campo adversário com um passe por cima. Para isso, quando a intenção é atacar, a trajetória deve ser perpendicular à linha dos ombros do jogador, para frente ou para trás. A restrição não se aplica quando o atleta realmente tenta levantar para o parceiro e a bola acaba atravessando a rede, inclusive por ação do vento.</p>
+
+<p><strong>Pode usar o pé no vôlei de praia</strong></p>
+
+<p>Sim. A bola pode tocar qualquer parte do corpo, incluindo pé, perna, cabeça, ombro, peito ou costas. Portanto, chutar a bola para evitar que ela caia na areia é uma ação legal.</p>
+
+<p>O contato com o pé entra normalmente na contagem dos três toques. Se a bola toca involuntariamente a perna de um atleta durante uma defesa, esse contato também é contabilizado.</p>
+
+<p><strong>Como funcionam o saque e a ordem de serviço</strong></p>
+
+<p>Antes da partida, um sorteio define qual dupla terá a primeira escolha. O vencedor pode escolher entre sacar ou receber, ou escolher o lado inicial da quadra. A equipe adversária fica com a opção restante. Um novo sorteio é realizado antes do terceiro set, caso o tie-break seja necessário.</p>
+
+<p>A dupla informa a ordem de saque, que deve ser mantida durante todo o set. Quando a equipe que já estava sacando vence o ponto, o mesmo jogador continua no serviço. Quando a dupla receptora ganha o rally e conquista o saque, deve servir o atleta que não realizou o último serviço da equipe.</p>
+
+<p>No momento do saque, o jogador deve:</p>
+
+<ul>
+<li>Estar na zona de serviço, atrás da linha de fundo;</li>
+<li>Golpear a bola com uma mão ou qualquer parte do braço;</li>
+<li>Realizar o saque em até cinco segundos após o apito;</li>
+<li>Não tocar a linha de fundo nem o terreno fora da zona de serviço no momento do contato ou da impulsão;</li>
+<li>Respeitar a ordem previamente registrada.</li>
+</ul>
+
+<p>Apenas um lançamento ou soltura da bola é permitido. Se o atleta soltar a bola e deixá-la cair sem golpeá-la, a ação é considerada uma tentativa de saque, e não há uma segunda chance. Após o contato, o sacador pode pisar ou aterrissar dentro da quadra.</p>
+
+<p>A bola pode tocar a rede no saque e continuar em jogo, desde que atravesse corretamente o espaço entre as antenas e caia no campo adversário.</p>
+
+<p>A dupla sacadora também não pode formar uma barreira para esconder o contato ou a trajetória da bola. Movimentar os braços, saltar ou deslocar-se deliberadamente para impedir a visão do adversário pode caracterizar a falta de bloqueio visual, também chamada de screening.</p>
+
+<p><strong>As trocas de lado de quadra</strong></p>
+
+<p>As duplas trocam de lado de acordo com a soma dos pontos das duas equipes:</p>
+
+<ul>
+<li>A cada sete pontos somados no primeiro e no segundo sets;</li>
+<li>A cada cinco pontos somados no terceiro set.</li>
+</ul>
+
+<p>Em um set normal, as trocas podem ocorrer quando o placar total chega a 7, 14, 21, 28 pontos e assim por diante. Isso inclui placares como 4 a 3, 8 a 6 ou 11 a 10.</p>
+
+<p>No tie-break, as trocas acontecem com totais de 5, 10, 15, 20 pontos e assim sucessivamente.</p>
+
+<p>A mudança frequente busca equilibrar fatores externos como vento, sol e direção da iluminação. A troca deve ser feita imediatamente, sem funcionar como intervalo adicional.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Substituição na partida</strong></p>
+
+<p>Não. O regulamento não permite substituições. Os mesmos dois jogadores devem disputar toda a partida.</p>
+
+<p>Em caso de lesão, o atleta pode receber um período de recuperação de até cinco minutos, conforme o protocolo médico. Se não conseguir retornar, a equipe é declarada incompleta e perde o set ou a partida, porque não há reserva para ocupar seu lugar.</p>
+
+<p>Essa regra aumenta o peso da preparação física, da resistência e do controle de desgaste. Uma dupla não pode trocar um atleta cansado, modificar sua formação ou colocar um especialista para bloquear ou sacar.</p>
+
+<p><strong>Tempos de descanso e interrupções</strong></p>
+
+<p>Cada dupla pode solicitar um tempo de descanso por set. O pedido deve ser feito pelo capitão enquanto a bola estiver fora de jogo e antes do apito que autoriza o próximo saque. O tempo solicitado tem duração padrão de 30 segundos.</p>
+
+<p>Nas competições mundiais e oficiais da FIVB, existe ainda um tempo técnico automático de 30 segundos nos dois primeiros sets quando a soma dos pontos das equipes chega a 21. Se o placar estiver 11 a 10, por exemplo, ocorre o tempo técnico.</p>
+
+<p>Não existe tempo técnico no terceiro set. Cada equipe conserva apenas o direito ao seu tempo solicitado de 30 segundos. Os intervalos entre os sets duram um minuto. Regulamentos específicos podem ajustar a duração das pausas quando houver autorização da FIVB.</p>
+
+<p><strong>O tamanho da quadra</strong></p>
+
+<p>Ela mede 16 metros de comprimento por 8 metros de largura. A rede divide o espaço em dois campos iguais de 8 por 8 metros. Não existe linha central desenhada na areia.</p>
+
+<p>A zona livre ao redor da quadra deve ter no mínimo três metros. Em competições mundiais e oficiais da FIVB, essa área deve ficar entre cinco e seis metros a partir das linhas laterais e de fundo.</p>
+
+<p>Nos eventos oficiais da FIVB, a camada de areia deve ter pelo menos 40 centímetros de profundidade.</p>
+
+<p>As linhas fazem parte da quadra. Portanto, se qualquer parte da bola tocar uma linha, ela é considerada dentro. A bola só é marcada como fora quando cai completamente além dos limites, sem tocar a linha.</p>
+
+<p><strong>Altura da rede</strong></p>
+
+<p>Oficial nas categorias adultas é:</p>
+
+<ul>
+<li>Masculino: 2,43 metros;</li>
+<li>Feminino: 2,24 metros.</li>
+</ul>
+
+<p>A medida é feita no centro da quadra. A FIVB estabelece alturas menores para determinadas categorias de base, variando conforme a faixa etária.</p>
+
+<p><strong>Principais faltas</strong></p>
+
+<ul>
+<li>Quatro toques: a dupla utiliza mais de três contatos antes de devolver a bola.</li>
+<li>Dois toques: um jogador toca a bola duas vezes consecutivas fora das exceções previstas.</li>
+<li>Condução: a bola é agarrada, carregada ou lançada, em vez de rebater no corpo.</li>
+<li>Ataque de mão aberta: o jogador empurra a bola com os dedos abertos em direção ao campo adversário.</li>
+<li>Ataque irregular com passe: a bola é enviada por cima com os dedos em uma direção que não é perpendicular aos ombros, sem que exista uma tentativa real de levantamento para o parceiro.</li>
+<li>Toque na rede: o atleta toca a rede entre as antenas durante a ação de jogar a bola, incluindo impulsão, tentativa de contato e aterrissagem.</li>
+<li>Invasão com interferência: o jogador entra no espaço adversário e prejudica a tentativa legítima do oponente de jogar a bola.</li>
+<li>Saque fora da ordem: o atleta errado realiza o serviço.</li>
+<li>Falta de pé no saque: o sacador pisa na linha de fundo, dentro da quadra ou fora da zona de serviço antes do contato ou da impulsão.</li>
+<li>Bola fora: a bola cai completamente além das linhas, toca uma antena, um objeto externo ou atravessa por fora do espaço de passagem.</li>
+<li>Bloqueio do saque: é proibido bloquear diretamente o serviço adversário.</li>
+<li>Bloqueio visual: um jogador da dupla sacadora esconde deliberadamente o contato e a trajetória da bola.</li>
+<li>Demora de jogo: a equipe atrasa a retomada da partida ou prolonga uma interrupção indevidamente.</li>
+</ul>
+
+<p>É importante observar que passar por baixo da rede não representa automaticamente uma falta. Um atleta pode entrar no campo ou na zona livre adversária desde que não interfira na jogada do oponente. A infração ocorre quando há contato, obstrução ou prejuízo à ação adversária.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Diferenças entre o vôlei de quadra</strong></p>
+
+<p><strong>Número de jogadores:</strong></p>
+
+<p>No vôlei de praia, cada equipe joga com dois atletas. No vôlei de quadra, existem seis jogadores por equipe dentro de jogo.</p>
+
+<p><strong>Formato da partida:</strong></p>
+
+<p>Na praia, a partida é em melhor de três sets, com os dois primeiros até 21 e o tie-break até 15. Na quadra, o confronto é em melhor de cinco sets: os quatro primeiros vão até 25 pontos e o quinto até 15. Sempre é necessária vantagem de dois pontos.</p>
+
+<p><strong>Tamanho da quadra:</strong></p>
+
+<p>A quadra de praia mede 16 por 8 metros. A quadra do vôlei indoor mede 18 por 9 metros. Cada atleta da areia, portanto, precisa cobrir uma área muito maior individualmente.</p>
+
+<p><strong>Contagem do bloqueio:</strong></p>
+
+<p>Na praia, o bloqueio conta como o primeiro dos três toques. Na quadra, o contato no bloqueio não entra na contagem, e o time ainda pode usar três contatos depois dele.</p>
+
+<p><strong>Substituições:</strong></p>
+
+<p>O vôlei de praia não permite substituições. No regulamento tradicional do vôlei de quadra, existem reservas, líberos e substituições ilimitadas durante os sets.</p>
+
+<p><strong>Posicionamento e rotação:</strong></p>
+
+<p>Na areia, os jogadores podem se posicionar livremente e precisam respeitar somente a ordem de saque. Na quadra, os seis atletas possuem uma ordem de rotação e devem ocupar posições regulamentares no momento correspondente da jogada.</p>
+
+<p><strong>Comissão técnica:</strong></p>
+
+<p>Nas principais competições oficiais de praia, os jogadores não podem receber orientação externa ou instruções de um treinador durante a partida, salvo exceções previstas em regulamentos específicos. No vôlei de quadra, o treinador participa ativamente, solicita interrupções e orienta a equipe.</p>
+
+<p><strong>Resumo das regras do vôlei de praia:</strong></p>
+
+<ul>
+<li>A partida é disputada em melhor de três sets;</li>
+<li>Os dois primeiros sets vão até 21 pontos;</li>
+<li>O terceiro set vai até 15 pontos;</li>
+<li>É preciso abrir dois pontos de vantagem;</li>
+<li>Cada dupla pode dar no máximo três toques;</li>
+<li>O bloqueio conta como o primeiro toque;</li>
+<li>O bloqueador pode tocar novamente na sequência;</li>
+<li>É permitido usar o pé e qualquer outra parte do corpo;</li>
+<li>A bola não pode ser agarrada ou conduzida;</li>
+<li>As trocas de lado acontecem a cada sete pontos somados nos dois primeiros sets e a cada cinco no terceiro;</li>
+<li>A quadra mede 16 por 8 metros;</li>
+<li>A rede tem 2,43 metros no masculino e 2,24 metros no feminino;</li>
+<li>Cada equipe pode pedir um tempo de 30 segundos por set;</li>
+<li>A linha faz parte da quadra e a bola que toca nela é considerada dentro.</li>
+</ul>
+
+<p>Entender as regras da modalidade vai além de saber quantos pontos valem um set ou quantos toques uma dupla pode dar. Esse conhecimento ajuda a interpretar a dinâmica da partida, compreender por que os atletas escolhem determinados movimentos e avaliar melhor atitudes como a cobertura do bloqueio, a direção do saque, o posicionamento defensivo, o levantamento e a decisão de atacar ou apenas manter a bola em jogo.</p>
+
+<p>A mesma lógica vale para outras modalidades. Conhecer as <a href="https://cortedosesportes.com.br/regras-do-handebol-tempo-de-jogo-faltas-cartoes-tiro-de-7-metros.html">regras do handebol</a> permite entender o contato físico, o jogo passivo, as exclusões e o tiro de sete metros, enquanto as <a href="https://cortedosesportes.com.br/regras-do-futsal-tempo-de-jogo-faltas-acumuladas-goleiro-linha.html">regras do futsal</a> explicam as faltas acumuladas, as substituições rápidas e o uso estratégico do goleiro-linha. Já <a href="https://cortedosesportes.com.br/regras-futebol-americano-nfl-como-funciona.html"> as regras do futebol americano</a> ajuda a acompanhar descidas, jardas, pontuação e controle do cronômetro. Quando o torcedor domina o básico de cada esporte, passa a enxergar com mais clareza os movimentos, as decisões, o desempenho dos atletas e os detalhes que determinam o resultado.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "volei-praia";
+const CATEGORY_NAME = "Volei de Praia";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
