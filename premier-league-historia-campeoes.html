@@ -1,555 +1,733 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Premier League: origem, formato e clubes que dominaram a liga | Corte dos Esportes</title>
-  <meta name="description" content="Criada em 1992, a Premier League virou referência global ao unir força comercial, grandes rivalidades, estádios cheios e campeões históricos." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
-
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
-
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
-
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    .ad-slot { overflow: hidden; max-width: 100%; }
-
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
-
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main { flex: 1; }
-
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-container img { height: 34px; }
-
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
-
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
-
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
-
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
-
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
-
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
-
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .meta a:hover { text-decoration: underline; }
-
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
-
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
-
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
-
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
-
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
-
-    .desc { font-size: 14px; line-height: 1.4; }
-
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
-
-    footer a:hover { color: #1E4BA5; }
-
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
-
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
-
-      h1 { font-size: 34px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Premier League: história, maiores campeões e clubes que dominaram a liga | Corte dos Esportes</title>
+<meta name="description" content="Criada em 1992, transformou a elite do futebol inglês em um fenômeno global, sem abandonar rivalidades, estádios e tradições que ajudam a explicar a força do campeonato." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
-
 <body>
-
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
 </header>
-
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Premier League: história, maiores campeões e clubes que dominaram a liga</h1>
+<p class="subhead" id="articleExcerpt">Criada em 1992, transformou a elite do futebol inglês em um fenômeno global, sem abandonar rivalidades, estádios e tradições que ajudam a explicar a força do campeonato.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">21/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/taca-premier-league-singapura.jpg",
+  "caption": "Taça da Premier League fotografada em Singapura.",
+  "description": "Taça da Premier League fotografada de frente em Singapura.",
+  "width": 3024,
+  "height": 4032,
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Trophy_of_FA_Premier_League_in_Singapore,_2023.jpg",
+  "creditText": "Foto: Pangalau/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Pangalau"
+  },
+  "copyrightNotice": "Pangalau/Wikimedia Commons."
+}
+</script>
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="taca-premier-league-singapura.jpg" alt="Taça da Premier League fotografada de frente em Singapura." width="3024" height="4032" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">Taça da Premier League fotografada em Singapura. Foto: Pangalau/Wikimedia Commons.</figcaption>
+</figure>
+<p>A Premier League não é apenas a primeira divisão da Inglaterra. Desde sua criação, o campeonato se tornou uma das propriedades esportivas mais valiosas e acompanhadas do planeta, atraindo grandes jogadores, treinadores de diferentes escolas e investimentos capazes de transformar os clubes.</p>
+
+<p>A força comercial, porém, explica apenas parte dessa história. A liga inglesa cresceu porque conseguiu combinar dinheiro, exposição internacional e organização com elementos que já faziam parte do futebol do país: estádios cheios, rivalidades centenárias, clubes ligados às próprias comunidades e um calendário no qual praticamente toda rodada oferece confrontos de grande interesse.</p>
+
+<p>Ao longo da era Premier League, Manchester United, Manchester City, Chelsea, Arsenal e Liverpool concentraram a maior parte dos títulos. Ainda assim, as conquistas de Blackburn Rovers e Leicester City provaram que o campeonato também pode produzir campanhas capazes de desafiar as principais potências.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </div>
 
-<main>
-  <div class="page">
-    <div class="layout">
+<p><strong>Como surgiu a competição</strong></p>
 
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">Premier League: origem, formato e clubes que dominaram a liga</h1>
-          <p class="subhead" id="articleExcerpt">Criada em 1992, a Premier League virou referência global ao unir força comercial, grandes rivalidades, estádios cheios e campeões históricos.</p>
+<p>A Premier League nasceu de uma reorganização profunda do futebol inglês no começo da década de 1990. Os principais clubes da antiga First Division buscavam maior autonomia para negociar contratos comerciais, direitos de transmissão e patrocínios.</p>
 
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">15/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
-          </div>
+<p>Em 17 de julho de 1991, foi assinado o acordo que estabeleceu os princípios da nova competição. Em 20 de fevereiro de 1992, os 22 integrantes da primeira divisão deixaram coletivamente a Football League. A Premier League foi formalmente constituída como empresa em 27 de maio daquele ano, com independência comercial para organizar seus próprios acordos.</p>
 
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
+<p>A primeira rodada foi disputada em 15 de agosto de 1992. A edição inaugural reuniu 22 clubes.</p>
 
-          <article id="articleBody">
-            <p>A Premier League virou mais do que um campeonato nacional. Desde 1992, quando substituiu a antiga First Division, a liga inglesa cresceu, ganhou alcance global e se transformou em uma das marcas mais poderosas do futebol mundial.</p>
+<p>A mudança não apagou a história anterior do Campeonato Inglês. Passou a representar a divisão máxima do país, mas os títulos conquistados antes de 1992 continuam fazendo parte da história da elite inglesa. Essa distinção é importante porque a lista dos maiores campeões da era Premier League não é igual ao ranking geral de títulos nacionais da Inglaterra.</p>
 
-            <p>Esse salto veio com a modernização dos estádios, a explosão das transmissões e a força comercial do torneio. Com o tempo, a Premier League passou a atrair audiência em escala internacional e se consolidou como referência dentro e fora de campo.</p>
+<p><strong>A diminuição de clubes</strong></p>
 
-            <p>Mesmo com essa dimensão global, a liga não perdeu sua essência. Parte da força da Premier League está justamente na combinação entre mercado, tradição e identidade local, com clubes profundamente ligados às cidades, rivalidades e comunidades que moldaram a história do futebol inglês.</p>
+<p>A liga começou com 22 participantes, mas o plano de redução para 20 equipes já fazia parte da reorganização. A mudança foi concluída ao fim da temporada 1994/95, quando quatro clubes foram rebaixados e apenas dois subiram.</p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>Desde 1995/96, o campeonato é disputado por 20 times. Cada equipe enfrenta os outros 19 adversários duas vezes, uma em casa e outra fora, totalizando 38 partidas por clube e 380 jogos em toda a temporada.</p>
 
-            <p><strong>Os maiores campeões da era Premier League</strong></p>
+<p>Os três últimos colocados são rebaixados para a Championship, segunda divisão do país. Eles são substituídos pelos dois primeiros colocados da Championship e pelo vencedor dos playoffs de acesso.</p>
 
-            <p>A lista abaixo mostra o domínio de 5 dos times do grupo do "Big 6":</p>
+<p><strong>Os maiores campeões da era Premier League</strong></p>
 
-            <p>Manchester United — 13 títulos</p>
+<p>Somente sete clubes conquistaram o troféu desde a temporada inaugural de 1992/93. Depois do título do Arsenal em 2025/26, a divisão das conquistas ficou assim:</p>
 
-            <p>Manchester City — 8 títulos</p>
+<ul>
+<li>Manchester United — 13 títulos</li>
+<li>Manchester City — 8 títulos</li>
+<li>Chelsea — 5 títulos</li>
+<li>Arsenal — 4 títulos</li>
+<li>Liverpool — 2 títulos</li>
+<li>Blackburn Rovers — 1 título</li>
+<li>Leicester City — 1 título</li>
+<li>Atual campeão: Arsenal, vencedor da temporada 2025/26</li>
+</ul>
 
-            <p>Chelsea — 5 títulos</p>
+<p>O Manchester United continua isolado como o maior campeão da história, mesmo não vencendo desde a temporada 2012/13. O Arsenal, por sua vez, chegou ao quarto troféu ao encerrar uma espera de 22 anos, depois de três temporadas consecutivas terminando na segunda colocação. A <a href="https://cortedosesportes.com.br/arsenal-campeao-premier-league-2026-jejum-22-anos.html">conquista de 2025/26</a> colocou o clube londrino mais perto do Chelsea e abriu um novo capítulo na disputa entre as principais forças inglesas.</p>
 
-            <p>Arsenal — 4 títulos</p>
+<p><strong>A era de Alex Ferguson</strong></p>
 
-            <p>Liverpool — 2 títulos</p>
+<p>O primeiro grande domínio da Premier League pertenceu ao Manchester United. Sob o comando de Ferguson, o clube conquistou 13 títulos.</p>
 
-            <p>Blackburn Rovers — 1 título</p>
+<p>As temporadas das conquistas:</p>
 
-            <p>Leicester City — 1 título</p>
+<ul>
+<li>1992/93</li>
+<li>1993/94</li>
+<li>1995/96</li>
+<li>1996/97</li>
+<li>1998/99</li>
+<li>1999/2000</li>
+<li>2000/01</li>
+<li>2002/03</li>
+<li>2006/07</li>
+<li>2007/08</li>
+<li>2008/09</li>
+<li>2010/11</li>
+<li>2012/13</li>
+</ul>
 
-            <p>Atual campeão: Arsenal temporada 2026</p>
+<p>Todos os 13 títulos foram conquistados com o técnico francês. Além de ganhar a edição inaugural, o treinador construiu uma sequência de domínio, renovação de elenco e competitividade que nenhuma outra equipe conseguiu repetir por tanto tempo na era Premier League.</p>
 
-            <p>Como curiosidade, a lista também mostra jejuns importantes entre campeões da era Premier League. O Arsenal não conquista a liga desde 2003/04, o Chelsea desde 2016/17 e o Manchester United desde 2012/13. Já o último título do Manchester City foi em 2023/24.</p>
+<p>Boa parte dessa identidade foi construída em <a href="https://cortedosesportes.com.br/old-trafford-historia-recordes-estadio-manchester-united.html">Old Trafford</a>. A história do clube e da competição se conecta ao peso do estádio, conhecido como Teatro dos Sonhos.</p>
 
-            <p>O Blackburn Rovers foi campeão em 1994/95, em um dos títulos mais simbólicos do início da Premier League. Mesmo sem manter protagonismo nas décadas seguintes, aquela conquista segue como uma surpresa histórica da era moderna da liga.</p>
+<p><strong>Os Invencíveis e a retomada com Arteta</strong></p>
 
-            <p>O Leicester City conquistou a Premier League em 2015/16 e protagonizou uma das campanhas mais improváveis do futebol europeu moderno. Até hoje, aquele título é tratado como uma das maiores histórias da competição.</p>
+<p>O Arsenal foi o principal adversário do Manchester United na passagem dos anos 1990 para os anos 2000. Com Arsène Wenger, os Gunners conquistaram a competição em 1997/98, 2001/02 e 2003/04.</p>
 
-            <p>Essa divisão ajuda a entender como a liga passou por diferentes ciclos de domínio. O Manchester United marcou a virada dos anos 1990 e o começo dos anos 2000 com uma era histórica sob Alex Ferguson. Depois, Arsenal, Chelsea e mais tarde o Manchester City assumiram protagonismo em fases distintas.</p>
+<p>A última dessas campanhas entrou para a história. O time terminou as 38 rodadas sem perder, com 26 vitórias e 12 empates. A equipe liderada por nomes como Thierry Henry, Patrick Vieira, Dennis Bergkamp, Ashley Cole e Sol Campbell recebeu o apelido de “Invencíveis”.</p>
 
-            <p><strong>A geografia ajuda a explicar a liga</strong></p>
+<p>A espera pelo título seguinte durou 22 anos. Em 2025/26, depois de três vice-campeonatos consecutivos, o time de Mikel Arteta superou o Manchester City e voltou ao topo. O Arsenal terminou aquela campanha com a melhor defesa da liga, 19 partidas sem sofrer gols e apenas 27 gols concedidos.</p>
 
-            <p>A Premier League também se explica pelo mapa da Inglaterra. Londres concentra parte dos clubes mais midiáticos e rivalidades fortes, enquanto Manchester e Liverpool formam outro eixo histórico do campeonato. Somadas a outras regiões tradicionais, essas cidades ajudam a dar à liga uma identidade marcada por ambientes, torcidas e culturas locais muito diferentes entre si.</p>
+<p><strong>O equilíbrio de forças</strong></p>
 
-            <p><strong>Deslocamentos, calendário e rotina inglesa</strong></p>
+<p>O Chelsea alterou a estrutura de poder a partir da temporada 2004/05. Com José Mourinho, o clube conquistou dois títulos consecutivos e se estabeleceu entre as maiores potências do futebol inglês.</p>
 
-            <p>Na Inglaterra, os deslocamentos entre cidades costumam ser curtos e muitas viagens fazem parte de uma rotina logística bem integrada, com uso frequente de trem. O desgaste da temporada pesa menos pela distância e mais pela sequência de jogos, copas e compromissos europeus ao longo do calendário.</p>
+<p>Os Blues voltaram a ser campeões em 2009/10, 2014/15 e 2016/17, alcançando cinco troféus na era Premier League. O período mostrou como investimento, planejamento esportivo e treinadores de alto nível poderiam acelerar a transformação de um clube em candidato permanente aos principais títulos.</p>
 
-            <p>Nesse contexto, a FA Cup também ocupa papel central na tradição do futebol inglês. Leia também: <a href="https://cortedosesportes.com.br/fa-cup-historia-formato-maiores-campeoes-curiosidades.html">FA Cup: história, formato, maiores campeões e curiosidades da copa mais antiga do futebol</a>.</p>
+<p>Stamford Bridge se tornou um dos centros desse novo cenário. O estádio acompanhou diferentes gerações vitoriosas e consolidou sua importância entre os grandes palcos do futebol londrino.</p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p><strong>O domínio da era Guardiola</strong></p>
 
-            <p><strong>Muito além do Big Six</strong></p>
+<p>O Manchester City conquistou seu primeiro título em 2011/12, com o gol histórico de Sergio Agüero nos acréscimos da última rodada. O clube voltou ao topo em 2013/14 e, posteriormente, iniciou o período mais dominante de sua história sob o comando de <a href="https://cortedosesportes.com.br/pep-guardiola-carreira-legado-titulos-estilo-de-jogo.html">Pep Guardiola</a>.</p>
 
-            <p>A fama internacional da Premier League costuma girar em torno do chamado Big Six — Manchester United, Liverpool, Arsenal, Chelsea, Tottenham e Manchester City. Mas a força do campeonato também está fora desse grupo.</p>
+<p>Títulos do City na era Premier League:</p>
 
-            <p>A liga inglesa construiu sua reputação porque times de médio porte frequentemente jogam em estádios cheios, com muita intensidade e capacidade de dificultar a vida dos favoritos. Isso ajuda a manter o torneio vivo durante toda a temporada e reforça a sensação de competitividade rodada após rodada.</p>
+<ul>
+<li>2011/12 — Roberto Mancini</li>
+<li>2013/14 — Manuel Pellegrini</li>
+<li>2017/18 — Pep Guardiola</li>
+<li>2018/19 — Pep Guardiola</li>
+<li>2020/21 — Pep Guardiola</li>
+<li>2021/22 — Pep Guardiola</li>
+<li>2022/23 — Pep Guardiola</li>
+<li>2023/24 — Pep Guardiola</li>
+</ul>
 
-            <p><strong>Rivalidades que sustentam a mística</strong></p>
+<p>Guardiola comandou o City em seis das oito conquistas do clube. Nesse período, a equipe também se tornou a primeira da história a vencer quatro temporadas consecutivas, entre 2020/21 e 2023/24.</p>
 
-            <p>Toda grande liga precisa de grandes confrontos, e a Premier League construiu muitos deles. Arsenal x Tottenham representa o peso do dérbi do norte de Londres. Liverpool x Manchester United virou duelo entre potências históricas. Manchester City x Manchester United transformou a rivalidade local em um dos centros das atenções do futebol moderno.</p>
+<p>A campanha de 2017/18 terminou com uma diferença de 19 pontos sobre o Manchester United, a maior vantagem já registrada por um campeão da Premier League.</p>
 
-            <p>Esses jogos valem mais do que três pontos. Eles ajudam a sustentar a memória do campeonato, alimentam gerações de torcedores e mantêm a Premier League ligada à sua própria história.</p>
+<p><strong>O retorno do protagonismo</strong></p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>O Liverpool chegou à era Premier League carregando uma das histórias mais vitoriosas do futebol inglês, mas precisou esperar até 2019/20 para conquistar seu primeiro título no novo formato.</p>
 
-            <p><strong>Por que a Premier League virou referência mundial</strong></p>
+<p>Com Jürgen Klopp, o clube construiu uma equipe baseada em intensidade, pressão alta, velocidade ofensiva e grande força coletiva. O título de 2019/20 encerrou um jejum de 30 anos na primeira divisão inglesa.</p>
 
-            <p>A Premier League se consolidou como referência mundial porque conseguiu expandir sua força comercial sem perder completamente a identidade que sustenta o futebol inglês. A liga reúne audiência global, grandes elencos, rivalidades históricas e uma atmosfera que segue valorizando o peso de cada jogo.</p>
+<p>A segunda conquista veio em 2024/25, recolocando o Liverpool no topo. Embora tenha menos taças na era Premier League do que United, City, Chelsea e Arsenal, o clube permanece entre os dois maiores campeões quando toda a história da elite inglesa é considerada.</p>
 
-            <p>No fim, esse é o ponto que mantém a Premier League em destaque: não se trata apenas de mercado ou visibilidade, mas da capacidade de unir tradição, competitividade e identidade local em um campeonato que continua entre os mais fortes do mundo.</p>
-          </article>
-        </div>
-      </section>
+<p>A ligação entre equipe, torcida e estádio também ajuda a explicar essa força. <a href="https://cortedosesportes.com.br/anfield-historia-tradicao-estadio-liverpool.html">Anfield</a> não é apenas o local dos jogos do Liverpool, mas um elemento central da identidade competitiva do clube.</p>
 
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
-
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
-
-    </div>
-  </div>
-</main>
-
-<footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
-</footer>
-
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
 <script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "Futebol";
-
-  const AGENDA_JSON_URL = "agenda.json";
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
-
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
-
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
-
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
-
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
-
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
-
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
-
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
-
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
-
-  loadAgenda();
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+</div>
 
+<p><strong>As "zebras" que desafiaram as potências</strong></p>
+
+<p>O Blackburn Rovers foi campeão em 1994/95, interrompendo o domínio inicial do Manchester United. Liderada pelos gols de Alan Shearer, a equipe terminou um ponto à frente do United e conquistou um dos títulos mais marcantes dos primeiros anos da competição.</p>
+
+<p>Mais de duas décadas depois, o Leicester City protagonizou uma surpresa ainda maior. O clube iniciou a temporada 2015/16 longe da lista de favoritos, mas manteve uma regularidade impressionante sob o comando de Claudio Ranieri.</p>
+
+<p>Com Jamie Vardy, Riyad Mahrez, N’Golo Kanté, Kasper Schmeichel e uma equipe extremamente organizada, o Leicester superou os clubes mais ricos da Inglaterra e conquistou a Premier League. O título se transformou em uma das maiores zebras da história do futebol europeu.</p>
+
+<p><strong>O peso do Big Six</strong></p>
+
+<p>A expressão “Big Six” é usada para identificar Arsenal, Chelsea, Liverpool, Manchester City, Manchester United e Tottenham. O grupo reúne clubes com grande torcida, presença internacional, receitas elevadas e participação frequente nas competições europeias.</p>
+
+<p>Cinco integrantes desse bloco já foram campeões da Premier League. A exceção é o Tottenham, que possui títulos importantes na história geral do futebol inglês, mas ainda não venceu a liga desde a criação do formato atual em 1992.</p>
+
+<p>O protagonismo do Big Six não significa que os demais clubes sejam meros participantes. Equipes como Newcastle, Aston Villa, Everton, Nottingham Forest, e outras forças regionais carregam tradições próprias, torcidas numerosas e capacidade para desafiar os favoritos.</p>
+
+<p><strong>As rivalidades</strong></p>
+
+<p>A Premier League ganhou alcance global, mas grande parte de sua força continua ligada a disputas locais e históricas.</p>
+
+<p>Arsenal e Tottenham protagonizam o dérbi do norte de Londres. Manchester United e Manchester City dividem uma das cidades mais importantes do futebol mundial. Liverpool e Everton disputam o dérbi de Merseyside. Chelsea, Arsenal, Tottenham, Fulham, Brentford, Crystal Palace e West Ham representam diferentes regiões e identidades da capital inglesa.</p>
+
+<p>Liverpool e Manchester United formam uma rivalidade que ultrapassa o campo. O confronto reúne os dois maiores campeões da história completa da elite inglesa e também reflete a antiga competição econômica e cultural entre as cidades.</p>
+
+<p>Esses jogos não valem somente três pontos. Eles influenciam temporadas, pressionam treinadores, fortalecem identidades e mantêm a Premier League conectada às raízes do futebol inglês.</p>
+
+<p><strong>Calendário, copas e desgaste físico</strong></p>
+
+<p>A extensão territorial da Inglaterra permite deslocamentos menores do que os encontrados em países continentais de grandes dimensões. Isso, entretanto, não torna a temporada simples.</p>
+
+<p>Os clubes precisam conciliar as 38 rodadas da Premier League com a Copa da Liga Inglesa, a <a href="https://cortedosesportes.com.br/fa-cup-historia-formato-maiores-campeoes-curiosidades.html">FA Cup</a> e as competições organizadas pela Uefa. Datas internacionais e compromissos das seleções aumentam ainda mais o desgaste.</p>
+
+<p><strong>A força financeira e o alcance global</strong></p>
+
+<p>A transformação da Premier League em referência mundial também passa pelo tamanho de sua operação financeira. Direitos de transmissão, patrocínios, receitas comerciais, bilheteria, hospitalidade e exploração dos estádios formam uma estrutura que coloca os clubes ingleses em uma posição privilegiada no mercado internacional.</p>
+
+<p>Na temporada 2025/26, os 20 participantes da Premier League superaram £7 bilhões em receitas operacionais combinadas, sem considerar valores obtidos diretamente com transferências de jogadores. O número representa uma projeção, porque os balanços completos dos clubes são divulgados posteriormente, mas confirma um novo avanço em relação aos £6,8 bilhões registrados em 2024/25.</p>
+
+<p>Na temporada anterior, as principais fontes de receita dos clubes foram:</p>
+
+<ul>
+<li>Direitos de transmissão — £3,4 bilhões</li>
+<li>Receitas comerciais — £2,4 bilhões</li>
+<li>Bilheteria, hospitalidade e receitas de dias de jogo — mais de £1 bilhão</li>
+</ul>
+
+<p>A força televisiva continua sendo um dos pilares do modelo. A Premier League vende seus direitos de forma centralizada e depois distribui parte da arrecadação entre os participantes. Esse sistema garante que todos os clubes recebam uma parcela relevante, embora o valor final varie de acordo com a posição na tabela e com a quantidade de partidas exibidas ao vivo no Reino Unido.</p>
+
+<p><strong>O prêmio do campeão</strong></p>
+
+<p>Diferentemente de outras competições, a Premier League não entrega ao campeão um prêmio único e separado pela conquista do título. O dinheiro faz parte dos chamados pagamentos centrais, que reúnem diferentes fontes de receita:</p>
+
+<ul>
+<li>Parcela igualitária dos direitos de transmissão</li>
+<li>Distribuição das receitas comerciais da liga</li>
+<li>Pagamento por posição na classificação</li>
+<li>Taxas relacionadas aos jogos exibidos ao vivo no Reino Unido</li>
+<li>Parcela dos direitos internacionais</li>
+</ul>
+
+<p>O campeão recebe a maior cota por desempenho. O primeiro colocado ganha 20 vezes o valor-base do pagamento por mérito, enquanto o vice recebe 19 vezes, seguindo uma escala até o último colocado, que fica com apenas uma cota. Na temporada anterior, cada posição representou aproximadamente £2,6 milhões, e o campeão recebeu £53,1 milhões somente pelo mérito esportivo.</p>
+
+<p>Com o título de 2025/26, o Arsenal ficou com a maior parcela de mérito da temporada. Além desse pagamento, o clube recebeu as cotas igualitárias, as receitas dos direitos internacionais, os valores comerciais e as taxas relacionadas aos jogos transmitidos.</p>
+
+<p>Esse montante não corresponde à receita total do Arsenal na temporada. Entradas de bilheteria, patrocínios próprios, venda de produtos, contratos comerciais e premiações das competições europeias são contabilizadas separadamente. Também existem possíveis bônus previstos nos contratos com patrocinadores, jogadores e integrantes da comissão técnica.</p>
+
+<p><strong>Fair play financeiro e controle dos gastos</strong></p>
+
+<p>A enorme capacidade de arrecadação não significa que os clubes possam gastar sem limites. Durante a temporada 2025/26, a Premier League continuou utilizando as Regras de Rentabilidade e Sustentabilidade, conhecidas pela sigla PSR.</p>
+
+<p>Pelo regulamento, um clube que permaneceu na Premier League durante todo o período de avaliação poderia acumular até £105 milhões em perdas ajustadas ao longo de três temporadas. O limite era reduzido em £22 milhões para cada temporada que a equipe tivesse disputado na Championship dentro desse intervalo.</p>
+
+<p>Nem todo investimento entrava integralmente nessa conta. Despesas consideradas importantes para o desenvolvimento do futebol, como investimentos em categorias de base, futebol feminino, projetos comunitários e infraestrutura, poderiam ser retiradas do cálculo ajustado. O objetivo era controlar gastos excessivos sem impedir que os clubes modernizassem estádios, academias e estruturas esportivas.</p>
+
+<p>As equipes que ultrapassassem os limites poderiam ser investigadas e julgadas por comissões independentes. Entre as punições possíveis estavam multas, restrições e perda de pontos, como ocorreu em casos anteriores envolvendo clubes da competição.</p>
+
+<p>A temporada 2025/26 também marcou a transição para um novo modelo. A partir de 2026/27, a Premier League passou a adotar o Squad Cost Ratio, sistema que limita os gastos relacionados ao elenco a 85% das receitas do futebol e do resultado líquido obtido com negociações de jogadores. Clubes classificados para competições europeias também precisam respeitar o limite mais rígido de 70% estabelecido pela Uefa.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Uma liga para quase todo o planeta</strong></p>
+
+<p>A dimensão financeira está diretamente ligada ao seu alcance internacional. O campeonato é transmitido em 189 dos 193 países reconhecidos pelas Nações Unidas, com partidas disponíveis em aproximadamente 900 milhões de residências ao redor do mundo. A liga também possui cerca de 1,87 bilhão de seguidores globais que interagem semanalmente com seus conteúdos por diferentes meios.</p>
+
+<p>Essa presença global amplia o valor dos direitos de transmissão e fortalece os contratos comerciais dos clubes. Um patrocinador de camisa, fornecedor de material esportivo ou parceiro oficial não está comprando exposição apenas na Inglaterra, mas acesso a uma audiência distribuída por Europa, Ásia, África, América e Oceania.</p>
+
+<p>É esse ciclo que sustenta o poder econômico da competição: o alcance mundial valoriza os direitos e os patrocínios, o aumento das receitas permite investimentos em jogadores e estruturas, e a presença de grandes nomes mantém o interesse internacional. Por isso, a liga não é apenas o campeonato nacional mais rico do futebol europeu, mas uma das maiores plataformas esportivas e comerciais do planeta.</p>
+
+<p><strong>A referência mundial</strong></p>
+
+<p>A Premier League alcançou projeção internacional porque soube transformar o campeonato em um produto global sem eliminar completamente suas características locais.</p>
+
+<p>A competição reúne grandes jogadores, treinadores de diferentes nacionalidades, estádios reconhecidos mundialmente e contratos comerciais de enorme alcance. Ao mesmo tempo, continua sustentada por clubes com identidades regionais fortes, rivalidades históricas e torcedores que tratam cada partida como parte da vida de suas origens.</p>
+
+<p>O equilíbrio absoluto não existe: os clubes mais ricos concentram títulos, receitas e os elencos mais valiosos. Ainda assim, o sistema de acesso e rebaixamento, a força das equipes intermediárias e a intensidade do calendário impedem que o campeonato seja reduzido a poucos confrontos decisivos.</p>
+
+<p>É essa combinação que explica a permanência da Premier League entre as principais competições do futebol. A liga mudou financeiramente, ampliou suas fronteiras e se tornou uma marca mundial, mas continua encontrando sua maior força naquilo que já definia o futebol inglês antes de 1992: tradição, rivalidade, pertencimento e a certeza de que cada rodada pode produzir uma nova história.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
 <!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
-
 </body>
 </html>
