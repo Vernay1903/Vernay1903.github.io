@@ -1,544 +1,686 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Bundesliga: tradição, hegemonia do Bayern e cultura de torcida | Corte dos Esportes</title>
-  <meta name="description" content="A Bundesliga ocupa um lugar especial no futebol europeu porque consegue reunir tradição, identidade regional, estádios cheios e um estilo de competição que continua relevante dentro e fora da Alemanha." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
-
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
-
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
-
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    .ad-slot { overflow: hidden; max-width: 100%; }
-
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
-
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main { flex: 1; }
-
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-container img { height: 34px; }
-
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
-
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
-
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
-
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
-
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
-
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
-
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .meta a:hover { text-decoration: underline; }
-
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
-
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
-
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
-
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
-
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
-
-    .desc { font-size: 14px; line-height: 1.4; }
-
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
-
-    footer a:hover { color: #1E4BA5; }
-
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
-
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
-
-      h1 { font-size: 34px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Bundesliga: história, maiores campeões, finanças e cultura de torcida | Corte dos Esportes</title>
+<meta name="description" content="Criada em 1963, o campeonato transformou o futebol alemão ao reunir tradição regional, formação de jogadores, estádios cheios, controle financeiro e uma relação estrutural entre clubes e torcedores." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
-
 <body>
-
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
-</header>
-
-<div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474" decoding="async">
+</picture>
+</a>
 </div>
-
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
 <main>
-  <div class="page">
-    <div class="layout">
-
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">Bundesliga: tradição, hegemonia do Bayern e cultura de torcida</h1>
-          <p class="subhead" id="articleExcerpt">A Bundesliga ocupa um lugar especial no futebol europeu porque consegue reunir tradição, identidade regional, estádios cheios e um estilo de competição que continua relevante dentro e fora da Alemanha.</p>
-
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">16/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
-          </div>
-
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
-
-          <!-- ANÚNCIO (ARTIGO - TOPO) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
-            <!-- Display-Article-Meio -->
-            <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-4145492637375431"
-              data-ad-slot="8702501261"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-
-          <article id="articleBody">
-            <p>A Bundesliga ocupa um lugar especial no futebol europeu porque consegue reunir tradição, identidade regional, estádios cheios e um estilo de competição que continua relevante dentro e fora da Alemanha. Criada em 1963, a liga ajudou a transformar o país em uma potência do esporte e virou referência por unir organização, formação de talentos e uma relação muito forte entre clubes e torcedores.</p>
-
-            <p><strong>Como nasceu a Bundesliga</strong></p>
-
-            <p>A Bundesliga foi criada para organizar o futebol alemão em uma liga nacional unificada. A estreia oficial aconteceu em 24 de agosto de 1963, encerrando o antigo modelo regional e dando ao país uma competição mais forte, mais centralizada e mais preparada para crescer tecnicamente e comercialmente. Desde então, a liga passou a ser palco de grandes jogadores, títulos históricos e rivalidades que ajudaram a consolidar a Alemanha como uma das referências do futebol mundial.</p>
-
-            <p>Ao longo de sua história, a Bundesliga teve 13 campeões diferentes desde a fundação. A lista dos vencedores mostra como a competição passou por vários ciclos antes de o domínio do Bayern atingir o tamanho atual:</p>
-
-            <p>Atual campeão temporada 2025/2026 Bayern de Munique</p>
-            <p>Bayern de Munique – 35 títulos</p>
-            <p>Borussia Dortmund – 5 títulos</p>
-            <p>Borussia Mönchengladbach – 5 títulos</p>
-            <p>Werder Bremen – 4 títulos</p>
-            <p>Hamburg – 3 títulos</p>
-            <p>VfB Stuttgart – 3 títulos</p>
-            <p>Köln – 2 títulos</p>
-            <p>Kaiserslautern – 2 títulos</p>
-            <p>Bayer Leverkusen – 1 título</p>
-            <p>Wolfsburg – 1 título</p>
-            <p>Eintracht Braunschweig – 1 título</p>
-            <p>Nürnberg – 1 título</p>
-            <p>1860 Munique – 1 título</p>
-
-            <!-- ANÚNCIO (ARTIGO - MEIO) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p><strong>A construção da hegemonia do Bayern de Munique</strong></p>
-
-            <p>Quando a Bundesliga começou, o Bayern ainda não era o gigante absoluto que se tornou depois. O clube sequer entrou na edição inaugural da liga e só mais tarde iniciou a caminhada que o transformaria no maior campeão do país. Essa ascensão passou por gerações marcantes, estrutura forte, estabilidade administrativa e capacidade de se renovar sem perder competitividade.</p>
-
-            <p>Hoje, o Bayern é o maior símbolo da era Bundesliga. O clube chegou ao seu 33º título ao vencer a edição 2024/25. Para dimensionar esse tamanho, basta olhar para a distância em relação aos segundos maiores campeões da história da liga: Borussia Dortmund e Borussia Mönchengladbach têm 5 títulos cada, o que deixa o Bayern 28 conquistas à frente.</p>
-
-            <p>A hegemonia do Bayern não se sustenta apenas em investimento. Ela também está ligada à capacidade de formar elencos fortes por longos períodos, atrair protagonistas, manter uma cultura vencedora e responder rapidamente quando perde espaço. O título retomado em 2024/25, depois da quebra da sequência pelo Bayer Leverkusen, reforçou justamente essa imagem de resiliência competitiva.</p>
-
-            <p><strong>Muito além do campeão: a força dos outros clubes</strong></p>
-
-            <p>A Bundesliga continua relevante porque possui clubes com identidade muito clara. Borussia Dortmund, Borussia Mönchengladbach, Werder Bremen, Stuttgart, Hamburg e Köln, por exemplo, ajudaram a escrever capítulos importantes da competição e mantêm bases de torcida que sustentam o tamanho cultural da liga. A história do campeonato não se resume ao líder mais vencedor; ela também passa por arquibancadas tradicionais, rivalidades locais e diferentes fases de protagonismo.</p>
-
-            <p>Isso dá à Bundesliga uma característica interessante: o Bayern concentra a hegemonia esportiva, mas a liga conserva pluralidade na cultura do futebol. Em outras palavras, a taça pode até ter dono frequente, mas o campeonato continua cheio de camisas pesadas, cidades mobilizadas e contextos regionais muito fortes.</p>
-
-            <p><strong>A cultura de torcida como marca da Bundesliga</strong></p>
-
-            <p>Poucas ligas de elite são tão associadas ao torcedor quanto a Bundesliga. Parte disso passa pela regra do 50+1, segundo a qual os membros do clube precisam manter o controle majoritário dos direitos de voto. Na prática, esse modelo preserva a influência da base associativa e reduz o poder absoluto de investidores externos sobre as decisões centrais das equipes.</p>
-
-            <!-- ANÚNCIO (ARTIGO - FINAL) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p>Esse formato ajuda a explicar por que o futebol alemão costuma ser visto como um ambiente mais conectado à comunidade. A própria Bundesliga destaca que a regra fortalece a voz dos torcedores, ajuda a preservar tradições e contribui para uma cultura de estádio marcada por bandeiras, mosaicos, grandes festas nas arquibancadas e preços historicamente mais acessíveis do que em outros centros europeus.</p>
-
-            <p>Além disso, os clubes alemães seguem registrando crescimento no número de associados, outro sinal de que a relação entre arquibancada e instituição não é apenas estética, mas estrutural. Em muitos casos, o torcedor não é só consumidor do espetáculo: ele faz parte do funcionamento simbólico e político do clube.</p>
-
-            <p><strong>Por que a Bundesliga continua tão relevante</strong></p>
-
-            <p>A Bundesliga segue forte porque oferece algo que vai além da disputa pelo título. A liga entrega tradição, formação de jogadores, identidade local e estádios que mantêm atmosfera intensa ao longo da temporada. O Bayern domina a parte mais pesada da história recente, mas o campeonato continua interessante porque preserva aquilo que muitos torcedores ainda procuram no futebol: pertencimento, rivalidade e conexão real entre clube e comunidade. Para quem gosta de comparar os grandes campeonatos europeus e entender diferentes modelos de sucesso, também vale conferir <a href="https://cortedosesportes.com.br/premier-league-historia-campeoes.html">a história da Premier League e seus campeões</a>.</p>
-
-            <p>No fim das contas, é isso que faz a Bundesliga ser mais do que uma liga marcada pela hegemonia bávara. Ela é uma competição em que a força do campeão convive com a tradição de várias camisas e com uma cultura de torcida que segue sendo uma das mais marcantes do futebol mundial.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
-
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
-
-    </div>
-  </div>
-</main>
-
-<footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
-</footer>
-
-<script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "FUTEBOL";
-
-  const AGENDA_JSON_URL = "agenda.json";
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
-
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
-
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
-
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
-
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
-
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
-
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
-
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
-
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
-
-  loadAgenda();
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Bundesliga: história, maiores campeões, finanças e cultura de torcida</h1>
+<p class="subhead" id="articleExcerpt">Criada em 1963, o campeonato transformou o futebol alemão ao reunir tradição regional, formação de jogadores, estádios cheios, controle financeiro e uma relação estrutural entre clubes e torcedores.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">22/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/meisterschale-bundesliga-gramado.jpg",
+  "caption": "A Meisterschale, troféu entregue ao campeão da Bundesliga em exibição.",
+  "description": "Meisterschale sobre um pedestal branco, com o gramado e as arquibancadas desfocados ao fundo.",
+  "width": 4288,
+  "height": 2848,
+  "license": "https://creativecommons.org/licenses/by/2.0/",
+  "acquireLicensePage": "https://www.ccnull.de/foto/meisterschale-fussball-bundesliga/1045882",
+  "creditText": "Foto: Marco Verch/ccnull.de.",
+  "creator": {
+    "@type": "Person",
+    "name": "Marco Verch"
+  },
+  "copyrightNotice": "Marco Verch/ccnull.de."
+}
 </script>
-
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="meisterschale-bundesliga-gramado.jpg" alt="Meisterschale sobre um pedestal branco, com o gramado e as arquibancadas desfocados ao fundo." width="4288" height="2848" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">A Meisterschale, troféu entregue ao campeão da Bundesliga em exibição. Foto: Marco Verch/ccnull.de.</figcaption>
+</figure>
+<p>A Bundesliga ocupa um lugar especial no futebol europeu porque combina características que nem sempre aparecem juntas nas principais ligas do continente. O campeonato movimenta bilhões de euros, atrai estrelas internacionais e possui clubes competitivos nas competições europeias, mas ainda preserva arquibancadas populares, associações fortes e uma identidade regional muito marcante.</p>
+<p>O Bayern de Munique construiu uma hegemonia sem paralelo na era moderna do futebol alemão. Mesmo assim, a história da Bundesliga não se resume ao clube bávaro. Borussia Dortmund, Borussia Mönchengladbach, Werder Bremen, Hamburgo, Stuttgart, Colônia, Kaiserslautern e Bayer Leverkusen também protagonizaram ciclos importantes.</p>
+<p>A competição ainda se diferencia por ter apenas 18 participantes, adotar um sistema de playoff contra o rebaixamento e aplicar a regra do 50+1, criada para preservar o controle dos clubes nas mãos de seus associados.</p>
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<p><strong>Como nasceu a Bundesliga</strong></p>
+<p>Ela foi criada para organizar o futebol alemão em uma liga nacional unificada. Antes de 1963, o país possuía competições regionais, cujos melhores clubes avançavam para a disputa do título nacional.</p>
+<p>A estreia oficial aconteceu em 24 de agosto de 1963, encerrando esse modelo fragmentado e oferecendo à Alemanha Ocidental um campeonato centralizado, com calendário regular e condições melhores para o desenvolvimento técnico e comercial dos clubes.</p>
+<p>A primeira edição contou com 16 equipes. O Colônia foi o campeão inaugural, terminando seis pontos à frente do Meidericher SV, atual Duisburg.</p>
+<p>O Bayern de Munique não participou da temporada de estreia. O clube só chegou à Bundesliga em 1965/66, mas precisou de poucos anos para iniciar a transformação que o levaria à condição de maior campeão da competição.</p>
+<p><strong>O formato do campeonato</strong></p>
+<p>A Bundesliga é disputada por 18 clubes, dois a menos do que Premier League, LaLiga e Serie A. O formato produz uma temporada mais curta, mas mantém o sistema tradicional de pontos corridos com jogos de ida e volta.</p>
+<p>Os dois últimos colocados são rebaixados diretamente para a Bundesliga 2. O 16º colocado disputa um playoff de ida e volta contra o terceiro colocado da segunda divisão. O vencedor do confronto fica com uma vaga na elite na temporada seguinte.</p>
+<p>Esse sistema acrescenta uma decisão depois do encerramento da tabela. Em vez de três rebaixamentos automáticos, como acontece em outras grandes ligas europeias, a Alemanha permite que uma das vagas seja definida em confronto direto.</p>
+<p><strong>Os maiores campeões da história</strong></p>
+<p>A Bundesliga teve 13 campeões diferentes desde sua criação, em 1963. O Bayern de Munique aparece muito à frente dos demais, enquanto Borussia Dortmund e Borussia Mönchengladbach dividem a segunda posição.</p>
+<p>Abaixo a lista completa:</p>
+<ul>
+<li>Bayern de Munique — 34 títulos</li>
+<li>Borussia Dortmund — 5 títulos</li>
+<li>Borussia Mönchengladbach — 5 títulos</li>
+<li>Werder Bremen — 4 títulos</li>
+<li>Hamburgo — 3 títulos</li>
+<li>Stuttgart — 3 títulos</li>
+<li>Colônia — 2 títulos</li>
+<li>Kaiserslautern — 2 títulos</li>
+<li>Bayer Leverkusen — 1 título</li>
+<li>Wolfsburg — 1 título</li>
+<li>Eintracht Braunschweig — 1 título</li>
+<li>Nürnberg — 1 título</li>
+<li>1860 Munique — 1 título</li>
+</ul>
+<p>Atual campeão: Bayern de Munique, vencedor da temporada 2025/26</p>
+<p>Existe uma diferença importante entre os títulos da Bundesliga e o total de campeonatos alemães. O Bayern possui 34 conquistas desde a criação da liga, mas soma 35 títulos nacionais quando também é considerado o troféu obtido em 1932, antes da existência da Bundesliga.</p>
+<p><strong>A construção da hegemonia</strong></p>
+<p>Quando a Bundesliga começou, o Bayern ainda não era o gigante absoluto que se tornaria nas décadas seguintes. O clube sequer foi incluído entre os participantes da primeira edição e estreou apenas na terceira temporada.</p>
+<p>O primeiro título veio em 1968/69. A partir daquele momento, diferentes gerações transformaram o clube na maior força do futebol alemão.</p>
+<p>Títulos do Bayern por período:</p>
+<ul>
+<li>Anos 1960 — 1968/69</li>
+<li>Anos 1970 — 1971/72, 1972/73, 1973/74 e 1979/80</li>
+<li>Anos 1980 — 1980/81, 1984/85, 1985/86, 1986/87, 1988/89 e 1989/90</li>
+<li>Anos 1990 — 1993/94, 1996/97, 1998/99 e 1999/2000</li>
+<li>Anos 2000 — 2000/01, 2002/03, 2004/05, 2005/06, 2007/08 e 2009/10</li>
+<li>De 2010 a 2019 — 2012/13, 2013/14, 2014/15, 2015/16, 2016/17, 2017/18, 2018/19 e 2019/20</li>
+<li>De 2020 a 2026 — 2020/21, 2021/22, 2022/23, 2024/25 e 2025/26</li>
+</ul>
+<p>A relação mostra que a hegemonia não surgiu em um único período. O Bayern conseguiu vencer em diferentes contextos, com mudanças de treinadores, dirigentes, estilos de jogo e gerações de jogadores.</p>
+<p>O auge da sequência aconteceu entre 2012/13 e 2022/23, quando o clube conquistou 11 temporadas consecutivas. O domínio só foi interrompido pelo Bayer Leverkusen em 2023/24.</p>
+<p><strong>O atual título</strong></p>
+<p>O Bayern confirmou o 34º troféu da Bundesliga em 20 de abril de 2026, ao derrotar o Stuttgart por 4 a 2 na Allianz Arena. A conquista foi assegurada na 30ª rodada, com quatro jogos de antecedência.</p>
+<p>O Stuttgart abriu o placar com Chris Führich, mas o Bayern virou com Raphaël Guerreiro, Nicolas Jackson, Alphonso Davies e Harry Kane. Chema Andrés descontou para os visitantes no fim da partida.</p>
+<p>A equipe comandada por Vincent Kompany terminou a Bundesliga com 89 pontos. O grande destaque foi o ataque: o Bayern marcou 122 gols e estabeleceu um novo recorde da competição. Harry Kane terminou como artilheiro pelo terceiro ano consecutivo, com 36 gols.</p>
+<p>Foi ainda o 13º troféu do Bayern nas últimas 14 temporadas.</p>
+<p><strong>A disputa pela segunda posição</strong></p>
+<p>Borussia Dortmund e Borussia Mönchengladbach são os clubes que mais se aproximam do Bayern na lista de campeões da Bundesliga, com cinco títulos cada.</p>
+<p>Títulos do Borussia Dortmund:</p>
+<ul>
+<li>1994/95</li>
+<li>1995/96</li>
+<li>2001/02</li>
+<li>2010/11</li>
+<li>2011/12</li>
+</ul>
+<p>O Dortmund viveu dois ciclos marcantes. O primeiro aconteceu na década de 1990, quando conquistou dois campeonatos consecutivos antes de vencer a Champions League de 1996/97.</p>
+<p>O segundo foi construído por Jürgen Klopp. Com um time jovem, intenso e agressivo na pressão, o Dortmund venceu a Bundesliga em 2010/11 e repetiu a conquista em 2011/12. O último título também encerrou a temporada com recorde de 81 pontos para o clube.</p>
+<p>Títulos do Borussia Mönchengladbach:</p>
+<ul>
+<li>1969/70</li>
+<li>1970/71</li>
+<li>1974/75</li>
+<li>1975/76</li>
+<li>1976/77</li>
+</ul>
+<p>O Gladbach conquistou seus cinco troféus durante a década de 1970. Naquele período, o clube dividiu o protagonismo nacional com o Bayern e apresentou algumas das equipes mais ofensivas da história do futebol alemão.</p>
+<p><strong>Demais campeões</strong></p>
+<p>O Werder Bremen aparece logo depois, com quatro conquistas. O clube foi campeão em 1964/65, 1987/88, 1992/93 e 2003/04.</p>
+<p>A campanha de 2003/04 é especialmente lembrada. Sob o comando de Thomas Schaaf, o Werder venceu a Bundesliga e a Copa da Alemanha, completando uma dobradinha nacional.</p>
+<p>Hamburgo e Stuttgart possuem três títulos cada na era Bundesliga.</p>
+<p>Títulos do Hamburgo:</p>
+<ul>
+<li>1978/79</li>
+<li>1981/82</li>
+<li>1982/83</li>
+</ul>
+<p>Títulos do Stuttgart:</p>
+<ul>
+<li>1983/84</li>
+<li>1991/92</li>
+<li>2006/07</li>
+</ul>
+<p>O Hamburgo viveu seu período mais forte entre o fim dos anos 1970 e o começo dos anos 1980. Além dos títulos nacionais, conquistou a antiga Copa dos Campeões da Europa em 1982/83.</p>
+<p>O Stuttgart teve ciclos mais espaçados. Sua conquista mais recente veio em 2006/07, com uma equipe jovem que cresceu durante a temporada e superou Schalke e Werder Bremen na disputa pelo título.</p>
+<p><strong>A temporada invicta</strong></p>
+<p>O Bayer Leverkusen conquistou seu primeiro título da Bundesliga em 2023/24, encerrando a sequência de 11 troféus consecutivos do Bayern.</p>
+<p>Comandado por Xabi Alonso, o Leverkusen terminou as 34 rodadas sem perder. Foram 28 vitórias, seis empates e 90 pontos, além de 89 gols marcados.</p>
+<p>A equipe se tornou a primeira da história a completar uma temporada inteira da Bundesliga de maneira invicta. O título foi confirmado com uma goleada por 5 a 0 sobre o Werder Bremen, na BayArena, ainda na 29ª rodada.</p>
+<p>O Leverkusen também venceu a Copa da Alemanha naquela temporada. A campanha mostrou que o domínio do Bayern poderia ser interrompido por um projeto capaz de combinar planejamento, trabalho técnico, contratações eficientes e continuidade.</p>
+<p><strong>O troféu em forma de “roda”</strong></p>
+<p>Diferentemente das taças tradicionais, com base elevada, corpo vertical e alças, o campeão da Bundesliga recebe um troféu circular. Meisterschale significa “prato” ou “salva do campeão”, embora o formato também tenha rendido o apelido popular de “saladeira”. A peça foi criada em 1949 pela ourives e professora de arte Elisabeth Treskow, com a participação de alunos das Escolas de Artes de Colônia. Ela substituiu a antiga taça Viktoria, desaparecida durante a Segunda Guerra Mundial.</p>
+<p>A Meisterschale reúne os nomes de todos os campeões alemães desde 1903, gravados ao redor de sua estrutura. Por isso, novos anéis precisaram ser acrescentados ao longo do tempo, incluindo uma ampliação em 2026 para abrir espaço às futuras conquistas.O desenho transformou a peça em uma obra de ourivesaria única no futebol europeu e em um dos símbolos mais reconhecidos do campeonato alemão.</p>
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<p><strong>A força financeira da liga</strong></p>
+<p>A Bundesliga também ocupa uma posição importante na economia do futebol europeu. O campeonato arrecada menos do que a Premier League, mas possui uma operação bilionária sustentada por direitos de transmissão, publicidade, transferências, bilheteria e comercialização de produtos.</p>
+<p>Os números financeiros completos da temporada 2025/26 ainda dependem da publicação dos balanços de todos os clubes. O relatório consolidado mais recente corresponde a 2024/25.</p>
+<p>Naquela temporada, os 18 clubes da Bundesliga movimentaram €5,12 bilhões em receitas, superando pela primeira vez a marca de €5 bilhões. O crescimento foi de 6,7% em relação ao exercício anterior.</p>
+<p>Principais fontes de receita da Bundesliga em 2024/25:</p>
+<ul>
+<li>Direitos de mídia — €1,70 bilhão</li>
+<li>Publicidade e patrocínios — €1,15 bilhão</li>
+<li>Transferências de jogadores — €872,6 milhões</li>
+<li>Bilheteria e receitas de jogos — €599 milhões</li>
+<li>Merchandising e outras receitas — aproximadamente €802 milhões</li>
+</ul>
+<p>Os clubes da primeira divisão terminaram o período com lucro conjunto de €242,1 milhões. Treze das 18 equipes apresentaram resultado positivo depois dos impostos, e todas registraram resultado operacional positivo antes de juros, impostos, depreciação e amortização.</p>
+<p>Somadas, Bundesliga e Bundesliga 2 movimentaram €6,33 bilhões em 2024/25. As duas divisões ainda venderam quase 21 milhões de ingressos, outro sinal da capacidade econômica e popular do futebol alemão.</p>
+<p><strong>Direitos de transmissão</strong></p>
+<p>A temporada 2025/26 marcou o começo de um novo ciclo nas transmissões no mercado de língua alemã.</p>
+<p>Entre 2025/26 e 2028/29, os 36 clubes da Bundesliga e da Bundesliga 2 dividirão €1,121 bilhão por temporada em receitas provenientes dos direitos nacionais. O contrato completo está avaliado em €4,484 bilhões ao longo de quatro anos.</p>
+<p>A Bundesliga comercializa os direitos de forma centralizada, mas o dinheiro não é distribuído apenas de acordo com a classificação final de uma temporada. O cálculo considera diferentes critérios, como desempenho acumulado, posição recente, formação de jovens jogadores e componentes de igualdade entre os participantes.</p>
+<p>Por isso, não existe um prêmio único e isolado entregue ao campeão apenas por levantar a Meisterschale.</p>
+<p><strong>Quanto o Bayern recebeu pelo último título</strong></p>
+<p>O clube ficou com a maior faixa da distribuição ligada ao desempenho, mas o repasse da DFL também levou em consideração resultados de temporadas anteriores.</p>
+<p>Antes do início da edição 2025/26, a receita doméstica de televisão destinada ao Bayern foi estimada em aproximadamente €83,4 milhões. O valor não representa apenas o título e não inclui direitos internacionais, bilheteria, patrocínios próprios, venda de produtos ou premiações da Champions League e da Copa da Alemanha.</p>
+<p>Essa diferença é importante para evitar comparações imprecisas. A renda total de um campeão é muito maior do que o pagamento central da televisão, mas não existe uma única quantia que possa ser apresentada como “prêmio pelo título”.</p>
+<p><strong>Controle financeiro e licenciamento dos clubes</strong></p>
+<p>A Bundesliga não utiliza exatamente o mesmo sistema de controle financeiro da Premier League. Na Alemanha, a estabilidade econômica é acompanhada principalmente pelo processo anual de licenciamento da DFL.</p>
+<p>Para participar da Bundesliga ou da Bundesliga 2, cada clube precisa apresentar documentos financeiros e demonstrar que possui condições de cumprir suas obrigações durante toda a temporada. A avaliação busca reduzir o risco de insolvência, salários atrasados ou abandono do campeonato.</p>
+<p>O licenciamento também analisa critérios:</p>
+<ul>
+<li>Financeiros</li>
+<li>Jurídicos</li>
+<li>Administrativos</li>
+<li>Esportivos</li>
+<li>Estruturais</li>
+<li>De segurança</li>
+<li>De sustentabilidade</li>
+</ul>
+<p>Os clubes classificados para as competições europeias ainda precisam cumprir as regras de sustentabilidade financeira da Uefa. Desde 2025/26, despesas com salários de jogadores e treinadores, amortizações de transferências e comissões de agentes não podem ultrapassar 70% das receitas consideradas no cálculo da entidade.</p>
+<p><strong>A regra do 50+1</strong></p>
+<p>Esse é um dos principais elementos da identidade da Bundesliga. Ela determina que a associação de membros do clube mantenha a maioria dos direitos de voto na empresa responsável pelo departamento de futebol.</p>
+<p>Na prática, os associados precisam controlar 50% dos votos mais um. Isso impede que um investidor externo assuma sozinho o comando político e administrativo de uma equipe.</p>
+<p>O modelo não proíbe investimentos privados. Empresas e empresários podem adquirir participações, financiar projetos e integrar estruturas societárias. O controle final, porém, deve permanecer com a associação do clube.</p>
+<p>No Bayern, por exemplo, a equipe profissional é administrada pelo FC Bayern München AG. A associação de membros controla 75% da empresa, enquanto Adidas, Audi e Allianz possuem participações minoritárias.</p>
+<p>Leverkusen e Wolfsburg são casos especiais devido à relação histórica e prolongada com Bayer e Volkswagen. Essas estruturas receberam exceções previstas pelo regulamento.</p>
+<p>A regra do 50+1 não é um mecanismo de fair play financeiro nem um teto de gastos. Sua função principal é controlar a propriedade e os direitos de voto. Ainda assim, ela influencia a forma como os clubes são administrados, dificultando modelos baseados exclusivamente na vontade de um único proprietário.</p>
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<p><strong>A cultura de torcida como marca</strong></p>
+<p>Poucas ligas de elite são tão associadas às arquibancadas quanto a Bundesliga. A relação entre clubes, sócios e comunidades ajuda a explicar a atmosfera encontrada em estádios como Signal Iduna Park, Allianz Arena, Volksparkstadion, RheinEnergieStadion, Weserstadion e Borussia-Park.</p>
+<p>O Borussia Dortmund é o maior símbolo dessa cultura. O Signal Iduna Park recebe mais de 81 mil torcedores, e a Südtribüne, conhecida como Muralha Amarela, é uma das maiores arquibancadas populares da Europa.</p>
+<p>Os preços também ajudam a manter os estádios acessíveis. Para a temporada 2025/26, os planos anuais mais baratos custavam €150 no Hoffenheim, €160 no Wolfsburg e €175 no Bayern. No caso do clube de Munique, o preço representava pouco mais de €10 por partida da Bundesliga.</p>
+<p>Além disso, muitos estádios alemães preservam setores em pé em jogos nacionais. Esse modelo aumenta a capacidade, mantém ingressos de menor valor e contribui para uma atmosfera mais intensa.</p>
+<p><strong>Uma liga com alcance mundial</strong></p>
+<p>A Bundesliga deixou de ser uma competição acompanhada apenas na Alemanha. A DFL possui acordos com emissoras e plataformas em diferentes regiões da Europa, América, Ásia, África, Oriente Médio e Oceania.</p>
+<p>Em partidas de grande apelo, o alcance se aproxima de todo o mercado internacional do futebol. O confronto entre Bayern e Borussia Dortmund, por exemplo, foi exibido em mais de 200 territórios vinculados à Fifa, com emissoras de diferentes continentes produzindo conteúdos diretamente do estádio.</p>
+<p>Esse alcance aumenta a importância comercial dos clubes. Também permite que a liga explore transmissões personalizadas, publicidade virtual, conteúdos em diferentes idiomas e produtos digitais voltados a mercados específicos.</p>
+<p>A Bundesliga ainda está distante da Premier League em receitas internacionais de televisão. Mesmo assim, a combinação entre jogadores reconhecidos mundialmente, clubes tradicionais e atmosfera de estádio mantém o campeonato como uma das principais propriedades esportivas da Europa.</p>
+<p><strong>Rivalidades que sustentam a competição</strong></p>
+<p>Os clássicos nacionais e regionais que ajudam a manter o campeonato conectado às diferentes partes da Alemanha.</p>
+<p>Bayern de Munique e Borussia Dortmund protagonizam o Der Klassiker, duelo que ganhou dimensão internacional principalmente depois das disputas por títulos na década de 2010.</p>
+<p>Borussia Dortmund e Schalke fazem o Revierderby, uma das rivalidades mais intensas do país. O confronto representa cidades e comunidades profundamente ligadas à região industrial do Ruhr.</p>
+<p>Colônia e Borussia Mönchengladbach disputam um dos principais dérbis da Renânia. Hamburgo e Werder Bremen formam o Nordderby. Bayern e 1860 Munique representam a rivalidade da capital bávara, embora o encontro tenha se tornado raro devido à distância esportiva entre os clubes.</p>
+<p>Esses jogos mostram que a Bundesliga não depende apenas da disputa pelo título. Parte importante do campeonato está na identidade local, nas rivalidades históricas e no significado que cada clube possui dentro de sua região.</p>
+<p><strong>Por que a Bundesliga continua relevante</strong></p>
+<p>Permanece entre as principais ligas do futebol porque consegue unir poder econômico, formação de jogadores, organização e forte participação popular.</p>
+<p>A hegemonia do Bayern é evidente e representa um desafio para o equilíbrio esportivo. Mesmo assim, a campanha invicta do Bayer Leverkusen mostrou que projetos bem construídos ainda podem alterar a ordem da competição.</p>
+<p>Além da Bundesliga, o calendário nacional também reserva espaço para a <a href="https://cortedosesportes.com.br/copa-da-alemanha-dfb-pokal-historia-formato-maiores-campeoes.html">Copa da Alemanha</a>.</p>
+<p>Para quem acompanha os diferentes modelos do futebol europeu, a comparação com <a href="https://cortedosesportes.com.br/premier-league-historia-campeoes.html">a história da Premier League</a> ajuda a entender dois caminhos distintos. A Inglaterra construiu a liga nacional mais rica e internacionalizada do planeta, enquanto a Alemanha manteve maior controle associativo, preços mais acessíveis e uma cultura de arquibancada especialmente forte.</p>
+<p>No fim, é isso que faz a Bundesliga ser mais do que uma competição marcada pelo domínio do Bayern. A liga continua relevante porque a força do maior campeão convive com clubes históricos, cidades mobilizadas, modelos próprios de gestão e uma das relações mais intensas entre torcida e futebol no cenário mundial.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
 <!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
-
 </body>
 </html>
