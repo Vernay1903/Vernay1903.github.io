@@ -1,562 +1,864 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Campeonato Italiano: por que a Serie A segue como uma das ligas mais tradicionais do futebol mundial | Corte dos Esportes</title>
-  <meta name="description" content="Poucos campeonatos carregam uma identidade tão própria quanto o Campeonato Italiano. A Serie A construiu sua reputação apoiada em tradição, rivalidades históricas e força tática." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
-
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
-
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
-
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    .ad-slot { overflow: hidden; max-width: 100%; }
-
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
-
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main { flex: 1; }
-
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-container img { height: 34px; }
-
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
-
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
-
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
-
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
-
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
-
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
-
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .meta a:hover { text-decoration: underline; }
-
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
-
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
-
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
-
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
-
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
-
-    .desc { font-size: 14px; line-height: 1.4; }
-
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
-
-    footer a:hover { color: #1E4BA5; }
-
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
-
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
-
-      h1 { font-size: 34px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Campeonato Italiano: história, campeões e a glória do scudetto | Corte dos Esportes</title>
+<meta name="description" content="Disputada em grupo único desde 1929/30, a Serie A reúne clubes históricos, rivalidades intensas, tradição tática, alcance mundial e uma disputa pelo símbolo que atravessa gerações." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
-
 <body>
-
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474" decoding="async">
+</picture>
+</a>
+</div>
 </header>
-
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Campeonato Italiano: história, campeões e a glória do scudetto</h1>
+<p class="subhead" id="articleExcerpt">Disputada em grupo único desde 1929/30, a Serie A reúne clubes históricos, rivalidades intensas, tradição tática, alcance mundial e uma disputa pelo símbolo que atravessa gerações.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">24/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/trofeu-serie-a-exposicao-hong-kong-2021.jpg",
+  "caption": "Troféu da Serie A em exposição durante um evento da Juventus.",
+  "description": "Troféu prateado da Serie A exposto sobre um pedestal branco, visto de frente.",
+  "width": 3096,
+  "height": 4128,
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:HK_CWB_%E9%8A%85%E9%91%BC%E7%81%A3_Causeway_Bay_%E6%99%82%E4%BB%A3%E5%BB%A3%E5%A0%B4_Times_Square_mall_void_exhibition_Juventus_Football_Club_September_2021_SS2_015.jpg",
+  "creditText": "Foto: Jrmallpo RZIMTao/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Jrmallpo RZIMTao"
+  },
+  "copyrightNotice": "Jrmallpo RZIMTao/Wikimedia Commons."
+}
+</script>
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="trofeu-serie-a-exposicao-hong-kong-2021.jpg" alt="Troféu prateado da Serie A exposto sobre um pedestal branco, visto de frente." width="3096" height="4128" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">Troféu da Serie A em exposição durante um evento da Juventus. Foto: Jrmallpo RZIMTao/Wikimedia Commons.</figcaption>
+</figure>
+<p>Poucos campeonatos carregam uma identidade tão própria quanto o Campeonato Italiano. Construiu sua reputação com clubes gigantes, rivalidades centenárias, treinadores influentes e jogadores que ajudaram a transformar o futebol europeu ao longo de diferentes gerações.</p>
+
+<p>A competição também representa as diferenças culturais e regionais da Itália. O poder econômico e esportivo do norte convive com a paixão de cidades do centro e do sul, criando um campeonato no qual os resultados frequentemente ganham significados que ultrapassam a tabela.</p>
+
+<p>Mais do que uma liga nacional, a Serie A é uma das bases da cultura esportiva da Itália e continua entre os campeonatos mais tradicionais do futebol mundial.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </div>
 
-<main>
-  <div class="page">
-    <div class="layout">
+<p><strong>Como nasceu a competição</strong></p>
 
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">Campeonato Italiano: por que a Serie A segue como uma das ligas mais tradicionais do futebol mundial</h1>
-          <p class="subhead" id="articleExcerpt">Poucos campeonatos carregam uma identidade tão própria quanto o Campeonato Italiano. A Serie A construiu sua reputação apoiada em tradição, rivalidades históricas e força tática.</p>
+<p>O primeiro Campeonato Italiano foi disputado em 1898. A edição inaugural aconteceu em Turim, teve duração de apenas um dia e terminou com o título do Genoa, clube que dominaria os primeiros anos da competição.</p>
 
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">20/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
-          </div>
+<p>Durante décadas, o torneio passou por diferentes formatos, com grupos regionais e fases nacionais. A mudança decisiva ocorreu em 1929/30, quando o campeonato adotou pela primeira vez o sistema de grupo único, reunindo os principais clubes em uma tabela nacional com jogos ao longo da temporada.</p>
 
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
+<p>A campeã da primeira edição nesse formato foi a Inter, que na época utilizava o nome Ambrosiana. A equipe tinha <a href="https://cortedosesportes.com.br/giuseppe-meazza-recorde-gols-maior-artilheiro-inter-de-milao.htmll">Giuseppe Meazza</a> como principal referência ofensiva e confirmou o título na penúltima rodada ao derrotar a Juventus por 2 a 0. Meazza terminou aquela campanha com 31 gols em 33 partidas.</p>
 
-          <article id="articleBody">
-            <p>Poucos campeonatos carregam uma identidade tão própria quanto o Campeonato Italiano. A Serie A construiu sua reputação apoiada em tradição, rivalidades históricas, força tática e clubes que ajudaram a moldar o futebol europeu ao longo de diferentes gerações. Mais do que uma liga nacional, o torneio virou parte importante da cultura esportiva da Itália e segue sendo um dos palcos mais simbólicos do futebol mundial.</p>
+<p>Essa reorganização aproximou o campeonato da estrutura mantida até hoje. A partir daquele momento, clubes de diferentes regiões passaram a disputar regularmente a mesma competição, fortalecendo rivalidades nacionais e ampliando a importância econômica e cultural do torneio.</p>
 
-            <p><strong>Uma história que mistura prestígio, pressão e identidade</strong></p>
+<p><strong>O formato</strong></p>
 
-            <p>A história do Campeonato Italiano ganhou forma moderna com a Serie A em grupo único a partir da temporada 1929/30. Desde então, o torneio passou a representar muito mais do que a disputa por pontos: virou um espaço em que cidades, regiões e identidades locais se confrontam rodada após rodada. Em um país marcado por fortes diferenças culturais entre norte, centro e sul, o futebol sempre funcionou também como expressão de pertencimento.</p>
+<p>A Serie A é disputada por 20 clubes em sistema de pontos corridos. Cada equipe enfrenta os outros 19 participantes duas vezes, uma em casa e outra fora.</p>
 
-            <p>Essa característica ajudou a transformar o campeonato em uma competição de enorme pressão. Ganhar a Serie A nunca significou apenas levantar um troféu, mas entrar para uma tradição muito exigente, em que o peso da camisa, a relação com a torcida e a cobrança por desempenho sempre caminharam juntos. É justamente essa combinação que dá ao torneio um charme próprio e faz do scudetto uma conquista tão valorizada no futebol europeu.</p>
+<p>Os três últimos colocados são rebaixados para a Serie B e substituídos por três equipes vindas da segunda divisão.</p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>A quantidade de vagas europeias pode variar de acordo com o desempenho dos clubes italianos nas competições da Uefa e com a distribuição definida para cada temporada. A classificação nacional normalmente determina os representantes do país na Champions League, Europa League e Conference League.</p>
 
-            <p><strong>O scudetto virou símbolo máximo do futebol italiano</strong></p>
+<p><strong>O scudetto e seu significado</strong></p>
 
-            <p>Poucos símbolos do esporte italiano têm tanta força quanto o scudetto. O pequeno escudo tricolor usado pelo campeão nacional na temporada seguinte virou um emblema de prestígio e continuidade histórica. Na prática, ele resume a essência do torneio: vencer a Serie A é ocupar, por um ano, o posto de principal força do futebol italiano.</p>
+<p>A palavra significa “pequeno escudo” em italiano. Ela identifica o emblema com as cores verde, branca e vermelha da bandeira nacional que o campeão passa a utilizar na camisa durante a temporada seguinte.</p>
 
-            <p>Ao longo das décadas, essa disputa foi marcada por estilos diferentes. Houve fases de domínio mais longo, períodos de equilíbrio maior e momentos em que a liga serviu como vitrine para algumas das maiores equipes da Europa. Ainda assim, a percepção mais constante é que o Campeonato Italiano sempre exigiu regularidade, disciplina e força mental acima da média.</p>
+<p>A tradição começou na década de 1920. Em 1924, a assembleia da Federação Italiana decidiu que a equipe campeã deveria exibir o escudo tricolor no uniforme. O Genoa, vencedor da temporada anterior, tornou-se o primeiro clube a entrar em campo com o símbolo, em outubro daquele ano.</p>
 
-            <p><strong>Maiores campeões ajudam a contar a história da liga</strong></p>
+<p>A origem do desenho é associada a Gabriele D’Annunzio. Em 1920, o poeta teria utilizado um distintivo tricolor em uma equipe militar italiana durante uma partida realizada em Fiume, atual Rijeka, na Croácia. A ideia foi posteriormente incorporada ao futebol nacional.</p>
 
-            <p>A história da Serie A também pode ser lida a partir de seus maiores campeões. A Juventus segue como o clube com mais títulos italianos, enquanto Inter e Milan aparecem logo atrás como dois dos pilares mais pesados da tradição do campeonato. Esse trio ajudou a construir grande parte do imaginário da competição e foi decisivo para projetar a liga mundialmente.</p>
+<p>O primeiro scudetto apresentava o escudo da Casa de Saboia na parte branca. O desenho passou por alterações políticas e institucionais até chegar ao formato tricolor utilizado atualmente. Depois da Segunda Guerra Mundial, o emblema voltou a representar exclusivamente as cores da bandeira italiana.</p>
 
-            <p><strong>Maiores campeões do Campeonato Italiano</strong></p>
+<p>Com o tempo, a palavra deixou de designar somente o distintivo. “Conquistar o scudetto” virou sinônimo de vencer o Campeonato Italiano.</p>
 
-            <p>Juventus — 36 títulos</p>
-            <p>Inter — 21 títulos (atual campeão, temporada 2025/2026)</p>
-            <p>Milan — 19 títulos</p>
-            <p>Genoa — 9 títulos</p>
-            <p>Torino — 7 títulos</p>
-            <p>Bologna — 7 títulos</p>
-            <p>Pro Vercelli — 7 títulos</p>
-            <p>Napoli — 4 títulos</p>
-            <p>Roma — 3 títulos</p>
-            <p>Lazio — 2 títulos</p>
-            <p>Fiorentina — 2 títulos</p>
-            <p>Cagliari — 1 título</p>
-            <p>Verona — 1 título</p>
-            <p>Sampdoria — 1 título</p>
+<p><strong>A diferença entre a taça da Serie A</strong></p>
 
-            <p>Em seguida aparecem clubes que também carregam peso histórico importante, como Genoa, Torino, Bologna, Pro Vercelli, Roma, Napoli, Lazio, Fiorentina, Cagliari, Verona e Sampdoria, cada um com seu espaço na memória do torneio. Alguns representam eras mais antigas do futebol italiano; outros marcaram momentos de ruptura, de afirmação regional ou de campanhas que viraram parte da cultura popular do país.</p>
+<p>O scudetto não é o troféu físico entregue ao campeão. Ele é o símbolo que será usado na camisa durante a temporada seguinte.</p>
 
-            <p><strong>Juventus, Inter e Milan formam o núcleo mais pesado da competição</strong></p>
+<p>A taça oficial é chamada de Coppa Campioni d’Italia. Criada em 1960 pelo escultor e medalhista Ettore Calvelli, ela começou a ser entregue na temporada 1960/61. A Juventus foi a primeira equipe a recebê-la.</p>
 
-            <p>Quando se fala em tradição da Serie A, é quase inevitável que Juventus, Inter e Milan apareçam no centro da conversa. A Juventus construiu sua imagem como clube de enorme regularidade doméstica e presença constante no topo. A Inter se consolidou como uma potência de identidade forte, ligada a campanhas marcantes e a uma torcida global. O Milan, por sua vez, ajudou a associar o futebol italiano à sofisticação técnica, ao peso europeu e a uma história repleta de equipes memoráveis.</p>
+<p>Os nomes dos campeões são gravados na peça, preservando a sequência histórica das conquistas desde sua criação.</p>
 
-            <p>Essa concentração de força em clubes tão pesados ajudou a elevar o padrão competitivo do campeonato. Ao mesmo tempo, fez com que o restante do país passasse a enxergar o torneio também como uma disputa contra centros tradicionais de poder. É por isso que, na Itália, o título nunca é tratado apenas como um resultado esportivo: ele costuma ter também valor simbólico e regional.</p>
+<p>Essa diferença ajuda a entender a linguagem do futebol italiano: o clube levanta a Coppa Campioni d’Italia, mas conquista o scudetto e passa a usar o escudo tricolor no uniforme.</p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p><strong>Os maiores campeões</strong></p>
 
-            <p><strong>Rivalidades transformaram a Serie A em um palco de tensão constante</strong></p>
+<p>A contagem oficial considera todos os campeonatos nacionais reconhecidos pela Federação Italiana desde 1898, incluindo as edições anteriores à criação da Serie A em grupo único.</p>
 
-            <p>O Campeonato Italiano é movido por rivalidades que atravessam gerações. O Derby della Madonnina, entre Milan e Inter, é um dos confrontos mais emblemáticos do futebol europeu e sintetiza bem a mistura de identidade urbana, tradição e pressão que caracteriza a liga. A própria Lega Serie A trata o clássico como um dos grandes eventos de sua história recente e destaca o peso estatístico e emocional do duelo.</p>
+<p>São os times:</p>
 
-            <p>Outro confronto central é o Derby d’Italia, entre Inter e Juventus, tratado há décadas como um choque entre gigantes acostumados a disputar poder, títulos e protagonismo nacional. A rivalidade ganhou ainda mais força porque reúne clubes de enorme torcida, enorme cobrança e enorme presença histórica na corrida pelo scudetto.</p>
+<ul>
+<li>Juventus — 36 títulos</li>
+<li>Inter — 21 títulos</li>
+<li>Milan — 19 títulos</li>
+<li>Genoa — 9 títulos</li>
+<li>Bologna — 7 títulos</li>
+<li>Torino — 7 títulos</li>
+<li>Pro Vercelli — 7 títulos</li>
+<li>Napoli — 4 títulos</li>
+<li>Roma — 3 títulos</li>
+<li>Fiorentina — 2 títulos</li>
+<li>Lazio — 2 títulos</li>
+<li>Cagliari — 1 título</li>
+<li>Casale — 1 título</li>
+<li>Hellas Verona — 1 título</li>
+<li>Novese — 1 título</li>
+<li>Sampdoria — 1 título</li>
+<li>Atual campeã: Inter, vencedora da temporada 2025/26</li>
+</ul>
 
-            <p>Além deles, a Serie A vive de rivalidades locais e regionais que ajudam a sustentar seu apelo cultural: Roma x Lazio, Juventus x Torino, Napoli x clubes do norte e os confrontos entre grandes tradicionais carregam contextos que vão muito além do futebol. Em muitos casos, cada jogo funciona como uma disputa de narrativa, status e identidade.</p>
+<p>A lista mostra duas histórias diferentes dentro da mesma competição. Genoa e Pro Vercelli, por exemplo, construíram grande parte de seus títulos antes da criação do grupo único. Juventus, Inter e Milan ampliaram seu domínio principalmente após a profissionalização e a consolidação nacional do campeonato.</p>
 
-            <p><strong>O contexto cultural faz a liga ser diferente</strong></p>
+<p><strong>O Campeonato de 2025/26</strong></p>
 
-            <p>Parte do fascínio do Campeonato Italiano está na maneira como o torneio conversa com a vida social do país. Na Itália, clube, bairro, cidade e família muitas vezes se conectam de forma direta. O futebol é debate cotidiano, herança geracional e ponto de encontro entre memória e rivalidade. Por isso, a Serie A costuma ser vivida com uma intensidade que vai além da lógica de tabela.</p>
+<p>Com a conquista, Inter confirmou seu 21º título italiano. Comandada por Cristian Chivu, a equipe assegurou matematicamente ao derrotar o Parma por 2 a 0 no San Siro, com três rodadas de antecedência.</p>
 
-            <p>Esse cenário ajuda a explicar por que o campeonato preserva tanto apelo mesmo em fases de mudança econômica ou técnica. A liga não depende só de estrelas momentâneas. Ela se sustenta também em atmosfera, tradição, estádios carregados de história e narrativas que se renovam sem perder a ligação com o passado.</p>
+<p>Foi o segundo scudetto da Inter em três temporadas. A campanha teve como principal característica a força ofensiva: os nerazzurri terminaram as 38 rodadas com 89 gols, o maior número do clube em uma edição da Serie A nos cinco anos anteriores.</p>
 
-            <p><strong>A fama tática virou uma marca da Serie A</strong></p>
+<p>Lautaro Martínez foi o artilheiro do campeonato, com 17 gols, e também teve participação importante como capitão e referência técnica. Federico Dimarco foi outro protagonista, contribuindo na construção ofensiva e na criação de oportunidades.</p>
 
-            <p>Durante muito tempo, o Campeonato Italiano ficou associado ao jogo tático, à organização defensiva e à inteligência estratégica. Essa imagem nem sempre resume tudo o que a liga foi, mas ajuda a entender por que a Serie A se tornou uma referência para treinadores, analistas e torcedores que valorizam leitura de jogo, disciplina e adaptação.</p>
+<p>O título ainda marcou a primeira temporada de Chivu no comando da equipe principal da Inter. O treinador assumiu depois de uma passagem pelo Parma e conseguiu transformar a produção ofensiva em regularidade suficiente para decidir o campeonato antes das rodadas finais.</p>
 
-            <p>Mesmo com mudanças no futebol europeu e com fases de estilo mais ofensivo, a Serie A continua vista como uma liga em que detalhes pesam muito. Não por acaso, o torneio preserva a reputação de campeonato duro, exigente e pouco permissivo para erros. Essa identidade se tornou parte central de seu prestígio histórico.</p>
+<p><strong>Os campeões mais recentes</strong></p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>O domínio da Juventus foi sucedido por um período de maior alternância. Entre 2020/21 e 2025/26, Inter, Milan e Napoli dividiram todos os títulos.</p>
 
-            <p><strong>Por que o Campeonato Italiano continua tão relevante</strong></p>
+<p>Campeões nas últimas temporadas:</p>
 
-            <p>A Serie A segue relevante porque reúne elementos que poucos campeonatos conseguem combinar com a mesma força: tradição, peso histórico, clubes gigantes, rivalidades orgânicas e uma cultura futebolística muito própria. Mesmo quando o debate internacional gira em torno de outras ligas, o Campeonato Italiano continua ocupando um lugar especial no imaginário do esporte.</p>
+<ul>
+<li>2019/20 — Juventus</li>
+<li>2020/21 — Inter</li>
+<li>2021/22 — Milan</li>
+<li>2022/23 — Napoli</li>
+<li>2023/24 — Inter</li>
+<li>2024/25 — Napoli</li>
+<li>2025/26 — Inter</li>
+</ul>
 
-            <p>No fim das contas, acompanhar a Serie A é acompanhar uma parte importante da história do futebol europeu. O torneio mudou, se adaptou e atravessou gerações, mas manteve intacta a sensação de que cada scudetto conquistado carrega mais do que estatística. Carrega tradição, cidade, memória e orgulho — exatamente o tipo de combinação que explica por que o Campeonato Italiano segue tão respeitado no cenário mundial. Em outra frente do futebol europeu, essa relação entre tradição, identidade e força cultural também aparece na <a href="https://cortedosesportes.com.br/bundesliga-historia-hegemonia-bayern-cultura-torcida.html">história da Bundesliga e no peso que o campeonato alemão construiu com sua cultura de torcida</a>.</p>
-          </article>
-        </div>
-      </section>
+<p>A sequência mostra uma mudança importante no equilíbrio da liga. Depois de nove títulos consecutivos da Juventus, a Serie A passou a ter três campeões diferentes em seis temporadas.</p>
 
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
+<p><strong>O maior domínio da história italiana</strong></p>
 
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
+<p>A "Velha Senhora" é a maior campeã do futebol italiano, com 36 títulos reconhecidos. Nenhum outro clube apresentou o mesmo nível de regularidade doméstica ao longo de tantos períodos diferentes.</p>
 
-    </div>
-  </div>
-</main>
+<p>A fase mais dominante começou em 2011/12. A equipe conquistou nove campeonatos consecutivos, sequência encerrada apenas em 2020/21.</p>
 
-<footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
-</footer>
+<p>Títulos da sequência da Juventus:</p>
 
+<ul>
+<li>2011/12</li>
+<li>2012/13</li>
+<li>2013/14</li>
+<li>2014/15</li>
+<li>2015/16</li>
+<li>2016/17</li>
+<li>2017/18</li>
+<li>2018/19</li>
+<li>2019/20</li>
+</ul>
+
+<p>Durante esse período, a Juventus venceu com diferentes treinadores e características. Antonio Conte iniciou a reconstrução, Massimiliano Allegri ampliou o domínio e Maurizio Sarri comandou a equipe na última conquista da sequência.</p>
+
+<p>O título de 2019/20 permanece como o mais recente. Desde então, Inter, Milan e Napoli assumiram o protagonismo da disputa.</p>
+
+<p><strong>Os técnicos mas vitoriosos</strong></p>
+
+<p>A história do Campeonato Italiano também foi construída por treinadores que atravessaram diferentes gerações e transformaram grandes elencos em equipes dominantes.</p>
+
+<p>Técnicos com mais scudetti:</p>
+
+<ul>
+<li>Giovanni Trapattoni — 7 títulos<br>Juventus: 1976/77, 1977/78, 1980/81, 1981/82, 1983/84 e 1985/86<br>Inter: 1988/89</li>
+<li>Massimiliano Allegri — 6 títulos<br>Milan: 2010/11<br>Juventus: 2014/15, 2015/16, 2016/17, 2017/18 e 2018/19</li>
+<li>Fabio Capello — 5 títulos<br>Milan: 1991/92, 1992/93, 1993/94 e 1995/96<br>Roma: 2000/01</li>
+<li>Marcello Lippi — 5 títulos<br>Juventus: 1994/95, 1996/97, 1997/98, 2001/02 e 2002/03</li>
+<li>Antonio Conte — 5 títulos<br>Juventus: 2011/12, 2012/13 e 2013/14<br>Inter: 2020/21<br>Napoli: 2024/25</li>
+</ul>
+
+<p>Trapattoni é o único da lista que conquistou sete scudetti e também venceu a competição por Juventus e Inter. Conte, por sua vez, tornou-se campeão por três clubes diferentes, mostrando capacidade de construir equipes vencedoras em contextos distintos. Allegri marcou a fase mais dominante da Juventus na década de 2010, enquanto Capello e Lippi comandaram alguns dos times mais fortes da história moderna da liga.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
 <script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "Futebol";
-
-  const AGENDA_JSON_URL = "agenda.json";
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
-
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
-
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
-
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
-
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
-
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
-
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
-
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
-
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
-
-  loadAgenda();
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+</div>
 
+<p><strong>O centro de poder</strong></p>
+
+<p>Inter e Milan formam, ao lado da Juventus, o núcleo mais vitorioso do futebol italiano. Os dois clubes dividem o <a href="https://cortedosesportes.com.br/san-siro-historia-estadio-milan-inter-de-milao.html">San Siro</a> e ajudaram a transformar Milão em uma das cidades mais importantes da história do esporte.</p>
+
+<p>A Inter chegou ao 21º scudetto em 2025/26. O clube também marcou épocas com o time de Helenio Herrera nos anos 1960, a equipe de Giovanni Trapattoni em 1988/89, a sequência de títulos dos anos 2000 e a Tríplice Coroa conquistada com José Mourinho em 2009/10.</p>
+
+<p>O Milan com 19 títulos, tendo sua história está ligada a equipes que transformaram o futebol europeu, especialmente durante os ciclos comandados por Arrigo Sacchi e Fabio Capello. O último scudetto rossonero foi conquistado em 2021/22, sob a direção de Stefano Pioli.</p>
+
+<p><strong>A força do sul da Itália</strong></p>
+
+<p>O Napoli conquistou quatro títulos italianos e representa um contraponto ao poder historicamente concentrado no norte do país.</p>
+
+<p>Títulos Napolitanos:</p>
+
+<ul>
+<li>1986/87</li>
+<li>1989/90</li>
+<li>2022/23</li>
+<li>2024/25</li>
+</ul>
+
+<p>Os dois primeiros foram liderados por <a href="https://cortedosesportes.com.br/maradona-historia-gols-titulos-napoli-argentina-boca.html">Diego Maradona</a>. Mais do que transformar o Napoli em campeão, o argentino virou símbolo de uma cidade que enxergava o futebol como afirmação diante dos centros mais ricos do país.</p>
+
+<p>O terceiro título encerrou uma espera de 33 anos. Na temporada 2022/23, o time comandado por Luciano Spalletti dominou o campeonato com um futebol ofensivo e teve Victor Osimhen e Khvicha Kvaratskhelia entre seus principais jogadores.</p>
+
+<p>A quarta conquista veio em 2024/25, com Antonio Conte. O resultado confirmou o Napoli como uma força capaz de disputar o campeonato de maneira recorrente, e não apenas como protagonista de períodos isolados.</p>
+
+<p><strong>O peso da capital</strong></p>
+
+<p>Roma e Lazio transformam a capital italiana em outro eixo central da competição.</p>
+
+<p>A Roma foi campeã em três oportunidades:</p>
+
+<ul>
+<li>1941/42</li>
+<li>1982/83</li>
+<li>2000/01</li>
+</ul>
+
+<p>O título de 2000/01 é um dos mais lembrados da era moderna. Comandada por Fabio Capello, a equipe tinha Francesco Totti como símbolo, além de Gabriel Batistuta, Cafu, Vincenzo Montella e Walter Samuel.</p>
+
+<p>A Lazio possui dois títulos:</p>
+
+<ul>
+<li>1973/74</li>
+<li>1999/2000</li>
+</ul>
+
+<p>A última conquista aconteceu durante uma das fases mais fortes da história do clube, com um elenco que reunia Alessandro Nesta, Pavel Nedvěd, Juan Sebastián Verón, Diego Simeone, Marcelo Salas e Siniša Mihajlović.</p>
+
+<p>Quando Roma e Lazio se enfrentam, o Derby della Capitale transforma o Estádio Olímpico em um dos ambientes mais tensos do futebol europeu.</p>
+
+<p><strong>Campeões que desafiaram as potências</strong></p>
+
+<p>A história do Campeonato Italiano também foi marcada por equipes que quebraram a concentração de títulos entre os clubes mais poderosos.</p>
+
+<p>O Cagliari foi campeão em 1969/70, liderado por Gigi Riva. A conquista levou o scudetto pela primeira vez à Sardenha e permanece como o maior título da história do clube.</p>
+
+<p>O Hellas Verona surpreendeu o país em 1984/85. Comandada por Osvaldo Bagnoli, a equipe superou clubes com maior capacidade financeira e conquistou seu único campeonato italiano.</p>
+
+<p>A Sampdoria venceu em 1990/91. A equipe de Vujadin Boškov tinha Gianluca Vialli e Roberto Mancini como referências ofensivas e terminou à frente de Milan, Inter e Juventus.</p>
+
+<p>Esses títulos ganharam importância porque aconteceram em períodos de grande força econômica da Serie A, quando o campeonato reunia vários dos melhores jogadores do mundo.</p>
+
+<p><strong>Rivalidades que sustentam a identidade</strong></p>
+
+<p>O Campeonato Italiano é movido por clássicos nacionais, locais e regionais.</p>
+
+<p>O Derby della Madonnina coloca Milan e Inter frente a frente no mesmo estádio. O nome faz referência à estátua da Virgem Maria localizada no alto da Catedral de Milão e reforça a ligação do confronto com a cidade.</p>
+
+<p>Inter e Juventus protagonizam o Derby d’Italia. A rivalidade reúne os dois clubes com mais títulos italianos e foi alimentada por disputas esportivas, decisões administrativas e diferentes ciclos de poder.</p>
+
+<p>Outros grandes dérbis da Serie A:</p>
+
+<ul>
+<li>Roma x Lazio — Derby della Capitale</li>
+<li>Juventus x Torino — Derby della Mole</li>
+<li>Genoa x Sampdoria — Derby della Lanterna</li>
+<li>Inter x Milan — Derby della Madonnina</li>
+<li>Bologna x Fiorentina — Derby dell’Appennino</li>
+</ul>
+
+<p>Também existe uma rivalidade histórica entre o Napoli e as principais forças do norte. Embora nem sempre seja tratada como um dérbi formal, ela representa diferenças econômicas, sociais e culturais que fazem parte da formação da Itália.</p>
+
+<p><strong>A fama tática</strong></p>
+
+<p>Durante muito tempo, o Campeonato Italiano foi associado ao jogo defensivo, à organização e à leitura estratégica. Essa fama não significa que todos os times adotassem a mesma proposta, mas mostra a importância que o país deu ao trabalho dos treinadores.</p>
+
+<p>O catenaccio se tornou a expressão mais conhecida desse passado. O sistema valorizava cobertura, proteção da área, disciplina posicional e transições rápidas. Com o tempo, porém, o futebol italiano incorporou novas ideias e produziu equipes ofensivas, agressivas na pressão e capazes de controlar a posse de bola.</p>
+
+<p>Treinadores como Vittorio Pozzo, Nereo Rocco, Helenio Herrera, Arrigo Sacchi, Fabio Capello, Marcello Lippi, Carlo Ancelotti, Antonio Conte, Massimiliano Allegri e Gian Piero Gasperini representaram diferentes escolas.</p>
+
+<p>Sacchi, por exemplo, ficou conhecido por transformar o Milan com pressão coletiva, linha defensiva organizada e ocupação compacta dos espaços. Conte se destacou pela intensidade, pelos movimentos coordenados e pela utilização de sistemas com três defensores. Gasperini desenvolveu um modelo de marcação individual por setor e grande agressividade ofensiva.</p>
+
+<p>Por isso, reduzir a Serie A a um campeonato defensivo seria ignorar sua evolução. A característica mais duradoura da liga é a atenção aos detalhes e a capacidade de adaptar o plano de jogo ao adversário.</p>
+
+<p><strong>A força financeira</strong></p>
+
+<p>A liga continua entre as cinco maiores ligas europeias em faturamento, embora esteja distante da Premier League e também enfrente limitações relacionadas aos estádios, aos direitos de transmissão e ao endividamento de alguns clubes.</p>
+
+<p>Os números consolidados mais recentes correspondem à temporada 2024/25. Naquele período, os 20 clubes da Serie A geraram aproximadamente €3 bilhões em receitas, crescimento de 4% em relação ao exercício anterior.</p>
+
+<p>Principais receitas em 2024/25:</p>
+
+<ul>
+<li>Direitos de transmissão e distribuições esportivas — €1,5 bilhão</li>
+<li>Receitas comerciais — €1 bilhão</li>
+<li>Bilheteria e dias de jogo — €500 milhões</li>
+</ul>
+
+<p>Juventus, Inter e Milan responderam por aproximadamente 45% de toda a receita do campeonato. A concentração mostra a diferença entre os maiores clubes e boa parte dos demais participantes.</p>
+
+<p>Os gastos salariais chegaram a cerca de €2 bilhões, equivalentes a 66% das receitas. A liga apresentou lucro operacional conjunto de apenas €9 milhões e prejuízo antes de impostos próximo de €300 milhões, mesmo com uma redução das perdas em comparação com a temporada anterior.</p>
+
+<p>Os números completos de 2025/26 dependem da publicação posterior dos balanços de todos os clubes.</p>
+
+<p><strong>Distribuição das receitas</strong></p>
+
+<p>Os direitos de transmissão domésticos da Serie A foram vendidos para DAZN e Sky em um acordo válido de 2024/25 até 2028/29.</p>
+
+<p>O contrato movimenta aproximadamente €900 milhões por temporada. A DAZN transmite todos os jogos, enquanto a Sky possui uma parte das partidas em regime de compartilhamento.</p>
+
+<p>A comercialização é centralizada pela liga. Metade da receita é dividida igualmente entre os 20 clubes, enquanto o restante considera elementos como desempenho esportivo, histórico, audiência e presença da torcida.</p>
+
+<p>Esse sistema busca garantir uma base financeira para todos os participantes sem eliminar completamente a recompensa para os clubes de maior desempenho e alcance comercial.</p>
+
+<p><strong>Quanto o campeão recebe</strong></p>
+
+<p>A Serie A não entrega ao campeão um prêmio único e isolado apenas pela conquista do scudetto. A remuneração faz parte de um conjunto mais amplo de repasses centrais.</p>
+
+<p>O valor recebido por um clube reúne:</p>
+
+<ul>
+<li>Parcela igualitária dos direitos de transmissão</li>
+<li>Cota relacionada à classificação</li>
+<li>Desempenho em temporadas anteriores</li>
+<li>Histórico esportivo</li>
+<li>Audiência televisiva</li>
+<li>Presença e engajamento da torcida</li>
+<li>Receitas internacionais distribuídas pela liga</li>
+</ul>
+
+<p>A Inter recebeu a maior parcela relacionada à posição final em 2025/26, mas o valor completo não pode ser tratado simplesmente como “prêmio pelo título”. A receita total do clube ainda inclui bilheteria, patrocínios próprios, venda de produtos, negociações de jogadores e premiações das competições da Uefa.</p>
+
+<p><strong>Controle financeiro e fair play</strong></p>
+
+<p>Os clubes italianos precisam cumprir requisitos econômicos para participar das competições nacionais e obter as licenças necessárias. A análise considera pagamento de salários, impostos, dívidas esportivas e capacidade de manter as operações durante a temporada.</p>
+
+<p>As equipes classificadas para as competições europeias também estão submetidas às regras de sustentabilidade financeira da Uefa.</p>
+
+<p>Desde 2025/26, a regra de custo do elenco limita a 70% das receitas consideradas os gastos com:</p>
+
+<ul>
+<li>Salários de jogadores e treinadores</li>
+<li>Amortização de transferências</li>
+<li>Empréstimos de atletas</li>
+<li>Comissões de agentes e intermediários</li>
+</ul>
+
+<p>O objetivo é aproximar os investimentos esportivos da capacidade real de arrecadação. Violações podem resultar em multas, restrições para inscrição de jogadores e outras sanções esportivas.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Uma liga acompanhada no mundo inteiro</strong></p>
+
+<p>A Serie A possui um alcance internacional construído ao longo de décadas. O auge esportivo das décadas de 1980 e 1990, a presença de craques estrangeiros e a tradição de clubes como Juventus, Inter e Milan transformaram o campeonato em um produto global.</p>
+
+<p>Em ciclos recentes de transmissão, a liga informou que suas partidas chegaram a mais de 200 países por meio de dezenas de emissoras e plataformas. O alcance potencial foi estimado em mais de um bilhão de pessoas.</p>
+
+<p>A distribuição internacional aumenta o valor de patrocínios e permite que os clubes mantenham torcidas relevantes fora da Itália. América Latina, Estados Unidos, Oriente Médio, Ásia, África e diferentes partes da Europa são mercados importantes para o campeonato.</p>
+
+<p>A Serie A também investiu na criação de um centro internacional de produção, em conteúdos digitais, transmissões em alta definição e ações direcionadas a públicos de diferentes países.</p>
+
+<p><strong>O desafio da modernização</strong></p>
+
+<p>A Itália possui estádios reconhecidos mundialmente, como San Siro, Olímpico de Roma, Diego Armando Maradona, Artemio Franchi e Luigi Ferraris.</p>
+
+<p>Muitos desses locais, porém, foram construídos ou reformados há várias décadas e pertencem aos municípios. Isso limita a capacidade dos clubes de explorar eventos, áreas comerciais, hospitalidade e receitas fora dos dias de jogo.</p>
+
+<p>A modernização dos estádios é uma das principais discussões econômicas da Serie A. Arenas próprias permitem maior arrecadação com camarotes, restaurantes, museus, lojas, eventos corporativos e experiências para os torcedores.</p>
+
+<p>A Juventus ganhou vantagem nesse processo ao inaugurar seu estádio próprio em 2011. Outros clubes passaram a desenvolver projetos, mas questões burocráticas, patrimoniais e políticas frequentemente atrasam as obras.</p>
+
+<p><strong>A Serie A e o mata-mata</strong></p>
+
+<p>Além do campeonato por pontos corridos, os clubes disputam a <a href="https://cortedosesportes.com.br/coppa-italia-historia-maiores-campeoes-formato-curiosidades.html">Coppa Italia</a>, principal torneio eliminatório do país.</p>
+
+<p>A competição possui uma lógica diferente: enquanto a Serie A recompensa regularidade durante 38 rodadas, a copa exige eficiência em confrontos de mata-mata. A conquista ainda garante ao vencedor uma vaga nas competições europeias, de acordo com as regras de classificação da temporada.</p>
+
+<p><strong>Por que o Campeonato Italiano continua relevante</strong></p>
+
+<p>A Serie A permanece entre as principais ligas do mundo porque combina elementos difíceis de reproduzir: clubes centenários, rivalidades orgânicas, escolas táticas influentes, títulos europeus e uma ligação profunda entre futebol, cidades e regiões.</p>
+
+<p>A competição atravessou períodos de enorme riqueza, crises financeiras, escândalos, reformas e mudanças de formato. Mesmo assim, preservou sua capacidade de produzir equipes competitivas e narrativas de alcance mundial.</p>
+
+<p>O cenário recente também trouxe maior alternância. Depois de nove títulos consecutivos da Juventus, Inter, Milan e Napoli voltaram a dividir o topo. Enquanto clubes como Atalanta, Roma, Napoli, Milan e Juventus mantiveram presença importante nas competições europeias.</p>
+
+<p>Para quem acompanha os diferentes modelos do futebol do continente europeu, a comparação com <a href="https://cortedosesportes.com.br/bundesliga-historia-hegemonia-bayern-cultura-torcida.html">a história, a hegemonia do Bayern na Bundesliga</a> mostra caminhos distintos. A Alemanha se destaca pela participação dos associados e pelos estádios cheios, enquanto a Itália construiu sua força sobre rivalidades regionais, tradição tática e clubes que marcaram a história europeia.</p>
+
+<p>No fim, o Campeonato Italiano continua relevante porque o scudetto representa mais do que uma posição na tabela. Ele carrega a identidade de uma cidade, o peso de uma camisa, a memória de diferentes gerações e o direito de exibir durante uma temporada o pequeno escudo tricolor que identifica o campeão da Itália.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
 <!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
-
 </body>
 </html>
