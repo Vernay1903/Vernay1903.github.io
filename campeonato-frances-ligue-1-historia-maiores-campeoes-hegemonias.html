@@ -1,581 +1,792 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Campeonato Francês: a história da Ligue 1, seus maiores campeões e as mudanças de hegemonia | Corte dos Esportes</title>
-  <meta name="description" content="A liga francesa construiu ao longo de décadas uma identidade própria dentro do futebol europeu." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
-
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
-
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
-
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    .ad-slot { overflow: hidden; max-width: 100%; }
-
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
-
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main { flex: 1; }
-
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-container img { height: 34px; }
-
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
-
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
-
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
-
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
-
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
-
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
-
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .meta a:hover { text-decoration: underline; }
-
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
-
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
-
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
-
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
-
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
-
-    .desc { font-size: 14px; line-height: 1.4; }
-
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
-
-    footer a:hover { color: #1E4BA5; }
-
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
-
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
-
-      h1 { font-size: 34px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Campeonato Francês: história, maiores campeões e a hegemonias da Ligue 1 | Corte dos Esportes</title>
+<meta name="description" content="Criada profissionalmente em 1932, a competição passou por diferentes ciclos de poder, revelou jogadores históricos e se consolidou como uma das principais ligas formadoras do futebol europeu." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
-
 <body>
-
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
 </header>
-
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Campeonato Francês: história, maiores campeões e a hegemonias da Ligue 1</h1>
+<p class="subhead" id="articleExcerpt">Criada profissionalmente em 1932, a competição passou por diferentes ciclos de poder, revelou jogadores históricos e se consolidou como uma das principais ligas formadoras do futebol europeu.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">25/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+<p>O Campeonato Francês construiu uma identidade própria dentro do futebol europeu. Embora não movimente os mesmos valores da Premier League e nem sempre receba a mesma exposição internacional de LaLiga, Serie A ou Bundesliga, a Ligue 1 reúne clubes tradicionais, rivalidades regionais, centros de formação reconhecidos e uma história marcada por constantes mudanças de hegemonia.</p>
+<p>A liga francesa também ocupa uma posição estratégica no mercado de jogadores. Jovens recebem espaço, clubes desenvolvem atletas para a elite europeia e as transferências se tornaram uma parte fundamental da sustentabilidade financeira das equipes.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </div>
 
-<main>
-  <div class="page">
-    <div class="layout">
+<p><strong>As origens do campeonato</strong></p>
+<p>A profissionalização do futebol francês começou a ganhar forma no início da década de 1930. A Federação Francesa autorizou os clubes a remunerarem oficialmente seus jogadores e organizou a primeira edição do torneio profissional na temporada 1932/33.</p>
+<p>A competição inaugural teve um formato diferente do atual, com duas chaves e uma decisão entre os vencedores. O Olympique Lillois, um dos clubes que deram origem posteriormente ao Lille, venceu o Cannes por 4 a 3 na final e se tornou o primeiro campeão profissional da França.</p>
+<p>O campeonato não foi disputado durante parte da Segunda Guerra Mundial nos mesmos moldes oficiais. Depois do conflito, a liga foi reorganizada e recuperou seu papel como principal competição de clubes do país.</p>
+<p>Durante décadas, o torneio foi chamado de Division 1. A denominação Ligue 1 passou a ser utilizada a partir da temporada 2002/03, acompanhando uma estratégia de modernização comercial e internacionalização da competição.</p>
 
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">Campeonato Francês: a história da Ligue 1, seus maiores campeões e as mudanças de hegemonia</h1>
-          <p class="subhead" id="articleExcerpt">A liga francesa construiu ao longo de décadas uma identidade própria dentro do futebol europeu.</p>
+<p><strong>O formato</strong></p>
+<p>É disputada por 18 clubes desde a redução implantada na temporada 2023/24. O campeonato segue o sistema de pontos corridos, com partidas de ida e volta.</p>
+<p>Os dois últimos colocados são rebaixados diretamente para a Ligue 2. O 16º colocado disputa um playoff de permanência, em jogos de ida e volta, contra a equipe classificada por meio dos playoffs da segunda divisão.</p>
+<p>As vagas nas competições europeias dependem da posição final, dos campeões das copas nacionais e do desempenho da França no ranking da Uefa. Por isso, a quantidade de classificados para Champions League, Europa League e Conference League pode sofrer alterações entre as temporadas.</p>
 
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">25/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">CATEGORIA</a>
-          </div>
+<p><strong>A nova taça da Ligue 1</strong></p>
+<p>Foi apresentado um novo troféu em outubro de 2024. A peça foi entregue pela primeira vez ao campeão da temporada 2024/25 e passou a representar uma nova fase da identidade visual do campeonato.</p>
+<p>Criado pelo artista francês Mathias Kiss e produzido pela tradicional Maison Christofle, o troféu combina elementos clássicos da ourivesaria francesa com um desenho moderno.</p>
+<p>A base possui formato hexagonal, uma referência direta ao mapa da França, frequentemente chamado de “Hexágono”. Nela estão gravados os campeões nacionais desde a primeira edição profissional, disputada em 1932/33.</p>
+<p>A taça mede 54 centímetros e pesa pouco menos de 10 quilos. Ela substituiu o Hexagoal, troféu hexagonal que havia se tornado um dos símbolos visuais da liga durante o período anterior.</p>
 
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
+<p><strong>Os maiores campeões</strong></p>
+<p>O PSG assumiu a liderança isolada do ranking ao ampliar seu domínio durante a década de 2020. Saint-Étienne, Marseille, Monaco, Nantes e Lyon completam o grupo dos clubes mais vencedores.</p>
+<p><strong>Maiores campeões franceses:</strong></p>
+<ul>
+<li>Paris Saint-Germain — 14 títulos</li>
+<li>Saint-Étienne — 10 títulos</li>
+<li>Olympique de Marseille — 9 títulos</li>
+<li>Monaco — 8 títulos</li>
+<li>Nantes — 8 títulos</li>
+<li>Lyon — 7 títulos</li>
+<li>Bordeaux — 6 títulos</li>
+<li>Stade de Reims — 6 títulos</li>
+<li>Atual campeão: Paris Saint-Germain, vencedor da temporada 2025/26</li>
+</ul>
+<p>Ao todo, 19 clubes diferentes já conquistaram o campeonato profissional desde 1932/33. A lista inclui equipes que desapareceram, passaram por fusões ou deixaram de ocupar espaço relevante na elite, como Olympique Lillois e CO Roubaix-Tourcoing.</p>
 
-          <!-- ANÚNCIO (ARTIGO - TOPO) -->
-          <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
-            <!-- Display-Article-Meio -->
-            <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-4145492637375431"
-              data-ad-slot="8702501261"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
+<p><strong>O 14º título em 2025/26</strong></p>
+<p>O Paris Saint-Germain confirmou seu <a href="https://cortedosesportes.com.br/psg-campeao-2026-pentacampeao-ligue-1-titulo-frances-lens.html">14º</a> título francês ao vencer o Lens por 2 a 0 no Stade Bollaert-Delelis, em 13 de maio de 2026. O resultado garantiu matematicamente a conquista com uma rodada de antecedência.</p>
+<p>Foi o quinto título consecutivo do PSG, uma sequência inédita na história do clube. Apenas o Lyon, campeão sete vezes seguidas entre 2001/02 e 2007/08, conseguiu uma série mais longa no Campeonato Francês.</p>
+<p>A equipe comandada por Luis Enrique encerrou a temporada com 76 pontos. O PSG também apresentou o elenco titular mais jovem de sua história na liga, com média inferior a 24 anos, e manteve a melhor estrutura ofensiva e defensiva do campeonato durante grande parte da campanha.</p>
 
-          <article id="articleBody">
-            <p>O Campeonato Francês, hoje conhecido como Ligue 1, construiu ao longo de décadas uma identidade própria dentro do futebol europeu. Embora nem sempre tenha ocupado o mesmo espaço midiático de ligas como a inglesa, a espanhola ou a italiana, o torneio francês formou gerações de craques, revelou clubes históricos e passou por diferentes ciclos de força e domínio até chegar ao cenário atual.</p>
+<p><strong>A ascensão e a nova hegemonia francesa</strong></p>
+<p>O PSG foi fundado em 1970 e demorou até 1985/86 para conquistar seu primeiro Campeonato Francês. O segundo título veio em 1993/94, durante uma fase de crescimento nacional e europeu.</p>
+<p>A transformação mais profunda aconteceu depois da entrada da Qatar Sports Investments, em 2011. O clube ampliou receitas, contratou jogadores de projeção mundial e passou a construir elencos muito superiores à média financeira da liga.</p>
+<p><strong>Títulos do PSG no Campeonato Francês:</strong></p>
+<ul>
+<li>1985/86</li>
+<li>1993/94</li>
+<li>2012/13</li>
+<li>2013/14</li>
+<li>2014/15</li>
+<li>2015/16</li>
+<li>2017/18</li>
+<li>2018/19</li>
+<li>2019/20</li>
+<li>2021/22</li>
+<li>2022/23</li>
+<li>2023/24</li>
+<li>2024/25</li>
+<li>2025/26</li>
+</ul>
+<p>Desde a chegada do novo grupo controlador, o PSG venceu 12 de 15 edições da liga. Somente Monaco, Lille e Montpellier conseguiram interromper o domínio parisiense nesse período.</p>
+<p>O poder financeiro elevou a exposição internacional da competição, trouxe nomes como Ibrahimović, Neymar, <a href="https://cortedosesportes.com.br/messi-historia-barcelona-titulos-recordes-copa-2022.html">Messi</a>, Kylian Mbappé e Ousmane Dembélé e transformou o clube da capital na principal referência comercial da Ligue 1.</p>
+<p>Ao mesmo tempo, a distância econômica alimentou debates sobre equilíbrio competitivo. Para grande parte dos adversários, disputar o título passou a exigir uma combinação de planejamento excepcional, desenvolvimento de jovens, contratações eficientes e instabilidade do favorito.</p>
 
-            <p>Mais do que uma simples disputa nacional, a liga francesa virou um retrato das transformações do futebol do país. Em alguns momentos, foi marcada pelo equilíbrio. Em outros, por hegemonias claras. E justamente essa alternância ajuda a explicar por que a história do campeonato é mais rica do que muitas vezes parece à primeira vista.</p>
+<p><strong>O primeiro clube a alcançar dez títulos</strong></p>
+<p>Antes da ascensão do PSG, o Saint-Étienne ocupava um lugar especial como maior campeão francês. O clube foi o primeiro a atingir a marca de dez títulos nacionais.</p>
+<p>A fase mais forte aconteceu durante as décadas de 1960 e 1970. Entre 1964 e 1976, os Verts conquistaram oito campeonatos e transformaram o Stade Geoffroy-Guichard em um dos ambientes mais temidos do futebol francês.</p>
+<p><strong>Títulos do Saint-Étienne:</strong></p>
+<ul>
+<li>1956/57</li>
+<li>1963/64</li>
+<li>1966/67</li>
+<li>1967/68</li>
+<li>1968/69</li>
+<li>1969/70</li>
+<li>1973/74</li>
+<li>1974/75</li>
+<li>1975/76</li>
+<li>1980/81</li>
+</ul>
+<p>O clube também ganhou projeção continental ao chegar à final da Copa dos Campeões da Europa em 1975/76, quando perdeu para o Bayern de Munique por 1 a 0.</p>
+<p>Mesmo distante das principais conquistas nas décadas seguintes, o Saint-Étienne preservou uma torcida nacional numerosa e uma identidade associada à classe trabalhadora e à tradição industrial da cidade.</p>
 
-            <p><strong>Como surgiu o Campeonato Francês</strong></p>
+<p><strong>O poder do sul da França</strong></p>
+<p>O Olympique de Marseille soma nove títulos e possui uma das maiores torcidas do país. O clube representa o principal contraponto regional ao poder de Paris e dos centros do norte da França.</p>
+<p>O período mais dominante ocorreu entre o fim da década de 1980 e o início dos anos 1990. O Marseille conquistou quatro títulos consecutivos entre 1988/89 e 1991/92.</p>
+<p><strong>Títulos do Marseille:</strong></p>
+<ul>
+<li>1936/37</li>
+<li>1947/48</li>
+<li>1970/71</li>
+<li>1971/72</li>
+<li>1988/89</li>
+<li>1989/90</li>
+<li>1990/91</li>
+<li>1991/92</li>
+<li>2009/10</li>
+</ul>
+<p>A temporada 1992/93 não possui campeão oficial. O Marseille terminou em primeiro lugar, mas perdeu o título depois do escândalo de manipulação envolvendo a partida contra o Valenciennes.</p>
+<p>Mesmo com essa ruptura, o período entrou para a memória do clube por outro motivo: em 1993, o Marseille derrotou o Milan na final da Champions League e se tornou o primeiro clube francês campeão europeu.</p>
+<p>A rivalidade entre PSG e Marseille ganhou o nome de Le Classique. O confronto reúne a capital e a principal potência do sul, além de diferenças culturais, econômicas e esportivas que ampliam a tensão entre as torcidas.</p>
 
-            <p>O futebol francês levou algum tempo para estruturar um campeonato nacional profissional nos moldes das grandes ligas europeias. Esse passo foi dado em 1932, quando a França organizou sua primeira edição profissional de alcance nacional e abriu caminho para a consolidação da elite do país.</p>
+<p><strong>Stade de Reims abriu as portas da Europa</strong></p>
+<p>A instituição foi a primeira grande potência internacional do futebol francês. O clube conquistou seis campeonatos e chegou às finais da Copa dos Campeões da Europa em 1956 e 1959.</p>
+<p>A equipe comandada por Albert Batteux ficou conhecida por um estilo técnico e ofensivo. Nomes como Raymond Kopa e Just Fontaine transformaram o Reims em uma referência para o futebol francês da época.</p>
+<p><strong>Títulos do Stade de Reims:</strong></p>
+<ul>
+<li>1948/49</li>
+<li>1952/53</li>
+<li>1954/55</li>
+<li>1957/58</li>
+<li>1959/60</li>
+<li>1961/62</li>
+</ul>
+<p>O clube perdeu as duas decisões europeias para o <a href="https://cortedosesportes.com.br/real-madrid-maior-clube-do-mundo-historia-titulos-champions.html">Real Madrid</a>, mas suas campanhas ajudaram a colocar a França no mapa do recém-criado futebol continental de clubes.</p>
 
-            <p>Com o tempo, a competição mudou de nome e de formato até chegar à marca Ligue 1, que hoje representa a primeira divisão do futebol francês. Essa evolução acompanhou não apenas mudanças administrativas, mas também a tentativa de tornar o campeonato mais forte comercialmente e mais competitivo em escala internacional.</p>
+<p><strong>Diferentes modelos de sucesso</strong></p>
+<p>O Nantes conquistou oito títulos com uma identidade baseada em formação de jogadores, continuidade e futebol coletivo. O chamado “jeu à la nantaise” valorizava movimentação, passes rápidos e compreensão coletiva do espaço.</p>
+<p><strong>Títulos do Nantes:</strong></p>
+<ul>
+<li>1964/65</li>
+<li>1965/66</li>
+<li>1972/73</li>
+<li>1976/77</li>
+<li>1979/80</li>
+<li>1982/83</li>
+<li>1994/95</li>
+<li>2000/01</li>
+</ul>
+<p>O Monaco também possui oito conquistas. Embora represente o Principado de Mônaco, o clube participa do sistema francês e construiu sua força por meio de investimento, formação e capacidade de identificar jogadores jovens.</p>
+<p><strong>Títulos do Monaco:</strong></p>
+<ul>
+<li>1960/61</li>
+<li>1962/63</li>
+<li>1977/78</li>
+<li>1981/82</li>
+<li>1987/88</li>
+<li>1996/97</li>
+<li>1999/2000</li>
+<li>2016/17</li>
+</ul>
+<p>A campanha de 2016/17 foi especialmente marcante. Com Leonardo Jardim, o Monaco superou o PSG e apresentou uma equipe ofensiva que tinha Kylian Mbappé, Radamel Falcao, Bernardo Silva, Fabinho, Thomas Lemar e Benjamin Mendy.</p>
 
-            <p><strong>Um campeonato que nunca teve uma única cara</strong></p>
+<p><strong>A hegemonia histórica</strong></p>
+<p>O Lyon construiu a maior sequência de títulos consecutivos da história do Campeonato Francês. Foram sete conquistas entre 2001/02 e 2007/08.</p>
+<p><strong>Títulos consecutivos do Lyon:</strong></p>
+<ul>
+<li>2001/02</li>
+<li>2002/03</li>
+<li>2003/04</li>
+<li>2004/05</li>
+<li>2005/06</li>
+<li>2006/07</li>
+<li>2007/08</li>
+</ul>
+<p>Antes desse período, o clube nunca havia vencido a primeira divisão. O crescimento foi sustentado por estabilidade administrativa, boas contratações, desenvolvimento de jogadores e um modelo capaz de renovar o elenco sem perder competitividade.</p>
+<p>Juninho Pernambucano foi um dos principais símbolos da geração. O brasileiro participou dos sete títulos, tornou-se referência técnica e marcou época por sua liderança e pela extraordinária capacidade nas cobranças de falta.</p>
+<p>O Lyon também venceu com quatro treinadores diferentes durante a sequência: Jacques Santini, Paul Le Guen, Gérard Houllier e Alain Perrin. Essa alternância mostrou que a força do projeto ultrapassava o trabalho de um único comandante.</p>
 
-            <p>Uma das características mais interessantes do Campeonato Francês é justamente a dificuldade de resumir sua história a um só perfil. Diferentemente de ligas em que dois ou três clubes concentram quase todo o protagonismo por décadas, a França viveu fases bastante distintas.</p>
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
-            <p>Houve, por exemplo, décadas em que clubes de forte identidade regional ou de cidades fora do eixo mais midiático ganharam enorme relevância, como o Reims nos anos 1950, o Saint-Étienne nas décadas de 1960 e 1970 e o Nantes em diferentes momentos entre os anos 1960 e 1990. Em outras fases, equipes de centros maiores ou com projeção internacional assumiram o controle, como o Marseille no fim dos anos 1980 e início dos anos 1990, o Lyon nos anos 2000 e o PSG a partir da década de 2010.</p>
+<p><strong>Os técnicos mais vitoriosos</strong></p>
+<p>A história da Ligue 1 também foi construída por treinadores que marcaram épocas e deram identidade a diferentes clubes.</p>
+<p>Albert Batteux é o técnico que mais ganhou a competição, com oito títulos. Ele comandou o Stade de Reims em cinco conquistas e o Saint-Étienne em outras três.</p>
+<p><strong>Outro técnicos campeões:</strong></p>
+<ul>
+<li>Stade de Reims: 1952/53, 1954/55, 1957/58, 1959/60 e 1961/62</li>
+<li>Saint-Étienne: 1967/68, 1968/69 e 1969/70</li>
+<li>Robert Herbin — 4 títulos</li>
+<li>Saint-Étienne: 1973/74, 1974/75, 1975/76 e 1980/81</li>
+<li>Laurent Blanc — 4 títulos</li>
+<li>Bordeaux: 2008/09</li>
+<li>PSG: 2013/14, 2014/15 e 2015/16</li>
+<li>Lucien Leduc — 4 títulos</li>
+<li>Monaco: 1960/61, 1962/63 e 1977/78</li>
+<li>Marseille: 1970/71</li>
+</ul>
+<p>Luis Enrique consquitou três título seguidos, espanhol chegou a essa marca ao comandar o PSG nas campanhas de 2023/24, 2024/25 e 2025/26.</p>
 
-            <p>Também houve momentos de grande equilíbrio, com títulos espalhados por diferentes camisas, algo que ajudou a criar a imagem de uma liga imprevisível e, em muitos anos, difícil de dominar por muito tempo.</p>
+<p><strong>A revelação de talentos</strong></p>
+<p>A Ligue 1 construiu uma das reputações mais fortes do mundo na formação e no desenvolvimento de jogadores</p>
+<p>Clubes franceses investem em academias, redes de observação e integração de jovens ao elenco profissional. A diversidade cultural do país e a ligação com territórios da África, do Caribe e de outras regiões também ampliaram a base disponível para a formação esportiva.</p>
+<p><strong>Alguns exemplos abaixo:</strong></p>
+<ul>
+<li>Raymond Kopa</li>
+<li>Michel Platini</li>
+<li>Jean-Pierre Papin</li>
+<li>Eric Cantona</li>
+<li><a href="https://cortedosesportes.com.br/zidane-historia-carreira-titulos-real-madrid-franca.html">Zinedine Zidane</a></li>
+<li>Thierry Henry</li>
+<li>David Trezeguet</li>
+<li>Karim Benzema</li>
+<li>N’Golo Kanté</li>
+<li>Kylian Mbappé</li>
+<li>William Saliba</li>
+<li>Aurélien Tchouaméni</li>
+<li>Eduardo Camavinga</li>
+<li>Désiré Doué</li>
+</ul>
+<p>Nem todos permaneceram por muito tempo na competição. Muitos utilizaram a Ligue 1 como etapa de preparação antes de serem negociados com clubes mais ricos da Inglaterra, Espanha, Alemanha ou Itália.</p>
+<p>Essa dinâmica fez o campeonato ganhar o apelido informal de “liga dos talentos”. Para os clubes, revelar e vender jogadores se tornou não apenas uma escolha esportiva, mas uma parte central do modelo econômico.</p>
 
-            <!-- ANÚNCIO (ARTIGO - MEIO) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p><strong>A força financeira e as dificuldades econômicas</strong></p>
+<p>O futebol profissional francês movimenta bilhões de euros, mas enfrenta um desequilíbrio importante entre receitas, salários, investimentos e dependência das transferências.</p>
+<p>O relatório econômico referente à temporada 2024/25 apontou aproximadamente €2,36 bilhões em receitas para o conjunto do futebol profissional francês, uma queda de 18% em comparação com o exercício anterior. O resultado líquido combinado ficou negativo em cerca de €542 milhões.</p>
+<p>Somente os clubes da Ligue 1 apresentaram um déficit líquido próximo de €466 milhões. A queda também esteve relacionada à redução de receitas extraordinárias ligadas ao acordo comercial entre a LFP e o fundo CVC.</p>
+<p>O PSG concentra uma parte muito elevada da economia da primeira divisão. Segundo a análise dos dados financeiros, o clube representou quase 39% das receitas da Ligue 1 e cerca de 45% das receitas comerciais.</p>
+<p>Essa concentração ajuda a explicar a diferença esportiva. Enquanto o PSG conta com patrocínios internacionais, grande venda de produtos e presença constante na Champions League, vários adversários dependem fortemente de transferências para equilibrar o orçamento.</p>
+<p>A venda de atletas funciona como uma fonte recorrente de recursos. Clubes como Monaco, Lille, Lyon, Rennes, Strasbourg e Montpellier desenvolveram modelos de identificação, valorização e negociação de jovens.</p>
 
-            <p><strong>Saint-Étienne e o primeiro grande poder da era moderna</strong></p>
+<p><strong>Ligue 1+ mudou a transmissão na França</strong></p>
+<p>A temporada 2025/26 marcou uma transformação no mercado doméstico. A LFP lançou a plataforma Ligue 1+, assumindo diretamente a produção e a distribuição da maior parte das partidas.</p>
+<p>O serviço passou a oferecer:</p>
+<ul>
+<li>Oito jogos ao vivo e exclusivos por rodada</li>
+<li>A nona partida transmitida pela beIN Sports e exibida posteriormente na plataforma</li>
+<li>Um multiplex por rodada</li>
+<li>Reprises e melhores momentos</li>
+<li>Programas de análise e bastidores</li>
+<li>Playoffs de acesso e permanência</li>
+<li>Trophée des Champions</li>
+</ul>
+<p>O lançamento representou uma resposta às dificuldades da liga em fechar um contrato tradicional de televisão com os valores esperados. Em vez de depender integralmente de uma emissora, a LFP passou a assumir parte maior do risco comercial e da relação com os assinantes.</p>
 
-            <p>Quando se fala em tradição no futebol francês, o Saint-Étienne aparece inevitavelmente como um dos nomes centrais. O clube virou símbolo de força sobretudo nas décadas de 1960 e 1970, quando construiu parte decisiva do seu prestígio com uma sequência marcante de títulos nacionais.</p>
+<p><strong>Quanto o campeão recebe</strong></p>
+<p>A Ligue 1 não entrega ao campeão um prêmio único e separado apenas pela conquista do título. O dinheiro recebido faz parte de um conjunto de pagamentos centrais e receitas próprias.</p>
+<p>Os recursos de um clube podem incluir:</p>
+<ul>
+<li>Distribuição dos direitos domésticos</li>
+<li>Distribuição dos direitos internacionais</li>
+<li>Parcela relacionada ao desempenho esportivo</li>
+<li>Histórico e exposição comercial</li>
+<li>Bilheteria</li>
+<li>Patrocínios próprios</li>
+<li>Venda de produtos</li>
+<li>Transferências de jogadores</li>
+<li>Premiações das competições europeias</li>
+</ul>
+<p>O campeão ocupa a maior faixa ligada à classificação, mas o valor total recebido não corresponde exclusivamente ao título. Por isso, não é correto apresentar todo o repasse central do PSG como se fosse uma premiação única pelo primeiro lugar.</p>
+<p>Os números definitivos da distribuição de 2025/26 dependem do fechamento financeiro da LFP, das receitas obtidas pela Ligue 1+ e dos pagamentos internacionais.</p>
 
-            <p>Por muito tempo, o Saint-Étienne foi tratado como a maior referência doméstica do país. Sua hegemonia ajudou a consolidar a imagem de um clube vencedor, popular e profundamente ligado a uma era em que o Campeonato Francês ainda buscava ampliar sua relevância dentro e fora do país.</p>
+<p><strong>O controle financeiro dos clubes</strong></p>
+<p>O controle econômico do futebol profissional francês é exercido pela Direction Nationale du Contrôle de Gestion, conhecida como DNCG.</p>
+<p>O órgão analisa orçamentos, dívidas, salários, transferências, garantias financeiras e projeções de receita. A avaliação acontece antes e durante as temporadas.</p>
+<p>A DNCG pode aplicar medidas como:</p>
+<ul>
+<li>Limitação da folha salarial</li>
+<li>Restrição a gastos com transferências</li>
+<li>Exigência de aportes dos acionistas</li>
+<li>Proibição de registrar contratos</li>
+<li>Rebaixamento administrativo</li>
+<li>Exclusão de competições profissionais</li>
+</ul>
+<p>O caso do Lyon em 2025 mostrou o peso desse sistema. O clube chegou a receber uma decisão de rebaixamento administrativo durante a análise financeira, reforçando que a classificação dentro de campo não garante sozinha a permanência na elite.</p>
+<p>Os clubes classificados para torneios continentais também precisam cumprir as regras de licenciamento e sustentabilidade financeira da Uefa.</p>
 
-            <p><strong>Marseille e a consolidação de outro gigante</strong></p>
+<!-- ANÚNCIO (ARTIGO - FIM) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - fim)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
-            <p>Se o Saint-Étienne representa uma fase histórica de domínio, o Olympique de Marseille simboliza outro capítulo fundamental da liga. O clube do sul da França se firmou como uma das marcas mais pesadas do futebol francês, com grande torcida, identidade forte e presença frequente nas disputas por títulos.</p>
+<p><strong>Uma liga transmitida em 215 territórios</strong></p>
+<p>O alcance da Ligue 1 vai muito além da França. Na temporada 2025/26, o campeonato esteve disponível em 215 territórios por meio de uma rede de 50 parceiros de transmissão.</p>
+<p>A liga ampliou acordos com plataformas como Sky na Itália, Fox no México e beIN Sports em Hong Kong, além de novas parcerias na Romênia, em Malta, na Tailândia e no Vietnã.</p>
+<p>A audiência internacional registrou crescimento expressivo em mercados estratégicos. Na comparação entre 2024/25 e 2023/24, o público aumentou 540% em Portugal, 194% no Brasil e 19% na África Subsaariana.</p>
+<p>A Ligue 1 também acumulava 54 milhões de seguidores nas plataformas digitais, dos quais 89% estavam localizados fora da França.</p>
+<p>A expansão internacional depende da presença de jogadores reconhecidos, do desempenho dos clubes nas competições europeias e da capacidade de transformar jovens promessas em personagens acompanhados mundialmente.</p>
 
-            <p>O Marseille também teve papel importante no crescimento do Campeonato Francês. Com uma das torcidas mais fortes do país e presença constante nas disputas pelo topo, o clube virou um dos grandes símbolos da liga.</p>
+<p><strong>Torcida e estádios</strong></p>
+<p>O campeonato levou aproximadamente 8,55 milhões de torcedores aos estádios durante a temporada 2024/25. O número mostrou a força do público mesmo em um cenário de instabilidade financeira e mudanças nos contratos de transmissão.</p>
+<p>Alguns dos principais ambientes da competição são:</p>
+<ul>
+<li>Stade Vélodrome — Olympique de Marseille</li>
+<li>Parc des Princes — Paris Saint-Germain</li>
+<li>Groupama Stadium — Lyon</li>
+<li>Stade Bollaert-Delelis — Lens</li>
+<li>Stade Pierre-Mauroy — Lille</li>
+<li>Stade de la Beaujoire — Nantes</li>
+<li>Stade Louis-II — Monaco</li>
+<li>Stade Geoffroy-Guichard — Saint-Étienne</li>
+</ul>
+<p>O Lens é um dos maiores exemplos da ligação regional entre clube e comunidade. Mesmo representando uma cidade relativamente pequena, o time costuma atuar diante de públicos que se aproximam da população local.</p>
+<p>O Vélodrome também ocupa posição especial. A torcida do Marseille transformou o estádio em um dos ambientes mais intensos da Europa, especialmente nos clássicos contra o PSG e nas noites de competições continentais.</p>
 
-            <p><strong>Nantes, Bordeaux, Monaco e Lyon mostram a força da diversidade francesa</strong></p>
+<p><strong>Os principais clássicos</strong></p>
+<p>O futebol francês possui rivalidades construídas por geografia, história, identidade social e disputas por títulos.</p>
 
-            <p>A história da liga não se resume aos clubes mais midiáticos. O Campeonato Francês também foi moldado por equipes como Nantes, Bordeaux e Monaco, que em diferentes períodos conseguiram unir organização, talento e continuidade para levantar a taça e deixar marca na competição.</p>
+<p><strong>PSG x Marseille — Le Classique</strong></p>
+<p>É o confronto de maior alcance comercial da liga. De um lado está Paris, capital política e econômica. Do outro, Marseille, cidade portuária do sul com uma identidade regional muito forte.</p>
 
-            <p>O Nantes, por exemplo, ganhou prestígio por uma identidade de jogo muito valorizada e por campanhas que reforçaram sua relevância histórica. O Bordeaux também viveu fases de enorme peso no cenário doméstico. Já o Monaco, embora seja um clube do Principado de Mônaco e dispute o sistema francês, virou um dos nomes mais consistentes da elite e soma oito títulos nacionais, número que ajuda a explicar seu peso histórico.</p>
+<p><strong>Lyon x Saint-Étienne — Derby Rhône-Alpes</strong></p>
+<p>A rivalidade aproxima duas cidades separadas por cerca de 60 quilômetros. O confronto também carrega diferenças históricas entre a imagem burguesa e comercial de Lyon e a tradição operária de Saint-Étienne.</p>
 
-            <p>Essa variedade de campeões é parte essencial da identidade da liga. Ela ajuda a mostrar que o Campeonato Francês nunca foi apenas uma corrida concentrada em um único eixo.</p>
+<p><strong>Lille x Lens — Derby du Nord</strong></p>
+<p>O clássico representa o norte da França e coloca frente a frente clubes com grandes bases populares. Lens possui raízes ligadas à mineração, enquanto Lille representa o principal centro urbano da região.</p>
 
-            <p><strong>A hegemonia do Lyon marcou os anos 2000</strong></p>
+<p><strong>Monaco x Nice — Derby de la Côte d’Azur</strong></p>
+<p>A partida reúne dois clubes da Riviera Francesa. Apesar da proximidade geográfica, Monaco e Nice possuem contextos institucionais e sociais bastante diferentes.</p>
 
-            <p>Entre todas as mudanças de poder no futebol francês, uma das mais claras foi a do Lyon no início dos anos 2000. O clube construiu um ciclo dominante e emendou sete títulos seguidos, entre 2001-02 e 2007-08, sequência que mudou sua posição na história da competição.</p>
+<p><strong>Nantes x Rennes — Derby Breton</strong></p>
+<p>O confronto possui forte peso regional, embora a identidade histórica da cidade de Nantes em relação à Bretanha também seja tema de debate cultural e político.</p>
 
-            <p>Aquele período transformou o Lyon de clube forte em potência nacional. Mais do que vencer, a equipe passou a ser o grande parâmetro interno da liga, impondo regularidade, elenco competitivo e uma estrutura que a colocou acima dos rivais durante vários anos.</p>
+<p><strong>A Ligue 1 e a Copa da França</strong></p>
+<p>Além do campeonato por pontos corridos, os clubes franceses disputam a <a href="https://cortedosesportes.com.br/copa-da-franca-historia-formato-maiores-campeoes-curiosidades.html">Coupe de France</a>, uma das copas nacionais mais abertas do futebol mundial.</p>
+<p>A competição permite a participação de equipes profissionais, amadoras e representantes de territórios ultramarinos. Clubes da Ligue 1 podem enfrentar adversários de níveis muito inferiores, criando um ambiente favorável para zebras e campanhas históricas.</p>
 
-            <p>Foi uma hegemonia importante também porque mostrou que o futebol francês podia produzir um domínio longo sem necessariamente depender de um gigante histórico tradicional. O Lyon se tornou esse gigante na prática, justamente pelo que construiu dentro de campo. E esse ciclo também teve forte protagonismo brasileiro: Juninho Pernambucano foi um dos rostos da era dourada do clube e esteve presente nos sete títulos seguidos do Lyon, tornando-se até hoje um dos rostos mais marcantes da era mais dominante da história do clube no Campeonato Francês.</p>
+<p><strong>A relevância do campeonato</strong></p>
+<p>A Ligue 1 permanece relevante porque ocupa uma posição única no futebol europeu. A competição combina tradição, formação de jogadores, diversidade regional e uma economia que depende da descoberta e valorização de talentos.</p>
+<p>O domínio do PSG é a característica central do período atual, mas a história mostra que o poder no futebol francês já passou por diferentes cidades. Reims, Saint-Étienne, Marseille, Nantes, Monaco e Lyon construíram ciclos que mudaram a hierarquia nacional.</p>
+<p>A temporada 2025/26 reforçou a hegemonia parisiense com o 14º título e a quinta conquista consecutiva. Ao mesmo tempo, a campanha do Lens, vice-campeão e vencedor da Copa da França, mostrou que projetos esportivos consistentes ainda podem desafiar a distância econômica.</p>
+<p>Para entender como diferentes ligas europeias construíram suas identidades, também vale conhecer da <a href="https://cortedosesportes.com.br/campeonato-italiano-historia-tradicao-maiores-campeoes-rivalidades.html">Série A italiana</a>.</p>
+<p>No fim, o Campeonato Francês é muito mais do que o domínio recente do PSG. É uma competição que revelou gerações, exportou craques, produziu diferentes hegemonias e continua sendo observada por clubes do mundo inteiro em busca do próximo grande talento do futebol.</p>
+</article>
+</div>
+</section>
 
-            <!-- ANÚNCIO (ARTIGO - FINAL) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li>
+<span class="time">--:--</span>
+<span class="desc">Carregando agenda...</span>
+</li>
+</ul>
+</div>
 
-            <p><strong>O PSG mudou a lógica recente do campeonato</strong></p>
-
-            <p>Se o Lyon teve uma era dominante, o Paris Saint-Germain alterou de forma ainda mais profunda o mapa recente da Ligue 1. Com um salto de investimento, visibilidade internacional e capacidade de montar elencos muito acima da média local, o clube parisiense passou a exercer um protagonismo difícil de comparar com fases anteriores.</p>
-
-            <p>A partir daí, o Campeonato Francês entrou em uma nova lógica. O PSG deixou de ser apenas um candidato forte e passou a ser o principal parâmetro da competição. Isso elevou o nível de exigência dos adversários e também mudou a percepção externa sobre a liga, que passou a ser cada vez mais associada ao poder esportivo e financeiro do clube da capital.</p>
-
-            <p>Ao mesmo tempo, esse domínio recente também provocou debate. De um lado, aumentou a exposição internacional do campeonato. De outro, levantou discussões sobre equilíbrio competitivo e sobre o espaço real dos concorrentes em uma liga com um favorito tão claro em muitas temporadas.</p>
-
-            <p><strong>Quem são os maiores campeões do Campeonato Francês</strong></p>
-
-            <p>Ao olhar para a história do torneio, alguns clubes aparecem com peso especial. Entre os maiores campeões, o recorte principal passa por:</p>
-
-            <p>PSG – 14 títulos</p>
-            <p>Saint-Étienne – 10 títulos</p>
-            <p>Marseille – 9 títulos</p>
-            <p>Monaco – 8 títulos</p>
-            <p>Nantes – 8 títulos</p>
-            <p>Lyon – 7 títulos</p>
-            <p>Bordeaux – 6 títulos</p>
-            <p>Reims – 6 títulos</p>
-            <p>Atual campeão (temporada 2025/2026): PSG</p>
-
-            <p>Mas o dado mais interessante talvez não seja apenas a lista dos maiores campeões. O que realmente chama atenção é como essa hierarquia mudou ao longo do tempo. O clube que parecia inalcançável em uma geração foi superado ou ameaçado em outra. Isso mostra como o Campeonato Francês passou por diferentes centros de poder, sem permanecer preso a uma única lógica histórica.</p>
-
-            <p><strong>Por que a Ligue 1 revela tantos talentos</strong></p>
-
-            <p>Mesmo quando não é colocada no topo das discussões sobre as ligas mais badaladas do planeta, a Ligue 1 costuma manter enorme prestígio em um aspecto essencial: a formação e valorização de talentos.</p>
-
-            <p>O futebol francês se notabilizou por revelar jogadores de altíssimo nível, muitos deles capazes de explodir no cenário europeu e mundial. Casos como Thierry Henry, Zinedine Zidane, Karim Benzema, N’Golo Kanté e, mais recentemente, Kylian Mbappé ajudam a ilustrar essa força formadora. Mbappé, inclusive, se tornou o exemplo mais recente de craque que saiu do ambiente da liga francesa para se consolidar entre os maiores nomes do futebol mundial.</p>
-
-            <p>Isso acontece porque o campeonato convive com centros de formação fortes, boa base de desenvolvimento e espaço relativamente maior para jovens ganharem minutos em alto nível.</p>
-
-            <p>Essa característica ajudou a manter a relevância da competição mesmo em fases em que seu peso internacional parecia menor do que o de outras ligas. A Ligue 1 pode não ter sido sempre a mais poderosa em fama global, mas quase sempre foi uma liga observada com atenção por quem procura talento.</p>
-
-            <p><strong>Um campeonato entre tradição, renovação e disputa por prestígio</strong></p>
-
-            <p>A história do Campeonato Francês mostra uma competição que nunca ficou parada. A liga mudou de nome, viu forças tradicionais perderem espaço, testemunhou novas hegemonias e se reinventou em diferentes contextos do futebol europeu.</p>
-
-            <p>Esse movimento permanente talvez seja uma de suas maiores marcas. A Ligue 1 carrega tradição, mas também vive de renovação. Tem clubes históricos, mas também abre espaço para surpresas. Já foi dominada por diferentes potências e continua funcionando como vitrine para jogadores, treinadores e projetos esportivos.</p>
-
-            <p>Por isso, entender o Campeonato Francês é olhar para muito mais do que a tabela de uma temporada. É acompanhar uma competição que atravessou gerações, mudou de mãos várias vezes e segue tentando equilibrar passado, presente e ambição de futuro dentro do futebol europeu, cenário em que outras ligas históricas também construíram identidade própria, como a <a href="https://cortedosesportes.com.br/laliga-historia-maiores-campeoes-rivalidade-real-madrid-barcelona.html">LaLiga</a>.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
-
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
-
-    </div>
-  </div>
+<div class="card">
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+</aside>
+</div>
+</div>
 </main>
 
 <footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
 </footer>
 
 <script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "Futebol";
+const CATEGORY_SLUG = "futebol";
 
-  const AGENDA_JSON_URL = "agenda.json";
+document.querySelectorAll("#sportsMenu a").forEach(function (link) {
+if (link.dataset.slug === CATEGORY_SLUG) {
+link.classList.add("active");
+}
+});
 
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
+const categoryLink = document.getElementById("categoryLink");
+if (categoryLink) {
+categoryLink.href = CATEGORY_SLUG + ".html";
+}
 
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
+fetch("agenda.json", { cache: "no-store" })
+.then(function (response) {
+if (!response.ok) {
+throw new Error("Erro ao carregar agenda");
+}
+return response.json();
+})
+.then(function (agenda) {
+const agendaList = document.getElementById("agendaList");
+agendaList.innerHTML = "";
 
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
+agenda.forEach(function (item) {
+const li = document.createElement("li");
+const time = document.createElement("span");
+const desc = document.createElement("span");
 
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
+time.className = "time";
+desc.className = "desc";
+time.textContent = item.horario;
+desc.textContent = item.descricao;
 
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
-
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
-
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
-
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
-
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
-
-  loadAgenda();
+li.appendChild(time);
+li.appendChild(desc);
+agendaList.appendChild(li);
+});
+})
+.catch(function () {
+const agendaList = document.getElementById("agendaList");
+agendaList.innerHTML = '<li><span class="time">--:--</span><span class="desc">Carregando agenda...</span></li>';
+});
 </script>
 
-<!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
-
 </body>
 </html>
