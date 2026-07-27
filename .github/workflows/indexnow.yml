@@ -1,0 +1,79 @@
+name: Enviar URLs ao IndexNow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "*.html"
+      - "**/*.html"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ler arquivos do repositorio
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 2
+
+      - name: Aguardar publicacao do GitHub Pages
+        run: sleep 30
+
+      - name: Enviar URLs alteradas
+        shell: bash
+        env:
+          INDEXNOW_KEY: 709d2960837e1ad461118c0d0f73a985
+          SITE_URL: https://cortedosesportes.com.br
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            files=("index.html")
+          else
+            before="${{ github.event.before }}"
+
+            if [ "$before" = "0000000000000000000000000000000000000000" ]; then
+              files=("index.html")
+            else
+              mapfile -t files < <(
+                git diff --name-only --diff-filter=ACMRTD \
+                  "$before" "$GITHUB_SHA" -- "*.html"
+              )
+            fi
+          fi
+
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "Nenhuma pagina HTML alterada."
+            exit 0
+          fi
+
+          for file in "${files[@]}"; do
+            [ -n "$file" ] || continue
+
+            if [ "$file" = "index.html" ]; then
+              url="${SITE_URL}/"
+            else
+              url="${SITE_URL}/${file}"
+            fi
+
+            status="$(
+              curl --silent --show-error --output /dev/null \
+                --write-out "%{http_code}" \
+                --get "https://api.indexnow.org/indexnow" \
+                --data-urlencode "url=${url}" \
+                --data-urlencode "key=${INDEXNOW_KEY}"
+            )"
+
+            if [ "$status" != "200" ] && [ "$status" != "202" ]; then
+              echo "::error::Falha ao enviar ${url}. HTTP ${status}"
+              exit 1
+            fi
+
+            echo "IndexNow recebeu ${url} (HTTP ${status})"
+          done
