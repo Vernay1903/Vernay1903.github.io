@@ -1,536 +1,1060 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>LaLiga: história, maiores campeões e por que o torneio espanhol se tornou um dos maiores símbolos do futebol mundial | Corte dos Esportes</title>
-  <meta name="description" content="A LaLiga não se transformou em uma das competições mais admiradas do planeta apenas pela quantidade de craques que passaram por seus gramados." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<title>LaLiga: história, maiores campeões, finanças e rivalidades do futebol espanhol | Corte dos Esportes</title>
+<meta name="description" content="Criada em 1929, a liga espanhola reúne clubes gigantes, identidades regionais, estádios históricos, controle econômico e uma projeção mundial construída por craques, títulos europeus e confrontos como o El Classico." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
 
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
 
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
 
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
 
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
 
-    .ad-slot { overflow: hidden; max-width: 100%; }
+.ad-slot { overflow: hidden; max-width: 100%; }
 
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
 
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
 
-    main { flex: 1; }
+main { flex: 1; }
 
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+/* HEADER */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
 
-    .logo-container img { height: 34px; }
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
 
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
+.logo-container img {
+width: 420px;
+height: auto;
+}
 
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
 
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
 
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
 
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
 
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
+.sports-menu a:hover {
+background: #1E4BA5;
+color: #FFFFFF;
+}
 
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
 
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
 
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
 
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
 
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
 
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
 
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
 
-    .meta a:hover { text-decoration: underline; }
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
 
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
 
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+.meta a:hover { text-decoration: underline; }
 
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
 
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
+.ad-slot.sidebar {
+min-height: 120px;
+margin: 0;
+}
 
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
 
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
 
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
 
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
 
-    .desc { font-size: 14px; line-height: 1.4; }
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
 
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
+.agenda-list li:first-child {
+border-top: none;
+padding-top: 0;
+}
 
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
 
-    footer a:hover { color: #1E4BA5; }
+.desc {
+font-size: 14px;
+line-height: 1.4;
+}
 
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
 
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
 
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
+footer a:hover { color: #1E4BA5; }
 
-      h1 { font-size: 34px; }
-    }
-  </style>
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+
+.logo-container {
+justify-content: center;
+}
+
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+
+.logo-text {
+font-size: 18px;
+}
+
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+
+h1 { font-size: 34px; }
+
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474" decoding="async">
+</picture>
+</a>
+</div>
 </header>
 
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
-  <div class="page">
-    <div class="layout">
+<div class="page">
+<div class="layout">
 
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">LaLiga: história, maiores campeões e por que o torneio espanhol se tornou um dos maiores símbolos do futebol mundial</h1>
-          <p class="subhead" id="articleExcerpt">A LaLiga não se transformou em uma das competições mais admiradas do planeta apenas pela quantidade de craques que passaram por seus gramados.</p>
+<!-- ARTIGO -->
+<section>
+<div class="card">
 
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">24/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
-          </div>
+<h1 id="articleTitle">LaLiga: história, maiores campeões, finanças e rivalidades do futebol espanhol</h1>
 
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
+<p class="subhead" id="articleExcerpt">Criada em 1929, a liga espanhola reúne clubes gigantes, identidades regionais, estádios históricos, controle econômico e uma projeção mundial construída por craques, títulos europeus e confrontos como o El Classico.</p>
 
-          <article id="articleBody">
-            <p>A LaLiga não se transformou em uma das competições mais admiradas do planeta apenas pela quantidade de craques que passaram por seus gramados. O peso do torneio espanhol nasce da combinação entre tradição, identidade regional, clubes gigantes, rivalidades históricas e um ambiente cultural que sempre fez o futebol significar algo maior do que os 90 minutos. Fundada em 1929, a liga rapidamente se tornou uma vitrine do futebol espanhol e, com o passar das décadas, consolidou uma marca global capaz de influenciar o jogo, o mercado e a forma como o esporte é consumido em diferentes países.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">28/07/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
 
-            <p><strong>Como nasceu a LaLiga</strong></p>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
 
-            <p>A origem da LaLiga está ligada ao processo de organização do futebol profissional na Espanha no início do século 20. A criação do campeonato nacional em 1929 deu ao país uma competição de pontos corridos capaz de reunir os principais clubes espanhóis em uma disputa contínua, algo decisivo para fortalecer rivalidades, ampliar a visibilidade do esporte e criar uma narrativa de longo prazo para cada temporada. O torneio inaugural foi vencido pelo Barcelona, detalhe simbólico para uma liga que, desde o início, já mostrava a força de seus clubes históricos.</p>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/trofeu-laliga-museu-barcelona.jpg",
+  "caption": "Troféu da LaLiga em exposição.",
+  "description": "Troféu da Primeira Divisão espanhola exposto em uma vitrine no Museu do FC Barcelona.",
+  "width": 3864,
+  "height": 5152,
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Col%C2%B7leccions_del_Museu_del_FC_Barcelona_16.jpg",
+  "creditText": "Foto: Nicholas Gemini/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Nicholas Gemini"
+  },
+  "copyrightNotice": "Nicholas Gemini/Wikimedia Commons"
+}
+</script>
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="trofeu-laliga-museu-barcelona.jpg" alt="Troféu da Primeira Divisão espanhola exposto em uma vitrine no Museu do FC Barcelona." width="3864" height="5152" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">Troféu da LaLiga em exposição. Foto: Nicholas Gemini/Wikimedia Commons.</figcaption>
+</figure>
 
-            <p><strong>A construção de uma liga marcada por tradição e identidade</strong></p>
+<p>A LaLiga não se transformou em uma das competições mais admiradas do planeta apenas pela quantidade de estrelas que passaram por seus gramados. A força do Campeonato Espanhol nasce da combinação entre tradição, rivalidades históricas, escolas de jogo, clubes de alcance global e um ambiente cultural no qual o futebol frequentemente representa cidades, regiões e diferentes formas de pertencimento.</p>
 
-            <p>Ao longo do tempo, a LaLiga deixou de ser apenas um campeonato nacional forte para se tornar uma competição com personalidade própria. Diferentemente de ligas em que o peso recai quase exclusivamente sobre a parte técnica, o futebol espanhol sempre carregou camadas adicionais de identidade regional, sentimento de pertencimento e memória histórica. Isso ajudou a construir um campeonato em que cada camisa parece representar mais do que um clube: muitas vezes, ela representa uma cidade, uma região, uma tradição política ou uma forma específica de enxergar o futebol.</p>
+<p>Real Madrid e Barcelona concentram a maior parte dos títulos e da atenção internacional, mas a história da liga não pode ser reduzida aos dois gigantes. Outros clubes também conquistaram o campeonato e deixaram marcas profundas em diferentes períodos.</p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>A competição ainda possui uma ligação especial com o futebol europeu. Os clubes espanhóis construíram algumas das maiores dinastias continentais, desenvolveram gerações de jogadores e ajudaram a transformar LaLiga em uma marca acompanhada em praticamente todos os grandes mercados esportivos.</p>
 
-            <p><strong>Os maiores campeões da história da LaLiga</strong></p>
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
-            <p>A história da LaLiga também pode ser observada pela força de seus campeões, com alguns clubes concentrando grande parte dos títulos e ajudando a moldar a identidade do torneio ao longo das décadas.</p>
+<p><strong>Como nasceu</strong></p>
 
-            <p><strong>Real Madrid – 36 títulos</strong></p>
-            <p><strong>Barcelona – 29 títulos</strong></p>
-            <p><strong>Atlético de Madrid – 11 títulos</strong></p>
-            <p><strong>Athletic Bilbao – 8 títulos</strong></p>
-            <p><strong>Valencia – 6 títulos</strong></p>
-            <p><strong>Atual campeão – Barcelona (temporada 2025/26)</strong></p>
+<p>O Campeonato Espanhol começou na temporada 1928/29. A edição inaugural reuniu dez clubes e adotou o sistema de pontos corridos com partidas de ida e volta.</p>
 
-            <p>Essa distribuição ajuda a mostrar duas marcas históricas do campeonato espanhol: de um lado, a força dominante de gigantes que atravessam gerações; de outro, o peso de clubes tradicionais que, mesmo com menos conquistas, seguem essenciais para a construção da história da competição.</p>
+<p>Os participantes da primeira temporada foram:</p>
 
-            <p><strong>Real Madrid e Barcelona: a rivalidade que ajudou a definir a liga</strong></p>
+<ul>
+<li>Barcelona</li>
+<li>Real Madrid</li>
+<li>Athletic Bilbao</li>
+<li>Real Sociedad</li>
+<li>Arenas de Getxo</li>
+<li>Atlético de Madrid</li>
+<li>Espanyol</li>
+<li>Europa</li>
+<li>Real Unión</li>
+<li>Racing de Santander</li>
+</ul>
 
-            <p>Nenhum confronto explica melhor a grandeza da LaLiga do que Real Madrid x Barcelona. El Clásico se transformou em um dos jogos mais famosos do planeta porque nunca foi apenas um duelo entre dois times vencedores. Ele reúne títulos, ídolos, pressão, estética, disputa por hegemonia e uma dimensão simbólica rara no esporte. Durante décadas, o clássico ajudou a definir campeonatos, moldou eras e concentrou a atenção global sobre o futebol espanhol, funcionando quase como um espelho da própria liga: intensa, técnica, dramática e carregada de significado.</p>
+<p>Barcelona e Real Madrid terminaram empatados em pontos, mas o clube catalão ficou com o título pelos critérios previstos no regulamento. A conquista foi confirmada depois de uma vitória do Barcelona por 2 a 0 sobre o Arenas de Getxo e da derrota do Real Madrid para o Athletic Bilbao na rodada final, já na primeira edição, mostrando o que se tornaria uma das maiores rivalidade do esporte no planeta.</p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>A criação da liga nacional permitiu que os principais clubes espanhóis passassem a disputar uma competição contínua. Até então, a Copa do Rei ocupava o centro do calendário nacional, enquanto torneios regionais tinham enorme importância na formação das rivalidades.</p>
 
-            <p><strong>Muito além do campo: a dimensão cultural de El Clásico</strong></p>
+<p>A Guerra Civil Espanhola interrompeu o campeonato entre 1936 e 1939. Depois da retomada, a liga passou por diferentes ampliações até chegar ao modelo atual com 20 participantes.</p>
 
-            <p>A força de Real Madrid x Barcelona também nasce do que cada clube passou a representar dentro da sociedade espanhola. O Barcelona foi associado historicamente à identidade catalã, enquanto o Real Madrid, para muitos, passou a simbolizar o centro do poder espanhol e a imagem mais ligada à capital. Essa leitura nunca explica sozinha toda a rivalidade, mas ajuda a entender por que o confronto ganhou dimensão cultural tão profunda. Em muitos períodos, o clássico foi tratado como mais do que um jogo: era a colisão entre visões distintas de país, identidade e pertencimento.</p>
+<p><strong>Como funciona a competição</strong></p>
 
-            <p><strong>O peso político da rivalidade</strong></p>
+<p>A primeira divisão espanhola é disputada por 20 clubes. Cada equipe enfrenta os outros 19 adversários duas vezes, uma como mandante e outra como visitante.</p>
 
-            <p>A dimensão política de El Clásico se fortaleceu especialmente em períodos marcados pela tensão entre o poder central espanhol e as identidades regionais, sobretudo a catalã. Nesse contexto, o Barcelona passou a ser visto por muitos torcedores como uma expressão esportiva da Catalunha, enquanto o Real Madrid acabou associado, no imaginário popular, a uma ideia de centralidade política e institucional. Mesmo que essa leitura nem sempre dê conta de toda a complexidade da rivalidade, ela ajuda a explicar por que o clássico ultrapassou o futebol e se transformou em um confronto carregado de memória, simbolismo e disputas de identidade.</p>
+<p>Os três últimos colocados são rebaixados para a segunda divisão e substituídos pelos dois primeiros colocados da LaLiga 2 e pelo vencedor dos playoffs de acesso.</p>
 
-            <p><strong>A liga das grandes camisas e dos estilos marcantes</strong></p>
+<p>O sistema de acesso e rebaixamento mantém a ligação entre a elite e o restante da pirâmide espanhola. A movimentação mais recente entre as divisões também pode ser acompanhada na matéria sobre os <a href="https://cortedosesportes.com.br/rebaixados-promovidos-times-laliga-2026-2027.html">times rebaixados e promovidos para a temporada 2026/27</a>.</p>
 
-            <p>Embora Real Madrid e Barcelona concentrem enorme parte da atenção, a força da LaLiga também passa por outros clubes que deram densidade histórica ao campeonato. O Atlético de Madrid consolidou-se como principal força de contestação à dupla dominante em muitas fases da era moderna. O Athletic Bilbao preservou uma identidade singular no futebol europeu com sua política de valorização de jogadores ligados ao País Basco. O Valencia, em diferentes gerações, também mostrou capacidade de competir no topo e construir campanhas marcantes. Essa combinação entre gigantes globais e camisas tradicionais ajudou a dar à liga um perfil único.</p>
+<p><strong>A taça do Campeonato Espanhol</strong></p>
 
-            <p><strong>Por que a LaLiga ganhou o mundo</strong></p>
+<p>O troféu entregue ao campeão da LaLiga possui um desenho bem diferente dos troféus mais modernos do futebol europeu. A peça preserva uma estética clássica, com duas grandes alças laterais, corpo prateado e uma base na qual são gravados o nome do vencedor e a temporada da conquista.</p>
 
-            <p>A projeção internacional da LaLiga não pode ser explicada apenas por resultados esportivos. A competição cresceu globalmente porque soube unir grandes marcas, jogadores históricos, clássicos com apelo mundial e uma narrativa visual fortíssima. O campeonato espanhol exportou ídolos, transformou partidas em eventos globais e consolidou uma presença digital e internacional muito ampla. Esse movimento ampliou o alcance da liga e reforçou sua imagem como produto esportivo de primeira linha, sem que ela perdesse sua base histórica e cultural.</p>
+<p>O modelo atual tem origem na década de 1940. A fabricação é realizada pela Joyería Alegre desde 1949, mantendo uma tradição artesanal ligada à história da competição.</p>
 
-            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>Características da taça:</p>
 
-            <p><strong>O lugar da LaLiga na história do futebol</strong></p>
+<ul>
+<li>Produzida em prata de lei</li>
+<li>Aproximadamente 18 quilos</li>
+<li>Cerca de 65 centímetros de altura</li>
+<li>Aproximadamente 60 centímetros de largura</li>
+<li>Duas grandes alças laterais</li>
+<li>Escudo da Federação Espanhola no corpo</li>
+<li>Nome do campeão gravado na base</li>
+</ul>
 
-            <p>A grandeza da LaLiga está no fato de que ela nunca dependeu de um único elemento para se tornar gigante. Sua força vem do encontro entre tradição, rivalidade, contexto histórico, clubes enormes e capacidade de renovação. É uma liga que ajudou a contar a história do futebol europeu e, ao mesmo tempo, construiu um modo próprio de existir dentro do esporte. Quando se fala em campeonatos que ultrapassaram o papel de simples competição para virar patrimônio cultural do futebol, a liga espanhola aparece inevitavelmente entre os maiores exemplos. Em outras grandes ligas do continente, essa relação entre tradição, identidade e arquibancada também ajudou a moldar a força do torneio, como acontece na <a href="https://cortedosesportes.com.br/bundesliga-historia-hegemonia-bayern-cultura-torcida.html">Bundesliga</a>.</p>
-          </article>
-        </div>
-      </section>
+<p>A principal alteração estrutural aconteceu em 1980/81, quando a base foi modificada para comportar novas gravações. Mesmo com mudanças pontuais, o troféu manteve a aparência tradicional que o diferencia das peças adotadas por outras grandes ligas europeias.</p>
 
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
+<p><strong>Os maiores campeões</strong></p>
 
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
+<p>Somente nove clubes conquistaram o Campeonato Espanhol desde a temporada inaugural de 1928/29. Real Madrid e Barcelona aparecem muito à frente, enquanto o Atlético de Madrid ocupa a terceira posição.</p>
 
-    </div>
-  </div>
+<ul>
+<li>Real Madrid — 36 títulos</li>
+<li>Barcelona — 29 títulos</li>
+<li>Atlético de Madrid — 11 títulos</li>
+<li>Athletic Bilbao — 8 títulos</li>
+<li>Valencia — 6 títulos</li>
+<li>Real Sociedad — 2 títulos</li>
+<li>Deportivo La Coruña — 1 título</li>
+<li>Sevilla — 1 título</li>
+<li>Real Betis — 1 título</li>
+<li>Atual campeão: Barcelona, vencedor da temporada 2025/26</li>
+</ul>
+
+<p>A diferença entre os dois primeiros mostra o peso da rivalidade na construção do campeonato. Real Madrid e Barcelona somam juntos 65 títulos, número muito superior ao total conquistado pelos outros sete campeões.</p>
+
+<p><strong>Barcelona foi campeão da LaLiga em 2025/26</strong></p>
+
+<p>O clube Catalão conquistou seu 29º título espanhol na útima temporada. A confirmação veio em 10 de maio de 2026, com uma <a href="https://cortedosesportes.com.br/barcelona-vitoria-real-madrid-campeao-la-liga-2026-el-classico.html"> vitória por 2 a 0 sobre o Real Madrid</a>, resultado que deu ao clube catalão o segundo campeonato consecutivo.</p>
+
+<p>Marcus Rashford e Ferran Torres marcaram os gols do título. Além de confirmar a conquista diante do principal rival, o resultado reforçou o domínio do Barcelona nos confrontos diretos daquela temporada.</p>
+
+<p>A equipe comandada por Hansi Flick terminou o campeonato com 94 pontos e 95 gols marcados. O Barcelona também se tornou o primeiro clube a vencer todas as 19 partidas como mandante em uma edição de 38 rodadas da LaLiga.</p>
+
+<p>Lamine Yamal foi eleito o melhor jogador da temporada depois de participar diretamente de 28 gols, com 16 bolas na rede e 12 assistências. Flick recebeu o prêmio de melhor treinador da competição.</p>
+
+<p><strong>O maior domínio da liga</strong></p>
+
+<p>O <a href="https://cortedosesportes.com.br/real-madrid-maior-clube-do-mundo-historia-titulos-champions.html"> Real Madrid</a> é o maior campeão da história da LaLiga, o clube venceu em diferentes períodos, com gerações que combinaram jogadores espanhóis, estrelas internacionais e uma estrutura esportiva construída para disputar títulos todos os anos.</p>
+
+<p>A primeira conquista veio em 1931/32. O Real repetiu o título na temporada seguinte, iniciando uma trajetória que cresceria principalmente a partir da década de 1950.</p>
+
+<p>O período de maior domínio nacional ocorreu entre os anos 1960 e 1980. Com nomes como Alfredo Di Stéfano, Ferenc Puskás, Paco Gento, Amancio Amaro, Pirri, Santillana, José Antonio Camacho, Emilio Butragueño e Hugo Sánchez, o clube acumulou campeonatos e consolidou a imagem de potência espanhola.</p>
+
+<p>Entre 1960/61 e 1968/69, o Real Madrid conquistou oito das nove edições disputadas. Décadas depois, voltou a vencer cinco temporadas consecutivas entre 1985/86 e 1989/90, durante a era da Quinta del Buitre.</p>
+
+<p>A força do clube também está ligada ao <a href="https://cortedosesportes.com.br/santiago-bernabeu-historia-reforma-estadio-real-madrid.html">Santiago Bernabéu</a>, estádio que acompanhou diferentes ciclos vitoriosos.</p>
+
+<p><strong>Barcelona, identidade e diferentes eras vencedoras</strong></p>
+
+<p>O clube Catalão ocupa a segunda posição entre os maiores campeões. O primeiro troféu veio justamente na edição inaugural de 1928/29.</p>
+
+<p>O clube construiu diferentes gerações vencedoras. Johan Cruyff teve importância em duas delas: primeiro como jogador, no título de 1973/74, e depois como treinador do Dream Team, que conquistou quatro campeonatos consecutivos entre 1990/91 e 1993/94.</p>
+
+<p>A partir dos anos 2000, o Barcelona viveu outra fase histórica. <a href="https://cortedosesportes.com.br/ronaldinho-gaucho-historia-titulos-gols-assistencias-clubes-selecao.html">Ronaldinho Gaúcho</a> liderou a reconstrução que resultou nos títulos de 2004/05 e 2005/06. Depois, <a href="https://cortedosesportes.com.br/pep-guardiola-carreira-legado-titulos-estilo-de-jogo.html">Pep Guardiola</a> comandou um time formado por <a href="https://cortedosesportes.com.br/messi-historia-barcelona-titulos-recordes-copa-2022.html">Lionel Messi</a>, Xavi, Andrés Iniesta, Carles Puyol, Sergio Busquets, Gerard Piqué e outros jogadores desenvolvidos no próprio clube.</p>
+
+<p>O Barcelona de Guardiola venceu três edições em quatro temporadas:</p>
+
+<ul>
+<li>2008/09</li>
+<li>2009/10</li>
+<li>2010/11</li>
+</ul>
+
+<p>Lionel Messi se tornou o <a href="https://cortedosesportes.com.br/maior-artilheiro-laliga-historia-gols-recorde-messi.html">maior artilheiro da história do campeonato</a> e o principal símbolo do período mais vitorioso do clube. O argentino combinou produção individual, regularidade e participação direta em dez títulos espanhóis.</p>
+
+<p>A ligação entre essas equipes vencedoras também se conecta com o estádio catalão na figura do <a href="https://cortedosesportes.com.br/estadio-camp-nou-historia-reformas-capacidade-barcelona.html">Camp Nou</a>.</p>
+
+<p><strong>O desafiante da dupla dominante</strong></p>
+
+<p>O Atlético de Madrid é o terceiro maior campeão. O clube ocupa um espaço particular na LaLiga por representar a principal força capaz de interromper o domínio de Real Madrid e Barcelona em diferentes períodos.</p>
+
+<p>Os títulos:</p>
+
+<ul>
+<li>1939/40</li>
+<li>1940/41</li>
+<li>1949/50</li>
+<li>1950/51</li>
+<li>1965/66</li>
+<li>1969/70</li>
+<li>1972/73</li>
+<li>1976/77</li>
+<li>1995/96</li>
+<li>2013/14</li>
+<li>2020/21</li>
+</ul>
+
+<p>A conquista de 1995/96 ficou conhecida pela dobradinha nacional. Sob o comando de Radomir Antić, o Atlético venceu LaLiga e Copa do Rei com jogadores como Diego Simeone, José Luis Caminero, Kiko e Milinko Pantić.</p>
+
+<p>Simeone voltaria ao clube como treinador e lideraria os títulos de 2013/14 e 2020/21. O argentino construiu uma equipe marcada por intensidade, organização defensiva, competitividade e capacidade de disputar em condições financeiras inferiores às dos dois maiores rivais.</p>
+
+<p>O campeonato de 2013/14 foi confirmado com um empate diante do Barcelona no Camp Nou, na última rodada. Já a conquista de 2020/21 terminou com vitória sobre o Valladolid, também no encerramento da competição.</p>
+
+<p><strong>Uma identidade única</strong></p>
+
+<p>O Athletic Bilbao ocupa a quarta posição no ranking histórico. O clube conquistou campeonatos em diferentes fases, com destaque para as décadas de 1930 e 1980.</p>
+
+<p>Títulos:</p>
+
+<ul>
+<li>1929/30</li>
+<li>1930/31</li>
+<li>1933/34</li>
+<li>1935/36</li>
+<li>1942/43</li>
+<li>1955/56</li>
+<li>1982/83</li>
+<li>1983/84</li>
+</ul>
+
+<p>O Athletic preserva uma política esportiva singular: seu elenco é formado por jogadores nascidos ou desenvolvidos futebolisticamente no País Basco e em áreas ligadas à cultura basca.</p>
+
+<p>Essa escolha limita o mercado de contratações, mas fortalece a ligação entre clube, academia e território. Mesmo com essa política, o Athletic nunca foi rebaixado da primeira divisão, marca compartilhada apenas com Real Madrid e Barcelona.</p>
+
+<p><strong>Valencia e os títulos de diferentes gerações</strong></p>
+
+<p>A equipe viveu sua fase mais recente de domínio sob o comando de Rafael Benítez. O clube conquistou dois campeonatos em três temporadas, quebrando o protagonismo dos dois gigantes.</p>
+
+<p>Os títulos:</p>
+
+<ul>
+<li>1941/42</li>
+<li>1943/44</li>
+<li>1946/47</li>
+<li>1970/71</li>
+<li>2001/02</li>
+<li>2003/04</li>
+</ul>
+
+<p>O título de 2001/02 teve como base a organização defensiva e o equilíbrio coletivo. Em 2003/04, o clube voltou ao topo e ainda conquistou a Copa da Uefa, completando uma das maiores temporadas de sua história.</p>
+
+<p>Jogadores como Santiago Cañizares, Roberto Ayala, David Albelda, Rubén Baraja, Pablo Aimar, Vicente e Mista foram protagonistas daquele ciclo.</p>
+
+<p><strong>Demais clubes que entraram na história campeã</strong></p>
+
+<p>A Real Sociedad conquistou dois títulos consecutivos, em 1980/81 e 1981/82. A equipe representou a força do futebol basco em um período no qual o Athletic Bilbao também voltaria ao topo pouco depois.</p>
+
+<p>O Deportivo La Coruña foi campeão em 1999/2000. O chamado Superdépor reunia nomes como Djalminha, Mauro Silva, Roy Makaay, Fran González, Donato e Noureddine Naybet. A conquista transformou o clube da Galícia em um dos campeões mais simbólicos da era moderna.</p>
+
+<p>O Sevilla possui um título, conquistado em 1945/46. O clube se tornaria mais conhecido internacionalmente décadas depois, principalmente pelo domínio construído na Copa da Uefa e na Europa League.</p>
+
+<p>O Real Betis também venceu uma vez, em 1934/35. A campanha permanece como o maior título nacional da história do clube e reforça o peso do futebol de Sevilha dentro da tradição espanhola.</p>
+
+<p><strong>Os campeões mais recentes da LaLiga</strong></p>
+
+<p>Apesar da concentração histórica em Real Madrid e Barcelona, o Atlético conseguiu interromper a dupla no início da década de 2020.</p>
+
+<p>Campeões recentes:</p>
+
+<ul>
+<li>2020/21 — Atlético de Madrid</li>
+<li>2021/22 — Real Madrid</li>
+<li>2022/23 — Barcelona</li>
+<li>2023/24 — Real Madrid</li>
+<li>2024/25 — Barcelona</li>
+<li>2025/26 — Barcelona</li>
+</ul>
+
+<p>A sequência mostra três campeões diferentes em seis temporadas, mas também confirma a dificuldade enfrentada pelos clubes de fora do principal trio.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Os técnicos mais vitoriosos</strong></p>
+
+<p>A história do Campeonato Espanhol também foi marcada por treinadores capazes de construir equipes dominantes e atravessar diferentes gerações.</p>
+
+<p>Miguel Muñoz é o técnico com mais títulos consquistados. Ex-jogador do Real Madrid, ele assumiu o comando da equipe em 1960 e liderou nove conquistas nacionais.</p>
+
+<p>Técnicos com mais títulos:</p>
+
+<ul>
+<li>Miguel Muñoz — 9 títulos</li>
+<li>Enrique Fernández — 4 títulos</li>
+<li>Helenio Herrera — 4 títulos</li>
+<li>Johan Cruyff — 4 títulos</li>
+<li>Ferdinand Daučík — 3 títulos</li>
+<li>Luis Molowny — 3 títulos</li>
+<li>Leo Beenhakker — 3 títulos</li>
+<li>Pep Guardiola — 3 títulos</li>
+</ul>
+
+<p>Muñoz venceu todas as nove edições pelo Real Madrid. Cruyff conquistou quatro títulos consecutivos com o Barcelona, enquanto Guardiola levantou três troféus em quatro temporadas.</p>
+
+<p>Helenio Herrera foi campeão por Atlético de Madrid e Barcelona. Enrique Fernández venceu com Barcelona e Real Madrid, mostrando capacidade de triunfar nos dois lados da maior rivalidade do país.</p>
+
+<p><strong>El Clásico e a rivalidade que ganhou o mundo</strong></p>
+
+<p>Nenhum confronto representa melhor a projeção da LaLiga do que Real Madrid x Barcelona. O El Clásico reúne os dois maiores campeões, alguns dos maiores jogadores da história e um peso cultural que ultrapassa os resultados.</p>
+
+<p>O primeiro encontro entre os clubes pela liga aconteceu em 17 de fevereiro de 1929. O Real Madrid venceu por 2 a 1 no estádio Les Corts. No segundo turno, o Barcelona ganhou por 1 a 0 em Madri.</p>
+
+<p>Ao longo das décadas, o confronto reuniu nomes como Alfredo Di Stéfano, Ferenc Puskás, Paco Gento, Johan Cruyff, Diego Maradona, Hugo Sánchez, Romário, Ronaldo, Ronaldinho, Zinedine Zidane, Cristiano Ronaldo, Lionel Messi, Xavi, Andrés Iniesta, Karim Benzema e Luka Modrić.</p>
+
+<p>Até o encerramento da temporada 2025/26, os clubes haviam disputado 192 partidas pela LaLiga. O Real Madrid tinha 80 vitórias, o Barcelona 77 e ocorreram 35 empates.</p>
+
+<p><strong>A dimensão cultural da rivalidade</strong></p>
+
+<p>El Clásico também ganhou força pelo que Real Madrid e Barcelona passaram a representar na sociedade espanhola.</p>
+
+<p>O Barcelona possui uma ligação histórica com a identidade catalã. A expressão “Més que un club”, ou “Mais que um clube”, resume a forma como a instituição se apresenta como elemento esportivo, social e cultural da Catalunha.</p>
+
+<p>O Real Madrid está ligado à capital e à centralidade política, econômica e institucional do país. Em diferentes momentos, essa posição alimentou interpretações sobre uma oposição entre o poder central e a afirmação regional catalã.</p>
+
+<p>Essa leitura não explica sozinha toda a rivalidade. Real Madrid e Barcelona possuem histórias internas complexas, torcedores espalhados por todo o país e relações que mudaram ao longo do tempo. Ainda assim, o contexto político e regional ajudou a transformar o confronto em um evento diferente de um clássico puramente esportivo.</p>
+
+<p><strong>Outras rivalidades</strong></p>
+
+<p>A identidade da LaLiga também está nas rivalidades regionais espalhadas pelo país.</p>
+
+<p>Principais clássicos espanhóis:</p>
+
+<ul>
+<li>Real Madrid x Atlético de Madrid — dérbi de Madri</li>
+<li>Barcelona x Espanyol — dérbi de Barcelona</li>
+<li>Sevilla x Real Betis — El Gran Derbi</li>
+<li>Athletic Bilbao x Real Sociedad — dérbi basco</li>
+<li>Valencia x Levante — dérbi valenciano</li>
+<li>Celta de Vigo x Deportivo La Coruña — dérbi da Galícia</li>
+<li>Sporting Gijón x Real Oviedo — dérbi das Astúrias</li>
+<li>Sevilla x Cádiz — confronto regional da Andaluzia</li>
+</ul>
+
+<p>O dérbi de Sevilha está entre os jogos mais intensos da Espanha. Betis e Sevilla representam diferentes identidades dentro da mesma cidade e transformam cada encontro em uma disputa por espaço, memória e orgulho local.</p>
+
+<p>O dérbi basco possui outra característica. Athletic Bilbao e Real Sociedad compartilham elementos culturais regionais, mas competem pelo protagonismo esportivo do País Basco.</p>
+
+<p>O dérbi de Madri coloca frente a frente o clube mais vitorioso da Espanha e um Atlético historicamente associado à resistência diante do vizinho de maior poder financeiro.</p>
+
+<p><strong>A força financeira</strong></p>
+
+<p>A LaLiga está entre as competições esportivas que mais movimentam dinheiro no mundo. Direitos de transmissão, receitas comerciais, patrocínios, bilheteria, competições europeias e negociações de jogadores sustentam uma operação bilionária.</p>
+
+<p>O relatório econômico consolidado mais recente corresponde à temporada 2024/25. Naquele período, o futebol profissional administrado pela LaLiga, incluindo primeira e segunda divisões, alcançou €5,464 bilhões em receitas normalizadas, crescimento de 8,1%.</p>
+
+<p>As receitas comerciais superaram €1,5 bilhão. As duas divisões também receberam mais de 17 milhões de torcedores, com uma taxa média de ocupação de 84,5% nos estádios da primeira divisão.</p>
+
+<p><strong>Direitos de transmissão</strong></p>
+
+<p>Os direitos audiovisuais representam uma das principais fontes de receita da competição. O ciclo doméstico válido entre 2022/23 e 2026/27 foi negociado por aproximadamente €4,95 bilhões.</p>
+
+<p>O contrato seguinte, válido de 2027/28 a 2031/32, alcançou €6,135 bilhões considerando os diferentes pacotes domésticos. Somente o bloco residencial da primeira divisão foi avaliado em €5,25 bilhões, um crescimento de aproximadamente 6% em relação ao ciclo anterior.</p>
+
+<p>A comercialização centralizada evita que cada clube negocie isoladamente seus jogos. O modelo também permite uma distribuição mais equilibrada do que existia antes da mudança na legislação espanhola, embora Real Madrid, Barcelona e Atlético continuem recebendo parcelas superiores por desempenho, audiência e alcance social.</p>
+
+<p><strong>Quanto o campeão recebe</strong></p>
+
+<p>A LaLiga não entrega ao campeão um prêmio único e separado apenas pela conquista do título. O valor recebido faz parte da distribuição central dos direitos audiovisuais e de outras receitas do clube.</p>
+
+<p>O sistema considera três blocos principais:</p>
+
+<ul>
+<li>Parcela igualitária</li>
+<li>Resultados esportivos</li>
+<li>Implantação social e capacidade de gerar audiência</li>
+</ul>
+
+<p>Metade do valor destinado à primeira divisão é distribuída igualmente entre os 20 participantes. A outra parte considera o desempenho acumulado e critérios de alcance, como receitas de bilheteria, número de associados e contribuição para a audiência televisiva.</p>
+
+<p>O regulamento também limita a diferença entre o clube que mais recebe e aquele que fica com a menor cota. O objetivo é recompensar resultados e tamanho de mercado sem produzir uma distância ilimitada entre as equipes.</p>
+
+<p>Com o título de 2025/26, o Barcelona ficou com a maior parcela relacionada à posição final. O repasse completo, porém, não pode ser apresentado como uma premiação exclusiva pelo campeonato.</p>
+
+<p>A receita total do clube ainda inclui:</p>
+
+<ul>
+<li>Bilheteria</li>
+<li>Patrocínios próprios</li>
+<li>Produtos licenciados</li>
+<li>Negociações de jogadores</li>
+<li>Hospitalidade</li>
+<li>Eventos</li>
+<li>Premiações das competições da Uefa</li>
+</ul>
+
+<p><strong>Controle econômico e fair play financeiro</strong></p>
+
+<p>A LaLiga desenvolveu um sistema próprio de controle econômico para acompanhar os gastos dos clubes. O mecanismo é aplicado antes da realização de contratações e busca impedir que as equipes assumam compromissos incompatíveis com suas receitas.</p>
+
+<p>O principal instrumento é o Limite de Custo do Elenco Esportivo. Cada clube recebe um teto individual calculado de acordo com receitas, despesas, dívidas e compromissos financeiros.</p>
+
+<p>O limite inclui:</p>
+
+<ul>
+<li>Salários de jogadores</li>
+<li>Salários de treinadores e comissões técnicas</li>
+<li>Bônus e premiações</li>
+<li>Encargos sociais</li>
+<li>Amortizações de transferências</li>
+<li>Comissões de agentes</li>
+<li>Custos com empréstimos</li>
+<li>Gastos com determinados integrantes das categorias de base</li>
+</ul>
+
+<p>O clube apresenta sua proposta financeira, mas a organização pode validar, reduzir ou corrigir o valor para preservar a sustentabilidade.</p>
+
+<p>O controle econômico foi implantado em 2013, após um período em que vários clubes acumulavam dívidas fiscais e atrasos salariais. Desde então, a liga afirma ter reduzido de forma expressiva os débitos com o governo e as denúncias por pagamentos não realizados a jogadores.</p>
+
+<p>Isso não significa que todos os clubes estejam livres de dificuldades. Equipes com receitas menores ou grandes compromissos podem ter o limite reduzido e enfrentar restrições para registrar contratações.</p>
+
+<p>Os participantes das competições europeias também precisam cumprir as regras de sustentabilidade financeira da Uefa.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>A marca global</strong></p>
+
+<p>A projeção internacional do Campeonato Espanhol foi construída pela combinação entre clubes mundialmente conhecidos, jogadores históricos, conquistas europeias e partidas de enorme audiência.</p>
+
+<p>Na temporada 2024/25, LaLiga possuía 59 parceiros internacionais de transmissão e estava disponível em mais de 180 países.</p>
+
+<p>A competição desenvolve conteúdos em diferentes idiomas, eventos com ex-jogadores, acordos comerciais regionais e ações específicas para mercados como América Latina, Estados Unidos, Oriente Médio, África e Ásia.</p>
+
+<p>Nos Estados Unidos, a temporada 2025/26 alcançou 20,1 milhões de espectadores e acumulou 3,9 bilhões de minutos assistidos. O El Clásico disputado em maio de 2026 reuniu aproximadamente 1,3 milhão de espectadores no país.</p>
+
+<p>O alcance também é sustentado pela força continental dos clubes. No século 21, equipes espanholas acumularam uma quantidade de títulos da Uefa superior à obtida conjuntamente por clubes das outras quatro grandes ligas europeias durante o mesmo recorte.</p>
+
+<p><strong>Craques que ajudaram a internacionalizar o campeonato</strong></p>
+
+<p>A história reúne alguns dos maiores jogadores de todos os tempos.</p>
+
+<p>Entre os nomes que atuaram no Campeonato Espanhol estão:</p>
+
+<ul>
+<li>Alfredo Di Stéfano</li>
+<li>Ferenc Puskás</li>
+<li>Paco Gento</li>
+<li>Johan Cruyff</li>
+<li>Diego Maradona</li>
+<li>Hugo Sánchez</li>
+<li>Romário</li>
+<li>Rivaldo</li>
+<li>Ronaldo</li>
+<li>Zinedine Zidane</li>
+<li>Ronaldinho</li>
+<li>Luís Figo</li>
+<li>Roberto Carlos</li>
+<li>David Beckham</li>
+<li>Xavi</li>
+<li>Andrés Iniesta</li>
+<li>Sergio Ramos</li>
+<li>Cristiano Ronaldo</li>
+<li>Lionel Messi</li>
+<li>Karim Benzema</li>
+<li>Luka Modrić</li>
+<li>Luis Suárez</li>
+<li>Neymar</li>
+</ul>
+
+<p>A rivalidade entre Messi e Cristiano Ronaldo marcou um período especialmente importante. Durante nove temporadas, os dois disputaram títulos, recordes e prêmios individuais por Barcelona e Real Madrid.</p>
+
+<p>Esse confronto ampliou o interesse internacional, transformou partidas comuns em eventos globais e levou a competição a um patamar de audiência difícil de repetir.</p>
+
+<p><strong>Estádios que fazem parte da identidade</strong></p>
+
+<p>A força cultural da LaLiga também está nos estádios. Cada região construiu ambientes com características próprias e forte ligação com suas comunidades.</p>
+
+<p>Entre os principais palcos estão:</p>
+
+<ul>
+<li>Santiago Bernabéu — Real Madrid</li>
+<li>Camp Nou — Barcelona</li>
+<li>Metropolitano — Atlético de Madrid</li>
+<li>San Mamés — Athletic Bilbao</li>
+<li>Mestalla — Valencia</li>
+<li>Ramón Sánchez-Pizjuán — Sevilla</li>
+<li>Benito Villamarín — Real Betis</li>
+<li>Anoeta — Real Sociedad</li>
+<li>La Cerámica — Villarreal</li>
+<li>Balaídos — Celta de Vigo</li>
+</ul>
+
+<p>San Mamés é conhecido pela relação intensa entre o Athletic e a torcida basca. Mestalla se destaca pela proximidade das arquibancadas com o campo. Sánchez-Pizjuán e Benito Villamarín refletem a paixão da cidade de Sevilha.</p>
+
+<p>Bernabéu e Camp Nou, por sua vez, ganharam projeção mundial e se transformaram em símbolos dos dois maiores clubes da competição.</p>
+
+<p><strong>O mata a mata</strong></p>
+
+<p>A temporada espanhola não se resume ao campeonato por pontos corridos. Os clubes também disputam a <a href="https://cortedosesportes.com.br/barcelona-atletico-semifinal-copa-del-rey-historia-maiores-campeoes.html"> Copa do Rei</a>, competição eliminatória capaz de produzir confrontos entre equipes de diferentes divisões.</p>
+
+<p>Enquanto a LaLiga recompensa a regularidade durante 38 rodadas, a Copa do Rei exige eficiência em jogos eliminatórios. O torneio abre espaço para zebras, estádios menores e campanhas que dificilmente aconteceriam em um campeonato longo.</p>
+
+<p><strong>Entre as maiores ligas do mundo</strong></p>
+
+<p>Ela permanece no grupo das principais competições do planeta porque sua grandeza não depende de um único elemento.</p>
+
+<p>Real Madrid e Barcelona oferecem alcance global, títulos europeus e rivalidade. O Atlético de Madrid funciona como principal força de contestação. Athletic Bilbao, Valencia, Real Sociedad, Sevilla, Betis e outros clubes preservam identidades regionais e diferentes formas de viver o futebol.</p>
+
+<p>A liga também possui tradição técnica. O futebol espanhol desenvolveu escolas baseadas em posse, circulação de bola, jogo posicional, formação de jovens e capacidade de controlar partidas. Ao mesmo tempo, equipes como o Atlético mostraram que intensidade, defesa e transições também podem construir projetos vencedores.</p>
+
+<p>A força comercial e os direitos internacionais colocam o campeonato em posição privilegiada, enquanto o controle econômico busca impedir que os gastos superem de maneira permanente a capacidade de arrecadação.</p>
+
+<p>Para compreender como outras grandes ligas europeias desenvolveram modelos próprios, também vale conhecer <a href="https://cortedosesportes.com.br/bundesliga-historia-hegemonia-bayern-cultura-torcida.html">a história da Bundesliga</a>.</p>
+
+<p>No fim, a LaLiga é muito mais do que Real Madrid x Barcelona. É um campeonato construído por regiões, rivalidades, estádios, escolas táticas e gerações de jogadores que transformaram o futebol espanhol em referência mundial. O título muda de mãos, os craques se renovam e os clubes atravessam diferentes ciclos, mas a competição continua preservando uma identidade que poucos torneios conseguiram construir com a mesma força.</p>
+
+</article>
+</div>
+</section>
+
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+
+</div>
+</div>
 </main>
 
 <footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
 </footer>
 
 <script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "Futebol";
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
 
-  const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
 
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
 
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
 
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
 
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
 
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
 
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
 
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
 
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
 
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
 
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
 
-  loadAgenda();
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+
+loadAgenda();
 </script>
 
 <!-- JS do compartilhar (único para todas as notícias) -->
