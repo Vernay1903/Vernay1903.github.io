@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Tour de France Femmes entra na semana decisiva com a brasileira Tota Magalhães | Corte dos Esportes</title>
+<meta name="description" content="Principal volta por etapas do ciclismo feminino mundial será disputada até domingo, 9 de agosto, com diferentes tipos de percurso, chegada a uma das montanhas mais famosas da modalidade e presença brasileira pelo segundo ano seguido." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+
+.ad-slot { overflow: hidden; max-width: 100%; }
+
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+
+/* ✅ FIM DA CORREÇÃO */
+
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+
+.logo-container img {
+width: 420px;
+height: auto;
+}
+
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+
+.sports-menu a:hover {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+
+.meta a:hover { text-decoration: underline; }
+
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+
+.ad-slot.sidebar {
+min-height: 120px;
+margin: 0;
+}
+
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+
+.agenda-list li:first-child {
+border-top: none;
+padding-top: 0;
+}
+
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+
+.desc {
+font-size: 14px;
+line-height: 1.4;
+}
+
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+
+footer a:hover { color: #1E4BA5; }
+
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
+
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+
+.logo-container {
+justify-content: center;
+}
+
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+
+.logo-text { font-size: 18px; }
+
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+
+h1 { font-size: 34px; }
+
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474" decoding="async">
+</picture>
+</a>
+</div>
+</header>
+
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+
+<main>
+<div class="page">
+<div class="layout">
+
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Tour de France Femmes entra na semana decisiva com a brasileira Tota Magalhães</h1>
+
+<p class="subhead" id="articleExcerpt">Principal volta por etapas do ciclismo feminino mundial será disputada até domingo, 9 de agosto, com diferentes tipos de percurso, chegada a uma das montanhas mais famosas da modalidade e presença brasileira pelo segundo ano seguido.</p>
+
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">03/08/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Esportes Olimpicos</a>
+</div>
+
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/tour-de-france-femmes-col-madeleine.jpg",
+  "caption": "Pelotão do Tour de France Femmes em direção ao Col de la Madeleine, na Savoia, França.",
+  "description": "Pelotão de ciclistas em uma estrada cercada pelas montanhas da Savoia.",
+  "width": 3774,
+  "height": 2833,
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:8e_%C3%A9tape_Tour_de_France_Femmes_2025_-_D%C3%A9but_Madeleine_-_Peloton_1.JPG",
+  "creditText": "Foto: Florian Pépellin/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Florian Pépellin"
+  },
+  "copyrightNotice": "Florian Pépellin/Wikimedia Commons."
+}
+</script>
+<figure style="margin:6px auto 22px;max-width:760px;">
+<img src="tour-de-france-femmes-col-madeleine.jpg" alt="Pelotão de ciclistas em uma estrada cercada pelas montanhas da Savoia." width="3774" height="2833" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+<figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">Pelotão do Tour de France Femmes em direção ao Col de la Madeleine, na Savoia, França. Foto: Florian Pépellin/Wikimedia Commons.</figcaption>
+</figure>
+<p>O Tour de France Femmes entra em sua semana mais importante entre os dias 3 e 9 de agosto. Para quem acompanha o ciclismo de perto, o período reúne alguns dos desafios mais aguardados da temporada. Para o público que ainda está conhecendo a modalidade, é uma oportunidade de entender por que essa competição ocupa um lugar tão especial no calendário esportivo.</p>
+
+<p>A programação terá um pouco de tudo: disputa individual contra o relógio, etapas longas em terreno irregular, uma chegada ao lendário Mont Ventoux e o encerramento em Nice. O Brasil estará representado por Ana Vitória “Tota” Magalhães, ciclista da equipe Movistar que disputa seu segundo Tour de France Femmes.</p>
+
+<p>Mais do que uma sequência de corridas independentes, o Tour funciona como uma grande jornada. As atletas competem todos os dias, acumulam seus tempos e precisam equilibrar velocidade, resistência, estratégia e recuperação. Uma campeã não é definida apenas por vencer uma etapa, mas por completar toda a prova no menor tempo total.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>O que é o Tour de France Femmes?</strong></p>
+
+<p>É a principal volta por etapas do ciclismo feminino. A competição moderna foi lançada em 2022 e é organizada pelo mesmo grupo responsável pelo tradicional Tour de France masculino.</p>
+
+<p>Apesar de sua fase atual ser recente, a história das mulheres no Tour é bem mais antiga. Diferentes versões e formatos de uma volta feminina francesa foram disputados ao longo das décadas, especialmente nos anos 1980. A criação do Tour de France Femmes avec Zwift devolveu ao calendário uma competição feminina com estrutura, visibilidade internacional e percursos compatíveis com sua importância esportiva.</p>
+
+<p>O funcionamento é relativamente simples. A cada dia, as ciclistas disputam uma etapa com largada e chegada previamente definidas. Os tempos são somados, e quem apresentar o menor resultado acumulado lidera a classificação geral.</p>
+
+<p>A campeã é uma única ciclista: aquela que terminar todas as etapas com o menor tempo acumulado. Apesar disso, o ciclismo é um esporte coletivo, e cada equipe trabalha para proteger sua líder e ajudá-la na disputa.</p>
+
+<p>A líder usa a camisa amarela, uma das peças mais conhecidas do ciclismo mundial. Isso não significa necessariamente que ela venceu todas as etapas. Uma atleta pode conquistar a camisa pela regularidade, evitando grandes perdas e se mantendo próxima das primeiras colocadas durante toda a competição.</p>
+
+<p>Também existem classificações paralelas, como a disputa por pontos, a competição de montanha, a melhor jovem e a classificação por equipes. Assim, mesmo uma ciclista sem chance de título geral pode ter objetivos importantes durante o Tour.</p>
+
+<p><strong>As diferentes etapas da corrida</strong></p>
+
+<p>O Tour não é disputado sempre no mesmo tipo de estrada. Essa variedade é justamente o que torna a competição mais interessante e exige atletas com características distintas.</p>
+
+<p>Há etapas planas, nas quais as equipes costumam preparar uma chegada rápida para suas velocistas. Existem jornadas acidentadas, com várias subidas curtas, ideais para ataques e fugas. Também há dias de alta montanha, normalmente decisivos para a classificação geral.</p>
+
+<p>Outro formato importante é o contrarrelógio, presente nesta edição na terça-feira, 4 de agosto. Nesse tipo de etapa, cada ciclista larga sozinha, em intervalos definidos, e tenta completar o percurso no menor tempo possível.</p>
+
+<p>Em vez de competir lado a lado com todo o grupo, a atleta luta diretamente contra o cronômetro. Por isso, utiliza bicicleta, capacete e posição corporal preparados para reduzir a resistência do vento.</p>
+
+<p>O contrarrelógio costuma beneficiar ciclistas muito potentes e capazes de manter alta velocidade por vários quilômetros. Quem não tem essa especialidade tenta limitar o prejuízo para continuar na disputa antes das etapas de montanha.</p>
+
+<p><strong>Dijon pode mudar a classificação</strong></p>
+
+<p>A etapa de terça-feira será disputada entre Gevrey-Chambertin e Dijon, com 21 quilômetros. A distância pode parecer pequena quando comparada a jornadas de mais de 150 quilômetros, mas o esforço é intenso do início ao fim.</p>
+
+<p>Não há espaço para descansar dentro do pelotão, nome dado ao grande grupo de ciclistas que pedala junto durante uma etapa convencional. No contrarrelógio, cada competidora precisa encontrar sozinha o melhor ritmo.</p>
+
+<p>A suíça Marlen Reusser, companheira de Tota Magalhães na Movistar, é uma das ciclistas conhecidas pela qualidade nesse tipo de prova. Para a equipe espanhola, o dia representa uma oportunidade de ganhar tempo na classificação geral.</p>
+
+<p>As escaladoras, atletas que se destacam nas grandes subidas, terão outro objetivo: perder o menor número possível de segundos. Caso a diferença fique grande, precisarão atacar mais tarde nas montanhas.</p>
+
+<p><strong>O espaço para fugas</strong></p>
+
+<p>Na quarta e na quinta-feira, o Tour passará por terrenos considerados acidentados. Isso significa que o caminho terá subidas e descidas frequentes, mas sem necessariamente terminar em uma montanha muito longa.</p>
+
+<p>Essas etapas são difíceis de controlar porque oferecem diferentes possibilidades de corrida. Uma delas é a fuga, quando uma ou mais ciclistas se distanciam do pelotão e tentam chegar à meta antes de serem alcançadas.</p>
+
+<p>Nem toda fuga consegue vencer. Muitas são neutralizadas perto da chegada, depois de horas na frente. Ainda assim, atacar pode dar visibilidade à ciclista, garantir pontos em classificações secundárias e obrigar as equipes favoritas a gastar energia na perseguição.</p>
+
+<p>Para o público iniciante, acompanhar a distância entre a fuga e o pelotão é uma das formas mais simples de entender a estratégia. Quando a vantagem começa a cair rapidamente, significa que o grupo principal aumentou o ritmo para buscar as escapadas.</p>
+
+<p>As equipes também precisam proteger suas principais atletas contra quedas, vento e problemas de posicionamento. Ficar muito atrás no pelotão pode ser perigoso, principalmente em estradas estreitas ou em momentos de aceleração.</p>
+
+<p><strong>O grande desafio da sexta-feira</strong></p>
+
+<p>A etapa mais aguardada acontecerá na sexta-feira, 7 de agosto, com chegada ao Mont Ventoux. A montanha é uma das mais famosas de todo o ciclismo e aparece há décadas em momentos decisivos do Tour de France.</p>
+
+<p>O Ventoux é facilmente reconhecido por sua parte final aberta, pedregosa e quase sem vegetação. O cenário dá à montanha uma aparência diferente de outras subidas dos Alpes e dos Pireneus.</p>
+
+<p>A dificuldade não está apenas na paisagem ou na altitude. A subida é longa, apresenta trechos inclinados e pode ser castigada pelo vento. Depois de vários dias de competição, o cansaço acumulado também pesa.</p>
+
+<p>Nas montanhas, as diferenças de tempo podem crescer muito mais rapidamente. Uma ciclista que perde contato com o grupo das favoritas pode ceder segundos ou minutos em poucos quilômetros.</p>
+
+<p>É nesse momento que aparecem as chamadas gregárias. Elas são ciclistas que trabalham para uma líder, levando água, controlando o ritmo, protegendo contra o vento e ajudando em perseguições. Quando a estrada fica muito inclinada, as melhores gregárias tentam acompanhar a líder pelo maior tempo possível.</p>
+
+<p>O trabalho de Tota Magalhães dentro da Movistar passa por esse tipo de função coletiva. Seu desempenho não pode ser avaliado apenas pela posição individual na classificação. Em uma grande volta, ajudar a principal nome da equipe também pode ser decisivo para o resultado final.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Final em Nice ainda pode mudar</strong></p>
+
+<p>O Tour de France Femmes terminará no domingo, 9 de agosto, em Nice. Mas não será uma etapa apenas de celebração.</p>
+
+<p>Em algumas grandes voltas, o último dia apresenta um percurso mais controlado, com a classificação geral praticamente definida. Nesta edição, o cenário será diferente. O trajeto ao redor de Nice terá subidas e espaço para novos ataques.</p>
+
+<p>Isso significa que a dona da camisa amarela ainda precisará defender sua vantagem. Uma diferença pequena pode desaparecer diante de uma aceleração, de uma falha de posicionamento ou de um momento de fraqueza.</p>
+
+<p>As descidas também terão importância. Descer bem no ciclismo não significa simplesmente pedalar mais rápido. É necessário escolher a trajetória correta nas curvas, controlar a bicicleta, entender as condições do asfalto e evitar riscos desnecessários.</p>
+
+<p>A campeã só poderá respirar aliviada depois de cruzar a última linha de chegada.</p>
+
+<p><strong>Tota Magalhães disputa seu segundo Tour</strong></p>
+
+<p>A brasileira participa do Tour de France Femmes pelo segundo ano consecutivo. A carioca representa a Movistar, uma das equipes tradicionais do circuito internacional.</p>
+
+<p>Sua presença tem peso histórico para o ciclismo brasileiro. Em 2025, Tota tornou-se a primeira brasileira a disputar a versão moderna do Tour feminino. Ela também apareceu em fugas e mostrou disposição para pedalar de forma ofensiva.</p>
+
+<p>Retornar no ano seguinte confirma sua adaptação ao mais alto nível da modalidade. Uma grande volta exige muito mais do que bom desempenho em um único dia. É necessário suportar etapas consecutivas, mudanças de terreno, transferências, pressão competitiva e pouco tempo de recuperação.</p>
+
+<p>Tota também ajuda a aproximar o público brasileiro de uma prova ainda pouco conhecida fora do grupo que acompanha o ciclismo regularmente. Mesmo trabalhando para sua equipe, cada aparição em uma fuga ou em um momento decisivo aumenta a visibilidade do país na competição.</p>
+
+<p><strong>Programação da semana decisiva:</strong></p>
+
+<ul>
+<li>Segunda-feira, 3 de agosto<br>Etapa 3 — Genebra a Poligny<br>Distância: 156,5 quilômetros<br>Tipo: etapa acidentada</li>
+
+<li>Terça-feira, 4 de agosto<br>Etapa 4 — Gevrey-Chambertin a Dijon<br>Distância: 21 quilômetros<br>Tipo: contrarrelógio individual</li>
+
+<li>Quarta-feira, 5 de agosto<br>Etapa 5 — Mâcon a Belleville-en-Beaujolais<br>Distância: 140 quilômetros<br>Tipo: etapa acidentada</li>
+
+<li>Quinta-feira, 6 de agosto<br>Etapa 6 — Montbrison a Tournon-sur-Rhône<br>Distância: 153,4 quilômetros<br>Tipo: etapa acidentada</li>
+
+<li>Sexta-feira, 7 de agosto<br>Etapa 7 — La Voulte-sur-Rhône ao Mont Ventoux<br>Distância: 146,8 quilômetros<br>Tipo: etapa de montanha com chegada no alto</li>
+
+<li>Sábado, 8 de agosto<br>Etapa 8 — Sisteron a Nice<br>Distância: 171,9 quilômetros<br>Tipo: etapa longa, com possibilidade de chegada rápida ou fuga</li>
+
+<li>Domingo, 9 de agosto<br>Etapa 9 — Nice a Nice<br>Distância: 99,2 quilômetros<br>Tipo: etapa montanhosa e encerramento da competição</li>
+</ul>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Onde assistir</strong></p>
+
+<p>No Brasil, o Tour de France Femmes 2026 tem transmissão ao vivo pelo canal ESPN 3, na televisão por assinatura, e pelo Disney+, no streaming. A cobertura acompanha as etapas da competição até o encerramento em Nice, no domingo, 9 de agosto. Os horários podem variar conforme o percurso de cada dia, e a chegada das ciclistas está prevista, em geral, para perto das 12h30, no horário de Brasília.</p>
+
+<p><strong>Velocidade, resistência e trabalho coletivo</strong></p>
+
+<p>O Tour de France Femmes pode parecer complexo em um primeiro contato porque reúne várias classificações, estratégias e tipos de etapa. No entanto, sua lógica principal é direta: completar todos os percursos no menor tempo acumulado.</p>
+
+<p>Ao redor dessa disputa central, cada dia conta uma história diferente. As velocistas buscam as chegadas planas, as especialistas tentam abrir vantagem no contrarrelógio, as escaladoras atacam nas montanhas e as gregárias trabalham para manter suas líderes na briga.</p>
+
+<p>Entre 3 e 9 de agosto, o público verá essas diferentes peças se encontrarem. O contrarrelógio organizará a disputa, o Mont Ventoux deverá separar as principais candidatas e o circuito de Nice dará a última oportunidade para mudar a classificação.</p>
+
+<p>Para o Brasil, a presença de Tota Magalhães acrescenta um motivo especial para acompanhar a prova. Para quem está começando a entender o ciclismo, a semana oferece um resumo quase completo da modalidade: esforço individual, estratégia coletiva, ataques, perseguições, montanhas e uma camisa amarela em jogo até os quilômetros finais.</p>
+</article>
+</div>
+</section>
+
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+
+</div>
+</div>
+</main>
+
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+
+<script>
+const CATEGORY_SLUG = "esportes-olimpicos";
+const CATEGORY_NAME = "Esportes Olimpicos";
+const AGENDA_JSON_URL = "agenda.json";
+
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+
+loadAgenda();
+</script>
+
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
