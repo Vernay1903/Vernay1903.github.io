@@ -1,690 +1,1027 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Champions League: história, maiores campeões, formato e finais históricas | Corte dos Esportes</title>
-  <meta name="description" content="A principal competição de clubes da Europa, com origem em 1955, domínio histórico do Real Madrid, novo formato, finais épicas, recordes marcantes e o peso cultural único no futebol mundial." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<title>Champions League: história, maiores campeões, finais históricas e premiação | Corte dos Esportes</title>
+<meta name="description" content="Criada em 1955, a principal competição de clubes da Europa reúne gigantes de diferentes países, uma taça reconhecida mundialmente, premiações milionárias e noites que transformaram jogadores, treinadores e equipes em lendas do futebol." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
+<!-- ADSENSE (carregar 1x por página) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
 
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
 
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
 
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
 
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
 
-    .ad-slot { overflow: hidden; max-width: 100%; }
+.ad-slot { overflow: hidden; max-width: 100%; }
 
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
 
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
 
-    main { flex: 1; }
+main { flex: 1; }
 
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+/* HEADER */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
 
-    .logo-container img { height: 34px; }
+.logo-container img {
+width: 420px;
+height: auto;
+}
 
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
 
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
 
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
 
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+.sports-menu a:hover {
+background: #1E4BA5;
+color: #FFFFFF;
+}
 
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
 
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
 
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
 
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
 
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
 
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
 
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
 
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
 
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
 
-    .meta a:hover { text-decoration: underline; }
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
 
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
+.meta a:hover { text-decoration: underline; }
 
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
 
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
+.ad-slot.sidebar {
+min-height: 120px;
+margin: 0;
+}
 
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
 
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
 
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
 
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
 
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
 
-    .desc { font-size: 14px; line-height: 1.4; }
+.agenda-list li:first-child {
+border-top: none;
+padding-top: 0;
+}
 
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
 
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
+.desc {
+font-size: 14px;
+line-height: 1.4;
+}
 
-    footer a:hover { color: #1E4BA5; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
 
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+}
 
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
+footer a:hover { color: #1E4BA5; }
 
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+}
 
-      h1 { font-size: 34px; }
-    }
-  </style>
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+
+.logo-container {
+justify-content: center;
+}
+
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+
+.logo-text {
+font-size: 18px;
+}
+
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+
+h1 { font-size: 34px; }
+
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474" decoding="async">
+</picture>
+</a>
+</div>
 </header>
 
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
 </div>
 
 <main>
-  <div class="page">
-    <div class="layout">
+<div class="page">
+<div class="layout">
 
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">Champions League: história, maiores campeões, formato e finais históricas</h1>
-          <p class="subhead" id="articleExcerpt">A principal competição de clubes da Europa, com origem em 1955, domínio histórico do Real Madrid, novo formato, finais épicas, recordes marcantes e o peso cultural único no futebol mundial.</p>
+<!-- ARTIGO -->
+<section>
+<div class="card">
 
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">13/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">Futebol</a>
-          </div>
+<h1 id="articleTitle">Champions League: história, maiores campeões, finais históricas e premiação</h1>
 
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
+<p class="subhead" id="articleExcerpt">Criada em 1955, a principal competição de clubes da Europa reúne gigantes de diferentes países, uma taça reconhecida mundialmente, premiações milionárias e noites que transformaram jogadores, treinadores e equipes em lendas do futebol.</p>
 
-          <article id="articleBody">
-            <p>A Champions League é a principal competição de clubes do futebol europeu e uma das mais prestigiadas do esporte mundial. Ao longo de mais de sete décadas, o torneio reuniu campeões nacionais, clubes históricos, craques de diferentes gerações, viradas improváveis e finais que ajudaram a construir parte da memória mais valiosa do futebol.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">04/08/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
 
-            <p>Com o passar dos anos, deixou de ser apenas um torneio continental para se transformar em um produto global, com impacto esportivo, financeiro, cultural e midiático.</p>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
 
-            <p>Conquistar a Champions significa entrar em uma galeria restrita. Para clubes, é o título que mais pesa fora das competições nacionais. Para jogadores, é um palco de consagração. Para torcedores, é a noite em que campanhas viram legado. O hino, o mata-mata, os grandes estádios e a final em jogo único tornaram o torneio um símbolo de elite no futebol.</p>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/taca-champions-league-exposicao.jpg",
+  "caption": "Taça da UEFA Champions League em exposição.",
+  "description": "Taça prateada da UEFA Champions League em exposição, vista de frente sobre uma base.",
+  "width": 3264,
+  "height": 2448,
+  "license": "https://creativecommons.org/licenses/by/2.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:2010_-_UEFA_Champions_League_Trophy.jpg",
+  "creditText": "Foto: Daniel/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Daniel"
+  },
+  "copyrightNotice": "Daniel/Wikimedia Commons."
+}
+</script>
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="taca-champions-league-exposicao.jpg" alt="Taça prateada da UEFA Champions League em exposição, vista de frente sobre uma base." width="3264" height="2448" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">Taça da UEFA Champions League em exposição. Foto: Daniel/Wikimedia Commons.</figcaption>
+</figure>
 
-            <p><strong>Como surgiu a competição</strong></p>
+<p>A Champions League é a principal competição de clubes do futebol europeu e uma das propriedades esportivas mais valiosas do planeta. Ao longo de mais de sete décadas, o torneio reuniu campeões nacionais, potências históricas, diferentes escolas táticas e alguns dos maiores jogadores de todos os tempos.</p>
 
-            <p>A Champions teve início em 1955, ainda com o nome de Copa dos Campeões da Europa. A ideia inicial era simples e poderosa: reunir os campeões das principais ligas nacionais do continente para definir o melhor clube da Europa.</p>
+<p>Conquistar a Champions significa ocupar um espaço restrito na história. Para os clubes, é a oportunidade de provar força além das fronteiras nacionais. Para jogadores e treinadores, representa o palco de maior pressão no futebol europeu e mundial. Para os torcedores, é a competição das grandes viradas, dos jogos eliminatórios e das finais que atravessam gerações.</p>
 
-            <p>Nas primeiras décadas, o torneio tinha formato eliminatório e era mais restrito. A participação era basicamente reservada aos campeões nacionais, o que tornava cada confronto direto ainda mais pesado. Não havia uma fase de grupos longa como depois se tornou comum, nem a presença numerosa de clubes de um mesmo país.</p>
+<p>O torneio mudou de nome, ampliou o número de participantes e adotou uma fase de liga com 36 equipes. Mesmo assim, preservou elementos que sustentam sua identidade: o hino, a bola estrelada, a taça “Orelhuda”, o mata-mata e a decisão em jogo único.</p>
 
-            <p>O Real Madrid dominou o início da competição e venceu as cinco primeiras edições, entre 1956 e 1960. Esse começo ajudou a moldar a identidade do torneio. Desde o nascimento, a Copa dos Campeões já carregava a sensação de grandeza, tradição e hierarquia continental.</p>
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
-            <p>Com o tempo, a UEFA ampliou o formato, incluiu mais participantes, modernizou a marca e transformou o torneio em Champions League. A mudança de nome, em 1992, marcou uma nova fase: mais jogos, mais televisão, mais receitas, mais exposição global e um produto muito mais poderoso.</p>
+<p><strong>Como surgiu a Copa dos Campeões da Europa</strong></p>
 
-            <p><strong>Por que é o torneio mais importante da Europa</strong></p>
+<p>A origem da competição está ligada ao jornal francês L’Équipe. Na década de 1950, o editor Gabriel Hanot e o jornalista Jacques Ferran defenderam a criação de um torneio que reunisse os principais clubes do continente.</p>
 
-            <p>A competição reúne quatro elementos difíceis de combinar: tradição, qualidade técnica, pressão competitiva e alcance global.</p>
+<p>A proposta foi apresentada às federações europeias e recebeu apoio da recém-criada Uefa. Em 21 de junho de 1955, a entidade aprovou a organização da Copa dos Clubes Campeões Europeus.</p>
 
-            <p>As ligas nacionais medem regularidade. A Champions mede grandeza continental. Um clube pode dominar seu país, mas só entra no imaginário europeu quando vence adversários de outras ligas, supera ambientes diferentes e resiste ao peso do mata-mata.</p>
+<p>A primeira edição começou em setembro de 1955 e contou com 16 participantes. O jogo inaugural foi disputado em Lisboa, onde Sporting e Partizan empataram por 3 a 3.</p>
 
-            <p>Também coloca frente a frente escolas distintas de futebol. Ingleses, espanhóis, italianos, alemães, franceses, portugueses e holandeses carregam estilos, culturas táticas e histórias próprias. Esse contraste aumenta o valor do torneio e ajuda a explicar por que as “noites de Champions” têm uma aura tão forte.</p>
+<p>Embora o projeto tivesse como base uma competição para campeões nacionais, somente sete dos participantes da edição inaugural haviam vencido suas respectivas ligas na temporada anterior. O prestígio e a representatividade dos clubes também tiveram peso na composição do torneio.</p>
 
-            <p>Além disso, a Champions virou um dos maiores produtos comerciais do esporte. Direitos de transmissão, premiações, patrocínios, bilheteria, turismo esportivo e exposição internacional fazem da competição uma peça central do futebol moderno.</p>
+<p><strong>O primeiro campeão</strong></p>
 
-            <p><strong>Formato atual da Champions League</strong></p>
+<p>A primeira decisão aconteceu em 13 de junho de 1956, no Parc des Princes, em Paris. O Stade de Reims abriu dois gols de vantagem, mas o Real Madrid reagiu e venceu por 4 a 3.</p>
 
-            <p>Desde a temporada 2024/25, passou a ter um novo formato. O antigo modelo de grupos com 32 clubes foi substituído por uma fase de liga com 36 equipes.</p>
+<p>Alfredo Di Stéfano, Héctor Rial e Marquitos marcaram na virada espanhola. Rial fez dois gols, incluindo o que definiu o resultado.</p>
 
-            <p>Cada clube faz oito jogos contra oito adversários diferentes, sendo quatro partidas em casa e quatro fora. Todos os times ficam em uma tabela única.</p>
+<p>Aquela conquista iniciou uma sequência que nunca mais foi repetida. O <a href="https://cortedosesportes.com.br/real-madrid-maior-clube-do-mundo-historia-titulos-champions.html">Real Madrid</a> venceu as cinco primeiras edições, entre 1955/56 e 1959/60, e estabeleceu desde o nascimento uma relação especial com a competição.</p>
 
-            <p><strong>Como funciona a fase de liga:</strong></p>
-            <ul>
-              <li>36 clubes participam da fase principal</li>
-              <li>Cada time joga 8 partidas</li>
-              <li>São 4 jogos em casa e 4 fora</li>
-              <li>Os 8 melhores avançam direto às oitavas</li>
-              <li>Do 9º ao 24º colocado, os clubes disputam playoffs</li>
-              <li>Do 25º ao 36º, os clubes são eliminados</li>
-            </ul>
+<p>A quinta taça veio com uma das maiores atuações da história das finais: vitória por 7 a 3 sobre o Eintracht Frankfurt, diante de mais de 127 mil pessoas no Hampden Park, em Glasgow. Ferenc Puskás marcou quatro vezes, enquanto Di Stéfano fez três gols.</p>
 
-            <p>Depois da fase de liga e dos playoffs, a competição segue em mata-mata tradicional: oitavas, quartas, semifinais e final. A decisão continua em jogo único, em sede definida previamente.</p>
+<p><strong>Da Copa dos Campeões à Champions League</strong></p>
 
-            <p>Esse novo formato aumentou o número de jogos grandes logo na primeira fase. Em vez de grupos fechados, a tabela única cria mais combinações entre clubes fortes e mantém mais equipes vivas até as rodadas finais.</p>
+<p>Durante suas primeiras décadas, a competição foi disputada essencialmente em confrontos eliminatórios de ida e volta. O modelo era mais restrito e privilegiava os campeões das ligas nacionais.</p>
 
-            <!-- ANÚNCIO (ARTIGO - TOPO) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>As transformações econômicas, comerciais e televisivas do futebol europeu levaram a Uefa a reformular o torneio. Uma fase de grupos foi introduzida em 1991/92 e, na temporada seguinte, nasceu oficialmente a UEFA Champions League.</p>
 
-            <p><strong>Maiores campeões</strong></p>
+<p>A mudança não representou apenas uma nova denominação. A competição recebeu uma identidade visual própria, ampliou sua presença na televisão, incorporou mais clubes das principais ligas e se tornou progressivamente mais valiosa.</p>
 
-            <p>O Real Madrid é o maior campeão da história da competição. O clube espanhol construiu uma relação quase inseparável com o torneio e lidera com ampla vantagem o ranking de títulos.</p>
+<p>O primeiro campeão com a marca Champions League foi o Olympique de Marseille, que derrotou o Milan por 1 a 0 na final de 1992/93, com gol de Basile Boli.</p>
 
-            <p><strong>Ranking abaixo:</strong></p>
-            <ul>
-              <li>Real Madrid: 15 títulos</li>
-              <li>Milan: 7 títulos</li>
-              <li>Liverpool: 6 títulos</li>
-              <li><a href="https://cortedosesportes.com.br/bayern-munique-6-titulos-champions-league.html">Bayern de Munique: 6 títulos</a></li>
-              <li>Barcelona: 5 títulos</li>
-              <li>Ajax: 4 títulos</li>
-              <li>Manchester United: 3 títulos</li>
-              <li>Inter de Milão: 3 títulos</li>
-            </ul>
+<p>Com o tempo, a participação deixou de ser exclusiva dos campeões nacionais. As ligas mais bem colocadas no ranking da Uefa passaram a classificar várias equipes, aumentando a presença das principais potências econômicas do continente.</p>
 
-            <p><strong>Clubes com 2 títulos:</strong></p>
-            <ul>
-              <li>PSG: 2 títulos — </li>
-              <li>Benfica: 2 títulos</li>
-              <li>Juventus: 2 títulos</li>
-              <li>Nottingham Forest: 2 títulos</li>
-              <li>Porto: 2 títulos</li>
-              <li>Chelsea: 2 títulos</li>
-            </ul>
+<p><strong>O atual formato</strong></p>
 
-            <p><strong>Atual campeão temporada 2025/2026:PSG</strong></p>
+<p>Desde 2024/25, a antiga fase de grupos foi substituída por uma fase de liga com 36 clubes. Todas as equipes aparecem na mesma classificação, mas não enfrentam todos os adversários.</p>
 
-            <p>O PSG entrou definitivamente no grupo de campeões históricos ao conquistar seu primeiro título em 2025 e confirmou uma hegemonia ao voltar a levantar a <a href="https://cortedosesportes.com.br/psg-campeao-champions-league-arsenal-penaltis-2026.html">taça em 2026</a>. A trajetória parisiense ganhou força recente ao tirar o clube da lista de gigantes europeus sem o principal título continental.</p>
+<p>Cada participante disputa oito partidas contra oito equipes diferentes, sendo quatro jogos em casa e quatro como visitante.</p>
 
-            <p>Mas o domínio do Real Madrid é tão grande que o clube virou sinônimo de Champions. <a href="https://cortedosesportes.com.br/real-madrid-maior-clube-do-mundo-historia-titulos-champions.html">A história merengue</a> na competição inclui a hegemonia inicial dos anos 1950, a retomada com a geração de Zidane, os títulos de Cristiano Ronaldo e o ciclo recente de conquistas em mata-mata.</p>
+<p>O formato da fase de liga:</p>
 
-            <p>O Real não domina a competição apenas pelo número de títulos. Domina também pela forma como venceu. O clube acumulou finais, viradas, campanhas improváveis, decisões contra gigantes e noites em que parecia derrotado antes de encontrar uma forma de sobreviver.</p>
+<ul>
+<li>36 clubes participantes</li>
+<li>Oito partidas para cada equipe</li>
+<li>Quatro jogos em casa</li>
+<li>Quatro jogos fora</li>
+<li>Tabela única com os 36 participantes</li>
+</ul>
 
-            <p>Essa mística virou parte da identidade da Champions. Quando se fala no torneio, o Real Madrid aparece naturalmente como referência de tradição, pressão e capacidade de decidir jogos grandes.</p>
+<p>As equipes são divididas em quatro potes para a definição dos confrontos. Cada clube enfrenta dois adversários de cada pote, com uma partida como mandante e outra como visitante.</p>
 
-            <p>A relação é tão forte que a competição ajudou a definir a grandeza global do clube, enquanto o clube também ajudou a definir a imagem internacional da competição.</p>
+<p>Ao fim das oito rodadas:</p>
 
-            <p><strong>Clubes que ajudaram a construir a grandeza da competição</strong></p>
+<ul>
+<li>Do 1º ao 8º lugar — classificação direta para as oitavas de final</li>
+<li>Do 9º ao 16º — disputa dos playoffs como cabeça de chave</li>
+<li>Do 17º ao 24º — disputa dos playoffs sem condição de cabeça de chave</li>
+<li>Do 25º ao 36º — eliminação</li>
+</ul>
 
-            <p>Embora o Real Madrid seja o maior campeão, a Champions League não foi construída por um único clube. O torneio ganhou força porque diferentes potências marcaram época em períodos distintos.</p>
+<p>Os oito vencedores dos playoffs completam as oitavas de final. A partir dessa etapa, os confrontos são disputados em jogos de ida e volta até as semifinais. A final permanece em partida única e sede escolhida previamente.</p>
 
-            <p>O Milan construiu algumas das equipes mais elegantes e dominantes da história, especialmente com seus grandes times dos anos 1980, 1990 e 2000. O Liverpool virou símbolo de noites épicas e viradas europeias. O Bayern de Munique se consolidou como referência de regularidade, força física e competitividade.</p>
+<p>O novo modelo produz 189 jogos da fase de liga até a final:</p>
 
-            <p>O Barcelona brilhou com gerações de altíssimo nível técnico, especialmente na era de Messi, Xavi e Iniesta. O Ajax marcou a competição com formação, inovação e futebol ofensivo. Inter de Milão, Manchester United, Juventus, Benfica, Porto, Chelsea e PSG também têm capítulos importantes.</p>
+<ul>
+<li>Fase de liga — 144 partidas</li>
+<li>Playoffs — 16 partidas</li>
+<li>Oitavas de final — 16 partidas</li>
+<li>Quartas de final — oito partidas</li>
+<li>Semifinais — quatro partidas</li>
+<li>Final — uma partida</li>
+</ul>
 
-            <p>A força da Champions está justamente nessa soma. É um torneio de gigantes, mas também de ciclos. Cada geração deixa sua marca.</p>
+<p>O aumento em comparação com o antigo formato criou mais confrontos entre equipes tradicionais antes do mata-mata. Também elevou a exigência física, esportiva e logística dos clubes, que precisam conciliar a competição europeia com ligas, copas nacionais e partidas de seleções.</p>
 
-            <!-- ANÚNCIO (ARTIGO - MEIO) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p><strong>A taça e as grandes “orelhas”</strong></p>
 
-            <p><strong>Finais históricas</strong></p>
+<p>O troféu da Champions League é um dos símbolos mais reconhecidos do futebol. Suas grandes alças deram origem a apelidos como “Orelhuda” no Brasil e “Copa das Grandes Orelhas” em diferentes partes da Europa.</p>
 
-            <p>A Champions também é lembrada por finais que ultrapassaram o resultado e viraram memória coletiva do futebol.</p>
+<p>A peça atual mede 73,5 centímetros e pesa aproximadamente 7,5 quilos. Na parte frontal está gravada a inscrição em francês “Coupe des Clubs Champions Européens”, mantendo viva a ligação com o nome original da competição.</p>
 
-            <ul>
-              <li>1956 — Real Madrid 4 x 3 Reims<br>A primeira final da competição já nasceu com sete gols e vitória do Real Madrid, iniciando a hegemonia merengue.</li>
-              <li>1960 — Real Madrid 7 x 3 Eintracht Frankfurt<br>Uma das maiores atuações em finais europeias. O Real, com Di Stéfano e Puskás, venceu em um jogo que ajudou a eternizar a primeira grande era do clube.</li>
-              <li>1999 — Manchester United 2 x 1 Bayern de Munique<br>O Bayern vencia até os acréscimos, mas o United marcou duas vezes no fim e conquistou uma das viradas mais famosas da história.</li>
-              <li>2005 — Liverpool 3 x 3 Milan<br>O Milan abriu 3 a 0 no primeiro tempo, mas o Liverpool empatou em seis minutos no segundo tempo e venceu nos pênaltis. A final de Istambul virou sinônimo de milagre europeu.</li>
-              <li>2012 — Chelsea 1 x 1 Bayern de Munique<br>Jogando na casa do Bayern, o Chelsea resistiu, empatou no fim com Drogba e venceu nos pênaltis para conquistar sua primeira taça.</li>
-              <li>2014 — Real Madrid 4 x 1 Atlético de Madrid<br>O Atlético vencia até os acréscimos, mas Sergio Ramos empatou aos 48 minutos do segundo tempo. Na prorrogação, o Real conquistou a tão buscada décima taça.</li>
-              <li>2019 — Liverpool 2 x 0 Tottenham<br>Depois da virada histórica contra o Barcelona na semifinal, o Liverpool confirmou o título em uma final inglesa.</li>
-            </ul>
+<p>O primeiro troféu, entregue em 1956, foi oferecido pelo L’Équipe e possuía alças menores. Depois do sexto título do Real Madrid, em 1966, o clube ficou definitivamente com aquela peça.</p>
 
-            <p>Essas decisões entre outras, mostram por que a Champions tem tanta força. O torneio não entrega apenas campeões; entrega cenas que passam a ser lembradas por décadas.</p>
+<p>A Uefa encomendou então um novo modelo ao suíço Jürg Stadelmann. O trabalho levou cerca de 340 horas e resultou no desenho de grandes alças utilizado até hoje. O Celtic foi o primeiro campeão a receber essa versão, em 1967.</p>
 
-            <p><strong>Viradas e noites que definem a competição</strong></p>
+<p>Durante décadas, o regulamento permitiu que um clube ficasse com o troféu original ao conquistar cinco títulos ou vencer três edições consecutivas. Real Madrid, Ajax, Bayern de Munique, Milan e Liverpool receberam versões originais da taça.</p>
 
-            <p>Além das finais, ela também é feita de noites de mata-mata que viraram lenda.</p>
+<p>A regra foi alterada antes da temporada 2008/09. Atualmente, o troféu usado na cerimônia permanece sob propriedade da Uefa, enquanto o campeão recebe uma réplica em tamanho real com seu nome gravado.</p>
 
-            <p>A remontada do Barcelona contra o PSG em 2017, com vitória por 6 a 1 depois de derrota por 4 a 0 na ida, é uma das mais lembradas. O Liverpool contra o Barcelona em 2019, revertendo 3 a 0 sem Salah e Firmino, também entrou para a história.</p>
+<p><strong>Os maiores campeões</strong></p>
 
-            <p>O Real Madrid construiu uma sequência de viradas marcantes em 2021/22, passando por PSG, Chelsea e Manchester City antes de vencer o Liverpool na final. Foi uma campanha que reforçou a ideia de que, na Champions, camisa, ambiente e controle emocional pesam muito.</p>
+<p>O Real Madrid lidera com grande vantagem a lista histórica. O ranking considera conjuntamente a antiga Copa dos Campeões e a Champions League.</p>
 
-            <p>Essas noites ajudam a explicar a diferença do torneio. Em outros campeonatos, uma derrota pesada pode ser apenas um tropeço. Na Champions, pode virar o início de uma história improvável.</p>
+<p>Clubes com mais títulos:</p>
 
-            <p><strong>Recordes e curiosidades</strong></p>
+<ul>
+<li>Real Madrid — 15</li>
+<li>Milan — 7</li>
+<li>Liverpool — 6</li>
+<li>Bayern de Munique —  6</li>
+<li>Barcelona — 5</li>
+<li>Ajax — 4</li>
+<li>Inter de Milão — 3</li>
+<li>Manchester United — 3</li>
+<li>Benfica — 2</li>
+<li>Chelsea — 2</li>
+<li>Juventus — 2</li>
+<li>Nottingham Forest — 2</li>
+<li>Paris Saint-Germain — 2</li>
+<li>Porto — 2</li>
+</ul>
 
-            <p>A competição também é rica em recordes, marcas e curiosidades que ajudam a medir seu peso histórico.</p>
+<p>Clubes com um título:</p>
 
-            <p><strong>Algumas delas:</strong></p>
-            <ul>
-              <li>O Real Madrid venceu as cinco primeiras edições da competição.</li>
-              <li>23 clubes diferentes já conquistaram a Champions ou a antiga Copa dos Campeões.</li>
-              <li>O Nottingham Forest tem uma marca rara: venceu a competição duas vezes, em 1979 e 1980, apesar de não ser uma potência constante da elite europeia.</li>
-              <li>O Porto foi campeão em 1987 e voltou a vencer em 2004, com José Mourinho.</li>
-              <li>A final de 1960 entre Real Madrid e Eintracht Frankfurt teve 10 gols.</li>
-              <li>A final de 2005 entre Liverpool e Milan é considerada uma das maiores viradas da história do futebol.</li>
-              <li>O Real Madrid é o único clube que venceu a Champions moderna três vezes seguidas, entre 2016 e 2018.</li>
-              <li>O PSG se tornou o primeiro clube desde o Real Madrid a defender o título da Champions, ao conquistar as edições de 2025 e 2026.</li>
-            </ul>
+<ul>
+<li>Aston Villa</li>
+<li>Borussia Dortmund</li>
+<li>Celtic</li>
+<li>Estrela Vermelha</li>
+<li>Feyenoord</li>
+<li>Hamburgo</li>
+<li>Manchester City</li>
+<li>Olympique de Marseille</li>
+<li>PSV Eindhoven</li>
+<li>Steaua Bucareste</li>
+</ul>
 
-            <p>Esses dados mostram como o torneio mistura domínio de gigantes com espaço para campanhas especiais. A Champions é previsível em sua grandeza, mas imprevisível nos detalhes.</p>
+<p>Atual campeão: Paris Saint-Germain, vencedor da temporada 2025/26</p>
 
-            <p><strong>Jogadores que marcaram época</strong></p>
+<p>Ao todo, 24 clubes diferentes já conquistaram a principal competição europeia. A Espanha lidera entre os países, com 20 títulos somados por Real Madrid e Barcelona. A Inglaterra aparece com 15, distribuídos entre seis campeões diferentes.</p>
 
-            <p>Cristiano Ronaldo é o maior nome estatístico da era moderna da competição. O português é o <a href="https://cortedosesportes.com.br/cristiano-ronaldo-maior-artilheiro-champions-league-recordes.html">maior artilheiro</a> da história da Champions League, com 140 gols, além de cinco títulos no torneio e recordes construídos por Manchester United, Real Madrid e Juventus.</p>
+<p><strong>PSG  bicampeão consecutivo</strong></p>
 
-            <p>Lionel Messi também marcou uma era com o Barcelona, especialmente nos títulos de 2006, 2009, 2011 e 2015. Ao lado de Cristiano, ajudou a transformar a Champions em palco central da maior rivalidade individual do futebol moderno.</p>
+<p>O Paris Saint-Germain conquistou seu primeiro título em 2024/25, com uma goleada por 5 a 0 sobre a Inter de Milão, em Munique. Foi a maior diferença de gols registrada em uma final da história da competição.</p>
 
-            <p>Zinedine Zidane entrou para a história com o voleio na final de 2002 e depois voltou a marcar o torneio como treinador. Paolo Maldini, Kaká, Steven Gerrard, Xavi, Iniesta, Sergio Ramos, Benzema, Modrić, Lewandowski, Neuer, Drogba, Casillas e muitos outros construíram capítulos decisivos.</p>
+<p>Achraf Hakimi abriu o placar, Désiré Doué marcou duas vezes, Khvicha Kvaratskhelia fez o quarto e Senny Mayulu fechou a goleada. A conquista retirou o PSG da lista de grandes clubes europeus que nunca haviam levantado a taça.</p>
 
-            <p>A Champions não define sozinha a grandeza de um jogador, mas costuma funcionar como o palco que amplia sua memória internacional.</p>
+<p>Na temporada seguinte, o time de Luis Enrique voltou à decisão e enfrentou o Arsenal no Puskás Aréna, em Budapeste, em 30 de maio de 2026.</p>
 
-            <p><strong>Técnicos históricos</strong></p>
+<p>Kai Havertz colocou o Arsenal na frente aos seis minutos. Ousmane Dembélé empatou em cobrança de pênalti aos 20 minutos do segundo tempo. Depois do 1 a 1 no tempo normal e na prorrogação, o PSG venceu a disputa por 4 a 3.</p>
 
-            <p>A competição também consagrou treinadores. Alguns venceram por ideias táticas. Outros por gestão de elenco, leitura de mata-mata e capacidade de decidir finais.</p>
+<p>Eberechi Eze e Gabriel Magalhães desperdiçaram cobranças pelo Arsenal. Nuno Mendes perdeu pelo PSG, mas a equipe francesa converteu quatro de suas cinco tentativas e <a href="https://cortedosesportes.com.br/psg-campeao-champions-league-arsenal-penaltis-2026.html">confirmou o bicampeonato</a>.</p>
 
-            <p><strong>Alguns deles:</strong></p>
+<p>O clube de Paris se tornou apenas o segundo clube a defender o título desde a criação da Champions League em 1992/93. O outro foi o Real Madrid, que venceu três vezes seguidas entre 2015/16 e 2017/18.</p>
 
-            <ul>
-              <li>Carlo Ancelotti: maior vencedor como treinador, com 5 títulos — Milan em 2003 e 2007; Real Madrid em 2014, 2022 e 2024.</li>
-              <li>Zinedine Zidane: tricampeão consecutivo pelo Real Madrid, em 2016, 2017 e 2018.</li>
-              <li>Pep Guardiola: campeão por Barcelona e Manchester City.</li>
-              <li>José Mourinho: campeão por Porto e Inter de Milão.</li>
-              <li>Alex Ferguson: símbolo do Manchester United em noites europeias.</li>
-              <li>Arrigo Sacchi: referência histórica com o Milan.</li>
-              <li>Bob Paisley: tricampeão com o Liverpool.</li>
-              <li>Luis Enrique: Tri campeão com Barcelona e PSG, consolidando seu nome entre os técnicos mais vencedores do torneio.</li>
-            </ul>
+<p><strong>A maior relação da história da competição</strong></p>
 
-            <!-- ANÚNCIO (ARTIGO - FINAL) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
+<p>Nenhum clube possui uma ligação tão forte com o torneio quanto o Real Madrid. Além dos 15 títulos, a equipe venceu todas as nove finais que disputou desde a adoção do nome Champions League.</p>
 
-            <p><strong>A importância financeira </strong></p>
+<p>As conquistas do Real Madrid:</p>
 
-            <p>A Champions League também é decisiva financeiramente. Participar do torneio já muda a temporada de um clube. Avançar de fase pode alterar planejamento, orçamento, mercado de transferências e capacidade de manter ou contratar jogadores de elite.</p>
+<ul>
+<li>1955/56</li>
+<li>1956/57</li>
+<li>1957/58</li>
+<li>1958/59</li>
+<li>1959/60</li>
+<li>1965/66</li>
+<li>1997/98</li>
+<li>1999/2000</li>
+<li>2001/02</li>
+<li>2013/14</li>
+<li>2015/16</li>
+<li>2016/17</li>
+<li>2017/18</li>
+<li>2021/22</li>
+<li>2023/24</li>
+</ul>
 
-            <p>As receitas vêm de premiação esportiva, direitos de transmissão, ranking histórico, bilheteria, patrocínios e valorização internacional de marca. Para clubes de ligas médias, uma campanha na pode representar um salto financeiro enorme. Para gigantes, a competição é parte central da estratégia global.</p>
+<p>O clube construiu três grandes ciclos. O primeiro foi o pentacampeonato iniciado em 1956. O segundo veio entre o fim dos anos 1990 e o começo dos anos 2000, com três títulos em cinco temporadas. O terceiro reuniu seis conquistas entre 2014 e 2024.</p>
 
-            <p>O título do PSG em 2025/26 ajuda a dimensionar esse impacto. Apenas pela vitória na final, o campeão recebeu 25 milhões de euros referentes à premiação da decisão. Considerando participação, campanha, vitórias, avanço de fases, bônus e distribuição comercial, a estimativa de ganhos totais do clube na Champions da temporada ficou entre 150 milhões e 160 milhões de euros.</p>
+<p>A equipe também é a única a ter vencido três edições consecutivas na era moderna, com <a href="https://cortedosesportes.com.br/zidane-historia-carreira-titulos-real-madrid-franca.html">Zinedine Zidane</a> no comando e Cristiano Ronaldo como principal referência ofensiva.</p>
 
-            <p>Esse peso financeiro explica por que a vaga na competição é tão disputada nas ligas nacionais. Terminar entre os primeiros colocados não significa apenas status esportivo. Significa acesso ao torneio que mais distribui dinheiro, visibilidade e prestígio no futebol europeu.</p>
+<p>A relação se alimenta nos dois sentidos: a Champions ajudou a transformar o Real Madrid em uma marca global, enquanto as campanhas merengues ajudaram a construir a mística da competição.</p>
 
-            <p><strong>A Champions no novo calendário europeu</strong></p>
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
-            <p>O novo formato com 36 clubes aumentou a presença no calendário. Mais jogos significam mais receitas, mais confrontos grandes e mais exigência física para os elencos.</p>
+<p><strong>O bloco perseguidor</strong></p>
 
-            <p>Ao mesmo tempo, isso aumenta o desafio de gestão. Clubes precisam equilibrar liga nacional, copas domésticas, Champions, viagens e seleções. A competição ficou mais longa e mais intensa, exigindo elencos profundos.</p>
+<p>O Milan é o segundo maior campeão, o clube italiano venceu em 1963, 1969, 1989, 1990, 1994, 2003 e 2007.</p>
 
-            <p>A temporada 2026/27 já nasce nesse cenário de calendário ampliado, com classificados, datas e caminhos que ajudam a entender como a competição continuará crescendo. Esse contexto aparece nos <a href="https://cortedosesportes.com.br/champions-league-2026-27-times-classificados-datas.html">times classificados para a próxima temporada da competição</a>.</p>
+<p>As equipes comandadas por Arrigo Sacchi e Fabio Capello no fim dos anos 1980 e início dos anos 1990 ajudaram a transformar conceitos de pressão, compactação e linha defensiva. O Milan de Carlo Ancelotti também alcançou três finais entre 2003 e 2007, vencendo duas.</p>
 
-            <p><strong>A importância cultural</strong></p>
+<p>Liverpool e Bayern de Munique possuem seis conquistas cada.</p>
 
-            <p>A Champions League deixou de ser apenas uma competição esportiva. O hino, as noites de terça e quarta-feira, o mata-mata, as semifinais e a final em estádio neutro transformaram o torneio em um fenômeno cultural.</p>
+<p>Títulos do Liverpool:</p>
 
-            <p>Para muitos torcedores, ela representa o auge do futebol de clubes. É o torneio em que as maiores estrelas aparecem juntas, em que grandes camisas se enfrentam e em que cada erro ganha dimensão histórica.</p>
+<ul>
+<li>1976/77</li>
+<li>1977/78</li>
+<li>1980/81</li>
+<li>1983/84</li>
+<li>2004/05</li>
+<li>2018/19</li>
+</ul>
 
-            <p>O hino virou parte da identidade do evento. A bola estrelada, a marca visual e o peso simbólico da final ajudam a criar uma atmosfera diferente. A Champions é uma competição, mas também é um ritual.</p>
+<p>O time inglês construiu parte de sua identidade europeia em <a href="https://cortedosesportes.com.br/anfield-historia-tradicao-estadio-liverpool.html">Anfield</a>, com viradas e ambientes que fizeram das noites continentais um elemento central da história do clube.</p>
 
-            <p><strong>Por que continua no topo</strong></p>
+<p>Títulos do Bayern de Munique:</p>
 
-            <p>Porque consegue se renovar sem perder o peso do passado. O formato muda, os clubes variam, novos campeões surgem e o futebol se transforma, mas a sensação de noite europeia permanece.</p>
+<ul>
+<li>1973/74</li>
+<li>1974/75</li>
+<li>1975/76</li>
+<li>2000/01</li>
+<li>2012/13</li>
+<li>2019/20</li>
+</ul>
 
-            <p>O torneio carrega uma combinação rara: tradição antiga, impacto moderno, dinheiro, audiência global, craques, técnicos de elite, rivalidades e memórias. Poucas competições conseguem unir tantas camadas.</p>
+<p>O Bayern é um dos poucos clubes que venceram três edições consecutivas. Sua trajetória está detalhada no conteúdo sobre os <a href="https://cortedosesportes.com.br/bayern-munique-6-titulos-champions-league.html">seis títulos na competição</a>.</p>
 
-            <p>No fim, a Champions é mais do que a principal competição de clubes da Europa. É o lugar onde o futebol europeu mede grandeza. Ganhar uma liga nacional prova regularidade. Ganhar a Champions coloca um clube na história continental.</p>
+<p><strong>A mudança da maneira de jogar</strong></p>
 
-            <p>Por isso, cada edição começa com a mesma promessa: novos jogos, novos favoritos, novas surpresas e a chance de mais uma noite entrar para sempre na memória do futebol.</p>
-          </article>
-        </div>
-      </section>
+<p>O Barcelona conquistou seus títulos em 1992, 2006, 2009, 2011 e 2015.</p>
 
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
+<p>A primeira taça veio com o time comandado por Johan Cruyff. Posteriormente, as gerações lideradas por <a href="https://cortedosesportes.com.br/ronaldinho-gaucho-historia-titulos-gols-assistencias-clubes-selecao.html">Ronaldinho</a> e <a href="https://cortedosesportes.com.br/messi-historia-barcelona-titulos-recordes-copa-2022.html">Lionel Messi</a> consolidaram o clube entre as principais potências da competição.</p>
 
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
+<p>O Barcelona de <a href="https://cortedosesportes.com.br/pep-guardiola-carreira-legado-titulos-estilo-de-jogo.html">Pep Guardiola</a>, campeão em 2009 e 2011, marcou época pela combinação de posse de bola, pressão após a perda e jogadores formados em La Masia. Xavi, Andrés Iniesta, Sergio Busquets, Carles Puyol, Gerard Piqué e Messi formaram a base de uma das equipes mais influentes da era moderna.</p>
 
-    </div>
-  </div>
+<p>O Ajax conquistou em 1971, 1972, 1973 e 1995. O tricampeonato da década de 1970 ficou ligado ao Futebol Total e à geração de Johan Cruyff. A taça de 1995 veio com uma equipe jovem comandada por Louis van Gaal.</p>
+
+<p><strong>As finais mais históricas</strong></p>
+
+<p>A competição construiu sua reputação por meio de decisões que produziram viradas, goleadas, prorrogações e disputas por pênaltis.</p>
+
+<p>Algumas das finais mais marcantes:</p>
+
+<ul>
+<li>1956 — Real Madrid 4 x 3 Stade de Reims<br>A primeira decisão teve sete gols, duas viradas no placar e o início da hegemonia espanhola.</li>
+<li>1960 — Real Madrid 7 x 3 Eintracht Frankfurt<br>Puskás marcou quatro vezes e Di Stéfano fez três. A partida permanece como a final com mais gols.</li>
+<li>1986 — Steaua Bucareste 0 x 0 Barcelona<br>O Steaua venceu por 2 a 0 nos pênaltis. O goleiro Helmuth Duckadam defendeu as quatro cobranças realizadas pelo Barcelona.</li>
+<li>1999 — Manchester United 2 x 1 Bayern de Munique<br>O Bayern vencia até os acréscimos. Teddy Sheringham e Ole Gunnar Solskjær marcaram aos 46 e 48 minutos do segundo tempo.</li>
+<li>2005 — Liverpool 3 x 3 Milan<br>O Milan abriu 3 a 0 no primeiro tempo, mas o Liverpool empatou em um intervalo de seis minutos e venceu por 3 a 2 nos pênaltis.</li>
+<li>2012 — Chelsea 1 x 1 Bayern de Munique<br>Jogando no estádio do adversário, o Chelsea empatou com Didier Drogba aos 43 minutos do segundo tempo e venceu por 4 a 3 nos pênaltis.</li>
+<li>2014 — Real Madrid 4 x 1 Atlético de Madrid<br>O Atlético ficou perto do título, mas Sergio Ramos empatou aos 48 minutos da etapa final. O Real marcou mais três vezes na prorrogação e conquistou a Décima.</li>
+<li>2025 — Paris Saint-Germain 5 x 0 Inter de Milão<br>O PSG conquistou sua primeira taça com a maior goleada já registrada em uma final.</li>
+<li>2026 — Paris Saint-Germain 1 x 1 Arsenal<br>Depois do empate no tempo normal e na prorrogação, o PSG venceu por 4 a 3 nos pênaltis e confirmou o bicampeonato.</li>
+</ul>
+
+<p>As finais mostram como a competição consegue produzir diferentes tipos de memória. Algumas ficaram marcadas pelo domínio absoluto. Outras, pela capacidade de sobreviver quando a derrota parecia inevitável.</p>
+
+<p><strong>Viradas que definiram as noites de Champions</strong></p>
+
+<p>A mística da competição não está apenas nas finais. Algumas das partidas mais lembradas aconteceram durante o mata-mata.</p>
+
+<p><strong>Barcelona 6 x 1 PSG, em 2017</strong></p>
+
+<p>O time francês venceu a ida das oitavas de final por 4 a 0. No <a href="https://cortedosesportes.com.br/estadio-camp-nou-historia-reformas-capacidade-barcelona.html">Camp Nou</a>, o Barcelona precisava de uma reação praticamente impossível e marcou três gols nos minutos finais para fechar o confronto com uma vitória por 6 a 1.</p>
+
+<p><strong>Roma 3 x 0 Barcelona, em 2018</strong></p>
+
+<p>Depois de perder por 4 a 1 na Espanha, a Roma venceu por 3 a 0 no Estádio Olímpico e avançou pelo critério de gols fora de casa. Kostas Manolas marcou o gol decisivo.</p>
+
+<p><strong>Liverpool 4 x 0 Barcelona, em 2019</strong></p>
+
+<p>O Barcelona havia vencido a ida da semifinal por 3 a 0. Sem Mohamed Salah e Roberto Firmino, o Liverpool marcou quatro vezes em Anfield e completou uma das maiores viradas da história do torneio.</p>
+
+<p><strong>Real Madrid em 2021/22</strong></p>
+
+<p>Naquela campanha, o time Merengue eliminou PSG, Chelsea e Manchester City em confrontos nos quais esteve próximo da eliminação. Karim Benzema, Rodrygo, Vinícius Júnior, Luka Modrić e Thibaut Courtois foram protagonistas de uma trajetória que terminou com o título sobre o Liverpool.</p>
+
+<p>Esses jogos mostram por que uma eliminatória não termina enquanto houver tempo. A combinação entre estádio, pressão, talento e fragilidade emocional pode mudar completamente o roteiro de um confronto.</p>
+
+<p><strong>Os maiores artilheiros</strong></p>
+
+<p>Cristiano Ronaldo é o maior goleador, se tornando um também um símbolo da história da competição. O português foi campeão uma vez pelo Manchester United e quatro pelo Real Madrid.</p>
+
+<p>Jogadores com mais gols na Champions:</p>
+
+<ul>
+<li><a href="https://cortedosesportes.com.br/cristiano-ronaldo-maior-artilheiro-champions-league-recordes.html">Cristiano Ronaldo — 140 gols</a></li>
+<li>Lionel Messi — 129 gols</li>
+<li>Robert Lewandowski — 109 gols</li>
+<li>Karim Benzema — 90 gols</li>
+<li>Raúl González — 71 gols</li>
+<li>Kylian Mbappé — 70 gols</li>
+</ul>
+
+<p>Messi conquistou quatro títulos pelo Barcelona e foi o principal jogador de dois ciclos históricos do clube. Lewandowski construiu seus números por Borussia Dortmund, Bayern de Munique e Barcelona. Benzema foi um dos grandes protagonistas do Real Madrid, especialmente na campanha de 2021/22.</p>
+
+<p>Outros fatos da competição:</p>
+
+<ul>
+<li>Mais gols em uma edição — Cristiano Ronaldo, com 17 em 2013/14</li>
+<li>Primeiro campeão inglês — Manchester United, em 1968</li>
+<li>Primeiro campeão francês — Olympique de Marseille, em 1993</li>
+<li>Primeiro campeão português — Benfica, em 1961</li>
+<li>Primeiro campeão neerlandês — Feyenoord, em 1970</li>
+<li>Único clube com dois títulos e duas finais — Nottingham Forest</li>
+<li>Primeiro clube a vencer todos os oito jogos da fase de liga — Arsenal, em 2025/26</li>
+<li>Maior número de gols da fase de liga até a final em uma campanha — Barcelona em 1999/2000 e PSG em 2025/26, com 45</li>
+</ul>
+
+<p>A Champions combina recordes de domínio com histórias improváveis. O Nottingham Forest, por exemplo, venceu duas vezes consecutivas, em 1979 e 1980, mesmo sem manter presença constante entre as principais potências europeias.</p>
+
+<p><strong>Os técnicos com mais títulos</strong></p>
+
+<p>Carlo Ancelotti é o treinador mais vitorioso da história da Copa dos Campeões e da Champions League, com cinco conquistas.</p>
+
+<p>Técnicos com mais títulos:</p>
+
+<ul>
+<li>Carlo Ancelotti — cinco títulos</li>
+<li>Milan: 2002/03 e 2006/07</li>
+<li>Real Madrid: 2013/14, 2021/22 e 2023/24</li>
+<li>Bob Paisley — três títulos</li>
+<li>Liverpool: 1976/77, 1977/78 e 1980/81</li>
+<li>Zinedine Zidane — três títulos</li>
+<li>Real Madrid: 2015/16, 2016/17 e 2017/18</li>
+<li>Pep Guardiola — três títulos</li>
+<li>Barcelona: 2008/09 e 2010/11</li>
+<li>Manchester City: 2022/23</li>
+<li>Luis Enrique — três títulos</li>
+<li>Barcelona: 2014/15</li>
+<li>Paris Saint-Germain: 2024/25 e 2025/26</li>
+</ul>
+
+<p>Luis Enrique entrou nesse grupo ao comandar o bicampeonato do PSG. Ele também se tornou um dos poucos treinadores a vencer por dois clubes diferentes.</p>
+
+<p>Zidane é o único técnico a conquistar três edições consecutivas na era Champions. Paisley venceu suas três taças em apenas cinco temporadas. Ancelotti alcançou o recorde comandando Milan e Real Madrid em diferentes gerações.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>A importância financeira</strong></p>
+
+<p>A Champions é decisiva para o planejamento dos clubes porque distribui valores muito superiores aos oferecidos pelas outras competições continentais.</p>
+
+<p>Na temporada 2025/26, €2,467 bilhões foram destinados aos participantes da Champions League e da Supercopa da Uefa. A maior parte ficou com as 36 equipes da fase de liga.</p>
+
+<p>Cada clube classificado para a fase principal recebeu inicialmente €18,62 milhões.</p>
+
+<p>Premiações por resultado na fase de liga:</p>
+
+<ul>
+<li>Vitória — €2,1 milhões</li>
+<li>Empate — €700 mil</li>
+</ul>
+
+<p>Além desses valores, as equipes receberam bônus pela posição final na tabela. A primeira colocada ficou com 36 cotas de um valor inicial de €275 mil, enquanto a última recebeu uma cota. Os oito primeiros ainda ganharam €2 milhões extras, e os clubes entre o 9º e o 16º lugar receberam €1 milhão.</p>
+
+<p>Premiações pelo avanço no mata-mata:</p>
+
+<ul>
+<li>Classificação para os playoffs — €1 milhão</li>
+<li>Classificação para as oitavas — €11 milhões</li>
+<li>Classificação para as quartas — €12,5 milhões</li>
+<li>Classificação para as semifinais — €15 milhões</li>
+<li>Classificação para a final — €18,5 milhões</li>
+<li>Título — €6,5 milhões adicionais</li>
+</ul>
+
+<p>Somente a chegada à decisão e a conquista da taça renderam ao campeão €25 milhões. O valor é formado pelos €18,5 milhões pagos aos finalistas e pelos €6,5 milhões adicionais entregues ao vencedor.</p>
+
+<p>Como o PSG disputou os playoffs e percorreu todas as fases até o título, recebeu pelo menos €83,12 milhões nas parcelas fixas de participação e progressão. O total foi maior porque também incluiu vitórias, empates, posição na fase de liga e a chamada cota de valor, calculada a partir de direitos de transmissão e coeficientes históricos.</p>
+
+<p>Por isso, não existe um único “prêmio da final” que represente toda a receita do campeão. O dinheiro é acumulado durante a campanha e varia de acordo com resultados, classificação, mercado de mídia e histórico do clube.</p>
+
+<p><strong>Como funciona a cota de valor</strong></p>
+
+<p>Além das parcelas iguais e dos bônus esportivos, a Uefa reservou €853 milhões para o chamado pilar de valor na temporada 2025/26.</p>
+
+<p>Essa parte substituiu elementos do antigo market pool e do ranking de coeficientes. O cálculo considera dois grandes blocos:</p>
+
+<ul>
+<li>Valor dos direitos de transmissão nos mercados europeus</li>
+<li>Valor dos direitos vendidos fora da Europa</li>
+</ul>
+
+<p>Também entram no sistema a força comercial do mercado nacional e o desempenho histórico do clube nas competições da Uefa.</p>
+
+<p>Isso explica por que duas equipes com campanhas semelhantes podem terminar a temporada recebendo valores diferentes. Clubes de mercados televisivos maiores ou com coeficientes históricos superiores tendem a obter parcelas mais altas.</p>
+
+<p><strong>O alcance global da competição</strong></p>
+
+<p>A Champions League é transmitida em mais de 200 países e territórios. Sua presença internacional se sustenta por acordos de televisão, plataformas digitais, patrocinadores globais e uma base de torcedores distribuída por todos os continentes.</p>
+
+<p>Em um dos levantamentos divulgados pela Uefa, a temporada 2019/20 alcançou uma audiência acumulada de 2,4 bilhões de pessoas em toda a programação relacionada à competição.</p>
+
+<p>Esse alcance transforma cada partida em uma vitrine. Um clube que chega às fases decisivas não recebe apenas premiação: amplia exposição para patrocinadores, fortalece sua marca, valoriza jogadores e aumenta o potencial de receitas comerciais.</p>
+
+<p>A final concentra essa dimensão. A decisão é produzida para uma audiência mundial e utiliza uma estrutura tecnológica comparável à de grandes eventos internacionais. Em 2026, a transmissão oficial contou com 42 câmeras, incluindo drones, sistema aéreo, helicóptero e equipamentos de alta velocidade.</p>
+
+<p><strong>A final passou para um novo horário em 2026</strong></p>
+
+<p>A decisão entre PSG e Arsenal marcou uma mudança no horário da final. A partir de 2026, a Uefa antecipou o início das partidas de 21h para 18h no horário da Europa Central.</p>
+
+<p>A alteração buscou facilitar a mobilidade dos torcedores, melhorar o retorno após o jogo, ampliar a presença de famílias e permitir que as cidades-sede organizassem melhor o fluxo de público.</p>
+
+<p>A final continua sendo disputada aos sábados, em estádio escolhido previamente pela Uefa.</p>
+
+<p><strong>A construção de uma identidade cultural</strong></p>
+
+<p>O hino oficial foi criado em 1992 pelo compositor britânico Tony Britten. A música utiliza elementos de “Zadok the Priest”, obra de Georg Friedrich Händel composta para a coroação do rei George II, em 1727.</p>
+
+<p>A letra mistura os três idiomas oficiais da Uefa:</p>
+
+<ul>
+<li>Inglês</li>
+<li>Francês</li>
+<li>Alemão</li>
+</ul>
+
+<p>A gravação original foi feita pela Royal Philharmonic Orchestra e pelo coro da Academy of Saint Martin in the Fields.</p>
+
+<p>O hino é executado antes das partidas e se tornou parte essencial da experiência. Para jogadores e torcedores, sua reprodução no estádio representa a entrada em um ambiente diferente das competições nacionais.</p>
+
+<p>A bola com estrelas, o arco montado no campo, as placas publicitárias e a cerimônia de entrada completam uma identidade visual e sonora reconhecida mundialmente.</p>
+
+<p><strong>A principal competição de clubes do mundo</strong></p>
+
+<p>A Champions conseguiu crescer comercialmente sem abandonar os principais elementos que construíram sua tradição.</p>
+
+<p>O formato mudou, o número de participantes aumentou e a competição passou a distribuir bilhões de euros. Ainda assim, uma eliminatória continua sendo definida por detalhes: um gol fora do roteiro, uma defesa nos pênaltis, uma virada diante da torcida ou uma atuação individual capaz de alterar uma temporada inteira.</p>
+
+<p>O Real Madrid permanece como a maior referência histórica. Milan, Liverpool, Bayern, Barcelona e Ajax representam diferentes escolas vencedoras. O bicampeonato do PSG mostrou que novas potências também podem construir seus próprios ciclos.</p>
+
+<p>A competição também preserva espaço para histórias que desafiam a lógica. Nottingham Forest, Steaua Bucareste, Estrela Vermelha, Aston Villa, Celtic e Feyenoord provaram em diferentes épocas que o torneio não pertence exclusivamente aos clubes de maior orçamento.</p>
+
+<p>No fim, a Champions League é o lugar em que o futebol europeu mede grandeza continental. Vencer uma liga nacional prova regularidade ao longo de uma temporada. Levantar a Orelhuda significa superar fronteiras, estilos, ambientes e alguns dos adversários mais fortes do planeta.</p>
+
+<p>É por isso que cada edição começa com a mesma promessa: novos confrontos, novas quedas, novas viradas e a possibilidade de uma noite entrar definitivamente para a história do futebol.</p>
+
+</article>
+</div>
+</section>
+
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</aside>
+
+</div>
+</div>
 </main>
 
 <footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
 </footer>
 
 <script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "Futebol";
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
 
-  const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
 
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
 
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
 
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
 
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
 
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
 
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
 
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
 
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
 
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
 
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
 
-  loadAgenda();
+loadAgenda();
 </script>
 
 <!-- JS do compartilhar (único para todas as notícias) -->
