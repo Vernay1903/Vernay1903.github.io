@@ -41,15 +41,38 @@
     /* HEADER (STICKY) */
     header{
       background:#0A1E3A;
-      padding:10px 30px;
+      padding:2px 0;
       display:flex;
       align-items:center;
-      position:sticky;
-      top:0;
+      justify-content:center;
+      position:relative;
       z-index:1000;
     }
-    .logo-container{ display:flex; align-items:center; gap:12px; }
-    .logo-container img{ height:34px; }
+
+    .logo-container{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logo-container img{
+      width:420px;
+      height:auto;
+    }
+
+    @media (min-width:769px){
+      .logo-container a{
+        background:#FFFFFF;
+        padding:0 38px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+    }
+
     .logo-text{
       font-size:20px;
       font-weight:700;
@@ -69,7 +92,7 @@
       gap:12px;
       border-bottom:1px solid #E5E5E5;
       position:sticky;
-      top:54px;
+      top:0;
       z-index:999;
       width: 100%;
     }
@@ -139,12 +162,27 @@
 
     @media (max-width:768px){
       .hero-central h1{ font-size:38px; }
-      header{ padding:10px 18px; }
-      .logo-container img{ height:30px; }
+
+      header{
+        padding:2px 6px;
+        background:#FFFFFF;
+        border:2px solid #0A1E3A;
+      }
+
+      .logo-container{
+        justify-content:center;
+      }
+
+      .logo-container img{
+        width:calc(100vw - 16px);
+        max-width:none;
+        height:auto;
+      }
+
       .logo-text{ font-size:18px; }
 
       .sports-menu {
-        top: 50px;
+        top:0;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
@@ -173,8 +211,12 @@
 
 <header>
   <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
- 
+    <a href="index.html" aria-label="Corte dos Esportes">
+      <picture>
+        <source media="(max-width: 768px)" srcset="logo-mobile.webp" type="image/webp">
+        <img src="logo-mobile.webp" alt="Corte dos Esportes" width="1400" height="200" fetchpriority="high" decoding="async">
+      </picture>
+    </a>
   </div>
 </header>
 
