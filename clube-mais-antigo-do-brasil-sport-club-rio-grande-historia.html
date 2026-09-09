@@ -1,541 +1,618 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sport Club Rio Grande: a história do clube mais antigo do Brasil e seu lugar na origem do futebol nacional | Corte dos Esportes</title>
-  <meta name="description" content="Quando se fala no clube mais antigo do Brasil, o nome que aparece com mais respaldo histórico é o o Sport Club Rio Grande, fundado em 19 de julho de 1900." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ADSENSE (carregar 1x por página) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
-    crossorigin="anonymous"></script>
-
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS do compartilhar (único para todas as notícias) -->
-  <link rel="stylesheet" href="share.css">
-
-  <style>
-    /* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Montserrat, sans-serif;
-      background: #FFFFFF;
-      color: #0A1E3A;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    img, video, iframe, embed, object {
-      max-width: 100%;
-      height: auto;
-    }
-
-    ins.adsbygoogle {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    .ad-slot { overflow: hidden; max-width: 100%; }
-
-    /* ESSENCIAL para grid/flex não estourar */
-    .layout > section, .layout > aside { min-width: 0; }
-
-    /* Quebra segura (não “corta” frases) */
-    h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      hyphens: none;
-      max-width: 100%;
-    }
-    /* ✅ FIM DA CORREÇÃO */
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main { flex: 1; }
-
-    /* HEADER (STICKY) */
-    header {
-      background: #0A1E3A;
-      padding: 10px 30px;
-      display: flex;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-container img { height: 34px; }
-
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: 0.3px;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    /* MENU (STICKY) */
-    .sports-menu {
-      background: #FFFFFF;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #E5E5E5;
-      position: sticky;
-      top: 54px;
-      z-index: 999;
-    }
-
-    .sports-menu a {
-      flex: 1 1 120px;
-      max-width: 150px;
-      text-align: center;
-      padding: 12px 8px;
-      border: 1px solid #1E4BA5;
-      border-radius: 10px;
-      color: #1E4BA5;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #FFFFFF;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-
-    .sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
-
-    /* Destaque do esporte atual no menu */
-    .sports-menu a.active {
-      background: #1E4BA5;
-      color: #FFFFFF;
-    }
-
-    /* LAYOUT */
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 10px 40px;
-      box-sizing: border-box;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 2.3fr 330px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* ✅ CORREÇÃO: margin negativo gera overflow lateral */
-    aside { margin-right: 0; }
-
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E5E5;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(10,30,58,0.06);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0 0 10px;
-      line-height: 1.15;
-    }
-
-    .subhead {
-      font-size: 18px;
-      margin: 0 0 14px;
-      color: #31425F;
-      line-height: 1.5;
-    }
-
-    .meta {
-      font-size: 12px;
-      color: #5B6B84;
-      margin-bottom: 10px;
-    }
-
-    .meta a {
-      color: #1E4BA5;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .meta a:hover { text-decoration: underline; }
-
-    /* AD SLOTS (sem texto) */
-    .ad-slot {
-      border: 1px dashed #C9D3E2;
-      background: #F7FAFF;
-      border-radius: 14px;
-      padding: 22px;
-      min-height: 64px;
-      box-sizing: border-box;
-      margin: 16px 0;
-    }
-
-    .ad-slot.sidebar { min-height: 120px; margin: 0; }
-
-    article p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #0A1E3A;
-      margin: 0 0 16px;
-    }
-
-    /* SIDEBAR */
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-    }
-
-    .agenda-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .agenda-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #EEF1F5;
-    }
-
-    .agenda-list li:first-child { border-top: none; padding-top: 0; }
-
-    .time {
-      min-width: 60px;
-      font-weight: 700;
-      color: #1E4BA5;
-    }
-
-    .desc { font-size: 14px; line-height: 1.4; }
-
-    footer {
-      background: #0A1E3A;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-
-    footer a {
-      color: #FFFFFF;
-      text-decoration: none;
-      margin: 0 12px;
-    }
-
-    footer a:hover { color: #1E4BA5; }
-
-    @media (max-width: 1024px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { margin-right: 0; }
-    }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 18px; }
-      .logo-container img { height: 30px; }
-      .logo-text { font-size: 18px; }
-
-      /* ✅ ÚNICA MUDANÇA: no mobile o menu NÃO fica sticky */
-      .sports-menu { top: auto; position: static; }
-
-      h1 { font-size: 34px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Sport Club Rio Grande: o clube mais antigo do Brasil, fundação, títulos e história no futebol nacional | Corte dos Esportes</title>
+<meta name="description" content="Fundado em 19 de julho de 1900, ele não é apenas o primeiro clube de futebol brasileiro constituído em atividade: sua história passa pela expansão do esporte no Rio Grande do Sul, pela origem do Grêmio, pelo Dia Nacional do Futebol e por um título gaúcho conquistado sobre o Internacional." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+.desktop-only-ad { display: none !important; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
 </head>
-
 <body>
-
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corte dos Esportes">
-    <a class="logo-text" href="index.html">Corte dos Esportes</a>
-  </div>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
 </header>
-
 <div class="sports-menu" id="sportsMenu">
-  <a href="index.html" data-slug="inicio">Início</a>
-  <a href="atletismo.html" data-slug="atletismo">Atletismo</a>
-  <a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
-  <a href="basquete.html" data-slug="basquete">Basquete</a>
-  <a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
-  <a href="futebol.html" data-slug="futebol">Futebol</a>
-  <a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
-  <a href="futsal.html" data-slug="futsal">Futsal</a>
-  <a href="handebol.html" data-slug="handebol">Handebol</a>
-  <a href="lutas.html" data-slug="lutas">Lutas</a>
-  <a href="skate.html" data-slug="skate">Skate</a>
-  <a href="surf.html" data-slug="surf">Surf</a>
-  <a href="volei.html" data-slug="volei">Vôlei</a>
-  <a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
-  <a href="tenis.html" data-slug="tenis">Tênis</a>
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Sport Club Rio Grande: o clube mais antigo do Brasil, fundação, títulos e história no futebol nacional</h1>
+<p class="subhead" id="articleExcerpt">Fundado em 19 de julho de 1900, ele não é apenas o primeiro clube de futebol brasileiro constituído em atividade: sua história passa pela expansão do esporte no Rio Grande do Sul, pela origem do Grêmio, pelo Dia Nacional do Futebol e por um título gaúcho conquistado sobre o Internacional.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">09/09/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/monumento-sport-club-rio-grande.jpg",
+  "caption": "Monumento em homenagem ao Sport Club Rio Grande, na cidade de Rio Grande (RS).",
+  "description": "Monumento com referência ao Sport Club Rio Grande.",
+  "width": 1456,
+  "height": 2592,
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Monumento_ao_S._C._Rio_Grande,em_Rio_Grande(RS).jpg",
+  "creditText": "Foto: Artur Vaz/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Artur Vaz"
+  },
+  "copyrightNotice": "Artur Vaz/Wikimedia Commons."
+}
+</script>
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="monumento-sport-club-rio-grande.jpg" alt="Monumento com referência ao Sport Club Rio Grande." width="1456" height="2592" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">Monumento em homenagem ao Sport Club Rio Grande, na cidade de Rio Grande (RS). Foto: Artur Vaz/Wikimedia Commons.</figcaption>
+</figure>
+<p>Há uma diferença enorme entre simplesmente ser um clube centenário e ter surgido quando o próprio futebol brasileiro ainda começava a organizar seus primeiros times. É justamente nesse segundo grupo que está o Sport Club Rio Grande.</p>
+<p>Fundado na cidade de Rio Grande, no extremo sul do Rio Grande do Sul, o “Vovô” atravessou diferentes eras do esporte e permanece em atividade mais de um século depois. A condição de clube de futebol mais antigo do Brasil está diretamente ligada à própria natureza de sua fundação e à continuidade da instituição. Até a Associação Atlética Ponte Preta, fundada poucas semanas depois, em 11 de agosto de 1900, apresenta o Rio Grande em sua história oficial como o primeiro e a Macaca como o segundo clube de futebol fundado no país.</p>
+<p>Mas reduzir o Rio Grande à pergunta “qual é o clube mais antigo do Brasil?” significa perder a parte mais rica dessa história. O clube participou da difusão do futebol pelo território gaúcho, fez exibições em uma época na qual encontrar adversários já era um desafio, esteve ligado a um episódio decisivo para a fundação do Grêmio e, décadas depois, conquistou o Campeonato Gaúcho derrotando o Internacional na decisão.</p>
+<p>Em dimensão internacional, essa busca pelas raízes do esporte se conecta à história do <a href="https://cortedosesportes.com.br/sheffield-fc-clube-mais-antigo-do-mundo-historia.html">Sheffield FC</a> , reconhecido como o clube mais antigo do mundo. No Brasil, o Rio Grande ocupa posição semelhante como uma instituição que sobreviveu à passagem do futebol amador para um esporte profissional, nacional e bilionário.</p>
+<p>Antes de 1900 já existiam no Brasil associações esportivas nas quais o futebol chegou a ser praticado. Algumas haviam sido criadas originalmente para outras modalidades e incorporaram o jogo posteriormente; outras tiveram departamentos de futebol que deixaram de existir.</p>
+<p>O caso do Rio Grande é diferente: trata-se de uma agremiação criada no começo do século XX diretamente ligada à organização e à prática do futebol e que continuou existindo.</p>
+<p>O reconhecimento ganhou também uma dimensão institucional. O acervo histórico do Rio Grande registra que, em julho de 1975, a então Confederação Brasileira de Desportos, a CBD, antecessora da atual CBF, anotou em seus registros o Sport Club Rio Grande como o clube de futebol mais antigo do país após receber documentação enviada pela instituição gaúcha.</p>
+<p>Essa relação histórica seria eternizada no calendário esportivo brasileiro.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </div>
 
-<main>
-  <div class="page">
-    <div class="layout">
+<p><strong>A data comemorativa</strong></p>
+<p>O Dia Nacional do Futebol é celebrado justamente em 19 de julho por causa da fundação do Sport Club Rio Grande.</p>
+<p>A data foi criada em 1976 pela então CBD como uma alusão ao nascimento do clube gaúcho. O próprio governo federal já registrou oficialmente a ligação: o 19 de julho foi escolhido porque o Rio Grande, fundado nessa data em 1900, era reconhecido como o primeiro clube de futebol brasileiro ainda em atividade.</p>
+<p>Isso transforma a fundação do clube em algo que ultrapassa a própria história da instituição. Todos os anos, quando o futebol brasileiro é celebrado oficialmente em 19 de julho, a escolha da data remete diretamente ao clube da cidade de Rio Grande.</p>
+<p>Pouquíssimas agremiações brasileiras possuem uma conexão institucional tão direta com uma efeméride nacional do esporte.</p>
 
-      <!-- ARTIGO -->
-      <section>
-        <div class="card">
-          <h1 id="articleTitle">Sport Club Rio Grande: a história do clube mais antigo do Brasil e seu lugar na origem do futebol nacional</h1>
-          <p class="subhead" id="articleExcerpt">Quando se fala no clube mais antigo do Brasil, o nome que aparece com mais respaldo histórico é o o Sport Club Rio Grande, fundado em 19 de julho de 1900.</p>
+<p><strong>O nascimento do clube</strong></p>
+<p>A localização de Rio Grande ajuda a compreender por que uma das primeiras experiências organizadas de futebol do país apareceu justamente ali.</p>
+<p>No começo do século XX, a cidade já tinha forte atividade portuária e contato constante com estrangeiros. O ambiente reunia brasileiros e comunidades de origem europeia, especialmente alemães e ingleses. O relato histórico preservado pelo clube descreve uma sociedade local marcada por essa circulação internacional e por uma intensa atividade comercial ligada ao porto.</p>
+<p>Foi nesse cenário que jovens interessados no esporte passaram a organizar a criação de uma entidade destinada ao futebol.</p>
+<p>Um personagem central foi Johannes Christian Moritz Minnemann, alemão nascido em Hamburgo. Ele conhecia o jogo e suas regras e teve papel importante na organização das reuniões, na documentação inicial e na mobilização do grupo que fundaria o clube.</p>
+<p>Arthur Cecil Lawson também ocupa posição fundamental nessa história. Nascido em Rio Grande, Lawson havia estudado na Inglaterra, onde teve contato direto com o futebol e atuou como goleiro. Ao retornar à cidade em 1900, trouxe consigo experiência com o esporte e material para sua prática. Henrique Buhle foi outro nome ligado às movimentações que antecederam a fundação.</p>
+<p>Um dos detalhes que torna a origem do Rio Grande mais interessante é que o 19 de julho foi o resultado de um processo de organização iniciado dias antes.</p>
+<p>O registro histórico do clube aponta uma reunião programada inicialmente para 14 de julho de 1900. Uma nova tentativa estava prevista para o dia 17. A formalização acabou ocorrendo em 19 de julho, no Clube Germânia, quando foi lavrada a fundação do Sport Club Rio Grande.</p>
+<p>A ata reuniu participantes de diferentes origens. Entre os nomes preservados nos registros aparecem Johannes Minnemann, Arthur Cecil Lawson, Henrique Buhle, Rudolf Dietiker, Sinclair W. Robinson, M. E. Castro, G. Kladt, Walter Gerdau e Boje Schmidt, entre outros.</p>
+<p>Rudolf Dietiker foi escolhido como primeiro presidente. Lawson assumiu funções ligadas à organização esportiva, além de atuar como goleiro e capitão. Minnemann se consolidou como uma das figuras centrais da fundação e da organização inicial.</p>
+<p>Ou seja: por trás da simples data de 19 de julho de 1900 existe uma estrutura de personagens, reuniões e intercâmbio cultural que ajuda a explicar por que o futebol encontrou terreno fértil naquela cidade portuária.</p>
 
-          <div class="meta">
-            Por Corte dos Esportes · <span id="articleDate">30/03/2026</span> ·
-            Categoria: <a id="categoryLink" href="#">FUTEBOL</a>
-          </div>
+<p><strong>A dificuldade de praticar o esporte</strong></p>
+<p>Nos primeiros anos, um dos desafios era básico para qualquer clube de futebol: encontrar outros times.</p>
+<p>O Rio Grande mantinha seus próprios quadros para a prática do esporte. Em 1901, porém, aconteceu um episódio particularmente simbólico: partidas contra uma equipe formada por tripulantes da canhoneira britânica HMS Nymphe.</p>
+<p>Os registros históricos apontam um empate por 2 a 2 em 19 de maio de 1901 e uma vitória do Rio Grande por 2 a 1 quatro dias depois. Os jogos aconteceram em um período no qual o futebol organizado ainda estava longe de possuir uma estrutura regular de campeonatos no país.</p>
+<p>O episódio ajuda a dimensionar o ambiente dos primeiros anos. Hoje, um clube planeja sua temporada a partir de calendários estaduais e nacionais. Naquele momento, uma embarcação estrangeira que chegava a uma cidade portuária podia oferecer a oportunidade de enfrentar um adversário diferente.</p>
 
-          <!-- COMPARTILHAR (CARREGA DO share.js) -->
-          <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
-            <button class="share-btn" id="copyBtn" type="button">Copiar link</button>
-            <span class="share-msg" id="shareMsg" aria-live="polite"></span>
-          </div>
+<p><strong>As cores que viraram identidade do Vovô</strong></p>
+<p>A identidade visual que acompanha o Rio Grande foi definida ainda no começo de sua história.</p>
+<p>Em assembleia realizada em 12 de julho de 1901, ficaram estabelecidas como cores do clube o verde, o vermelho e o amarelo, seguindo as cores da bandeira do Rio Grande do Sul. Décadas de transformações depois, a combinação permanece como uma das características mais reconhecíveis da instituição.</p>
+<p>O distintivo também carrega uma particularidade histórica. O clube registra que Arthur Lawson promoveu posteriormente a troca do escudo anterior por um símbolo em formato de bola, elemento que permaneceu ligado à identidade do Rio Grande.</p>
+<p>É uma associação visual coerente com a própria origem: um clube cuja identidade institucional se confunde com os primeiros tempos da bola no país.</p>
 
-          <article id="articleBody">
-            <p>Quando se fala no clube mais antigo do Brasil, o nome que aparece com mais respaldo histórico é o o Sport Club Rio Grande, fundado em 19 de julho de 1900, na cidade de Rio Grande, no litoral sul do Rio Grande do Sul. A data de fundação do clube, inclusive, acabou virando referência nacional e está ligada ao Dia Nacional do Futebol.</p>
+<p><strong>A viagem que entrou na história da fundação de outro clube</strong></p>
+<p>Talvez nenhum episódio mostra melhor a influência do Sport Club Rio Grande na expansão do futebol gaúcho do que o que aconteceu em Porto Alegre em setembro de 1903.</p>
+<p>O próprio Grêmio registra oficialmente que uma equipe do Rio Grande esteve na capital para uma exibição em 7 de setembro daquele ano. Entre os espectadores estava Cândido Dias da Silva, que possuía uma bola de futebol. Durante a apresentação, a bola utilizada pelos jogadores esvaziou, e Cândido emprestou a sua para que a demonstração pudesse continuar.</p>
+<p>Depois do jogo, segundo a história oficial gremista, Cândido recebeu dos integrantes da equipe de Rio Grande informações sobre o esporte e sobre como organizar um clube.</p>
+<p>Oito dias depois, em 15 de setembro de 1903, 32 homens se reuniram no Salão Grau e fundaram o <a href="https://cortedosesportes.com.br/gremio-historia-tradicao-titulos-imortal.html">Grêmio Foot-Ball Porto Alegrense</a>.</p>
+<p>Isso coloca o Rio Grande em uma posição muito mais importante do que a de mero pioneiro cronológico. Uma exibição de seu time está diretamente inserida na narrativa oficial de nascimento de um dos maiores clubes do futebol sul-americano.</p>
+<p>O Vovô não apenas estava presente nos primeiros anos do futebol gaúcho. Ele ajudava o esporte a circular.</p>
 
-            <p>Mais do que um pioneiro por calendário, o Rio Grande ocupa um lugar simbólico na formação do futebol brasileiro. Em um esporte que depois se espalharia por todas as regiões do país, o clube gaúcho permaneceu como uma espécie de guardião das origens, carregando uma história que liga o início do futebol no Brasil ao presente. Em outra escala, esse tipo de discussão também remete ao <a href="https://cortedosesportes.com.br/sheffield-fc-clube-mais-antigo-do-mundo-historia.html">Sheffield FC, reconhecido como o clube mais antigo do mundo</a>.</p>
-
-            <p><strong>Por que o Rio Grande é tratado como o mais antigo do país</strong></p>
-
-            <p>O ponto central dessa discussão está no recorte usado. O Sport Club Rio Grande é amplamente tratado como o clube de futebol mais antigo do Brasil em atividade, fundado em 1900.</p>
-
-            <p>Esse detalhe é importante porque o tema costuma gerar debate com outros clubes tradicionais, especialmente quando entram em cena diferenças entre clube poliesportivo, prática contínua do futebol e reconhecimento histórico. Ainda assim, no recorte mais aceito de clube de futebol mais antigo em atividade no Brasil, o Rio Grande segue sendo a referência mais consolidada.</p>
-
-            <!-- ANÚNCIO (ARTIGO - BLOCO 1) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 1)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p><strong>Um clube que nasceu junto com os primeiros passos do futebol brasileiro</strong></p>
-
-            <p>O Rio Grande surgiu em um período em que o futebol ainda dava seus primeiros passos no país. Isso por si só ajuda a dimensionar o tamanho histórico do clube: ele foi criado antes da profissionalização do esporte, antes da estrutura moderna de campeonatos e antes mesmo de o futebol ganhar o alcance popular que teria no século seguinte.</p>
-
-            <p>Por isso, sua relevância vai além da simples antiguidade. O clube representa uma fase quase fundadora do futebol brasileiro, quando o esporte ainda estava se organizando e criando suas primeiras tradições locais. Em um país que depois se tornaria uma potência mundial no jogo, o Rio Grande aparece como uma das raízes mais antigas dessa história.</p>
-
-            <p><strong>O apelido de “Vovô” e o peso da tradição</strong></p>
-
-            <p>Não por acaso, o Sport Club Rio Grande é conhecido como “Vovô”. O apelido resume bem a imagem que o clube construiu ao longo do tempo: a de uma instituição que envelheceu junto com o futebol brasileiro e manteve viva uma identidade própria em meio às transformações do esporte.</p>
-
-            <p>Essa tradição também ajuda a explicar por que o clube segue sendo lembrado mesmo longe do centro das grandes competições nacionais. O Rio Grande não depende apenas de títulos ou de presença constante nas divisões mais altas para permanecer relevante. Seu peso está no valor histórico, na permanência e na relação direta com a origem do futebol no país.</p>
-
-            <!-- ANÚNCIO (ARTIGO - BLOCO 2) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 2)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p><strong>Títulos e momentos que marcaram a trajetória</strong></p>
-
-            <p>Embora seja lembrado sobretudo pela antiguidade, o Rio Grande também construiu sua própria história competitiva. O maior marco esportivo do clube é o título do Campeonato Gaúcho de 1936, a principal conquista de sua trajetória.</p>
-
-            <p>Esse troféu ajuda a mostrar que o clube não ficou restrito ao papel de peça histórica. Ele também teve protagonismo real dentro de campo e deixou sua marca no futebol gaúcho. A conquista ganha ainda mais peso quando colocada dentro da <a href="https://cortedosesportes.com.br/campeonato-gaucho-historia-maiores-campeoes-gauchao.html">história do Campeonato Gaúcho</a> e da tradição que o torneio construiu no estado.</p>
-
-            <p>Ao longo das décadas, o Rio Grande seguiu como um nome tradicional do interior do estado, ainda que longe do peso de clubes como Grêmio e Internacional no cenário estadual e nacional. Seu lugar no futebol brasileiro, porém, não depende só da comparação com gigantes: depende da raridade de continuar ativo mais de um século depois de ter surgido.</p>
-
-            <p><strong>A situação atual do clube</strong></p>
-
-            <p>Hoje, o Sport Club Rio Grande vive uma realidade bem distante da elite do futebol brasileiro. O clube atravessa há anos as dificuldades comuns a muitas instituições tradicionais fora dos grandes centros: limitações financeiras, menor visibilidade e a luta constante para preservar estrutura, memória e competitividade.</p>
-
-            <p>Ainda assim, essa distância dos grandes palcos não apaga seu valor. Pelo contrário: reforça a ideia de que o Rio Grande sobrevive mais pela força da história, da comunidade e da tradição do que por poder financeiro ou protagonismo midiático. É justamente isso que torna o clube tão singular no futebol brasileiro.</p>
-
-            <!-- ANÚNCIO (ARTIGO - BLOCO 3) -->
-            <div class="ad-slot" aria-label="Espaço para anúncio (artigo - bloco 3)">
-              <!-- Display-Article-Meio -->
-              <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4145492637375431"
-                data-ad-slot="8702501261"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <p><strong>Por que o Rio Grande continua importante</strong></p>
-
-            <p>Em um futebol cada vez mais dominado por cifras, calendários internacionais e clubes globalizados, o Rio Grande lembra que o esporte no Brasil também nasceu de estruturas muito mais simples, locais e identitárias. Ele representa um ponto de origem, um elo com o momento em que o futebol ainda estava se espalhando e formando suas primeiras referências no país.</p>
-
-            <p>É por isso que falar do clube mais antigo do Brasil não é só recuperar uma curiosidade histórica. É olhar para uma parte viva da fundação do futebol nacional, ainda existente e ainda capaz de carregar um simbolismo que poucos clubes podem reivindicar.</p>
-
-            <p><strong>Um patrimônio histórico do futebol brasileiro</strong></p>
-
-            <p>O Sport Club Rio Grande talvez não ocupe o noticiário diário do futebol nacional, mas ocupa um lugar raro na memória do esporte. Sua fundação em 1900, o vínculo com o Dia Nacional do Futebol e a condição de clube mais antigo em atividade fazem dele um patrimônio histórico do jogo no Brasil.</p>
-
-            <p>Num país em que o futebol virou parte central da cultura, lembrar a história do Rio Grande é também lembrar que tudo isso teve um começo. E poucos clubes conseguem simbolizar esse começo de forma tão direta quanto o velho “Vovô” gaúcho.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="card">
-          <h2 class="section-title">Agenda do Dia</h2>
-          <ul class="agenda-list" id="agendaList">
-            <li><div class="time">--:--</div><div class="desc">Carregando agenda...</div></li>
-          </ul>
-        </div>
-
-        <div class="ad-slot sidebar" aria-label="Espaço para anúncio (sidebar)">
-          <!-- Display-Article-Sidebar -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4145492637375431"
-            data-ad-slot="5521804159"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </aside>
-
-    </div>
-  </div>
-</main>
-
-<footer>
-  © 2026 Corte dos Esportes |
-  <a href="politica.html">Privacidade</a> |
-  <a href="contato.html">Contato</a> |
-  <a href="sobre.html">Sobre</a> |
-  <a href="termos.html">Termos de Uso</a>
-</footer>
-
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
 <script>
-  const CATEGORY_SLUG = "futebol";
-  const CATEGORY_NAME = "FUTEBOL";
-
-  const AGENDA_JSON_URL = "agenda.json";
-
-  function escapeHtml(str) {
-    return String(str || "").replace(/[&<>"']/g, s => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[s]));
-  }
-
-  // Categoria
-  const categoryLink = document.getElementById("categoryLink");
-  categoryLink.textContent = CATEGORY_NAME;
-  categoryLink.href = CATEGORY_SLUG + ".html";
-
-  // Menu ativo
-  const menuLinks = document.querySelectorAll("#sportsMenu a");
-  menuLinks.forEach(a => {
-    if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
-  });
-
-  // Agenda automática
-  function renderAgenda(items) {
-    const list = document.getElementById("agendaList");
-
-    if (!items.length) {
-      list.innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Agenda ainda não cadastrada.</div>
-        </li>
-      `;
-      return;
-    }
-
-    const ordered = items.slice().sort((a,b) => {
-      const ta = String(a.time || "").trim();
-      const tb = String(b.time || "").trim();
-      return ta.localeCompare(tb);
-    });
-
-    list.innerHTML = ordered.slice(0, 12).map(it => `
-      <li>
-        <div class="time">${escapeHtml(it.time || "--:--")}</div>
-        <div class="desc">${escapeHtml(it.desc || "")}</div>
-      </li>
-    `).join("");
-  }
-
-  async function loadAgenda() {
-    try {
-      const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error("Falha ao carregar agenda.json");
-      const data = await res.json();
-
-      const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
-      const clean = items
-        .filter(x => x && (x.time || x.desc))
-        .map(x => ({
-          time: String(x.time || "").trim(),
-          desc: String(x.desc || "").trim()
-        }));
-
-      renderAgenda(clean);
-    } catch (e) {
-      document.getElementById("agendaList").innerHTML = `
-        <li>
-          <div class="time">--:--</div>
-          <div class="desc">Erro ao carregar agenda.</div>
-        </li>
-      `;
-    }
-  }
-
-  loadAgenda();
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+</div>
 
+<p><strong>O título que foi muito mais do que uma linha na lista de conquitas</strong></p>
+<p>Se a fundação colocou o Rio Grande na história, a campanha do Campeonato Gaúcho de 1936 deu ao clube sua principal conquista dentro de campo.</p>
+<p>O formato do Estadual daquele período era muito diferente do atual. Campeões de diferentes regiões avançavam para a disputa do título gaúcho. O Rio Grande representou a Zona Litoral, enquanto Internacional, Novo Hamburgo, Riograndense de Santa Maria e Botafogo de São Gabriel estavam entre os classificados de outras regiões.</p>
+<p>Há ainda uma curiosidade importante: embora oficialmente referente à temporada de 1936, a fase decisiva terminou somente em janeiro de 1937.</p>
+<p>Na semifinal, disputada em 14 de janeiro, o Rio Grande venceu o Novo Hamburgo por 5 a 2 e garantiu lugar na decisão. O adversário seria o Interl.</p>
+<p>A primeira partida da final foi realizada em 17 de janeiro. O Rio Grande venceu o Colorado por 3 a 2. Quatro dias depois, em 21 de janeiro, voltou a superar o Internacional, desta vez por 2 a 0. As duas vitórias confirmaram o primeiro e único título do Rio Grande na elite estadual.</p>
+<p>Entre os jogadores registrados naquele time campeão aparecem Munheco, Fruto, Cazuza, Juvêncio, Chinês, Ernestinho, Carruíra, Souza, Marzol e Pesce, além de outros atletas utilizados na campanha.</p>
+<p>O título ganha dimensão ainda maior quando inserido na <a href="https://cortedosesportes.com.br/campeonato-gaucho-historia-maiores-campeoes-gauchao.html">história do Campeonato Gaúcho</a>. Em um estado que construiria algumas das rivalidades e potências mais importantes do futebol brasileiro, o Rio Grande conseguiu colocar seu nome definitivamente entre os campeões.</p>
+
+<p><strong>A história competitiva do clube</strong></p>
+<p>O Gauchão de 1936 é a conquista mais importante, mas não foi o único título estadual relevante do Rio Grande.</p>
+<p>Em 1962, o clube venceu o Torneio de Acesso, competição correspondente ao segundo nível estadual daquele período. </p>
+<p>Mais de meio século depois, veio outro capítulo.</p>
+<p>Em 2014, o Vovô conquistou a então Segunda Divisão – Série B do Campeonato Gaúcho, equivalente ao terceiro nível estadual. Na decisão contra o Guarani de Venâncio Aires, venceu a primeira partida por 1 a 0 no Estádio Arthur Lawson e empatou a volta por 1 a 1 no Edmundo Feix, resultado que confirmou o título. </p>
+<p>Assim, considerando as estruturas e nomenclaturas utilizadas em cada época, o clube possui conquistas nos três níveis do futebol estadual: a elite em 1936, o acesso em 1962 e o terceiro nível em 2014.</p>
+
+<p><strong>O centenário levou o Rio Grande de volta à elite</strong></p>
+<p>No ano em que completou um século de existência, o clube foi convidado pela Federação Gaúcha de Futebol para disputar novamente a primeira divisão estadual. A edição recebeu inclusive a denominação “Copa Sport Club Rio Grande – Um Século de Futebol”, em homenagem ao centenário do Vovô.</p>
+<p>O retorno teve caráter comemorativo. Depois daquela participação, o clube voltou às divisões inferiores do futebol gaúcho.</p>
+<p>A passagem de 2000 acabou se tornando a última presença do Rio Grande na primeira divisão estadual até hoje, criando um contraste expressivo: o clube que ajudou a espalhar o futebol pelo estado passou a disputar, no século XXI, competições bem distantes do nível ocupado pelas principais potências gaúchas.</p>
+
+<p><strong>O nome da casa do clube</strong></p>
+<p>A ligação entre passado e presente também aparece no estádio utilizado pelo Rio Grande.</p>
+<p>A casa do clube leva o nome de Arthur Lawson, um dos personagens fundamentais de sua fundação. O nome não é apenas uma homenagem protocolar. Lawson esteve envolvido na prática do futebol, na gestão da instituição e na expansão do esporte para outras cidades do estado.</p>
+<p>O estádio recebeu sistema de iluminação em 2009 e passou por ampliação de arquibancadas a partir de 2011, segundo o acervo histórico do clube.</p>
+<p>É ali que o Vovô continua escrevendo uma trajetória competitiva muito diferente daquela dos grandes clubes nacionais, mas carregando um patrimônio histórico que praticamente nenhum adversário pode reproduzir.</p>
+
+<!-- ANÚNCIO (ARTIGO - FIM) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - fim)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>A situação atualmente</strong></p>
+<p>A distância da elite não significa que o clube tenha virado apenas uma instituição memorial.</p>
+<p>Em 2026, o Sport Club Rio Grande está inscrito no Gauchão Série B, atualmente o terceiro nível do futebol estadual. A Federação Gaúcha de Futebol colocou o Vovô entre os dez participantes da competição.</p>
+<p>A edição de 2026 passou a ser disputada na categoria Sub-23. Na primeira fase, os dez clubes se enfrentam em turno único, com nove partidas para cada equipe. Os dois primeiros avançam diretamente às semifinais, enquanto os times entre terceiro e sexto disputam playoffs pelas outras vagas.</p>
+<p>É uma realidade esportiva muito distante do Rio Grande campeão estadual de 1936. Ao mesmo tempo, é justamente a permanência em competições oficiais que mantém viva uma história iniciada quando não existiam <a href="https://cortedosesportes.com.br/campeonato-brasileiro-historia-rivalidades-tradicao-evolucao.html">Campeonato Brasileiro</a>, <a href="https://cortedosesportes.com.br/copa-do-brasil-historia-tradicao-maiores-campeoes.html">Copa do Brasil</a>, <a href="https://cortedosesportes.com.br/libertadores-historia-maiores-campeoes-rivalidades-cultura-torcida.html">Libertadores</a> ou sequer um sistema estadual semelhante ao atual.</p>
+
+<p><strong>O lugar que ocupa vai além dos títulos</strong></p>
+<p>O valor histórico do Sport Club Rio Grande aparece com mais clareza quando todas essas peças são colocadas juntas.</p>
+<p>Não se trata apenas de um clube fundado em 1900.</p>
+<p>É uma instituição cuja data de nascimento está ligada ao Dia Nacional do Futebol; cuja história envolve Johannes Minnemann e Arthur Lawson nos primeiros anos de organização da modalidade; cujo time realizou exibições pelo Rio Grande do Sul quando o futebol ainda procurava espaço; e cuja passagem por Porto Alegre aparece diretamente na narrativa oficial da fundação do Grêmio.</p>
+<p>Dentro de campo, também não vive apenas de antiguidade. Foi campeão gaúcho derrotando o Internacional duas vezes na decisão, venceu uma competição de acesso em 1962 e voltou a conquistar um título estadual em 2014.</p>
+<p>A realidade atual é modesta quando comparada à dimensão comercial do futebol brasileiro. Mas talvez seja exatamente esse contraste que torne a história do Vovô tão singular.</p>
+<p>O Sport Club Rio Grande nasceu antes de quase todas as estruturas que hoje parecem inseparáveis do futebol. Sobreviveu ao amadorismo, à profissionalização, às mudanças de regulamento, às transformações econômicas e ao surgimento de clubes que se tornariam gigantes nacionais e internacionais.</p>
+<p>Mais de um século depois, ainda entra em campo.</p>
+<p>Por isso, quando a pergunta é qual é o clube de futebol mais antigo do Brasil em atividade, a resposta leva a Rio Grande. Mas quando a pergunta é por que essa história realmente importa, a resposta é muito maior: o Vovô não apenas assistiu ao nascimento do futebol brasileiro. Em diferentes momentos, ajudou a construí-lo.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda.</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar desktop-only-ad" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+if (window.matchMedia("(min-width: 1025px)").matches) {
+(adsbygoogle = window.adsbygoogle || []).push({});
+}
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
 <!-- JS do compartilhar (único para todas as notícias) -->
 <script src="share.js"></script>
-
 </body>
 </html>
