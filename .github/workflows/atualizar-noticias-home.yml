@@ -1,0 +1,69 @@
+name: Atualizar noticias-home
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "noticias.json"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Gerar noticias-home.json
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          origem = Path("noticias.json")
+          destino = Path("noticias-home.json")
+
+          with origem.open("r", encoding="utf-8") as arquivo:
+              noticias = json.load(arquivo)
+
+          if not isinstance(noticias, list):
+              raise ValueError("noticias.json precisa conter uma lista.")
+
+          noticias_home = noticias[:10]
+
+          with destino.open("w", encoding="utf-8") as arquivo:
+              json.dump(
+                  noticias_home,
+                  arquivo,
+                  ensure_ascii=False,
+                  indent=2
+              )
+              arquivo.write("\n")
+
+          print(f"noticias-home.json atualizado com {len(noticias_home)} notícias.")
+          PY
+
+      - name: Salvar atualização
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add noticias-home.json
+
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração necessária."
+          else
+            git commit -m "Atualiza noticias-home.json automaticamente"
+            git push
+          fi
