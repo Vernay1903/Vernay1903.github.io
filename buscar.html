@@ -512,6 +512,33 @@
   }
 
 
+  function parseDateBR(dateStr) {
+
+    const parts =
+      String(dateStr || "").split("/");
+
+    if (parts.length !== 3) {
+      return 0;
+    }
+
+    const day =
+      Number(parts[0]);
+
+    const month =
+      Number(parts[1]) - 1;
+
+    const year =
+      Number(parts[2]);
+
+    return new Date(
+      year,
+      month,
+      day
+    ).getTime();
+
+  }
+
+
   function searchNews(items, query) {
 
     const queryNorm = norm(query);
@@ -557,46 +584,39 @@
         }
 
 
-        let score = 0;
+        let priority = 0;
 
 
-        /* Frase completa */
+        /* PRIORIDADE DA BUSCA */
 
         if (title.includes(queryNorm)) {
-          score += 100;
+
+          priority = 3;
+
         }
 
-        if (category.includes(queryNorm)) {
-          score += 50;
+        else if (
+          terms.every(
+            term =>
+              title.includes(term)
+          )
+        ) {
+
+          priority = 2;
+
         }
 
-        if (excerpt.includes(queryNorm)) {
-          score += 30;
+        else {
+
+          priority = 1;
+
         }
-
-
-        /* Palavras individuais */
-
-        terms.forEach(term => {
-
-          if (title.includes(term)) {
-            score += 10;
-          }
-
-          if (category.includes(term)) {
-            score += 5;
-          }
-
-          if (excerpt.includes(term)) {
-            score += 2;
-          }
-
-        });
 
 
         return {
           item,
-          score,
+          priority,
+          date: parseDateBR(item.date),
           index
         };
 
@@ -604,14 +624,24 @@
 
       .filter(Boolean)
 
-      .sort((a,b) => {
+      .sort((a, b) => {
 
-        if (b.score !== a.score) {
-          return b.score - a.score;
+        /* Primeiro: correspondência no título */
+
+        if (b.priority !== a.priority) {
+          return b.priority - a.priority;
         }
 
-        // Em empate, mantém a ordem
-        // original do noticias.json
+
+        /* Depois: matéria mais recente */
+
+        if (b.date !== a.date) {
+          return b.date - a.date;
+        }
+
+
+        /* Desempate */
+
         return a.index - b.index;
 
       })
@@ -790,8 +820,8 @@
 
       const res =
         await fetch(
-          NEWS_JSON_URL,
-          { cache:"no-cache" }
+          NEWS_JSON_URL + "?v=" + Date.now(),
+          { cache:"no-store" }
         );
 
 
