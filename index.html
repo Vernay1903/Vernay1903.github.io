@@ -543,7 +543,7 @@
     const latestEmpty = document.getElementById("latestEmpty");
 
     try {
-      const res = await fetch("noticias.json", { cache: "no-store" });
+      const res = await fetch("noticias-home.json", { cache: "no-store" });
       if (!res.ok) throw new Error("noticias.json não carregou");
       const data = await res.json();
       const items = Array.isArray(data) ? data : [];
