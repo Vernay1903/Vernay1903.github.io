@@ -5,6 +5,7 @@
   <title>Corte dos Esportes | Notícias e cobertura esportiva</title>
   <meta name="description" content="Portal Corte dos Esportes: notícias, destaques e cobertura completa das principais modalidades esportivas." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preload" href="noticias.json" as="fetch" crossorigin="anonymous">
 
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -502,7 +503,7 @@
     ];
 
     try {
-      const res = await fetch("agenda.json", { cache: "no-store" });
+      const res = await fetch("agenda.json", { cache: "no-cache" });
       if (!res.ok) throw new Error("agenda.json não carregou");
       const data = await res.json();
 
@@ -542,7 +543,7 @@
     const latestEmpty = document.getElementById("latestEmpty");
 
     try {
-      const res = await fetch("noticias.json", { cache: "no-store" });
+      const res = await fetch("noticias.json", { cache: "no-cache" });
       if (!res.ok) throw new Error("noticias.json não carregou");
       const data = await res.json();
       const items = Array.isArray(data) ? data : [];
