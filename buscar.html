@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Buscar | Corte dos Esportes</title>
+
+  <meta name="description"
+        content="Busque notícias, atletas, clubes, campeonatos e modalidades no Corte dos Esportes.">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <!-- Evita indexação de páginas internas de pesquisa -->
+  <meta name="robots" content="noindex,follow">
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- CSS compartilhado -->
+  <link rel="stylesheet" href="share.css">
+
+  <style>
+
+    *, *::before, *::after {
+      box-sizing:border-box;
+    }
+
+    html,
+    body {
+      min-height:100%;
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;
+      background:#FFFFFF;
+      color:#0A1E3A;
+      width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+    }
+
+    body {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    main {
+      flex:1;
+    }
+
+    img {
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+
+    /* ===== HEADER ===== */
+
+    header {
+      background:#0A1E3A;
+      padding:2px 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      z-index:1000;
+    }
+
+    .logo-container {
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width:0;
+    }
+
+    .logo-container img {
+      width:420px;
+      height:auto;
+    }
+
+    @media (min-width:769px) {
+
+      .logo-container a {
+        background:#FFFFFF;
+        padding:0 38px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+    }
+
+
+    /* ===== MENU ===== */
+
+    .sports-menu {
+      background:#FFFFFF;
+      padding:15px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+      border-bottom:1px solid #E5E5E5;
+      position:sticky;
+      top:0;
+      z-index:999;
+      width:100%;
+    }
+
+    .sports-menu a {
+      flex:1 1 120px;
+      max-width:150px;
+      text-align:center;
+      padding:12px 8px;
+      border:1px solid #1E4BA5;
+      border-radius:10px;
+      color:#1E4BA5;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:600;
+      background:#FFFFFF;
+      transition:.3s;
+      white-space:nowrap;
+    }
+
+    .sports-menu a:hover {
+      background:#1E4BA5;
+      color:#FFFFFF;
+    }
+
+
+    /* ===== CONTEÚDO ===== */
+
+    .page {
+      max-width:1000px;
+      width:100%;
+      margin:0 auto;
+      padding:28px 10px 40px;
+    }
+
+    .search-header {
+      margin-bottom:20px;
+    }
+
+    .search-header h1 {
+      font-size:32px;
+      line-height:1.2;
+      margin:0 0 8px;
+    }
+
+    .search-info {
+      margin:0;
+      color:#5B6B84;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .card {
+      background:#FFFFFF;
+      border:1px solid #E5E5E5;
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(10,30,58,.06);
+    }
+
+
+    /* ===== RESULTADOS ===== */
+
+    .results-list {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .results-list li {
+      padding:18px 0;
+      border-top:1px solid #EEF1F5;
+    }
+
+    .results-list li:first-child {
+      border-top:none;
+      padding-top:0;
+    }
+
+    .result-title {
+      display:inline-block;
+      color:#0A1E3A;
+      text-decoration:none;
+      font-size:20px;
+      line-height:1.35;
+      font-weight:700;
+      margin-bottom:7px;
+      overflow-wrap:anywhere;
+    }
+
+    .result-title:hover {
+      color:#1E4BA5;
+    }
+
+    .result-excerpt {
+      margin:0 0 8px;
+      font-size:14px;
+      color:#31425F;
+      line-height:1.6;
+      overflow-wrap:anywhere;
+    }
+
+    .result-meta {
+      font-size:12px;
+      color:#5B6B84;
+    }
+
+    .search-empty {
+      margin:0;
+      padding:6px 0;
+      color:#31425F;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+
+    /* ===== FOOTER ===== */
+
+    footer {
+      background:#0A1E3A;
+      text-align:center;
+      padding:20px;
+      font-size:14px;
+      color:#FFFFFF;
+    }
+
+    footer a {
+      color:#FFFFFF;
+      text-decoration:none;
+      margin:0 12px;
+      white-space:nowrap;
+    }
+
+    footer a:hover {
+      color:#1E4BA5;
+    }
+
+
+    /* ===== MOBILE ===== */
+
+    @media (max-width:768px) {
+
+      header {
+        padding:2px 6px;
+        background:#FFFFFF;
+        border:2px solid #0A1E3A;
+      }
+
+      .logo-container {
+        justify-content:center;
+      }
+
+      .logo-container img {
+        width:calc(100vw - 16px);
+        max-width:none;
+        height:auto;
+      }
+
+      .sports-menu {
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:10px;
+        justify-content:initial;
+        top:0;
+      }
+
+      .sports-menu a {
+        width:100%;
+        max-width:none;
+        flex:initial;
+        white-space:normal;
+        word-break:break-word;
+        hyphens:none;
+        line-height:1.15;
+        padding:10px 6px;
+        font-size:13px;
+      }
+
+      .sports-menu a[data-slug="automobilismo"] {
+        white-space:nowrap;
+      }
+
+      .page {
+        padding-top:22px;
+      }
+
+      .search-header h1 {
+        font-size:27px;
+      }
+
+      .result-title {
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <a href="index.html" aria-label="Corte dos Esportes">
+
+      <picture>
+        <source media="(max-width: 768px)"
+                srcset="logo-mobile.webp"
+                type="image/webp">
+
+        <img
+          src="logo-mobile.webp"
+          alt="Corte dos Esportes"
+          width="1400"
+          height="200"
+          fetchpriority="high"
+          decoding="async">
+      </picture>
+
+    </a>
+  </div>
+</header>
+
+
+<div class="sports-menu" id="sportsMenu">
+
+  <a href="index.html" data-slug="inicio">Início</a>
+
+  <a href="atletismo.html"
+     data-slug="atletismo">Atletismo</a>
+
+  <a href="automobilismo.html"
+     data-slug="automobilismo">Automobilismo</a>
+
+  <a href="basquete.html"
+     data-slug="basquete">Basquete</a>
+
+  <a href="esportes-olimpicos.html"
+     data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+
+  <a href="futebol.html"
+     data-slug="futebol">Futebol</a>
+
+  <a href="futebol-americano.html"
+     data-slug="futebol-americano">Futebol Americano</a>
+
+  <a href="futsal.html"
+     data-slug="futsal">Futsal</a>
+
+  <a href="handebol.html"
+     data-slug="handebol">Handebol</a>
+
+  <a href="lutas.html"
+     data-slug="lutas">Lutas</a>
+
+  <a href="skate.html"
+     data-slug="skate">Skate</a>
+
+  <a href="surf.html"
+     data-slug="surf">Surf</a>
+
+  <a href="volei.html"
+     data-slug="volei">Vôlei</a>
+
+  <a href="volei-praia.html"
+     data-slug="volei-praia">Vôlei de Praia</a>
+
+  <a href="tenis.html"
+     data-slug="tenis">Tênis</a>
+
+</div>
+
+
+<main>
+
+  <div class="page">
+
+    <div class="search-header">
+
+      <h1 id="searchTitle">
+        Buscar no Corte dos Esportes
+      </h1>
+
+      <p class="search-info"
+         id="searchInfo">
+        Carregando resultados...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <ul
+        class="results-list"
+        id="resultsList">
+      </ul>
+
+      <p
+        class="search-empty"
+        id="searchEmpty"
+        style="display:none;">
+      </p>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  © 2026 Corte dos Esportes |
+
+  <a href="politica.html">Privacidade</a> |
+
+  <a href="contato.html">Contato</a> |
+
+  <a href="sobre.html">Sobre</a> |
+
+  <a href="termos.html">Termos de Uso</a>
+
+</footer>
+
+
+<script>
+
+  const NEWS_JSON_URL = "/noticias.json";
+
+
+  function escapeHtml(str) {
+
+    return String(str || "").replace(
+      /[&<>"']/g,
+      s => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[s])
+    );
+
+  }
+
+
+  function norm(str) {
+
+    return String(str || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+
+  }
+
+
+  function safeUrl(url) {
+
+    const value = String(url || "").trim();
+
+    if (!value) return "#";
+
+    try {
+
+      const parsed = new URL(
+        value,
+        window.location.origin
+      );
+
+      if (
+        parsed.protocol !== "http:" &&
+        parsed.protocol !== "https:"
+      ) {
+        return "#";
+      }
+
+      return value;
+
+    } catch (e) {
+
+      return "#";
+
+    }
+
+  }
+
+
+  function getQuery() {
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    return String(
+      params.get("q") || ""
+    ).trim();
+
+  }
+
+
+  function searchNews(items, query) {
+
+    const queryNorm = norm(query);
+
+    if (!queryNorm) return [];
+
+    const terms =
+      queryNorm
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    return items
+
+      .map((item, index) => {
+
+        const title =
+          norm(item.title);
+
+        const excerpt =
+          norm(item.excerpt);
+
+        const category =
+          norm(item.category);
+
+        const allText =
+          title +
+          " " +
+          excerpt +
+          " " +
+          category;
+
+
+        const matchesAll =
+          terms.every(
+            term =>
+              allText.includes(term)
+          );
+
+
+        if (!matchesAll) {
+          return null;
+        }
+
+
+        let score = 0;
+
+
+        /* Frase completa */
+
+        if (title.includes(queryNorm)) {
+          score += 100;
+        }
+
+        if (category.includes(queryNorm)) {
+          score += 50;
+        }
+
+        if (excerpt.includes(queryNorm)) {
+          score += 30;
+        }
+
+
+        /* Palavras individuais */
+
+        terms.forEach(term => {
+
+          if (title.includes(term)) {
+            score += 10;
+          }
+
+          if (category.includes(term)) {
+            score += 5;
+          }
+
+          if (excerpt.includes(term)) {
+            score += 2;
+          }
+
+        });
+
+
+        return {
+          item,
+          score,
+          index
+        };
+
+      })
+
+      .filter(Boolean)
+
+      .sort((a,b) => {
+
+        if (b.score !== a.score) {
+          return b.score - a.score;
+        }
+
+        // Em empate, mantém a ordem
+        // original do noticias.json
+        return a.index - b.index;
+
+      })
+
+      .map(result => result.item);
+
+  }
+
+
+  function renderResults(results, query) {
+
+    const list =
+      document.getElementById(
+        "resultsList"
+      );
+
+    const empty =
+      document.getElementById(
+        "searchEmpty"
+      );
+
+    const info =
+      document.getElementById(
+        "searchInfo"
+      );
+
+    const title =
+      document.getElementById(
+        "searchTitle"
+      );
+
+
+    title.textContent =
+      `Resultados para "${query}"`;
+
+
+    document.title =
+      `Busca por ${query} | Corte dos Esportes`;
+
+
+    if (!results.length) {
+
+      list.innerHTML = "";
+
+      empty.style.display =
+        "block";
+
+      empty.textContent =
+        `Nenhum resultado encontrado para "${query}". Tente outro nome, clube, atleta, competição ou modalidade.`;
+
+      info.textContent =
+        "Nenhuma matéria encontrada.";
+
+      return;
+
+    }
+
+
+    empty.style.display =
+      "none";
+
+
+    const total =
+      results.length;
+
+
+    info.textContent =
+      total === 1
+        ? `1 resultado encontrado para "${query}".`
+        : `${total} resultados encontrados para "${query}".`;
+
+
+    list.innerHTML =
+      results.map(item => {
+
+        const title =
+          escapeHtml(
+            item.title ||
+            "Sem título"
+          );
+
+        const excerpt =
+          escapeHtml(
+            item.excerpt || ""
+          );
+
+        const date =
+          escapeHtml(
+            item.date || ""
+          );
+
+        const category =
+          escapeHtml(
+            item.category || ""
+          );
+
+        const url =
+          escapeHtml(
+            safeUrl(item.url)
+          );
+
+
+        return `
+          <li>
+
+            <a
+              class="result-title"
+              href="${url}">
+              ${title}
+            </a>
+
+            ${
+              excerpt
+                ? `<p class="result-excerpt">${excerpt}</p>`
+                : ""
+            }
+
+            <div class="result-meta">
+              ${date}
+              ${
+                date && category
+                  ? " • "
+                  : ""
+              }
+              ${category}
+            </div>
+
+          </li>
+        `;
+
+      }).join("");
+
+  }
+
+
+  async function loadSearch() {
+
+    const query =
+      getQuery();
+
+    const list =
+      document.getElementById(
+        "resultsList"
+      );
+
+    const empty =
+      document.getElementById(
+        "searchEmpty"
+      );
+
+    const info =
+      document.getElementById(
+        "searchInfo"
+      );
+
+
+    if (!query) {
+
+      list.innerHTML = "";
+
+      empty.style.display =
+        "block";
+
+      empty.textContent =
+        "Digite um termo no campo de busca acima.";
+
+      info.textContent =
+        "Pesquise por atleta, clube, campeonato, modalidade ou assunto.";
+
+      return;
+
+    }
+
+
+    try {
+
+      const res =
+        await fetch(
+          NEWS_JSON_URL,
+          { cache:"no-cache" }
+        );
+
+
+      if (!res.ok) {
+        throw new Error(
+          "Falha ao carregar noticias.json"
+        );
+      }
+
+
+      const data =
+        await res.json();
+
+
+      const items =
+        Array.isArray(data)
+          ? data
+          : (
+              Array.isArray(data.items)
+                ? data.items
+                : []
+            );
+
+
+      const results =
+        searchNews(
+          items,
+          query
+        );
+
+
+      renderResults(
+        results,
+        query
+      );
+
+
+    } catch (e) {
+
+      console.error(e);
+
+      list.innerHTML = "";
+
+      empty.style.display =
+        "block";
+
+      empty.textContent =
+        "Não foi possível carregar a busca neste momento.";
+
+      info.textContent =
+        "Erro ao carregar as notícias.";
+
+    }
+
+  }
+
+
+  loadSearch();
+
+</script>
+
+
+<!-- Cria automaticamente a busca dentro do menu -->
+<script src="share.js"></script>
+
+</body>
+</html>
