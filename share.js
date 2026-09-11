@@ -2,6 +2,39 @@
 (function () {
 
   /* =========================================
+     GOOGLE ANALYTICS
+  ========================================= */
+
+  function initAnalytics() {
+    const measurementId = "G-ZTYJ0TYZYC";
+
+    // Evita carregar/configurar a mesma tag duas vezes
+    const existingTag = document.querySelector(
+      'script[src*="googletagmanager.com/gtag/js?id=' + measurementId + '"]'
+    );
+
+    if (existingTag) return;
+
+    window.dataLayer = window.dataLayer || [];
+
+    window.gtag = window.gtag || function () {
+      window.dataLayer.push(arguments);
+    };
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src =
+      "https://www.googletagmanager.com/gtag/js?id=" +
+      encodeURIComponent(measurementId);
+
+    document.head.appendChild(script);
+
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId);
+  }
+
+
+  /* =========================================
      BUSCA DO SITE
   ========================================= */
 
@@ -132,6 +165,7 @@
   ========================================= */
 
   function init() {
+    initAnalytics();
     initSiteSearch();
     initShare();
   }
