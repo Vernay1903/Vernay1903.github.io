@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>NBA Cup: o que é, como funciona, campeões e por que a Liga criou o torneio | Corte dos Esportes</title>
+<meta name="description" content="Criada em 2023 para aumentar o peso competitivo do início da temporada regular, a competição reúne as 30 franquias, mistura fase de grupos com mata-mata e já colocou Lakers, Bucks e Knicks em sua lista de campeões." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+.desktop-only-ad { display: none !important; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">NBA Cup: o que é, como funciona, campeões e por que a Liga criou o torneio</h1>
+<p class="subhead" id="articleExcerpt">Criada em 2023 para aumentar o peso competitivo do início da temporada regular, a competição reúne as 30 franquias, mistura fase de grupos com mata-mata e já colocou Lakers, Bucks e Knicks em sua lista de campeões.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">11/09/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Basquete</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/spike-lee-nba-cup-2025.jpg",
+  "caption": "Spike Lee durante a NBA Cup 2025, acompanhando os knicks.",
+  "description": "Spike Lee à beira da quadra durante a NBA Cup 2025.",
+  "width": 1440,
+  "height": 1800,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Spike_Lee_Dec_15_Knicks_Vs_Magic_NBA_Cup.jpg",
+  "creditText": "Foto: Daiei Onoguchi/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Daiei Onoguchi"
+  },
+  "copyrightNotice": "Daiei Onoguchi/Wikimedia Commons."
+}
+</script>
+
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="spike-lee-nba-cup-2025.jpg" alt="Spike Lee à beira da quadra durante a NBA Cup 2025." width="1440" height="1800" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">Spike Lee durante a NBA Cup 2025, acompanhando os knicks. Foto: Daiei Onoguchi/Wikimedia Commons.</figcaption>
+</figure>
+<p>A NBA Cup ainda é uma competição jovem, mas já conquistou um espaço próprio no calendário da maior liga de basquete do mundo. O torneio foi lançado na temporada 2023/24 com o nome NBA In-Season Tournament e nasceu com uma proposta incomum para o esporte profissional dos Estados Unidos: disputar uma copa paralela sem interromper o campeonato principal.</p>
+<p>Na prática, quase todas as partidas da NBA Cup também valem pela temporada regular. Ao mesmo tempo, resultados específicos desses jogos formam uma classificação própria, que conduz os melhores times para um mata-mata e termina com a disputa de um troféu separado do tradicional título das Finais da NBA.</p>
+<p>A ideia permite à liga criar jogos com pressão de eliminação ainda nos primeiros meses da temporada, período em que cada franquia normalmente está apenas começando a longa caminhada de 82 partidas. A própria NBA define entre os objetivos da competição oferecer outro título para jogadores e equipes, criar uma nova forma de engajamento dos torcedores e gerar mais interesse na primeira parte da temporada regular.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>O que é a NBA Cup</strong></p>
+<p>É o torneio de meio de temporada da NBA. As 30 franquias participam e continuam normalmente envolvidas na temporada regular enquanto disputam a competição.</p>
+<p>Esse detalhe é fundamental para entender o formato. A NBA não criou um calendário totalmente separado no qual os clubes precisam jogar dezenas de partidas adicionais. Os jogos da fase de grupos e das primeiras fases eliminatórias também fazem parte da temporada regular. Apenas a final fica fora da classificação oficial das 82 partidas.</p>
+<p>Assim, um confronto entre Lakers e Warriors, por exemplo, pode valer simultaneamente como jogo da NBA Cup e como partida da temporada regular. O resultado entra no retrospecto oficial das equipes e, ao mesmo tempo, influencia a classificação dentro do grupo da Copa.</p>
+<p>A proposta se tornou mais fácil de entender com o passar das edições. A NBA utiliza identidade visual própria, quadras especiais para os jogos da competição e noites específicas dedicadas ao torneio, deixando claro para o público quando determinada partida também vale pela nova competição.</p>
+<p>A primeira edição aconteceu na temporada 2023/24. Na época, o nome oficial era NBA In-Season Tournament.</p>
+<p>A discussão, entretanto, era bem anterior. Adam Silver já falava publicamente sobre a possibilidade de um torneio durante a temporada desde pelo menos 2016. Entre as referências estavam competições de copa comuns no futebol europeu, nas quais clubes podem disputar simultaneamente uma liga de pontos corridos e torneios eliminatórios.</p>
+<p>A novidade finalmente estreou em novembro de 2023.</p>
+<p>Na edição inaugural, o Los Angeles Lakers chegou à decisão contra o Indiana Pacers e venceu por 123 a 109. <a href="https://cortedosesportes.com.br/lebron-james-historia-titulos-recordes-legado.html">LeBron James</a> foi eleito o MVP da competição e se tornou o primeiro jogador a conquistar o prêmio.</p>
+
+<p>Em fevereiro de 2024, a NBA anunciou uma parceria global de vários anos com a Emirates. A empresa passou a ser patrocinadora principal do torneio, que deixou oficialmente o nome NBA In-Season Tournament e passou a ser chamado Emirates NBA Cup.</p>
+
+<p><strong>O formato da competição</strong></p>
+<p>O modelo básico divide a competição em duas partes: fase de grupos e mata-mata.</p>
+<p>Na primeira fase, os 30 times são separados entre Conferência Leste e Conferência Oeste. Cada conferência recebe três grupos de cinco franquias, totalizando seis grupos.</p>
+<p>O sorteio não é totalmente livre. Antes da definição das chaves, os 15 times de cada conferência são distribuídos em cinco potes de acordo com a campanha obtida na temporada regular anterior.</p>
+<p>O pote 1 reúne os três melhores registros da conferência; o pote 2 reúne do quarto ao sexto; o pote 3, do sétimo ao nono; o pote 4, do décimo ao 12º; e o pote 5, do 13º ao 15º. Depois, um representante de cada pote é sorteado para cada grupo. A intenção é produzir chaves mais equilibradas a partir do desempenho recente das franquias.</p>
+<p>Cada equipe disputa quatro partidas na fase de grupos: uma contra cada adversário da própria chave. São dois jogos em casa e dois fora.</p>
+
+<p><strong>O mata-mata</strong></p>
+<p>Oito equipes deixam a fase de grupos e chegam às rodadas eliminatórias.</p>
+<p>Classificam-se os seis campeões de grupo — três do Leste e três do Oeste — mais um wild card de cada conferência. Essa vaga extra fica com a equipe de melhor campanha entre aquelas que terminaram em segundo lugar em seus respectivos grupos.</p>
+<p>A partir daí, a competição vira mata-mata em jogo único.</p>
+<p>Não há séries de melhor de sete como nos tradicionais <a href="https://cortedosesportes.com.br/playoffs-nba-como-funciona-tradicao-series-historicas.html">playoffs da NBA</a>. Quartas de final, semifinais e decisão seguem a lógica de vencer ou ser eliminado.</p>
+
+<p><strong>Saldo de pontos faz diferença</strong></p>
+<p>Uma das características mais diferentes da NBA Cup aparece nos critérios de desempate.</p>
+<p>Quando duas ou mais equipes terminarem empatadas dentro de um grupo, a NBA utiliza uma sequência de critérios. Pelas regras da edição de 2026, o primeiro é o confronto direto. Depois aparecem saldo de pontos na fase de grupos e total de pontos marcados. </p>
+<p>O saldo transformou os minutos finais de algumas partidas em situações pouco comuns para a NBA. Mesmo com uma vitória praticamente definida, uma equipe pode continuar buscando pontos porque a diferença no placar pode determinar uma classificação futura.</p>
+<p>A lógica é comum em outras competições internacionais e foi uma das novidades mais debatidas desde a primeira edição.</p>
+
+<p><strong>Importância para a temporada regular</strong></p>
+<p>Os jogos da fase de grupos, quartas de final e semifinais também fazem parte da temporada regular. As equipes continuam disputando 82 jogos oficiais.</p>
+<p>A final é diferente. Ela existe exclusivamente para definir o campeão da NBA Cup e não entra na classificação da temporada regular. Dessa forma, os dois finalistas efetivamente disputam uma partida adicional em relação ao calendário tradicional.</p>
+<p>A integração resolve um dos maiores desafios do projeto. A NBA conseguiu criar um torneio novo sem adicionar uma competição inteira sobre um calendário que já é extenso.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Onde será disputada</strong></p>
+<p>A NBA Cup não fica concentrada em uma única cidade. Durante a fase de grupos, os jogos são realizados nas arenas das próprias franquias, com cada equipe fazendo duas partidas em casa e duas fora. As quartas de final e as semifinais de 2026 também serão disputadas em mercados da NBA.</p>
+<p>A grande decisão será diferente. A final da NBA Cup 2026 está marcada para 11 de dezembro no Hinkle Fieldhouse, em Indianapolis, Indiana. A histórica arena da Butler University será o palco neutro que definirá o quarto campeão da competição. A escolha também marca uma mudança em relação às primeiras edições, que tiveram Las Vegas como principal sede das fases decisivas.</p>
+
+<p><strong>As datas da NBA Cup 2026</strong></p>
+<p>Começa em 30 de outubro e terá sete noites específicas de jogos pela fase de grupos. As 60 partidas dessa etapa serão distribuídas pelas seguintes datas:</p>
+<ul>
+<li>30 de outubro — abertura da fase de grupos</li>
+<li>6 de novembro</li>
+<li>13 de novembro</li>
+<li>20 de novembro</li>
+<li>24 de novembro</li>
+<li>25 de novembro</li>
+<li>27 de novembro — encerramento da fase de grupos</li>
+</ul>
+<p>Depois, os oito classificados avançam para o mata-mata.</p>
+
+<p><strong>Quartas de final:</strong></p>
+<ul>
+<li>4 de dezembro</li>
+<li>5 de dezembro </li>
+</ul>
+
+<p><strong>Semifinais:</strong></p>
+<ul>
+<li>8 e/ou 9 de dezembro </li>
+</ul>
+
+<p><strong>Final:</strong></p>
+<ul>
+<li>11 de dezembro</li>
+</ul>
+
+<p><strong>Como assistir à NBA Cup 2026</strong></p>
+<p>Para o público brasileiro, o Prime Video faz parte do acordo de transmissão da NBA e disponibiliza jogos da liga no país. A grade específica da NBA Cup para o Brasil, porém, pode variar de acordo com a programação definida para cada rodada. Por isso, horários e canais de cada partida devem ser consultados nas plataformas oficiais mais próximo dos jogos.</p>
+
+<p><strong>Os impactos da nova competição</strong></p>
+<p>O principal está no valor esportivo e comercial do início da temporada.</p>
+<p>A NBA possui uma estrutura naturalmente voltada para seus grandes eventos: rodada de Natal, All-Star Weekend, reta final da temporada regular, Play-In e principalmente os playoffs e as Finais. Nos primeiros meses, porém, ainda existe muito caminho até que a classificação seja decidida.</p>
+<p>A NBA Cup tenta preencher justamente esse espaço.</p>
+<p>A liga afirma oficialmente que o torneio oferece aos times outro campeonato para conquistar, cria uma nova experiência de acompanhamento para os fãs e aumenta o interesse na parte inicial da temporada.</p>
+<p>Em vez de uma partida de novembro representar apenas o 15º ou 20º jogo de uma campanha de 82 compromissos, ela pode valer a liderança do grupo, eliminação ou classificação para o mata-mata.</p>
+<p>É uma maneira de produzir urgência esportiva muito antes dos playoffs.</p>
+<p>Ao mesmo tempo, a Copa cria outro produto relevante dentro da estrutura comercial da <a href="https://cortedosesportes.com.br/nba-historia-maiores-campeoes-playoffs-conferencias.html">NBA</a>: há troféu próprio, MVP, seleção dos melhores jogadores do torneio, quadras diferenciadas, patrocinador específico e partidas de grande exposição.</p>
+
+<p><strong>Premiação também é atrativo aos atletas</strong></p>
+<p>A NBA mantém uma premiação financeira destinada aos jogadores das equipes que alcançam a fase eliminatória, com valores maiores conforme o avanço na competição. A estrutura faz do título uma conquista esportiva e também cria incentivo financeiro adicional para os elencos.</p>
+<p>Na edição inaugural de 2023, por exemplo, a NBA estabeleceu US$ 500 mil por jogador da equipe campeã, US$ 200 mil para os atletas do vice, US$ 100 mil para jogadores derrotados nas semifinais e US$ 50 mil para aqueles eliminados nas quartas de final. Esses valores são referentes especificamente à primeira edição e podem ser modificados pela liga em temporadas posteriores.</p>
+
+<!-- ANÚNCIO (ARTIGO - FIM) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - fim)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Os campeões da NBA Cup</strong></p>
+<p>Nas três primeiras edições, três franquias diferentes levantaram o troféu:</p>
+<ul>
+<li>2023 — Los Angeles Lakers</li>
+<li>Final: Lakers 123 x 109 Indiana Pacers</li>
+<li>MVP: LeBron James</li>
+<li>2024 — Milwaukee Bucks</li>
+<li>Final: Bucks 97 x 81 Oklahoma City Thunder</li>
+<li>MVP: Giannis Antetokounmpo</li>
+<li>2025 — New York Knicks</li>
+<li>Final: Knicks 124 x 113 San Antonio Spurs</li>
+<li>MVP: Jalen Brunson</li>
+</ul>
+<p>O caso do New York Knicks aumentou ainda mais o peso simbólico da competição. Depois de conquistar a NBA Cup de 2025, a franquia também venceu as Finais da temporada 2025/26 diante do San Antonio Spurs, tornando-se a primeira equipe a ganhar a Copa e o campeonato da NBA na mesma temporada.</p>
+<p>Foi uma temporada histórica para Nova York, detalhada também na <a href="https://cortedosesportes.com.br/final-nba-2026-knicks-spurs-knicks-campeao.html">conquista dos Knicks</a> nas Finais de 2026.</p>
+
+<p><strong>O troféu da NBA Cup</strong></p>
+<p>A competição também recebeu uma taça exclusiva desde a edição inaugural.</p>
+<p>A NBA Cup foi produzida pela Tiffany &amp; Co. em colaboração com o artista Victor Solomon. O design utiliza prata, acabamento dourado e elementos em preto, diferenciando visualmente a taça dos outros troféus tradicionais da liga.</p>
+<p>A criação de uma identidade própria não é um mero detalhe. Para que um torneio novo ganhe tradição, ele precisa construir símbolos reconhecíveis, campeões históricos, jogos memoráveis e jogadores associados à conquista.</p>
+<p>LeBron James, Giannis Antetokounmpo e Jalen Brunson, os três primeiros MVPs, deram à competição justamente uma sequência inicial de grandes nomes.</p>
+
+<p><strong>Uma competição tentando criar tradição</strong></p>
+<p>A NBA Cup ainda não possui o peso histórico do título das Finais — e nem foi criada para substituí-lo. O Larry O'Brien Trophy continua sendo a principal conquista possível para uma franquia.</p>
+<p>A função da Copa é diferente.</p>
+<p>Ela cria uma segunda corrida por título dentro da mesma temporada, transforma jogos comuns do primeiro semestre em confrontos de classificação e oferece um mata-mata curto no qual praticamente qualquer equipe pode ser eliminada em uma única noite.</p>
+<p>Em apenas três edições concluídas, a competição já teve três campeões, três MVPs de enorme projeção e um caso em que o vencedor da Copa também terminou a temporada como campeão da NBA.</p>
+<p>É cedo para medir exatamente qual será o lugar da NBA Cup dentro da história da liga. Mas o torneio já deixou de ser apenas uma experiência de calendário. Com formato estabelecido, identidade própria, premiação, mata-mata e uma lista crescente de campeões, a Copa começa a construir aquilo que nenhuma competição consegue criar de imediato: tradição.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda.</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar desktop-only-ad" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+if (window.matchMedia("(min-width: 1025px)").matches) {
+(adsbygoogle = window.adsbygoogle || []).push({});
+}
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "basquete";
+const CATEGORY_NAME = "Basquete";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
