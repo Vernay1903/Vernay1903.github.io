@@ -1,0 +1,70 @@
+name: Agenda Guard
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  agenda-only:
+    name: agenda-only
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate changed files
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          CHANGED_FILES="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")"
+
+          echo "Arquivos alterados:"
+          printf '%s\n' "$CHANGED_FILES"
+
+          if [ "$CHANGED_FILES" != "agenda.json" ]; then
+            echo "ERRO: esta automação só pode alterar agenda.json."
+            exit 1
+          fi
+
+      - name: Validate agenda.json
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          path = Path('agenda.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+
+          if not isinstance(data, list):
+              raise SystemExit('agenda.json precisa conter uma lista JSON.')
+
+          time_re = re.compile(r'^(?:[01]\d|2[0-3]):[0-5]\d$')
+          previous = None
+
+          for i, item in enumerate(data, start=1):
+              if not isinstance(item, dict):
+                  raise SystemExit(f'Item {i} precisa ser um objeto JSON.')
+              if set(item.keys()) != {'time', 'desc'}:
+                  raise SystemExit(f'Item {i} deve ter somente as chaves time e desc.')
+              if not isinstance(item['time'], str) or not time_re.fullmatch(item['time']):
+                  raise SystemExit(f'Horário inválido no item {i}: {item.get("time")!r}')
+              if not isinstance(item['desc'], str) or not item['desc'].strip():
+                  raise SystemExit(f'Descrição inválida no item {i}.')
+              if previous is not None and item['time'] < previous:
+                  raise SystemExit('Os jogos precisam estar ordenados por horário.')
+              previous = item['time']
+
+          print(f'agenda.json válido: {len(data)} jogo(s).')
+          PY
