@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       - name: Validate changed files
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'agenda-auto-')
         shell: bash
         run: |
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
@@ -37,6 +37,7 @@ jobs:
           fi
 
       - name: Validate agenda.json
+        if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'agenda-auto-')
         shell: bash
         run: |
           python - <<'PY'
@@ -68,3 +69,7 @@ jobs:
 
           print(f'agenda.json válido: {len(data)} jogo(s).')
           PY
+
+      - name: Manual PR allowed
+        if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'agenda-auto-')
+        run: echo "PR manual detectado; Agenda Guard não restringe arquivos fora da automação da agenda."
