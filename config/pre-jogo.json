@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "timezone": "America/Sao_Paulo",
+  "category": {
+    "slug": "futebol",
+    "name": "Futebol"
+  },
+  "publication": {
+    "prepare_time": "23:30",
+    "target_publish_time": "00:01"
+  },
+  "scope": {
+    "official_first_team_only": true,
+    "exclude_friendlies": true,
+    "if_two_monitored_clubs_same_match": "single_article",
+    "if_postponed_or_cancelled": "skip"
+  },
+  "monitored_clubs": [
+    {
+      "name": "Arsenal",
+      "slug": "arsenal",
+      "aliases": ["Arsenal FC"]
+    },
+    {
+      "name": "Manchester City",
+      "slug": "manchester-city",
+      "aliases": ["Manchester City FC", "Man City"]
+    },
+    {
+      "name": "PSG",
+      "slug": "psg",
+      "aliases": ["Paris Saint-Germain", "Paris Saint-Germain FC", "Paris SG"]
+    },
+    {
+      "name": "Bayern de Munique",
+      "slug": "bayern-de-munique",
+      "aliases": ["Bayern Munich", "FC Bayern München", "Bayern München"]
+    },
+    {
+      "name": "Inter de Milão",
+      "slug": "inter-milao",
+      "aliases": ["Inter Milan", "Internazionale", "FC Internazionale Milano"]
+    },
+    {
+      "name": "Flamengo",
+      "slug": "flamengo",
+      "aliases": ["CR Flamengo", "Clube de Regatas do Flamengo"]
+    },
+    {
+      "name": "Palmeiras",
+      "slug": "palmeiras",
+      "aliases": ["SE Palmeiras", "Sociedade Esportiva Palmeiras"]
+    },
+    {
+      "name": "Grêmio",
+      "slug": "gremio",
+      "aliases": ["Gremio", "Grêmio FBPA", "Grêmio Foot-Ball Porto Alegrense"]
+    },
+    {
+      "name": "Barcelona",
+      "slug": "barcelona",
+      "aliases": ["FC Barcelona"]
+    },
+    {
+      "name": "Real Madrid",
+      "slug": "real-madrid",
+      "aliases": ["Real Madrid CF"]
+    }
+  ],
+  "slug": {
+    "pattern": "mandante-visitante-competicao-ano-transmissao-horario-escalacoes.html",
+    "suffix": "transmissao-horario-escalacoes.html"
+  },
+  "article": {
+    "min_words": 700,
+    "require_subtitles_strong": true,
+    "require_internal_link": true,
+    "internal_link_domain": "https://cortedosesportes.com.br/"
+  },
+  "template": "templates/pre-jogo.html",
+  "images": {
+    "mode": "sequential_rotation",
+    "one_per_article": true,
+    "insert_immediately_after": "<article id=\"articleBody\">",
+    "items": [
+      {
+        "template": "templates/imagens/01-bola-uhlsport.html",
+        "filename": "bola-uhlsport-gramado.jpg"
+      },
+      {
+        "template": "templates/imagens/02-bola-adidas.html",
+        "filename": "bola-adidas-gramado.jpg"
+      },
+      {
+        "template": "templates/imagens/03-bola-estadio.html",
+        "filename": "bola-estadio-futebol.jpg"
+      }
+    ]
+  }
+}
