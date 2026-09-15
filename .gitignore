@@ -1,0 +1,10 @@
+# Arquivos temporários da automação de pré-jogo
+build/
+
+# Segredos locais — nunca versionar chaves de API
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
