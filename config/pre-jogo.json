@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -14,6 +14,22 @@
     "exclude_friendlies": true,
     "if_two_monitored_clubs_same_match": "single_article",
     "if_postponed_or_cancelled": "skip"
+  },
+  "fixtures_provider": {
+    "name": "api-football",
+    "base_url": "https://v3.football.api-sports.io",
+    "endpoint": "/fixtures",
+    "api_key_env": "API_FOOTBALL_KEY",
+    "query_mode": "date",
+    "timezone": "America/Sao_Paulo",
+    "friendly_name_patterns": [
+      "friendly",
+      "friendlies",
+      "club friendly",
+      "club friendlies",
+      "amistoso",
+      "amistosos"
+    ]
   },
   "monitored_clubs": [
     {
