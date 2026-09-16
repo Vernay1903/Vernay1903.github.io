@@ -8,6 +8,12 @@ on:
       - "*.html"
       - "**/*.html"
   workflow_dispatch:
+    inputs:
+      file:
+        description: "Arquivo HTML específico para envio manual (ex.: materia.html)"
+        required: false
+        default: "index.html"
+        type: string
 
 permissions:
   contents: read
@@ -30,11 +36,17 @@ jobs:
         env:
           INDEXNOW_KEY: 709d2960837e1ad461118c0d0f73a985
           SITE_URL: https://cortedosesportes.com.br
+          MANUAL_FILE: ${{ inputs.file }}
         run: |
           set -euo pipefail
 
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            files=("index.html")
+            file="${MANUAL_FILE:-index.html}"
+            if [ "$file" != "index.html" ] && [[ ! "$file" =~ ^[a-z0-9][a-z0-9-]*\.html$ ]]; then
+              echo "::error::Arquivo manual inválido: ${file}"
+              exit 1
+            fi
+            files=("$file")
           else
             before="${{ github.event.before }}"
 
