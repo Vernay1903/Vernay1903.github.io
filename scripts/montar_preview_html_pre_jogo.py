@@ -160,6 +160,35 @@ def best_section_for_fact(records: list[dict[str, Any]], fact: str) -> tuple[int
     return best_index, best_score
 
 
+def first_qualifying_section_for_fact(
+    records: list[dict[str, Any]], fact: str, *, start_index: int = 0
+) -> tuple[int, int]:
+    """Localiza a primeira seção editorial que já resolve o fato.
+
+    Isso evita que uma recapitulação no fim da matéria, por repetir o fato com
+    palavras mais próximas do contrato, seja confundida com a seção principal.
+    """
+    wanted = token_set(fact)
+    if not wanted:
+        fail(f"Fato sem tokens úteis para posicionamento editorial: {fact}")
+
+    minimum = 2 if len(wanted) <= 4 else 3
+    best_score = -1
+    for record in records:
+        index = int(record["index"])
+        if index < start_index:
+            continue
+        score = len(wanted & token_set(record["text"]))
+        best_score = max(best_score, score)
+        if score >= minimum:
+            return index, score
+
+    fail(
+        "Não foi possível localizar a primeira seção editorial do fato: "
+        f"{fact} (melhor pontuação={best_score})."
+    )
+
+
 def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], dict[str, Any]]:
     records = section_records(body)
 
@@ -167,8 +196,14 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
     first_point = int(records[0]["end"])
 
     # Anúncio 2: depois de os dois momentos recentes terem sido tratados.
+    # A partir da segunda seção, preferimos a PRIMEIRA ocorrência suficiente,
+    # e não a ocorrência mais parecida de toda a matéria. Isso impede que um
+    # resumo final desloque o anúncio do meio para depois do retrospecto.
     form_facts = fact_texts(contract, "recent_form_both_teams")
-    form_matches = [best_section_for_fact(records, fact) for fact in form_facts]
+    form_matches = [
+        first_qualifying_section_for_fact(records, fact, start_index=1)
+        for fact in form_facts
+    ]
     form_last_index = max(index for index, _score in form_matches)
     second_point = int(records[form_last_index]["end"])
 
