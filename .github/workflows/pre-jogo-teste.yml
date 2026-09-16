@@ -43,14 +43,17 @@ jobs:
           set -euo pipefail
           python -m json.tool config/pre-jogo.json > /dev/null
           python -m json.tool tests/pre-jogo/football-data-resposta-simulada.json > /dev/null
+          python -m json.tool tests/pre-jogo/evidencias-pesquisa-simuladas.json > /dev/null
           python -m py_compile \
             scripts/buscar_fixtures_football_data.py \
             scripts/identificar_jogos.py \
             scripts/planejar_pre_jogos.py \
             scripts/preparar_dados_editoriais.py \
             scripts/preparar_pesquisa_factual.py \
+            scripts/validar_pesquisa_factual.py \
             scripts/gerar_pre_jogo.py \
-            tests/pre-jogo/teste_pipeline_simulado.py
+            tests/pre-jogo/teste_pipeline_simulado.py \
+            tests/pre-jogo/teste_validacao_pesquisa.py
           test -f templates/pre-jogo.html
           test -f templates/imagens/01-bola-uhlsport.html
           test -f templates/imagens/02-bola-adidas.html
@@ -63,11 +66,19 @@ jobs:
           set -euo pipefail
           python tests/pre-jogo/teste_pipeline_simulado.py
 
-      - name: Guardar relatório do teste simulado
+      - name: Validar evidências factuais simuladas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_validacao_pesquisa.py
+
+      - name: Guardar relatórios dos testes simulados
         uses: actions/upload-artifact@v4
         with:
           name: pre-jogo-simulacao
-          path: build/pre-jogo/teste-simulado.json
+          path: |
+            build/pre-jogo/teste-simulado.json
+            build/pre-jogo/teste-validacao-pesquisa.json
           if-no-files-found: error
           retention-days: 3
 
@@ -94,9 +105,11 @@ jobs:
         if: ${{ inputs.mode == 'simulation_only' }}
         shell: bash
         run: |
-          echo "Teste estrutural, filtros, planejamento, metadados e dossiês de pesquisa simulados concluídos."
+          echo "Teste estrutural, filtros, planejamento, dossiês e validação factual simulados concluídos."
           echo "A API NÃO foi consultada."
-          echo "Nenhuma pesquisa externa foi executada."
+          echo "Nenhuma pesquisa externa real foi executada."
+          echo "A redação só foi liberada no teste após evidências válidas."
+          echo "HTML e publicação permaneceram bloqueados."
           echo "Nenhum arquivo publicado foi alterado."
 
       - name: Verificar Secret para teste real
@@ -186,6 +199,8 @@ jobs:
           print(f"Dossiês de pesquisa preparados: {research['research_dossier_count']}")
           print(f"Pesquisa externa executada: {research['external_research_performed']}")
           print(f"Prontas para redação: {research['ready_for_drafting_count']}")
+          print("Validação factual real aguarda um pacote de evidências de fontes.")
+          print("HTML e publicação continuam bloqueados.")
           for item in research["dossiers"]:
               print(
                   f"- PESQUISA PENDENTE | {item['title']} | "
