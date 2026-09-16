@@ -88,13 +88,13 @@ def main() -> None:
         "bola-adidas-gramado.jpg",
         "bola-estadio-futebol.jpg",
     }
-    assert rendered.count(metadata["selected_image"]) == 1
+    assert rendered.count(f'<img src="{metadata["selected_image"]}"') == 1
     assert "{{" not in rendered
     assert "}}" not in rendered
 
     article_marker = '<article id="articleBody">'
-    assert rendered.index(metadata["selected_image"]) > rendered.index(article_marker)
-    assert rendered.index(metadata["selected_image"]) < rendered.index("Arsenal e Manchester City")
+    assert rendered.index(f'<img src="{metadata["selected_image"]}"') > rendered.index(article_marker)
+    assert rendered.index(f'<img src="{metadata["selected_image"]}"') < rendered.index("Arsenal e Manchester City")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
