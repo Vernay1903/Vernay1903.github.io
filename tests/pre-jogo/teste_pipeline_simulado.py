@@ -16,6 +16,7 @@ if str(ROOT) not in sys.path:
 
 from scripts import buscar_fixtures_football_data as provider  # noqa: E402
 from scripts import identificar_jogos as identifier  # noqa: E402
+from scripts import planejar_pre_jogos as planner  # noqa: E402
 
 RAW_FIXTURE_PATH = ROOT / "tests" / "pre-jogo" / "football-data-resposta-simulada.json"
 REPORT_PATH = ROOT / "build" / "pre-jogo" / "teste-simulado.json"
@@ -173,6 +174,54 @@ def main() -> None:
             "Travas não exercitadas ou não aplicadas: " + ", ".join(sorted(missing))
         )
 
+    # Planejamento: simula uma matéria manual já existente para Flamengo x Bahia.
+    # O planejador deve bloquear esse jogo mesmo que o slug antigo seja diferente.
+    simulated_noticias = [
+        {
+            "title": "Flamengo x Bahia: onde assistir, horário e escalações",
+            "excerpt": "Registro simulado apenas para teste de duplicidade.",
+            "url": "flamengo-bahia-onde-assistir.html",
+            "date": "17/09/2026",
+            "category": "Futebol",
+        }
+    ]
+    nonexistent_root = ROOT / "tests" / "pre-jogo" / "__sem_html_publicado__"
+    planned, skipped = planner.plan_matches(
+        selected,
+        target_date=TARGET_DATE,
+        config=config,
+        noticias=simulated_noticias,
+        root=nonexistent_root,
+    )
+
+    assert_equal([item["fixture_id"] for item in planned], [1001, 1003], "Planos liberados")
+    assert_equal([item["fixture_id"] for item in skipped], [1002], "Plano bloqueado por duplicidade")
+    assert_equal(
+        planned[0]["slug"],
+        "arsenal-manchester-city-premier-league-2026-transmissao-horario-escalacoes.html",
+        "Slug Arsenal x Manchester City",
+    )
+    assert_equal(
+        planned[1]["slug"],
+        "real-madrid-barcelona-la-liga-2026-transmissao-horario-escalacoes.html",
+        "Slug Real Madrid x Barcelona",
+    )
+    assert_equal(
+        "same_match_already_in_noticias" in skipped[0]["reasons"],
+        True,
+        "Detecção de matéria já existente para o mesmo jogo",
+    )
+    assert_equal(
+        planned[0]["prepare_at_brasilia"],
+        "2026-09-16T23:30:00-03:00",
+        "Horário de preparação",
+    )
+    assert_equal(
+        planned[0]["target_publish_at_brasilia"],
+        "2026-09-17T00:01:00-03:00",
+        "Horário-alvo de publicação",
+    )
+
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     report = {
         "mode": "simulation_only",
@@ -185,6 +234,10 @@ def main() -> None:
         "selected_count": len(selected),
         "selected_matches": selected,
         "ignored_reasons": ignored_reasons,
+        "planned_count": len(planned),
+        "planned_articles": planned,
+        "planning_skipped_count": len(skipped),
+        "planning_skipped": skipped,
         "checks": {
             "ten_monitored_clubs": True,
             "utc_to_brasilia": True,
@@ -197,6 +250,10 @@ def main() -> None:
             "non_first_team_removed": True,
             "duplicate_removed": True,
             "two_monitored_clubs_single_match": True,
+            "slug_pattern": True,
+            "existing_manual_article_blocks_duplicate": True,
+            "prepare_time_2330": True,
+            "publish_time_0001": True,
         },
     }
     REPORT_PATH.write_text(
@@ -213,6 +270,14 @@ def main() -> None:
         print(
             f'- {match["kickoff_time_brasilia"]} | {match["home"]} x {match["away"]} '
             f'| {match["competition"]} | monitorado: {clubs}'
+        )
+    print(f"Planos de matéria liberados: {len(planned)}")
+    for item in planned:
+        print(f'- PLANO | {item["home"]} x {item["away"]} | {item["slug"]}')
+    for item in skipped:
+        print(
+            f'- BLOQUEADO | {item["home"]} x {item["away"]} | '
+            f'{", ".join(item["reasons"])}'
         )
     print(f"Relatório: {REPORT_PATH.relative_to(ROOT)}")
     print("Nenhum token foi usado e nenhum arquivo publicado foi alterado.")
