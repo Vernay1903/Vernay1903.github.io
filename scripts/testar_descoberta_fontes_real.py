@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Teste real controlado da hierarquia de descoberta de fontes via Serper.
+"""Teste real controlado da hierarquia, estruturação e leitura de fontes via Serper.
 
-Executa no máximo três consultas, sempre nesta ordem:
+Executa a descoberta em ordem:
 1. fontes oficiais;
 2. grandes veículos esportivos;
 3. pesquisa ampla para possível imprensa local relevante.
 
-Este teste descobre URLs candidatas e as estrutura como fontes candidatas de um
-requisito factual. Não valida fatos, não redige matéria, não gera HTML e não
-libera publicação.
+Depois estrutura as URLs candidatas e lê uma quantidade mínima de páginas pelo
+Serper Scrape. Não transforma conteúdo em fato, não redige matéria, não gera HTML
+e não libera publicação. As fontes e consultas permanecem apenas como metadados
+internos de pesquisa e não podem ser citadas no corpo da matéria.
 """
 
 from __future__ import annotations
@@ -29,6 +30,7 @@ if str(ROOT) not in sys.path:
 
 from scripts import buscar_fontes_serper as serper  # noqa: E402
 from scripts import estruturar_evidencias_candidatas as evidence  # noqa: E402
+from scripts import ler_fontes_candidatas as reader  # noqa: E402
 from scripts import preparar_pesquisa_factual as research  # noqa: E402
 
 OUTPUT_PATH = ROOT / "build" / "pre-jogo" / "serper-discovery-test.json"
@@ -36,7 +38,7 @@ OUTPUT_PATH = ROOT / "build" / "pre-jogo" / "serper-discovery-test.json"
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Testa a hierarquia real de descoberta de fontes no Serper sem publicar nada."
+        description="Testa descoberta e leitura real de fontes sem publicar nada."
     )
     parser.add_argument(
         "--execute",
@@ -63,13 +65,12 @@ def main() -> None:
     if not args.execute:
         serper.fail("Teste externo bloqueado. Use --execute explicitamente.")
 
-    config = serper.load_config()
+    config = reader.load_config()
     provider = config["research"]["discovery"]["search_provider"]
     secret_name = provider["api_key_env"]
     if not os.environ.get(secret_name, "").strip():
         serper.fail(f"Secret/variável {secret_name} não configurado.")
 
-    # A configuração persistente continua segura. A busca é liberada somente nesta cópia em memória.
     runtime_config = deepcopy(config)
     runtime_config["research"]["discovery"]["external_search_enabled"] = True
 
@@ -172,22 +173,52 @@ def main() -> None:
         serper.fail("O Passo 20 não pode criar fatos a partir de snippets do buscador.")
     if structured_requirement["sources"]:
         serper.fail("Fontes candidatas não podem ser promovidas a fontes validadas.")
-    for source in structured_requirement["source_candidates"]:
-        if source.get("checked_at") is not None or source.get("content_checked") is not False:
-            serper.fail("Fonte candidata foi marcada indevidamente como conteúdo checado.")
-        if source.get("eligible_for_factual_validation") is not False:
-            serper.fail("Fonte candidata não checada não pode ir ao validador factual.")
+
+    checked_requirement = reader.check_requirement_candidates(
+        structured_requirement,
+        config=config,
+        checked_at=datetime.now(tz).isoformat(),
+        max_attempts=2,
+    )
+
+    if selected_candidates and checked_requirement.get("page_check_success_count", 0) < 1:
+        serper.fail("Nenhuma das páginas candidatas testadas pôde ser lida pelo Serper Scrape.")
+    if checked_requirement.get("facts"):
+        serper.fail("A leitura de página não pode criar fatos automaticamente.")
+    if checked_requirement.get("sources"):
+        serper.fail("A leitura de página não pode promover a fonte a validada.")
+
+    checked_sources = [
+        item
+        for item in checked_requirement.get("source_candidates", [])
+        if isinstance(item, dict) and item.get("content_checked") is True
+    ]
+    eligible_sources = [
+        item
+        for item in checked_sources
+        if item.get("eligible_for_factual_validation") is True
+    ]
+
+    policy = config["editorial"]["source_attribution_policy"]
+    if policy.get("research_sources_are_internal_only") is not True:
+        serper.fail("Fontes de pesquisa devem permanecer internas.")
+    if policy.get("forbid_source_names_in_article_body") is not True:
+        serper.fail("A política deve proibir nomes das fontes no corpo da matéria.")
+    if policy.get("forbid_research_process_mentions") is not True:
+        serper.fail("A política deve proibir menções ao processo de consulta na matéria.")
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     if OUTPUT_PATH.exists() and not args.force:
         serper.fail(f"Relatório já existe: {OUTPUT_PATH}. Use --force apenas em build/.")
 
     report = {
-        "step": 20,
-        "mode": "serper_discovery_and_candidate_evidence_test",
+        "step": 21,
+        "mode": "serper_discovery_candidate_and_page_read_test",
         "generated_at": discovered_at,
         "provider": "serper",
+        "page_reader": config["research"]["page_reader"]["name"],
         "external_search_performed": True,
+        "page_read_performed": bool(checked_sources),
         "query_base": query,
         "requirement_id": requirement_id,
         "source_priority": [
@@ -205,11 +236,18 @@ def main() -> None:
             selected_stage and selected_stage.get("dynamic_relevance_required")
         ),
         "structured_evidence_candidate": structured_requirement,
+        "checked_requirement": checked_requirement,
+        "page_check_attempt_count": checked_requirement.get("page_check_attempt_count", 0),
+        "page_check_success_count": len(checked_sources),
+        "eligible_source_count": len(eligible_sources),
         "facts_verified": False,
         "ready_for_factual_validation": False,
         "ready_for_drafting": False,
         "ready_for_html": False,
         "publication_unlocked": False,
+        "research_sources_internal_only": True,
+        "source_attribution_in_article_body": "forbidden",
+        "research_process_mentions_in_article_body": "forbidden",
         "repository_files_modified": False,
     }
     OUTPUT_PATH.write_text(
@@ -217,17 +255,18 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    print("OK: descoberta real controlada de fontes concluída.")
-    print(f"Consultas executadas: {len(attempts)}")
+    print("OK: descoberta, estruturação e leitura real controlada de fontes concluídas.")
+    print(f"Consultas Serper executadas: {len(attempts)}")
     print("Ordem testada: oficial -> grande imprensa -> imprensa local relevante.")
     if selected_type:
         print(f"Primeira etapa com candidatos: {selected_type}")
         print(f"Candidatos encontrados nessa etapa: {len(selected_candidates)}")
     else:
         print("Nenhuma das três etapas encontrou candidatos.")
-    print(f"Fontes candidatas estruturadas no requisito {requirement_id}: {structured_requirement['candidate_source_count']}")
-    print("Nenhuma página candidata foi marcada como checada.")
-    print("Nenhum fato foi validado.")
+    print(f"Páginas lidas com conteúdo: {len(checked_sources)}")
+    print(f"Fontes elegíveis para futura extração factual: {len(eligible_sources)}")
+    print("Nenhum fato foi validado automaticamente.")
+    print("As fontes e consultas são internas e não podem aparecer no texto da matéria.")
     print("Validação factual, redação, HTML e publicação permanecem bloqueados.")
     print("O valor de SERPER_API_KEY não foi exibido.")
 
