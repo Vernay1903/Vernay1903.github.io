@@ -44,6 +44,7 @@ jobs:
           python -m json.tool config/pre-jogo.json > /dev/null
           python -m json.tool tests/pre-jogo/football-data-resposta-simulada.json > /dev/null
           python -m json.tool tests/pre-jogo/evidencias-pesquisa-simuladas.json > /dev/null
+          python -m json.tool tests/pre-jogo/serper-resposta-simulada.json > /dev/null
           python -m py_compile \
             scripts/buscar_fixtures_football_data.py \
             scripts/identificar_jogos.py \
@@ -52,10 +53,12 @@ jobs:
             scripts/preparar_pesquisa_factual.py \
             scripts/validar_pesquisa_factual.py \
             scripts/planejar_coleta_fontes.py \
+            scripts/buscar_fontes_serper.py \
             scripts/gerar_pre_jogo.py \
             tests/pre-jogo/teste_pipeline_simulado.py \
             tests/pre-jogo/teste_validacao_pesquisa.py \
-            tests/pre-jogo/teste_planejamento_coleta.py
+            tests/pre-jogo/teste_planejamento_coleta.py \
+            tests/pre-jogo/teste_serper_provider.py
           test -f templates/pre-jogo.html
           test -f templates/imagens/01-bola-uhlsport.html
           test -f templates/imagens/02-bola-adidas.html
@@ -80,6 +83,12 @@ jobs:
           set -euo pipefail
           python tests/pre-jogo/teste_planejamento_coleta.py
 
+      - name: Validar integração Serper sem chamada externa
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_serper_provider.py
+
       - name: Guardar relatórios dos testes simulados
         uses: actions/upload-artifact@v4
         with:
@@ -88,6 +97,7 @@ jobs:
             build/pre-jogo/teste-simulado.json
             build/pre-jogo/teste-validacao-pesquisa.json
             build/pre-jogo/teste-planejamento-coleta.json
+            build/pre-jogo/teste-serper-provider.json
           if-no-files-found: error
           retention-days: 3
 
@@ -114,10 +124,10 @@ jobs:
         if: ${{ inputs.mode == 'simulation_only' }}
         shell: bash
         run: |
-          echo "Teste estrutural, filtros, planejamento, dossiês, validação factual e coleta planejada concluídos."
-          echo "A API NÃO foi consultada."
+          echo "Pipeline simulado, validação factual, planejamento de fontes e integração Serper concluídos."
+          echo "A API football-data.org NÃO foi consultada."
+          echo "O Serper foi selecionado e validado apenas com resposta simulada."
           echo "Nenhuma pesquisa externa real foi executada."
-          echo "A prioridade de fontes foi validada: oficial -> grande imprensa -> imprensa local relevante."
           echo "HTML e publicação permaneceram bloqueados."
           echo "Nenhum arquivo publicado foi alterado."
 
@@ -210,6 +220,8 @@ jobs:
           editorial = json.loads(editorial_path.read_text(encoding="utf-8"))
           research = json.loads(research_path.read_text(encoding="utf-8"))
           collection = json.loads(collection_path.read_text(encoding="utf-8"))
+          provider = collection['search_provider']
+          provider_name = provider.get('name') if isinstance(provider, dict) else provider
           print(f"Data-alvo: {games['target_date']}")
           print(f"Partidas recebidas: {games['input_count']}")
           print(f"Partidas selecionadas: {games['selected_count']}")
@@ -219,8 +231,8 @@ jobs:
           print(f"Dossiês de pesquisa preparados: {research['research_dossier_count']}")
           print(f"Planos de coleta preparados: {collection['collection_plan_count']}")
           print(f"Pesquisa externa executada: {collection['external_search_performed']}")
-          print(f"Provedor de busca: {collection['search_provider']}")
-          print("A execução das buscas reais aguarda a escolha de um provedor de busca.")
+          print(f"Provedor de busca selecionado: {provider_name}")
+          print("A busca Serper real continua bloqueada até configurar SERPER_API_KEY e habilitar explicitamente a execução.")
           print("HTML e publicação continuam bloqueados.")
           for item in collection["plans"]:
               print(
