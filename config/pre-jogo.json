@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -146,6 +146,76 @@
       "stakes_and_qualification_scenarios_when_applicable",
       "upcoming_fixtures_when_useful"
     ]
+  },
+  "research": {
+    "auto_fetch_enabled": false,
+    "source_priority": [
+      "official",
+      "major_sports_media",
+      "relevant_local_press"
+    ],
+    "google_discovery_only": true,
+    "required_source_fields": [
+      "publisher",
+      "url",
+      "source_type",
+      "checked_at"
+    ],
+    "allowed_resolution_statuses": [
+      "verified",
+      "verified_not_announced",
+      "not_applicable",
+      "unavailable_after_check"
+    ],
+    "requirement_policy": {
+      "stadium_and_location": {
+        "required_for_drafting": true,
+        "conditional": false,
+        "allow_unavailable_after_check": false
+      },
+      "transmission": {
+        "required_for_drafting": true,
+        "conditional": false,
+        "allow_unavailable_after_check": true
+      },
+      "probable_lineups_and_coaches": {
+        "required_for_drafting": true,
+        "conditional": false,
+        "allow_unavailable_after_check": true
+      },
+      "officiating": {
+        "required_for_drafting": true,
+        "conditional": false,
+        "allow_unavailable_after_check": true
+      },
+      "recent_form_both_teams": {
+        "required_for_drafting": true,
+        "conditional": false,
+        "allow_unavailable_after_check": false
+      },
+      "competition_specific_head_to_head": {
+        "required_for_drafting": true,
+        "conditional": false,
+        "allow_unavailable_after_check": false
+      },
+      "competition_internal_link": {
+        "required_for_drafting": true,
+        "conditional": false,
+        "allow_unavailable_after_check": false
+      },
+      "stakes_and_qualification_scenarios_when_applicable": {
+        "required_for_drafting": true,
+        "conditional": true,
+        "allow_unavailable_after_check": false
+      },
+      "upcoming_fixtures_when_useful": {
+        "required_for_drafting": false,
+        "conditional": true,
+        "allow_unavailable_after_check": true
+      }
+    },
+    "lineup_rule": "Never invent a probable lineup. If reliable sources diverge, preserve the uncertainty. Lack of a complete reliable projection alone must not block publication.",
+    "source_rule": "Prefer official club, competition, federation or organizer sources; then major recognized sports outlets; use reliable local press only as supplementary support."
   },
   "article": {
     "min_words": 700,
