@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -149,10 +149,17 @@
   },
   "research": {
     "auto_fetch_enabled": false,
+    "evidence_ingestion_mode": "validated_json",
     "source_priority": [
       "official",
       "major_sports_media",
       "relevant_local_press"
+    ],
+    "allowed_source_types": [
+      "official",
+      "major_sports_media",
+      "relevant_local_press",
+      "internal_site"
     ],
     "google_discovery_only": true,
     "required_source_fields": [
@@ -167,6 +174,13 @@
       "not_applicable",
       "unavailable_after_check"
     ],
+    "validation": {
+      "require_https_sources": true,
+      "require_timezone_in_checked_at": true,
+      "minimum_unique_sources_for_verified": 1,
+      "internal_link_domain": "https://cortedosesportes.com.br/",
+      "publication_unlock_allowed": false
+    },
     "requirement_policy": {
       "stadium_and_location": {
         "required_for_drafting": true,
