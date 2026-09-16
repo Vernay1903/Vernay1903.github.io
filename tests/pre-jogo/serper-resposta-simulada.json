@@ -1,0 +1,48 @@
+{
+  "searchParameters": {
+    "q": "Arsenal Manchester City Premier League estádio",
+    "gl": "br",
+    "hl": "pt-br",
+    "type": "search",
+    "num": 10
+  },
+  "organic": [
+    {
+      "title": "Arsenal v Manchester City - match information",
+      "link": "https://www.arsenal.com/news/arsenal-manchester-city-match-information",
+      "snippet": "Official match information from Arsenal.",
+      "position": 1,
+      "date": "Sep 16, 2026"
+    },
+    {
+      "title": "Arsenal v Manchester City",
+      "link": "https://www.premierleague.com/match/arsenal-v-manchester-city",
+      "snippet": "Premier League match page.",
+      "position": 2
+    },
+    {
+      "title": "Arsenal x Manchester City: informações da partida",
+      "link": "https://www.espn.com.br/futebol/jogo/_/id/999999",
+      "snippet": "Informações e cobertura do confronto.",
+      "position": 3
+    },
+    {
+      "title": "Resultado irrelevante",
+      "link": "https://example.com/arsenal-city",
+      "snippet": "Resultado fora dos domínios aceitos.",
+      "position": 4
+    },
+    {
+      "title": "Resultado inseguro",
+      "link": "http://arsenal.com/unsafe",
+      "snippet": "HTTP deve ser descartado.",
+      "position": 5
+    },
+    {
+      "title": "Duplicata",
+      "link": "https://www.arsenal.com/news/arsenal-manchester-city-match-information",
+      "snippet": "A mesma URL não pode entrar duas vezes.",
+      "position": 6
+    }
+  ]
+}
