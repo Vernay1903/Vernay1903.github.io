@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -102,6 +102,50 @@
   "slug": {
     "pattern": "mandante-visitante-competicao-ano-transmissao-horario-escalacoes.html",
     "suffix": "transmissao-horario-escalacoes.html"
+  },
+  "editorial": {
+    "title_tail": "transmissão, horário e prováveis escalações",
+    "competition_labels": {
+      "premier-league": {
+        "name": "Premier League",
+        "connector": "pela"
+      },
+      "la-liga": {
+        "name": "La Liga",
+        "connector": "pela"
+      },
+      "ligue-1": {
+        "name": "Ligue 1",
+        "connector": "pela"
+      },
+      "bundesliga": {
+        "name": "Bundesliga",
+        "connector": "pela"
+      },
+      "serie-a": {
+        "name": "Serie A",
+        "connector": "pela"
+      },
+      "brasileirao": {
+        "name": "Brasileirão",
+        "connector": "pelo"
+      },
+      "champions-league": {
+        "name": "Champions League",
+        "connector": "pela"
+      }
+    },
+    "research_requirements": [
+      "stadium_and_location",
+      "transmission",
+      "probable_lineups_and_coaches",
+      "officiating",
+      "recent_form_both_teams",
+      "competition_specific_head_to_head",
+      "competition_internal_link",
+      "stakes_and_qualification_scenarios_when_applicable",
+      "upcoming_fixtures_when_useful"
+    ]
   },
   "article": {
     "min_words": 700,
