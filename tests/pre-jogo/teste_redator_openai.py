@@ -42,6 +42,7 @@ def main() -> None:
     schema = text_format["schema"]
     assert schema["additionalProperties"] is False
     assert schema["properties"]["slug"]["enum"] == [contract["slug"]]
+    assert schema["properties"]["body_html"]["minLength"] == 5500
     fact_schema = schema["properties"]["fact_fields_used"]
     assert "uniqueItems" not in fact_schema
     assert fact_schema["minItems"] == len(contract["required_fact_fields"])
@@ -56,6 +57,7 @@ def main() -> None:
     assert "https://cortedosesportes.com.br/premier-league-historia-campeoes.html" in serialized
     assert "é expressamente proibido citar" in lowered
     assert "use exclusivamente" in lowered
+    assert "mínimo absoluto 800 palavras" in lowered
 
     fake_draft = {
         "slug": contract["slug"],
