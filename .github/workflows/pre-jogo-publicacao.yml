@@ -61,11 +61,12 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           text = Path('.github/workflows/pre-jogo-publicacao.yml').read_text(encoding='utf-8')
-          if 'schedule:' in text:
+          lines = [line.strip() for line in text.splitlines()]
+          if 'schedule:' in lines:
               raise SystemExit('ERRO: Passo 31 não pode ter agendamento automático.')
-          if 'contents: write' in text:
+          if 'contents: write' in lines:
               raise SystemExit('ERRO: Passo 31 não pode ter permissão contents: write.')
-          if 'persist-credentials: false' not in text:
+          if 'persist-credentials: false' not in lines:
               raise SystemExit('ERRO: checkout precisa remover credencial persistente de Git.')
           print('OK: workflow permanece manual, read-only e sem agendamento.')
           PY
