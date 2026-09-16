@@ -129,8 +129,10 @@ jobs:
           cleanup = json.loads(cleanups[0].read_text(encoding='utf-8'))
           if report.get('step') != 30:
               raise SystemExit('ERRO: report não pertence ao Passo 30.')
-          if report.get('remote_push_executed') is not True:
+          if report.get('push_executed') is not True:
               raise SystemExit('ERRO: Passo 30 não comprovou push remoto temporário.')
+          if report.get('main_push_executed') is not False:
+              raise SystemExit('ERRO: Passo 30 indica push indevido para main.')
           if report.get('changed_file_count') != 3:
               raise SystemExit('ERRO: Passo 30 não comprovou exatamente três arquivos.')
           if report.get('remote_branch_deleted') is not True:
