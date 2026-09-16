@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -16,20 +16,36 @@
     "if_postponed_or_cancelled": "skip"
   },
   "fixtures_provider": {
-    "name": "api-football",
-    "base_url": "https://v3.football.api-sports.io",
-    "endpoint": "/fixtures",
-    "api_key_env": "API_FOOTBALL_KEY",
-    "query_mode": "date",
-    "timezone": "America/Sao_Paulo",
-    "friendly_name_patterns": [
-      "friendly",
-      "friendlies",
-      "club friendly",
-      "club friendlies",
-      "amistoso",
-      "amistosos"
-    ]
+    "name": "football-data.org",
+    "base_url": "https://api.football-data.org/v4",
+    "endpoint": "/matches",
+    "api_key_env": "FOOTBALL_DATA_TOKEN",
+    "auth_header": "X-Auth-Token",
+    "query_mode": "date_range",
+    "editorial_timezone": "America/Sao_Paulo",
+    "free_competition_codes": [
+      "PL",
+      "PD",
+      "FL1",
+      "BL1",
+      "SA",
+      "BSA",
+      "CL"
+    ],
+    "competition_slugs": {
+      "PL": "premier-league",
+      "PD": "la-liga",
+      "FL1": "ligue-1",
+      "BL1": "bundesliga",
+      "SA": "serie-a",
+      "BSA": "brasileirao",
+      "CL": "champions-league"
+    },
+    "coverage_note": "Plano Free cobre as ligas nacionais principais dos 10 clubes e a Champions League. Copas nacionais e Libertadores precisam de fonte complementar.",
+    "attribution": {
+      "required": true,
+      "text": "Football data provided by the Football-Data.org API"
+    }
   },
   "monitored_clubs": [
     {
