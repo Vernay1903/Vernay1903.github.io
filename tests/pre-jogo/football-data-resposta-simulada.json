@@ -1,0 +1,201 @@
+{
+  "filters": {
+    "competitions": "PL,PD,FL1,BL1,SA,BSA,CL",
+    "dateFrom": "2026-09-17",
+    "dateTo": "2026-09-18"
+  },
+  "resultSet": {
+    "count": 7
+  },
+  "matches": [
+    {
+      "id": 1001,
+      "utcDate": "2026-09-17T19:00:00Z",
+      "status": "TIMED",
+      "matchday": 5,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2026-09-16T20:00:00Z",
+      "competition": {
+        "id": 2021,
+        "name": "Premier League",
+        "code": "PL",
+        "type": "LEAGUE"
+      },
+      "homeTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS"
+      },
+      "awayTeam": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI"
+      }
+    },
+    {
+      "id": 1002,
+      "utcDate": "2026-09-17T23:30:00Z",
+      "status": "TIMED",
+      "matchday": 25,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2026-09-16T20:00:00Z",
+      "competition": {
+        "id": 2013,
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA",
+        "type": "LEAGUE"
+      },
+      "homeTeam": {
+        "id": 1783,
+        "name": "Flamengo",
+        "shortName": "Flamengo",
+        "tla": "FLA"
+      },
+      "awayTeam": {
+        "id": 1777,
+        "name": "EC Bahia",
+        "shortName": "Bahia",
+        "tla": "BAH"
+      }
+    },
+    {
+      "id": 1003,
+      "utcDate": "2026-09-18T01:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 5,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2026-09-16T20:00:00Z",
+      "competition": {
+        "id": 2014,
+        "name": "Primera Division",
+        "code": "PD",
+        "type": "LEAGUE"
+      },
+      "homeTeam": {
+        "id": 86,
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA"
+      },
+      "awayTeam": {
+        "id": 81,
+        "name": "FC Barcelona",
+        "shortName": "Barcelona",
+        "tla": "FCB"
+      }
+    },
+    {
+      "id": 1004,
+      "utcDate": "2026-09-17T17:00:00Z",
+      "status": "TIMED",
+      "matchday": 5,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2026-09-16T20:00:00Z",
+      "competition": {
+        "id": 2021,
+        "name": "Premier League",
+        "code": "PL",
+        "type": "LEAGUE"
+      },
+      "homeTeam": {
+        "id": 62,
+        "name": "Everton FC",
+        "shortName": "Everton",
+        "tla": "EVE"
+      },
+      "awayTeam": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE"
+      }
+    },
+    {
+      "id": 1005,
+      "utcDate": "2026-09-17T02:30:00Z",
+      "status": "TIMED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2026-09-16T20:00:00Z",
+      "competition": {
+        "id": 2002,
+        "name": "Bundesliga",
+        "code": "BL1",
+        "type": "LEAGUE"
+      },
+      "homeTeam": {
+        "id": 5,
+        "name": "Bayern Munich",
+        "shortName": "Bayern",
+        "tla": "FCB"
+      },
+      "awayTeam": {
+        "id": 4,
+        "name": "Borussia Dortmund",
+        "shortName": "Dortmund",
+        "tla": "BVB"
+      }
+    },
+    {
+      "id": 1006,
+      "utcDate": "2026-09-17T18:00:00Z",
+      "status": "POSTPONED",
+      "matchday": 6,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2026-09-16T20:00:00Z",
+      "competition": {
+        "id": 2015,
+        "name": "Ligue 1",
+        "code": "FL1",
+        "type": "LEAGUE"
+      },
+      "homeTeam": {
+        "id": 524,
+        "name": "Paris Saint-Germain FC",
+        "shortName": "PSG",
+        "tla": "PSG"
+      },
+      "awayTeam": {
+        "id": 548,
+        "name": "AS Monaco FC",
+        "shortName": "Monaco",
+        "tla": "ASM"
+      }
+    },
+    {
+      "id": 1007,
+      "utcDate": "2026-09-17T19:45:00Z",
+      "status": "CANCELLED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2026-09-16T20:00:00Z",
+      "competition": {
+        "id": 2019,
+        "name": "Serie A",
+        "code": "SA",
+        "type": "LEAGUE"
+      },
+      "homeTeam": {
+        "id": 108,
+        "name": "FC Internazionale Milano",
+        "shortName": "Inter",
+        "tla": "INT"
+      },
+      "awayTeam": {
+        "id": 98,
+        "name": "AC Milan",
+        "shortName": "Milan",
+        "tla": "MIL"
+      }
+    }
+  ]
+}
