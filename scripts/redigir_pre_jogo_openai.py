@@ -139,7 +139,6 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
                 "items": {"type": "string", "enum": unique_fields},
                 "minItems": len(unique_fields),
                 "maxItems": len(unique_fields),
-                "uniqueItems": True,
             },
         },
         "required": ["slug", "body_html", "fact_fields_used"],
