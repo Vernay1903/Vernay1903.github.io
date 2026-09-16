@@ -29,6 +29,7 @@ jobs:
         run: |
           set -euo pipefail
           python -m json.tool config/pre-jogo.json > /dev/null
+          python -m json.tool config/links-internos-competicoes.json > /dev/null
           python -m py_compile \
             scripts/buscar_fontes_serper.py \
             scripts/preparar_pesquisa_factual.py \
@@ -36,12 +37,14 @@ jobs:
             scripts/ler_fontes_candidatas.py \
             scripts/extrair_fatos_estruturados.py \
             scripts/validar_politica_editorial.py \
+            scripts/montar_pacote_editorial.py \
             scripts/testar_descoberta_fontes_real.py \
             tests/pre-jogo/teste_estruturacao_evidencias.py \
             tests/pre-jogo/teste_leitura_fontes.py \
             tests/pre-jogo/teste_extracao_fatos.py \
-            tests/pre-jogo/teste_extratores_multicampos.py
-          echo "Estrutura de descoberta, leitura, extração factual e política editorial validada."
+            tests/pre-jogo/teste_extratores_multicampos.py \
+            tests/pre-jogo/teste_pacote_editorial.py
+          echo "Estrutura de descoberta, leitura, extração factual e pacote editorial validada."
 
       - name: Validar estruturação de evidências sem internet
         shell: bash
@@ -67,6 +70,12 @@ jobs:
           set -euo pipefail
           python tests/pre-jogo/teste_extratores_multicampos.py
 
+      - name: Validar pacote editorial limpo
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_pacote_editorial.py
+
       - name: Verificar Secret do Serper
         shell: bash
         env:
@@ -87,7 +96,7 @@ jobs:
           set -euo pipefail
           python scripts/testar_descoberta_fontes_real.py --execute --force
 
-      - name: Resumo da descoberta, leitura e extração factual
+      - name: Resumo da descoberta, leitura, extração e pacote editorial
         shell: bash
         run: |
           set -euo pipefail
@@ -101,6 +110,7 @@ jobs:
           checked = data["checked_requirement"]
           extracted = data["extracted_requirement"]
           multi = json.loads(Path("build/pre-jogo/teste-extratores-multicampos.json").read_text(encoding="utf-8"))
+          editorial = json.loads(Path("build/pre-jogo/teste-pacote-editorial.json").read_text(encoding="utf-8"))
           print(f"Provedor de busca: {data['provider']}")
           print(f"Leitor de páginas: {data['page_reader']}")
           print(f"Consultas reais executadas: {data['query_count']}")
@@ -122,8 +132,12 @@ jobs:
           print(f"Conflito de transmissão bloqueado: {multi['conflict_case_blocked']}")
           print(f"Escalação incompleta bloqueada: {multi['incomplete_lineup_blocked']}")
           print(f"H2H inconsistente bloqueado: {multi['inconsistent_h2h_blocked']}")
+          print(f"Pacote editorial limpo libera redação quando completo: {editorial['clean_package_ready_for_drafting']}")
+          print(f"Proveniência separada do pacote de redação: {editorial['provenance_separated']}")
+          print(f"URLs externas no pacote limpo: {editorial['external_source_urls_in_clean_package']}")
+          print(f"Ausência de requisito obrigatório bloqueia redação: {editorial['missing_required_requirement_blocks_drafting']}")
+          print(f"Ausência de link interno mapeado bloqueia redação: {editorial['missing_internal_link_blocks_drafting']}")
           print("Fontes/consultas podem aparecer na matéria: não")
-          print("Redação liberada: não")
           print("HTML liberado: não")
           print("Publicação liberada: não")
           PY
@@ -138,6 +152,7 @@ jobs:
             build/pre-jogo/teste-leitura-fontes.json
             build/pre-jogo/teste-extracao-fatos.json
             build/pre-jogo/teste-extratores-multicampos.json
+            build/pre-jogo/teste-pacote-editorial.json
           if-no-files-found: error
           retention-days: 3
 
