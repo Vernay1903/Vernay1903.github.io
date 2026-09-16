@@ -39,7 +39,8 @@ jobs:
             scripts/testar_descoberta_fontes_real.py \
             tests/pre-jogo/teste_estruturacao_evidencias.py \
             tests/pre-jogo/teste_leitura_fontes.py \
-            tests/pre-jogo/teste_extracao_fatos.py
+            tests/pre-jogo/teste_extracao_fatos.py \
+            tests/pre-jogo/teste_extratores_multicampos.py
           echo "Estrutura de descoberta, leitura, extração factual e política editorial validada."
 
       - name: Validar estruturação de evidências sem internet
@@ -59,6 +60,12 @@ jobs:
         run: |
           set -euo pipefail
           python tests/pre-jogo/teste_extracao_fatos.py
+
+      - name: Validar extratores factuais multicampos
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_extratores_multicampos.py
 
       - name: Verificar Secret do Serper
         shell: bash
@@ -93,6 +100,7 @@ jobs:
           structured = data["structured_evidence_candidate"]
           checked = data["checked_requirement"]
           extracted = data["extracted_requirement"]
+          multi = json.loads(Path("build/pre-jogo/teste-extratores-multicampos.json").read_text(encoding="utf-8"))
           print(f"Provedor de busca: {data['provider']}")
           print(f"Leitor de páginas: {data['page_reader']}")
           print(f"Consultas reais executadas: {data['query_count']}")
@@ -100,16 +108,20 @@ jobs:
           print(f"Primeira etapa com candidatos: {data['selected_source_type']}")
           print(f"Candidatos encontrados: {data['candidate_count']}")
           print(f"Hierarquia respeitada: {data['hierarchy_respected']}")
-          print(f"Requisito ligado ao dossiê: {data['requirement_id']}")
+          print(f"Requisito ligado ao dossiê no teste real: {data['requirement_id']}")
           print(f"Fontes candidatas estruturadas: {structured['candidate_source_count']}")
           print(f"Tentativas de leitura: {data['page_check_attempt_count']}")
           print(f"Páginas lidas com conteúdo: {data['page_check_success_count']}")
           print(f"Fontes elegíveis para extração factual: {data['eligible_source_count']}")
-          print(f"Fatos estruturados aceitos: {data['structured_fact_count']}")
-          print(f"Conflito detectado: {data['conflict_detected']}")
-          print(f"Validador factual aceitou o requisito: {data['validator_accepted']}")
-          print(f"Status de extração: {extracted.get('fact_extraction_status')}")
+          print(f"Fatos estruturados aceitos no teste real: {data['structured_fact_count']}")
+          print(f"Conflito detectado no teste real: {data['conflict_detected']}")
+          print(f"Validador factual aceitou o requisito real: {data['validator_accepted']}")
+          print(f"Status de extração real: {extracted.get('fact_extraction_status')}")
           print(f"Status do requisito após leitura: {checked['status']}")
+          print("Extratores determinísticos habilitados: " + ", ".join(multi['enabled_extractors']))
+          print(f"Conflito de transmissão bloqueado: {multi['conflict_case_blocked']}")
+          print(f"Escalação incompleta bloqueada: {multi['incomplete_lineup_blocked']}")
+          print(f"H2H inconsistente bloqueado: {multi['inconsistent_h2h_blocked']}")
           print("Fontes/consultas podem aparecer na matéria: não")
           print("Redação liberada: não")
           print("HTML liberado: não")
@@ -125,6 +137,7 @@ jobs:
             build/pre-jogo/teste-estruturacao-evidencias.json
             build/pre-jogo/teste-leitura-fontes.json
             build/pre-jogo/teste-extracao-fatos.json
+            build/pre-jogo/teste-extratores-multicampos.json
           if-no-files-found: error
           retention-days: 3
 
