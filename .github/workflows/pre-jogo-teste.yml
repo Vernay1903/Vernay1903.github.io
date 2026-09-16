@@ -46,6 +46,7 @@ jobs:
           python -m py_compile \
             scripts/buscar_fixtures_football_data.py \
             scripts/identificar_jogos.py \
+            scripts/planejar_pre_jogos.py \
             scripts/gerar_pre_jogo.py \
             tests/pre-jogo/teste_pipeline_simulado.py
           test -f templates/pre-jogo.html
@@ -91,7 +92,7 @@ jobs:
         if: ${{ inputs.mode == 'simulation_only' }}
         shell: bash
         run: |
-          echo "Teste estrutural e pipeline simulado concluídos."
+          echo "Teste estrutural, filtros e planejamento simulado concluídos."
           echo "A API NÃO foi consultada."
           echo "Nenhum arquivo publicado foi alterado."
 
@@ -128,6 +129,15 @@ jobs:
             --date "${{ steps.date.outputs.target_date }}" \
             --force
 
+      - name: Planejar matérias sem publicar
+        if: ${{ inputs.mode == 'real_api' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/planejar_pre_jogos.py \
+            --date "${{ steps.date.outputs.target_date }}" \
+            --force
+
       - name: Mostrar resumo do teste real
         if: ${{ inputs.mode == 'real_api' }}
         shell: bash
@@ -138,17 +148,24 @@ jobs:
           from pathlib import Path
 
           target = "${{ steps.date.outputs.target_date }}"
-          path = Path(f"build/pre-jogo/jogos-{target}.json")
-          data = json.loads(path.read_text(encoding="utf-8"))
-          print(f"Data-alvo: {data['target_date']}")
-          print(f"Partidas recebidas: {data['input_count']}")
-          print(f"Partidas selecionadas: {data['selected_count']}")
-          for match in data["matches"]:
-              clubs = ", ".join(c["name"] for c in match["monitored_clubs"])
+          games_path = Path(f"build/pre-jogo/jogos-{target}.json")
+          plans_path = Path(f"build/pre-jogo/planos-{target}.json")
+          games = json.loads(games_path.read_text(encoding="utf-8"))
+          plans = json.loads(plans_path.read_text(encoding="utf-8"))
+          print(f"Data-alvo: {games['target_date']}")
+          print(f"Partidas recebidas: {games['input_count']}")
+          print(f"Partidas selecionadas: {games['selected_count']}")
+          print(f"Matérias candidatas: {plans['planned_count']}")
+          print(f"Matérias bloqueadas: {plans['skipped_count']}")
+          for item in plans["planned"]:
               print(
-                  f"- {match['kickoff_time_brasilia']} | "
-                  f"{match['home']} x {match['away']} | "
-                  f"{match['competition']} | {clubs}"
+                  f"- PLANO | {item['kickoff_time_brasilia']} | "
+                  f"{item['home']} x {item['away']} | {item['slug']}"
+              )
+          for item in plans["skipped"]:
+              print(
+                  f"- BLOQUEADO | {item['home']} x {item['away']} | "
+                  f"{', '.join(item['reasons'])}"
               )
           PY
 
@@ -160,6 +177,7 @@ jobs:
           path: |
             build/pre-jogo/fixtures-normalizados.json
             build/pre-jogo/jogos-${{ steps.date.outputs.target_date }}.json
+            build/pre-jogo/planos-${{ steps.date.outputs.target_date }}.json
           if-no-files-found: error
           retention-days: 3
 
