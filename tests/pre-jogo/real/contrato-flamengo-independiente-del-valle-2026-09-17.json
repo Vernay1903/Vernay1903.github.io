@@ -1,0 +1,218 @@
+{
+  "step": 25,
+  "mode": "real_match_manual_test_contract",
+  "slug": "flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.html",
+  "title": "Flamengo x Independiente del Valle pela Libertadores: transmissão, horário e prováveis escalações",
+  "excerpt": "Rubro-Negro recebe o Independiente del Valle no Maracanã com vantagem de 2 a 0 e pode até perder por um gol para avançar à semifinal da Libertadores; veja transmissão, horário, escalações e arbitragem.",
+  "date": "17/09/2026",
+  "match_context": {
+    "home": "Flamengo",
+    "away": "Independiente del Valle",
+    "competition": "Libertadores",
+    "competition_slug": "libertadores",
+    "phase": "quartas de final - jogo de volta",
+    "kickoff_time_brasilia": "21:30"
+  },
+  "facts_by_requirement": [
+    {
+      "id": "stadium_and_location",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "stadium",
+          "text": "A partida será disputada no Maracanã, no Rio de Janeiro (RJ)."
+        }
+      ]
+    },
+    {
+      "id": "transmission",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "transmission",
+          "text": "No Brasil, a partida terá transmissão da ESPN e do Disney+."
+        }
+      ]
+    },
+    {
+      "id": "probable_lineups_and_coaches",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "home_lineup",
+          "text": "Provável Flamengo: Rossi; Emerson Royal, Léo Ortiz, Danilo (Léo Pereira) e Ayrton Lucas; Erick Pulgar, Jorginho e Arrascaeta; Carrascal (Plata), Samuel Lino e Pedro (Bruno Henrique)."
+        },
+        {
+          "field": "home_coach",
+          "text": "Técnico do Flamengo: Leonardo Jardim."
+        },
+        {
+          "field": "away_lineup",
+          "text": "Provável Independiente del Valle: Aldair Quintana; Daykol Romero, Carabajal, Schunke e Layan Loor; Alcivar, Hugo Quintana e Sornoza; Arón Rodríguez, Emerson Pata e Djorkaeff Reasco."
+        },
+        {
+          "field": "away_coach",
+          "text": "Técnico do Independiente del Valle: Joaquín Papa."
+        }
+      ]
+    },
+    {
+      "id": "officiating",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "referee",
+          "text": "O árbitro será Andrés Matonte, do Uruguai."
+        },
+        {
+          "field": "assistant_referees",
+          "text": "Os assistentes serão Carlos Barreiro e Mathias Muniz, ambos do Uruguai."
+        },
+        {
+          "field": "var",
+          "text": "O VAR será Antonio García, do Uruguai."
+        }
+      ]
+    },
+    {
+      "id": "recent_form_both_teams",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "home_recent_form",
+          "text": "O Flamengo vem de vitória por 2 a 1 sobre o Corinthians no Brasileirão, resultado que levou a equipe a 57 pontos e manteve a liderança da competição nacional; antes disso, havia vencido o Independiente del Valle por 2 a 0 em Quito pela ida das quartas da Libertadores."
+        },
+        {
+          "field": "away_recent_form",
+          "text": "O Independiente del Valle vem de vitória por 3 a 2 sobre o Libertad em seu compromisso mais recente, depois de ter perdido por 2 a 0 para o Flamengo no jogo de ida das quartas da Libertadores."
+        }
+      ]
+    },
+    {
+      "id": "competition_specific_head_to_head",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "games",
+          "text": "Antes do jogo de volta, Flamengo e Independiente del Valle haviam se enfrentado três vezes pela Libertadores."
+        },
+        {
+          "field": "home_wins",
+          "text": "O Flamengo venceu dois desses três confrontos pela Libertadores."
+        },
+        {
+          "field": "away_wins",
+          "text": "O Independiente del Valle venceu um desses três confrontos pela Libertadores."
+        },
+        {
+          "field": "draws",
+          "text": "Não houve empate nos três confrontos anteriores entre as equipes pela Libertadores."
+        },
+        {
+          "field": "head_to_head_goals",
+          "text": "Nos três confrontos anteriores pela Libertadores, o Flamengo marcou seis gols e o Independiente del Valle marcou cinco."
+        },
+        {
+          "field": "last_competition_meeting",
+          "text": "O encontro mais recente pela Libertadores terminou Independiente del Valle 0 x 2 Flamengo, em 10 de setembro de 2026, em Quito."
+        }
+      ]
+    },
+    {
+      "id": "stakes_and_qualification_scenarios_when_applicable",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "first_leg",
+          "text": "O Flamengo venceu o jogo de ida por 2 a 0 em Quito, com gols de Bruno Henrique e Léo Pereira."
+        },
+        {
+          "field": "stakes",
+          "text": "O Flamengo avança à semifinal com vitória, empate ou derrota por um gol de diferença. Uma vitória do Independiente del Valle por dois gols de diferença leva a decisão para os pênaltis; por três ou mais gols de diferença, classifica a equipe equatoriana."
+        }
+      ]
+    },
+    {
+      "id": "availability_and_absences",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {
+          "field": "home_availability",
+          "text": "Evertton Araújo segue fora do Flamengo por lesão; Léo Pereira é dúvida após ter sentido desconforto muscular e ficado fora do jogo contra o Corinthians, sem lesão constatada nos exames."
+        },
+        {
+          "field": "away_availability",
+          "text": "O Independiente del Valle não terá o atacante Charli González, artilheiro da equipe na temporada com 16 gols e sete na Libertadores, por lesão muscular; Djorkaeff Reasco aparece como substituto provável."
+        }
+      ]
+    }
+  ],
+  "competition_internal_link": {
+    "competition_slug": "libertadores",
+    "url": "https://cortedosesportes.com.br/libertadores-historia-maiores-campeoes-rivalidades-cultura-torcida.html",
+    "anchor_hint": "história da Libertadores"
+  },
+  "required_fact_fields": [
+    "stadium",
+    "transmission",
+    "home_lineup",
+    "home_coach",
+    "away_lineup",
+    "away_coach",
+    "referee",
+    "assistant_referees",
+    "var",
+    "home_recent_form",
+    "away_recent_form",
+    "games",
+    "home_wins",
+    "away_wins",
+    "draws",
+    "head_to_head_goals",
+    "last_competition_meeting",
+    "first_leg",
+    "stakes",
+    "home_availability",
+    "away_availability"
+  ],
+  "output_contract": {
+    "format": "json",
+    "required_fields": [
+      "slug",
+      "body_html",
+      "fact_fields_used"
+    ],
+    "body_html_scope": "article_body_only",
+    "minimum_words": 700,
+    "minimum_strong_subheadings": 5,
+    "internal_link_exactly_once": true,
+    "unordered_lists_for_service_blocks": true
+  },
+  "editorial_rules": {
+    "language": "pt-BR",
+    "tone": "jornalístico direto, fluido e factual",
+    "seo": "natural, sem repetição artificial de palavras-chave",
+    "opening": "Abrir naturalmente com confronto, data, horário de Brasília, estádio, competição, contexto da vantagem de 2 a 0 e transmissão; não repetir depois um bloco mecânico de serviço.",
+    "subheadings": "Usar <p><strong>...</strong></p> ao longo da matéria.",
+    "lineups": "Apresentar as duas prováveis escalações e os técnicos em blocos/listas visíveis; manter entre parênteses as dúvidas e alternativas fornecidas e nunca chamar a escalação de oficial.",
+    "head_to_head": "Usar somente o retrospecto específico da Libertadores em lista curta com bolinhas.",
+    "qualification": "Explicar integralmente os três cenários: Flamengo avança com vitória, empate ou derrota por um gol; derrota por dois gols leva aos pênaltis; derrota por três ou mais elimina o Flamengo.",
+    "internal_link": "Inserir exatamente uma vez o link interno fornecido, de forma natural no texto; nenhum outro URL deve ser criado.",
+    "source_policy": "É expressamente proibido citar fontes, sites, portais, veículos ou consultas internas; escrever os fatos aprovados diretamente.",
+    "fact_policy": "Usar somente os fatos fornecidos no pacote. Não completar lacunas com conhecimento externo, suposições ou inferências factuais.",
+    "ad_ready_structure": "Tratar a forma recente dos dois times antes do retrospecto da Libertadores e manter pelo menos uma seção conclusiva depois do retrospecto, para permitir o posicionamento editorial dos três anúncios.",
+    "ads": "Não inserir anúncios, imagens, scripts ou estrutura da página nesta etapa."
+  },
+  "drafting_provider_connected": false,
+  "ready_for_model": true,
+  "ready_for_html": false,
+  "publication_unlocked": false
+}
