@@ -1,0 +1,127 @@
+{
+  "step": 25,
+  "mode": "draft_contract_only",
+  "slug": "arsenal-manchester-city-premier-league-2026-transmissao-horario-escalacoes.html",
+  "title": "Arsenal x Manchester City pela Premier League: transmissão, horário e prováveis escalações",
+  "excerpt": "Arsenal e Manchester City se enfrentam pela Premier League em Londres.",
+  "date": "17/09/2026",
+  "match_context": {
+    "home": "Arsenal",
+    "away": "Manchester City",
+    "competition": "Premier League",
+    "competition_slug": "premier-league",
+    "kickoff_time_brasilia": "16:00"
+  },
+  "facts_by_requirement": [
+    {
+      "id": "stadium_and_location",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {"field": "stadium", "text": "A partida será disputada no Emirates Stadium."}
+      ]
+    },
+    {
+      "id": "transmission",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {"field": "transmission", "text": "A transmissão será de ESPN e Disney+."}
+      ]
+    },
+    {
+      "id": "probable_lineups_and_coaches",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {"field": "home_lineup", "text": "Arsenal: Raya; Timber; Saliba; Gabriel; Calafiori; Rice; Odegaard; Saka; Eze; Martinelli; Gyokeres."},
+        {"field": "home_coach", "text": "Técnico do Arsenal: Mikel Arteta."},
+        {"field": "away_lineup", "text": "Manchester City: Donnarumma; Lewis; Dias; Gvardiol; Ait-Nouri; Rodri; Reijnders; Foden; Cherki; Doku; Haaland."},
+        {"field": "away_coach", "text": "Técnico do Manchester City: Pep Guardiola."}
+      ]
+    },
+    {
+      "id": "officiating",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {"field": "referee", "text": "Michael Oliver será o árbitro da partida."}
+      ]
+    },
+    {
+      "id": "recent_form_both_teams",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {"field": "home_recent_form", "text": "O Arsenal soma três vitórias nos últimos cinco jogos."},
+        {"field": "away_recent_form", "text": "O Manchester City venceu quatro dos últimos cinco jogos."}
+      ]
+    },
+    {
+      "id": "competition_specific_head_to_head",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {"field": "games", "text": "Foram 20 confrontos pela Premier League no recorte considerado."},
+        {"field": "home_wins", "text": "O Arsenal venceu sete."},
+        {"field": "away_wins", "text": "O Manchester City venceu dez."},
+        {"field": "draws", "text": "Houve três empates."}
+      ]
+    },
+    {
+      "id": "stakes_and_qualification_scenarios_when_applicable",
+      "status": "verified",
+      "resolved": true,
+      "facts": [
+        {"field": "stakes", "text": "Os três pontos têm impacto direto na disputa pelas primeiras posições."}
+      ]
+    }
+  ],
+  "competition_internal_link": {
+    "competition_slug": "premier-league",
+    "url": "https://cortedosesportes.com.br/premier-league-historia-campeoes.html",
+    "anchor_hint": "história da Premier League"
+  },
+  "required_fact_fields": [
+    "stadium",
+    "transmission",
+    "home_lineup",
+    "home_coach",
+    "away_lineup",
+    "away_coach",
+    "referee",
+    "home_recent_form",
+    "away_recent_form",
+    "games",
+    "home_wins",
+    "away_wins",
+    "draws",
+    "stakes"
+  ],
+  "output_contract": {
+    "format": "json",
+    "required_fields": ["slug", "body_html", "fact_fields_used"],
+    "body_html_scope": "article_body_only",
+    "minimum_words": 700,
+    "minimum_strong_subheadings": 5,
+    "internal_link_exactly_once": true,
+    "unordered_lists_for_service_blocks": true
+  },
+  "editorial_rules": {
+    "language": "pt-BR",
+    "tone": "jornalístico direto, fluido e factual",
+    "seo": "natural, sem repetição artificial de palavras-chave",
+    "opening": "Abrir naturalmente com confronto, data, horário de Brasília, estádio, competição, contexto esportivo e transmissão quando disponível; não repetir depois um bloco mecânico de serviço.",
+    "subheadings": "Usar <p><strong>...</strong></p> ao longo da matéria.",
+    "lineups": "Prováveis escalações dos dois times e técnicos devem aparecer em bloco/lista visível; nunca transformar escalação provável em oficial e nunca inventar nomes.",
+    "head_to_head": "Usar somente o retrospecto específico da competição em lista curta com bolinhas.",
+    "internal_link": "Inserir exatamente uma vez o link interno fornecido, de forma natural no texto; nenhum outro URL deve ser criado.",
+    "source_policy": "É expressamente proibido citar fontes, sites, portais, veículos ou consultas internas; escrever os fatos aprovados diretamente.",
+    "fact_policy": "Usar somente os fatos fornecidos no pacote. Não completar lacunas com conhecimento externo, suposições ou inferências factuais.",
+    "ads": "Não inserir anúncios, imagens, scripts ou estrutura da página nesta etapa."
+  },
+  "drafting_provider_connected": false,
+  "ready_for_model": true,
+  "ready_for_html": false,
+  "publication_unlocked": false
+}
