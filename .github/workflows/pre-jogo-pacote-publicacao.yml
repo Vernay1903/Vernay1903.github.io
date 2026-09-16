@@ -1,0 +1,197 @@
+name: Pré-jogo — teste de pacote de publicação
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pre-jogo-pacote-publicacao
+  cancel-in-progress: false
+
+jobs:
+  preparar-pacote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar estrutura do Passo 28
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/preparar_pacote_publicacao_pre_jogo.py \
+            tests/pre-jogo/teste_pacote_publicacao.py
+          test -f noticias.json
+          test -f sitemap.xml
+          echo "Estrutura do Passo 28 validada."
+
+      - name: Testar regras sem publicar
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_pacote_publicacao.py
+
+      - name: Localizar última prévia HTML aprovada do Passo 27
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/pre-jogo/source-step27
+
+          FOUND=""
+          RUN_IDS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-preview-html.yml/runs" \
+            -f branch=main \
+            -f status=success \
+            -f event=workflow_dispatch \
+            -f per_page=20 \
+            --jq '.workflow_runs[].id')
+
+          for RUN_ID in ${RUN_IDS}; do
+            if gh api --method GET \
+              "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+              --jq '.artifacts[].name' | grep -qx 'pre-jogo-preview-html-passo-27'; then
+              echo "Usando prévia aprovada da execução ${RUN_ID}."
+              gh run download "${RUN_ID}" \
+                --repo "${GITHUB_REPOSITORY}" \
+                --name pre-jogo-preview-html-passo-27 \
+                --dir build/pre-jogo/source-step27
+              echo "${RUN_ID}" > build/pre-jogo/source-step27-run-id.txt
+              FOUND="${RUN_ID}"
+              break
+            fi
+          done
+
+          if [ -z "${FOUND}" ]; then
+            echo "ERRO: nenhum artifact aprovado do Passo 27 foi encontrado."
+            exit 1
+          fi
+
+          PREVIEW=$(find build/pre-jogo/source-step27 -type f -path '*/previews/*.html' | head -n 1)
+          METADATA=$(find build/pre-jogo/source-step27 -type f -path '*/preview-metadata/*.json' | head -n 1)
+
+          if [ -z "${PREVIEW}" ] || [ -z "${METADATA}" ]; then
+            echo "ERRO: artifact do Passo 27 incompleto."
+            exit 1
+          fi
+
+          if [ "$(find build/pre-jogo/source-step27 -type f -path '*/previews/*.html' | wc -l)" -ne 1 ]; then
+            echo "ERRO: o Passo 28 exige exatamente uma prévia HTML."
+            exit 1
+          fi
+          if [ "$(find build/pre-jogo/source-step27 -type f -path '*/preview-metadata/*.json' | wc -l)" -ne 1 ]; then
+            echo "ERRO: o Passo 28 exige exatamente um metadata da prévia."
+            exit 1
+          fi
+
+          echo "${PREVIEW}" > build/pre-jogo/source-step27-preview-path.txt
+          echo "${METADATA}" > build/pre-jogo/source-step27-metadata-path.txt
+          echo "Prévia localizada: ${PREVIEW}"
+          echo "Metadata localizado: ${METADATA}"
+
+      - name: Preparar as três alterações exatas
+        shell: bash
+        run: |
+          set -euo pipefail
+          PREVIEW=$(cat build/pre-jogo/source-step27-preview-path.txt)
+          METADATA=$(cat build/pre-jogo/source-step27-metadata-path.txt)
+          python scripts/preparar_pacote_publicacao_pre_jogo.py \
+            --preview "${PREVIEW}" \
+            --metadata "${METADATA}" \
+            --contract tests/pre-jogo/contrato-redacao-controlado.json \
+            --force
+
+      - name: Validar pacote preparado
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          root = Path("build/pre-jogo/publication-package")
+          manifest_path = root / "manifest.json"
+          if not manifest_path.exists():
+              raise SystemExit("ERRO: manifest.json não foi criado.")
+
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          slug = manifest.get("slug")
+          if not isinstance(slug, str) or not slug.endswith(".html"):
+              raise SystemExit("ERRO: slug inválido no manifest.")
+
+          expected = {slug, "noticias.json", "sitemap.xml", "manifest.json"}
+          found = {p.name for p in root.iterdir() if p.is_file()}
+          if found != expected:
+              raise SystemExit(f"ERRO: arquivos inesperados no pacote: {sorted(found)}")
+
+          if manifest.get("prepared_change_count") != 3:
+              raise SystemExit("ERRO: o pacote deve preparar exatamente três alterações.")
+          if manifest.get("published_files_touched") is not False:
+              raise SystemExit("ERRO: manifest indica alteração publicada.")
+          if manifest.get("commit_executed") is not False:
+              raise SystemExit("ERRO: manifest indica commit executado.")
+          if manifest.get("publication_unlocked") is not False:
+              raise SystemExit("ERRO: publicação foi liberada indevidamente.")
+
+          news = json.loads((root / "noticias.json").read_text(encoding="utf-8"))
+          if not news or news[0].get("url") != slug or news[0].get("category") != "Futebol":
+              raise SystemExit("ERRO: nova notícia não é o primeiro objeto correto.")
+
+          sitemap_text = (root / "sitemap.xml").read_text(encoding="utf-8")
+          ET.fromstring(sitemap_text)
+          target = f"https://cortedosesportes.com.br/{slug}"
+          tail = sitemap_text.split("<!-- MATÉRIAS -->", 1)[1]
+          first_loc_start = tail.find("<loc>")
+          first_loc_end = tail.find("</loc>", first_loc_start)
+          if first_loc_start < 0 or tail[first_loc_start + 5:first_loc_end].strip() != target:
+              raise SystemExit("ERRO: nova URL não é a primeira matéria do sitemap preparado.")
+
+          article = (root / slug).read_text(encoding="utf-8")
+          if article.count('data-ad-slot="8702501261"') != 3:
+              raise SystemExit("ERRO: HTML preparado perdeu anúncios internos.")
+          if article.count('data-ad-slot="5521804159"') != 1:
+              raise SystemExit("ERRO: HTML preparado perdeu sidebar.")
+
+          print(f"HTML futuro: {slug}")
+          print("noticias.json: nova notícia em primeiro")
+          print("sitemap.xml: nova URL como primeira matéria")
+          print("Alterações preparadas: 3")
+          print("Commit executado: não")
+          print("Publicação liberada: não")
+          PY
+
+      - name: Guardar pacote do Passo 28
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-pacote-publicacao-passo-28
+          path: build/pre-jogo/publication-package/*
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Confirmar que nada foi publicado
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- . ':!build'; then
+            echo "ERRO: o Passo 28 alterou arquivo versionado/publicado."
+            git diff -- . ':!build'
+            exit 1
+          fi
+          echo "OK: nenhum arquivo publicado foi alterado."
+          echo "HTML na raiz: não criado"
+          echo "noticias.json original: intacto"
+          echo "sitemap.xml original: intacto"
+          echo "Commit: não executado"
