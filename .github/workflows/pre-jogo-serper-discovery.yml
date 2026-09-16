@@ -33,8 +33,15 @@ jobs:
             scripts/buscar_fontes_serper.py \
             scripts/preparar_pesquisa_factual.py \
             scripts/estruturar_evidencias_candidatas.py \
-            scripts/testar_descoberta_fontes_real.py
+            scripts/testar_descoberta_fontes_real.py \
+            tests/pre-jogo/teste_estruturacao_evidencias.py
           echo "Estrutura do teste real de fontes e evidências candidatas validada."
+
+      - name: Validar estruturação de evidências sem internet
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_estruturacao_evidencias.py
 
       - name: Verificar Secret do Serper
         shell: bash
@@ -88,7 +95,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: serper-discovery-test
-          path: build/pre-jogo/serper-discovery-test.json
+          path: |
+            build/pre-jogo/serper-discovery-test.json
+            build/pre-jogo/teste-estruturacao-evidencias.json
           if-no-files-found: error
           retention-days: 3
 
