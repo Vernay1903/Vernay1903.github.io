@@ -1,0 +1,274 @@
+name: Pré-jogo — publicação definitiva (BLOQUEADA)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Modo do Passo 31"
+        required: true
+        type: choice
+        default: preflight_only
+        options:
+          - preflight_only
+
+# PASSO 31: trava deliberada. Este workflow ainda NÃO pode escrever no repositório.
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pre-jogo-publicacao-definitiva
+  cancel-in-progress: false
+
+env:
+  PUBLICATION_LOCKED: "true"
+
+jobs:
+  preflight-publicacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Confirmar modo bloqueado
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ inputs.mode }}" = "preflight_only"
+          test "${PUBLICATION_LOCKED}" = "true"
+          echo "Modo: preflight_only"
+          echo "Publicação bloqueada: sim"
+
+      - name: Baixar repositório sem credencial de push
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar estrutura do Passo 31
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/preflight_publicacao_pre_jogo.py \
+            tests/pre-jogo/teste_preflight_publicacao.py
+          python tests/pre-jogo/teste_preflight_publicacao.py
+
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/pre-jogo-publicacao.yml').read_text(encoding='utf-8')
+          if 'schedule:' in text:
+              raise SystemExit('ERRO: Passo 31 não pode ter agendamento automático.')
+          if 'contents: write' in text:
+              raise SystemExit('ERRO: Passo 31 não pode ter permissão contents: write.')
+          if 'persist-credentials: false' not in text:
+              raise SystemExit('ERRO: checkout precisa remover credencial persistente de Git.')
+          print('OK: workflow permanece manual, read-only e sem agendamento.')
+          PY
+
+      - name: Localizar último teste remoto aprovado do Passo 30
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/pre-jogo/source-step30
+
+          FOUND=""
+          RUN_IDS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-teste-push-remoto.yml/runs" \
+            -f branch=main \
+            -f status=success \
+            -f event=workflow_dispatch \
+            -f per_page=20 \
+            --jq '.workflow_runs[].id')
+
+          for RUN_ID in ${RUN_IDS}; do
+            if gh api --method GET \
+              "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+              --jq '.artifacts[].name' | grep -qx 'pre-jogo-teste-push-remoto-passo-30'; then
+              echo "Usando validação remota aprovada da execução ${RUN_ID}."
+              gh run download "${RUN_ID}" \
+                --repo "${GITHUB_REPOSITORY}" \
+                --name pre-jogo-teste-push-remoto-passo-30 \
+                --dir build/pre-jogo/source-step30
+              echo "${RUN_ID}" > build/pre-jogo/source-step30-run-id.txt
+              FOUND="${RUN_ID}"
+              break
+            fi
+          done
+
+          if [ -z "${FOUND}" ]; then
+            echo "ERRO: nenhum artifact aprovado do Passo 30 foi encontrado."
+            exit 1
+          fi
+
+      - name: Validar Passo 30 e identificar pacote exato do Passo 28
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('build/pre-jogo/source-step30')
+          reports = list(root.rglob('report.json'))
+          cleanups = list(root.rglob('cleanup.json'))
+          source_ids = list(root.rglob('source-step28-run-id.txt'))
+          if len(reports) != 1 or len(cleanups) != 1 or len(source_ids) != 1:
+              raise SystemExit(
+                  f'ERRO: artifact do Passo 30 incompleto: reports={len(reports)} '
+                  f'cleanups={len(cleanups)} source_ids={len(source_ids)}'
+              )
+
+          report = json.loads(reports[0].read_text(encoding='utf-8'))
+          cleanup = json.loads(cleanups[0].read_text(encoding='utf-8'))
+          if report.get('step') != 30:
+              raise SystemExit('ERRO: report não pertence ao Passo 30.')
+          if report.get('remote_push_executed') is not True:
+              raise SystemExit('ERRO: Passo 30 não comprovou push remoto temporário.')
+          if report.get('changed_file_count') != 3:
+              raise SystemExit('ERRO: Passo 30 não comprovou exatamente três arquivos.')
+          if report.get('remote_branch_deleted') is not True:
+              raise SystemExit('ERRO: branch temporária do Passo 30 não consta como excluída.')
+          if report.get('remote_main_unchanged_after_cleanup') is not True:
+              raise SystemExit('ERRO: Passo 30 não comprovou integridade final da main.')
+          if cleanup.get('remote_branch_exists_after_cleanup') is not False:
+              raise SystemExit('ERRO: cleanup do Passo 30 indica branch remota restante.')
+          if cleanup.get('remote_main_unchanged') is not True:
+              raise SystemExit('ERRO: cleanup do Passo 30 não confirmou main intacta.')
+
+          step28 = source_ids[0].read_text(encoding='utf-8').strip()
+          if not step28.isdigit():
+              raise SystemExit(f'ERRO: run id do Passo 28 inválido: {step28!r}')
+          Path('build/pre-jogo/approved-step28-run-id.txt').write_text(step28 + '\n', encoding='utf-8')
+          print(f'Passo 30 aprovado; pacote exato do Passo 28: execução {step28}.')
+          PY
+
+      - name: Baixar pacote exato aprovado nos Passos 28 e 30
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          STEP28_RUN_ID=$(cat build/pre-jogo/approved-step28-run-id.txt)
+          mkdir -p build/pre-jogo/source-step28
+
+          STATUS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/runs/${STEP28_RUN_ID}" \
+            --jq '.conclusion')
+          test "${STATUS}" = "success"
+
+          gh run download "${STEP28_RUN_ID}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --name pre-jogo-pacote-publicacao-passo-28 \
+            --dir build/pre-jogo/source-step28
+
+          test -f build/pre-jogo/source-step28/manifest.json
+          echo "Pacote aprovado localizado e baixado."
+
+      - name: Instalar bloqueio local absoluto de push
+        shell: bash
+        run: |
+          set -euo pipefail
+          git remote set-url --push origin 'no-push://passo-31-publicacao-bloqueada'
+          test "$(git remote get-url --push origin)" = 'no-push://passo-31-publicacao-bloqueada'
+          echo "Push URL bloqueada."
+
+      - name: Confirmar main remota antes da porta final
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          REMOTE_MAIN=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" \
+            --jq '.object.sha')
+          if [ "${REMOTE_MAIN}" != "${GITHUB_SHA}" ]; then
+            echo "ERRO: main remota avançou durante o Passo 31."
+            echo "Workflow iniciou em: ${GITHUB_SHA}"
+            echo "Main atual: ${REMOTE_MAIN}"
+            exit 1
+          fi
+          echo "Main remota sincronizada: ${REMOTE_MAIN}"
+
+      - name: Executar preflight definitivo sem commit e sem push
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/preflight_publicacao_pre_jogo.py \
+            --package-dir build/pre-jogo/source-step28 \
+            --report build/pre-jogo/publication-preflight/report.json
+
+      - name: Validar porta final ainda bloqueada
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('build/pre-jogo/publication-preflight/report.json')
+          report = json.loads(path.read_text(encoding='utf-8'))
+          if report.get('step') != 31:
+              raise SystemExit('ERRO: relatório não pertence ao Passo 31.')
+          if report.get('publication_gate_reached') is not True:
+              raise SystemExit('ERRO: porta final não foi alcançada.')
+          if report.get('package_matches_current_main') is not True:
+              raise SystemExit('ERRO: pacote não corresponde à main atual.')
+          if report.get('changed_file_count') != 3:
+              raise SystemExit('ERRO: porta final não contém exatamente três arquivos.')
+          if report.get('commit_created') is not False:
+              raise SystemExit('ERRO: Passo 31 criou commit indevidamente.')
+          if report.get('push_executed') is not False:
+              raise SystemExit('ERRO: Passo 31 executou push indevidamente.')
+          if report.get('main_published') is not False:
+              raise SystemExit('ERRO: Passo 31 publicou na main indevidamente.')
+          if report.get('publication_authorized') is not False:
+              raise SystemExit('ERRO: publicação foi autorizada no Passo 31.')
+          if report.get('publication_unlocked') is not False:
+              raise SystemExit('ERRO: trava de publicação foi aberta no Passo 31.')
+          if report.get('checkout_restored_clean') is not True:
+              raise SystemExit('ERRO: checkout não foi restaurado limpo.')
+
+          print('PORTA FINAL ALCANÇADA COM SUCESSO')
+          print(f"HTML futuro: {report.get('slug')}")
+          for item in report.get('staged_name_status', []):
+              print(f'  {item}')
+          print('Commit: BLOQUEADO')
+          print('Push: BLOQUEADO')
+          print('Publicação na main: BLOQUEADA')
+          PY
+
+      - name: Confirmar main remota intacta no final
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(git remote get-url --push origin)" = 'no-push://passo-31-publicacao-bloqueada'
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+
+          REMOTE_MAIN=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" \
+            --jq '.object.sha')
+          test "${REMOTE_MAIN}" = "${GITHUB_SHA}"
+
+          echo "OK: main remota intacta."
+          echo "Commit enviado: não"
+          echo "Publicação executada: não"
+
+      - name: Guardar relatório do Passo 31
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-preflight-publicacao-passo-31
+          path: |
+            build/pre-jogo/publication-preflight/report.json
+            build/pre-jogo/source-step30-run-id.txt
+            build/pre-jogo/approved-step28-run-id.txt
+          if-no-files-found: error
+          retention-days: 3
