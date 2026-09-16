@@ -1,0 +1,320 @@
+name: Pré-jogo — teste de push remoto temporário
+
+on:
+  workflow_dispatch:
+
+# Este é o primeiro teste que precisa escrever no remoto, mas somente em uma
+# branch temporária com nome rigidamente controlado. A main nunca é destino.
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: pre-jogo-teste-push-remoto
+  cancel-in-progress: false
+
+env:
+  TEST_BRANCH: pre-jogo-teste-remoto-${{ github.run_id }}-${{ github.run_attempt }}
+  EXPECTED_MAIN_SHA: ${{ github.sha }}
+
+jobs:
+  testar-push-remoto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar estrutura do Passo 30
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/testar_push_remoto_pre_jogo.py \
+            tests/pre-jogo/teste_push_remoto_temporario.py
+          python tests/pre-jogo/teste_push_remoto_temporario.py
+          [[ "${TEST_BRANCH}" =~ ^pre-jogo-teste-remoto-[0-9]+-[0-9]+$ ]]
+          echo "Estrutura e nome da branch do Passo 30 validados."
+
+      - name: Confirmar que workflows públicos ignoram a branch temporária
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          for path in (
+              Path('.github/workflows/indexnow.yml'),
+              Path('.github/workflows/atualizar-noticias-home.yml'),
+          ):
+              text = path.read_text(encoding='utf-8')
+              if 'push:' not in text or 'branches:' not in text or '- main' not in text:
+                  raise SystemExit(
+                      f'ERRO: {path} deixou de restringir push à main; teste remoto bloqueado.'
+                  )
+          print('OK: IndexNow e noticias-home continuam restritos a pushes na main.')
+          PY
+
+      - name: Localizar último pacote aprovado do Passo 28
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/pre-jogo/source-step28
+
+          FOUND=""
+          RUN_IDS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-pacote-publicacao.yml/runs" \
+            -f branch=main \
+            -f status=success \
+            -f event=workflow_dispatch \
+            -f per_page=20 \
+            --jq '.workflow_runs[].id')
+
+          for RUN_ID in ${RUN_IDS}; do
+            if gh api --method GET \
+              "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+              --jq '.artifacts[].name' | grep -qx 'pre-jogo-pacote-publicacao-passo-28'; then
+              echo "Usando pacote aprovado da execução ${RUN_ID}."
+              gh run download "${RUN_ID}" \
+                --repo "${GITHUB_REPOSITORY}" \
+                --name pre-jogo-pacote-publicacao-passo-28 \
+                --dir build/pre-jogo/source-step28
+              echo "${RUN_ID}" > build/pre-jogo/source-step28-run-id.txt
+              FOUND="${RUN_ID}"
+              break
+            fi
+          done
+
+          if [ -z "${FOUND}" ]; then
+            echo "ERRO: nenhum artifact aprovado do Passo 28 foi encontrado."
+            exit 1
+          fi
+          test -f build/pre-jogo/source-step28/manifest.json
+          echo "Pacote do Passo 28 localizado."
+
+      - name: Instalar trava local de pre-push
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          branch = os.environ['TEST_BRANCH']
+          allowed = f'refs/heads/{branch}'
+          hook = f'''#!/usr/bin/env bash
+          set -euo pipefail
+          allowed_ref="{allowed}"
+          while read -r local_ref local_sha remote_ref remote_sha; do
+            [ -n "$remote_ref" ] || continue
+            if [ "$remote_ref" != "$allowed_ref" ]; then
+              echo "ERRO: pre-push do Passo 30 bloqueou destino: $remote_ref" >&2
+              exit 1
+            fi
+          done
+          '''
+          path = Path('.git/hooks/pre-push')
+          path.write_text(hook, encoding='utf-8')
+          path.chmod(0o755)
+          print(f'Pre-push permite somente: {allowed}')
+          PY
+
+      - name: Confirmar main remota antes do teste
+        shell: bash
+        run: |
+          set -euo pipefail
+          REMOTE_MAIN=$(git ls-remote origin refs/heads/main | awk '{print $1}')
+          test -n "${REMOTE_MAIN}"
+          if [ "${REMOTE_MAIN}" != "${EXPECTED_MAIN_SHA}" ]; then
+            echo "ERRO: main remota mudou antes do teste."
+            echo "Esperado: ${EXPECTED_MAIN_SHA}"
+            echo "Atual: ${REMOTE_MAIN}"
+            exit 1
+          fi
+          echo "Main remota confirmada: ${REMOTE_MAIN}"
+
+      - name: Criar commit e fazer push somente para branch temporária
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/testar_push_remoto_pre_jogo.py \
+            --package-dir build/pre-jogo/source-step28 \
+            --branch "${TEST_BRANCH}" \
+            --report build/pre-jogo/remote-push-test/report.json
+
+      - name: Verificar no GitHub os três arquivos da branch temporária
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/pre-jogo/remote-push-test
+          BASE=$(python -c 'import json; print(json.load(open("build/pre-jogo/remote-push-test/report.json"))["base_main_sha"])')
+
+          gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/compare/${BASE}...${TEST_BRANCH}" \
+            > build/pre-jogo/remote-push-test/compare.json
+          gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/${TEST_BRANCH}" \
+            > build/pre-jogo/remote-push-test/branch-ref.json
+          gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" \
+            > build/pre-jogo/remote-push-test/main-ref-after-push.json
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('build/pre-jogo/remote-push-test')
+          report = json.loads((root / 'report.json').read_text(encoding='utf-8'))
+          compare = json.loads((root / 'compare.json').read_text(encoding='utf-8'))
+          branch_ref = json.loads((root / 'branch-ref.json').read_text(encoding='utf-8'))
+          main_ref = json.loads((root / 'main-ref-after-push.json').read_text(encoding='utf-8'))
+
+          slug = report['slug']
+          expected = {
+              slug: 'added',
+              'noticias.json': 'modified',
+              'sitemap.xml': 'modified',
+          }
+          observed = {
+              item['filename']: item['status']
+              for item in compare.get('files', [])
+          }
+          if observed != expected:
+              raise SystemExit(f'ERRO: diff remoto inesperado: {observed}')
+          if compare.get('ahead_by') != 1 or compare.get('total_commits') != 1:
+              raise SystemExit(
+                  f"ERRO: branch deve ter exatamente um commit; ahead_by={compare.get('ahead_by')} "
+                  f"total_commits={compare.get('total_commits')}"
+              )
+          remote_commit = branch_ref.get('object', {}).get('sha')
+          if remote_commit != report.get('local_commit_sha'):
+              raise SystemExit('ERRO: SHA remoto da branch diverge do commit preparado.')
+          if main_ref.get('object', {}).get('sha') != report.get('base_main_sha'):
+              raise SystemExit('ERRO: main remota mudou após o push temporário.')
+
+          verification = {
+              'step': 30,
+              'remote_branch_verified': True,
+              'temporary_branch': report['temporary_remote_branch'],
+              'remote_commit_sha': remote_commit,
+              'changed_files': expected,
+              'changed_file_count': 3,
+              'remote_commit_count': 1,
+              'main_remote_unchanged_before_cleanup': True,
+              'publication_on_main': False,
+          }
+          (root / 'verification.json').write_text(
+              json.dumps(verification, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
+          )
+          print('OK: GitHub confirmou 1 commit remoto e exatamente 3 arquivos.')
+          for name, status in expected.items():
+              print(f'  {status}: {name}')
+          print('Main remota alterada: não')
+          PY
+
+      - name: Excluir branch remota temporária
+        if: ${{ always() }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "${TEST_BRANCH}" =~ ^pre-jogo-teste-remoto-[0-9]+-[0-9]+$ ]]
+          if gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/${TEST_BRANCH}" \
+            >/dev/null 2>&1; then
+            echo "Excluindo branch remota temporária ${TEST_BRANCH}..."
+            gh api --method DELETE \
+              "repos/${GITHUB_REPOSITORY}/git/refs/heads/${TEST_BRANCH}"
+          else
+            echo "Branch temporária não existe no remoto; nada para excluir."
+          fi
+
+      - name: Confirmar limpeza remota e integridade da main
+        if: ${{ always() }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/pre-jogo/remote-push-test
+
+          if gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/${TEST_BRANCH}" \
+            >/dev/null 2>&1; then
+            echo "ERRO: branch remota temporária ainda existe após a limpeza."
+            exit 1
+          fi
+
+          REMOTE_MAIN=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" \
+            --jq '.object.sha')
+          if [ "${REMOTE_MAIN}" != "${EXPECTED_MAIN_SHA}" ]; then
+            echo "ERRO: main remota mudou durante o Passo 30."
+            echo "Esperado: ${EXPECTED_MAIN_SHA}"
+            echo "Atual: ${REMOTE_MAIN}"
+            exit 1
+          fi
+
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path('build/pre-jogo/remote-push-test')
+          cleanup = {
+              'step': 30,
+              'temporary_branch': os.environ['TEST_BRANCH'],
+              'remote_branch_deleted': True,
+              'remote_branch_exists_after_cleanup': False,
+              'remote_main_sha_after_cleanup': os.environ['EXPECTED_MAIN_SHA'],
+              'remote_main_unchanged': True,
+              'main_published': False,
+              'publication_unlocked': False,
+          }
+          (root / 'cleanup.json').write_text(
+              json.dumps(cleanup, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
+          )
+
+          report_path = root / 'report.json'
+          if report_path.exists():
+              report = json.loads(report_path.read_text(encoding='utf-8'))
+              report['remote_branch_deletion_pending'] = False
+              report['remote_branch_deleted'] = True
+              report['remote_branch_exists_after_cleanup'] = False
+              report['remote_main_sha_after_cleanup'] = os.environ['EXPECTED_MAIN_SHA']
+              report['remote_main_unchanged_after_cleanup'] = True
+              report_path.write_text(
+                  json.dumps(report, ensure_ascii=False, indent=2) + '\n',
+                  encoding='utf-8',
+              )
+          PY
+
+          echo "OK: branch remota temporária excluída."
+          echo "Main remota: intacta"
+          echo "Publicação na main: não"
+
+      - name: Guardar relatório do Passo 30
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-teste-push-remoto-passo-30
+          path: |
+            build/pre-jogo/remote-push-test/*.json
+            build/pre-jogo/source-step28-run-id.txt
+          if-no-files-found: warn
+          retention-days: 3
