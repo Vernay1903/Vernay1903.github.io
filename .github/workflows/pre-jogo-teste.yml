@@ -51,9 +51,11 @@ jobs:
             scripts/preparar_dados_editoriais.py \
             scripts/preparar_pesquisa_factual.py \
             scripts/validar_pesquisa_factual.py \
+            scripts/planejar_coleta_fontes.py \
             scripts/gerar_pre_jogo.py \
             tests/pre-jogo/teste_pipeline_simulado.py \
-            tests/pre-jogo/teste_validacao_pesquisa.py
+            tests/pre-jogo/teste_validacao_pesquisa.py \
+            tests/pre-jogo/teste_planejamento_coleta.py
           test -f templates/pre-jogo.html
           test -f templates/imagens/01-bola-uhlsport.html
           test -f templates/imagens/02-bola-adidas.html
@@ -72,6 +74,12 @@ jobs:
           set -euo pipefail
           python tests/pre-jogo/teste_validacao_pesquisa.py
 
+      - name: Validar planejamento de coleta de fontes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_planejamento_coleta.py
+
       - name: Guardar relatórios dos testes simulados
         uses: actions/upload-artifact@v4
         with:
@@ -79,6 +87,7 @@ jobs:
           path: |
             build/pre-jogo/teste-simulado.json
             build/pre-jogo/teste-validacao-pesquisa.json
+            build/pre-jogo/teste-planejamento-coleta.json
           if-no-files-found: error
           retention-days: 3
 
@@ -105,10 +114,10 @@ jobs:
         if: ${{ inputs.mode == 'simulation_only' }}
         shell: bash
         run: |
-          echo "Teste estrutural, filtros, planejamento, dossiês e validação factual simulados concluídos."
+          echo "Teste estrutural, filtros, planejamento, dossiês, validação factual e coleta planejada concluídos."
           echo "A API NÃO foi consultada."
           echo "Nenhuma pesquisa externa real foi executada."
-          echo "A redação só foi liberada no teste após evidências válidas."
+          echo "A prioridade de fontes foi validada: oficial -> grande imprensa -> imprensa local relevante."
           echo "HTML e publicação permaneceram bloqueados."
           echo "Nenhum arquivo publicado foi alterado."
 
@@ -172,6 +181,15 @@ jobs:
             --date "${{ steps.date.outputs.target_date }}" \
             --force
 
+      - name: Planejar coleta de fontes sem pesquisar
+        if: ${{ inputs.mode == 'real_api' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/planejar_coleta_fontes.py \
+            --date "${{ steps.date.outputs.target_date }}" \
+            --force
+
       - name: Mostrar resumo do teste real
         if: ${{ inputs.mode == 'real_api' }}
         shell: bash
@@ -186,10 +204,12 @@ jobs:
           plans_path = Path(f"build/pre-jogo/planos-{target}.json")
           editorial_path = Path(f"build/pre-jogo/dados-editoriais-{target}.json")
           research_path = Path(f"build/pre-jogo/pesquisa-{target}.json")
+          collection_path = Path(f"build/pre-jogo/coleta-fontes-{target}.json")
           games = json.loads(games_path.read_text(encoding="utf-8"))
           plans = json.loads(plans_path.read_text(encoding="utf-8"))
           editorial = json.loads(editorial_path.read_text(encoding="utf-8"))
           research = json.loads(research_path.read_text(encoding="utf-8"))
+          collection = json.loads(collection_path.read_text(encoding="utf-8"))
           print(f"Data-alvo: {games['target_date']}")
           print(f"Partidas recebidas: {games['input_count']}")
           print(f"Partidas selecionadas: {games['selected_count']}")
@@ -197,14 +217,15 @@ jobs:
           print(f"Matérias bloqueadas: {plans['skipped_count']}")
           print(f"Dados editoriais preparados: {editorial['editorial_count']}")
           print(f"Dossiês de pesquisa preparados: {research['research_dossier_count']}")
-          print(f"Pesquisa externa executada: {research['external_research_performed']}")
-          print(f"Prontas para redação: {research['ready_for_drafting_count']}")
-          print("Validação factual real aguarda um pacote de evidências de fontes.")
+          print(f"Planos de coleta preparados: {collection['collection_plan_count']}")
+          print(f"Pesquisa externa executada: {collection['external_search_performed']}")
+          print(f"Provedor de busca: {collection['search_provider']}")
+          print("A execução das buscas reais aguarda a escolha de um provedor de busca.")
           print("HTML e publicação continuam bloqueados.")
-          for item in research["dossiers"]:
+          for item in collection["plans"]:
               print(
-                  f"- PESQUISA PENDENTE | {item['title']} | "
-                  f"{len(item['blocking_requirement_ids'])} requisitos bloqueadores"
+                  f"- COLETA PLANEJADA | {item['title']} | "
+                  f"{len(item['tasks'])} tarefas"
               )
           for item in plans["skipped"]:
               print(
@@ -226,6 +247,8 @@ jobs:
             build/pre-jogo/dados-editoriais-${{ steps.date.outputs.target_date }}/
             build/pre-jogo/pesquisa-${{ steps.date.outputs.target_date }}.json
             build/pre-jogo/pesquisa-${{ steps.date.outputs.target_date }}/
+            build/pre-jogo/coleta-fontes-${{ steps.date.outputs.target_date }}.json
+            build/pre-jogo/coleta-fontes-${{ steps.date.outputs.target_date }}/
           if-no-files-found: error
           retention-days: 3
 
