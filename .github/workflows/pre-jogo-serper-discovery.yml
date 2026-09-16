@@ -13,7 +13,7 @@ concurrency:
 jobs:
   testar-hierarquia-fontes:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
 
     steps:
       - name: Baixar repositório
@@ -33,15 +33,23 @@ jobs:
             scripts/buscar_fontes_serper.py \
             scripts/preparar_pesquisa_factual.py \
             scripts/estruturar_evidencias_candidatas.py \
+            scripts/ler_fontes_candidatas.py \
             scripts/testar_descoberta_fontes_real.py \
-            tests/pre-jogo/teste_estruturacao_evidencias.py
-          echo "Estrutura do teste real de fontes e evidências candidatas validada."
+            tests/pre-jogo/teste_estruturacao_evidencias.py \
+            tests/pre-jogo/teste_leitura_fontes.py
+          echo "Estrutura de descoberta, evidências candidatas e leitura de páginas validada."
 
       - name: Validar estruturação de evidências sem internet
         shell: bash
         run: |
           set -euo pipefail
           python tests/pre-jogo/teste_estruturacao_evidencias.py
+
+      - name: Validar leitura de fontes sem internet
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_leitura_fontes.py
 
       - name: Verificar Secret do Serper
         shell: bash
@@ -55,7 +63,7 @@ jobs:
           fi
           echo "SERPER_API_KEY encontrado. O valor não será exibido."
 
-      - name: Executar descoberta real controlada
+      - name: Executar descoberta e leitura real controlada
         shell: bash
         env:
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
@@ -63,7 +71,7 @@ jobs:
           set -euo pipefail
           python scripts/testar_descoberta_fontes_real.py --execute --force
 
-      - name: Resumo da hierarquia e evidências candidatas
+      - name: Resumo da descoberta e leitura de fontes
         shell: bash
         run: |
           set -euo pipefail
@@ -74,7 +82,9 @@ jobs:
           path = Path("build/pre-jogo/serper-discovery-test.json")
           data = json.loads(path.read_text(encoding="utf-8"))
           structured = data["structured_evidence_candidate"]
-          print(f"Provedor: {data['provider']}")
+          checked = data["checked_requirement"]
+          print(f"Provedor de busca: {data['provider']}")
+          print(f"Leitor de páginas: {data['page_reader']}")
           print(f"Consultas reais executadas: {data['query_count']}")
           print("Prioridade: " + " -> ".join(data['source_priority']))
           print(f"Primeira etapa com candidatos: {data['selected_source_type']}")
@@ -82,9 +92,12 @@ jobs:
           print(f"Hierarquia respeitada: {data['hierarchy_respected']}")
           print(f"Requisito ligado ao dossiê: {data['requirement_id']}")
           print(f"Fontes candidatas estruturadas: {structured['candidate_source_count']}")
-          print(f"Status candidato: {structured['candidate_status']}")
-          print("Conteúdo das páginas checado: não")
+          print(f"Tentativas de leitura: {data['page_check_attempt_count']}")
+          print(f"Páginas lidas com conteúdo: {data['page_check_success_count']}")
+          print(f"Fontes elegíveis para futura extração factual: {data['eligible_source_count']}")
+          print(f"Status do requisito após leitura: {checked['status']}")
           print("Fatos verificados: não")
+          print("Fontes/consultas podem aparecer na matéria: não")
           print("Validação factual liberada: não")
           print("Redação liberada: não")
           print("HTML liberado: não")
@@ -98,6 +111,7 @@ jobs:
           path: |
             build/pre-jogo/serper-discovery-test.json
             build/pre-jogo/teste-estruturacao-evidencias.json
+            build/pre-jogo/teste-leitura-fontes.json
           if-no-files-found: error
           retention-days: 3
 
