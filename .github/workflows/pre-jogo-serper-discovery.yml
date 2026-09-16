@@ -1,0 +1,97 @@
+name: Pré-jogo — teste real de fontes
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pre-jogo-serper-discovery
+  cancel-in-progress: false
+
+jobs:
+  testar-hierarquia-fontes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar estrutura do teste
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool config/pre-jogo.json > /dev/null
+          python -m py_compile \
+            scripts/buscar_fontes_serper.py \
+            scripts/testar_descoberta_fontes_real.py
+          echo "Estrutura do teste real de fontes validada."
+
+      - name: Verificar Secret do Serper
+        shell: bash
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SERPER_API_KEY}" ]; then
+            echo "O Secret SERPER_API_KEY não está configurado."
+            exit 1
+          fi
+          echo "SERPER_API_KEY encontrado. O valor não será exibido."
+
+      - name: Executar descoberta real controlada
+        shell: bash
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: |
+          set -euo pipefail
+          python scripts/testar_descoberta_fontes_real.py --execute --force
+
+      - name: Resumo da hierarquia de fontes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("build/pre-jogo/serper-discovery-test.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          print(f"Provedor: {data['provider']}")
+          print(f"Consultas reais executadas: {data['query_count']}")
+          print("Prioridade: " + " -> ".join(data['source_priority']))
+          print(f"Primeira etapa com candidatos: {data['selected_source_type']}")
+          print(f"Candidatos encontrados: {data['candidate_count']}")
+          print(f"Hierarquia respeitada: {data['hierarchy_respected']}")
+          print(f"Validação dinâmica de imprensa local pendente: {data['local_dynamic_relevance_required']}")
+          print("Fatos verificados: não")
+          print("Redação liberada: não")
+          print("HTML liberado: não")
+          print("Publicação liberada: não")
+          PY
+
+      - name: Guardar resultado do teste real de fontes
+        uses: actions/upload-artifact@v4
+        with:
+          name: serper-discovery-test
+          path: build/pre-jogo/serper-discovery-test.json
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Confirmar que nada foi publicado
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- . ':!build'; then
+            echo "ERRO: o teste alterou arquivos versionados."
+            git diff -- . ':!build'
+            exit 1
+          fi
+          echo "OK: nenhum arquivo versionado/publicado foi alterado."
