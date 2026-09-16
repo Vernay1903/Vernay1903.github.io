@@ -6,8 +6,9 @@ Executa no máximo três consultas, sempre nesta ordem:
 2. grandes veículos esportivos;
 3. pesquisa ampla para possível imprensa local relevante.
 
-Este teste apenas descobre URLs candidatas. Não valida fatos, não redige matéria,
-não gera HTML e não libera publicação.
+Este teste descobre URLs candidatas e as estrutura como fontes candidatas de um
+requisito factual. Não valida fatos, não redige matéria, não gera HTML e não
+libera publicação.
 """
 
 from __future__ import annotations
@@ -27,6 +28,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts import buscar_fontes_serper as serper  # noqa: E402
+from scripts import estruturar_evidencias_candidatas as evidence  # noqa: E402
+from scripts import preparar_pesquisa_factual as research  # noqa: E402
 
 OUTPUT_PATH = ROOT / "build" / "pre-jogo" / "serper-discovery-test.json"
 
@@ -70,7 +73,8 @@ def main() -> None:
     runtime_config = deepcopy(config)
     runtime_config["research"]["discovery"]["external_search_enabled"] = True
 
-    query = '"Arsenal" "Manchester City" "Premier League"'
+    requirement_id = "stadium_and_location"
+    query = '"Arsenal" "Manchester City" "Premier League" estádio local jogo'
     stages = [
         {
             "order": 1,
@@ -146,18 +150,46 @@ def main() -> None:
                         f"Candidato fora dos domínios permitidos para {selected_type}: {host}"
                     )
 
+    tz = ZoneInfo(config["timezone"])
+    discovered_at = datetime.now(tz).isoformat()
+    base_requirement = research.build_requirement(requirement_id, config=config)
+    discovery_task = {
+        "requirement_id": requirement_id,
+        "selected_source_type": selected_type,
+        "dynamic_relevance_required": bool(
+            selected_stage and selected_stage.get("dynamic_relevance_required")
+        ),
+        "candidates": selected_candidates,
+    }
+    structured_requirement = evidence.structure_requirement_from_discovery(
+        base_requirement,
+        discovery_task,
+        discovered_at=discovered_at,
+        config=config,
+    )
+
+    if structured_requirement["facts"]:
+        serper.fail("O Passo 20 não pode criar fatos a partir de snippets do buscador.")
+    if structured_requirement["sources"]:
+        serper.fail("Fontes candidatas não podem ser promovidas a fontes validadas.")
+    for source in structured_requirement["source_candidates"]:
+        if source.get("checked_at") is not None or source.get("content_checked") is not False:
+            serper.fail("Fonte candidata foi marcada indevidamente como conteúdo checado.")
+        if source.get("eligible_for_factual_validation") is not False:
+            serper.fail("Fonte candidata não checada não pode ir ao validador factual.")
+
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     if OUTPUT_PATH.exists() and not args.force:
         serper.fail(f"Relatório já existe: {OUTPUT_PATH}. Use --force apenas em build/.")
 
-    tz = ZoneInfo(config["timezone"])
     report = {
-        "step": 19,
-        "mode": "serper_discovery_test",
-        "generated_at": datetime.now(tz).isoformat(),
+        "step": 20,
+        "mode": "serper_discovery_and_candidate_evidence_test",
+        "generated_at": discovered_at,
         "provider": "serper",
         "external_search_performed": True,
         "query_base": query,
+        "requirement_id": requirement_id,
         "source_priority": [
             "official",
             "major_sports_media",
@@ -172,7 +204,9 @@ def main() -> None:
         "local_dynamic_relevance_required": bool(
             selected_stage and selected_stage.get("dynamic_relevance_required")
         ),
+        "structured_evidence_candidate": structured_requirement,
         "facts_verified": False,
+        "ready_for_factual_validation": False,
         "ready_for_drafting": False,
         "ready_for_html": False,
         "publication_unlocked": False,
@@ -191,10 +225,10 @@ def main() -> None:
         print(f"Candidatos encontrados nessa etapa: {len(selected_candidates)}")
     else:
         print("Nenhuma das três etapas encontrou candidatos.")
-    if selected_type == "relevant_local_press":
-        print("A relevância local ainda precisa ser validada antes de aceitar qualquer fonte.")
+    print(f"Fontes candidatas estruturadas no requisito {requirement_id}: {structured_requirement['candidate_source_count']}")
+    print("Nenhuma página candidata foi marcada como checada.")
     print("Nenhum fato foi validado.")
-    print("Redação, HTML e publicação permanecem bloqueados.")
+    print("Validação factual, redação, HTML e publicação permanecem bloqueados.")
     print("O valor de SERPER_API_KEY não foi exibido.")
 
 
