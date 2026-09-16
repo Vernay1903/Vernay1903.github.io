@@ -39,15 +39,31 @@ jobs:
         run: |
           set -euo pipefail
           python -m json.tool config/pre-jogo.json > /dev/null
+          python -m json.tool tests/pre-jogo/football-data-resposta-simulada.json > /dev/null
           python -m py_compile \
             scripts/buscar_fixtures_football_data.py \
             scripts/identificar_jogos.py \
-            scripts/gerar_pre_jogo.py
+            scripts/gerar_pre_jogo.py \
+            tests/pre-jogo/teste_pipeline_simulado.py
           test -f templates/pre-jogo.html
           test -f templates/imagens/01-bola-uhlsport.html
           test -f templates/imagens/02-bola-adidas.html
           test -f templates/imagens/03-bola-estadio.html
           echo "Estrutura técnica validada."
+
+      - name: Executar pipeline simulado sem API
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_pipeline_simulado.py
+
+      - name: Guardar relatório do teste simulado
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-simulacao
+          path: build/pre-jogo/teste-simulado.json
+          if-no-files-found: error
+          retention-days: 3
 
       - name: Definir data-alvo
         id: date
@@ -72,7 +88,7 @@ jobs:
         if: ${{ !inputs.run_api }}
         shell: bash
         run: |
-          echo "Teste estrutural concluído."
+          echo "Teste estrutural e pipeline simulado concluídos."
           echo "A API NÃO foi consultada."
           echo "Nenhum arquivo publicado foi alterado."
 
@@ -109,12 +125,11 @@ jobs:
             --date "${{ steps.date.outputs.target_date }}" \
             --force
 
-      - name: Mostrar resumo do teste
+      - name: Mostrar resumo do teste real
         if: ${{ inputs.run_api }}
         shell: bash
         run: |
           set -euo pipefail
-          REPORT="build/pre-jogo/jogos-${{ steps.date.outputs.target_date }}.json"
           python - <<'PY'
           import json
           from pathlib import Path
@@ -134,7 +149,7 @@ jobs:
               )
           PY
 
-      - name: Guardar relatório como artifact
+      - name: Guardar relatório do teste real como artifact
         if: ${{ inputs.run_api }}
         uses: actions/upload-artifact@v4
         with:
