@@ -1,0 +1,136 @@
+{
+  "target_date": "2026-09-17",
+  "articles": [
+    {
+      "slug": "arsenal-manchester-city-premier-league-2026-transmissao-horario-escalacoes.html",
+      "requirements": {
+        "stadium_and_location": {
+          "status": "verified",
+          "facts": [
+            {
+              "field": "stadium_location",
+              "text": "Estádio e localização simulados apenas para teste técnico."
+            }
+          ],
+          "sources": [
+            {
+              "publisher": "Fonte oficial simulada",
+              "url": "https://official.example/match/stadium",
+              "source_type": "official",
+              "checked_at": "2026-09-16T23:35:00-03:00"
+            }
+          ],
+          "notes": "Conteúdo exclusivamente simulado; não deve ser publicado."
+        },
+        "transmission": {
+          "status": "verified",
+          "facts": [
+            {
+              "field": "transmission",
+              "text": "Transmissão simulada apenas para validar o pipeline."
+            }
+          ],
+          "sources": [
+            {
+              "publisher": "Fonte oficial simulada",
+              "url": "https://official.example/match/broadcast",
+              "source_type": "official",
+              "checked_at": "2026-09-16T23:36:00-03:00"
+            }
+          ],
+          "notes": "Conteúdo exclusivamente simulado; não deve ser publicado."
+        },
+        "probable_lineups_and_coaches": {
+          "status": "unavailable_after_check",
+          "facts": [],
+          "sources": [
+            {
+              "publisher": "Veículo esportivo simulado",
+              "url": "https://sports.example/match/lineups",
+              "source_type": "major_sports_media",
+              "checked_at": "2026-09-16T23:37:00-03:00"
+            }
+          ],
+          "notes": "Nenhuma projeção completa confiável foi localizada no cenário simulado; nenhum jogador deve ser inventado."
+        },
+        "officiating": {
+          "status": "verified_not_announced",
+          "facts": [],
+          "sources": [
+            {
+              "publisher": "Organizador simulado",
+              "url": "https://official.example/match/officiating",
+              "source_type": "official",
+              "checked_at": "2026-09-16T23:38:00-03:00"
+            }
+          ],
+          "notes": "A arbitragem ainda não havia sido anunciada no cenário simulado no momento da checagem."
+        },
+        "recent_form_both_teams": {
+          "status": "verified",
+          "facts": [
+            {
+              "field": "home_recent_form",
+              "text": "Momento recente do mandante simulado para teste."
+            },
+            {
+              "field": "away_recent_form",
+              "text": "Momento recente do visitante simulado para teste."
+            }
+          ],
+          "sources": [
+            {
+              "publisher": "Organizador simulado",
+              "url": "https://official.example/standings/form",
+              "source_type": "official",
+              "checked_at": "2026-09-16T23:39:00-03:00"
+            }
+          ],
+          "notes": "Conteúdo exclusivamente simulado; não deve ser publicado."
+        },
+        "competition_specific_head_to_head": {
+          "status": "verified",
+          "facts": [
+            {
+              "field": "competition_head_to_head",
+              "text": "Retrospecto específico da competição simulado para teste."
+            }
+          ],
+          "sources": [
+            {
+              "publisher": "Organizador simulado",
+              "url": "https://official.example/competition/head-to-head",
+              "source_type": "official",
+              "checked_at": "2026-09-16T23:40:00-03:00"
+            }
+          ],
+          "notes": "Conteúdo exclusivamente simulado; não deve ser publicado."
+        },
+        "competition_internal_link": {
+          "status": "verified",
+          "facts": [
+            {
+              "field": "internal_link",
+              "text": "Link interno simulado do Corte dos Esportes para a competição."
+            }
+          ],
+          "sources": [
+            {
+              "publisher": "Corte dos Esportes",
+              "url": "https://cortedosesportes.com.br/premier-league-historia-campeoes.html",
+              "source_type": "internal_site",
+              "checked_at": "2026-09-16T23:41:00-03:00"
+            }
+          ],
+          "notes": "Link usado apenas para validar a regra de domínio interno."
+        },
+        "stakes_and_qualification_scenarios_when_applicable": {
+          "status": "not_applicable",
+          "facts": [],
+          "sources": [],
+          "notes": "No cenário simulado não há mata-mata nem cenário de classificação direta a descrever."
+        }
+      }
+    }
+  ]
+}
