@@ -1,0 +1,133 @@
+name: Pré-jogo — teste de redação
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Modo do teste"
+        required: true
+        default: simulation_only
+        type: choice
+        options:
+          - simulation_only
+          - openai_real_draft
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pre-jogo-redacao
+  cancel-in-progress: false
+
+jobs:
+  testar-redacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar estrutura do Passo 26
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool config/pre-jogo.json > /dev/null
+          python -m json.tool config/redacao-pre-jogo.json > /dev/null
+          python -m json.tool tests/pre-jogo/contrato-redacao-controlado.json > /dev/null
+          python -m py_compile \
+            scripts/montar_pacote_editorial.py \
+            scripts/preparar_redacao_pre_jogo.py \
+            scripts/validar_rascunho_pre_jogo.py \
+            scripts/redigir_pre_jogo_openai.py \
+            tests/pre-jogo/teste_redator_openai.py
+          echo "Estrutura do redator OpenAI validada."
+
+      - name: Validar cliente do redator sem chamada externa
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_redator_openai.py
+
+      - name: Verificar Secret da OpenAI
+        if: ${{ inputs.mode == 'openai_real_draft' }}
+        shell: bash
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${OPENAI_API_KEY}" ]; then
+            echo "O Secret OPENAI_API_KEY não está configurado."
+            exit 1
+          fi
+          echo "OPENAI_API_KEY encontrado. O valor não será exibido."
+
+      - name: Gerar rascunho real controlado
+        if: ${{ inputs.mode == 'openai_real_draft' }}
+        shell: bash
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          python scripts/redigir_pre_jogo_openai.py \
+            --contract tests/pre-jogo/contrato-redacao-controlado.json \
+            --execute \
+            --force
+
+      - name: Resumo do Passo 26
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("build/pre-jogo/teste-redator-openai.json").read_text(encoding="utf-8"))
+          print(f"Provedor preparado: {report['provider']}")
+          print(f"Modelo preparado: {report['model']}")
+          print(f"Structured Output configurado: {report['structured_output_enabled']}")
+          print(f"Fontes enviadas ao modelo: {report['sources_sent_to_model']}")
+          print(f"Proveniência enviada ao modelo: {report['provenance_sent_to_model']}")
+          print(f"Pesquisa web habilitada: {report['web_search_enabled']}")
+          print(f"Ferramentas habilitadas: {report['tools_enabled']}")
+          print(f"Modo solicitado: ${{ inputs.mode }}")
+          if "${{ inputs.mode }}" == "openai_real_draft":
+              drafts = list(Path("build/pre-jogo/rascunhos-modelo").glob("*.json"))
+              if not drafts:
+                  raise SystemExit("ERRO: rascunho real não foi gerado.")
+              draft = json.loads(drafts[0].read_text(encoding="utf-8"))
+              print(f"Rascunho real validado: {draft.get('draft_validated')}")
+              print(f"Palavras: {draft.get('word_count')}")
+              print(f"Subtítulos fortes: {draft.get('strong_subheading_count')}")
+          else:
+              print("Chamada real executada: não")
+          print("HTML liberado: não")
+          print("Publicação liberada: não")
+          PY
+
+      - name: Guardar resultado da redação
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-redacao-${{ inputs.mode }}
+          path: |
+            build/pre-jogo/teste-redator-openai.json
+            build/pre-jogo/rascunhos-modelo/*.json
+            build/pre-jogo/redacao-modelo-metadata/*.json
+          if-no-files-found: warn
+          retention-days: 3
+
+      - name: Confirmar que nada foi publicado
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- . ':!build'; then
+            echo "ERRO: o teste alterou arquivos versionados."
+            git diff -- . ':!build'
+            exit 1
+          fi
+          echo "OK: nenhum arquivo versionado/publicado foi alterado."
