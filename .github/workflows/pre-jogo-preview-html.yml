@@ -1,0 +1,169 @@
+name: Pré-jogo — teste de prévia HTML
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pre-jogo-preview-html
+  cancel-in-progress: false
+
+jobs:
+  montar-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar estrutura do Passo 27
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/gerar_pre_jogo.py \
+            scripts/validar_rascunho_pre_jogo.py \
+            scripts/montar_preview_html_pre_jogo.py \
+            tests/pre-jogo/teste_preview_html.py
+          test -f templates/anuncios/01-artigo-topo.html
+          test -f templates/anuncios/02-artigo-meio.html
+          test -f templates/anuncios/03-artigo-fim.html
+          echo "Estrutura do Passo 27 validada."
+
+      - name: Testar montagem sem fonte externa
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_preview_html.py
+
+      - name: Localizar último rascunho real aprovado do Passo 26
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/pre-jogo/source-step26
+
+          FOUND=""
+          RUN_IDS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-redacao.yml/runs" \
+            -f branch=main \
+            -f status=success \
+            -f event=workflow_dispatch \
+            -f per_page=20 \
+            --jq '.workflow_runs[].id')
+
+          for RUN_ID in ${RUN_IDS}; do
+            if gh api --method GET \
+              "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+              --jq '.artifacts[].name' | grep -qx 'pre-jogo-redacao-openai_real_draft'; then
+              echo "Usando rascunho real aprovado da execução ${RUN_ID}."
+              gh run download "${RUN_ID}" \
+                --repo "${GITHUB_REPOSITORY}" \
+                --name pre-jogo-redacao-openai_real_draft \
+                --dir build/pre-jogo/source-step26
+              echo "${RUN_ID}" > build/pre-jogo/source-step26-run-id.txt
+              FOUND="${RUN_ID}"
+              break
+            fi
+          done
+
+          if [ -z "${FOUND}" ]; then
+            echo "ERRO: nenhum artifact real aprovado do Passo 26 foi encontrado."
+            exit 1
+          fi
+
+          DRAFT=$(python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("build/pre-jogo/source-step26")
+          for path in sorted(root.rglob("*.json")):
+              try:
+                  data = json.loads(path.read_text(encoding="utf-8"))
+              except Exception:
+                  continue
+              if data.get("draft_validated") is True and isinstance(data.get("body_html"), str):
+                  print(path)
+                  raise SystemExit(0)
+          raise SystemExit("ERRO: artifact do Passo 26 não contém rascunho real validado.")
+          PY
+          )
+          echo "${DRAFT}" > build/pre-jogo/source-step26-draft-path.txt
+          echo "Rascunho localizado: ${DRAFT}"
+
+      - name: Montar prévia HTML completa
+        shell: bash
+        run: |
+          set -euo pipefail
+          DRAFT=$(cat build/pre-jogo/source-step26-draft-path.txt)
+          python scripts/montar_preview_html_pre_jogo.py \
+            --draft "${DRAFT}" \
+            --contract tests/pre-jogo/contrato-redacao-controlado.json \
+            --force
+
+      - name: Validar prévia gerada
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          previews = list(Path("build/pre-jogo/previews").glob("*.html"))
+          metadata_files = list(Path("build/pre-jogo/preview-metadata").glob("*.json"))
+          if len(previews) != 1 or len(metadata_files) != 1:
+              raise SystemExit("ERRO: o Passo 27 deve gerar exatamente uma prévia e um metadata.")
+
+          html = previews[0].read_text(encoding="utf-8")
+          meta = json.loads(metadata_files[0].read_text(encoding="utf-8"))
+          if html.count('data-ad-slot="8702501261"') != 3:
+              raise SystemExit("ERRO: quantidade incorreta de anúncios internos.")
+          if html.count('data-ad-slot="5521804159"') != 1:
+              raise SystemExit("ERRO: anúncio de sidebar não foi preservado.")
+          if meta.get("preview_only") is not True or meta.get("ready_for_publication") is not False:
+              raise SystemExit("ERRO: trava de prévia/publicação inválida.")
+          if meta.get("selected_image") not in html:
+              raise SystemExit("ERRO: imagem selecionada não aparece na prévia.")
+
+          print(f"Prévia: {previews[0]}")
+          print(f"Palavras do rascunho: {meta.get('source_word_count')}")
+          print(f"Imagem: {meta.get('selected_image')}")
+          print("Anúncios internos: 3")
+          print("Sidebar: preservada")
+          print("Publicação liberada: não")
+          PY
+
+      - name: Guardar prévia HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-preview-html-passo-27
+          path: |
+            build/pre-jogo/previews/*.html
+            build/pre-jogo/preview-metadata/*.json
+            build/pre-jogo/source-step26-run-id.txt
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Confirmar que nada foi publicado
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- . ':!build'; then
+            echo "ERRO: o Passo 27 alterou arquivo versionado/publicado."
+            git diff -- . ':!build'
+            exit 1
+          fi
+          echo "OK: nenhum arquivo publicado foi alterado."
+          echo "noticias.json: intacto"
+          echo "sitemap.xml: intacto"
+          echo "HTML na raiz do site: intacto"
