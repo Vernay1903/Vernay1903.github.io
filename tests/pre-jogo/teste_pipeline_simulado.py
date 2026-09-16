@@ -18,6 +18,7 @@ from scripts import buscar_fixtures_football_data as provider  # noqa: E402
 from scripts import identificar_jogos as identifier  # noqa: E402
 from scripts import planejar_pre_jogos as planner  # noqa: E402
 from scripts import preparar_dados_editoriais as editorial  # noqa: E402
+from scripts import preparar_pesquisa_factual as research  # noqa: E402
 
 RAW_FIXTURE_PATH = ROOT / "tests" / "pre-jogo" / "football-data-resposta-simulada.json"
 REPORT_PATH = ROOT / "build" / "pre-jogo" / "teste-simulado.json"
@@ -278,6 +279,58 @@ def main() -> None:
             "Requisitos editoriais ausentes: " + ", ".join(sorted(missing_requirements))
         )
 
+    research_dossiers = research.build_research_dossiers(
+        editorial_records,
+        config=config,
+    )
+    assert_equal(len(research_dossiers), 2, "Quantidade de dossiês de pesquisa")
+
+    arsenal_research = research_dossiers[0]
+    assert_equal(
+        arsenal_research["external_research_performed"],
+        False,
+        "Passo 14 não pode acessar fontes externas",
+    )
+    assert_equal(
+        arsenal_research["ready_for_drafting"],
+        False,
+        "Redação deve continuar bloqueada antes da pesquisa factual",
+    )
+    assert_equal(
+        arsenal_research["ready_for_html"],
+        False,
+        "HTML deve continuar bloqueado antes da pesquisa factual",
+    )
+    assert_equal(
+        arsenal_research["source_policy"]["priority"],
+        ["official", "major_sports_media", "relevant_local_press"],
+        "Prioridade de fontes",
+    )
+
+    requirement_ids = [item["id"] for item in arsenal_research["requirements"]]
+    assert_equal(
+        requirement_ids,
+        config["editorial"]["research_requirements"],
+        "Ordem dos requisitos de pesquisa",
+    )
+    for requirement in arsenal_research["requirements"]:
+        assert_equal(requirement["status"], "pending", f'Status inicial de {requirement["id"]}')
+        assert_equal(requirement["facts"], [], f'Fatos iniciais de {requirement["id"]}')
+        assert_equal(requirement["sources"], [], f'Fontes iniciais de {requirement["id"]}')
+
+    lineup_requirement = next(
+        item
+        for item in arsenal_research["requirements"]
+        if item["id"] == "probable_lineups_and_coaches"
+    )
+    assert_equal(
+        lineup_requirement["allow_unavailable_after_check"],
+        True,
+        "Escalação incompleta não deve forçar invenção de dados",
+    )
+    assert_equal(arsenal_research["verified_fact_count"], 0, "Fatos verificados iniciais")
+    assert_equal(arsenal_research["source_count"], 0, "Fontes iniciais")
+
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     report = {
         "mode": "simulation_only",
@@ -296,6 +349,8 @@ def main() -> None:
         "planning_skipped": skipped,
         "editorial_count": len(editorial_records),
         "editorial_records": editorial_records,
+        "research_dossier_count": len(research_dossiers),
+        "research_dossiers": research_dossiers,
         "checks": {
             "ten_monitored_clubs": True,
             "utc_to_brasilia": True,
@@ -317,6 +372,12 @@ def main() -> None:
             "noticias_entry_exact_match": True,
             "body_remains_pending": True,
             "research_requirements_present": True,
+            "research_dossiers_created": True,
+            "no_external_research_in_step_14": True,
+            "research_starts_empty": True,
+            "source_priority_preserved": True,
+            "drafting_remains_blocked": True,
+            "lineup_non_hallucination_rule_preserved": True,
         },
     }
     REPORT_PATH.write_text(
@@ -345,6 +406,9 @@ def main() -> None:
     print(f"Dados editoriais preparados: {len(editorial_records)}")
     for item in editorial_records:
         print(f'- EDITORIAL | {item["title"]}')
+    print(f"Dossiês de pesquisa preparados: {len(research_dossiers)}")
+    for item in research_dossiers:
+        print(f'- PESQUISA PENDENTE | {item["title"]}')
     print(f"Relatório: {REPORT_PATH.relative_to(ROOT)}")
     print("Nenhum token foi usado e nenhum arquivo publicado foi alterado.")
 
