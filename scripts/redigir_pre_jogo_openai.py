@@ -133,7 +133,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
         "type": "object",
         "properties": {
             "slug": {"type": "string", "enum": [slug]},
-            "body_html": {"type": "string", "minLength": 1},
+            "body_html": {"type": "string", "minLength": 5500},
             "fact_fields_used": {
                 "type": "array",
                 "items": {"type": "string", "enum": unique_fields},
@@ -164,7 +164,7 @@ def system_instructions() -> str:
         "Insira exatamente uma vez o link interno aprovado no contrato, com âncora textual natural. "
         "Não crie nenhum outro link. "
         "Evite bloco mecânico repetindo serviço logo após a abertura; distribua as informações naturalmente. "
-        "Busque entre 850 e 1100 palavras para permanecer acima do mínimo editorial de 700 palavras. "
+        "A matéria deve ter no mínimo absoluto 800 palavras e preferencialmente entre 900 e 1100 palavras; nunca encerre o texto abaixo de 800 palavras. "
         "Retorne somente o objeto JSON exigido pelo schema."
     )
 
@@ -172,7 +172,8 @@ def system_instructions() -> str:
 def user_payload(contract: dict[str, Any]) -> str:
     return (
         "Redija a matéria utilizando somente este contrato editorial limpo. "
-        "Todos os campos factuais listados em required_fact_fields devem ser usados sem alterar seu sentido.\n\n"
+        "Todos os campos factuais listados em required_fact_fields devem ser usados sem alterar seu sentido. "
+        "O validador editorial rejeita qualquer matéria abaixo de 700 palavras; entregue pelo menos 800 palavras para manter margem de segurança.\n\n"
         + json.dumps(contract, ensure_ascii=False, indent=2)
     )
 
