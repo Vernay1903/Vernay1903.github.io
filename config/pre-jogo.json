@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -229,7 +229,47 @@
       }
     },
     "lineup_rule": "Never invent a probable lineup. If reliable sources diverge, preserve the uncertainty. Lack of a complete reliable projection alone must not block publication.",
-    "source_rule": "Prefer official club, competition, federation or organizer sources; then major recognized sports outlets; use reliable local press only as supplementary support."
+    "source_rule": "Prefer official club, competition, federation or organizer sources; then major recognized sports outlets; use reliable local press only as supplementary support.",
+    "discovery": {
+      "mode": "planned_queries",
+      "external_search_enabled": false,
+      "search_provider": null,
+      "publication_unlock_allowed": false,
+      "query_language": "pt-BR",
+      "fallback_order": [
+        "official",
+        "major_sports_media",
+        "relevant_local_press"
+      ],
+      "official_domains": {
+        "clubs": {
+          "Arsenal": ["arsenal.com"],
+          "Manchester City": ["mancity.com"],
+          "PSG": ["psg.fr"],
+          "Bayern de Munique": ["fcbayern.com"],
+          "Inter de Milão": ["inter.it"],
+          "Flamengo": ["flamengo.com.br"],
+          "Palmeiras": ["palmeiras.com.br"],
+          "Grêmio": ["gremio.net"],
+          "Barcelona": ["fcbarcelona.com"],
+          "Real Madrid": ["realmadrid.com"]
+        },
+        "competitions": {
+          "premier-league": ["premierleague.com"],
+          "la-liga": ["laliga.com"],
+          "ligue-1": ["ligue1.com"],
+          "bundesliga": ["bundesliga.com"],
+          "serie-a": ["legaseriea.it"],
+          "brasileirao": ["cbf.com.br"],
+          "champions-league": ["uefa.com"]
+        }
+      },
+      "major_sports_media_domains": [
+        "ge.globo.com",
+        "espn.com.br"
+      ],
+      "local_press_policy": "Só entrar na terceira etapa quando fontes oficiais e grandes veículos não resolverem o requisito; a relevância local deve ser confirmada para o clube ou local da partida antes de aceitar a fonte."
+    }
   },
   "article": {
     "min_words": 700,
