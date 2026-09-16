@@ -88,13 +88,18 @@ def main() -> None:
         "bola-adidas-gramado.jpg",
         "bola-estadio-futebol.jpg",
     }
-    assert rendered.count(f'<img src="{metadata["selected_image"]}"') == 1
+    image_tag = f'<img src="{metadata["selected_image"]}"'
+    assert rendered.count(image_tag) == 1
     assert "{{" not in rendered
     assert "}}" not in rendered
 
+    # A mesma expressão do confronto aparece no H1 e no excerpt. A posição da
+    # imagem deve ser validada apenas dentro do conteúdo do <article>.
     article_marker = '<article id="articleBody">'
-    assert rendered.index(f'<img src="{metadata["selected_image"]}"') > rendered.index(article_marker)
-    assert rendered.index(f'<img src="{metadata["selected_image"]}"') < rendered.index("Arsenal e Manchester City")
+    article_start = rendered.index(article_marker) + len(article_marker)
+    article_end = rendered.index("</article>", article_start)
+    article_html = rendered[article_start:article_end]
+    assert article_html.index(image_tag) < article_html.index("Arsenal e Manchester City")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
