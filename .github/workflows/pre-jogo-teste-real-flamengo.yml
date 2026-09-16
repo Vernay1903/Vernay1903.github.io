@@ -1,0 +1,310 @@
+name: Pré-jogo — teste real Flamengo x Del Valle (Passo 32)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pre-jogo-teste-real-flamengo-passo-32
+  cancel-in-progress: false
+
+env:
+  CONTRACT: tests/pre-jogo/real/contrato-flamengo-independiente-del-valle-2026-09-17.json
+  EVIDENCE: tests/pre-jogo/real/evidencias-flamengo-independiente-del-valle-2026-09-17.json
+  SLUG: flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.html
+  DRAFT: build/pre-jogo/rascunhos-modelo/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json
+  DRAFT_META: build/pre-jogo/redacao-modelo-metadata/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json
+  PREVIEW: build/pre-jogo/previews/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.html
+  PREVIEW_META: build/pre-jogo/preview-metadata/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json
+  PACKAGE_DIR: build/pre-jogo/publication-package
+  PREFLIGHT_REPORT: build/pre-jogo/passo-32-preflight.json
+
+jobs:
+  testar-materia-real:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Baixar repositório sem credencial de push
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar partida real e travas do Passo 32
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool "${CONTRACT}" > /dev/null
+          python -m json.tool "${EVIDENCE}" > /dev/null
+          python -m json.tool config/pre-jogo.json > /dev/null
+          python -m json.tool config/redacao-pre-jogo.json > /dev/null
+
+          python -m py_compile \
+            scripts/redigir_pre_jogo_openai.py \
+            scripts/montar_preview_html_pre_jogo.py \
+            scripts/preparar_pacote_publicacao_pre_jogo.py \
+            scripts/preflight_publicacao_pre_jogo.py
+
+          python - <<'PY'
+          import json
+          from datetime import datetime, timedelta
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          contract = json.loads(Path("tests/pre-jogo/real/contrato-flamengo-independiente-del-valle-2026-09-17.json").read_text(encoding="utf-8"))
+          evidence = json.loads(Path("tests/pre-jogo/real/evidencias-flamengo-independiente-del-valle-2026-09-17.json").read_text(encoding="utf-8"))
+
+          expected_slug = "flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.html"
+          expected_date = "17/09/2026"
+          context = contract.get("match_context", {})
+
+          checks = {
+              "step": contract.get("step") == 25,
+              "home": context.get("home") == "Flamengo",
+              "away": context.get("away") == "Independiente del Valle",
+              "competition": context.get("competition") == "Libertadores",
+              "competition_slug": context.get("competition_slug") == "libertadores",
+              "date": contract.get("date") == expected_date,
+              "kickoff": context.get("kickoff_time_brasilia") == "21:30",
+              "slug": contract.get("slug") == expected_slug,
+              "ready_for_model": contract.get("ready_for_model") is True,
+              "ready_for_html": contract.get("ready_for_html") is False,
+              "publication_locked": contract.get("publication_unlocked") is False,
+          }
+          failed = [key for key, ok in checks.items() if not ok]
+          if failed:
+              raise SystemExit("ERRO: contrato real inválido nos campos: " + ", ".join(failed))
+
+          tomorrow = datetime.now(ZoneInfo("America/Sao_Paulo")).date() + timedelta(days=1)
+          contract_date = datetime.strptime(expected_date, "%d/%m/%Y").date()
+          if contract_date != tomorrow:
+              raise SystemExit(
+                  f"ERRO: este teste é válido somente na véspera. Amanhã={tomorrow.isoformat()}, contrato={contract_date.isoformat()}."
+              )
+
+          policy = evidence.get("article_source_policy", {})
+          if policy.get("internal_only") is not True:
+              raise SystemExit("ERRO: evidências precisam permanecer internas.")
+          for key in ("send_sources_to_model", "show_sources_in_article", "show_research_process_in_article"):
+              if policy.get(key) is not False:
+                  raise SystemExit(f"ERRO: política interna inválida: {key}")
+
+          match = evidence.get("match", {})
+          for key, expected in {
+              "home": "Flamengo",
+              "away": "Independiente del Valle",
+              "competition": "Libertadores",
+              "date": expected_date,
+              "kickoff_brasilia": "21:30",
+              "stadium": "Maracanã",
+          }.items():
+              if match.get(key) != expected:
+                  raise SystemExit(f"ERRO: evidência diverge do contrato em {key}.")
+
+          if not evidence.get("evidence"):
+              raise SystemExit("ERRO: snapshot interno de evidências está vazio.")
+
+          if Path(expected_slug).exists():
+              raise SystemExit(f"ERRO: slug já existe na raiz: {expected_slug}")
+
+          noticias = Path("noticias.json").read_text(encoding="utf-8")
+          sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
+          if expected_slug in noticias:
+              raise SystemExit("ERRO: slug já existe em noticias.json.")
+          if f"https://cortedosesportes.com.br/{expected_slug}" in sitemap:
+              raise SystemExit("ERRO: URL já existe em sitemap.xml.")
+
+          print("OK: partida real do Flamengo confirmada para o teste controlado.")
+          print("Data: 17/09/2026")
+          print("Horário de Brasília: 21:30")
+          print("Competição: Libertadores — quartas de final, volta")
+          print("Fontes/evidências: internas e bloqueadas para o redator e para a matéria")
+          print("Publicação: bloqueada")
+          PY
+
+      - name: Verificar Secret da OpenAI
+        shell: bash
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${OPENAI_API_KEY}" ]; then
+            echo "ERRO: OPENAI_API_KEY não está configurado."
+            exit 1
+          fi
+          echo "OPENAI_API_KEY encontrado. O valor não será exibido."
+
+      - name: Gerar e validar rascunho real do Flamengo
+        shell: bash
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          python scripts/redigir_pre_jogo_openai.py \
+            --contract "${CONTRACT}" \
+            --execute \
+            --force
+          test -f "${DRAFT}"
+          test -f "${DRAFT_META}"
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          draft = json.loads(Path("build/pre-jogo/rascunhos-modelo/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json").read_text(encoding="utf-8"))
+          if draft.get("draft_validated") is not True:
+              raise SystemExit("ERRO: rascunho real não foi validado.")
+          if draft.get("word_count", 0) < 700:
+              raise SystemExit("ERRO: rascunho real ficou abaixo de 700 palavras.")
+          if draft.get("ready_for_html") is not False or draft.get("publication_unlocked") is not False:
+              raise SystemExit("ERRO: rascunho abriu uma trava indevida.")
+
+          body = draft.get("body_html", "")
+          forbidden = [
+              "segundo o site",
+              "segundo o portal",
+              "conforme o site",
+              "conforme o portal",
+              "de acordo com o site",
+              "de acordo com o portal",
+              "nossa pesquisa",
+              "nossa consulta",
+              "fontes consultadas",
+          ]
+          lower = body.casefold()
+          hits = [item for item in forbidden if item.casefold() in lower]
+          if hits:
+              raise SystemExit("ERRO: matéria citou fonte/consulta interna: " + ", ".join(hits))
+
+          print(f"OK: rascunho real validado com {draft.get('word_count')} palavras.")
+          print("Citação de fontes/consultas internas: não")
+          PY
+
+      - name: Montar prévia HTML completa
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/montar_preview_html_pre_jogo.py \
+            --draft "${DRAFT}" \
+            --contract "${CONTRACT}" \
+            --output-dir build/pre-jogo \
+            --force
+          test -f "${PREVIEW}"
+          test -f "${PREVIEW_META}"
+
+      - name: Preparar pacote real de publicação sem publicar
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/preparar_pacote_publicacao_pre_jogo.py \
+            --preview "${PREVIEW}" \
+            --metadata "${PREVIEW_META}" \
+            --contract "${CONTRACT}" \
+            --output-dir "${PACKAGE_DIR}" \
+            --force
+
+          test -f "${PACKAGE_DIR}/${SLUG}"
+          test -f "${PACKAGE_DIR}/noticias.json"
+          test -f "${PACKAGE_DIR}/sitemap.xml"
+          test -f "${PACKAGE_DIR}/manifest.json"
+
+      - name: Executar preflight final ainda bloqueado
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/preflight_publicacao_pre_jogo.py \
+            --package-dir "${PACKAGE_DIR}" \
+            --report "${PREFLIGHT_REPORT}"
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("build/pre-jogo/passo-32-preflight.json").read_text(encoding="utf-8"))
+          if report.get("publication_gate_reached") is not True:
+              raise SystemExit("ERRO: o pacote real não alcançou a porta final.")
+          if report.get("package_matches_current_main") is not True:
+              raise SystemExit("ERRO: pacote real diverge da main atual.")
+          if report.get("changed_file_count") != 3:
+              raise SystemExit("ERRO: pacote real não contém exatamente três alterações.")
+          if report.get("commit_created") is not False:
+              raise SystemExit("ERRO: o teste real criou commit indevidamente.")
+          if report.get("push_executed") is not False:
+              raise SystemExit("ERRO: o teste real executou push indevidamente.")
+          if report.get("main_published") is not False:
+              raise SystemExit("ERRO: o teste real publicou na main indevidamente.")
+
+          print("OK: pacote real chegou até a porta final e permaneceu bloqueado.")
+          print("Alterações futuras preparadas: HTML + noticias.json + sitemap.xml")
+          print("Commit: não")
+          print("Push: não")
+          print("Publicação: não")
+          PY
+
+      - name: Confirmar que o site continua intacto
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- . ':!build'; then
+            echo "ERRO: o Passo 32 alterou arquivo versionado/publicado."
+            git diff -- . ':!build'
+            exit 1
+          fi
+          if git status --porcelain=v1 --untracked-files=all | grep -v '^?? build/' | grep -q .; then
+            echo "ERRO: surgiram arquivos fora de build/."
+            git status --porcelain=v1 --untracked-files=all
+            exit 1
+          fi
+          echo "OK: nenhum arquivo publicado/versionado foi alterado pelo teste."
+
+      - name: Resumo do Passo 32
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          contract = json.loads(Path("tests/pre-jogo/real/contrato-flamengo-independiente-del-valle-2026-09-17.json").read_text(encoding="utf-8"))
+          draft = json.loads(Path("build/pre-jogo/rascunhos-modelo/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json").read_text(encoding="utf-8"))
+          preview_meta = json.loads(Path("build/pre-jogo/preview-metadata/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json").read_text(encoding="utf-8"))
+          manifest = json.loads(Path("build/pre-jogo/publication-package/manifest.json").read_text(encoding="utf-8"))
+
+          print("PASSO 32 — TESTE REAL CONCLUÍDO")
+          print(f"Jogo: {contract['match_context']['home']} x {contract['match_context']['away']}")
+          print(f"Data: {contract['date']} às {contract['match_context']['kickoff_time_brasilia']}")
+          print(f"Rascunho validado: {draft.get('draft_validated')}")
+          print(f"Palavras: {draft.get('word_count')}")
+          print(f"Imagem: {preview_meta.get('selected_image')}")
+          print(f"Anúncios internos: {preview_meta.get('in_body_ads')}")
+          print(f"Arquivos preparados para eventual publicação: {manifest.get('prepared_change_count')}")
+          print("Fontes/consultas no texto da matéria: proibidas")
+          print("HTML na raiz: não")
+          print("noticias.json original alterado: não")
+          print("sitemap.xml original alterado: não")
+          print("Commit/push/publicação: não")
+          PY
+
+      - name: Guardar matéria real para revisão
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-teste-real-flamengo-passo-32
+          path: |
+            tests/pre-jogo/real/contrato-flamengo-independiente-del-valle-2026-09-17.json
+            tests/pre-jogo/real/evidencias-flamengo-independiente-del-valle-2026-09-17.json
+            build/pre-jogo/rascunhos-modelo/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json
+            build/pre-jogo/redacao-modelo-metadata/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json
+            build/pre-jogo/previews/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.html
+            build/pre-jogo/preview-metadata/flamengo-independiente-del-valle-libertadores-2026-transmissao-horario-escalacoes.json
+            build/pre-jogo/publication-package/*
+            build/pre-jogo/passo-32-preflight.json
+          if-no-files-found: error
+          retention-days: 3
