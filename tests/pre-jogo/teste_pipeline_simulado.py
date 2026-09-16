@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 from scripts import buscar_fixtures_football_data as provider  # noqa: E402
 from scripts import identificar_jogos as identifier  # noqa: E402
 from scripts import planejar_pre_jogos as planner  # noqa: E402
+from scripts import preparar_dados_editoriais as editorial  # noqa: E402
 
 RAW_FIXTURE_PATH = ROOT / "tests" / "pre-jogo" / "football-data-resposta-simulada.json"
 REPORT_PATH = ROOT / "build" / "pre-jogo" / "teste-simulado.json"
@@ -68,7 +69,6 @@ def main() -> None:
         "Partidas mantidas pela normalização",
     )
 
-    # Confirma que a janela editorial usa Brasília, inclusive quando o UTC já virou o dia.
     real_barca = next(item for item in normalized if item["id"] == 1003)
     assert_equal(
         real_barca["kickoff"],
@@ -76,7 +76,6 @@ def main() -> None:
         "Conversão UTC -> America/Sao_Paulo",
     )
 
-    # 1004 não envolve clube monitorado; 1005 cai em 16/09 no horário de Brasília.
     excluded_at_normalization = {
         item["raw_id"] for item in normalization_results if not item["included"]
     }
@@ -86,7 +85,6 @@ def main() -> None:
         "Exclusões na normalização",
     )
 
-    # Acrescenta casos normalizados artificiais para exercitar as travas editoriais.
     test_fixtures = deepcopy(normalized)
     test_fixtures.extend(
         [
@@ -126,7 +124,6 @@ def main() -> None:
                 "first_team": False,
                 "friendly": False,
             },
-            # Duplicata proposital de Flamengo x Bahia para confirmar matéria única.
             deepcopy(next(item for item in normalized if item["id"] == 1002)),
         ]
     )
@@ -174,8 +171,6 @@ def main() -> None:
             "Travas não exercitadas ou não aplicadas: " + ", ".join(sorted(missing))
         )
 
-    # Planejamento: simula uma matéria manual já existente para Flamengo x Bahia.
-    # O planejador deve bloquear esse jogo mesmo que o slug antigo seja diferente.
     simulated_noticias = [
         {
             "title": "Flamengo x Bahia: onde assistir, horário e escalações",
@@ -222,6 +217,67 @@ def main() -> None:
         "Horário-alvo de publicação",
     )
 
+    editorial_records = editorial.build_editorial_records(
+        planned,
+        target_date=TARGET_DATE,
+        config=config,
+    )
+    assert_equal(len(editorial_records), 2, "Quantidade de dados editoriais")
+
+    arsenal_editorial = editorial_records[0]
+    real_barca_editorial = editorial_records[1]
+    assert_equal(
+        arsenal_editorial["title"],
+        "Arsenal x Manchester City pela Premier League: transmissão, horário e prováveis escalações",
+        "Título editorial Arsenal x Manchester City",
+    )
+    assert_equal(
+        real_barca_editorial["title"],
+        "Real Madrid x Barcelona pela La Liga: transmissão, horário e prováveis escalações",
+        "Título editorial Real Madrid x Barcelona",
+    )
+    assert_equal(arsenal_editorial["date"], "17/09/2026", "Data editorial")
+    assert_equal(arsenal_editorial["slug"], planned[0]["slug"], "Slug definitivo preservado")
+    assert_equal(arsenal_editorial["body_html"], None, "Corpo deve continuar pendente")
+    assert_equal(arsenal_editorial["ready_for_html"], False, "HTML não pode estar liberado antes da redação")
+    assert_equal(
+        "17 de setembro de 2026" in arsenal_editorial["excerpt"],
+        True,
+        "Excerpt deve conter a data por extenso",
+    )
+    assert_equal(
+        "16h (de Brasília)" in arsenal_editorial["excerpt"],
+        True,
+        "Excerpt deve conter horário de Brasília",
+    )
+    assert_equal(
+        arsenal_editorial["noticias_entry"],
+        {
+            "title": arsenal_editorial["title"],
+            "excerpt": arsenal_editorial["excerpt"],
+            "url": arsenal_editorial["slug"],
+            "date": "17/09/2026",
+            "category": "Futebol",
+        },
+        "Objeto noticias.json deve reutilizar exatamente título, excerpt, URL e data",
+    )
+
+    research_requirements = set(arsenal_editorial["research_requirements"])
+    expected_requirements = {
+        "stadium_and_location",
+        "transmission",
+        "probable_lineups_and_coaches",
+        "officiating",
+        "recent_form_both_teams",
+        "competition_specific_head_to_head",
+        "competition_internal_link",
+    }
+    missing_requirements = expected_requirements.difference(research_requirements)
+    if missing_requirements:
+        raise AssertionError(
+            "Requisitos editoriais ausentes: " + ", ".join(sorted(missing_requirements))
+        )
+
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     report = {
         "mode": "simulation_only",
@@ -238,6 +294,8 @@ def main() -> None:
         "planned_articles": planned,
         "planning_skipped_count": len(skipped),
         "planning_skipped": skipped,
+        "editorial_count": len(editorial_records),
+        "editorial_records": editorial_records,
         "checks": {
             "ten_monitored_clubs": True,
             "utc_to_brasilia": True,
@@ -254,6 +312,11 @@ def main() -> None:
             "existing_manual_article_blocks_duplicate": True,
             "prepare_time_2330": True,
             "publish_time_0001": True,
+            "editorial_title_pattern": True,
+            "editorial_excerpt_date_and_time": True,
+            "noticias_entry_exact_match": True,
+            "body_remains_pending": True,
+            "research_requirements_present": True,
         },
     }
     REPORT_PATH.write_text(
@@ -279,6 +342,9 @@ def main() -> None:
             f'- BLOQUEADO | {item["home"]} x {item["away"]} | '
             f'{", ".join(item["reasons"])}'
         )
+    print(f"Dados editoriais preparados: {len(editorial_records)}")
+    for item in editorial_records:
+        print(f'- EDITORIAL | {item["title"]}')
     print(f"Relatório: {REPORT_PATH.relative_to(ROOT)}")
     print("Nenhum token foi usado e nenhum arquivo publicado foi alterado.")
 
