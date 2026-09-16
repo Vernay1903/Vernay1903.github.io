@@ -1,0 +1,122 @@
+{
+  "step": 32,
+  "mode": "internal_evidence_snapshot_only",
+  "match": {
+    "home": "Flamengo",
+    "away": "Independiente del Valle",
+    "competition": "Libertadores",
+    "phase": "quartas de final - jogo de volta",
+    "date": "17/09/2026",
+    "kickoff_brasilia": "21:30",
+    "stadium": "Maracanã",
+    "city": "Rio de Janeiro"
+  },
+  "article_source_policy": {
+    "internal_only": true,
+    "send_sources_to_model": false,
+    "show_sources_in_article": false,
+    "show_research_process_in_article": false
+  },
+  "evidence": [
+    {
+      "source_type": "official_club",
+      "publisher": "Flamengo",
+      "url": "https://www.flamengo.com.br/",
+      "supports": [
+        "date",
+        "kickoff",
+        "stadium",
+        "first_team_official_fixture",
+        "latest_result_fluminense_context"
+      ]
+    },
+    {
+      "source_type": "official_competition",
+      "publisher": "CONMEBOL Libertadores",
+      "url": "https://gol.conmebol.com/libertadores/pt-br/news/flamengo-x-independiente-del-valle-pela-volta-das-quartas-de-final-da-conmebol-libertadores",
+      "supports": [
+        "phase",
+        "stadium",
+        "date",
+        "kickoff",
+        "referee",
+        "var",
+        "first_leg",
+        "qualification_scenarios"
+      ]
+    },
+    {
+      "source_type": "major_sports_media",
+      "publisher": "ge",
+      "url": "https://ge.globo.com/futebol/times/flamengo/noticia/2026/09/16/del-valle-chega-ao-brasil-treinara-no-ct-do-fluminense-e-nao-tera-seu-principal-artilheiro-contra-flamengo.ghtml",
+      "supports": [
+        "away_probable_lineup",
+        "away_absence_charli_gonzalez",
+        "away_replacement_djorkaeff_reasco",
+        "qualification_scenarios"
+      ]
+    },
+    {
+      "source_type": "major_sports_media",
+      "publisher": "Lance!",
+      "url": "https://www.lance.com.br/onde-assistir/flamengo-x-del-valle-onde-assistir-horario-e-escalacoes-do-jogo-pela-libertadores.html",
+      "supports": [
+        "transmission",
+        "home_probable_lineup",
+        "home_coach",
+        "away_coach",
+        "assistant_referees",
+        "var",
+        "home_availability",
+        "away_recent_result"
+      ]
+    },
+    {
+      "source_type": "major_sports_media",
+      "publisher": "ge",
+      "url": "https://ge.globo.com/futebol/times/flamengo/noticia/2026/09/15/entenda-como-foi-a-recuperacao-de-alex-sandro-que-volta-ao-flamengo-em-meio-a-disputa-com-ayrton-lucas.ghtml",
+      "supports": [
+        "home_latest_result",
+        "home_brasileirao_points",
+        "home_brasileirao_lead"
+      ]
+    },
+    {
+      "source_type": "official_club",
+      "publisher": "Flamengo",
+      "url": "https://www.flamengo.com.br/flamengo/noticias/futebol/na-altitude-de-quito-flamengo-vence-o-del-valle-e-abre-vantagem-na-libertadores",
+      "supports": [
+        "first_leg_score",
+        "first_leg_scorers"
+      ]
+    },
+    {
+      "source_type": "statistics_cross_check",
+      "publisher": "oGol",
+      "url": "https://www.ogol.com.br/jogo/2026-09-18-flamengo-independiente-del-valle/12593261",
+      "supports": [
+        "libertadores_head_to_head_games",
+        "libertadores_head_to_head_wins",
+        "libertadores_head_to_head_draws",
+        "libertadores_head_to_head_goals"
+      ]
+    },
+    {
+      "source_type": "statistics_cross_check",
+      "publisher": "FBref",
+      "url": "https://fbref.com/en/stathead/matchup/teams/990519b8/639950ae/Independiente-del-Valle-vs-Flamengo-History",
+      "supports": [
+        "libertadores_head_to_head_games",
+        "libertadores_head_to_head_wins",
+        "libertadores_head_to_head_draws",
+        "libertadores_head_to_head_goals",
+        "last_libertadores_meeting"
+      ]
+    }
+  ],
+  "notes": [
+    "A escalação provável do Flamengo contém alternativas e dúvidas entre parênteses e não deve ser apresentada como oficial.",
+    "A escalação provável do Independiente del Valle usada no contrato prioriza a atualização do ge de 16/09/2026, que já considera a ausência de Charli González.",
+    "As evidências deste arquivo são exclusivamente de auditoria interna e não podem ser enviadas ao redator nem aparecer no corpo da matéria."
+  ]
+}
