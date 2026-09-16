@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -145,7 +145,22 @@
       "competition_internal_link",
       "stakes_and_qualification_scenarios_when_applicable",
       "upcoming_fixtures_when_useful"
-    ]
+    ],
+    "source_attribution_policy": {
+      "research_sources_are_internal_only": true,
+      "forbid_source_names_in_article_body": true,
+      "forbid_research_process_mentions": true,
+      "forbid_query_mentions": true,
+      "write_verified_facts_directly": true,
+      "forbidden_examples": [
+        "segundo o site X",
+        "conforme o site X",
+        "de acordo com o site X",
+        "segundo o portal X",
+        "conforme o portal X",
+        "de acordo com o portal X"
+      ]
+    }
   },
   "research": {
     "auto_fetch_enabled": false,
@@ -281,6 +296,20 @@
         "espn.com.br"
       ],
       "local_press_policy": "Só entrar na terceira etapa quando fontes oficiais e grandes veículos não resolverem o requisito; a relevância local deve ser confirmada para o clube ou local da partida antes de aceitar a fonte."
+    },
+    "page_reader": {
+      "name": "serper-scrape",
+      "base_url": "https://scrape.serper.dev",
+      "method": "POST",
+      "api_key_env": "SERPER_API_KEY",
+      "auth_header": "X-API-KEY",
+      "content_type": "application/json",
+      "include_markdown": true,
+      "max_candidates_per_requirement": 1,
+      "max_segments_per_source": 6,
+      "max_segment_chars": 500,
+      "execute_requires_explicit_flag": true,
+      "publication_unlock_allowed": false
     }
   },
   "article": {
