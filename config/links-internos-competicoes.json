@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "domain": "https://cortedosesportes.com.br/",
+  "links": {
+    "premier-league": {
+      "url": "https://cortedosesportes.com.br/premier-league-historia-campeoes.html",
+      "anchor_hint": "história da Premier League"
+    },
+    "la-liga": {
+      "url": "https://cortedosesportes.com.br/laliga-historia-maiores-campeoes-rivalidade-real-madrid-barcelona.html",
+      "anchor_hint": "história da La Liga"
+    },
+    "ligue-1": {
+      "url": "https://cortedosesportes.com.br/campeonato-frances-ligue-1-historia-maiores-campeoes-hegemonias.html",
+      "anchor_hint": "história da Ligue 1"
+    },
+    "bundesliga": {
+      "url": "https://cortedosesportes.com.br/bundesliga-historia-hegemonia-bayern-cultura-torcida.html",
+      "anchor_hint": "história da Bundesliga"
+    },
+    "serie-a": {
+      "url": "https://cortedosesportes.com.br/campeonato-italiano-historia-tradicao-maiores-campeoes-rivalidades.html",
+      "anchor_hint": "história do Campeonato Italiano"
+    },
+    "brasileirao": {
+      "url": "https://cortedosesportes.com.br/campeonato-brasileiro-historia-rivalidades-tradicao-evolucao.html",
+      "anchor_hint": "história do Campeonato Brasileiro"
+    },
+    "champions-league": {
+      "url": "https://cortedosesportes.com.br/champions-league-historia-maiores-campeoes-curiosidades.html",
+      "anchor_hint": "história da Champions League"
+    },
+    "libertadores": {
+      "url": "https://cortedosesportes.com.br/libertadores-historia-maiores-campeoes-rivalidades-cultura-torcida.html",
+      "anchor_hint": "história da Libertadores"
+    },
+    "copa-do-brasil": {
+      "url": "https://cortedosesportes.com.br/copa-do-brasil-historia-tradicao-maiores-campeoes.html",
+      "anchor_hint": "história da Copa do Brasil"
+    }
+  }
+}
