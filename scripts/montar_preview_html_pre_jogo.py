@@ -50,7 +50,7 @@ FORBIDDEN_PREEXISTING_AD_RE = re.compile(
 STOPWORDS = {
     "a", "ao", "aos", "as", "com", "da", "das", "de", "do", "dos", "e", "em",
     "no", "nos", "na", "nas", "o", "os", "para", "pela", "pelo", "por", "que",
-    "será", "sera", "são", "sao", "um", "uma", "pela", "pelo", "foi", "foram",
+    "sera", "sao", "um", "uma", "foi", "foram",
 }
 
 
@@ -136,7 +136,6 @@ def section_records(body: str) -> list[dict[str, Any]]:
                 "end": end,
                 "heading": normalize_text(match.group(1)),
                 "text": normalize_text(chunk),
-                "raw": chunk,
             }
         )
     return records
@@ -150,8 +149,7 @@ def best_section_for_fact(records: list[dict[str, Any]], fact: str) -> tuple[int
     best_index = -1
     best_score = -1
     for record in records:
-        available = token_set(record["text"])
-        score = len(wanted & available)
+        score = len(wanted & token_set(record["text"]))
         if score > best_score:
             best_score = score
             best_index = int(record["index"])
@@ -276,8 +274,8 @@ def build_preview(
         fail("HTML final da prévia não preservou os três anúncios internos.")
     if rendered.count('data-ad-slot="5521804159"') != 1:
         fail("HTML final da prévia não preservou exatamente um anúncio de sidebar.")
-    if rendered.count(selected_image) != 1:
-        fail("HTML final da prévia não contém exatamente a imagem selecionada.")
+    if rendered.count(f'<img src="{selected_image}"') != 1:
+        fail("HTML final da prévia não contém exatamente uma tag <img> com a imagem selecionada.")
     if "{{" in rendered or "}}" in rendered:
         fail("HTML final da prévia contém placeholder não resolvido.")
 
