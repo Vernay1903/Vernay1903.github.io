@@ -71,7 +71,8 @@ def main() -> None:
 
     assert_equal(plan["external_search_enabled"], False, "Busca externa deve ficar desligada")
     assert_equal(plan["external_search_performed"], False, "Nenhuma busca pode ser executada")
-    assert_equal(plan["search_provider"], None, "Provedor de busca ainda não deve ser escolhido")
+    assert_equal(plan["search_provider"]["name"], "serper", "Serper deve ser o provedor escolhido")
+    assert_equal(plan["search_provider"]["api_key_env"], "SERPER_API_KEY", "Secret esperado do Serper")
     assert_equal(plan["ready_for_drafting"], False, "Redação continua bloqueada")
     assert_equal(plan["ready_for_html"], False, "HTML continua bloqueado")
     assert_equal(plan["publication_unlocked"], False, "Publicação continua bloqueada")
@@ -131,6 +132,7 @@ def main() -> None:
         "external_search_performed": False,
         "collection_status": plan["collection_status"],
         "task_count": len(plan["tasks"]),
+        "provider_selected": plan["search_provider"]["name"],
         "official_domains": stadium["stages"][0]["domains"],
         "major_sports_media_domains": stadium["stages"][1]["domains"],
         "checks": {
@@ -139,6 +141,7 @@ def main() -> None:
             "local_press_third_and_dynamic": True,
             "internal_link_scoped_to_site": True,
             "lineup_queries_cover_both_teams": True,
+            "serper_selected_but_not_executed": True,
             "no_external_search": True,
             "drafting_blocked": True,
             "html_blocked": True,
@@ -150,7 +153,7 @@ def main() -> None:
     print("OK: planejamento de coleta de fontes validado sem busca externa.")
     print(f"Tarefas planejadas: {len(plan['tasks'])}")
     print("Ordem: fontes oficiais -> grandes veículos -> imprensa local relevante.")
-    print("Provedor de busca: ainda não definido.")
+    print("Provedor de busca selecionado: Serper (execução real ainda desligada).")
     print("Redação, HTML e publicação permanecem bloqueados.")
 
 
