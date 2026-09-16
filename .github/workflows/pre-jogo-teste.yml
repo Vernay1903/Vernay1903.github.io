@@ -14,6 +14,7 @@ on:
         type: choice
         options:
           - simulation_only
+          - serper_smoke_test
           - real_api
 
 permissions:
@@ -54,6 +55,7 @@ jobs:
             scripts/validar_pesquisa_factual.py \
             scripts/planejar_coleta_fontes.py \
             scripts/buscar_fontes_serper.py \
+            scripts/testar_serper_real.py \
             scripts/gerar_pre_jogo.py \
             tests/pre-jogo/teste_pipeline_simulado.py \
             tests/pre-jogo/teste_validacao_pesquisa.py \
@@ -130,6 +132,56 @@ jobs:
           echo "Nenhuma pesquisa externa real foi executada."
           echo "HTML e publicação permaneceram bloqueados."
           echo "Nenhum arquivo publicado foi alterado."
+
+      - name: Verificar Secret do Serper
+        if: ${{ inputs.mode == 'serper_smoke_test' }}
+        shell: bash
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SERPER_API_KEY}" ]; then
+            echo "O Secret SERPER_API_KEY não está configurado."
+            exit 1
+          fi
+          echo "SERPER_API_KEY encontrado. O valor não será exibido."
+
+      - name: Executar uma única consulta real ao Serper
+        if: ${{ inputs.mode == 'serper_smoke_test' }}
+        shell: bash
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: |
+          set -euo pipefail
+          python scripts/testar_serper_real.py --execute --force
+
+      - name: Guardar resultado do smoke test Serper
+        if: ${{ inputs.mode == 'serper_smoke_test' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: serper-smoke-test
+          path: build/pre-jogo/serper-smoke-test.json
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Resumo do smoke test Serper
+        if: ${{ inputs.mode == 'serper_smoke_test' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("build/pre-jogo/serper-smoke-test.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          print(f"Provedor: {data['provider']}")
+          print(f"Consultas reais executadas: {data['query_count']}")
+          print(f"Candidatos oficiais encontrados: {data['candidate_count']}")
+          print("Fatos verificados: não")
+          print("Redação liberada: não")
+          print("HTML liberado: não")
+          print("Publicação liberada: não")
+          PY
 
       - name: Verificar Secret para teste real
         if: ${{ inputs.mode == 'real_api' }}
@@ -232,7 +284,7 @@ jobs:
           print(f"Planos de coleta preparados: {collection['collection_plan_count']}")
           print(f"Pesquisa externa executada: {collection['external_search_performed']}")
           print(f"Provedor de busca selecionado: {provider_name}")
-          print("A busca Serper real continua bloqueada até configurar SERPER_API_KEY e habilitar explicitamente a execução.")
+          print("A busca Serper real do pipeline continua separada e bloqueada até uma etapa posterior.")
           print("HTML e publicação continuam bloqueados.")
           for item in collection["plans"]:
               print(
