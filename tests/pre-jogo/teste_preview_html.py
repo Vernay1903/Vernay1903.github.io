@@ -35,9 +35,9 @@ def body_fixture(contract: dict) -> str:
         long_paragraph("Os três pontos têm impacto direto na disputa pelas primeiras posições."),
         f'<p>A <a href="{link}">história da Premier League</a> ajuda a dimensionar a importância de confrontos entre candidatos às primeiras posições.</p>',
         "<p><strong>Como chega o Arsenal</strong></p>",
-        long_paragraph("O Arsenal soma três vitórias nos últimos cinco jogos."),
+        long_paragraph("O Arsenal venceu três de seus últimos cinco jogos."),
         "<p><strong>Como chega o Manchester City</strong></p>",
-        long_paragraph("O Manchester City venceu quatro dos últimos cinco jogos."),
+        long_paragraph("O Manchester City chega após quatro vitórias em cinco partidas."),
         "<p><strong>Prováveis escalações e arbitragem</strong></p>",
         "<p>As formações são prováveis e podem sofrer alterações até a confirmação oficial.</p>",
         "<ul><li>Arsenal: Raya; Timber; Saliba; Gabriel; Calafiori; Rice; Odegaard; Saka; Eze; Martinelli; Gyokeres.</li><li>Técnico: Mikel Arteta.</li></ul>",
@@ -50,7 +50,11 @@ def body_fixture(contract: dict) -> str:
         "<p><strong>Onde assistir</strong></p>",
         long_paragraph("A transmissão será de ESPN e Disney+."),
         "<p><strong>O que está em jogo</strong></p>",
-        long_paragraph("Os três pontos têm impacto direto na disputa pelas primeiras posições."),
+        long_paragraph(
+            "Os três pontos têm impacto direto na disputa pelas primeiras posições. "
+            "O Arsenal soma três vitórias nos últimos cinco jogos. "
+            "O Manchester City venceu quatro dos últimos cinco jogos."
+        ),
     ]
     return "\n".join(parts)
 
@@ -82,6 +86,7 @@ def main() -> None:
     assert rendered.index("<!-- ANÚNCIO (ARTIGO - TOPO) -->") < rendered.index("<!-- ANÚNCIO (ARTIGO - MEIO) -->")
     assert rendered.index("<!-- ANÚNCIO (ARTIGO - MEIO) -->") < rendered.index("<!-- ANÚNCIO (ARTIGO - FIM) -->")
     assert metadata["ad_placement"]["recent_form_sections"]
+    assert all("como chega" in heading for heading in metadata["ad_placement"]["recent_form_sections"])
     assert "historico" in metadata["ad_placement"]["h2h_section"]
     assert metadata["selected_image"] in {
         "bola-uhlsport-gramado.jpg",
