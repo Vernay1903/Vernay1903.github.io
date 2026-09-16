@@ -7,11 +7,14 @@ on:
         description: "Data-alvo YYYY-MM-DD (vazio = amanhã em America/Sao_Paulo)"
         required: false
         type: string
-      run_api:
-        description: "Executar consulta real ao football-data.org"
+      mode:
+        description: "Modo do teste"
         required: true
-        default: false
-        type: boolean
+        default: simulation_only
+        type: choice
+        options:
+          - simulation_only
+          - real_api
 
 permissions:
   contents: read
@@ -85,7 +88,7 @@ jobs:
           echo "Data-alvo: ${TARGET_DATE}"
 
       - name: Modo seguro sem chamada externa
-        if: ${{ !inputs.run_api }}
+        if: ${{ inputs.mode == 'simulation_only' }}
         shell: bash
         run: |
           echo "Teste estrutural e pipeline simulado concluídos."
@@ -93,7 +96,7 @@ jobs:
           echo "Nenhum arquivo publicado foi alterado."
 
       - name: Verificar Secret para teste real
-        if: ${{ inputs.run_api }}
+        if: ${{ inputs.mode == 'real_api' }}
         shell: bash
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
@@ -106,7 +109,7 @@ jobs:
           echo "Secret encontrado. O valor não será exibido."
 
       - name: Buscar fixtures no football-data.org
-        if: ${{ inputs.run_api }}
+        if: ${{ inputs.mode == 'real_api' }}
         shell: bash
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
@@ -117,7 +120,7 @@ jobs:
             --force
 
       - name: Identificar jogos monitorados
-        if: ${{ inputs.run_api }}
+        if: ${{ inputs.mode == 'real_api' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -126,7 +129,7 @@ jobs:
             --force
 
       - name: Mostrar resumo do teste real
-        if: ${{ inputs.run_api }}
+        if: ${{ inputs.mode == 'real_api' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -150,7 +153,7 @@ jobs:
           PY
 
       - name: Guardar relatório do teste real como artifact
-        if: ${{ inputs.run_api }}
+        if: ${{ inputs.mode == 'real_api' }}
         uses: actions/upload-artifact@v4
         with:
           name: pre-jogo-teste-${{ steps.date.outputs.target_date }}
