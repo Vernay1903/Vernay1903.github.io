@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -233,7 +233,19 @@
     "discovery": {
       "mode": "planned_queries",
       "external_search_enabled": false,
-      "search_provider": null,
+      "search_provider": {
+        "name": "serper",
+        "base_url": "https://google.serper.dev",
+        "endpoint": "/search",
+        "method": "POST",
+        "api_key_env": "SERPER_API_KEY",
+        "auth_header": "X-API-KEY",
+        "content_type": "application/json",
+        "gl": "br",
+        "hl": "pt-br",
+        "results_per_query": 10,
+        "execute_requires_explicit_flag": true
+      },
       "publication_unlock_allowed": false,
       "query_language": "pt-BR",
       "fallback_order": [
