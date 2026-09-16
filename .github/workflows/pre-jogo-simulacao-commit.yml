@@ -1,0 +1,172 @@
+name: Pré-jogo — teste de commit simulado
+
+on:
+  workflow_dispatch:
+
+# Duas travas contra publicação: token somente leitura e push-url inutilizável.
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pre-jogo-simulacao-commit
+  cancel-in-progress: false
+
+jobs:
+  simular-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar estrutura do Passo 29
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/simular_commit_pre_jogo.py \
+            tests/pre-jogo/teste_simulacao_commit.py
+          echo "Estrutura do Passo 29 validada."
+
+      - name: Testar travas sem Git remoto
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/pre-jogo/teste_simulacao_commit.py
+
+      - name: Localizar último pacote aprovado do Passo 28
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/pre-jogo/source-step28
+
+          FOUND=""
+          RUN_IDS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-pacote-publicacao.yml/runs" \
+            -f branch=main \
+            -f status=success \
+            -f event=workflow_dispatch \
+            -f per_page=20 \
+            --jq '.workflow_runs[].id')
+
+          for RUN_ID in ${RUN_IDS}; do
+            if gh api --method GET \
+              "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+              --jq '.artifacts[].name' | grep -qx 'pre-jogo-pacote-publicacao-passo-28'; then
+              echo "Usando pacote aprovado da execução ${RUN_ID}."
+              gh run download "${RUN_ID}" \
+                --repo "${GITHUB_REPOSITORY}" \
+                --name pre-jogo-pacote-publicacao-passo-28 \
+                --dir build/pre-jogo/source-step28
+              echo "${RUN_ID}" > build/pre-jogo/source-step28-run-id.txt
+              FOUND="${RUN_ID}"
+              break
+            fi
+          done
+
+          if [ -z "${FOUND}" ]; then
+            echo "ERRO: nenhum artifact aprovado do Passo 28 foi encontrado."
+            exit 1
+          fi
+
+          test -f build/pre-jogo/source-step28/manifest.json
+          echo "Pacote do Passo 28 localizado."
+
+      - name: Bloquear qualquer push Git
+        shell: bash
+        run: |
+          set -euo pipefail
+          git remote set-url --push origin 'no-push://passo-29-bloqueado'
+          echo "Fetch URL: $(git remote get-url origin)"
+          echo "Push URL: $(git remote get-url --push origin)"
+          test "$(git remote get-url --push origin)" = 'no-push://passo-29-bloqueado'
+          echo "Push remoto bloqueado por configuração local."
+
+      - name: Simular commit local dos três arquivos
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/simular_commit_pre_jogo.py \
+            --package-dir build/pre-jogo/source-step28 \
+            --report build/pre-jogo/commit-simulation/report.json
+
+      - name: Validar relatório da simulação
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("build/pre-jogo/commit-simulation/report.json")
+          if not path.exists():
+              raise SystemExit("ERRO: relatório do Passo 29 não foi criado.")
+          report = json.loads(path.read_text(encoding="utf-8"))
+
+          if report.get("step") != 29:
+              raise SystemExit("ERRO: relatório não pertence ao Passo 29.")
+          if report.get("changed_file_count") != 3:
+              raise SystemExit("ERRO: commit simulado não contém exatamente três arquivos.")
+          if report.get("changed_files") != [
+              report.get("slug"), "noticias.json", "sitemap.xml"
+          ]:
+              raise SystemExit("ERRO: ordem/escopo de arquivos do commit simulado inválido.")
+          if report.get("remote_push_executed") is not False:
+              raise SystemExit("ERRO: relatório indica push remoto.")
+          if report.get("remote_branch_created") is not False:
+              raise SystemExit("ERRO: relatório indica branch remota criada.")
+          if report.get("remote_main_unchanged") is not True:
+              raise SystemExit("ERRO: main remota não permaneceu igual.")
+          if report.get("main_published") is not False:
+              raise SystemExit("ERRO: relatório indica publicação na main.")
+          if report.get("publication_unlocked") is not False:
+              raise SystemExit("ERRO: publicação foi liberada.")
+          if report.get("temporary_local_branch_removed") is not True:
+              raise SystemExit("ERRO: branch local temporária não foi removida.")
+          if report.get("checkout_restored_clean") is not True:
+              raise SystemExit("ERRO: checkout não foi restaurado limpo.")
+
+          print(f"Commit local temporário: {report.get('local_commit_sha')}")
+          print("Arquivos simulados: 3")
+          for line in report.get("commit_name_status", []):
+              print(f"  {line}")
+          print("Push remoto: não")
+          print("Branch remota: não")
+          print("Main remota alterada: não")
+          print("Checkout restaurado: sim")
+          print("Publicação liberada: não")
+          PY
+
+      - name: Confirmar impossibilidade de publicação
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git remote get-url --push origin)" = 'no-push://passo-29-bloqueado'
+          if [ -n "$(git status --porcelain=v1 --untracked-files=all)" ]; then
+            echo "ERRO: checkout não está limpo ao final do Passo 29."
+            git status --short
+            exit 1
+          fi
+          echo "OK: checkout limpo e push URL continua bloqueada."
+          echo "Nenhum commit foi enviado ao GitHub."
+
+      - name: Guardar relatório do Passo 29
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-simulacao-commit-passo-29
+          path: |
+            build/pre-jogo/commit-simulation/report.json
+            build/pre-jogo/source-step28-run-id.txt
+          if-no-files-found: error
+          retention-days: 3
