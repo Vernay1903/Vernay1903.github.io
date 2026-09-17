@@ -78,6 +78,7 @@ jobs:
             scripts/preparar_lote_pre_jogo_automatico.py \
             scripts/aplicar_lote_pre_jogo_automatico.py
           python tests/pre-jogo/teste_passo34_automatico.py
+          python tests/pre-jogo/teste_passo34_8.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
           import json
