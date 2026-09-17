@@ -232,8 +232,20 @@ def candidate_haystack(candidate: dict[str, Any]) -> str:
     )
 
 
+def candidate_title_url_haystack(candidate: dict[str, Any]) -> str:
+    return normalize_text(
+        " ".join(str(candidate.get(key, "")) for key in ("title", "url"))
+    )
+
+
 def candidate_matches_team(candidate: dict[str, Any], team: str, config: dict[str, Any]) -> bool:
     haystack = candidate_haystack(candidate)
+    return any(variant in haystack for variant in team_variants(team, config))
+
+
+def candidate_matches_team_strict(candidate: dict[str, Any], team: str, config: dict[str, Any]) -> bool:
+    """Para H2H, o clube precisa aparecer no título/URL, não só em snippet lateral."""
+    haystack = candidate_title_url_haystack(candidate)
     return any(variant in haystack for variant in team_variants(team, config))
 
 
@@ -253,6 +265,25 @@ def competition_matches_candidate(candidate: dict[str, Any], context: dict[str, 
     return any(domain_matches(domain, str(item)) for item in domains if isinstance(item, str))
 
 
+def recent_form_candidate_has_result_signal(candidate: dict[str, Any]) -> bool:
+    """Rejeita páginas genéricas de clube/tabela que não sustentam forma recente."""
+    text = candidate_haystack(candidate)
+    outcome_signals = (
+        " win ", " wins ", " won ", " victory ", " draw ", " draws ", " unbeaten ",
+        " defeat ", " loss ", " lost ", " vitoria ", " vitorias ", " venceu ",
+        " empate ", " empates ", " derrota ", " perdeu ", " points ", " pontos ",
+    )
+    time_signals = (
+        " recent ", " form ", " last ", " latest ", " matchday ", " season ",
+        " games ", " matches ", " ultimos ", " ultimo ", " rodada ", " temporada ",
+        " jogos ", " partidas ", " 2026 ",
+    )
+    padded = f" {text} "
+    return any(signal in padded for signal in outcome_signals) and any(
+        signal in padded for signal in time_signals
+    )
+
+
 def filter_results_for_requirement(
     requirement_id: str,
     results: list[dict[str, Any]],
@@ -260,7 +291,7 @@ def filter_results_for_requirement(
     context: dict[str, Any],
     config: dict[str, Any],
 ) -> list[dict[str, Any]]:
-    """Passo 34.5: impede páginas de outros jogos de ocuparem as vagas do leitor."""
+    """Passos 34.5/34.6: evita páginas laterais e páginas genéricas antes da leitura."""
     if requirement_id not in {"recent_form_both_teams", "competition_specific_head_to_head"}:
         return results
 
@@ -272,14 +303,15 @@ def filter_results_for_requirement(
     if requirement_id == "competition_specific_head_to_head":
         return [
             item for item in results
-            if candidate_matches_team(item, home, config)
-            and candidate_matches_team(item, away, config)
+            if candidate_matches_team_strict(item, home, config)
+            and candidate_matches_team_strict(item, away, config)
             and competition_matches_candidate(item, context, config)
         ]
 
     relevant = [
         item for item in results
-        if candidate_matches_team(item, home, config) or candidate_matches_team(item, away, config)
+        if recent_form_candidate_has_result_signal(item)
+        and (candidate_matches_team(item, home, config) or candidate_matches_team(item, away, config))
     ]
     home_rows = [item for item in relevant if candidate_matches_team(item, home, config)]
     away_rows = [item for item in relevant if candidate_matches_team(item, away, config)]
@@ -298,7 +330,12 @@ def filter_results_for_requirement(
     return ordered
 
 
-def expanded_queries(requirement_id: str, queries: list[Any], context: dict[str, Any]) -> list[str]:
+def expanded_queries(
+    requirement_id: str,
+    queries: list[Any],
+    context: dict[str, Any],
+    article_date: str | None = None,
+) -> list[str]:
     result: list[str] = [item.strip() for item in queries if isinstance(item, str) and item.strip()]
     home = context.get("home")
     away = context.get("away")
@@ -306,13 +343,21 @@ def expanded_queries(requirement_id: str, queries: list[Any], context: dict[str,
     if not all(isinstance(item, str) and item.strip() for item in (home, away, competition)):
         return result
 
+    year = ""
+    if isinstance(article_date, str):
+        match = re.match(r"(\d{4})-", article_date)
+        if match:
+            year = match.group(1)
+
     extras: list[str] = []
     if requirement_id == "recent_form_both_teams":
         extras = [
-            f'"{home}" "{competition}" recent form results last matches',
-            f'"{away}" "{competition}" recent form results last matches',
-            f'"{home}" "{competition}" últimos jogos resultados',
-            f'"{away}" "{competition}" últimos jogos resultados',
+            f'"{home}" "{competition}" recent form results last matches {year}'.strip(),
+            f'"{away}" "{competition}" recent form results last matches {year}'.strip(),
+            f'"{home}" "{competition}" últimos jogos resultados {year}'.strip(),
+            f'"{away}" "{competition}" últimos jogos resultados {year}'.strip(),
+            f'"{home}" "{competition}" latest result matchday {year}'.strip(),
+            f'"{away}" "{competition}" latest result matchday {year}'.strip(),
         ]
     elif requirement_id == "competition_specific_head_to_head":
         extras = [
@@ -389,6 +434,7 @@ def discover_candidates_for_plan(
     if not isinstance(tasks, list):
         fail("Plano de coleta sem tarefas válidas.")
     context = plan.get("match_context") if isinstance(plan.get("match_context"), dict) else {}
+    article_date = plan.get("date") if isinstance(plan.get("date"), str) else None
 
     discovered_tasks: list[dict[str, Any]] = []
     query_count = 0
@@ -400,7 +446,7 @@ def discover_candidates_for_plan(
         stages = task.get("stages")
         if not isinstance(requirement_id, str) or not isinstance(queries, list) or not isinstance(stages, list):
             continue
-        queries = expanded_queries(requirement_id, queries, context)
+        queries = expanded_queries(requirement_id, queries, context, article_date)
 
         selected_stage: dict[str, Any] | None = None
         selected_results: list[dict[str, Any]] = []
@@ -453,6 +499,7 @@ def discover_candidates_for_plan(
                 "executed_queries": executed_queries,
                 "candidates": selected_results,
                 "passo34_5_relevance_filter": requirement_id in {"recent_form_both_teams", "competition_specific_head_to_head"},
+                "passo34_6_quality_filter": requirement_id in {"recent_form_both_teams", "competition_specific_head_to_head"},
                 "facts_verified": False,
                 "ready_for_drafting": False,
             }
@@ -538,7 +585,7 @@ def main() -> None:
     print(f"OK: descoberta Serper concluída para {target_date.isoformat()}.")
     print(f"Matérias pesquisadas: {len(results)}")
     print(f"Consultas executadas: {manifest['query_count']}")
-    print("Passo 34.5: forma recente e H2H passaram por filtro de relevância antes da leitura das páginas.")
+    print("Passo 34.6: forma recente exige sinais de resultado e H2H exige os dois clubes no título/URL.")
     print("Nenhum fato foi validado por este script.")
     print("Redação, HTML e publicação permanecem bloqueados.")
 
