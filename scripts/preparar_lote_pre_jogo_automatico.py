@@ -9,6 +9,10 @@ que poderá ser usado pela execução das 00:01.
 Passo 34.3: quando a extração determinística não resolve todos os requisitos,
 este orquestrador pode executar o fallback factual OpenAI estritamente aterrado
 em páginas já checadas e depois reconstruir o pacote editorial limpo.
+
+Passo 34.4: em execução manual, se o fallback continuar insuficiente, gera um
+relatório diagnóstico interno com os segmentos enviados ao extrator e os motivos
+de cada campo continuar pendente. O diagnóstico nunca altera fatos nem publicação.
 """
 
 from __future__ import annotations
@@ -232,11 +236,50 @@ def run_grounded_fact_fallback(args: argparse.Namespace) -> tuple[bool, bool]:
         "--force",
     ])
     if not ok:
-        print("AVISO: fatos aterrrados foram gerados, mas o pacote editorial não pôde ser reconstruído; publicação continua bloqueada.")
+        print("AVISO: fatos aterrados foram gerados, mas o pacote editorial não pôde ser reconstruído; publicação continua bloqueada.")
         return True, False
 
     print("OK: Passo 34.3 concluiu fallback factual e reconstruiu o pacote editorial limpo.")
     return True, True
+
+
+def run_grounded_diagnostic(
+    args: argparse.Namespace,
+    output_dir: Path,
+    *,
+    fallback_attempted: bool,
+    prepared: list[dict[str, Any]],
+    skipped: list[dict[str, Any]],
+) -> tuple[bool, bool, str | None]:
+    """Passo 34.4: diagnóstico só no workflow_dispatch e sem efeito editorial."""
+    if os.environ.get("GITHUB_EVENT_NAME") != "workflow_dispatch":
+        return False, True, None
+    if not fallback_attempted or prepared:
+        return False, True, None
+    if not any(item.get("reason") == "research_incomplete" for item in skipped):
+        return False, True, None
+
+    checked = DEFAULT_BUILD / f"paginas-checadas-{args.date}.json"
+    if not checked.exists():
+        print("AVISO: Passo 34.4 não executado porque faltam páginas checadas.")
+        return True, False, None
+
+    diagnostic_path = output_dir / f"diagnostico-extracao-factual-{args.date}.json"
+    print("PASSO 34.4 — gerando diagnóstico interno da extração factual pendente.")
+    ok, _ = run_command([
+        sys.executable,
+        "scripts/diagnosticar_extracao_factual_openai.py",
+        "--date", args.date,
+        "--checked", str(checked),
+        "--facts", str(args.facts),
+        "--output", str(diagnostic_path),
+        "--execute",
+    ])
+    if not ok:
+        print("AVISO: diagnóstico do Passo 34.4 falhou; nenhuma trava editorial foi alterada.")
+        return True, False, None
+    print("OK: diagnóstico 34.4 foi anexado ao artifact manual.")
+    return True, True, diagnostic_path.name
 
 
 def parse_args() -> argparse.Namespace:
@@ -395,6 +438,14 @@ def main() -> None:
             },
         })
 
+    diagnostic_attempted, diagnostic_succeeded, diagnostic_file = run_grounded_diagnostic(
+        args,
+        output_dir,
+        fallback_attempted=fallback_attempted,
+        prepared=prepared,
+        skipped=skipped,
+    )
+
     manifest = {
         "step": 34,
         "mode": "automatic_preparation",
@@ -409,6 +460,9 @@ def main() -> None:
         "skipped": skipped,
         "grounded_fact_fallback_attempted": fallback_attempted,
         "grounded_fact_fallback_succeeded": fallback_succeeded,
+        "grounded_diagnostic_attempted": diagnostic_attempted,
+        "grounded_diagnostic_succeeded": diagnostic_succeeded,
+        "grounded_diagnostic_file": diagnostic_file,
         "publication_unlocked": False,
         "requires_final_official_status_check": True,
     }
@@ -420,6 +474,9 @@ def main() -> None:
     print("PASSO 34 — PREPARAÇÃO AUTOMÁTICA CONCLUÍDA")
     print(f"Data-alvo: {args.date}")
     print(f"Fallback factual aterrado: {'executado' if fallback_attempted else 'não necessário'} | sucesso={fallback_succeeded}")
+    print(f"Diagnóstico 34.4: {'executado' if diagnostic_attempted else 'não necessário'} | sucesso={diagnostic_succeeded}")
+    if diagnostic_file:
+        print(f"Diagnóstico interno no artifact: {diagnostic_file}")
     print(f"Matérias prontas para a janela das 00:01: {len(prepared)}")
     print(f"Matérias bloqueadas/puladas por segurança: {len(skipped)}")
     for item in prepared:
