@@ -6,8 +6,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
+import unicodedata
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, NoReturn
@@ -174,6 +176,158 @@ def normalize_serper_response(
     return results
 
 
+def normalize_text(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    folded = unicodedata.normalize("NFKD", value)
+    folded = "".join(ch for ch in folded if not unicodedata.combining(ch))
+    folded = folded.casefold()
+    folded = re.sub(r"[^a-z0-9]+", " ", folded)
+    return " ".join(folded.split())
+
+
+def canonical_monitored_club(team: str, config: dict[str, Any]) -> dict[str, Any] | None:
+    needle = normalize_text(team)
+    for club in config.get("monitored_clubs", []):
+        if not isinstance(club, dict):
+            continue
+        variants = [club.get("name"), str(club.get("slug", "")).replace("-", " "), *club.get("aliases", [])]
+        if any(normalize_text(item) == needle for item in variants if isinstance(item, str)):
+            return club
+    return None
+
+
+def team_variants(team: str, config: dict[str, Any]) -> list[str]:
+    raw: list[str] = [team]
+    club = canonical_monitored_club(team, config)
+    if club:
+        raw.extend([str(club.get("name", "")), str(club.get("slug", "")).replace("-", " ")])
+        raw.extend(str(item) for item in club.get("aliases", []) if isinstance(item, str))
+
+    normalized = normalize_text(team)
+    tokens = normalized.split()
+    generic_stop = {"1", "fc", "cf", "sc", "ac", "afc", "sv", "club", "clube"}
+    meaningful = [token for token in tokens if token not in generic_stop]
+    if meaningful:
+        raw.append(" ".join(meaningful))
+        if len(meaningful) >= 2:
+            raw.append(" ".join(meaningful[-2:]))
+
+    result: list[str] = []
+    seen: set[str] = set()
+    for item in raw:
+        value = normalize_text(item)
+        if len(value) >= 4 and value not in seen:
+            seen.add(value)
+            result.append(value)
+    return result
+
+
+def candidate_haystack(candidate: dict[str, Any]) -> str:
+    return normalize_text(
+        " ".join(
+            str(candidate.get(key, ""))
+            for key in ("title", "snippet", "url")
+        )
+    )
+
+
+def candidate_matches_team(candidate: dict[str, Any], team: str, config: dict[str, Any]) -> bool:
+    haystack = candidate_haystack(candidate)
+    return any(variant in haystack for variant in team_variants(team, config))
+
+
+def competition_matches_candidate(candidate: dict[str, Any], context: dict[str, Any], config: dict[str, Any]) -> bool:
+    competition = normalize_text(context.get("competition"))
+    slug = normalize_text(str(context.get("competition_slug", "")).replace("-", " "))
+    haystack = candidate_haystack(candidate)
+    if competition and competition in haystack:
+        return True
+    if slug and slug in haystack:
+        return True
+
+    domain = str(candidate.get("domain", "")).strip().lower()
+    competition_slug = context.get("competition_slug")
+    official = config.get("research", {}).get("discovery", {}).get("official_domains", {}).get("competitions", {})
+    domains = official.get(competition_slug, []) if isinstance(official, dict) else []
+    return any(domain_matches(domain, str(item)) for item in domains if isinstance(item, str))
+
+
+def filter_results_for_requirement(
+    requirement_id: str,
+    results: list[dict[str, Any]],
+    *,
+    context: dict[str, Any],
+    config: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Passo 34.5: impede páginas de outros jogos de ocuparem as vagas do leitor."""
+    if requirement_id not in {"recent_form_both_teams", "competition_specific_head_to_head"}:
+        return results
+
+    home = context.get("home")
+    away = context.get("away")
+    if not isinstance(home, str) or not isinstance(away, str):
+        return []
+
+    if requirement_id == "competition_specific_head_to_head":
+        return [
+            item for item in results
+            if candidate_matches_team(item, home, config)
+            and candidate_matches_team(item, away, config)
+            and competition_matches_candidate(item, context, config)
+        ]
+
+    relevant = [
+        item for item in results
+        if candidate_matches_team(item, home, config) or candidate_matches_team(item, away, config)
+    ]
+    home_rows = [item for item in relevant if candidate_matches_team(item, home, config)]
+    away_rows = [item for item in relevant if candidate_matches_team(item, away, config)]
+    if not home_rows or not away_rows:
+        # Uma etapa que só cobre um dos clubes não resolve um requisito explicitamente bilateral.
+        return []
+
+    ordered: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for pool in (home_rows[:1], away_rows[:1], relevant):
+        for item in pool:
+            url = str(item.get("url", ""))
+            if url and url not in seen:
+                seen.add(url)
+                ordered.append(item)
+    return ordered
+
+
+def expanded_queries(requirement_id: str, queries: list[Any], context: dict[str, Any]) -> list[str]:
+    result: list[str] = [item.strip() for item in queries if isinstance(item, str) and item.strip()]
+    home = context.get("home")
+    away = context.get("away")
+    competition = context.get("competition")
+    if not all(isinstance(item, str) and item.strip() for item in (home, away, competition)):
+        return result
+
+    extras: list[str] = []
+    if requirement_id == "recent_form_both_teams":
+        extras = [
+            f'"{home}" "{competition}" recent form results last matches',
+            f'"{away}" "{competition}" recent form results last matches',
+            f'"{home}" "{competition}" últimos jogos resultados',
+            f'"{away}" "{competition}" últimos jogos resultados',
+        ]
+    elif requirement_id == "competition_specific_head_to_head":
+        extras = [
+            f'"{home}" "{away}" "{competition}" head to head record',
+            f'"{home}" "{away}" "{competition}" previous meetings results',
+        ]
+
+    seen = set(result)
+    for query in extras:
+        if query not in seen:
+            seen.add(query)
+            result.append(query)
+    return result
+
+
 def request_serper(
     *,
     query: str,
@@ -234,6 +388,7 @@ def discover_candidates_for_plan(
     tasks = plan.get("tasks")
     if not isinstance(tasks, list):
         fail("Plano de coleta sem tarefas válidas.")
+    context = plan.get("match_context") if isinstance(plan.get("match_context"), dict) else {}
 
     discovered_tasks: list[dict[str, Any]] = []
     query_count = 0
@@ -245,6 +400,7 @@ def discover_candidates_for_plan(
         stages = task.get("stages")
         if not isinstance(requirement_id, str) or not isinstance(queries, list) or not isinstance(stages, list):
             continue
+        queries = expanded_queries(requirement_id, queries, context)
 
         selected_stage: dict[str, Any] | None = None
         selected_results: list[dict[str, Any]] = []
@@ -276,6 +432,13 @@ def discover_candidates_for_plan(
                     if result["url"] not in seen_urls:
                         seen_urls.add(result["url"])
                         stage_results.append(result)
+
+            stage_results = filter_results_for_requirement(
+                requirement_id,
+                stage_results,
+                context=context,
+                config=config,
+            )
             if stage_results:
                 selected_stage = stage
                 selected_results = stage_results
@@ -289,6 +452,7 @@ def discover_candidates_for_plan(
                 "dynamic_relevance_required": bool(selected_stage.get("dynamic_relevance_required")) if selected_stage else False,
                 "executed_queries": executed_queries,
                 "candidates": selected_results,
+                "passo34_5_relevance_filter": requirement_id in {"recent_form_both_teams", "competition_specific_head_to_head"},
                 "facts_verified": False,
                 "ready_for_drafting": False,
             }
@@ -374,6 +538,7 @@ def main() -> None:
     print(f"OK: descoberta Serper concluída para {target_date.isoformat()}.")
     print(f"Matérias pesquisadas: {len(results)}")
     print(f"Consultas executadas: {manifest['query_count']}")
+    print("Passo 34.5: forma recente e H2H passaram por filtro de relevância antes da leitura das páginas.")
     print("Nenhum fato foi validado por este script.")
     print("Redação, HTML e publicação permanecem bloqueados.")
 
