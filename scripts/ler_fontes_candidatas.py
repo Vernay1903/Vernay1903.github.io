@@ -1,560 +1,440 @@
 #!/usr/bin/env python3
-"""Lê páginas candidatas via Serper Scrape sem transformar conteúdo em fato publicado.
+"""Passo 34.7 — leitura/resegmentação contextual de evidências de pré-jogo.
 
-Este passo abre páginas descobertas anteriormente, registra evidências textuais limitadas
-para futura extração factual e mantém redação, HTML e publicação bloqueados.
+Este arquivo mantém o leitor do Passo 34.6 como núcleo imutável e acrescenta uma
+camada conservadora antes da extração factual:
+- páginas já checadas podem ser resegmentadas especificamente para o novo requisito;
+- o texto da página é relido no máximo uma vez por URL nesta etapa e continua interno;
+- forma recente descarta fonte interna do próprio site e conteúdo claramente antigo;
+- se um dos clubes ainda não tiver forma recente utilizável, uma busca complementar
+  restrita a fonte oficial/competição e grande imprensa é tentada;
+- nenhuma informação é promovida a fato aqui: os extratores e validadores continuam
+  obrigatórios e publicação permanece bloqueada.
 """
 
 from __future__ import annotations
 
-import argparse
-import hashlib
-import json
-import os
 import re
-import sys
-import time
-import unicodedata
 from copy import deepcopy
-from datetime import date, datetime, timedelta
-from pathlib import Path
-from typing import Any, NoReturn
-from urllib.error import HTTPError, URLError
-from urllib.parse import urlparse
-from urllib.request import Request, urlopen
-from zoneinfo import ZoneInfo
+from typing import Any
 
-ROOT = Path(__file__).resolve().parent.parent
-CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
-DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
+from scripts import buscar_fontes_serper as source_search
+from scripts import ler_fontes_candidatas_base as base
+from scripts.ler_fontes_candidatas_base import *  # noqa: F401,F403
+
+_BASE_CHECK_ARTICLE = base.check_article
+_SCRAPE_CACHE: dict[str, dict[str, Any] | Exception] = {}
 
 
-def fail(message: str) -> NoReturn:
-    print(f"ERRO: {message}", file=sys.stderr)
-    raise SystemExit(1)
-
-
-def load_json(path: Path) -> Any:
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        fail(f"Arquivo não encontrado: {path}")
-    except json.JSONDecodeError as exc:
-        fail(f"JSON inválido em {path}: {exc}")
-
-
-def load_config() -> dict[str, Any]:
-    config = load_json(CONFIG_PATH)
-    if not isinstance(config, dict):
-        fail("config/pre-jogo.json deve conter um objeto JSON.")
-    if config.get("timezone") != "America/Sao_Paulo":
-        fail('O timezone deve permanecer "America/Sao_Paulo".')
-
-    research = config.get("research")
-    if not isinstance(research, dict):
-        fail('Configuração "research" ausente ou inválida.')
-    reader = research.get("page_reader")
-    if not isinstance(reader, dict):
-        fail('Configuração "research.page_reader" ausente ou inválida.')
-
-    expected = {
-        "name": "serper-scrape",
-        "base_url": "https://scrape.serper.dev",
-        "method": "POST",
-        "api_key_env": "SERPER_API_KEY",
-        "auth_header": "X-API-KEY",
-    }
-    for key, value in expected.items():
-        if reader.get(key) != value:
-            fail(f'Configuração do leitor de páginas inválida em "{key}".')
-    if reader.get("execute_requires_explicit_flag") is not True:
-        fail("A leitura externa deve exigir autorização explícita.")
-    if reader.get("publication_unlock_allowed") is not False:
-        fail("A leitura de páginas não pode liberar publicação.")
-
-    policy = config.get("editorial", {}).get("source_attribution_policy")
-    if not isinstance(policy, dict):
-        fail("Política editorial de atribuição de fontes ausente.")
-    if policy.get("research_sources_are_internal_only") is not True:
-        fail("As fontes de pesquisa devem permanecer internas.")
-    if policy.get("forbid_source_names_in_article_body") is not True:
-        fail("A matéria deve proibir nomes de fontes de pesquisa no corpo.")
-    if policy.get("forbid_research_process_mentions") is not True:
-        fail("A matéria deve proibir menções ao processo de pesquisa.")
-
-    return config
-
-
-def parse_target_date(raw: str | None, tz: ZoneInfo) -> date:
-    if raw:
-        try:
-            return datetime.strptime(raw, "%Y-%m-%d").date()
-        except ValueError:
-            fail("--date deve usar o formato YYYY-MM-DD.")
-    return datetime.now(tz).date() + timedelta(days=1)
-
-
-def load_candidate_manifest(path: Path, target_date: date) -> list[dict[str, Any]]:
-    data = load_json(path)
-    if not isinstance(data, dict):
-        fail("O manifesto de evidências candidatas deve ser um objeto JSON.")
-    if data.get("target_date") != target_date.isoformat():
-        fail("A data do manifesto não coincide com a data-alvo.")
-    articles = data.get("articles")
-    if not isinstance(articles, list):
-        fail('O manifesto deve conter um array "articles".')
-    return [item for item in articles if isinstance(item, dict)]
-
-
-def request_serper_scrape(
-    url: str,
-    *,
-    config: dict[str, Any],
-    timeout: int = 30,
-    retries: int = 1,
-) -> dict[str, Any]:
-    parsed = urlparse(url)
-    if parsed.scheme != "https" or not parsed.netloc:
-        raise ValueError("Somente URLs HTTPS válidas podem ser lidas.")
-
-    reader = config["research"]["page_reader"]
-    secret_name = reader["api_key_env"]
-    api_key = os.environ.get(secret_name, "").strip()
-    if not api_key:
-        raise RuntimeError(f"Secret/variável {secret_name} não configurado.")
-
-    payload: dict[str, Any] = {"url": url}
-    if reader.get("include_markdown") is True:
-        payload["includeMarkdown"] = True
-
-    body = json.dumps(payload).encode("utf-8")
-    headers = {
-        reader["auth_header"]: api_key,
-        "Content-Type": reader.get("content_type", "application/json"),
-        "Accept": "application/json",
-        "User-Agent": "Corte-dos-Esportes-pre-jogo/1.0",
-    }
-
-    last_error: Exception | None = None
-    for attempt in range(retries + 1):
-        try:
-            req = Request(
-                reader["base_url"],
-                data=body,
-                headers=headers,
-                method=reader["method"],
-            )
-            with urlopen(req, timeout=timeout) as response:
-                raw = response.read().decode("utf-8")
-                data = json.loads(raw)
-                if not isinstance(data, dict):
-                    raise RuntimeError("Resposta inesperada do Serper Scrape.")
-                return data
-        except HTTPError as exc:
-            last_error = exc
-            if exc.code not in {429, 500, 502, 503, 504} or attempt >= retries:
-                raise RuntimeError(f"Serper Scrape retornou HTTP {exc.code}.") from exc
-        except (URLError, TimeoutError, json.JSONDecodeError, RuntimeError) as exc:
-            last_error = exc
-            if attempt >= retries:
-                raise RuntimeError(f"Falha ao ler página via Serper Scrape: {exc}") from exc
-        time.sleep(1 + attempt)
-
-    raise RuntimeError(f"Falha ao ler página via Serper Scrape: {last_error}")
-
-
-def normalize_scrape_response(payload: dict[str, Any]) -> dict[str, Any]:
-    markdown = payload.get("markdown")
-    text = payload.get("text")
-    content = markdown if isinstance(markdown, str) and markdown.strip() else text
-    if not isinstance(content, str):
-        content = ""
-    content = content.strip()
-
-    metadata = payload.get("metadata")
-    if not isinstance(metadata, dict):
-        metadata = {}
-
-    credits = payload.get("credits")
-    if not isinstance(credits, int):
-        credits = None
-
-    return {
-        "content": content,
-        "metadata": metadata,
-        "credits": credits,
-    }
-
-
-REQUIREMENT_KEYWORDS: dict[str, tuple[str, ...]] = {
-    "stadium_and_location": (
-        "stadium", "estádio", "estadio", "arena", "venue", "local", "emirates", "allianz",
-    ),
-    "transmission": (
-        "transmiss", "onde assistir", "tv", "stream", "broadcast", "canal",
-    ),
-    "probable_lineups_and_coaches": (
-        "escala", "lineup", "team news", "coach", "treinador", "manager", "starting xi",
-    ),
-    "officiating": (
-        "árbit", "arbit", "referee", "officiat", "var",
-    ),
-    "recent_form_both_teams": (
-        "últimos", "ultimos", "recent", "form", "vitória", "vitoria", "derrota", "empate",
-        "wins", "won", "draw", "unbeaten", "season", "matchday", "first three", "last",
-    ),
-    "competition_specific_head_to_head": (
-        "confront", "head-to-head", "head to head", "histórico", "historico", "previous meeting",
-        "encounter", "encounters", "meetings", "record against", "unbeaten", "never lost",
-    ),
-    "competition_internal_link": (
-        "história", "historia", "campeões", "campeoes", "competition",
-    ),
-    "stakes_and_qualification_scenarios_when_applicable": (
-        "classifica", "vaga", "semifinal", "quartas", "oitavas", "final", "aggregate", "penalt",
-    ),
-    "upcoming_fixtures_when_useful": (
-        "próximo", "proximo", "next match", "fixtures", "schedule", "calendário", "calendario",
-    ),
-}
-
-
-def clean_markdown_line(line: str) -> str:
-    value = line.strip()
-    if not value:
+def _target_year(article_date: Any) -> str:
+    if not isinstance(article_date, str):
         return ""
-    value = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", value)
-    value = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", value)
-    value = re.sub(r"[`*_>#|]+", " ", value)
-    value = re.sub(r"\s+", " ", value).strip()
-    return value
+    match = re.match(r"(20\d{2})-", article_date.strip())
+    return match.group(1) if match else ""
 
 
-def extract_evidence_segments(
-    content: str,
+def _scrape_once(url: str, *, config: dict[str, Any]) -> dict[str, Any]:
+    cached = _SCRAPE_CACHE.get(url)
+    if isinstance(cached, Exception):
+        raise cached
+    if isinstance(cached, dict):
+        return cached
+    try:
+        payload = base.request_serper_scrape(url, config=config)
+    except Exception as exc:
+        _SCRAPE_CACHE[url] = exc
+        raise
+    _SCRAPE_CACHE[url] = payload
+    return payload
+
+
+def _resegment_source(
+    source: dict[str, Any],
     requirement_id: str,
     *,
-    max_segments: int,
-    max_segment_chars: int,
+    checked_at: str,
+    config: dict[str, Any],
+) -> dict[str, Any] | None:
+    url = source.get("url")
+    if not isinstance(url, str) or not url.startswith("https://"):
+        return None
+    try:
+        raw = _scrape_once(url, config=config)
+        rebuilt = base.apply_scrape_to_candidate(
+            deepcopy(source),
+            raw,
+            requirement_id=requirement_id,
+            checked_at=checked_at,
+            config=config,
+        )
+    except Exception:
+        return None
+    if rebuilt.get("eligible_for_factual_validation") is not True:
+        return None
+    rebuilt["passo34_7_target_resegmented"] = True
+    rebuilt["passo34_7_target_requirement_id"] = requirement_id
+    return rebuilt
+
+
+def _source_year_is_acceptable(source: dict[str, Any], target_year: str) -> bool:
+    if not target_year:
+        return True
+    published = str(source.get("published_hint", ""))
+    years = set(re.findall(r"\b20\d{2}\b", published))
+    if years and target_year not in years:
+        return False
+    return True
+
+
+def _recent_supports_team(source: dict[str, Any], team: Any, *, target_year: str) -> bool:
+    if not base.eligible_checked_source(source):
+        return False
+    if source.get("source_type") == "internal_site":
+        return False
+    if not _source_year_is_acceptable(source, target_year):
+        return False
+
+    blob = base.source_evidence_blob(source)
+    folded = base.normalize_text(blob)
+    if not base.mentions_team(blob, team):
+        return False
+
+    outcome = any(
+        signal in folded
+        for signal in (
+            " win ", " wins ", " won ", " victory ", " victories ",
+            " draw ", " draws ", " unbeaten ", " defeat ", " defeats ",
+            " loss ", " losses ", " lost ", " vitoria ", " vitorias ",
+            " venceu ", " empate ", " empates ", " derrota ", " derrotas ",
+            " perdeu ", " points ", " pontos ",
+        )
+    )
+    padded = f" {folded} "
+    outcome = outcome or any(
+        signal in padded
+        for signal in (
+            " win ", " wins ", " won ", " draw ", " draws ", " unbeaten ",
+            " defeat ", " loss ", " lost ", " vitoria ", " venceu ",
+            " empate ", " derrota ", " perdeu ", " points ", " pontos ",
+        )
+    )
+    recency = any(
+        signal in padded
+        for signal in (
+            " recent ", " latest ", " last ", " matchday ", " season ",
+            " first three ", " first four ", " ultimos ", " ultimo ",
+            " rodada ", " temporada ",
+        )
+    )
+    if target_year and target_year in folded:
+        recency = True
+    return outcome and recency
+
+
+def _classify_source_type(domain: str, *, official_domains: set[str], major_domains: set[str]) -> str | None:
+    if any(source_search.domain_matches(domain, item) for item in official_domains):
+        return "official"
+    if any(source_search.domain_matches(domain, item) for item in major_domains):
+        return "major_sports_media"
+    return None
+
+
+def _official_domains_for_team_and_competition(
+    team: str,
+    context: dict[str, Any],
+    config: dict[str, Any],
 ) -> list[str]:
-    if not content.strip():
+    discovery = config.get("research", {}).get("discovery", {})
+    official = discovery.get("official_domains", {}) if isinstance(discovery, dict) else {}
+    club_map = official.get("clubs", {}) if isinstance(official, dict) else {}
+    competition_map = official.get("competitions", {}) if isinstance(official, dict) else {}
+
+    domains: list[str] = []
+    club = source_search.canonical_monitored_club(team, config)
+    if isinstance(club, dict):
+        raw = club_map.get(club.get("name"), []) if isinstance(club_map, dict) else []
+        if isinstance(raw, list):
+            domains.extend(str(item) for item in raw)
+    slug = context.get("competition_slug")
+    raw_comp = competition_map.get(slug, []) if isinstance(competition_map, dict) else []
+    if isinstance(raw_comp, list):
+        domains.extend(str(item) for item in raw_comp)
+
+    result: list[str] = []
+    seen: set[str] = set()
+    for domain in domains:
+        value = domain.strip().lower()
+        if value and value not in seen:
+            seen.add(value)
+            result.append(value)
+    return result
+
+
+def _candidate_current_enough(candidate: dict[str, Any], target_year: str) -> bool:
+    if not target_year:
+        return True
+    text = source_search.candidate_haystack(candidate)
+    published = base.normalize_text(str(candidate.get("published_hint", "")))
+    years = set(re.findall(r"\b20\d{2}\b", f"{text} {published}"))
+    if years and target_year not in years:
+        return False
+    if target_year in text or target_year in published:
+        return True
+    padded = f" {text} "
+    return any(signal in padded for signal in (" latest ", " recent ", " matchday ", " last ", " season "))
+
+
+def _candidate_score(candidate: dict[str, Any], team: str, target_year: str) -> int:
+    title = base.normalize_text(str(candidate.get("title", "")))
+    haystack = source_search.candidate_haystack(candidate)
+    score = 0
+    variants = source_search.team_variants(team, _ACTIVE_CONFIG)
+    if any(variant in title for variant in variants):
+        score += 6
+    if target_year and target_year in haystack:
+        score += 5
+    for signal in ("latest", "recent", "matchday", "last", "results", "result", "form"):
+        if signal in haystack:
+            score += 1
+    return score
+
+
+_ACTIVE_CONFIG: dict[str, Any] = {}
+
+
+def _search_recent_sources_for_team(
+    team: str,
+    *,
+    context: dict[str, Any],
+    article_date: str,
+    checked_at: str,
+    config: dict[str, Any],
+) -> list[dict[str, Any]]:
+    target_year = _target_year(article_date)
+    competition = context.get("competition")
+    if not isinstance(competition, str) or not competition.strip():
         return []
 
-    lines = [clean_markdown_line(line) for line in content.splitlines()]
-    lines = [line for line in lines if len(line) >= 25]
-    keywords = tuple(item.casefold() for item in REQUIREMENT_KEYWORDS.get(requirement_id, ()))
+    official_domains = _official_domains_for_team_and_competition(team, context, config)
+    discovery = config.get("research", {}).get("discovery", {})
+    major_raw = discovery.get("major_sports_media_domains", []) if isinstance(discovery, dict) else []
+    major_domains = [str(item) for item in major_raw if isinstance(item, str) and item.strip()]
 
-    matched: list[str] = []
-    fallback: list[str] = []
-    seen: set[str] = set()
+    stages: list[tuple[str, list[str]]] = []
+    if official_domains:
+        stages.append(("official", official_domains))
+    if major_domains:
+        stages.append(("major_sports_media", major_domains))
 
-    for line in lines:
-        clipped = line[:max_segment_chars].strip()
-        if not clipped or clipped in seen:
+    queries = [
+        f'"{team}" "{competition}" {target_year} latest result last match'.strip(),
+        f'"{team}" "{competition}" {target_year} recent form last matches'.strip(),
+        f'"{team}" "{competition}" {target_year} resultados últimos jogos'.strip(),
+        f'"{team}" "{competition}" {target_year} matchday result'.strip(),
+    ]
+
+    official_set = set(official_domains)
+    major_set = set(major_domains)
+    for stage_type, domains in stages:
+        discovered: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        for query in queries:
+            try:
+                _, raw = source_search.request_serper(query=query, domains=domains, config=config)
+            except Exception:
+                continue
+            for candidate in source_search.normalize_serper_response(raw, allowed_domains=domains):
+                url = str(candidate.get("url", ""))
+                if not url or url in seen:
+                    continue
+                if not source_search.candidate_matches_team(candidate, team, config):
+                    continue
+                if not source_search.recent_form_candidate_has_result_signal(candidate):
+                    continue
+                if not _candidate_current_enough(candidate, target_year):
+                    continue
+                seen.add(url)
+                discovered.append(candidate)
+
+        if not discovered:
             continue
-        seen.add(clipped)
-        fallback.append(clipped)
-        folded = clipped.casefold()
-        if keywords and any(keyword in folded for keyword in keywords):
-            matched.append(clipped)
-
-    chosen = matched if matched else fallback
-    return chosen[:max_segments]
-
-
-def normalize_text(value: Any) -> str:
-    if not isinstance(value, str):
-        return ""
-    folded = unicodedata.normalize("NFKD", value)
-    folded = "".join(ch for ch in folded if not unicodedata.combining(ch))
-    folded = folded.casefold()
-    folded = re.sub(r"[^a-z0-9]+", " ", folded)
-    return " ".join(folded.split())
-
-
-def meaningful_team_tokens(team: Any) -> list[str]:
-    text = normalize_text(team)
-    stop = {"1", "fc", "cf", "sc", "ac", "afc", "sv", "club", "clube", "de", "do", "da", "dos", "das"}
-    return [token for token in text.split() if token not in stop and len(token) >= 4]
-
-
-def mentions_team(text: str, team: Any) -> bool:
-    corpus = normalize_text(text)
-    tokens = meaningful_team_tokens(team)
-    if not tokens:
-        return False
-    phrase = " ".join(tokens)
-    if phrase and phrase in corpus:
-        return True
-    corpus_tokens = set(corpus.split())
-    distinctive = [token for token in tokens if len(token) >= 5]
-    # Permite variantes internacionais como München/Munich quando um nome distintivo
-    # compartilhado (ex.: Bayern) está presente. Para estádio/H2H, o chamador exige
-    # também o adversário, evitando promover páginas de outro confronto.
-    return bool(distinctive) and any(token in corpus_tokens for token in distinctive)
-
-
-def source_evidence_blob(source: dict[str, Any]) -> str:
-    parts: list[str] = []
-    title = source.get("title")
-    if isinstance(title, str):
-        parts.append(title)
-    page = source.get("page_evidence")
-    if isinstance(page, dict):
-        metadata = page.get("metadata")
-        if isinstance(metadata, dict):
-            parts.extend(str(value) for value in metadata.values() if isinstance(value, str))
-        segments = page.get("evidence_segments")
-        if isinstance(segments, list):
-            parts.extend(str(item) for item in segments if isinstance(item, str))
-    return "\n".join(parts)
-
-
-def eligible_checked_source(source: Any) -> bool:
-    return (
-        isinstance(source, dict)
-        and source.get("content_checked") is True
-        and source.get("eligible_for_factual_validation") is True
-    )
-
-
-def source_supports_cross_requirement_reuse(
-    source: dict[str, Any],
-    target_requirement_id: str,
-    context: dict[str, Any],
-) -> bool:
-    if not eligible_checked_source(source):
-        return False
-    blob = source_evidence_blob(source)
-    folded = normalize_text(blob)
-    home = context.get("home")
-    away = context.get("away")
-    competition = normalize_text(context.get("competition"))
-
-    if target_requirement_id == "stadium_and_location":
-        return (
-            mentions_team(blob, home)
-            and mentions_team(blob, away)
-            and any(word in folded for word in ("stadium", "arena", "venue", "estadio", "allianz"))
-        )
-
-    if target_requirement_id == "competition_specific_head_to_head":
-        return (
-            mentions_team(blob, home)
-            and mentions_team(blob, away)
-            and (not competition or competition in folded)
-            and any(
-                signal in folded
-                for signal in (
-                    "head to head", "encounter", "encounters", "meeting", "meetings",
-                    "record against", "unbeaten", "never lost", "without ever losing",
-                    "confront", "historico",
-                )
+        discovered.sort(key=lambda item: _candidate_score(item, team, target_year), reverse=True)
+        checked: list[dict[str, Any]] = []
+        for candidate in discovered[:4]:
+            domain = str(candidate.get("domain", "")).strip().lower()
+            source_type = _classify_source_type(
+                domain,
+                official_domains=official_set,
+                major_domains=major_set,
+            ) or stage_type
+            row = deepcopy(candidate)
+            row.update({
+                "publisher": domain,
+                "source_type": source_type,
+                "dynamic_relevance_required": False,
+                "passo34_7_recent_form_refresh": True,
+                "passo34_7_team": team,
+            })
+            rebuilt = _resegment_source(
+                row,
+                "recent_form_both_teams",
+                checked_at=checked_at,
+                config=config,
             )
-        )
-
-    if target_requirement_id == "recent_form_both_teams":
-        team_present = mentions_team(blob, home) or mentions_team(blob, away)
-        outcome = any(
-            signal in folded
-            for signal in (
-                "wins", "won", "victory", "draw", "draws", "unbeaten", "defeat", "loss",
-                "vitoria", "venceu", "empate", "derrota", "perdeu",
-            )
-        )
-        recency = any(
-            signal in folded
-            for signal in ("recent", "last", "latest", "first three", "season", "matchday", "ultimos", "rodada", "temporada")
-        )
-        return team_present and outcome and recency
-
-    return False
+            if rebuilt is None:
+                continue
+            if _recent_supports_team(rebuilt, team, target_year=target_year):
+                checked.append(rebuilt)
+                break
+        if checked:
+            return checked
+    return []
 
 
-def reuse_checked_sources_across_requirements(
+def _dedupe_sources(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        url = row.get("url")
+        if not isinstance(url, str) or not url or url in seen:
+            continue
+        seen.add(url)
+        result.append(row)
+    return result
+
+
+def _promote_cross_requirement_sources(
     requirements: list[dict[str, Any]],
     *,
     context: dict[str, Any],
-) -> tuple[list[dict[str, Any]], int]:
-    """Passo 34.6: uma página já checada pode sustentar outro requisito do mesmo jogo.
-
-    A página não é relida nem promovida por si só: apenas fontes já elegíveis entram no
-    reaproveitamento e ainda terão de passar pelos extratores/validadores factuais.
-    """
-    pool: list[tuple[str, dict[str, Any]]] = []
+    article_date: str,
+    checked_at: str,
+    config: dict[str, Any],
+) -> tuple[list[dict[str, Any]], int, int]:
+    pool: list[dict[str, Any]] = []
     for requirement in requirements:
-        origin = requirement.get("id")
-        if not isinstance(origin, str):
-            continue
         for source in requirement.get("source_candidates", []):
-            if eligible_checked_source(source):
-                pool.append((origin, source))
+            if base.eligible_checked_source(source) and source.get("source_type") != "internal_site":
+                pool.append(source)
+    pool = _dedupe_sources(pool)
 
     target_ids = {
         "stadium_and_location",
         "recent_form_both_teams",
         "competition_specific_head_to_head",
     }
-    total_reused = 0
+    reused_count = 0
+    refreshed_recent_count = 0
+    target_year = _target_year(article_date)
+    home = context.get("home")
+    away = context.get("away")
     updated: list[dict[str, Any]] = []
 
     for requirement in requirements:
         result = deepcopy(requirement)
-        target_id = result.get("id")
-        original = result.get("source_candidates", [])
-        if not isinstance(original, list):
-            original = []
+        req_id = result.get("id")
+        original = [item for item in result.get("source_candidates", []) if isinstance(item, dict)]
 
-        reused: list[dict[str, Any]] = []
-        if target_id in target_ids:
-            existing_urls = {
-                str(item.get("url")) for item in original
-                if isinstance(item, dict) and isinstance(item.get("url"), str)
-            }
-            for origin_id, source in pool:
+        if req_id in target_ids:
+            rebuilt_existing: list[dict[str, Any]] = []
+            for source in original:
+                if source.get("source_type") == "internal_site" and req_id != "competition_internal_link":
+                    continue
+                if source.get("passo34_6_cross_requirement_reuse") is True:
+                    rebuilt = _resegment_source(
+                        source,
+                        str(req_id),
+                        checked_at=checked_at,
+                        config=config,
+                    )
+                    if rebuilt is not None:
+                        source = rebuilt
+                rebuilt_existing.append(source)
+            original = rebuilt_existing
+
+            existing_urls = {str(item.get("url")) for item in original if item.get("url")}
+            extras: list[dict[str, Any]] = []
+            for source in pool:
                 url = source.get("url")
-                if origin_id == target_id or not isinstance(url, str) or url in existing_urls:
+                if not isinstance(url, str) or url in existing_urls:
                     continue
-                if not source_supports_cross_requirement_reuse(source, str(target_id), context):
+                rebuilt = _resegment_source(
+                    source,
+                    str(req_id),
+                    checked_at=checked_at,
+                    config=config,
+                )
+                if rebuilt is None:
                     continue
-                copied = deepcopy(source)
-                copied["reused_from_requirement_id"] = origin_id
-                copied["passo34_6_cross_requirement_reuse"] = True
-                reused.append(copied)
+                if req_id == "recent_form_both_teams":
+                    supports = (
+                        _recent_supports_team(rebuilt, home, target_year=target_year)
+                        or _recent_supports_team(rebuilt, away, target_year=target_year)
+                    )
+                else:
+                    supports = base.source_supports_cross_requirement_reuse(rebuilt, str(req_id), context)
+                if not supports:
+                    continue
+                rebuilt["reused_from_requirement_id"] = source.get("reused_from_requirement_id") or "cross_requirement_pool"
+                rebuilt["passo34_7_cross_requirement_reuse"] = True
+                extras.append(rebuilt)
                 existing_urls.add(url)
+                reused_count += 1
 
-        if reused:
-            # Reaproveitados relevantes vêm primeiro para não perder espaço nos limites do extrator.
-            result["source_candidates"] = reused + [deepcopy(item) for item in original]
-            total_reused += len(reused)
-        else:
-            result["source_candidates"] = [deepcopy(item) for item in original]
+            original = extras + original
 
-        result["passo34_6_reused_source_count"] = len(reused)
-        result["ready_for_fact_extraction"] = any(
-            eligible_checked_source(item) for item in result["source_candidates"]
-        )
+        if req_id == "recent_form_both_teams":
+            original = [
+                item for item in original
+                if item.get("source_type") != "internal_site"
+                and (
+                    _recent_supports_team(item, home, target_year=target_year)
+                    or _recent_supports_team(item, away, target_year=target_year)
+                )
+            ]
+            have_home = any(_recent_supports_team(item, home, target_year=target_year) for item in original)
+            have_away = any(_recent_supports_team(item, away, target_year=target_year) for item in original)
+
+            if isinstance(home, str) and not have_home:
+                fresh = _search_recent_sources_for_team(
+                    home,
+                    context=context,
+                    article_date=article_date,
+                    checked_at=checked_at,
+                    config=config,
+                )
+                original = fresh + original
+                refreshed_recent_count += len(fresh)
+            if isinstance(away, str) and not have_away:
+                fresh = _search_recent_sources_for_team(
+                    away,
+                    context=context,
+                    article_date=article_date,
+                    checked_at=checked_at,
+                    config=config,
+                )
+                original = fresh + original
+                refreshed_recent_count += len(fresh)
+
+            original = _dedupe_sources(original)
+            home_rows = [item for item in original if _recent_supports_team(item, home, target_year=target_year)]
+            away_rows = [item for item in original if _recent_supports_team(item, away, target_year=target_year)]
+            ordered: list[dict[str, Any]] = []
+            if home_rows:
+                ordered.append(home_rows[0])
+            if away_rows and (not ordered or away_rows[0].get("url") != ordered[0].get("url")):
+                ordered.append(away_rows[0])
+            ordered.extend(original)
+            original = _dedupe_sources(ordered)
+
+        result["source_candidates"] = original
+        result["passo34_7_target_resegmentation"] = req_id in target_ids
+        result["ready_for_fact_extraction"] = any(base.eligible_checked_source(item) for item in original)
         updated.append(result)
 
-    return updated, total_reused
-
-
-def apply_scrape_to_candidate(
-    candidate: dict[str, Any],
-    raw_payload: dict[str, Any],
-    *,
-    requirement_id: str,
-    checked_at: str,
-    config: dict[str, Any],
-) -> dict[str, Any]:
-    result = deepcopy(candidate)
-    normalized = normalize_scrape_response(raw_payload)
-    content = normalized["content"]
-    reader = config["research"]["page_reader"]
-    segments = extract_evidence_segments(
-        content,
-        requirement_id,
-        max_segments=int(reader.get("max_segments_per_source", 6)),
-        max_segment_chars=int(reader.get("max_segment_chars", 500)),
-    )
-
-    metadata = normalized["metadata"]
-    safe_metadata = {
-        key: value
-        for key, value in metadata.items()
-        if key in {"title", "description", "og:title", "og:description", "language"}
-        and isinstance(value, str)
-    }
-
-    result["checked_at"] = checked_at
-    result["content_checked"] = bool(content)
-    result["verification_status"] = (
-        "page_checked_pending_fact_extraction" if content else "page_checked_no_content"
-    )
-    result["page_evidence"] = {
-        "metadata": safe_metadata,
-        "evidence_segments": segments,
-        "segment_count": len(segments),
-        "content_length": len(content),
-        "content_sha256": hashlib.sha256(content.encode("utf-8")).hexdigest() if content else None,
-        "credits_used": normalized["credits"],
-    }
-
-    dynamic = result.get("dynamic_relevance_required") is True
-    result["eligible_for_factual_validation"] = bool(content and segments and not dynamic)
-    if dynamic:
-        result["local_relevance_verified"] = False
-    return result
-
-
-def check_requirement_candidates(
-    requirement: dict[str, Any],
-    *,
-    config: dict[str, Any],
-    checked_at: str,
-    max_attempts: int | None = None,
-) -> dict[str, Any]:
-    result = deepcopy(requirement)
-    candidates = result.get("source_candidates")
-    if not isinstance(candidates, list):
-        candidates = []
-
-    reader = config["research"]["page_reader"]
-    limit = max_attempts
-    if limit is None:
-        raw_limit = reader.get("max_candidates_per_requirement", 1)
-        limit = raw_limit if isinstance(raw_limit, int) and raw_limit > 0 else 1
-
-    checked: list[dict[str, Any]] = []
-    successful = 0
-    attempts = 0
-    for candidate in candidates:
-        if not isinstance(candidate, dict):
-            continue
-        if attempts >= limit:
-            checked.append(deepcopy(candidate))
-            continue
-        attempts += 1
-        try:
-            raw = request_serper_scrape(candidate["url"], config=config)
-            updated = apply_scrape_to_candidate(
-                candidate,
-                raw,
-                requirement_id=str(result.get("id", "")),
-                checked_at=checked_at,
-                config=config,
-            )
-            if updated.get("content_checked") is True:
-                successful += 1
-            checked.append(updated)
-        except Exception as exc:  # rede/API pode falhar por URL; registramos sem promover a fonte.
-            failed = deepcopy(candidate)
-            failed["content_checked"] = False
-            failed["checked_at"] = checked_at
-            failed["verification_status"] = "page_fetch_failed"
-            failed["eligible_for_factual_validation"] = False
-            failed["page_evidence"] = {
-                "metadata": {},
-                "evidence_segments": [],
-                "segment_count": 0,
-                "content_length": 0,
-                "content_sha256": None,
-                "credits_used": None,
-                "error": str(exc)[:300],
-            }
-            checked.append(failed)
-
-    result["source_candidates"] = checked
-    result["page_check_attempt_count"] = attempts
-    result["page_check_success_count"] = successful
-    result["ready_for_fact_extraction"] = any(
-        isinstance(item, dict) and item.get("eligible_for_factual_validation") is True
-        for item in checked
-    )
-    result["facts"] = []
-    result["sources"] = []
-    result["status"] = "pending"
-    return result
+    return updated, reused_count, refreshed_recent_count
 
 
 def check_article(
@@ -563,26 +443,27 @@ def check_article(
     config: dict[str, Any],
     checked_at: str,
 ) -> dict[str, Any]:
-    result = deepcopy(article)
-    requirements = result.get("requirements")
+    global _ACTIVE_CONFIG
+    _ACTIVE_CONFIG = config
+    result = _BASE_CHECK_ARTICLE(article, config=config, checked_at=checked_at)
+    requirements = result.get("requirements", [])
     if not isinstance(requirements, list):
         requirements = []
-
-    checked_requirements = [
-        check_requirement_candidates(item, config=config, checked_at=checked_at)
-        for item in requirements
-        if isinstance(item, dict)
-    ]
     context = result.get("match_context") if isinstance(result.get("match_context"), dict) else {}
-    checked_requirements, reused_count = reuse_checked_sources_across_requirements(
-        checked_requirements,
+    article_date = str(result.get("date", ""))
+
+    refined, reused_count, refreshed_recent_count = _promote_cross_requirement_sources(
+        [item for item in requirements if isinstance(item, dict)],
         context=context,
+        article_date=article_date,
+        checked_at=checked_at,
+        config=config,
     )
 
     checked_sources: set[str] = set()
     eligible_sources: set[str] = set()
     blocking: list[str] = []
-    for requirement in checked_requirements:
+    for requirement in refined:
         req_id = requirement.get("id")
         for source in requirement.get("source_candidates", []):
             if not isinstance(source, dict):
@@ -596,116 +477,22 @@ def check_article(
             if isinstance(req_id, str):
                 blocking.append(req_id)
 
-    result["requirements"] = checked_requirements
-    result["research_status"] = "candidate_pages_checked"
+    result["requirements"] = refined
     result["page_checked_source_count"] = len(checked_sources)
     result["eligible_source_count"] = len(eligible_sources)
-    result["passo34_6_reused_source_count"] = reused_count
-    result["ready_for_fact_extraction"] = bool(eligible_sources)
     result["page_check_blocking_requirement_ids"] = blocking
-    result["verified_fact_count"] = 0
-    result["verified_source_count"] = 0
-    result["ready_for_factual_validation"] = False
-    result["ready_for_drafting"] = False
-    result["ready_for_html"] = False
-    result["publication_unlocked"] = False
-    result["next_required_step"] = "extract_structured_facts_from_checked_page_evidence"
-    result["article_source_attribution_policy"] = deepcopy(
-        config["editorial"]["source_attribution_policy"]
-    )
+    result["passo34_7_resegmented_reuse_count"] = reused_count
+    result["passo34_7_recent_form_refresh_count"] = refreshed_recent_count
+    result["passo34_7_applied"] = True
     return result
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Lê fontes candidatas via Serper Scrape sem validar fatos ou publicar."
-    )
-    parser.add_argument("--date", help="Data-alvo YYYY-MM-DD. Vazio = amanhã em Brasília.")
-    parser.add_argument(
-        "--candidates",
-        type=Path,
-        help="Manifesto evidencias-candidatas-AAAA-MM-DD.json.",
-    )
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        default=DEFAULT_OUTPUT_DIR,
-        help="Diretório de saída. Padrão: build/pre-jogo/.",
-    )
-    parser.add_argument(
-        "--execute",
-        action="store_true",
-        help="Obrigatório para permitir chamadas reais ao Serper Scrape.",
-    )
-    parser.add_argument(
-        "--force",
-        action="store_true",
-        help="Permite substituir somente arquivos de páginas checadas dentro de build/.",
-    )
-    return parser.parse_args()
+# O núcleo chama seu próprio global check_article; substituímos apenas essa função.
+base.check_article = check_article
 
 
 def main() -> None:
-    args = parse_args()
-    config = load_config()
-    if not args.execute:
-        fail("Leitura externa bloqueada. Use --execute somente em execução autorizada.")
-
-    reader = config["research"]["page_reader"]
-    if not os.environ.get(reader["api_key_env"], "").strip():
-        fail(f"Secret/variável {reader['api_key_env']} não configurado.")
-
-    tz = ZoneInfo(config["timezone"])
-    target_date = parse_target_date(args.date, tz)
-    candidate_path = args.candidates or DEFAULT_OUTPUT_DIR / f"evidencias-candidatas-{target_date.isoformat()}.json"
-    articles = load_candidate_manifest(candidate_path, target_date)
-    checked_at = datetime.now(tz).isoformat()
-    checked_articles = [check_article(item, config=config, checked_at=checked_at) for item in articles]
-
-    output_dir = args.output_dir.resolve()
-    articles_dir = output_dir / f"paginas-checadas-{target_date.isoformat()}"
-    manifest_path = output_dir / f"paginas-checadas-{target_date.isoformat()}.json"
-    destinations = [articles_dir / Path(item["slug"]).with_suffix(".json").name for item in checked_articles]
-    destinations.append(manifest_path)
-
-    existing = [path for path in destinations if path.exists()]
-    if existing and not args.force:
-        fail("Páginas checadas já existem. Use --force somente para substituir arquivos de build/.")
-
-    articles_dir.mkdir(parents=True, exist_ok=True)
-    written: list[str] = []
-    for article, destination in zip(checked_articles, destinations[:-1]):
-        destination.write_text(json.dumps(article, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        written.append(str(destination.relative_to(ROOT)) if destination.is_relative_to(ROOT) else str(destination))
-
-    manifest = {
-        "generated_at": checked_at,
-        "target_date": target_date.isoformat(),
-        "timezone": config["timezone"],
-        "source_candidate_manifest": str(candidate_path),
-        "article_count": len(checked_articles),
-        "page_checked_source_count": sum(item["page_checked_source_count"] for item in checked_articles),
-        "eligible_source_count": sum(item["eligible_source_count"] for item in checked_articles),
-        "passo34_6_reused_source_count": sum(item.get("passo34_6_reused_source_count", 0) for item in checked_articles),
-        "verified_fact_count": 0,
-        "ready_for_factual_validation_count": 0,
-        "ready_for_drafting_count": 0,
-        "ready_for_html_count": 0,
-        "publication_unlocked": False,
-        "source_attribution_in_article_body": "forbidden",
-        "files": written,
-        "articles": checked_articles,
-    }
-    manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    print(f"OK: páginas candidatas checadas para {target_date.isoformat()}.")
-    print(f"Páginas checadas com conteúdo: {manifest['page_checked_source_count']}")
-    print(f"Fontes elegíveis para futura extração factual: {manifest['eligible_source_count']}")
-    print(f"Passo 34.6 — evidências reaproveitadas entre requisitos: {manifest['passo34_6_reused_source_count']}")
-    print("Fatos verificados: 0")
-    print("As fontes de pesquisa permanecem internas e não podem ser citadas no texto da matéria.")
-    print("Validação factual, redação, HTML e publicação permanecem bloqueados.")
+    base.main()
 
 
 if __name__ == "__main__":
