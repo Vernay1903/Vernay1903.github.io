@@ -1,0 +1,766 @@
+name: Pré-jogo — automático diário (Passo 34)
+
+on:
+  schedule:
+    # 23:30 de Brasília do dia anterior (UTC-3)
+    - cron: "30 2 * * *"
+    # 00:01 de Brasília do dia da partida (UTC-3)
+    - cron: "1 3 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Teste manual seguro do Passo 34"
+        required: true
+        default: prepare_dry_run
+        type: choice
+        options:
+          - prepare_dry_run
+          - publish_dry_run
+      target_date:
+        description: "Opcional: YYYY-MM-DD. Vazio = amanhã no preparo / hoje no teste de publicação"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pre-jogo-publicacao-main
+  cancel-in-progress: false
+
+env:
+  TZ: America/Sao_Paulo
+  PREP_ARTIFACT_PREFIX: pre-jogo-preparado
+  AUTO_SOURCE: build/pre-jogo/automatico-source
+  AUTO_PUBLISH: build/pre-jogo/automatico-publish
+  APPROVED_FILE: build/pre-jogo/automatico-approved.txt
+  APPLY_REPORT: build/pre-jogo/automatico-publicacao.json
+
+jobs:
+  preparar:
+    if: ${{ (github.event_name == 'schedule' && github.event.schedule == '30 2 * * *') || (github.event_name == 'workflow_dispatch' && inputs.mode == 'prepare_dry_run') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+
+    steps:
+      - name: Baixar main sem credencial de push
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar código e travas do Passo 34
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/buscar_fixtures_football_data.py \
+            scripts/identificar_jogos.py \
+            scripts/planejar_pre_jogos.py \
+            scripts/preparar_dados_editoriais.py \
+            scripts/preparar_pesquisa_factual.py \
+            scripts/planejar_coleta_fontes.py \
+            scripts/buscar_fontes_serper.py \
+            scripts/estruturar_evidencias_candidatas.py \
+            scripts/ler_fontes_candidatas.py \
+            scripts/extrair_fatos_estruturados.py \
+            scripts/montar_pacote_editorial.py \
+            scripts/preparar_redacao_pre_jogo.py \
+            scripts/redigir_pre_jogo_openai.py \
+            scripts/preparar_lote_pre_jogo_automatico.py \
+            scripts/aplicar_lote_pre_jogo_automatico.py
+          python tests/pre-jogo/teste_passo34_automatico.py
+          python -m json.tool config/pre-jogo.json > /dev/null
+          test "$(python - <<'PY'
+          import json
+          print(len(json.load(open('config/pre-jogo.json', encoding='utf-8'))['monitored_clubs']))
+          PY
+          )" = "10"
+          echo "OK: Passo 34 mantém exatamente os 10 clubes monitorados."
+
+      - name: Resolver data-alvo do preparo
+        id: target
+        shell: bash
+        run: |
+          set -euo pipefail
+          INPUT_DATE='${{ github.event_name == 'workflow_dispatch' && inputs.target_date || '' }}'
+          if [ -n "${INPUT_DATE}" ]; then
+            TARGET_DATE="${INPUT_DATE}"
+          elif [ "${GITHUB_EVENT_NAME}" = "schedule" ]; then
+            # O cron de preparo roda às 02:30 UTC; a data UTC já é a data-alvo da matéria.
+            TARGET_DATE=$(date -u +%F)
+          else
+            TARGET_DATE=$(python - <<'PY'
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
+          print((datetime.now(ZoneInfo('America/Sao_Paulo')).date() + timedelta(days=1)).isoformat())
+          PY
+          )
+          fi
+          python - <<PY
+          from datetime import datetime
+          datetime.strptime('${TARGET_DATE}', '%Y-%m-%d')
+          PY
+          echo "TARGET_DATE=${TARGET_DATE}" >> "${GITHUB_ENV}"
+          echo "SOURCE_MAIN_SHA=$(git rev-parse HEAD)" >> "${GITHUB_ENV}"
+          echo "date=${TARGET_DATE}" >> "${GITHUB_OUTPUT}"
+          echo "Data-alvo do preparo: ${TARGET_DATE}"
+
+      - name: Verificar Secrets necessários
+        shell: bash
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          for NAME in FOOTBALL_DATA_TOKEN SERPER_API_KEY OPENAI_API_KEY; do
+            if [ -z "${!NAME}" ]; then
+              echo "ERRO: Secret ${NAME} não configurado."
+              exit 1
+            fi
+          done
+          echo "OK: os três Secrets obrigatórios estão disponíveis; valores não serão exibidos."
+
+      - name: Descobrir e planejar jogos dos clubes monitorados
+        shell: bash
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/buscar_fixtures_football_data.py --date "${TARGET_DATE}" --force
+          python scripts/identificar_jogos.py --date "${TARGET_DATE}" --force
+          python scripts/planejar_pre_jogos.py --date "${TARGET_DATE}" --force
+          python scripts/preparar_dados_editoriais.py --date "${TARGET_DATE}" --force
+          python scripts/preparar_pesquisa_factual.py --date "${TARGET_DATE}" --force
+          python scripts/planejar_coleta_fontes.py --date "${TARGET_DATE}" --force
+
+      - name: Pesquisar e validar fatos em fontes externas
+        shell: bash
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: |
+          set -euo pipefail
+          restore_config() {
+            git checkout -- config/pre-jogo.json >/dev/null 2>&1 || true
+          }
+          trap restore_config EXIT
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('config/pre-jogo.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          data['research']['discovery']['external_search_enabled'] = True
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+          python scripts/buscar_fontes_serper.py --date "${TARGET_DATE}" --execute --force
+          python scripts/estruturar_evidencias_candidatas.py --date "${TARGET_DATE}" --force
+          python scripts/ler_fontes_candidatas.py --date "${TARGET_DATE}" --execute --force
+          python scripts/extrair_fatos_estruturados.py --date "${TARGET_DATE}" --force
+
+          restore_config
+          trap - EXIT
+          git diff --quiet -- config/pre-jogo.json
+
+      - name: Montar pacotes editoriais limpos
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/montar_pacote_editorial.py --date "${TARGET_DATE}" --force
+
+      - name: Redigir e guardar lote aprovado sem publicar
+        shell: bash
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          python scripts/preparar_lote_pre_jogo_automatico.py \
+            --date "${TARGET_DATE}" \
+            --packages "build/pre-jogo/pacotes-editoriais-${TARGET_DATE}.json" \
+            --facts "build/pre-jogo/fatos-estruturados-${TARGET_DATE}.json" \
+            --source-main-sha "${SOURCE_MAIN_SHA}" \
+            --output-dir build/pre-jogo/automatico \
+            --execute \
+            --force
+          python -m json.tool build/pre-jogo/automatico/manifest.json > /dev/null
+
+      - name: Confirmar que o preparo não publicou nada
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- . ':!build'; then
+            echo "ERRO: preparo automático alterou arquivo versionado."
+            git diff -- . ':!build'
+            exit 1
+          fi
+          if git status --porcelain=v1 --untracked-files=all | grep -v '^?? build/' | grep -q .; then
+            echo "ERRO: preparo automático criou arquivo fora de build/."
+            git status --porcelain=v1 --untracked-files=all
+            exit 1
+          fi
+          echo "OK: preparo automático permaneceu totalmente fora da publicação."
+
+      - name: Guardar lote para a janela das 00:01
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PREP_ARTIFACT_PREFIX }}-${{ steps.target.outputs.date }}
+          path: build/pre-jogo/automatico/
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Resumo do preparo automático
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('build/pre-jogo/automatico/manifest.json').read_text(encoding='utf-8'))
+          print('PASSO 34 — PREPARO FINALIZADO')
+          print(f"Data-alvo: {data['target_date']}")
+          print(f"Matérias prontas: {data['prepared_count']}")
+          print(f"Bloqueadas/puladas por segurança: {data['skipped_count']}")
+          print('Publicação: não; o artifact aguardará a checagem final das 00:01.')
+          PY
+
+  testar-publicacao:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'publish_dry_run' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+
+    steps:
+      - name: Baixar main sem credencial de push
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolver data-alvo do teste de publicação
+        id: target
+        shell: bash
+        run: |
+          set -euo pipefail
+          INPUT_DATE='${{ inputs.target_date }}'
+          if [ -n "${INPUT_DATE}" ]; then
+            TARGET_DATE="${INPUT_DATE}"
+          else
+            TARGET_DATE=$(python - <<'PY'
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          print(datetime.now(ZoneInfo('America/Sao_Paulo')).date().isoformat())
+          PY
+          )
+          fi
+          echo "TARGET_DATE=${TARGET_DATE}" >> "${GITHUB_ENV}"
+          echo "date=${TARGET_DATE}" >> "${GITHUB_OUTPUT}"
+
+      - name: Localizar lote preparado da mesma data
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ALLOW_OLD_PREP: "true"
+        run: |
+          set -euo pipefail
+          rm -rf "${AUTO_SOURCE}"
+          mkdir -p "${AUTO_SOURCE}"
+          ARTIFACT_NAME="${PREP_ARTIFACT_PREFIX}-${TARGET_DATE}"
+          FOUND=""
+          RUN_IDS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-automatico.yml/runs" \
+            -f branch=main -f status=success -f per_page=30 \
+            --jq '.workflow_runs[].id')
+          for RUN_ID in ${RUN_IDS}; do
+            COUNT=$(gh api --method GET "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+              --jq "[.artifacts[] | select(.name == \"${ARTIFACT_NAME}\")] | length")
+            [ "${COUNT}" = "1" ] || continue
+            TMP="build/pre-jogo/artifact-${RUN_ID}"
+            rm -rf "${TMP}" && mkdir -p "${TMP}"
+            gh run download "${RUN_ID}" --repo "${GITHUB_REPOSITORY}" --name "${ARTIFACT_NAME}" --dir "${TMP}"
+            MANIFEST=$(find "${TMP}" -maxdepth 3 -type f -name manifest.json -print -quit)
+            [ -n "${MANIFEST}" ] || continue
+            if python - "${MANIFEST}" "${TARGET_DATE}" <<'PY'
+          import json, sys
+          from pathlib import Path
+          data = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
+          raise SystemExit(0 if data.get('target_date') == sys.argv[2] and data.get('step') == 34 else 1)
+          PY
+            then
+              cp -R "$(dirname "${MANIFEST}")"/. "${AUTO_SOURCE}/"
+              echo "SOURCE_PREP_RUN_ID=${RUN_ID}" >> "${GITHUB_ENV}"
+              FOUND="${RUN_ID}"
+              break
+            fi
+          done
+          if [ -z "${FOUND}" ]; then
+            echo "ERRO: nenhum lote preparado foi encontrado para ${TARGET_DATE}."
+            exit 1
+          fi
+          echo "OK: lote do run ${FOUND} carregado para teste."
+
+      - name: Verificar Secret do check final
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${SERPER_API_KEY}" || { echo "ERRO: SERPER_API_KEY ausente."; exit 1; }
+
+      - name: Revalidar status oficial de cada matéria
+        shell: bash
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: |
+          set -euo pipefail
+          : > "${APPROVED_FILE}"
+          python - <<'PY' > build/pre-jogo/status-list.tsv
+          import json
+          from pathlib import Path
+          data = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
+          for item in data.get('articles', []):
+              print(f"{item['slug']}\t{item['status_snapshot']}")
+          PY
+          while IFS=$'\t' read -r SLUG SNAPSHOT; do
+            [ -n "${SLUG}" ] || continue
+            REPORT="build/pre-jogo/status-final-${SLUG%.html}.json"
+            if python scripts/validar_status_final_pre_jogo.py \
+              --evidence "${AUTO_SOURCE}/${SNAPSHOT}" --report "${REPORT}" --execute; then
+              echo "${SLUG}" >> "${APPROVED_FILE}"
+            else
+              echo "::warning::${SLUG} bloqueada no check oficial final."
+            fi
+          done < build/pre-jogo/status-list.tsv
+
+      - name: Regenerar HTMLs contra a main atual
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "${AUTO_PUBLISH}"
+          mkdir -p "${AUTO_PUBLISH}"
+          OFFSET=0
+          python - <<'PY' > build/pre-jogo/preview-list.tsv
+          import json
+          from pathlib import Path
+          data = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
+          for item in data.get('articles', []):
+              print(f"{item['slug']}\t{item['contract']}\t{item['draft']}")
+          PY
+          while IFS=$'\t' read -r SLUG CONTRACT DRAFT; do
+            grep -Fxq "${SLUG}" "${APPROVED_FILE}" || continue
+            python scripts/montar_preview_html_pre_jogo.py \
+              --draft "${AUTO_SOURCE}/${DRAFT}" \
+              --contract "${AUTO_SOURCE}/${CONTRACT}" \
+              --output-dir "${AUTO_PUBLISH}" \
+              --rotation-offset "${OFFSET}" \
+              --force
+            OFFSET=$((OFFSET + 1))
+          done < build/pre-jogo/preview-list.tsv
+
+      - name: Simular aplicação do lote sem commit nem push
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/aplicar_lote_pre_jogo_automatico.py \
+            --manifest "${AUTO_SOURCE}/manifest.json" \
+            --artifact-root "${AUTO_SOURCE}" \
+            --approved "${APPROVED_FILE}" \
+            --previews-root "${AUTO_PUBLISH}" \
+            --report "${APPLY_REPORT}" \
+            --dry-run
+          git diff --quiet -- . ':!build'
+          echo "OK: teste de publicação terminou sem alterar a main."
+
+      - name: Guardar auditoria do teste
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-passo-34-publicacao-dry-run-${{ steps.target.outputs.date }}
+          path: |
+            build/pre-jogo/automatico-publicacao.json
+            build/pre-jogo/status-final-*.json
+            build/pre-jogo/automatico-approved.txt
+          if-no-files-found: warn
+          retention-days: 3
+
+  publicar:
+    if: ${{ github.event_name == 'schedule' && github.event.schedule == '1 3 * * *' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - name: Baixar main sem credencial persistente
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolver data-alvo da publicação
+        id: target
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_DATE=$(python - <<'PY'
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          print(datetime.now(ZoneInfo('America/Sao_Paulo')).date().isoformat())
+          PY
+          )
+          echo "TARGET_DATE=${TARGET_DATE}" >> "${GITHUB_ENV}"
+          echo "date=${TARGET_DATE}" >> "${GITHUB_OUTPUT}"
+          echo "BASE_MAIN_SHA=$(git rev-parse HEAD)" >> "${GITHUB_ENV}"
+          echo "Publicação automática para ${TARGET_DATE}."
+
+      - name: Localizar preparo fresco da noite anterior
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf "${AUTO_SOURCE}"
+          mkdir -p "${AUTO_SOURCE}"
+          ARTIFACT_NAME="${PREP_ARTIFACT_PREFIX}-${TARGET_DATE}"
+          FOUND=""
+          RUN_IDS=$(gh api --method GET \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-automatico.yml/runs" \
+            -f branch=main -f status=success -f per_page=30 \
+            --jq '.workflow_runs[].id')
+
+          for RUN_ID in ${RUN_IDS}; do
+            COUNT=$(gh api --method GET "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+              --jq "[.artifacts[] | select(.name == \"${ARTIFACT_NAME}\")] | length")
+            [ "${COUNT}" = "1" ] || continue
+            TMP="build/pre-jogo/artifact-${RUN_ID}"
+            rm -rf "${TMP}" && mkdir -p "${TMP}"
+            gh run download "${RUN_ID}" --repo "${GITHUB_REPOSITORY}" --name "${ARTIFACT_NAME}" --dir "${TMP}"
+            MANIFEST=$(find "${TMP}" -maxdepth 3 -type f -name manifest.json -print -quit)
+            [ -n "${MANIFEST}" ] || continue
+            if python - "${MANIFEST}" "${TARGET_DATE}" <<'PY'
+          import json, sys
+          from datetime import datetime, timedelta
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          data = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
+          if data.get('step') != 34 or data.get('target_date') != sys.argv[2]:
+              raise SystemExit(1)
+          raw = data.get('generated_at')
+          try:
+              generated = datetime.fromisoformat(raw)
+          except Exception:
+              raise SystemExit(1)
+          if generated.tzinfo is None:
+              raise SystemExit(1)
+          target = datetime.strptime(sys.argv[2], '%Y-%m-%d').replace(tzinfo=ZoneInfo('America/Sao_Paulo'))
+          # Aceita preparo feito entre 22:00 da véspera e 02:00 do dia-alvo.
+          if not (target - timedelta(hours=2) <= generated.astimezone(ZoneInfo('America/Sao_Paulo')) <= target + timedelta(hours=2)):
+              raise SystemExit(1)
+          raise SystemExit(0)
+          PY
+            then
+              cp -R "$(dirname "${MANIFEST}")"/. "${AUTO_SOURCE}/"
+              echo "SOURCE_PREP_RUN_ID=${RUN_ID}" >> "${GITHUB_ENV}"
+              FOUND="${RUN_ID}"
+              break
+            fi
+          done
+
+          if [ -z "${FOUND}" ]; then
+            echo "::warning::Nenhum preparo fresco aprovado para ${TARGET_DATE}; nada será publicado."
+            echo "NO_PREP=true" >> "${GITHUB_ENV}"
+          else
+            echo "NO_PREP=false" >> "${GITHUB_ENV}"
+            echo "OK: usando preparo automático do run ${FOUND}."
+          fi
+
+      - name: Verificar integridade do artifact
+        if: ${{ env.NO_PREP == 'false' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('build/pre-jogo/automatico-source')
+          data = json.loads((root / 'manifest.json').read_text(encoding='utf-8'))
+          for item in data.get('articles', []):
+              for key in ('contract', 'draft', 'status_snapshot'):
+                  rel = item[key]
+                  path = root / rel
+                  expected = item['sha256'][key]
+                  got = hashlib.sha256(path.read_bytes()).hexdigest()
+                  if got != expected:
+                      raise SystemExit(f'ERRO: artifact adulterado/corrompido em {rel}')
+          print(f"OK: {len(data.get('articles', []))} matéria(s) do artifact passaram no SHA-256.")
+          PY
+
+      - name: Verificar Secret do check final
+        if: ${{ env.NO_PREP == 'false' }}
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${SERPER_API_KEY}" || { echo "ERRO: SERPER_API_KEY ausente."; exit 1; }
+
+      - name: Revalidar cada jogo em fonte oficial
+        if: ${{ env.NO_PREP == 'false' }}
+        shell: bash
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: |
+          set -euo pipefail
+          : > "${APPROVED_FILE}"
+          python - <<'PY' > build/pre-jogo/status-list.tsv
+          import json
+          from pathlib import Path
+          data = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
+          for item in data.get('articles', []):
+              print(f"{item['slug']}\t{item['status_snapshot']}")
+          PY
+          while IFS=$'\t' read -r SLUG SNAPSHOT; do
+            [ -n "${SLUG}" ] || continue
+            REPORT="build/pre-jogo/status-final-${SLUG%.html}.json"
+            if python scripts/validar_status_final_pre_jogo.py \
+              --evidence "${AUTO_SOURCE}/${SNAPSHOT}" --report "${REPORT}" --execute; then
+              echo "${SLUG}" >> "${APPROVED_FILE}"
+            else
+              echo "::warning::${SLUG} não passou no check oficial final e não será publicada."
+            fi
+          done < build/pre-jogo/status-list.tsv
+
+      - name: Regenerar HTMLs com template e rotação atuais
+        if: ${{ env.NO_PREP == 'false' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "${AUTO_PUBLISH}"
+          mkdir -p "${AUTO_PUBLISH}"
+          OFFSET=0
+          python - <<'PY' > build/pre-jogo/preview-list.tsv
+          import json
+          from pathlib import Path
+          data = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
+          for item in data.get('articles', []):
+              print(f"{item['slug']}\t{item['contract']}\t{item['draft']}")
+          PY
+          while IFS=$'\t' read -r SLUG CONTRACT DRAFT; do
+            grep -Fxq "${SLUG}" "${APPROVED_FILE}" || continue
+            python scripts/montar_preview_html_pre_jogo.py \
+              --draft "${AUTO_SOURCE}/${DRAFT}" \
+              --contract "${AUTO_SOURCE}/${CONTRACT}" \
+              --output-dir "${AUTO_PUBLISH}" \
+              --rotation-offset "${OFFSET}" \
+              --force
+            OFFSET=$((OFFSET + 1))
+          done < build/pre-jogo/preview-list.tsv
+
+      - name: Aplicar lote contra a main atual
+        if: ${{ env.NO_PREP == 'false' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/aplicar_lote_pre_jogo_automatico.py \
+            --manifest "${AUTO_SOURCE}/manifest.json" \
+            --artifact-root "${AUTO_SOURCE}" \
+            --approved "${APPROVED_FILE}" \
+            --previews-root "${AUTO_PUBLISH}" \
+            --report "${APPLY_REPORT}"
+
+          PUBLISH_COUNT=$(python - <<'PY'
+          import json
+          print(json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))['changed_file_count'])
+          PY
+          )
+          echo "PUBLISH_COUNT=${PUBLISH_COUNT}" >> "${GITHUB_ENV}"
+          if [ "${PUBLISH_COUNT}" = "0" ]; then
+            echo "Nenhuma matéria passou por todas as travas; não haverá commit."
+          fi
+
+      - name: Validar escopo exato das alterações
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, subprocess
+          report = json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))
+          expected = set(report['changed_files'])
+          modified = set(filter(None, subprocess.check_output(['git','diff','--name-only'], text=True).splitlines()))
+          untracked = set(filter(None, subprocess.check_output(['git','ls-files','--others','--exclude-standard'], text=True).splitlines()))
+          observed = modified | untracked
+          if observed != expected:
+              raise SystemExit(f'ERRO: escopo local inesperado. esperado={sorted(expected)} observado={sorted(observed)}')
+          expected_count = report['selected_count'] + 2
+          if len(expected) != expected_count:
+              raise SystemExit(f'ERRO: lote deveria ter N+2 arquivos ({expected_count}), mas tem {len(expected)}.')
+          print(f'OK: escopo local contém exatamente {len(expected)} arquivos autorizados.')
+          PY
+
+      - name: Confirmar que a main remota não mudou
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          REMOTE_MAIN=$(git ls-remote origin refs/heads/main | awk '{print $1}')
+          if [ "${REMOTE_MAIN}" != "${BASE_MAIN_SHA}" ]; then
+            echo "ERRO: main remota mudou durante o Passo 34; publicação bloqueada."
+            exit 1
+          fi
+
+      - name: Criar commit único do lote
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t FILES < <(python - <<'PY'
+          import json
+          for item in json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))['changed_files']:
+              print(item)
+          PY
+          )
+          git add -- "${FILES[@]}"
+          git diff --cached --check
+          python - <<'PY'
+          import json, subprocess
+          report = json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))
+          expected = set(report['changed_files'])
+          staged = set()
+          for line in subprocess.check_output(['git','diff','--cached','--name-status'], text=True).splitlines():
+              _status, name = line.split('\t', 1)
+              staged.add(name)
+          if staged != expected:
+              raise SystemExit(f'ERRO: stage final diverge do relatório: {sorted(staged)}')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publica pré-jogos automáticos ${TARGET_DATE}"
+          echo "PUBLICATION_COMMIT_SHA=$(git rev-parse HEAD)" >> "${GITHUB_ENV}"
+
+      - name: Instalar trava de pre-push dinâmica
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          files = json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))['changed_files']
+          Path('/tmp/passo34-expected-files.txt').write_text('\n'.join(sorted(files)) + '\n', encoding='utf-8')
+          PY
+          cat > .git/hooks/pre-push <<'HOOK'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          while read -r local_ref local_sha remote_ref remote_sha; do
+            [ -n "$remote_ref" ] || continue
+            if [ "$remote_ref" != "refs/heads/main" ]; then
+              echo "ERRO: Passo 34 bloqueou destino diferente de main: $remote_ref" >&2
+              exit 1
+            fi
+            git diff --name-only "$remote_sha" "$local_sha" | sort > /tmp/passo34-observed-files.txt
+            if ! cmp -s /tmp/passo34-observed-files.txt /tmp/passo34-expected-files.txt; then
+              echo "ERRO: arquivos do push divergem do lote aprovado." >&2
+              diff -u /tmp/passo34-expected-files.txt /tmp/passo34-observed-files.txt >&2 || true
+              exit 1
+            fi
+          done
+          HOOK
+          chmod +x .git/hooks/pre-push
+
+      - name: Reconfirmar main e publicar automaticamente
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          REMOTE_MAIN=$(git ls-remote origin refs/heads/main | awk '{print $1}')
+          [ "${REMOTE_MAIN}" = "${BASE_MAIN_SHA}" ] || { echo "ERRO: main mudou imediatamente antes do push."; exit 1; }
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin HEAD:main
+          AFTER=$(git ls-remote origin refs/heads/main | awk '{print $1}')
+          [ "${AFTER}" = "${PUBLICATION_COMMIT_SHA}" ] || { echo "ERRO: SHA remoto não corresponde ao commit automático."; exit 1; }
+          echo "OK: lote automático chegou à main."
+
+      - name: Confirmar diff remoto no próprio GitHub
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api --method GET "repos/${GITHUB_REPOSITORY}/commits/${PUBLICATION_COMMIT_SHA}" > build/pre-jogo/passo34-commit-remoto.json
+          python - <<'PY'
+          import json, os
+          report = json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))
+          remote = json.load(open('build/pre-jogo/passo34-commit-remoto.json', encoding='utf-8'))
+          expected = set(report['changed_files'])
+          observed = {item['filename'] for item in remote.get('files', [])}
+          if observed != expected:
+              raise SystemExit(f'ERRO: GitHub confirmou arquivos inesperados: {sorted(observed)}')
+          if remote.get('sha') != os.environ['PUBLICATION_COMMIT_SHA']:
+              raise SystemExit('ERRO: SHA do commit remoto diverge.')
+          for item in remote.get('files', []):
+              if item['filename'] in {'noticias.json','sitemap.xml'} and item['status'] != 'modified':
+                  raise SystemExit(f"ERRO: {item['filename']} não foi modificado como esperado.")
+              if item['filename'].endswith('.html') and item['status'] != 'added':
+                  raise SystemExit(f"ERRO: HTML {item['filename']} não foi adicionado como esperado.")
+          print(f"OK: GitHub confirmou exatamente {len(expected)} arquivos no commit automático.")
+          PY
+
+      - name: Atualizar home e enviar URLs ao IndexNow
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if ! gh workflow run atualizar-noticias-home.yml --repo "${GITHUB_REPOSITORY}" --ref main; then
+            echo "::warning::Não foi possível despachar Atualizar noticias-home."
+          fi
+          python - <<'PY' > build/pre-jogo/published-slugs.txt
+          import json
+          for slug in json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))['selected_slugs']:
+              print(slug)
+          PY
+          while read -r SLUG; do
+            [ -n "${SLUG}" ] || continue
+            if ! gh workflow run indexnow.yml --repo "${GITHUB_REPOSITORY}" --ref main -f "file=${SLUG}"; then
+              echo "::warning::Falha ao despachar IndexNow para ${SLUG}."
+            fi
+          done < build/pre-jogo/published-slugs.txt
+
+      - name: Guardar auditoria da publicação automática
+        if: ${{ always() && env.NO_PREP == 'false' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-passo-34-publicacao-${{ steps.target.outputs.date }}
+          path: |
+            build/pre-jogo/automatico-publicacao.json
+            build/pre-jogo/status-final-*.json
+            build/pre-jogo/passo34-commit-remoto.json
+            build/pre-jogo/automatico-approved.txt
+          if-no-files-found: warn
+          retention-days: 7
