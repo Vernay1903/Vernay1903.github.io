@@ -5,6 +5,10 @@ Este script NÃO publica nada. Ele recebe os pacotes editoriais limpos do Passo 
 chama os Passos 25 e 26 apenas para os artigos integralmente resolvidos, cria um
 snapshot interno mínimo para a checagem oficial final e grava um artifact compacto
 que poderá ser usado pela execução das 00:01.
+
+Passo 34.3: quando a extração determinística não resolve todos os requisitos,
+este orquestrador pode executar o fallback factual OpenAI estritamente aterrado
+em páginas já checadas e depois reconstruir o pacote editorial limpo.
 """
 
 from __future__ import annotations
@@ -184,6 +188,57 @@ def run_command(args: list[str]) -> tuple[bool, str]:
     return process.returncode == 0, output
 
 
+def package_manifest_needs_fallback(path: Path) -> bool:
+    data = load_json(path)
+    if not isinstance(data, dict):
+        return False
+    for article in data.get("articles", []):
+        if isinstance(article, dict) and article.get("ready_for_drafting") is not True:
+            return True
+    return False
+
+
+def run_grounded_fact_fallback(args: argparse.Namespace) -> tuple[bool, bool]:
+    """Tenta o Passo 34.3 sem transformar falha do provedor em publicação insegura."""
+    if not package_manifest_needs_fallback(args.packages):
+        return False, True
+
+    checked = DEFAULT_BUILD / f"paginas-checadas-{args.date}.json"
+    if not checked.exists():
+        print("AVISO: Passo 34.3 não executado porque o manifesto de páginas checadas não existe.")
+        return True, False
+
+    print("PASSO 34.3 — tentando resolver somente lacunas factuais com grounding extrativo.")
+    ok, _ = run_command([
+        sys.executable,
+        "scripts/extrair_fatos_openai.py",
+        "--date", args.date,
+        "--checked", str(checked),
+        "--facts", str(args.facts),
+        "--output-dir", str(DEFAULT_BUILD),
+        "--execute",
+        "--force",
+    ])
+    if not ok:
+        print("AVISO: fallback factual OpenAI falhou; matéria continuará bloqueada em vez de forçar dados.")
+        return True, False
+
+    ok, _ = run_command([
+        sys.executable,
+        "scripts/montar_pacote_editorial.py",
+        "--date", args.date,
+        "--facts", str(args.facts),
+        "--output-dir", str(DEFAULT_BUILD),
+        "--force",
+    ])
+    if not ok:
+        print("AVISO: fatos aterrrados foram gerados, mas o pacote editorial não pôde ser reconstruído; publicação continua bloqueada.")
+        return True, False
+
+    print("OK: Passo 34.3 concluiu fallback factual e reconstruiu o pacote editorial limpo.")
+    return True, True
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Prepara lote automático de pré-jogos sem publicar.")
     parser.add_argument("--date", required=True, help="Data-alvo YYYY-MM-DD.")
@@ -204,10 +259,13 @@ def main() -> None:
         fail("OPENAI_API_KEY não configurada.")
 
     config = load_json(CONFIG_PATH)
-    packages_manifest = load_json(args.packages)
-    facts_manifest = load_json(args.facts)
     if not isinstance(config, dict) or config.get("timezone") != "America/Sao_Paulo":
         fail("config/pre-jogo.json inválido.")
+
+    fallback_attempted, fallback_succeeded = run_grounded_fact_fallback(args)
+
+    packages_manifest = load_json(args.packages)
+    facts_manifest = load_json(args.facts)
     if not isinstance(packages_manifest, dict) or packages_manifest.get("target_date") != args.date:
         fail("Manifesto de pacotes editoriais não corresponde à data-alvo.")
     if not isinstance(facts_manifest, dict) or facts_manifest.get("target_date") != args.date:
@@ -349,6 +407,8 @@ def main() -> None:
         "skipped_count": len(skipped),
         "articles": prepared,
         "skipped": skipped,
+        "grounded_fact_fallback_attempted": fallback_attempted,
+        "grounded_fact_fallback_succeeded": fallback_succeeded,
         "publication_unlocked": False,
         "requires_final_official_status_check": True,
     }
@@ -359,6 +419,7 @@ def main() -> None:
 
     print("PASSO 34 — PREPARAÇÃO AUTOMÁTICA CONCLUÍDA")
     print(f"Data-alvo: {args.date}")
+    print(f"Fallback factual aterrado: {'executado' if fallback_attempted else 'não necessário'} | sucesso={fallback_succeeded}")
     print(f"Matérias prontas para a janela das 00:01: {len(prepared)}")
     print(f"Matérias bloqueadas/puladas por segurança: {len(skipped)}")
     for item in prepared:
