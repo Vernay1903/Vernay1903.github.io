@@ -524,6 +524,7 @@ def controlled_zero_away_wins_grounding(
     unbeaten_signals = (
         "unbeaten", "never lost", "without ever losing", "no defeats", "no losses",
         "invicto", "invicta", "nunca perdeu", "sem derrotas",
+        "ungeschlagen", "noch nie verloren", "ohne niederlage",
     )
     if not any(normalize_text(signal) in support_norm for signal in unbeaten_signals):
         return False
