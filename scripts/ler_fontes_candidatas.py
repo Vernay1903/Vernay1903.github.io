@@ -288,7 +288,10 @@ def mentions_team(text: str, team: Any) -> bool:
         return True
     corpus_tokens = set(corpus.split())
     distinctive = [token for token in tokens if len(token) >= 5]
-    return bool(distinctive) and all(token in corpus_tokens for token in distinctive[:2])
+    # Permite variantes internacionais como München/Munich quando um nome distintivo
+    # compartilhado (ex.: Bayern) está presente. Para estádio/H2H, o chamador exige
+    # também o adversário, evitando promover páginas de outro confronto.
+    return bool(distinctive) and any(token in corpus_tokens for token in distinctive)
 
 
 def source_evidence_blob(source: dict[str, Any]) -> str:
