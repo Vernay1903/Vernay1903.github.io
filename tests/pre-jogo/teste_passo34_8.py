@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from scripts import extrair_fatos_openai as grounded_extractor
 from scripts import ler_fontes_candidatas_passo34_8 as reader
 
 
