@@ -49,6 +49,7 @@ _extend_keywords(
         "duell",
         "duelle",
         "spiele",
+        "spielen",
         "siege",
         "unentschieden",
         "remis",
@@ -141,7 +142,7 @@ def h2h_source_has_aggregate_signals(source: dict[str, Any], context: dict[str, 
         signal in padded
         for signal in (
             " games ", " matches ", " meetings ", " encounters ",
-            " jogos ", " partidas ", " spiele ", " duelle ", " begegnungen ",
+            " jogos ", " partidas ", " spiele ", " spielen ", " duelle ", " begegnungen ",
         )
     )
     wins_signal = any(
@@ -164,7 +165,7 @@ def h2h_source_has_aggregate_signals(source: dict[str, Any], context: dict[str, 
         )
     )
     number_count = len(re.findall(r"\b\d{1,3}\b", folded))
-    return games_signal and wins_signal and (draws_signal or unbeaten_signal) and number_count >= 2
+    return games_signal and wins_signal and (draws_signal or unbeaten_signal) and number_count >= 1
 
 
 def _allowed_stage_domains(
