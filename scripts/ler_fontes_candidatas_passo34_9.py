@@ -66,24 +66,24 @@ def content_is_current_enough(
     """Bloqueia páginas claramente antigas; aceita sinais explícitos da temporada-alvo."""
     if not target_year:
         return True
+    published = str(source.get("published_hint", ""))
+    published_years = set(re.findall(r"\b20\d{2}\b", published))
+    if published_years:
+        # Uma data editorial explícita tem precedência sobre título/URL.
+        return target_year in published_years
+
     haystack = base.normalize_text(
         " ".join(
             [
                 content,
                 str(source.get("title", "")),
                 str(source.get("url", "")),
-                str(source.get("published_hint", "")),
             ]
         )
     )
     signals = tuple(base.normalize_text(item) for item in _season_signals(target_year))
     if any(signal and signal in haystack for signal in signals):
         return True
-
-    published = str(source.get("published_hint", ""))
-    years = set(re.findall(r"\b20\d{2}\b", published))
-    if years:
-        return target_year in years
 
     # Se há ano explícito diferente em título/URL/conteúdo, a página é antiga.
     explicit_years = set(re.findall(r"\b20\d{2}\b", haystack))
