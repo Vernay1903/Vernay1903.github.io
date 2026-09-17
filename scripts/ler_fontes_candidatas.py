@@ -14,6 +14,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 from copy import deepcopy
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -187,7 +188,7 @@ def normalize_scrape_response(payload: dict[str, Any]) -> dict[str, Any]:
 
 REQUIREMENT_KEYWORDS: dict[str, tuple[str, ...]] = {
     "stadium_and_location": (
-        "stadium", "estádio", "estadio", "arena", "venue", "local", "emirates",
+        "stadium", "estádio", "estadio", "arena", "venue", "local", "emirates", "allianz",
     ),
     "transmission": (
         "transmiss", "onde assistir", "tv", "stream", "broadcast", "canal",
@@ -200,9 +201,11 @@ REQUIREMENT_KEYWORDS: dict[str, tuple[str, ...]] = {
     ),
     "recent_form_both_teams": (
         "últimos", "ultimos", "recent", "form", "vitória", "vitoria", "derrota", "empate",
+        "wins", "won", "draw", "unbeaten", "season", "matchday", "first three", "last",
     ),
     "competition_specific_head_to_head": (
         "confront", "head-to-head", "head to head", "histórico", "historico", "previous meeting",
+        "encounter", "encounters", "meetings", "record against", "unbeaten", "never lost",
     ),
     "competition_internal_link": (
         "história", "historia", "campeões", "campeoes", "competition",
@@ -257,6 +260,180 @@ def extract_evidence_segments(
 
     chosen = matched if matched else fallback
     return chosen[:max_segments]
+
+
+def normalize_text(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    folded = unicodedata.normalize("NFKD", value)
+    folded = "".join(ch for ch in folded if not unicodedata.combining(ch))
+    folded = folded.casefold()
+    folded = re.sub(r"[^a-z0-9]+", " ", folded)
+    return " ".join(folded.split())
+
+
+def meaningful_team_tokens(team: Any) -> list[str]:
+    text = normalize_text(team)
+    stop = {"1", "fc", "cf", "sc", "ac", "afc", "sv", "club", "clube", "de", "do", "da", "dos", "das"}
+    return [token for token in text.split() if token not in stop and len(token) >= 4]
+
+
+def mentions_team(text: str, team: Any) -> bool:
+    corpus = normalize_text(text)
+    tokens = meaningful_team_tokens(team)
+    if not tokens:
+        return False
+    phrase = " ".join(tokens)
+    if phrase and phrase in corpus:
+        return True
+    corpus_tokens = set(corpus.split())
+    distinctive = [token for token in tokens if len(token) >= 5]
+    return bool(distinctive) and all(token in corpus_tokens for token in distinctive[:2])
+
+
+def source_evidence_blob(source: dict[str, Any]) -> str:
+    parts: list[str] = []
+    title = source.get("title")
+    if isinstance(title, str):
+        parts.append(title)
+    page = source.get("page_evidence")
+    if isinstance(page, dict):
+        metadata = page.get("metadata")
+        if isinstance(metadata, dict):
+            parts.extend(str(value) for value in metadata.values() if isinstance(value, str))
+        segments = page.get("evidence_segments")
+        if isinstance(segments, list):
+            parts.extend(str(item) for item in segments if isinstance(item, str))
+    return "\n".join(parts)
+
+
+def eligible_checked_source(source: Any) -> bool:
+    return (
+        isinstance(source, dict)
+        and source.get("content_checked") is True
+        and source.get("eligible_for_factual_validation") is True
+    )
+
+
+def source_supports_cross_requirement_reuse(
+    source: dict[str, Any],
+    target_requirement_id: str,
+    context: dict[str, Any],
+) -> bool:
+    if not eligible_checked_source(source):
+        return False
+    blob = source_evidence_blob(source)
+    folded = normalize_text(blob)
+    home = context.get("home")
+    away = context.get("away")
+    competition = normalize_text(context.get("competition"))
+
+    if target_requirement_id == "stadium_and_location":
+        return (
+            mentions_team(blob, home)
+            and mentions_team(blob, away)
+            and any(word in folded for word in ("stadium", "arena", "venue", "estadio", "allianz"))
+        )
+
+    if target_requirement_id == "competition_specific_head_to_head":
+        return (
+            mentions_team(blob, home)
+            and mentions_team(blob, away)
+            and (not competition or competition in folded)
+            and any(
+                signal in folded
+                for signal in (
+                    "head to head", "encounter", "encounters", "meeting", "meetings",
+                    "record against", "unbeaten", "never lost", "without ever losing",
+                    "confront", "historico",
+                )
+            )
+        )
+
+    if target_requirement_id == "recent_form_both_teams":
+        team_present = mentions_team(blob, home) or mentions_team(blob, away)
+        outcome = any(
+            signal in folded
+            for signal in (
+                "wins", "won", "victory", "draw", "draws", "unbeaten", "defeat", "loss",
+                "vitoria", "venceu", "empate", "derrota", "perdeu",
+            )
+        )
+        recency = any(
+            signal in folded
+            for signal in ("recent", "last", "latest", "first three", "season", "matchday", "ultimos", "rodada", "temporada")
+        )
+        return team_present and outcome and recency
+
+    return False
+
+
+def reuse_checked_sources_across_requirements(
+    requirements: list[dict[str, Any]],
+    *,
+    context: dict[str, Any],
+) -> tuple[list[dict[str, Any]], int]:
+    """Passo 34.6: uma página já checada pode sustentar outro requisito do mesmo jogo.
+
+    A página não é relida nem promovida por si só: apenas fontes já elegíveis entram no
+    reaproveitamento e ainda terão de passar pelos extratores/validadores factuais.
+    """
+    pool: list[tuple[str, dict[str, Any]]] = []
+    for requirement in requirements:
+        origin = requirement.get("id")
+        if not isinstance(origin, str):
+            continue
+        for source in requirement.get("source_candidates", []):
+            if eligible_checked_source(source):
+                pool.append((origin, source))
+
+    target_ids = {
+        "stadium_and_location",
+        "recent_form_both_teams",
+        "competition_specific_head_to_head",
+    }
+    total_reused = 0
+    updated: list[dict[str, Any]] = []
+
+    for requirement in requirements:
+        result = deepcopy(requirement)
+        target_id = result.get("id")
+        original = result.get("source_candidates", [])
+        if not isinstance(original, list):
+            original = []
+
+        reused: list[dict[str, Any]] = []
+        if target_id in target_ids:
+            existing_urls = {
+                str(item.get("url")) for item in original
+                if isinstance(item, dict) and isinstance(item.get("url"), str)
+            }
+            for origin_id, source in pool:
+                url = source.get("url")
+                if origin_id == target_id or not isinstance(url, str) or url in existing_urls:
+                    continue
+                if not source_supports_cross_requirement_reuse(source, str(target_id), context):
+                    continue
+                copied = deepcopy(source)
+                copied["reused_from_requirement_id"] = origin_id
+                copied["passo34_6_cross_requirement_reuse"] = True
+                reused.append(copied)
+                existing_urls.add(url)
+
+        if reused:
+            # Reaproveitados relevantes vêm primeiro para não perder espaço nos limites do extrator.
+            result["source_candidates"] = reused + [deepcopy(item) for item in original]
+            total_reused += len(reused)
+        else:
+            result["source_candidates"] = [deepcopy(item) for item in original]
+
+        result["passo34_6_reused_source_count"] = len(reused)
+        result["ready_for_fact_extraction"] = any(
+            eligible_checked_source(item) for item in result["source_candidates"]
+        )
+        updated.append(result)
+
+    return updated, total_reused
 
 
 def apply_scrape_to_candidate(
@@ -393,6 +570,11 @@ def check_article(
         for item in requirements
         if isinstance(item, dict)
     ]
+    context = result.get("match_context") if isinstance(result.get("match_context"), dict) else {}
+    checked_requirements, reused_count = reuse_checked_sources_across_requirements(
+        checked_requirements,
+        context=context,
+    )
 
     checked_sources: set[str] = set()
     eligible_sources: set[str] = set()
@@ -415,6 +597,7 @@ def check_article(
     result["research_status"] = "candidate_pages_checked"
     result["page_checked_source_count"] = len(checked_sources)
     result["eligible_source_count"] = len(eligible_sources)
+    result["passo34_6_reused_source_count"] = reused_count
     result["ready_for_fact_extraction"] = bool(eligible_sources)
     result["page_check_blocking_requirement_ids"] = blocking
     result["verified_fact_count"] = 0
@@ -500,6 +683,7 @@ def main() -> None:
         "article_count": len(checked_articles),
         "page_checked_source_count": sum(item["page_checked_source_count"] for item in checked_articles),
         "eligible_source_count": sum(item["eligible_source_count"] for item in checked_articles),
+        "passo34_6_reused_source_count": sum(item.get("passo34_6_reused_source_count", 0) for item in checked_articles),
         "verified_fact_count": 0,
         "ready_for_factual_validation_count": 0,
         "ready_for_drafting_count": 0,
@@ -515,6 +699,7 @@ def main() -> None:
     print(f"OK: páginas candidatas checadas para {target_date.isoformat()}.")
     print(f"Páginas checadas com conteúdo: {manifest['page_checked_source_count']}")
     print(f"Fontes elegíveis para futura extração factual: {manifest['eligible_source_count']}")
+    print(f"Passo 34.6 — evidências reaproveitadas entre requisitos: {manifest['passo34_6_reused_source_count']}")
     print("Fatos verificados: 0")
     print("As fontes de pesquisa permanecem internas e não podem ser citadas no texto da matéria.")
     print("Validação factual, redação, HTML e publicação permanecem bloqueados.")
