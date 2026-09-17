@@ -82,21 +82,12 @@ def stadium_source_has_explicit_venue(source: dict[str, Any], context: dict[str,
     blob = _source_blob(source)
     if not _has_match_context(blob, context):
         return False
-    folded = base.normalize_text(blob)
-    venue_signals = (
-        " stadium ",
-        " estadio ",
-        " arena ",
-        " venue ",
-        " stadion ",
-        " spielort ",
-        " spielstaette ",
-        " allianz arena ",
-    )
-    padded = f" {folded} "
-    if not any(signal in padded for signal in venue_signals):
+
+    home = context.get("home")
+    away = context.get("away")
+    if not isinstance(home, str) or not isinstance(away, str):
         return False
-    # Exige pelo menos um nome com aparência de local, não apenas a palavra genérica.
+
     known = (
         "allianz arena",
         "emirates stadium",
@@ -110,19 +101,53 @@ def stadium_source_has_explicit_venue(source: dict[str, Any], context: dict[str,
         "camp nou",
         "santiago bernabeu",
     )
-    if any(item in folded for item in known):
-        return True
-    return bool(
-        re.search(
-            r"\b(?:stadium|arena|stadion)\b.{0,80}\b[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’.-]{2,}",
-            blob,
-            flags=re.IGNORECASE,
+
+    title = str(source.get("title", ""))
+    title_has_match = base.mentions_team(title, home) and base.mentions_team(title, away)
+    page = source.get("page_evidence") if isinstance(source.get("page_evidence"), dict) else {}
+    raw_segments = page.get("evidence_segments", []) if isinstance(page, dict) else []
+    segments = [title] + [str(item) for item in raw_segments if isinstance(item, str)]
+
+    for segment in segments:
+        folded = base.normalize_text(segment)
+        padded = f" {folded} "
+        has_venue = (
+            any(
+                signal in padded
+                for signal in (
+                    " stadium ", " estadio ", " arena ", " venue ",
+                    " stadion ", " spielort ", " spielstaette ",
+                )
+            )
+            or any(item in folded for item in known)
         )
-        or re.search(
-            r"\b[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+){0,4}\s+(?:Stadium|Arena)\b",
-            blob,
-        )
-    )
+        if not has_venue:
+            continue
+
+        has_home = base.mentions_team(segment, home)
+        has_away = base.mentions_team(segment, away)
+        # Se a própria linha cita um dos clubes, precisa citar os dois.
+        if has_home or has_away:
+            if not (has_home and has_away):
+                continue
+        elif not title_has_match:
+            continue
+
+        if any(item in folded for item in known):
+            return True
+        if (
+            re.search(
+                r"\b(?:stadium|arena|stadion)\b.{0,80}\b[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’.-]{2,}",
+                segment,
+                flags=re.IGNORECASE,
+            )
+            or re.search(
+                r"\b[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+){0,4}\s+(?:Stadium|Arena)\b",
+                segment,
+            )
+        ):
+            return True
+    return False
 
 
 def h2h_source_has_aggregate_signals(source: dict[str, Any], context: dict[str, Any]) -> bool:
