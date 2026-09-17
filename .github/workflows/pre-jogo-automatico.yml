@@ -71,6 +71,7 @@ jobs:
             scripts/buscar_fontes_serper.py \
             scripts/estruturar_evidencias_candidatas.py \
             scripts/ler_fontes_candidatas.py \
+            scripts/ler_fontes_candidatas_passo34_8.py \
             scripts/extrair_fatos_estruturados.py \
             scripts/montar_pacote_editorial.py \
             scripts/preparar_redacao_pre_jogo.py \
