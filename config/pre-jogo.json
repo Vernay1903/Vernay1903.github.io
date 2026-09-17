@@ -305,9 +305,9 @@
       "auth_header": "X-API-KEY",
       "content_type": "application/json",
       "include_markdown": true,
-      "max_candidates_per_requirement": 1,
-      "max_segments_per_source": 6,
-      "max_segment_chars": 500,
+      "max_candidates_per_requirement": 3,
+      "max_segments_per_source": 10,
+      "max_segment_chars": 700,
       "execute_requires_explicit_flag": true,
       "publication_unlock_allowed": false
     }
