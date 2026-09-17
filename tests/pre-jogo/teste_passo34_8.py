@@ -9,6 +9,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts import extrair_fatos_openai as grounded_extractor
+from scripts import extrair_fatos_openai as grounded_extractor
 from scripts import ler_fontes_candidatas_passo34_8 as reader
 
 
@@ -58,6 +59,26 @@ def main() -> None:
         "Bayer Leverkusen gegen 1. FC Union Berlin in der Allianz Arena."
     )
     assert reader.stadium_source_has_explicit_venue(wrong_match, context) is False
+
+    site_config = {
+        "monitored_clubs": [
+            {
+                "name": "Bayern de Munique",
+                "slug": "bayern-de-munique",
+                "aliases": ["Bayern Munich", "FC Bayern München", "Bayern München"],
+            }
+        ]
+    }
+    assert grounded_extractor.controlled_zero_away_wins_grounding(
+        field="h2h_away_wins",
+        value="0",
+        support=(
+            "In 14 Bundesliga-Spielen zwischen FC Bayern München und 1. FC Union Berlin "
+            "gab es 9 Siege und 5 Unentschieden; Bayern ist gegen Union ungeschlagen."
+        ),
+        context=context,
+        site_config=site_config,
+    ) is True
 
     print("OK: Passo 34.8 mantém busca dirigida com suporte explícito de estádio e H2H agregado.")
 
