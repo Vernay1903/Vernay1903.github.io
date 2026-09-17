@@ -338,7 +338,7 @@ def system_instructions() -> str:
         "Se o suporte estiver incompleto, use pending. Se fontes fornecidas discordarem sobre o mesmo dado crítico, use conflict. "
         "Não faça inferências, não combine competições no retrospecto, não transforme escalação provável em oficial e não invente transmissão, árbitro, estádio, placar, forma, jogadores ou números. "
         "No retrospecto, aceite apenas números explicitamente ligados à competição indicada. "
-        "Única exceção controlada: se um mesmo segmento de H2H disser explicitamente que o mandante está invicto, nunca perdeu ou ficou sem derrotas contra o visitante, você pode retornar h2h_away_wins com value '0' apoiado nesse segmento; os demais números continuam obrigatoriamente literais e a soma final será revalidada pelo código. "
+        "Única exceção controlada: se um mesmo segmento de H2H disser explicitamente que o mandante está invicto, nunca perdeu, ficou sem derrotas, está ungeschlagen ou noch nie verloren contra o visitante, você pode retornar h2h_away_wins com value '0' apoiado nesse segmento; os demais números continuam obrigatoriamente literais e a soma final será revalidada pelo código. "
         "Em recent_form_both_teams, é obrigatório haver suporte explícito para os dois times. "
         "Não inclua nomes de fontes, URLs, atribuições como 'segundo'/'conforme' ou comentários sobre o processo de pesquisa. "
         "Retorne somente o JSON exigido pelo schema."
