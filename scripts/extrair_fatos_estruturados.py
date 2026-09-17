@@ -47,6 +47,15 @@ ENABLED_EXTRACTORS = {
     "stakes_and_qualification_scenarios_when_applicable",
 }
 
+LEAGUE_SLUGS = {
+    "premier-league",
+    "la-liga",
+    "ligue-1",
+    "bundesliga",
+    "serie-a",
+    "brasileirao",
+}
+
 KNOWN_VENUES = [
     "Emirates Stadium",
     "Etihad Stadium",
@@ -145,6 +154,45 @@ def contains_attribution_language(value: str) -> bool:
     return any(normalize_text(prefix) in folded for prefix in ATTRIBUTION_PREFIXES)
 
 
+def unmonitored_team_aliases(team: str) -> list[str]:
+    """Gera somente variantes conservadoras de nomes vindos do provedor.
+
+    Ex.: "1. FC Union Berlin" -> também "Union Berlin". Isso serve apenas
+    para reconhecer o mesmo clube no texto das fontes; não cria qualquer fato.
+    """
+    variants = [team.strip()]
+    raw = team.strip()
+    prefix_pattern = (
+        r"^\s*(?:\d+\.?\s+)?(?:FC|F\.C\.|AFC|A\.F\.C\.|AC|A\.C\.|"
+        r"SSC|S\.S\.C\.|AS|A\.S\.|SC|S\.C\.|RC|R\.C\.|CF|C\.F\.|FSV|TSG)\s+"
+    )
+    stripped = re.sub(prefix_pattern, "", raw, flags=re.IGNORECASE).strip()
+    if stripped and normalize_text(stripped) != normalize_text(raw):
+        variants.append(stripped)
+
+    trailing = re.sub(
+        r"\s+(?:FC|F\.C\.|AFC|A\.F\.C\.|AC|A\.C\.|SC|S\.C\.|CF|C\.F\.)\s*$",
+        "",
+        raw,
+        flags=re.IGNORECASE,
+    ).strip()
+    if trailing and normalize_text(trailing) != normalize_text(raw):
+        variants.append(trailing)
+
+    unique: list[str] = []
+    seen: set[str] = set()
+    for candidate in variants:
+        key = normalize_text(candidate)
+        if not key or key in seen:
+            continue
+        # Evita aliases excessivamente curtos/genericamente perigosos.
+        if candidate != raw and len(key) < 5:
+            continue
+        seen.add(key)
+        unique.append(candidate)
+    return unique or [team]
+
+
 def aliases_for_team(team: str, config: dict[str, Any]) -> list[str]:
     key = normalize_text(team)
     for club in config.get("monitored_clubs", []):
@@ -153,8 +201,11 @@ def aliases_for_team(team: str, config: dict[str, Any]) -> list[str]:
         candidates = [club.get("name"), club.get("slug"), *club.get("aliases", [])]
         normalized = [normalize_text(str(item).replace("-", " ")) for item in candidates if item]
         if key in normalized:
-            return [str(item) for item in candidates if isinstance(item, str) and item.strip()]
-    return [team]
+            values = [str(item) for item in candidates if isinstance(item, str) and item.strip()]
+            if team not in values:
+                values.append(team)
+            return values
+    return unmonitored_team_aliases(team)
 
 
 def mentions_team(corpus: str, team: str, config: dict[str, Any]) -> bool:
@@ -211,6 +262,64 @@ def eligible_sources(requirement: dict[str, Any]) -> list[dict[str, Any]]:
         and item.get("content_checked") is True
         and item.get("eligible_for_factual_validation") is True
     ]
+
+
+def checked_source_records(requirement: dict[str, Any]) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for source in requirement.get("source_candidates", []):
+        if not isinstance(source, dict) or source.get("content_checked") is not True:
+            continue
+        url = source.get("url")
+        if not isinstance(url, str) or not url.startswith("https://") or url in seen:
+            continue
+        seen.add(url)
+        records.append({
+            "publisher": source.get("publisher"),
+            "url": url,
+            "source_type": source.get("source_type"),
+            "checked_at": source.get("checked_at"),
+        })
+    return records
+
+
+def resolve_allowed_gap(
+    requirement: dict[str, Any],
+    *,
+    competition_slug: str,
+    config: dict[str, Any],
+) -> dict[str, Any]:
+    """Resolve só ausências que a política já permite, sem fabricar fatos."""
+    result = deepcopy(requirement)
+    if result.get("status") == "verified" or result.get("conflict_detected") is True:
+        return result
+
+    req_id = result.get("id")
+    policy = config.get("research", {}).get("requirement_policy", {}).get(req_id, {})
+    sources = checked_source_records(result)
+
+    if req_id == "stakes_and_qualification_scenarios_when_applicable" and competition_slug in LEAGUE_SLUGS:
+        result["status"] = "not_applicable"
+        result["facts"] = []
+        result["sources"] = sources
+        result["notes"] = "Competição de liga: cenário de classificação mata-mata não se aplica a este pré-jogo."
+        result["fact_extraction_status"] = "automatic_not_applicable_for_league"
+        result["validator_accepted"] = True
+        result["conflict_detected"] = False
+        return result
+
+    if isinstance(policy, dict) and policy.get("allow_unavailable_after_check") is True and sources:
+        result["status"] = "unavailable_after_check"
+        result["facts"] = []
+        result["sources"] = sources
+        result["notes"] = (
+            "Informação não foi confirmada de forma completa nas páginas efetivamente checadas; "
+            "nenhuma lacuna foi inventada."
+        )
+        result["fact_extraction_status"] = "automatic_unavailable_after_checked_sources"
+        result["validator_accepted"] = True
+        result["conflict_detected"] = False
+    return result
 
 
 def internal_source_record(source: dict[str, Any], evidence_segment: str) -> dict[str, Any]:
@@ -532,9 +641,11 @@ def extract_team_labeled_claims(
                     continue
                 value = labeled_value(segment, labels, max_chars=max_chars)
                 if not value:
+                    aliases = aliases_for_team(team, config)
+                    alias_pattern = "(?:" + "|".join(re.escape(alias) for alias in aliases) + ")"
                     for label in labels:
                         match = re.search(
-                            rf"{re.escape(team)}.*?{label}\s*[:\-–—]\s*(.+)$",
+                            rf"{alias_pattern}.*?{label}\s*[:\-–—]\s*(.+)$",
                             segment,
                             flags=re.IGNORECASE,
                         )
@@ -641,6 +752,9 @@ def extract_h2h_requirement(
         result["fact_extraction_status"] = "missing_match_context"
         return result
 
+    home_alias_pattern = "(?:" + "|".join(re.escape(alias) for alias in aliases_for_team(home, config)) + ")"
+    away_alias_pattern = "(?:" + "|".join(re.escape(alias) for alias in aliases_for_team(away, config)) + ")"
+
     claims: list[dict[str, Any]] = []
     for source in eligible_sources(requirement):
         corpus = source_corpus(source)
@@ -652,14 +766,14 @@ def extract_h2h_requirement(
             fields: list[tuple[str, int | None]] = [
                 ("h2h_games", extract_int_after_labels(segment, [r"jogos", r"partidas", r"games", r"matches"])),
                 ("h2h_home_wins", extract_int_after_labels(segment, [
-                    rf"vitórias\s+(?:do\s+|da\s+)?{re.escape(home)}",
-                    rf"{re.escape(home)}\s+vitórias",
-                    rf"{re.escape(home)}\s+wins",
+                    rf"vitórias\s+(?:do\s+|da\s+)?{home_alias_pattern}",
+                    rf"{home_alias_pattern}\s+vitórias",
+                    rf"{home_alias_pattern}\s+wins",
                 ])),
                 ("h2h_away_wins", extract_int_after_labels(segment, [
-                    rf"vitórias\s+(?:do\s+|da\s+)?{re.escape(away)}",
-                    rf"{re.escape(away)}\s+vitórias",
-                    rf"{re.escape(away)}\s+wins",
+                    rf"vitórias\s+(?:do\s+|da\s+)?{away_alias_pattern}",
+                    rf"{away_alias_pattern}\s+vitórias",
+                    rf"{away_alias_pattern}\s+wins",
                 ])),
                 ("h2h_draws", extract_int_after_labels(segment, [r"empates", r"draws"])),
             ]
@@ -771,6 +885,12 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
         extract_requirement(item, match_context=match_context, config=config)
         for item in requirements if isinstance(item, dict)
     ]
+    competition_slug = str(match_context.get("competition_slug", ""))
+    extracted = [
+        resolve_allowed_gap(item, competition_slug=competition_slug, config=config)
+        for item in extracted
+    ]
+
     structured_fact_count = sum(int(item.get("structured_fact_count", 0)) for item in extracted)
     conflicts = [item.get("id") for item in extracted if item.get("conflict_detected") is True]
     validator_accepted = [item.get("id") for item in extracted if item.get("validator_accepted") is True]
@@ -783,6 +903,7 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
     result["validator_accepted_requirement_ids"] = [
         item for item in validator_accepted if isinstance(item, str)
     ]
+    result["automatic_gap_resolution_applied"] = True
     result["ready_for_factual_validation"] = False
     result["ready_for_drafting"] = False
     result["ready_for_html"] = False
