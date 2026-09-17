@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "provider": {
+    "name": "openai-responses",
+    "endpoint": "https://api.openai.com/v1/responses",
+    "api_key_env": "OPENAI_API_KEY",
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "store": false,
+    "timeout_seconds": 120,
+    "max_attempts": 3,
+    "execute_requires_explicit_flag": true
+  },
+  "scope": {
+    "input_mode": "checked_page_evidence_only",
+    "allow_web_search": false,
+    "allow_tools": false,
+    "one_model_call_per_article": true,
+    "max_sources_per_requirement": 3,
+    "max_segments_per_requirement": 14,
+    "max_segment_chars": 650
+  },
+  "safety": {
+    "publication_unlock_allowed": false,
+    "drafting_allowed": false,
+    "html_generation_allowed": false,
+    "invent_missing_facts_allowed": false,
+    "source_attribution_output_allowed": false,
+    "external_urls_sent_to_model": false,
+    "publisher_names_sent_to_model": false,
+    "support_segment_required": true,
+    "extractive_value_required": true
+  }
+}
