@@ -374,7 +374,10 @@ def _build_checked_source(
             max_chars=max_chars,
         )
     else:
-        supported = _match_in_text(f"{source.get('title', '')}\n{content}", context)
+        supported = (
+            _match_in_text(f"{source.get('title', '')}\n{content}", context)
+            and content_is_current_enough(content, source, target_year=target_year)
+        )
         segments = base.extract_evidence_segments(
             content,
             requirement_id,
