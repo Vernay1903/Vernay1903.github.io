@@ -311,6 +311,7 @@ def _segments_for_recent(
     content: str,
     *,
     team: str,
+    source_title: str,
     max_segments: int,
     max_chars: int,
 ) -> list[str]:
@@ -322,7 +323,7 @@ def _segments_for_recent(
     return _contextual_segments(
         content,
         predicate=lambda line: (
-            base.mentions_team(line, team)
+            (base.mentions_team(line, team) or base.mentions_team(source_title, team))
             and (
                 any(term in base.normalize_text(line) for term in terms)
                 or bool(re.search(r"\b\d{1,2}\s*[-:]\s*\d{1,2}\b", line))
@@ -370,6 +371,7 @@ def _build_checked_source(
         segments = _segments_for_recent(
             content,
             team=recent_team,
+            source_title=str(source.get("title", "")),
             max_segments=max_segments,
             max_chars=max_chars,
         )
@@ -387,6 +389,15 @@ def _build_checked_source(
 
     if not supported or not segments:
         return None
+
+    source_title = re.sub(r"\s+", " ", str(source.get("title", ""))).strip()
+    if requirement_id in CRITICAL_REQUIREMENTS and source_title:
+        enriched: list[str] = []
+        for segment in segments:
+            if base.normalize_text(source_title) not in base.normalize_text(segment):
+                segment = f"{source_title}. {segment}"
+            enriched.append(segment[:max_chars].strip())
+        segments = enriched
 
     rebuilt = deepcopy(source)
     metadata = normalized["metadata"]
