@@ -7,6 +7,11 @@ Cada valor factual aceito precisa apontar para um único segmento fornecido e se
 extrativo: o valor normalizado deve existir literalmente no segmento de suporte.
 Depois disso, o validador factual determinístico continua sendo obrigatório.
 
+Passo 34.6 acrescenta uma única derivação controlada no H2H: quando o mesmo segmento
+explicita que o mandante está invicto/nunca perdeu para o visitante, uma contagem de
+vitórias do visitante igual a zero pode ser aceita, desde que a soma dos campos do H2H
+continue fechando exatamente com o total de jogos.
+
 Este script nunca redige matéria, nunca gera HTML e nunca libera publicação.
 """
 
@@ -333,6 +338,7 @@ def system_instructions() -> str:
         "Se o suporte estiver incompleto, use pending. Se fontes fornecidas discordarem sobre o mesmo dado crítico, use conflict. "
         "Não faça inferências, não combine competições no retrospecto, não transforme escalação provável em oficial e não invente transmissão, árbitro, estádio, placar, forma, jogadores ou números. "
         "No retrospecto, aceite apenas números explicitamente ligados à competição indicada. "
+        "Única exceção controlada: se um mesmo segmento de H2H disser explicitamente que o mandante está invicto, nunca perdeu ou ficou sem derrotas contra o visitante, você pode retornar h2h_away_wins com value '0' apoiado nesse segmento; os demais números continuam obrigatoriamente literais e a soma final será revalidada pelo código. "
         "Em recent_form_both_teams, é obrigatório haver suporte explícito para os dois times. "
         "Não inclua nomes de fontes, URLs, atribuições como 'segundo'/'conforme' ou comentários sobre o processo de pesquisa. "
         "Retorne somente o JSON exigido pelo schema."
@@ -499,6 +505,38 @@ def exact_grounded_value(value: str, support: str) -> bool:
     return bool(value_norm) and value_norm in support_norm
 
 
+def controlled_zero_away_wins_grounding(
+    *,
+    field: str,
+    value: str,
+    support: str,
+    context: dict[str, Any],
+    site_config: dict[str, Any],
+) -> bool:
+    """Única inferência numérica permitida: invencibilidade explícita => rival com 0 vitórias.
+
+    Ainda exige os dois clubes no mesmo segmento e a consistência  jogos = V + E + D é
+    revalidada depois. Nenhum outro campo pode usar esta exceção.
+    """
+    if field != "h2h_away_wins" or value.strip() != "0":
+        return False
+    support_norm = normalize_text(support)
+    unbeaten_signals = (
+        "unbeaten", "never lost", "without ever losing", "no defeats", "no losses",
+        "invicto", "invicta", "nunca perdeu", "sem derrotas",
+    )
+    if not any(normalize_text(signal) in support_norm for signal in unbeaten_signals):
+        return False
+    home = context.get("home")
+    away = context.get("away")
+    if not isinstance(home, str) or not isinstance(away, str):
+        return False
+    return (
+        deterministic.mentions_team(support, home, site_config)
+        and deterministic.mentions_team(support, away, site_config)
+    )
+
+
 def fact_text(field: str, value: str, context: dict[str, Any]) -> str:
     home = str(context.get("home", "Mandante"))
     away = str(context.get("away", "Visitante"))
@@ -594,7 +632,14 @@ def apply_requirement_result(
             continue
         value = re.sub(r"\s+", " ", value).strip(" \t\r\n.,;:-–—")
         support = str(segment_info.get("model_text", ""))
-        if not exact_grounded_value(value, support):
+        derived_zero = controlled_zero_away_wins_grounding(
+            field=str(field),
+            value=value,
+            support=support,
+            context=context,
+            site_config=site_config,
+        )
+        if not exact_grounded_value(value, support) and not derived_zero:
             continue
         if deterministic.contains_attribution_language(value):
             continue
@@ -602,17 +647,20 @@ def apply_requirement_result(
             continue
         numbers = re.findall(r"\d+(?:[.,]\d+)?", value)
         support_norm = normalize_text(support)
-        if any(normalize_text(number) not in support_norm for number in numbers):
+        if not derived_zero and any(normalize_text(number) not in support_norm for number in numbers):
             continue
 
         accepted.append({"field": field, "value": value})
         seen_fields.add(field)
         source_rows.append(source_for_segment(segment_info))
-        grounding.append({
-            "field": field,
+        grounding_row = {
+            "field": str(field),
             "support_segment_id": seg_id,
             "support_sha256": hashlib.sha256(str(segment_info.get("raw_text", "")).encode("utf-8")).hexdigest(),
-        })
+        }
+        if derived_zero:
+            grounding_row["derivation_rule"] = "explicit_home_unbeaten_implies_zero_away_wins"
+        grounding.append(grounding_row)
 
     if set(seen_fields) != set(expected_fields):
         result["openai_grounded_attempted"] = True
@@ -830,6 +878,7 @@ def main() -> None:
         "usage": usage_totals,
         "web_search": False,
         "tools": False,
+        "passo34_6_controlled_zero_h2h_derivation": True,
         "publication_unlocked": False,
     }
     manifest["files"] = files
@@ -840,6 +889,7 @@ def main() -> None:
     print(f"Chamadas ao modelo: {call_count}")
     print(f"Requisitos aceitos com grounding extrativo: {grounded_verified}")
     print(f"Fatos estruturados totais após fallback: {manifest['structured_fact_count']}")
+    print("Passo 34.6: zero de vitórias no H2H só pode ser derivado de invencibilidade explícita e soma consistente.")
     print("Web search e ferramentas do modelo: desativadas.")
     print("Redação, HTML e publicação permanecem bloqueados nesta etapa.")
 
