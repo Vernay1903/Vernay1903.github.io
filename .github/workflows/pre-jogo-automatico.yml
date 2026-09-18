@@ -82,6 +82,7 @@ jobs:
           python tests/pre-jogo/teste_passo34_8.py
           python tests/pre-jogo/teste_passo34_9.py
           python tests/pre-jogo/teste_passo34_10.py
+          python tests/pre-jogo/teste_passo34_11.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
           import json
