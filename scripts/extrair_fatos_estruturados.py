@@ -89,6 +89,33 @@ ATTRIBUTION_PREFIXES = (
     "de acordo com o ", "de acordo com a ", "according to ",
 )
 
+# Passo 34.11 — numerais naturais usados somente na leitura determinística
+# de retrospecto. Não há soma/estimativa para criar fatos; o token precisa
+# existir literalmente no trecho e a consistência final continua obrigatória.
+NATURAL_COUNT_WORDS: dict[str, int] = {
+    "zero": 0,
+    "um": 1, "uma": 1, "dois": 2, "duas": 2, "tres": 3, "quatro": 4,
+    "cinco": 5, "seis": 6, "sete": 7, "oito": 8, "nove": 9, "dez": 10,
+    "onze": 11, "doze": 12, "treze": 13, "catorze": 14, "quatorze": 14,
+    "quinze": 15, "dezesseis": 16, "dezessete": 17, "dezoito": 18,
+    "dezenove": 19, "vinte": 20,
+    "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+    "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+    "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15,
+    "sixteen": 16, "seventeen": 17, "eighteen": 18, "nineteen": 19,
+    "twenty": 20,
+    "eins": 1, "eine": 1, "einen": 1, "zwei": 2, "drei": 3, "vier": 4,
+    "funf": 5, "sechs": 6, "sieben": 7, "acht": 8, "neun": 9, "zehn": 10,
+    "elf": 11, "zwolf": 12, "dreizehn": 13, "vierzehn": 14,
+    "funfzehn": 15, "sechzehn": 16, "siebzehn": 17, "achtzehn": 18,
+    "neunzehn": 19, "zwanzig": 20,
+}
+NATURAL_COUNT_TOKEN_RE = (
+    r"(?:\\d{1,3}|" + "|".join(
+        sorted((re.escape(item) for item in NATURAL_COUNT_WORDS), key=len, reverse=True)
+    ) + r")"
+)
+
 
 def fail(message: str) -> NoReturn:
     print(f"ERRO: {message}", file=sys.stderr)
@@ -225,6 +252,39 @@ def context_mentions_match(corpus: str, match_context: dict[str, Any], config: d
         and mentions_team(corpus, home, config)
         and mentions_team(corpus, away, config)
     )
+
+
+def relaxed_team_markers(team: str, config: dict[str, Any]) -> list[str]:
+    """Marcadores curtos só para frases dentro de uma página já vinculada ao jogo."""
+    markers: list[str] = []
+    seen: set[str] = set()
+    generic = {
+        "fc", "cf", "sc", "ac", "afc", "club", "clube", "de", "da", "do",
+        "munique", "munich", "munchen", "muenchen", "milan", "milano",
+    }
+    for alias in aliases_for_team(team, config):
+        normalized = normalize_text(alias.replace("-", " "))
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            markers.append(normalized)
+        tokens = [item for item in normalized.split() if item not in generic]
+        if len(tokens) == 1 and len(tokens[0]) >= 5 and tokens[0] not in seen:
+            seen.add(tokens[0])
+            markers.append(tokens[0])
+        elif len(tokens) >= 2:
+            pair = " ".join(tokens[-2:])
+            if len(pair) >= 7 and pair not in seen:
+                seen.add(pair)
+                markers.append(pair)
+            if len(tokens[0]) >= 6 and tokens[0] not in seen:
+                seen.add(tokens[0])
+                markers.append(tokens[0])
+    return markers
+
+
+def relaxed_mentions_team(sentence: str, team: str, config: dict[str, Any]) -> bool:
+    folded = f" {normalize_text(sentence)} "
+    return any(f" {marker} " in folded for marker in relaxed_team_markers(team, config))
 
 
 def competition_is_mentioned(corpus: str, match_context: dict[str, Any]) -> bool:
@@ -701,6 +761,187 @@ def extract_lineups_requirement(
     )
 
 
+def natural_recent_form_value(
+    corpus: str,
+    team: str,
+    *,
+    config: dict[str, Any],
+) -> tuple[str, str] | None:
+    """Extrai uma frase de forma recente sem transformar números nem resultados."""
+    sentences = [
+        clean_value(item, max_chars=340)
+        for item in re.split(r"(?<=[.!?])\\s+", re.sub(r"\\s+", " ", corpus))
+        if item.strip()
+    ]
+    time_markers = (
+        "ultimos", "ultimo", "recent", "last", "latest", "spieltag", "zuletzt",
+    )
+    result_markers = (
+        "venceu", "vitoria", "vitorias", "empate", "empates", "derrota", "derrotas",
+        "ganhou", "perdeu", "won", "wins", "victory", "draw", "draws", "lost",
+        "loss", "defeat", "unbeaten", "sieg", "siege", "gewann", "unentschieden",
+        "niederlage",
+    )
+    for sentence in sentences:
+        if not relaxed_mentions_team(sentence, team, config):
+            continue
+        folded = f" {normalize_text(sentence)} "
+        has_time = any(marker in folded for marker in time_markers)
+        has_result = any(marker in folded for marker in result_markers)
+        if has_time and has_result:
+            return sentence, sentence
+    return None
+
+
+def source_supports_bilateral_recent_form(
+    source: dict[str, Any],
+    *,
+    match_context: dict[str, Any],
+    config: dict[str, Any],
+) -> bool:
+    corpus = source_corpus(source)
+    if not corpus or not context_mentions_match(corpus, match_context, config):
+        return False
+    if not competition_is_mentioned(corpus, match_context):
+        return False
+    home = match_context.get("home")
+    away = match_context.get("away")
+    return (
+        isinstance(home, str)
+        and isinstance(away, str)
+        and natural_recent_form_value(corpus, home, config=config) is not None
+        and natural_recent_form_value(corpus, away, config=config) is not None
+    )
+
+
+def augment_requirements_with_final_cross_evidence(
+    requirements: list[dict[str, Any]],
+    *,
+    match_context: dict[str, Any],
+    config: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """34.11: reaproveita página já checada somente quando ela sustenta os dois lados."""
+    pool: list[dict[str, Any]] = []
+    seen_pool: set[str] = set()
+    for requirement in requirements:
+        for source in eligible_sources(requirement):
+            url = source.get("url")
+            if isinstance(url, str) and url and url not in seen_pool:
+                seen_pool.add(url)
+                pool.append(source)
+
+    updated: list[dict[str, Any]] = []
+    for requirement in requirements:
+        result = deepcopy(requirement)
+        if result.get("id") != "recent_form_both_teams":
+            updated.append(result)
+            continue
+        current = [
+            deepcopy(item)
+            for item in result.get("source_candidates", [])
+            if isinstance(item, dict)
+        ]
+        current_urls = {
+            str(item.get("url"))
+            for item in current
+            if isinstance(item.get("url"), str)
+        }
+        reused = 0
+        for source in pool:
+            url = source.get("url")
+            if not isinstance(url, str) or not url or url in current_urls:
+                continue
+            if not source_supports_bilateral_recent_form(
+                source,
+                match_context=match_context,
+                config=config,
+            ):
+                continue
+            copied = deepcopy(source)
+            copied["passo34_11_cross_requirement_reuse"] = True
+            copied["reused_for_requirement_id"] = "recent_form_both_teams"
+            current.insert(0, copied)
+            current_urls.add(url)
+            reused += 1
+        result["source_candidates"] = current
+        result["passo34_11_reused_source_count"] = reused
+        updated.append(result)
+    return updated
+
+
+def natural_count_token(value: str) -> int | None:
+    token = normalize_text(value)
+    if re.fullmatch(r"\\d{1,3}", token):
+        return int(token)
+    return NATURAL_COUNT_WORDS.get(token)
+
+
+def natural_h2h_counts(
+    segment: str,
+    *,
+    home: str,
+    away: str,
+    config: dict[str, Any],
+) -> dict[str, int] | None:
+    """Lê frases como 'últimos cinco... Bayern venceu três... um empate...'."""
+    folded = normalize_text(segment)
+    h2h_markers = (
+        "confrontos diretos", "retrospecto", "head to head", "previous meetings",
+        "meetings", "duelle", "bilanz",
+    )
+    if not any(marker in folded for marker in h2h_markers):
+        return None
+    if not relaxed_mentions_team(segment, home, config) or not relaxed_mentions_team(segment, away, config):
+        return None
+
+    total_match = re.search(
+        rf"(?:ultimos|ultimo|last|letzten?)\\s+({NATURAL_COUNT_TOKEN_RE})\\s+"
+        rf"(?:confrontos|encontros|jogos|partidas|meetings|matches|duelle|spiele)",
+        folded,
+    )
+    if not total_match:
+        return None
+    games = natural_count_token(total_match.group(1))
+    if games is None:
+        return None
+
+    def team_win_count(team: str) -> int | None:
+        markers = relaxed_team_markers(team, config)
+        for marker in markers:
+            patterns = (
+                rf"(?:^|\\s){re.escape(marker)}\\s+(?:venceu|ganhou|won|gewann)\\s+({NATURAL_COUNT_TOKEN_RE})(?:\\s|$)",
+                rf"({NATURAL_COUNT_TOKEN_RE})\\s+(?:vitoria|vitorias|wins|siege)\\s+(?:do|da|de|for)?\\s*{re.escape(marker)}(?:\\s|$)",
+            )
+            for pattern in patterns:
+                match = re.search(pattern, folded)
+                if match:
+                    return natural_count_token(match.group(1))
+        return None
+
+    home_wins = team_win_count(home)
+    away_wins = team_win_count(away)
+
+    draw_match = re.search(
+        rf"(?:^|\\s)({NATURAL_COUNT_TOKEN_RE})\\s+(?:empate|empates|draw|draws|unentschieden|remis)(?:\\s|$)",
+        folded,
+    )
+    draws = natural_count_token(draw_match.group(1)) if draw_match else None
+
+    if None in (home_wins, away_wins, draws):
+        return None
+    values = {
+        "h2h_games": int(games),
+        "h2h_home_wins": int(home_wins),
+        "h2h_away_wins": int(away_wins),
+        "h2h_draws": int(draws),
+    }
+    if values["h2h_games"] != (
+        values["h2h_home_wins"] + values["h2h_away_wins"] + values["h2h_draws"]
+    ):
+        return None
+    return values
+
+
 def extract_recent_form_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -720,6 +961,24 @@ def extract_recent_form_requirement(
     )
     home = match_context.get("home", "Mandante")
     away = match_context.get("away", "Visitante")
+
+    # 34.11: formato jornalístico natural, sem exigir rótulo "forma recente:".
+    for source in eligible_sources(requirement):
+        corpus = source_corpus(source)
+        if not context_mentions_match(corpus, match_context, config):
+            continue
+        if not competition_is_mentioned(corpus, match_context):
+            continue
+        for side, team in (("home", home), ("away", away)):
+            if not isinstance(team, str):
+                continue
+            natural = natural_recent_form_value(corpus, team, config=config)
+            if natural is None:
+                continue
+            value, support = natural
+            claim = make_claim(f"{side}_recent_form", value, source, support)
+            if claim:
+                claims.append(claim)
     return finalize_claims(
         requirement,
         claims,
@@ -763,6 +1022,18 @@ def extract_h2h_requirement(
         if not competition_is_mentioned(corpus, match_context):
             continue
         for segment in corpus.splitlines():
+            natural_counts = natural_h2h_counts(
+                segment,
+                home=home,
+                away=away,
+                config=config,
+            )
+            if natural_counts is not None:
+                for natural_field, natural_value in natural_counts.items():
+                    claim = make_claim(natural_field, str(natural_value), source, segment)
+                    if claim:
+                        claims.append(claim)
+
             fields: list[tuple[str, int | None]] = [
                 ("h2h_games", extract_int_after_labels(segment, [r"jogos", r"partidas", r"games", r"matches"])),
                 ("h2h_home_wins", extract_int_after_labels(segment, [
@@ -880,6 +1151,11 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
     requirements = article.get("requirements")
     if not isinstance(requirements, list):
         requirements = []
+    requirements = augment_requirements_with_final_cross_evidence(
+        [item for item in requirements if isinstance(item, dict)],
+        match_context=match_context,
+        config=config,
+    )
 
     extracted = [
         extract_requirement(item, match_context=match_context, config=config)
