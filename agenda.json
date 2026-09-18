@@ -1,54 +1,9 @@
 [
-{
-"time": "13:45",
-"desc": "OFI Creta x Hoffenheim - Europa League"
-},
-{
-"time": "13:45",
-"desc": "Levski Sofia x RB Salzburg - Europa League"
-},
-{
-"time": "14:00",
-"desc": "Real Betis x Getafe - La Liga"
-},
-{
-"time": "16:00",
-"desc": "Besiktas x Olympique de Marseille - Europa League"
-},
-{
-"time": "16:00",
-"desc": "Celtic x Ferencváros - Europa League"
-},
-{
-"time": "16:00",
-"desc": "Crystal Palace x Lech Poznan - Europa League"
-},
-{
-"time": "16:00",
-"desc": "Viktoria Plzen x Union Saint-Gilloise - Europa League"
-},
-{
-"time": "16:00",
-"desc": "Juventus x NEC Nijmegen - Europa League"
-},
-{
-"time": "16:00",
-"desc": "Lillestrøm x Torreense - Europa League"
-},
-{
-"time": "16:00",
-"desc": "Real Sociedad x Bournemouth - Europa League"
-},
-{
-"time": "16:30",
-"desc": "Málaga x Villarreal - La Liga"
-},
-{
-"time": "21:30",
-"desc": "Flamengo x Independiente del Valle - Libertadores"
-},
-{
-"time": "21:30",
-"desc": "Montevideo City Torque x Cienciano - Sul-Americana"
-}
+  {"time":"15:30","desc":"Bayern de Munique x Union Berlin - Bundesliga"},
+  {"time":"15:45","desc":"Monza x Sassuolo - Serie A italiana"},
+  {"time":"16:00","desc":"Brentford x Chelsea - Premier League"},
+  {"time":"16:00","desc":"Espanyol x Elche - La Liga"},
+  {"time":"19:30","desc":"Vila Nova x América-MG - Brasileirão Série B"},
+  {"time":"20:30","desc":"Ceará x Novorizontino - Brasileirão Série B"},
+  {"time":"21:00","desc":"São Bernardo x Atlético-GO - Brasileirão Série B"}
 ]
