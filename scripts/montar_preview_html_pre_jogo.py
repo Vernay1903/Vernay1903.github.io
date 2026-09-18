@@ -83,7 +83,7 @@ def token_set(value: str) -> set[str]:
     }
 
 
-def fact_texts(contract: dict[str, Any], requirement_id: str) -> list[str]:
+def fact_items(contract: dict[str, Any], requirement_id: str) -> list[dict[str, str]]:
     groups = contract.get("facts_by_requirement")
     if not isinstance(groups, list):
         fail("Contrato sem facts_by_requirement válido.")
@@ -93,14 +93,70 @@ def fact_texts(contract: dict[str, Any], requirement_id: str) -> list[str]:
         facts = group.get("facts")
         if not isinstance(facts, list):
             break
-        result = []
+        result: list[dict[str, str]] = []
         for fact in facts:
-            if isinstance(fact, dict) and isinstance(fact.get("text"), str) and fact["text"].strip():
-                result.append(fact["text"].strip())
+            if not isinstance(fact, dict):
+                continue
+            text = fact.get("text")
+            if not isinstance(text, str) or not text.strip():
+                continue
+            row = {"text": text.strip()}
+            field = fact.get("field")
+            if isinstance(field, str) and field.strip():
+                row["field"] = field.strip()
+            result.append(row)
         if result:
             return result
         break
     fail(f"Contrato sem fatos para o requisito {requirement_id}.")
+
+
+def fact_texts(contract: dict[str, Any], requirement_id: str) -> list[str]:
+    return [item["text"] for item in fact_items(contract, requirement_id)]
+
+
+def record_mentions_team(record: dict[str, Any], team: str) -> bool:
+    wanted = {
+        token
+        for token in token_set(team)
+        if token not in {"fc", "cf", "sc", "ac", "afc", "1"}
+    }
+    if not wanted:
+        wanted = token_set(team)
+    return bool(wanted & token_set(str(record.get("text", ""))))
+
+
+H2H_HEADING_MARKERS = (
+    "retrospecto",
+    "historico",
+    "histórico",
+    "confrontos",
+    "confronto direto",
+    "head to head",
+    "duelos",
+    "bilanz",
+)
+
+
+def h2h_section_index(records: list[dict[str, Any]], contract: dict[str, Any]) -> int:
+    for record in records:
+        heading = str(record.get("heading", ""))
+        if any(normalize_text(marker) in heading for marker in H2H_HEADING_MARKERS):
+            return int(record["index"])
+
+    # Fallback conservador para títulos criativos: a seção precisa conter um
+    # marcador explícito de retrospecto além de sobrepor os fatos numéricos.
+    h2h_facts = fact_texts(contract, "competition_specific_head_to_head")
+    candidates: list[tuple[int, int]] = []
+    for record in records:
+        text = str(record.get("text", ""))
+        if not any(normalize_text(marker) in text for marker in H2H_HEADING_MARKERS):
+            continue
+        score = sum(len(token_set(fact) & token_set(text)) for fact in h2h_facts)
+        candidates.append((int(record["index"]), score))
+    if not candidates:
+        fail("Não foi possível localizar a seção de retrospecto/H2H no rascunho.")
+    return max(candidates, key=lambda item: item[1])[0]
 
 
 def load_ad_blocks() -> list[str]:
@@ -195,27 +251,51 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
     # Anúncio 1: depois da abertura e da primeira seção substantiva.
     first_point = int(records[0]["end"])
 
-    # Anúncio 2: depois de os dois momentos recentes terem sido tratados.
-    # A partir da segunda seção, preferimos a PRIMEIRA ocorrência suficiente,
-    # e não a ocorrência mais parecida de toda a matéria. Isso impede que um
-    # resumo final desloque o anúncio do meio para depois do retrospecto.
-    form_facts = fact_texts(contract, "recent_form_both_teams")
-    form_matches = [
-        first_qualifying_section_for_fact(records, fact, start_index=1)
-        for fact in form_facts
-    ]
+    # Primeiro fixamos a seção real de H2H pela semântica do subtítulo. Números
+    # isolados como 3, 1 e 5 aparecem em forma recente e não podem puxar o anúncio
+    # final para a seção errada.
+    h2h_index = h2h_section_index(records, contract)
+
+    # Anúncio 2: somente depois de os DOIS times terem sua forma recente tratada.
+    # Usa o field do contrato para exigir que a seção também mencione a equipe
+    # correspondente e só procura antes do H2H.
+    context = contract.get("match_context") if isinstance(contract.get("match_context"), dict) else {}
+    home = context.get("home")
+    away = context.get("away")
+    form_items = fact_items(contract, "recent_form_both_teams")
+    form_matches: list[tuple[int, int]] = []
+
+    for item in form_items:
+        fact = item["text"]
+        field = item.get("field")
+        team = home if field == "home_recent_form" else away if field == "away_recent_form" else None
+        wanted = token_set(fact)
+        minimum = 2 if len(wanted) <= 4 else 3
+        matched: tuple[int, int] | None = None
+        best_score = -1
+        for record in records:
+            index = int(record["index"])
+            if index < 1 or index >= h2h_index:
+                continue
+            if isinstance(team, str) and team.strip() and not record_mentions_team(record, team):
+                continue
+            score = len(wanted & token_set(str(record["text"])))
+            best_score = max(best_score, score)
+            if score >= minimum:
+                matched = (index, score)
+                break
+        if matched is None:
+            fail(
+                "Não foi possível localizar a forma recente antes do H2H para "
+                f"{team or field or fact} (melhor pontuação={best_score})."
+            )
+        form_matches.append(matched)
+
     form_last_index = max(index for index, _score in form_matches)
     second_point = int(records[form_last_index]["end"])
 
     # Anúncio 3: depois do retrospecto específico da competição e antes da seção seguinte.
-    h2h_facts = fact_texts(contract, "competition_specific_head_to_head")
-    h2h_matches = [best_section_for_fact(records, fact) for fact in h2h_facts]
-    score_by_section: dict[int, int] = {}
-    for index, score in h2h_matches:
-        score_by_section[index] = score_by_section.get(index, 0) + score
-    h2h_index = max(score_by_section, key=score_by_section.get)
     third_point = int(records[h2h_index]["end"])
-
     if third_point >= len(body):
         fail("O retrospecto ficou como última seção; o anúncio final precisa anteceder uma seção conclusiva.")
 
