@@ -280,8 +280,11 @@ def structure_article(
             if isinstance(source.get("url"), str):
                 candidate_urls.add(source["url"])
 
+    editorial_input = dossier.get("editorial_input") if isinstance(dossier.get("editorial_input"), dict) else {}
     return {
         "title": dossier.get("title"),
+        "excerpt": editorial_input.get("excerpt"),
+        "noticias_entry": deepcopy(editorial_input.get("noticias_entry")),
         "slug": slug,
         "date": dossier.get("date"),
         "fixture_id": dossier.get("fixture_id"),
