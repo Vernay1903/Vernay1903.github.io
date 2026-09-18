@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import sys
+from copy import deepcopy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -59,6 +60,59 @@ def body_fixture(contract: dict) -> str:
     return "\n".join(parts)
 
 
+
+def collision_regression(contract: dict) -> None:
+    """Números da forma recente não podem ser confundidos com a seção de H2H."""
+    local = deepcopy(contract)
+    local["match_context"]["home"] = "Arsenal"
+    local["match_context"]["away"] = "Manchester City"
+    for group in local["facts_by_requirement"]:
+        if group.get("id") == "recent_form_both_teams":
+            group["facts"] = [
+                {
+                    "field": "home_recent_form",
+                    "text": "Forma recente do Arsenal: Arsenal 3 2-1-0 7:2 +5 7.",
+                },
+                {
+                    "field": "away_recent_form",
+                    "text": "Forma recente do Manchester City: seven-match winless run.",
+                },
+            ]
+        elif group.get("id") == "competition_specific_head_to_head":
+            group["facts"] = [
+                {"field": "h2h_games", "text": "Confrontos pela Premier League: 5 jogos."},
+                {"field": "h2h_home_wins", "text": "Vitórias do Arsenal pela Premier League: 3."},
+                {"field": "h2h_away_wins", "text": "Vitórias do Manchester City pela Premier League: 1."},
+                {"field": "h2h_draws", "text": "Empates pela Premier League: 1."},
+            ]
+
+    body = "\n".join(
+        [
+            "<p>Abertura do confronto.</p>",
+            "<p><strong>Data, horário e local</strong></p>",
+            "<p>Arsenal x Manchester City pela Premier League.</p>",
+            "<p><strong>Transmissão</strong></p>",
+            "<p>Serviço do jogo.</p>",
+            "<p><strong>Momento do Arsenal</strong></p>",
+            "<p>Arsenal 3 2-1-0 7:2 +5 7.</p>",
+            "<p><strong>Momento do Manchester City</strong></p>",
+            "<p>Manchester City vive seven-match winless run.</p>",
+            "<p><strong>Retrospecto de Arsenal x Manchester City na Premier League</strong></p>",
+            "<p>Em cinco jogos, o Arsenal tem três vitórias, o Manchester City uma e houve um empate.</p>",
+            "<ul><li>Jogos: 5</li><li>Arsenal: 3</li><li>Manchester City: 1</li><li>Empates: 1</li></ul>",
+            "<p><strong>Prováveis escalações</strong></p>",
+            "<p>Informações das equipes.</p>",
+            "<p><strong>O que está em jogo</strong></p>",
+            "<p>Conclusão.</p>",
+        ]
+    )
+    points, metadata = preview.placement_points(body, local)
+    assert len(set(points)) == 3, points
+    assert points == sorted(points), points
+    assert "momento do manchester city" in metadata["recent_form_sections"][-1]
+    assert "retrospecto" in metadata["h2h_section"]
+
+
 def main() -> None:
     contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
     body = body_fixture(contract)
@@ -97,6 +151,8 @@ def main() -> None:
     assert rendered.count(image_tag) == 1
     assert "{{" not in rendered
     assert "}}" not in rendered
+
+    collision_regression(contract)
 
     # A mesma expressão do confronto aparece no H1 e no excerpt. A posição da
     # imagem deve ser validada apenas dentro do conteúdo do <article>.
