@@ -22,12 +22,12 @@ from urllib.parse import urlparse
 
 from scripts import buscar_fontes_serper as source_search
 from scripts import ler_fontes_candidatas_base as base
-from scripts import ler_fontes_candidatas_passo34_7 as step34_7
-from scripts import ler_fontes_candidatas_passo34_8 as step34_8
-from scripts import ler_fontes_candidatas_passo34_9 as previous
+from scripts import ler_fontes_candidatas_passo34_7 as _step34_7
+from scripts import ler_fontes_candidatas_passo34_8 as _step34_8
+from scripts import ler_fontes_candidatas_passo34_9 as _step34_9
 from scripts.ler_fontes_candidatas_passo34_9 import *  # noqa: F401,F403
 
-_PREVIOUS_CHECK_ARTICLE = previous.check_article
+_PREVIOUS_CHECK_ARTICLE = _step34_9.check_article
 
 
 def _article_local_press_domains(article: dict[str, Any]) -> list[str]:
@@ -86,11 +86,11 @@ def stadium_source_is_current(
     if not base.eligible_checked_source(source):
         return False
     blob = _current_match_blob(source)
-    if not previous._match_in_text(blob, context):
+    if not _step34_9._match_in_text(blob, context):
         return False
-    if not previous._competition_in_text(blob, context):
+    if not _step34_9._competition_in_text(blob, context):
         return False
-    if not previous.content_is_current_enough(blob, source, target_year=target_year):
+    if not _step34_9.content_is_current_enough(blob, source, target_year=target_year):
         return False
 
     page = source.get("page_evidence") if isinstance(source.get("page_evidence"), dict) else {}
@@ -125,9 +125,9 @@ def officiating_source_is_current(
         return False
     blob = _current_match_blob(source)
     return (
-        previous._match_in_text(blob, context)
-        and previous._competition_in_text(blob, context)
-        and previous.content_is_current_enough(blob, source, target_year=target_year)
+        _step34_9._match_in_text(blob, context)
+        and _step34_9._competition_in_text(blob, context)
+        and _step34_9.content_is_current_enough(blob, source, target_year=target_year)
     )
 
 
@@ -136,7 +136,7 @@ def _officiating_segments(content: str, *, max_segments: int, max_chars: int) ->
         "arbitro", "árbitro", "referee", "match referee", "officiating",
         "schiedsrichter", "var", "video assistant",
     )
-    selected = previous._contextual_segments(
+    selected = _step34_9._contextual_segments(
         content,
         predicate=lambda line: any(
             base.normalize_text(term) in base.normalize_text(line) for term in terms
@@ -170,11 +170,11 @@ def _checked_from_raw(
         return None
     title = str(source.get("title", ""))
     joined = f"{title}\n{content}"
-    if not previous._match_in_text(joined, context):
+    if not _step34_9._match_in_text(joined, context):
         return None
-    if not previous._competition_in_text(joined, context):
+    if not _step34_9._competition_in_text(joined, context):
         return None
-    if not previous.content_is_current_enough(content, source, target_year=target_year):
+    if not _step34_9.content_is_current_enough(content, source, target_year=target_year):
         return None
 
     reader = config["research"]["page_reader"]
@@ -188,7 +188,7 @@ def _checked_from_raw(
         temp["eligible_for_factual_validation"] = True
         temp["page_evidence"] = {
             "metadata": normalized["metadata"],
-            "evidence_segments": previous._segments_for_stadium(
+            "evidence_segments": _step34_9._segments_for_stadium(
                 content,
                 max_segments=max_segments,
                 max_chars=max_chars,
@@ -248,7 +248,7 @@ def _queries(requirement_id: str, context: dict[str, Any], article_date: str) ->
     competition = context.get("competition")
     if not all(isinstance(x, str) and x.strip() for x in (home, away, competition)):
         return []
-    year = previous._target_year(article_date)
+    year = _step34_9._target_year(article_date)
     if requirement_id == "stadium_and_location":
         return [
             f'"{home}" "{away}" "{competition}" {year} stadium venue',
@@ -269,7 +269,7 @@ def _search_stages(
     config: dict[str, Any],
     local_domains: list[str],
 ) -> list[tuple[str, list[str]]]:
-    stages = list(step34_8._allowed_stage_domains(context, config))
+    stages = list(_step34_8._allowed_stage_domains(context, config))
     if local_domains:
         stages.append(("relevant_local_press", local_domains))
     return stages
@@ -284,7 +284,7 @@ def _search_targeted(
     config: dict[str, Any],
     local_domains: list[str],
 ) -> list[dict[str, Any]]:
-    target_year = previous._target_year(article_date)
+    target_year = _step34_9._target_year(article_date)
     queries = _queries(requirement_id, context, article_date)
     for source_type, domains in _search_stages(context, config, local_domains):
         rows: list[dict[str, Any]] = []
@@ -316,7 +316,7 @@ def _search_targeted(
                 }
             )
             try:
-                raw = step34_7._scrape_once(source["url"], config=config)
+                raw = _step34_7._scrape_once(source["url"], config=config)
             except Exception:
                 continue
             checked = _checked_from_raw(
@@ -366,7 +366,7 @@ def check_article(
         requirements = []
     context = result.get("match_context") if isinstance(result.get("match_context"), dict) else {}
     article_date = str(result.get("date", ""))
-    target_year = previous._target_year(article_date)
+    target_year = _step34_9._target_year(article_date)
     local_domains = _article_local_press_domains(result)
 
     updated: list[dict[str, Any]] = []
