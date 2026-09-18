@@ -1,4 +1,4 @@
-name: Passo 34 — validação final de publicação temporária
+name: Passo 34 — validação final completa temporária
 
 on:
   push:
@@ -11,11 +11,96 @@ permissions:
   actions: write
 
 jobs:
-  validar-publicacao:
+  validar-passo-34-completo:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
+    env:
+      TARGET_DATE: "2026-09-18"
+      SLUG: "bayern-de-munique-1-fc-union-berlin-bundesliga-2026-transmissao-horario-escalacoes.html"
+
     steps:
-      - name: Disparar publish_dry_run
+      - name: Disparar preparo final
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh workflow run pre-jogo-automatico.yml \
+            --repo "${GITHUB_REPOSITORY}" \
+            --ref main \
+            -f mode=prepare_dry_run \
+            -f target_date="${TARGET_DATE}"
+          RUN_ID=""
+          for _ in $(seq 1 30); do
+            RUN_ID=$(gh api \
+              "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-automatico.yml/runs?event=workflow_dispatch&branch=main&per_page=20" \
+              --jq ".workflow_runs | map(select(.head_sha == \"${GITHUB_SHA}\" and .status != \"completed\")) | .[0].id // empty")
+            [ -n "${RUN_ID}" ] && break
+            sleep 4
+          done
+          [ -n "${RUN_ID}" ] || { echo "ERRO: preparo não localizado."; exit 1; }
+          echo "PREP_RUN_ID=${RUN_ID}" >> "${GITHUB_ENV}"
+          echo "Preparo run: ${RUN_ID}"
+
+      - name: Aguardar preparo
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for _ in $(seq 1 180); do
+            STATUS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${PREP_RUN_ID}" --jq '.status')
+            CONCLUSION=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${PREP_RUN_ID}" --jq '.conclusion // ""')
+            if [ "${STATUS}" = "completed" ]; then
+              echo "preparo conclusion=${CONCLUSION}"
+              [ "${CONCLUSION}" = "success" ] || exit 1
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "ERRO: timeout no preparo."
+          exit 1
+
+      - name: Validar conteúdo preparado
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/passo34-prep
+          mkdir -p /tmp/passo34-prep
+          gh run download "${PREP_RUN_ID}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --name "pre-jogo-preparado-${TARGET_DATE}" \
+            --dir /tmp/passo34-prep
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/passo34-prep")
+          manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+          slug = "bayern-de-munique-1-fc-union-berlin-bundesliga-2026-transmissao-horario-escalacoes.html"
+          assert manifest["prepared_count"] == 1, manifest
+          assert manifest["skipped_count"] == 0, manifest
+          article = manifest["articles"][0]
+          assert article["slug"] == slug, article
+          assert isinstance(article.get("excerpt"), str) and article["excerpt"].strip(), article
+          contract = json.loads((root / article["contract"]).read_text(encoding="utf-8"))
+          assert isinstance(contract.get("excerpt"), str) and contract["excerpt"].strip(), contract
+          reqs = {r["id"]: r for r in contract["facts_by_requirement"]}
+          recent = {f["field"]: f["text"] for f in reqs["recent_form_both_teams"]["facts"]}
+          assert "quatro de seus últimos cinco jogos" in recent["home_recent_form"], recent
+          assert "venceu um de seus últimos cinco jogos" in recent["away_recent_form"], recent
+          assert "Retrospecto do confronto" not in recent["home_recent_form"], recent
+          assert "confrontos diretos" not in recent["away_recent_form"], recent
+          h2h = {f["field"]: f["text"] for f in reqs["competition_specific_head_to_head"]["facts"]}
+          assert "5 jogos" in h2h["h2h_games"], h2h
+          assert h2h["h2h_home_wins"].endswith("3."), h2h
+          assert h2h["h2h_away_wins"].endswith("1."), h2h
+          assert h2h["h2h_draws"].endswith("1."), h2h
+          print("PREPARO FINAL OK: excerpt + forma recente + H2H corretos.")
+          PY
+
+      - name: Disparar publicação dry-run
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -25,40 +110,39 @@ jobs:
             --repo "${GITHUB_REPOSITORY}" \
             --ref main \
             -f mode=publish_dry_run \
-            -f target_date=2026-09-18
-
+            -f target_date="${TARGET_DATE}"
           RUN_ID=""
           for _ in $(seq 1 30); do
             RUN_ID=$(gh api \
               "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-automatico.yml/runs?event=workflow_dispatch&branch=main&per_page=20" \
-              --jq ".workflow_runs | map(select(.head_sha == \"${GITHUB_SHA}\")) | .[0].id // empty")
+              --jq ".workflow_runs | map(select(.head_sha == \"${GITHUB_SHA}\" and .id != ${PREP_RUN_ID})) | .[0].id // empty")
             [ -n "${RUN_ID}" ] && break
             sleep 4
           done
-          [ -n "${RUN_ID}" ] || { echo "ERRO: run filho não localizado."; exit 1; }
-          echo "CHILD_RUN_ID=${RUN_ID}" >> "${GITHUB_ENV}"
-          echo "Run filho de publicação: ${RUN_ID}"
+          [ -n "${RUN_ID}" ] || { echo "ERRO: dry-run não localizado."; exit 1; }
+          echo "PUB_RUN_ID=${RUN_ID}" >> "${GITHUB_ENV}"
+          echo "Publicação dry-run: ${RUN_ID}"
 
-      - name: Aguardar dry-run
+      - name: Aguardar publicação dry-run
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           for _ in $(seq 1 120); do
-            STATUS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${CHILD_RUN_ID}" --jq '.status')
-            CONCLUSION=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${CHILD_RUN_ID}" --jq '.conclusion // ""')
-            echo "status=${STATUS} conclusion=${CONCLUSION}"
+            STATUS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${PUB_RUN_ID}" --jq '.status')
+            CONCLUSION=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${PUB_RUN_ID}" --jq '.conclusion // ""')
             if [ "${STATUS}" = "completed" ]; then
+              echo "publicacao conclusion=${CONCLUSION}"
               [ "${CONCLUSION}" = "success" ] || exit 1
               exit 0
             fi
             sleep 5
           done
-          echo "ERRO: timeout."
+          echo "ERRO: timeout no dry-run."
           exit 1
 
-      - name: Validar auditoria sem publicar
+      - name: Validar escopo final sem push
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -66,22 +150,19 @@ jobs:
           set -euo pipefail
           rm -rf /tmp/passo34-pub
           mkdir -p /tmp/passo34-pub
-          gh run download "${CHILD_RUN_ID}" \
+          gh run download "${PUB_RUN_ID}" \
             --repo "${GITHUB_REPOSITORY}" \
-            --name "pre-jogo-passo-34-publicacao-dry-run-2026-09-18" \
+            --name "pre-jogo-passo-34-publicacao-dry-run-${TARGET_DATE}" \
             --dir /tmp/passo34-pub
-          REPORT=$(find /tmp/passo34-pub -type f -name automatico-publicacao.json -print -quit)
-          APPROVED=$(find /tmp/passo34-pub -type f -name automatico-approved.txt -print -quit)
-          [ -n "${REPORT}" ] || { echo "ERRO: relatório ausente."; exit 1; }
-          [ -n "${APPROVED}" ] || { echo "ERRO: aprovados ausente."; exit 1; }
-          python - "${REPORT}" "${APPROVED}" <<'PY'
-          import json, sys
+          python - <<'PY'
+          import json
           from pathlib import Path
-          report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-          approved = [x.strip() for x in Path(sys.argv[2]).read_text(encoding="utf-8").splitlines() if x.strip()]
+          root = Path("/tmp/passo34-pub")
+          report = json.loads(next(root.rglob("automatico-publicacao.json")).read_text(encoding="utf-8"))
+          approved = [x.strip() for x in next(root.rglob("automatico-approved.txt")).read_text(encoding="utf-8").splitlines() if x.strip()]
           slug = "bayern-de-munique-1-fc-union-berlin-bundesliga-2026-transmissao-horario-escalacoes.html"
           assert approved == [slug], approved
           assert report.get("changed_file_count") == 3, report
           assert set(report.get("changed_files", [])) == {slug, "noticias.json", "sitemap.xml"}, report
-          print("PASSO 34 PUBLICAÇÃO DRY-RUN FINALIZADA: 1 matéria aprovada, 3 arquivos exatos, 0 push.")
+          print("PASSO 34 FINALIZADO END-TO-END: 1 matéria, 3 arquivos exatos, 0 push no dry-run.")
           PY
