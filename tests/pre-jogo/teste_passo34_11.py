@@ -9,6 +9,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts import extrair_fatos_estruturados as facts
+from scripts import estruturar_evidencias_candidatas as struct
 
 
 def base_requirement(req_id: str, config: dict) -> dict:
@@ -64,6 +65,32 @@ def main() -> None:
         "competition_slug": "bundesliga",
     }
     source = checked_source()
+
+    structured = struct.structure_article(
+        {
+            "title": "Bayern x Union",
+            "slug": "bayern-union.html",
+            "date": "18/09/2026",
+            "fixture_id": 123,
+            "match_context": context,
+            "requirements": [],
+            "editorial_input": {
+                "excerpt": "Excerpt obrigatório preservado.",
+                "noticias_entry": {
+                    "title": "Bayern x Union",
+                    "excerpt": "Excerpt obrigatório preservado.",
+                    "url": "bayern-union.html",
+                    "date": "18/09/2026",
+                    "category": "Futebol",
+                },
+            },
+        },
+        None,
+        discovered_at="2026-09-18T10:00:00-03:00",
+        config=config,
+    )
+    assert structured["excerpt"] == "Excerpt obrigatório preservado."
+    assert structured["noticias_entry"]["excerpt"] == "Excerpt obrigatório preservado."
 
     recent_req = base_requirement("recent_form_both_teams", config)
     h2h_req = base_requirement("competition_specific_head_to_head", config)
