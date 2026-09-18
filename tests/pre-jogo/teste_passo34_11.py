@@ -86,6 +86,11 @@ def main() -> None:
     assert recent_result["status"] == "verified", recent_result
     fields = {item["field"] for item in recent_result["facts"]}
     assert fields == {"home_recent_form", "away_recent_form"}, fields
+    recent_text = {item["field"]: item["text"] for item in recent_result["facts"]}
+    assert "quatro de seus últimos cinco jogos" in recent_text["home_recent_form"], recent_text
+    assert "venceu um de seus últimos cinco jogos" in recent_text["away_recent_form"], recent_text
+    assert "Retrospecto do confronto" not in recent_text["home_recent_form"], recent_text
+    assert "confrontos diretos" not in recent_text["away_recent_form"], recent_text
 
     h2h_result = facts.extract_h2h_requirement(
         h2h_req,
