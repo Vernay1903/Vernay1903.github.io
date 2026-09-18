@@ -111,7 +111,7 @@ NATURAL_COUNT_WORDS: dict[str, int] = {
     "neunzehn": 19, "zwanzig": 20,
 }
 NATURAL_COUNT_TOKEN_RE = (
-    r"(?:\\d{1,3}|" + "|".join(
+    r"(?:\d{1,3}|" + "|".join(
         sorted((re.escape(item) for item in NATURAL_COUNT_WORDS), key=len, reverse=True)
     ) + r")"
 )
@@ -770,7 +770,7 @@ def natural_recent_form_value(
     """Extrai uma frase de forma recente sem transformar números nem resultados."""
     sentences = [
         clean_value(item, max_chars=340)
-        for item in re.split(r"(?<=[.!?])\\s+", re.sub(r"\\s+", " ", corpus))
+        for item in re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", corpus))
         if item.strip()
     ]
     time_markers = (
@@ -871,7 +871,7 @@ def augment_requirements_with_final_cross_evidence(
 
 def natural_count_token(value: str) -> int | None:
     token = normalize_text(value)
-    if re.fullmatch(r"\\d{1,3}", token):
+    if re.fullmatch(r"\d{1,3}", token):
         return int(token)
     return NATURAL_COUNT_WORDS.get(token)
 
@@ -895,7 +895,7 @@ def natural_h2h_counts(
         return None
 
     total_match = re.search(
-        rf"(?:ultimos|ultimo|last|letzten?)\\s+({NATURAL_COUNT_TOKEN_RE})\\s+"
+        rf"(?:ultimos|ultimo|last|letzten?)\s+({NATURAL_COUNT_TOKEN_RE})\s+"
         rf"(?:confrontos|encontros|jogos|partidas|meetings|matches|duelle|spiele)",
         folded,
     )
@@ -909,8 +909,8 @@ def natural_h2h_counts(
         markers = relaxed_team_markers(team, config)
         for marker in markers:
             patterns = (
-                rf"(?:^|\\s){re.escape(marker)}\\s+(?:venceu|ganhou|won|gewann)\\s+({NATURAL_COUNT_TOKEN_RE})(?:\\s|$)",
-                rf"({NATURAL_COUNT_TOKEN_RE})\\s+(?:vitoria|vitorias|wins|siege)\\s+(?:do|da|de|for)?\\s*{re.escape(marker)}(?:\\s|$)",
+                rf"(?:^|\s){re.escape(marker)}\s+(?:venceu|ganhou|won|gewann)\s+({NATURAL_COUNT_TOKEN_RE})(?:\s|$)",
+                rf"({NATURAL_COUNT_TOKEN_RE})\s+(?:vitoria|vitorias|wins|siege)\s+(?:do|da|de|for)?\s*{re.escape(marker)}(?:\s|$)",
             )
             for pattern in patterns:
                 match = re.search(pattern, folded)
@@ -922,7 +922,7 @@ def natural_h2h_counts(
     away_wins = team_win_count(away)
 
     draw_match = re.search(
-        rf"(?:^|\\s)({NATURAL_COUNT_TOKEN_RE})\\s+(?:empate|empates|draw|draws|unentschieden|remis)(?:\\s|$)",
+        rf"(?:^|\s)({NATURAL_COUNT_TOKEN_RE})\s+(?:empate|empates|draw|draws|unentschieden|remis)(?:\s|$)",
         folded,
     )
     draws = natural_count_token(draw_match.group(1)) if draw_match else None
