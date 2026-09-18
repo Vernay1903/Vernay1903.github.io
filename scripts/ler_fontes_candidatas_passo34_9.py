@@ -21,10 +21,11 @@ from typing import Any
 
 from scripts import buscar_fontes_serper as source_search
 from scripts import ler_fontes_candidatas_base as base
-from scripts import ler_fontes_candidatas_passo34_8 as previous
+from scripts import ler_fontes_candidatas_passo34_7 as step34_7
+from scripts import ler_fontes_candidatas_passo34_8 as step34_8
 from scripts.ler_fontes_candidatas_passo34_8 import *  # noqa: F401,F403
 
-_PREVIOUS_CHECK_ARTICLE = previous.check_article
+_PREVIOUS_CHECK_ARTICLE = step34_8.check_article
 
 CRITICAL_REQUIREMENTS = {
     "stadium_and_location",
@@ -440,7 +441,7 @@ def _scrape_candidate(
     if not isinstance(url, str) or not url.startswith("https://"):
         return None
     try:
-        raw = previous._scrape_once(url, config=config)
+        raw = step34_7._scrape_once(url, config=config)
     except Exception:
         return None
     return _build_checked_source(
@@ -530,7 +531,7 @@ def _search_and_check(
     if not queries:
         return []
 
-    for source_type, domains in previous._allowed_stage_domains(context, config):
+    for source_type, domains in step34_8._allowed_stage_domains(context, config):
         candidates: list[dict[str, Any]] = []
         seen: set[str] = set()
         for query in queries:
