@@ -773,8 +773,14 @@ def natural_recent_form_value(
         for item in re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", corpus))
         if item.strip()
     ]
-    time_markers = (
-        "ultimos", "ultimo", "recent", "last", "latest", "spieltag", "zuletzt",
+    # Forma recente precisa falar de uma sequência de JOGOS da própria equipe.
+    # "último confronto" ou "encontro mais recente" pertence ao H2H e não pode
+    # alimentar este requisito.
+    form_markers = (
+        "ultimos cinco jogos", "ultimos 5 jogos", "ultimos jogos",
+        "seus ultimos", "recent form", "last five games", "last 5 games",
+        "last five matches", "last 5 matches", "recent matches",
+        "letzten funf spiele", "letzten 5 spiele", "zuletzt in der bundesliga",
     )
     result_markers = (
         "venceu", "vitoria", "vitorias", "empate", "empates", "derrota", "derrotas",
@@ -786,9 +792,16 @@ def natural_recent_form_value(
         if not relaxed_mentions_team(sentence, team, config):
             continue
         folded = f" {normalize_text(sentence)} "
-        has_time = any(marker in folded for marker in time_markers)
+        has_form_window = any(marker in folded for marker in form_markers)
+        # Alternativa conservadora: "últimos/last/letzten" + palavra que
+        # significa jogos/partidas, nunca confronto/encontro direto.
+        if not has_form_window:
+            has_form_window = (
+                any(marker in folded for marker in (" ultimos ", " last ", " letzten "))
+                and any(marker in folded for marker in (" jogos ", " partidas ", " games ", " matches ", " spiele "))
+            )
         has_result = any(marker in folded for marker in result_markers)
-        if has_time and has_result:
+        if has_form_window and has_result:
             return sentence, sentence
     return None
 
