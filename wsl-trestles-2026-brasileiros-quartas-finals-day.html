@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>WSL em Trestles: dia de zebras, brilho brasileiro e definição das quartas de final | Corte dos Esportes</title>
+<meta name="description" content="Yago Dora, Miguel Pupo, Mateus Herdy e Luana Silva avançaram em baterias marcadas pela queda de Gabriel Medina, Italo Ferreira e Filipe Toledo e por mudanças importantes na disputa do ranking mundial." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+.desktop-only-ad { display: none !important; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">WSL em Trestles: dia de zebras, brilho brasileiro e definição das quartas de final</h1>
+<p class="subhead" id="articleExcerpt">Yago Dora, Miguel Pupo, Mateus Herdy e Luana Silva avançaram em baterias marcadas pela queda de Gabriel Medina, Italo Ferreira e Filipe Toledo e por mudanças importantes na disputa do ranking mundial.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">17/09/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Surf</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+<p>O Lexus Trestles Pro viveu nesta quinta-feira, 17 de setembro de 2026, um dos dias mais importantes de sua edição. A competição havia passado por uma longa pausa antes de voltar à água, cenário detalhado na <a href="https://cortedosesportes.com.br/wsl-trestles-2026-round-2-baterias-resultados.html">retomada após três dias de day off</a>. Com a melhora das condições, a organização conseguiu realizar uma sequência longa de baterias, com definição das quartas de final no masculino e no feminino.</p>
+<p>Para o Brasil, o saldo foi de fortes contrastes, com Mateus Herdy sendo o grande personagem brasileiro do dia ao vencer Medina e, pouco depois, superar Jack Robinson.</p>
+<p>O dia também teve peso direto sobre a corrida pelo título mundial e sobre a batalha para permanecer na elite. Trestles é a última etapa da temporada regular antes da redução do número de competidores para a pós-temporada, o que transformou praticamente todas as baterias em confrontos de definição.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Mateus Herdy vive dia de vitórias</strong></p>
+<p>O catarinense teve em um dos momentos de maior pressão de sua temporada de estreia no Championship Tour.</p>
+<p>Na primeira bateria do dia, Herdy enfrentou Gabriel Medina. O duelo foi decidido por apenas 0,17 ponto: Mateus venceu por 12,00 a 11,83 e eliminou o tricampeão mundial. Foi também a primeira vitória de Herdy sobre Medina em confrontos entre os dois.</p>
+<p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qv9irVD_dL0" title="Gabriel Medina vs Mateus Herdy | Lexus Trestles Pro 2026 - Round 2 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>Pouco depois, Herdy voltou ao mar para enfrentar Jack Robinson nas oitavas de final. Dessa vez, o brasileiro conseguiu construir uma margem bem mais confortável. Fechou a bateria com 14,10 pontos contra 9,84 do australiano e garantiu vaga entre os oito melhores da etapa.</p>
+<p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wLKfxhp-sms" title="Mateus Herdy vs Jack Robinson | Lexus Trestles Pro 2026 - Round 3 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>A campanha ganhou uma importância ainda maior pelo contexto do ranking. Herdy chegou à reta final da temporada pressionado pela linha de corte e precisava avançar em Trestles. A classificação para as quartas manteve essa possibilidade aberta e colocou o brasileiro diante de mais uma bateria decisiva.</p>
+<p>Miguel Pupo também enfrentou uma jornada dupla em Lower Trestles.</p>
+<p>Primeiro, venceu o marroquino Ramzi Boukhiam por 13,20 a 12,16.</p>
+<p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S_d2dBpGcFA" title="Miguel Pupo vs Ramzi Boukhiam | Lexus Trestles Pro 2026 - Round 2 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>Na sequência, já pelas oitavas de final, superou Liam O'Brien por 13,40 a 10,13. Com isso, Miguel se colocou entre os oito melhores da competição.</p>
+<<p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OzThyjsZuCQ" title="Liam O'Brien vs Miguel Pupo | Lexus Trestles Pro 2026 - Round 3 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>O confronto garante ao Brasil pelo menos um representante nas semifinais masculinas.</p>
+<p>Para Miguel, a campanha reforça uma temporada de regularidade dentro do grupo da frente. Para Herdy, o duelo representa mais uma etapa de uma corrida muito diferente: a luta por um resultado capaz de modificar sua situação na classificação.</p>
+
+<p><strong>Yago Dora avança e ganha força no ranking</strong></p>
+<p>O atual campeão mundial chegou a Trestles como um dos protagonistas da temporada e encontrou um cenário ainda mais favorável com as eliminações de concorrentes diretos.</p>
+<p>Depois de derrotar Oscar Berry na rodada anterior, o brasileiro enfrentou Kauli Vaast nas oitavas. Yago somou 12,50 pontos, com notas 6,50 e 6,00, enquanto Vaast terminou com 10,97.</p>
+<p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pT7XYsNRIR8" title="Yago Dora vs Kauli Vaast | Lexus Trestles Pro 2026 - Round 3 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>A vitória colocou o defensor do título da etapa nas quartas de final, onde enfrentará Callum Robson. Mais do que simplesmente avançar no evento, Yago aproveitou um dia em que vários nomes fortes do ranking ficaram pelo caminho.</p>
+<p>Leonardo Fioravanti, que chegou à etapa na primeira colocação, foi eliminado cedo. Gabriel Medina e Italo Ferreira também não alcançaram as quartas. O conjunto de resultados permitiu que Yago assumisse a liderança durante a passagem por Trestles e abrisse uma oportunidade importante antes da pós-temporada.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Italo Ferreira cai em bateria apertada</strong></p>
+<p>Italo havia avançado anteriormente ao derrotar Eli Hanneman por 14,26 a 12,40, mas encontrou Marco Mignot nas oitavas.</p>
+<p>Foi uma das baterias mais equilibradas do dia.</p>
+<p>Mignot somou 13,70, construídos com notas 7,00 e 6,70. Italo terminou com 13,37 e ficou apenas 0,33 ponto atrás do francês. A diferença mínima encerrou a participação do brasileiro em Trestles.</p>
+<p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qkxkkxPYd58" title="Italo Ferreira vs Marco Mignot | Lexus Trestles Pro 2026 - Round 3 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>A eliminação ganhou peso adicional porque Italo entrou na etapa diretamente envolvido na disputa pelas primeiras posições do Championship Tour.</p>
+
+<p><strong>Medina e Filipe Toledo também ficam pelo caminho</strong></p>
+<p>Gabriel Medina deixou Trestles após a derrota para Mateus Herdy. O resultado interrompeu a tentativa do tricampeão mundial de transformar a etapa californiana em mais um avanço dentro da disputa da temporada.</p>
+<p>Filipinho viveu situação igualmente delicada.</p>
+<p>Especialista histórico em Lower Trestles e bicampeão mundial, ele precisava de um resultado importante para proteger sua posição na linha de corte. No entanto, caiu diante de Liam O'Brien por 15,10 a 14,43.</p>
+<p><strong>Veja os melhores momentos da bateria abaixo:</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bI2UK_gXaPY" title="Filipe Toledo | Lexus Trestles Pro 2026 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>A derrota deixou o brasileiro dependente dos resultados de outros competidores na luta pela permanência entre os surfistas que avançam para a sequência da temporada.</p>
+
+<p><strong>Luana Silva avança no feminino</strong></p>
+<p>Entre as mulheres, Luana confirmou mais uma boa atuação e avançou às quartas de final.</p>
+<p>A brasileira enfrentou Tyler Wright, bicampeã mundial, e venceu por 13,03 a 10,93. Com o resultado, Luana garantiu presença entre as oito melhores da etapa e passou a ter pela frente Gabriela Bryan, uma das principais surfistas da temporada.</p>
+<p>Veja os melhores momentos da bateria abaixo:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zIoOE4jBC5g" title="Luana Silva vs Tyler Wright | Lexus Trestles Pro 2026 - Round 2 - WSL Championship Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>A campanha de Luana também reforça a presença brasileira em uma temporada na qual ela conseguiu ocupar a primeira colocação do ranking feminino.</p>
+
+<p><strong>Confrontos das quartas de final</strong></p>
+<p>O Brasil terá presença forte na fase de quartas, incluindo um confronto direto entre dois brasileiros.</p>
+<ul>
+<li>Yago Dora x Callum Robson</li>
+<li>Mateus Herdy x Miguel Pupo</li>
+<li>Luana Silva x Gabriela Bryan</li>
+</ul>
+
+<!-- ANÚNCIO (ARTIGO - FIM) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - fim)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Próxima chamada pode abrir o Finals Day em Trestles</strong></p>
+<p>Essa sexta-feira, 18 de setembro, aparece como uma data central para a definição do campeonato. A próxima chamada está prevista para 7h30 no horário local da Califórnia, o que corresponde a 11h30 no horário de Brasília. Nesse momento, a WSL avaliará as condições de Lower Trestles antes de confirmar a programação do dia.</p>
+<p>Antes da retomada da competição, o vice-presidente de Tours e Competições da WSL, Renato Hickel, afirmou que a previsão indicava a sexta-feira como uma possibilidade para o Finals Day da etapa, depois do pico do swell previsto para quinta-feira.</p>
+<p>Isso significa que, se as condições de Lower Trestles permitirem e a WSL confirmar a realização completa da programação, o dia pode concentrar as quartas de final, semifinais e as decisões masculina e feminina do evento. A sexta-feira, porém, vinha sendo tratada pela organização como uma possibilidade de Finals Day, e não como uma confirmação antecipada; o sábado também permanecia dentro da janela caso fosse necessário concluir a competição.</p>
+<p>Trestles ainda não definiu seus campeões, mas o dia 17 de setembro já deixou uma marca clara na temporada de 2026 da WSL: favoritos eliminados, brasileiros em lados opostos da pressão e uma disputa mundial que ganhou novos contornos justamente em uma das ondas mais tradicionais do circuito.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda.</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar desktop-only-ad" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+if (window.matchMedia("(min-width: 1025px)").matches) {
+(adsbygoogle = window.adsbygoogle || []).push({});
+}
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "surf";
+const CATEGORY_NAME = "Surf";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
