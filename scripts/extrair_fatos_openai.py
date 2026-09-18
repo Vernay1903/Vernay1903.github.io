@@ -505,6 +505,48 @@ def exact_grounded_value(value: str, support: str) -> bool:
     return bool(value_norm) and value_norm in support_norm
 
 
+H2H_NUMBER_WORDS: dict[str, int] = {
+    # português
+    "zero": 0, "um": 1, "uma": 1, "dois": 2, "duas": 2, "tres": 3,
+    "quatro": 4, "cinco": 5, "seis": 6, "sete": 7, "oito": 8, "nove": 9,
+    "dez": 10, "onze": 11, "doze": 12, "treze": 13, "catorze": 14,
+    "quatorze": 14, "quinze": 15, "dezesseis": 16, "dezessete": 17,
+    "dezoito": 18, "dezenove": 19, "vinte": 20,
+    # inglês
+    "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+    "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+    "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15,
+    "sixteen": 16, "seventeen": 17, "eighteen": 18, "nineteen": 19,
+    "twenty": 20,
+    # alemão
+    "eins": 1, "eine": 1, "einen": 1, "zwei": 2, "drei": 3, "vier": 4,
+    "funf": 5, "sechs": 6, "sieben": 7, "acht": 8, "neun": 9, "zehn": 10,
+    "elf": 11, "zwolf": 12, "dreizehn": 13, "vierzehn": 14, "funfzehn": 15,
+    "sechzehn": 16, "siebzehn": 17, "achtzehn": 18, "neunzehn": 19,
+    "zwanzig": 20,
+}
+
+
+def normalize_grounded_h2h_count(value: str, support: str) -> str | None:
+    """Normaliza numeral por extenso só quando ele aparece literalmente no suporte.
+
+    A regra é exclusiva aos quatro campos numéricos do H2H. Não soma, não estima e
+    não converte expressões compostas; apenas mapeia um token literal de 0 a 20.
+    """
+    clean = re.sub(r"\s+", " ", value).strip(" \t\r\n.,;:-–—")
+    if re.fullmatch(r"\d{1,4}", clean):
+        return clean if exact_grounded_value(clean, support) else None
+
+    token = normalize_text(clean)
+    number = H2H_NUMBER_WORDS.get(token)
+    if number is None:
+        return None
+    support_norm = normalize_text(support)
+    if not re.search(rf"(?:^|\s){re.escape(token)}(?:$|\s)", support_norm):
+        return None
+    return str(number)
+
+
 def controlled_zero_away_wins_grounding(
     *,
     field: str,
@@ -631,24 +673,38 @@ def apply_requirement_result(
         segment_info = segment_map.get(seg_id)
         if not isinstance(segment_info, dict) or segment_info.get("requirement_id") != req_id:
             continue
-        value = re.sub(r"\s+", " ", value).strip(" \t\r\n.,;:-–—")
+        raw_value = re.sub(r"\s+", " ", value).strip(" \t\r\n.,;:-–—")
         support = str(segment_info.get("model_text", ""))
         derived_zero = controlled_zero_away_wins_grounding(
             field=str(field),
-            value=value,
+            value=raw_value,
             support=support,
             context=context,
             site_config=site_config,
         )
-        if not exact_grounded_value(value, support) and not derived_zero:
+        number_word_normalized = False
+        value = raw_value
+
+        if field.startswith("h2h_") and not re.fullmatch(r"\d{1,4}", value):
+            normalized_count = normalize_grounded_h2h_count(value, support)
+            if normalized_count is None:
+                continue
+            value = normalized_count
+            number_word_normalized = True
+        elif not exact_grounded_value(value, support) and not derived_zero:
             continue
-        if deterministic.contains_attribution_language(value):
+
+        if deterministic.contains_attribution_language(raw_value):
             continue
         if field.startswith("h2h_") and not re.fullmatch(r"\d{1,4}", value):
             continue
         numbers = re.findall(r"\d+(?:[.,]\d+)?", value)
         support_norm = normalize_text(support)
-        if not derived_zero and any(normalize_text(number) not in support_norm for number in numbers):
+        if (
+            not derived_zero
+            and not number_word_normalized
+            and any(normalize_text(number) not in support_norm for number in numbers)
+        ):
             continue
 
         accepted.append({"field": field, "value": value})
@@ -661,6 +717,9 @@ def apply_requirement_result(
         }
         if derived_zero:
             grounding_row["derivation_rule"] = "explicit_home_unbeaten_implies_zero_away_wins"
+        elif number_word_normalized:
+            grounding_row["derivation_rule"] = "literal_number_word_normalized_to_integer"
+            grounding_row["literal_value"] = raw_value
         grounding.append(grounding_row)
 
     if set(seen_fields) != set(expected_fields):
