@@ -598,7 +598,7 @@ def extract_officiating_requirement(
 ) -> dict[str, Any]:
     claims: list[dict[str, Any]] = []
     patterns = [
-        r"(?:árbitro|arbitro|referee)\s*[:\-–—]\s*([A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+){1,5})",
+        r"(?:árbitro|arbitro|referee|schiedsrichter)\s*[:\-–—]\s*([A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+){1,5})",
         r"(?:match referee)\s*[:\-–—]\s*([A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+){1,5})",
     ]
     for source in eligible_sources(requirement):
