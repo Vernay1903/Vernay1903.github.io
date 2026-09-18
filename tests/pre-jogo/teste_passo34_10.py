@@ -31,6 +31,11 @@ def checked_source(title: str, segment: str) -> dict:
 
 
 def main() -> None:
+    assert callable(reader._step34_7._scrape_once)
+    assert callable(reader._step34_8._allowed_stage_domains)
+    assert callable(reader._step34_9._match_in_text)
+    assert reader._PREVIOUS_CHECK_ARTICLE is reader._step34_9.check_article
+
     h2h_support = (
         "Nos últimos cinco confrontos diretos pela Bundesliga, o Bayern venceu três, "
         "com um empate e uma vitória do Union Berlin."
