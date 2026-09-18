@@ -21,6 +21,10 @@ def src(title: str, *, published: str | None = None) -> dict:
 
 
 def main() -> None:
+    assert callable(reader.step34_7._scrape_once)
+    assert callable(reader.step34_8._allowed_stage_domains)
+    assert reader._PREVIOUS_CHECK_ARTICLE is reader.step34_8.check_article
+
     context = {
         "home": "FC Bayern München",
         "away": "1. FC Union Berlin",
