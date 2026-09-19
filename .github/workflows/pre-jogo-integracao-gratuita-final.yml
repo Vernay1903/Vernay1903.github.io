@@ -1,4 +1,4 @@
-name: Pré-jogo — integração gratuita final temporária
+name: Pré-jogo — integração gratuita final temporária #2
 on:
   push:
     branches: [main]
