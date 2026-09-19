@@ -462,8 +462,9 @@
       }
     ]
   },
-  "home_stadium_hints": {
-    "policy": "search_hint_only_never_publish_without_match_specific_confirmation",
+  "fixed_home_stadium": {
+    "policy": "fixed_when_monitored_club_is_home_user_approved_2026_09_19",
+    "provenance": "editorial_configuration_not_match_specific_external_confirmation",
     "stadiums": {
       "Arsenal": "Emirates Stadium",
       "Manchester City": "Etihad Stadium",
@@ -475,6 +476,7 @@
       "Grêmio": "Arena do Grêmio",
       "Barcelona": "Spotify Camp Nou",
       "Real Madrid": "Santiago Bernabéu"
-    }
+    },
+    "exceptions_by_fixture_id": {}
   }
 }
