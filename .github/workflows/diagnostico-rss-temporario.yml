@@ -1,0 +1,19 @@
+name: Diagnóstico RSS gratuito temporário
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/diagnostico-rss-temporario.yml]
+permissions:
+  contents: read
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/diagnostico_rss_temporario.py
