@@ -51,52 +51,83 @@
     {
       "name": "Arsenal",
       "slug": "arsenal",
-      "aliases": ["Arsenal FC"]
+      "aliases": [
+        "Arsenal FC"
+      ]
     },
     {
       "name": "Manchester City",
       "slug": "manchester-city",
-      "aliases": ["Manchester City FC", "Man City"]
+      "aliases": [
+        "Manchester City FC",
+        "Man City"
+      ]
     },
     {
       "name": "PSG",
       "slug": "psg",
-      "aliases": ["Paris Saint-Germain", "Paris Saint-Germain FC", "Paris SG"]
+      "aliases": [
+        "Paris Saint-Germain",
+        "Paris Saint-Germain FC",
+        "Paris SG"
+      ]
     },
     {
       "name": "Bayern de Munique",
       "slug": "bayern-de-munique",
-      "aliases": ["Bayern Munich", "FC Bayern München", "Bayern München"]
+      "aliases": [
+        "Bayern Munich",
+        "FC Bayern München",
+        "Bayern München"
+      ]
     },
     {
       "name": "Inter de Milão",
       "slug": "inter-milao",
-      "aliases": ["Inter Milan", "Internazionale", "FC Internazionale Milano"]
+      "aliases": [
+        "Inter Milan",
+        "Internazionale",
+        "FC Internazionale Milano"
+      ]
     },
     {
       "name": "Flamengo",
       "slug": "flamengo",
-      "aliases": ["CR Flamengo", "Clube de Regatas do Flamengo"]
+      "aliases": [
+        "CR Flamengo",
+        "Clube de Regatas do Flamengo"
+      ]
     },
     {
       "name": "Palmeiras",
       "slug": "palmeiras",
-      "aliases": ["SE Palmeiras", "Sociedade Esportiva Palmeiras"]
+      "aliases": [
+        "SE Palmeiras",
+        "Sociedade Esportiva Palmeiras"
+      ]
     },
     {
       "name": "Grêmio",
       "slug": "gremio",
-      "aliases": ["Gremio", "Grêmio FBPA", "Grêmio Foot-Ball Porto Alegrense"]
+      "aliases": [
+        "Gremio",
+        "Grêmio FBPA",
+        "Grêmio Foot-Ball Porto Alegrense"
+      ]
     },
     {
       "name": "Barcelona",
       "slug": "barcelona",
-      "aliases": ["FC Barcelona"]
+      "aliases": [
+        "FC Barcelona"
+      ]
     },
     {
       "name": "Real Madrid",
       "slug": "real-madrid",
-      "aliases": ["Real Madrid CF"]
+      "aliases": [
+        "Real Madrid CF"
+      ]
     }
   ],
   "slug": {
@@ -174,7 +205,8 @@
       "official",
       "major_sports_media",
       "relevant_local_press",
-      "internal_site"
+      "internal_site",
+      "structured_data_provider"
     ],
     "google_discovery_only": true,
     "required_source_fields": [
@@ -270,25 +302,59 @@
       ],
       "official_domains": {
         "clubs": {
-          "Arsenal": ["arsenal.com"],
-          "Manchester City": ["mancity.com"],
-          "PSG": ["psg.fr"],
-          "Bayern de Munique": ["fcbayern.com"],
-          "Inter de Milão": ["inter.it"],
-          "Flamengo": ["flamengo.com.br"],
-          "Palmeiras": ["palmeiras.com.br"],
-          "Grêmio": ["gremio.net"],
-          "Barcelona": ["fcbarcelona.com"],
-          "Real Madrid": ["realmadrid.com"]
+          "Arsenal": [
+            "arsenal.com"
+          ],
+          "Manchester City": [
+            "mancity.com"
+          ],
+          "PSG": [
+            "psg.fr"
+          ],
+          "Bayern de Munique": [
+            "fcbayern.com"
+          ],
+          "Inter de Milão": [
+            "inter.it"
+          ],
+          "Flamengo": [
+            "flamengo.com.br"
+          ],
+          "Palmeiras": [
+            "palmeiras.com.br"
+          ],
+          "Grêmio": [
+            "gremio.net"
+          ],
+          "Barcelona": [
+            "fcbarcelona.com"
+          ],
+          "Real Madrid": [
+            "realmadrid.com"
+          ]
         },
         "competitions": {
-          "premier-league": ["premierleague.com"],
-          "la-liga": ["laliga.com"],
-          "ligue-1": ["ligue1.com"],
-          "bundesliga": ["bundesliga.com"],
-          "serie-a": ["legaseriea.it"],
-          "brasileirao": ["cbf.com.br"],
-          "champions-league": ["uefa.com"]
+          "premier-league": [
+            "premierleague.com"
+          ],
+          "la-liga": [
+            "laliga.com"
+          ],
+          "ligue-1": [
+            "ligue1.com"
+          ],
+          "bundesliga": [
+            "bundesliga.com"
+          ],
+          "serie-a": [
+            "legaseriea.it"
+          ],
+          "brasileirao": [
+            "cbf.com.br"
+          ],
+          "champions-league": [
+            "uefa.com"
+          ]
         }
       },
       "major_sports_media_domains": [
@@ -310,6 +376,16 @@
       "max_segment_chars": 700,
       "execute_requires_explicit_flag": true,
       "publication_unlock_allowed": false
+    },
+    "structured_data_provider": {
+      "name": "football-data.org",
+      "mode": "api_authenticated",
+      "free_plan_only": true,
+      "fields": [
+        "recent_form_both_teams",
+        "competition_specific_head_to_head"
+      ],
+      "note": "Recorte explicitamente rotulado; dados não devem substituir informação conflitante nem criar contexto não confirmado."
     }
   },
   "article": {
