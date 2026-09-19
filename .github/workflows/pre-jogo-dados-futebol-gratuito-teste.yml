@@ -8,7 +8,7 @@ permissions:
 jobs:
   dados:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 9
     env:
       CDE_FREE_RESEARCH: '1'
     steps:
@@ -26,6 +26,7 @@ jobs:
           TARGET=$(python -c "from datetime import datetime,timedelta;from zoneinfo import ZoneInfo;print(datetime.now(ZoneInfo('America/Sao_Paulo')).date()+timedelta(days=1))")
           python -m py_compile scripts/enriquecer_fatos_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
+          python tests/pre-jogo/teste_recuperar_preparo.py
           python scripts/buscar_fixtures_football_data.py --date "${TARGET}" --force
           python - <<'PY'
           import json,os
@@ -65,3 +66,31 @@ jobs:
           PY
 
 # Regressão atualizada: placares futuros bloqueados.
+
+          python - "${TARGET}" <<'PY'
+          import json,sys
+          from pathlib import Path
+          day=sys.argv[1]
+          root=Path('build/pre-jogo')
+          fixtures=json.loads((root/'fixtures-normalizados.json').read_text())
+          rows=[]
+          for fixture in fixtures['fixtures']:
+              rows.append({'slug':f"teste-{fixture['id']}.html",'fixture_id':fixture['id'],
+                  'match_context':{'home':fixture['home'],'away':fixture['away'],
+                                   'competition':fixture['competition'],
+                                   'competition_slug':fixture['competition_slug']},
+                  'requirements':[{'id':name,'status':'pending','conflict_detected':False}
+                                  for name in ('recent_form_both_teams','competition_specific_head_to_head')]})
+          (root/f'fatos-estruturados-{day}.json').write_text(json.dumps({'target_date':day,'articles':rows}))
+          PY
+          python scripts/enriquecer_fatos_football_data.py --date "${TARGET}" --execute --force
+          python - "${TARGET}" <<'PY'
+          import json,sys
+          from pathlib import Path
+          day=sys.argv[1]
+          path=Path('build/pre-jogo')/f'fatos-estruturados-{day}.json'
+          data=json.loads(path.read_text())
+          for item in data['articles']:
+              verified=[r['id'] for r in item['requirements'] if r['status']=='verified']
+              print('FATOS GRATUITOS VERIFICADOS:',item['slug'],verified)
+          PY
