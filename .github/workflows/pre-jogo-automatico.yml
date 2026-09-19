@@ -93,6 +93,7 @@ jobs:
           python tests/pre-jogo/teste_pesquisa_gratuita.py
           python tests/pre-jogo/teste_rss_consulta_curta.py
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
+          python tests/pre-jogo/teste_status_final_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
@@ -535,6 +536,7 @@ jobs:
           python tests/pre-jogo/teste_pesquisa_gratuita.py
           python tests/pre-jogo/teste_rss_consulta_curta.py
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
+          python tests/pre-jogo/teste_status_final_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python scripts/recuperar_preparo_pre_jogo_automatico.py --date "${TARGET_DATE}"
           echo "NO_PREP=false" >> "${GITHUB_ENV}"
