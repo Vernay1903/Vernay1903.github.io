@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -26,6 +27,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts import ler_fontes_candidatas as reader  # noqa: E402
+from scripts import buscar_fixtures_football_data as fixtures_api  # noqa: E402
 
 DEFAULT_REPORT = ROOT / "build" / "pre-jogo" / "status-final.json"
 STOPWORDS = {"de", "da", "do", "das", "dos", "del", "the", "club", "clube", "fc", "cf", "cd", "csd"}
@@ -149,13 +151,85 @@ def official_urls(evidence: dict[str, Any]) -> list[str]:
             continue
         source_type = item.get("source_type")
         url = item.get("url")
-        if not isinstance(source_type, str) or not source_type.startswith("official"):
+        if not isinstance(source_type, str) or source_type == "official_fixture_data" or not source_type.startswith("official"):
             continue
         if not isinstance(url, str) or not url.startswith("https://"):
             continue
         rank = 0 if source_type == "official_competition" else 1
         ranked.append((rank, url))
     return [url for _rank, url in sorted(ranked)]
+
+
+def verify_official_fixture(
+    fixture: dict[str, Any],
+    match: dict[str, Any],
+) -> dict[str, Any]:
+    """Checagem final por ID, data, horário, equipes, competição e status da API.
+
+    A partida ter sido listada no preparo NÃO é suficiente: a chamada é atual,
+    independente do snapshot e impede publicar jogo iniciado ou reagendado.
+    """
+    token = os.environ.get("FOOTBALL_DATA_TOKEN", "").strip()
+    if not token:
+        fail("FOOTBALL_DATA_TOKEN ausente no check final gratuito.")
+    match_id = fixture.get("match_id")
+    if not isinstance(match_id, int) or match_id <= 0:
+        fail("ID da partida oficial inválido.")
+    data, _ = fixtures_api.request_json(
+        base_url="https://api.football-data.org/v4",
+        endpoint=f"/matches/{match_id}",
+        auth_header="X-Auth-Token",
+        token=token,
+        params={},
+    )
+    if data.get("id") != match_id:
+        fail("Football-Data devolveu outra partida.")
+    home = data.get("homeTeam")
+    away = data.get("awayTeam")
+    comp = data.get("competition")
+    if not isinstance(home, dict) or not isinstance(away, dict) or not isinstance(comp, dict):
+        fail("Football-Data retornou equipes/competição inválidas.")
+    if (
+        home.get("id") != fixture.get("home_team_id")
+        or away.get("id") != fixture.get("away_team_id")
+        or comp.get("code") != fixture.get("competition_code")
+    ):
+        fail("Equipes ou competição mudaram em relação ao preparo.")
+    if data.get("status") not in {"SCHEDULED", "TIMED"}:
+        fail("Partida não está oficialmente agendada: " + str(data.get("status"))[:30])
+    raw = data.get("utcDate")
+    if not isinstance(raw, str) or not raw:
+        fail("Partida oficial sem horário UTC.")
+    try:
+        current = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        prepared = datetime.fromisoformat(str(fixture.get("utc_date", "")).replace("Z", "+00:00"))
+        expected_date = datetime.strptime(match["date"], "%d/%m/%Y").date()
+    except (TypeError, ValueError, KeyError):
+        fail("Data ou horário do snapshot inválido.")
+    if current.tzinfo is None or prepared.tzinfo is None or current != prepared:
+        fail("Horário oficial alterado após o preparo; matéria bloqueada para revisão.")
+    local = current.astimezone(ZoneInfo("America/Sao_Paulo"))
+    if local.date() != expected_date or local.strftime("%H:%M") != match.get("kickoff_brasilia"):
+        fail("Data/hora oficial não coincide com a matéria.")
+    if datetime.now(ZoneInfo("America/Sao_Paulo")) >= local:
+        fail("Jogo já começou; matéria pré-jogo não será publicada.")
+    return {
+        "step": 33,
+        "mode": "final_official_status_check",
+        "match": {
+            "home": match["home"],
+            "away": match["away"],
+            "date": match["date"],
+            "kickoff_brasilia": match.get("kickoff_brasilia"),
+        },
+        "official_source_confirmed": True,
+        "official_provider": "football-data.org",
+        "postponed_cancelled_or_suspended": False,
+        "publication_status_gate_passed": True,
+        "sources_internal_only": True,
+        "attempts": [{"source_type": "official_fixture_data", "read_ok": True,
+                      "match_id": match_id, "status": data["status"]}],
+    }
 
 
 def validate_status(evidence: dict[str, Any], *, execute: bool) -> dict[str, Any]:
@@ -178,6 +252,15 @@ def validate_status(evidence: dict[str, Any], *, execute: bool) -> dict[str, Any
     stadium = match.get("stadium")
     if not all(isinstance(value, str) and value.strip() for value in (home, away, date_br)):
         fail("Snapshot sem mandante, visitante ou data válidos.")
+
+    fixture_rows = [
+        row for row in evidence.get("evidence", [])
+        if isinstance(row, dict) and row.get("source_type") == "official_fixture_data"
+    ]
+    if fixture_rows:
+        if len(fixture_rows) != 1:
+            fail("Snapshot com IDs oficiais conflitantes.")
+        return verify_official_fixture(fixture_rows[0], match)
 
     urls = official_urls(evidence)
     if not urls:
