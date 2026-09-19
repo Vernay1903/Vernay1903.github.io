@@ -1,0 +1,51 @@
+name: Pré-jogo — regressão temporária sem publicar
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pre-jogo-regressao-temporaria.yml'
+permissions:
+  contents: read
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar scripts e regressões sem acesso externo
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/recuperar_preparo_pre_jogo_automatico.py scripts/montar_preview_html_pre_jogo.py scripts/preparar_lote_pre_jogo_automatico.py
+          python tests/pre-jogo/teste_passo34_automatico.py
+          python tests/pre-jogo/teste_passo34_8.py
+          python tests/pre-jogo/teste_passo34_9.py
+          python tests/pre-jogo/teste_passo34_10.py
+          python tests/pre-jogo/teste_passo34_11.py
+          python tests/pre-jogo/teste_preview_html.py
+          python tests/pre-jogo/teste_recuperar_preparo.py
+          TARGET=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Sao_Paulo')).date())")
+          python scripts/recuperar_preparo_pre_jogo_automatico.py --date "$TARGET" --dry-run
+      - name: Validar recuperação real apenas dentro de build, sem publicação
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          TARGET=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Sao_Paulo')).date())")
+          python scripts/recuperar_preparo_pre_jogo_automatico.py --date "$TARGET"
+          git diff --quiet -- . ':!build'
+          echo 'TESTE SEGURO: fluxo externo de recuperação executado sem publicar.'
+      - name: Guardar diagnóstico técnico temporário
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-teste-recuperacao-sem-publicacao
+          path: build/pre-jogo/automatico-source/manifest.json
+          if-no-files-found: warn
+          retention-days: 1
