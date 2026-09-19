@@ -61,7 +61,13 @@ def main():
     assert len(rows) == 1
     assert "Arsenal" in rows[0]["title"]
     assert not any(key in str(page) for key in ("Not a verified fact", "SERPER_API_KEY"))
-    print("OK: RSS apenas descobre, página original fornece texto, Serper não é chamado.")
+    with patch.dict(os.environ, {"CDE_FREE_RESEARCH": "1"}):
+        gambling=search.normalize_serper_response({"organic":[
+            {"title":"Palpite","link":"https://www.lance.com.br/sites-de-apostas/palpites/teste.html"},
+            {"title":"Notícia jornalística","link":"https://www.lance.com.br/futebol-nacional/teste.html"}
+        ]},allowed_domains=["lance.com.br"])
+        assert len(gambling)==1 and gambling[0]["title"]=="Notícia jornalística"
+    print("OK: RSS apenas descobre, página original fornece texto e apostas são excluídas.")
 
 
 if __name__ == "__main__":
