@@ -154,6 +154,14 @@ def normalize_serper_response(
             continue
         if not isinstance(link, str) or not link.startswith("https://"):
             continue
+        # Páginas de palpites/apostas não são usadas como prova de estádios,
+        # equipes, escalações ou outros fatos jornalísticos da matéria.
+        if os.environ.get("CDE_FREE_RESEARCH") == "1":
+            path = urlparse(link).path.casefold() + "/"
+            if any("/" + term + "/" in path for term in (
+                "sites-de-apostas", "apostas", "palpites", "betting", "bet-tips"
+            )):
+                continue
         host = normalize_domain(link)
         if not host:
             continue
