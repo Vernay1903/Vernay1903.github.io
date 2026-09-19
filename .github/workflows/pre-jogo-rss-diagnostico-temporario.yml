@@ -47,4 +47,25 @@ jobs:
                   print(f'RESULTADO {label}: bytes={len(raw)}, prefixo={raw[:85]!r}, itens={len(items)}, url_publica={sum(bool(x) for x in decoded)}, url_filtrada={len(selected)}, amostra={selected[:2]}',flush=True)
               except Exception as e:
                   print(f'ERRO {label}: {type(e).__name__}: {str(e)[:100]}',flush=True)
+      - name: Diagnosticar extração de duas páginas públicas originais
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import sys
+          sys.path.insert(0,'.')
+          from scripts.pesquisa_publica_gratuita import read_public_page
+          samples=[
+            ('Lance Flamengo', 'https://www.lance.com.br/futebol-nacional/flamengo-x-red-bull-bragantino-onde-assistir-horario-e-escalacoes.html'),
+            ('Man City oficial', 'https://www.mancity.com/news/mens/city-v-sunderland-match-preview-pl-20-sep-63925242')
+          ]
+          for label,url in samples:
+              try:
+                  d=read_public_page(url)
+                  content=d['markdown']
+                  print(f'LEITURA {label}: caracteres={len(content)} linhas={len(content.splitlines())} título={d["metadata"].get("title","")[:100]}')
+                  for term in ('Maracanã', 'Etihad', 'Premiere', 'Prováveis', 'Provavel', 'Rodrigo José'):
+                      i=content.casefold().find(term.casefold())
+                      print(f'TERMO {term}: encontrado={i>=0} contexto={(content[max(0,i-40):i+95] if i>=0 else "")[:135]}')
+              except Exception as e:
+                  print(f'LEITURA {label}: erro={type(e).__name__}')
           PY
