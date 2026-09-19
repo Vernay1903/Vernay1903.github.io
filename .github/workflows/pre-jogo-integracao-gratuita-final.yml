@@ -1,4 +1,4 @@
-name: Pré-jogo — integração gratuita final temporária #2
+name: Pré-jogo — auditoria integral gratuita sem publicação
 on:
   push:
     branches: [main]
@@ -23,9 +23,9 @@ jobs:
       - name: Rodar regressões sem APIs pagas
         run: |
           set -euo pipefail
-          python -m py_compile scripts/pesquisa_publica_gratuita.py scripts/enriquecer_evidencias_football_data.py scripts/redigir_pre_jogo_openai.py scripts/recuperar_preparo_pre_jogo_automatico.py
+          python -m py_compile scripts/pesquisa_publica_gratuita.py scripts/enriquecer_fatos_football_data.py scripts/redigir_pre_jogo_openai.py scripts/recuperar_preparo_pre_jogo_automatico.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
-          python tests/pre-jogo/teste_football_data_editorial.py
+          python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python tests/pre-jogo/teste_orcamento_openai.py
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_preview_html.py
@@ -59,6 +59,7 @@ jobs:
           python scripts/ler_fontes_candidatas.py --date "${TARGET}" --execute --force
           python scripts/enriquecer_evidencias_football_data.py --date "${TARGET}" --force
           python scripts/extrair_fatos_estruturados.py --date "${TARGET}" --force
+          python scripts/enriquecer_fatos_football_data.py --date "${TARGET}" --execute --force
           python scripts/montar_pacote_editorial.py --date "${TARGET}" --force
 
           cp /tmp/pre-jogo.json config/pre-jogo.json
