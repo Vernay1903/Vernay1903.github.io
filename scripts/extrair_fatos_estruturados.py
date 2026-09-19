@@ -1211,6 +1211,83 @@ def extract_requirement(
     return result
 
 
+def configured_home_stadium(article: dict[str, Any], config: dict[str, Any]) -> str | None:
+    """Estádio fixo aprovado pelo editor apenas se o MANDANTE é monitorado.
+
+    Não simula confirmação externa. Um override por ID pode corrigir jogo
+    excepcional antes do preparo, sem alterar a sede habitual de outros jogos.
+    """
+    settings = config.get("fixed_home_stadium", {})
+    if settings.get("policy") != "fixed_when_monitored_club_is_home_user_approved_2026_09_19":
+        return None
+    home = (article.get("match_context") or {}).get("home")
+    if not isinstance(home, str) or not home.strip():
+        return None
+    key = normalize_text(home)
+    canonical = None
+    for club in config.get("monitored_clubs", []):
+        variants = [club.get("name"), club.get("slug", "").replace("-", " "), *club.get("aliases", [])]
+        if any(isinstance(alias, str) and normalize_text(alias) == key for alias in variants):
+            canonical = club.get("name")
+            break
+    if canonical is None:
+        return None
+
+    stadiums = settings.get("stadiums", {})
+    stadium = stadiums.get(canonical)
+    if not isinstance(stadium, str) or not stadium.strip():
+        fail(f"Estádio fixo ausente para o mandante monitorado {canonical}.")
+
+    exceptions = settings.get("exceptions_by_fixture_id", {})
+    if not isinstance(exceptions, dict):
+        fail("exceptions_by_fixture_id deve ser um objeto JSON.")
+    fixture_id = article.get("fixture_id")
+    if isinstance(fixture_id, int) and not isinstance(fixture_id, bool):
+        replacement = exceptions.get(str(fixture_id))
+        if replacement is not None:
+            if not isinstance(replacement, str) or not replacement.strip():
+                fail(f"Exceção de estádio inválida no jogo {fixture_id}.")
+            stadium = replacement
+    return stadium.strip()
+
+
+def apply_fixed_home_stadium(
+    requirements: list[dict[str, Any]],
+    *,
+    article: dict[str, Any],
+    config: dict[str, Any],
+) -> list[dict[str, Any]]:
+    stadium = configured_home_stadium(article, config)
+    if stadium is None:
+        return requirements
+    updated: list[dict[str, Any]] = []
+    changed = False
+    for requirement in requirements:
+        if requirement.get("id") != "stadium_and_location":
+            updated.append(requirement)
+            continue
+        if changed:
+            fail("Mais de um requisito de estádio no mesmo artigo.")
+        row = deepcopy(requirement)
+        row["status"] = "verified"
+        row["facts"] = [{"field": "stadium", "text": f"A partida será disputada no {stadium}."}]
+        row["sources"] = []  # Configuração do editor NÃO é fonte jornalística externa.
+        row["notes"] = "Estádio fixado pela regra editorial do mandante; não confirmado para este jogo."
+        row["fact_extraction_status"] = "editorial_fixed_home_stadium"
+        row["editorial_stadium_override"] = True
+        row["editorial_config_path"] = "config/pre-jogo.json#fixed_home_stadium"
+        row["structured_fact_count"] = 1
+        row["validator_accepted"] = True  # Aceito pela regra editorial explícita do proprietário.
+        row["conflict_detected"] = False
+        row["conflicts"] = []
+        row["internal_provenance_only"] = True
+        updated.append(row)
+        changed = True
+    if not changed:
+        fail("Requisito stadium_and_location ausente para mandante monitorado.")
+    return updated
+
+
 def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[str, Any]:
     result = deepcopy(article)
     match_context = article.get("match_context")
@@ -1234,6 +1311,10 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
         resolve_allowed_gap(item, competition_slug=competition_slug, config=config)
         for item in extracted
     ]
+    # Decisão editorial: o estádio do MANDANTE monitorado é fixo e prevalece
+    # sobre lacunas ou estádio diferente encontrado em páginas de pré-jogo.
+    # Visitantes monitorados em casa de outro clube continuam na pesquisa normal.
+    extracted = apply_fixed_home_stadium(extracted, article=article, config=config)
 
     structured_fact_count = sum(int(item.get("structured_fact_count", 0)) for item in extracted)
     conflicts = [item.get("id") for item in extracted if item.get("conflict_detected") is True]
