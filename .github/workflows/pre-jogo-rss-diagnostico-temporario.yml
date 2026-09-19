@@ -29,6 +29,13 @@ jobs:
             ('premier', 'Manchester City Sunderland 20 September 2026', []),
             ('atletico', 'Atletico Madrid Real Madrid 20 September 2026', []),
             ('arsenal_oficial', 'Arsenal match preview September 2026', ['arsenal.com']),
+            ('brasil_ge', 'Flamengo Bragantino escalações 20 setembro 2026 site:ge.globo.com', ['ge.globo.com']),
+            ('brasil_espn', 'Flamengo Bragantino 20 setembro 2026 site:espn.com.br', ['espn.com.br']),
+            ('ingles_espn', 'Manchester City Sunderland September 20 2026 site:espn.com', ['espn.com']),
+            ('ingles_city', 'Manchester City Sunderland September 20 2026 site:mancity.com', ['mancity.com']),
+            ('brasileiro_simples', 'Flamengo RB Bragantino prováveis escalações transmissão', []),
+            ('espanhol_simples', 'Atlético Madrid Real Madrid alineaciones 20 septiembre 2026', []),
+            ('frances_simples', 'Marseille PSG compositions 20 septembre 2026', []),
           ]
           for label,query,domains in checks:
               url=f.RSS_ENDPOINT+'?'+__import__('urllib.parse',fromlist=['urlencode']).urlencode({'q':query,'format':'rss'})
