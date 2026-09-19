@@ -153,7 +153,6 @@ jobs:
 
       - name: Pesquisar e validar fatos em fontes externas
         shell: bash
-        env:
         run: |
           set -euo pipefail
           restore_config() {
@@ -330,7 +329,6 @@ jobs:
 
       - name: Revalidar status oficial de cada matéria
         shell: bash
-        env:
         run: |
           set -euo pipefail
           : > "${APPROVED_FILE}"
@@ -575,7 +573,6 @@ jobs:
       - name: Revalidar cada jogo em fonte oficial
         if: ${{ env.NO_PREP == 'false' }}
         shell: bash
-        env:
         run: |
           set -euo pipefail
           : > "${APPROVED_FILE}"
