@@ -65,8 +65,6 @@ jobs:
                   print('ENDPOINT:',endpoint.split('?')[0],'erro:',type(e).__name__)
           PY
 
-# Regressão atualizada: placares futuros bloqueados.
-
           python - "${TARGET}" <<'PY'
           import json,sys
           from pathlib import Path
