@@ -30,6 +30,8 @@ concurrency:
 
 env:
   TZ: America/Sao_Paulo
+  # Impede chamadas à Serper em preparo, recuperação e checagem final.
+  CDE_FREE_RESEARCH: "1"
   PREP_ARTIFACT_PREFIX: pre-jogo-preparado
   AUTO_SOURCE: build/pre-jogo/automatico-source
   AUTO_PUBLISH: build/pre-jogo/automatico-publish
@@ -125,17 +127,16 @@ jobs:
         shell: bash
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
-          for NAME in FOOTBALL_DATA_TOKEN SERPER_API_KEY OPENAI_API_KEY; do
+          for NAME in FOOTBALL_DATA_TOKEN OPENAI_API_KEY; do
             if [ -z "${!NAME}" ]; then
               echo "ERRO: Secret ${NAME} não configurado."
               exit 1
             fi
           done
-          echo "OK: os três Secrets obrigatórios estão disponíveis; valores não serão exibidos."
+          echo "OK: Football-Data e OpenAI disponíveis; pesquisa gratuita não requer chave."
 
       - name: Descobrir e planejar jogos dos clubes monitorados
         shell: bash
@@ -153,7 +154,6 @@ jobs:
       - name: Pesquisar e validar fatos em fontes externas
         shell: bash
         env:
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         run: |
           set -euo pipefail
           restore_config() {
@@ -322,18 +322,15 @@ jobs:
           fi
           echo "OK: lote do run ${FOUND} carregado para teste."
 
-      - name: Verificar Secret do check final
-        env:
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+      - name: Confirmar pesquisa pública no check final
         shell: bash
         run: |
           set -euo pipefail
-          test -n "${SERPER_API_KEY}" || { echo "ERRO: SERPER_API_KEY ausente."; exit 1; }
+          test "${CDE_FREE_RESEARCH}" = "1" || { echo "ERRO: modo gratuito não está ativo."; exit 1; }
 
       - name: Revalidar status oficial de cada matéria
         shell: bash
         env:
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         run: |
           set -euo pipefail
           : > "${APPROVED_FILE}"
@@ -512,7 +509,6 @@ jobs:
         shell: bash
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
@@ -569,20 +565,17 @@ jobs:
               print(f'LOTE ENCONTRADO: {ready} pronta(s); {blocked} bloqueada(s).')
           PY
 
-      - name: Verificar Secret do check final
+      - name: Confirmar pesquisa pública no check final
         if: ${{ env.NO_PREP == 'false' }}
-        env:
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         shell: bash
         run: |
           set -euo pipefail
-          test -n "${SERPER_API_KEY}" || { echo "ERRO: SERPER_API_KEY ausente."; exit 1; }
+          test "${CDE_FREE_RESEARCH}" = "1" || { echo "ERRO: modo gratuito não está ativo."; exit 1; }
 
       - name: Revalidar cada jogo em fonte oficial
         if: ${{ env.NO_PREP == 'false' }}
         shell: bash
         env:
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         run: |
           set -euo pipefail
           : > "${APPROVED_FILE}"
