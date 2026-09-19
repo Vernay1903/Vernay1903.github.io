@@ -88,6 +88,8 @@ KNOWN_VENUES = [
     "Stade Velodrome",
     "CEPAC Vélodrome",
     "CEPAC Velodrome",
+    "Vélodrome",
+    "Velodrome",
 ]
 
 VENUE_CANONICAL_ALIASES = {
