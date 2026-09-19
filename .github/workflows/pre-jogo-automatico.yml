@@ -65,6 +65,7 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile \
+            scripts/enriquecer_fatos_football_data.py \
             scripts/buscar_fixtures_football_data.py \
             scripts/identificar_jogos.py \
             scripts/planejar_pre_jogos.py \
@@ -91,6 +92,7 @@ jobs:
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
+          python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
           import json
@@ -157,6 +159,8 @@ jobs:
 
       - name: Pesquisar e validar fatos em fontes externas
         shell: bash
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
         run: |
           set -euo pipefail
           restore_config() {
@@ -178,6 +182,8 @@ jobs:
           python scripts/ler_fontes_candidatas.py --date "${TARGET_DATE}" --execute --force
           python scripts/enriquecer_evidencias_football_data.py --date "${TARGET_DATE}" --force
           python scripts/extrair_fatos_estruturados.py --date "${TARGET_DATE}" --force
+          # Complemento não inventa resultados e não substitui fatos conflitantes.
+          python scripts/enriquecer_fatos_football_data.py --date "${TARGET_DATE}" --execute --force
 
           restore_config
           trap - EXIT
@@ -525,6 +531,7 @@ jobs:
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
+          python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python scripts/recuperar_preparo_pre_jogo_automatico.py --date "${TARGET_DATE}"
           echo "NO_PREP=false" >> "${GITHUB_ENV}"
           echo "RECOVERED_PREP=true" >> "${GITHUB_ENV}"
