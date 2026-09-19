@@ -17,9 +17,10 @@ from scripts import recuperar_preparo_pre_jogo_automatico as recovery  # noqa: E
 def main() -> None:
     today = datetime.now(ZoneInfo("America/Sao_Paulo")).date().isoformat()
     plan = recovery.command_plan(today)
-    assert len(plan) == 11
+    assert len(plan) == 12
     assert plan[0][0] == "scripts/buscar_fixtures_football_data.py"
     assert plan[-1][0] == "scripts/montar_pacote_editorial.py"
+    assert plan[-2][0] == "scripts/enriquecer_fatos_football_data.py"
     assert plan[6][0] == "scripts/buscar_fontes_serper.py"
     assert plan[8][0] == "scripts/ler_fontes_candidatas.py"
     assert all("--force" in cmd for cmd in plan)
@@ -72,7 +73,7 @@ def main() -> None:
             recovery.run(today)
             assert config.read_bytes() == original
             assert (source / "manifest.json").exists()
-            assert len(calls) == 12
+            assert len(calls) == 13
             calls.clear()
 
             def raise_scrape(*args):
