@@ -1,4 +1,4 @@
-name: Pré-jogo — auditoria integral gratuita sem publicação # RSS6 #6
+name: Pré-jogo — auditoria integral gratuita sem publicação # RSS7 #7
 on:
   push:
     branches: [main]
@@ -27,6 +27,7 @@ jobs:
           python tests/pre-jogo/teste_pesquisa_gratuita.py
           python tests/pre-jogo/teste_rss_consulta_curta.py
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
+          python tests/pre-jogo/teste_status_final_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python tests/pre-jogo/teste_orcamento_openai.py
           python tests/pre-jogo/teste_recuperar_preparo.py
