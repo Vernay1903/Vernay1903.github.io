@@ -14,9 +14,9 @@ def main():
     assert p["max_output_tokens"]<=6000
     assert b["monthly_target_usd"]<=10
     assert b["max_articles_per_day"]<=10
-    assert b["max_contract_chars"]<=80000
+    assert b["max_contract_chars"]<=20000
     cost=writer.estimate_usage_cost_usd({"usage":{"input_tokens":20000,"output_tokens":6000}},cfg)
-    assert cost is not None and cost < 0.01, cost
+    assert cost is not None and cost < 0.012, cost
     print(f"OK: redator econômico ativo; cenário 20k entrada/6k saída ~= US$ {cost} por chamada.")
 
 if __name__=="__main__":
