@@ -15,6 +15,7 @@ continuam em etapas posteriores e com as mesmas travas.
 
 from __future__ import annotations
 
+import os
 import re
 from copy import deepcopy
 from typing import Any
@@ -68,7 +69,7 @@ def _contains_current_venue_statement(text: str) -> bool:
     if any(base.normalize_text(item) in folded for item in historical):
         return False
     current = (
-        "venue", "stadium", "arena", "spielort", "stadion",
+        "venue", "stadium", "arena", "spielort", "stadion", "estádio", "estadio", "local",
         "will be played", "takes place", "will take place", "held at",
         "será disputado", "sera disputado", "será disputada", "sera disputada",
         "será jogado", "sera jogado", "recebe", "receberá", "recebera",
@@ -333,6 +334,57 @@ def _search_targeted(
     return []
 
 
+def _reuse_original_pages(
+    article: dict[str, Any],
+    *,
+    requirement_id: str,
+    context: dict[str, Any],
+    article_date: str,
+    checked_at: str,
+    config: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Releitura dirigida de fontes já checadas do MESMO jogo, sem nova busca.
+
+    RSS é só descoberta. A fonte original deve passar novamente por checagem
+    de jogo, competição, data e trecho de fato específico do requisito.
+    """
+    if os.environ.get("CDE_FREE_RESEARCH") != "1":
+        return []
+    pool = []
+    seen = set()
+    for req in article.get("requirements", []):
+        if not isinstance(req, dict):
+            continue
+        for candidate in req.get("source_candidates", []):
+            if not base.eligible_checked_source(candidate):
+                continue
+            url = candidate.get("url")
+            if not isinstance(url, str) or not url.startswith("https://") or url in seen:
+                continue
+            seen.add(url)
+            pool.append(candidate)
+    priority = {"official": 0, "major_sports_media": 1, "relevant_local_press": 2}
+    pool.sort(key=lambda x: priority.get(str(x.get("source_type", "")), 3))
+    year = _step34_9._target_year(article_date)
+    for candidate in pool[:12]:
+        try:
+            raw = _step34_7._scrape_once(candidate["url"], config=config)
+            checked = _checked_from_raw(
+                candidate, raw,
+                requirement_id=requirement_id,
+                context=context,
+                target_year=year,
+                checked_at=checked_at,
+                config=config,
+            )
+        except Exception:
+            continue
+        if checked is not None:
+            checked["passo34_10_reused_original_page"] = True
+            return [checked]
+    return []
+
+
 def _existing_current(
     requirement: dict[str, Any],
     *,
@@ -383,6 +435,15 @@ def check_article(
                 context=context,
                 target_year=target_year,
             )
+            if not selected:
+                selected = _reuse_original_pages(
+                    result,
+                    requirement_id=str(req_id),
+                    context=context,
+                    article_date=article_date,
+                    checked_at=checked_at,
+                    config=config,
+                )
             if not selected:
                 selected = _search_targeted(
                     str(req_id),
