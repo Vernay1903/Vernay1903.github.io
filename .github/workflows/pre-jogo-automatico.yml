@@ -85,6 +85,7 @@ jobs:
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
           python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_serper_economia.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
           import json
@@ -499,7 +500,7 @@ jobs:
           done
 
           if [ -z "${FOUND}" ]; then
-            echo "::warning::Nenhum preparo fresco aprovado para ${TARGET_DATE}; nada será publicado."
+            echo "::warning::Nenhum preparo fresco para ${TARGET_DATE}; iniciando recuperação na própria execução."
             echo "NO_PREP=true" >> "${GITHUB_ENV}"
           else
             echo "NO_PREP=false" >> "${GITHUB_ENV}"
@@ -524,6 +525,7 @@ jobs:
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
           python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_serper_economia.py
           python scripts/recuperar_preparo_pre_jogo_automatico.py --date "${TARGET_DATE}"
           echo "NO_PREP=false" >> "${GITHUB_ENV}"
           echo "RECOVERED_PREP=true" >> "${GITHUB_ENV}"
