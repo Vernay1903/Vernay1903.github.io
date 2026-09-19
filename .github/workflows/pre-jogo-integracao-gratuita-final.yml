@@ -1,4 +1,4 @@
-name: Pré-jogo — auditoria integral gratuita sem publicação # RSS3 #3
+name: Pré-jogo — auditoria integral gratuita sem publicação # RSS4 #4
 on:
   push:
     branches: [main]
@@ -25,6 +25,7 @@ jobs:
           set -euo pipefail
           python -m py_compile scripts/pesquisa_publica_gratuita.py scripts/enriquecer_fatos_football_data.py scripts/redigir_pre_jogo_openai.py scripts/recuperar_preparo_pre_jogo_automatico.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
+          python tests/pre-jogo/teste_rss_consulta_curta.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python tests/pre-jogo/teste_orcamento_openai.py
           python tests/pre-jogo/teste_recuperar_preparo.py
