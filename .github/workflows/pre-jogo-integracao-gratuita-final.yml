@@ -134,20 +134,10 @@ jobs:
           from pathlib import Path
           data=json.loads(Path('build/pre-jogo/automatico/manifest.json').read_text(encoding='utf-8'))
           for item in data.get('articles',[]):
-              print(f"{item['slug']}\t{item['status_snapshot']}")
+              print(item['slug']+'\t'+item['status_snapshot'])
           PY
-          while IFS=        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pre-jogo-integracao-gratuita-final
-          path: |
-            build/pre-jogo/pacotes-editoriais-*.json
-            build/pre-jogo/fatos-estruturados-*.json
-            build/pre-jogo/automatico/manifest.json
-            build/pre-jogo/redacao-modelo-metadata/*.json
-          if-no-files-found: warn
-          retention-days: 1
-\t' read -r SLUG SNAPSHOT; do
+          TAB=$(printf '\t')
+          while IFS="${TAB}" read -r SLUG SNAPSHOT; do
             [ -n "${SLUG}" ] || continue
             if python scripts/validar_status_final_pre_jogo.py \
               --evidence "build/pre-jogo/automatico/${SNAPSHOT}" \
@@ -163,20 +153,9 @@ jobs:
           from pathlib import Path
           data=json.loads(Path('build/pre-jogo/automatico/manifest.json').read_text(encoding='utf-8'))
           for item in data.get('articles',[]):
-              print(f"{item['slug']}\t{item['contract']}\t{item['draft']}")
+              print(item['slug']+'\t'+item['contract']+'\t'+item['draft'])
           PY
-          while IFS=        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pre-jogo-integracao-gratuita-final
-          path: |
-            build/pre-jogo/pacotes-editoriais-*.json
-            build/pre-jogo/fatos-estruturados-*.json
-            build/pre-jogo/automatico/manifest.json
-            build/pre-jogo/redacao-modelo-metadata/*.json
-          if-no-files-found: warn
-          retention-days: 1
-\t' read -r SLUG CONTRACT DRAFT; do
+          while IFS="${TAB}" read -r SLUG CONTRACT DRAFT; do
             grep -Fxq "${SLUG}" "${APPROVED}" || continue
             python scripts/montar_preview_html_pre_jogo.py \
               --draft "build/pre-jogo/automatico/${DRAFT}" \
@@ -210,5 +189,7 @@ jobs:
             build/pre-jogo/fatos-estruturados-*.json
             build/pre-jogo/automatico/manifest.json
             build/pre-jogo/redacao-modelo-metadata/*.json
+            build/pre-jogo/auditoria-publicacao.json
+            build/pre-jogo/auditoria-status-final-*.json
           if-no-files-found: warn
           retention-days: 1
