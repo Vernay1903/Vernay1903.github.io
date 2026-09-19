@@ -73,7 +73,7 @@ def latest_form(data: dict, team_id: int, cutoff: datetime) -> str | None:
         try:
             d = datetime.fromisoformat(str(row["utcDate"]).replace("Z", "+00:00"))
         except (ValueError, KeyError): continue
-        if d >= cutoff: continue
+        if d >= cutoff or d > datetime.now(d.tzinfo): continue
         score = score_for(row, team_id)
         if score: dated.append((d, score))
     dated.sort(reverse=True, key=lambda item: item[0])
@@ -97,7 +97,7 @@ def head_to_head(data: dict, home_id: int, away_id: int, comp_code: str, cutoff:
         if not isinstance(row, dict): continue
         try: d = datetime.fromisoformat(str(row["utcDate"]).replace("Z","+00:00"))
         except (ValueError, KeyError): continue
-        if d >= cutoff or row.get("competition", {}).get("code") != comp_code: continue
+        if d >= cutoff or d > datetime.now(d.tzinfo) or row.get("competition", {}).get("code") != comp_code: continue
         left,right = row.get("homeTeam",{}).get("id"),row.get("awayTeam",{}).get("id")
         if {left,right} != {home_id,away_id}: continue
         result = score_for(row, home_id)
