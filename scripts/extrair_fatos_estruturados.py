@@ -200,16 +200,16 @@ def unmonitored_team_aliases(team: str) -> list[str]:
     # Variações conservadoras vistas nos nomes oficiais do provedor.
     # Só geramos aliases quando o restante continua específico o bastante.
     provider_prefixes = (
-        (r"^\\s*Club\\s+", ""),
-        (r"^\\s*Olympique\\s+de\\s+", ""),
-        (r"^\\s*Red\\s+Bull\\s+", ""),
+        (r"^\s*Club\s+", ""),
+        (r"^\s*Olympique\s+de\s+", ""),
+        (r"^\s*Red\s+Bull\s+", ""),
     )
     for pattern, replacement in provider_prefixes:
         candidate = re.sub(pattern, replacement, raw, flags=re.IGNORECASE).strip()
         if candidate and len(normalize_text(candidate)) >= 5 and normalize_text(candidate) != normalize_text(raw):
             variants.append(candidate)
 
-    rb_match = re.match(r"^\\s*RB\\s+(.+)$", raw, flags=re.IGNORECASE)
+    rb_match = re.match(r"^\s*RB\s+(.+)$", raw, flags=re.IGNORECASE)
     if rb_match:
         tail = rb_match.group(1).strip()
         if len(normalize_text(tail)) >= 5:
