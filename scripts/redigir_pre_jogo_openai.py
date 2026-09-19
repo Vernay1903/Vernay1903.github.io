@@ -97,7 +97,7 @@ def load_provider_config() -> dict[str, Any]:
         fail("O teto mensal configurado para a OpenAI não pode ultrapassar US$ 10.")
     if int(budget.get("max_articles_per_day", 0)) != 10:
         fail("A trava diária deve permanecer em no máximo 10 matérias.")
-    if int(budget.get("max_contract_chars", 0)) > 80000:
+    if int(budget.get("max_contract_chars", 0)) > 20000:
         fail("Contrato máximo acima do limite de custo aprovado.")
     if scope.get("input_contract_step") != 25 or scope.get("input_must_be_clean") is not True:
         fail("O redator deve consumir somente o contrato limpo do Passo 25.")
