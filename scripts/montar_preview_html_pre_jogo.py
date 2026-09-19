@@ -192,6 +192,7 @@ def section_records(body: str) -> list[dict[str, Any]]:
                 "end": end,
                 "heading": normalize_text(match.group(1)),
                 "text": normalize_text(chunk),
+                "body_text": normalize_text(body[match.end():end]),
             }
         )
     return records
@@ -281,7 +282,15 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
                 continue
             score = len(wanted & token_set(str(record["text"])))
             best_score = max(best_score, score)
-            if score >= minimum:
+            form_heading = any(
+                marker in str(record["heading"])
+                for marker in (
+                    "como chega", "momento", "forma recente", "fase atual",
+                    "desempenho recente", "sequencia", "ultimos jogos",
+                )
+            )
+            substantive_body = len(WORD_RE.findall(str(record.get("body_text", "")))) >= 6
+            if score >= minimum or (score >= 1 and form_heading and substantive_body):
                 matched = (index, score)
                 break
         if matched is None:
