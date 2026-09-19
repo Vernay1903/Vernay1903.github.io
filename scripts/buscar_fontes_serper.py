@@ -400,6 +400,11 @@ def request_serper(
     timeout: int = 20,
     retries: int = 2,
 ) -> tuple[str, dict[str, Any]]:
+    # Pesquisa gratuita de RSS com leitura independente: não toca nos endpoints Serper.
+    if os.environ.get("CDE_FREE_RESEARCH") == "1":
+        from scripts import pesquisa_publica_gratuita as free
+        return free.search_rss(query, domains, config)
+
     discovery = config["research"]["discovery"]
     if discovery.get("external_search_enabled") is not True:
         fail("Busca externa está desligada em config/pre-jogo.json.")
