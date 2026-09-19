@@ -279,7 +279,11 @@ def normalize_text(value: Any) -> str:
 def meaningful_team_tokens(team: Any) -> list[str]:
     text = normalize_text(team)
     stop = {"1", "fc", "cf", "sc", "ac", "afc", "sv", "club", "clube", "de", "do", "da", "dos", "das"}
-    return [token for token in text.split() if token not in stop and len(token) >= 4]
+    short_distinctive = {"psg"}
+    return [
+        token for token in text.split()
+        if token not in stop and (len(token) >= 4 or token in short_distinctive)
+    ]
 
 
 def mentions_team(text: str, team: Any) -> bool:
