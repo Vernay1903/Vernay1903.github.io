@@ -130,27 +130,54 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
     if not query.strip():
         raise ValueError("Consulta RSS vazia.")
     q = query.strip()
-    # Mantém o filtro local como autoridade: o buscador pode ignorar "site:".
-    url = RSS_ENDPOINT + "?" + urlencode({"q": q, "format": "rss"})
-    raw, _charset = fetch(url)
+    # O feed às vezes devolve HTML em vez de XML para consultas com aspas/OR.
+    # Segunda tentativa: os dois clubes + ano + assunto, mantendo filtro LOCAL
+    # por domínio e validação posterior na página de origem.
+    quoted = re.findall(r'"([^"]{3,80})"', q)
+    year = next(iter(re.findall(r"\\b20\\d{2}\\b", q)), "")
+    folded = q.casefold()
+    if any(x in folded for x in ("lineup", "escala", "alineacion", "compos")):
+        topic = "escalações"
+    elif any(x in folded for x in ("transmi", "watch", "assistir", "stream", "tv")):
+        topic = "onde assistir"
+    elif any(x in folded for x in ("referee", "arbitr", "schiedsrichter")):
+        topic = "árbitro"
+    elif any(x in folded for x in ("stadium", "estádio", "estadio", "venue", "stadion")):
+        topic = "estádio"
+    else:
+        topic = "prévia"
+    if len(quoted) >= 2:
+        compact = f"{quoted[0]} {quoted[1]} {topic} {year}".strip()
+    else:
+        compact = re.sub(r"\\s+", " ", re.sub(r"[()\\\"]", " ", q)).split(" site:")[0][:120].strip()
+    if len(domains) == 1:
+        compact = f"{compact} site:{domains[0]}"
+    queries = [q]
+    if compact and compact.casefold() != q.casefold():
+        queries.append(compact)
     candidates: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for item in _rss_items(raw):
-        link = original_link(item.get("link", "").strip())
-        if not link or link in seen or not domain_allowed(link, domains):
-            continue
-        title = html.unescape(item.get("title", "").strip())
-        if not title:
-            continue
-        seen.add(link)
-        candidates.append({
-            "title": title,
-            "link": link,
-            "snippet": re.sub(r"<[^>]+>", " ", html.unescape(item.get("description", "")))[:450],
-            "position": len(candidates) + 1,
-            "date": item.get("pubDate"),
-        })
-        if len(candidates) >= MAX_RESULTS:
+    for proposed in queries:
+        url = RSS_ENDPOINT + "?" + urlencode({"q": proposed, "format": "rss"})
+        raw, _charset = fetch(url)
+        for item in _rss_items(raw):
+            link = original_link(item.get("link", "").strip())
+            if not link or link in seen or not domain_allowed(link, domains):
+                continue
+            title = html.unescape(item.get("title", "").strip())
+            if not title:
+                continue
+            seen.add(link)
+            candidates.append({
+                "title": title,
+                "link": link,
+                "snippet": re.sub(r"<[^>]+>", " ", html.unescape(item.get("description", "")))[:450],
+                "position": len(candidates) + 1,
+                "date": item.get("pubDate"),
+            })
+            if len(candidates) >= MAX_RESULTS:
+                break
+        if candidates:
             break
     result = {"organic": candidates}
     _SEARCH_CACHE[key] = result
