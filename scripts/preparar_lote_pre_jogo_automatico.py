@@ -333,6 +333,12 @@ def main() -> None:
         if isinstance(item, dict) and isinstance(item.get("slug"), str)
     }
     packages = [item for item in packages_manifest.get("articles", []) if isinstance(item, dict)]
+    budget_cfg = load_json(ROOT / "config" / "redacao-pre-jogo.json")
+    max_daily = int(budget_cfg.get("budget", {}).get("max_articles_per_day", 0)) if isinstance(budget_cfg, dict) else 0
+    if max_daily <= 0 or max_daily > 10:
+        fail("Trava diária de orçamento OpenAI inválida.")
+    if len(packages) > max_daily:
+        fail(f"Lote com {len(packages)} matérias excede o teto diário de {max_daily}; nada será redigido.")
     packages.sort(key=lambda item: str(item.get("match_context", {}).get("kickoff_brasilia", "")))
 
     prepared: list[dict[str, Any]] = []
