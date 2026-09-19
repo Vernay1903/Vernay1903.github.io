@@ -1,4 +1,4 @@
-name: Pré-jogo — auditoria integral gratuita sem publicação # RSS10 #10
+name: Pré-jogo — auditoria integral gratuita sem publicação # RSS11 #11
 on:
   push:
     branches: [main]
@@ -113,6 +113,93 @@ jobs:
           PY
           git diff --quiet -- . ':!build'
           echo "OK: redação real testada sem commit/push e sem Serper."
+      - name: Simular janela 00:01 completa sem alterar a main
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          MANIFEST="build/pre-jogo/automatico/manifest.json"
+          if [ ! -f "${MANIFEST}" ]; then
+            echo "Sem lote preparado; nada a simular."
+            exit 0
+          fi
+          APPROVED="build/pre-jogo/auditoria-approved.txt"
+          PREVIEWS="build/pre-jogo/auditoria-previews"
+          REPORT="build/pre-jogo/auditoria-publicacao.json"
+          : > "${APPROVED}"
+          rm -rf "${PREVIEWS}"
+          mkdir -p "${PREVIEWS}"
+          python - <<'PY' > build/pre-jogo/auditoria-status.tsv
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/pre-jogo/automatico/manifest.json').read_text(encoding='utf-8'))
+          for item in data.get('articles',[]):
+              print(f"{item['slug']}\t{item['status_snapshot']}")
+          PY
+          while IFS=        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-integracao-gratuita-final
+          path: |
+            build/pre-jogo/pacotes-editoriais-*.json
+            build/pre-jogo/fatos-estruturados-*.json
+            build/pre-jogo/automatico/manifest.json
+            build/pre-jogo/redacao-modelo-metadata/*.json
+          if-no-files-found: warn
+          retention-days: 1
+\t' read -r SLUG SNAPSHOT; do
+            [ -n "${SLUG}" ] || continue
+            if python scripts/validar_status_final_pre_jogo.py \
+              --evidence "build/pre-jogo/automatico/${SNAPSHOT}" \
+              --report "build/pre-jogo/auditoria-status-final-${SLUG%.html}.json" \
+              --execute; then
+              echo "${SLUG}" >> "${APPROVED}"
+            fi
+          done < build/pre-jogo/auditoria-status.tsv
+
+          OFFSET=0
+          python - <<'PY' > build/pre-jogo/auditoria-preview.tsv
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/pre-jogo/automatico/manifest.json').read_text(encoding='utf-8'))
+          for item in data.get('articles',[]):
+              print(f"{item['slug']}\t{item['contract']}\t{item['draft']}")
+          PY
+          while IFS=        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-integracao-gratuita-final
+          path: |
+            build/pre-jogo/pacotes-editoriais-*.json
+            build/pre-jogo/fatos-estruturados-*.json
+            build/pre-jogo/automatico/manifest.json
+            build/pre-jogo/redacao-modelo-metadata/*.json
+          if-no-files-found: warn
+          retention-days: 1
+\t' read -r SLUG CONTRACT DRAFT; do
+            grep -Fxq "${SLUG}" "${APPROVED}" || continue
+            python scripts/montar_preview_html_pre_jogo.py \
+              --draft "build/pre-jogo/automatico/${DRAFT}" \
+              --contract "build/pre-jogo/automatico/${CONTRACT}" \
+              --output-dir "${PREVIEWS}" --rotation-offset "${OFFSET}" --force
+            OFFSET=$((OFFSET+1))
+          done < build/pre-jogo/auditoria-preview.tsv
+
+          python scripts/aplicar_lote_pre_jogo_automatico.py \
+            --manifest "${MANIFEST}" \
+            --artifact-root build/pre-jogo/automatico \
+            --approved "${APPROVED}" \
+            --previews-root "${PREVIEWS}" \
+            --report "${REPORT}" --dry-run
+          git diff --quiet -- . ':!build'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('build/pre-jogo/auditoria-publicacao.json').read_text(encoding='utf-8'))
+          print('SIMULAÇÃO 00:01: selecionadas=',r['selected_count'],'arquivos que seriam alterados=',r['changed_file_count'])
+          print('SIMULAÇÃO 00:01: nenhuma alteração real na main.')
+          PY
+
       - name: Guardar diagnóstico sem matéria publicada
         if: always()
         uses: actions/upload-artifact@v4
