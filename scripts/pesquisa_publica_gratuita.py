@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import html
 import ipaddress
+import os
 import re
 import socket
 from html.parser import HTMLParser
@@ -81,6 +82,11 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
     key = query + "|" + ",".join(sorted(domains))
     if key in _SEARCH_CACHE:
         return query, _SEARCH_CACHE[key]
+    # Tempo de GitHub Actions e serviços públicos são finitos: encerrar busca
+    # com ZERO candidatos, nunca inventar evidências nem comprar pesquisas.
+    budget = max(1, min(80, int(os.environ.get("CDE_RSS_MAX_REQUESTS", "45"))))
+    if len(_SEARCH_CACHE) >= budget:
+        return query, {"organic": [], "public_feed_request_limit": True}
     if not query.strip():
         raise ValueError("Consulta RSS vazia.")
     q = query.strip()
