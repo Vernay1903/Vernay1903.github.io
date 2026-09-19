@@ -30,17 +30,43 @@ jobs:
           python tests/pre-jogo/teste_recuperar_preparo.py
           TARGET=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Sao_Paulo')).date())")
           python scripts/recuperar_preparo_pre_jogo_automatico.py --date "$TARGET" --dry-run
-      - name: Validar recuperação real apenas dentro de build, sem publicação
+      - name: Diagnosticar resposta da Serper sem revelar chave nem publicar
         env:
-          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
-          TARGET=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Sao_Paulo')).date())")
-          python scripts/recuperar_preparo_pre_jogo_automatico.py --date "$TARGET"
-          git diff --quiet -- . ':!build'
-          echo 'TESTE SEGURO: fluxo externo de recuperação executado sem publicar.'
+          python - <<'PY'
+          import json
+          import os
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError
+          key = os.environ['SERPER_API_KEY']
+          if not key:
+              raise SystemExit('SERPER_API_KEY ausente.')
+          endpoint = 'https://google.serper.dev/search'
+          for label, query in [
+              ('consulta_simples', 'Arsenal Barcelona futebol 2026'),
+              ('consulta_site', 'Arsenal Barcelona futebol 2026 (site:arsenal.com OR site:fcbarcelona.com)'),
+          ]:
+              body = json.dumps({'q': query, 'num': 1, 'gl': 'br', 'hl': 'pt-br'}).encode()
+              req = Request(endpoint, data=body,
+                            headers={'X-API-KEY': key, 'Content-Type': 'application/json',
+                                     'Accept': 'application/json'}, method='POST')
+              try:
+                  with urlopen(req, timeout=30) as r:
+                      data = json.loads(r.read().decode())
+                      print(f'{label}: HTTP {r.status}; chaves_resposta={list(data)[:8]}')
+              except HTTPError as e:
+                  raw = e.read().decode('utf-8', errors='replace')
+                  try:
+                      data = json.loads(raw)
+                      message = str(data.get('message') or data.get('error') or '')
+                  except Exception:
+                      message = ''
+                  message = message.replace(key, '[OCULTO]')[:200]
+                  print(f'{label}: HTTP {e.code}; motivo_serper={message or "não fornecido"}')
+                  break
+          PY
       - name: Guardar diagnóstico técnico temporário
         if: always()
         uses: actions/upload-artifact@v4
