@@ -34,13 +34,13 @@ def main():
                 query="Brighton Arsenal", domains=["arsenal.com"], config={})
     assert query == "Brighton Arsenal"
     assert [item["link"] for item in result["organic"]] == [original]
-    html = (b"<html><head><title>Arsenal x Brighton</title>"
-            b'<meta name="description" content="Preview oficial"></head><body>'
-            b"<nav>Compre nossos produtos de futebol</nav>"
-            b"<article><h1>Arsenal x Brighton pela Premier League 2026</h1>"
-            b"<p>O confronto acontecerá no Emirates Stadium, conforme o anúncio oficial.</p>"
-            b"<p>Transmissão será confirmada depois pela organização.</p></article>"
-            b"<script>var false_fact = 'Referee is INVENTED';</script></body></html>")
+    html = ("<html><head><title>Arsenal x Brighton</title>"
+            '<meta name="description" content="Preview oficial"></head><body>'
+            "<nav>Compre nossos produtos de futebol</nav>"
+            "<article><h1>Arsenal x Brighton pela Premier League 2026</h1>"
+            "<p>O confronto acontecerá no Emirates Stadium, conforme o anúncio oficial.</p>"
+            "<p>Transmissão será confirmada depois pela organização.</p></article>"
+            "<script>var false_fact = 'Referee is INVENTED';</script></body></html>").encode("utf-8")
     with patch.object(free, "fetch", return_value=(html, "utf-8")):
         with patch.dict(os.environ, {"CDE_FREE_RESEARCH": "1", "SERPER_API_KEY": ""}):
             page = reader.request_serper_scrape(original, config={})
