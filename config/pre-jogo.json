@@ -45,6 +45,21 @@
     "attribution": {
       "required": true,
       "text": "Football data provided by the Football-Data.org API"
+    },
+    "editorial_fact_support": {
+      "enabled": true,
+      "allowed_requirements": [
+        "recent_form_both_teams",
+        "competition_specific_head_to_head"
+      ],
+      "never_used_for": [
+        "transmission",
+        "probable_lineups_and_coaches",
+        "officiating",
+        "final_match_status"
+      ],
+      "max_recent_matches": 5,
+      "max_h2h_matches": 50
     }
   },
   "monitored_clubs": [
