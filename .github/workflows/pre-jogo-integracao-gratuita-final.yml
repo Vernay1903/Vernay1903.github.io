@@ -1,4 +1,4 @@
-name: Pré-jogo — auditoria integral gratuita sem publicação # RSS16 #16
+name: Pré-jogo — auditoria integral gratuita sem publicação # FIXEDHOME19
 on:
   push:
     branches: [main]
@@ -28,6 +28,7 @@ jobs:
           python tests/pre-jogo/teste_aliases_adversarios.py
           python tests/pre-jogo/teste_reuso_opcionais.py
           python tests/pre-jogo/teste_estadios_aliases.py
+          python tests/pre-jogo/teste_estadio_fixo_mandante.py
           python tests/pre-jogo/teste_rss_consulta_curta.py
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
           python tests/pre-jogo/teste_status_final_football_data.py
