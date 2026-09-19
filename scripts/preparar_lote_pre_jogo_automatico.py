@@ -159,7 +159,7 @@ def football_data_status_row(article: dict[str, Any], package: dict[str, Any]) -
         manifest = load_json(source)
         if manifest.get("provider") != "football-data.org":
             return None
-        match_id = package.get("fixture_id")
+        match_id = article.get("fixture_id")
         if not isinstance(match_id, int):
             return None
         fixtures = manifest.get("fixtures", [])
