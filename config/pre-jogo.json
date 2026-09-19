@@ -461,5 +461,20 @@
         "filename": "bola-estadio-futebol.jpg"
       }
     ]
+  },
+  "home_stadium_hints": {
+    "policy": "search_hint_only_never_publish_without_match_specific_confirmation",
+    "stadiums": {
+      "Arsenal": "Emirates Stadium",
+      "Manchester City": "Etihad Stadium",
+      "PSG": "Parc des Princes",
+      "Bayern de Munique": "Allianz Arena",
+      "Inter de Milão": "San Siro",
+      "Flamengo": "Maracanã",
+      "Palmeiras": "Nubank Parque",
+      "Grêmio": "Arena do Grêmio",
+      "Barcelona": "Spotify Camp Nou",
+      "Real Madrid": "Santiago Bernabéu"
+    }
   }
 }
