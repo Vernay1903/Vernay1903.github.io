@@ -8,7 +8,7 @@ permissions:
 jobs:
   teste:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 28
     env:
       CDE_FREE_RESEARCH: '1'
       SERPER_API_KEY: ''
@@ -57,3 +57,50 @@ jobs:
           PY
 
 # Executa regressão corrigida
+
+      - name: Pesquisa integrada gratuita para o dia seguinte SEM redigir/publicar
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          TARGET=$(python -c "from datetime import datetime,timedelta;from zoneinfo import ZoneInfo;print(datetime.now(ZoneInfo('America/Sao_Paulo')).date()+timedelta(days=1))")
+          echo "Dia de referência: ${TARGET}"
+          python scripts/buscar_fixtures_football_data.py --date "${TARGET}" --force
+          python scripts/identificar_jogos.py --date "${TARGET}" --force
+          python scripts/planejar_pre_jogos.py --date "${TARGET}" --force
+          python scripts/preparar_dados_editoriais.py --date "${TARGET}" --force
+          python scripts/preparar_pesquisa_factual.py --date "${TARGET}" --force
+          python scripts/planejar_coleta_fontes.py --date "${TARGET}" --force
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('config/pre-jogo.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          data['research']['discovery']['external_search_enabled']=True
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          python scripts/buscar_fontes_serper.py --date "${TARGET}" --execute --force
+          python scripts/estruturar_evidencias_candidatas.py --date "${TARGET}" --force
+          python scripts/ler_fontes_candidatas.py --date "${TARGET}" --execute --force
+          python scripts/extrair_fatos_estruturados.py --date "${TARGET}" --force
+          git checkout -- config/pre-jogo.json
+          python scripts/montar_pacote_editorial.py --date "${TARGET}" --force
+          python - "${TARGET}" <<'PY'
+          import json,sys
+          from pathlib import Path
+          date=sys.argv[1]
+          data=json.loads((Path('build/pre-jogo')/f'pacotes-editoriais-{date}.json').read_text())
+          articles=data.get('articles',[])
+          print('SEM COBRANÇA: candidatos=',len(articles),'com dados suficientes=',sum(a.get('ready_for_drafting') is True for a in articles))
+          for a in articles:
+              print('CANDIDATO',str(a.get('slug')),'pronto=',a.get('ready_for_drafting'),'pendências=',a.get('unresolved_required_requirement_ids',[]))
+          PY
+          git diff --quiet -- . ':!build'
+      - name: Guardar apenas resumo da pesquisa gratuita
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-pesquisa-gratuita-temporario
+          path: build/pre-jogo/pacotes-editoriais-*.json
+          if-no-files-found: warn
+          retention-days: 1
