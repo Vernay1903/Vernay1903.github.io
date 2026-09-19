@@ -209,6 +209,9 @@ def unmonitored_team_aliases(team: str) -> list[str]:
         if candidate and len(normalize_text(candidate)) >= 5 and normalize_text(candidate) != normalize_text(raw):
             variants.append(candidate)
 
+    if normalize_text(raw) in {"club atletico de madrid", "atletico de madrid"}:
+        variants.extend(["Atlético de Madrid", "Atletico Madrid"])
+
     rb_match = re.match(r"^\s*RB\s+(.+)$", raw, flags=re.IGNORECASE)
     if rb_match:
         tail = rb_match.group(1).strip()
