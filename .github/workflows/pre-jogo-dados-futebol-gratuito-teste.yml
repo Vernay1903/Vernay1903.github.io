@@ -63,3 +63,5 @@ jobs:
               except Exception as e:
                   print('ENDPOINT:',endpoint.split('?')[0],'erro:',type(e).__name__)
           PY
+
+# Regressão atualizada: placares futuros bloqueados.
