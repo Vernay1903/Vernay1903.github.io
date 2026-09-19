@@ -20,7 +20,7 @@ def main() -> None:
     assert len(plan) == 12
     assert plan[0][0] == "scripts/buscar_fixtures_football_data.py"
     assert plan[-1][0] == "scripts/montar_pacote_editorial.py"
-    assert plan[-2][0] == "scripts/enriquecer_fatos_football_data.py"
+    assert plan[-2][0] == "scripts/extrair_fatos_estruturados.py"\n    assert plan[-3][0] == "scripts/enriquecer_evidencias_football_data.py"
     assert plan[6][0] == "scripts/buscar_fontes_serper.py"
     assert plan[8][0] == "scripts/ler_fontes_candidatas.py"
     assert all("--force" in cmd for cmd in plan)
@@ -47,6 +47,7 @@ def main() -> None:
             if args[0] in ("scripts/buscar_fontes_serper.py",
                            "scripts/estruturar_evidencias_candidatas.py",
                            "scripts/ler_fontes_candidatas.py",
+                           "scripts/enriquecer_evidencias_football_data.py",
                            "scripts/extrair_fatos_estruturados.py"):
                 assert external is True
             else:
