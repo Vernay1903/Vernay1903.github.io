@@ -76,7 +76,6 @@ jobs:
             scripts/estruturar_evidencias_candidatas.py \
             scripts/ler_fontes_candidatas.py \
             scripts/ler_fontes_candidatas_passo34_8.py \
-            scripts/enriquecer_evidencias_football_data.py \
             scripts/extrair_fatos_estruturados.py \
             scripts/montar_pacote_editorial.py \
             scripts/preparar_redacao_pre_jogo.py \
@@ -180,7 +179,6 @@ jobs:
           python scripts/buscar_fontes_serper.py --date "${TARGET_DATE}" --execute --force
           python scripts/estruturar_evidencias_candidatas.py --date "${TARGET_DATE}" --force
           python scripts/ler_fontes_candidatas.py --date "${TARGET_DATE}" --execute --force
-          python scripts/enriquecer_evidencias_football_data.py --date "${TARGET_DATE}" --force
           python scripts/extrair_fatos_estruturados.py --date "${TARGET_DATE}" --force
           # Complemento não inventa resultados e não substitui fatos conflitantes.
           python scripts/enriquecer_fatos_football_data.py --date "${TARGET_DATE}" --execute --force
