@@ -1,0 +1,57 @@
+name: Pré-jogo — teste temporário da pesquisa gratuita
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pre-jogo-pesquisa-gratuita-teste.yml]
+permissions:
+  contents: read
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CDE_FREE_RESEARCH: '1'
+      SERPER_API_KEY: ''
+      OPENAI_API_KEY: ''
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testar compatibilidade gratuita e travas editoriais
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/pesquisa_publica_gratuita.py scripts/buscar_fontes_serper.py scripts/ler_fontes_candidatas_base.py scripts/recuperar_preparo_pre_jogo_automatico.py
+          python tests/pre-jogo/teste_pesquisa_gratuita.py
+          python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_serper_economia.py
+          python tests/pre-jogo/teste_passo34_automatico.py
+          python tests/pre-jogo/teste_passo34_8.py
+          python tests/pre-jogo/teste_passo34_9.py
+          python tests/pre-jogo/teste_passo34_10.py
+          python tests/pre-jogo/teste_passo34_11.py
+          python tests/pre-jogo/teste_preview_html.py
+      - name: Diagnosticar RSS gratuito real sem publicar
+        run: |
+          python - <<'PY'
+          from scripts.pesquisa_publica_gratuita import search_rss, read_public_page
+          q='"Arsenal" "Brighton" Premier League 2026'
+          for domains in ([], ['arsenal.com'], ['premierleague.com'], ['espn.com.br']):
+              try:
+                  _, data = search_rss(q, domains)
+              except Exception as exc:
+                  print('RSS indisponível:', type(exc).__name__)
+                  continue
+              items = data['organic']
+              print('Domínios',domains or '[aberto]','links originais',len(items))
+              if items and not domains:
+                  item = items[0]
+                  try:
+                      page = read_public_page(item['link'])
+                      print('Fonte acessível e extraída:',len(page['markdown']),
+                            'créditos:',page['credits'])
+                  except Exception as exc:
+                      print('Fonte indisponível:',type(exc).__name__)
+          PY
