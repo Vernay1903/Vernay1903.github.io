@@ -33,7 +33,7 @@ def main():
     assert fd.score_for(game(home,away,1,0),home)[0]=="Vitória"
     assert fd.score_for(game(home,away,1,0),away)[0]=="Derrota"
     assert fd.head_to_head({"matches":history},home,away,"PL",kickoff)==(2,1,0,1)
-    assert fd.latest_form({"matches":[game(home,away,1,1),game(home,away,1,0)]},home,kickoff).endswith("1 vitórias, 1 empates e 0 derrotas") is False
+    assert fd.latest_form({"matches":[game(home,away,1,1),game(home,away,1,0)]},home,kickoff).endswith("1 vitória, 1 empate e 0 derrotas")
     reqs=[
       {"id":"recent_form_both_teams","status":"pending","conflict_detected":False},
       {"id":"competition_specific_head_to_head","status":"pending","conflict_detected":False},
