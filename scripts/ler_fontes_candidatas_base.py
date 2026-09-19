@@ -307,6 +307,9 @@ def source_evidence_blob(source: dict[str, Any]) -> str:
     title = source.get("title")
     if isinstance(title, str):
         parts.append(title)
+    published_hint = source.get("published_hint")
+    if isinstance(published_hint, str):
+        parts.append(published_hint)
     page = source.get("page_evidence")
     if isinstance(page, dict):
         metadata = page.get("metadata")
@@ -382,7 +385,9 @@ def source_supports_cross_requirement_reuse(
         kickoff = str(context.get("kickoff_brasilia", ""))
         year = kickoff[:4] if len(kickoff) >= 4 else ""
         exact_match = mentions_team(blob, home) and mentions_team(blob, away)
-        current_context = (not competition or competition in folded) or (year and year in folded)
+        # Para ausência opcional, não basta ser o mesmo clássico em outro ano.
+        # O feed/data da própria página precisa situar a fonte na temporada atual.
+        current_context = bool(year and year in folded)
         return exact_match and current_context
 
     return False
