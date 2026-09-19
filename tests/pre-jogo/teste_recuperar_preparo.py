@@ -58,8 +58,8 @@ def main() -> None:
                     encoding="utf-8",
                 )
 
-        secret_env = {"FOOTBALL_DATA_TOKEN": "teste", "SERPER_API_KEY": "teste",
-                      "OPENAI_API_KEY": "teste"}
+        secret_env = {"FOOTBALL_DATA_TOKEN": "teste", "CDE_FREE_RESEARCH": "1",
+                      "OPENAI_API_KEY": "teste", "SERPER_API_KEY": ""}
         with mock.patch.object(recovery, "ROOT", root), \
              mock.patch.object(recovery, "CONFIG", config), \
              mock.patch.object(recovery, "BUILD", build), \
