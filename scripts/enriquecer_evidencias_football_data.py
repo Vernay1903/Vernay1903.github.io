@@ -84,7 +84,7 @@ def recent_form_segment(team_name: str, matches: list[dict[str, Any]], team_id: 
 
 
 def h2h_segment(home: str, away: str, competition: str, matches: list[dict[str, Any]],
-                competition_code: str | None) -> str | None:
+                competition_code: str | None, home_id: int, away_id: int) -> str | None:
     relevant = []
     for match in matches:
         comp = match.get("competition") or {}
@@ -103,13 +103,11 @@ def h2h_segment(home: str, away: str, competition: str, matches: list[dict[str, 
         ag = match["score"]["fullTime"]["away"]
         if hg == ag:
             draws += 1
-        elif (hteam.get("name") == home and hg > ag) or (ateam.get("name") == home and ag > hg):
+        elif (hteam.get("id") == home_id and hg > ag) or (ateam.get("id") == home_id and ag > hg):
             home_wins += 1
-        elif (hteam.get("name") == away and hg > ag) or (ateam.get("name") == away and ag > hg):
+        elif (hteam.get("id") == away_id and hg > ag) or (ateam.get("id") == away_id and ag > hg):
             away_wins += 1
         else:
-            # Nomes do plano podem estar canonicalizados; comparar ids não está disponível aqui.
-            # Se a orientação do resultado não puder ser atribuída com certeza, não usar o H2H.
             return None
     n = len(relevant)
     return (
@@ -168,7 +166,11 @@ def enrich_article(article: dict[str, Any], fixture: dict[str, Any], token: str,
     try:
         data = fetch_json(endpoint, token, params={"limit": str(max_h2h)})
         matches = data.get("matches") if isinstance(data.get("matches"), list) else []
-        segment = h2h_segment(home, away, competition, matches, comp_code if isinstance(comp_code, str) else None)
+        segment = h2h_segment(
+            home, away, competition, matches,
+            comp_code if isinstance(comp_code, str) else None,
+            home_id, away_id,
+        )
         if segment:
             h2h_sources.append(source(
                 f"https://api.football-data.org/v4{endpoint}?limit={max_h2h}",
