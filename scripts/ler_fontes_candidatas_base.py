@@ -372,6 +372,15 @@ def source_supports_cross_requirement_reuse(
         )
         return team_present and outcome and recency
 
+    if target_requirement_id in {
+        "transmission", "probable_lineups_and_coaches", "officiating",
+    }:
+        kickoff = str(context.get("kickoff_brasilia", ""))
+        year = kickoff[:4] if len(kickoff) >= 4 else ""
+        exact_match = mentions_team(blob, home) and mentions_team(blob, away)
+        current_context = (not competition or competition in folded) or (year and year in folded)
+        return exact_match and current_context
+
     return False
 
 
@@ -396,6 +405,9 @@ def reuse_checked_sources_across_requirements(
 
     target_ids = {
         "stadium_and_location",
+        "transmission",
+        "probable_lineups_and_coaches",
+        "officiating",
         "recent_form_both_teams",
         "competition_specific_head_to_head",
     }
