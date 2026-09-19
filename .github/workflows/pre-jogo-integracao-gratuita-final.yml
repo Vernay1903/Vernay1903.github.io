@@ -1,4 +1,4 @@
-name: Pré-jogo — auditoria integral gratuita sem publicação # RSS5 #5
+name: Pré-jogo — auditoria integral gratuita sem publicação # RSS6 #6
 on:
   push:
     branches: [main]
@@ -76,6 +76,41 @@ jobs:
           for a in d["articles"]:
               print("CANDIDATO",a["slug"],"pronto=",a["ready_for_drafting"],"pendencias=",a.get("unresolved_required_requirement_ids",[]))
           PY
+      - name: Testar redação OpenAI somente de artigos factualmente prontos sem publicar
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          READY=$(python - <<'PY'
+          import json,os
+          from pathlib import Path
+          t=os.environ['TARGET_DATE']
+          m=json.loads((Path('build/pre-jogo')/f'pacotes-editoriais-{t}.json').read_text(encoding='utf-8'))
+          print(m['ready_for_drafting_count'])
+          PY
+          )
+          if [ "${READY}" = "0" ]; then
+            echo "Nenhuma matéria validada: zero chamada à OpenAI e nenhuma publicação."
+            exit 0
+          fi
+          python scripts/preparar_lote_pre_jogo_automatico.py \
+            --date "${TARGET_DATE}" \
+            --packages "build/pre-jogo/pacotes-editoriais-${TARGET_DATE}.json" \
+            --facts "build/pre-jogo/fatos-estruturados-${TARGET_DATE}.json" \
+            --source-main-sha "$(git rev-parse HEAD)" \
+            --output-dir build/pre-jogo/automatico --execute --force
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('build/pre-jogo/automatico/manifest.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          print('REDAÇÃO REAL SEM PUBLICAÇÃO: prontas=',d['prepared_count'],'bloqueadas=',d['skipped_count'])
+          for row in d['skipped']:
+              print('BLOQUEIO:',row['slug'],row['reason'])
+          PY
+          git diff --quiet -- . ':!build'
+          echo "OK: redação real testada sem commit/push e sem Serper."
       - name: Guardar diagnóstico sem matéria publicada
         if: always()
         uses: actions/upload-artifact@v4
@@ -84,5 +119,7 @@ jobs:
           path: |
             build/pre-jogo/pacotes-editoriais-*.json
             build/pre-jogo/fatos-estruturados-*.json
+            build/pre-jogo/automatico/manifest.json
+            build/pre-jogo/redacao-modelo-metadata/*.json
           if-no-files-found: warn
           retention-days: 1
