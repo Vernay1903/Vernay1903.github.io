@@ -89,6 +89,16 @@ def load_provider_config() -> dict[str, Any]:
 
     if scope.get("allow_web_search") is not False or scope.get("allow_tools") is not False:
         fail("O redator não pode receber ferramentas ou pesquisa web.")
+
+    budget = config.get("budget")
+    if not isinstance(budget, dict):
+        fail("Configuração de orçamento do redator ausente.")
+    if float(budget.get("monthly_target_usd", 0)) > 10:
+        fail("O teto mensal configurado para a OpenAI não pode ultrapassar US$ 10.")
+    if int(budget.get("max_articles_per_day", 0)) != 10:
+        fail("A trava diária deve permanecer em no máximo 10 matérias.")
+    if int(budget.get("max_contract_chars", 0)) > 80000:
+        fail("Contrato máximo acima do limite de custo aprovado.")
     if scope.get("input_contract_step") != 25 or scope.get("input_must_be_clean") is not True:
         fail("O redator deve consumir somente o contrato limpo do Passo 25.")
     return config
@@ -170,11 +180,16 @@ def system_instructions() -> str:
 
 
 def user_payload(contract: dict[str, Any]) -> str:
+    provider_config = load_provider_config()
+    limit = int(provider_config["budget"]["max_contract_chars"])
+    serialized = json.dumps(contract, ensure_ascii=False, indent=2)
+    if len(serialized) > limit:
+        fail(f"Contrato excede o limite de orçamento: {len(serialized)} > {limit} caracteres.")
     return (
         "Redija a matéria utilizando somente este contrato editorial limpo. "
         "Todos os campos factuais listados em required_fact_fields devem ser usados sem alterar seu sentido. "
         "O validador editorial rejeita qualquer matéria abaixo de 700 palavras; entregue pelo menos 800 palavras para manter margem de segurança.\n\n"
-        + json.dumps(contract, ensure_ascii=False, indent=2)
+        + serialized
     )
 
 
@@ -296,6 +311,23 @@ def parse_draft(response: dict[str, Any]) -> dict[str, Any]:
     return draft
 
 
+def estimate_usage_cost_usd(response: dict[str, Any], provider_config: dict[str, Any]) -> float | None:
+    usage = response.get("usage")
+    if not isinstance(usage, dict):
+        return None
+    try:
+        input_tokens = int(usage.get("input_tokens", 0) or 0)
+        output_tokens = int(usage.get("output_tokens", 0) or 0)
+        budget = provider_config["budget"]
+        cost = (
+            input_tokens * float(budget["input_usd_per_million_tokens"])
+            + output_tokens * float(budget["output_usd_per_million_tokens"])
+        ) / 1_000_000
+        return round(cost, 6)
+    except (TypeError, ValueError, KeyError):
+        return None
+
+
 def usage_summary(response: dict[str, Any]) -> dict[str, Any]:
     usage = response.get("usage")
     if not isinstance(usage, dict):
@@ -369,6 +401,8 @@ def main() -> None:
         "response_id": response.get("id"),
         "response_status": response.get("status"),
         "usage": usage_summary(response),
+        "estimated_cost_usd": estimate_usage_cost_usd(response, provider_config),
+        "monthly_target_usd": provider_config["budget"]["monthly_target_usd"],
         "generated_at": datetime.now(ZoneInfo(site_config["timezone"])).isoformat(),
         "sources_sent_to_model": False,
         "provenance_sent_to_model": False,
@@ -383,6 +417,7 @@ def main() -> None:
     print("OK: rascunho real do modelo gerado e validado somente em build/.")
     print(f"Modelo: {metadata['model']}")
     print(f"Palavras: {validated['word_count']}")
+    print(f"Custo estimado desta redação: US$ {metadata['estimated_cost_usd'] if metadata['estimated_cost_usd'] is not None else 'n/d'}")
     print(f"Subtítulos fortes: {validated['strong_subheading_count']}")
     print("Fontes/proveniência enviadas ao modelo: não")
     print("Pesquisa web/ferramentas do modelo: não")
