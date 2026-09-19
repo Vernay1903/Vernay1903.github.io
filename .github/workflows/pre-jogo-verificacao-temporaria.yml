@@ -1,0 +1,26 @@
+name: Pré-jogo — verificação temporária da correção
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pre-jogo-verificacao-temporaria.yml'
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar regressões HTML e segurança
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/montar_preview_html_pre_jogo.py
+          python tests/pre-jogo/teste_preview_html.py
+          python tests/pre-jogo/teste_passo34_automatico.py
+          python tests/pre-jogo/teste_passo34_8.py
+          python tests/pre-jogo/teste_passo34_9.py
+          python tests/pre-jogo/teste_passo34_10.py
+          python tests/pre-jogo/teste_passo34_11.py
