@@ -84,6 +84,7 @@ jobs:
           python tests/pre-jogo/teste_passo34_10.py
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
+          python tests/pre-jogo/teste_recuperar_preparo.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
           import json
@@ -522,6 +523,7 @@ jobs:
           python tests/pre-jogo/teste_passo34_10.py
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
+          python tests/pre-jogo/teste_recuperar_preparo.py
           python scripts/recuperar_preparo_pre_jogo_automatico.py --date "${TARGET_DATE}"
           echo "NO_PREP=false" >> "${GITHUB_ENV}"
           echo "RECOVERED_PREP=true" >> "${GITHUB_ENV}"
