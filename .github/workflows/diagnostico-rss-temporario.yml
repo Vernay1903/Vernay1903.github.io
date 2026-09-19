@@ -17,3 +17,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/diagnostico_rss_temporario.py
+
+# Consulta site: sem custo
