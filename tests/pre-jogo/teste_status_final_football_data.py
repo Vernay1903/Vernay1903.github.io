@@ -36,9 +36,9 @@ def main():
            "provider":"football-data.org","target_date":local.date().isoformat(),"fixtures":[fixture]
         }))
         with patch.object(prepare,"DEFAULT_BUILD",bd):
-            row=prepare.football_data_status_row({},package)
+            row=prepare.football_data_status_row({"fixture_id":9876543},package)
             assert row and row["source_type"]=="official_fixture_data" and row["match_id"]==9876543,row
-            snapshot=prepare.status_snapshot({"requirements":[]},package,{"research":{"discovery":{"official_domains":{}}}})
+            snapshot=prepare.status_snapshot({"fixture_id":9876543,"requirements":[]},package,{"research":{"discovery":{"official_domains":{}}}})
             assert snapshot is not None and snapshot["evidence"]==[row]
         with patch.dict(os.environ,{"FOOTBALL_DATA_TOKEN":"token-teste"}), \
              patch.object(status.fixtures_api,"request_json",return_value=(data,{})) as call:
