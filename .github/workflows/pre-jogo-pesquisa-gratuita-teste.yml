@@ -55,3 +55,5 @@ jobs:
                   except Exception as exc:
                       print('Fonte indisponível:',type(exc).__name__)
           PY
+
+# Executa regressão corrigida
