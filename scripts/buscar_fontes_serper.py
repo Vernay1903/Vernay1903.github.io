@@ -373,6 +373,25 @@ def expanded_queries(
     return result
 
 
+def classify_serper_error_body(raw: str) -> str:
+    """Retorna apenas categorias seguras; nunca registra a chave da API."""
+    try:
+        payload = json.loads(raw)
+        detail = str(payload.get("message") or payload.get("error") or "")
+    except (ValueError, AttributeError, TypeError):
+        detail = raw
+    folded = detail.casefold()
+    if "credit" in folded and any(term in folded for term in ("not enough", "insufficient", "exhaust", "no ", "out of")):
+        return "créditos insuficientes na conta Serper; recarregue o saldo no painel"
+    if "api key" in folded and any(term in folded for term in ("invalid", "missing", "inactive")):
+        return "chave de API ausente, inválida ou inativa"
+    if "rate limit" in folded or "too many requests" in folded:
+        return "limite de requisições atingido"
+    if "query" in folded and any(term in folded for term in ("invalid", "too long", "exceed")):
+        return "consulta recusada pelo provedor"
+    return "razão não classificada; confira a conta e os parâmetros no painel Serper"
+
+
 def request_serper(
     *,
     query: str,
@@ -414,8 +433,10 @@ def request_serper(
                 return final_query, data
         except HTTPError as exc:
             last_error = exc
+            # Lê só a mensagem de erro; nunca registra request headers/API key.
+            error_reason = classify_serper_error_body(exc.read().decode("utf-8", errors="replace"))
             if exc.code not in {429, 500, 502, 503, 504} or attempt >= retries:
-                fail(f"Serper retornou HTTP {exc.code}.")
+                fail(f"Serper retornou HTTP {exc.code}: {error_reason}.")
         except (URLError, TimeoutError, json.JSONDecodeError) as exc:
             last_error = exc
             if attempt >= retries:
@@ -479,15 +500,20 @@ def discover_candidates_for_plan(
                         seen_urls.add(result["url"])
                         stage_results.append(result)
 
-            stage_results = filter_results_for_requirement(
-                requirement_id,
-                stage_results,
-                context=context,
-                config=config,
-            )
-            if stage_results:
-                selected_stage = stage
-                selected_results = stage_results
+                # Evita gastar todas as variantes quando a evidência já basta.
+                # Forma recente mantém a exigência de cobrir os DOIS clubes;
+                # H2H continua exigindo ambos no título/URL e competição.
+                qualifying = filter_results_for_requirement(
+                    requirement_id,
+                    stage_results,
+                    context=context,
+                    config=config,
+                )
+                if qualifying:
+                    selected_stage = stage
+                    selected_results = qualifying
+                    break
+            if selected_results:
                 break
 
         discovered_tasks.append(
