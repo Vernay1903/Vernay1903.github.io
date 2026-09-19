@@ -117,6 +117,10 @@ def request_serper_scrape(
     if parsed.scheme != "https" or not parsed.netloc:
         raise ValueError("Somente URLs HTTPS válidas podem ser lidas.")
 
+    if os.environ.get("CDE_FREE_RESEARCH") == "1":
+        from scripts import pesquisa_publica_gratuita as free
+        return free.read_public_page(url, config)
+
     reader = config["research"]["page_reader"]
     secret_name = reader["api_key_env"]
     api_key = os.environ.get(secret_name, "").strip()
@@ -652,7 +656,7 @@ def main() -> None:
         fail("Leitura externa bloqueada. Use --execute somente em execução autorizada.")
 
     reader = config["research"]["page_reader"]
-    if not os.environ.get(reader["api_key_env"], "").strip():
+    if os.environ.get("CDE_FREE_RESEARCH") != "1" and not os.environ.get(reader["api_key_env"], "").strip():
         fail(f"Secret/variável {reader['api_key_env']} não configurado.")
 
     tz = ZoneInfo(config["timezone"])
