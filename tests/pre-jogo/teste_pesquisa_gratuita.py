@@ -50,6 +50,16 @@ def main():
     assert "Compre nossos produtos" not in page["markdown"]
     assert "Preview oficial" == page["metadata"]["description"]
     assert free._PAGE_CACHE[original] == page
+    # RSS malformado continua servindo apenas para descobrir URL original.
+    malformed = (
+        b'<rss><channel><item><title>Arsenal & City</title>'
+        + ('<link>' + wrapped.replace("&", "&amp;") + '</link>').encode()
+        + b'<description><![CDATA[Somente descoberta]]></description></item>'
+        + b'<quebrado></channel></rss>'
+    )
+    rows = free._rss_items(malformed)
+    assert len(rows) == 1
+    assert "Arsenal" in rows[0]["title"]
     assert not any(key in str(page) for key in ("Not a verified fact", "SERPER_API_KEY"))
     print("OK: RSS apenas descobre, página original fornece texto, Serper não é chamado.")
 
