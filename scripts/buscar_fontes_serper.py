@@ -467,6 +467,11 @@ def discover_candidates_for_plan(
     tasks = plan.get("tasks")
     if not isinstance(tasks, list):
         fail("Plano de coleta sem tarefas válidas.")
+    if os.environ.get("CDE_FREE_RESEARCH") == "1":
+        # O limite é POR CONFRONTO. Não deixar o primeiro jogo consumir todas
+        # as consultas RSS gratuitas e impedir a pesquisa dos demais.
+        from scripts import pesquisa_publica_gratuita as free
+        free._SEARCH_CACHE.clear()
     context = plan.get("match_context") if isinstance(plan.get("match_context"), dict) else {}
     article_date = plan.get("date") if isinstance(plan.get("date"), str) else None
 
