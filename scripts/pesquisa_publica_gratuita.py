@@ -134,7 +134,7 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
     # Segunda tentativa: os dois clubes + ano + assunto, mantendo filtro LOCAL
     # por domínio e validação posterior na página de origem.
     quoted = re.findall(r'"([^"]{3,80})"', q)
-    year = next(iter(re.findall(r"\\b20\\d{2}\\b", q)), "")
+    year = next(iter(re.findall(r"\b20\d{2}\b", q)), "")
     folded = q.casefold()
     if any(x in folded for x in ("lineup", "escala", "alineacion", "compos")):
         topic = "escalações"
@@ -149,7 +149,7 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
     if len(quoted) >= 2:
         compact = f"{quoted[0]} {quoted[1]} {topic} {year}".strip()
     else:
-        compact = re.sub(r"\\s+", " ", re.sub(r"[()\\\"]", " ", q)).split(" site:")[0][:120].strip()
+        compact = re.sub(r"\s+", " ", re.sub(r"[()\\\"]", " ", q)).split(" site:")[0][:120].strip()
     if len(domains) == 1:
         compact = f"{compact} site:{domains[0]}"
     queries = [q]
