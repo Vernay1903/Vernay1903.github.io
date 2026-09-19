@@ -57,7 +57,6 @@ jobs:
           python scripts/buscar_fontes_serper.py --date "${TARGET}" --execute --force
           python scripts/estruturar_evidencias_candidatas.py --date "${TARGET}" --force
           python scripts/ler_fontes_candidatas.py --date "${TARGET}" --execute --force
-          python scripts/enriquecer_evidencias_football_data.py --date "${TARGET}" --force
           python scripts/extrair_fatos_estruturados.py --date "${TARGET}" --force
           python scripts/enriquecer_fatos_football_data.py --date "${TARGET}" --execute --force
           python scripts/montar_pacote_editorial.py --date "${TARGET}" --force
