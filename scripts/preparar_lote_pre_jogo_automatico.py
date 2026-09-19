@@ -204,6 +204,9 @@ def package_manifest_needs_fallback(path: Path) -> bool:
 
 def run_grounded_fact_fallback(args: argparse.Namespace) -> tuple[bool, bool]:
     """Tenta o Passo 34.3 sem transformar falha do provedor em publicação insegura."""
+    if os.environ.get("CDE_DISABLE_PAID_FACT_FALLBACK") == "1":
+        print("ORÇAMENTO: fallback factual OpenAI desligado; lacunas permanecem bloqueadas.")
+        return False, True
     if not package_manifest_needs_fallback(args.packages):
         return False, True
 
