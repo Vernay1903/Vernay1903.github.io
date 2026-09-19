@@ -1,0 +1,63 @@
+name: Pré-jogo — teste temporário dados gratuitos de futebol
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pre-jogo-dados-futebol-gratuito-teste.yml]
+permissions:
+  contents: read
+jobs:
+  dados:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      CDE_FREE_RESEARCH: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Consultar dados reais das partidas sem custos nem publicação
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          TARGET=$(python -c "from datetime import datetime,timedelta;from zoneinfo import ZoneInfo;print(datetime.now(ZoneInfo('America/Sao_Paulo')).date()+timedelta(days=1))")
+          python scripts/buscar_fixtures_football_data.py --date "${TARGET}" --force
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          from urllib.error import HTTPError
+          p=json.loads(Path('build/pre-jogo/fixtures-normalizados.json').read_text(encoding='utf-8'))
+          if not p['fixtures']:
+              print('Sem jogos na data-alvo.');raise SystemExit(0)
+          match=p['fixtures'][0]
+          ctx=match['provider_data']
+          print('JOGO:',match['home'],'x',match['away'])
+          base='https://api.football-data.org/v4'
+          endpoints=[
+              '/matches/'+str(ctx['match_id']),
+              '/matches/'+str(ctx['match_id'])+'/head2head?limit=15',
+              '/teams/'+str(ctx['home_team_id'])+'/matches?status=FINISHED&limit=5',
+              '/teams/'+str(ctx['away_team_id'])+'/matches?status=FINISHED&limit=5',
+          ]
+          for endpoint in endpoints:
+              try:
+                  req=Request(base+endpoint,headers={'X-Auth-Token':os.environ['FOOTBALL_DATA_TOKEN']})
+                  with urlopen(req,timeout=20) as resp:
+                      data=json.loads(resp.read().decode())
+                  matches=data.get('matches',[])
+                  print('ENDPOINT:',endpoint.split('?')[0],'HTTP:200','venue:',data.get('venue'),
+                        'refs:',len(data.get('referees',[]) or []),'partidas:',len(matches),
+                        'h2h_partidas:',(data.get('aggregates') or data.get('head2head') or {}).get('numberOfMatches'))
+                  if matches:
+                      print('REGISTRO:',[(m.get('status'),m.get('competition',{}).get('code'),
+                                          m.get('score',{}).get('fullTime'),
+                                          m.get('utcDate')) for m in matches[:2]])
+              except HTTPError as e:
+                  print('ENDPOINT:',endpoint.split('?')[0],'HTTP:',e.code)
+              except Exception as e:
+                  print('ENDPOINT:',endpoint.split('?')[0],'erro:',type(e).__name__)
+          PY
