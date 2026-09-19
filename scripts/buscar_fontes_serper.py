@@ -215,6 +215,21 @@ def team_variants(team: str, config: dict[str, Any]) -> list[str]:
         raw.extend(str(item) for item in club.get("aliases", []) if isinstance(item, str))
 
     normalized = normalize_text(team)
+
+    # Variantes conservadoras de nomes do provedor também entram nas consultas
+    # gratuitas; isso não muda a validação factual posterior.
+    if normalized in {"club atletico de madrid", "atletico de madrid"}:
+        raw.extend(["Atlético de Madrid", "Atletico Madrid"])
+    if normalized.startswith("olympique de ") and len(normalized.split()) >= 3:
+        tail = " ".join(team.split()[2:]).strip()
+        if len(normalize_text(tail)) >= 5:
+            raw.append(tail)
+    rb = re.match(r"^\s*RB\s+(.+)$", team, flags=re.IGNORECASE)
+    if rb:
+        tail = rb.group(1).strip()
+        if len(normalize_text(tail)) >= 5:
+            raw.extend([f"Red Bull {tail}", tail])
+
     tokens = normalized.split()
     generic_stop = {"1", "fc", "cf", "sc", "ac", "afc", "sv", "club", "clube"}
     meaningful = [token for token in tokens if token not in generic_stop]
