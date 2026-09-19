@@ -73,7 +73,10 @@ def run(target: str) -> None:
     if desired != now.date():
         fail(f"Recuperação só pode preparar a data corrente de Brasília: {now.date()}.")
 
-    for secret in ("FOOTBALL_DATA_TOKEN", "SERPER_API_KEY", "OPENAI_API_KEY"):
+    required = ["FOOTBALL_DATA_TOKEN", "OPENAI_API_KEY"]
+    if os.environ.get("CDE_FREE_RESEARCH") != "1":
+        fail("Recuperação paga desativada: é obrigatório CDE_FREE_RESEARCH=1.")
+    for secret in required:
         if not os.environ.get(secret, "").strip():
             fail(f"Secret obrigatório ausente: {secret}. Nenhuma publicação foi feita.")
 
