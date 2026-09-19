@@ -60,6 +60,7 @@ def command_plan(target: str) -> list[list[str]]:
         ["scripts/estruturar_evidencias_candidatas.py", "--date", target, "--force"],
         ["scripts/ler_fontes_candidatas.py", "--date", target, "--execute", "--force"],
         ["scripts/extrair_fatos_estruturados.py", "--date", target, "--force"],
+        ["scripts/enriquecer_fatos_football_data.py", "--date", target, "--execute", "--force"],
         ["scripts/montar_pacote_editorial.py", "--date", target, "--force"],
     ]
 
@@ -100,6 +101,7 @@ def run(target: str) -> None:
         CONFIG.write_bytes(raw_config)
 
     call(*command_plan(target)[10])
+    call(*command_plan(target)[11])
     sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     call(
         "scripts/preparar_lote_pre_jogo_automatico.py",
