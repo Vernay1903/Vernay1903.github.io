@@ -77,6 +77,46 @@ def fetch(url: str, max_bytes: int = MAX_RSS_BYTES, timeout: int = 15) -> tuple[
         return raw, response.headers.get_content_charset() or "utf-8"
 
 
+def _rss_items(raw: bytes) -> list[dict[str, str]]:
+    """Extrai itens para descoberta mesmo quando o feed vem com XML imperfeito.
+
+    Nenhum campo retornado por esta função vira evidência factual; a URL original
+    ainda precisa ser baixada e validada separadamente.
+    """
+    items: list[dict[str, str]] = []
+    try:
+        root = ET.fromstring(raw)
+        for item in root.findall(".//item"):
+            items.append({
+                "title": item.findtext("title", "") or "",
+                "link": item.findtext("link", "") or "",
+                "description": item.findtext("description", "") or "",
+                "pubDate": item.findtext("pubDate", "") or "",
+            })
+        return items
+    except ET.ParseError:
+        pass
+
+    # Fallback conservador: só interpreta blocos <item> completos e campos
+    # textuais básicos. Se o provedor devolver HTML ou conteúdo sem itens,
+    # o resultado fica vazio e a matéria continua bloqueada.
+    text = raw.decode("utf-8", errors="replace")
+    for block in re.findall(r"<item\b[^>]*>(.*?)</item>", text, flags=re.I | re.S):
+        row: dict[str, str] = {}
+        for tag in ("title", "link", "description", "pubDate"):
+            match = re.search(
+                rf"<{tag}\b[^>]*>(.*?)</{tag}>",
+                block,
+                flags=re.I | re.S,
+            )
+            value = match.group(1) if match else ""
+            value = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", value, flags=re.S)
+            row[tag] = html.unescape(re.sub(r"\s+", " ", value).strip())
+        if row["link"]:
+            items.append(row)
+    return items
+
+
 def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = None) -> tuple[str, dict[str, Any]]:
     """Mesma interface de request_serper: organic com URLs originais verificáveis."""
     key = query + "|" + ",".join(sorted(domains))
@@ -93,23 +133,22 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
     # Mantém o filtro local como autoridade: o buscador pode ignorar "site:".
     url = RSS_ENDPOINT + "?" + urlencode({"q": q, "format": "rss"})
     raw, _charset = fetch(url)
-    root = ET.fromstring(raw)
     candidates: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for item in root.findall(".//item"):
-        link = original_link(item.findtext("link", "").strip())
+    for item in _rss_items(raw):
+        link = original_link(item.get("link", "").strip())
         if not link or link in seen or not domain_allowed(link, domains):
             continue
-        title = html.unescape(item.findtext("title", "").strip())
+        title = html.unescape(item.get("title", "").strip())
         if not title:
             continue
         seen.add(link)
         candidates.append({
             "title": title,
             "link": link,
-            "snippet": re.sub(r"<[^>]+>", " ", html.unescape(item.findtext("description", "")))[:450],
+            "snippet": re.sub(r"<[^>]+>", " ", html.unescape(item.get("description", "")))[:450],
             "position": len(candidates) + 1,
-            "date": item.findtext("pubDate"),
+            "date": item.get("pubDate"),
         })
         if len(candidates) >= MAX_RESULTS:
             break
