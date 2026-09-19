@@ -64,10 +64,10 @@ jobs:
           cp /tmp/pre-jogo.json config/pre-jogo.json
           trap - EXIT
           git diff --quiet -- config/pre-jogo.json
-          python - <<'PY'
-          import json, os
+          python - "${TARGET}" <<'PY'
+          import json, sys
           from pathlib import Path
-          date=os.environ["TARGET_DATE"]
+          date=sys.argv[1]
           p=Path("build/pre-jogo")/f"pacotes-editoriais-{date}.json"
           d=json.loads(p.read_text(encoding="utf-8"))
           print("RESULTADO GRATUITO: candidatas=",d["article_count"],"prontas=",d["ready_for_drafting_count"])
