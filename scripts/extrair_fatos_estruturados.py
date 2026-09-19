@@ -66,6 +66,8 @@ KNOWN_VENUES = [
     "Giuseppe Meazza",
     "Maracanã",
     "Maracana",
+    "Estadio Jornalista Mário Filho",
+    "Estadio Jornalista Mario Filho",
     "Allianz Parque",
     "Arena do Grêmio",
     "Arena do Gremio",
@@ -75,7 +77,36 @@ KNOWN_VENUES = [
     "Estadi Olimpic Lluis Companys",
     "Santiago Bernabéu",
     "Santiago Bernabeu",
+    "Riyadh Air Metropolitano",
+    "Estadio Metropolitano",
+    "Cívitas Metropolitano",
+    "Civitas Metropolitano",
+    "Wanda Metropolitano",
+    "Orange Vélodrome",
+    "Orange Velodrome",
+    "Stade Vélodrome",
+    "Stade Velodrome",
+    "CEPAC Vélodrome",
+    "CEPAC Velodrome",
 ]
+
+VENUE_CANONICAL_ALIASES = {
+    "maracana": "Maracanã",
+    "estadio jornalista mario filho": "Maracanã",
+    "riyadh air metropolitano": "Riyadh Air Metropolitano",
+    "estadio metropolitano": "Riyadh Air Metropolitano",
+    "civitas metropolitano": "Riyadh Air Metropolitano",
+    "wanda metropolitano": "Riyadh Air Metropolitano",
+    "orange velodrome": "Vélodrome",
+    "stade velodrome": "Vélodrome",
+    "cepac velodrome": "Vélodrome",
+    "velodrome": "Vélodrome",
+}
+
+
+def canonical_venue(value: str) -> str:
+    key = normalize_text(value)
+    return VENUE_CANONICAL_ALIASES.get(key, value)
 
 VENUE_CONTEXT_WORDS = (
     "venue", "stadium", "estádio", "estadio", "arena",
@@ -589,17 +620,18 @@ def extract_venue_values(text: str) -> list[tuple[str, str]]:
             continue
         for venue in KNOWN_VENUES:
             if normalize_text(venue) in folded:
-                key = normalize_text(venue)
+                canonical = canonical_venue(venue)
+                key = normalize_text(canonical)
                 if key not in seen:
                     seen.add(key)
-                    found.append((venue, segment))
+                    found.append((canonical, segment))
         patterns = [
             r"(?:venue\s*[:\-]?\s*|played at\s+|will be played at\s+|takes place at\s+|held at\s+)(?:the\s+)?([A-ZÀ-Ý][\wÀ-ÿ'’.-]*(?:\s+(?:[A-ZÀ-Ý][\wÀ-ÿ'’.-]*|do|da|de|dos|das)){0,5}\s+(?:Stadium|Arena|Park|Ground))",
             r"(?:estádio|estadio|local)\s*[:\-]?\s*([A-ZÀ-Ý][\wÀ-ÿ'’.-]*(?:\s+(?:[A-ZÀ-Ý][\wÀ-ÿ'’.-]*|do|da|de|dos|das)){0,5}(?:\s+(?:Stadium|Arena|Park|Ground))?)",
         ]
         for pattern in patterns:
             for match in re.finditer(pattern, segment, flags=re.IGNORECASE):
-                value = clean_value(match.group(1), max_chars=120)
+                value = canonical_venue(clean_value(match.group(1), max_chars=120))
                 key = normalize_text(value)
                 if len(value) >= 4 and key and key not in seen:
                     seen.add(key)
