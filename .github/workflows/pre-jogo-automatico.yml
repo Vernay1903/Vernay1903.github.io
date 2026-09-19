@@ -1,10 +1,14 @@
 name: Pré-jogo — automático diário (Passo 34)
 
-# Agendamento pago pausado a pedido do proprietário (19/09/2026).
-# Serper sem saldo; fluxo também usa API OpenAI com cobrança independente.
-# O workflow_dispatch permanece para inspeção técnica, NÃO execute modos
-# com --execute enquanto a substituição sem custos não estiver aprovada.
+# Fluxo automático reativado em 19/09/2026 após auditoria integral.
+# Pesquisa factual: RSS/páginas públicas + Football-Data, sem Serper.
+# OpenAI é usada somente na redação final de matérias factualmente aprovadas.
 on:
+  schedule:
+    # 23:30 de Brasília do dia anterior (UTC-3)
+    - cron: "30 2 * * *"
+    # 00:01 de Brasília do dia da partida (UTC-3)
+    - cron: "1 3 * * *"
   workflow_dispatch:
     inputs:
       mode:
