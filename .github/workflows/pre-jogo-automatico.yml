@@ -91,6 +91,7 @@ jobs:
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
+          python tests/pre-jogo/teste_aliases_adversarios.py
           python tests/pre-jogo/teste_rss_consulta_curta.py
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
           python tests/pre-jogo/teste_status_final_football_data.py
