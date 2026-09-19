@@ -1,0 +1,86 @@
+name: Pré-jogo — integração gratuita final temporária
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pre-jogo-integracao-gratuita-final.yml]
+permissions:
+  contents: read
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CDE_FREE_RESEARCH: "1"
+      CDE_DISABLE_PAID_FACT_FALLBACK: "1"
+      CDE_RSS_MAX_REQUESTS: "35"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rodar regressões sem APIs pagas
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/pesquisa_publica_gratuita.py scripts/enriquecer_evidencias_football_data.py scripts/redigir_pre_jogo_openai.py scripts/recuperar_preparo_pre_jogo_automatico.py
+          python tests/pre-jogo/teste_pesquisa_gratuita.py
+          python tests/pre-jogo/teste_football_data_editorial.py
+          python tests/pre-jogo/teste_orcamento_openai.py
+          python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_preview_html.py
+      - name: Executar pesquisa factual gratuita completa sem redigir nem publicar
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          TARGET=$(python -c "from datetime import datetime,timedelta;from zoneinfo import ZoneInfo;print(datetime.now(ZoneInfo('America/Sao_Paulo')).date()+timedelta(days=1))")
+          echo "TARGET_DATE=${TARGET}" >> "${GITHUB_ENV}"
+          python scripts/buscar_fixtures_football_data.py --date "${TARGET}" --force
+          python scripts/identificar_jogos.py --date "${TARGET}" --force
+          python scripts/planejar_pre_jogos.py --date "${TARGET}" --force
+          python scripts/preparar_dados_editoriais.py --date "${TARGET}" --force
+          python scripts/preparar_pesquisa_factual.py --date "${TARGET}" --force
+          python scripts/planejar_coleta_fontes.py --date "${TARGET}" --force
+
+          cp config/pre-jogo.json /tmp/pre-jogo.json
+          trap 'cp /tmp/pre-jogo.json config/pre-jogo.json' EXIT
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("config/pre-jogo.json")
+          d=json.loads(p.read_text(encoding="utf-8"))
+          d["research"]["discovery"]["external_search_enabled"]=True
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+
+          python scripts/buscar_fontes_serper.py --date "${TARGET}" --execute --force
+          python scripts/estruturar_evidencias_candidatas.py --date "${TARGET}" --force
+          python scripts/ler_fontes_candidatas.py --date "${TARGET}" --execute --force
+          python scripts/enriquecer_evidencias_football_data.py --date "${TARGET}" --force
+          python scripts/extrair_fatos_estruturados.py --date "${TARGET}" --force
+          python scripts/montar_pacote_editorial.py --date "${TARGET}" --force
+
+          cp /tmp/pre-jogo.json config/pre-jogo.json
+          trap - EXIT
+          git diff --quiet -- config/pre-jogo.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          date=os.environ["TARGET_DATE"]
+          p=Path("build/pre-jogo")/f"pacotes-editoriais-{date}.json"
+          d=json.loads(p.read_text(encoding="utf-8"))
+          print("RESULTADO GRATUITO: candidatas=",d["article_count"],"prontas=",d["ready_for_drafting_count"])
+          for a in d["articles"]:
+              print("CANDIDATO",a["slug"],"pronto=",a["ready_for_drafting"],"pendencias=",a.get("unresolved_required_requirement_ids",[]))
+          PY
+      - name: Guardar diagnóstico sem matéria publicada
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-jogo-integracao-gratuita-final
+          path: |
+            build/pre-jogo/pacotes-editoriais-*.json
+            build/pre-jogo/fatos-estruturados-*.json
+          if-no-files-found: warn
+          retention-days: 1
