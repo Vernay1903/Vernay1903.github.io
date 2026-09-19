@@ -1,15 +1,15 @@
 {
-  "version": 1,
+  "version": 2,
   "provider": {
     "name": "openai-responses",
     "endpoint": "https://api.openai.com/v1/responses",
     "api_key_env": "OPENAI_API_KEY",
-    "model": "gpt-5.6-terra",
+    "model": "gpt-5.6-luna",
     "reasoning_effort": "low",
-    "max_output_tokens": 7000,
+    "max_output_tokens": 6000,
     "store": false,
     "timeout_seconds": 120,
-    "max_attempts": 3,
+    "max_attempts": 2,
     "execute_requires_explicit_flag": true
   },
   "scope": {
@@ -29,5 +29,15 @@
     "source_attribution_allowed": false,
     "html_generation_allowed": false,
     "publication_unlock_allowed": false
+  },
+  "budget": {
+    "monthly_target_usd": 10,
+    "policy": "hard_conservative_guard",
+    "pricing_reference_date": "2026-09-19",
+    "input_usd_per_million_tokens": 0.2,
+    "output_usd_per_million_tokens": 1.2,
+    "max_contract_chars": 80000,
+    "max_articles_per_day": 10,
+    "note": "Somente redacao final usa OpenAI; pesquisa e extracao factual pagas ficam desativadas."
   }
 }
