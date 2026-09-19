@@ -403,7 +403,13 @@ def request_serper(
     # Pesquisa gratuita de RSS com leitura independente: não toca nos endpoints Serper.
     if os.environ.get("CDE_FREE_RESEARCH") == "1":
         from scripts import pesquisa_publica_gratuita as free
-        return free.search_rss(query, domains, config)
+        try:
+            return free.search_rss(query, domains, config)
+        except Exception as exc:
+            # Nunca substitui ausência de pesquisa por um fato: somente zero candidatos.
+            # Não volta à Serper (saldo esgotado), mesmo em falha externa do RSS.
+            print(f"AVISO: feed público indisponível ({type(exc).__name__}); nenhuma fonte promovida.")
+            return query, {"organic": [], "public_feed_unavailable": True}
 
     discovery = config["research"]["discovery"]
     if discovery.get("external_search_enabled") is not True:
