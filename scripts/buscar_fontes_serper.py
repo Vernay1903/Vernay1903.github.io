@@ -649,7 +649,8 @@ def main() -> None:
     }
     destination.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    provider_label = "RSS público gratuito" if os.environ.get("CDE_FREE_RESEARCH") == "1" else "Serper"\n    print(f"OK: descoberta {provider_label} concluída para {target_date.isoformat()}.")
+    provider_label = "RSS público gratuito" if os.environ.get("CDE_FREE_RESEARCH") == "1" else "Serper"
+    print(f"OK: descoberta {provider_label} concluída para {target_date.isoformat()}.")
     print(f"Matérias pesquisadas: {len(results)}")
     print(f"Consultas executadas: {manifest['query_count']}")
     print("Passo 34.6: forma recente exige sinais de resultado e H2H exige os dois clubes no título/URL.")
