@@ -146,8 +146,51 @@ def stadium_from_article(article: dict[str, Any]) -> str | None:
     return None
 
 
+def football_data_status_row(article: dict[str, Any], package: dict[str, Any]) -> dict[str, Any] | None:
+    """Inclui no snapshot somente a partida exata já identificada pela API oficial.
+
+    Nenhum dado deste registro entra no texto da matéria; o ID será consultado
+    novamente com token no check final antes de qualquer commit.
+    """
+    source = DEFAULT_BUILD / "fixtures-normalizados.json"
+    if not source.exists():
+        return None
+    try:
+        manifest = load_json(source)
+        if manifest.get("provider") != "football-data.org":
+            return None
+        match_id = package.get("fixture_id")
+        if not isinstance(match_id, int):
+            return None
+        fixtures = manifest.get("fixtures", [])
+        row = next((x for x in fixtures if isinstance(x, dict) and x.get("id") == match_id), None)
+        if row is None or row.get("provider") != "football-data.org":
+            return None
+        if manifest.get("target_date") != datetime.strptime(package["date"], "%d/%m/%Y").date().isoformat():
+            return None
+        pdata = row.get("provider_data", {})
+        home_id = pdata.get("home_team_id")
+        away_id = pdata.get("away_team_id")
+        if not all(isinstance(x, int) and x > 0 for x in (home_id, away_id)):
+            return None
+        return {
+            "source_type": "official_fixture_data",
+            "url": f"https://api.football-data.org/v4/matches/{match_id}",
+            "match_id": match_id,
+            "home_team_id": home_id,
+            "away_team_id": away_id,
+            "utc_date": pdata["utc_date"],
+            "competition_code": pdata["competition_code"],
+        }
+    except (OSError, ValueError, TypeError, KeyError):
+        return None
+
+
 def status_snapshot(article: dict[str, Any], package: dict[str, Any], config: dict[str, Any]) -> dict[str, Any] | None:
     rows = official_source_rows(article, config)
+    official_fixture = football_data_status_row(article, package)
+    if official_fixture is not None:
+        rows.insert(0, official_fixture)
     if not rows:
         return None
     context = package.get("match_context") if isinstance(package.get("match_context"), dict) else {}
