@@ -84,7 +84,9 @@ def latest_form(data: dict, team_id: int, cutoff: datetime) -> str | None:
     draws = outcomes.count("Empate")
     losses = outcomes.count("Derrota")
     return (f"nos últimos {len(latest)} jogos concluídos registrados, "
-            f"{wins} vitórias, {draws} empates e {losses} derrotas")
+            f"{wins} {'vitória' if wins == 1 else 'vitórias'}, "
+            f"{draws} {'empate' if draws == 1 else 'empates'} e "
+            f"{losses} {'derrota' if losses == 1 else 'derrotas'}")
 
 
 def head_to_head(data: dict, home_id: int, away_id: int, comp_code: str, cutoff: datetime) -> tuple[int,int,int,int] | None:
