@@ -101,7 +101,6 @@ def run(target: str) -> None:
         CONFIG.write_bytes(raw_config)
 
     call(*command_plan(target)[11])
-    call(*command_plan(target)[11])
     sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     call(
         "scripts/preparar_lote_pre_jogo_automatico.py",
