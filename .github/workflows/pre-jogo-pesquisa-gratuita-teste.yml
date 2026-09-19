@@ -104,3 +104,5 @@ jobs:
           path: build/pre-jogo/pacotes-editoriais-*.json
           if-no-files-found: warn
           retention-days: 1
+
+# Correção do sys.path do modo RSS
