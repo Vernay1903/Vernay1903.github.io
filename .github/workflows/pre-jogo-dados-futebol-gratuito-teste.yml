@@ -24,6 +24,8 @@ jobs:
         run: |
           set -euo pipefail
           TARGET=$(python -c "from datetime import datetime,timedelta;from zoneinfo import ZoneInfo;print(datetime.now(ZoneInfo('America/Sao_Paulo')).date()+timedelta(days=1))")
+          python -m py_compile scripts/enriquecer_fatos_football_data.py
+          python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
           python scripts/buscar_fixtures_football_data.py --date "${TARGET}" --force
           python - <<'PY'
           import json,os
