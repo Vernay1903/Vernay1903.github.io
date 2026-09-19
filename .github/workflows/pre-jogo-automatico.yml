@@ -407,7 +407,8 @@ jobs:
   publicar:
     if: ${{ github.event_name == 'schedule' && github.event.schedule == '1 3 * * *' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Se o preparo anterior falhou, há tempo para recuperação integral no mesmo runner.
+    timeout-minutes: 60
     permissions:
       contents: write
       actions: write
@@ -480,8 +481,11 @@ jobs:
           if generated.tzinfo is None:
               raise SystemExit(1)
           target = datetime.strptime(sys.argv[2], '%Y-%m-%d').replace(tzinfo=ZoneInfo('America/Sao_Paulo'))
-          # Aceita preparo feito entre 22:00 da véspera e 02:00 do dia-alvo.
-          if not (target - timedelta(hours=2) <= generated.astimezone(ZoneInfo('America/Sao_Paulo')) <= target + timedelta(hours=2)):
+          # O GitHub pode atrasar crons por horas. O cutoff de cada jogo e o
+          # check oficial final continuam obrigatórios na publicação.
+          local_generated = generated.astimezone(ZoneInfo('America/Sao_Paulo'))
+          now = datetime.now(ZoneInfo('America/Sao_Paulo'))
+          if not (target - timedelta(hours=2) <= local_generated <= now and now.date() == target.date()):
               raise SystemExit(1)
           raise SystemExit(0)
           PY
@@ -500,6 +504,27 @@ jobs:
             echo "NO_PREP=false" >> "${GITHUB_ENV}"
             echo "OK: usando preparo automático do run ${FOUND}."
           fi
+
+      # Sem lote, refaz o preparo no próprio job; não publica nesta etapa.
+      - name: Recuperar preparo ausente na data correta
+        if: ${{ env.NO_PREP == 'true' }}
+        shell: bash
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/recuperar_preparo_pre_jogo_automatico.py
+          python tests/pre-jogo/teste_passo34_automatico.py
+          python tests/pre-jogo/teste_passo34_8.py
+          python tests/pre-jogo/teste_passo34_9.py
+          python tests/pre-jogo/teste_passo34_10.py
+          python tests/pre-jogo/teste_passo34_11.py
+          python tests/pre-jogo/teste_preview_html.py
+          python scripts/recuperar_preparo_pre_jogo_automatico.py --date "${TARGET_DATE}"
+          echo "NO_PREP=false" >> "${GITHUB_ENV}"
+          echo "RECOVERED_PREP=true" >> "${GITHUB_ENV}"
 
       - name: Verificar integridade do artifact
         if: ${{ env.NO_PREP == 'false' }}
@@ -520,6 +545,25 @@ jobs:
                   if got != expected:
                       raise SystemExit(f'ERRO: artifact adulterado/corrompido em {rel}')
           print(f"OK: {len(data.get('articles', []))} matéria(s) do artifact passaram no SHA-256.")
+          PY
+
+      - name: Identificar lote sem matérias e bloqueios explícitos
+        if: ${{ env.NO_PREP == 'false' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
+          ready = manifest['prepared_count']
+          blocked = manifest['skipped_count']
+          if ready == 0 and blocked > 0:
+              raise SystemExit(f'ERRO: {blocked} partida(s) bloqueada(s) e nenhuma matéria pronta; publicação incompleta.')
+          if ready == 0:
+              print('SEM JOGOS ELEGÍVEIS: manifesto válido e nenhum conteúdo a publicar.')
+          else:
+              print(f'LOTE ENCONTRADO: {ready} pronta(s); {blocked} bloqueada(s).')
           PY
 
       - name: Verificar Secret do check final
@@ -602,7 +646,21 @@ jobs:
           )
           echo "PUBLISH_COUNT=${PUBLISH_COUNT}" >> "${GITHUB_ENV}"
           if [ "${PUBLISH_COUNT}" = "0" ]; then
-            echo "Nenhuma matéria passou por todas as travas; não haverá commit."
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
+          report = json.loads(Path('build/pre-jogo/automatico-publicacao.json').read_text(encoding='utf-8'))
+          if manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0:
+              print('SEM JOGOS ELEGÍVEIS: nenhuma publicação necessária.')
+          elif report['skipped'] and all(
+              item.get('reason') in {'html_already_exists', 'url_already_in_noticias', 'same_match_already_in_noticias'}
+              for item in report['skipped']
+          ) and manifest['skipped_count'] == 0:
+              print('DUPLICIDADE EVITADA: todas as matérias deste lote já estão publicadas.')
+          else:
+              raise SystemExit('ERRO: havia partidas no lote mas nenhuma matéria foi publicada. Verifique bloqueios no relatório.')
+          PY
           fi
 
       - name: Validar escopo exato das alterações
