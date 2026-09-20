@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Teste offline: pesquisa esportiva recebe placares e escalações reais lidas do HTML."""
 import json
+import os
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -58,6 +59,32 @@ def main():
     ],{"home":"Manchester City","away":"Sunderland AFC","competition":"Premier League"},"20/09/2026")
     assert any("2026" in q and "team news" in q for q in queries),queries
     assert any("desfalques" in q for q in queries)
+
+    # RSS deve ler primeiro página da partida e não notícia lateral de um clube.
+    candidates=[
+      {"title":"Manchester City: training", "url":"https://example.com/city-training",
+       "snippet":"Premier League 2026"},
+      {"title":"Manchester City x Sunderland AFC preview 2026",
+       "url":"https://example.com/man-city-sunderland-preview", "snippet":"Matchday"},
+      {"title":"Manchester City x Sunderland AFC prováveis escalações 2026",
+       "url":"https://example.com/man-city-sunderland-lineups", "snippet":"Escalações"},
+    ]
+    old=os.environ.get("CDE_FREE_RESEARCH")
+    os.environ["CDE_FREE_RESEARCH"]="1"
+    try:
+        prioritized=discover.filter_results_for_requirement(
+            "probable_lineups_and_coaches",candidates,
+            context={"home":"Manchester City","away":"Sunderland AFC",
+                     "kickoff_brasilia":"2026-09-27T15:00:00-03:00"},
+            config=config,
+        )
+        assert len(prioritized)==2,prioritized
+        assert prioritized[0]["url"].endswith("lineups"),prioritized
+    finally:
+        if old is None:
+            os.environ.pop("CDE_FREE_RESEARCH",None)
+        else:
+            os.environ["CDE_FREE_RESEARCH"]=old
 
     names_a=[f"Jogador Alfa{i}" for i in range(1,12)]
     names_b=[f"Jogador Beta{i}" for i in range(1,12)]
