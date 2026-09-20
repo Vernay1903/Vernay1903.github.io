@@ -34,6 +34,25 @@ def main():
     assert "Sunderland 0 x 3 Manchester City" in details,details
     assert "4 x 1" not in details
     assert fd.recent_match_details({"matches":[rows[0]]},65,cutoff) is None
+    # Se uma matéria já tem V/E/D checados na imprensa, a API deve complementar
+    # com placares reais sem gastar busca extra e sem apagar a evidência anterior.
+    checked_at=datetime.now(timezone.utc).isoformat()
+    verified={
+      "id":"recent_form_both_teams","status":"verified","conflict_detected":False,
+      "facts":[
+        {"field":"home_recent_form","text":"Forma recente do Manchester City: 2 vitórias."},
+        {"field":"away_recent_form","text":"Forma recente do Sunderland: 2 derrotas."},
+      ],
+      "sources":[{
+        "publisher":"Imprensa teste","url":"https://example.com/form",
+        "source_type":"major_sports_media","checked_at":checked_at,
+      }],
+    }
+    assert fd.append_verified_recent_results(
+      verified,[{"field":"home_recent_matches","text":"Resultados recentes: "+details+"."}],
+      ["https://api.football-data.org/v4/teams/65/matches?status=FINISHED&limit=5"],
+      checked_at,config,
+    )["status"]=="verified"
     queries=discover.expanded_queries("probable_lineups_and_coaches",[
         '"Manchester City" "Sunderland AFC" provável escalação 20/09/2026'
     ],{"home":"Manchester City","away":"Sunderland AFC","competition":"Premier League"},"20/09/2026")
