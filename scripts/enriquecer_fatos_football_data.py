@@ -172,6 +172,47 @@ def validated_update(req: dict, facts: list[dict], urls: list[str], now: str, co
     return validated
 
 
+
+def append_verified_recent_results(requirement: dict, facts: list[dict], urls: list[str], now: str, config: dict) -> dict:
+    """Junta placares à forma já verificada sem apagar as evidências anteriores."""
+    if requirement.get("status") != "verified" or requirement.get("conflict_detected") is True:
+        return requirement
+    previous = requirement.get("facts")
+    if not isinstance(previous, list) or not previous:
+        return requirement
+    observed = {f.get("field") for f in previous if isinstance(f, dict)}
+    additions = [
+        fact for fact in facts
+        if fact.get("field") in {"home_recent_matches", "away_recent_matches"}
+        and fact.get("field") not in observed
+    ]
+    if not additions:
+        return requirement
+    sources = [dict(src) for src in requirement.get("sources", []) if isinstance(src, dict)]
+    seen = {src.get("url") for src in sources}
+    for url in sorted(set(urls)):
+        if url not in seen:
+            sources.append({
+                "publisher": "football-data.org", "url": url,
+                "source_type": "structured_data_provider", "checked_at": now,
+            })
+    evidence = {
+        "status": "verified", "facts": [*previous, *additions],
+        "sources": sources, "notes": requirement.get("notes"),
+    }
+    validated, errors = factual_validator.validate_requirement_evidence(
+        requirement, evidence, config=config
+    )
+    if errors:
+        return requirement
+    validated["fact_extraction_status"] = "verified_plus_free_recent_match_details"
+    validated["structured_fact_count"] = len(validated["facts"])
+    validated["validator_accepted"] = True
+    validated["conflict_detected"] = False
+    validated["internal_provenance_only"] = True
+    return validated
+
+
 def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
     result = deepcopy(article)
     ctx = article.get("match_context",{})
@@ -191,14 +232,24 @@ def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
     if not isinstance(requirements,list): return result
     needed = {r.get("id") for r in requirements if isinstance(r,dict) and
               r.get("status") != "verified" and r.get("conflict_detected") is not True}
-    if not needed.intersection({"recent_form_both_teams","competition_specific_head_to_head"}):
+    recent_req = next((
+        r for r in requirements if isinstance(r, dict)
+        and r.get("id") == "recent_form_both_teams"
+        and r.get("conflict_detected") is not True
+    ), None)
+    recent_needs_details = bool(
+        recent_req and not {"home_recent_matches", "away_recent_matches"}.issubset({
+            f.get("field") for f in recent_req.get("facts", []) if isinstance(f, dict)
+        })
+    )
+    if not needed.intersection({"recent_form_both_teams","competition_specific_head_to_head"}) and not recent_needs_details:
         return result
 
     home=ctx.get("home");away=ctx.get("away");competition=ctx.get("competition")
     if not all(isinstance(x,str) and x.strip() for x in (home,away,competition)): return result
 
     supplements={}
-    if "recent_form_both_teams" in needed:
+    if "recent_form_both_teams" in needed or recent_needs_details:
         home_url = f"{API}/teams/{home_id}/matches?status=FINISHED&limit=5"
         away_url = f"{API}/teams/{away_id}/matches?status=FINISHED&limit=5"
         home_data=query(f"/teams/{home_id}/matches?status=FINISHED&limit=5")
@@ -236,7 +287,10 @@ def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
             updated.append(req)
         else:
             facts,urls=supplements[req["id"]]
-            updated.append(validated_update(req,facts,urls,now,config))
+            if req.get("id") == "recent_form_both_teams" and req.get("status") == "verified":
+                updated.append(append_verified_recent_results(req,facts,urls,now,config))
+            else:
+                updated.append(validated_update(req,facts,urls,now,config))
     result["requirements"]=updated
     result["structured_fact_count"]=sum(len(r.get("facts",[])) for r in updated if isinstance(r,dict))
     result["validator_accepted_requirement_ids"]=[r["id"] for r in updated if isinstance(r,dict) and r.get("status")=="verified"]
