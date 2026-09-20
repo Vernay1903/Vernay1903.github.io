@@ -317,13 +317,46 @@ def filter_results_for_requirement(
     config: dict[str, Any],
 ) -> list[dict[str, Any]]:
     """Passos 34.5/34.6: evita páginas laterais e páginas genéricas antes da leitura."""
-    if requirement_id not in {"recent_form_both_teams", "competition_specific_head_to_head"}:
+    service = {"probable_lineups_and_coaches", "transmission", "officiating"}
+    strict_free_services = (
+        os.environ.get("CDE_FREE_RESEARCH") == "1" and requirement_id in service
+    )
+    if requirement_id not in {"recent_form_both_teams", "competition_specific_head_to_head"} and not strict_free_services:
         return results
 
     home = context.get("home")
     away = context.get("away")
     if not isinstance(home, str) or not isinstance(away, str):
         return []
+
+    if strict_free_services:
+        # RSS é descoberta, não evidência. Não gastar as 3 leituras da página
+        # com notícia de apenas um time ou um confronto anterior.
+        direct = [
+            item for item in results
+            if candidate_matches_team_strict(item, home, config)
+            and candidate_matches_team_strict(item, away, config)
+        ]
+        topical = {
+            "probable_lineups_and_coaches": (
+                "escalac", "lineup", "predicted xi", "team news",
+                "alineacion", "desfalqu", "probable",
+            ),
+            "transmission": (
+                "transmiss", "assistir", "watch", "stream", "ao vivo", "tv",
+            ),
+            "officiating": ("arbitr", "referee", "officiat", "var"),
+        }
+        def priority(item: dict[str, Any]) -> tuple[int, int]:
+            headline = candidate_title_url_haystack(item)
+            relevant = sum(
+                signal in headline
+                for signal in topical[requirement_id]
+            )
+            match_year = str(context.get("kickoff_brasilia", ""))[:4]
+            current = bool(match_year and match_year in candidate_haystack(item))
+            return (int(bool(relevant)), int(current))
+        return sorted(direct, key=priority, reverse=True)
 
     if requirement_id == "competition_specific_head_to_head":
         return [
