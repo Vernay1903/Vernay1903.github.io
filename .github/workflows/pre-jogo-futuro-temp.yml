@@ -1,0 +1,106 @@
+name: Pré-jogo — auditoria próxima data gratuita temporária
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pre-jogo-futuro-temp.yml]
+permissions:
+  contents: read
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 27
+    env:
+      CDE_FREE_RESEARCH: "1"
+      CDE_DISABLE_PAID_FACT_FALLBACK: "1"
+      CDE_RSS_MAX_REQUESTS: "60"
+      TZ: America/Sao_Paulo
+      FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Escolher próxima data com jogos sem custos
+        run: |
+          set -euo pipefail
+          TARGET_DATE=""
+          for DATE in 2026-09-21 2026-09-22 2026-09-23 2026-09-24; do
+            python scripts/buscar_fixtures_football_data.py --date "${DATE}" --force
+            COUNT=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/pre-jogo/fixtures-normalizados.json').read_text())
+          print(len(data.get('fixtures',[])))
+          PY
+            )
+            echo "DATA=${DATE} JOGOS_MONITORADOS=${COUNT}"
+            if [ "${COUNT}" -gt 0 ]; then
+              TARGET_DATE="${DATE}"
+              break
+            fi
+          done
+          if [ -z "${TARGET_DATE}" ]; then
+            echo "AVISO: nenhum jogo dos dez clubes nos quatro dias."
+            echo "HAS_MATCHES=0" >> "${GITHUB_ENV}"
+            exit 0
+          fi
+          echo "HAS_MATCHES=1" >> "${GITHUB_ENV}"
+          echo "TARGET_DATE=${TARGET_DATE}" >> "${GITHUB_ENV}"
+      - name: Coletar sem OpenAI e sem publicar
+        if: env.HAS_MATCHES == '1'
+        run: |
+          set -euo pipefail
+          python scripts/identificar_jogos.py --date "${TARGET_DATE}" --force
+          python scripts/planejar_pre_jogos.py --date "${TARGET_DATE}" --force
+          python scripts/preparar_dados_editoriais.py --date "${TARGET_DATE}" --force
+          python scripts/preparar_pesquisa_factual.py --date "${TARGET_DATE}" --force
+          python scripts/planejar_coleta_fontes.py --date "${TARGET_DATE}" --force
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('config/pre-jogo.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          data['research']['discovery']['external_search_enabled']=True
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          python scripts/buscar_fontes_serper.py --date "${TARGET_DATE}" --execute --force
+          python scripts/estruturar_evidencias_candidatas.py --date "${TARGET_DATE}" --force
+          python scripts/ler_fontes_candidatas.py --date "${TARGET_DATE}" --execute --force
+          python scripts/extrair_fatos_estruturados.py --date "${TARGET_DATE}" --force
+          python scripts/enriquecer_fatos_football_data.py --date "${TARGET_DATE}" --execute --force
+          git checkout -- config/pre-jogo.json
+          python scripts/montar_pacote_editorial.py --date "${TARGET_DATE}" --force
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          day=os.environ['TARGET_DATE']
+          data=json.loads(Path(f'build/pre-jogo/pacotes-editoriais-{day}.json').read_text())
+          print('AUDITORIA FUTURA: data=',day,
+                'candidatas=',data['article_count'],
+                'prontas=',data['ready_for_drafting_count'])
+          for article in data['articles']:
+              fields={
+                  fact.get('field')
+                  for req in article.get('facts_by_requirement',[])
+                  for fact in req.get('facts',[])
+                  if isinstance(fact,dict)
+              }
+              print('JOGO=',article['slug'],
+                    'pronto=',article['ready_for_drafting'],
+                    'campos=',sorted(fields),
+                    'pendencias=',article['unresolved_required_requirement_ids'])
+          PY
+          git diff --quiet -- . ':!build'
+          echo "AUDITORIA: SEM OPENAI, SEM SERPER, SEM PUBLICAÇÃO."
+      - name: Guardar somente relatório factual temporário
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-factual-gratuita
+          path: |
+            build/pre-jogo/pacotes-editoriais-*.json
+            build/pre-jogo/fatos-estruturados-*.json
+          if-no-files-found: ignore
+          retention-days: 1
