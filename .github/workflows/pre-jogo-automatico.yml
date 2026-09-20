@@ -100,6 +100,7 @@ jobs:
           python tests/pre-jogo/teste_reuso_opcionais.py
           python tests/pre-jogo/teste_estadios_aliases.py
           python tests/pre-jogo/teste_estadio_fixo_mandante.py
+          python tests/pre-jogo/teste_modelo_editorial_aprovado.py
           python tests/pre-jogo/teste_rss_consulta_curta.py
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
           python tests/pre-jogo/teste_status_final_football_data.py
