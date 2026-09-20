@@ -232,8 +232,9 @@ def validate_draft(
 
     lineup_fields = {"home_lineup", "away_lineup"}
     if lineup_fields.issubset(required_set):
-        if len(re.findall(r"<ul\b", body, flags=re.IGNORECASE)) < 2:
-            errors.append("com escalações disponíveis, o rascunho deve ter pelo menos duas listas com bolinhas")
+        # O modelo aprovado usa uma única <ul>, mas com dois <li> identificados.
+        if len(re.findall(r"<li\b", body, flags=re.IGNORECASE)) < 2:
+            errors.append("com escalações disponíveis, o rascunho deve ter entradas para as duas equipes")
 
     validated = deepcopy(draft)
     validated["body_html"] = body
