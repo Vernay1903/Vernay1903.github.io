@@ -257,7 +257,9 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
         if not marker.search(heading) or len(heading) > 130:
             continue
         names: list[str] = []
-        for row in rows[index + 1:index + 16]:
+        last_index = index
+        for position in range(index + 1, min(len(rows), index + 16)):
+            row = rows[position]
             if not row:
                 continue
             if marker.search(row) or excluded.search(row):
@@ -267,6 +269,7 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
             if re.search(r"\b(?:20\d{2}|https?://)\b", row, re.IGNORECASE):
                 break
             names.append(row)
+            last_index = position
             if len(names) == 11:
                 break
         if len(names) != 11:
@@ -275,6 +278,19 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
         result = f"{heading.rstrip(':')}: " + "; ".join(names)
         if len(result) <= max_segment_chars:
             windows.append(result)
+        # O técnico pode aparecer na linha HTML seguinte, sem o nome do clube.
+        # Juntar só a linha ADJACENTE à escalação cuja autoria está clara.
+        for coach_line in rows[last_index + 1:last_index + 4]:
+            if not coach_line:
+                continue
+            if re.match(
+                r"^(?:t[eé]cnico|coach|manager)\s*[:\-–—]\s*[\wÀ-ÿ].+$",
+                coach_line, flags=re.IGNORECASE,
+            ):
+                contextual_coach = f"{heading.rstrip(':')} | {coach_line}"
+                if len(contextual_coach) <= max_segment_chars:
+                    windows.append(contextual_coach)
+            break
     return list(dict.fromkeys(windows))
 
 
