@@ -104,7 +104,7 @@ def required_service_body_errors(body: str, contract: dict[str, Any]) -> list[st
             lineup = facts.get(field, "")
             text = lineup.split(":", 1)[-1].rstrip(".")
             players = [
-                re.sub(r"\\s*\\([^)]*\\)", "", p).strip()
+                re.sub(r"\s*\([^)]*\)", "", p).strip()
                 for p in re.split(r"[;,]", text)
                 if p.strip()
             ]
@@ -121,7 +121,7 @@ def required_service_body_errors(body: str, contract: dict[str, Any]) -> list[st
                 errors.append(f"técnico {field} não aparece no corpo")
 
         # Exigir duas listas identificáveis, além do texto visível dos nomes.
-        items = re.findall(r"<li\\b[^>]*>(.*?)</li\\s*>", body, flags=re.IGNORECASE | re.DOTALL)
+        items = re.findall(r"<li\b[^>]*>(.*?)</li\s*>", body, flags=re.IGNORECASE | re.DOTALL)
         probable_items = [item for item in items if "provav" in folded_text(item)]
         if len(probable_items) < 2:
             errors.append("prováveis escalações devem aparecer em duas entradas de lista identificadas")
@@ -170,7 +170,7 @@ def validate_draft(
             if folded_text(heading) in forbidden:
                 errors.append("subtítulo genérico repetitivo proibido pelo modelo aprovado: " + visible_text(heading))
         seen_paragraphs = set()
-        for paragraph in re.findall(r"<p\\b[^>]*>(.*?)</p\\s*>", body, flags=re.IGNORECASE | re.DOTALL):
+        for paragraph in re.findall(r"<p\b[^>]*>(.*?)</p\s*>", body, flags=re.IGNORECASE | re.DOTALL):
             normalized = folded_text(paragraph)
             if len(normalized) < 100:
                 continue
