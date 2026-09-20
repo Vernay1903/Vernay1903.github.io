@@ -173,8 +173,15 @@ def system_instructions() -> str:
         "O retrospecto deve permanecer específico da competição indicada. "
         "Insira exatamente uma vez o link interno aprovado no contrato, com âncora textual natural. "
         "Não crie nenhum outro link. "
-        "Evite bloco mecânico repetindo serviço logo após a abertura; distribua as informações naturalmente. "
-        "A matéria deve ter no mínimo absoluto 800 palavras e preferencialmente entre 900 e 1100 palavras; nunca encerre o texto abaixo de 800 palavras. "
+        "Siga o modelo editorial aprovado LDU x Palmeiras: cada seção deve trazer novidade específica do confronto; "
+        "contextualize preparação, últimos jogos concretos, mudanças de escalação, consequência esportiva, transmissão e arbitragem quando fornecidos. "
+        "Abra com gancho e serviço verificados, desenvolva Como chega cada time, depois prováveis escalações com onze jogadores e técnicos, "
+        "histórico com escopo explícito, onde assistir e fechamento com informação nova quando disponível. "
+        "É proibido produzir subtítulos genéricos 'Informações confirmadas para a partida', 'O que observar no confronto' ou 'Resumo do pré-jogo' "
+        "para repetir números que já apareceram. Não repita balanço de vitórias ou retrospecto em várias seções. "
+        "Não confunda dois jogos recuperados na API com todo o histórico do duelo. "
+        "O corpo deve ter pelo menos 700 palavras de conteúdo real; não estenda texto apenas para atingir contagem. "
+        "Se os fatos forem insuficientes para redigir nesse padrão, a redação deve ser recusada pelo pipeline, nunca preenchida com inferências. "
         "Retorne somente o objeto JSON exigido pelo schema."
     )
 
@@ -188,7 +195,7 @@ def user_payload(contract: dict[str, Any]) -> str:
     return (
         "Redija a matéria utilizando somente este contrato editorial limpo. "
         "Todos os campos factuais listados em required_fact_fields devem ser usados sem alterar seu sentido. "
-        "O validador editorial rejeita qualquer matéria abaixo de 700 palavras; entregue pelo menos 800 palavras para manter margem de segurança.\n\n"
+        "O validador editorial rejeita matéria abaixo de 700 palavras; privilegie profundidade factual e evite repetição para atingir a contagem.\n\n"
         + serialized
     )
 
