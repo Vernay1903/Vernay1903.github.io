@@ -234,6 +234,50 @@ def clean_markdown_line(line: str) -> str:
     return value
 
 
+def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]:
+    """Preserva 11 nomes apresentados em linhas HTML <li> separadas.
+
+    Só une nomes REALMENTE lidos debaixo de um cabeçalho de provável escalação;
+    não prevê jogadores nem transforma escalação definitiva em provável.
+    """
+    rows = [clean_markdown_line(line) for line in content.splitlines()]
+    marker = re.compile(
+        r"prov[aá]vel(?:\s+escala[cç][aã]o)?|probable\s+lineup|predicted\s+(?:lineup|xi)|"
+        r"alineaci[oó]n\s+probable",
+        flags=re.IGNORECASE,
+    )
+    excluded = re.compile(
+        r"^(?:t[eé]cnico|coach|manager|[aá]rbitro|referee|var|"
+        r"transmiss[aã]o|onde assistir|assistentes?|reservas|substitutos?|"
+        r"bench|substitutes|related|leia mais)\b",
+        flags=re.IGNORECASE,
+    )
+    windows: list[str] = []
+    for index, heading in enumerate(rows):
+        if not marker.search(heading) or len(heading) > 130:
+            continue
+        names: list[str] = []
+        for row in rows[index + 1:index + 16]:
+            if not row:
+                continue
+            if marker.search(row) or excluded.search(row):
+                break
+            if len(row) > 65 or len(row) < 3 or row.endswith((".", ":", "?", "!")):
+                break
+            if re.search(r"\b(?:20\d{2}|https?://)\b", row, re.IGNORECASE):
+                break
+            names.append(row)
+            if len(names) == 11:
+                break
+        if len(names) != 11:
+            continue
+        # O cabeçalho associa a lista ao clube e deve permanecer na evidência.
+        result = f"{heading.rstrip(':')}: " + "; ".join(names)
+        if len(result) <= max_segment_chars:
+            windows.append(result)
+    return list(dict.fromkeys(windows))
+
+
 def extract_evidence_segments(
     content: str,
     requirement_id: str,
@@ -244,6 +288,10 @@ def extract_evidence_segments(
     if not content.strip():
         return []
 
+    lineup_windows = (
+        structured_lineup_windows(content, max_segment_chars)
+        if requirement_id == "probable_lineups_and_coaches" else []
+    )
     lines = [clean_markdown_line(line) for line in content.splitlines()]
     lines = [line for line in lines if len(line) >= 25]
     keywords = tuple(item.casefold() for item in REQUIREMENT_KEYWORDS.get(requirement_id, ()))
@@ -263,7 +311,7 @@ def extract_evidence_segments(
             matched.append(clipped)
 
     chosen = matched if matched else fallback
-    return chosen[:max_segments]
+    return list(dict.fromkeys([*lineup_windows, *chosen]))[:max_segments]
 
 
 def normalize_text(value: Any) -> str:
