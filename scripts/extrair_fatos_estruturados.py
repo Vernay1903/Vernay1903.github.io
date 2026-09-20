@@ -754,6 +754,9 @@ def extract_team_labeled_claims(
             for side, team in teams:
                 if not isinstance(team, str) or not mentions_team(segment, team, config):
                     continue
+                # Não aceitar prévias do MESMO clube para uma partida anterior.
+                if not context_mentions_match(corpus, match_context, config):
+                    continue
                 value = labeled_value(segment, labels, max_chars=max_chars)
                 if not value:
                     aliases = aliases_for_team(team, config)
@@ -767,6 +770,18 @@ def extract_team_labeled_claims(
                         if match:
                             value = clean_value(match.group(1), max_chars=max_chars)
                             break
+                    if not value and field_suffix == "lineup":
+                        # Sites esportivos também escrevem "Provável Time: 11 nomes".
+                        match = re.search(
+                            rf"(?:prov[aá]vel(?:\s+escala[cç][aã]o)?|"
+                            rf"probable\s+lineup|predicted\s+(?:lineup|xi))"
+                            rf"\s*(?:(?:do|da|de)\s+)?{alias_pattern}"
+                            rf"\s*[:\-–—]\s*(.+)$",
+                            segment,
+                            flags=re.IGNORECASE,
+                        )
+                        if match:
+                            value = clean_value(match.group(1), max_chars=max_chars)
                 if value:
                     claim = make_claim(f"{side}_{field_suffix}", value, source, segment)
                     if claim:
