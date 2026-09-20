@@ -13,6 +13,7 @@ import html
 import json
 import re
 import sys
+import unicodedata
 from copy import deepcopy
 from pathlib import Path
 from typing import Any, NoReturn
@@ -65,6 +66,66 @@ def visible_text(body_html: str) -> str:
 
 def word_count(body_html: str) -> int:
     return len(WORD_RE.findall(visible_text(body_html)))
+
+
+def folded_text(value: str) -> str:
+    value = html.unescape(TAG_RE.sub(" ", value))
+    value = "".join(c for c in unicodedata.normalize("NFKD", value) if not unicodedata.combining(c))
+    return " ".join(re.sub(r"[^a-zA-Z0-9]+", " ", value.casefold()).split())
+
+
+def required_service_body_errors(body: str, contract: dict[str, Any]) -> list[str]:
+    """Confere presença real dos fatos prometidos, não só fact_fields_used."""
+    title = folded_text(str(contract.get("title") or "") + " " + str(contract.get("excerpt") or ""))
+    body_folded = folded_text(body)
+    facts: dict[str, str] = {}
+    for requirement in contract.get("facts_by_requirement", []):
+        if not isinstance(requirement, dict) or requirement.get("status") != "verified":
+            continue
+        for fact in requirement.get("facts", []):
+            if isinstance(fact, dict) and isinstance(fact.get("field"), str) and isinstance(fact.get("text"), str):
+                facts[fact["field"]] = fact["text"]
+
+    errors: list[str] = []
+    if "transmissao" in title or "onde assistir" in title:
+        transmission = facts.get("transmission", "")
+        value = folded_text(transmission.split(":", 1)[-1].rstrip("."))
+        if not value or value not in body_folded:
+            errors.append("chamada promete transmissão, mas a emissora/plataforma confirmada não aparece no corpo")
+
+    if "arbitragem" in title or "arbitro" in title:
+        referee = facts.get("referee", "")
+        value = folded_text(referee.split(":", 1)[-1].rstrip("."))
+        if not value or value not in body_folded:
+            errors.append("chamada promete arbitragem, mas o árbitro confirmado não aparece no corpo")
+
+    if "escalac" in title:
+        for field in ("home_lineup", "away_lineup"):
+            lineup = facts.get(field, "")
+            text = lineup.split(":", 1)[-1].rstrip(".")
+            players = [
+                re.sub(r"\\s*\\([^)]*\\)", "", p).strip()
+                for p in re.split(r"[;,]", text)
+                if p.strip()
+            ]
+            if len(players) < 11:
+                errors.append(f"chamada promete escalações, mas {field} não contém 11 nomes")
+                continue
+            missing = [name for name in players if len(folded_text(name)) >= 3 and folded_text(name) not in body_folded]
+            if missing:
+                errors.append(f"escalação {field} incompleta no texto: {', '.join(missing[:4])}")
+        for field in ("home_coach", "away_coach"):
+            coach = facts.get(field, "")
+            value = folded_text(coach.split(":", 1)[-1].rstrip("."))
+            if not value or value not in body_folded:
+                errors.append(f"técnico {field} não aparece no corpo")
+
+        # Exigir duas listas identificáveis, além do texto visível dos nomes.
+        items = re.findall(r"<li\\b[^>]*>(.*?)</li\\s*>", body, flags=re.IGNORECASE | re.DOTALL)
+        probable_items = [item for item in items if "provav" in folded_text(item)]
+        if len(probable_items) < 2:
+            errors.append("prováveis escalações devem aparecer em duas entradas de lista identificadas")
+    return errors
 
 
 def validate_draft(
@@ -120,6 +181,8 @@ def validate_draft(
 
     policy_errors = editorial_policy.validate_body_policy(body, config)
     errors.extend(policy_errors)
+    if config.get("editorial", {}).get("approved_pre_match_model"):
+        errors.extend(required_service_body_errors(body, contract))
 
     if "<ul" not in body.lower() or "<li" not in body.lower():
         errors.append("o rascunho deve usar ao menos uma lista com bolinhas (<ul><li>)")
