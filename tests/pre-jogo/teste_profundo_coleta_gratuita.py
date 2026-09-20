@@ -11,6 +11,7 @@ from scripts import enriquecer_fatos_football_data as fd
 from scripts import ler_fontes_candidatas_base as reader
 from scripts import extrair_fatos_estruturados as facts
 from scripts import buscar_fontes_serper as discover
+from scripts import pesquisa_publica_gratuita as public
 
 def game(date,h,a,hg,ag,status="FINISHED"):
     return {
@@ -88,15 +89,21 @@ def main():
 
     names_a=[f"Jogador Alfa{i}" for i in range(1,12)]
     names_b=[f"Jogador Beta{i}" for i in range(1,12)]
-    content=(
-      "Manchester City x Sunderland AFC pela Premier League, em 20/09/2026\n"
-      "Provável Manchester City:\n"
-      + "\n".join(names_a)
-      + "\nTécnico: Exemplo Alfa\n"
-      + "Provável Sunderland AFC:\n"
-      + "\n".join(names_b)
-      + "\nTécnico: Exemplo Beta"
+    markup=(
+      "<main><h1>Manchester City x Sunderland AFC pela Premier League, 20/09/2026</h1>"
+      "<h2>Provável Manchester City:</h2><ul>"
+      + "".join(f"<li>{name}</li>" for name in names_a)
+      + "<li>Técnico: Exemplo Alfa</li></ul>"
+      + "<h2>Provável Sunderland AFC:</h2><ul>"
+      + "".join(f"<li>{name}</li>" for name in names_b)
+      + "<li>Técnico: Exemplo Beta</li></ul></main>"
     )
+    parser=public.TextExtractor()
+    parser.feed(markup)
+    parser.flush()
+    for name in names_a+names_b:
+        assert name in parser.lines,("HTML omitiu o atleta",name,parser.lines)
+    content="\n".join(parser.lines)
     segments=reader.extract_evidence_segments(
         content,"probable_lineups_and_coaches",max_segments=10,max_segment_chars=700
     )
