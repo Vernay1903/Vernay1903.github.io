@@ -165,14 +165,36 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "seo": "natural, sem repetição artificial de palavras-chave",
             "opening": (
                 "Abrir naturalmente com confronto, data, horário de Brasília, estádio, competição, "
-                "contexto esportivo e transmissão quando disponível; não repetir depois um bloco mecânico de serviço."
+                "gancho esportivo concreto e transmissão confirmada; não repetir um bloco de serviço depois."
+            ),
+            "approved_model": (
+                "Seguir a estrutura da prévia aprovada LDU x Palmeiras: abertura com fato central, "
+                "contexto competitivo, como chega cada equipe com acontecimentos verificáveis, "
+                "prováveis escalações completas e arbitragem, histórico contextualizado, "
+                "onde assistir e encerramento com consequência ou próximo jogo verificado. "
+                "É proibido criar seção sem fatos suficientes para acrescentar novidade."
+            ),
+            "editorial_depth": (
+                "Priorizar placares recentes identificados, jogadores, desfalques, retorno, "
+                "preparação dos técnicos, situação da competição e consequências quando fornecidos. "
+                "Se o contrato não tiver esses dados, não inventar nem compensar com paráfrases de V-E-D."
+            ),
+            "non_repetition": (
+                "Cada bloco deve acrescentar informação concreta nova. Não repetir estatística de "
+                "vitórias/empates/derrotas e retrospecto na introdução, nas duas seções de momento, "
+                "em O que observar, em Informações confirmadas e em Resumo do pré-jogo. "
+                "Não criar os blocos genéricos Informações confirmadas, O que observar ou Resumo do pré-jogo."
             ),
             "subheadings": "Usar <p><strong>...</strong></p> ao longo da matéria.",
             "lineups": (
                 "Prováveis escalações dos dois times e técnicos devem aparecer em bloco/lista visível; "
                 "nunca transformar escalação provável em oficial e nunca inventar nomes."
             ),
-            "head_to_head": "Usar somente o retrospecto específico da competição em lista curta com bolinhas.",
+            "head_to_head": (
+                "Separar retrospecto histórico completo de amostra limitada da base. "
+                "Se o dado for só um recorte da API, citar explicitamente o tamanho e nunca "
+                "apresentá-lo como a história integral do confronto. Lista curta com bolinhas."
+            ),
             "internal_link": (
                 "Inserir exatamente uma vez o link interno fornecido, de forma natural no texto; "
                 "nenhum outro URL deve ser criado."
