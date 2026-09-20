@@ -294,6 +294,60 @@ def scan_external_urls(value: Any, internal_domain: str, path: str = "root") -> 
     return errors
 
 
+def verified_promised_service_gaps(
+    requirement_by_id: dict[str, dict[str, Any]],
+    *,
+    title: str,
+    excerpt: str,
+    config: dict[str, Any],
+) -> list[str]:
+    """A headline não pode prometer transmissão, escalações e arbitragem ausentes.
+
+    'unavailable_after_check' continua útil para rastreio, mas NÃO satisfaz
+    uma promessa factual explícita do título ou excerpt. Aplica-se à redação
+    antes de chamar OpenAI, economizando créditos de rascunhos rejeitados.
+    """
+    model = config.get("editorial", {}).get("approved_pre_match_model", {})
+    required = model.get("promised_service_requirements", {})
+    headline = editorial_policy.normalize_text(f"{title} {excerpt}") if hasattr(editorial_policy, "normalize_text") else f"{title} {excerpt}".casefold()
+    triggers = {
+        "transmission": ("transmissao", "onde assistir"),
+        "probable_lineups_and_coaches": ("escalac",),
+        "officiating": ("arbitragem", "arbitro", "var"),
+    }
+    # Normalização de acentos é independente de dependências de NLP.
+    import unicodedata
+    folded = "".join(c for c in unicodedata.normalize("NFKD", headline) if not unicodedata.combining(c))
+    missing: list[str] = []
+    for requirement_id, fields in required.items():
+        if not any(trigger in folded for trigger in triggers.get(requirement_id, ())):
+            continue
+        req = requirement_by_id.get(requirement_id)
+        if not isinstance(req, dict) or req.get("status") != "verified" or req.get("conflict_detected") is True:
+            missing.append(f"promised_{requirement_id}_not_verified")
+            continue
+        observed = {
+            fact.get("field"): fact.get("text")
+            for fact in req.get("facts", [])
+            if isinstance(fact, dict) and isinstance(fact.get("text"), str)
+        }
+        for field in fields:
+            if not isinstance(observed.get(field), str) or not observed[field].strip():
+                missing.append(f"promised_{field}_missing")
+        if requirement_id == "probable_lineups_and_coaches":
+            minimum = int(model.get("minimum_players_per_team", 11))
+            for field in ("home_lineup", "away_lineup"):
+                text = observed.get(field, "")
+                value = text.split(":", 1)[-1].rstrip(".").strip()
+                players = [
+                    item.strip() for item in re.split(r"[;,]", value)
+                    if len(item.strip()) >= 3
+                ]
+                if len(players) < minimum:
+                    missing.append(f"promised_{field}_less_than_{minimum}_names")
+    return missing
+
+
 def build_article_packages(
     article: dict[str, Any],
     *,
@@ -345,6 +399,16 @@ def build_article_packages(
             )
         else:
             resolution_status[req_id] = str(requirement.get("status"))
+
+    # A política antiga aceita informação indisponível após consulta;
+    # o modelo aprovado NÃO aceita publicar uma chamada que a prometa.
+    unresolved.extend(verified_promised_service_gaps(
+        requirement_by_id,
+        title=str(article.get("title") or ""),
+        excerpt=str(article.get("excerpt") or ""),
+        config=config,
+    ))
+    unresolved = list(dict.fromkeys(unresolved))
 
     clean_package = {
         "step": 24,
