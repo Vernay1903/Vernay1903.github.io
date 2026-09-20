@@ -89,6 +89,52 @@ def latest_form(data: dict, team_id: int, cutoff: datetime) -> str | None:
             f"{losses} {'derrota' if losses == 1 else 'derrotas'}")
 
 
+
+def recent_match_details(data: dict, team_id: int, cutoff: datetime) -> str | None:
+    """Resultados individuais da MESMA lista gratuita usada para a forma recente.
+
+    Nunca atribui gol a jogador, nunca cria adversário quando o provedor omite
+    seu nome e nunca contabiliza partidas futuras, sem placar ou não encerradas.
+    """
+    matches = data.get("matches", [])
+    require(isinstance(matches, list), "API sem lista de jogos")
+    dated: list[tuple[datetime, str]] = []
+    for row in matches:
+        if not isinstance(row, dict):
+            continue
+        try:
+            when = datetime.fromisoformat(str(row["utcDate"]).replace("Z", "+00:00"))
+        except (ValueError, KeyError):
+            continue
+        if when >= cutoff or when > datetime.now(when.tzinfo):
+            continue
+        if score_for(row, team_id) is None:
+            continue
+        home, away = row.get("homeTeam"), row.get("awayTeam")
+        if not isinstance(home, dict) or not isinstance(away, dict):
+            continue
+        if team_id not in {home.get("id"), away.get("id")}:
+            continue
+        home_name = home.get("shortName") or home.get("name")
+        away_name = away.get("shortName") or away.get("name")
+        score = row.get("score", {}).get("fullTime", {})
+        hg, ag = score.get("home"), score.get("away")
+        if not all(isinstance(n, str) and n.strip() for n in (home_name, away_name)):
+            continue
+        if any(";" in n or "\\n" in n for n in (home_name, away_name)):
+            continue
+        comp = row.get("competition")
+        comp_name = comp.get("name") if isinstance(comp, dict) else None
+        comp_suffix = f" ({comp_name})" if isinstance(comp_name, str) and comp_name.strip() else ""
+        moment = when.astimezone(TZ).strftime("%d/%m/%Y")
+        dated.append((
+            when, f"{moment}: {home_name} {hg} x {ag} {away_name}{comp_suffix}"
+        ))
+    dated.sort(key=lambda item: item[0], reverse=True)
+    last = [description for _date, description in dated[:5]]
+    return "; ".join(last) if len(last) >= MIN_FORM_GAMES else None
+
+
 def head_to_head(data: dict, home_id: int, away_id: int, comp_code: str, cutoff: datetime) -> tuple[int,int,int,int] | None:
     rows = data.get("matches", [])
     require(isinstance(rows, list), "API sem lista de confrontos")
@@ -155,13 +201,22 @@ def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
     if "recent_form_both_teams" in needed:
         home_url = f"{API}/teams/{home_id}/matches?status=FINISHED&limit=5"
         away_url = f"{API}/teams/{away_id}/matches?status=FINISHED&limit=5"
-        home_form=latest_form(query(f"/teams/{home_id}/matches?status=FINISHED&limit=5"),home_id,cutoff)
-        away_form=latest_form(query(f"/teams/{away_id}/matches?status=FINISHED&limit=5"),away_id,cutoff)
+        home_data=query(f"/teams/{home_id}/matches?status=FINISHED&limit=5")
+        away_data=query(f"/teams/{away_id}/matches?status=FINISHED&limit=5")
+        home_form=latest_form(home_data,home_id,cutoff)
+        away_form=latest_form(away_data,away_id,cutoff)
         if home_form and away_form:
-            supplements["recent_form_both_teams"]=(
-              [{"field":"home_recent_form","text":f"Forma recente do {home}: {home_form}."},
-               {"field":"away_recent_form","text":f"Forma recente do {away}: {away_form}."}],
-              [home_url,away_url])
+            facts=[
+              {"field":"home_recent_form","text":f"Forma recente do {home}: {home_form}."},
+              {"field":"away_recent_form","text":f"Forma recente do {away}: {away_form}."},
+            ]
+            home_details=recent_match_details(home_data,home_id,cutoff)
+            away_details=recent_match_details(away_data,away_id,cutoff)
+            if home_details:
+                facts.append({"field":"home_recent_matches","text":f"Resultados recentes do {home}, com datas e placares registrados: {home_details}."})
+            if away_details:
+                facts.append({"field":"away_recent_matches","text":f"Resultados recentes do {away}, com datas e placares registrados: {away_details}."})
+            supplements["recent_form_both_teams"]=(facts,[home_url,away_url])
     if "competition_specific_head_to_head" in needed:
         endpoint=f"/matches/{match_id}/head2head?limit=15"
         sample=head_to_head(query(endpoint),home_id,away_id,code,cutoff)
