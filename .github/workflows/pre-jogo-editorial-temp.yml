@@ -1,4 +1,4 @@
-name: Pré-jogo — teste editorial temporário sem APIs
+name: Pré-jogo — teste editorial temporário sem APIs # v2
 on:
   push:
     branches: [main]
