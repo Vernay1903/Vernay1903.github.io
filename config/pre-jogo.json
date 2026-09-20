@@ -206,6 +206,41 @@
         "conforme o portal X",
         "de acordo com o portal X"
       ]
+    },
+    "approved_pre_match_model": {
+      "reference": "LDU x Palmeiras, 16/09/2026, fornecido pelo editor em 20/09/2026",
+      "promise_rule": "Título e excerpt só podem prometer informações factualmente verificadas e presentes no corpo.",
+      "promised_service_requirements": {
+        "transmission": [
+          "transmission"
+        ],
+        "probable_lineups_and_coaches": [
+          "home_lineup",
+          "away_lineup",
+          "home_coach",
+          "away_coach"
+        ],
+        "officiating": [
+          "referee"
+        ]
+      },
+      "minimum_players_per_team": 11,
+      "article_outline": [
+        "Abertura factual com gancho específico do confronto",
+        "Contexto competitivo e implicações verificadas",
+        "Como chega o mandante: últimas partidas concretas, preparação e desfalques verificados",
+        "Como chega o visitante: últimas partidas concretas, preparação e desfalques verificados",
+        "Prováveis escalações com os 11 jogadores de cada equipe e técnicos; árbitro e auxiliares/VAR apenas quando verificados",
+        "Histórico de competição com escopo e limite amostral explícitos",
+        "Onde assistir, com emissora/plataforma confirmada",
+        "Fechamento com desdobramento ou próximo jogo verificado"
+      ],
+      "prohibit": [
+        "subtítulos vazios ou redundantes",
+        "repetição de balanço V-E-D ou H2H em várias seções",
+        "preencher 800 palavras apenas com estatísticas genéricas",
+        "apresentar amostra de API como histórico completo"
+      ]
     }
   },
   "research": {
