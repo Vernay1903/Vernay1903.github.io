@@ -191,6 +191,7 @@ class TextExtractor(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.skip = 0
         self.depth = 0
+        self.block_stack: list[str] = []
         self.current: list[str] = []
         self.lines: list[str] = []
         self.title: list[str] = []
@@ -213,6 +214,7 @@ class TextExtractor(HTMLParser):
         if tag in self.BLOCK:
             self.flush()
             self.depth += 1
+            self.block_stack.append(tag)
 
     def handle_endtag(self, tag: str) -> None:
         if tag in self.IGNORE:
@@ -225,6 +227,10 @@ class TextExtractor(HTMLParser):
         if tag in self.BLOCK:
             self.flush()
             self.depth = max(0, self.depth - 1)
+            if tag in self.block_stack:
+                # Em HTML válido, a tag aberta por último fecha primeiro.
+                index = len(self.block_stack) - 1 - self.block_stack[::-1].index(tag)
+                del self.block_stack[index:]
 
     def handle_data(self, data: str) -> None:
         if self.skip:
@@ -236,7 +242,10 @@ class TextExtractor(HTMLParser):
 
     def flush(self) -> None:
         line = " ".join(" ".join(self.current).split())
-        if len(line) >= 18:
+        # Itens <li> com nome de jogador têm frequentemente 4–17 caracteres.
+        # Não descartar linhas curtas de lista; fora dela, manter o filtro
+        # contra menus, botões e ruído editorial.
+        if len(line) >= 18 or ("li" in self.block_stack and len(line) >= 3):
             self.lines.append(line[:2500])
         self.current.clear()
 
