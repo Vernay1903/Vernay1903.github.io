@@ -160,6 +160,24 @@ def validate_draft(
         errors.append(
             f"rascunho tem {len(headings)} subtítulos <p><strong>; mínimo exigido é {minimum_headings}"
         )
+    if config.get("editorial", {}).get("approved_pre_match_model"):
+        forbidden = {
+            "informacoes confirmadas para a partida",
+            "o que observar no confronto",
+            "resumo do pre jogo",
+        }
+        for heading in headings:
+            if folded_text(heading) in forbidden:
+                errors.append("subtítulo genérico repetitivo proibido pelo modelo aprovado: " + visible_text(heading))
+        seen_paragraphs = set()
+        for paragraph in re.findall(r"<p\\b[^>]*>(.*?)</p\\s*>", body, flags=re.IGNORECASE | re.DOTALL):
+            normalized = folded_text(paragraph)
+            if len(normalized) < 100:
+                continue
+            if normalized in seen_paragraphs:
+                errors.append("o texto repete parágrafo inteiro para alongar a matéria")
+                break
+            seen_paragraphs.add(normalized)
 
     internal_link = contract.get("competition_internal_link")
     allowed_url = internal_link.get("url") if isinstance(internal_link, dict) else None
