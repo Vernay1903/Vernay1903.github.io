@@ -373,9 +373,28 @@ def expanded_queries(
         match = re.match(r"(\d{4})-", article_date)
         if match:
             year = match.group(1)
+        else:
+            local = re.fullmatch(r"\d{2}/\d{2}/(20\d{2})", article_date)
+            if local:
+                year = local.group(1)
 
     extras: list[str] = []
-    if requirement_id == "recent_form_both_teams":
+    if requirement_id == "probable_lineups_and_coaches":
+        extras = [
+            f'"{home}" "{away}" probable lineups team news predicted XI {year}',
+            f'"{home}" "{away}" prováveis escalações desfalques {year}',
+            f'"{home}" "{away}" alineaciones probables bajas {year}',
+        ]
+    elif requirement_id == "transmission":
+        extras = [
+            f'"{home}" "{away}" transmissão onde assistir Brasil {year}',
+            f'"{home}" "{away}" TV ao vivo streaming {year}',
+        ]
+    elif requirement_id == "officiating":
+        extras = [
+            f'"{home}" "{away}" referee appointment árbitro VAR {year}',
+        ]
+    elif requirement_id == "recent_form_both_teams":
         extras = [
             f'"{home}" "{competition}" recent form results last matches {year}'.strip(),
             f'"{away}" "{competition}" recent form results last matches {year}'.strip(),
