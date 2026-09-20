@@ -1,4 +1,4 @@
-name: Pré-jogo — teste coleta gratuita temporário # técnicos adjacentes
+name: Pré-jogo — teste coleta gratuita temporário # HTML 22 atletas
 on:
   push:
     branches: [main]
