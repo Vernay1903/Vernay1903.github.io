@@ -102,6 +102,8 @@ def main():
     )
     assert any("Provável Manchester City:" in s and names_a[-1] in s for s in segments),segments
     assert any("Provável Sunderland AFC:" in s and names_b[-1] in s for s in segments),segments
+    assert any("Provável Manchester City" in s and "Técnico: Exemplo Alfa" in s for s in segments)
+    assert any("Provável Sunderland AFC" in s and "Técnico: Exemplo Beta" in s for s in segments)
 
     requirement={
       "id":"probable_lineups_and_coaches",
@@ -122,6 +124,9 @@ def main():
     seen={p["field"]:p["value"] for p in claims}
     assert "home_lineup" in seen,seen
     assert "away_lineup" in seen,seen
+    assert "home_coach" in seen and seen["home_coach"]=="Exemplo Alfa",seen
+    assert "away_coach" in seen and seen["away_coach"]=="Exemplo Beta",seen
+    assert value["status"] == "verified",value.get("validator_errors",value)
     assert names_a[0] in seen["home_lineup"] and names_a[-1] in seen["home_lineup"]
     assert names_b[0] in seen["away_lineup"] and names_b[-1] in seen["away_lineup"]
     assert not any("Jogador Gama" in str(x) for x in claims)
