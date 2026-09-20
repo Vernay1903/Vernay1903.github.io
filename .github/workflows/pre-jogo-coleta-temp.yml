@@ -1,4 +1,4 @@
-name: Pré-jogo — teste coleta gratuita temporário # prioridade RSS
+name: Pré-jogo — teste coleta gratuita temporário # técnicos adjacentes
 on:
   push:
     branches: [main]
