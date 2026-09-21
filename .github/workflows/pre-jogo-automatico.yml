@@ -187,8 +187,8 @@ jobs:
           import json, os
           from pathlib import Path
           d = os.environ['TARGET_DATE']
-          plan = json.loads(Path(f'build/pre-jogo/planos-{d}.json').read_text(encoding='utf-8'))
-          raise SystemExit(0 if plan.get('planned_count') == 0 and plan.get('skipped_count') == 0 else 1)
+          games = json.loads(Path(f'build/pre-jogo/jogos-{d}.json').read_text(encoding='utf-8'))
+          raise SystemExit(0 if games.get('selected_count') == 0 else 1)
           PY
           then
             exit 0
@@ -629,10 +629,20 @@ jobs:
           manifest = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
           ready = manifest['prepared_count']
           blocked = manifest['skipped_count']
+          empty = manifest.get('no_eligible_matches') is True
+          planning_skipped = manifest.get('planning_skipped_count', 0)
+          if ready != len(manifest.get('articles', [])) or blocked != len(manifest.get('skipped', [])):
+              raise SystemExit('ERRO: contagens do lote não correspondem aos registros.')
+          if empty and (ready or blocked or planning_skipped):
+              raise SystemExit('ERRO: manifesto declara dia sem jogos, mas contém partidas.')
           if ready == 0 and blocked > 0:
               raise SystemExit(f'ERRO: {blocked} partida(s) bloqueada(s) e nenhuma matéria pronta; publicação incompleta.')
-          if ready == 0:
-              print('SEM JOGOS ELEGÍVEIS: manifesto válido e nenhum conteúdo a publicar.')
+          if ready == 0 and empty:
+              print('SEM JOGOS ELEGÍVEIS: zero partidas confirmado, nenhum conteúdo a publicar.')
+          elif ready == 0 and planning_skipped > 0:
+              print(f'SEM MATÉRIAS NOVAS: {planning_skipped} confronto(s) barrado(s) no planejamento (duplicidade/colisão).')
+          elif ready == 0:
+              raise SystemExit('ERRO: lote vazio sem comprovação de dia sem jogos ou de duplicidade.')
           else:
               print(f'LOTE ENCONTRADO: {ready} pronta(s); {blocked} bloqueada(s).')
           PY
@@ -720,8 +730,10 @@ jobs:
           from pathlib import Path
           manifest = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
           report = json.loads(Path('build/pre-jogo/automatico-publicacao.json').read_text(encoding='utf-8'))
-          if manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0:
+          if manifest.get('no_eligible_matches') is True and manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0:
               print('SEM JOGOS ELEGÍVEIS: nenhuma publicação necessária.')
+          elif manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0 and manifest.get('planning_skipped_count', 0) > 0:
+              print('SEM MATÉRIAS NOVAS: confrontos barrados no planejamento (duplicidade/colisão).')
           elif report['skipped'] and all(
               item.get('reason') in {'html_already_exists', 'url_already_in_noticias', 'same_match_already_in_noticias'}
               for item in report['skipped']
