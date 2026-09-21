@@ -74,12 +74,10 @@ def run(target: str) -> None:
     if desired != now.date():
         fail(f"Recuperação só pode preparar a data corrente de Brasília: {now.date()}.")
 
-    required = ["FOOTBALL_DATA_TOKEN", "OPENAI_API_KEY"]
     if os.environ.get("CDE_FREE_RESEARCH") != "1":
         fail("Recuperação paga desativada: é obrigatório CDE_FREE_RESEARCH=1.")
-    for secret in required:
-        if not os.environ.get(secret, "").strip():
-            fail(f"Secret obrigatório ausente: {secret}. Nenhuma publicação foi feita.")
+    if not os.environ.get("FOOTBALL_DATA_TOKEN", "").strip():
+        fail("FOOTBALL_DATA_TOKEN ausente: não é possível confirmar um dia sem partidas.")
 
     raw_config = CONFIG.read_bytes()
     config = json.loads(raw_config)
@@ -89,7 +87,34 @@ def run(target: str) -> None:
     if SOURCE.exists():
         shutil.rmtree(SOURCE)
     SOURCE.mkdir(parents=True)
-    for command in command_plan(target)[:6]:
+
+    plan = command_plan(target)
+    # Recuperação sem partidas encerra antes de RSS, Serper ou OpenAI.
+    for command in plan[:3]:
+        call(*command)
+    games = json.loads((BUILD / f"jogos-{target}.json").read_text(encoding="utf-8"))
+    planned = json.loads((BUILD / f"planos-{target}.json").read_text(encoding="utf-8"))
+    if games.get("target_date") != target or planned.get("target_date") != target:
+        fail("Data da identificação/planejamento divergente na recuperação.")
+    if games.get("selected_count") == 0:
+        if games.get("matches") != [] or planned.get("planned_count") != 0 or planned.get("skipped_count") != 0:
+            fail("Relatórios não comprovam ausência de jogos elegíveis.")
+        sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+        call(
+            "scripts/registrar_preparo_vazio_pre_jogo.py",
+            "--date", target, "--source-main-sha", sha, "--force",
+        )
+        manifest = json.loads((OUTPUT / "manifest.json").read_text(encoding="utf-8"))
+        if manifest.get("no_eligible_matches") is not True or manifest.get("target_date") != target:
+            fail("Registro de dia sem jogos inválido na recuperação.")
+        shutil.copytree(OUTPUT, SOURCE, dirs_exist_ok=True)
+        verify_checkout_unchanged()
+        print("RECUPERAÇÃO: sem jogos dos clubes; sem RSS, OpenAI ou publicação.", flush=True)
+        return
+
+    if not os.environ.get("OPENAI_API_KEY", "").strip():
+        fail("OPENAI_API_KEY ausente para jogos elegíveis; nenhuma publicação foi feita.")
+    for command in plan[3:6]:
         call(*command)
 
     try:
