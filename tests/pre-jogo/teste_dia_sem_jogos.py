@@ -9,6 +9,7 @@ from unittest import mock
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
 from scripts import registrar_preparo_vazio_pre_jogo as empty
+from scripts import aplicar_lote_pre_jogo_automatico as apply_batch
 
 TARGET="2026-09-22"
 SHA="a"*40
@@ -78,6 +79,32 @@ def main():
             else:
                 raise AssertionError("Não deve registrar zero jogos quando há um.")
             assert got == json.loads((build/"automatico"/"manifest.json").read_text())
+    # Simulação da ETAPA FINAL: zero alterações mesmo contra noticias/sitemap reais.
+    with tempfile.TemporaryDirectory() as tmp:
+        folder=Path(tmp)
+        manifest_file=folder/"manifest.json"
+        manifest_file.write_text(json.dumps(manifest),encoding="utf-8")
+        approved=folder/"approved.txt"
+        approved.write_text("",encoding="utf-8")
+        report_file=apply_batch.BUILD/"teste-aplicacao-dia-sem-jogos.json"
+        before_news=apply_batch.NOTICIAS.read_bytes()
+        before_sitemap=apply_batch.SITEMAP.read_bytes()
+        with mock.patch.object(sys,"argv",[
+            "script","--manifest",str(manifest_file),
+            "--artifact-root",str(folder),
+            "--approved",str(approved),
+            "--previews-root",str(folder),
+            "--report",str(report_file),
+            "--dry-run",
+        ]):
+            apply_batch.main()
+        report=json.loads(report_file.read_text(encoding="utf-8"))
+        assert report["selected_count"]==0 and report["changed_file_count"]==0
+        assert report["changed_files"]==[]
+        assert not report["push_executed"] and not report["commit_created"]
+        assert apply_batch.NOTICIAS.read_bytes()==before_news
+        assert apply_batch.SITEMAP.read_bytes()==before_sitemap
+        report_file.unlink()
     print("OK: dia sem jogos é declarativo; não mascara bloqueios ou duplicatas e não toca no site.")
 
 
