@@ -506,21 +506,18 @@
   async function loadAgenda() {
     const list = document.getElementById("agendaList");
 
-    const fallback = [
-      { time: "08:00", desc: "Jogos, horários e transmissões principais." },
-      { time: "16:00", desc: "Evento relevante do dia." },
-      { time: "21:30", desc: "Jogo principal do dia." }
-    ];
-
     try {
       const res = await fetch("agenda.json", { cache: "no-store" });
       if (!res.ok) throw new Error("agenda.json não carregou");
       const data = await res.json();
+      if (!Array.isArray(data)) throw new Error("agenda.json deve ser uma lista");
 
-      const items = Array.isArray(data) ? data : [];
-      const useItems = items.length ? items : fallback;
+      if (data.length === 0) {
+        list.innerHTML = '<li><div class="desc">Não há jogos das competições acompanhadas hoje.</div></li>';
+        return;
+      }
 
-      const ordered = useItems.slice().sort((a, b) => {
+      const ordered = data.slice().sort((a, b) => {
         const ta = safeText(a.time, "");
         const tb = safeText(b.time, "");
         return ta.localeCompare(tb);
@@ -533,9 +530,8 @@
       }).join("");
 
     } catch (e) {
-      list.innerHTML = fallback.map(item => {
-        return `<li><div class="time">${item.time}</div><div class="desc">${item.desc}</div></li>`;
-      }).join("");
+      console.warn("Erro ao carregar agenda:", e);
+      list.innerHTML = '<li><div class="desc">Agenda indisponível no momento.</div></li>';
     }
   }
 
