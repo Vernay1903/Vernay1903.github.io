@@ -1,0 +1,65 @@
+name: Pré-jogo — regressão noturna temporária
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pre-jogo-regressao-temp.yml]
+permissions:
+  contents: read
+jobs:
+  valida:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reproduzir validação exata do preparo automático sem APIs
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/enriquecer_fatos_football_data.py \
+            scripts/buscar_fixtures_football_data.py \
+            scripts/identificar_jogos.py \
+            scripts/planejar_pre_jogos.py \
+            scripts/preparar_dados_editoriais.py \
+            scripts/preparar_pesquisa_factual.py \
+            scripts/planejar_coleta_fontes.py \
+            scripts/buscar_fontes_serper.py \
+            scripts/estruturar_evidencias_candidatas.py \
+            scripts/ler_fontes_candidatas.py \
+            scripts/ler_fontes_candidatas_passo34_8.py \
+            scripts/extrair_fatos_estruturados.py \
+            scripts/montar_pacote_editorial.py \
+            scripts/preparar_redacao_pre_jogo.py \
+            scripts/redigir_pre_jogo_openai.py \
+            scripts/preparar_lote_pre_jogo_automatico.py \
+            scripts/aplicar_lote_pre_jogo_automatico.py
+          python tests/pre-jogo/teste_passo34_automatico.py
+          python tests/pre-jogo/teste_passo34_8.py
+          python tests/pre-jogo/teste_passo34_9.py
+          python tests/pre-jogo/teste_passo34_10.py
+          python tests/pre-jogo/teste_passo34_11.py
+          python tests/pre-jogo/teste_preview_html.py
+          python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_serper_economia.py
+          python tests/pre-jogo/teste_pesquisa_gratuita.py
+          python tests/pre-jogo/teste_aliases_adversarios.py
+          python tests/pre-jogo/teste_reuso_opcionais.py
+          python tests/pre-jogo/teste_estadios_aliases.py
+          python tests/pre-jogo/teste_estadio_fixo_mandante.py
+          python tests/pre-jogo/teste_modelo_editorial_aprovado.py
+          python tests/pre-jogo/teste_profundo_coleta_gratuita.py
+          python tests/pre-jogo/teste_rss_consulta_curta.py
+          python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
+          python tests/pre-jogo/teste_status_final_football_data.py
+          python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
+          python -m json.tool config/pre-jogo.json > /dev/null
+          test "$(python - <<'PY'
+          import json
+          print(len(json.load(open('config/pre-jogo.json', encoding='utf-8'))['monitored_clubs']))
+          PY
+          )" = "10"
+          echo "OK: todas as validações noturnas concluídas sem custo de API."
