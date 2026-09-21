@@ -71,6 +71,7 @@ jobs:
           set -euo pipefail
           python -m py_compile \
             scripts/enriquecer_fatos_football_data.py \
+            scripts/registrar_preparo_vazio_pre_jogo.py \
             scripts/buscar_fixtures_football_data.py \
             scripts/identificar_jogos.py \
             scripts/planejar_pre_jogos.py \
@@ -94,6 +95,7 @@ jobs:
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
           python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
           python tests/pre-jogo/teste_aliases_adversarios.py
@@ -587,6 +589,7 @@ jobs:
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
           python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
           python tests/pre-jogo/teste_rss_consulta_curta.py
