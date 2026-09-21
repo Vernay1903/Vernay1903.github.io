@@ -1,4 +1,4 @@
-name: Pré-jogo auditoria completa temporária sem APIs # v2
+name: Pré-jogo auditoria completa temporária sem APIs # v3
 on:
   push:
     branches: [main]
