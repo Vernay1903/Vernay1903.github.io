@@ -376,6 +376,15 @@ def main() -> None:
         if isinstance(item, dict) and isinstance(item.get("slug"), str)
     }
     packages = [item for item in packages_manifest.get("articles", []) if isinstance(item, dict)]
+    # O preparo normal NUNCA deve fingir que um lote vazio equivale a dia sem jogos:
+    # esta declaração só é emitida por registrar_preparo_vazio_pre_jogo.py.
+    planning_file = DEFAULT_BUILD / f"planos-{args.date}.json"
+    planning_skipped_count = 0
+    if planning_file.exists():
+        planning = load_json(planning_file)
+        if not isinstance(planning, dict) or planning.get("target_date") != args.date:
+            fail("Planejamento com data divergente no lote automático.")
+        planning_skipped_count = int(planning.get("skipped_count", 0))
     budget_cfg = load_json(ROOT / "config" / "redacao-pre-jogo.json")
     max_daily = int(budget_cfg.get("budget", {}).get("max_articles_per_day", 0)) if isinstance(budget_cfg, dict) else 0
     if max_daily <= 0 or max_daily > 10:
@@ -506,6 +515,8 @@ def main() -> None:
         "timezone": "America/Sao_Paulo",
         "source_main_sha": args.source_main_sha,
         "monitored_club_count": len(config.get("monitored_clubs", [])),
+        "no_eligible_matches": False,
+        "planning_skipped_count": planning_skipped_count,
         "prepared_count": len(prepared),
         "skipped_count": len(skipped),
         "articles": prepared,
