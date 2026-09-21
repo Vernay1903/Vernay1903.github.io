@@ -53,6 +53,20 @@ def main() -> None:
                 assert external is True
             else:
                 assert external is False
+            if args[0] == "scripts/identificar_jogos.py":
+                build.mkdir(parents=True, exist_ok=True)
+                (build / f"jogos-{today}.json").write_text(
+                    json.dumps({"target_date": today, "selected_count": 1,
+                                "matches": [{"id": 123}]}),
+                    encoding="utf-8",
+                )
+            if args[0] == "scripts/planejar_pre_jogos.py":
+                (build / f"planos-{today}.json").write_text(
+                    json.dumps({"target_date": today, "planned_count": 1,
+                                "planned": [{"fixture_id": 123}],
+                                "skipped_count": 0, "skipped": []}),
+                    encoding="utf-8",
+                )
             if args[0] == "scripts/preparar_lote_pre_jogo_automatico.py":
                 output.mkdir(parents=True, exist_ok=True)
                 (output / "manifest.json").write_text(
@@ -90,6 +104,35 @@ def main() -> None:
                     assert "falha externa simulada" in str(exc)
                 else:
                     raise AssertionError("Falha de API não deve ser escondida.")
+            assert config.read_bytes() == original
+
+            # Em dia comprovadamente sem jogos, não se deve pesquisar
+            # nem precisar de chave OpenAI para registrar o lote vazio.
+            no_games_calls = []
+            def no_games_call(*args):
+                no_games_calls.append(args)
+                if args[0] == "scripts/identificar_jogos.py":
+                    (build / f"jogos-{today}.json").write_text(json.dumps({
+                        "target_date": today, "selected_count": 0, "matches": []
+                    }), encoding="utf-8")
+                elif args[0] == "scripts/planejar_pre_jogos.py":
+                    (build / f"planos-{today}.json").write_text(json.dumps({
+                        "target_date": today, "planned_count": 0, "planned": [],
+                        "skipped_count": 0, "skipped": []
+                    }), encoding="utf-8")
+                elif args[0] == "scripts/registrar_preparo_vazio_pre_jogo.py":
+                    output.mkdir(parents=True, exist_ok=True)
+                    (output / "manifest.json").write_text(json.dumps({
+                        "step": 34, "target_date": today, "no_eligible_matches": True,
+                        "prepared_count": 0, "skipped_count": 0
+                    }), encoding="utf-8")
+            with mock.patch.object(recovery, "call", side_effect=no_games_call), \
+                 mock.patch.dict(os.environ, {"OPENAI_API_KEY": ""}):
+                recovery.run(today)
+            assert len(no_games_calls) == 4, no_games_calls
+            assert all("buscar_fontes_serper.py" not in str(item) for item in no_games_calls)
+            assert all("preparar_lote_pre_jogo_automatico.py" not in str(item) for item in no_games_calls)
+            assert json.loads((source / "manifest.json").read_text())["no_eligible_matches"] is True
             assert config.read_bytes() == original
 
             with mock.patch.dict(os.environ, {"OPENAI_API_KEY": ""}):
