@@ -42,7 +42,7 @@ def main():
 
     def fake_request(**kw):
         calls.append(kw["query"])
-        return kw["query"], result("Arsenal match 2026", "https://example.org/arsenal")
+        return kw["query"], result("Arsenal x Manchester City transmissão ao vivo 2026", "https://example.org/arsenal-manchester-city-transmissao-2026")
 
     with mock.patch.object(search, "request_serper", side_effect=fake_request):
         out = search.discover_candidates_for_plan(
