@@ -149,13 +149,11 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
-          for NAME in FOOTBALL_DATA_TOKEN OPENAI_API_KEY; do
-            if [ -z "${!NAME}" ]; then
-              echo "ERRO: Secret ${NAME} não configurado."
-              exit 1
-            fi
-          done
-          echo "OK: Football-Data e OpenAI disponíveis; pesquisa gratuita não requer chave."
+          if [ -z "${FOOTBALL_DATA_TOKEN}" ]; then
+            echo "ERRO: FOOTBALL_DATA_TOKEN ausente; consulta de jogos não pode ser presumida vazia."
+            exit 1
+          fi
+          echo "OK: Football-Data disponível. OpenAI só será exigida se houver matérias a redigir."
 
       - name: Descobrir e planejar jogos dos clubes monitorados
         shell: bash
@@ -166,11 +164,51 @@ jobs:
           python scripts/buscar_fixtures_football_data.py --date "${TARGET_DATE}" --force
           python scripts/identificar_jogos.py --date "${TARGET_DATE}" --force
           python scripts/planejar_pre_jogos.py --date "${TARGET_DATE}" --force
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          date = os.environ['TARGET_DATE']
+          games = json.loads(Path(f'build/pre-jogo/jogos-{date}.json').read_text(encoding='utf-8'))
+          plans = json.loads(Path(f'build/pre-jogo/planos-{date}.json').read_text(encoding='utf-8'))
+          if games.get('target_date') != date or plans.get('target_date') != date:
+              raise SystemExit('ERRO: relatórios de identificação e planejamento com data divergente.')
+          if games.get('selected_count') == 0:
+              if plans.get('planned_count') != 0 or plans.get('skipped_count') != 0:
+                  raise SystemExit('ERRO: plano não vazio para data sem partidas elegíveis.')
+              marker = 'true'
+              print('SEM JOGOS ELEGÍVEIS: não consultar RSS nem OpenAI.')
+          else:
+              marker = 'false'
+              print(f"JOGOS IDENTIFICADOS: {games['selected_count']}; planejados: {plans['planned_count']}.")
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as out:
+              out.write(f'NO_MONITORED_MATCHES={marker}\n')
+          PY
+          if python - <<'PY'
+          import json, os
+          from pathlib import Path
+          d = os.environ['TARGET_DATE']
+          plan = json.loads(Path(f'build/pre-jogo/planos-{d}.json').read_text(encoding='utf-8'))
+          raise SystemExit(0 if plan.get('planned_count') == 0 and plan.get('skipped_count') == 0 else 1)
+          PY
+          then
+            exit 0
+          fi
           python scripts/preparar_dados_editoriais.py --date "${TARGET_DATE}" --force
           python scripts/preparar_pesquisa_factual.py --date "${TARGET_DATE}" --force
           python scripts/planejar_coleta_fontes.py --date "${TARGET_DATE}" --force
 
+      - name: Registrar dia sem jogos sem pesquisa ou OpenAI
+        if: ${{ env.NO_MONITORED_MATCHES == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/registrar_preparo_vazio_pre_jogo.py \
+            --date "${TARGET_DATE}" \
+            --source-main-sha "${SOURCE_MAIN_SHA}" \
+            --force
+
       - name: Pesquisar e validar fatos em fontes externas
+        if: ${{ env.NO_MONITORED_MATCHES != 'true' }}
         shell: bash
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
@@ -202,17 +240,23 @@ jobs:
           git diff --quiet -- config/pre-jogo.json
 
       - name: Montar pacotes editoriais limpos
+        if: ${{ env.NO_MONITORED_MATCHES != 'true' }}
         shell: bash
         run: |
           set -euo pipefail
           python scripts/montar_pacote_editorial.py --date "${TARGET_DATE}" --force
 
       - name: Redigir e guardar lote aprovado sem publicar
+        if: ${{ env.NO_MONITORED_MATCHES != 'true' }}
         shell: bash
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
+          if [ -z "${OPENAI_API_KEY}" ]; then
+            echo "ERRO: OPENAI_API_KEY ausente para matérias elegíveis."
+            exit 1
+          fi
           python scripts/preparar_lote_pre_jogo_automatico.py \
             --date "${TARGET_DATE}" \
             --packages "build/pre-jogo/pacotes-editoriais-${TARGET_DATE}.json" \
