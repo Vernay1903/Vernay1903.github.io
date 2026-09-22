@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Quantidade de estrangeiros e novos horários dos jogos a partir de 2027 no Brasileirão | Corte dos Esportes</title>
+<meta name="description" content="O Campeonato Brasileiro passará por uma reformulação no limite de jogadores estrangeiros, nas inscrições dos elencos e na distribuição dos jogos das Séries A e B. Entenda as novas regras, a redução gradual até 2030 e como ficará a programação das rodadas." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+.desktop-only-ad { display: none !important; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Quantidade de estrangeiros e novos horários dos jogos a partir de 2027 no Brasileirão</h1>
+<p class="subhead" id="articleExcerpt">O Campeonato Brasileiro passará por uma reformulação no limite de jogadores estrangeiros, nas inscrições dos elencos e na distribuição dos jogos das Séries A e B. Entenda as novas regras, a redução gradual até 2030 e como ficará a programação das rodadas.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">22/09/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+<p>A CBF e os clubes das Séries A e B aprovaram uma reformulação que envolve três aspectos fundamentais da competição: o número de jogadores estrangeiros permitidos por partida, a composição dos elencos e a organização dos dias e horários dos jogos.</p>
+<p>As medidas foram aprovadas em reunião realizada em 21 de setembro de 2026, no Rio de Janeiro, como parte do processo de construção de uma liga nacional e de valorização comercial e esportiva do Brasileirão.</p>
+<p>A principal alteração esportiva será a redução progressiva do limite de estrangeiros relacionados por partida, que passará de nove para oito em 2027 e chegará a cinco em 2030. Paralelamente, a CBF estabeleceu uma nova divisão das vagas de inscrição, reservando mais espaço para jogadores com até 23 anos.</p>
+<p>No calendário de partidas, o domingo ganhará protagonismo na Série A, enquanto o sábado será o principal dia da Série B. A proposta também prevê a criação da chamada “Super Quarta”, com seis partidas da primeira divisão no mesmo dia.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Quantidade de jogadores estrangeiros a partir de 2027</strong></p>
+<p>A redução será gradual, permitindo que os clubes adaptem seus elencos e considerem os contratos já existentes.</p>
+<p>Em 2026, o regulamento permite que cada equipe relacione até nove atletas estrangeiros por partida. A partir de 2027, esse número começará a diminuir anualmente.</p>
+<ul>
+<li>2026: até 9 estrangeiros por partida.</li>
+<li>2027: até 8 estrangeiros por partida.</li>
+<li>2028: até 7 estrangeiros por partida.</li>
+<li>2029: até 6 estrangeiros por partida.</li>
+<li>2030: até 5 estrangeiros por partida.</li>
+</ul>
+<p>A redução terá como referência a súmula de cada jogo. Isso significa que o limite não representa necessariamente uma proibição de contratar ou manter um número superior de estrangeiros no elenco.</p>
+<p>Um clube poderá continuar tendo mais jogadores de outras nacionalidades sob contrato, mas precisará respeitar a quantidade máxima permitida entre os atletas relacionados para cada confronto.</p>
+<p>Também é importante distinguir o número de estrangeiros em súmula do número de jogadores em campo. A regra estabelece o limite de atletas relacionados, considerando titulares e reservas, e não uma quantidade adicional de estrangeiros que poderiam entrar durante a partida.</p>
+
+<p><strong>Os clubes com mais jogadores de fora</strong></p>
+<p>O Campeonato Brasileiro Série A de 2026 registra 159 jogadores estrangeiros de 26 países.  O número evidencia a presença crescente de atletas internacionais no futebol brasileiro e ajuda a dimensionar o impacto da redução gradual do limite de jogadores aprovada pela CBF para as próximas temporadas.</p>
+<ul>
+<li>Total de estrangeiros: 159 jogadores.</li>
+<li>Estrangeiros que já entraram em campo: 146.</li>
+<li>Estrangeiros inscritos que ainda não estrearam: 13.</li>
+<li>Média por clube: aproximadamente 8 estrangeiros.</li>
+</ul>
+<p>O Botafogo aparece como o clube com mais jogadores estrangeiros na Série A, seguido por Athletico-PR e Vasco.</p>
+<ol>
+<li>Botafogo — 12 estrangeiros.</li>
+<li>Athletico-PR — 11 estrangeiros.</li>
+<li>Vasco — 11 estrangeiros.</li>
+<li>Flamengo — 10 estrangeiros.</li>
+<li>Grêmio — 10 estrangeiros.</li>
+<li>Internacional — 10 estrangeiros.</li>
+</ol>
+<p>A quantidade por clube ajuda a dimensionar o impacto da mudança aprovada pela CBF. Em 2026, cada equipe pode relacionar até nove atletas estrangeiros por partida, independentemente da quantidade total presente no elenco.</p>
+<p>Com a redução progressiva, os clubes que concentram mais jogadores de outras nacionalidades precisarão adaptar suas relações de atletas para as partidas. A mudança, entretanto, não significa que as equipes serão obrigadas a negociar ou rescindir os contratos dos estrangeiros excedentes, uma vez que a restrição se aplica ao número de jogadores relacionados para cada confronto.</p>
+
+<p><strong>Porque a CBF tomou a medida</strong></p>
+<p>A mudança está relacionada à preocupação da entidade com a redução da participação de jovens brasileiros no Campeonato Brasileiro.</p>
+<p>Um estudo desenvolvido pela CBF Academy identificou alterações importantes no perfil dos atletas utilizados na Série A, especialmente em relação à idade média dos jogadores e ao espaço destinado aos profissionais mais jovens.</p>
+<p>Segundo o levantamento apresentado, a idade média dos atletas da primeira divisão passou de 27,3 anos, em 2021, para 28,5 anos, em 2026.</p>
+<p>Outro indicador relevante envolve a distribuição dos minutos disputados.</p>
+<p>Entre 2020 e 2026, a participação dos estrangeiros com mais de 23 anos aumentou de 7,8% para 25% dos minutos jogados na Série A. No mesmo período, a participação dos brasileiros sub-23 caiu de 28,3% para 11,5%.</p>
+<p>Considerando jogadores brasileiros e estrangeiros, os atletas com até 23 anos representavam 13,8% dos minutos disputados na competição em 2026, no momento do levantamento.</p>
+<p>A CBF também destacou a importância econômica da formação de jogadores. Entre 2016 e 2025, atletas de até 20 anos responderam por 50,1% das receitas brasileiras com transferências internacionais consideradas no estudo.</p>
+<p>A avaliação apresentada pela entidade é que ampliar as oportunidades para jovens profissionais pode contribuir tanto para o desenvolvimento técnico quanto para a formação de patrimônio esportivo e financeiro dos clubes.</p>
+<p>Isso não significa, entretanto, que a redução de estrangeiros garanta automaticamente mais minutos aos jovens. A utilização desses jogadores continuará dependendo das decisões dos clubes e das comissões técnicas.</p>
+
+<p><strong>Como o limite de estrangeiros ao longo dos anos</strong></p>
+<p>A nova regulamentação representa uma mudança de direção em relação à política adotada pelo futebol brasileiro desde 2013.</p>
+<p>Naquele ano, as competições nacionais permitiam até três estrangeiros relacionados por partida. </p>
+<p>Posteriormente, o futebol brasileiro ampliou a participação dos atletas internacionais:</p>
+<ul>
+<li>2013: limite de três estrangeiros.</li>
+<li>2014 a 2022: limite de cinco estrangeiros.</li>
+<li>2023: limite de sete estrangeiros.</li>
+<li>2024 a 2026: limite de nove estrangeiros.</li>
+</ul>
+<p>Com a redução progressiva aprovada pela CBF, o Brasileirão voltará em 2030 ao mesmo limite de cinco estrangeiros que vigorava até 2022.</p>
+<p>A entidade também apresentou um dado importante para contextualizar o impacto da medida: em uma amostra de 219 partidas da Série A, a média foi de 5,4 estrangeiros relacionados por equipe.</p>
+<p>O número mostra que o limite máximo permitido não corresponde necessariamente à quantidade efetivamente utilizada pelos clubes em cada confronto.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Novas regras para inscrição de jogadores sub-23</strong></p>
+<p>A redução de estrangeiros será acompanhada por outra mudança importante: a reorganização das listas de inscrição dos clubes.</p>
+<p>O limite total de 50 atletas por equipe será mantido, mas as vagas passarão a ser divididas entre dois grupos.</p>
+<p>A Lista A será destinada ao elenco principal, com limite de jogadores acima de 23 anos. A Lista B será formada por atletas sub-23.</p>
+<p>Diferentemente de modelos que exigem jogadores formados exclusivamente nas categorias de base do próprio clube, a proposta da CBF não estabelece essa condição para os atletas da Lista B.</p>
+<p>A distribuição será modificada progressivamente:</p>
+<ul>
+<li>2027: 30 jogadores na Lista A e 20 na Lista B.</li>
+<li>2028: 29 jogadores na Lista A e 21 na Lista B.</li>
+<li>2029: 27 jogadores na Lista A e 23 na Lista B.</li>
+<li>2030: 25 jogadores na Lista A e 25 na Lista B.</li>
+</ul>
+<p>Dessa forma, a partir de 2030, metade das vagas de inscrição será destinada aos atletas sub-23.</p>
+<p>A nova divisão deverá influenciar diretamente o planejamento dos departamentos de futebol, especialmente na contratação de jogadores experientes, na formação de elencos e na transição de atletas das categorias de base para o profissional.</p>
+
+<p><strong>Novos horários do Brasileirão a partir de 2027</strong></p>
+<p>A segunda grande mudança aprovada envolve a padronização dos dias e horários das partidas.</p>
+<p>A intenção da CBF é construir uma programação mais previsível para os torcedores, reduzir a quantidade de jogos em horários considerados desfavoráveis e diminuir a concorrência direta entre partidas das Séries A e B.</p>
+<p>O estudo apresentado pela entidade identificou que, entre 2023 e 2025, a Série A utilizou 51 combinações diferentes de dias e horários.</p>
+<p>A nova grade busca reduzir essa fragmentação, estabelecendo faixas regulares para as partidas.</p>
+<p>Na Série A, o domingo será o principal dia da rodada, com destaque para o tradicional horário das 16h.</p>
+<p>A distribuição proposta para as rodadas de fim de semana é a seguinte:</p>
+<ul>
+<li>Sábado, às 16h: 2 jogos.</li>
+<li>Sábado, às 19h30: 1 jogo.</li>
+<li>Domingo, às 11h: 1 jogo.</li>
+<li>Domingo, às 16h: 3 jogos.</li>
+<li>Domingo, às 18h30: 2 jogos.</li>
+<li>Domingo, às 19h30: 1 jogo.</li>
+</ul>
+<p>O modelo também prevê duas janelas alternativas para acomodar necessidades específicas de calendário:</p>
+<ul>
+<li>Sexta-feira, às 20h.</li>
+<li>Segunda-feira, às 20h.</li>
+</ul>
+<p>A proposta preserva o domingo à tarde como um dos principais momentos do futebol brasileiro e estabelece uma distribuição mais organizada dos dez confrontos de uma rodada completa.</p>
+<p>É importante destacar que essa grade foi aprovada por clubes e federações, mas sua implementação definitiva ainda precisa ser discutida com as empresas detentoras dos direitos de transmissão, que possuem compromissos comerciais relacionados ao ciclo vigente.</p>
+
+<p><strong>Super Quarta do Brasileirão: seis jogos no mesmo dia</strong></p>
+<p>Uma das principais novidades para as rodadas realizadas durante a semana será a concentração de seis partidas da Série A às quartas-feiras.</p>
+<p>Batizada de “Super Quarta”, a proposta prevê três horários diferentes, com dois confrontos simultâneos em cada faixa.</p>
+<ul>
+<li>Terça-feira, às 20h: 2 jogos.</li>
+<li>Quarta-feira, às 19h30: 2 jogos.</li>
+<li>Quarta-feira, às 20h30: 2 jogos.</li>
+<li>Quarta-feira, às 21h30: 2 jogos.</li>
+<li>Quinta-feira, às 20h: 2 jogos.</li>
+</ul>
+<p>Com isso, a quarta-feira reunirá seis dos dez confrontos de uma rodada realizada no meio de semana.</p>
+<p>A proposta mantém partidas às 21h30 nas rodadas de meio de semana, mas procura eliminar a dispersão excessiva de horários que dificulta a criação de uma programação regular para o público.</p>
+<p>O objetivo é facilitar a identificação dos dias de futebol, melhorar a organização das transmissões e permitir que o torcedor tenha maior previsibilidade sobre quando seu clube entrará em campo.</p>
+
+<!-- ANÚNCIO (ARTIGO - FIM) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - fim)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Série B também terá novos dias e horários</strong></p>
+<p>A reformulação não ficará restrita à elite nacional.</p>
+<p>A segunda divisão terá uma grade própria, com o sábado como principal dia de jogos e o horário das 18h como uma das principais referências da competição.</p>
+<p>No levantamento apresentado pela CBF, a segunda divisão registrou 81 combinações diferentes de dias e horários entre 2023 e 2025.</p>
+<p>A intenção é estabelecer uma identidade mais clara para a Série B, garantindo janelas específicas e reduzindo a sobreposição com os confrontos da primeira divisão.</p>
+<ul>
+<li>Sexta-feira, às 19h30: 1 jogo.</li>
+<li>Sábado, às 11h: 1 jogo.</li>
+<li>Sábado, às 16h: 2 jogos.</li>
+<li>Sábado, às 18h: 3 jogos.</li>
+<li>Domingo, às 16h: 1 jogo.</li>
+<li>Domingo, às 18h: 1 jogo.</li>
+<li>Segunda-feira, às 19h30: 1 jogo.</li>
+</ul>
+<p>Nas rodadas de meio de semana, a proposta estabelece a seguinte distribuição:</p>
+<ul>
+<li>Terça-feira, às 19h30: 2 jogos.</li>
+<li>Terça-feira, às 21h: 2 jogos.</li>
+<li>Quarta-feira, às 19h30: 1 jogo.</li>
+<li>Quarta-feira, às 21h: 1 jogo.</li>
+<li>Quinta-feira, às 19h30: 2 jogos.</li>
+<li>Quinta-feira, às 21h: 2 jogos.</li>
+</ul>
+<p>A separação das grades também poderá ampliar a visibilidade da segunda divisão, permitindo que determinados confrontos tenham espaço próprio na programação esportiva, sem disputar diretamente a atenção do público com vários jogos da Série A.</p>
+
+<p><strong>Quais horários deixarão de existir </strong></p>
+<p>A reformulação busca eliminar algumas janelas consideradas problemáticas pela CBF e pelos clubes, estabelecendo uma programação mais previsível para o torcedor.</p>
+<p>Veja os principais horários que serão eliminados ou modificados no Brasileirão:</p>
+<ul>
+<li>Jogos às 19h durante a semana: retirada dessa faixa de horário da programação.</li>
+<li>Jogos às 21h e 21h30 aos sábados: eliminação dessas janelas, com 19h30 passando a ser o último horário de início na grade da Série A.</li>
+<li>Jogos aos domingos em horários avançados: redução das partidas noturnas, com a última janela dominical prevista para as 19h30.</li>
+</ul>
+<p>A CBF argumenta que a reorganização poderá facilitar o deslocamento dos torcedores, especialmente daqueles que dependem de transporte público ou precisam trabalhar no dia seguinte.</p>
+<p>Por outro lado, a distribuição definitiva das partidas continuará exigindo atenção às condições climáticas, aos deslocamentos das equipes, à disponibilidade dos estádios e aos contratos de transmissão.</p>
+
+<p><strong>O que muda para os clubes e torcedores a partir de 2027</strong></p>
+<p>As medidas aprovadas representam uma transformação que vai além da redução de estrangeiros ou da alteração de horários.</p>
+<p>Para os clubes, o novo limite de jogadores internacionais e a divisão das listas de inscrição exigirão planejamento de elenco de médio e longo prazo.</p>
+<p>Equipes com muitos estrangeiros precisarão administrar a quantidade de atletas disponíveis para cada jogo. Ao mesmo tempo, a reserva de vagas para jogadores sub-23 exigirá atenção à formação e à contratação de profissionais mais jovens.</p>
+<p>Para os torcedores, a proposta de horários fixos busca tornar a experiência de acompanhar o Campeonato Brasileiro mais previsível.</p>
+<p>As mudanças também integram o projeto da CBF de estruturar uma liga nacional capaz de valorizar comercialmente o Campeonato Brasileiro. A padronização dos horários é considerada parte importante desse processo, inclusive para a negociação dos direitos de transmissão a partir do ciclo de 2030. A reformulação representa mais um capítulo da <a href="https://cortedosesportes.com.br/campeonato-brasileiro-historia-rivalidades-tradicao-evolucao.html">história do Campeonato Brasileiro</a>, marcada por mudanças de regulamento, evolução dos formatos de disputa e transformações que consolidaram o Brasileirão como a principal competição nacional de clubes.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda.</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar desktop-only-ad" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+if (window.matchMedia("(min-width: 1025px)").matches) {
+(adsbygoogle = window.adsbygoogle || []).push({});
+}
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
