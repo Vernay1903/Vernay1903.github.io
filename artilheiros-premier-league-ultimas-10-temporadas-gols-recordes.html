@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Veja todos artilheiros das últimas 10 temporadas da Premier League | Corte dos Esportes</title>
+<meta name="description" content="De Harry Kane a Erling Haaland, passando pelas marcas históricas de Mohamed Salah e pela surpreendente conquista de Jamie Vardy, confira quem terminou no topo da artilharia do Campeonato Inglês entre 2016/17 e 2025/26." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+.desktop-only-ad { display: none !important; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Veja todos artilheiros das últimas 10 temporadas da Premier League</h1>
+<p class="subhead" id="articleExcerpt">De Harry Kane a Erling Haaland, passando pelas marcas históricas de Mohamed Salah e pela surpreendente conquista de Jamie Vardy, confira quem terminou no topo da artilharia do Campeonato Inglês entre 2016/17 e 2025/26.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">22/09/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Futebol</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+<p>A Premier League reúne alguns dos maiores atacantes do futebol mundial. A cada temporada, a disputa pela artilharia coloca frente a frente jogadores de diferentes características, desde centroavantes tradicionais até pontas que se transformaram em verdadeiras máquinas de fazer gols.</p>
+<p>Nas últimas dez edições encerradas do Campeonato Inglês, nomes como Harry Kane, Mohamed Salah e Erling Haaland dominaram a corrida pela artilharia. Entretanto, também houve espaço para conquistas compartilhadas, marcas históricas e jogadores que desafiaram expectativas.</p>
+<p>O norueguês Haaland estabeleceu o recorde absoluto de gols em uma única edição da Premier League. Salah igualou uma marca histórica de Thierry Henry, enquanto Kane demonstrou que um centroavante pode terminar uma temporada liderando simultaneamente as estatísticas de gols e assistências.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Todos os artilheiros das últimas 10 temporadas </strong></p>
+<p>A lista considera exclusivamente os gols marcados na Premier League, sem incluir partidas de copas nacionais ou competições europeias.</p>
+<ul>
+<li>2016/17 — Harry Kane (Tottenham): 29 gols.</li>
+<li>2017/18 — Salah (Liverpool): 32 gols.</li>
+<li>2018/19 — Salah (Liverpool), Sadio Mané (Liverpool) e Aubameyang (Arsenal): 22 gols cada.</li>
+<li>2019/20 — Jamie Vardy (Leicester City): 23 gols.</li>
+<li>2020/21 — Harry Kane (Tottenham): 23 gols.</li>
+<li>2021/22 — Salah (Liverpool) e Son Heung-min (Tottenham): 23 gols cada.</li>
+<li>2022/23 — Erling Haaland (Manchester City): 36 gols.</li>
+<li>2023/24 — Erling Haaland (Manchester City): 27 gols.</li>
+<li>2024/25 — Mohamed Salah (Liverpool): 29 gols.</li>
+<li>2025/26 — Erling Haaland (Manchester City): 27 gols.</li>
+</ul>
+
+<p><strong>2016/17: Kane conquista a segunda artilharia consecutiva</strong></p>
+<p>A temporada marcou a consolidação de Harry Kane como uma das grandes referências ofensivas do futebol inglês.</p>
+<p>O atacante do Tottenham terminou a Premier League com 29 gols e conquistou a artilharia pela segunda temporada consecutiva.</p>
+<p>O detalhe mais impressionante foi a arrancada na reta final. Kane estava atrás de Romelu Lukaku na corrida pela artilharia, mas marcou quatro gols contra o Leicester City e outros três diante do Hull City.</p>
+<p>Foram sete gols nas duas últimas partidas, desempenho que garantiu ao inglês a liderança definitiva da artilharia e confirmou sua capacidade de decidir jogos com finalizações de diferentes características.</p>
+
+<p><strong>2017/18: Salah estabelece novo recorde </strong></p>
+<p>Em sua primeira temporada após chegar ao Liverpool vindo da Roma, Mohamed Salah protagonizou uma campanha que mudou sua posição na história da Premier League.</p>
+<p>O atacante egípcio marcou 32 gols e estabeleceu o recorde de uma edição com 38 partidas, superando os 31 registrados anteriormente por Alan Shearer, Cristiano Ronaldo e Luis Suárez nesse formato.</p>
+<p>O gol que confirmou a marca saiu na vitória do Liverpool por 4 a 0 sobre o Brighton, na última rodada, em Anfield.</p>
+<p>A temporada também rendeu a Salah o prêmio de melhor jogador da Premier League.</p>
+<p>Sua velocidade, os movimentos da direita para o centro e a precisão nas finalizações transformaram o ataque do Liverpool em uma das grandes atrações do Campeonato Inglês daquele ano.</p>
+
+<p><strong>2018/19: divisão da artilharia</strong></p>
+<p>A edição daquela temporada teve uma particularidade: três atacantes terminaram empatados no topo da tabela de goleadores.</p>
+<p>Mohamed Salah e Sadio Mané, do Liverpool, dividiram a artilharia com Aubameyang, do Arsenal.</p>
+<p>Cada um marcou 22 gols.</p>
+<p>O empate foi definido na última rodada, quando Aubameyang balançou as redes duas vezes contra o Burnley e alcançou os jogadores do Liverpool.</p>
+<p>A conquista também teve um significado continental: os três artilheiros representavam seleções africanas, com Salah pelo Egito, Mané por Senegal e Aubameyang pelo Gabão.</p>
+<p>No caso do Liverpool, a premiação compartilhada demonstrou como o sistema ofensivo de Jürgen Klopp permitia que diferentes jogadores assumissem protagonismo na conclusão das jogadas.</p>
+
+<p><strong>2019/20: artilharia aos 33 anos</strong></p>
+<p>Jamie Vardy escreveu outro capítulo marcante de sua trajetória pelo Leicester City.</p>
+<p>O atacante terminou o Campeonato Inglês com 23 gols e conquistou sua primeira artilharia  da Premier League.</p>
+<p>Aos 33 anos, tornou-se o jogador mais velho a receber a premiação na história da competição.</p>
+<p>Vardy já havia sido um dos protagonistas do título surpreendente do Leicester em 2015/16, mas a artilharia individual chegou quatro temporadas depois.</p>
+<p>Sua velocidade nos contra-ataques, capacidade de atacar espaços atrás dos defensores e eficiência nas finalizações continuaram sendo características fundamentais para o desempenho ofensivo da equipe.</p>
+
+<p><strong>2020/21: Kane lidera gols e assistências</strong></p>
+<p>Harry Kane voltou ao topo da artilharia e conquistou sua terceira temporada de goleador da competição.</p>
+<p>O jogador do Tottenham marcou 23 gols, terminando uma bola na rede à frente de Mohamed Salah.</p>
+<p>Entretanto, sua temporada foi especialmente significativa por outro motivo: Kane também liderou a Premier League em assistências, com 14 passes para gol.</p>
+<p>A conquista simultânea dos prêmios Golden Boot e Playmaker evidenciou sua evolução como atacante capaz de participar tanto da construção quanto da finalização das jogadas.</p>
+<p>O inglês confirmou a artilharia ao marcar na vitória do Tottenham por 4 a 2 sobre o Leicester City, na última rodada.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>2021/22: outra divisão entre artilheiros</strong></p>
+<p>A Premier League voltou a registrar uma artilharia compartilhada naquela temporada.</p>
+<p>Mohamed Salah, do Liverpool, e Son Heung-min, do Tottenham, terminaram com 23 gols cada.</p>
+<p>A disputa permaneceu aberta até a rodada final.</p>
+<p>Salah marcou na vitória do Liverpool por 3 a 1 sobre o Wolverhampton. Son, por sua vez, fez dois gols na goleada do Tottenham por 5 a 0 contra o Norwich City.</p>
+<p>O resultado garantiu ao sul-coreano um feito histórico: tornar-se o primeiro jogador asiático a conquistar a artilharia da Premier League.</p>
+<p>Para Salah, foi a terceira premiação de artilheiro da competição.</p>
+<p>O egípcio também terminou a temporada como líder de assistências, com 13, repetindo a combinação de prêmios conquistada por Kane na edição anterior.</p>
+
+<p><strong>2022/23: a quebra do recorde de gols</strong></p>
+<p>A chegada de Erling Haaland ao Manchester City inaugurou um novo capítulo na história da artilharia inglesa.</p>
+<p>Em sua temporada de estreia, o norueguês marcou impressionantes 36 gols em 35 partidas.</p>
+<p>O desempenho superou o recorde absoluto da Premier League, que pertencia a Andrew Cole e Alan Shearer, ambos com 34 gols em temporadas disputadas com 42 jogos por equipe.</p>
+<p>Haaland também ultrapassou os 32 gols marcados por Salah em 2017/18, até então a maior marca do formato com 38 rodadas.</p>
+<p>Sua capacidade de atacar a pequena área, antecipar movimentos dos defensores e finalizar com poucos toques fez dele a principal referência ofensiva do Manchester City.</p>
+<p>O desempenho também foi importante para a conquista do Campeonato Inglês pela equipe comandada por Pep Guardiola.</p>
+<p>Harry Kane terminou aquela temporada com 30 gols pelo Tottenham, mas ficou seis atrás do norueguês.</p>
+<p>A marca de 36 gols permanece como o recorde de uma única temporada da Premier League.</p>
+
+<p><strong>2023/24: a segunda artilharia consecutiva</strong></p>
+<p>Depois de estabelecer o recorde absoluto, Haaland voltou a liderar a tabela de goleadores na temporada seguinte.</p>
+<p>O atacante do Manchester City terminou a temporada com 27 gols. Cole Palmer, do Chelsea, foi o segundo colocado, com 22 gols.</p>
+<p>Embora o número tenha sido inferior ao da campanha anterior, Haaland novamente demonstrou regularidade e importância na disputa pelo título.</p>
+<p>O norueguês também foi protagonista de uma reta final decisiva, incluindo os dois gols da vitória do Manchester City sobre o Tottenham por 2 a 0, resultado fundamental para a conquista de mais uma Premier League do clube.</p>
+
+<p><strong>2024/25: Salah iguala Thierry Henry e conquista a quarta artilharia</strong></p>
+<p>Aquela edição colocou Mohamed Salah novamente no centro das atenções do futebol inglês.</p>
+<p>O atacante marcou 29 gols pelo Liverpool e conquistou sua quarta artilharia da Premier League.</p>
+<p>Com isso, igualou Thierry Henry como maior vencedor da premiação na história da competição.</p>
+<p>Salah também terminou a temporada com 18 assistências, alcançando 47 participações diretas em gols.</p>
+<p>A marca igualou o recorde histórico de participações em gols de uma única temporada, anteriormente estabelecido por Andrew Cole e Alan Shearer em edições com 42 jogos por equipe.</p>
+<p>O egípcio conquistou ainda os prêmios de melhor jogador e maior assistente da Premier League, completando uma combinação inédita dessas três premiações em uma mesma temporada.</p>
+<p>O desempenho ajudou o Liverpool a conquistar o Campeonato Inglês e reforçou a importância do atacante na história recente do clube e de <a href="https://cortedosesportes.com.br/anfield-historia-tradicao-estadio-liverpool.html">Anfield</a>, estádio que se transformou no palco de seus principais recordes na Inglaterra.</p>
+
+<p><strong>2025/26: a terceira artilharia</strong></p>
+<p>Erling Haaland encerrou a última temporada com mais uma conquista individual pelo Manchester City.</p>
+<p>O centroavante marcou 27 gols e terminou novamente como artilheiro da Premier League.</p>
+<p>Foi sua terceira vez no topo dos goleadores em quatro temporadas disputadas no futebol inglês.</p>
+<p>O brasileiro Igor Thiago, do Brentford, ficou na segunda colocação da artilharia, com 22 gols.</p>
+<p>A temporada também mostrou que a artilharia individual não necessariamente acompanha a conquista coletiva do campeonato.</p>
+<p>Apesar dos gols de Haaland, o Manchester City terminou como vice-campeão, enquanto o <a href="https://cortedosesportes.com.br/arsenal-campeao-premier-league-2026-jejum-22-anos.html">Arsenal conquistou o título e encerrou um jejum de 22 anos sem ser campeão  inglês</a>.</p>
+<p>Com a terceira premiação, Haaland alcançou Harry Kane e Alan Shearer em número de artilharia inglesas, ficando a uma conquista do recorde compartilhado por Salah e Thierry Henry.</p>
+
+<!-- ANÚNCIO (ARTIGO - FINAL) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - final)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Os goleadores das últimas 10 temporadas</strong></p>
+<p>A análise das temporadas de 2016/17 a 2025/26 evidencia o domínio de três jogadores na disputa pela artilharia.</p>
+<p>Mohamed Salah aparece com quatro conquistas no período, seguido por Harry Kane e Erling Haaland, com três cada.</p>
+<p>O detalhe importante é que essas três premiações de Haaland foram conquistadas em apenas quatro temporadas, desde sua estreia pelo Manchester City em 2022/23, e tudo indica que alcançará o recorde de quatro temporadas de Salah e Henry, visto que Salah continua em atividade mas jogando na Turquia, e o noruegues possui contrato com clube de Manchester até 2034.</p>
+
+<p><strong>A maior artilharia da história da Premier League</strong></p>
+<p>A lista dos goleadores das últimas dez temporadas mostra como Kane, Salah e Haaland dominaram a disputa, mas o recorde de gols acumulados na competição pertence a outro ídolo do futebol inglês. Com 260 gols marcados por Blackburn Rovers e Newcastle United, Alan Shearer continua sendo o <a href="https://cortedosesportes.com.br/alan-shearer-maior-artilheiro-premier-league-recorde-gols.html">maior artilheiro da história da Premier League</a>, uma marca que atravessa gerações e permanece como referência para os grandes atacantes do Campeonato Inglês.</p>
+
+<p><strong>A relevância na história do Campeonato Inglês</strong></p>
+<p>A Chuteira de Ouro da Premier League é uma das principais premiações individuais do futebol inglês e é entregue ao maior goleador de cada temporada desde a criação da competição, em 1992/93.</p>
+<p>Diferentemente de premiações definidas por votação, sua distribuição depende exclusivamente da quantidade de gols marcados. Quando dois ou mais jogadores terminam empatados na liderança, todos recebem o reconhecimento.</p>
+<p>Ao longo da história, a lista de vencedores reuniu nomes como Thierry Henry, Alan Shearer, Cristiano Ronaldo, Didier Drogba, Sergio Agüero, Luis Suárez e Robin van Persie.</p>
+<p>A sequência mais recente, marcada pelas conquistas de Kane, Salah e Haaland, mantém essa tradição.</p>
+<p>Os números também mostram como diferentes perfis de atacantes podem dominar a competição: Kane com sua capacidade de finalizar e construir jogadas, Salah com seus movimentos partindo da direita e Haaland com sua presença na área adversária.</p>
+<p>Os grandes artilheiros da Premier League constroem seus números em estádios que também fazem parte da história do futebol inglês. A cada gol de Salah em Anfield, de Haaland no Etihad Stadium ou de Kane durante sua trajetória pelo Tottenham, essas arenas se tornam testemunhas de marcas e recordes que atravessam gerações. Conheça os <a href="https://cortedosesportes.com.br/estadios-clubes-premier-league-historia-capacidade-jogos.html">estádios dos clubes da Premier League</a> , suas histórias, capacidades e características, palcos que acompanham cada capítulo da corrida pela artilharia.</p>
+<p>A disputa é apenas uma das tradições que ajudaram a transformar o Campeonato Inglês em uma referência mundial. Desde sua criação, em 1992, a competição reuniu grandes clubes, jogadores históricos, rivalidades e recordes que marcaram diferentes gerações. Conheça a <a href="https://cortedosesportes.com.br/premier-league-historia-campeoes.html">história da Premier League</a> , sua evolução e os maiores campeões do futebol inglês, uma trajetória que ajuda a entender a importância dos artilheiros que construíram seus nomes na competição.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda.</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar desktop-only-ad" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+if (window.matchMedia("(min-width: 1025px)").matches) {
+(adsbygoogle = window.adsbygoogle || []).push({});
+}
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "futebol";
+const CATEGORY_NAME = "Futebol";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
