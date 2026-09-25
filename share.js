@@ -35,6 +35,40 @@
 
 
   /* =========================================
+     TESTE CLEVER ADVERTISING — REMOVER APÓS 24 HORAS
+  ========================================= */
+
+  function initCleverAdvertising() {
+    // A homepage já possui o script diretamente no index.html.
+    // Evita duplicar a publicidade nessa página.
+    if (
+      document.getElementById("clever-core") ||
+      document.getElementById("CleverCoreLoader107238")
+    ) return;
+
+    const frame = window.frameElement;
+    const script = document.createElement("script");
+
+    script.id = "CleverCoreLoader107238";
+    script.src = "https://scripts.cleverwebserver.com/567b728004b82e4aea26086072ee6e59.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.setAttribute("data-target", window.name || (frame && frame.getAttribute("id")));
+    script.setAttribute("data-callback", "put-your-callback-function-here");
+    script.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+    script.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+    // O mesmo carregador fornecido pela Clever, nas páginas que usam share.js.
+    const anchor = document.getElementsByTagName("script")[0];
+    if (anchor && anchor.parentNode) {
+      anchor.parentNode.insertBefore(script, anchor);
+    } else {
+      (document.head || document.body).appendChild(script);
+    }
+  }
+
+
+  /* =========================================
      BUSCA DO SITE
   ========================================= */
 
@@ -166,6 +200,7 @@
 
   function init() {
     initAnalytics();
+    initCleverAdvertising();
     initSiteSearch();
     initShare();
   }
