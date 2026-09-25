@@ -1,100 +1,124 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTYJ0TYZYC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    const quickEmpty = document.getElementById("quickEmpty");
 
-    gtag('config', 'G-ZTYJ0TYZYC');
-  </script>
+    const latestList = document.getElementById("latestList");
+    const latestEmpty = document.getElementById("latestEmpty");
 
-  <meta charset="UTF-8" />
-  <title>Corte dos Esportes | Notícias e cobertura esportiva</title>
-  <meta name="description" content="Portal Corte dos Esportes: notícias, destaques e cobertura completa das principais modalidades esportivas." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    try {
+      const res = await fetch("noticias-home.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("noticias.json não carregou");
+      const data = await res.json();
+      const items = Array.isArray(data) ? data : [];
 
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-  <style>
-/* share.css */
+      if (!items.length) {
+        featuredLink.textContent = "Sem notícias publicadas ainda";
+        featuredLink.href = "#";
+        featuredExcerpt.textContent = "Publique sua primeira notícia e ela aparecerá aqui automaticamente.";
+        featuredDate.textContent = "";
+        featuredCategory.textContent = "";
+        featuredCategory.href = "#";
 
-/* ===== COMPARTILHAR ===== */
-.share-wrap{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-  margin:6px 0 14px;
-}
+        quickList.innerHTML = "";
+        quickEmpty.style.display = "block";
+        latestList.innerHTML = "";
+        latestEmpty.style.display = "block";
+        return;
+      }
 
-.share-btn{
-  border:1px solid #1E4BA5;
-  background:#FFFFFF;
-  color:#1E4BA5;
-  font-weight:700;
-  padding:10px 14px;
-  border-radius:10px;
-  cursor:pointer;
-  transition:0.2s;
-  font-size:14px;
-}
+      const top = items[0];
+      const topTitle = safeText(top.title, "Notícia");
+      const topExcerpt = safeText(top.excerpt, "");
+      const topUrl = safeText(top.url, "#");
+      const topDate = safeText(top.date, "");
+      const topCategory = safeText(top.category, "");
 
-.share-btn:hover{
-  background:#1E4BA5;
-  color:#FFFFFF;
-}
+      featuredLink.textContent = topTitle;
+      featuredLink.href = topUrl;
 
-.share-msg{
-  font-size:12px;
-  color:#5B6B84;
-}
+      featuredExcerpt.textContent = topExcerpt;
 
+      featuredDate.textContent = topDate ? (topDate + " ·") : "";
+      featuredCategory.textContent = topCategory || "Geral";
+      featuredCategory.href = makeCategoryLink(topCategory);
 
-/* ===== BUSCA DO SITE ===== */
+      const quickItems = items.slice(1, 4);
+      if (!quickItems.length) {
+        quickList.innerHTML = "";
+        quickEmpty.style.display = "block";
+      } else {
+        quickEmpty.style.display = "none";
+        quickList.innerHTML = quickItems.map(n => {
+          const t = safeText(n.title, "Notícia");
+          const u = safeText(n.url, "#");
+          const d = safeText(n.date, "");
+          return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
+        }).join("");
+      }
 
-.site-search{
-  flex:1 1 360px;
-  max-width:430px;
-  min-width:320px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin:0;
-}
+      latestEmpty.style.display = "none";
+      latestList.innerHTML = items.slice(0, 10).map(n => {
+        const t = safeText(n.title, "Notícia");
+        const u = safeText(n.url, "#");
+        const d = safeText(n.date, "");
+        return `<li><a href="${u}">${t}</a>${d ? ` <span class="muted">- ${d}</span>` : ""}</li>`;
+      }).join("");
 
-.site-search-label{
-  position:absolute;
-  width:1px;
-  height:1px;
-  padding:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
-}
+    } catch (e) {
+      featuredLink.textContent = "Erro ao carregar notícias";
+      featuredLink.href = "#";
+      featuredExcerpt.textContent = "Verifique se o arquivo noticias.json existe e está válido.";
+      featuredDate.textContent = "";
+      featuredCategory.textContent = "";
+      featuredCategory.href = "#";
 
-.site-search-input{
-  flex:1;
-  min-width:0;
-  height:44px;
-  padding:0 13px;
-  border:1px solid #1E4BA5;
-  border-radius:10px;
-  background:#FFFFFF;
-  color:#0A1E3A;
-  font:inherit;
-  font-size:14px;
-  outline:none;
-}
+      quickList.innerHTML = "";
+      quickEmpty.style.display = "block";
 
+      latestList.innerHTML = "";
+      latestEmpty.style.display = "block";
+    }
+  }
+
+  loadNoticias();
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(loadAgenda, { timeout: 1500 });
+  } else {
+    setTimeout(loadAgenda, 800);
+  }
+</script>
+
+<script src="share.js"></script>
+
+<!-- INÍCIO DO TESTE CLEVER ADVERTISING — REMOVER APÓS 24 HORAS -->
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader107238";
+        c.src = "https://scripts.cleverwebserver.com/567b728004b82e4aea26086072ee6e59.js";
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+<!-- FIM DO TESTE CLEVER ADVERTISING -->
+
+</body>
+</html>
 
 
 
