@@ -83,7 +83,18 @@ def main() -> None:
         )
         noticias = root / "noticias.json"
         sitemap = root / "sitemap.xml"
-        noticias.write_text("[]\n", encoding="utf-8")
+        noticias.write_text(
+            json.dumps([
+                {
+                    "title": "Matéria anterior",
+                    "excerpt": "Resumo anterior.",
+                    "url": "materia-anterior.html",
+                    "date": "16/09/2026",
+                    "category": "Futebol",
+                }
+            ], ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
         sitemap.write_text(
             '<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
