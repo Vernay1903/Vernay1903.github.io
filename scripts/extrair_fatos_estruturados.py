@@ -800,15 +800,18 @@ def extract_team_labeled_claims(
 TEAM_NEWS_PATTERNS = (
     r"\\bdesfalques?\\b", r"\\bles(?:a|ã)o\\b", r"\\blesionad[oa]s?\\b",
     r"\\bsuspens[oa]s?\\b", r"\\bsuspens[aã]o\\b", r"\\bd[uú]vida\\b",
-    r"\\bretorn(?:a|o|am|ou)\\b", r"\\bvolta\\b", r"\\bfora\\s+do\\s+jogo\\b",
+    r"\\bfora\\s+do\\s+jogo\\b", r"\\bn[aã]o\\s+(?:joga|enfrenta)\\b",
+    r"\\bretorn(?:a|o|am|ou)\\b.{0,45}\\bles(?:a|ã)o\\b",
+    r"\\bvolta\\b.{0,45}\\bles(?:a|ã)o\\b",
     r"\\binjur(?:y|ed|ies)\\b", r"\\bsuspended\\b", r"\\bdoubtful\\b",
-    r"\\bruled\\s+out\\b", r"\\bunavailable\\b", r"\\breturns?\\b",
-    r"\\bback\\s+in\\s+contention\\b", r"\\bmiss(?:es|ing)?\\b",
+    r"\\bruled\\s+out\\b", r"\\bunavailable\\b",
+    r"\\breturns?\\s+from\\s+injury\\b", r"\\bback\\s+in\\s+contention\\b",
+    r"\\bfit\\s+again\\b",
     r"\\bbajas?\\b", r"\\blesionad[oa]s?\\b", r"\\bsancionad[oa]s?\\b",
-    r"\\bregresa\\b", r"\\bvuelve\\b",
-    r"\\bverletzt\\b", r"\\bgesperrt\\b", r"\\bfraglich\\b", r"\\bzuruck\\b",
-    r"\\blesse\\b", r"\\bsuspendu\\b", r"\\bforfait\\b", r"\\bretour\\b", r"\\bincertain\\b",
-    r"\\binfortunato\\b", r"\\bsqualificato\\b", r"\\bdubbio\\b", r"\\brientra\\b",
+    r"\\bregresa\\b.{0,45}\\blesi[oó]n\\b", r"\\bvuelve\\b.{0,45}\\blesi[oó]n\\b",
+    r"\\bverletzt\\b", r"\\bgesperrt\\b", r"\\bfraglich\\b",
+    r"\\bblesse\\b", r"\\bsuspendu\\b", r"\\bforfait\\b", r"\\bincertain\\b",
+    r"\\binfortunato\\b", r"\\bsqualificato\\b", r"\\bdubbio\\b",
 )
 
 
