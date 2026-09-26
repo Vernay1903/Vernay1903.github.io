@@ -445,6 +445,12 @@ def main() -> None:
             "competitions": codes,
         },
         "rate_limit": rate,
+        "coverage": {
+            "mode": "configured_free_competitions",
+            "competition_codes": list(codes),
+            "all_official_competitions_covered": False,
+            "note": provider.get("coverage_note"),
+        },
         "source_match_count": len(matches),
         "normalized_count": len(normalized),
         "attribution": provider.get("attribution"),
@@ -458,7 +464,8 @@ def main() -> None:
 
     print(f"OK: fixtures normalizados para {target_date.isoformat()}.")
     print(f"Partidas recebidas da API: {len(matches)}")
-    print(f"Partidas dos clubes monitorados: {len(normalized)}")
+    print(f"Partidas dos clubes monitorados nas competições cobertas: {len(normalized)}")
+    print("Cobertura total de competições oficiais: não; copas fora do plano gratuito exigem fonte complementar.")
     for fixture in normalized:
         kickoff = datetime.fromisoformat(fixture["kickoff"])
         print(

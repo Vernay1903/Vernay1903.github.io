@@ -49,6 +49,9 @@ def build_empty_manifest(
         "source_main_sha": source_sha,
         "monitored_club_count": 10,
         "no_eligible_matches": True,
+        "no_eligible_matches_in_covered_competitions": True,
+        "all_official_competitions_covered": False,
+        "coverage_scope": "configured_free_competitions",
         "planning_skipped_count": 0,
         "prepared_count": 0,
         "skipped_count": 0,
@@ -89,7 +92,7 @@ def main() -> None:
     (output / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    print(f"SEM JOGOS ELEGÍVEIS em {args.date}: lote vazio registrado e validado.")
+    print(f"SEM JOGOS ELEGÍVEIS NAS COMPETIÇÕES COBERTAS em {args.date}: lote vazio registrado e validado.")
     print("Pesquisa RSS: não; OpenAI: não; Serper: não; publicação: não.")
 
 

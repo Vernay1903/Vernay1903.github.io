@@ -97,6 +97,7 @@ jobs:
           python tests/pre-jogo/teste_redator_openai.py
           python tests/pre-jogo/teste_redacao_controlada.py
           python tests/pre-jogo/teste_pacote_publicacao.py
+          python tests/pre-jogo/teste_fluxo_com_jogo_dry_run.py
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
@@ -181,7 +182,7 @@ jobs:
               if plans.get('planned_count') != 0 or plans.get('skipped_count') != 0:
                   raise SystemExit('ERRO: plano não vazio para data sem partidas elegíveis.')
               marker = 'true'
-              print('SEM JOGOS ELEGÍVEIS: não consultar RSS nem OpenAI.')
+              print('SEM JOGOS ELEGÍVEIS NAS COMPETIÇÕES COBERTAS: não consultar RSS nem OpenAI.')
           else:
               marker = 'false'
               print(f"JOGOS IDENTIFICADOS: {games['selected_count']}; planejados: {plans['planned_count']}.")
@@ -594,6 +595,7 @@ jobs:
           python tests/pre-jogo/teste_redator_openai.py
           python tests/pre-jogo/teste_redacao_controlada.py
           python tests/pre-jogo/teste_pacote_publicacao.py
+          python tests/pre-jogo/teste_fluxo_com_jogo_dry_run.py
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
@@ -647,7 +649,7 @@ jobs:
           if ready == 0 and blocked > 0:
               raise SystemExit(f'ERRO: {blocked} partida(s) bloqueada(s) e nenhuma matéria pronta; publicação incompleta.')
           if ready == 0 and empty:
-              print('SEM JOGOS ELEGÍVEIS: zero partidas confirmado, nenhum conteúdo a publicar.')
+              print('SEM JOGOS ELEGÍVEIS NAS COMPETIÇÕES COBERTAS: zero partidas confirmado, nenhum conteúdo a publicar.')
           elif ready == 0 and planning_skipped > 0:
               print(f'SEM MATÉRIAS NOVAS: {planning_skipped} confronto(s) barrado(s) no planejamento (duplicidade/colisão).')
           elif ready == 0:
@@ -740,7 +742,7 @@ jobs:
           manifest = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text(encoding='utf-8'))
           report = json.loads(Path('build/pre-jogo/automatico-publicacao.json').read_text(encoding='utf-8'))
           if manifest.get('no_eligible_matches') is True and manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0:
-              print('SEM JOGOS ELEGÍVEIS: nenhuma publicação necessária.')
+              print('SEM JOGOS ELEGÍVEIS NAS COMPETIÇÕES COBERTAS: nenhuma publicação necessária.')
           elif manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0 and manifest.get('planning_skipped_count', 0) > 0:
               print('SEM MATÉRIAS NOVAS: confrontos barrados no planejamento (duplicidade/colisão).')
           elif report['skipped'] and all(

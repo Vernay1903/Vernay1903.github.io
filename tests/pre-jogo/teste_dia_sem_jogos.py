@@ -34,6 +34,9 @@ def main():
     games,plans=records()
     manifest=empty.build_empty_manifest(games,plans,target=TARGET,source_sha=SHA)
     assert manifest["no_eligible_matches"] is True
+    assert manifest["no_eligible_matches_in_covered_competitions"] is True
+    assert manifest["all_official_competitions_covered"] is False
+    assert manifest["coverage_scope"] == "configured_free_competitions"
     assert manifest["articles"] == [] and manifest["skipped"] == []
     assert manifest["prepared_count"] == 0 and manifest["skipped_count"] == 0
     assert manifest["publication_unlocked"] is False
