@@ -170,6 +170,8 @@ def system_instructions() -> str:
         "Produza somente o corpo editorial da matéria, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
         "Use subtítulos no formato <p><strong>...</strong></p> e listas <ul><li> quando melhorarem a UX. "
         "As escalações, quando fornecidas, devem ser apresentadas como prováveis e nunca como oficiais. "
+        "No bloco de escalações, cada equipe deve ter uma entrada <li> identificada explicitamente como "
+        "'Provável NOME DO TIME:' antes dos 11 jogadores; os técnicos devem aparecer de forma visível no mesmo bloco. "
         "O retrospecto deve permanecer específico da competição indicada. "
         "Insira exatamente uma vez o link interno aprovado no contrato, com âncora textual natural. "
         "Não crie nenhum outro link. "

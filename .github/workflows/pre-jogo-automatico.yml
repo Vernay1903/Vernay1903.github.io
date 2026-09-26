@@ -94,6 +94,9 @@ jobs:
           python tests/pre-jogo/teste_passo34_10.py
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
+          python tests/pre-jogo/teste_redator_openai.py
+          python tests/pre-jogo/teste_redacao_controlada.py
+          python tests/pre-jogo/teste_pacote_publicacao.py
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
@@ -588,6 +591,9 @@ jobs:
           python tests/pre-jogo/teste_passo34_10.py
           python tests/pre-jogo/teste_passo34_11.py
           python tests/pre-jogo/teste_preview_html.py
+          python tests/pre-jogo/teste_redator_openai.py
+          python tests/pre-jogo/teste_redacao_controlada.py
+          python tests/pre-jogo/teste_pacote_publicacao.py
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py

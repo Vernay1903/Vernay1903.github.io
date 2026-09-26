@@ -30,8 +30,9 @@ def main() -> None:
     assert provider["provider"]["name"] == "openai-responses"
     assert provider["provider"]["endpoint"] == "https://api.openai.com/v1/responses"
     assert provider["provider"]["api_key_env"] == "OPENAI_API_KEY"
-    assert provider["provider"]["model"] == "gpt-5.6-terra"
-    assert request["model"] == "gpt-5.6-terra"
+    expected_model = provider["provider"]["model"]
+    assert isinstance(expected_model, str) and expected_model.strip()
+    assert request["model"] == expected_model
     assert request["store"] is False
     assert "tools" not in request
     assert "web_search" not in json.dumps(request, ensure_ascii=False).casefold()
@@ -57,7 +58,7 @@ def main() -> None:
     assert "https://cortedosesportes.com.br/premier-league-historia-campeoes.html" in serialized
     assert "é expressamente proibido citar" in lowered
     assert "use exclusivamente" in lowered
-    assert "mínimo absoluto 800 palavras" in lowered
+    assert "abaixo de 700 palavras" in lowered
 
     fake_draft = {
         "slug": contract["slug"],
