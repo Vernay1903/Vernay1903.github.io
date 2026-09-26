@@ -199,6 +199,12 @@ REQUIREMENT_KEYWORDS: dict[str, tuple[str, ...]] = {
     ),
     "probable_lineups_and_coaches": (
         "escala", "lineup", "team news", "coach", "treinador", "manager", "starting xi",
+        "desfalque", "lesão", "lesionado", "suspenso", "dúvida", "retorno", "volta",
+        "injury", "injured", "suspended", "doubt", "ruled out", "return", "unavailable",
+        "baja", "lesionado", "sancionado", "regresa", "vuelve",
+        "verletzt", "gesperrt", "fraglich", "zurück",
+        "blessé", "suspendu", "forfait", "retour", "incertain",
+        "infortunato", "squalificato", "dubbio", "rientra",
     ),
     "officiating": (
         "árbit", "arbit", "referee", "officiat", "var",
