@@ -179,6 +179,11 @@ def query_variants(requirement_id: str, context: dict[str, Any], article_date: s
             f'"{home}" provável escalação desfalques técnico {article_date}',
             f'"{away}" provável escalação desfalques técnico {article_date}',
         ],
+        "team_news_and_availability": [
+            f"{base} desfalques retornos lesões suspensos preparação treino {article_date}",
+            f'"{home}" desfalques retornos lesões suspensos treino {article_date}',
+            f'"{away}" desfalques retornos lesões suspensos treino {article_date}',
+        ],
         "officiating": [f"{base} arbitragem árbitro {article_date}"],
         "recent_form_both_teams": [
             f'"{home}" últimos jogos momento recente {competition}',

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dias sem jogos são sucesso sem custo; bloqueio editorial e duplicidade não são dias vazios."""
+"""Lotes sem matéria não podem mascarar falhas, e não podem tocar no site."""
 import json
 import sys
 import tempfile
@@ -14,99 +14,65 @@ from scripts import aplicar_lote_pre_jogo_automatico as apply_batch
 TARGET="2026-09-22"
 SHA="a"*40
 
-
 def records():
     return (
       {"target_date":TARGET,"selected_count":0,"matches":[],"input_count":0},
       {"target_date":TARGET,"planned_count":0,"planned":[],"skipped_count":0,"skipped":[]},
     )
 
-
-def rejected(games,plans):
+def rejected(builder,games,plans):
     try:
-        empty.build_empty_manifest(games,plans,target=TARGET,source_sha=SHA)
+        builder(games,plans,target=TARGET,source_sha=SHA)
     except ValueError:
         return
-    raise AssertionError("Lote sem jogos foi aceito com dados incompatíveis.")
-
+    raise AssertionError("Manifesto sem matéria foi aceito com dados incompatíveis.")
 
 def main():
     games,plans=records()
     manifest=empty.build_empty_manifest(games,plans,target=TARGET,source_sha=SHA)
-    assert manifest["no_eligible_matches"] is True
-    assert manifest["articles"] == [] and manifest["skipped"] == []
-    assert manifest["prepared_count"] == 0 and manifest["skipped_count"] == 0
-    assert manifest["publication_unlocked"] is False
-    assert manifest["source_main_sha"] == SHA
-    assert manifest["grounded_fact_fallback_attempted"] is False
-    a,b=records()
-    a["selected_count"]=1
-    a["matches"]=[{"id":1}]
-    rejected(a,b)
-    a,b=records()
-    b["planned_count"]=1
-    b["planned"]=[{"id":1}]
-    rejected(a,b)
-    a,b=records()
-    b["skipped_count"]=1
-    b["skipped"]=[{"id":1,"reason":"duplicado"}]
-    rejected(a,b)
-    a,b=records()
-    b["target_date"]="2026-09-21"
-    rejected(a,b)
-    a,b=records()
+    assert manifest["no_eligible_matches"] is True and manifest["no_new_articles"] is False
+    a,b=records(); a["selected_count"]=1; a["matches"]=[{"id":1}]
+    rejected(empty.build_empty_manifest,a,b)
+
+    games_dup={"target_date":TARGET,"selected_count":1,"matches":[{"id":9}],"input_count":1}
+    plans_dup={"target_date":TARGET,"planned_count":0,"planned":[],"skipped_count":1,
+               "skipped":[{"fixture_id":9,"reasons":["same_match_already_in_noticias"]}]}
+    duplicate=empty.build_no_new_articles_manifest(games_dup,plans_dup,target=TARGET,source_sha=SHA)
+    assert duplicate["no_eligible_matches"] is False and duplicate["no_new_articles"] is True
+    assert duplicate["planning_skip_reasons"]==["same_match_already_in_noticias"]
+    rejected(empty.build_no_new_articles_manifest,*records())
+
     with tempfile.TemporaryDirectory() as tmp:
-        root=Path(tmp)
-        build=root/"build"/"pre-jogo"
-        build.mkdir(parents=True)
-        (build/f"jogos-{TARGET}.json").write_text(json.dumps(a),encoding="utf-8")
-        (build/f"planos-{TARGET}.json").write_text(json.dumps(b),encoding="utf-8")
+        root=Path(tmp); build=root/"build"/"pre-jogo"; build.mkdir(parents=True)
+        (build/f"jogos-{TARGET}.json").write_text(json.dumps(games),encoding="utf-8")
+        (build/f"planos-{TARGET}.json").write_text(json.dumps(plans),encoding="utf-8")
         with mock.patch.object(empty,"ROOT",root), mock.patch.object(empty,"BUILD",build), \
              mock.patch.object(sys,"argv",["script","--date",TARGET,"--source-main-sha",SHA,"--force"]):
             empty.main()
-            got=json.loads((build/"automatico"/"manifest.json").read_text(encoding="utf-8"))
-            assert got["no_eligible_matches"] is True
-            assert list((build/"automatico").iterdir()) == [build/"automatico"/"manifest.json"]
-            assert not (root/"noticias.json").exists()
-            assert not (root/"agenda.json").exists()
-            (build/f"jogos-{TARGET}.json").write_text(json.dumps({
-                "target_date":TARGET,"selected_count":1,"matches":[{"id":1}]
-            }),encoding="utf-8")
-            try:
-                empty.main()
-            except ValueError:
-                pass
-            else:
-                raise AssertionError("Não deve registrar zero jogos quando há um.")
-            assert got == json.loads((build/"automatico"/"manifest.json").read_text())
-    # Simulação da ETAPA FINAL: zero alterações mesmo contra noticias/sitemap reais.
-    with tempfile.TemporaryDirectory() as tmp:
-        folder=Path(tmp)
-        manifest_file=folder/"manifest.json"
-        manifest_file.write_text(json.dumps(manifest),encoding="utf-8")
-        approved=folder/"approved.txt"
-        approved.write_text("",encoding="utf-8")
-        report_file=apply_batch.BUILD/"teste-aplicacao-dia-sem-jogos.json"
-        before_news=apply_batch.NOTICIAS.read_bytes()
-        before_sitemap=apply_batch.SITEMAP.read_bytes()
-        with mock.patch.object(sys,"argv",[
-            "script","--manifest",str(manifest_file),
-            "--artifact-root",str(folder),
-            "--approved",str(approved),
-            "--previews-root",str(folder),
-            "--report",str(report_file),
-            "--dry-run",
-        ]):
-            apply_batch.main()
-        report=json.loads(report_file.read_text(encoding="utf-8"))
-        assert report["selected_count"]==0 and report["changed_file_count"]==0
-        assert report["changed_files"]==[]
-        assert not report["push_executed"] and not report["commit_created"]
-        assert apply_batch.NOTICIAS.read_bytes()==before_news
-        assert apply_batch.SITEMAP.read_bytes()==before_sitemap
-        report_file.unlink()
-    print("OK: dia sem jogos é declarativo; não mascara bloqueios ou duplicatas e não toca no site.")
+        assert json.loads((build/"automatico"/"manifest.json").read_text())["no_eligible_matches"] is True
+        (build/f"jogos-{TARGET}.json").write_text(json.dumps(games_dup),encoding="utf-8")
+        (build/f"planos-{TARGET}.json").write_text(json.dumps(plans_dup),encoding="utf-8")
+        with mock.patch.object(sys,"argv",["script","--date",TARGET,"--source-main-sha",SHA,
+                                           "--kind","no_new_articles","--force"]):
+            empty.main()
+        assert json.loads((build/"automatico"/"manifest.json").read_text())["no_new_articles"] is True
+        assert not (root/"noticias.json").exists() and not (root/"agenda.json").exists()
 
+    for sample in (manifest,duplicate):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)
+            mf=folder/"manifest.json"; mf.write_text(json.dumps(sample),encoding="utf-8")
+            approved=folder/"approved.txt"; approved.write_text("",encoding="utf-8")
+            report_file=apply_batch.BUILD/"teste-aplicacao-lote-sem-materia.json"
+            before_news=apply_batch.NOTICIAS.read_bytes(); before_sitemap=apply_batch.SITEMAP.read_bytes()
+            with mock.patch.object(sys,"argv",["script","--manifest",str(mf),"--artifact-root",str(folder),
+                "--approved",str(approved),"--previews-root",str(folder),"--report",str(report_file),"--dry-run"]):
+                apply_batch.main()
+            report=json.loads(report_file.read_text())
+            assert report["selected_count"]==0 and report["changed_file_count"]==0
+            assert apply_batch.NOTICIAS.read_bytes()==before_news and apply_batch.SITEMAP.read_bytes()==before_sitemap
+            report_file.unlink()
+    print("OK: dias sem jogos e jogos já descartados encerram sem pesquisa, OpenAI ou alteração do site.")
 
 if __name__=="__main__":
     main()

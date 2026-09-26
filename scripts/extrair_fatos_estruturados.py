@@ -9,8 +9,8 @@ Passo 23:
 - não redige matéria, não gera HTML e não libera publicação.
 
 Extratores determinísticos habilitados:
-stadium_and_location, transmission, probable_lineups_and_coaches, officiating,
-recent_form_both_teams, competition_specific_head_to_head e
+stadium_and_location, transmission, probable_lineups_and_coaches, team_news_and_availability,
+officiating, recent_form_both_teams, competition_specific_head_to_head e
 stakes_and_qualification_scenarios_when_applicable.
 """
 
@@ -41,6 +41,7 @@ ENABLED_EXTRACTORS = {
     "stadium_and_location",
     "transmission",
     "probable_lineups_and_coaches",
+    "team_news_and_availability",
     "officiating",
     "recent_form_both_teams",
     "competition_specific_head_to_head",
@@ -1165,6 +1166,66 @@ def extract_h2h_requirement(
     )
 
 
+def extract_team_news_requirement(
+    requirement: dict[str, Any],
+    *,
+    match_context: dict[str, Any],
+    config: dict[str, Any],
+) -> dict[str, Any]:
+    """Extrai contexto atual de desfalques/retornos sem inferir disponibilidade."""
+    signal = re.compile(
+        r"\b(?:desfalq|lesion|injur|suspend|suspens|duvida|retorn|return|"
+        r"recuper|trein|training|prepara|ruled out|unavailable|fitness|team news)\w*",
+        flags=re.IGNORECASE,
+    )
+    claims: list[dict[str, Any]] = []
+    found: set[str] = set()
+    teams = [("home", match_context.get("home")), ("away", match_context.get("away"))]
+    for source in eligible_sources(requirement):
+        corpus = source_corpus(source)
+        if not context_mentions_match(corpus, match_context, config):
+            continue
+        for segment in corpus.splitlines():
+            if not signal.search(normalize_text(segment)):
+                continue
+            for side, team in teams:
+                if side in found or not isinstance(team, str):
+                    continue
+                if not relaxed_mentions_team(segment, team, config):
+                    continue
+                value = clean_value(segment, max_chars=360)
+                claim = make_claim(f"{side}_team_news", value, source, segment)
+                if claim:
+                    claims.append(claim)
+                    found.add(side)
+            if len(found) == 2:
+                break
+        if len(found) == 2:
+            break
+    required = [
+        field for field in ("home_team_news", "away_team_news")
+        if any(item.get("field") == field for item in claims)
+    ]
+    if not required:
+        result = base_pending_result(requirement, claims)
+        result["fact_extraction_status"] = "no_supported_team_news"
+        return result
+    home = match_context.get("home", "Mandante")
+    away = match_context.get("away", "Visitante")
+    return finalize_claims(
+        requirement,
+        claims,
+        required_fields=required,
+        fact_builder=lambda v: [
+            *([{"field": "home_team_news", "text": f"Notícias do {home} para o jogo: {v['home_team_news']}."}]
+              if "home_team_news" in v else []),
+            *([{"field": "away_team_news", "text": f"Notícias do {away} para o jogo: {v['away_team_news']}."}]
+              if "away_team_news" in v else []),
+        ],
+        config=config,
+    )
+
+
 def extract_stakes_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -1212,6 +1273,7 @@ def extract_requirement(
         "stadium_and_location": extract_stadium_requirement,
         "transmission": extract_transmission_requirement,
         "probable_lineups_and_coaches": extract_lineups_requirement,
+        "team_news_and_availability": extract_team_news_requirement,
         "officiating": extract_officiating_requirement,
         "recent_form_both_teams": extract_recent_form_requirement,
         "competition_specific_head_to_head": extract_h2h_requirement,

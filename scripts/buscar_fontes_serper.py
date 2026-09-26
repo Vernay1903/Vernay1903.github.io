@@ -317,7 +317,7 @@ def filter_results_for_requirement(
     config: dict[str, Any],
 ) -> list[dict[str, Any]]:
     """Passos 34.5/34.6: evita páginas laterais e páginas genéricas antes da leitura."""
-    service = {"probable_lineups_and_coaches", "transmission", "officiating"}
+    service = {"probable_lineups_and_coaches", "team_news_and_availability", "transmission", "officiating"}
     strict_free_services = (
         os.environ.get("CDE_FREE_RESEARCH") == "1" and requirement_id in service
     )
@@ -341,6 +341,10 @@ def filter_results_for_requirement(
             "probable_lineups_and_coaches": (
                 "escalac", "lineup", "predicted xi", "team news",
                 "alineacion", "desfalqu", "probable",
+            ),
+            "team_news_and_availability": (
+                "team news", "desfalqu", "lesion", "injur", "suspend",
+                "retorn", "return", "training", "treino",
             ),
             "transmission": (
                 "transmiss", "assistir", "watch", "stream", "ao vivo", "tv",
@@ -417,6 +421,12 @@ def expanded_queries(
             f'"{home}" "{away}" probable lineups team news predicted XI {year}',
             f'"{home}" "{away}" prováveis escalações desfalques {year}',
             f'"{home}" "{away}" alineaciones probables bajas {year}',
+        ]
+    elif requirement_id == "team_news_and_availability":
+        extras = [
+            f'"{home}" "{away}" team news injuries suspensions returns {year}',
+            f'"{home}" "{away}" desfalques retornos lesões suspensos {year}',
+            f'"{home}" "{away}" baixas lesionados sancionados regresos {year}',
         ]
     elif requirement_id == "transmission":
         extras = [

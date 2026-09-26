@@ -108,6 +108,7 @@ jobs:
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
           python tests/pre-jogo/teste_status_final_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
+          python tests/pre-jogo/teste_contexto_editorial_extra.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
           import json
@@ -174,23 +175,33 @@ jobs:
           plans = json.loads(Path(f'build/pre-jogo/planos-{date}.json').read_text(encoding='utf-8'))
           if games.get('target_date') != date or plans.get('target_date') != date:
               raise SystemExit('ERRO: relatórios de identificação e planejamento com data divergente.')
-          if games.get('selected_count') == 0:
+          no_matches = games.get('selected_count') == 0
+          no_new = False
+          if no_matches:
               if plans.get('planned_count') != 0 or plans.get('skipped_count') != 0:
                   raise SystemExit('ERRO: plano não vazio para data sem partidas elegíveis.')
-              marker = 'true'
               print('SEM JOGOS ELEGÍVEIS: não consultar RSS nem OpenAI.')
+          elif plans.get('planned_count') == 0:
+              if type(plans.get('skipped_count')) is not int or plans.get('skipped_count') <= 0:
+                  raise SystemExit('ERRO: jogo encontrado, mas o planejamento não registrou matéria nem motivo de descarte.')
+              no_new = True
+              print(f"SEM MATÉRIAS NOVAS: {plans['skipped_count']} confronto(s) já barrado(s) por duplicidade/colisão.")
           else:
-              marker = 'false'
               print(f"JOGOS IDENTIFICADOS: {games['selected_count']}; planejados: {plans['planned_count']}.")
           with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as out:
-              out.write(f'NO_MONITORED_MATCHES={marker}\n')
+              out.write(f"NO_MONITORED_MATCHES={'true' if no_matches else 'false'}\n")
+              out.write(f"NO_NEW_ARTICLES={'true' if no_new else 'false'}\n")
           PY
           if python - <<'PY'
           import json, os
           from pathlib import Path
           d = os.environ['TARGET_DATE']
           games = json.loads(Path(f'build/pre-jogo/jogos-{d}.json').read_text(encoding='utf-8'))
-          raise SystemExit(0 if games.get('selected_count') == 0 else 1)
+          plans = json.loads(Path(f'build/pre-jogo/planos-{d}.json').read_text(encoding='utf-8'))
+          stop = games.get('selected_count') == 0 or (
+              plans.get('planned_count') == 0 and plans.get('skipped_count', 0) > 0
+          )
+          raise SystemExit(0 if stop else 1)
           PY
           then
             exit 0
@@ -199,18 +210,21 @@ jobs:
           python scripts/preparar_pesquisa_factual.py --date "${TARGET_DATE}" --force
           python scripts/planejar_coleta_fontes.py --date "${TARGET_DATE}" --force
 
-      - name: Registrar dia sem jogos sem pesquisa ou OpenAI
-        if: ${{ env.NO_MONITORED_MATCHES == 'true' }}
+      - name: Registrar lote sem matéria sem pesquisa ou OpenAI
+        if: ${{ env.NO_MONITORED_MATCHES == 'true' || env.NO_NEW_ARTICLES == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
+          KIND="no_games"
+          if [ "${NO_NEW_ARTICLES:-false}" = "true" ]; then KIND="no_new_articles"; fi
           python scripts/registrar_preparo_vazio_pre_jogo.py \
             --date "${TARGET_DATE}" \
             --source-main-sha "${SOURCE_MAIN_SHA}" \
+            --kind "${KIND}" \
             --force
 
       - name: Pesquisar e validar fatos em fontes externas
-        if: ${{ env.NO_MONITORED_MATCHES != 'true' }}
+        if: ${{ env.NO_MONITORED_MATCHES != 'true' && env.NO_NEW_ARTICLES != 'true' }}
         shell: bash
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
@@ -242,14 +256,14 @@ jobs:
           git diff --quiet -- config/pre-jogo.json
 
       - name: Montar pacotes editoriais limpos
-        if: ${{ env.NO_MONITORED_MATCHES != 'true' }}
+        if: ${{ env.NO_MONITORED_MATCHES != 'true' && env.NO_NEW_ARTICLES != 'true' }}
         shell: bash
         run: |
           set -euo pipefail
           python scripts/montar_pacote_editorial.py --date "${TARGET_DATE}" --force
 
       - name: Redigir e guardar lote aprovado sem publicar
-        if: ${{ env.NO_MONITORED_MATCHES != 'true' }}
+        if: ${{ env.NO_MONITORED_MATCHES != 'true' && env.NO_NEW_ARTICLES != 'true' }}
         shell: bash
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -596,6 +610,7 @@ jobs:
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
           python tests/pre-jogo/teste_status_final_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
+          python tests/pre-jogo/teste_contexto_editorial_extra.py
           python scripts/recuperar_preparo_pre_jogo_automatico.py --date "${TARGET_DATE}"
           echo "NO_PREP=false" >> "${GITHUB_ENV}"
           echo "RECOVERED_PREP=true" >> "${GITHUB_ENV}"
@@ -633,19 +648,24 @@ jobs:
           ready = manifest['prepared_count']
           blocked = manifest['skipped_count']
           empty = manifest.get('no_eligible_matches') is True
+          no_new = manifest.get('no_new_articles') is True
           planning_skipped = manifest.get('planning_skipped_count', 0)
           if ready != len(manifest.get('articles', [])) or blocked != len(manifest.get('skipped', [])):
               raise SystemExit('ERRO: contagens do lote não correspondem aos registros.')
+          if empty and no_new:
+              raise SystemExit('ERRO: manifesto não pode ser simultaneamente sem jogos e sem matérias novas.')
           if empty and (ready or blocked or planning_skipped):
               raise SystemExit('ERRO: manifesto declara dia sem jogos, mas contém partidas.')
+          if no_new and (ready or blocked or planning_skipped <= 0):
+              raise SystemExit('ERRO: manifesto sem matérias novas não corresponde ao planejamento.')
           if ready == 0 and blocked > 0:
               raise SystemExit(f'ERRO: {blocked} partida(s) bloqueada(s) e nenhuma matéria pronta; publicação incompleta.')
           if ready == 0 and empty:
               print('SEM JOGOS ELEGÍVEIS: zero partidas confirmado, nenhum conteúdo a publicar.')
-          elif ready == 0 and planning_skipped > 0:
+          elif ready == 0 and no_new:
               print(f'SEM MATÉRIAS NOVAS: {planning_skipped} confronto(s) barrado(s) no planejamento (duplicidade/colisão).')
           elif ready == 0:
-              raise SystemExit('ERRO: lote vazio sem comprovação de dia sem jogos ou de duplicidade.')
+              raise SystemExit('ERRO: lote vazio sem comprovação explícita do motivo.')
           else:
               print(f'LOTE ENCONTRADO: {ready} pronta(s); {blocked} bloqueada(s).')
           PY
@@ -735,7 +755,7 @@ jobs:
           report = json.loads(Path('build/pre-jogo/automatico-publicacao.json').read_text(encoding='utf-8'))
           if manifest.get('no_eligible_matches') is True and manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0:
               print('SEM JOGOS ELEGÍVEIS: nenhuma publicação necessária.')
-          elif manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0 and manifest.get('planning_skipped_count', 0) > 0:
+          elif manifest.get('no_new_articles') is True and manifest['prepared_count'] == 0 and manifest['skipped_count'] == 0 and manifest.get('planning_skipped_count', 0) > 0:
               print('SEM MATÉRIAS NOVAS: confrontos barrados no planejamento (duplicidade/colisão).')
           elif report['skipped'] and all(
               item.get('reason') in {'html_already_exists', 'url_already_in_noticias', 'same_match_already_in_noticias'}

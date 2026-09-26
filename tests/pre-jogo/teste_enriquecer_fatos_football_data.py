@@ -63,6 +63,7 @@ def main():
     # Nunca substitui evidência conflitante ou já validada.
     article["requirements"][0]["conflict_detected"]=True
     article["requirements"][1]["status"]="verified"
+    article["requirements"][2]["status"]="verified"
     assert fd.enrich(article,fixture,query,datetime.now(timezone.utc).isoformat(),config)["requirements"]==article["requirements"]
     # Se o adversário não tem jogos suficientes, a pesquisa continua pendente.
     assert fd.latest_form({"matches":[game(home,away,2,1)]},home,kickoff) is None

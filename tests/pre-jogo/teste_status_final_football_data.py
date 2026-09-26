@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Status final da Football-Data: só libera o jogo correto e ainda não iniciado."""
+import io
 import json
 import os
 import sys
 import tempfile
+from contextlib import redirect_stderr
 from copy import deepcopy
 from datetime import datetime,timedelta,timezone
 from pathlib import Path
@@ -51,11 +53,12 @@ def main():
                 ("id",44),
             ):
                 bad=deepcopy(data);bad[field]=invalid
-                with patch.object(status.fixtures_api,"request_json",return_value=(bad,{})):
+                with patch.object(status.fixtures_api,"request_json",return_value=(bad,{})), \
+                     redirect_stderr(io.StringIO()):
                     try: status.validate_status(snapshot,execute=True)
                     except SystemExit: pass
                     else: raise AssertionError(f"Falha do status {field} deveria bloquear.")
-        with patch.dict(os.environ,{"FOOTBALL_DATA_TOKEN":""}):
+        with patch.dict(os.environ,{"FOOTBALL_DATA_TOKEN":""}), redirect_stderr(io.StringIO()):
             try:status.validate_status(snapshot,execute=True)
             except SystemExit:pass
             else:raise AssertionError("Sem token deve bloquear.")

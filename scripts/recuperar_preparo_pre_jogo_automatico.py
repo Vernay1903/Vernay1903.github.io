@@ -96,20 +96,33 @@ def run(target: str) -> None:
     planned = json.loads((BUILD / f"planos-{target}.json").read_text(encoding="utf-8"))
     if games.get("target_date") != target or planned.get("target_date") != target:
         fail("Data da identificação/planejamento divergente na recuperação.")
+    kind = None
     if games.get("selected_count") == 0:
         if games.get("matches") != [] or planned.get("planned_count") != 0 or planned.get("skipped_count") != 0:
             fail("Relatórios não comprovam ausência de jogos elegíveis.")
+        kind = "no_games"
+    elif planned.get("planned_count") == 0:
+        if type(planned.get("skipped_count")) is not int or planned.get("skipped_count") <= 0:
+            fail("Há jogo elegível, mas o planejamento não explicou por que nenhuma matéria foi criada.")
+        kind = "no_new_articles"
+
+    if kind is not None:
         sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
         call(
             "scripts/registrar_preparo_vazio_pre_jogo.py",
-            "--date", target, "--source-main-sha", sha, "--force",
+            "--date", target, "--source-main-sha", sha, "--kind", kind, "--force",
         )
         manifest = json.loads((OUTPUT / "manifest.json").read_text(encoding="utf-8"))
-        if manifest.get("no_eligible_matches") is not True or manifest.get("target_date") != target:
-            fail("Registro de dia sem jogos inválido na recuperação.")
+        expected_flag = "no_eligible_matches" if kind == "no_games" else "no_new_articles"
+        if manifest.get(expected_flag) is not True or manifest.get("target_date") != target:
+            fail("Registro de lote sem matéria inválido na recuperação.")
         shutil.copytree(OUTPUT, SOURCE, dirs_exist_ok=True)
         verify_checkout_unchanged()
-        print("RECUPERAÇÃO: sem jogos dos clubes; sem RSS, OpenAI ou publicação.", flush=True)
+        print(
+            "RECUPERAÇÃO: sem pesquisa/OpenAI; "
+            + ("nenhum jogo dos clubes." if kind == "no_games" else "nenhuma matéria nova após planejamento."),
+            flush=True,
+        )
         return
 
     if not os.environ.get("OPENAI_API_KEY", "").strip():

@@ -200,6 +200,10 @@ REQUIREMENT_KEYWORDS: dict[str, tuple[str, ...]] = {
     "probable_lineups_and_coaches": (
         "escala", "lineup", "team news", "coach", "treinador", "manager", "starting xi",
     ),
+    "team_news_and_availability": (
+        "desfal", "lesão", "lesao", "lesion", "injur", "suspens", "dúvida", "duvida",
+        "retorn", "return", "treino", "training", "prepara", "team news", "ruled out",
+    ),
     "officiating": (
         "árbit", "arbit", "referee", "officiat", "var",
     ),
@@ -444,7 +448,7 @@ def source_supports_cross_requirement_reuse(
         return team_present and outcome and recency
 
     if target_requirement_id in {
-        "transmission", "probable_lineups_and_coaches", "officiating",
+        "transmission", "probable_lineups_and_coaches", "team_news_and_availability", "officiating",
     }:
         kickoff = str(context.get("kickoff_brasilia", ""))
         year = kickoff[:4] if len(kickoff) >= 4 else ""
@@ -480,6 +484,7 @@ def reuse_checked_sources_across_requirements(
         "stadium_and_location",
         "transmission",
         "probable_lineups_and_coaches",
+        "team_news_and_availability",
         "officiating",
         "recent_form_both_teams",
         "competition_specific_head_to_head",

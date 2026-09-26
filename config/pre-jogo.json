@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "timezone": "America/Sao_Paulo",
   "category": {
     "slug": "futebol",
@@ -50,7 +50,8 @@
       "enabled": true,
       "allowed_requirements": [
         "recent_form_both_teams",
-        "competition_specific_head_to_head"
+        "competition_specific_head_to_head",
+        "stakes_and_qualification_scenarios_when_applicable"
       ],
       "never_used_for": [
         "transmission",
@@ -185,6 +186,7 @@
       "stadium_and_location",
       "transmission",
       "probable_lineups_and_coaches",
+      "team_news_and_availability",
       "officiating",
       "recent_form_both_teams",
       "competition_specific_head_to_head",
@@ -287,17 +289,17 @@
       "transmission": {
         "required_for_drafting": true,
         "conditional": false,
-        "allow_unavailable_after_check": true
+        "allow_unavailable_after_check": false
       },
       "probable_lineups_and_coaches": {
         "required_for_drafting": true,
         "conditional": false,
-        "allow_unavailable_after_check": true
+        "allow_unavailable_after_check": false
       },
       "officiating": {
         "required_for_drafting": true,
         "conditional": false,
-        "allow_unavailable_after_check": true
+        "allow_unavailable_after_check": false
       },
       "recent_form_both_teams": {
         "required_for_drafting": true,
@@ -323,9 +325,14 @@
         "required_for_drafting": false,
         "conditional": true,
         "allow_unavailable_after_check": true
+      },
+      "team_news_and_availability": {
+        "required_for_drafting": false,
+        "conditional": true,
+        "allow_unavailable_after_check": true
       }
     },
-    "lineup_rule": "Never invent a probable lineup. If reliable sources diverge, preserve the uncertainty. Lack of a complete reliable projection alone must not block publication.",
+    "lineup_rule": "Never invent a probable lineup. When title or excerpt promise lineups, both teams must have a complete reliable 11-player projection plus coaches; if sources diverge or a complete projection is unavailable, block drafting instead of guessing.",
     "source_rule": "Prefer official club, competition, federation or organizer sources; then major recognized sports outlets; use reliable local press only as supplementary support.",
     "discovery": {
       "mode": "planned_queries",
@@ -466,7 +473,8 @@
       "free_plan_only": true,
       "fields": [
         "recent_form_both_teams",
-        "competition_specific_head_to_head"
+        "competition_specific_head_to_head",
+        "stakes_and_qualification_scenarios_when_applicable"
       ],
       "note": "Recorte explicitamente rotulado; dados não devem substituir informação conflitante nem criar contexto não confirmado."
     }

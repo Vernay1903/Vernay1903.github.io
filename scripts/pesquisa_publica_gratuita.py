@@ -136,7 +136,9 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
     quoted = re.findall(r'"([^"]{3,80})"', q)
     year = next(iter(re.findall(r"\b20\d{2}\b", q)), "")
     folded = q.casefold()
-    if any(x in folded for x in ("lineup", "escala", "alineacion", "compos")):
+    if any(x in folded for x in ("desfalq", "lesao", "lesão", "injur", "team news", "suspend", "retorn")):
+        topic = "desfalques"
+    elif any(x in folded for x in ("lineup", "escala", "alineacion", "compos")):
         topic = "escalações"
     elif any(x in folded for x in ("transmi", "watch", "assistir", "stream", "tv")):
         topic = "onde assistir"

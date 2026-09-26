@@ -27,6 +27,9 @@ BUILD = ROOT / "build" / "pre-jogo"
 API = "https://api.football-data.org/v4"
 TZ = ZoneInfo("America/Sao_Paulo")
 MIN_FORM_GAMES = 2
+LEAGUE_SLUGS = {
+    "premier-league", "la-liga", "ligue-1", "bundesliga", "serie-a", "brasileirao",
+}
 
 
 def require(condition: bool, message: str) -> None:
@@ -156,6 +159,53 @@ def head_to_head(data: dict, home_id: int, away_id: int, comp_code: str, cutoff:
     return count,hw,aw,draw
 
 
+def standings_facts(
+    data: dict,
+    home_id: int,
+    away_id: int,
+    home: str,
+    away: str,
+    competition: str,
+) -> list[dict]:
+    """Extrai posição/pontos atuais apenas da tabela TOTAL do provedor."""
+    standings = data.get("standings")
+    if not isinstance(standings, list):
+        return []
+    block = next(
+        (item for item in standings if isinstance(item, dict) and item.get("type") == "TOTAL"
+         and isinstance(item.get("table"), list)),
+        None,
+    )
+    if block is None:
+        block = next(
+            (item for item in standings if isinstance(item, dict) and isinstance(item.get("table"), list)),
+            None,
+        )
+    if not isinstance(block, dict):
+        return []
+    rows = block.get("table", [])
+    by_id = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        team = row.get("team")
+        if isinstance(team, dict) and type(team.get("id")) is int:
+            by_id[team["id"]] = row
+    facts = []
+    for side, team_id, name in (("home", home_id, home), ("away", away_id, away)):
+        row = by_id.get(team_id)
+        if not isinstance(row, dict):
+            return []
+        position, points, played = row.get("position"), row.get("points"), row.get("playedGames")
+        if type(position) is not int or type(points) is not int or position <= 0 or points < 0:
+            return []
+        text = f"Situação do {name} na {competition}: {position}º lugar, {points} pontos"
+        if type(played) is int and played >= 0:
+            text += f" em {played} jogos"
+        facts.append({"field": f"{side}_league_table", "text": text + "."})
+    return facts
+
+
 def validated_update(req: dict, facts: list[dict], urls: list[str], now: str, config: dict) -> dict:
     if req.get("status") == "verified" or req.get("conflict_detected") is True: return req
     evidence = {"status": "verified", "facts": facts,
@@ -242,7 +292,11 @@ def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
             f.get("field") for f in recent_req.get("facts", []) if isinstance(f, dict)
         })
     )
-    if not needed.intersection({"recent_form_both_teams","competition_specific_head_to_head"}) and not recent_needs_details:
+    if not needed.intersection({
+        "recent_form_both_teams",
+        "competition_specific_head_to_head",
+        "stakes_and_qualification_scenarios_when_applicable",
+    }) and not recent_needs_details:
         return result
 
     home=ctx.get("home");away=ctx.get("away");competition=ctx.get("competition")
@@ -280,6 +334,17 @@ def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
                  {"field":"h2h_away_wins","text":f"Vitórias do {away} {qualifier}: {aw}."},
                  {"field":"h2h_draws","text":f"Empates {qualifier}: {draw}."}],
                 [API+endpoint])
+
+    if (
+        "stakes_and_qualification_scenarios_when_applicable" in needed
+        and ctx.get("competition_slug") in LEAGUE_SLUGS
+    ):
+        endpoint=f"/competitions/{code}/standings"
+        table_facts=standings_facts(query(endpoint),home_id,away_id,home,away,competition)
+        if table_facts:
+            supplements["stakes_and_qualification_scenarios_when_applicable"]=(
+                table_facts,[API+endpoint]
+            )
 
     updated=[]
     for req in requirements:
