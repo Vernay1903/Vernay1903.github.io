@@ -536,30 +536,10 @@ jobs:
             gh run download "${RUN_ID}" --repo "${GITHUB_REPOSITORY}" --name "${ARTIFACT_NAME}" --dir "${TMP}"
             MANIFEST=$(find "${TMP}" -maxdepth 3 -type f -name manifest.json -print -quit)
             [ -n "${MANIFEST}" ] || continue
-            if python - "${MANIFEST}" "${TARGET_DATE}" <<'PY'
-          import json, sys
-          from datetime import datetime, timedelta
-          from pathlib import Path
-          from zoneinfo import ZoneInfo
-          data = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
-          if data.get('step') != 34 or data.get('target_date') != sys.argv[2]:
-              raise SystemExit(1)
-          raw = data.get('generated_at')
-          try:
-              generated = datetime.fromisoformat(raw)
-          except Exception:
-              raise SystemExit(1)
-          if generated.tzinfo is None:
-              raise SystemExit(1)
-          target = datetime.strptime(sys.argv[2], '%Y-%m-%d').replace(tzinfo=ZoneInfo('America/Sao_Paulo'))
-          # O GitHub pode atrasar crons por horas. O cutoff de cada jogo e o
-          # check oficial final continuam obrigatórios na publicação.
-          local_generated = generated.astimezone(ZoneInfo('America/Sao_Paulo'))
-          now = datetime.now(ZoneInfo('America/Sao_Paulo'))
-          if not (target - timedelta(hours=2) <= local_generated <= now and now.date() == target.date()):
-              raise SystemExit(1)
-          raise SystemExit(0)
-          PY
+            if python scripts/validar_artifact_pre_jogo.py \
+              --manifest "${MANIFEST}" \
+              --date "${TARGET_DATE}" \
+              --base-main-sha "${BASE_MAIN_SHA}"
             then
               cp -R "$(dirname "${MANIFEST}")"/. "${AUTO_SOURCE}/"
               echo "SOURCE_PREP_RUN_ID=${RUN_ID}" >> "${GITHUB_ENV}"
