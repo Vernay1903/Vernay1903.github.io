@@ -205,14 +205,20 @@ def valid_body() -> str:
         "no mesmo recorte. Entre essas tendências, o resultado será definido pelo que cada equipe conseguir executar no Emirates Stadium durante "
         "os noventa minutos.</p>"
     )
-    filler = "".join(
-        "<p>Em partidas desse nível, o equilíbrio entre iniciativa e cautela costuma orientar as decisões. Quem conseguir proteger melhor a bola, "
-        "reduzir erros em zonas perigosas e manter organização depois de perder a posse terá condições de sustentar períodos maiores de domínio. "
-        "A intensidade também pode mudar ao longo do confronto, exigindo leitura rápida para alternar pressão, circulação e ataques mais verticais "
-        "sem abandonar a estrutura defensiva. Essa combinação ajuda a explicar por que um jogo entre Arsenal e Manchester City pode mudar de "
-        "característica várias vezes antes do apito final.</p>"
-        for _ in range(4)
-    )
+    filler = "".join([
+        "<p>Na construção ofensiva, o controle da primeira fase pode determinar onde cada equipe conseguirá instalar seu jogo. O Arsenal precisa "
+        "evitar perdas próximas à própria área, enquanto o Manchester City tende a exigir precisão nas coberturas e atenção às aproximações pelo "
+        "meio. Esse duelo de organização ajuda a sustentar a leitura do confronto sem substituir os dados objetivos já apresentados.</p>",
+        "<p>Na recomposição defensiva, a distância entre os setores será outro ponto relevante para a dinâmica da partida. Uma equipe que avance "
+        "sem proteção suficiente pode oferecer espaços para transições, enquanto uma postura excessivamente baixa pode facilitar a circulação do "
+        "adversário perto da área. O equilíbrio entre pressão e segurança será parte do desenvolvimento do jogo.</p>",
+        "<p>As bolas paradas também podem ganhar importância em um confronto equilibrado, sobretudo se as chances claras forem escassas durante "
+        "os primeiros minutos. Escanteios e faltas laterais exigem concentração na marcação e qualidade na execução, mas o contexto do jogo continuará "
+        "dependendo principalmente das escolhas coletivas e da eficiência nas duas áreas.</p>",
+        "<p>Na gestão do ritmo, Arsenal e Manchester City terão de reconhecer os momentos de acelerar e de controlar a posse. A capacidade de "
+        "reduzir erros quando o adversário cresce e aproveitar períodos de superioridade territorial pode influenciar o resultado. O cenário reforça "
+        "a necessidade de decisões precisas durante os noventa minutos no Emirates Stadium.</p>",
+    ])
     return intro + context + form + lineups + h2h + watch + finish + filler
 
 
