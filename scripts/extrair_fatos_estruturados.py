@@ -576,7 +576,15 @@ def finalize_claims(
         return result
 
     selected_urls: set[str] = set()
-    for field in required_fields:
+    # Incluir também as fontes de fatos opcionais efetivamente publicados no
+    # contrato, não apenas os campos mínimos que destravam o requisito.
+    fact_fields = {
+        fact.get("field") for fact in facts
+        if isinstance(fact, dict) and isinstance(fact.get("field"), str)
+    }
+    for field in set(required_fields) | fact_fields:
+        if field not in grouped or not grouped[field]:
+            continue
         group = next(iter(grouped[field].values()))
         selected_urls.update(
             str(item.get("url")) for item in group["supporting_sources"] if item.get("url")
@@ -789,6 +797,68 @@ def extract_team_labeled_claims(
     return claims
 
 
+TEAM_NEWS_PATTERNS = (
+    r"\\bdesfalques?\\b", r"\\bles(?:a|ã)o\\b", r"\\blesionad[oa]s?\\b",
+    r"\\bsuspens[oa]s?\\b", r"\\bsuspens[aã]o\\b", r"\\bd[uú]vida\\b",
+    r"\\bretorn(?:a|o|am|ou)\\b", r"\\bvolta\\b", r"\\bfora\\s+do\\s+jogo\\b",
+    r"\\binjur(?:y|ed|ies)\\b", r"\\bsuspended\\b", r"\\bdoubtful\\b",
+    r"\\bruled\\s+out\\b", r"\\bunavailable\\b", r"\\breturns?\\b",
+    r"\\bback\\s+in\\s+contention\\b", r"\\bmiss(?:es|ing)?\\b",
+    r"\\bbajas?\\b", r"\\blesionad[oa]s?\\b", r"\\bsancionad[oa]s?\\b",
+    r"\\bregresa\\b", r"\\bvuelve\\b",
+    r"\\bverletzt\\b", r"\\bgesperrt\\b", r"\\bfraglich\\b", r"\\bzuruck\\b",
+    r"\\blesse\\b", r"\\bsuspendu\\b", r"\\bforfait\\b", r"\\bretour\\b", r"\\bincertain\\b",
+    r"\\binfortunato\\b", r"\\bsqualificato\\b", r"\\bdubbio\\b", r"\\brientra\\b",
+)
+
+
+def extract_optional_team_news_claims(
+    requirement: dict[str, Any],
+    *,
+    match_context: dict[str, Any],
+    config: dict[str, Any],
+    max_per_team: int = 3,
+) -> list[dict[str, Any]]:
+    """Extrai disponibilidade/desfalques sem inferir clube ou condição médica.
+
+    A frase precisa citar a própria equipe e conter marcador explícito de
+    ausência, dúvida, suspensão ou retorno. O texto é preservado como evidência
+    factual; o redator apenas o traduz/parafraseia depois.
+    """
+    teams = [("home", match_context.get("home")), ("away", match_context.get("away"))]
+    collected: dict[str, list[tuple[str, dict[str, Any], str]]] = {"home": [], "away": []}
+    seen: dict[str, set[str]] = {"home": set(), "away": set()}
+
+    for source in eligible_sources(requirement):
+        corpus = source_corpus(source)
+        if not corpus or not context_mentions_match(corpus, match_context, config):
+            continue
+        for segment in corpus.splitlines():
+            for sentence in re.split(r"(?<=[.!?])\\s+", segment):
+                value = clean_value(sentence, max_chars=360)
+                if len(value.split()) < 5:
+                    continue
+                folded = normalize_text(value)
+                if not any(re.search(pattern, folded, flags=re.IGNORECASE) for pattern in TEAM_NEWS_PATTERNS):
+                    continue
+                for side, team in teams:
+                    if not isinstance(team, str) or not relaxed_mentions_team(value, team, config):
+                        continue
+                    key = normalize_text(value)
+                    if key in seen[side]:
+                        continue
+                    seen[side].add(key)
+                    collected[side].append((value, source, sentence))
+
+    claims: list[dict[str, Any]] = []
+    for side in ("home", "away"):
+        for index, (value, source, sentence) in enumerate(collected[side][:max_per_team], start=1):
+            claim = make_claim(f"{side}_team_news_{index}", value, source, sentence)
+            if claim:
+                claims.append(claim)
+    return claims
+
+
 def extract_lineups_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -815,18 +885,36 @@ def extract_lineups_requirement(
         field_suffix="coach",
         max_chars=100,
     ))
+    claims.extend(extract_optional_team_news_claims(
+        requirement,
+        match_context=match_context,
+        config=config,
+    ))
     home = match_context.get("home", "Mandante")
     away = match_context.get("away", "Visitante")
+
+    def build_lineup_facts(values: dict[str, str]) -> list[dict[str, str]]:
+        facts = [
+            {"field": "home_lineup", "text": f"Provável escalação do {home}: {values['home_lineup']}."},
+            {"field": "home_coach", "text": f"Técnico do {home}: {values['home_coach']}."},
+            {"field": "away_lineup", "text": f"Provável escalação do {away}: {values['away_lineup']}."},
+            {"field": "away_coach", "text": f"Técnico do {away}: {values['away_coach']}."},
+        ]
+        for side, team in (("home", home), ("away", away)):
+            for index in range(1, 4):
+                field = f"{side}_team_news_{index}"
+                if field in values:
+                    facts.append({
+                        "field": field,
+                        "text": f"Informação de elenco do {team}: {values[field]}",
+                    })
+        return facts
+
     return finalize_claims(
         requirement,
         claims,
         required_fields=["home_lineup", "away_lineup", "home_coach", "away_coach"],
-        fact_builder=lambda v: [
-            {"field": "home_lineup", "text": f"Provável escalação do {home}: {v['home_lineup']}."},
-            {"field": "home_coach", "text": f"Técnico do {home}: {v['home_coach']}."},
-            {"field": "away_lineup", "text": f"Provável escalação do {away}: {v['away_lineup']}."},
-            {"field": "away_coach", "text": f"Técnico do {away}: {v['away_coach']}."},
-        ],
+        fact_builder=build_lineup_facts,
         config=config,
     )
 
