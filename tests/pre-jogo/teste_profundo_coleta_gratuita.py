@@ -94,9 +94,11 @@ def main():
       "<h2>Provável Manchester City:</h2><ul>"
       + "".join(f"<li>{name}</li>" for name in names_a)
       + "<li>Técnico: Exemplo Alfa</li></ul>"
+      + "<p>Manchester City terá o retorno do Jogador Alfa1 após lesão muscular.</p>"
       + "<h2>Provável Sunderland AFC:</h2><ul>"
       + "".join(f"<li>{name}</li>" for name in names_b)
-      + "<li>Técnico: Exemplo Beta</li></ul></main>"
+      + "<li>Técnico: Exemplo Beta</li></ul>"
+      + "<p>Sunderland AFC terá o desfalque de Reserva Beta, lesionado no último treino.</p></main>"
     )
     parser=public.TextExtractor()
     parser.feed(markup)
@@ -133,11 +135,15 @@ def main():
     assert "away_lineup" in seen,seen
     assert "home_coach" in seen and seen["home_coach"]=="Exemplo Alfa",seen
     assert "away_coach" in seen and seen["away_coach"]=="Exemplo Beta",seen
+    assert "home_team_news_1" in seen and "lesão muscular" in seen["home_team_news_1"],seen
+    assert "away_team_news_1" in seen and "desfalque" in seen["away_team_news_1"],seen
+    fact_fields={item.get("field") for item in value.get("facts",[]) if isinstance(item,dict)}
+    assert {"home_team_news_1","away_team_news_1"}.issubset(fact_fields),value.get("facts")
     assert value["status"] == "verified",value.get("validator_errors",value)
     assert names_a[0] in seen["home_lineup"] and names_a[-1] in seen["home_lineup"]
     assert names_b[0] in seen["away_lineup"] and names_b[-1] in seen["away_lineup"]
     assert not any("Jogador Gama" in str(x) for x in claims)
-    print("OK: detalhes reais gratuitos, busca de 2026 e dois times com 11 nomes de HTML.")
+    print("OK: placares, 22 titulares, técnicos, desfalques e retornos verificados chegam ao contrato.")
 
 
 if __name__=="__main__":
