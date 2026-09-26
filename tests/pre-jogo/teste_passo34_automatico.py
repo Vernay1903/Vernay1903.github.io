@@ -4,7 +4,9 @@ from __future__ import annotations
 import json
 import sys
 import tempfile
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
@@ -15,6 +17,7 @@ from scripts import buscar_fontes_serper as source_search
 from scripts import extrair_fatos_openai as grounded_extractor
 from scripts import ler_fontes_candidatas as page_reader
 from scripts import preparar_lote_pre_jogo_automatico as prepare_batch
+from scripts import validar_artifact_pre_jogo as artifact_gate
 
 
 def main() -> None:
@@ -266,6 +269,27 @@ def main() -> None:
         digest = prepare_batch.sha256_file(json_path)
         assert len(digest) == 64
         assert digest == apply_batch.sha256_file(json_path)
+
+    sha = "a" * 40
+    now = datetime(2026, 9, 30, 5, 0, tzinfo=ZoneInfo("America/Sao_Paulo"))
+    prepared = {
+        "step": 34,
+        "target_date": "2026-09-30",
+        "source_main_sha": sha,
+        "generated_at": "2026-09-30T04:45:00-03:00",
+    }
+    artifact_gate.validate_manifest(
+        prepared, target_date="2026-09-30", base_main_sha=sha, now=now
+    )
+    stale_sha = dict(prepared, source_main_sha="b" * 40)
+    try:
+        artifact_gate.validate_manifest(
+            stale_sha, target_date="2026-09-30", base_main_sha=sha, now=now
+        )
+    except ValueError as exc:
+        assert "outro SHA" in str(exc)
+    else:
+        raise AssertionError("Artifact preparado sobre main antiga deve ser rejeitado.")
 
     print("OK: travas centrais do Passo 34 e ajustes 34.5/34.6 validados.")
 
