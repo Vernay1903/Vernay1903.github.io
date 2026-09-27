@@ -5,7 +5,8 @@ on:
     workflows: ["Agenda Guard"]
     types: [completed]
   schedule:
-    - cron: "10 3 * * *"
+    - cron: "5,15,30,45 3 * * *"
+    - cron: "0,15 4 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,7 +22,7 @@ jobs:
   publicar:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Conferir PR, Agenda Guard e publicar sem bypass
         uses: actions/github-script@v7
@@ -29,22 +30,67 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const repoName = owner + '/' + repo;
-            const parts = Object.fromEntries(
-              new Intl.DateTimeFormat('en-US', {
-                timeZone: 'America/Sao_Paulo',
-                year: 'numeric', month: '2-digit', day: '2-digit'
-              }).formatToParts(new Date()).map(({type, value}) => [type, value])
-            );
-            const date = parts.year + '-' + parts.month + '-' + parts.day;
-            const branch = 'agenda-auto-' + date;
+            const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+            function saoParts() {
+              const p = Object.fromEntries(
+                new Intl.DateTimeFormat('en-US', {
+                  timeZone: 'America/Sao_Paulo',
+                  year: 'numeric', month: '2-digit', day: '2-digit',
+                  hour: '2-digit', minute: '2-digit', second: '2-digit',
+                  hourCycle: 'h23'
+                }).formatToParts(new Date()).map(({type, value}) => [type, value])
+              );
+              return {
+                date: p.year + '-' + p.month + '-' + p.day,
+                hour: Number(p.hour),
+                minute: Number(p.minute),
+                second: Number(p.second)
+              };
+            }
+
+            function addDays(date, days) {
+              const [y, m, d] = date.split('-').map(Number);
+              const dt = new Date(Date.UTC(y, m - 1, d + days));
+              return dt.toISOString().slice(0, 10);
+            }
+
+            let local = saoParts();
+            let date = local.date;
+            let branch = 'agenda-auto-' + date;
+            let triggeringGuard = null;
 
             if (context.eventName === 'workflow_run') {
               const run = context.payload.workflow_run;
-              if (run.event !== 'pull_request' ||
-                  run.path !== '.github/workflows/agenda-guard.yml' ||
-                  run.head_branch !== branch) {
-                core.info('Evento não pertence à agenda de hoje. Nada a publicar.');
+              const match = /^agenda-auto-(\d{4}-\d{2}-\d{2})$/.exec(run.head_branch || '');
+
+              if (run.event !== 'pull_request' || !match) {
+                core.info('Evento não pertence a uma branch automática válida. Nada a publicar.');
                 return;
+              }
+
+              date = match[1];
+              branch = run.head_branch;
+              triggeringGuard = run;
+
+              // O agendador pode disparar a tarefa das 00:01 alguns minutos antes.
+              // Se a branch já for do dia seguinte e faltarem no máximo 10 minutos
+              // para a meia-noite em Brasília, espere a virada antes de publicar.
+              if (date !== local.date) {
+                const tomorrow = addDays(local.date, 1);
+                if (date === tomorrow && local.hour === 23 && local.minute >= 50) {
+                  const waitMs = (((60 - local.minute) * 60) - local.second) * 1000 + 5000;
+                  if (waitMs <= 10 * 60 * 1000) {
+                    core.info('Branch do próximo dia criada antes da meia-noite; aguardando a virada em Brasília.');
+                    await sleep(waitMs);
+                    local = saoParts();
+                  }
+                }
+
+                if (date !== local.date) {
+                  core.info('Branch ' + branch + ' não corresponde à data atual em Brasília. Nada a publicar.');
+                  return;
+                }
               }
             }
 
@@ -52,11 +98,13 @@ jobs:
               owner, repo, state: 'open', base: 'main',
               head: owner + ':' + branch, per_page: 100
             });
+
             if (prs.length === 0) {
-              core.info('Nenhum PR aberto da agenda de hoje. Nenhum arquivo alterado.');
+              core.info('Nenhum PR aberto da agenda de ' + date + '. Nenhum arquivo alterado.');
               return;
             }
-            if (prs.length !== 1) throw new Error('Há mais de um PR da agenda de hoje.');
+            if (prs.length !== 1) throw new Error('Há mais de um PR da agenda de ' + date + '.');
+
             const number = prs[0].number;
             let pr = (await github.rest.pulls.get({owner, repo, pull_number: number})).data;
             const sha = pr.head.sha;
@@ -66,7 +114,7 @@ jobs:
                   p.base.ref !== 'main' || p.head.ref !== branch ||
                   p.head.repo.full_name !== repoName ||
                   p.base.repo.full_name !== repoName || p.head.sha !== sha) {
-                throw new Error('PR, branch, base ou SHA não corresponde à agenda de hoje.');
+                throw new Error('PR, branch, base ou SHA não corresponde à agenda esperada.');
               }
             }
             checkPr(pr);
@@ -80,20 +128,25 @@ jobs:
               throw new Error('A publicação exige alteração exclusiva de agenda.json.');
             }
 
-            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
-              owner, repo, workflow_id: 'agenda-guard.yml',
-              branch, event: 'pull_request', per_page: 100
-            });
-            const guard = runs.find(r =>
-              r.head_sha === sha && r.status === 'completed' &&
-              r.conclusion === 'success' &&
-              r.pull_requests.some(p => p.number === number)
-            );
-            if (!guard) throw new Error('Agenda Guard não aprovado para HEAD atual.');
-            if (context.eventName === 'workflow_run' &&
-                context.payload.workflow_run.id !== guard.id) {
-              core.info('Existe outra execução mais recente aprovada para este HEAD.');
+            let guard = null;
+            if (triggeringGuard &&
+                triggeringGuard.head_sha === sha &&
+                triggeringGuard.status === 'completed' &&
+                triggeringGuard.conclusion === 'success' &&
+                triggeringGuard.pull_requests.some(p => p.number === number)) {
+              guard = triggeringGuard;
+            } else {
+              const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+                owner, repo, workflow_id: 'agenda-guard.yml',
+                branch, event: 'pull_request', per_page: 100
+              });
+              guard = runs.find(r =>
+                r.head_sha === sha && r.status === 'completed' &&
+                r.conclusion === 'success' &&
+                r.pull_requests.some(p => p.number === number)
+              );
             }
+            if (!guard) throw new Error('Agenda Guard não aprovado para o HEAD atual.');
 
             const response = await github.rest.repos.getContent({
               owner, repo, path: 'agenda.json', ref: sha
@@ -104,6 +157,7 @@ jobs:
             const source = Buffer.from(response.data.content, 'base64').toString('utf8');
             const agenda = JSON.parse(source);
             if (!Array.isArray(agenda)) throw new Error('agenda.json deve ser uma lista.');
+
             let last = '';
             for (const entry of agenda) {
               if (!entry || typeof entry !== 'object' || Array.isArray(entry) ||
@@ -117,13 +171,13 @@ jobs:
               last = entry.time;
             }
 
-            // Se o titular já publicou manualmente a mesma agenda, não faça merge redundante.
             const mainFile = await github.rest.repos.getContent({
               owner, repo, path: 'agenda.json', ref: 'main'
             });
             if (Array.isArray(mainFile.data)) {
               throw new Error('agenda.json da main não é um arquivo.');
             }
+
             let mainAgenda = null;
             try {
               mainAgenda = JSON.parse(
@@ -132,15 +186,25 @@ jobs:
             } catch (error) {
               core.info('agenda.json atual da main não é JSON válido; o PR deverá corrigi-lo.');
             }
+
+            // Se a pesquisa de hoje resultar no mesmo conteúdo já publicado,
+            // encerra o PR redundante para não deixar pendências antigas.
             if (JSON.stringify(mainAgenda) === JSON.stringify(agenda)) {
-              core.info('Agenda de hoje já está na main; PR não será mesclado.');
+              await github.rest.pulls.update({
+                owner, repo, pull_number: number, state: 'closed'
+              });
+              core.notice(
+                'Agenda de ' + date + ' já estava correta na main; PR #' +
+                number + ' encerrado sem merge redundante.'
+              );
               return;
             }
 
             let ready = false;
-            for (let attempt = 0; attempt < 4; attempt++) {
+            for (let attempt = 0; attempt < 10; attempt++) {
               pr = (await github.rest.pulls.get({owner, repo, pull_number: number})).data;
               checkPr(pr);
+
               if (pr.mergeable === true && pr.mergeable_state === 'clean') {
                 ready = true;
                 break;
@@ -148,9 +212,10 @@ jobs:
               if (pr.mergeable === false || ['dirty', 'blocked'].includes(pr.mergeable_state)) {
                 throw new Error('GitHub bloqueou merge: ' + pr.mergeable_state);
               }
-              await new Promise(resolve => setTimeout(resolve, 3000));
+
+              await sleep(3000);
             }
-            if (!ready) throw new Error('GitHub não confirmou mergeable=true / clean.');
+            if (!ready) throw new Error('GitHub não confirmou mergeable=true / clean após novas consultas.');
 
             const result = await github.rest.pulls.merge({
               owner, repo, pull_number: number, sha,
@@ -170,6 +235,7 @@ jobs:
             if (JSON.stringify(published) !== JSON.stringify(agenda)) {
               throw new Error('Merge feito, mas conteúdo da main diverge da agenda aprovada.');
             }
+
             core.notice(
               'Agenda de ' + date + ': ' + agenda.length + ' jogo(s); PR #' +
               number + '; merge ' + result.data.sha
