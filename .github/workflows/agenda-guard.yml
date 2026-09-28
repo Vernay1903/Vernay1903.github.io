@@ -70,6 +70,17 @@ jobs:
                   raise SystemExit(f'Horário inválido no item {i}: {item.get("time")!r}')
               if not isinstance(item['desc'], str) or not item['desc'].strip():
                   raise SystemExit(f'Descrição inválida no item {i}.')
+              if ' - ' not in item['desc']:
+                  raise SystemExit(f'Descrição sem competição no item {i}.')
+              competition = item['desc'].rsplit(' - ', 1)[1].strip()
+              if not any(pattern.fullmatch(competition) for pattern in allowed_competitions):
+                  raise SystemExit(
+                      f'Competição fora do escopo automático no item {i}: {competition!r}'
+                  )
+              signature = (item['time'], item['desc'])
+              if signature in seen:
+                  raise SystemExit(f'Jogo duplicado no item {i}: {item["desc"]!r}')
+              seen.add(signature)
               if previous is not None and item['time'] < previous:
                   raise SystemExit('Os jogos precisam estar ordenados por horário.')
               previous = item['time']
