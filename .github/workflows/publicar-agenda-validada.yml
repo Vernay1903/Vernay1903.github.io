@@ -134,17 +134,22 @@ jobs:
                 owner, repo, state: 'all', base: 'main',
                 head: owner + ':' + branch, per_page: 100
               });
-              const mergedPr = previousPrs.find(p => p.merged_at);
-              if (mergedPr) {
-                core.notice('Agenda de ' + date + ' já foi publicada pelo PR #' + mergedPr.number + '.');
-                return;
-              }
-              const closedPr = previousPrs.find(p => p.state === 'closed');
-              if (closedPr) {
-                throw new Error(
-                  'Existe PR #' + closedPr.number + ' fechado sem merge para ' + branch +
-                  '; recuperação automática interrompida.'
-                );
+              for (const previous of previousPrs) {
+                const details = (await github.rest.pulls.get({
+                  owner, repo, pull_number: previous.number
+                })).data;
+                if (details.merged_at) {
+                  core.notice(
+                    'Agenda de ' + date + ' já foi publicada pelo PR #' + details.number + '.'
+                  );
+                  return;
+                }
+                if (details.state === 'closed') {
+                  throw new Error(
+                    'Existe PR #' + details.number + ' fechado sem merge para ' + branch +
+                    '; recuperação automática interrompida.'
+                  );
+                }
               }
 
               const comparison = (await github.rest.repos.compareCommits({
@@ -153,6 +158,15 @@ jobs:
               const recoveryFiles = comparison.files || [];
 
               if ((comparison.ahead_by || 0) === 0) {
+                // A primeira checagem das 00:05 pode coincidir com a escrita ainda em andamento.
+                // Dê uma janela curta e só trate como falha persistente a partir de 00:15.
+                if (local.hour === 0 && local.minute < 15) {
+                  core.info(
+                    'Branch ' + branch +
+                    ' ainda está sem commit próprio; aguardando a próxima checagem antes de declarar falha.'
+                  );
+                  return;
+                }
                 throw new Error(
                   'Branch ' + branch +
                   ' foi criada, mas não contém commit próprio. A execução falhou antes de gravar agenda.json.'
