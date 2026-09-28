@@ -63,7 +63,92 @@ jobs:
               re.compile(r'^La Liga$'),
               re.compile(r'^Premier League$'),
               re.compile(r'^Bundesliga$'),
-              re.compile(r'^Ligue 1$'),
+              re.compile(r'^Ligue 1              re.compile(r'^(?:Serie A italiana|Campeonato Italiano)$'),
+              re.compile(r'^.*Champions League$'),
+              re.compile(r'^.*Europa League$'),
+              re.compile(r'^.*Copa do Brasil$'),
+              re.compile(r'^.*Libertadores$'),
+              re.compile(r'^.*Sul-Americana$'),
+              re.compile(r'^Brasileirão Série A$'),
+              re.compile(r'^Brasileirão Série B$'),
+          ]
+          previous = None
+          seen = set()
+
+          for i, item in enumerate(data, start=1):
+              if not isinstance(item, dict):
+                  raise SystemExit(f'Item {i} precisa ser um objeto JSON.')
+              if set(item.keys()) != {'time', 'desc'}:
+                  raise SystemExit(f'Item {i} deve ter somente as chaves time e desc.')
+              if not isinstance(item['time'], str) or not time_re.fullmatch(item['time']):
+                  raise SystemExit(f'Horário inválido no item {i}: {item.get("time")!r}')
+              if not isinstance(item['desc'], str) or not item['desc'].strip():
+                  raise SystemExit(f'Descrição inválida no item {i}.')
+              if ' - ' not in item['desc']:
+                  raise SystemExit(f'Descrição sem competição no item {i}.')
+              competition = item['desc'].rsplit(' - ', 1)[1].strip()
+              if not any(pattern.fullmatch(competition) for pattern in allowed_competitions):
+                  raise SystemExit(
+                      f'Competição fora do escopo automático no item {i}: {competition!r}'
+                  )
+              signature = (item['time'], item['desc'])
+              if signature in seen:
+                  raise SystemExit(f'Jogo duplicado no item {i}: {item["desc"]!r}')
+              seen.add(signature)
+              if previous is not None and item['time'] < previous:
+                  raise SystemExit('Os jogos precisam estar ordenados por horário.')
+              previous = item['time']
+
+          print(f'agenda.json válido: {len(data)} jogo(s).')
+          PY
+
+      - name: Manual PR allowed
+        if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'agenda-auto-')
+        run: echo "PR manual detectado; Agenda Guard não restringe arquivos fora da automação da agenda."
+),
+              re.compile(r'^(?:Liga das Nações|Nations League|UEFA Nations League)              re.compile(r'^(?:Serie A italiana|Campeonato Italiano)$'),
+              re.compile(r'^.*Champions League$'),
+              re.compile(r'^.*Europa League$'),
+              re.compile(r'^.*Copa do Brasil$'),
+              re.compile(r'^.*Libertadores$'),
+              re.compile(r'^.*Sul-Americana$'),
+              re.compile(r'^Brasileirão Série A$'),
+              re.compile(r'^Brasileirão Série B$'),
+          ]
+          previous = None
+          seen = set()
+
+          for i, item in enumerate(data, start=1):
+              if not isinstance(item, dict):
+                  raise SystemExit(f'Item {i} precisa ser um objeto JSON.')
+              if set(item.keys()) != {'time', 'desc'}:
+                  raise SystemExit(f'Item {i} deve ter somente as chaves time e desc.')
+              if not isinstance(item['time'], str) or not time_re.fullmatch(item['time']):
+                  raise SystemExit(f'Horário inválido no item {i}: {item.get("time")!r}')
+              if not isinstance(item['desc'], str) or not item['desc'].strip():
+                  raise SystemExit(f'Descrição inválida no item {i}.')
+              if ' - ' not in item['desc']:
+                  raise SystemExit(f'Descrição sem competição no item {i}.')
+              competition = item['desc'].rsplit(' - ', 1)[1].strip()
+              if not any(pattern.fullmatch(competition) for pattern in allowed_competitions):
+                  raise SystemExit(
+                      f'Competição fora do escopo automático no item {i}: {competition!r}'
+                  )
+              signature = (item['time'], item['desc'])
+              if signature in seen:
+                  raise SystemExit(f'Jogo duplicado no item {i}: {item["desc"]!r}')
+              seen.add(signature)
+              if previous is not None and item['time'] < previous:
+                  raise SystemExit('Os jogos precisam estar ordenados por horário.')
+              previous = item['time']
+
+          print(f'agenda.json válido: {len(data)} jogo(s).')
+          PY
+
+      - name: Manual PR allowed
+        if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'agenda-auto-')
+        run: echo "PR manual detectado; Agenda Guard não restringe arquivos fora da automação da agenda."
+),
               re.compile(r'^(?:Serie A italiana|Campeonato Italiano)$'),
               re.compile(r'^.*Champions League$'),
               re.compile(r'^.*Europa League$'),
