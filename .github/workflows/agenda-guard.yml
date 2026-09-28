@@ -59,7 +59,21 @@ jobs:
               raise SystemExit('agenda.json precisa conter uma lista JSON.')
 
           time_re = re.compile(r'^(?:[01]\d|2[0-3]):[0-5]\d$')
+          allowed_competitions = [
+              re.compile(r'^La Liga$'),
+              re.compile(r'^Premier League$'),
+              re.compile(r'^Bundesliga$'),
+              re.compile(r'^(?:Serie A italiana|Campeonato Italiano)$'),
+              re.compile(r'^.*Champions League$'),
+              re.compile(r'^.*Europa League$'),
+              re.compile(r'^.*Copa do Brasil$'),
+              re.compile(r'^.*Libertadores$'),
+              re.compile(r'^.*Sul-Americana$'),
+              re.compile(r'^Brasileirão Série A$'),
+              re.compile(r'^Brasileirão Série B$'),
+          ]
           previous = None
+          seen = set()
 
           for i, item in enumerate(data, start=1):
               if not isinstance(item, dict):
