@@ -55,6 +55,14 @@ jobs:
               return dt.toISOString().slice(0, 10);
             }
 
+            function canonicalAgenda(value) {
+              if (!Array.isArray(value)) return null;
+              return JSON.stringify(value.map(entry => ({
+                time: entry && entry.time,
+                desc: entry && entry.desc
+              })));
+            }
+
             let local = saoParts();
             let date = local.date;
             let branch = 'agenda-auto-' + date;
@@ -94,14 +102,85 @@ jobs:
               }
             }
 
-            const prs = await github.paginate(github.rest.pulls.list, {
+            let prs = await github.paginate(github.rest.pulls.list, {
               owner, repo, state: 'open', base: 'main',
               head: owner + ':' + branch, per_page: 100
             });
 
             if (prs.length === 0) {
-              core.info('Nenhum PR aberto da agenda de ' + date + '. Nenhum arquivo alterado.');
-              return;
+              // Em workflow_run, o PR pode já ter sido encerrado por outra execução válida.
+              // A recuperação abaixo é reservada aos ciclos de schedule/workflow_dispatch.
+              if (context.eventName === 'workflow_run') {
+                core.info('Nenhum PR aberto da agenda de ' + date + ' neste workflow_run.');
+                return;
+              }
+
+              let branchInfo = null;
+              try {
+                branchInfo = (await github.rest.repos.getBranch({owner, repo, branch})).data;
+              } catch (error) {
+                if (error.status === 404) {
+                  core.info('Branch ' + branch + ' ainda não existe; nova verificação ocorrerá no próximo ciclo.');
+                  return;
+                }
+                throw error;
+              }
+
+              if (!branchInfo || !branchInfo.commit || !branchInfo.commit.sha) {
+                throw new Error('Branch ' + branch + ' existe, mas o HEAD não pôde ser confirmado.');
+              }
+
+              const previousPrs = await github.paginate(github.rest.pulls.list, {
+                owner, repo, state: 'all', base: 'main',
+                head: owner + ':' + branch, per_page: 100
+              });
+              const mergedPr = previousPrs.find(p => p.merged_at);
+              if (mergedPr) {
+                core.notice('Agenda de ' + date + ' já foi publicada pelo PR #' + mergedPr.number + '.');
+                return;
+              }
+              const closedPr = previousPrs.find(p => p.state === 'closed');
+              if (closedPr) {
+                throw new Error(
+                  'Existe PR #' + closedPr.number + ' fechado sem merge para ' + branch +
+                  '; recuperação automática interrompida.'
+                );
+              }
+
+              const comparison = (await github.rest.repos.compareCommits({
+                owner, repo, base: 'main', head: branch
+              })).data;
+              const recoveryFiles = comparison.files || [];
+
+              if ((comparison.ahead_by || 0) === 0) {
+                throw new Error(
+                  'Branch ' + branch +
+                  ' foi criada, mas não contém commit próprio. A execução falhou antes de gravar agenda.json.'
+                );
+              }
+
+              if (recoveryFiles.length !== 1 || recoveryFiles[0].filename !== 'agenda.json') {
+                throw new Error(
+                  'Recuperação recusada: a branch ' + branch +
+                  ' não altera exclusivamente agenda.json.'
+                );
+              }
+
+              const created = (await github.rest.pulls.create({
+                owner, repo,
+                head: branch,
+                base: 'main',
+                title: 'Atualiza agenda de ' + date,
+                body:
+                  'PR recriado automaticamente pelo publicador após detectar que a branch ' +
+                  'da agenda contém alteração válida em agenda.json, mas estava sem PR.'
+              })).data;
+
+              core.notice(
+                'PR #' + created.number + ' recriado automaticamente para ' + branch +
+                '; o Agenda Guard fará a validação antes de qualquer merge.'
+              );
+              prs = [created];
             }
             if (prs.length !== 1) throw new Error('Há mais de um PR da agenda de ' + date + '.');
 
@@ -189,7 +268,7 @@ jobs:
 
             // Se a pesquisa de hoje resultar no mesmo conteúdo já publicado,
             // encerra o PR redundante para não deixar pendências antigas.
-            if (JSON.stringify(mainAgenda) === JSON.stringify(agenda)) {
+            if (canonicalAgenda(mainAgenda) === canonicalAgenda(agenda)) {
               await github.rest.pulls.update({
                 owner, repo, pull_number: number, state: 'closed'
               });
@@ -232,7 +311,7 @@ jobs:
             const published = JSON.parse(
               Buffer.from(updated.data.content, 'base64').toString('utf8')
             );
-            if (JSON.stringify(published) !== JSON.stringify(agenda)) {
+            if (canonicalAgenda(published) !== canonicalAgenda(agenda)) {
               throw new Error('Merge feito, mas conteúdo da main diverge da agenda aprovada.');
             }
 
