@@ -63,6 +63,8 @@ jobs:
               re.compile(r'^La Liga$'),
               re.compile(r'^Premier League$'),
               re.compile(r'^Bundesliga$'),
+              re.compile(r'^Ligue 1$'),
+              re.compile(r'^(?:Liga das Nações|Nations League|UEFA Nations League)$'),
               re.compile(r'^(?:Serie A italiana|Campeonato Italiano)$'),
               re.compile(r'^.*Champions League$'),
               re.compile(r'^.*Europa League$'),
