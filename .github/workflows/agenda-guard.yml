@@ -104,6 +104,34 @@ jobs:
           print(f'agenda.json válido: {len(data)} jogo(s).')
           PY
 
+      - name: Smoke test agenda fallback source
+        if: github.event_name == 'pull_request' && github.head_ref == 'fix/agenda-fallback-sofascore-2026-09-29'
+        shell: bash
+        run: |
+          set -euo pipefail
+          UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36'
+          URL1='https://api.sofascore.com/api/v1/sport/football/scheduled-events/2026-09-29'
+          URL2='https://www.sofascore.com/api/v1/sport/football/scheduled-events/2026-09-29'
+          if ! curl -fsSL --retry 2 --connect-timeout 15 --max-time 40 -A "$UA" -H 'Accept: application/json' "$URL1" -o /tmp/sofa.json; then
+            curl -fsSL --retry 2 --connect-timeout 15 --max-time 40 -A "$UA" -H 'Accept: application/json' "$URL2" -o /tmp/sofa.json
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('/tmp/sofa.json').read_text(encoding='utf-8'))
+          events = data.get('events')
+          if not isinstance(events, list) or not events:
+              raise SystemExit('Sofascore não retornou uma lista não vazia de eventos.')
+          competitions = sorted({
+              ((e.get('tournament') or {}).get('uniqueTournament') or {}).get('name')
+              or (e.get('tournament') or {}).get('name')
+              for e in events
+              if isinstance(e, dict)
+          })
+          competitions = [x for x in competitions if x]
+          print(f'Sofascore acessível: {len(events)} eventos; {len(competitions)} competições.')
+          PY
+
       - name: Manual PR allowed
         if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'agenda-auto-')
         run: echo "PR manual detectado; Agenda Guard não restringe arquivos fora da automação da agenda."
