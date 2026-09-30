@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Conferir PR, Agenda Guard e publicar sem bypass
         uses: actions/github-script@v9
+        env:
+          AGENDA_PR_TOKEN: ${{ secrets.AGENDA_PR_TOKEN }}
         with:
           script: |
             const { owner, repo } = context.repo;
@@ -180,7 +182,14 @@ jobs:
                 );
               }
 
-              const created = (await github.rest.pulls.create({
+              if (!process.env.AGENDA_PR_TOKEN) {
+                throw new Error(
+                  'Recuperação de PR exige o secret AGENDA_PR_TOKEN com acesso somente a este repositório e Pull requests: write. ' +
+                  'O GITHUB_TOKEN pode deixar o Agenda Guard aguardando aprovação humana.'
+                );
+              }
+              const created = (await github.request('POST /repos/{owner}/{repo}/pulls', {
+                headers: { authorization: 'Bearer ' + process.env.AGENDA_PR_TOKEN },
                 owner, repo,
                 head: branch,
                 base: 'main',
@@ -194,7 +203,8 @@ jobs:
                 'PR #' + created.number + ' recriado automaticamente para ' + branch +
                 '; o Agenda Guard fará a validação antes de qualquer merge.'
               );
-              prs = [created];
+              core.info('PR criado; aguardando Agenda Guard. O workflow_run continuará a publicação após aprovação do check.');
+              return;
             }
             if (prs.length !== 1) throw new Error('Há mais de um PR da agenda de ' + date + '.');
 
