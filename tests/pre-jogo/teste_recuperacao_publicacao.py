@@ -41,6 +41,13 @@ def main():
         pages.confirm('owner/repo', 'abc', 'https://example.com', ['jogo.html'])
         assert api.call_args_list[0].args == ('repos/owner/repo/pages/builds', 'POST')
         live.assert_called_once_with('https://example.com', ['jogo.html'])
+    # API legada com erro, mas a execução substituta terminou corretamente.
+    responses = [{}, {'status': 'errored', 'error': {'message': 'Page build failed.'}},
+                 {'workflow_runs': [{'path': 'dynamic/pages/pages-build-deployment',
+                                     'conclusion': 'success', 'head_sha': 'abc', 'id': 123}]}]
+    with patch.object(pages, 'api', side_effect=responses), patch.object(pages, 'live_check') as live:
+        pages.confirm('owner/repo', 'abc', 'https://example.com', ['jogo.html'])
+        live.assert_called_once()
     with patch.object(pages, 'api', return_value={'status': 'behind'}):
         assert not pages.includes_commit('owner/repo', 'new', 'old')
     # Só reutilizar redações com a mesma data, SHA e hashes íntegros.

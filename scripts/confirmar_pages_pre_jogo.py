@@ -68,7 +68,18 @@ def confirm(repository, commit, site, slugs, timeout=900):
                 print(f'PAGES CONFIRMADO: commit {build["commit"]}; {len(slugs)} matéria(s) acessível(is).')
                 return
             if build.get('status') == 'errored':
-                raise RuntimeError('Build do Pages falhou: ' + str(build.get('error')))
+                last_error = 'Registro Pages: ' + str(build.get('error'))
+            # A API legada pode marcar erro/cancelamento enquanto o workflow
+            # dinâmico substituto publica o mesmo commit com sucesso.
+            runs = api(f'repos/{repository}/actions/runs?per_page=30')
+            for run in runs.get('workflow_runs', []):
+                if (run.get('path') == 'dynamic/pages/pages-build-deployment'
+                        and run.get('conclusion') == 'success'
+                        and includes_commit(repository, commit, run.get('head_sha'))):
+                    live_check(site, slugs)
+                    print(f'PAGES CONFIRMADO: execução {run["id"]}; commit {run["head_sha"]}; '
+                          f'{len(slugs)} matéria(s) acessível(is).')
+                    return
         except (OSError, ValueError) as exc:
             last_error = str(exc)
         time.sleep(10)
