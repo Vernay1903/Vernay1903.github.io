@@ -5,14 +5,23 @@ on:
     workflows: ["Agenda Guard"]
     types: [completed]
   schedule:
-    - cron: "5,15,30,45 3 * * *"
-    - cron: "0,15 4 * * *"
+    - cron: "1,17,37,57 3 * * *"
+    - cron: "17,47 4-6 * * *"
   workflow_dispatch:
     inputs:
       verificar_credencial:
         description: 'Verificar somente a credencial, sem publicar'
         type: boolean
         default: false
+
+      simular:
+        description: 'Coletar e validar sem alterar agenda ou criar PR'
+        type: boolean
+        default: false
+      data_teste:
+        description: 'Data YYYY-MM-DD: somente com simular marcado'
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -25,10 +34,145 @@ concurrency:
 
 jobs:
   publicar:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'agenda-auto-')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Coletar as 13 competições e validar a data de Brasília
+        if: ${{ inputs.verificar_credencial != true }}
+        env:
+          SIMULAR: ${{ inputs.simular }}
+          DATA_TESTE: ${{ inputs.data_teste }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import concurrent.futures
+          import datetime as dt
+          import json
+          import os
+          import re
+          import time
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          TZ = ZoneInfo('America/Sao_Paulo')
+          LEAGUES = [
+              ('esp.1', '740', 'La Liga'),
+              ('eng.1', '700', 'Premier League'),
+              ('ger.1', '720', 'Bundesliga'),
+              ('fra.1', '710', 'Ligue 1'),
+              ('ita.1', '730', 'Serie A italiana'),
+              ('uefa.champions', '775', 'UEFA Champions League'),
+              ('uefa.europa', '776', 'UEFA Europa League'),
+              ('uefa.nations', '2395', 'Liga das Nações'),
+              ('bra.copa_do_brazil', None, 'Copa do Brasil'),
+              ('conmebol.libertadores', '783', 'Copa Libertadores'),
+              ('conmebol.sudamericana', '5454', 'Copa Sul-Americana'),
+              ('bra.1', '630', 'Brasileirão Série A'),
+              ('bra.2', '4007', 'Brasileirão Série B'),
+          ]
+
+          def download(slug, day):
+              url = ('https://site.api.espn.com/apis/site/v2/sports/soccer/' + slug
+                     + '/scoreboard?dates=' + day.strftime('%Y%m%d') + '&limit=1000&lang=pt&region=br')
+              for attempt in range(3):
+                  try:
+                      request = urllib.request.Request(url, headers={'User-Agent': 'CorteDosEsportes-Agenda/1.0', 'Accept': 'application/json'})
+                      with urllib.request.urlopen(request, timeout=25) as response:
+                          if response.status != 200:
+                              raise ValueError('HTTP ' + str(response.status))
+                          data = json.load(response)
+                      return data, url
+                  except Exception as error:
+                      if attempt == 2:
+                          raise RuntimeError(f'Coleta incompleta: {slug} {day}: {error}') from error
+                      time.sleep(2 ** attempt)
+
+          def parse(data, slug, league_id, name, target):
+              leagues = data.get('leagues') if isinstance(data, dict) else None
+              if not isinstance(leagues, list) or len(leagues) != 1 or leagues[0].get('slug') != slug:
+                  raise ValueError(f'Competição ausente/incorreta na resposta: {slug}')
+              if league_id and str(leagues[0].get('id')) != league_id:
+                  raise ValueError(f'ID de competição incorreto: {slug}')
+              events = data.get('events')
+              if not isinstance(events, list) or len(events) >= 1000:
+                  raise ValueError(f'Lista de jogos ausente/truncada: {slug}')
+              result = {}
+              for event in events:
+                  event_id = event.get('id')
+                  raw_date = event.get('date', '')
+                  if not event_id or not re.search(r'(Z|[+-]\d{2}:\d{2})$', raw_date):
+                      raise ValueError(f'Jogo sem ID ou data com fuso: {slug}')
+                  start = dt.datetime.fromisoformat(raw_date.replace('Z', '+00:00')).astimezone(TZ)
+                  if start.date() != target:
+                      continue
+                  competitions = event.get('competitions')
+                  if not isinstance(competitions, list) or len(competitions) != 1:
+                      raise ValueError(f'Partida inválida: {event_id}')
+                  match = competitions[0]
+                  status = event.get('status', match.get('status', {})).get('type', {})
+                  if status.get('name') in ('STATUS_POSTPONED', 'STATUS_CANCELED', 'STATUS_CANCELLED'):
+                      continue
+                  if status.get('state') not in ('pre', 'in', 'post') or status.get('name') in ('STATUS_DELAYED', 'STATUS_SUSPENDED', 'STATUS_TBD') or match.get('dateValid') is False or match.get('timeValid') is False:
+                      raise ValueError(f'Horário/status indefinido: {event_id}; agenda preservada')
+                  teams = match.get('competitors', [])
+                  if len(teams) != 2 or {team.get('homeAway') for team in teams} != {'home', 'away'}:
+                      raise ValueError(f'Mandante/visitante inválido: {event_id}')
+                  names = {}
+                  for team in teams:
+                      text = team.get('team', {}).get('displayName', '').strip()
+                      if not text or text.lower() in ('tbd', 'a definir', 'winner', 'loser'):
+                          raise ValueError(f'Equipe indefinida: {event_id}')
+                      names[team['homeAway']] = text
+                  entry = {'time': start.strftime('%H:%M'), 'desc': names['home'] + ' x ' + names['away'] + ' - ' + name}
+                  key = slug + ':' + str(event_id)
+                  if key in result and result[key] != entry:
+                      raise ValueError(f'Jogo divergente: {key}')
+                  result[key] = entry
+              return result
+
+          def collect(target, loader=download):
+              # Consultar também o dia UTC seguinte cobre jogos brasileiros após 21h.
+              days = (target, target + dt.timedelta(days=1))
+              def league_job(league):
+                  slug, league_id, name = league
+                  games, sources = {}, []
+                  for day in days:
+                      data, url = loader(slug, day)
+                      entries = parse(data, slug, league_id, name, target)
+                      for key, value in entries.items():
+                          if key in games and games[key] != value:
+                              raise ValueError(f'Horário/equipes divergentes entre consultas: {key}')
+                          games[key] = value
+                      sources.append(url)
+                  return games, {'competition': name, 'count': len(games), 'sources': sources}
+              with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+                  results = list(pool.map(league_job, LEAGUES))
+              games, coverage = {}, []
+              for entries, evidence in results:
+                  games.update(entries)
+                  coverage.append(evidence)
+              agenda = sorted(games.values(), key=lambda item: (item['time'], item['desc']))
+              if len({(item['time'], item['desc']) for item in agenda}) != len(agenda):
+                  raise ValueError('Jogos duplicados com IDs diferentes; agenda preservada')
+              if len(coverage) != 13:
+                  raise ValueError('Cobertura incompleta; agenda preservada')
+              return {'date': target.isoformat(), 'agenda': agenda, 'coverage': coverage}
+
+          if __name__ == '__main__':
+              today = dt.datetime.now(TZ).date()
+              requested = os.environ.get('DATA_TESTE', '').strip()
+              if requested and os.environ.get('SIMULAR') != 'true':
+                  raise SystemExit('Data alternativa permitida somente em simulação sem escrita.')
+              target = dt.date.fromisoformat(requested) if requested else today
+              result = collect(target)
+              if not requested and dt.datetime.now(TZ).date() != target:
+                  raise SystemExit('A data mudou durante a coleta; tentar novamente.')
+              path = os.path.join(os.environ.get('RUNNER_TEMP', '/tmp'), 'agenda-coleta.json')
+              with open(path, 'w', encoding='utf-8') as file:
+                  json.dump(result, file, ensure_ascii=False, indent=2)
+              print(json.dumps(result, ensure_ascii=False, indent=2))
+          PY
       - name: Conferir PR, Agenda Guard e publicar sem bypass
         uses: actions/github-script@v9
         env:
@@ -86,10 +230,23 @@ jobs:
 
             function canonicalAgenda(value) {
               if (!Array.isArray(value)) return null;
+              let previous = '';
+              const seen = new Set();
+              for (const item of value) {
+                if (!item || typeof item !== 'object' || Array.isArray(item) ||
+                    Object.keys(item).sort().join(',') !== 'desc,time' ||
+                    typeof item.time !== 'string' || !/^(?:[01][0-9]|2[0-3]):[0-5][0-9]$/.test(item.time) ||
+                    typeof item.desc !== 'string' || !item.desc.includes(' x ') || !item.desc.includes(' - ') ||
+                    item.time < previous || seen.has(item.time + '|' + item.desc)) return null;
+                previous = item.time;
+                seen.add(item.time + '|' + item.desc);
+              }
               return JSON.stringify(value.map(entry => ({
                 time: entry && entry.time,
-                desc: entry && entry.desc
-              })));
+                desc: entry && typeof entry.desc === 'string' ? entry.desc
+                  .replace(/\bPaíses Baixos\b/g, 'Holanda')
+                  .replace(/\bAthletic-MG\b/g, 'Athletic') : entry && entry.desc
+              })).sort((a, b) => String(a.time).localeCompare(String(b.time)) || String(a.desc).localeCompare(String(b.desc))));
             }
 
             let local = saoParts();
@@ -131,6 +288,70 @@ jobs:
               }
             }
 
+            // O mesmo workflow coleta os jogos: não depende da preparação pelo ChatGPT.
+            const fs = require('node:fs');
+            const collection = JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP + '/agenda-coleta.json', 'utf8'));
+            const simulation = context.eventName === 'workflow_dispatch' && context.payload.inputs?.simular === 'true';
+            if (!Array.isArray(collection.coverage) || collection.coverage.length !== 13 || !Array.isArray(collection.agenda)) {
+              throw new Error('Coleta ausente ou incompleta; nenhuma alteração permitida.');
+            }
+            const collected = collection.agenda;
+            await core.summary.addHeading('Agenda de ' + collection.date)
+              .addRaw('Coleta ESPN: 13 competições confirmadas. ' + collected.length + ' jogo(s).\n')
+              .addTable([
+                [{data: 'Competição', header: true}, {data: 'Jogos', header: true}],
+                ...collection.coverage.map(row => [row.competition, String(row.count)])
+              ]).addCodeBlock(JSON.stringify(collected, null, 2), 'json').write();
+            if (simulation) {
+              core.notice('SIMULAÇÃO: coleta e validação concluídas; nenhuma branch, PR ou agenda alterada.');
+              return;
+            }
+            if (collection.date !== date || saoParts().date !== date) {
+              throw new Error('Data da coleta não corresponde ao dia atual em Brasília.');
+            }
+            const mainSnapshot = (await github.rest.repos.getBranch({owner, repo, branch: 'main'})).data.commit.sha;
+            const mainSource = (await github.rest.repos.getContent({owner, repo, path: 'agenda.json', ref: mainSnapshot})).data;
+            if (Array.isArray(mainSource)) throw new Error('agenda.json não é arquivo.');
+            let currentAgenda = null;
+            try { currentAgenda = JSON.parse(Buffer.from(mainSource.content, 'base64').toString('utf8')); } catch {}
+            if (canonicalAgenda(currentAgenda) === canonicalAgenda(collected)) {
+              core.notice('Agenda de ' + date + ' conferida nas 13 competições, sem alteração: ' + collected.length + ' jogo(s).');
+              await core.summary.addRaw('\nResultado: agenda conferida, sem alteração.\n').write();
+              return;
+            }
+
+            async function prepareDailyBranch() {
+              // Nunca atualiza main: toda escrita de conteúdo fica na branch diária.
+              let ref;
+              try {
+                ref = (await github.rest.git.getRef({owner, repo, ref: 'heads/' + branch})).data;
+              } catch (error) {
+                if (error.status !== 404) throw error;
+                ref = (await github.rest.git.createRef({owner, repo, ref: 'refs/heads/' + branch, sha: mainSnapshot})).data;
+              }
+              const head = ref.object.sha;
+              const comparison = (await github.rest.repos.compareCommits({owner, repo, base: mainSnapshot, head})).data;
+              if ((comparison.files || []).some(file => file.filename !== 'agenda.json')) {
+                throw new Error('Branch diária contém alteração fora de agenda.json; escrita recusada.');
+              }
+              const mainCommit = (await github.rest.git.getCommit({owner, repo, commit_sha: mainSnapshot})).data;
+              const source = JSON.stringify(collected, null, 2) + '\n';
+              const blob = (await github.rest.git.createBlob({owner, repo, content: source, encoding: 'utf-8'})).data;
+              const tree = (await github.rest.git.createTree({owner, repo, base_tree: mainCommit.tree.sha,
+                tree: [{path: 'agenda.json', mode: '100644', type: 'blob', sha: blob.sha}]})).data;
+              const parents = [head];
+              if (head !== mainSnapshot && (comparison.behind_by || 0) > 0) parents.push(mainSnapshot);
+              const commit = (await github.rest.git.createCommit({owner, repo,
+                message: 'Atualiza agenda de ' + date, tree: tree.sha, parents})).data;
+              if (saoParts().date !== date) throw new Error('Virada de data antes de gravar branch; tentar novamente.');
+              await github.rest.git.updateRef({owner, repo, ref: 'heads/' + branch, sha: commit.sha, force: false});
+              const stored = (await github.rest.repos.getContent({owner, repo, path: 'agenda.json', ref: commit.sha})).data;
+              if (canonicalAgenda(JSON.parse(Buffer.from(stored.content, 'base64').toString('utf8'))) !== canonicalAgenda(collected)) {
+                throw new Error('Conteúdo da branch diverge da coleta.');
+              }
+              return (await github.rest.repos.getBranch({owner, repo, branch})).data;
+            }
+
             let prs = await github.paginate(github.rest.pulls.list, {
               owner, repo, state: 'open', base: 'main',
               head: owner + ':' + branch, per_page: 100
@@ -144,21 +365,6 @@ jobs:
                 return;
               }
 
-              let branchInfo = null;
-              try {
-                branchInfo = (await github.rest.repos.getBranch({owner, repo, branch})).data;
-              } catch (error) {
-                if (error.status === 404) {
-                  core.warning('Agenda de ' + date + ' não comprovada: branch ' + branch + ' ausente. Esta execução não pesquisou jogos nem publicou agenda.');
-                  return;
-                }
-                throw error;
-              }
-
-              if (!branchInfo || !branchInfo.commit || !branchInfo.commit.sha) {
-                throw new Error('Branch ' + branch + ' existe, mas o HEAD não pôde ser confirmado.');
-              }
-
               const previousPrs = await github.paginate(github.rest.pulls.list, {
                 owner, repo, state: 'all', base: 'main',
                 head: owner + ':' + branch, per_page: 100
@@ -168,10 +374,7 @@ jobs:
                   owner, repo, pull_number: previous.number
                 })).data;
                 if (details.merged_at) {
-                  core.notice(
-                    'Agenda de ' + date + ' já foi publicada pelo PR #' + details.number + '.'
-                  );
-                  return;
+                  throw new Error('PR #' + details.number + ' já foi mesclado, mas a agenda atual diverge da coleta; revisão necessária.');
                 }
                 if (details.state === 'closed') {
                   throw new Error(
@@ -181,26 +384,15 @@ jobs:
                 }
               }
 
+              prClient(); // Falhar antes da escrita se o secret não estiver configurado.
+              await prepareDailyBranch();
+
               const comparison = (await github.rest.repos.compareCommits({
                 owner, repo, base: 'main', head: branch
               })).data;
               const recoveryFiles = comparison.files || [];
 
-              if ((comparison.ahead_by || 0) === 0) {
-                // A primeira checagem das 00:05 pode coincidir com a escrita ainda em andamento.
-                // Dê uma janela curta e só trate como falha persistente a partir de 00:15.
-                if (local.hour === 0 && local.minute < 15) {
-                  core.info(
-                    'Branch ' + branch +
-                    ' ainda está sem commit próprio; aguardando a próxima checagem antes de declarar falha.'
-                  );
-                  return;
-                }
-                throw new Error(
-                  'Branch ' + branch +
-                  ' foi criada, mas não contém commit próprio. A execução falhou antes de gravar agenda.json.'
-                );
-              }
+              if ((comparison.ahead_by || 0) === 0) throw new Error('Branch diária sem alteração após preparação.');
 
               if (recoveryFiles.length !== 1 || recoveryFiles[0].filename !== 'agenda.json') {
                 throw new Error(
@@ -221,8 +413,9 @@ jobs:
                 base: 'main',
                 title: 'Atualiza agenda de ' + date,
                 body:
-                  'PR recriado automaticamente pelo publicador após detectar que a branch ' +
-                  'da agenda contém alteração válida em agenda.json, mas estava sem PR.'
+                  'Agenda de ' + date + ' coletada diretamente da ESPN. As 13 competições foram consultadas com sucesso; ' +
+                  'horários convertidos para America/Sao_Paulo. Somente agenda.json foi alterado. ' +
+                  'Relatório: https://github.com/' + repoName + '/actions/runs/' + context.runId
               })).data;
 
               core.notice(
@@ -286,6 +479,9 @@ jobs:
             const source = Buffer.from(response.data.content, 'base64').toString('utf8');
             const agenda = JSON.parse(source);
             if (!Array.isArray(agenda)) throw new Error('agenda.json deve ser uma lista.');
+            if (canonicalAgenda(agenda) !== canonicalAgenda(collected)) {
+              throw new Error('Agenda do PR diverge da coleta atual das 13 competições; merge recusado.');
+            }
 
             let last = '';
             for (const entry of agenda) {
@@ -346,6 +542,7 @@ jobs:
             }
             if (!ready) throw new Error('GitHub não confirmou mergeable=true / clean após novas consultas.');
 
+            if (saoParts().date !== date) throw new Error('Data mudou antes do merge; publicação recusada.');
             const result = await github.rest.pulls.merge({
               owner, repo, pull_number: number, sha,
               merge_method: 'squash',
@@ -369,3 +566,4 @@ jobs:
               'Agenda de ' + date + ': ' + agenda.length + ' jogo(s); PR #' +
               number + '; merge ' + result.data.sha
             );
+
