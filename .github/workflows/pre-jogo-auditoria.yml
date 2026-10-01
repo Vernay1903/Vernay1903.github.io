@@ -80,6 +80,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/diagnosticar_servicos_pre_jogo.py
       - name: Provar solicitação e confirmação do Pages existente
+        if: ${{ always() && !cancelled() }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/confirmar_pages_pre_jogo.py --commit "${GITHUB_SHA}"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Checa fontes e acesso ao modelo sem consumir tokens ou publicar matérias."""
+"""Checa fontes e acesso ao modelo com uma resposta mínima, sem publicar matérias."""
 import json
 import os
 import sys
@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from scripts import pesquisa_publica_gratuita as public
-from scripts import buscar_fixtures_football_data as fixtures
+from scripts import redigir_pre_jogo_openai as writer
 
 
 def check_model():
@@ -17,14 +17,18 @@ def check_model():
     if not token:
         raise RuntimeError('OPENAI_API_KEY ausente.')
     model = config['provider']['model']
-    # GET apenas verifica o modelo e a chave; não finge comprovar saldo/redação.
-    request = Request('https://api.openai.com/v1/models/' + model,
-                      headers={'Authorization': 'Bearer ' + token})
-    with urlopen(request, timeout=30) as response:
-        result = json.load(response)
-    if result.get('id') != model:
-        raise RuntimeError('Modelo retornado difere da configuração.')
-    print('OK: chave OpenAI aceita e modelo acessível; nenhuma redação cobrada.')
+    # Chaves restritas podem permitir Responses e negar GET /models.
+    # Usa o mesmo endpoint/modelo da redação, com no máximo 256 tokens de saída.
+    provider = config['provider']
+    result = writer.post_json(provider['endpoint'], token, {
+        'model': model, 'input': 'Responda somente OK.', 'max_output_tokens': 256,
+        'reasoning': {'effort': provider['reasoning_effort']}, 'store': False,
+    }, timeout=provider['timeout_seconds'])
+    text = writer.extract_output_text(result)
+    if 'OK' not in text.upper():
+        raise RuntimeError('Resposta mínima do redator não confirmada.')
+    print('OK: Responses API e modelo de redação responderam ao teste mínimo.')
+
 
 
 def main():
