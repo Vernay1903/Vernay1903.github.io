@@ -8,6 +8,11 @@ on:
     - cron: "5,15,30,45 3 * * *"
     - cron: "0,15 4 * * *"
   workflow_dispatch:
+    inputs:
+      verificar_credencial:
+        description: 'Verificar somente a credencial, sem publicar'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -33,6 +38,28 @@ jobs:
             const { owner, repo } = context.repo;
             const repoName = owner + '/' + repo;
             const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+            // Use um cliente separado: o hook do cliente padrão sobrescreve
+            // Authorization com GITHUB_TOKEN mesmo quando o header é informado.
+            let recoveryClient;
+            function prClient() {
+              if (!process.env.AGENDA_PR_TOKEN) {
+                throw new Error('Secret AGENDA_PR_TOKEN ausente; recuperação de PR indisponível.');
+              }
+              if (!recoveryClient) recoveryClient = getOctokit(process.env.AGENDA_PR_TOKEN);
+              return recoveryClient;
+            }
+
+            // Permite testar a credencial sem criar alteração artificial na agenda.
+            if (context.eventName === 'workflow_dispatch') {
+              const identity = (await prClient().rest.users.getAuthenticated()).data;
+              if (identity.login.toLowerCase() !== owner.toLowerCase()) {
+                throw new Error('AGENDA_PR_TOKEN não pertence ao proprietário esperado do repositório.');
+              }
+              await prClient().rest.repos.get({ owner, repo });
+              core.notice('AGENDA_PR_TOKEN autenticado como ' + identity.login + '; acesso ao repositório confirmado.');
+              if (context.payload.inputs?.verificar_credencial === 'true') return;
+            }
 
             function saoParts() {
               const p = Object.fromEntries(
@@ -122,7 +149,7 @@ jobs:
                 branchInfo = (await github.rest.repos.getBranch({owner, repo, branch})).data;
               } catch (error) {
                 if (error.status === 404) {
-                  core.info('Branch ' + branch + ' ainda não existe; nova verificação ocorrerá no próximo ciclo.');
+                  core.warning('Agenda de ' + date + ' não comprovada: branch ' + branch + ' ausente. Esta execução não pesquisou jogos nem publicou agenda.');
                   return;
                 }
                 throw error;
@@ -188,8 +215,7 @@ jobs:
                   'O GITHUB_TOKEN pode deixar o Agenda Guard aguardando aprovação humana.'
                 );
               }
-              const created = (await github.request('POST /repos/{owner}/{repo}/pulls', {
-                headers: { authorization: 'Bearer ' + process.env.AGENDA_PR_TOKEN },
+              const created = (await prClient().rest.pulls.create({
                 owner, repo,
                 head: branch,
                 base: 'main',
