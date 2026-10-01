@@ -8,6 +8,11 @@ on:
     - cron: "5,15,30,45 3 * * *"
     - cron: "0,15 4 * * *"
   workflow_dispatch:
+    inputs:
+      verificar_credencial:
+        description: 'Verificar somente a credencial, sem publicar'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -53,6 +58,7 @@ jobs:
               }
               await prClient().rest.repos.get({ owner, repo });
               core.notice('AGENDA_PR_TOKEN autenticado como ' + identity.login + '; acesso ao repositório confirmado.');
+              if (context.payload.inputs?.verificar_credencial === 'true') return;
             }
 
             function saoParts() {
