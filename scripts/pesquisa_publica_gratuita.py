@@ -20,6 +20,8 @@ from xml.etree import ElementTree as ET
 from typing import Any
 
 RSS_ENDPOINT = "https://www.bing.com/news/search"
+WEB_RSS_ENDPOINT = "https://www.bing.com/search"
+_RSS_REQUESTS = 0
 MAX_RSS_BYTES = 500_000
 MAX_PAGE_BYTES = 1_200_000
 MAX_RESULTS = 8
@@ -83,6 +85,9 @@ def _rss_items(raw: bytes) -> list[dict[str, str]]:
     Nenhum campo retornado por esta função vira evidência factual; a URL original
     ainda precisa ser baixada e validada separadamente.
     """
+    # Uma página HTML de erro não é uma busca válida sem resultados.
+    if not re.search(rb"<rss\b|<feed\b", raw, flags=re.I):
+        raise ValueError("Provedor devolveu conteúdo diferente de RSS/Atom.")
     items: list[dict[str, str]] = []
     try:
         root = ET.fromstring(raw)
@@ -119,13 +124,14 @@ def _rss_items(raw: bytes) -> list[dict[str, str]]:
 
 def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = None) -> tuple[str, dict[str, Any]]:
     """Mesma interface de request_serper: organic com URLs originais verificáveis."""
+    global _RSS_REQUESTS
     key = query + "|" + ",".join(sorted(domains))
     if key in _SEARCH_CACHE:
         return query, _SEARCH_CACHE[key]
     # Tempo de GitHub Actions e serviços públicos são finitos: encerrar busca
     # com ZERO candidatos, nunca inventar evidências nem comprar pesquisas.
     budget = max(1, min(80, int(os.environ.get("CDE_RSS_MAX_REQUESTS", "45"))))
-    if len(_SEARCH_CACHE) >= budget:
+    if _RSS_REQUESTS >= budget:
         return query, {"organic": [], "public_feed_request_limit": True}
     if not query.strip():
         raise ValueError("Consulta RSS vazia.")
@@ -157,10 +163,24 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
         queries.append(compact)
     candidates: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for proposed in queries:
-        url = RSS_ENDPOINT + "?" + urlencode({"q": proposed, "format": "rss"})
-        raw, _charset = fetch(url)
-        for item in _rss_items(raw):
+    errors: list[str] = []
+    valid_feeds = 0
+    # A busca web RSS também entrega URLs originais, sem decodificador privado.
+    attempts = [(RSS_ENDPOINT, proposed) for proposed in queries]
+    attempts.append((WEB_RSS_ENDPOINT, compact or q))
+    for endpoint, proposed in attempts:
+        if _RSS_REQUESTS >= budget:
+            break
+        _RSS_REQUESTS += 1
+        url = endpoint + "?" + urlencode({"q": proposed, "format": "rss"})
+        try:
+            raw, _charset = fetch(url)
+            items = _rss_items(raw)
+            valid_feeds += 1
+        except (OSError, ValueError) as exc:
+            errors.append(f"{endpoint}: {type(exc).__name__}")
+            continue
+        for item in items:
             link = original_link(item.get("link", "").strip())
             if not link or link in seen or not domain_allowed(link, domains):
                 continue
@@ -179,7 +199,11 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
                 break
         if candidates:
             break
-    result = {"organic": candidates}
+    if not valid_feeds and errors:
+        # Não guardar uma indisponibilidade no cache como se não houvesse notícia.
+        raise ValueError("Pesquisa pública indisponível: " + "; ".join(errors))
+    result = {"organic": candidates, "public_feed_errors": errors,
+              "public_feed_request_limit": _RSS_REQUESTS >= budget}
     _SEARCH_CACHE[key] = result
     return query, result
 

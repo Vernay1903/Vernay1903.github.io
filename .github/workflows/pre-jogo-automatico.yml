@@ -9,6 +9,9 @@ on:
     - cron: "30 2 * * *"
     # 00:01 de Brasília do dia da partida (UTC-3)
     - cron: "1 3 * * *"
+    # Reservas limitadas: recuperam falhas; planejamento evita republicação.
+    - cron: "17 6 * * *"
+    - cron: "17 12 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -99,6 +102,7 @@ jobs:
           python tests/pre-jogo/teste_pacote_publicacao.py
           python tests/pre-jogo/teste_fluxo_com_jogo_dry_run.py
           python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_recuperacao_publicacao.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
@@ -364,8 +368,8 @@ jobs:
           FOUND=""
           RUN_IDS=$(gh api --method GET \
             "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-automatico.yml/runs" \
-            -f branch=main -f status=success -f per_page=30 \
-            --jq '.workflow_runs[].id')
+            -f branch=main -f per_page=30 \
+            --jq '.workflow_runs[] | select(.status == "completed") | .id')
           for RUN_ID in ${RUN_IDS}; do
             COUNT=$(gh api --method GET "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
               --jq "[.artifacts[] | select(.name == \"${ARTIFACT_NAME}\")] | length")
@@ -469,6 +473,7 @@ jobs:
         with:
           name: pre-jogo-passo-34-publicacao-dry-run-${{ steps.target.outputs.date }}
           path: |
+            build/pre-jogo/automatico-source/
             build/pre-jogo/automatico-publicacao.json
             build/pre-jogo/status-final-*.json
             build/pre-jogo/automatico-approved.txt
@@ -476,13 +481,14 @@ jobs:
           retention-days: 3
 
   publicar:
-    if: ${{ github.event_name == 'schedule' && github.event.schedule == '1 3 * * *' }}
+    if: ${{ github.event_name == 'schedule' && github.event.schedule != '30 2 * * *' }}
     runs-on: ubuntu-latest
     # Se o preparo anterior falhou, há tempo para recuperação integral no mesmo runner.
     timeout-minutes: 60
     permissions:
       contents: write
       actions: write
+      pages: write
 
     steps:
       - name: Baixar main sem credencial persistente
@@ -524,8 +530,8 @@ jobs:
           FOUND=""
           RUN_IDS=$(gh api --method GET \
             "repos/${GITHUB_REPOSITORY}/actions/workflows/pre-jogo-automatico.yml/runs" \
-            -f branch=main -f status=success -f per_page=30 \
-            --jq '.workflow_runs[].id')
+            -f branch=main -f per_page=30 \
+            --jq '.workflow_runs[] | select(.status == "completed") | .id')
 
           for RUN_ID in ${RUN_IDS}; do
             COUNT=$(gh api --method GET "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
@@ -556,6 +562,20 @@ jobs:
             echo "OK: usando preparo automático do run ${FOUND}."
           fi
 
+      - name: Identificar preparo incompleto para recuperação
+        if: ${{ env.NO_PREP == 'false' }}
+        shell: bash
+        run: |
+          python - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          data = json.loads(Path('build/pre-jogo/automatico-source/manifest.json').read_text())
+          if data.get('skipped_count', 0) > 0:
+              with open(os.environ['GITHUB_ENV'], 'a') as out:
+                  out.write('NO_PREP=true\n')
+              print('Preparo incompleto: refazer pesquisa e preservar redações aprovadas.')
+          PYCODE
+
       # Sem lote, refaz o preparo no próprio job; não publica nesta etapa.
       - name: Recuperar preparo ausente na data correta
         if: ${{ env.NO_PREP == 'true' }}
@@ -577,6 +597,7 @@ jobs:
           python tests/pre-jogo/teste_pacote_publicacao.py
           python tests/pre-jogo/teste_fluxo_com_jogo_dry_run.py
           python tests/pre-jogo/teste_recuperar_preparo.py
+          python tests/pre-jogo/teste_recuperacao_publicacao.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
@@ -622,6 +643,10 @@ jobs:
           blocked = manifest['skipped_count']
           empty = manifest.get('no_eligible_matches') is True
           planning_skipped = manifest.get('planning_skipped_count', 0)
+          import os
+          if ready or planning_skipped:
+              with open(os.environ['GITHUB_ENV'], 'a') as out:
+                  out.write('NEEDS_PAGES=true\n')
           if ready != len(manifest.get('articles', [])) or blocked != len(manifest.get('skipped', [])):
               raise SystemExit('ERRO: contagens do lote não correspondem aos registros.')
           if empty and (ready or blocked or planning_skipped):
@@ -749,9 +774,9 @@ jobs:
           observed = modified | untracked
           if observed != expected:
               raise SystemExit(f'ERRO: escopo local inesperado. esperado={sorted(expected)} observado={sorted(observed)}')
-          expected_count = report['selected_count'] + 2
+          expected_count = report['selected_count'] + 3
           if len(expected) != expected_count:
-              raise SystemExit(f'ERRO: lote deveria ter N+2 arquivos ({expected_count}), mas tem {len(expected)}.')
+              raise SystemExit(f'ERRO: lote deveria ter N+3 arquivos ({expected_count}), mas tem {len(expected)}.')
           print(f'OK: escopo local contém exatamente {len(expected)} arquivos autorizados.')
           PY
 
@@ -859,23 +884,29 @@ jobs:
           if remote.get('sha') != os.environ['PUBLICATION_COMMIT_SHA']:
               raise SystemExit('ERRO: SHA do commit remoto diverge.')
           for item in remote.get('files', []):
-              if item['filename'] in {'noticias.json','sitemap.xml'} and item['status'] != 'modified':
+              if item['filename'] in {'noticias.json','sitemap.xml','noticias-home.json'} and item['status'] != 'modified':
                   raise SystemExit(f"ERRO: {item['filename']} não foi modificado como esperado.")
               if item['filename'].endswith('.html') and item['status'] != 'added':
                   raise SystemExit(f"ERRO: HTML {item['filename']} não foi adicionado como esperado.")
           print(f"OK: GitHub confirmou exatamente {len(expected)} arquivos no commit automático.")
           PY
 
-      - name: Atualizar home e enviar URLs ao IndexNow
+      - name: Solicitar Pages e confirmar publicação pública
+        if: ${{ env.NO_PREP == 'false' && env.NEEDS_PAGES == 'true' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/confirmar_pages_pre_jogo.py \
+            --commit "${PUBLICATION_COMMIT_SHA:-${BASE_MAIN_SHA}}" --report "${APPLY_REPORT}"
+
+      - name: Enviar URLs confirmadas ao IndexNow
         if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          if ! gh workflow run atualizar-noticias-home.yml --repo "${GITHUB_REPOSITORY}" --ref main; then
-            echo "::warning::Não foi possível despachar Atualizar noticias-home."
-          fi
           python - <<'PY' > build/pre-jogo/published-slugs.txt
           import json
           for slug in json.load(open('build/pre-jogo/automatico-publicacao.json', encoding='utf-8'))['selected_slugs']:
@@ -888,12 +919,20 @@ jobs:
             fi
           done < build/pre-jogo/published-slugs.txt
 
+      - name: Sinalizar qualquer matéria ainda pendente
+        if: ${{ env.NO_PREP == 'false' }}
+        shell: bash
+        run: |
+          python scripts/verificar_resultado_pre_jogo.py \
+            --manifest "${AUTO_SOURCE}/manifest.json" --report "${APPLY_REPORT}"
+
       - name: Guardar auditoria da publicação automática
         if: ${{ always() && env.NO_PREP == 'false' }}
         uses: actions/upload-artifact@v4
         with:
           name: pre-jogo-passo-34-publicacao-${{ steps.target.outputs.date }}
           path: |
+            build/pre-jogo/automatico-source/
             build/pre-jogo/automatico-publicacao.json
             build/pre-jogo/status-final-*.json
             build/pre-jogo/passo34-commit-remoto.json

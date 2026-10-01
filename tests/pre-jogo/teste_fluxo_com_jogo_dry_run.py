@@ -11,6 +11,8 @@ import sys
 import tempfile
 from pathlib import Path
 from unittest import mock
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
@@ -154,12 +156,33 @@ def main() -> None:
         result = json.loads(report.read_text(encoding="utf-8"))
         assert result["selected_count"] == 1, result
         assert result["skipped_count"] == 0, result
-        assert result["changed_file_count"] == 3, result
-        assert set(result["changed_files"]) == {slug, "noticias.json", "sitemap.xml"}
+        assert result["changed_file_count"] == 4, result
+        assert set(result["changed_files"]) == {slug, "noticias.json", "sitemap.xml", "noticias-home.json"}
         assert result["commit_created"] is False and result["push_executed"] is False
         assert noticias.read_bytes() == before_news
         assert sitemap.read_bytes() == before_sitemap
         assert not (root / slug).exists()
+
+        class FixedDate(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return cls(2026, 9, 17, 0, 2, tzinfo=ZoneInfo("America/Sao_Paulo"))
+        argv = ["script", "--manifest", str(manifest_path), "--artifact-root", str(artifact),
+                "--approved", str(approved), "--previews-root", str(previews), "--report", str(report)]
+        with mock.patch.object(apply_batch, "ROOT", root), \
+             mock.patch.object(apply_batch, "BUILD", build), \
+             mock.patch.object(apply_batch, "NOTICIAS", noticias), \
+             mock.patch.object(apply_batch, "SITEMAP", sitemap), \
+             mock.patch.object(apply_batch, "datetime", FixedDate), \
+             mock.patch.object(sys, "argv", argv):
+            apply_batch.main()
+            assert (root / slug).read_text() == rendered
+            assert json.loads((root / "noticias-home.json").read_text()) == json.loads(noticias.read_text())[:10]
+            first = noticias.read_bytes()
+            apply_batch.main()
+            assert json.loads(report.read_text())["changed_file_count"] == 0
+            assert noticias.read_bytes() == first
+
 
     print("OK: jogo sintético atravessa contrato, redação, HTML e lote dry-run sem publicar.")
 

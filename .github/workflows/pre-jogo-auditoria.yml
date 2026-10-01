@@ -55,28 +55,31 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python tests/pre-jogo/teste_dia_sem_jogos.py
-          python tests/pre-jogo/teste_recuperar_preparo.py
-          python tests/pre-jogo/teste_passo34_automatico.py
-          python tests/pre-jogo/teste_passo34_8.py
-          python tests/pre-jogo/teste_passo34_9.py
-          python tests/pre-jogo/teste_passo34_10.py
-          python tests/pre-jogo/teste_passo34_11.py
-          python tests/pre-jogo/teste_preview_html.py
-          python tests/pre-jogo/teste_redator_openai.py
-          python tests/pre-jogo/teste_redacao_controlada.py
-          python tests/pre-jogo/teste_pacote_publicacao.py
-          python tests/pre-jogo/teste_fluxo_com_jogo_dry_run.py
-          python tests/pre-jogo/teste_serper_economia.py
-          python tests/pre-jogo/teste_pesquisa_gratuita.py
-          python tests/pre-jogo/teste_aliases_adversarios.py
-          python tests/pre-jogo/teste_reuso_opcionais.py
-          python tests/pre-jogo/teste_estadios_aliases.py
-          python tests/pre-jogo/teste_estadio_fixo_mandante.py
-          python tests/pre-jogo/teste_modelo_editorial_aprovado.py
-          python tests/pre-jogo/teste_profundo_coleta_gratuita.py
-          python tests/pre-jogo/teste_rss_consulta_curta.py
-          python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
-          python tests/pre-jogo/teste_status_final_football_data.py
-          python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
+          for test in tests/pre-jogo/teste_*.py; do
+            python "$test"
+          done
           echo "OK: auditoria offline concluída sem OpenAI, Serper ou publicação."
+
+  verificar-servicos:
+    needs: auditar
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Conferir serviços reais sem publicar matéria de teste
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/diagnosticar_servicos_pre_jogo.py
+      - name: Provar solicitação e confirmação do Pages existente
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/confirmar_pages_pre_jogo.py --commit "${GITHUB_SHA}"

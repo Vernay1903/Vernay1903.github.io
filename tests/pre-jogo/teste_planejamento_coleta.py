@@ -97,7 +97,7 @@ def main() -> None:
     )
     assert_equal(
         stadium["stages"][1]["domains"],
-        ["ge.globo.com", "espn.com.br"],
+        config["research"]["discovery"]["major_sports_media_domains"],
         "Domínios de grande imprensa",
     )
     assert_equal(

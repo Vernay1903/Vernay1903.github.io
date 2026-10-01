@@ -84,9 +84,7 @@ def run(target: str) -> None:
     if config.get("timezone") != "America/Sao_Paulo" or len(config.get("monitored_clubs", [])) != 10:
         fail("Configuração dos 10 clubes/timezone inválida.")
 
-    if SOURCE.exists():
-        shutil.rmtree(SOURCE)
-    SOURCE.mkdir(parents=True)
+    SOURCE.mkdir(parents=True, exist_ok=True)
 
     plan = command_plan(target)
     # Recuperação sem partidas encerra antes de RSS, Serper ou OpenAI.
@@ -134,6 +132,7 @@ def run(target: str) -> None:
         "--facts", f"build/pre-jogo/fatos-estruturados-{target}.json",
         "--source-main-sha", sha,
         "--output-dir", "build/pre-jogo/automatico",
+        "--reuse-dir", str(SOURCE),
         "--execute", "--force",
     )
     manifest = json.loads((OUTPUT / "manifest.json").read_text(encoding="utf-8"))

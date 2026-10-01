@@ -249,7 +249,7 @@ def main() -> None:
 
     changed_files: list[str] = []
     if selected:
-        changed_files = [str(item["slug"]) for item in selected] + ["noticias.json", "sitemap.xml"]
+        changed_files = [str(item["slug"]) for item in selected] + ["noticias.json", "sitemap.xml", "noticias-home.json"]
         if not args.dry_run:
             for article in selected:
                 (ROOT / str(article["slug"])).write_text(
@@ -258,6 +258,10 @@ def main() -> None:
                 )
             NOTICIAS.write_text(noticias_new, encoding="utf-8")
             SITEMAP.write_text(sitemap_new, encoding="utf-8")
+            (ROOT / "noticias-home.json").write_text(
+                json.dumps(json.loads(noticias_new)[:10], ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
 
     report = {
         "step": 34,

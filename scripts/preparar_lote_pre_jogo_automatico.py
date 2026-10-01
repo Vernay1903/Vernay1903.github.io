@@ -335,9 +335,30 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--facts", required=True, type=Path, help="Manifesto fatos-estruturados-AAAA-MM-DD.json.")
     parser.add_argument("--source-main-sha", required=True)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--reuse-dir", type=Path, help="Lote da mesma data/SHA; reutiliza redações já validadas.")
     parser.add_argument("--execute", action="store_true", help="Autoriza chamadas reais à OpenAI no Passo 26.")
     parser.add_argument("--force", action="store_true")
     return parser.parse_args()
+
+
+def reusable_articles(directory: Path | None, target: str, sha: str) -> dict:
+    if directory is None or not (directory / "manifest.json").exists():
+        return {}
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    from scripts.validar_artifact_pre_jogo import validate_manifest
+    from scripts.aplicar_lote_pre_jogo_automatico import validate_artifact_files
+    data = load_json(directory / "manifest.json")
+    try:
+        validate_manifest(data, target_date=target, base_main_sha=sha,
+                          now=datetime.now(ZoneInfo("America/Sao_Paulo")))
+    except ValueError:
+        return {}
+    found = {}
+    for item in data.get("articles", []):
+        validate_artifact_files(directory, item)
+        found[item["slug"]] = item
+    return found
 
 
 def main() -> None:
@@ -393,6 +414,7 @@ def main() -> None:
         fail(f"Lote com {len(packages)} matérias excede o teto diário de {max_daily}; nada será redigido.")
     packages.sort(key=lambda item: str(item.get("match_context", {}).get("kickoff_brasilia", "")))
 
+    reused = reusable_articles(args.reuse_dir, args.date, args.source_main_sha)
     prepared: list[dict[str, Any]] = []
     skipped: list[dict[str, Any]] = []
 
@@ -400,6 +422,15 @@ def main() -> None:
         slug = package.get("slug")
         if not isinstance(slug, str) or not slug.endswith(".html"):
             skipped.append({"slug": slug, "reason": "invalid_slug"})
+            continue
+        previous = reused.get(slug)
+        context = package.get("match_context", {})
+        if previous and all(previous.get(key) == context.get(key)
+                            for key in ("home", "away", "kickoff_time_brasilia")):
+            for key in ("contract", "draft", "status_snapshot"):
+                shutil.copy2(args.reuse_dir / previous[key], output_dir / previous[key])
+            prepared.append(previous)
+            print(f"REUTILIZADA: {slug}; sem nova chamada OpenAI; status será revalidado.")
             continue
         if package.get("ready_for_drafting") is not True:
             skipped.append({
