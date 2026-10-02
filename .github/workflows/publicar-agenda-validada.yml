@@ -4,9 +4,17 @@ on:
   workflow_run:
     workflows: ["Agenda Guard"]
     types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/publicar-agenda-validada.yml"
   schedule:
-    - cron: "1,17,37,57 3 * * *"
-    - cron: "17,47 4-6 * * *"
+    # 00:01 continua como primeira tentativa. As tentativas fora do início
+    # da hora reduzem o risco de atraso/descarte do scheduler do GitHub.
+    - cron: "1,7,17,27,37,47,57 0 * * *"
+      timezone: "America/Sao_Paulo"
+    - cron: "7,17,27,37,47,57 1-3 * * *"
+      timezone: "America/Sao_Paulo"
   workflow_dispatch:
     inputs:
       verificar_credencial:
