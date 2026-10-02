@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>NBA All-Star: história, seleção dos jogadores e a tradição do fim de semana das estrelas | Corte dos Esportes</title>
+<meta name="description" content="Muito mais do que um jogo de exibição, o evento se transformou em uma das grandes vitrines do basquete mundial, reunindo os astros da liga, concursos de enterradas e bolas de três, jovens talentos e diferentes gerações se reunindo para o show de basquete." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+.desktop-only-ad { display: none !important; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">NBA All-Star: história, seleção dos jogadores e a tradição do fim de semana das estrelas</h1>
+<p class="subhead" id="articleExcerpt">Muito mais do que um jogo de exibição, o evento se transformou em uma das grandes vitrines do basquete mundial, reunindo os astros da liga, concursos de enterradas e bolas de três, jovens talentos e diferentes gerações se reunindo para o show de basquete.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">02/10/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Basquete</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://cortedosesportes.com.br/lebron-james-nba-all-star-2022.jpg",
+  "caption": "LeBron James é o recordista de participações do NBA All-Star",
+  "description": "LeBron James conduzindo a bola com uniforme cinza do NBA All-Star.",
+  "width": 2366,
+  "height": 4573,
+  "license": "https://creativecommons.org/licenses/by/2.0/",
+  "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:LeBron_James_at_the_2022_NBA_All-Star_Game.jpg",
+  "creditText": "Foto: Erik Drost/Wikimedia Commons.",
+  "creator": {
+    "@type": "Person",
+    "name": "Erik Drost"
+  },
+  "copyrightNotice": "Erik Drost/Wikimedia Commons."
+}
+</script>
+<figure style="margin:6px auto 22px;max-width:760px;">
+  <img src="lebron-james-nba-all-star-2022.jpg" alt="LeBron James conduzindo a bola com uniforme cinza do NBA All-Star." width="2366" height="4573" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;">
+  <figcaption style="margin:4px 2px 0;font-size:0.72rem;line-height:1.35;color:#7A879A;text-align:right;">LeBron James é o recordista de participações do NBA All-Star Foto: Erik Drost/Wikimedia Commons.</figcaption>
+</figure>
+<p>O NBA All-Star ocupa um espaço único no calendário do esporte. Realizado durante a temporada regular, o evento interrompe momentaneamente a disputa por vitórias, posições de conferência e vagas nos playoffs para colocar os principais nomes da liga em um ambiente voltado ao espetáculo.</p>
+<p>A atração principal é o All-Star Game, criado em 1951. Ao redor dele, porém, nasceu uma programação que se tornou tão importante quanto a própria partida. Concurso de enterradas, disputa de três pontos, desafios de habilidade e eventos voltados aos jovens jogadores ajudaram a transformar o antigo encontro entre estrelas em um fim de semana completo.</p>
+<p>Ao mesmo tempo, poucas tradições da NBA passaram por tantas mudanças de formato. O clássico Leste contra Oeste dominou grande parte da história, mas a liga também experimentou draft de jogadores, pontuação-alvo, minitorneios e confrontos envolvendo estrelas norte-americanas e internacionais. Essa capacidade de mudar ajuda a explicar por que entender o All-Star significa também conhecer parte da evolução da própria NBA.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>O início da tradição</strong></p>
+<p>A primeira edição do NBA All-Star Game aconteceu em 2 de março de 1951, no Boston Garden. A ideia nasceu em um período no qual a liga ainda procurava ampliar sua popularidade e fortalecer o interesse do público no basquete profissional.</p>
+<p>O conceito foi discutido por nomes importantes dos primeiros anos da NBA, entre eles o comissário Maurice Podoloff, o responsável pela publicidade da liga Haskell Cohen e Walter Brown, presidente do Boston Celtics. Inspirado em eventos semelhantes de outras ligas esportivas norte-americanas, o projeto reuniria em uma mesma partida os principais jogadores daquele momento.</p>
+<p>A estreia terminou com vitória da Conferência Leste sobre a Oeste por 111 a 94. Ed Macauley, do Boston Celtics, marcou 20 pontos e posteriormente ficou reconhecido como o MVP daquela primeira edição.</p>
+<p>O sucesso transformou aquela experiência em tradição. A partir dali, ser escolhido para o All-Star passou a representar uma distinção importante na carreira de um jogador.</p>
+<p>Quando um atleta é chamado de All-Star, significa que ele foi selecionado para integrar o grupo de jogadores escolhidos para o evento daquela temporada.</p>
+<p>A quantidade de convocações acumuladas durante uma carreira se tornou, inclusive, uma das medidas utilizadas para contextualizar a longevidade e a presença de uma estrela entre a elite da liga.</p>
+<p>LeBron James é o maior exemplo. Em 2026, ele chegou à 22ª seleção consecutiva para o All-Star, recorde da NBA. LeBron também havia alcançado 449 pontos em jogos do evento, a maior marca acumulada da história.</p>
+<p>A dimensão dessas marcas acompanha o tamanho de sua trajetória, abordada também na matéria sobre a <a href="https://cortedosesportes.com.br/lebron-james-historia-titulos-recordes-legado.html">história, os títulos e os recordes de LeBron James</a>.</p>
+
+<p><strong>Como os jogadores são escolhidos </strong></p>
+<p>O sistema de seleção mudou ao longo das décadas.</p>
+<p>Nas primeiras edições, jornalistas e profissionais de mídia tiveram participação decisiva na composição dos times. O modelo foi sendo reformulado conforme a NBA cresceu, e os torcedores ganharam papel cada vez maior.</p>
+<p>Em edições recentes, a liga manteve uma combinação de votação popular, jogadores da própria NBA e imprensa para definir os titulares. Em 2026, por exemplo, os fãs representaram 50% do resultado da votação dos titulares, enquanto jogadores da NBA ficaram responsáveis por 25% e um painel de mídia pelos outros 25%.</p>
+<p>Os reservas foram escolhidos pelos técnicos da liga. A edição de 2026 manteve a seleção de 24 All-Stars, 12 provenientes de cada conferência, embora a montagem das equipes do jogo tenha seguido um formato diferente.</p>
+
+<p><strong>Partida que marcou a maior parte da história</strong></p>
+<p>Durante décadas, a imagem clássica do All-Star Game foi simples: estrelas da <a href="https://cortedosesportes.com.br/conferencia-leste-nba-historia-maiores-campeoes-dinastias-e-rivalidades.html">Conferência Leste</a> enfrentando estrelas da <a href="https://cortedosesportes.com.br/conferencia-oeste-nba-historia-times-franquias-dinastias.html">Conferência Oeste</a>.</p>
+<p>Essa divisão produziu alguns dos encontros mais famosos da história da liga e colocou simultaneamente em quadra jogadores que normalmente eram rivais durante a temporada.</p>
+<p>O modelo tradicional, entretanto, começou a ser questionado à medida que a própria natureza do jogo de exibição mudou.</p>
+
+<p><strong>A era do draft dos capitães</strong></p>
+<p>Em 2018, a NBA realizou uma transformação importante.</p>
+<p>O confronto deixou de colocar obrigatoriamente Leste contra Oeste. Os jogadores ainda eram selecionados a partir das conferências, mas dois capitães passaram a montar as equipes por meio de um draft, escolhendo atletas independentemente do lado do país em que jogavam.</p>
+<p>LeBron James e Stephen Curry foram os primeiros capitães desse formato.</p>
+<p>A mudança permitiu combinações antes difíceis de acontecer no All-Star. Companheiros de conferência poderiam atuar em equipes opostas, enquanto grandes rivais poderiam aparecer no mesmo time.</p>
+
+<p><strong>Novas mudanças mostraram que o formato não é permanente</strong></p>
+<p>Em 2020, a NBA introduziu uma pontuação-alvo para decidir a partida, eliminando o relógio no período decisivo. A proposta buscava aumentar a competitividade principalmente nos minutos finais.</p>
+<p>Em 2024, a liga recuperou o confronto tradicional entre Conferência Leste e Conferência Oeste e voltou aos quatro quartos de 12 minutos.</p>
+<p>A experiência durou apenas aquela edição.</p>
+<p>Em 2025, surgiu um minitorneio com quatro equipes. Foram disputadas duas semifinais e uma final, e cada partida terminava quando uma equipe alcançava ou ultrapassava 40 pontos.</p>
+<p>Em 2026, outra reformulação colocou duas equipes de jogadores norte-americanos e uma seleção de atletas internacionais em um sistema de todos contra todos. O torneio contou com quatro partidas de 12 minutos, incluindo a decisão entre os dois melhores times da fase inicial.</p>
+<p>A sequência mostra uma característica fundamental do NBA All-Star moderno: sua estrutura pode ser alterada pela liga. O evento é permanente; o regulamento não necessariamente.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>All-Star Weekend além do jogo principal</strong></p>
+<p>O crescimento do NBA All-Star criou um verdadeiro festival de basquete.</p>
+<p>Atualmente, o jogo das estrelas representa apenas uma parte da programação. O fim de semana reúne atrações competitivas, apresentações e eventos envolvendo diferentes perfis de atletas.</p>
+<p>Entre os mais conhecidos estão o Slam Dunk Contest, o concurso de três pontos e o Rising Stars. Dependendo da edição, a NBA também inclui desafios de habilidades e outras atrações especiais.</p>
+<p>Por isso, quando alguém fala em “All-Star Weekend”, está se referindo ao conjunto da programação. O “All-Star Game” é especificamente a principal disputa entre as estrelas selecionadas.</p>
+
+<p><strong>Slam Dunk Contest virou parte da cultura da NBA</strong></p>
+<p>Poucos eventos esportivos produziram tantas imagens icônicas quanto o concurso de enterradas.</p>
+<p>A NBA incorporou definitivamente a competição em 1984, quando Larry Nance venceu a disputa. O conceito já havia aparecido anteriormente na ABA, cuja competição de 1976 teve Julius Erving como vencedor.</p>
+<p>Com o passar das décadas, o Dunk Contest criou momentos que ultrapassaram o próprio All-Star.</p>
+<p>Michael Jordan e Dominique Wilkins transformaram suas disputas em símbolos dos anos 1980. Spud Webb impressionou pela explosão apesar de sua baixa estatura para os padrões da liga. Vince Carter produziu uma das apresentações mais lembradas da história em 2000. Nate Robinson, Zach LaVine e outros campeões mantiveram a competição entre as atrações mais conhecidas do evento.</p>
+<p><a href="https://cortedosesportes.com.br/kobe-bryant-historia-titulos-legado-lakers-nba.html">Kobe Bryant</a> também está na lista de campeões. Ele venceu o concurso em 1997, antes de construir a carreira que o colocaria entre os maiores jogadores da história da NBA.</p>
+
+<p><strong>Concurso de três pontos cresceu junto com a evolução do jogo</strong></p>
+<p>O Three-Point Contest estreou em 1986, com Larry Bird conquistando o primeiro título.</p>
+<p>Bird venceu também as duas edições seguintes e ajudou a dar importância a uma competição criada quando os arremessos de longa distância ainda ocupavam um espaço muito menor no basquete do que atualmente.</p>
+<p>A evolução do concurso acompanha uma transformação tática da própria NBA.</p>
+<p>Com o aumento da importância das bolas de três pontos, o evento passou a reunir algumas das maiores estrelas ofensivas da liga. Stephen Curry, Klay Thompson, Damian Lillard e outros grandes arremessadores conquistaram o torneio em diferentes momentos.</p>
+
+<p><strong>MVP leva o nome de Kobe Bryant</strong></p>
+<p>A principal premiação individual da partida é o troféu de MVP do NBA All-Star Game.</p>
+<p>Desde 2020, o prêmio leva oficialmente o nome de Kobe Bryant, que participou de 18 All-Star Games e conquistou quatro prêmios de MVP do evento.</p>
+<p>Em 2022, a NBA apresentou uma nova versão física do Kobe Bryant Trophy, construída com diversos elementos relacionados à carreira do ex-jogador do Los Angeles Lakers.</p>
+<p>Kobe divide com Bob Pettit o recorde de quatro prêmios de MVP do All-Star Game.</p>
+
+<p><strong>Jogadores com mais seleções para o NBA All-Star</strong></p>
+<p>Ser escolhido é uma das formas mais tradicionais de medir a permanência de um jogador entre as grandes estrelas da NBA. Uma convocação isolada pode marcar o auge de uma temporada, mas aparecer repetidamente no evento exige longevidade, desempenho e relevância durante muitos anos. Por isso, a lista de jogadores com mais seleções para o All-Star reúne alguns dos maiores nomes da história da liga.</p>
+<p>Os 10 jogadores com mais seleções para o NBA All-Star:</p>
+<ul>
+<li>LeBron James — 22 seleções</li>
+<li>Kareem Abdul-Jabbar — 19 seleções</li>
+<li>Kobe Bryant — 18 seleções</li>
+<li>Kevin Durant — 16 seleções</li>
+<li>Tim Duncan — 15 seleções</li>
+<li>Kevin Garnett — 15 seleções</li>
+<li>Shaquille O'Neal — 15 seleções</li>
+<li>Michael Jordan — 14 seleções</li>
+<li>Karl Malone — 14 seleções</li>
+<li>Dirk Nowitzki — 14 seleções</li>
+<li>Jerry West — 14 seleções</li>
+</ul>
+<p>O ranking mostra como o All-Star também funciona como um registro da longevidade das maiores estrelas da NBA. </p>
+
+<!-- ANÚNCIO (ARTIGO - FIM) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - fim)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Por que o NBA All-Star é tão importante</strong></p>
+<p>O fim de semana não entrega o título da temporada, não interfere diretamente nos playoffs e não possui a pressão competitiva das NBA Finals. Sua importância está em outra dimensão.</p>
+<p>O evento funciona como uma celebração da liga e de suas estrelas.</p>
+<p>Para jogadores jovens, uma primeira seleção pode representar a confirmação de que chegaram ao grupo de elite. Para veteranos, o número de aparições ajuda a documentar anos de excelência. Para o público, é uma oportunidade rara de ver grandes nomes dividindo a quadra sem as limitações normais das rivalidades e dos elencos.</p>
+<p>O All-Star também funciona como um retrato de cada época. O evento dos anos 1980 ajuda a contar a ascensão de Magic Johnson, Larry Bird e Michael Jordan. Os anos seguintes registraram a presença de Shaquille O'Neal e Kobe Bryant. Depois vieram LeBron James, Kevin Durant e Stephen Curry. Novas gerações assumem gradualmente esse espaço.</p>
+<p>Entender esse encontro entre estrelas é também compreender uma parte da <a href="https://cortedosesportes.com.br/nba-historia-maiores-campeoes-playoffs-conferencias.html">história da NBA, suas conferências, playoffs e os grandes campeões</a>.</p>
+
+<p><strong>O próximo NBA All-Star será em Phoenix</strong></p>
+<p>A próxima edição já tem data e sede definidas. O NBA All-Star 2027 será realizado entre 19 e 21 de fevereiro de 2027, em Phoenix, no Arizona. O 76º All-Star Game está marcado para domingo, 21 de fevereiro, no Mortgage Matchup Center, casa do Phoenix Suns. O evento estará inserido na pausa do All-Star da temporada 2026/27, prevista no calendário da liga entre 19 e 24 de fevereiro.</p>
+<p>O fim de semana será novamente um dos pontos altos da temporada, reunindo as estrelas da liga e as tradicionais atrações ligadas ao All-Star. Para acompanhar as principais datas da competição, período da temporada regular e caminho até a pós-temporada, confira também o <a href="https://cortedosesportes.com.br/nba-2026-2027-inicio-calendario-playoffs-finais-onde-assistir.html">calendário completo da NBA 2026/27, com início da temporada, playoffs e finais</a>.</p>
+
+<p><strong>Um evento que muda sem abandonar sua essência</strong></p>
+<p>Desde aquela primeira partida de 1951 no Boston Garden, o NBA All-Star mudou quase tudo ao seu redor.</p>
+<p>Mudaram as arenas, a televisão, a votação, os uniformes, as atrações e até o formato da partida principal. O Leste contra Oeste deixou de ser uma regra intocável. Os capitães ganharam poder para selecionar equipes. A NBA testou pontuação-alvo, mini torneios e confrontos entre norte-americanos e jogadores internacionais.</p>
+<p>O princípio, entretanto, continua reconhecível: colocar alguns dos maiores astros da NBA no mesmo palco e transformar a pausa da temporada em uma celebração do basquete.</p>
+<p>É justamente essa combinação de história e capacidade de reinvenção que mantém o NBA All-Star relevante. Mais de sete décadas depois da estreia, o evento continua funcionando como encontro entre gerações, vitrine para as estrelas e laboratório para uma liga que nunca deixou de experimentar novas maneiras de apresentar seu principal espetáculo ao mundo.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda.</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar desktop-only-ad" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+if (window.matchMedia("(min-width: 1025px)").matches) {
+(adsbygoogle = window.adsbygoogle || []).push({});
+}
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "basquete";
+const CATEGORY_NAME = "Basquete";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
