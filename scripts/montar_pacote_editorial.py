@@ -340,7 +340,8 @@ def verified_promised_service_gaps(
                 text = observed.get(field, "")
                 value = text.split(":", 1)[-1].rstrip(".").strip()
                 players = [
-                    item.strip() for item in re.split(r"[;,]", value)
+                    item.strip()
+                    for item in re.split(r"(?:[;,]|\s+e\s+)", value, flags=re.IGNORECASE)
                     if len(item.strip()) >= 3
                 ]
                 if len(players) < minimum:
