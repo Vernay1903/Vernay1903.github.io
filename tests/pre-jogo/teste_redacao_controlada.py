@@ -167,13 +167,13 @@ def valid_body() -> str:
         "<li><strong>Provável Manchester City:</strong> Donnarumma; Lewis; Dias; Gvardiol; Ait-Nouri; Rodri; Reijnders; Foden; Cherki; Doku; Haaland.</li>"
         "<li><strong>Técnico:</strong> Pep Guardiola.</li>"
         "</ul>"
-        "<p>Michael Oliver será o árbitro da partida. A definição da arbitragem completa o quadro de serviço do confronto, que reúne duas "
+        "<p>Michael Oliver será o árbitro da partida. A arbitragem está confirmada para o confronto, que reúne duas "
         "equipes acostumadas a jogos de grande intensidade e que precisam controlar também o aspecto disciplinar para não perder jogadores "
         "em momentos decisivos.</p>"
     )
     h2h = (
         "<p><strong>Histórico do confronto pela Premier League</strong></p>"
-        "<p>No recorte considerado pela competição, o retrospecto mostra vantagem do Manchester City, mas também registra vitórias do Arsenal "
+        "<p>Nos 20 confrontos fornecidos para a Premier League, o retrospecto mostra vantagem do Manchester City, mas também registra vitórias do Arsenal "
         "e empates suficientes para reforçar que o confronto não deve ser tratado como automático. Os números abaixo se referem apenas à "
         "Premier League.</p>"
         "<ul>"
