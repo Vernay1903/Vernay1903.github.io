@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Torneio de Abertura NBB 2026: veja jogos, formato datas | Corte dos Esportes</title>
+<meta name="description" content="A competição reúne oito equipes em Belo Horizonte até sábado, 10 de outubro. Primeira rodada teve vitórias de Flamengo, CAIXA/Brasília, Minas Storm e Itatiaiuçu Cruzeiro, enquanto a segunda rodada começa nesta quarta-feira." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ADSENSE (carregar 1x por página) -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4145492637375431"
+crossorigin="anonymous"></script>
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+rel="stylesheet">
+<!-- CSS do compartilhar (único para todas as notícias) -->
+<link rel="stylesheet" href="share.css">
+<style>
+/* ✅ CORREÇÃO: evitar rolagem lateral + evitar texto cortado */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+height: 100%;
+margin: 0;
+font-family: Montserrat, sans-serif;
+background: #FFFFFF;
+color: #0A1E3A;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+img, video, iframe, embed, object {
+max-width: 100%;
+height: auto;
+}
+ins.adsbygoogle {
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+.ad-slot { overflow: hidden; max-width: 100%; }
+/* ESSENCIAL para grid/flex não estourar */
+.layout > section, .layout > aside { min-width: 0; }
+/* Quebra segura (não “corta” frases) */
+h1, .subhead, .meta, article, article p, .desc, .agenda-list, .agenda-list li {
+overflow-wrap: anywhere;
+word-break: break-word;
+hyphens: none;
+max-width: 100%;
+}
+/* ✅ FIM DA CORREÇÃO */
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+main { flex: 1; }
+/* HEADER (STICKY) */
+header {
+background: #0A1E3A;
+padding: 2px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1000;
+}
+.logo-container {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+.logo-container img {
+width: 420px;
+height: auto;
+}
+@media (min-width: 769px) {
+.logo-container a {
+background: #FFFFFF;
+padding: 0 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+}
+.logo-text {
+font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+letter-spacing: 0.3px;
+line-height: 1;
+text-decoration: none;
+white-space: nowrap;
+}
+/* MENU (STICKY) */
+.sports-menu {
+background: #FFFFFF;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+border-bottom: 1px solid #E5E5E5;
+position: sticky;
+top: 0;
+z-index: 999;
+width: 100%;
+}
+.sports-menu a {
+flex: 1 1 120px;
+max-width: 150px;
+text-align: center;
+padding: 12px 8px;
+border: 1px solid #1E4BA5;
+border-radius: 10px;
+color: #1E4BA5;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+background-color: #FFFFFF;
+transition: 0.3s;
+white-space: nowrap;
+}
+.sports-menu a:hover { background: #1E4BA5; color: #FFFFFF; }
+/* Destaque do esporte atual no menu */
+.sports-menu a.active {
+background: #1E4BA5;
+color: #FFFFFF;
+}
+header, .sports-menu, footer {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+/* LAYOUT */
+.page {
+max-width: 1200px;
+margin: 0 auto;
+padding: 28px 10px 40px;
+box-sizing: border-box;
+}
+.layout {
+display: grid;
+grid-template-columns: 2.3fr 330px;
+gap: 20px;
+align-items: start;
+}
+/* ✅ CORREÇÃO: margin negativo gera overflow lateral */
+aside { margin-right: 0; }
+.card {
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(10,30,58,0.06);
+margin-bottom: 16px;
+}
+h1 {
+font-size: 44px;
+margin: 0 0 10px;
+line-height: 1.15;
+}
+.subhead {
+font-size: 18px;
+margin: 0 0 14px;
+color: #31425F;
+line-height: 1.5;
+}
+.meta {
+font-size: 12px;
+color: #5B6B84;
+margin-bottom: 10px;
+}
+.meta a {
+color: #1E4BA5;
+text-decoration: none;
+font-weight: 700;
+}
+.meta a:hover { text-decoration: underline; }
+/* AD SLOTS (sem texto) */
+.ad-slot {
+margin: 16px 0;
+padding: 0;
+border: none;
+background: transparent;
+box-shadow: none;
+min-height: 64px;
+box-sizing: border-box;
+max-width: 100%;
+overflow: visible;
+text-align: center;
+}
+.ad-slot.sidebar { min-height: 120px; margin: 0; }
+.ad-slot ins.adsbygoogle {
+display: block !important;
+margin: 0 auto !important;
+}
+article p {
+font-size: 16px;
+line-height: 1.8;
+color: #0A1E3A;
+margin: 0 0 16px;
+}
+/* SIDEBAR */
+.section-title {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.agenda-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.agenda-list li {
+display: flex;
+gap: 12px;
+padding: 10px 0;
+border-top: 1px solid #EEF1F5;
+}
+.agenda-list li:first-child { border-top: none; padding-top: 0; }
+.time {
+min-width: 60px;
+font-weight: 700;
+color: #1E4BA5;
+}
+.desc { font-size: 14px; line-height: 1.4; }
+footer {
+background: #0A1E3A;
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #FFFFFF;
+}
+footer a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 12px;
+white-space: nowrap;
+}
+footer a:hover { color: #1E4BA5; }
+@media (max-width: 1024px) {
+.layout { grid-template-columns: 1fr; }
+aside { margin-right: 0; }
+.desktop-only-ad { display: none !important; }
+}
+@media (max-width: 768px) {
+header {
+padding: 2px 6px;
+background: #FFFFFF;
+border: 2px solid #0A1E3A;
+}
+.logo-container {
+justify-content: center;
+}
+.logo-container img {
+width: calc(100vw - 16px);
+max-width: none;
+height: auto;
+}
+.logo-text {
+font-size: 18px;
+}
+.sports-menu {
+top: 0;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 10px;
+justify-content: initial;
+}
+.sports-menu a {
+width: 100%;
+max-width: none;
+flex: initial;
+white-space: normal;
+word-break: break-word;
+hyphens: none;
+line-height: 1.15;
+padding: 10px 6px;
+font-size: 13px;
+}
+.sports-menu a[data-slug="automobilismo"] {
+white-space: nowrap;
+}
+h1 { font-size: 34px; }
+.ad-slot {
+width: 100%;
+max-width: 100%;
+margin: 18px auto;
+text-align: center;
+}
+.ad-slot ins.adsbygoogle,
+.ad-slot iframe {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+max-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<a href="index.html" aria-label="Corte dos Esportes">
+<picture>
+<source media="(max-width: 768px)" srcset="logo-mobile.png">
+<img src="logo-mobile.png" alt="Corte dos Esportes" width="3318" height="474"
+decoding="async">
+</picture>
+</a>
+</div>
+</header>
+<div class="sports-menu" id="sportsMenu">
+<a href="index.html" data-slug="inicio">Início</a>
+<a href="atletismo.html" data-slug="atletismo">Atletismo</a>
+<a href="automobilismo.html" data-slug="automobilismo">Automobilismo</a>
+<a href="basquete.html" data-slug="basquete">Basquete</a>
+<a href="esportes-olimpicos.html" data-slug="esportes-olimpicos">Esportes Olímpicos</a>
+<a href="futebol.html" data-slug="futebol">Futebol</a>
+<a href="futebol-americano.html" data-slug="futebol-americano">Futebol Americano</a>
+<a href="futsal.html" data-slug="futsal">Futsal</a>
+<a href="handebol.html" data-slug="handebol">Handebol</a>
+<a href="lutas.html" data-slug="lutas">Lutas</a>
+<a href="skate.html" data-slug="skate">Skate</a>
+<a href="surf.html" data-slug="surf">Surf</a>
+<a href="volei.html" data-slug="volei">Vôlei</a>
+<a href="volei-praia.html" data-slug="volei-praia">Vôlei de Praia</a>
+<a href="tenis.html" data-slug="tenis">Tênis</a>
+</div>
+<main>
+<div class="page">
+<div class="layout">
+<!-- ARTIGO -->
+<section>
+<div class="card">
+<h1 id="articleTitle">Torneio de Abertura NBB 2026: veja jogos, formato datas</h1>
+<p class="subhead" id="articleExcerpt">A competição reúne oito equipes em Belo Horizonte até sábado, 10 de outubro. Primeira rodada teve vitórias de Flamengo, CAIXA/Brasília, Minas Storm e Itatiaiuçu Cruzeiro, enquanto a segunda rodada começa nesta quarta-feira.</p>
+<div class="meta">
+Por Corte dos Esportes · <span id="articleDate">07/10/2026</span> ·
+Categoria: <a id="categoryLink" href="#">Basquete</a>
+</div>
+<!-- COMPARTILHAR (CARREGA DO share.js) -->
+<div class="share-wrap">
+<button class="share-btn" id="shareBtn" type="button">Compartilhar</button>
+<button class="share-btn" id="copyBtn" type="button">Copiar link</button>
+<span class="share-msg" id="shareMsg" aria-live="polite"></span>
+</div>
+<article id="articleBody">
+<p>O basquete nacional já está em ritmo de competição antes mesmo do início da temporada regular do NBB CAIXA 2026/27. O Torneio de Abertura NBB CAIXA 2026 começou nesta terça-feira, 6 de outubro, no Ginásio Dona Salomé, em Belo Horizonte, reunindo oito equipes em busca do primeiro troféu da temporada.</p>
+<p>A terceira edição do torneio será disputada até sábado, 10 de outubro. São oito participantes divididos em dois grupos de quatro equipes, com três partidas para cada time na primeira fase. Os líderes das duas chaves avançam para a decisão do título, enquanto as demais colocações também determinam confrontos diretos no último dia da competição.[ ](https://lnb.com.br/noticias/torneio-de-abertura-do-nbb-caixa-2026-tem-tabela-definida-confira-grupos-e-os-jogos/?utm_source=chatgpt.com)</p>
+<p>A segunda rodada acontece nesta quarta-feira, 7 de outubro, novamente com quatro jogos.</p>
+
+<!-- ANÚNCIO (ARTIGO - TOPO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - topo)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Como funciona o Torneio de Abertura NBB CAIXA 2026</strong></p>
+<p>A edição de 2026 apresenta um formato diferente das anteriores. Os oito participantes foram separados em dois grupos.</p>
+<p>Grupo A:</p>
+<ul>
+<li>CAIXA/Brasília</li>
+<li>Caxias do Sul Basquete</li>
+<li>Fluminense</li>
+<li>Itatiaiuçu Cruzeiro Basquete</li>
+</ul>
+<p>Grupo B:</p>
+<ul>
+<li>Botafogo</li>
+<li>Flamengo</li>
+<li>Grupo BT/Clube de Campo de Tatuí</li>
+<li>Minas Storm</li>
+</ul>
+<p>Dentro de cada chave, todos enfrentam todos em turno único. Assim, cada equipe realiza três partidas na fase de grupos. A programação tem jogos nos dias 6, 7 e 9 de outubro, com folga geral na quinta-feira, dia 8.[ ](https://lnb.com.br/noticias/torneio-de-abertura-do-nbb-caixa-2026-tem-tabela-definida-confira-grupos-e-os-jogos/?utm_source=chatgpt.com)</p>
+<p>No sábado, 10 de outubro, os times são cruzados conforme a posição obtida nos grupos. Os quartos colocados disputam o sétimo lugar, os terceiros fazem a partida pelo quinto lugar, os segundos colocados decidem a terceira posição e os líderes dos grupos fazem a final do Torneio de Abertura, às 19h30.[ ](https://lnb.com.br/noticias/torneio-de-abertura-do-nbb-caixa-2026-tem-tabela-definida-confira-grupos-e-os-jogos/?utm_source=chatgpt.com)</p>
+
+<p><strong>Flamengo estreia com vitória sobre o Botafogo</strong></p>
+<p>O resultado mais expressivo do primeiro dia foi construído pelo Flamengo. Atual campeão do Torneio de Abertura, o Rubro-Negro derrotou o Botafogo por 99 a 66 e iniciou a defesa do título com uma diferença de 33 pontos.</p>
+<p>O Flamengo venceu todos os períodos: 24 a 16 no primeiro quarto, 25 a 18 no segundo, 31 a 19 no terceiro e 19 a 13 no último. Didi foi o principal pontuador rubro-negro, com 22 pontos. Yago terminou com 15 pontos e sete assistências, enquanto Franco Baralle fez 11 pontos.</p>
+<p>Pelo Botafogo, Mudronja também anotou 22 pontos. JP Demetrio marcou 18. </p>
+
+<p><strong>Brasília abre 24 pontos no primeiro quarto e também vence </strong></p>
+<p>Pelo Grupo A, o CAIXA/Brasília derrotou o Fluminense por 87 a 68. A equipe do Distrito Federal praticamente definiu o rumo da partida em um primeiro quarto dominante: 36 a 12.</p>
+<p>Depois disso, o Fluminense conseguiu equilibrar as ações, mas não teve força suficiente para eliminar a diferença construída nos dez minutos iniciais. Zu Jr. terminou como cestinha do Brasília, com 18 pontos. Fernandez contribuiu com 16 pontos e nove rebotes, enquanto Crescenzi distribuiu cinco assistências.</p>
+<p>No Fluminense, Gui Pedra liderou a pontuação com 15 pontos. Edu Marília fez 10 pontos e pegou oito rebotes.[ ](https://lnb.com.br/partidas/torneio-de-abertura-nbb-caixa-2026-2027-caixa-brasilia-basquete-x-fluminense-06102026-1400/?utm_source=chatgpt.com)</p>
+
+<p><strong>Minas começa busca pelo bicampeonato com vitória por 30 pontos</strong></p>
+<p>Primeiro campeão da história do Torneio de Abertura, o Minas Storm também começou bem em Belo Horizonte. O time mineiro derrotou o Grupo BT/Clube de Campo de Tatuí por 93 a 63.</p>
+<p>Depois de um primeiro quarto mais equilibrado, vencido pelo Minas por 24 a 21, a diferença cresceu progressivamente. Foram parciais de 26 a 17, 23 a 14 e 20 a 11 nos três períodos seguintes.</p>
+<p>Yuri Neptune foi o cestinha do Minas com 15 pontos. Luís Santos anotou 13, enquanto Wesley, Coelho e Jeremy Hollowell terminaram com 12 pontos cada. </p>
+<p>O domínio coletivo também apareceu nos números: o Minas terminou com 38 rebotes contra 27 do adversário e 28 assistências contra 13.[ ](https://lnb.com.br/noticias/torneio-de-abertura-nbb-caixa-2026-grupo-b-minas-storm-93-x-63-grupo-bt-clube-de-campo-de-tatui/?utm_source=chatgpt.com)</p>
+
+<p><strong>Cruzeiro supera o Caxias no jogo mais equilibrado da rodada</strong></p>
+<p>O confronto mais apertado da estreia aconteceu entre Caxias do Sul e Itatiaiuçu Cruzeiro. A equipe mineira venceu por 76 a 67 diante da torcida em Belo Horizonte.</p>
+<p>O segundo quarto foi determinante. Depois de ganhar o primeiro por apenas 14 a 12, o Cruzeiro fez 31 a 18 no período seguinte e abriu uma vantagem importante antes do intervalo.</p>
+<p>O Caxias reagiu e venceu os dois últimos quartos, mas não conseguiu reverter o cenário. Adyel Borges liderou o Cruzeiro com 14 pontos e seis rebotes. Nique Coleman marcou 13 pontos e Felipe Queirós terminou com 10.</p>
+<p>Pelo Caxias, Bolivar foi o cestinha com 17 pontos, enquanto Rafa contribuiu com 10 pontos e 10 rebotes.</p>
+
+<!-- ANÚNCIO (ARTIGO - MEIO) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - meio)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Jogos desta quarta-feira </strong></p>
+<p>A segunda rodada acontece nesta quarta-feira, 7 de outubro, e já começa a colocar frente a frente equipes com situações diferentes dentro dos grupos.</p>
+<ul>
+<li>11h30 — Grupo BT/Clube de Campo de Tatuí x Flamengo — Grupo B</li>
+<li>14h — Fluminense x Caxias do Sul Basquete — Grupo A</li>
+<li>17h — Botafogo x Minas Storm — Grupo B</li>
+<li>19h30 — Itatiaiuçu Cruzeiro x CAIXA/Brasília — Grupo A[ ](https://lnb.com.br/noticias/torneio-de-abertura-nbb-caixa-2026-reune-oito-equipes-em-primeiro-teste-da-temporada/?utm_source=chatgpt.com)</li>
+</ul>
+<p>O último duelo do dia é especialmente importante porque reúne os dois vencedores da primeira rodada do Grupo A. Já Flamengo e Minas, que começaram vencendo no Grupo B, só se enfrentam na sexta-feira.</p>
+
+<p><strong>Terceira rodada pode definir finalistas</strong></p>
+<p>Depois da folga de quinta-feira, a fase classificatória termina na sexta-feira, 9 de outubro.</p>
+<ul>
+<li>11h30 — Botafogo x Grupo BT/Clube de Campo de Tatuí</li>
+<li>14h — CAIXA/Brasília x Caxias do Sul Basquete</li>
+<li>17h — Flamengo x Minas Storm</li>
+<li>19h30 — Itatiaiuçu Cruzeiro x Fluminense</li>
+</ul>
+<p>O duelo entre Flamengo e Minas merece atenção especial. Os dois clubes são justamente os únicos campeões da história do Torneio de Abertura até agora. Como estão no mesmo grupo em 2026, não podem se enfrentar novamente na final.</p>
+
+<!-- ANÚNCIO (ARTIGO - FIM) -->
+<div class="ad-slot" aria-label="Espaço para anúncio (artigo - fim)">
+<!-- Display-Article-Meio -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="8702501261"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<p><strong>Minas e Flamengo são os campeões anteriores</strong></p>
+<p>O Torneio de Abertura NBB chega à terceira edição em 2026. O Minas Storm conquistou o primeiro título, em 2024, ao derrotar o Vasco por 76 a 52 na decisão realizada em Brasília.</p>
+<p>Em 2025, o Flamengo ficou com o troféu. O Rubro-Negro venceu justamente o Minas por 86 a 68 na final e tornou-se o segundo campeão da competição. Alexey Borges foi eleito o MVP daquela edição.[ ](https://lnb.com.br/noticias/torneio-de-abertura-nbb-caixa-veja-quais-sao-os-campeoes-das-duas-primeiras-edicoes/)</p>
+<p>Agora, os dois voltaram a começar com vitória e aparecem novamente entre os protagonistas do torneio.</p>
+
+<p><strong>Torneio serve como primeiro grande teste da temporada</strong></p>
+<p>Além da disputa pelo troféu, o Torneio de Abertura funciona como uma etapa importante de preparação. Flamengo, Minas, Brasília, Cruzeiro, Caxias e Botafogo aproveitam os jogos para ajustar seus elencos antes da edição 2026/27 do NBB CAIXA.</p>
+<p>Fluminense e Grupo BT/Clube de Campo de Tatuí vivem uma realidade diferente. As duas equipes estão utilizando o torneio como preparação para a Liga Ouro, competição que terá início posteriormente e funciona como outra frente importante do calendário nacional.</p>
+<p>Todos os confrontos do Torneio de Abertura têm transmissão anunciada pela Liga Nacional de Basquete no canal oficial do NBB CAIXA no YouTube. A competição segue até sábado no Ginásio Dona Salomé, em Belo Horizonte, quando serão disputadas as partidas de definição de todas as posições e, às 19h30, a grande final.</p>
+</article>
+</div>
+</section>
+<!-- SIDEBAR -->
+<aside>
+<div class="card">
+<h2 class="section-title">Agenda do Dia</h2>
+<ul class="agenda-list" id="agendaList">
+<li><div class="time">--:--</div><div class="desc">Carregando agenda.</div></li>
+</ul>
+</div>
+
+<div class="ad-slot sidebar desktop-only-ad" aria-label="Espaço para anúncio (sidebar)">
+<!-- Display-Article-Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4145492637375431"
+data-ad-slot="5521804159"
+data-ad-format="auto"
+data-full-width-responsive="false"></ins>
+<script>
+if (window.matchMedia("(min-width: 1025px)").matches) {
+(adsbygoogle = window.adsbygoogle || []).push({});
+}
+</script>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer>
+© 2026 Corte dos Esportes |
+<a href="politica.html">Privacidade</a> |
+<a href="contato.html">Contato</a> |
+<a href="sobre.html">Sobre</a> |
+<a href="termos.html">Termos de Uso</a>
+</footer>
+<script>
+const CATEGORY_SLUG = "basquete";
+const CATEGORY_NAME = "Basquete";
+const AGENDA_JSON_URL = "agenda.json";
+function escapeHtml(str) {
+return String(str || "").replace(/[&<>"']/g, s => ({
+"&": "&amp;",
+"<": "&lt;",
+">": "&gt;",
+'"': "&quot;",
+"'": "&#39;"
+}[s]));
+}
+// Categoria
+const categoryLink = document.getElementById("categoryLink");
+categoryLink.textContent = CATEGORY_NAME;
+categoryLink.href = CATEGORY_SLUG + ".html";
+// Menu ativo
+const menuLinks = document.querySelectorAll("#sportsMenu a");
+menuLinks.forEach(a => {
+if (a.dataset.slug === CATEGORY_SLUG) a.classList.add("active");
+});
+// Agenda automática
+function renderAgenda(items) {
+const list = document.getElementById("agendaList");
+if (!items.length) {
+list.innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Agenda ainda não cadastrada.</div>
+</li>
+`;
+return;
+}
+const ordered = items.slice().sort((a,b) => {
+const ta = String(a.time || "").trim();
+const tb = String(b.time || "").trim();
+return ta.localeCompare(tb);
+});
+list.innerHTML = ordered.slice(0, 12).map(it => `
+<li>
+<div class="time">${escapeHtml(it.time || "--:--")}</div>
+<div class="desc">${escapeHtml(it.desc || "")}</div>
+</li>
+`).join("");
+}
+async function loadAgenda() {
+try {
+const res = await fetch(AGENDA_JSON_URL, { cache: "no-store" });
+if (!res.ok) throw new Error("Falha ao carregar agenda.json");
+const data = await res.json();
+const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+const clean = items
+.filter(x => x && (x.time || x.desc))
+.map(x => ({
+time: String(x.time || "").trim(),
+desc: String(x.desc || "").trim()
+}));
+renderAgenda(clean);
+} catch (e) {
+document.getElementById("agendaList").innerHTML = `
+<li>
+<div class="time">--:--</div>
+<div class="desc">Erro ao carregar agenda.</div>
+</li>
+`;
+}
+}
+loadAgenda();
+</script>
+<!-- JS do compartilhar (único para todas as notícias) -->
+<script src="share.js"></script>
+</body>
+</html>
