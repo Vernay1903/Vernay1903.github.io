@@ -12,8 +12,11 @@ def main():
     original=CONFIG.read_bytes()
     try:
         cfg=json.loads(original);cfg['research']['discovery']['external_search_enabled']=True
-        CONFIG.write_text(json.dumps(cfg,ensure_ascii=False,indent=2)+'\n')
         for index,command in enumerate(command_plan(target)):
+            if index == 6:
+                CONFIG.write_text(json.dumps(cfg,ensure_ascii=False,indent=2)+'\n')
+            if index == 11:
+                CONFIG.write_bytes(original)
             call(*command)
             if index==2:
                 plan=json.loads((BUILD/f'planos-{target}.json').read_text())
