@@ -165,6 +165,8 @@ def system_instructions() -> str:
         "Quando uma informação não estiver no contrato, omita-a em vez de completar. "
         "É expressamente proibido citar ou atribuir fontes de pesquisa, sites, portais, veículos, consultas ou processos internos. "
         "A menção a uma emissora/plataforma é permitida apenas quando ela própria é o fato de transmissão fornecido. "
+        "Declarar um campo em fact_fields_used não basta: todo campo de required_fact_fields deve aparecer de forma visível e inequívoca no body_html. "
+        "Quando houver transmission, escreva explicitamente no corpo o nome de cada emissora/plataforma confirmada. "
         "Não diga 'segundo', 'conforme' ou 'de acordo com' para atribuir informação pesquisada. "
         "Não invente escalações, jogadores, árbitros, números, resultados, datas, horários, estádios, cidades, cenários ou retrospectos. "
         "Produza somente o corpo editorial da matéria, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
@@ -196,7 +198,8 @@ def user_payload(contract: dict[str, Any]) -> str:
         fail(f"Contrato excede o limite de orçamento: {len(serialized)} > {limit} caracteres.")
     return (
         "Redija a matéria utilizando somente este contrato editorial limpo. "
-        "Todos os campos factuais listados em required_fact_fields devem ser usados sem alterar seu sentido. "
+        "Todos os campos factuais listados em required_fact_fields devem ser usados sem alterar seu sentido e devem aparecer visivelmente no body_html; listá-los apenas em fact_fields_used não conta. "
+        "Se houver o campo transmission, o nome de cada emissora/plataforma confirmada deve aparecer explicitamente no texto. "
         "O validador editorial rejeita matéria abaixo de 700 palavras; privilegie profundidade factual e evite repetição para atingir a contagem.\n\n"
         + serialized
     )

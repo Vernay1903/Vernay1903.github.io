@@ -78,6 +78,21 @@ def main():
     )
     assert draft.required_service_body_errors(good,contract)==[]
 
+    # A plataforma deve ser exigida, não a repetição literal da frase coletada.
+    transmission_sentence=json.loads(json.dumps(full))
+    transmission_sentence["transmission"]["facts"][0]["text"]="Transmissão: Canal Exemplo transmite a partida."
+    contract_transmission={
+       "title":title,"excerpt":excerpt,
+       "facts_by_requirement":list(transmission_sentence.values())
+    }
+    body_transmission=good.replace("Transmissão: Canal Exemplo.","Onde assistir: Canal Exemplo.")
+    assert draft.required_service_body_errors(body_transmission,contract_transmission)==[]
+    missing_transmission=good.replace("Transmissão: Canal Exemplo.","Transmissão confirmada.")
+    assert any(
+        "transmissão" in x
+        for x in draft.required_service_body_errors(missing_transmission,contract_transmission)
+    )
+
     natural_contract={
        "title":title,
        "excerpt":excerpt_sem_arbitragem,

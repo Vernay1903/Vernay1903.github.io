@@ -59,6 +59,8 @@ def main() -> None:
     assert "é expressamente proibido citar" in lowered
     assert "use exclusivamente" in lowered
     assert "abaixo de 700 palavras" in lowered
+    assert "fact_fields_used não basta" in lowered
+    assert "nome de cada emissora/plataforma confirmada" in lowered
 
     fake_draft = {
         "slug": contract["slug"],

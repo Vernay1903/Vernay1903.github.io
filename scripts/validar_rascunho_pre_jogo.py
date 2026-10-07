@@ -89,8 +89,27 @@ def required_service_body_errors(body: str, contract: dict[str, Any]) -> list[st
     errors: list[str] = []
     if "transmissao" in title or "onde assistir" in title:
         transmission = facts.get("transmission", "")
-        value = folded_text(transmission.split(":", 1)[-1].rstrip("."))
-        if not value or value not in body_folded:
+        raw_value = transmission.split(":", 1)[-1].rstrip(".").strip()
+        provider_text = re.split(
+            r"\b(?:transmit\w*|exib\w*|pass\w*|mostr\w*)\b",
+            raw_value,
+            maxsplit=1,
+            flags=re.IGNORECASE,
+        )[0].strip(" -–—,:;")
+        provider_text = re.sub(
+            r"^(?:do|da|de|no|na|pelo|pela)\s+",
+            "",
+            provider_text,
+            flags=re.IGNORECASE,
+        ).strip()
+        providers = [
+            folded_text(item)
+            for item in re.split(r"\s+(?:e|ou)\s+|[,;/]", provider_text, flags=re.IGNORECASE)
+            if len(folded_text(item)) >= 3
+        ]
+        if not providers and raw_value:
+            providers = [folded_text(raw_value)]
+        if not raw_value or not providers or any(provider not in body_folded for provider in providers):
             errors.append("chamada promete transmissão, mas a emissora/plataforma confirmada não aparece no corpo")
 
     if "arbitragem" in title or "arbitro" in title:
