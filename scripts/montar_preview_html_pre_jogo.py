@@ -300,6 +300,25 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
                 and team.strip()
                 and record_mentions_team({"text": record["heading"]}, team)
             )
+            heading_mentions_home = bool(
+                isinstance(home, str)
+                and home.strip()
+                and record_mentions_team({"text": record["heading"]}, home)
+            )
+            heading_mentions_away = bool(
+                isinstance(away, str)
+                and away.strip()
+                and record_mentions_team({"text": record["heading"]}, away)
+            )
+            # Uma seção explicitamente identificada como "Como chega TIME A"
+            # nunca pode satisfazer a forma recente do TIME B apenas porque o
+            # adversário foi citado incidentalmente no texto.
+            if (
+                form_heading
+                and (heading_mentions_home or heading_mentions_away)
+                and not heading_mentions_team
+            ):
+                continue
             substantive_body = len(WORD_RE.findall(str(record.get("body_text", "")))) >= 6
             if score >= minimum or (
                 score >= 1 and form_heading and heading_mentions_team and substantive_body
