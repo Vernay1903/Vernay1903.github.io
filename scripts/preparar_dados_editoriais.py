@@ -232,7 +232,7 @@ def build_editorial_record(
     excerpt = (
         f"{home} e {away} se enfrentam em {long_date_pt(target_date)}, às "
         f"{kickoff_display} (de Brasília), {connector} {competition_name}; veja "
-        "transmissão, prováveis escalações, arbitragem e informações do confronto."
+        "transmissão, prováveis escalações e informações do confronto."
     )
 
     noticias_entry = {
