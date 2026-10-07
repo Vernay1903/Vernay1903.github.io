@@ -80,12 +80,6 @@ jobs:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/diagnosticar_servicos_pre_jogo.py
-      - name: Provar solicitação e confirmação do Pages existente
-        if: ${{ always() && !cancelled() }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python scripts/confirmar_pages_pre_jogo.py --commit "${GITHUB_SHA}"
-
       - name: Validar coleta real dos jogos do dia até o pacote editorial
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
@@ -101,3 +95,9 @@ jobs:
             build/pre-jogo/paginas-checadas-*.json
             build/pre-jogo/pacotes-editoriais-*.json
           retention-days: 3
+      - name: Provar solicitação e confirmação do Pages existente
+        if: ${{ always() && !cancelled() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/confirmar_pages_pre_jogo.py --commit "${GITHUB_SHA}"
+
