@@ -43,7 +43,7 @@ def main() -> None:
     schema = text_format["schema"]
     assert schema["additionalProperties"] is False
     assert schema["properties"]["slug"]["enum"] == [contract["slug"]]
-    assert schema["properties"]["body_html"]["minLength"] == 5500
+    assert schema["properties"]["body_html"]["minLength"] == 4000
     fact_schema = schema["properties"]["fact_fields_used"]
     assert "uniqueItems" not in fact_schema
     assert fact_schema["minItems"] == len(contract["required_fact_fields"])
@@ -60,7 +60,10 @@ def main() -> None:
     assert "use exclusivamente" in lowered
     assert "abaixo de 700 palavras" in lowered
     assert "fact_fields_used não basta" in lowered
-    assert "nome de cada emissora/plataforma confirmada" in lowered
+    assert "cada emissora/plataforma confirmada" in lowered
+    assert "ausência de uma informação no contrato não é um fato" in lowered
+    assert "750 e 900 palavras" in lowered
+    assert "jogos concluídos registrados" in lowered
 
     fake_draft = {
         "slug": contract["slug"],

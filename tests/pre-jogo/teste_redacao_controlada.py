@@ -272,6 +272,33 @@ def main() -> None:
     _field_checked, field_errors = validate.validate_draft(missing_field, contract, config=config)
     assert any("campos factuais" in item for item in field_errors)
 
+    robotic = deepcopy(valid)
+    robotic["body_html"] = valid["body_html"].replace(
+        "O Arsenal soma três vitórias nos últimos cinco jogos.",
+        "O Arsenal soma três vitórias nos últimos cinco jogos concluídos registrados.",
+        1,
+    )
+    _robotic_checked, robotic_errors = validate.validate_draft(robotic, contract, config=config)
+    assert any("linguagem mecânica" in item for item in robotic_errors)
+
+    lineup_contradiction = deepcopy(valid)
+    lineup_contradiction["body_html"] = valid["body_html"].replace(
+        "As formações abaixo são prováveis e podem sofrer alterações até a confirmação oficial de cada equipe.",
+        "No Arsenal, não há informações confirmadas sobre a provável escalação.",
+        1,
+    )
+    _lineup_checked, lineup_errors = validate.validate_draft(lineup_contradiction, contract, config=config)
+    assert any("contradiz as prováveis escalações" in item for item in lineup_errors)
+
+    invented_absence = deepcopy(valid)
+    invented_absence["body_html"] = valid["body_html"].replace(
+        "O Arsenal soma três vitórias nos últimos cinco jogos.",
+        "O Arsenal soma três vitórias nos últimos cinco jogos e não tem desfalques confirmados.",
+        1,
+    )
+    _absence_checked, absence_errors = validate.validate_draft(invented_absence, contract, config=config)
+    assert any("desfalques/lesões/suspensões" in item for item in absence_errors)
+
     report = {
         "step": 25,
         "mode": "simulated_writer_contract_test",
@@ -285,6 +312,9 @@ def main() -> None:
         "source_attribution_blocked": bool(attr_errors),
         "external_link_blocked": bool(link_errors),
         "missing_fact_field_blocked": bool(field_errors),
+        "robotic_language_blocked": bool(robotic_errors),
+        "lineup_contradiction_blocked": bool(lineup_errors),
+        "invented_absence_blocked": bool(absence_errors),
         "semantic_factual_review_still_required": True,
         "ready_for_html": False,
         "publication_unlocked": False,
@@ -299,6 +329,9 @@ def main() -> None:
     print("Atribuição de fonte: bloqueada.")
     print("Link externo: bloqueado.")
     print("Campo factual omitido: bloqueado.")
+    print("Linguagem mecânica: bloqueada.")
+    print("Contradição de escalação: bloqueada.")
+    print("Desfalque inventado por ausência de dado: bloqueado.")
     print("Provedor real de redação conectado: não.")
     print("HTML e publicação permanecem bloqueados.")
 

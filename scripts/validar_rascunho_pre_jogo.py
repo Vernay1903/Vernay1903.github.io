@@ -74,6 +74,67 @@ def folded_text(value: str) -> str:
     return " ".join(re.sub(r"[^a-zA-Z0-9]+", " ", value.casefold()).split())
 
 
+def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
+    """Bloqueia vícios do texto automático que degradam o modelo editorial."""
+    body_folded = folded_text(body)
+    errors: list[str] = []
+
+    robotic_patterns = (
+        r"\bjogos? concluidos? registrados?\b",
+        r"\bpartidas? concluidas? registradas?\b",
+        r"\bresultados? registrados?\b",
+        r"\bplacares? registrados?\b",
+        r"\bbase considerada\b",
+        r"\brecorte considerado\b",
+        r"\bo servico reune os principais dados\b",
+        r"\bquadro de servico\b",
+        r"\bas informacoes serao acrescentadas\b",
+        r"\bconforme forem disponibilizadas\b",
+    )
+    if any(re.search(pattern, body_folded) for pattern in robotic_patterns):
+        errors.append("linguagem mecânica/de banco de dados proibida pelo modelo editorial")
+
+    fact_fields: set[str] = set()
+    fact_texts: list[str] = []
+    for requirement in contract.get("facts_by_requirement", []):
+        if not isinstance(requirement, dict) or requirement.get("status") != "verified":
+            continue
+        for fact in requirement.get("facts", []):
+            if not isinstance(fact, dict):
+                continue
+            field = fact.get("field")
+            text = fact.get("text")
+            if isinstance(field, str):
+                fact_fields.add(field)
+            if isinstance(text, str):
+                fact_texts.append(folded_text(text))
+
+    if {"home_lineup", "away_lineup"}.issubset(fact_fields):
+        lineup_contradictions = (
+            r"\bnao (?:ha|tem) informacoes? confirmadas?.{0,70}\bprovavel escalacao\b",
+            r"\bnao (?:ha|tem).{0,50}\bprovavel escalacao\b",
+            r"\bprovavel escalacao.{0,60}\b(?:sera acrescentada|ainda nao foi divulgada|nao foi confirmada)\b",
+            r"\btime titular.{0,60}\bserao acrescentadas\b",
+        )
+        if any(re.search(pattern, body_folded) for pattern in lineup_contradictions):
+            errors.append("texto contradiz as prováveis escalações verificadas do contrato")
+
+    absence_fact = any(
+        re.search(r"\b(?:desfalq|suspens|lesion|contusion|ausen)", text)
+        for text in fact_texts
+    )
+    if not absence_fact and re.search(
+        r"\b(?:desfalques?|suspensos?|suspensoes?|lesionados?|lesoes?|contusionados?)\b",
+        body_folded,
+    ):
+        errors.append("texto menciona desfalques/lesões/suspensões sem fato correspondente no contrato")
+
+    if body_folded.count("podem sofrer alteracoes") > 1:
+        errors.append("ressalva sobre alteração de escalações repetida mais de uma vez")
+
+    return errors
+
+
 def required_service_body_errors(body: str, contract: dict[str, Any]) -> list[str]:
     """Confere presença real dos fatos prometidos, não só fact_fields_used."""
     title = folded_text(str(contract.get("title") or "") + " " + str(contract.get("excerpt") or ""))
@@ -219,6 +280,7 @@ def validate_draft(
     policy_errors = editorial_policy.validate_body_policy(body, config)
     errors.extend(policy_errors)
     if config.get("editorial", {}).get("approved_pre_match_model"):
+        errors.extend(editorial_style_errors(body, contract))
         errors.extend(required_service_body_errors(body, contract))
 
     if "<ul" not in body.lower() or "<li" not in body.lower():

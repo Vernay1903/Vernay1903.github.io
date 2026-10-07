@@ -143,7 +143,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
         "type": "object",
         "properties": {
             "slug": {"type": "string", "enum": [slug]},
-            "body_html": {"type": "string", "minLength": 5500},
+            "body_html": {"type": "string", "minLength": 4000},
             "fact_fields_used": {
                 "type": "array",
                 "items": {"type": "string", "enum": unique_fields},
@@ -160,35 +160,30 @@ def system_instructions() -> str:
     return (
         "Você é o redator automático de pré-jogo do Corte dos Esportes. "
         "Escreva em português do Brasil com tom jornalístico direto, fluido, factual e natural. "
-        "Use EXCLUSIVAMENTE os fatos e o contexto presentes no contrato recebido. "
-        "Não use conhecimento externo, memória, inferências factuais, pesquisa, ferramentas ou navegação web. "
-        "Quando uma informação não estiver no contrato, omita-a em vez de completar. "
-        "É expressamente proibido citar ou atribuir fontes de pesquisa, sites, portais, veículos, consultas ou processos internos. "
-        "A menção a uma emissora/plataforma é permitida apenas quando ela própria é o fato de transmissão fornecido. "
+        "Use EXCLUSIVAMENTE os fatos e o contexto presentes no contrato. Não use memória, conhecimento externo, pesquisa, ferramentas ou navegação web. "
+        "A ausência de uma informação no contrato NÃO é um fato: omita o assunto. Nunca escreva que algo não foi divulgado, não foi confirmado, "
+        "está pendente ou será acrescentado depois, salvo quando essa indisponibilidade estiver explicitamente escrita como fato no contrato. "
+        "Não invente desfalques, suspensões, lesões, escalações, jogadores, árbitros, números, resultados, datas, horários, estádios ou cenários. "
+        "Não infira estilo de jogo, pressão, posse, transições, estratégia, motivação ou comportamento tático a partir de nomes, escalações, mando ou placares. "
+        "Os fatos estruturados são matéria-prima: reescreva-os em linguagem jornalística natural. Nunca exponha linguagem de banco de dados ou API como "
+        "'jogos concluídos registrados', 'resultados registrados', 'base considerada' ou 'recorte considerado'. "
+        "Produza somente o corpo editorial, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
+        "Use subtítulos <p><strong>...</strong></p> e listas <ul><li> quando melhorarem a UX. "
+        "A estrutura preferencial é: abertura curta; contexto competitivo se houver fato; Como chega o mandante; Como chega o visitante; "
+        "prováveis escalações; retrospecto proporcional à amostra; Onde assistir; fechamento somente se houver fato novo. "
+        "Use a forma recente de cada time uma única vez. Não repita os mesmos placares ou o balanço de vitórias/empates/derrotas no fechamento. "
+        "Se as duas prováveis escalações forem fornecidas, apresente-as em um único bloco de lista, uma entrada por equipe, com 11 jogadores e técnico. "
+        "Nesse caso é proibido dizer que não há provável escalação; use no máximo uma ressalva curta de que as formações são prováveis. "
+        "Se o retrospecto tiver só um ou dois jogos, trate-o em um bloco curto e não transforme a amostra em história ampla ou rivalidade. "
+        "Concentre a emissora/plataforma no bloco Onde assistir e escreva explicitamente cada nome confirmado. "
+        "Não recapitule serviço, resultados, escalações e retrospecto no encerramento. "
+        "Insira exatamente uma vez o link interno aprovado, com âncora textual natural, e não crie nenhum outro link. "
+        "É expressamente proibido citar fontes, sites, portais, veículos, consultas ou processos internos. "
         "Declarar um campo em fact_fields_used não basta: todo campo de required_fact_fields deve aparecer de forma visível e inequívoca no body_html. "
-        "Quando houver transmission, escreva explicitamente no corpo o nome de cada emissora/plataforma confirmada. "
-        "Não diga 'segundo', 'conforme' ou 'de acordo com' para atribuir informação pesquisada. "
-        "Não invente escalações, jogadores, árbitros, números, resultados, datas, horários, estádios, cidades, cenários ou retrospectos. "
-        "Produza somente o corpo editorial da matéria, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
-        "Use subtítulos no formato <p><strong>...</strong></p> e listas <ul><li> quando melhorarem a UX. "
-        "As escalações, quando fornecidas, devem ser apresentadas como prováveis e nunca como oficiais. "
-        "No bloco de escalações, cada equipe deve ter uma entrada <li> identificada explicitamente como "
-        "'Provável NOME DO TIME:' antes dos 11 jogadores; os técnicos devem aparecer de forma visível no mesmo bloco. "
-        "O retrospecto deve permanecer específico da competição indicada. "
-        "Insira exatamente uma vez o link interno aprovado no contrato, com âncora textual natural. "
-        "Não crie nenhum outro link. "
-        "Siga o modelo editorial aprovado LDU x Palmeiras: cada seção deve trazer novidade específica do confronto; "
-        "contextualize preparação, últimos jogos concretos, mudanças de escalação, consequência esportiva, transmissão e arbitragem quando fornecidos. "
-        "Abra com gancho e serviço verificados, desenvolva Como chega cada time, depois prováveis escalações com onze jogadores e técnicos, "
-        "histórico com escopo explícito, onde assistir e fechamento com informação nova quando disponível. "
-        "É proibido produzir subtítulos genéricos 'Informações confirmadas para a partida', 'O que observar no confronto' ou 'Resumo do pré-jogo' "
-        "para repetir números que já apareceram. Não repita balanço de vitórias ou retrospecto em várias seções. "
-        "Não confunda dois jogos recuperados na API com todo o histórico do duelo. "
-        "O corpo deve ter pelo menos 700 palavras de conteúdo real; não estenda texto apenas para atingir contagem. "
-        "Se os fatos forem insuficientes para redigir nesse padrão, a redação deve ser recusada pelo pipeline, nunca preenchida com inferências. "
+        "Busque entre 750 e 900 palavras; o mínimo absoluto é 700. Não alongue o texto com generalidades para atingir tamanho. "
+        "Se os fatos não sustentarem uma seção, omita a seção; se não sustentarem 700 palavras sem repetição ou inferência, recuse a redação pelo pipeline. "
         "Retorne somente o objeto JSON exigido pelo schema."
     )
-
 
 def user_payload(contract: dict[str, Any]) -> str:
     provider_config = load_provider_config()
@@ -198,9 +193,12 @@ def user_payload(contract: dict[str, Any]) -> str:
         fail(f"Contrato excede o limite de orçamento: {len(serialized)} > {limit} caracteres.")
     return (
         "Redija a matéria utilizando somente este contrato editorial limpo. "
-        "Todos os campos factuais listados em required_fact_fields devem ser usados sem alterar seu sentido e devem aparecer visivelmente no body_html; listá-los apenas em fact_fields_used não conta. "
-        "Se houver o campo transmission, o nome de cada emissora/plataforma confirmada deve aparecer explicitamente no texto. "
-        "O validador editorial rejeita matéria abaixo de 700 palavras; privilegie profundidade factual e evite repetição para atingir a contagem.\n\n"
+        "Sintetize jornalisticamente os fatos: não copie rótulos técnicos nem transforme cada campo em uma frase isolada. "
+        "Todos os campos factuais de required_fact_fields devem aparecer sem alteração de sentido no body_html; listá-los apenas em fact_fields_used não conta. "
+        "Ausência de campo não autoriza afirmar que a informação está pendente ou não foi divulgada. "
+        "Se houver transmission, cada emissora/plataforma confirmada deve aparecer explicitamente em Onde assistir. "
+        "Se houver home_lineup e away_lineup, não contradiga essas projeções dizendo que não existe provável escalação. "
+        "Alvo editorial: 750 a 900 palavras, sempre sem repetição, preenchimento genérico ou inferência factual; mínimo absoluto de 700.\n\n"
         + serialized
     )
 

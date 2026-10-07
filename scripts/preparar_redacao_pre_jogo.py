@@ -155,6 +155,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "required_fields": ["slug", "body_html", "fact_fields_used"],
             "body_html_scope": "article_body_only",
             "minimum_words": int(config["article"]["min_words"]),
+            "preferred_word_range": [750, 900],
             "minimum_strong_subheadings": 5,
             "internal_link_exactly_once": True,
             "unordered_lists_for_service_blocks": True,
@@ -164,36 +165,57 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "tone": "jornalístico direto, fluido e factual",
             "seo": "natural, sem repetição artificial de palavras-chave",
             "opening": (
-                "Abrir naturalmente com confronto, data, horário de Brasília, estádio, competição, "
-                "gancho esportivo concreto e transmissão confirmada; não repetir um bloco de serviço depois."
+                "Abrir em um ou dois parágrafos com confronto, data, horário de Brasília, estádio, competição "
+                "e um gancho esportivo concreto já presente nos fatos. Não despejar estatísticas nem antecipar "
+                "toda a ficha de serviço na abertura."
             ),
             "approved_model": (
-                "Seguir a estrutura da prévia aprovada LDU x Palmeiras: abertura com fato central, "
-                "contexto competitivo, como chega cada equipe com acontecimentos verificáveis, "
-                "prováveis escalações completas e arbitragem, histórico contextualizado, "
-                "onde assistir e encerramento com consequência ou próximo jogo verificado. "
-                "É proibido criar seção sem fatos suficientes para acrescentar novidade."
+                "Seguir a estrutura da prévia aprovada LDU x Palmeiras: abertura factual curta; contexto da partida "
+                "somente quando houver fato verificável; Como chega o mandante; Como chega o visitante; prováveis "
+                "escalações em bloco; retrospecto proporcional ao tamanho real da amostra; Onde assistir; e fechamento "
+                "apenas se houver uma consequência, cenário ou próximo jogo realmente fornecido no contrato."
+            ),
+            "journalistic_synthesis": (
+                "Os fatos estruturados são matéria-prima, não frases para copiar. Converter linguagem de API/banco de dados "
+                "em português jornalístico natural. Preferir 'nos cinco jogos mais recentes' a expressões como "
+                "'jogos concluídos registrados', 'resultados registrados', 'base considerada' ou 'recorte considerado'."
+            ),
+            "absence_is_not_fact": (
+                "Ausência de dado no contrato não é um fato publicável. Nunca escrever que uma informação não foi divulgada, "
+                "não foi confirmada, será acrescentada depois ou está pendente, a menos que essa indisponibilidade apareça "
+                "explicitamente como fato textual no contrato. Não mencionar desfalques, suspensões ou lesões sem fato específico."
             ),
             "editorial_depth": (
-                "Priorizar placares recentes identificados, jogadores, desfalques, retorno, "
-                "preparação dos técnicos, situação da competição e consequências quando fornecidos. "
-                "Se o contrato não tiver esses dados, não inventar nem compensar com paráfrases de V-E-D."
+                "Priorizar fatos concretos: resultados recentes, situação competitiva, jogadores e eventos explicitamente fornecidos. "
+                "Não inferir estilo de jogo, posse, pressão, transições, estratégia, motivação, comportamento tático ou efeito psicológico "
+                "a partir de nomes, escalações, mando de campo ou resultados."
+            ),
+            "recent_form": (
+                "Tratar a forma recente de cada equipe em seu próprio bloco, de maneira natural e sem repetir os mesmos placares, "
+                "balanços de vitórias/empates/derrotas ou sequências no fechamento."
             ),
             "non_repetition": (
-                "Cada bloco deve acrescentar informação concreta nova. Não repetir estatística de "
-                "vitórias/empates/derrotas e retrospecto na introdução, nas duas seções de momento, "
-                "em O que observar, em Informações confirmadas e em Resumo do pré-jogo. "
-                "Não criar os blocos genéricos Informações confirmadas, O que observar ou Resumo do pré-jogo."
+                "Cada bloco deve acrescentar informação concreta nova. Um mesmo balanço recente, placar, retrospecto ou serviço "
+                "não deve ser recontado em outra seção. Não criar os blocos genéricos Informações confirmadas, O que observar, "
+                "Resumo do pré-jogo ou O cenário antes da bola rolar."
             ),
             "subheadings": "Usar <p><strong>...</strong></p> ao longo da matéria.",
             "lineups": (
-                "Prováveis escalações dos dois times e técnicos devem aparecer em bloco/lista visível; "
-                "nunca transformar escalação provável em oficial e nunca inventar nomes."
+                "Prováveis escalações dos dois times e técnicos devem aparecer em um único bloco/lista visível. "
+                "Se home_lineup e away_lineup existem, é proibido dizer que não há provável escalação disponível. "
+                "Usar no máximo uma ressalva curta de que as formações são prováveis e podem mudar até a confirmação oficial."
             ),
             "head_to_head": (
-                "Separar retrospecto histórico completo de amostra limitada da base. "
-                "Se o dado for só um recorte da API, citar explicitamente o tamanho e nunca "
-                "apresentá-lo como a história integral do confronto. Lista curta com bolinhas."
+                "O retrospecto deve ser proporcional à amostra disponível. Se houver apenas um ou dois jogos no conjunto fornecido, "
+                "usar um bloco curto — um parágrafo ou lista — e deixar claro apenas que se trata de uma amostra limitada, sem "
+                "transformá-la em narrativa histórica ou rivalidade ampla. Nunca expandir números pequenos para preencher texto."
+            ),
+            "where_to_watch": (
+                "Concentrar a emissora/plataforma confirmada no bloco Onde assistir. Não repetir toda a ficha de serviço antes e depois."
+            ),
+            "closing": (
+                "Fechar em um parágrafo curto somente se houver fato novo de consequência esportiva ou próximo jogo. "
+                "Não recapitular resultados recentes, escalações, transmissão ou retrospecto no encerramento."
             ),
             "internal_link": (
                 "Inserir exatamente uma vez o link interno fornecido, de forma natural no texto; "

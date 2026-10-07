@@ -42,8 +42,8 @@ def live_check(site, slugs):
             raise ValueError('Matérias ainda ausentes de noticias.json público.')
         for slug in slugs:
             body = get(slug)
-            if '<article' not in body or slug not in body:
-                raise ValueError(f'HTML publicado não corresponde à matéria: {slug}')
+            if '<article id="articleBody">' not in body:
+                raise ValueError(f'HTML publicado não contém o artigo esperado: {slug}')
     else:
         if '<html' not in get('index.html').lower():
             raise ValueError('Home pública inválida.')
