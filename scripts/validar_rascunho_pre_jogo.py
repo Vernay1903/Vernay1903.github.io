@@ -105,7 +105,7 @@ def required_service_body_errors(body: str, contract: dict[str, Any]) -> list[st
             text = lineup.split(":", 1)[-1].rstrip(".")
             players = [
                 re.sub(r"\s*\([^)]*\)", "", p).strip()
-                for p in re.split(r"[;,]", text)
+                for p in re.split(r"(?:[;,]|\s+e\s+)", text, flags=re.IGNORECASE)
                 if p.strip()
             ]
             if len(players) < 11:
