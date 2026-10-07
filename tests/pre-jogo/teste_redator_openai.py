@@ -58,7 +58,7 @@ def main() -> None:
     assert "https://cortedosesportes.com.br/premier-league-historia-campeoes.html" in serialized
     assert "é expressamente proibido citar" in lowered
     assert "use exclusivamente" in lowered
-    assert "abaixo de 700 palavras" in lowered
+    assert "mínimo absoluto é 700" in lowered
     assert "fact_fields_used não basta" in lowered
     assert "cada emissora/plataforma confirmada" in lowered
     assert "ausência de uma informação no contrato não é um fato" in lowered
