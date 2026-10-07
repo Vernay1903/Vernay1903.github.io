@@ -85,3 +85,19 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/confirmar_pages_pre_jogo.py --commit "${GITHUB_SHA}"
+
+      - name: Validar coleta real dos jogos do dia até o pacote editorial
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          CDE_RSS_MAX_REQUESTS: "60"
+        run: python scripts/diagnosticar_coleta_pre_jogo.py
+      - name: Guardar diagnóstico factual para localizar qualquer bloqueio
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-coleta-real
+          path: |
+            build/pre-jogo/fatos-estruturados-*.json
+            build/pre-jogo/paginas-checadas-*.json
+            build/pre-jogo/pacotes-editoriais-*.json
+          retention-days: 3

@@ -215,6 +215,8 @@ def team_variants(team: str, config: dict[str, Any]) -> list[str]:
         raw.extend(str(item) for item in club.get("aliases", []) if isinstance(item, str))
 
     normalized = normalize_text(team)
+    if normalized == "clube do remo":
+        raw.append("Remo")
 
     # Variantes conservadoras de nomes do provedor também entram nas consultas
     # gratuitas; isso não muda a validação factual posterior.

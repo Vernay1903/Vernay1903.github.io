@@ -196,7 +196,10 @@ def competition_label(plan: dict[str, Any], config: dict[str, Any]) -> dict[str,
         fail("Plano sem competition_slug válido.")
     raw = config["editorial"]["competition_labels"].get(slug.strip())
     if not isinstance(raw, dict):
-        fail(f'Sem rótulo editorial para a competição "{slug}".')
+        name = plan.get("competition")
+        if not isinstance(name, str) or not name.strip():
+            fail("Competição sem nome confirmado.")
+        return {"name": name.strip(), "connector": "na competição"}
     return {"name": raw["name"].strip(), "connector": raw["connector"]}
 
 

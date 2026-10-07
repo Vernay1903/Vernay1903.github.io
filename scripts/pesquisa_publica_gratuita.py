@@ -213,6 +213,8 @@ class TextExtractor(HTMLParser):
     IGNORE = {"script", "style", "noscript", "svg", "form", "nav", "footer", "aside"}
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
+        self.article_depth = 0
+        self.article_lines: list[str] = []
         self.skip = 0
         self.depth = 0
         self.block_stack: list[str] = []
@@ -223,6 +225,12 @@ class TextExtractor(HTMLParser):
         self.metadata: dict[str, str] = {}
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag == "article":
+            if self.article_depth:
+                self.article_depth += 1
+            elif dict(attrs).get("itemprop") == "articleBody":
+                self.flush()
+                self.article_depth = 1
         if tag in self.IGNORE:
             self.skip += 1
         if self.skip:
@@ -241,6 +249,9 @@ class TextExtractor(HTMLParser):
             self.block_stack.append(tag)
 
     def handle_endtag(self, tag: str) -> None:
+        if tag == "article" and self.article_depth:
+            self.flush()
+            self.article_depth -= 1
         if tag in self.IGNORE:
             self.skip = max(0, self.skip - 1)
             return
@@ -271,6 +282,8 @@ class TextExtractor(HTMLParser):
         # contra menus, botões e ruído editorial.
         if len(line) >= 18 or ("li" in self.block_stack and len(line) >= 3):
             self.lines.append(line[:2500])
+            if self.article_depth:
+                self.article_lines.append(line[:2500])
         self.current.clear()
 
 
@@ -287,7 +300,7 @@ def read_public_page(url: str, config: dict[str, Any] | None = None) -> dict[str
     if title:
         parser.metadata["title"] = title[:300]
     # O conteúdo textual, NÃO a manchete/descrição do RSS, é a evidência.
-    content = "\n".join(dict.fromkeys(parser.lines))[:140_000]
+    content = "\n".join(dict.fromkeys(parser.article_lines or parser.lines))[:140_000]
     result = {"markdown": content, "metadata": parser.metadata, "credits": 0}
     _PAGE_CACHE[url] = result
     return result

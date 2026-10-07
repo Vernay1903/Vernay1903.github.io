@@ -57,6 +57,7 @@ LEAGUE_SLUGS = {
 }
 
 KNOWN_VENUES = [
+    "Mangueirão",
     "Emirates Stadium",
     "Etihad Stadium",
     "Parc des Princes",
@@ -220,6 +221,8 @@ def unmonitored_team_aliases(team: str) -> list[str]:
     Ex.: "1. FC Union Berlin" -> também "Union Berlin". Isso serve apenas
     para reconhecer o mesmo clube no texto das fontes; não cria qualquer fato.
     """
+    if normalize_text(team) in {"clube do remo", "remo"}:
+        return ["Clube do Remo", "Remo"]
     variants = [team.strip()]
     raw = team.strip()
     prefix_pattern = (
@@ -635,6 +638,8 @@ def extract_venue_values(text: str) -> list[tuple[str, str]]:
                 if key not in seen:
                     seen.add(key)
                     found.append((canonical, segment))
+        if any(normalize_text(v) in folded for v in KNOWN_VENUES):
+            continue
         patterns = [
             r"(?:venue\s*[:\-]?\s*|played at\s+|will be played at\s+|takes place at\s+|held at\s+)(?:the\s+)?([A-ZÀ-Ý][\wÀ-ÿ'’.-]*(?:\s+(?:[A-ZÀ-Ý][\wÀ-ÿ'’.-]*|do|da|de|dos|das)){0,5}\s+(?:Stadium|Arena|Park|Ground))",
             r"(?:estádio|estadio|local)\s*[:\-]?\s*([A-ZÀ-Ý][\wÀ-ÿ'’.-]*(?:\s+(?:[A-ZÀ-Ý][\wÀ-ÿ'’.-]*|do|da|de|dos|das)){0,5}(?:\s+(?:Stadium|Arena|Park|Ground))?)",
@@ -729,7 +734,7 @@ def extract_officiating_requirement(
         if not context_mentions_match(corpus, match_context, config):
             continue
         for segment in corpus.splitlines():
-            if re.search(r"\b(?:var|video assistant)\b", normalize_text(segment)):
+            if re.search(r"\b(?:var|video assistant|quarto arbitro|fourth official|arbitro assistente)\b", normalize_text(segment)):
                 continue
             for pattern in patterns:
                 match = re.search(pattern, segment, flags=re.IGNORECASE)

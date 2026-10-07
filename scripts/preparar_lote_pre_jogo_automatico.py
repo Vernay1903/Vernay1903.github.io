@@ -188,6 +188,11 @@ def football_data_status_row(article: dict[str, Any], package: dict[str, Any]) -
 
 def status_snapshot(article: dict[str, Any], package: dict[str, Any], config: dict[str, Any]) -> dict[str, Any] | None:
     rows = official_source_rows(article, config)
+    from scripts.coletar_competicoes_pre_jogo import snapshot
+    source = DEFAULT_BUILD / "fixtures-normalizados.json"
+    supplemental = snapshot(article, package, load_json(source)) if source.exists() else None
+    if supplemental:
+        rows.insert(0, supplemental)
     official_fixture = football_data_status_row(article, package)
     if official_fixture is not None:
         rows.insert(0, official_fixture)

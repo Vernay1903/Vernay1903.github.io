@@ -41,7 +41,7 @@
       "BSA": "brasileirao",
       "CL": "champions-league"
     },
-    "coverage_note": "Plano Free cobre as ligas nacionais principais dos 10 clubes e a Champions League. Copas nacionais e Libertadores precisam de fonte complementar.",
+    "coverage_note": "Football-Data complementado pelos calendários ESPN dos dez clubes, sem lista fechada de competições; amistosos excluídos.",
     "attribution": {
       "required": true,
       "text": "Football data provided by the Football-Data.org API"

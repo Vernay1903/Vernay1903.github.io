@@ -314,6 +314,10 @@ jobs:
           print(f"Matérias prontas: {data['prepared_count']}")
           print(f"Bloqueadas/puladas por segurança: {data['skipped_count']}")
           print('Publicação: não; o artifact aguardará a checagem final das 00:01.')
+          if data['skipped_count']:
+              for item in data['skipped']:
+                  print(f"BLOQUEIO: {item['slug']}: {item.get('unresolved', item.get('reason'))}")
+              raise SystemExit('ERRO: preparo incompleto; há partidas sem matéria pronta.')
           PY
 
   testar-publicacao:
@@ -477,6 +481,9 @@ jobs:
             build/pre-jogo/automatico-publicacao.json
             build/pre-jogo/status-final-*.json
             build/pre-jogo/automatico-approved.txt
+            build/pre-jogo/fatos-estruturados-*.json
+            build/pre-jogo/paginas-checadas-*.json
+            build/pre-jogo/pacotes-editoriais-*.json
           if-no-files-found: warn
           retention-days: 3
 
@@ -937,5 +944,8 @@ jobs:
             build/pre-jogo/status-final-*.json
             build/pre-jogo/passo34-commit-remoto.json
             build/pre-jogo/automatico-approved.txt
+            build/pre-jogo/fatos-estruturados-*.json
+            build/pre-jogo/paginas-checadas-*.json
+            build/pre-jogo/pacotes-editoriais-*.json
           if-no-files-found: warn
           retention-days: 7

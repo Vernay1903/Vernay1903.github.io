@@ -12,8 +12,8 @@ Segurança:
 
 Observação de cobertura:
 O plano Free do football-data.org cobre as principais ligas nacionais dos
-10 clubes monitorados e a Champions League. Copas nacionais e Libertadores
-precisam de uma fonte complementar em outra etapa.
+10 clubes monitorados e a Champions League. Os calendários ESPN dos clubes complementam qualquer competição oficial,
+sem lista fechada de ligas.
 """
 
 from __future__ import annotations
@@ -424,6 +424,10 @@ def main() -> None:
         seen_ids.add(dedupe_key)
         normalized.append(record)
 
+    sys.path.insert(0, str(ROOT))
+    from scripts.coletar_competicoes_pre_jogo import collect, merge
+    supplemental = collect(target_date, config)
+    normalized = merge(normalized, supplemental, config)
     normalized.sort(key=lambda item: (item["kickoff"], item["home"], item["away"]))
 
     output = args.output.resolve()
@@ -446,9 +450,11 @@ def main() -> None:
         },
         "rate_limit": rate,
         "coverage": {
-            "mode": "configured_free_competitions",
+            "mode": "club_schedules_all_competitions",
             "competition_codes": list(codes),
-            "all_official_competitions_covered": False,
+            "competition_whitelist": False,
+            "supplemental_provider": "espn",
+            "clubs_checked": 10,
             "note": provider.get("coverage_note"),
         },
         "source_match_count": len(matches),
@@ -465,7 +471,7 @@ def main() -> None:
     print(f"OK: fixtures normalizados para {target_date.isoformat()}.")
     print(f"Partidas recebidas da API: {len(matches)}")
     print(f"Partidas dos clubes monitorados nas competições cobertas: {len(normalized)}")
-    print("Cobertura total de competições oficiais: não; copas fora do plano gratuito exigem fonte complementar.")
+    print("Calendários dos 10 clubes consultados sem filtro de competição; amistosos excluídos.")
     for fixture in normalized:
         kickoff = datetime.fromisoformat(fixture["kickoff"])
         print(

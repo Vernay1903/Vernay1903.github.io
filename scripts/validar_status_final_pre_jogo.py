@@ -253,6 +253,15 @@ def validate_status(evidence: dict[str, Any], *, execute: bool) -> dict[str, Any
     if not all(isinstance(value, str) and value.strip() for value in (home, away, date_br)):
         fail("Snapshot sem mandante, visitante ou data válidos.")
 
+    supplemental = [r for r in evidence.get("evidence", []) if r.get("source_type") == "espn_fixture_data"]
+    if supplemental:
+        if len(supplemental) != 1:
+            fail("Mais de uma partida complementar no snapshot.")
+        from scripts.coletar_competicoes_pre_jogo import verify
+        try:
+            return verify(supplemental[0], match)
+        except (KeyError, ValueError, OSError) as exc:
+            fail(str(exc))
     fixture_rows = [
         row for row in evidence.get("evidence", [])
         if isinstance(row, dict) and row.get("source_type") == "official_fixture_data"

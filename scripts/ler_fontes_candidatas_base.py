@@ -259,6 +259,20 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
         flags=re.IGNORECASE,
     )
     windows: list[str] = []
+    # Seções jornalísticas: "Clube - técnico: Nome", parágrafos, "Escalação provável: ...".
+    current_team = None
+    for row in rows:
+        heading = re.fullmatch(r"([\wÀ-ÿ .'-]{2,65})\s+[-–—]\s+t[eé]cnico\s*:\s*(.+)", row, re.I)
+        if heading:
+            current_team = heading.group(1).strip()
+            windows.append(f"{current_team} | Técnico: {heading.group(2).strip()}")
+            continue
+        if current_team and re.match(r"^(?:prov[aá]vel\b|escala[cç][aã]o\s+prov[aá]vel\b)", row, re.I) and ":" in row:
+            value = row.split(":", 1)[1].strip()
+            if value and len(value) < max_segment_chars - len(current_team) - 30:
+                windows.append(f"{current_team} | Provável escalação: {value}")
+        if re.match(r"^(?:arbitragem|[aá]rbitro|onde assistir|transmiss[aã]o)\b", row, re.I):
+            current_team = None
     for index, heading in enumerate(rows):
         if not marker.search(heading) or len(heading) > 130:
             continue
@@ -315,7 +329,7 @@ def extract_evidence_segments(
         if requirement_id == "probable_lineups_and_coaches" else []
     )
     lines = [clean_markdown_line(line) for line in content.splitlines()]
-    lines = [line for line in lines if len(line) >= 25]
+    lines = [line for line in lines if len(line) >= 10]
     keywords = tuple(item.casefold() for item in REQUIREMENT_KEYWORDS.get(requirement_id, ()))
 
     matched: list[str] = []

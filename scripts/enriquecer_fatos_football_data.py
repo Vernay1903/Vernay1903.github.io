@@ -215,6 +215,8 @@ def append_verified_recent_results(requirement: dict, facts: list[dict], urls: l
 
 def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
     result = deepcopy(article)
+    if fixture.get("provider") not in (None, "football-data.org"):
+        return result
     ctx = article.get("match_context",{})
     src = fixture.get("provider_data",{})
     home_id,away_id = src.get("home_team_id"),src.get("away_team_id")
