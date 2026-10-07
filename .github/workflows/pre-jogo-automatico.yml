@@ -4,6 +4,9 @@ name: Pré-jogo — automático diário (Passo 34)
 # Pesquisa factual: RSS/páginas públicas + Football-Data, sem Serper.
 # OpenAI é usada somente na redação final de matérias factualmente aprovadas.
 on:
+  push:
+    branches:
+      - main
   schedule:
     # 23:30 de Brasília do dia anterior (UTC-3)
     - cron: "30 2 * * *"
@@ -488,7 +491,7 @@ jobs:
           retention-days: 3
 
   publicar:
-    if: ${{ github.event_name == 'schedule' && github.event.schedule != '30 2 * * *' }}
+    if: ${{ (github.event_name == 'schedule' && github.event.schedule != '30 2 * * *') || (github.event_name == 'push' && github.event.head_commit.message == 'Executa publicação manual do pré-jogo do Grêmio 2026-10-07') }}
     runs-on: ubuntu-latest
     # Se o preparo anterior falhou, há tempo para recuperação integral no mesmo runner.
     timeout-minutes: 60
