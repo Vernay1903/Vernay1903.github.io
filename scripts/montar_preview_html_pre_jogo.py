@@ -276,7 +276,7 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
         best_score = -1
         for record in records:
             index = int(record["index"])
-            if index < 1 or index >= h2h_index:
+            if index >= h2h_index:
                 continue
             if isinstance(team, str) and team.strip() and not record_mentions_team(record, team):
                 continue

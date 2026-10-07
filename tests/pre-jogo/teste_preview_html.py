@@ -113,6 +113,45 @@ def collision_regression(contract: dict) -> None:
     assert "retrospecto" in metadata["h2h_section"]
 
 
+def first_heading_form_regression(contract: dict) -> None:
+    """A primeira seção pode ser justamente 'Como chega o mandante'."""
+    local = deepcopy(contract)
+    local["match_context"]["home"] = "Arsenal"
+    local["match_context"]["away"] = "Manchester City"
+    for group in local["facts_by_requirement"]:
+        if group.get("id") == "recent_form_both_teams":
+            group["facts"] = [
+                {"field": "home_recent_form", "text": "Forma recente do Arsenal: 3 vitórias em 5 jogos."},
+                {"field": "away_recent_form", "text": "Forma recente do Manchester City: 4 vitórias em 5 jogos."},
+            ]
+        elif group.get("id") == "competition_specific_head_to_head":
+            group["facts"] = [
+                {"field": "h2h_games", "text": "Confrontos pela Premier League: 5 jogos."},
+                {"field": "h2h_home_wins", "text": "Vitórias do Arsenal pela Premier League: 3."},
+                {"field": "h2h_away_wins", "text": "Vitórias do Manchester City pela Premier League: 1."},
+                {"field": "h2h_draws", "text": "Empates pela Premier League: 1."},
+            ]
+
+    body = "\n".join([
+        "<p>Abertura factual do confronto.</p>",
+        "<p><strong>Como chega o Arsenal</strong></p>",
+        "<p>O Arsenal soma 3 vitórias em seus últimos 5 jogos e chega em boa sequência.</p>",
+        "<p><strong>Como chega o Manchester City</strong></p>",
+        "<p>O Manchester City soma 4 vitórias em seus últimos 5 jogos.</p>",
+        "<p><strong>Prováveis escalações</strong></p>",
+        "<p>Informações das duas equipes.</p>",
+        "<p><strong>Retrospecto pela Premier League</strong></p>",
+        "<p>Em 5 jogos, Arsenal tem 3 vitórias, Manchester City 1 e houve 1 empate.</p>",
+        "<p><strong>Onde assistir</strong></p>",
+        "<p>Serviço do jogo.</p>",
+        "<p><strong>Fechamento</strong></p>",
+        "<p>Conclusão do pré-jogo.</p>",
+    ])
+    points, metadata = preview.placement_points(body, local)
+    assert points == sorted(points) and len(set(points)) == 3, points
+    assert metadata["recent_form_sections"][0] == "como chega o arsenal", metadata
+
+
 def main() -> None:
     contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
     body = body_fixture(contract)
@@ -153,6 +192,7 @@ def main() -> None:
     assert "}}" not in rendered
 
     collision_regression(contract)
+    first_heading_form_regression(contract)
 
     # A mesma expressão do confronto aparece no H1 e no excerpt. A posição da
     # imagem deve ser validada apenas dentro do conteúdo do <article>.
