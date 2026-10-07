@@ -45,7 +45,7 @@ def body_fixture(contract: dict) -> str:
         "<ul><li>Provável Manchester City: Donnarumma; Lewis; Dias; Gvardiol; Ait-Nouri; Rodri; Reijnders; Foden; Cherki; Doku; Haaland.</li><li>Técnico: Pep Guardiola.</li></ul>",
         "<p>Michael Oliver será o árbitro da partida.</p>",
         "<p><strong>Histórico do confronto pela Premier League</strong></p>",
-        "<p>Foram 20 confrontos pela Premier League no recorte considerado.</p>",
+        "<p>Os dados fornecidos reúnem 20 confrontos pela Premier League.</p>",
         "<ul><li>O Arsenal venceu sete.</li><li>O Manchester City venceu dez.</li><li>Houve três empates.</li></ul>",
         long_paragraph("O retrospecto mostra um confronto com peso competitivo e diferentes momentos ao longo das temporadas."),
         "<p><strong>Onde assistir</strong></p>",
