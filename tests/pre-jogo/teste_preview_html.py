@@ -135,7 +135,7 @@ def first_heading_form_regression(contract: dict) -> None:
     body = "\n".join([
         "<p>Abertura factual do confronto.</p>",
         "<p><strong>Como chega o Arsenal</strong></p>",
-        "<p>O Arsenal soma 3 vitórias em seus últimos 5 jogos e chega em boa sequência.</p>",
+        "<p>O Arsenal soma 3 vitórias em seus últimos 5 jogos e se prepara para enfrentar o Manchester City.</p>",
         "<p><strong>Como chega o Manchester City</strong></p>",
         "<p>O Manchester City soma 4 vitórias em seus últimos 5 jogos.</p>",
         "<p><strong>Prováveis escalações</strong></p>",
@@ -149,7 +149,10 @@ def first_heading_form_regression(contract: dict) -> None:
     ])
     points, metadata = preview.placement_points(body, local)
     assert points == sorted(points) and len(set(points)) == 3, points
-    assert metadata["recent_form_sections"][0] == "como chega o arsenal", metadata
+    assert metadata["recent_form_sections"] == [
+        "como chega o arsenal",
+        "como chega o manchester city",
+    ], metadata
 
 
 def main() -> None:

@@ -263,13 +263,19 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
     context = contract.get("match_context") if isinstance(contract.get("match_context"), dict) else {}
     home = context.get("home")
     away = context.get("away")
-    form_items = fact_items(contract, "recent_form_both_teams")
+    form_items = [
+        item
+        for item in fact_items(contract, "recent_form_both_teams")
+        if item.get("field") in {"home_recent_form", "away_recent_form"}
+    ]
+    if {item.get("field") for item in form_items} != {"home_recent_form", "away_recent_form"}:
+        fail("Forma recente precisa conter os campos home_recent_form e away_recent_form para posicionar anúncios.")
     form_matches: list[tuple[int, int]] = []
 
     for item in form_items:
         fact = item["text"]
         field = item.get("field")
-        team = home if field == "home_recent_form" else away if field == "away_recent_form" else None
+        team = home if field == "home_recent_form" else away
         wanted = token_set(fact)
         minimum = 2 if len(wanted) <= 4 else 3
         matched: tuple[int, int] | None = None
@@ -289,8 +295,15 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
                     "desempenho recente", "sequencia", "ultimos jogos",
                 )
             )
+            heading_mentions_team = bool(
+                isinstance(team, str)
+                and team.strip()
+                and record_mentions_team({"text": record["heading"]}, team)
+            )
             substantive_body = len(WORD_RE.findall(str(record.get("body_text", "")))) >= 6
-            if score >= minimum or (score >= 1 and form_heading and substantive_body):
+            if score >= minimum or (
+                score >= 1 and form_heading and heading_mentions_team and substantive_body
+            ):
                 matched = (index, score)
                 break
         if matched is None:
