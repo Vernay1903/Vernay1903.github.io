@@ -119,12 +119,12 @@ def run(target: str) -> None:
     try:
         config["research"]["discovery"]["external_search_enabled"] = True
         CONFIG.write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        for command in command_plan(target)[6:11]:
+        for command in command_plan(target)[6:12]:
             call(*command)
     finally:
         CONFIG.write_bytes(raw_config)
 
-    call(*command_plan(target)[11])
+    call(*command_plan(target)[12])
     sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     call(
         "scripts/preparar_lote_pre_jogo_automatico.py",
