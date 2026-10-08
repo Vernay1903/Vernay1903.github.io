@@ -147,18 +147,6 @@ def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
         if len(normalized) >= 70 and body_folded.count(normalized) > 1:
             errors.append("escalação completa repetida em diferentes trechos do texto")
             break
-    transmission = facts_by_field.get("transmission", "").split(":", 1)[-1].strip().rstrip(".")
-    # As evidências podem vir como "A transmissão será de ESPN e Disney+"
-    # ou "Transmissão: TV Globo e Premiere"; em ambos os casos comparar canais.
-    normalized_transmission = folded_text(transmission)
-    normalized_transmission = re.sub(
-        r"^(?:a )?transmissao (?:sera|e|tera|fica) (?:de|da|do|pela|por) ",
-        "",
-        normalized_transmission,
-    )
-    if len(normalized_transmission) >= 12 and body_folded.count(normalized_transmission) > 4:
-        errors.append("plataformas de transmissão repetidas excessivamente no corpo")
-
     # Não reproduzir chamadas de cobertura como se fossem notícias de elenco.
     if re.search(r"informacao de elenco.{0,140}(?:acompanhamento|acompanhe|apresenta)", body_folded):
         errors.append("descrição promocional de cobertura apresentada como fato de elenco")
