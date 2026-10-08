@@ -132,6 +132,29 @@ def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
     if body_folded.count("podem sofrer alteracoes") > 1:
         errors.append("ressalva sobre alteração de escalações repetida mais de uma vez")
 
+    # O corpo não pode apresentar os mesmos onze atletas em seções diferentes
+    # nem repetir as plataformas de transmissão para preencher 700 palavras.
+    facts_by_field: dict[str, str] = {}
+    for requirement in contract.get("facts_by_requirement", []):
+        if not isinstance(requirement, dict) or requirement.get("status") != "verified":
+            continue
+        for fact in requirement.get("facts", []):
+            if isinstance(fact, dict) and isinstance(fact.get("field"), str) and isinstance(fact.get("text"), str):
+                facts_by_field[fact["field"]] = fact["text"]
+    for field in ("home_lineup", "away_lineup"):
+        lineup = facts_by_field.get(field, "").split(":", 1)[-1].strip().rstrip(".")
+        normalized = folded_text(lineup)
+        if len(normalized) >= 70 and body_folded.count(normalized) > 1:
+            errors.append("escalação completa repetida em diferentes trechos do texto")
+            break
+    transmission = facts_by_field.get("transmission", "").split(":", 1)[-1].strip().rstrip(".")
+    if len(folded_text(transmission)) >= 12 and body_folded.count(folded_text(transmission)) > 2:
+        errors.append("plataformas de transmissão repetidas excessivamente no corpo")
+
+    # Não reproduzir chamadas de cobertura como se fossem notícias de elenco.
+    if re.search(r"informacao de elenco.{0,140}(?:acompanhamento|acompanhe|apresenta)", body_folded):
+        errors.append("descrição promocional de cobertura apresentada como fato de elenco")
+
     # Uma seção sobre informações ausentes não substitui jornalismo factual.
     empty_service_patterns = (
         r"escalacoes? provaveis? nao integram as informacoes",
@@ -273,6 +296,9 @@ def validate_draft(
             "fechamento",
             "panorama estatistico do confronto",
         }
+        normalized_headings = [folded_text(h) for h in headings]
+        if "onde assistir" in normalized_headings and "dados do confronto" in normalized_headings:
+            errors.append("bloco Dados do confronto repete o serviço já reunido em Onde assistir")
         if len(headings) > 8:
             errors.append(f"texto fragmentado em {len(headings)} subtítulos; máximo editorial é 8")
 

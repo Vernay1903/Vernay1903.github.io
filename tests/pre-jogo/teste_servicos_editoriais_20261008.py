@@ -49,6 +49,22 @@ def main():
         altered = dict(draft, body_html=draft["body_html"] + f"<p><strong>{section}</strong></p><p>Arsenal e Manchester City se enfrentam pela Premier League.</p>")
         _, errors = editorial.validate_draft(altered, contract, config=cfg)
         assert any("subtítulo genérico repetitivo" in x for x in errors), (section, errors)
+    # Regresso do texto real de 08/10: escalação inteira duplicada no corpo.
+    repeated = dict(draft, body_html=draft["body_html"] +
+        "<p>Raya; Timber; Saliba; Gabriel; Calafiori; Rice; Odegaard; Saka; Eze; Martinelli; Gyokeres.</p>")
+    _, errors = editorial.validate_draft(repeated, contract, config=cfg)
+    assert any("escalação completa repetida" in x for x in errors), errors
+
+    duplicated_service = dict(draft, body_html=draft["body_html"] +
+        "<p>ESPN e Disney+ estão na transmissão. ESPN e Disney+ mostram o jogo.</p>")
+    _, errors = editorial.validate_draft(duplicated_service, contract, config=cfg)
+    assert any("plataformas de transmissão repetidas" in x for x in errors), errors
+
+    teaser = dict(draft, body_html=draft["body_html"] +
+        "<p>A informação de elenco apresenta acompanhamento de jogo ao vivo com escalações e desfalques.</p>")
+    _, errors = editorial.validate_draft(teaser, contract, config=cfg)
+    assert any("descrição promocional" in x for x in errors), errors
+
     print("OK: regressões editoriais de 08/10 bloqueiam matéria incompleta; exemplo aprovado permanece válido.")
 
 if __name__ == "__main__":

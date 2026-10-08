@@ -708,7 +708,7 @@ def normalize_transmission_broadcasters(value: str) -> str:
         "globo": "TV Globo", "tv globo": "TV Globo", "rede globo": "TV Globo",
         "ge tv": "ge tv", "getv": "ge tv", "ge.tv": "ge tv",
         "premiere": "Premiere", "premiere futebol": "Premiere",
-        "espn": "ESPN", "disney+": "Disney+", "disney plus": "Disney+",
+        "espn": "ESPN", "disney": "Disney+", "disney+": "Disney+", "disney plus": "Disney+",
         "sportv": "SporTV", "tnt": "TNT", "hbo max": "HBO Max",
         "cazetv": "CazéTV", "caze tv": "CazéTV",
         "prime video": "Prime Video", "amazon prime video": "Prime Video",
@@ -898,6 +898,14 @@ def extract_optional_team_news_claims(
                 if len(value.split()) < 5:
                     continue
                 folded = normalize_text(value)
+                # Teasers genéricos de "acompanhe ao vivo, escalações e desfalques"
+                # não contêm notícia sobre um atleta: não entram como fatos.
+                if re.search(
+                    r"\b(?:acompanhe|acompanhamento|cobertura|ao vivo|tempo real)\b"
+                    r".{0,110}\b(?:escalacoes|desfalques|onde assistir)\b",
+                    folded,
+                ) or "com informacoes sobre" in folded:
+                    continue
                 if not any(re.search(pattern, folded, flags=re.IGNORECASE) for pattern in TEAM_NEWS_PATTERNS):
                     continue
                 for side, team in teams:
