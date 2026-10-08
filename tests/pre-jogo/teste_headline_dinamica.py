@@ -17,8 +17,8 @@ def main():
       "excerpt":"Santos FC e Flamengo se enfrentam em 8 de outubro de 2026, às 19h30 (de Brasília), pelo Brasileirão; veja transmissão, prováveis escalações e informações do confronto.",
     }
     lineup_facts=[
-      {"field":"home_lineup","text":"Santos FC: A; B; C; D; E; F; G; H; I; J e K."},
-      {"field":"away_lineup","text":"Flamengo: L; M; N; O; P; Q; R; S; T; U e V."},
+      {"field":"home_lineup","text":"Santos FC: Ana; Beto; Caio; Davi; Enzo; Fabio; Guga; Hugo; Igor; Joao e Kaua."},
+      {"field":"away_lineup","text":"Flamengo: Leo; Mateus; Natan; Otavio; Paulo; Raul; Saulo; Tiago; Ulisses; Vitor e Wesley."},
       {"field":"home_coach","text":"Técnico do Santos FC: Técnico A."},
       {"field":"away_coach","text":"Técnico do Flamengo: Técnico B."},
     ]
