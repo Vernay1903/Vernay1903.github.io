@@ -1,503 +1,249 @@
 #!/usr/bin/env python3
-"""Monta a prévia HTML completa do Passo 27 sem publicar nada.
-
-Entrada:
-- rascunho real já validado no Passo 26;
-- contrato editorial limpo do Passo 25.
-
-Saída:
-- somente build/pre-jogo/previews/;
-- metadados somente em build/pre-jogo/preview-metadata/.
-
-Este script NÃO escreve na raiz do site, NÃO altera noticias.json, sitemap.xml,
-agenda.json ou qualquer HTML publicado.
-"""
+"""Teste determinístico do Passo 27, sem chamada externa e sem publicação."""
 
 from __future__ import annotations
 
-import argparse
-import html
 import json
-import re
 import sys
-import unicodedata
+from copy import deepcopy
 from pathlib import Path
-from typing import Any, NoReturn
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts import gerar_pre_jogo as page_builder  # noqa: E402
-from scripts import validar_rascunho_pre_jogo as draft_validator  # noqa: E402
+from scripts import montar_preview_html_pre_jogo as preview  # noqa: E402
 
-DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
-ADS = [
-    ROOT / "templates" / "anuncios" / "01-artigo-topo.html",
-    ROOT / "templates" / "anuncios" / "02-artigo-meio.html",
-    ROOT / "templates" / "anuncios" / "03-artigo-fim.html",
-]
-HEADING_RE = re.compile(
-    r"<p\s*>\s*<strong\s*>(.*?)</strong>\s*</p\s*>",
-    flags=re.IGNORECASE | re.DOTALL,
-)
-TAG_RE = re.compile(r"<[^>]+>")
-WORD_RE = re.compile(r"[a-z0-9À-ÿ]+", flags=re.IGNORECASE)
-FORBIDDEN_PREEXISTING_AD_RE = re.compile(
-    r"(?:data-ad-slot\s*=|class=[\"'][^\"']*adsbygoogle|ANÚNCIO\s*\(ARTIGO)",
-    flags=re.IGNORECASE,
-)
-STOPWORDS = {
-    "a", "ao", "aos", "as", "com", "da", "das", "de", "do", "dos", "e", "em",
-    "no", "nos", "na", "nas", "o", "os", "para", "pela", "pelo", "por", "que",
-    "sera", "sao", "um", "uma", "foi", "foram",
-}
+CONTRACT_PATH = ROOT / "tests" / "pre-jogo" / "contrato-redacao-controlado.json"
+OUTPUT = ROOT / "build" / "pre-jogo" / "teste-preview-html.json"
 
 
-def fail(message: str) -> NoReturn:
-    print(f"ERRO: {message}", file=sys.stderr)
-    raise SystemExit(1)
-
-
-def load_json(path: Path) -> Any:
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        fail(f"Arquivo não encontrado: {path}")
-    except json.JSONDecodeError as exc:
-        fail(f"JSON inválido em {path}: {exc}")
-
-
-def normalize_text(value: str) -> str:
-    text = html.unescape(TAG_RE.sub(" ", value))
-    text = unicodedata.normalize("NFKD", text)
-    text = "".join(ch for ch in text if not unicodedata.combining(ch))
-    return " ".join(text.casefold().split())
-
-
-def token_set(value: str) -> set[str]:
-    return {
-        token.casefold()
-        for token in WORD_RE.findall(normalize_text(value))
-        if len(token) >= 2 and token.casefold() not in STOPWORDS
-    }
-
-
-def fact_items(contract: dict[str, Any], requirement_id: str) -> list[dict[str, str]]:
-    groups = contract.get("facts_by_requirement")
-    if not isinstance(groups, list):
-        fail("Contrato sem facts_by_requirement válido.")
-    for group in groups:
-        if not isinstance(group, dict) or group.get("id") != requirement_id:
-            continue
-        facts = group.get("facts")
-        if not isinstance(facts, list):
-            break
-        result: list[dict[str, str]] = []
-        for fact in facts:
-            if not isinstance(fact, dict):
-                continue
-            text = fact.get("text")
-            if not isinstance(text, str) or not text.strip():
-                continue
-            row = {"text": text.strip()}
-            field = fact.get("field")
-            if isinstance(field, str) and field.strip():
-                row["field"] = field.strip()
-            result.append(row)
-        if result:
-            return result
-        break
-    fail(f"Contrato sem fatos para o requisito {requirement_id}.")
-
-
-def fact_texts(contract: dict[str, Any], requirement_id: str) -> list[str]:
-    return [item["text"] for item in fact_items(contract, requirement_id)]
-
-
-def record_mentions_team(record: dict[str, Any], team: str) -> bool:
-    wanted = {
-        token
-        for token in token_set(team)
-        if token not in {"fc", "cf", "sc", "ac", "afc", "1"}
-    }
-    if not wanted:
-        wanted = token_set(team)
-    return bool(wanted & token_set(str(record.get("text", ""))))
-
-
-H2H_HEADING_MARKERS = (
-    "retrospecto",
-    "historico",
-    "histórico",
-    "confrontos",
-    "confronto direto",
-    "head to head",
-    "duelos",
-    "bilanz",
-)
-
-
-def h2h_section_index(records: list[dict[str, Any]], contract: dict[str, Any]) -> int:
-    for record in records:
-        heading = str(record.get("heading", ""))
-        if any(normalize_text(marker) in heading for marker in H2H_HEADING_MARKERS):
-            return int(record["index"])
-
-    # Fallback conservador para títulos criativos: a seção precisa conter um
-    # marcador explícito de retrospecto além de sobrepor os fatos numéricos.
-    h2h_facts = fact_texts(contract, "competition_specific_head_to_head")
-    candidates: list[tuple[int, int]] = []
-    for record in records:
-        text = str(record.get("text", ""))
-        if not any(normalize_text(marker) in text for marker in H2H_HEADING_MARKERS):
-            continue
-        score = sum(len(token_set(fact) & token_set(text)) for fact in h2h_facts)
-        candidates.append((int(record["index"]), score))
-    if not candidates:
-        fail("Não foi possível localizar a seção de retrospecto/H2H no rascunho.")
-    return max(candidates, key=lambda item: item[1])[0]
-
-
-def load_ad_blocks() -> list[str]:
-    blocks = []
-    for path in ADS:
-        try:
-            block = path.read_text(encoding="utf-8").strip()
-        except FileNotFoundError:
-            fail(f"Bloco fixo de anúncio não encontrado: {path}")
-        if block.count('data-ad-slot="8702501261"') != 1:
-            fail(f"Bloco de anúncio inválido: {path}")
-        if 'data-ad-client="ca-pub-4145492637375431"' not in block:
-            fail(f"Cliente AdSense inesperado em {path}")
-        if 'data-full-width-responsive="false"' not in block:
-            fail(f"Bloco de anúncio fora do padrão mestre: {path}")
-        blocks.append(block)
-    return blocks
-
-
-def section_records(body: str) -> list[dict[str, Any]]:
-    matches = list(HEADING_RE.finditer(body))
-    if len(matches) < 5:
-        fail("Rascunho sem subtítulos suficientes para posicionar os anúncios editorialmente.")
-
-    records: list[dict[str, Any]] = []
-    for index, match in enumerate(matches):
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
-        chunk = body[match.start():end]
-        records.append(
-            {
-                "index": index,
-                "start": match.start(),
-                "end": end,
-                "heading": normalize_text(match.group(1)),
-                "text": normalize_text(chunk),
-                "body_text": normalize_text(body[match.end():end]),
-            }
-        )
-    return records
-
-
-def best_section_for_fact(records: list[dict[str, Any]], fact: str) -> tuple[int, int]:
-    wanted = token_set(fact)
-    if not wanted:
-        fail(f"Fato sem tokens úteis para posicionamento editorial: {fact}")
-
-    best_index = -1
-    best_score = -1
-    for record in records:
-        score = len(wanted & token_set(record["text"]))
-        if score > best_score:
-            best_score = score
-            best_index = int(record["index"])
-
-    minimum = 2 if len(wanted) <= 4 else 3
-    if best_score < minimum:
-        fail(f"Não foi possível localizar semanticamente no rascunho o fato: {fact}")
-    return best_index, best_score
-
-
-def first_qualifying_section_for_fact(
-    records: list[dict[str, Any]], fact: str, *, start_index: int = 0
-) -> tuple[int, int]:
-    """Localiza a primeira seção editorial que já resolve o fato.
-
-    Isso evita que uma recapitulação no fim da matéria, por repetir o fato com
-    palavras mais próximas do contrato, seja confundida com a seção principal.
-    """
-    wanted = token_set(fact)
-    if not wanted:
-        fail(f"Fato sem tokens úteis para posicionamento editorial: {fact}")
-
-    minimum = 2 if len(wanted) <= 4 else 3
-    best_score = -1
-    for record in records:
-        index = int(record["index"])
-        if index < start_index:
-            continue
-        score = len(wanted & token_set(record["text"]))
-        best_score = max(best_score, score)
-        if score >= minimum:
-            return index, score
-
-    fail(
-        "Não foi possível localizar a primeira seção editorial do fato: "
-        f"{fact} (melhor pontuação={best_score})."
+def long_paragraph(seed: str, repetitions: int = 7) -> str:
+    sentence = (
+        f"{seed} O contexto esportivo exige concentração, regularidade e leitura do jogo, "
+        "porque cada detalhe pode alterar o desenvolvimento da partida e a disputa pelas primeiras posições. "
     )
+    return "<p>" + sentence * repetitions + "</p>"
 
 
-def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], dict[str, Any]]:
-    records = section_records(body)
-
-    # Anúncio 1: depois da abertura e da primeira seção substantiva.
-    first_point = int(records[0]["end"])
-
-    # Primeiro fixamos a seção real de H2H pela semântica do subtítulo. Números
-    # isolados como 3, 1 e 5 aparecem em forma recente e não podem puxar o anúncio
-    # final para a seção errada.
-    h2h_index = h2h_section_index(records, contract)
-
-    # Anúncio 2: somente depois de os DOIS times terem sua forma recente tratada.
-    # Usa o field do contrato para exigir que a seção também mencione a equipe
-    # correspondente e só procura antes do H2H.
-    context = contract.get("match_context") if isinstance(contract.get("match_context"), dict) else {}
-    home = context.get("home")
-    away = context.get("away")
-    form_items = [
-        item
-        for item in fact_items(contract, "recent_form_both_teams")
-        if item.get("field") in {"home_recent_form", "away_recent_form"}
+def body_fixture(contract: dict) -> str:
+    link = contract["competition_internal_link"]["url"]
+    parts = [
+        "<p>Arsenal e Manchester City se enfrentam em Londres em um duelo importante da Premier League. "
+        "A partida está marcada para 16h, no horário de Brasília, e será disputada no Emirates Stadium, "
+        "com transmissão de ESPN e Disney+.</p>",
+        "<p><strong>Um confronto de peso na parte de cima</strong></p>",
+        long_paragraph("Os três pontos têm impacto direto na disputa pelas primeiras posições."),
+        f'<p>A <a href="{link}">história da Premier League</a> ajuda a dimensionar a importância de confrontos entre candidatos às primeiras posições.</p>',
+        "<p><strong>Como chega o Arsenal</strong></p>",
+        long_paragraph("O Arsenal venceu três de seus últimos cinco jogos."),
+        "<p><strong>Como chega o Manchester City</strong></p>",
+        long_paragraph("O Manchester City chega após quatro vitórias em cinco partidas."),
+        "<p><strong>Prováveis escalações e arbitragem</strong></p>",
+        "<p>As formações são prováveis e podem sofrer alterações até a confirmação oficial.</p>",
+        "<ul><li>Provável Arsenal: Raya; Timber; Saliba; Gabriel; Calafiori; Rice; Odegaard; Saka; Eze; Martinelli; Gyokeres.</li><li>Técnico: Mikel Arteta.</li></ul>",
+        "<ul><li>Provável Manchester City: Donnarumma; Lewis; Dias; Gvardiol; Ait-Nouri; Rodri; Reijnders; Foden; Cherki; Doku; Haaland.</li><li>Técnico: Pep Guardiola.</li></ul>",
+        "<p>Michael Oliver será o árbitro da partida.</p>",
+        "<p><strong>Histórico do confronto pela Premier League</strong></p>",
+        "<p>Os dados fornecidos reúnem 20 confrontos pela Premier League.</p>",
+        "<ul><li>O Arsenal venceu sete.</li><li>O Manchester City venceu dez.</li><li>Houve três empates.</li></ul>",
+        long_paragraph("O retrospecto mostra um confronto com peso competitivo e diferentes momentos ao longo das temporadas."),
+        "<p><strong>Onde assistir</strong></p>",
+        long_paragraph("A transmissão será de ESPN e Disney+."),
+        "<p><strong>O que está em jogo</strong></p>",
+        long_paragraph(
+            "Os três pontos têm impacto direto na disputa pelas primeiras posições. "
+            "O Arsenal soma três vitórias nos últimos cinco jogos. "
+            "O Manchester City venceu quatro dos últimos cinco jogos."
+        ),
     ]
-    if {item.get("field") for item in form_items} != {"home_recent_form", "away_recent_form"}:
-        fail("Forma recente precisa conter os campos home_recent_form e away_recent_form para posicionar anúncios.")
-    form_matches: list[tuple[int, int]] = []
-
-    for item in form_items:
-        fact = item["text"]
-        field = item.get("field")
-        team = home if field == "home_recent_form" else away
-        wanted = token_set(fact)
-        minimum = 2 if len(wanted) <= 4 else 3
-        matched: tuple[int, int] | None = None
-        best_score = -1
-        for record in records:
-            index = int(record["index"])
-            if index >= h2h_index:
-                continue
-            if isinstance(team, str) and team.strip() and not record_mentions_team(record, team):
-                continue
-            score = len(wanted & token_set(str(record["text"])))
-            best_score = max(best_score, score)
-            form_heading = any(
-                marker in str(record["heading"])
-                for marker in (
-                    "como chega", "momento", "forma recente", "fase atual",
-                    "desempenho recente", "sequencia", "ultimos jogos",
-                )
-            )
-            heading_mentions_team = bool(
-                isinstance(team, str)
-                and team.strip()
-                and record_mentions_team({"text": record["heading"]}, team)
-            )
-            heading_mentions_home = bool(
-                isinstance(home, str)
-                and home.strip()
-                and record_mentions_team({"text": record["heading"]}, home)
-            )
-            heading_mentions_away = bool(
-                isinstance(away, str)
-                and away.strip()
-                and record_mentions_team({"text": record["heading"]}, away)
-            )
-            # Uma seção explicitamente identificada como "Como chega TIME A"
-            # nunca pode satisfazer a forma recente do TIME B apenas porque o
-            # adversário foi citado incidentalmente no texto.
-            if (
-                form_heading
-                and (heading_mentions_home or heading_mentions_away)
-                and not heading_mentions_team
-            ):
-                continue
-            substantive_body = len(WORD_RE.findall(str(record.get("body_text", "")))) >= 6
-            if score >= minimum or (
-                score >= 1 and form_heading and heading_mentions_team and substantive_body
-            ):
-                matched = (index, score)
-                break
-        if matched is None:
-            fail(
-                "Não foi possível localizar a forma recente antes do H2H para "
-                f"{team or field or fact} (melhor pontuação={best_score})."
-            )
-        form_matches.append(matched)
-
-    form_last_index = max(index for index, _score in form_matches)
-    second_point = int(records[form_last_index]["end"])
-
-    # Anúncio 3: depois do retrospecto específico da competição e antes da seção seguinte.
-    third_point = int(records[h2h_index]["end"])
-    if third_point >= len(body):
-        fail("O retrospecto ficou como última seção; o anúncio final precisa anteceder uma seção conclusiva.")
-
-    points = [first_point, second_point, third_point]
-    if len(set(points)) != 3 or points != sorted(points):
-        fail(
-            "A ordem editorial do rascunho não permite os três anúncios sem colisão: "
-            f"pontos={points}. O rascunho deve manter abertura/seção inicial, forma recente e H2H em ordem."
-        )
-
-    metadata = {
-        "first_after_heading": records[0]["heading"],
-        "recent_form_sections": [records[index]["heading"] for index, _score in form_matches],
-        "h2h_section": records[h2h_index]["heading"],
-        "points": points,
-    }
-    return points, metadata
+    return "\n".join(parts)
 
 
-def inject_ads(body: str, contract: dict[str, Any]) -> tuple[str, dict[str, Any]]:
-    if FORBIDDEN_PREEXISTING_AD_RE.search(body):
-        fail("O rascunho já contém anúncio; o Passo 27 exige corpo editorial limpo.")
 
-    blocks = load_ad_blocks()
-    points, metadata = placement_points(body, contract)
-    enriched = body
-    for point, block in sorted(zip(points, blocks), key=lambda item: item[0], reverse=True):
-        enriched = enriched[:point].rstrip() + "\n\n" + block + "\n\n" + enriched[point:].lstrip()
+def collision_regression(contract: dict) -> None:
+    """Números da forma recente não podem ser confundidos com a seção de H2H."""
+    local = deepcopy(contract)
+    local["match_context"]["home"] = "Arsenal"
+    local["match_context"]["away"] = "Manchester City"
+    for group in local["facts_by_requirement"]:
+        if group.get("id") == "recent_form_both_teams":
+            group["facts"] = [
+                {
+                    "field": "home_recent_form",
+                    "text": "Forma recente do Arsenal: Arsenal 3 2-1-0 7:2 +5 7.",
+                },
+                {
+                    "field": "away_recent_form",
+                    "text": "Forma recente do Manchester City: seven-match winless run.",
+                },
+            ]
+        elif group.get("id") == "competition_specific_head_to_head":
+            group["facts"] = [
+                {"field": "h2h_games", "text": "Confrontos pela Premier League: 5 jogos."},
+                {"field": "h2h_home_wins", "text": "Vitórias do Arsenal pela Premier League: 3."},
+                {"field": "h2h_away_wins", "text": "Vitórias do Manchester City pela Premier League: 1."},
+                {"field": "h2h_draws", "text": "Empates pela Premier League: 1."},
+            ]
 
-    if enriched.count('data-ad-slot="8702501261"') != 3:
-        fail("A prévia precisa conter exatamente três anúncios dentro do artigo.")
-    return enriched, metadata
-
-
-def ensure_output_dir(output_dir: Path) -> Path:
-    allowed = (ROOT / "build" / "pre-jogo").resolve()
-    resolved = output_dir.resolve()
-    try:
-        resolved.relative_to(allowed)
-    except ValueError:
-        fail("Passo 27 só pode gravar dentro de build/pre-jogo/.")
-    return resolved
-
-
-def validate_source_draft(
-    draft: dict[str, Any], contract: dict[str, Any], config: dict[str, Any]
-) -> dict[str, Any]:
-    if draft.get("draft_validated") is not True:
-        fail("O rascunho de origem não está marcado como validado pelo Passo 26.")
-    if draft.get("draft_validation_errors") not in ([], None):
-        fail("O rascunho de origem contém erros de validação registrados.")
-    if draft.get("ready_for_html") is not False or draft.get("publication_unlocked") is not False:
-        fail("O rascunho de origem não preservou as travas de HTML/publicação.")
-
-    validated, errors = draft_validator.validate_draft(draft, contract, config=config)
-    if errors:
-        fail("Rascunho não passou na revalidação do Passo 27: " + "; ".join(errors))
-    return validated
-
-
-def build_preview(
-    *, draft: dict[str, Any], contract: dict[str, Any], rotation_offset: int = 0
-) -> tuple[str, dict[str, Any]]:
-    config = page_builder.load_config()
-    validated = validate_source_draft(draft, contract, config)
-
-    title = page_builder.require_text(contract, "title")
-    excerpt = page_builder.require_text(contract, "excerpt")
-    date = page_builder.require_text(contract, "date")
-    slug = page_builder.require_text(contract, "slug")
-    page_builder.validate_date(date)
-    page_builder.validate_slug(slug, config)
-
-    body = page_builder.require_text(validated, "body_html")
-    body_with_ads, ad_metadata = inject_ads(body, contract)
-
-    image_index = page_builder.choose_image_index(config, rotation_offset)
-    image_block = page_builder.load_image_block(config, image_index)
-    selected_image = page_builder.image_items(config)[image_index]["filename"]
-
-    rendered = page_builder.render(
-        config=config,
-        title=title,
-        excerpt=excerpt,
-        date=date,
-        body_html=body_with_ads,
-        image_block=image_block,
+    body = "\n".join(
+        [
+            "<p>Abertura do confronto.</p>",
+            "<p><strong>Data, horário e local</strong></p>",
+            "<p>Arsenal x Manchester City pela Premier League.</p>",
+            "<p><strong>Transmissão</strong></p>",
+            "<p>Serviço do jogo.</p>",
+            "<p><strong>Momento do Arsenal</strong></p>",
+            "<p>Arsenal 3 2-1-0 7:2 +5 7.</p>",
+            "<p><strong>Momento do Manchester City</strong></p>",
+            "<p>Manchester City vive seven-match winless run.</p>",
+            "<p><strong>Retrospecto de Arsenal x Manchester City na Premier League</strong></p>",
+            "<p>Em cinco jogos, o Arsenal tem três vitórias, o Manchester City uma e houve um empate.</p>",
+            "<ul><li>Jogos: 5</li><li>Arsenal: 3</li><li>Manchester City: 1</li><li>Empates: 1</li></ul>",
+            "<p><strong>Prováveis escalações</strong></p>",
+            "<p>Informações das equipes.</p>",
+            "<p><strong>O que está em jogo</strong></p>",
+            "<p>Conclusão.</p>",
+        ]
     )
-
-    if rendered.count('data-ad-slot="8702501261"') != 3:
-        fail("HTML final da prévia não preservou os três anúncios internos.")
-    if rendered.count('data-ad-slot="5521804159"') != 1:
-        fail("HTML final da prévia não preservou exatamente um anúncio de sidebar.")
-    if rendered.count(f'<img src="{selected_image}"') != 1:
-        fail("HTML final da prévia não contém exatamente uma tag <img> com a imagem selecionada.")
-    if "{{" in rendered or "}}" in rendered:
-        fail("HTML final da prévia contém placeholder não resolvido.")
-
-    metadata = {
-        "step": 27,
-        "slug": slug,
-        "source_draft_validated": True,
-        "source_word_count": validated.get("word_count"),
-        "selected_image": selected_image,
-        "image_rotation_index": image_index,
-        "in_body_ads": 3,
-        "in_body_ad_slot": "8702501261",
-        "sidebar_ad_slot": "5521804159",
-        "ad_placement": ad_metadata,
-        "preview_only": True,
-        "ready_for_publication": False,
-        "noticias_json_touched": False,
-        "sitemap_xml_touched": False,
-        "published_html_touched": False,
-    }
-    return rendered, metadata
+    points, metadata = preview.placement_points(body, local)
+    assert len(set(points)) == 3, points
+    assert points == sorted(points), points
+    assert "momento do manchester city" in metadata["recent_form_sections"][-1]
+    assert "retrospecto" in metadata["h2h_section"]
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Monta prévia HTML completa do Passo 27 sem publicar.")
-    parser.add_argument("--draft", required=True, type=Path, help="Rascunho real validado do Passo 26.")
-    parser.add_argument("--contract", required=True, type=Path, help="Contrato editorial limpo do Passo 25.")
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument("--rotation-offset", type=int, default=0)
-    parser.add_argument("--force", action="store_true")
-    return parser.parse_args()
+def first_heading_form_regression(contract: dict) -> None:
+    """A primeira seção pode ser justamente 'Como chega o mandante'."""
+    local = deepcopy(contract)
+    local["match_context"]["home"] = "Arsenal"
+    local["match_context"]["away"] = "Manchester City"
+    for group in local["facts_by_requirement"]:
+        if group.get("id") == "recent_form_both_teams":
+            group["facts"] = [
+                {"field": "home_recent_form", "text": "Forma recente do Arsenal: 3 vitórias em 5 jogos."},
+                {"field": "away_recent_form", "text": "Forma recente do Manchester City: 4 vitórias em 5 jogos."},
+            ]
+        elif group.get("id") == "competition_specific_head_to_head":
+            group["facts"] = [
+                {"field": "h2h_games", "text": "Confrontos pela Premier League: 5 jogos."},
+                {"field": "h2h_home_wins", "text": "Vitórias do Arsenal pela Premier League: 3."},
+                {"field": "h2h_away_wins", "text": "Vitórias do Manchester City pela Premier League: 1."},
+                {"field": "h2h_draws", "text": "Empates pela Premier League: 1."},
+            ]
+
+    body = "\n".join([
+        "<p>Abertura factual do confronto.</p>",
+        "<p><strong>Como chega o Arsenal</strong></p>",
+        "<p>O Arsenal soma 3 vitórias em seus últimos 5 jogos e se prepara para enfrentar o Manchester City.</p>",
+        "<p><strong>Como chega o Manchester City</strong></p>",
+        "<p>O Manchester City soma 4 vitórias em seus últimos 5 jogos.</p>",
+        "<p><strong>Prováveis escalações</strong></p>",
+        "<p>Informações das duas equipes.</p>",
+        "<p><strong>Retrospecto pela Premier League</strong></p>",
+        "<p>Em 5 jogos, Arsenal tem 3 vitórias, Manchester City 1 e houve 1 empate.</p>",
+        "<p><strong>Onde assistir</strong></p>",
+        "<p>Serviço do jogo.</p>",
+        "<p><strong>Fechamento</strong></p>",
+        "<p>Conclusão do pré-jogo.</p>",
+    ])
+    points, metadata = preview.placement_points(body, local)
+    assert points == sorted(points) and len(set(points)) == 3, points
+    assert metadata["recent_form_sections"] == [
+        "como chega o arsenal",
+        "como chega o manchester city",
+    ], metadata
+
+
+
+def no_h2h_regression(contract: dict) -> None:
+    """Sem retrospecto disponível, os anúncios ainda precisam ter três posições distintas."""
+    local = deepcopy(contract)
+    for group in local["facts_by_requirement"]:
+        if group.get("id") == "competition_specific_head_to_head":
+            group["status"] = "unavailable_after_check"
+            group["facts"] = []
+            group["resolved"] = True
+    body = "\n".join([
+        "<p>Abertura factual.</p>",
+        "<p><strong>Como chega o Arsenal</strong></p>",
+        "<p>O Arsenal soma três vitórias nos últimos cinco jogos e chega para a partida em Londres.</p>",
+        "<p><strong>Como chega o Manchester City</strong></p>",
+        "<p>O Manchester City venceu quatro dos últimos cinco jogos e será o visitante.</p>",
+        "<p><strong>Prováveis escalações</strong></p>",
+        "<p>As duas equipes têm formações prováveis disponíveis para o confronto.</p>",
+        "<p><strong>Onde assistir</strong></p>",
+        "<p>A transmissão será de ESPN e Disney+.</p>",
+        "<p><strong>Serviço do jogo</strong></p>",
+        "<p>A partida será disputada no Emirates Stadium, às 16h de Brasília.</p>",
+        "<p><strong>Fechamento</strong></p>",
+        "<p>Os três pontos têm impacto direto na disputa pelas primeiras posições.</p>",
+    ])
+    points, metadata = preview.placement_points(body, local)
+    assert len(set(points)) == 3 and points == sorted(points), points
+    assert metadata["h2h_section"] is None
+    assert metadata["third_ad_section"]
 
 
 def main() -> None:
-    args = parse_args()
-    output_root = ensure_output_dir(args.output_dir)
-    draft = load_json(args.draft)
-    contract = load_json(args.contract)
-    if not isinstance(draft, dict) or not isinstance(contract, dict):
-        fail("Rascunho ou contrato inválido.")
+    contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
+    body = body_fixture(contract)
+    draft = {
+        "slug": contract["slug"],
+        "body_html": body,
+        "fact_fields_used": contract["required_fact_fields"],
+        "draft_validated": True,
+        "draft_validation_errors": [],
+        "ready_for_html": False,
+        "publication_unlocked": False,
+    }
 
-    rendered, metadata = build_preview(
-        draft=draft,
-        contract=contract,
-        rotation_offset=args.rotation_offset,
-    )
-    slug = metadata["slug"]
-    preview_path = output_root / "previews" / slug
-    metadata_path = output_root / "preview-metadata" / Path(slug).with_suffix(".json").name
+    rendered, metadata = preview.build_preview(draft=draft, contract=contract)
 
-    for path in (preview_path, metadata_path):
-        if path.exists() and not args.force:
-            fail(f"Saída do Passo 27 já existe: {path}")
-        path.parent.mkdir(parents=True, exist_ok=True)
+    assert metadata["step"] == 27
+    assert metadata["preview_only"] is True
+    assert metadata["ready_for_publication"] is False
+    assert metadata["in_body_ads"] == 3
+    assert rendered.count('data-ad-slot="8702501261"') == 3
+    assert rendered.count('data-ad-slot="5521804159"') == 1
+    assert "<!-- ANÚNCIO (ARTIGO - TOPO) -->" in rendered
+    assert "<!-- ANÚNCIO (ARTIGO - MEIO) -->" in rendered
+    assert "<!-- ANÚNCIO (ARTIGO - FIM) -->" in rendered
+    assert rendered.index("<!-- ANÚNCIO (ARTIGO - TOPO) -->") < rendered.index("<!-- ANÚNCIO (ARTIGO - MEIO) -->")
+    assert rendered.index("<!-- ANÚNCIO (ARTIGO - MEIO) -->") < rendered.index("<!-- ANÚNCIO (ARTIGO - FIM) -->")
+    assert metadata["ad_placement"]["recent_form_sections"]
+    assert all("como chega" in heading for heading in metadata["ad_placement"]["recent_form_sections"])
+    assert "historico" in metadata["ad_placement"]["h2h_section"]
+    assert metadata["selected_image"] in {
+        "bola-uhlsport-gramado.jpg",
+        "bola-adidas-gramado.jpg",
+        "bola-estadio-futebol.jpg",
+    }
+    image_tag = f'<img src="{metadata["selected_image"]}"'
+    assert rendered.count(image_tag) == 1
+    assert "{{" not in rendered
+    assert "}}" not in rendered
 
-    preview_path.write_text(rendered, encoding="utf-8")
-    metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    collision_regression(contract)
+    first_heading_form_regression(contract)
+    no_h2h_regression(contract)
 
-    print("OK: prévia HTML completa do Passo 27 montada somente em build/.")
-    print(f"Prévia: {preview_path.relative_to(ROOT)}")
-    print(f"Imagem da rotação: {metadata['selected_image']}")
+    # A mesma expressão do confronto aparece no H1 e no excerpt. A posição da
+    # imagem deve ser validada apenas dentro do conteúdo do <article>.
+    article_marker = '<article id="articleBody">'
+    article_start = rendered.index(article_marker) + len(article_marker)
+    article_end = rendered.index("</article>", article_start)
+    article_html = rendered[article_start:article_end]
+    assert article_html.index(image_tag) < article_html.index("Arsenal e Manchester City")
+
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    print("OK: montagem HTML do Passo 27 validada sem chamada externa.")
+    print(f"Imagem selecionada no teste: {metadata['selected_image']}")
     print("Anúncios internos: 3")
-    print("noticias.json alterado: não")
-    print("sitemap.xml alterado: não")
-    print("HTML publicado alterado: não")
-    print("Publicação liberada: não")
+    print("Sidebar preservada: sim")
+    print("Arquivos publicados alterados: não")
 
 
 if __name__ == "__main__":

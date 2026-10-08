@@ -307,7 +307,7 @@
       "competition_specific_head_to_head": {
         "required_for_drafting": true,
         "conditional": false,
-        "allow_unavailable_after_check": false
+        "allow_unavailable_after_check": true
       },
       "competition_internal_link": {
         "required_for_drafting": true,

@@ -425,15 +425,26 @@ def resolve_allowed_gap(
         result["conflict_detected"] = False
         return result
 
-    if isinstance(policy, dict) and policy.get("allow_unavailable_after_check") is True and sources:
+    no_candidates_after_search = (
+        result.get("candidate_status") == "no_candidates"
+        and int(result.get("candidate_source_count", 0) or 0) == 0
+    )
+    if (
+        isinstance(policy, dict)
+        and policy.get("allow_unavailable_after_check") is True
+        and (sources or no_candidates_after_search)
+    ):
         result["status"] = "unavailable_after_check"
         result["facts"] = []
         result["sources"] = sources
         result["notes"] = (
-            "Informação não foi confirmada de forma completa nas páginas efetivamente checadas; "
-            "nenhuma lacuna foi inventada."
+            "Informação não foi confirmada após a pesquisa disponível; nenhuma lacuna foi inventada."
         )
-        result["fact_extraction_status"] = "automatic_unavailable_after_checked_sources"
+        result["fact_extraction_status"] = (
+            "automatic_unavailable_after_checked_sources"
+            if sources
+            else "automatic_unavailable_after_search_without_candidates"
+        )
         result["validator_accepted"] = True
         result["conflict_detected"] = False
     return result

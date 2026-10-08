@@ -61,6 +61,7 @@ def command_plan(target: str) -> list[list[str]]:
         ["scripts/ler_fontes_candidatas.py", "--date", target, "--execute", "--force"],
         ["scripts/extrair_fatos_estruturados.py", "--date", target, "--force"],
         ["scripts/enriquecer_fatos_football_data.py", "--date", target, "--execute", "--force"],
+        ["scripts/enriquecer_fatos_espn.py", "--date", target, "--execute", "--force"],
         ["scripts/montar_pacote_editorial.py", "--date", target, "--force"],
     ]
 

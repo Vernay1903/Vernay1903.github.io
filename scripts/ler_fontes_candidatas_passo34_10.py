@@ -111,7 +111,9 @@ def stadium_source_is_current(
             signal in f" {folded} "
             for signal in (" stadium ", " estadio ", " arena ", " venue ", " stadion ", " spielort ")
         )
-        if has_venue and _contains_current_venue_statement(segment):
+        segment_has_match = _step34_9._match_in_text(segment, context)
+        title_has_match = _step34_9._match_in_text(str(source.get("title", "")), context)
+        if has_venue and _contains_current_venue_statement(segment) and (segment_has_match or title_has_match):
             return True
     return False
 

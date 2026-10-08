@@ -15,7 +15,7 @@ def main():
         for index,command in enumerate(command_plan(target)):
             if index == 6:
                 CONFIG.write_text(json.dumps(cfg,ensure_ascii=False,indent=2)+'\n')
-            if index == 11:
+            if index == 12:
                 CONFIG.write_bytes(original)
             call(*command)
             if index==2:

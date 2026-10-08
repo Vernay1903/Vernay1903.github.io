@@ -74,6 +74,7 @@ jobs:
           set -euo pipefail
           python -m py_compile \
             scripts/enriquecer_fatos_football_data.py \
+            scripts/enriquecer_fatos_espn.py \
             scripts/registrar_preparo_vazio_pre_jogo.py \
             scripts/buscar_fixtures_football_data.py \
             scripts/identificar_jogos.py \
@@ -116,6 +117,7 @@ jobs:
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
           python tests/pre-jogo/teste_status_final_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
+          python tests/pre-jogo/teste_enriquecer_fatos_espn.py
           python -m json.tool config/pre-jogo.json > /dev/null
           test "$(python - <<'PY'
           import json
@@ -244,6 +246,7 @@ jobs:
           python scripts/extrair_fatos_estruturados.py --date "${TARGET_DATE}" --force
           # Complemento não inventa resultados e não substitui fatos conflitantes.
           python scripts/enriquecer_fatos_football_data.py --date "${TARGET_DATE}" --execute --force
+          python scripts/enriquecer_fatos_espn.py --date "${TARGET_DATE}" --execute --force
 
           restore_config
           trap - EXIT
@@ -612,6 +615,7 @@ jobs:
           python tests/pre-jogo/teste_reuso_fontes_gratuitas.py
           python tests/pre-jogo/teste_status_final_football_data.py
           python tests/pre-jogo/teste_enriquecer_fatos_football_data.py
+          python tests/pre-jogo/teste_enriquecer_fatos_espn.py
           python scripts/recuperar_preparo_pre_jogo_automatico.py --date "${TARGET_DATE}"
           echo "NO_PREP=false" >> "${GITHUB_ENV}"
           echo "RECOVERED_PREP=true" >> "${GITHUB_ENV}"

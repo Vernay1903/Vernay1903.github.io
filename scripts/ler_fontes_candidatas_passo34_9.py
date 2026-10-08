@@ -184,12 +184,12 @@ def stadium_content_support(
             continue
         line_has_home = isinstance(home, str) and base.mentions_team(line, home)
         line_has_away = isinstance(away, str) and base.mentions_team(line, away)
-        if line_has_home or line_has_away:
-            if line_has_home and line_has_away:
-                return True
-            continue
+        if line_has_home and line_has_away:
+            return True
         if title_has_match:
             return True
+        # Página genérica de um clube não prova o estádio de um jogo específico.
+        continue
     return False
 
 

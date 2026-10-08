@@ -294,6 +294,83 @@ def scan_external_urls(value: Any, internal_domain: str, path: str = "root") -> 
     return errors
 
 
+def _fact_map(requirement: dict[str, Any] | None) -> dict[str, str]:
+    if not isinstance(requirement, dict) or requirement.get("status") != "verified":
+        return {}
+    return {
+        fact.get("field"): fact.get("text")
+        for fact in requirement.get("facts", [])
+        if isinstance(fact, dict)
+        and isinstance(fact.get("field"), str)
+        and isinstance(fact.get("text"), str)
+        and fact.get("text").strip()
+    }
+
+
+def _verified_lineups(requirement: dict[str, Any] | None, config: dict[str, Any]) -> bool:
+    facts = _fact_map(requirement)
+    required = ("home_lineup", "away_lineup", "home_coach", "away_coach")
+    if not all(isinstance(facts.get(field), str) and facts[field].strip() for field in required):
+        return False
+    minimum = int(config.get("editorial", {}).get("approved_pre_match_model", {}).get("minimum_players_per_team", 11))
+    for field in ("home_lineup", "away_lineup"):
+        value = facts[field].split(":", 1)[-1].rstrip(".").strip()
+        players = [
+            item.strip()
+            for item in re.split(r"(?:[;,]|\s+e\s+)", value, flags=re.IGNORECASE)
+            if len(item.strip()) >= 3
+        ]
+        if len(players) < minimum:
+            return False
+    return True
+
+
+def _join_pt(items: list[str]) -> str:
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return " e ".join(items)
+    return ", ".join(items[:-1]) + " e " + items[-1]
+
+
+def adjusted_service_headline(
+    article: dict[str, Any],
+    requirement_by_id: dict[str, dict[str, Any]],
+    *,
+    config: dict[str, Any],
+) -> tuple[str, str]:
+    """Remove da chamada somente serviços que não foram realmente verificados."""
+    original_title = str(article.get("title") or "").strip()
+    original_excerpt = str(article.get("excerpt") or "").strip()
+    transmission = _fact_map(requirement_by_id.get("transmission")).get("transmission")
+    lineups_ok = _verified_lineups(requirement_by_id.get("probable_lineups_and_coaches"), config)
+
+    prefix = original_title.rsplit(":", 1)[0].strip() if ":" in original_title else original_title
+    title_items: list[str] = []
+    if isinstance(transmission, str) and transmission.strip():
+        title_items.append("transmissão")
+    title_items.append("horário")
+    if lineups_ok:
+        title_items.append("prováveis escalações")
+    if title_items == ["horário"]:
+        title_items.append("informações do jogo")
+    elif len(title_items) == 2 and title_items[0] == "transmissão":
+        title_items.append("informações do jogo")
+    title = f"{prefix}: {_join_pt(title_items)}" if prefix else original_title
+
+    base_excerpt = re.split(r";\s*veja\s+", original_excerpt, maxsplit=1, flags=re.IGNORECASE)[0].rstrip(" .")
+    excerpt_items: list[str] = []
+    if isinstance(transmission, str) and transmission.strip():
+        excerpt_items.append("transmissão")
+    if lineups_ok:
+        excerpt_items.append("prováveis escalações")
+    excerpt_items.append("informações do confronto")
+    excerpt = f"{base_excerpt}; veja {_join_pt(excerpt_items)}." if base_excerpt else original_excerpt
+    return title, excerpt
+
+
 def verified_promised_service_gaps(
     requirement_by_id: dict[str, dict[str, Any]],
     *,
@@ -401,20 +478,24 @@ def build_article_packages(
         else:
             resolution_status[req_id] = str(requirement.get("status"))
 
-    # A política antiga aceita informação indisponível após consulta;
-    # o modelo aprovado NÃO aceita publicar uma chamada que a prometa.
+    effective_title, effective_excerpt = adjusted_service_headline(
+        article, requirement_by_id, config=config
+    )
+
+    # Serviços opcionais ausentes saem da chamada; o que permanecer prometido
+    # continua obrigado a estar verificado e presente no corpo.
     unresolved.extend(verified_promised_service_gaps(
         requirement_by_id,
-        title=str(article.get("title") or ""),
-        excerpt=str(article.get("excerpt") or ""),
+        title=effective_title,
+        excerpt=effective_excerpt,
         config=config,
     ))
     unresolved = list(dict.fromkeys(unresolved))
 
     clean_package = {
         "step": 24,
-        "title": article.get("title"),
-        "excerpt": article.get("excerpt"),
+        "title": effective_title,
+        "excerpt": effective_excerpt,
         "date": article.get("date"),
         "slug": slug,
         "match_context": deepcopy(article.get("match_context", {})),
