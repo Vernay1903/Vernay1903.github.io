@@ -50,6 +50,7 @@ def main() -> None:
                            "scripts/estruturar_evidencias_candidatas.py",
                            "scripts/ler_fontes_candidatas.py",
                            "scripts/enriquecer_fatos_football_data.py",
+                           "scripts/enriquecer_fatos_espn.py",
                            "scripts/extrair_fatos_estruturados.py"):
                 assert external is True
             else:
@@ -90,7 +91,7 @@ def main() -> None:
             recovery.run(today)
             assert config.read_bytes() == original
             assert (source / "manifest.json").exists()
-            assert len(calls) == 13
+            assert len(calls) == 14
             calls.clear()
 
             def raise_scrape(*args):
