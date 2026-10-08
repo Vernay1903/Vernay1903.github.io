@@ -155,6 +155,36 @@ def first_heading_form_regression(contract: dict) -> None:
     ], metadata
 
 
+
+def no_h2h_regression(contract: dict) -> None:
+    """Sem retrospecto disponível, os anúncios ainda precisam ter três posições distintas."""
+    local = deepcopy(contract)
+    for group in local["facts_by_requirement"]:
+        if group.get("id") == "competition_specific_head_to_head":
+            group["status"] = "unavailable_after_check"
+            group["facts"] = []
+            group["resolved"] = True
+    body = "\n".join([
+        "<p>Abertura factual.</p>",
+        "<p><strong>Como chega o Arsenal</strong></p>",
+        "<p>O Arsenal soma três vitórias nos últimos cinco jogos e chega para a partida em Londres.</p>",
+        "<p><strong>Como chega o Manchester City</strong></p>",
+        "<p>O Manchester City venceu quatro dos últimos cinco jogos e será o visitante.</p>",
+        "<p><strong>Prováveis escalações</strong></p>",
+        "<p>As duas equipes têm formações prováveis disponíveis para o confronto.</p>",
+        "<p><strong>Onde assistir</strong></p>",
+        "<p>A transmissão será de ESPN e Disney+.</p>",
+        "<p><strong>Serviço do jogo</strong></p>",
+        "<p>A partida será disputada no Emirates Stadium, às 16h de Brasília.</p>",
+        "<p><strong>Fechamento</strong></p>",
+        "<p>Os três pontos têm impacto direto na disputa pelas primeiras posições.</p>",
+    ])
+    points, metadata = preview.placement_points(body, local)
+    assert len(set(points)) == 3 and points == sorted(points), points
+    assert metadata["h2h_section"] is None
+    assert metadata["third_ad_section"]
+
+
 def main() -> None:
     contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
     body = body_fixture(contract)
@@ -196,6 +226,7 @@ def main() -> None:
 
     collision_regression(contract)
     first_heading_form_regression(contract)
+    no_h2h_regression(contract)
 
     # A mesma expressão do confronto aparece no H1 e no excerpt. A posição da
     # imagem deve ser validada apenas dentro do conteúdo do <article>.
