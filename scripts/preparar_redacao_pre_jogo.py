@@ -172,7 +172,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "approved_model": (
                 "Seguir a estrutura da prévia aprovada LDU x Palmeiras: abertura factual curta; contexto da partida "
                 "somente quando houver fato verificável; Como chega o mandante; Como chega o visitante; prováveis "
-                "escalações em bloco; retrospecto proporcional ao tamanho real da amostra; Onde assistir; e fechamento "
+                "escalações em bloco apenas com 11 nomes por time verificados; retrospecto proporcional ao tamanho real da amostra; Onde assistir apenas com transmissão confirmada; e fechamento "
                 "apenas se houver uma consequência, cenário ou próximo jogo realmente fornecido no contrato."
             ),
             "journalistic_synthesis": (
@@ -202,7 +202,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "subheadings": "Usar <p><strong>...</strong></p> ao longo da matéria.",
             "lineups": (
                 "Prováveis escalações dos dois times e técnicos devem aparecer em um único bloco/lista visível. "
-                "Se home_lineup e away_lineup existem, é proibido dizer que não há provável escalação disponível. "
+                "Se home_lineup e away_lineup não existem com 11 jogadores e técnicos verificados, omitir o bloco por completo sem falar de informações ausentes. Se existem, é proibido dizer que não há provável escalação disponível. "
                 "Usar no máximo uma ressalva curta de que as formações são prováveis e podem mudar até a confirmação oficial."
             ),
             "head_to_head": (
@@ -211,7 +211,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "transformá-la em narrativa histórica ou rivalidade ampla. Nunca expandir números pequenos para preencher texto."
             ),
             "where_to_watch": (
-                "Concentrar a emissora/plataforma confirmada no bloco Onde assistir. Não repetir toda a ficha de serviço antes e depois."
+                "Concentrar a emissora/plataforma confirmada no bloco Onde assistir. Se não houver plataforma confirmada, omitir esse bloco. Não repetir toda a ficha de serviço antes e depois."
             ),
             "closing": (
                 "Fechar em um parágrafo curto somente se houver fato novo de consequência esportiva ou próximo jogo. "

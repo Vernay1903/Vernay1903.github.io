@@ -132,6 +132,18 @@ def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
     if body_folded.count("podem sofrer alteracoes") > 1:
         errors.append("ressalva sobre alteração de escalações repetida mais de uma vez")
 
+    # Uma seção sobre informações ausentes não substitui jornalismo factual.
+    empty_service_patterns = (
+        r"escalacoes? provaveis? nao integram as informacoes",
+        r"nao ha nomes de jogadores ou tecnicos",
+        r"nao existem nomes? (?:de )?jogadores? (?:ou )?tecnicos?",
+        r"nao (?:ha|foram fornecidas) (?:informacoes? )?(?:de )?provaveis? escalacoes?",
+        r"(?:transmissao|onde assistir).{0,90}(?:nao foi confirmad|sem informacao|indisponivel)",
+        r"nossa posicao e objetiva",
+    )
+    if any(re.search(pattern, body_folded) for pattern in empty_service_patterns):
+        errors.append("seção vazia ou comentário editorial sem informação factual")
+
     return errors
 
 
@@ -148,6 +160,16 @@ def required_service_body_errors(body: str, contract: dict[str, Any]) -> list[st
                 facts[fact["field"]] = fact["text"]
 
     errors: list[str] = []
+    # Uma chamada que retirou "transmissão/escalações" não autoriza o modelo
+    # a reintroduzir esses serviços em subtítulos sem dados concretos.
+    headings = [folded_text(value) for value in SUBHEADING_RE.findall(body)]
+    has_watch_heading = any("onde assistir" in value or "transmissao" in value for value in headings)
+    has_lineup_heading = any("provaveis escalacoes" in value or "provavel escalacao" in value for value in headings)
+    if has_watch_heading and not facts.get("transmission"):
+        errors.append("subtítulo Onde assistir sem transmissão verificada")
+    if has_lineup_heading and not all(facts.get(x) for x in ("home_lineup", "away_lineup", "home_coach", "away_coach")):
+        errors.append("subtítulo Prováveis escalações sem onze jogadores e técnicos verificados")
+
     if "transmissao" in title or "onde assistir" in title:
         transmission = facts.get("transmission", "")
         raw_value = transmission.split(":", 1)[-1].rstrip(".").strip()
@@ -245,7 +267,15 @@ def validate_draft(
             "informacoes confirmadas para a partida",
             "o que observar no confronto",
             "resumo do pre jogo",
+            "resumo do encontro",
+            "ultimas linhas antes da partida",
+            "informacoes principais",
+            "fechamento",
+            "panorama estatistico do confronto",
         }
+        if len(headings) > 8:
+            errors.append(f"texto fragmentado em {len(headings)} subtítulos; máximo editorial é 8")
+
         for heading in headings:
             if folded_text(heading) in forbidden:
                 errors.append("subtítulo genérico repetitivo proibido pelo modelo aprovado: " + visible_text(heading))
