@@ -17,11 +17,12 @@ from scripts import recuperar_preparo_pre_jogo_automatico as recovery  # noqa: E
 def main() -> None:
     today = datetime.now(ZoneInfo("America/Sao_Paulo")).date().isoformat()
     plan = recovery.command_plan(today)
-    assert len(plan) == 12
+    assert len(plan) == 13
     assert plan[0][0] == "scripts/buscar_fixtures_football_data.py"
     assert plan[-1][0] == "scripts/montar_pacote_editorial.py"
-    assert plan[-2][0] == "scripts/enriquecer_fatos_football_data.py"
-    assert plan[-3][0] == "scripts/extrair_fatos_estruturados.py"
+    assert plan[-2][0] == "scripts/enriquecer_fatos_espn.py"
+    assert plan[-3][0] == "scripts/enriquecer_fatos_football_data.py"
+    assert plan[-4][0] == "scripts/extrair_fatos_estruturados.py"
     assert plan[6][0] == "scripts/buscar_fontes_serper.py"
     assert plan[8][0] == "scripts/ler_fontes_candidatas.py"
     assert all("--force" in cmd for cmd in plan)
