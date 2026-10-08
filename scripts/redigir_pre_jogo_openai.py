@@ -143,7 +143,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
         "type": "object",
         "properties": {
             "slug": {"type": "string", "enum": [slug]},
-            "body_html": {"type": "string", "minLength": 6500},
+            "body_html": {"type": "string", "minLength": 3800},
             "fact_fields_used": {
                 "type": "array",
                 "items": {"type": "string", "enum": unique_fields},
@@ -170,21 +170,21 @@ def system_instructions() -> str:
         "Produza somente o corpo editorial, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
         "FORMATO OBRIGATÓRIO: body_html deve conter no mínimo cinco subtítulos exatamente no formato <p><strong>...</strong></p>; não use Markdown, <h2> ou <h3>. "
         "Inclua obrigatoriamente uma lista HTML <ul><li>...</li></ul> para os dados de serviço. "
-        "A estrutura preferencial é: abertura curta; contexto competitivo se houver fato; Como chega o mandante; Como chega o visitante; "
+        "MODELO JORNALÍSTICO APROVADO: a prévia LDU x Palmeiras (16/09/2026) abriu com a situação da eliminatória e seus desdobramentos, explicou a preparação específica dos clubes, incorporou retornos/desfalques ao contexto de cada equipe, reuniu escalações uma única vez, contextualizou o histórico, informou transmissão e fechou com consequência esportiva. " "NÃO copie fatos nem datas dessa referência: ela define apenas estilo e profundidade, e todos os fatos novos devem vir do contrato. " "A estrutura preferencial é: abertura curta; contexto competitivo se houver fato; Como chega o mandante; Como chega o visitante; "
         "prováveis escalações SOMENTE se os 11 jogadores e técnicos de ambos os clubes estiverem nos fatos; retrospecto proporcional à amostra; Onde assistir SOMENTE se houver emissora ou plataforma confirmada; fechamento somente se houver fato novo. "
-        "Use a forma recente de cada time uma única vez. Não repita os mesmos placares ou o balanço de vitórias/empates/derrotas no fechamento. "
+        "Para os blocos Como chega, não basta listar cinco placares: destaque preparação, jogadores, mudanças e notícias concretas verificadas. " "Não transforme frases de divulgação do site-fonte em notícias de elenco. " "Use a forma recente de cada time uma única vez. Não repita os mesmos placares ou o balanço de vitórias/empates/derrotas no fechamento. "
         "Se as duas prováveis escalações forem fornecidas, apresente-as em um único bloco de lista, uma entrada por equipe, com 11 jogadores e técnico. Se faltarem, não crie o subtítulo Prováveis escalações nem um aviso sobre a ausência. "
         "Cada entrada deve começar por Provável escalação do nome da equipe, conter os 11 jogadores e o técnico. "
         "Nesse caso é proibido dizer que não há provável escalação; use no máximo uma ressalva curta de que as formações são prováveis. "
         "Se o retrospecto tiver só um ou dois jogos, trate-o em um bloco curto e não transforme a amostra em história ampla ou rivalidade. "
         "Só crie Onde assistir quando houver transmissor confirmado; nesse caso escreva explicitamente cada emissora/plataforma. Caso contrário, não abra essa seção. "
-        "Não recapitule serviço, resultados, escalações e retrospecto no encerramento. Limite-se a até oito subtítulos informativos; nunca crie seções chamadas Resumo do encontro, Últimas linhas antes da partida, Informações principais ou Fechamento. Não repita jogos, balanços ou fichas de serviço com palavras diferentes. "
+        "Não recapitule serviço, resultados, escalações e retrospecto no encerramento. Cada parágrafo precisa trazer informação nova comprovada. " "Máximo oito subtítulos informativos; proíba Resumo do encontro, Dados do confronto, Últimas linhas antes da partida, Informações principais, Serviço do jogo ou Fechamento. " "Uma escalação completa só pode aparecer dentro do bloco Prováveis escalações. " "Onde assistir deve ser curto, com emissoras confirmadas e horário, sem repetir data/estádio em várias seções. " "Não repita jogos, balanços ou fichas de serviço com palavras diferentes. "
         "Insira exatamente uma vez o link interno aprovado, com âncora textual natural, e não crie nenhum outro link. "
         "É expressamente proibido citar fontes, sites, portais, veículos, consultas ou processos internos. "
         "Declarar um campo em fact_fields_used não basta: todo campo de required_fact_fields deve aparecer de forma visível e inequívoca no body_html. "
-        "Busque entre 750 e 900 palavras visíveis, visando o topo da faixa. O mínimo absoluto é 700. "
+        "Redija entre 700 e 900 palavras APENAS quando os fatos fornecidos sustentarem esse desenvolvimento, sem recapitulá-los. O mínimo editorial é 700. "
         "Tags HTML, chaves JSON e fact_fields_used não contam como palavras. Não alongue o texto com generalidades para atingir tamanho. "
-        "Se os fatos não sustentarem uma seção, omita a seção; se não sustentarem 700 palavras sem repetição ou inferência, recuse a redação pelo pipeline. "
+        "Se o contrato trouxer apenas placares, retrospecto, escalações e serviço, não é reportagem completa: o pipeline deve bloquear antes da redação. Não preencha com generalidades. "
         "Retorne somente o objeto JSON exigido pelo schema."
     )
 
@@ -201,7 +201,7 @@ def user_payload(contract: dict[str, Any]) -> str:
         "Ausência de campo não autoriza afirmar que a informação está pendente ou não foi divulgada. "
         "Se houver transmission, cada emissora/plataforma confirmada deve aparecer explicitamente em Onde assistir; caso contrário, omita Onde assistir por completo. "
         "Se houver home_lineup e away_lineup, mostre todos os jogadores e técnicos; se faltarem, não crie seção Prováveis escalações e não explique a ausência. "
-        "Alvo editorial: 750 a 900 palavras, sempre sem repetição, preenchimento genérico ou inferência factual; mínimo absoluto de 700. "
+        "Alvo editorial: 700 a 900 palavras sem repetição, preenchimento ou inferência; mínimo absoluto de 700, respeitando a densidade real dos fatos. "
         "Antes de finalizar, confira: cinco <p><strong>subtítulos</strong></p>, lista <ul><li>, "
         "exatamente um <a href=...> com competition_internal_link.url e todos os fatos obrigatórios no corpo.\n\n"
         + serialized
@@ -354,7 +354,7 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
             minimum = int(contract.get("output_contract", {}).get("minimum_words", 700))
             if count < minimum:
                 revision = (f" A contagem automática encontrou {count} palavras visíveis. "
-                            f"Acrescente ao menos {max(150, 850 - count)} palavras factuais ao texto, "
+                            f"O texto tem apenas {count} palavras visíveis, abaixo do mínimo {minimum}. "
                             "desenvolvendo resultados, datas, adversários e contexto que constam do contrato "
                             "e ainda não foram apresentados. Preserve os trechos corretos. "
                             "Não repita fatos, não invente cenários e não crie conclusões táticas.")

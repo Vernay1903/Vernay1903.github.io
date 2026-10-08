@@ -170,7 +170,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "toda a ficha de serviço na abertura."
             ),
             "approved_model": (
-                "Seguir a estrutura da prévia aprovada LDU x Palmeiras: abertura factual curta; contexto da partida "
+                "Seguir a estrutura da prévia aprovada LDU x Palmeiras (16/09/2026), que explicou a eliminatória, preparação específica e alterações dos times: abertura factual curta; contexto da partida "
                 "somente quando houver fato verificável; Como chega o mandante; Como chega o visitante; prováveis "
                 "escalações em bloco apenas com 11 nomes por time verificados; retrospecto proporcional ao tamanho real da amostra; Onde assistir apenas com transmissão confirmada; e fechamento "
                 "apenas se houver uma consequência, cenário ou próximo jogo realmente fornecido no contrato."

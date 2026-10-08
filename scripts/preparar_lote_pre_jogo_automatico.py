@@ -426,6 +426,8 @@ def main() -> None:
     prepared: list[dict[str, Any]] = []
     skipped: list[dict[str, Any]] = []
 
+    from scripts import qualidade_editorial_pre_jogo as quality
+
     for package in packages:
         slug = package.get("slug")
         if not isinstance(slug, str) or not slug.endswith(".html"):
@@ -446,6 +448,13 @@ def main() -> None:
                 "reason": "research_incomplete",
                 "unresolved": package.get("unresolved_required_requirement_ids", []),
             })
+            continue
+
+        # Sem conteúdo jornalístico novo, não consumir OpenAI para alongar números.
+        depth_errors = quality.source_depth_errors(package)
+        if depth_errors:
+            skipped.append({"slug": slug, "reason": "editorial_depth_insufficient",
+                            "errors": depth_errors})
             continue
 
         fact_article = fact_by_slug.get(slug)
@@ -495,6 +504,16 @@ def main() -> None:
         draft_src = DEFAULT_BUILD / "rascunhos-modelo" / basename
         if not draft_src.exists():
             skipped.append({"slug": slug, "reason": "draft_missing_after_generation"})
+            continue
+
+        # Verificação de qualidade NARRATIVA: a aprovação técnica não basta.
+        contract_record = load_json(contract_src)
+        draft_record = load_json(draft_src)
+        quality_errors = quality.draft_quality_errors(
+            str(draft_record.get("body_html", "")), contract_record)
+        if quality_errors:
+            skipped.append({"slug": slug, "reason": "editorial_quality_failed",
+                            "errors": quality_errors})
             continue
 
         contract_dest = output_dir / "contracts" / basename
