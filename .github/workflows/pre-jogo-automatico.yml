@@ -490,6 +490,9 @@ jobs:
             build/pre-jogo/fatos-estruturados-*.json
             build/pre-jogo/paginas-checadas-*.json
             build/pre-jogo/pacotes-editoriais-*.json
+            build/pre-jogo/contratos-redacao/
+            build/pre-jogo/redacao-tentativas/
+            build/pre-jogo/redacao-modelo-metadata/
           if-no-files-found: warn
           retention-days: 3
 
@@ -954,5 +957,8 @@ jobs:
             build/pre-jogo/fatos-estruturados-*.json
             build/pre-jogo/paginas-checadas-*.json
             build/pre-jogo/pacotes-editoriais-*.json
+            build/pre-jogo/contratos-redacao/
+            build/pre-jogo/redacao-tentativas/
+            build/pre-jogo/redacao-modelo-metadata/
           if-no-files-found: warn
           retention-days: 7

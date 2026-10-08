@@ -168,11 +168,13 @@ def system_instructions() -> str:
         "Os fatos estruturados são matéria-prima: reescreva-os em linguagem jornalística natural. Nunca exponha linguagem de banco de dados ou API como "
         "'jogos concluídos registrados', 'resultados registrados', 'base considerada' ou 'recorte considerado'. "
         "Produza somente o corpo editorial, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
-        "Use subtítulos <p><strong>...</strong></p> e listas <ul><li> quando melhorarem a UX. "
+        "FORMATO OBRIGATÓRIO: body_html deve conter no mínimo cinco subtítulos exatamente no formato <p><strong>...</strong></p>; não use Markdown, <h2> ou <h3>. "
+        "Inclua obrigatoriamente uma lista HTML <ul><li>...</li></ul> para os dados de serviço. "
         "A estrutura preferencial é: abertura curta; contexto competitivo se houver fato; Como chega o mandante; Como chega o visitante; "
         "prováveis escalações; retrospecto proporcional à amostra; Onde assistir; fechamento somente se houver fato novo. "
         "Use a forma recente de cada time uma única vez. Não repita os mesmos placares ou o balanço de vitórias/empates/derrotas no fechamento. "
         "Se as duas prováveis escalações forem fornecidas, apresente-as em um único bloco de lista, uma entrada por equipe, com 11 jogadores e técnico. "
+        "Cada entrada deve começar por Provável escalação do nome da equipe, conter os 11 jogadores e o técnico. "
         "Nesse caso é proibido dizer que não há provável escalação; use no máximo uma ressalva curta de que as formações são prováveis. "
         "Se o retrospecto tiver só um ou dois jogos, trate-o em um bloco curto e não transforme a amostra em história ampla ou rivalidade. "
         "Concentre a emissora/plataforma no bloco Onde assistir e escreva explicitamente cada nome confirmado. "
@@ -198,7 +200,9 @@ def user_payload(contract: dict[str, Any]) -> str:
         "Ausência de campo não autoriza afirmar que a informação está pendente ou não foi divulgada. "
         "Se houver transmission, cada emissora/plataforma confirmada deve aparecer explicitamente em Onde assistir. "
         "Se houver home_lineup e away_lineup, não contradiga essas projeções dizendo que não existe provável escalação. "
-        "Alvo editorial: 750 a 900 palavras, sempre sem repetição, preenchimento genérico ou inferência factual; mínimo absoluto de 700.\n\n"
+        "Alvo editorial: 750 a 900 palavras, sempre sem repetição, preenchimento genérico ou inferência factual; mínimo absoluto de 700. "
+        "Antes de finalizar, confira: cinco <p><strong>subtítulos</strong></p>, lista <ul><li>, "
+        "exatamente um <a href=...> com competition_internal_link.url e todos os fatos obrigatórios no corpo.\n\n"
         + serialized
     )
 
@@ -287,6 +291,65 @@ def call_responses_api(
     fail(f"Falha ao chamar o redator OpenAI após {attempts} tentativa(s): {last_error}")
 
 
+def generate_validated_draft(contract, provider_config, site_config, *, api_key, audit_path):
+    """Até duas chamadas no total, com diagnóstico e custo também das rejeitadas."""
+    provider = provider_config["provider"]
+    limit = min(int(provider.get("max_attempts", 2)),
+                int(provider_config["scope"].get("max_provider_calls_per_article", 2)))
+    if not 1 <= limit <= 2:
+        fail("Limite total de chamadas por redação inválido.")
+    payload = build_request(contract, provider_config)
+    attempts = []
+    errors = []
+    for attempt in range(1, limit + 1):
+        response = {}
+        retryable = True
+        try:
+            response = post_json(provider["endpoint"], api_key, payload,
+                                 timeout=int(provider.get("timeout_seconds", 120)))
+            if response.get("status") == "incomplete":
+                reason = (response.get("incomplete_details") or {}).get("reason")
+                errors = [f"Resposta incompleta: {reason or 'motivo não informado'}"]
+                retryable = reason == "max_output_tokens"
+            else:
+                try:
+                    draft = parse_draft(response)
+                    validated, errors = validate.validate_draft(draft, contract, config=site_config)
+                except SystemExit:
+                    errors = ["Resposta sem JSON editorial completo e utilizável"]
+                    retryable = not bool(response.get("error"))
+                    if any(c.get("type") == "refusal" for o in response.get("output", [])
+                           for c in o.get("content", [])):
+                        retryable = False
+        except RuntimeError as exc:
+            errors = [str(exc)]
+            code = response_http_code(exc)
+            retryable = code in RETRYABLE_HTTP or code is None
+        attempts.append({
+            "attempt": attempt, "response_id": response.get("id"),
+            "status": response.get("status"),
+            "incomplete_details": response.get("incomplete_details"),
+            "usage": usage_summary(response),
+            "estimated_cost_usd": estimate_usage_cost_usd(response, provider_config),
+            "validation_errors": errors,
+        })
+        audit_path.parent.mkdir(parents=True, exist_ok=True)
+        audit_path.write_text(json.dumps({"slug": contract["slug"], "attempts": attempts,
+            "draft_validated": not errors}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        if not errors:
+            return response, validated, attempts
+        print(f"REDAÇÃO {attempt}/{limit} rejeitada: " + "; ".join(errors), flush=True)
+        if not retryable or attempt == limit:
+            break
+        # Recomeça do contrato aprovado: o texto rejeitado não vira evidência.
+        payload = build_request(contract, provider_config)
+        payload["input"].append({"role": "user", "content": [{"type": "input_text", "text":
+            "A tentativa anterior foi rejeitada. Redija novamente o objeto completo usando SOMENTE "
+            "o contrato original, corrigindo estes erros de validação: " + "; ".join(errors) +
+            ". Preserve as travas factuais: não invente fatos nem acrescente texto genérico para atingir 700 palavras."}]})
+    fail("Rascunho não aprovado após o limite de chamadas: " + "; ".join(errors))
+
+
 def extract_output_text(response: dict[str, Any]) -> str:
     if not isinstance(response, dict):
         fail("Resposta da API inválida.")
@@ -294,7 +357,7 @@ def extract_output_text(response: dict[str, Any]) -> str:
         fail(f"Responses API retornou erro: {response.get('error')}")
     status = response.get("status")
     if status not in {"completed", None}:
-        fail(f"Resposta do modelo não foi concluída: status={status!r}")
+        fail(f"Resposta do modelo não foi concluída: status={status!r}; motivo={response.get('incomplete_details')!r}")
 
     texts: list[str] = []
     for item in response.get("output", []):
@@ -380,12 +443,6 @@ def main() -> None:
     if not api_key:
         fail(f"Variável de ambiente {env_name} não configurada.")
 
-    response = call_responses_api(contract, provider_config, api_key=api_key)
-    draft = parse_draft(response)
-    validated, errors = validate.validate_draft(draft, contract, config=site_config)
-    if errors:
-        fail("Rascunho do modelo rejeitado pelas travas: " + "; ".join(errors))
-
     slug = contract.get("slug")
     assert isinstance(slug, str)
     basename = Path(slug).with_suffix(".json").name
@@ -396,6 +453,11 @@ def main() -> None:
         if path.exists() and not args.force:
             fail(f"Saída já existe: {path}")
         path.parent.mkdir(parents=True, exist_ok=True)
+
+    response, validated, attempts = generate_validated_draft(
+        contract, provider_config, site_config, api_key=api_key,
+        audit_path=output_root / "redacao-tentativas" / basename,
+    )
 
     validated["drafting_provider"] = provider_config["provider"]["name"]
     validated["drafting_model"] = provider_config["provider"]["model"]
@@ -411,7 +473,8 @@ def main() -> None:
         "response_id": response.get("id"),
         "response_status": response.get("status"),
         "usage": usage_summary(response),
-        "estimated_cost_usd": estimate_usage_cost_usd(response, provider_config),
+        "estimated_cost_usd": round(sum(a["estimated_cost_usd"] or 0 for a in attempts), 6),
+        "attempts": attempts,
         "monthly_target_usd": provider_config["budget"]["monthly_target_usd"],
         "generated_at": datetime.now(ZoneInfo(site_config["timezone"])).isoformat(),
         "sources_sent_to_model": False,
