@@ -43,7 +43,7 @@ def main() -> None:
     schema = text_format["schema"]
     assert schema["additionalProperties"] is False
     assert schema["properties"]["slug"]["enum"] == [contract["slug"]]
-    assert schema["properties"]["body_html"]["minLength"] == 4000
+    assert schema["properties"]["body_html"]["minLength"] == 6500
     fact_schema = schema["properties"]["fact_fields_used"]
     assert "uniqueItems" not in fact_schema
     assert fact_schema["minItems"] == len(contract["required_fact_fields"])

@@ -143,7 +143,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
         "type": "object",
         "properties": {
             "slug": {"type": "string", "enum": [slug]},
-            "body_html": {"type": "string", "minLength": 4000},
+            "body_html": {"type": "string", "minLength": 6500},
             "fact_fields_used": {
                 "type": "array",
                 "items": {"type": "string", "enum": unique_fields},
@@ -182,7 +182,8 @@ def system_instructions() -> str:
         "Insira exatamente uma vez o link interno aprovado, com âncora textual natural, e não crie nenhum outro link. "
         "É expressamente proibido citar fontes, sites, portais, veículos, consultas ou processos internos. "
         "Declarar um campo em fact_fields_used não basta: todo campo de required_fact_fields deve aparecer de forma visível e inequívoca no body_html. "
-        "Busque entre 750 e 900 palavras; o mínimo absoluto é 700. Não alongue o texto com generalidades para atingir tamanho. "
+        "Busque entre 750 e 900 palavras visíveis, visando o topo da faixa. O mínimo absoluto é 700. "
+        "Tags HTML, chaves JSON e fact_fields_used não contam como palavras. Não alongue o texto com generalidades para atingir tamanho. "
         "Se os fatos não sustentarem uma seção, omita a seção; se não sustentarem 700 palavras sem repetição ou inferência, recuse a redação pelo pipeline. "
         "Retorne somente o objeto JSON exigido pelo schema."
     )
@@ -303,6 +304,7 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
     errors = []
     for attempt in range(1, limit + 1):
         response = {}
+        draft = None
         retryable = True
         try:
             response = post_json(provider["endpoint"], api_key, payload,
@@ -341,11 +343,25 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
         print(f"REDAÇÃO {attempt}/{limit} rejeitada: " + "; ".join(errors), flush=True)
         if not retryable or attempt == limit:
             break
-        # Recomeça do contrato aprovado: o texto rejeitado não vira evidência.
+        # Corrige a redação usando o contrato como única fonte de fatos.
         payload = build_request(contract, provider_config)
+        revision = ""
+        if isinstance(draft, dict):
+            # Texto gerado é material a revisar, nunca evidência factual.
+            payload["input"].append({"role": "assistant", "content": [
+                {"type": "output_text", "text": json.dumps(draft, ensure_ascii=False)}]})
+            count = validate.word_count(str(draft.get("body_html", "")))
+            minimum = int(contract.get("output_contract", {}).get("minimum_words", 700))
+            if count < minimum:
+                revision = (f" A contagem automática encontrou {count} palavras visíveis. "
+                            f"Acrescente ao menos {max(150, 850 - count)} palavras factuais ao texto, "
+                            "desenvolvendo resultados, datas, adversários e contexto que constam do contrato "
+                            "e ainda não foram apresentados. Preserve os trechos corretos. "
+                            "Não repita fatos, não invente cenários e não crie conclusões táticas.")
         payload["input"].append({"role": "user", "content": [{"type": "input_text", "text":
+            "O texto anterior é um rascunho NÃO validado, não uma fonte de fatos. "
             "A tentativa anterior foi rejeitada. Redija novamente o objeto completo usando SOMENTE "
-            "o contrato original, corrigindo estes erros de validação: " + "; ".join(errors) +
+            "o contrato original, corrigindo estes erros de validação: " + "; ".join(errors) + revision +
             ". Preserve as travas factuais: não invente fatos nem acrescente texto genérico para atingir 700 palavras."}]})
     fail("Rascunho não aprovado após o limite de chamadas: " + "; ".join(errors))
 

@@ -39,7 +39,11 @@ def main():
             assert attempts[0]['estimated_cost_usd'] > 0
             assert api.call_args_list[1].args[2]['reasoning']['effort'] == 'none'
             assert api.call_args_list[1].args[2]['max_output_tokens'] == 6000
-            assert 'Texto incompleto sem estrutura.' not in json.dumps(api.call_args_list[1].args[2])
+            second = api.call_args_list[1].args[2]
+            if initial is bad:
+                assert second['input'][-2]['role'] == 'assistant'
+                assert 'NÃO validado' in second['input'][-1]['content'][0]['text']
+                assert 'Acrescente ao menos' in second['input'][-1]['content'][0]['text']
         for responses, count in (([bad, bad], 2), ([RuntimeError('HTTP 401: unauthorized')], 1),
                                  ([incomplete, RuntimeError('HTTP 503: unavailable')], 2)):
             with patch.object(writer, 'post_json', side_effect=responses) as api:
