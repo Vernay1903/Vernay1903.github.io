@@ -56,7 +56,7 @@ def main():
     assert any("escalação completa repetida" in x for x in errors), errors
 
     duplicated_service = dict(draft, body_html=draft["body_html"] +
-        "<p>ESPN e Disney+ estão na transmissão. ESPN e Disney+ mostram o jogo.</p>")
+        "<p>ESPN e Disney+ estão na transmissão. ESPN e Disney+ mostram o jogo. ESPN e Disney+ transmitem a partida.</p>")
     _, errors = editorial.validate_draft(duplicated_service, contract, config=cfg)
     assert any("plataformas de transmissão repetidas" in x for x in errors), errors
 

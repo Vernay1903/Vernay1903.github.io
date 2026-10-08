@@ -156,7 +156,7 @@ def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
         "",
         normalized_transmission,
     )
-    if len(normalized_transmission) >= 12 and body_folded.count(normalized_transmission) > 2:
+    if len(normalized_transmission) >= 12 and body_folded.count(normalized_transmission) > 4:
         errors.append("plataformas de transmissão repetidas excessivamente no corpo")
 
     # Não reproduzir chamadas de cobertura como se fossem notícias de elenco.
