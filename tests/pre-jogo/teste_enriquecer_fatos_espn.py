@@ -84,6 +84,21 @@ def main():
     fixed["requirements"][0]["editorial_stadium_override"] = True
     fixed_result = espn.enrich(fixed, fixture, lambda url: urls[url], datetime.now(timezone.utc).isoformat(), config)
     assert "estádio errado" in fixed_result["requirements"][0]["facts"][0]["text"]
+
+    # Quando Football-Data é o provedor principal, o calendário ESPN suplementar
+    # ainda deve corrigir estádio e completar dados estruturados.
+    primary = {
+        "id": 123,
+        "provider": "football-data.org",
+        "kickoff": kickoff,
+        "supplemental_fixture": fixture,
+    }
+    supplemental_result = espn.enrich(
+        article, primary, lambda url: urls[url], datetime.now(timezone.utc).isoformat(), config
+    )
+    supplemental_req = {r["id"]: r for r in supplemental_result["requirements"]}
+    assert supplemental_req["stadium_and_location"]["facts"][0]["text"] == "A partida será disputada no Arena Exata."
+    assert supplemental_req["recent_form_both_teams"]["status"] == "verified"
     print("OK: ESPN complementa estádio exato, forma recente e H2H sem sobrescrever estádio fixo editorial.")
 
 

@@ -294,10 +294,13 @@ def validated_update(req: dict[str, Any], facts: list[dict[str, str]], urls: lis
 
 def enrich(article: dict[str, Any], fixture: dict[str, Any], query, now: str, config: dict[str, Any]) -> dict[str, Any]:
     result = deepcopy(article)
-    if fixture.get("provider") != "espn":
+    if not isinstance(fixture, dict):
+        return result
+    espn_fixture = fixture if fixture.get("provider") == "espn" else fixture.get("supplemental_fixture")
+    if not isinstance(espn_fixture, dict) or espn_fixture.get("provider") != "espn":
         return result
     ctx = result.get("match_context") if isinstance(result.get("match_context"), dict) else {}
-    src = fixture.get("provider_data") if isinstance(fixture.get("provider_data"), dict) else {}
+    src = espn_fixture.get("provider_data") if isinstance(espn_fixture.get("provider_data"), dict) else {}
     home_id = str(src.get("home_team_id") or "")
     away_id = str(src.get("away_team_id") or "")
     mid = str(src.get("match_id") or "")
@@ -305,7 +308,7 @@ def enrich(article: dict[str, Any], fixture: dict[str, Any], query, now: str, co
     if not (home_id.isdigit() and away_id.isdigit() and mid.isdigit() and code):
         return result
     try:
-        cutoff = datetime.fromisoformat(str(fixture["kickoff"]).replace("Z", "+00:00"))
+        cutoff = datetime.fromisoformat(str(espn_fixture["kickoff"]).replace("Z", "+00:00"))
     except (KeyError, ValueError):
         return result
     if cutoff.astimezone(TZ) <= datetime.now(TZ):
@@ -317,16 +320,43 @@ def enrich(article: dict[str, Any], fixture: dict[str, Any], query, now: str, co
         return result
 
     summary_url = f"{BASE}/{code}/summary?event={mid}"
-    home_url = f"{BASE}/all/teams/{home_id}/schedule?fixture=true"
-    away_url = f"{BASE}/all/teams/{away_id}/schedule?fixture=true"
     summary = query(summary_url)
-    home_schedule = query(home_url)
-    away_schedule = query(away_url)
 
-    venue = venue_from_summary(summary, fixture)
-    home_recent = recent_facts(home_schedule, home_id, home, cutoff, "home")
-    away_recent = recent_facts(away_schedule, away_id, away, cutoff, "away")
-    h2h = h2h_facts(home_schedule, home_id, away_id, home, away, competition, code, cutoff)
+    def load_schedule(team_id: str) -> tuple[dict[str, Any] | None, str | None]:
+        year = cutoff.astimezone(TZ).year
+        urls = [
+            f"{BASE}/{code}/teams/{team_id}/schedule?season={year}",
+            f"{BASE}/all/teams/{team_id}/schedule?season={year}",
+            f"{BASE}/all/teams/{team_id}/schedule?fixture=true",
+        ]
+        fallback: tuple[dict[str, Any] | None, str | None] = (None, None)
+        for url in urls:
+            try:
+                data = query(url)
+                rows = _schedule_events(data, team_id, cutoff)
+            except Exception:
+                continue
+            fallback = (data, url)
+            if len(rows) >= MIN_FORM_GAMES:
+                return data, url
+        return fallback
+
+    home_schedule, home_url = load_schedule(home_id)
+    away_schedule, away_url = load_schedule(away_id)
+
+    venue = venue_from_summary(summary, espn_fixture)
+    home_recent = (
+        recent_facts(home_schedule, home_id, home, cutoff, "home")
+        if isinstance(home_schedule, dict) else None
+    )
+    away_recent = (
+        recent_facts(away_schedule, away_id, away, cutoff, "away")
+        if isinstance(away_schedule, dict) else None
+    )
+    h2h = (
+        h2h_facts(home_schedule, home_id, away_id, home, away, competition, code, cutoff)
+        if isinstance(home_schedule, dict) else None
+    )
 
     updated = []
     for req in result.get("requirements", []):
@@ -339,11 +369,11 @@ def enrich(article: dict[str, Any], fixture: dict[str, Any], query, now: str, co
                 req, [{"field": "stadium", "text": f"A partida será disputada no {venue}."}],
                 [summary_url], now, config, replace_verified=True,
             ))
-        elif req_id == "recent_form_both_teams" and home_recent and away_recent:
+        elif req_id == "recent_form_both_teams" and home_recent and away_recent and home_url and away_url:
             updated.append(validated_update(
                 req, home_recent + away_recent, [home_url, away_url], now, config, replace_verified=True,
             ))
-        elif req_id == "competition_specific_head_to_head" and h2h:
+        elif req_id == "competition_specific_head_to_head" and h2h and home_url:
             updated.append(validated_update(req, h2h, [home_url], now, config))
         else:
             updated.append(req)
