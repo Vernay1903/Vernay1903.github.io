@@ -698,6 +698,44 @@ def labeled_value(segment: str, labels: tuple[str, ...], *, max_chars: int = 240
     return None
 
 
+def normalize_transmission_broadcasters(value: str) -> str:
+    """Unifica grafias de canais somente quando TODOS os nomes são reconhecidos.
+
+    Não resolve divergências reais de emissoras: nesses casos os grupos seguem
+    separados e finalize_claims continua bloqueando a publicação.
+    """
+    aliases = {
+        "globo": "TV Globo", "tv globo": "TV Globo", "rede globo": "TV Globo",
+        "ge tv": "ge tv", "getv": "ge tv", "ge.tv": "ge tv",
+        "premiere": "Premiere", "premiere futebol": "Premiere",
+        "espn": "ESPN", "disney+": "Disney+", "disney plus": "Disney+",
+        "sportv": "SporTV", "tnt": "TNT", "hbo max": "HBO Max",
+        "cazetv": "CazéTV", "caze tv": "CazéTV",
+        "prime video": "Prime Video", "amazon prime video": "Prime Video",
+        "band": "Band",
+    }
+    cleaned = re.sub(r"\([^)]{1,80}\)", "", value)
+    parts = re.split(r"\s*,\s*|\s*;\s*|\s+e\s+|\s+ou\s+", cleaned, flags=re.IGNORECASE)
+    if not parts:
+        return value
+    canonical = []
+    for part in parts:
+        label = re.sub(r"^\s*(?:do|da|de|no|na|pelo|pela)\s+", "", part.strip(), flags=re.IGNORECASE)
+        label = label.strip(" \t\r\n.,;:-–—")
+        normalized = normalize_text(label)
+        broadcast = aliases.get(normalized)
+        if not broadcast:
+            return value
+        if broadcast not in canonical:
+            canonical.append(broadcast)
+    if not canonical:
+        return value
+    order = ["TV Globo", "ge tv", "Premiere", "SporTV", "ESPN", "Disney+",
+             "TNT", "HBO Max", "CazéTV", "Prime Video", "Band"]
+    canonical.sort(key=lambda label: order.index(label))
+    return ", ".join(canonical[:-1]) + " e " + canonical[-1] if len(canonical) > 1 else canonical[0]
+
+
 def extract_transmission_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -718,6 +756,8 @@ def extract_transmission_requirement(
                 r"\b(?:nao anunciado|a definir|to be announced|tba)\b",
                 normalize_text(value),
             ):
+                # Grafias equivalentes entre fontes não são conflitos factuais.
+                value = normalize_transmission_broadcasters(value)
                 claim = make_claim("transmission", value, source, segment)
                 if claim:
                     claims.append(claim)

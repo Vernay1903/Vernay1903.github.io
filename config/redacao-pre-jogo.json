@@ -6,7 +6,7 @@
     "api_key_env": "OPENAI_API_KEY",
     "model": "gpt-5.6-luna",
     "reasoning_effort": "none",
-    "max_output_tokens": 9500,
+    "max_output_tokens": 8000,
     "store": false,
     "timeout_seconds": 120,
     "max_attempts": 2,
