@@ -64,7 +64,7 @@ def source_depth_errors(package: dict[str, Any]) -> list[str]:
     # continuam obrigatórios DEPOIS da geração.
     def detailed_games(field: str) -> int:
         value = available.get(field, "")
-        return len(re.findall(r"\\b\\d{2}/\\d{2}/\\d{4}:\\s*[^;]{3,110}?\\s+\\d+\\s*[xX×-]\\s*\\d+", value))
+        return len(re.findall(r"\b\d{2}/\d{2}/\d{4}:\s*[^;]{3,110}?\s+\d+\s*[xX×-]\s*\d+", value))
 
     if (
         detailed_games("home_recent_matches") >= 5
