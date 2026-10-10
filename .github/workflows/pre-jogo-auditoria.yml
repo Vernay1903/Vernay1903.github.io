@@ -85,6 +85,52 @@ jobs:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           CDE_RSS_MAX_REQUESTS: "60"
         run: python scripts/diagnosticar_coleta_pre_jogo.py
+      - name: Validar UMA matéria real com OpenAI sem publicar (somente este commit)
+        if: ${{ github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Validacao editorial real (1 artigo)') }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from datetime import datetime, timedelta
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          from scripts.qualidade_editorial_pre_jogo import source_depth_errors, facts
+          target=(datetime.now(ZoneInfo('America/Sao_Paulo')).date()+timedelta(days=1)).isoformat()
+          output=Path('build/pre-jogo')
+          manifest=json.loads((output/f'pacotes-editoriais-{target}.json').read_text(encoding='utf-8'))
+          ready=[a for a in manifest['articles'] if a['ready_for_drafting'] and not source_depth_errors(a)]
+          if not ready:
+              raise SystemExit('Nenhuma pauta editorial apta para testar o redator.')
+          chosen=max(ready,key=lambda a: sum(k.startswith(('home_team_news_','away_team_news_')) for k in facts(a)))
+          slug=Path(chosen['slug']).with_suffix('.json').name
+          package=output/f'pacotes-editoriais-{target}'/slug
+          assert package.exists()
+          (output/'amostra-editorial-package.txt').write_text(str(package), encoding='utf-8')
+          (output/'amostra-editorial-slug.txt').write_text(slug, encoding='utf-8')
+          print('AMOSTRA REAL SEM PUBLICAÇÃO:', chosen['slug'])
+          PY
+          python scripts/preparar_redacao_pre_jogo.py \
+            --package "$(cat build/pre-jogo/amostra-editorial-package.txt)" --force
+          python scripts/redigir_pre_jogo_openai.py \
+            --contract "build/pre-jogo/contratos-redacao/$(cat build/pre-jogo/amostra-editorial-slug.txt)" \
+            --execute --force
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.qualidade_editorial_pre_jogo import draft_quality_errors
+          b=Path('build/pre-jogo')
+          slug=(b/'amostra-editorial-slug.txt').read_text().strip()
+          draft=json.loads((b/'rascunhos-modelo'/slug).read_text(encoding='utf-8'))
+          contract=json.loads((b/'contratos-redacao'/slug).read_text(encoding='utf-8'))
+          assert draft.get('draft_validated') is True and draft.get('word_count',0)>=700
+          errors=draft_quality_errors(draft.get('body_html',''),contract)
+          if errors:
+              raise SystemExit('Redação reprovada na qualidade: '+str(errors))
+          print('OK: redação factual real de 700+ palavras aprovada sem HTML, commit ou publicação.')
+          PY
       - name: Guardar diagnóstico factual para localizar qualquer bloqueio
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
