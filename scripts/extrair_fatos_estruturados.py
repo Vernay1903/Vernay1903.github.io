@@ -770,16 +770,35 @@ def extract_transmission_requirement(
     )
 
 
+def extract_referee_name(segment: str) -> str | None:
+    """Aceita nome próprio, sem absorver o título da seção seguinte.
+
+    Não usa IGNORECASE sobre o nome: sem isso, palavras comuns e títulos
+    colados após o árbitro podem virar parte de uma pessoa inexistente.
+    """
+    pattern = (
+        r"(?i:(?:match\s+referee|árbitro|arbitro|referee|schiedsrichter))"
+        r"\s*[:\-–—]\s*"
+        r"([A-ZÀ-Ý][a-zà-ÿ'’.-]+"
+        r"(?:\s+(?:(?:de|da|do|dos|das|van|von|del|di)\s+)?[A-ZÀ-Ý][a-zà-ÿ'’.-]+){1,4})"
+    )
+    match = re.search(pattern, segment)
+    if not match:
+        return None
+    value = re.split(
+        r"\s+(?:Historial|Retrospecto|Head|Preview|Alineaciones|Escalações|Confrontos|Arbitragem)\b",
+        match.group(1),
+    )[0].strip()
+    return value if len(value.split()) >= 2 else None
+
+
 def extract_officiating_requirement(
     requirement: dict[str, Any],
-    *, match_context: dict[str, Any],
+    *,
+    match_context: dict[str, Any],
     config: dict[str, Any],
 ) -> dict[str, Any]:
     claims: list[dict[str, Any]] = []
-    patterns = [
-        r"(?:árbitro|arbitro|referee|schiedsrichter)\s*[:\-–—]\s*([A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+){1,5})",
-        r"(?:match referee)\s*[:\-–—]\s*([A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'’.-]+){1,5})",
-    ]
     for source in eligible_sources(requirement):
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
@@ -787,12 +806,11 @@ def extract_officiating_requirement(
         for segment in corpus.splitlines():
             if re.search(r"\b(?:var|video assistant|quarto arbitro|fourth official|arbitro assistente)\b", normalize_text(segment)):
                 continue
-            for pattern in patterns:
-                match = re.search(pattern, segment, flags=re.IGNORECASE)
-                if match:
-                    claim = make_claim("referee", match.group(1), source, segment)
-                    if claim:
-                        claims.append(claim)
+            name = extract_referee_name(segment)
+            if name:
+                claim = make_claim("referee", name, source, segment)
+                if claim:
+                    claims.append(claim)
     return finalize_claims(
         requirement,
         claims,
@@ -893,7 +911,7 @@ def extract_optional_team_news_claims(
         if not corpus or not context_mentions_match(corpus, match_context, config):
             continue
         for segment in corpus.splitlines():
-            for sentence in re.split(r"(?<=[.!?])\\s+", segment):
+            for sentence in re.split(r"(?<=[.!?])\s+", segment):
                 value = clean_value(sentence, max_chars=360)
                 if len(value.split()) < 5:
                     continue
