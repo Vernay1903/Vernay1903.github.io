@@ -131,6 +131,16 @@ jobs:
               raise SystemExit('Redação reprovada na qualidade: '+str(errors))
           print('OK: redação factual real de 700+ palavras aprovada sem HTML, commit ou publicação.')
           PY
+      - name: Preservar texto integral da amostra para avaliacao editorial
+        if: ${{ github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Validacao editorial real (1 artigo)') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: materia-amostra-editorial-completa
+          path: |
+            build/pre-jogo/rascunhos-modelo/*.json
+            build/pre-jogo/amostra-editorial-slug.txt
+          if-no-files-found: error
+          retention-days: 7
       - name: Guardar diagnóstico factual para localizar qualquer bloqueio
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
