@@ -41,9 +41,10 @@ def main():
             assert api.call_args_list[1].args[2]['max_output_tokens'] == 8000
             second = api.call_args_list[1].args[2]
             if initial is bad:
-                assert second['input'][-2]['role'] == 'assistant'
-                assert 'NÃO validado' in second['input'][-1]['content'][0]['text']
+                assert [entry['role'] for entry in second['input']] == ['system', 'user', 'user']
                 assert 'abaixo do mínimo' in second['input'][-1]['content'][0]['text']
+                assert 'NÃO validado' not in second['input'][-1]['content'][0]['text']
+                assert '<p>Texto incompleto' not in json.dumps(second, ensure_ascii=False)
         for responses, count in (([bad, bad], 2), ([RuntimeError('HTTP 401: unauthorized')], 1),
                                  ([incomplete, RuntimeError('HTTP 503: unavailable')], 2)):
             with patch.object(writer, 'post_json', side_effect=responses) as api:
