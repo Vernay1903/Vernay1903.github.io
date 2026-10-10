@@ -139,7 +139,28 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     if not fact_fields:
         fail("Pacote editorial sem fatos estruturados para redação.")
 
+    # Define um roteiro conforme os dados reais; a referência editorial é
+    # estrutura de escrita, jamais uma fonte de fatos de outro confronto.
+    verified_facts = {
+        item.get("field"): str(item.get("text", ""))
+        for req in clean_package.get("facts_by_requirement", [])
+        if isinstance(req, dict) and req.get("status") == "verified"
+        for item in req.get("facts", [])
+        if isinstance(item, dict) and isinstance(item.get("field"), str)
+    }
+    has_team_news = any(key.startswith(("home_team_news_", "away_team_news_"))
+                        for key in verified_facts)
+    has_results = all(verified_facts.get(key) for key in (
+        "home_recent_matches", "away_recent_matches",
+    ))
+    narrative_mode = (
+        "preparacao_com_elenco" if has_team_news else
+        "historico_factual_de_resultados" if has_results else
+        "fatos_confirmados_da_partida"
+    )
+
     contract = {
+        "editorial_narrative_mode": narrative_mode,
         "step": 25,
         "mode": "draft_contract_only",
         "slug": clean_package.get("slug"),
@@ -186,9 +207,17 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "explicitamente como fato textual no contrato. Não mencionar desfalques, suspensões ou lesões sem fato específico."
             ),
             "editorial_depth": (
-                "Priorizar fatos concretos: resultados recentes, situação competitiva, jogadores e eventos explicitamente fornecidos. "
-                "Não inferir estilo de jogo, posse, pressão, transições, estratégia, motivação, comportamento tático ou efeito psicológico "
-                "a partir de nomes, escalações, mando de campo ou resultados."
+                "Reproduzir a ESTRUTURA jornalística aprovada com os fatos da partida vigente. "
+                "Se editorial_narrative_mode=preparacao_com_elenco, inserir notícias de elenco verificadas "
+                "nas seções de cada clube. Se editorial_narrative_mode=historico_factual_de_resultados, "
+                "construir narrativa factual em cima dos dez jogos recentes individualizados (datas, "
+                "placares e adversários), separar casa/fora apenas quando explicitamente mostrado nos "
+                "placares e confrontar sequências verificáveis; o retrospecto direto vai em um único "
+                "bloco proporcional à amostra. Não transformar os dez placares em dez parágrafos iguais. "
+                "Nunca reutilizar informações da matéria LDU x Palmeiras como se fossem deste jogo. "
+                "Não inferir estilo de jogo, posse, pressão, transições, estratégia, motivação, comportamento "
+                "tático ou efeito psicológico a partir de nomes, escalações, mando ou resultados. "
+                "Se os dados não sustentarem 700 palavras sem redundância, falhar a validação, não completar com imaginação."
             ),
             "recent_form": (
                 "Tratar a forma recente de cada equipe em seu próprio bloco, de maneira natural e sem repetir os mesmos placares, "

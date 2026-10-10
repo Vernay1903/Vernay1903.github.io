@@ -56,10 +56,30 @@ def source_depth_errors(package: dict[str, Any]) -> list[str]:
                 and len(fold(v).split()) >= 8]
     if (home and away) or (sporting and (home or away)) or len(sporting) >= 2:
         return []
+
+    # Alternativa factual para rodadas sem entrevistas/preparação publicadas:
+    # dez resultados com adversário/placar/data (cinco de cada lado) + H2H real.
+    # Balanços agregados ou escalações isoladas NÃO liberam a redação.
+    # A trava de 700 palavras, a ausência de invenção e o teste de repetição
+    # continuam obrigatórios DEPOIS da geração.
+    def detailed_games(field: str) -> int:
+        value = available.get(field, "")
+        return len(re.findall(r"\\b\\d{2}/\\d{2}/\\d{4}:\\s*[^;]{3,110}?\\s+\\d+\\s*[xX×-]\\s*\\d+", value))
+
+    if (
+        detailed_games("home_recent_matches") >= 5
+        and detailed_games("away_recent_matches") >= 5
+        and all(available.get(field) for field in (
+            "home_recent_form", "away_recent_form", "h2h_games",
+            "h2h_home_wins", "h2h_away_wins", "h2h_draws", "stadium",
+        ))
+    ):
+        return []
     return [
         "profundidade factual insuficiente para o modelo LDU x Palmeiras: "
-        "faltam preparação concreta dos dois times ou notícia de elenco associada "
-        "a contexto competitivo/implicação verificável; placares, H2H e serviço isolados não bastam"
+        "exige preparação verificada ou dez resultados individuais "
+        "(cinco por equipe) com retrospecto validado; não completar lacunas "
+        "com inferências ou repetição"
     ]
 
 def paragraphs(body_html: str) -> list[str]:

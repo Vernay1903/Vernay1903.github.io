@@ -1004,6 +1004,89 @@ def extract_lineups_requirement(
     )
 
 
+
+def extract_separate_team_news(
+    requirements: list[dict[str, Any]], *,
+    match_context: dict[str, Any],
+    config: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Preserva notícias de elenco mesmo sem projeções dos 11 atletas/técnicos.
+
+    Nunca apresenta notícia de preparação como escalação provável. Só aceita
+    frases efetivamente lidas em páginas checadas e com clube explicitamente
+    mencionado na própria frase.
+    """
+    sources: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for requirement in requirements:
+        if requirement.get("id") not in {
+            "probable_lineups_and_coaches", "recent_form_both_teams",
+        }:
+            continue
+        for source in eligible_sources(requirement):
+            url = source.get("url")
+            if not isinstance(url, str) or not url or url in seen:
+                continue
+            seen.add(url)
+            sources.append(source)
+    if not sources:
+        return None
+
+    provisional = {
+        "id": "editorial_preparation_news",
+        "required_for_drafting": False,
+        "conditional": False,
+        "allow_unavailable_after_check": False,
+        "status": "pending",
+        "facts": [],
+        "sources": [],
+        "source_candidates": sources,
+    }
+    claims = extract_optional_team_news_claims(
+        provisional, match_context=match_context, config=config, max_per_team=2,
+    )
+    if not claims:
+        return None
+    teams = {
+        "home": match_context.get("home"),
+        "away": match_context.get("away"),
+    }
+    rows: list[dict[str, str]] = []
+    for claim in claims:
+        side = claim["field"].split("_", 1)[0]
+        team = teams.get(side)
+        if not isinstance(team, str) or not team:
+            continue
+        rows.append({
+            "field": claim["field"],
+            "text": f"Notícia verificada sobre o elenco do {team}: {claim['value']}",
+        })
+    if not rows:
+        return None
+    evidence = {
+        "status": "verified",
+        "facts": rows,
+        "sources": unique_validator_sources(
+            [claim["validator_source"] for claim in claims]
+        ),
+        "notes": None,
+    }
+    accepted, errors = factual_validator.validate_requirement_evidence(
+        provisional, evidence, config=config,
+    )
+    if errors:
+        return None
+    accepted["fact_extraction_status"] = "verified_team_news_independent_of_lineups"
+    accepted["structured_fact_count"] = len(rows)
+    accepted["validator_accepted"] = True
+    accepted["internal_provenance_only"] = True
+    accepted["extracted_claims"] = [
+        group for field_groups in group_claims(claims).values()
+        for group in field_groups.values()
+    ]
+    return accepted
+
+
 def natural_recent_form_value(
     corpus: str,
     team: str,
@@ -1499,6 +1582,11 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
         resolve_allowed_gap(item, competition_slug=competition_slug, config=config)
         for item in extracted
     ]
+    independent_news = extract_separate_team_news(
+        requirements, match_context=match_context, config=config,
+    )
+    if independent_news is not None:
+        extracted.append(independent_news)
     # Decisão editorial: o estádio do MANDANTE monitorado é fixo e prevalece
     # sobre lacunas ou estádio diferente encontrado em páginas de pré-jogo.
     # Visitantes monitorados em casa de outro clube continuam na pesquisa normal.
