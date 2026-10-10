@@ -33,11 +33,21 @@ def main():
     reference = body("ldu-x-palmeiras-libertadores-onde-assistir-horario-escalacoes.html")
     assert quality.draft_quality_errors(reference, {"facts_by_requirement": []}) == [], "modelo aprovado não pode ser reprovado"
     bad_santos = body("santos-fc-flamengo-brasileirao-2026-transmissao-horario-escalacoes.html")
-    bad_palmeiras = body("palmeiras-bahia-brasileirao-2026-transmissao-horario-escalacoes.html")
-    assert quality.draft_quality_errors(bad_santos, shallow), "prévia repetitiva passou"
-    assert quality.draft_quality_errors(bad_palmeiras, shallow), "prévia de Palmeiras repetitiva passou"
+    assert quality.draft_quality_errors(bad_santos, shallow), "prévia fragmentada passou"
+    # O HTML publicado pelo editor pode ter sido revisado desde 08/10.
+    # O teste de repeticao deve usar um caso imutavel, nao reprovar uma materia
+    # atualizada por ela manter o mesmo slug.
+    repetitive = (
+        "O time da casa chega ao confronto para defender sua campanha no campeonato "
+        "e pretende manter a regularidade diante da torcida, enquanto o adversario "
+        "busca melhorar sua posicao na tabela depois dos ultimos resultados. "
+        "O duelo exige atencao nos setores de defesa e meio campo, mas a equipe "
+        "ainda trabalha para definir suas principais alternativas de ataque."
+    )
+    bad_palmeiras = f"<p>{repetitive}</p><p>{repetitive}</p>"
+    assert quality.draft_quality_errors(bad_palmeiras, shallow), "texto com paragrafo duplicado passou"
     assert "saiba mais" not in quality.fold(reference)
-    print("OK: modelo LDU aprovado; duas matérias ruins de 08/10 bloqueadas; profundidade factual obrigatória.")
+    print("OK: modelo LDU aprovado; previa fragmentada e repeticao sintetica bloqueadas; profundidade obrigatoria.")
 
 if __name__ == "__main__":
     main()
