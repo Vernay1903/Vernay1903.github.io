@@ -143,7 +143,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
         "type": "object",
         "properties": {
             "slug": {"type": "string", "enum": [slug]},
-            "body_html": {"type": "string", "minLength": 3800},
+            "body_html": {"type": "string", "minLength": 4400},
             "fact_fields_used": {
                 "type": "array",
                 "items": {"type": "string", "enum": unique_fields},
@@ -187,6 +187,12 @@ def system_instructions() -> str:
         "É expressamente proibido citar fontes, sites, portais, veículos, consultas ou processos internos. "
         "Declarar um campo em fact_fields_used não basta: todo campo de required_fact_fields deve aparecer de forma visível e inequívoca no body_html. "
         "Redija entre 700 e 900 palavras APENAS quando os fatos fornecidos sustentarem esse desenvolvimento, sem recapitulá-los. O mínimo editorial é 700. "
+        "Antes de escrever, planeje 760 a 830 palavras: abertura factual curta (80 a 100), contexto objetivo e serviço (80 a 100), "
+        "Como chega o mandante (190 a 220), Como chega o visitante (190 a 220), retrospecto da competição (90 a 115) e "
+        "desdobramento verificado ou informações práticas distintas (60 a 90). Distribua os fatos de cada jogo recente entre os blocos "
+        "dos respectivos clubes, sem recitar dez placares como uma tabela nem repetir análises. Quando o contrato trouxer notícias de "
+        "preparação verificadas, incorpore-as ao time correto. Caso não haja suporte factual para pelo menos 700 palavras diferentes, "
+        "NÃO crie informações ou frases genéricas. "
         "Tags HTML, chaves JSON e fact_fields_used não contam como palavras. Não alongue o texto com generalidades para atingir tamanho. "
         "Se o contrato trouxer apenas placares, retrospecto, escalações e serviço, não é reportagem completa: o pipeline deve bloquear antes da redação. Não preencha com generalidades. "
         "Retorne somente o objeto JSON exigido pelo schema."
@@ -206,6 +212,8 @@ def user_payload(contract: dict[str, Any]) -> str:
         "Se houver transmission, cada emissora/plataforma confirmada deve aparecer explicitamente em Onde assistir; caso contrário, omita Onde assistir por completo. "
         "Se houver home_lineup e away_lineup, mostre todos os jogadores e técnicos; se faltarem, não crie seção Prováveis escalações e não explique a ausência. "
         "Alvo editorial: 700 a 900 palavras sem repetição, preenchimento ou inferência; mínimo absoluto de 700, respeitando a densidade real dos fatos. "
+        "Planeje 760–830 palavras, com desenvolvimento maior de Como chega cada equipe por meio dos cinco resultados individuais "
+        "e notícias verificadas do elenco quando presentes. Nunca inclua um bloco sem fatos nem substitua detalhes por generalidades. "
         "Antes de finalizar, confira: cinco <p><strong>subtítulos</strong></p>, lista <ul><li>, "
         "exatamente um <a href=...> com competition_internal_link.url e todos os fatos obrigatórios no corpo.\n\n"
         + serialized
@@ -296,6 +304,44 @@ def call_responses_api(
     fail(f"Falha ao chamar o redator OpenAI após {attempts} tentativa(s): {last_error}")
 
 
+def build_revision_request(
+    contract: dict[str, Any],
+    provider_config: dict[str, Any],
+    *,
+    errors: list[str],
+    previous_draft: dict[str, Any] | None,
+) -> dict[str, Any]:
+    """Segunda tentativa limpa: nunca devolve o texto inteiro rejeitado ao modelo."""
+    payload = build_request(contract, provider_config)
+    count = (
+        validate.word_count(str(previous_draft.get("body_html", "")))
+        if isinstance(previous_draft, dict) else 0
+    )
+    minimum = int(contract.get("output_contract", {}).get("minimum_words", 700))
+    short = (
+        f" A primeira tentativa ficou em {count} palavras, abaixo do mínimo de {minimum}. "
+        "Planeje cerca de 780 palavras e distribua o desenvolvimento entre os blocos: "
+        "contexto e abertura (150), cada equipe com fatos próprios (200 cada), "
+        "retrospecto delimitado (120) e informações práticas/fechamento factual (100). "
+        "Detalhe datas, adversários, resultados e notícias concretas AINDA não contextualizados, "
+        "sem listar placares repetidamente e sem inventar dados."
+    ) if count and count < minimum else ""
+    payload["input"].append({
+        "role": "user",
+        "content": [{
+            "type": "input_text",
+            "text": (
+                "A resposta anterior foi rejeitada, mas não é enviada novamente nem constitui "
+                "evidência. Produza um JSON editorial COMPLETO e novo utilizando SOMENTE "
+                "os fatos do contrato. Corrija: " + "; ".join(errors) + ". " + short +
+                " Mantenha entre 700 e 900 palavras sem repetição, fontes externas ou "
+                "inferências factuais. Use no máximo oito subtítulos e exatamente um link interno."
+            ),
+        }],
+    })
+    return payload
+
+
 def generate_validated_draft(contract, provider_config, site_config, *, api_key, audit_path):
     """Até duas chamadas no total, com diagnóstico e custo também das rejeitadas."""
     provider = provider_config["provider"]
@@ -347,26 +393,12 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
         print(f"REDAÇÃO {attempt}/{limit} rejeitada: " + "; ".join(errors), flush=True)
         if not retryable or attempt == limit:
             break
-        # Corrige a redação usando o contrato como única fonte de fatos.
-        payload = build_request(contract, provider_config)
-        revision = ""
-        if isinstance(draft, dict):
-            # Texto gerado é material a revisar, nunca evidência factual.
-            payload["input"].append({"role": "assistant", "content": [
-                {"type": "output_text", "text": json.dumps(draft, ensure_ascii=False)}]})
-            count = validate.word_count(str(draft.get("body_html", "")))
-            minimum = int(contract.get("output_contract", {}).get("minimum_words", 700))
-            if count < minimum:
-                revision = (f" A contagem automática encontrou {count} palavras visíveis. "
-                            f"O texto tem apenas {count} palavras visíveis, abaixo do mínimo {minimum}. "
-                            "desenvolvendo resultados, datas, adversários e contexto que constam do contrato "
-                            "e ainda não foram apresentados. Preserve os trechos corretos. "
-                            "Não repita fatos, não invente cenários e não crie conclusões táticas.")
-        payload["input"].append({"role": "user", "content": [{"type": "input_text", "text":
-            "O texto anterior é um rascunho NÃO validado, não uma fonte de fatos. "
-            "A tentativa anterior foi rejeitada. Redija novamente o objeto completo usando SOMENTE "
-            "o contrato original, corrigindo estes erros de validação: " + "; ".join(errors) + revision +
-            ". Preserve as travas factuais: não invente fatos nem acrescente texto genérico para atingir 700 palavras."}]})
+        # Tenta novo texto completo SEM devolver o rascunho anterior no contexto.
+        # Reenviar milhares de tokens da resposta reprovada fez a segunda chamada
+        # estourar max_output_tokens. O contrato permanece a única fonte factual.
+        payload = build_revision_request(
+            contract, provider_config, errors=errors, previous_draft=draft,
+        )
     fail("Rascunho não aprovado após o limite de chamadas: " + "; ".join(errors))
 
 

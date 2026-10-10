@@ -43,7 +43,7 @@ def main() -> None:
     schema = text_format["schema"]
     assert schema["additionalProperties"] is False
     assert schema["properties"]["slug"]["enum"] == [contract["slug"]]
-    assert schema["properties"]["body_html"]["minLength"] == 3800
+    assert schema["properties"]["body_html"]["minLength"] == 4400
     fact_schema = schema["properties"]["fact_fields_used"]
     assert "uniqueItems" not in fact_schema
     assert fact_schema["minItems"] == len(contract["required_fact_fields"])
@@ -64,6 +64,17 @@ def main() -> None:
     assert "ausência de uma informação no contrato não é um fato" in lowered
     assert "700 a 900 palavras" in lowered
     assert "jogos concluídos registrados" in lowered
+
+    retry = writer.build_revision_request(
+        contract, provider,
+        errors=["rascunho tem 604 palavras; mínimo exigido é 700"],
+        previous_draft={"body_html": "<p>" + ("palavra " * 604) + "</p>"},
+    )
+    assert len(retry["input"]) == 3, "não reenviar resposta anterior como mensagem do assistant"
+    assert [entry["role"] for entry in retry["input"]] == ["system", "user", "user"]
+    retry_text = json.dumps(retry, ensure_ascii=False)
+    assert "780 palavras" in retry_text
+    assert "<p>palavra " not in retry_text
 
     fake_draft = {
         "slug": contract["slug"],
