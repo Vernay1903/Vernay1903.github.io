@@ -548,7 +548,10 @@ def discover_candidates_for_plan(
         # O limite é POR CONFRONTO. Não deixar o primeiro jogo consumir todas
         # as consultas RSS gratuitas e impedir a pesquisa dos demais.
         from scripts import pesquisa_publica_gratuita as free
+        # A cota do feed e POR CONFRONTO, nao por processo.
+        # Sem reiniciar o contador, o primeiro jogo esgota o RSS dos demais.
         free._SEARCH_CACHE.clear()
+        free._RSS_REQUESTS = 0
     context = plan.get("match_context") if isinstance(plan.get("match_context"), dict) else {}
     article_date = plan.get("date") if isinstance(plan.get("date"), str) else None
 

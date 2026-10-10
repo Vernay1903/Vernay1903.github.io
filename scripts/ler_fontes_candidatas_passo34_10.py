@@ -414,6 +414,12 @@ def check_article(
     config: dict[str, Any],
     checked_at: str,
 ) -> dict[str, Any]:
+    if os.environ.get("CDE_FREE_RESEARCH") == "1":
+        # O leitor faz pesquisas adicionais; cada partida precisa da sua cota.
+        # Mantemos _PAGE_CACHE para evitar downloads repetidos do mesmo artigo.
+        from scripts import pesquisa_publica_gratuita as free
+        free._RSS_REQUESTS = 0
+        free._SEARCH_CACHE.clear()
     result = _PREVIOUS_CHECK_ARTICLE(article, config=config, checked_at=checked_at)
     requirements = result.get("requirements", [])
     if not isinstance(requirements, list):
