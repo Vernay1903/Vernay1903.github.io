@@ -1,14 +1,106 @@
 [
   {
-    "time": "15:30",
-    "desc": "Borussia Dortmund x Werder Bremen - Bundesliga"
+    "time": "08:30",
+    "desc": "Arsenal x Leeds United - Premier League"
+  },
+  {
+    "time": "09:00",
+    "desc": "Rayo Vallecano x Athletic Club - La Liga"
+  },
+  {
+    "time": "10:00",
+    "desc": "Genoa x Fiorentina - Serie A italiana"
+  },
+  {
+    "time": "10:30",
+    "desc": "Augsburg x Bayern Munich - Bundesliga"
+  },
+  {
+    "time": "10:30",
+    "desc": "Hoffenheim x Hamburg SV - Bundesliga"
+  },
+  {
+    "time": "10:30",
+    "desc": "Mainz x Bayer Leverkusen - Bundesliga"
+  },
+  {
+    "time": "10:30",
+    "desc": "Paderborn x VfB Stuttgart - Bundesliga"
+  },
+  {
+    "time": "10:30",
+    "desc": "Union Berlin x SV Elversberg - Bundesliga"
+  },
+  {
+    "time": "11:00",
+    "desc": "Aston Villa x Brentford - Premier League"
+  },
+  {
+    "time": "11:00",
+    "desc": "Chelsea x AFC Bournemouth - Premier League"
+  },
+  {
+    "time": "11:00",
+    "desc": "Ipswich Town x Fulham - Premier League"
+  },
+  {
+    "time": "11:00",
+    "desc": "Sunderland x Brighton & Hove Albion - Premier League"
+  },
+  {
+    "time": "11:15",
+    "desc": "Alavés x Atlético de Madrid - La Liga"
+  },
+  {
+    "time": "12:15",
+    "desc": "Lille x Le Havre AC - Ligue 1"
+  },
+  {
+    "time": "13:00",
+    "desc": "Internazionale x Parma - Serie A italiana"
+  },
+  {
+    "time": "13:30",
+    "desc": "Barcelona x Getafe - La Liga"
+  },
+  {
+    "time": "13:30",
+    "desc": "Manchester United x Tottenham Hotspur - Premier League"
+  },
+  {
+    "time": "13:30",
+    "desc": "RB Leipzig x Eintracht Frankfurt - Bundesliga"
   },
   {
     "time": "15:45",
-    "desc": "Lens x Lyon - Ligue 1"
+    "desc": "AS Mônaco x Toulouse - Ligue 1"
+  },
+  {
+    "time": "15:45",
+    "desc": "Brest x Angers - Ligue 1"
+  },
+  {
+    "time": "15:45",
+    "desc": "Lorient x Paris FC - Ligue 1"
+  },
+  {
+    "time": "15:45",
+    "desc": "Napoli x Frosinone - Serie A italiana"
+  },
+  {
+    "time": "15:45",
+    "desc": "Paris Saint-Germain x Le Mans - Ligue 1"
   },
   {
     "time": "16:00",
-    "desc": "Málaga x Espanyol - La Liga"
+    "desc": "Real Madrid x Villareal - La Liga"
+  },
+  {
+    "time": "18:00",
+    "desc": "Vasco da Gama x Remo - Brasileirão Série A"
+  },
+  {
+    "time": "21:00",
+    "desc": "São Paulo x Vitória - Brasileirão Série A"
   }
 ]
