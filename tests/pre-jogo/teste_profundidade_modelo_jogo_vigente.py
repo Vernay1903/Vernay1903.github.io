@@ -26,8 +26,8 @@ def main():
     context={"home":"Liverpool FC","away":"Manchester City","competition":"Premier League"}
     news=(
       "Liverpool FC enfrenta o Manchester City pela Premier League. "
-      "O Manchester City informou que seu atacante está fora do jogo por lesão. "
-      "No Liverpool FC, o goleiro está suspenso e não jogará."
+      "O Manchester City informou que seu atacante Daniel Souza está fora do jogo por lesão. "
+      "No Liverpool FC, o goleiro João Pereira está suspenso e não jogará."
     )
     clean=extract.extract_separate_team_news(
       [{"id":"probable_lineups_and_coaches",

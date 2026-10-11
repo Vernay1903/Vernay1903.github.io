@@ -22,8 +22,8 @@ def main():
 
     segment = (
         "PSG e Le Mans FC duelam pela Ligue 1 neste domingo. "
-        "O PSG confirmou que o lateral está fora do jogo por suspensão. "
-        "O Le Mans FC terá o atacante fora do jogo devido a lesão muscular."
+        "O PSG confirmou que o lateral João Silva está fora do jogo por suspensão. "
+        "O Le Mans FC terá o atacante Pierre Blanc fora do jogo devido a lesão muscular."
     )
     src = {
         "title": "PSG x Le Mans FC pela Ligue 1",

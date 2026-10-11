@@ -1014,7 +1014,15 @@ def extract_optional_team_news_claims(
                     r"(?<!\w)[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]+(?:\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]+){0,2}",
                     value,
                 )
-                if not any(name not in {"O", "A", "No", "Na", "Em", "Os", "As"} for name in people):
+                team_tokens = {
+                    token for _, team in teams if isinstance(team, str)
+                    for token in normalize_text(team).split()
+                }
+                if not any(
+                    normalize_text(name).split()[0] not in team_tokens
+                    and name not in {"O", "A", "No", "Na", "Em", "Os", "As"}
+                    for name in people
+                ):
                     continue
                 key = normalize_text(value)
                 if key not in seen[active_side]:
