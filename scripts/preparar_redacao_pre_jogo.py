@@ -169,7 +169,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     ]
     if any(key.startswith(("h2h_", "games", "home_wins", "away_wins", "draws"))
            for key in verified_facts):
-        section_plan.append(f"Retrospecto na {competition}")
+        section_plan.append(f"Retrospecto entre {popular_home} e {popular_away}")
     if all(verified_facts.get(field) for field in (
         "home_lineup", "away_lineup", "home_coach", "away_coach",
     )):
