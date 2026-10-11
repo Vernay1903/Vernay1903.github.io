@@ -38,4 +38,12 @@ assert not editorial.source_depth_errors({"facts_by_requirement":[{"status":"ver
   {"field":"home_team_news_1","text":"Fluminense x Flamengo: escalação, desfalques e mais do jogo do Brasileirão Série A 2022"},
   {"field":"away_team_news_1","text":"O Flamengo não tem confirmações de desfalques até o momento."},
 ]}]})==[], "genérico / histórico não pode liberar"
+official_stakes=src("https://www.flamengo.com.br/noticias/futebol/flamengo-x-fluminense",
+ "Flamengo x Fluminense: informações do clássico",
+ ["O Flamengo busca manter a liderança do Brasileirão depois do empate de quinta-feira, quando jogou contra o Santos."],
+ source_type="official")
+stakes=extraction.extract_separate_competitive_context(
+ [{"id":"probable_lineups_and_coaches","source_candidates":[official_stakes]}],
+ match_context=context,config=config)
+assert stakes is not None and any(x["field"]=="home_stakes_1" for x in stakes["facts"]),stakes
 print("OK: rejeita 2022 e falsos desfalques; mantém notícias recentes do clube correto.")

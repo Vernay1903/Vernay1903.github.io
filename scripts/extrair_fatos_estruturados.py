@@ -336,6 +336,9 @@ def relaxed_team_markers(team: str, config: dict[str, Any]) -> list[str]:
             if len(tokens[0]) >= 6 and tokens[0] not in seen:
                 seen.add(tokens[0])
                 markers.append(tokens[0])
+    if normalize_text(team) in {"sc internacional", "internacional", "sport club internacional"}:
+        if "inter" not in seen:
+            markers.append("inter")
     return markers
 
 
@@ -1182,6 +1185,106 @@ def extract_separate_team_news(
     return accepted
 
 
+def extract_separate_competitive_context(
+    requirements: list[dict[str, Any]], *,
+    match_context: dict[str, Any], config: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Coleta situações esportivas explícitas, jamais pressupõe posição na tabela."""
+    sources: list[dict[str, Any]] = []
+    seen_urls: set[str] = set()
+    for requirement in requirements:
+        if requirement.get("id") not in {"probable_lineups_and_coaches", "recent_form_both_teams",
+                                         "stakes_and_qualification_scenarios_when_applicable"}:
+            continue
+        for source in eligible_sources(requirement):
+            url = source.get("url")
+            if not isinstance(url, str) or url in seen_urls or not source_current_for_match(source, match_context):
+                continue
+            seen_urls.add(url)
+            sources.append(source)
+
+    by_side: dict[str, list[dict[str, Any]]] = {"home": [], "away": []}
+    stakes_pattern = re.compile(
+        r"\b(?:lideranca|lider|rebaixamento|queda|zona de|classificacao|vaga|"
+        r"semifinal|final|estreia|primeiro classico|primeira vitoria|tabela)\b"
+    )
+    for source in sources:
+        corpus = source_corpus(source)
+        if not context_mentions_match(corpus, match_context, config):
+            continue
+        segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+        if not isinstance(segments, list):
+            continue
+        if source.get("source_type") == "official":
+            description = (source.get("page_evidence") or {}).get("metadata", {}).get("description")
+            if isinstance(description, str) and description:
+                segments = [*segments, description]
+        for segment in segments:
+            if not isinstance(segment, str):
+                continue
+            for sentence in re.split(r"(?<=[.!?])\s+", segment):
+                value = clean_value(sentence, max_chars=300)
+                folded = normalize_text(value)
+                if len(folded.split()) < 10 or not stakes_pattern.search(folded):
+                    continue
+                if "tres pontos" in folded and not any(
+                    signal in folded for signal in ("tabela", "lider", "vaga", "queda", "rebaix")
+                ):
+                    continue
+                mentions = []
+                for side in ("home", "away"):
+                    team = match_context.get(side)
+                    if not isinstance(team, str):
+                        continue
+                    markers = relaxed_team_markers(team, config)
+                    places = [folded.find(marker) for marker in markers if len(marker)>3 and marker in folded]
+                    if places:
+                        mentions.append((min(places), side))
+                if not mentions:
+                    continue
+                mentions.sort()
+                if len(mentions)>1 and mentions[0][0] == mentions[1][0]:
+                    continue
+                side = mentions[0][1]
+                if len(by_side[side]) >= 2:
+                    continue
+                claim=make_claim(f"{side}_stakes_{len(by_side[side])+1}",value,source,sentence)
+                if claim is not None:
+                    by_side[side].append(claim)
+    claims=[*by_side["home"],*by_side["away"]]
+    if not claims:
+        return None
+    provisional={
+        "id":"editorial_match_stakes","status":"pending","facts":[],
+        "sources":[],"source_candidates":sources,
+        "required_for_drafting":False,"conditional":False,
+        "allow_unavailable_after_check":False,
+    }
+    teams={"home":match_context.get("home"),"away":match_context.get("away")}
+    rows=[
+        {"field":claim["field"],
+         "text":f"Situação competitiva verificada do {teams[claim['field'].split('_',1)[0]]}: {claim['value']}"}
+        for claim in claims
+    ]
+    evidence={
+        "status":"verified","facts":rows,
+        "sources":unique_validator_sources([c["validator_source"] for c in claims]),
+        "notes":None,
+    }
+    accepted,errors=factual_validator.validate_requirement_evidence(provisional,evidence,config=config)
+    if errors:
+        return None
+    accepted["fact_extraction_status"]="verified_sporting_context"
+    accepted["structured_fact_count"]=len(rows)
+    accepted["validator_accepted"]=True
+    accepted["internal_provenance_only"]=True
+    accepted["extracted_claims"]=[
+        group for field_groups in group_claims(claims).values()
+        for group in field_groups.values()
+    ]
+    return accepted
+
+
 def natural_recent_form_value(
     corpus: str,
     team: str,
@@ -1682,6 +1785,11 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
     )
     if independent_news is not None:
         extracted.append(independent_news)
+    competitive_news = extract_separate_competitive_context(
+        requirements, match_context=match_context, config=config,
+    )
+    if competitive_news is not None:
+        extracted.append(competitive_news)
     # Decisão editorial: o estádio do MANDANTE monitorado é fixo e prevalece
     # sobre lacunas ou estádio diferente encontrado em páginas de pré-jogo.
     # Visitantes monitorados em casa de outro clube continuam na pesquisa normal.
