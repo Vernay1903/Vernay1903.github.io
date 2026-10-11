@@ -34,6 +34,7 @@ def main() -> None:
     assert isinstance(expected_model, str) and expected_model.strip()
     assert request["model"] == expected_model
     assert request["store"] is False
+    assert request["max_output_tokens"] == 10000
     assert "tools" not in request
     assert "web_search" not in json.dumps(request, ensure_ascii=False).casefold()
 

@@ -186,6 +186,10 @@ def system_instructions() -> str:
         "Se as duas prováveis escalações forem fornecidas, apresente-as em um único bloco de lista, uma entrada por equipe, com 11 jogadores e técnico. Se faltarem, não crie o subtítulo Prováveis escalações nem um aviso sobre a ausência. "
         "Cada entrada deve começar por Provável escalação do nome da equipe, conter os 11 jogadores e o técnico. "
         "Nesse caso é proibido dizer que não há provável escalação; use no máximo uma ressalva curta de que as formações são prováveis. "
+        "ATENÇÃO: cada escalação completa dos 11 atletas aparece EXATAMENTE UMA vez e somente em "
+        "Prováveis escalações. NÃO repita qualquer lista integral de titulares em texto corrido, "
+        "outra lista, abertura ou conclusão. Pode mencionar individualmente jogadores "
+        "somente quando o contrato tiver informação específica sobre eles. "
         "Se o retrospecto tiver só um ou dois jogos, trate-o em um bloco curto e não transforme a amostra em história ampla ou rivalidade. "
         "Só crie Onde assistir quando houver transmissor confirmado; nesse caso escreva explicitamente cada emissora/plataforma. Caso contrário, não abra essa seção. "
         "Não recapitule serviço, resultados, escalações e retrospecto no encerramento. Cada parágrafo precisa trazer informação nova comprovada. "
@@ -223,6 +227,11 @@ def user_payload(contract: dict[str, Any]) -> str:
         "Alvo editorial: 700 a 900 palavras sem repetição, preenchimento ou inferência; mínimo absoluto de 700, respeitando a densidade real dos fatos. "
         "Planeje 825–875 palavras visíveis (não conte tags HTML, título nem JSON), com desenvolvimento maior de Como chega cada equipe por meio dos cinco resultados individuais "
         "e notícias verificadas do elenco quando presentes. Nunca inclua um bloco sem fatos nem substitua detalhes por generalidades. "
+        "Use os nomes de seções de editorial_section_plan fornecidos no contrato como roteiro concreto, "
+        "com no mínimo cinco e no máximo oito subtítulos <p><strong>; não omita os blocos específicos "
+        "de mandante, visitante, retrospecto e serviço quando houver fatos correspondentes. "
+        "Só inclua blocos de transmissão e escalações se os respectivos fatos estiverem verificados. "
+        "Nunca crie seções Fechamento, Resumo do encontro nem listas integrais de titulares fora da seção própria. "
         "Antes de finalizar, confira: cinco <p><strong>subtítulos</strong></p>, lista <ul><li>, "
         "exatamente um <a href=...> com competition_internal_link.url e todos os fatos obrigatórios no corpo.\n\n"
         + serialized
@@ -344,7 +353,13 @@ def build_revision_request(
                 "evidência. Produza um JSON editorial COMPLETO e novo utilizando SOMENTE "
                 "os fatos do contrato. Corrija: " + "; ".join(errors) + ". " + short +
                 " Mantenha entre 700 e 900 palavras sem repetição, fontes externas ou "
-                "inferências factuais. Use no máximo oito subtítulos e exatamente um link interno."
+                "inferências factuais. Siga editorial_section_plan com pelo menos cinco seções "
+                "substantivas: não substitua a seção de um dos clubes por um parágrafo da abertura. "
+                "Use no máximo oito subtítulos e exatamente um link interno. "
+                "Escreva os onze titulares de cada time uma única vez, dentro de Prováveis escalações, "
+                "e evite a linguagem 'dados fornecidos', 'recorte considerado' ou 'registro'. "
+                "Caso tenha saído incompleta por max_output_tokens, finalize o JSON em até 800 palavras, "
+                "sem repetir conteúdo e sem novos dados."
             ),
         }],
     })

@@ -44,7 +44,7 @@ def main():
             assert attempts[0]['validation_errors'] and not attempts[1]['validation_errors']
             assert attempts[0]['estimated_cost_usd'] > 0
             assert api.call_args_list[1].args[2]['reasoning']['effort'] == 'none'
-            assert api.call_args_list[1].args[2]['max_output_tokens'] == 8000
+            assert api.call_args_list[1].args[2]['max_output_tokens'] == 10000
             second = api.call_args_list[1].args[2]
             if initial is bad:
                 assert [entry['role'] for entry in second['input']] == ['system', 'user', 'user']

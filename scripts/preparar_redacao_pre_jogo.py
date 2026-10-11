@@ -159,7 +159,28 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         "fatos_confirmados_da_partida"
     )
 
+    popular_home = str(context.get("display_home") or context.get("home") or "mandante")
+    popular_away = str(context.get("display_away") or context.get("away") or "visitante")
+    competition = str(context.get("competition") or "competição")
+    section_plan = [
+        "Contexto do confronto",
+        f"Como chega o {popular_home}",
+        f"Como chega o {popular_away}",
+    ]
+    if any(key.startswith(("h2h_", "games", "home_wins", "away_wins", "draws"))
+           for key in verified_facts):
+        section_plan.append(f"Retrospecto na {competition}")
+    if all(verified_facts.get(field) for field in (
+        "home_lineup", "away_lineup", "home_coach", "away_coach",
+    )):
+        section_plan.append("Prováveis escalações")
+    section_plan.append("Horário e local da partida")
+    if verified_facts.get("transmission"):
+        section_plan.append("Onde assistir")
+    # Nunca abrir seções vazias para satisfazer contagens artificiais.
+    # Cabe ao redator desenvolver apenas fatos que existam no contrato.
     contract = {
+        "editorial_section_plan": section_plan,
         "editorial_narrative_mode": narrative_mode,
         "step": 25,
         "mode": "draft_contract_only",

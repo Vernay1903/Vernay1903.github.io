@@ -6,7 +6,7 @@
     "api_key_env": "OPENAI_API_KEY",
     "model": "gpt-5.6-luna",
     "reasoning_effort": "none",
-    "max_output_tokens": 8000,
+    "max_output_tokens": 10000,
     "store": false,
     "timeout_seconds": 120,
     "max_attempts": 2,
@@ -39,6 +39,6 @@
     "output_usd_per_million_tokens": 1.2,
     "max_contract_chars": 20000,
     "max_articles_per_day": 10,
-    "note": "Meta US$ 10/mes; controle rígido só com hard spend limit na plataforma; script limita chamadas; Serper e fallback pagos desativados."
+    "note": "Meta US$ 10/mês; 10 artigos/dia, até 2 chamadas, máximo 20 mil caracteres e 10 mil tokens de saída por chamada. Pior caso teórico estimado US$ 9,60/mês pelas tarifas configuradas; limite rígido de gasto continua dependente da plataforma."
   }
 }
