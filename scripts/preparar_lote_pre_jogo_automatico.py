@@ -369,6 +369,41 @@ def reusable_articles(directory: Path | None, target: str, sha: str) -> dict:
     return found
 
 
+def reusable_draft_is_editorially_current(
+    previous: dict[str, Any], current_package: dict[str, Any],
+    directory: Path, *, quality: Any,
+) -> bool:
+    """Nunca reaproveitar matéria criada antes da nova régua jornalística.
+
+    A recuperação anterior reutilizava contratos sem considerar a pauta atual
+    nem as mudanças de qualidade, fazendo reaparecer textos reprovados.
+    """
+    if current_package.get("ready_for_drafting") is not True:
+        return False
+    if quality.source_depth_errors(current_package):
+        return False
+    try:
+        old_contract = load_json(directory / previous["contract"])
+        old_draft = load_json(directory / previous["draft"])
+    except (FileNotFoundError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+        return False
+    if old_contract.get("editorial_quality_revision") != "classicos-contextuais-2026-10-11-v1":
+        return False
+    if old_contract.get("match_context") != current_package.get("match_context"):
+        return False
+    if old_contract.get("facts_by_requirement") != current_package.get("facts_by_requirement"):
+        return False
+    if old_contract.get("title") != current_package.get("title"):
+        return False
+    if old_contract.get("excerpt") != current_package.get("excerpt"):
+        return False
+    if old_draft.get("draft_validated") is not True:
+        return False
+    if quality.draft_quality_errors(str(old_draft.get("body_html", "")), old_contract):
+        return False
+    return True
+
+
 def main() -> None:
     args = parse_args()
     if not args.execute:
@@ -436,7 +471,11 @@ def main() -> None:
         previous = reused.get(slug)
         context = package.get("match_context", {})
         if previous and all(previous.get(key) == context.get(key)
-                            for key in ("home", "away", "kickoff_time_brasilia")):
+                            for key in ("home", "away", "kickoff_time_brasilia")) and (
+            reusable_draft_is_editorially_current(
+                previous, package, args.reuse_dir, quality=quality,
+            )
+        ):
             for key in ("contract", "draft", "status_snapshot"):
                 shutil.copy2(args.reuse_dir / previous[key], output_dir / previous[key])
             prepared.append(previous)

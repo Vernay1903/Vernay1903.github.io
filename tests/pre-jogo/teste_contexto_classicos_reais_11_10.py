@@ -18,6 +18,8 @@ from scripts import validar_rascunho_pre_jogo as validate
 from scripts.contexto_classicos_pre_jogo import find_rivalry
 from scripts.planejar_coleta_fontes import query_variants
 from scripts import preparar_redacao_pre_jogo as draft_prep
+from scripts import preparar_lote_pre_jogo_automatico as batch
+from tempfile import TemporaryDirectory
 
 config=json.loads((ROOT/"config/pre-jogo.json").read_text(encoding="utf-8"))
 fixtures=[
@@ -103,6 +105,24 @@ def main():
     assert "home_recent_matches" not in hierarchy["opening_hook_fields"]
     assert contract["editorial_storyline"]["rivalry_name"]=="Fla-Flu"
     assert contract["editorial_section_plan"][0].startswith("Fla-Flu")
+    assert contract["editorial_quality_revision"]=="classicos-contextuais-2026-10-11-v1"
+    # Recuperação não pode reutilizar um contrato antigo sem Fla-Flu / sem pauta.
+    with TemporaryDirectory() as tmp:
+        tmp_path=Path(tmp)
+        old_contract=dict(contract)
+        old_contract.pop("editorial_quality_revision")
+        (tmp_path/"old-contract.json").write_text(json.dumps(old_contract,ensure_ascii=False))
+        (tmp_path/"old-draft.json").write_text(json.dumps({
+            "draft_validated":True,
+            "body_html":"<p>Flamengo e Fluminense disputam uma partida.</p>"
+        },ensure_ascii=False))
+        previous={"contract":"old-contract.json","draft":"old-draft.json"}
+        assert not batch.reusable_draft_is_editorially_current(previous,synthetic,tmp_path,quality=quality)
+        # Contrato atual mas fatos desatualizados também devem reprovar.
+        old_contract=dict(contract)
+        (tmp_path/"old-contract.json").write_text(json.dumps(old_contract,ensure_ascii=False))
+        assert not batch.reusable_draft_is_editorially_current(previous,synthetic,tmp_path,quality=quality)
+
     assert find_rivalry("Flamengo","Palmeiras") is None
     print("OK: quatro partidas reais de 11/10 bloqueadas por falta de rivalidade;")
     print("OK: texto contextual passa e apelido jogado no subtítulo não burla a abertura.")
