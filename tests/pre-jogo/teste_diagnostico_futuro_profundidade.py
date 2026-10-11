@@ -24,6 +24,7 @@ def main():
     approved = package("validado.html", news={
         "home_team_news_1": "O mandante confirmou nesta semana que o lateral voltou a treinar e está liberado para o confronto.",
         "away_team_news_1": "O visitante anunciou antes da viagem que o atacante está suspenso e não participará da próxima partida.",
+        "home_team_news_2": "O atacante titular retornou aos treinamentos após se recuperar de uma lesão no tornozelo durante a semana.",
     })
     assert pending_issues({"articles": [approved]}) == []
     shallow = package("superficial.html")
