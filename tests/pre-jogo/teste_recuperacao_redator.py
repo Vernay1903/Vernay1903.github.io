@@ -18,7 +18,13 @@ def main():
     cfg = writer.load_provider_config()
     site = prepare.load_config()
     contract = prepare.build_contract(clean_package(), config=site)
-    draft = {'slug': contract['slug'], 'body_html': valid_body(),
+    # O sintético não contém fatos de classificação: evitar "O que está em jogo"
+    # sem contexto comprovado, conforme a trava editorial atual.
+    good_body = valid_body().replace(
+        "<p><strong>O que está em jogo</strong></p>",
+        "<p><strong>Contexto da competição</strong></p>",
+    )
+    draft = {'slug': contract['slug'], 'body_html': good_body,
              'fact_fields_used': contract['required_fact_fields']}
     def response(body):
         return {'status': 'completed', 'usage': {'input_tokens': 100, 'output_tokens': 100},
@@ -26,7 +32,7 @@ def main():
     good = response(draft)
     bad = response({**draft, 'body_html': '<p>Texto incompleto sem estrutura.</p>'})
     quality_bad = response({**draft, 'body_html': draft["body_html"].replace(
-        "<p><strong>O que está em jogo</strong></p>",
+        "<p><strong>Contexto da competição</strong></p>",
         "<p><strong>Fechamento</strong></p>",
         1,
     )})
