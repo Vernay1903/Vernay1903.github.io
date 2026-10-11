@@ -183,6 +183,15 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         },
         "editorial_rules": {
             "language": "pt-BR",
+            "team_names": (
+                "Usar sempre o nome jornalístico mais comum de cada clube. "
+                "No título, no texto e nos subtítulos, preferir match_context.display_home "
+                "e match_context.display_away, quando existirem. "
+                "Exemplos: Liverpool, Flamengo, Fluminense, Internacional e Corinthians; "
+                "não Liverpool FC, Clube de Regatas do Flamengo, Fluminense FC, "
+                "SC Internacional ou SC Corinthians Paulista. "
+                "A identificação formal do provedor não deve aparecer na prosa."
+            ),
             "tone": "jornalístico direto, fluido e factual",
             "seo": "natural, sem repetição artificial de palavras-chave",
             "opening": (

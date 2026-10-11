@@ -359,7 +359,7 @@ def validate_draft(
     context = contract.get("match_context")
     if isinstance(context, dict):
         for key in ("home", "away"):
-            value = context.get(key)
+            value = context.get("display_" + key) or context.get(key)
             if isinstance(value, str) and value.strip() and value.casefold() not in text.casefold():
                 errors.append(f"o texto não menciona a equipe {value}")
 

@@ -348,26 +348,26 @@ def adjusted_service_headline(
     lineups_ok = _verified_lineups(requirement_by_id.get("probable_lineups_and_coaches"), config)
 
     prefix = original_title.rsplit(":", 1)[0].strip() if ":" in original_title else original_title
-    title_items: list[str] = []
-    if isinstance(transmission, str) and transmission.strip():
-        title_items.append("transmissão")
-    title_items.append("horário")
+    # Apenas serviços verificados no título; nunca usar encheção de chamada.
+    title_items = ["horário"]
     if lineups_ok:
         title_items.append("prováveis escalações")
-    if title_items == ["horário"]:
-        title_items.append("informações do jogo")
-    elif len(title_items) == 2 and title_items[0] == "transmissão":
-        title_items.append("informações do jogo")
+    if isinstance(transmission, str) and transmission.strip():
+        title_items.append("transmissão")
     title = f"{prefix}: {_join_pt(title_items)}" if prefix else original_title
 
-    base_excerpt = re.split(r";\s*veja\s+", original_excerpt, maxsplit=1, flags=re.IGNORECASE)[0].rstrip(" .")
-    excerpt_items: list[str] = []
-    if isinstance(transmission, str) and transmission.strip():
-        excerpt_items.append("transmissão")
+    base_excerpt = re.split(
+        r";\s*(?:veja|confira)\s+", original_excerpt,
+        maxsplit=1, flags=re.IGNORECASE,
+    )[0].rstrip(" .")
+    excerpt_items = []
     if lineups_ok:
         excerpt_items.append("prováveis escalações")
-    excerpt_items.append("informações do confronto")
-    excerpt = f"{base_excerpt}; veja {_join_pt(excerpt_items)}." if base_excerpt else original_excerpt
+    if isinstance(transmission, str) and transmission.strip():
+        excerpt_items.append("transmissão")
+    excerpt = base_excerpt + (
+        f"; confira {_join_pt(excerpt_items)}." if excerpt_items else "."
+    ) if base_excerpt else original_excerpt
     return title, excerpt
 
 

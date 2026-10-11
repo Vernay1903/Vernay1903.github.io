@@ -149,6 +149,40 @@ def display_team_name(value: Any, config: dict[str, Any]) -> str:
     return monitored_name_index(config).get(normalize_text(raw), raw)
 
 
+# Formas mais usadas no jornalismo brasileiro; nomes de provedores ficam
+# intactos no contexto de pesquisa e na identificação de partidas.
+EDITORIAL_COMMON_NAMES = {
+    "liverpool fc": "Liverpool",
+    "sc internacional": "Internacional",
+    "sport club internacional": "Internacional",
+    "sc corinthians paulista": "Corinthians",
+    "sport club corinthians paulista": "Corinthians",
+    "fluminense fc": "Fluminense",
+    "parma calcio 1913": "Parma",
+    "ac milan": "Milan",
+    "nottm forest": "Nottingham Forest",
+    "fc augsburg": "Augsburg",
+    "bayer 04 leverkusen": "Bayer Leverkusen",
+    "ec vitoria": "Vitória",
+}
+
+
+def common_editorial_name(value: Any, config: dict[str, Any]) -> str:
+    """Apelido jornalístico para exibição, sem mudar os dados da pesquisa."""
+    canonical = display_team_name(value, config)
+    mapped = EDITORIAL_COMMON_NAMES.get(normalize_text(canonical))
+    if mapped:
+        return mapped
+    monitored = {
+        club.get("name") for club in config.get("monitored_clubs", [])
+        if isinstance(club, dict)
+    }
+    if canonical in monitored:
+        return canonical
+    abbreviated = re.sub(r"\s+(?:FC|CF|EC)$", "", canonical, flags=re.IGNORECASE).strip()
+    return abbreviated if abbreviated != canonical and len(abbreviated) >= 3 else canonical
+
+
 def parse_target_date(raw: str | None, tz: ZoneInfo) -> date:
     if raw:
         try:
@@ -211,6 +245,8 @@ def build_editorial_record(
 ) -> dict[str, Any]:
     home = display_team_name(plan.get("home"), config)
     away = display_team_name(plan.get("away"), config)
+    display_home = common_editorial_name(home, config)
+    display_away = common_editorial_name(away, config)
     label = competition_label(plan, config)
 
     slug = plan.get("slug")
@@ -228,11 +264,10 @@ def build_editorial_record(
     competition_name = label["name"]
     title_tail = config["editorial"]["title_tail"].strip()
 
-    title = f"{home} x {away} {connector} {competition_name}: {title_tail}"
+    title = f"{display_home} x {display_away} {connector} {competition_name}: {title_tail}"
     excerpt = (
-        f"{home} e {away} se enfrentam em {long_date_pt(target_date)}, às "
-        f"{kickoff_display} (de Brasília), {connector} {competition_name}; veja "
-        "transmissão, prováveis escalações e informações do confronto."
+        f"{display_home} e {display_away} se enfrentam em {long_date_pt(target_date)}, às "
+        f"{kickoff_display} (de Brasília), {connector} {competition_name}."
     )
 
     noticias_entry = {
@@ -255,6 +290,8 @@ def build_editorial_record(
         "match_context": {
             "home": home,
             "away": away,
+            "display_home": display_home,
+            "display_away": display_away,
             "competition": competition_name,
             "competition_slug": plan.get("competition_slug"),
             "kickoff_brasilia": plan.get("kickoff_brasilia"),
