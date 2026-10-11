@@ -382,7 +382,7 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
             # parágrafo REAL dentro da primeira seção, sem alterar o texto.
             paragraph_ends = [
                 m.end() for m in re.finditer(r"</p\s*>", body[:second_point], re.I)
-                if m.end() > body.find("</strong>") + len("</strong>")
+                if m.start() >= HEADING_RE.search(body).end()
             ]
             if paragraph_ends:
                 first_point = paragraph_ends[0]
