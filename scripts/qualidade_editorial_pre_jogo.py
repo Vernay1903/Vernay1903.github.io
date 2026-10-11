@@ -208,9 +208,19 @@ def rivalry_context_errors(body_html: str, contract: dict[str, Any]) -> list[str
     errors = []
     first_heading = HEADINGS.search(body_html)
     opening = body_html[:first_heading.start()] if first_heading else body_html
-    if fold(name) not in fold(opening):
+    kind = str(rivalry.get("rivalry_kind") or rivalry.get("kind") or "").casefold()
+    if kind.startswith("rivalidade"):
+        home = fold(str(context.get("display_home") or context.get("home") or ""))
+        away = fold(str(context.get("display_away") or context.get("away") or ""))
+        opening_ok = ("rivalidade" in fold(opening)
+                      and home in fold(opening) and away in fold(opening))
+        whole_ok = "rivalidade" in fold(body_html) and home in fold(body_html) and away in fold(body_html)
+    else:
+        opening_ok = fold(name) in fold(opening)
+        whole_ok = fold(name) in fold(body_html)
+    if not opening_ok:
         errors.append(f"abertura não identifica o clássico/rivalidade {name}")
-    if fold(name) not in fold(body_html):
+    if not whole_ok:
         errors.append(f"o texto não contextualiza a rivalidade {name}")
     if not any(marker in fold(body_html) for marker in ("classico","rivalidade","derby","derbi","duelo historico")):
         errors.append("rivalidade mencionada sem contextualização jornalística")

@@ -273,7 +273,7 @@ def build_editorial_record(
         (
             f"{display_home} e {display_away} disputam o {rivalry['name']} "
             if rivalry and rivalry["kind"].startswith("clássico") else
-            f"{display_home} e {display_away} medem forças em confronto de rivalidade "
+            f"{display_home} e {display_away} se enfrentam "
             if rivalry else
             f"{display_home} e {display_away} se enfrentam "
         ) +

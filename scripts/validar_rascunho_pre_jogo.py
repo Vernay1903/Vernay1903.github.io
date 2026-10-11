@@ -150,9 +150,20 @@ def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
     context_rivalry = (context or {}).get("editorial_rivalry") if isinstance(context, dict) else None
     if isinstance(context_rivalry, dict) and context_rivalry.get("name"):
         name = folded_text(str(context_rivalry["name"]))
-        first_heading = re.search(r"<p\\s*>\\s*<strong\\s*>", body, re.I)
+        first_heading = re.search(r"<p\s*>\s*<strong\s*>", body, re.I)
         opening = body[:first_heading.start()] if first_heading else body
-        if name not in folded_text(opening):
+        opening_folded = folded_text(opening)
+        kind = str(context_rivalry.get("kind") or "").casefold()
+        if kind.startswith("rivalidade"):
+            home_name = folded_text(str(context.get("display_home") or context.get("home") or ""))
+            away_name = folded_text(str(context.get("display_away") or context.get("away") or ""))
+            has_identity = (
+                "rivalidade" in opening_folded and home_name in opening_folded
+                and away_name in opening_folded
+            )
+        else:
+            has_identity = name in opening_folded
+        if not has_identity:
             errors.append(f"abertura sem identidade do clássico: {context_rivalry['name']}")
 
     if body_folded.count("podem sofrer alteracoes") > 1:
