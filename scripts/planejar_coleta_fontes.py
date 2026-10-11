@@ -200,6 +200,25 @@ def query_variants(requirement_id: str, context: dict[str, Any], article_date: s
     }
     if requirement_id not in templates:
         fail(f"Sem modelo de consulta para requisito: {requirement_id}")
+    # Os buscadores recebem também a identidade real do confronto. Sem isso,
+    # o RSS perde notícias tituladas "Gre-Nal", "Fla-Flu", "Derby Paulista",
+    # que são exatamente as matérias de preparação necessárias ao pré-jogo.
+    # Nada do resultado da busca vira fato antes da leitura/validação.
+    rivalry = context.get("editorial_rivalry")
+    if isinstance(rivalry, dict):
+        name = str(rivalry.get("name") or "").strip()
+        popular_home = str(context.get("display_home") or home)
+        popular_away = str(context.get("display_away") or away)
+        if name:
+            if requirement_id == "probable_lineups_and_coaches":
+                templates[requirement_id].insert(0,
+                    f'"{name}" "{popular_home}" "{popular_away}" desfalques retornos preparação escalações {article_date}')
+            elif requirement_id == "stakes_and_qualification_scenarios_when_applicable":
+                templates[requirement_id].insert(0,
+                    f'"{name}" "{popular_home}" "{popular_away}" classificação momento tabela {article_date}')
+            elif requirement_id == "competition_specific_head_to_head":
+                templates[requirement_id].insert(0,
+                    f'"{name}" histórico retrospecto {competition}')
     return templates[requirement_id]
 
 

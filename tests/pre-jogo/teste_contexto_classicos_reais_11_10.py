@@ -16,6 +16,7 @@ from scripts import preparar_dados_editoriais as data
 from scripts import qualidade_editorial_pre_jogo as quality
 from scripts import validar_rascunho_pre_jogo as validate
 from scripts.contexto_classicos_pre_jogo import find_rivalry
+from scripts.planejar_coleta_fontes import query_variants
 
 config=json.loads((ROOT/"config/pre-jogo.json").read_text(encoding="utf-8"))
 fixtures=[
@@ -44,6 +45,9 @@ def main():
         rivalry=record["match_context"]["editorial_rivalry"]
         assert rivalry and rivalry["name"]==nickname,(home,away,rivalry)
         assert nickname in record["excerpt"] if nickname in {"Gre-Nal","Fla-Flu","Derby Paulista"} else "rivalidade" not in record["excerpt"]
+        queries=query_variants("probable_lineups_and_coaches",record["match_context"],"11/10/2026")
+        assert any(nickname in item for item in queries),(nickname,queries)
+        assert any("desfalques" in item for item in queries)
         body=article((ROOT/slug).read_text(encoding="utf-8"))
         contract={"match_context":record["match_context"],"facts_by_requirement":[]}
         problems=quality.rivalry_context_errors(body,contract)
