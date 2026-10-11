@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "description": "Enquadramento editorial histórico estável; nunca é fonte de desfalques, escalações, posições, placares ou notícia atual.",
+  "rivalries": [
+    {
+      "teams": [
+        "Grêmio",
+        "Internacional"
+      ],
+      "name": "Gre-Nal",
+      "kind": "clássico gaúcho",
+      "background": "Grêmio e Internacional protagonizam o Gre-Nal, rivalidade histórica do futebol de Porto Alegre.",
+      "angle": "Enfatizar a identidade do clássico gaúcho e ligar o momento confirmado dos dois clubes ao encontro."
+    },
+    {
+      "teams": [
+        "Flamengo",
+        "Fluminense"
+      ],
+      "name": "Fla-Flu",
+      "kind": "clássico carioca",
+      "background": "O Fla-Flu é o clássico carioca entre Flamengo e Fluminense, rivais históricos do Rio de Janeiro.",
+      "angle": "Abrir o clássico com a notícia esportiva mais relevante da rodada e mostrar a preparação de cada equipe."
+    },
+    {
+      "teams": [
+        "Palmeiras",
+        "Corinthians"
+      ],
+      "name": "Derby Paulista",
+      "kind": "clássico paulista",
+      "background": "Palmeiras e Corinthians disputam o Derby Paulista, uma das rivalidades tradicionais do futebol de São Paulo.",
+      "angle": "Relacionar a rivalidade paulista às condições verificadas do confronto, sem repetir dez placares."
+    },
+    {
+      "teams": [
+        "Liverpool",
+        "Manchester City"
+      ],
+      "name": "rivalidade Liverpool–Manchester City",
+      "kind": "rivalidade da Premier League",
+      "background": "Liverpool e Manchester City desenvolveram uma rivalidade marcante na Premier League em temporadas recentes.",
+      "angle": "Contextualizar a rivalidade esportiva recente, sem chamar o encontro de clássico local nem confundi-lo com o dérbi de Manchester ou de Merseyside."
+    },
+    {
+      "teams": [
+        "Barcelona",
+        "Real Madrid"
+      ],
+      "name": "El Clásico",
+      "kind": "clássico espanhol",
+      "background": "Barcelona e Real Madrid protagonizam o El Clásico, confronto histórico do futebol espanhol.",
+      "angle": "Usar El Clásico como gancho e cruzar com os fatos verificados do jogo vigente."
+    },
+    {
+      "teams": [
+        "Milan",
+        "Inter de Milão"
+      ],
+      "name": "Derby della Madonnina",
+      "kind": "clássico de Milão",
+      "background": "Milan e Inter protagonizam o Derby della Madonnina, o clássico da cidade de Milão.",
+      "angle": "Tratar o confronto como clássico de Milão, sem supor posição na tabela."
+    },
+    {
+      "teams": [
+        "Bayern de Munique",
+        "Borussia Dortmund"
+      ],
+      "name": "Der Klassiker",
+      "kind": "rivalidade do futebol alemão",
+      "background": "Bayern de Munique e Borussia Dortmund protagonizam o duelo conhecido como Der Klassiker.",
+      "angle": "Identificar a rivalidade alemã sem inventar alterações de elenco."
+    },
+    {
+      "teams": [
+        "Manchester United",
+        "Liverpool"
+      ],
+      "name": "rivalidade Liverpool–Manchester United",
+      "kind": "rivalidade histórica inglesa",
+      "background": "Liverpool e Manchester United protagonizam uma rivalidade histórica do futebol inglês.",
+      "angle": "Dar contexto nacional à rivalidade, sem tratá-la como clássico entre equipes da mesma cidade."
+    },
+    {
+      "teams": [
+        "Manchester United",
+        "Manchester City"
+      ],
+      "name": "Dérbi de Manchester",
+      "kind": "clássico de Manchester",
+      "background": "Manchester United e Manchester City disputam o Dérbi de Manchester, clássico da mesma cidade.",
+      "angle": "Contextualizar o confronto municipal com os dados atuais."
+    },
+    {
+      "teams": [
+        "Arsenal",
+        "Tottenham"
+      ],
+      "name": "Derby do Norte de Londres",
+      "kind": "clássico londrino",
+      "background": "Arsenal e Tottenham disputam o Derby do Norte de Londres.",
+      "angle": "Contextualizar os rivais londrinos e os fatos esportivos do momento."
+    },
+    {
+      "teams": [
+        "Liverpool",
+        "Everton"
+      ],
+      "name": "Dérbi de Merseyside",
+      "kind": "clássico de Liverpool",
+      "background": "Liverpool e Everton protagonizam o Dérbi de Merseyside.",
+      "angle": "Relacionar rivalidade da cidade à preparação específica."
+    },
+    {
+      "teams": [
+        "Flamengo",
+        "Vasco"
+      ],
+      "name": "Clássico dos Milhões",
+      "kind": "clássico carioca",
+      "background": "Flamengo e Vasco disputam o Clássico dos Milhões, uma rivalidade histórica do Rio de Janeiro.",
+      "angle": "Contextualizar o clássico conforme a pauta factual presente."
+    },
+    {
+      "teams": [
+        "São Paulo",
+        "Corinthians"
+      ],
+      "name": "Majestoso",
+      "kind": "clássico paulista",
+      "background": "São Paulo e Corinthians disputam o Majestoso, clássico do futebol paulista.",
+      "angle": "Contextualizar conforme a pauta factual presente."
+    },
+    {
+      "teams": [
+        "São Paulo",
+        "Palmeiras"
+      ],
+      "name": "Choque-Rei",
+      "kind": "clássico paulista",
+      "background": "São Paulo e Palmeiras disputam o Choque-Rei.",
+      "angle": "Contextualizar conforme a pauta factual presente."
+    },
+    {
+      "teams": [
+        "Santos",
+        "Corinthians"
+      ],
+      "name": "Clássico Alvinegro",
+      "kind": "clássico paulista",
+      "background": "Santos e Corinthians disputam o Clássico Alvinegro.",
+      "angle": "Contextualizar conforme a pauta factual presente."
+    },
+    {
+      "teams": [
+        "Santos",
+        "Palmeiras"
+      ],
+      "name": "Clássico da Saudade",
+      "kind": "clássico paulista",
+      "background": "Santos e Palmeiras disputam o Clássico da Saudade.",
+      "angle": "Contextualizar conforme a pauta factual presente."
+    }
+  ]
+}

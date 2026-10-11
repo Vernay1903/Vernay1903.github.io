@@ -194,6 +194,31 @@ def unsupported_stakes_closing_errors(body_html: str, contract: dict[str, Any]) 
     return []
 
 
+def rivalry_context_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
+    """Rejeita o erro real de 11/10: quatro rivalidades publicadas sem contexto."""
+    context = contract.get("match_context") or {}
+    rivalry = (contract.get("editorial_storyline")
+               or (context.get("editorial_rivalry") if isinstance(context, dict) else None))
+    if not isinstance(rivalry, dict):
+        return []
+    name = str(rivalry.get("rivalry_name") or rivalry.get("name") or "").strip()
+    background = str(rivalry.get("established_background") or rivalry.get("background") or "")
+    if not name:
+        return []
+    errors = []
+    first_heading = HEADINGS.search(body_html)
+    opening = body_html[:first_heading.start()] if first_heading else body_html
+    if fold(name) not in fold(opening):
+        errors.append(f"abertura não identifica o clássico/rivalidade {name}")
+    if fold(name) not in fold(body_html):
+        errors.append(f"o texto não contextualiza a rivalidade {name}")
+    if not any(marker in fold(body_html) for marker in ("classico","rivalidade","derby","derbi","duelo historico")):
+        errors.append("rivalidade mencionada sem contextualização jornalística")
+    # O texto não pode simplesmente virar um histórico de clubes: as travas de
+    # notícia atual e repetição continuam sendo avaliadas separadamente.
+    return errors
+
+
 def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     """Trava extra, executada somente no lote automático antes da publicação."""
     errors: list[str] = []
@@ -213,6 +238,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
         errors.append("serviço repetido em seções diferentes")
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(near_duplicate_errors(body_html))
+    errors.extend(rivalry_context_errors(body_html, contract))
     errors.extend(redundant_recent_calendar_errors(body_html))
     errors.extend(unsupported_stakes_closing_errors(body_html, contract))
     return list(dict.fromkeys(errors))

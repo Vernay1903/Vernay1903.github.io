@@ -145,6 +145,16 @@ def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
     ):
         errors.append("texto menciona desfalques/lesões/suspensões sem fato correspondente no contrato")
 
+    # O mesmo requisito de contexto jornalístico deve valer para o teste
+    # primário, a prévia HTML e a tentativa de recuperação do redator.
+    context_rivalry = (context or {}).get("editorial_rivalry") if isinstance(context, dict) else None
+    if isinstance(context_rivalry, dict) and context_rivalry.get("name"):
+        name = folded_text(str(context_rivalry["name"]))
+        first_heading = re.search(r"<p\\s*>\\s*<strong\\s*>", body, re.I)
+        opening = body[:first_heading.start()] if first_heading else body
+        if name not in folded_text(opening):
+            errors.append(f"abertura sem identidade do clássico: {context_rivalry['name']}")
+
     if body_folded.count("podem sofrer alteracoes") > 1:
         errors.append("ressalva sobre alteração de escalações repetida mais de uma vez")
 

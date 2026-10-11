@@ -162,8 +162,10 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     popular_home = str(context.get("display_home") or context.get("home") or "mandante")
     popular_away = str(context.get("display_away") or context.get("away") or "visitante")
     competition = str(context.get("competition") or "competição")
+    rivalry = context.get("editorial_rivalry")
+    rivalry = rivalry if isinstance(rivalry, dict) else None
     section_plan = [
-        "Contexto do confronto",
+        (f"{rivalry['name']}: contexto do confronto" if rivalry else "Contexto do confronto"),
         f"Como chega o {popular_home}",
         f"Como chega o {popular_away}",
     ]
@@ -181,6 +183,20 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     # Cabe ao redator desenvolver apenas fatos que existam no contrato.
     contract = {
         "editorial_section_plan": section_plan,
+        "editorial_storyline": (
+            {
+                "rivalry_name": rivalry["name"],
+                "rivalry_kind": rivalry["kind"],
+                "established_background": rivalry["background"],
+                "editorial_angle": rivalry["angle"],
+                "required_opening_reference": rivalry["name"],
+                "require_verified_current_news": True,
+                "warning": (
+                    "O apelido e a natureza da rivalidade são contexto histórico estável. "
+                    "Nada aqui autoriza inventar gols, tabelas, personagens, resultados ou notícias de vestiário."
+                ),
+            } if rivalry else None
+        ),
         "editorial_narrative_mode": narrative_mode,
         "step": 25,
         "mode": "draft_contract_only",
@@ -214,6 +230,16 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "A identificação formal do provedor não deve aparecer na prosa."
             ),
             "tone": "jornalístico direto, fluido e factual",
+            "rivalry": (
+                "Se editorial_storyline estiver presente, o PRIMEIRO parágrafo deve nomear "
+                "naturalmente a rivalidade (Gre-Nal, Fla-Flu, Derby Paulista, El Clásico etc.) "
+                "e relacioná-la ao dado ATUAL verificado mais relevante para a partida. "
+                "A abertura precisa parecer uma reportagem sobre ESTE clássico, nunca sobre "
+                "dois clubes quaisquer. Explique a natureza da rivalidade em no máximo um "
+                "trecho curto: história geral não substitui fatos de preparação atuais. "
+                "Nunca trate Liverpool x Manchester City como clássico de Merseyside ou "
+                "Dérbi de Manchester. Não invente episódios históricos."
+            ),
             "seo": "natural, sem repetição artificial de palavras-chave",
             "opening": (
                 "Abrir em um ou dois parágrafos com confronto, data, horário de Brasília, estádio, competição "

@@ -16,6 +16,9 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.contexto_classicos_pre_jogo import find_rivalry
 
 MONTHS_PT = (
     "janeiro",
@@ -248,6 +251,7 @@ def build_editorial_record(
     display_home = common_editorial_name(home, config)
     display_away = common_editorial_name(away, config)
     label = competition_label(plan, config)
+    rivalry = find_rivalry(display_home, display_away)
 
     slug = plan.get("slug")
     if not isinstance(slug, str) or not slug.endswith(".html"):
@@ -266,8 +270,15 @@ def build_editorial_record(
 
     title = f"{display_home} x {display_away} {connector} {competition_name}: {title_tail}"
     excerpt = (
-        f"{display_home} e {display_away} se enfrentam em {long_date_pt(target_date)}, às "
-        f"{kickoff_display} (de Brasília), {connector} {competition_name}."
+        (
+            f"{display_home} e {display_away} disputam o {rivalry['name']} "
+            if rivalry and rivalry["kind"].startswith("clássico") else
+            f"{display_home} e {display_away} medem forças em confronto de rivalidade "
+            if rivalry else
+            f"{display_home} e {display_away} se enfrentam "
+        ) +
+        f"em {long_date_pt(target_date)}, às {kickoff_display} (de Brasília), "
+        f"{connector} {competition_name}."
     )
 
     noticias_entry = {
@@ -292,6 +303,7 @@ def build_editorial_record(
             "away": away,
             "display_home": display_home,
             "display_away": display_away,
+            "editorial_rivalry": rivalry,
             "competition": competition_name,
             "competition_slug": plan.get("competition_slug"),
             "kickoff_brasilia": plan.get("kickoff_brasilia"),
