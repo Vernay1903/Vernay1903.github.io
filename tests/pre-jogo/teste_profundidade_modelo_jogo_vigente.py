@@ -37,7 +37,7 @@ def main():
     fields={fact["field"] for fact in clean["facts"]}
     assert fields=={"home_team_news_1","away_team_news_1"}, fields
     assert clean["sources"] and clean["structured_fact_count"]==2
-    assert quality.source_depth_errors({"facts_by_requirement":[clean]})==[]
+    assert quality.source_depth_errors({"facts_by_requirement":[clean]}), "duas notas genéricas não fazem uma reportagem de 700 palavras"
 
     # Menções de apenas um clube ou fontes não verificadas não autorizam notícias.
     assert extract.extract_separate_team_news(
@@ -62,7 +62,7 @@ def main():
        "h2h_away_wins":"Vitórias do visitante: 4.",
        "h2h_draws":"Empates: 4.",
     }),req("stadium_and_location",{"stadium":"Jogo em Anfield."})]}
-    assert quality.source_depth_errors(fact_pack)==[], "dez resultados + H2H validado são pauta utilizável"
+    assert quality.source_depth_errors(fact_pack), "dez resultados e H2H NÃO liberam a redação"
     fact_pack["facts_by_requirement"][0]["facts"][2]["text"]="Últimos cinco jogos: duas vitórias e três empates"
     assert quality.source_depth_errors(fact_pack), "balanços sem placares não podem liberar o redator"
     print("OK: notícia contextual preservada sem escalações; prévia factual rica liberada; pauta rasa bloqueada.")

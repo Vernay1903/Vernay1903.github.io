@@ -26,7 +26,8 @@ def main():
     assert quality.source_depth_errors(shallow), "placares e serviço não bastam"
     full = mk({
         **{k: v for k, v in quality.facts(shallow).items()},
-        "home_team_news_1": "O Palmeiras terá o retorno do meio-campista após suspensão e mexe no setor central da equipe.",
+        "home_team_news_1": "Andreas Pereira retorna depois de cumprir suspensão e volta a ficar disponível para a comissão técnica do Palmeiras.",
+        "home_team_news_2": "Gustavo Gómez está suspenso e será substituído na defesa do Palmeiras, segundo a notícia específica de preparação.",
         "away_team_news_1": "O Bahia tem um retorno importante no ataque após o jogador cumprir suspensão no confronto anterior.",
     })
     assert quality.source_depth_errors(full) == [], "dois fatos concretos sustentam a pesquisa"

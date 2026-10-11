@@ -38,48 +38,71 @@ def facts(package: dict[str, Any]) -> dict[str, str]:
                     result[fact["field"]] = fact["text"].strip()
     return result
 
-def source_depth_errors(package: dict[str, Any]) -> list[str]:
-    """Resultados, H2H, fichas de serviço e escalações NÃO sustentam 700 palavras.
+def meaningful_team_news(raw: str) -> bool:
+    """Uma chamada SEO sobre escalações não é notícia de preparação."""
+    value = fold(raw.split(": ", 1)[-1])
+    if len(value.split()) < 8:
+        return False
+    fake_or_vague = (
+        r"escalacao desfalques e mais do jogo",
+        r"nao tem confirmacoes?",
+        r"sem confirmacao",
+        r"nao foi divulgad",
+        r"informacoes devem ser adicionadas",
+        r"com informacoes sobre",
+        r"acompanhamento ao vivo",
+        r"onde assistir",
+    )
+    if any(re.search(p, value) for p in fake_or_vague):
+        return False
+    return bool(re.search(
+        r"\b(?:fraturou|lesionad[oa]|lesao|suspens[ao]|suspensao|expuls[ao]|desfalqu\w*|"
+        r"retorn\w*|voltou|recuper\w*|poupad\w*|fora|ausen\w*|"
+        r"reavaliad\w*|convocad\w*|estre\w*|mudan\w*|"
+        r"injur\w*|ruled out|suspended)\b", value,
+    ))
 
-    Precisa haver uma notícia de preparação específica para cada equipe, ou
-    uma notícia concreta de um time e um cenário competitivo verificado.
-    Nenhum campo ausente é preenchido automaticamente.
+
+def meaningful_sporting_context(raw: str) -> bool:
+    value = fold(raw)
+    return len(value.split()) >= 10 and bool(re.search(
+        r"\b(?:lideranca|lider|rebaixamento|queda|zona|classificacao|vaga|"
+        r"semifinal|final|estreia|primeiro classico|pontos|tabela)\b",
+        value,
+    ))
+
+
+def source_depth_errors(package: dict[str, Any]) -> list[str]:
+    """O padrão aprovado exige NOTÍCIA do jogo, não um resumo de 10 placares.
+
+    A liberação automática exige contexto editorial particular dos dois clubes
+    e no mínimo três fatos substantivos verificáveis. Informações de serviço,
+    H2H, últimos cinco placares e nomes de escalação não contam como pauta.
     """
     available = facts(package)
-    home = [v for k, v in available.items()
-            if k.startswith("home_team_news_") and len(fold(v).split()) >= 8]
-    away = [v for k, v in available.items()
-            if k.startswith("away_team_news_") and len(fold(v).split()) >= 8]
-    sporting = [v for k, v in available.items()
-                if (k.startswith(("stakes_", "qualification_", "upcoming_fixture_", "home_upcoming_", "away_upcoming_"))
-                    or k in {"competitive_context", "standings_context", "qualification_scenario"})
-                and len(fold(v).split()) >= 8]
-    if (home and away) or (sporting and (home or away)) or len(sporting) >= 2:
-        return []
-
-    # Alternativa factual para rodadas sem entrevistas/preparação publicadas:
-    # dez resultados com adversário/placar/data (cinco de cada lado) + H2H real.
-    # Balanços agregados ou escalações isoladas NÃO liberam a redação.
-    # A trava de 700 palavras, a ausência de invenção e o teste de repetição
-    # continuam obrigatórios DEPOIS da geração.
-    def detailed_games(field: str) -> int:
-        value = available.get(field, "")
-        return len(re.findall(r"\b\d{2}/\d{2}/\d{4}:\s*[^;]{3,110}?\s+\d+\s*[xX×-]\s*\d+", value))
-
-    if (
-        detailed_games("home_recent_matches") >= 5
-        and detailed_games("away_recent_matches") >= 5
-        and all(available.get(field) for field in (
-            "home_recent_form", "away_recent_form", "h2h_games",
-            "h2h_home_wins", "h2h_away_wins", "h2h_draws", "stadium",
-        ))
+    home_news = [v for k,v in available.items()
+                 if k.startswith("home_team_news_") and meaningful_team_news(v)]
+    away_news = [v for k,v in available.items()
+                 if k.startswith("away_team_news_") and meaningful_team_news(v)]
+    home_stakes = [v for k,v in available.items()
+                   if k.startswith("home_stakes_") and meaningful_sporting_context(v)]
+    away_stakes = [v for k,v in available.items()
+                   if k.startswith("away_stakes_") and meaningful_sporting_context(v)]
+    common_stakes = [v for k,v in available.items()
+                     if (k.startswith(("stakes_", "qualification_", "upcoming_fixture_"))
+                         or k in {"competitive_context", "standings_context", "qualification_scenario"})
+                     and meaningful_sporting_context(v)]
+    home = home_news + home_stakes
+    away = away_news + away_stakes
+    total = home + away + common_stakes
+    if home and away and len({fold(x) for x in total}) >= 3 and (
+        home_news or away_news
     ):
         return []
     return [
-        "profundidade factual insuficiente para o modelo LDU x Palmeiras: "
-        "exige preparação verificada ou dez resultados individuais "
-        "(cinco por equipe) com retrospecto validado; não completar lacunas "
-        "com inferências ou repetição"
+        "profundidade editorial insuficiente: sem ao menos três fatos atuais "
+        "e específicos de preparação/contexto competitivo contemplando ambos os times. "
+        "Dez resultados recentes, H2H, escalações e serviço NÃO substituem reportagem."
     ]
 
 def paragraphs(body_html: str) -> list[str]:

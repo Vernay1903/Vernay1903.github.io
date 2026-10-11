@@ -831,6 +831,8 @@ def extract_team_labeled_claims(
     claims: list[dict[str, Any]] = []
     teams = [("home", match_context.get("home")), ("away", match_context.get("away"))]
     for source in eligible_sources(requirement):
+        if not source_current_for_match(source, match_context):
+            continue
         corpus = source_corpus(source)
         for segment in corpus.splitlines():
             for side, team in teams:
@@ -871,6 +873,44 @@ def extract_team_labeled_claims(
     return claims
 
 
+def source_current_for_match(
+    source: dict[str, Any], match_context: dict[str, Any],
+) -> bool:
+    """Uma página checada hoje NÃO transforma um pré-jogo antigo em notícia de hoje."""
+    kickoff = str(match_context.get("kickoff_brasilia") or "")
+    target = re.search(r"20\d{2}", kickoff)
+    if not target:
+        return True  # testes de extração isolada ainda não possuem data-alvo
+    target_year = target.group(0)
+    metadata = (source.get("page_evidence") or {}).get("metadata") or {}
+    locator = " ".join(str(value) for value in (
+        source.get("url", ""), source.get("title", ""),
+        metadata.get("og:title", ""),
+    ))
+    years = set(re.findall(r"(?<!\d)20[12]\d(?!\d)", locator))
+    if years and target_year not in years:
+        return False
+    # Não aplicar notícias de outra competição a um jogo atual.
+    headline = normalize_text(" ".join(str(value) for value in (
+        source.get("title", ""), metadata.get("og:title", ""),
+        metadata.get("description", ""),
+    )))
+    league = normalize_text(str(match_context.get("competition_slug") or ""))
+    if league == "brasileirao" and "copa do brasil" in headline and "brasileirao" not in headline and "serie a" not in headline:
+        return False
+    # Para notícias de elenco, fonte jornalística sem nenhuma referência temporal
+    # pode ser matéria histórica ou modelo de cobertura. Não a promover a fato.
+    if not years and source.get("source_type") != "official":
+        body = " ".join(str(item) for item in
+            (source.get("page_evidence") or {}).get("evidence_segments", []))
+        if target_year not in body and not re.search(
+            r"\b(?:\d{1,2} de (?:janeiro|fevereiro|marco|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)|(?:segunda|terca|terça|quarta|quinta|sexta|sabado|sábado|domingo)\s*\(\d{1,2}\))\b",
+            normalize_text(body),
+        ):
+            return False
+    return True
+
+
 TEAM_NEWS_PATTERNS = (
     r"\bdesfalques?\b", r"\bles(?:a|ã)o\b", r"\blesionad[oa]s?\b",
     r"\bsuspens[oa]s?\b", r"\bsuspens[aã]o\b", r"\bd[uú]vida\b",
@@ -907,15 +947,36 @@ def extract_optional_team_news_claims(
     seen: dict[str, set[str]] = {"home": set(), "away": set()}
 
     for source in eligible_sources(requirement):
-        corpus = source_corpus(source)
-        if not corpus or not context_mentions_match(corpus, match_context, config):
+        if not source_current_for_match(source, match_context):
             continue
-        for segment in corpus.splitlines():
+        corpus = source_corpus(source)
+        evidence_segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+        if not corpus or not isinstance(evidence_segments, list) or not evidence_segments:
+            continue
+        if not context_mentions_match(corpus, match_context, config):
+            continue
+        for segment in evidence_segments:
+            if not isinstance(segment, str) or not segment.strip():
+                continue
+            active_side = None
             for sentence in re.split(r"(?<=[.!?])\s+", segment):
                 value = clean_value(sentence, max_chars=360)
                 if len(value.split()) < 5:
                     continue
                 folded = normalize_text(value)
+                if re.search(
+                    r"(?i)\b(?:n[aã]o\s+(?:h[aá]|tem|existem|foram)\s+(?:confirma[cç][oõ]es|informa[cç][oõ]es)|"
+                    r"ainda\s+n[aã]o\s+foi\s+divulgad|"
+                    r"informa[cç][oõ]es\s+(?:devem|ser[aã]o)\s+(?:ser\s+)?adicionad|"
+                    r"escala[cç][aã]o\s*,?\s*desfalques?\s+e\s+mais\s+do\s+jogo)\b",
+                    value,
+                ):
+                    continue
+                # Cabeçalhos de página e tags SEO não constituem fatos de elenco.
+                if re.search(r"\b(?:onde assistir|hor[aá]rio|tudo sobre o jogo|pr[eé]-?jogo)\b", value, re.I) and re.search(
+                    r"\b(?:escala[cç][aã]o|desfalques?|transmiss[aã]o)\b", value, re.I
+                ) and not re.search(r"\b(?:ficar[aá]\s+fora|sofreu|fraturou|suspens[oa]|retornou|voltou|n[aã]o poder[aá]|recupera[cç][aã]o)\b", value, re.I):
+                    continue
                 # Teasers genéricos de "acompanhe ao vivo, escalações e desfalques"
                 # não contêm notícia sobre um atleta: não entram como fatos.
                 if re.search(
@@ -926,14 +987,39 @@ def extract_optional_team_news_claims(
                     continue
                 if not any(re.search(pattern, folded, flags=re.IGNORECASE) for pattern in TEAM_NEWS_PATTERNS):
                     continue
-                for side, team in teams:
-                    if not isinstance(team, str) or not relaxed_mentions_team(value, team, config):
-                        continue
-                    key = normalize_text(value)
-                    if key in seen[side]:
-                        continue
-                    seen[side].add(key)
-                    collected[side].append((value, source, sentence))
+                explicit_sides = [
+                    side for side, team in teams
+                    if isinstance(team, str) and relaxed_mentions_team(value, team, config)
+                ]
+                if len(explicit_sides) == 1:
+                    active_side = explicit_sides[0]
+                elif len(explicit_sides) > 1:
+                    # Não atribuir a mesma notícia a ambos os clubes quando
+                    # um é só o adversário citado no título ou na frase.
+                    first = normalize_text(value[:90])
+                    first_names = [
+                        side for side, team in teams
+                        if isinstance(team, str)
+                        and normalize_text(team).split()[-1] in first.split()[:8]
+                    ]
+                    active_side = first_names[0] if len(first_names) == 1 else None
+                # Em um mesmo parágrafo o atleta pode ser mencionado na frase
+                # seguinte ("O Grêmio tem dúvidas. Wallace fraturou o nariz").
+                # Só herdar contexto quando um único clube foi estabelecido.
+                if active_side is None:
+                    continue
+                # Sem jogador/técnico identificado, não transformar chamada
+                # genérica de "desfalques" em informação de elenco.
+                people = re.findall(
+                    r"(?<!\w)[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]+(?:\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]+){0,2}",
+                    value,
+                )
+                if not any(name not in {"O", "A", "No", "Na", "Em", "Os", "As"} for name in people):
+                    continue
+                key = normalize_text(value)
+                if key not in seen[active_side]:
+                    seen[active_side].add(key)
+                    collected[active_side].append((value, source, sentence))
 
     claims: list[dict[str, Any]] = []
     for side in ("home", "away"):
