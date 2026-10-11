@@ -675,6 +675,8 @@ def extract_stadium_requirement(
 ) -> dict[str, Any]:
     claims: list[dict[str, Any]] = []
     for source in eligible_sources(requirement):
+        if not source_current_for_match(source, match_context):
+            continue
         corpus = source_corpus(source)
         if not corpus or not context_mentions_match(corpus, match_context, config):
             continue
@@ -750,6 +752,8 @@ def extract_transmission_requirement(
     )
     claims: list[dict[str, Any]] = []
     for source in eligible_sources(requirement):
+        if not source_current_for_match(source, match_context):
+            continue
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
@@ -803,6 +807,8 @@ def extract_officiating_requirement(
 ) -> dict[str, Any]:
     claims: list[dict[str, Any]] = []
     for source in eligible_sources(requirement):
+        if not source_current_for_match(source, match_context):
+            continue
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
