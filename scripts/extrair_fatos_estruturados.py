@@ -961,9 +961,26 @@ def extract_optional_team_news_claims(
             active_side = None
             for sentence in re.split(r"(?<=[.!?])\s+", segment):
                 value = clean_value(sentence, max_chars=360)
+                folded = normalize_text(value)
+                # Resolver a equipe ANTES de filtrar por desfalque: manchetes
+                # podem abrir o parágrafo ("O Flamengo terá reforços") e os
+                # nomes dos jogadores aparecem apenas nas frases seguintes.
+                mentioned = []
+                for side, team in teams:
+                    if not isinstance(team, str) or not relaxed_mentions_team(value, team, config):
+                        continue
+                    identifier = normalize_text(team).split()[-1]
+                    position = folded.find(identifier)
+                    if position >= 0:
+                        mentioned.append((position, side))
+                if mentioned:
+                    mentioned.sort()
+                    if len(mentioned) == 1 or mentioned[0][0] < mentioned[1][0]:
+                        active_side = mentioned[0][1]
+                    else:
+                        active_side = None
                 if len(value.split()) < 5:
                     continue
-                folded = normalize_text(value)
                 if re.search(
                     r"(?i)\b(?:n[aã]o\s+(?:h[aá]|tem|existem|foram)\s+(?:confirma[cç][oõ]es|informa[cç][oõ]es)|"
                     r"ainda\s+n[aã]o\s+foi\s+divulgad|"
@@ -987,22 +1004,6 @@ def extract_optional_team_news_claims(
                     continue
                 if not any(re.search(pattern, folded, flags=re.IGNORECASE) for pattern in TEAM_NEWS_PATTERNS):
                     continue
-                explicit_sides = [
-                    side for side, team in teams
-                    if isinstance(team, str) and relaxed_mentions_team(value, team, config)
-                ]
-                if len(explicit_sides) == 1:
-                    active_side = explicit_sides[0]
-                elif len(explicit_sides) > 1:
-                    # Não atribuir a mesma notícia a ambos os clubes quando
-                    # um é só o adversário citado no título ou na frase.
-                    first = normalize_text(value[:90])
-                    first_names = [
-                        side for side, team in teams
-                        if isinstance(team, str)
-                        and normalize_text(team).split()[-1] in first.split()[:8]
-                    ]
-                    active_side = first_names[0] if len(first_names) == 1 else None
                 # Em um mesmo parágrafo o atleta pode ser mencionado na frase
                 # seguinte ("O Grêmio tem dúvidas. Wallace fraturou o nariz").
                 # Só herdar contexto quando um único clube foi estabelecido.
