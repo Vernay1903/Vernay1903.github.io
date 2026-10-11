@@ -47,6 +47,22 @@ def main():
     )
     bad_palmeiras = f"<p>{repetitive}</p><p>{repetitive}</p>"
     assert quality.draft_quality_errors(bad_palmeiras, shallow), "texto com paragrafo duplicado passou"
+    dates=(
+      "<p><strong>Contexto do confronto</strong></p>"
+      "<p>Em 30 de agosto o mandante empatou; em 6 de setembro venceu;"
+      " em 12 de setembro também venceu, em 20 de setembro empatou.</p>"
+      "<p><strong>Como chega o mandante</strong></p>"
+      "<p>No dia 30 de agosto empatou; em 6 de setembro venceu;"
+      " em 12 de setembro também venceu e em 20 de setembro empatou.</p>"
+    )
+    assert quality.redundant_recent_calendar_errors(dates), "recopiar cinco resultados deveria falhar"
+    generic_close=(
+       "<p><strong>Como chega o mandante</strong></p>"
+       "<p>O jogador retorna depois de suspensão.</p>"
+       "<p><strong>O que está em jogo no duelo</strong></p>"
+       "<p>Os times chegam de cinco jogos sem derrota e a bola rola no horário citado.</p>"
+    )
+    assert quality.unsupported_stakes_closing_errors(generic_close, {"facts_by_requirement":[]}), "desfecho vazio passa indevidamente"
     assert "saiba mais" not in quality.fold(reference)
     print("OK: modelo LDU aprovado; previa fragmentada e repeticao sintetica bloqueadas; profundidade obrigatoria.")
 

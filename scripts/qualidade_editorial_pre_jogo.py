@@ -166,6 +166,34 @@ ARTIFICIAL = (
     r"\bno recorte considerado\b",
 )
 
+def redundant_recent_calendar_errors(body_html: str) -> list[str]:
+    """Detecta o calendário recente copiado na abertura e novamente na análise."""
+    normalized=fold(body_html)
+    matches=re.findall(
+        r"\b\d{1,2} de (?:janeiro|fevereiro|marco|abril|maio|junho|"
+        r"julho|agosto|setembro|outubro|novembro|dezembro)\b",
+        normalized,
+    )
+    duplicates={key for key in matches if matches.count(key)>1}
+    if len(duplicates)>=3:
+        return ["resultados recentes recontados em mais de uma seção; datas de jogos repetidas"]
+    return []
+
+
+def unsupported_stakes_closing_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
+    headings=[fold(h) for h in HEADINGS.findall(body_html)]
+    if any(h.startswith(("o que esta em jogo","desdobramentos da rodada")) for h in headings):
+        verified=facts(contract)
+        real_stakes=any(
+            k.startswith(("home_stakes_", "away_stakes_", "stakes_", "qualification_"))
+            or k in {"standings_context","competitive_context","qualification_scenario"}
+            for k in verified
+        )
+        if not real_stakes:
+            return ["seção O que está em jogo repete serviço/placares sem fato competitivo comprovado"]
+    return []
+
+
 def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     """Trava extra, executada somente no lote automático antes da publicação."""
     errors: list[str] = []
@@ -185,4 +213,6 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
         errors.append("serviço repetido em seções diferentes")
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(near_duplicate_errors(body_html))
+    errors.extend(redundant_recent_calendar_errors(body_html))
+    errors.extend(unsupported_stakes_closing_errors(body_html, contract))
     return list(dict.fromkeys(errors))
