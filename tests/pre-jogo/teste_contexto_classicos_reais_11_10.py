@@ -17,6 +17,7 @@ from scripts import qualidade_editorial_pre_jogo as quality
 from scripts import validar_rascunho_pre_jogo as validate
 from scripts.contexto_classicos_pre_jogo import find_rivalry
 from scripts.planejar_coleta_fontes import query_variants
+from scripts import preparar_redacao_pre_jogo as draft_prep
 
 config=json.loads((ROOT/"config/pre-jogo.json").read_text(encoding="utf-8"))
 fixtures=[
@@ -65,6 +66,43 @@ def main():
         misplaced="<p>Os dois times se enfrentam hoje.</p><p><strong>"+nickname+": contexto</strong></p><p>O confronto será disputado.</p>"
         assert quality.rivalry_context_errors(misplaced,contract)
     assert not find_rivalry("Liverpool","Everton")["name"] == find_rivalry("Liverpool","Manchester City")["name"]
+    # O gerador do contrato precisa escolher notícias atuais antes dos placares.
+    synthetic={
+       "slug":"flamengo-fluminense-fc-brasileirao-2026-transmissao-horario-escalacoes.html",
+       "title":"Flamengo x Fluminense pelo Brasileirão: horário",
+       "excerpt":"Fla-Flu no Maracanã.",
+       "date":"11/10/2026",
+       "match_context":{
+           "home":"Flamengo","away":"Fluminense FC",
+           "display_home":"Flamengo","display_away":"Fluminense",
+           "editorial_rivalry":find_rivalry("Flamengo","Fluminense"),
+           "competition":"Brasileirão","competition_slug":"brasileirao",
+       },
+       "facts_by_requirement":[
+           {"id":"facts","status":"verified","facts":[
+              {"field":"home_team_news_1","text":"Notícia verificada: o jogador A retorna depois de cumprir suspensão."},
+              {"field":"away_team_news_1","text":"Notícia verificada: o jogador B fica fora por lesão no tornozelo."},
+              {"field":"home_recent_matches","text":"Placar 1 x 0."},
+              {"field":"away_recent_matches","text":"Placar 2 x 0."},
+           ]}
+       ],
+       "competition_internal_link":{
+           "url":"https://cortedosesportes.com.br/brasileirao-historia-campeoes.html",
+           "anchor_hint":"história do Brasileirão",
+           "competition_slug":"brasileirao",
+       },
+       "ready_for_drafting":True,
+       "ready_for_html":False,
+       "publication_unlocked":False,
+       "provenance_available_to_drafter":False,
+    }
+    contract=draft_prep.build_contract(synthetic,config=config)
+    hierarchy=contract["editorial_fact_hierarchy"]
+    assert hierarchy["opening_hook_fields"]==[
+       "home_team_news_1","away_team_news_1"],hierarchy
+    assert "home_recent_matches" not in hierarchy["opening_hook_fields"]
+    assert contract["editorial_storyline"]["rivalry_name"]=="Fla-Flu"
+    assert contract["editorial_section_plan"][0].startswith("Fla-Flu")
     assert find_rivalry("Flamengo","Palmeiras") is None
     print("OK: quatro partidas reais de 11/10 bloqueadas por falta de rivalidade;")
     print("OK: texto contextual passa e apelido jogado no subtítulo não burla a abertura.")

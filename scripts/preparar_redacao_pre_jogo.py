@@ -155,9 +155,38 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     ))
     narrative_mode = (
         "preparacao_com_elenco" if has_team_news else
+        "pauta_competitiva" if any(k.startswith(("home_stakes_", "away_stakes_")) for k in verified_facts) else
         "historico_factual_de_resultados" if has_results else
         "fatos_confirmados_da_partida"
     )
+    # Curadoria determinística: é a notícia verificada, não o placar médio,
+    # que define a abertura. Referenciar campos, sem duplicar texto/proveniência.
+    home_news_fields = sorted(k for k in verified_facts if k.startswith("home_team_news_"))
+    away_news_fields = sorted(k for k in verified_facts if k.startswith("away_team_news_"))
+    home_stakes_fields = sorted(k for k in verified_facts if k.startswith("home_stakes_"))
+    away_stakes_fields = sorted(k for k in verified_facts if k.startswith("away_stakes_"))
+    other_stakes = sorted(k for k in verified_facts
+                          if k.startswith(("stakes_", "qualification_"))
+                          or k in {"competitive_context", "standings_context", "qualification_scenario"})
+    hook_fields = (
+        (home_news_fields[:1] + away_news_fields[:1])
+        or (home_stakes_fields[:1] + away_stakes_fields[:1])
+        or other_stakes[:1]
+    )
+    editorial_fact_hierarchy = {
+        "opening_hook_fields": hook_fields,
+        "home_specific_preparation_fields": home_news_fields[:3] + home_stakes_fields[:2],
+        "away_specific_preparation_fields": away_news_fields[:3] + away_stakes_fields[:2],
+        "match_stakes_fields": other_stakes[:2],
+        "background_only_fields": ["home_recent_matches", "away_recent_matches",
+                                  "home_recent_form", "away_recent_form",
+                                  "h2h_games", "h2h_home_wins", "h2h_away_wins", "h2h_draws"],
+        "editorial_rule": (
+            "Começar pela notícia atual priorizada e pelas características específicas da partida. "
+            "Usar a cronologia de resultados apenas como apoio, nunca como enredo principal. "
+            "Cada bloco traz fatos diferentes, sem duplicar a abertura."
+        ),
+    }
 
     popular_home = str(context.get("display_home") or context.get("home") or "mandante")
     popular_away = str(context.get("display_away") or context.get("away") or "visitante")
@@ -183,6 +212,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     # Cabe ao redator desenvolver apenas fatos que existam no contrato.
     contract = {
         "editorial_section_plan": section_plan,
+        "editorial_fact_hierarchy": editorial_fact_hierarchy,
         "editorial_storyline": (
             {
                 "rivalry_name": rivalry["name"],
@@ -265,10 +295,12 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "editorial_depth": (
                 "Reproduzir a ESTRUTURA jornalística aprovada com os fatos da partida vigente. "
                 "Se editorial_narrative_mode=preparacao_com_elenco, inserir notícias de elenco verificadas "
-                "nas seções de cada clube. Se editorial_narrative_mode=historico_factual_de_resultados, "
-                "construir narrativa factual em cima dos dez jogos recentes individualizados (datas, "
-                "placares e adversários), separar casa/fora apenas quando explicitamente mostrado nos "
-                "placares e confrontar sequências verificáveis; o retrospecto direto vai em um único "
+                "nas seções de cada clube. Em qualquer modo, seguir editorial_fact_hierarchy: "
+                "notícia de preparação atual e contexto competitivo antes de forma recente. "
+                "Os dez placares recentes NUNCA são enredo principal, nem justificam 700 palavras; "
+                "apenas ilustram fatos esportivos, sem virar cronologia maçante. "
+                "Separar casa/fora apenas quando explicitamente mostrado nos placares "
+                "e tratar o retrospecto direto em um único "
                 "bloco proporcional à amostra. Não transformar os dez placares em dez parágrafos iguais. "
                 "Nunca reutilizar informações da matéria LDU x Palmeiras como se fossem deste jogo. "
                 "Não inferir estilo de jogo, posse, pressão, transições, estratégia, motivação, comportamento "
