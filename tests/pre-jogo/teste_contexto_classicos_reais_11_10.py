@@ -33,10 +33,14 @@ fixtures=[
      "liverpool-fc-manchester-city-premier-league-2026-transmissao-horario-escalacoes.html"),
 ]
 
-def article(html):
-    m=re.search(r'<article id="articleBody"[^>]*>(.*?)</article>',html,re.S)
-    assert m, "template sem <article>"
-    return m.group(1)
+# A fotografia editorial de 11/10 fica imutável: o editor pode corrigir
+# futuramente os HTMLs publicados sem quebrar os testes da automação.
+BAD_OPENINGS={
+    "Gre-Nal":"<p>Grêmio e Internacional se enfrentam neste domingo, 11 de outubro, pelo Brasileirão. A partida será disputada na Arena do Grêmio. O mandante não venceu seus cinco últimos jogos, enquanto o visitante alternou triunfos e derrotas.</p><p><strong>Como chega o Grêmio</strong></p><p>O Grêmio não venceu nenhum dos últimos cinco jogos.</p>",
+    "Fla-Flu":"<p><strong>Contexto do confronto</strong></p><p>Flamengo e Fluminense se enfrentam neste domingo, 11 de outubro, pelo Brasileirão. A partida está marcada para as 17h30, no Maracanã.</p>",
+    "Derby Paulista":"<p>Palmeiras e Corinthians se enfrentam neste domingo, 11 de outubro, às 17h30, pelo Brasileirão. O duelo reúne equipes em momentos distintos dos últimos cinco compromissos.</p><p><strong>Contexto do confronto</strong></p><p>Os últimos resultados mostram um contraste estatístico.</p>",
+    "Liverpool x Manchester City":"<p>Liverpool e Manchester City se enfrentam neste domingo, 11 de outubro de 2026, pela Premier League. O Liverpool chega invicto nos cinco compromissos mais recentes, enquanto o visitante venceu todos.</p><p><strong>Como chega o Liverpool</strong></p><p>O Liverpool soma dois triunfos e três empates.</p>",
+}
 
 def main():
     for home,away,nickname,slug in fixtures:
@@ -51,7 +55,7 @@ def main():
         queries=query_variants("probable_lineups_and_coaches",record["match_context"],"11/10/2026")
         assert any(nickname in item for item in queries),(nickname,queries)
         assert any("desfalques" in item for item in queries)
-        body=article((ROOT/slug).read_text(encoding="utf-8"))
+        body=BAD_OPENINGS[nickname]
         contract={"match_context":record["match_context"],"facts_by_requirement":[]}
         problems=quality.rivalry_context_errors(body,contract)
         assert problems,(nickname,"o texto reprovado não pode ser aprovado")
@@ -83,6 +87,7 @@ def main():
        "facts_by_requirement":[
            {"id":"facts","status":"verified","facts":[
               {"field":"home_team_news_1","text":"Notícia verificada: o jogador A retorna depois de cumprir suspensão."},
+              {"field":"home_team_news_2","text":"O treinador confirmou que o lateral C voltou depois de uma lesão no tornozelo e está disponível."},
               {"field":"away_team_news_1","text":"Notícia verificada: o jogador B fica fora por lesão no tornozelo."},
               {"field":"home_recent_matches","text":"Placar 1 x 0."},
               {"field":"away_recent_matches","text":"Placar 2 x 0."},
@@ -105,6 +110,7 @@ def main():
     assert "home_recent_matches" not in hierarchy["opening_hook_fields"]
     assert contract["editorial_storyline"]["rivalry_name"]=="Fla-Flu"
     assert contract["editorial_section_plan"][0].startswith("Fla-Flu")
+    assert not quality.source_depth_errors(synthetic), "teste de reuso deve partir de pauta jornalística suficiente"
     assert contract["editorial_quality_revision"]=="classicos-contextuais-2026-10-11-v1"
     # Recuperação não pode reutilizar um contrato antigo sem Fla-Flu / sem pauta.
     with TemporaryDirectory() as tmp:
