@@ -33,8 +33,9 @@ def main():
     reqs["probable_lineups_and_coaches"]={"id":"probable_lineups_and_coaches","status":"unavailable_after_check","facts":[]}
     title2,excerpt2=pack.adjusted_service_headline(article,reqs,config=config)
     assert "transmissão" not in title2.casefold() and "escala" not in title2.casefold()
-    assert "horário" in title2.casefold() and "informações do jogo" in title2.casefold()
-    assert "informações do confronto" in excerpt2.casefold()
+    assert title2 == "Santos FC x Flamengo pelo Brasileirão: horário", title2
+    assert "informações do jogo" not in title2.casefold()
+    assert "informações do confronto" not in excerpt2.casefold()
 
     gap={
       "id":"transmission","status":"pending","facts":[],"sources":[],

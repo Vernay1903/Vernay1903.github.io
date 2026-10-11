@@ -62,6 +62,10 @@ def test():
     assert flamengo["title"].startswith("Flamengo x Fluminense ")
     assert flamengo["match_context"]["home"]=="Flamengo"
     assert flamengo["match_context"]["away"]=="Fluminense FC"
+    from scripts import validar_rascunho_pre_jogo as review
+    formal={"match_context":{"home":"Liverpool FC","display_home":"Liverpool","away":"Manchester City","display_away":"Manchester City"},"facts_by_requirement":[]}
+    assert review.editorial_style_errors("<p>O Liverpool FC jogará em casa.</p>",formal)
+    assert review.editorial_style_errors("<p>O Liverpool jogará em casa.</p>",formal)==[]
     print("OK: nomes populares em títulos; serviços apenas se verificados; pesquisa com nomes originais.")
 
 

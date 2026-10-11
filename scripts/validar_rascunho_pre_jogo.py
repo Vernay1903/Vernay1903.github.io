@@ -93,6 +93,22 @@ def editorial_style_errors(body: str, contract: dict[str, Any]) -> list[str]:
     )
     if any(re.search(pattern, body_folded) for pattern in robotic_patterns):
         errors.append("linguagem mecânica/de banco de dados proibida pelo modelo editorial")
+    # Mesmo quando a fonte usa o nome oficial, o corpo deve manter a forma
+    # jornalística escolhida pelo editor, tal como Liverpool ou Corinthians.
+    context = contract.get("match_context")
+    if isinstance(context, dict):
+        for side in ("home", "away"):
+            official = context.get(side)
+            common = context.get("display_" + side)
+            if not isinstance(official, str) or not isinstance(common, str):
+                continue
+            official_normalized = folded_text(official)
+            common_normalized = folded_text(common)
+            if official_normalized and official_normalized != common_normalized and re.search(
+                r"\b" + re.escape(official_normalized) + r"\b", body_folded
+            ):
+                errors.append(f"nome formal de clube no corpo em vez de {common}")
+
 
     fact_fields: set[str] = set()
     fact_texts: list[str] = []
