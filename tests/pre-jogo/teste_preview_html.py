@@ -185,6 +185,42 @@ def no_h2h_regression(contract: dict) -> None:
     assert metadata["third_ad_section"]
 
 
+
+def actual_opening_heading_regression(contract: dict) -> None:
+    """Regressão dos rascunhos reais de 11/10: abertura nomeia os dois times."""
+    local = deepcopy(contract)
+    local["match_context"]["home"] = "Grêmio"
+    local["match_context"]["away"] = "SC Internacional"
+    local["match_context"]["display_home"] = "Grêmio"
+    local["match_context"]["display_away"] = "Internacional"
+    for group in local["facts_by_requirement"]:
+        if group.get("id") == "recent_form_both_teams":
+            group["facts"] = [
+                {"field":"home_recent_form","text":"Grêmio venceu dois dos últimos cinco jogos."},
+                {"field":"away_recent_form","text":"Internacional venceu três dos últimos cinco jogos."},
+            ]
+    body = "\n".join([
+        "<p><strong>Grêmio x Internacional pelo Brasileirão</strong></p>",
+        "<p>Grêmio venceu dois dos últimos cinco jogos. Internacional venceu três dos últimos cinco jogos. "
+        "Os dois times se enfrentam no clássico deste domingo.</p>",
+        "<p><strong>Como chega o Grêmio</strong></p>",
+        "<p>Grêmio venceu dois dos últimos cinco jogos e empatou outros dois; o time jogará em casa.</p>",
+        "<p><strong>Como chega o Internacional</strong></p>",
+        "<p>Internacional venceu três dos últimos cinco jogos; o clube será o visitante da rodada.</p>",
+        "<p><strong>Retrospecto no Brasileirão</strong></p>",
+        "<p>O retrospecto entre os times na competição tem vitórias e empates nos confrontos anteriores.</p>",
+        "<p><strong>Horário e local da partida</strong></p>",
+        "<p>O jogo está marcado para o estádio e horário informados no contrato de pesquisa.</p>",
+        "<p><strong>O que está em jogo</strong></p>",
+        "<p>Os times disputarão pontos na competição, de acordo com os fatos verificados.</p>",
+    ])
+    points, metadata = preview.placement_points(body, local)
+    assert len(set(points)) == 3 and points == sorted(points), (points, metadata)
+    assert metadata["recent_form_sections"] == [
+        "como chega o gremio", "como chega o internacional",
+    ], metadata
+    assert points[0] < points[1] < points[2]
+
 def main() -> None:
     contract = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
     body = body_fixture(contract)
@@ -226,6 +262,7 @@ def main() -> None:
 
     collision_regression(contract)
     first_heading_form_regression(contract)
+    actual_opening_heading_regression(contract)
     no_h2h_regression(contract)
 
     # A mesma expressão do confronto aparece no H1 e no excerpt. A posição da

@@ -288,21 +288,31 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
         minimum = 2 if len(wanted) <= 4 else 3
         matched: tuple[int, int] | None = None
         best_score = -1
+        # Primeiro prefira a seção editorial do próprio clube; uma abertura
+        # "Grêmio x Internacional" cita ambos e não deve virar forma dos dois.
+        form_markers = (
+            "como chega", "momento", "forma recente", "fase atual",
+            "desempenho recente", "sequencia", "ultimos jogos",
+        )
+        dedicated = [
+            int(record["index"]) for record in records
+            if (h2h_index is None or int(record["index"]) < h2h_index)
+            and any(marker in str(record["heading"]) for marker in form_markers)
+            and isinstance(team, str) and team.strip()
+            and record_mentions_team({"text": record["heading"]}, team)
+            and len(WORD_RE.findall(str(record.get("body_text", "")))) >= 6
+        ]
         for record in records:
             index = int(record["index"])
             if h2h_index is not None and index >= h2h_index:
+                continue
+            if dedicated and index not in dedicated:
                 continue
             if isinstance(team, str) and team.strip() and not record_mentions_team(record, team):
                 continue
             score = len(wanted & token_set(str(record["text"])))
             best_score = max(best_score, score)
-            form_heading = any(
-                marker in str(record["heading"])
-                for marker in (
-                    "como chega", "momento", "forma recente", "fase atual",
-                    "desempenho recente", "sequencia", "ultimos jogos",
-                )
-            )
+            form_heading = any(marker in str(record["heading"]) for marker in form_markers)
             heading_mentions_team = bool(
                 isinstance(team, str)
                 and team.strip()
@@ -359,6 +369,23 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
         third_index = candidates[0]
         third_point = int(records[third_index]["end"])
         third_heading = records[third_index]["heading"]
+
+    # A primeira seção pode, legitimamente, trazer a forma dos dois clubes.
+    # Nessa situação, posiciona o anúncio inicial após a abertura completa,
+    # nunca cola dois anúncios no mesmo ponto editorial.
+    if first_point == second_point:
+        introductory_end = int(records[0]["start"])
+        if introductory_end > 0 and body[:introductory_end].strip():
+            first_point = introductory_end
+        else:
+            # Com o primeiro subtítulo no início, aceita apenas uma quebra de
+            # parágrafo REAL dentro da primeira seção, sem alterar o texto.
+            paragraph_ends = [
+                m.end() for m in re.finditer(r"</p\s*>", body[:second_point], re.I)
+                if m.end() > body.find("</strong>") + len("</strong>")
+            ]
+            if paragraph_ends:
+                first_point = paragraph_ends[0]
 
     points = [first_point, second_point, third_point]
     if len(set(points)) != 3 or points != sorted(points):

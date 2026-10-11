@@ -31,6 +31,7 @@ if str(ROOT) not in sys.path:
 
 from scripts import preparar_redacao_pre_jogo as prepare  # noqa: E402
 from scripts import validar_rascunho_pre_jogo as validate  # noqa: E402
+from scripts import qualidade_editorial_pre_jogo as editorial_quality  # noqa: E402
 
 PROVIDER_CONFIG_PATH = ROOT / "config" / "redacao-pre-jogo.json"
 SITE_CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
@@ -187,12 +188,15 @@ def system_instructions() -> str:
         "Nesse caso é proibido dizer que não há provável escalação; use no máximo uma ressalva curta de que as formações são prováveis. "
         "Se o retrospecto tiver só um ou dois jogos, trate-o em um bloco curto e não transforme a amostra em história ampla ou rivalidade. "
         "Só crie Onde assistir quando houver transmissor confirmado; nesse caso escreva explicitamente cada emissora/plataforma. Caso contrário, não abra essa seção. "
-        "Não recapitule serviço, resultados, escalações e retrospecto no encerramento. Cada parágrafo precisa trazer informação nova comprovada. " "Máximo oito subtítulos informativos; proíba Resumo do encontro, Dados do confronto, Últimas linhas antes da partida, Informações principais, Serviço do jogo ou Fechamento. " "Uma escalação completa só pode aparecer dentro do bloco Prováveis escalações. " "Onde assistir deve ser curto, com emissoras confirmadas e horário, sem repetir data/estádio em várias seções. " "Não repita jogos, balanços ou fichas de serviço com palavras diferentes. "
+        "Não recapitule serviço, resultados, escalações e retrospecto no encerramento. Cada parágrafo precisa trazer informação nova comprovada. "
+        "São proibidos os subtítulos Fechamento, Resumo do encontro, Dados do confronto, "
+        "Informações principais, Serviço do jogo, Últimas linhas antes da partida; use "
+        "apenas seção com informação verificável, sem um resumo artificial. " "Máximo oito subtítulos informativos; proíba Resumo do encontro, Dados do confronto, Últimas linhas antes da partida, Informações principais, Serviço do jogo ou Fechamento. " "Uma escalação completa só pode aparecer dentro do bloco Prováveis escalações. " "Onde assistir deve ser curto, com emissoras confirmadas e horário, sem repetir data/estádio em várias seções. " "Não repita jogos, balanços ou fichas de serviço com palavras diferentes. "
         "Insira exatamente uma vez o link interno aprovado, com âncora textual natural, e não crie nenhum outro link. "
         "É expressamente proibido citar fontes, sites, portais, veículos, consultas ou processos internos. "
         "Declarar um campo em fact_fields_used não basta: todo campo de required_fact_fields deve aparecer de forma visível e inequívoca no body_html. "
         "Redija entre 700 e 900 palavras APENAS quando os fatos fornecidos sustentarem esse desenvolvimento, sem recapitulá-los. O mínimo editorial é 700. "
-        "Antes de escrever, planeje 760 a 830 palavras: abertura factual curta (80 a 100), contexto objetivo e serviço (80 a 100), "
+        "Antes de escrever, planeje 825 a 875 palavras: abertura factual curta (80 a 100), contexto objetivo e serviço (80 a 100), "
         "Como chega o mandante (190 a 220), Como chega o visitante (190 a 220), retrospecto da competição (90 a 115) e "
         "desdobramento verificado ou informações práticas distintas (60 a 90). Distribua os fatos de cada jogo recente entre os blocos "
         "dos respectivos clubes, sem recitar dez placares como uma tabela nem repetir análises. Quando o contrato trouxer notícias de "
@@ -217,7 +221,7 @@ def user_payload(contract: dict[str, Any]) -> str:
         "Se houver transmission, cada emissora/plataforma confirmada deve aparecer explicitamente em Onde assistir; caso contrário, omita Onde assistir por completo. "
         "Se houver home_lineup e away_lineup, mostre todos os jogadores e técnicos; se faltarem, não crie seção Prováveis escalações e não explique a ausência. "
         "Alvo editorial: 700 a 900 palavras sem repetição, preenchimento ou inferência; mínimo absoluto de 700, respeitando a densidade real dos fatos. "
-        "Planeje 760–830 palavras, com desenvolvimento maior de Como chega cada equipe por meio dos cinco resultados individuais "
+        "Planeje 825–875 palavras visíveis (não conte tags HTML, título nem JSON), com desenvolvimento maior de Como chega cada equipe por meio dos cinco resultados individuais "
         "e notícias verificadas do elenco quando presentes. Nunca inclua um bloco sem fatos nem substitua detalhes por generalidades. "
         "Antes de finalizar, confira: cinco <p><strong>subtítulos</strong></p>, lista <ul><li>, "
         "exatamente um <a href=...> com competition_internal_link.url e todos os fatos obrigatórios no corpo.\n\n"
@@ -325,7 +329,7 @@ def build_revision_request(
     minimum = int(contract.get("output_contract", {}).get("minimum_words", 700))
     short = (
         f" A primeira tentativa ficou em {count} palavras, abaixo do mínimo de {minimum}. "
-        "Planeje cerca de 780 palavras e distribua o desenvolvimento entre os blocos: "
+        "Planeje entre 825 e 875 palavras e distribua o desenvolvimento entre os blocos: "
         "contexto e abertura (150), cada equipe com fatos próprios (200 cada), "
         "retrospecto delimitado (120) e informações práticas/fechamento factual (100). "
         "Detalhe datas, adversários, resultados e notícias concretas AINDA não contextualizados, "
@@ -372,6 +376,16 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
                 try:
                     draft = parse_draft(response)
                     validated, errors = validate.validate_draft(draft, contract, config=site_config)
+                    if not errors:
+                        # Não desperdiçar matéria tecnicamente válida que a
+                        # trava narrativa rejeitaria depois: tentar corrigir
+                        # na segunda chamada, ANTES de gravar como aprovada.
+                        errors = editorial_quality.draft_quality_errors(
+                            validated["body_html"], contract,
+                        )
+                        if errors:
+                            validated["draft_validated"] = False
+                            validated["draft_validation_errors"] = errors
                 except SystemExit:
                     errors = ["Resposta sem JSON editorial completo e utilizável"]
                     retryable = not bool(response.get("error"))

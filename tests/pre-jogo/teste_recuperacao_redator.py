@@ -25,11 +25,17 @@ def main():
                 'output': [{'type': 'message', 'content': [{'type': 'output_text', 'text': json.dumps(body)}]}]}
     good = response(draft)
     bad = response({**draft, 'body_html': '<p>Texto incompleto sem estrutura.</p>'})
+    quality_bad = response({**draft, 'body_html': draft["body_html"].replace(
+        "<p><strong>O que está em jogo</strong></p>",
+        "<p><strong>Fechamento</strong></p>",
+        1,
+    )})
+    assert "Fechamento" in quality_bad["output"][0]["content"][0]["text"]
     incomplete = {'status': 'incomplete', 'incomplete_details': {'reason': 'max_output_tokens'},
                   'usage': {'input_tokens': 100, 'output_tokens': 6000}, 'output': []}
     with tempfile.TemporaryDirectory() as tmp:
         audit = Path(tmp) / 'attempts.json'
-        for initial in (bad, incomplete):
+        for initial in (bad, incomplete, quality_bad):
             with patch.object(writer, 'post_json', side_effect=[initial, good]) as api:
                 _, validated, attempts = writer.generate_validated_draft(
                     contract, cfg, site, api_key='fake', audit_path=audit)
