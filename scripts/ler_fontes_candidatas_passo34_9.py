@@ -734,6 +734,7 @@ def _search_and_check(
     if not queries:
         return []
 
+    cross_stage_lineups: list[dict[str, Any]] = []
     for source_type, domains in _source_stages_for_team(
         requirement_id, context=context, config=config, recent_team=recent_team,
     ):
@@ -803,11 +804,16 @@ def _search_and_check(
                         continue
                     seen_domains.add(domain)
                 selected.append(checked)
-                if len(selected) >= max_sources:
-                    return selected
+                if len(selected) + len(cross_stage_lineups) >= max_sources:
+                    return _dedupe([*cross_stage_lineups, *selected])[:max_sources]
         if selected:
+            if requirement_id == "probable_lineups_and_coaches":
+                cross_stage_lineups.extend(selected)
+                # Fontes oficiais raramente oferecem provável XI de ambos os
+                # clubes. Complementar com veículos, sem assumir completude.
+                continue
             return selected
-    return []
+    return _dedupe(cross_stage_lineups)[:max_sources]
 
 
 def _select_existing(
