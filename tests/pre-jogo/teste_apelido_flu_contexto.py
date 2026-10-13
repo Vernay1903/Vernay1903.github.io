@@ -12,7 +12,9 @@ CTX={"home":"Fluminense","away":"Palmeiras","competition_slug":"libertadores",
      "kickoff_brasilia":"2026-10-14T21:30:00-03:00"}
 
 def item(title, sentence, url):
-    return {"url":url, "title":title, "source_type":"major_sports_media",
+    return {"url":url, "title":title, "publisher":"ge.globo.com",
+            "source_type":"major_sports_media",
+            "checked_at":"2026-10-13T10:20:00-03:00",
             "published_hint":"Sun, 11 Oct 2026 15:00:00 GMT",
             "content_checked":True,"eligible_for_factual_validation":True,
             "editorial_target_side":"home","editorial_target_team":"Fluminense",
