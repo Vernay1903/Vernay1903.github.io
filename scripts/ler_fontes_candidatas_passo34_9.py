@@ -628,6 +628,13 @@ def _targeted_queries(
             f'"{team}" "{competition}" match preview {year}',
             f'"{team}" latest results league standings {year}',
         ]
+    if requirement_id == "probable_lineups_and_coaches":
+        return [
+            f'"{home}" "{away}" prováveis escalações técnicos {year}',
+            f'"{home}" "{away}" {year} times prováveis escalação',
+            f'"{home}" "{away}" {year} probable lineups coaches',
+            f'"{home}" "{away}" {year} alineaciones probables entrenadores',
+        ]
     if requirement_id == "stakes_and_qualification_scenarios_when_applicable":
         return [
             f'"{home}" "{away}" "{competition}" {year} semifinal jogo de ida',
@@ -727,6 +734,7 @@ def _search_and_check(
     if not queries:
         return []
 
+    cross_stage_lineups: list[dict[str, Any]] = []
     for source_type, domains in _source_stages_for_team(
         requirement_id, context=context, config=config, recent_team=recent_team,
     ):
@@ -790,17 +798,22 @@ def _search_and_check(
                 recent_team=recent_team,
             )
             if checked is not None:
-                if requirement_id == EDITORIAL_RESEARCH_ID and max_sources > 1:
+                if requirement_id in {EDITORIAL_RESEARCH_ID, "probable_lineups_and_coaches"} and max_sources > 1:
                     domain = str(checked.get("domain") or checked.get("publisher") or "")
                     if domain in seen_domains:
                         continue
                     seen_domains.add(domain)
                 selected.append(checked)
-                if len(selected) >= max_sources:
-                    return selected
+                if len(selected) + len(cross_stage_lineups) >= max_sources:
+                    return _dedupe([*cross_stage_lineups, *selected])[:max_sources]
         if selected:
+            if requirement_id == "probable_lineups_and_coaches":
+                cross_stage_lineups.extend(selected)
+                # Fontes oficiais raramente oferecem provável XI de ambos os
+                # clubes. Complementar com veículos, sem assumir completude.
+                continue
             return selected
-    return []
+    return _dedupe(cross_stage_lineups)[:max_sources]
 
 
 def _select_existing(
@@ -846,20 +859,27 @@ def _ensure_allowed_gap_check(
         item for item in req.get("source_candidates", [])
         if isinstance(item, dict) and base.eligible_checked_source(item)
     ]
-    if existing:
+    req_id = str(req.get("id"))
+    if existing and req_id != "probable_lineups_and_coaches":
         return req
 
+    # Uma página de "palpite e escalações" pode trazer apenas UM técnico ou
+    # um XI incompleto. Antes de gerar uma lacuna obrigatória, consultar
+    # outras fontes independentes e combiná-las; não desistir na primeira.
     fresh = _search_and_check(
-        str(req.get("id")),
+        req_id,
         context=context,
         article_date=article_date,
         checked_at=checked_at,
         config=config,
+        max_sources=3 if req_id == "probable_lineups_and_coaches" else 1,
     )
-    if fresh:
-        req["source_candidates"] = fresh
+    combined = _dedupe([*existing, *fresh])
+    if combined:
+        req["source_candidates"] = combined
         req["ready_for_fact_extraction"] = True
         req["passo34_9_allowed_gap_check"] = True
+        req["passo34_9_extra_lineup_research_count"] = len(fresh)
     return req
 
 
