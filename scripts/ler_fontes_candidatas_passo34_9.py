@@ -665,6 +665,48 @@ def _targeted_queries(
     return []
 
 
+def _source_stages_for_team(
+    requirement_id: str,
+    *,
+    context: dict[str, Any],
+    config: dict[str, Any],
+    recent_team: str | None,
+) -> list[tuple[str, list[str]]]:
+    """A imprensa oficial deve ser consultada por CLUBE, não por confronto.
+
+    Buscar notícias de Roma em (asroma.com + realmadrid.com + uefa.com)
+    frequentemente retornava só Real Madrid. Uma fonte oficial de clube A
+    nunca substitui a investigação editorial de clube B.
+    """
+    stages = step34_8._allowed_stage_domains(context, config)
+    if requirement_id != EDITORIAL_RESEARCH_ID or not isinstance(recent_team, str):
+        return stages
+    official = (config.get("research", {}).get("discovery", {})
+                .get("official_domains", {}).get("clubs", {}))
+    if not isinstance(official, dict):
+        return stages
+    club = source_search.canonical_monitored_club(recent_team, config)
+    canonical = club.get("name") if isinstance(club, dict) else recent_team
+    domains = official.get(canonical, [])
+    if not isinstance(domains, list) or not domains:
+        normalized = source_search.normalize_text(recent_team)
+        domains = next((
+            values for name, values in official.items()
+            if source_search.normalize_text(str(name)) == normalized
+        ), [])
+    if not isinstance(domains, list) or not domains:
+        return stages
+    selected = list(dict.fromkeys(
+        str(domain).lower().strip() for domain in domains
+        if isinstance(domain, str) and domain.strip()
+    ))
+    if not selected:
+        return stages
+    return [("official", selected), *[
+        (kind, allowed) for kind, allowed in stages if kind != "official"
+    ]]
+
+
 def _search_and_check(
     requirement_id: str,
     *,
@@ -685,7 +727,9 @@ def _search_and_check(
     if not queries:
         return []
 
-    for source_type, domains in step34_8._allowed_stage_domains(context, config):
+    for source_type, domains in _source_stages_for_team(
+        requirement_id, context=context, config=config, recent_team=recent_team,
+    ):
         candidates: list[dict[str, Any]] = []
         seen: set[str] = set()
         for query in queries:
