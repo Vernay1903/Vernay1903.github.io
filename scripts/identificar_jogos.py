@@ -288,6 +288,15 @@ def identify(
             "away": away.strip(),
             "competition": competition.strip(),
             "competition_slug": competition_slug.strip(),
+            # A fase vem do provedor oficial do fixture, nunca da redação ou de suposição.
+            "competition_stage": (
+                fixture["provider_data"].get("stage")
+                if isinstance(fixture.get("provider_data"), dict) else None
+            ),
+            "competition_matchday": (
+                fixture["provider_data"].get("matchday")
+                if isinstance(fixture.get("provider_data"), dict) else None
+            ),
             "kickoff_brasilia": kickoff_local.isoformat(),
             "kickoff_time_brasilia": kickoff_local.strftime("%H:%M"),
             "status": fixture.get("status"),

@@ -95,14 +95,18 @@ def source_depth_errors(package: dict[str, Any]) -> list[str]:
     home = home_news + home_stakes
     away = away_news + away_stakes
     total = home + away + common_stakes
+    # Não exigir lesão ou suspensão para justificar uma matéria: times sem
+    # desfalques também podem render jornalismo substantivo. Três fatos
+    # competitivos *verificados*, com contexto de ambos os clubes, bastam.
+    # Placar agregado, H2H e serviço continuam excluídos da contagem.
     if home and away and len({fold(x) for x in total}) >= 3 and (
-        home_news or away_news
+        home_news or away_news or (home_stakes and away_stakes)
     ):
         return []
     return [
-        "profundidade editorial insuficiente: sem ao menos três fatos atuais "
-        "e específicos de preparação/contexto competitivo contemplando ambos os times. "
-        "Dez resultados recentes, H2H, escalações e serviço NÃO substituem reportagem."
+        "profundidade editorial insuficiente: faltam três fatos atuais específicos "
+        "e verificados, cobrindo os dois times e sua preparação ou situação competitiva. "
+        "Resultados, H2H, escalações e serviço NÃO substituem reportagem."
     ]
 
 def paragraphs(body_html: str) -> list[str]:

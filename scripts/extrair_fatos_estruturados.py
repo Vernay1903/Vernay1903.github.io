@@ -408,6 +408,8 @@ def resolve_allowed_gap(
     *,
     competition_slug: str,
     config: dict[str, Any],
+    competition_stage: str | None = None,
+    competition_matchday: int | None = None,
 ) -> dict[str, Any]:
     """Resolve só ausências que a política já permite, sem fabricar fatos."""
     result = deepcopy(requirement)
@@ -418,11 +420,26 @@ def resolve_allowed_gap(
     policy = config.get("research", {}).get("requirement_policy", {}).get(req_id, {})
     sources = checked_source_records(result)
 
-    if req_id == "stakes_and_qualification_scenarios_when_applicable" and competition_slug in LEAGUE_SLUGS:
+    # Só a fase LEAGUE_STAGE comprovada pelo provedor pode usar a exceção,
+    # e apenas no início, sem cenário eliminatório da fase final.
+    # Nunca dispensar contexto de tabela/notícias: gate editorial é independente.
+    early_champions_league_phase = (
+        competition_slug == "champions-league"
+        and competition_stage == "LEAGUE_STAGE"
+        and type(competition_matchday) is int
+        and 1 <= competition_matchday <= 3
+    )
+    if req_id == "stakes_and_qualification_scenarios_when_applicable" and (
+        competition_slug in LEAGUE_SLUGS or early_champions_league_phase
+    ):
         result["status"] = "not_applicable"
         result["facts"] = []
         result["sources"] = sources
-        result["notes"] = "Competição de liga: cenário de classificação mata-mata não se aplica a este pré-jogo."
+        result["notes"] = (
+            "Fase de liga inicial da Champions sem cenário eliminatório imediato comprovado."
+            if early_champions_league_phase else
+            "Competição de pontos corridos: cenário de classificação mata-mata não se aplica."
+        )
         result["fact_extraction_status"] = "automatic_not_applicable_for_league"
         result["validator_accepted"] = True
         result["conflict_detected"] = False
@@ -1782,8 +1799,14 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
         for item in requirements if isinstance(item, dict)
     ]
     competition_slug = str(match_context.get("competition_slug", ""))
+    competition_stage = match_context.get("competition_stage")
+    competition_matchday = match_context.get("competition_matchday")
     extracted = [
-        resolve_allowed_gap(item, competition_slug=competition_slug, config=config)
+        resolve_allowed_gap(
+            item, competition_slug=competition_slug, config=config,
+            competition_stage=competition_stage,
+            competition_matchday=competition_matchday,
+        )
         for item in extracted
     ]
     independent_news = extract_separate_team_news(

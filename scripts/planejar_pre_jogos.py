@@ -288,6 +288,8 @@ def plan_matches(
             "away": match.get("away"),
             "competition": match.get("competition"),
             "competition_slug": match.get("competition_slug"),
+            "competition_stage": match.get("competition_stage"),
+            "competition_matchday": match.get("competition_matchday"),
             "kickoff_brasilia": match.get("kickoff_brasilia"),
             "kickoff_time_brasilia": match.get("kickoff_time_brasilia"),
             "monitored_clubs": match.get("monitored_clubs", []),

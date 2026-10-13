@@ -306,6 +306,8 @@ def build_editorial_record(
             "editorial_rivalry": rivalry,
             "competition": competition_name,
             "competition_slug": plan.get("competition_slug"),
+            "competition_stage": plan.get("competition_stage"),
+            "competition_matchday": plan.get("competition_matchday"),
             "kickoff_brasilia": plan.get("kickoff_brasilia"),
             "kickoff_time_brasilia": kickoff_raw,
             "prepare_at_brasilia": plan.get("prepare_at_brasilia"),
