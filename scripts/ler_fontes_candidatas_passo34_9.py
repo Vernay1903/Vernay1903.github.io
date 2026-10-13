@@ -52,6 +52,45 @@ ALLOWED_GAP_REQUIREMENTS = {
 }
 
 
+def editorial_headline_primary_side(
+    title: str, context: dict[str, Any], config: dict[str, Any],
+) -> str | None:
+    """Identifica sobre QUAL clube é a matéria; uma mera citação não basta."""
+    folded = f" {base.normalize_text(title)} "
+    if any(p in folded for p in (
+        " arbitro ", " arbitragem ", " juiz ", " referee ",
+        " onde assistir ", " transmissao ", " palpite ", " aposta ",
+    )):
+        return None
+    found: list[tuple[int, str, int]] = []
+    for side in ("home", "away"):
+        team = context.get(side)
+        if not isinstance(team, str):
+            continue
+        positions = []
+        for variant in source_search.team_variants(team, config):
+            alias = base.normalize_text(variant)
+            if not alias or len(alias) < 3:
+                continue
+            for m in re.finditer(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", folded):
+                positions.append((m.start(), m.end()))
+        if positions:
+            pos, end = min(positions)
+            found.append((pos, side, end))
+    if not found:
+        return None
+    found.sort()
+    if len(found) > 1:
+        # Roma x Real Madrid é chamada do JOGO, não reportagem exclusiva
+        # sobre Roma. O par pode ser recuperado no extrator bilateral normal.
+        between = folded[found[0][2]:found[1][0]]
+        if re.search(r"\b(?:x|vs|versus)\b", between):
+            return None
+    if found[0][0] > 80:
+        return None
+    return found[0][1]
+
+
 def _target_year(article_date: str) -> str:
     match = re.match(r"(20\d{2})-", article_date or "")
     return match.group(1) if match else ""
@@ -377,10 +416,12 @@ def _build_checked_source(
     elif requirement_id == EDITORIAL_RESEARCH_ID and isinstance(recent_team, str):
         headline = str(source.get("title", ""))
         supported = (
-            base.mentions_team(f"{headline}\n{content}", recent_team)
+            editorial_headline_primary_side(headline, context, config) ==
+            ("home" if recent_team == context.get("home") else "away")
+            and base.mentions_team(f"{headline}\n{content}", recent_team)
             and content_is_current_enough(content, source, target_year=target_year)
             and source_search.candidate_recent_for_article(
-                source, str(context.get("kickoff_brasilia") or "")[:10]
+                source, str(context.get("kickoff_brasilia") or "")[:10], days=7,
             )
         )
         segments = _contextual_segments(
@@ -589,7 +630,8 @@ def _search_and_check(
                 continue
             for candidate in source_search.normalize_serper_response(raw, allowed_domains=domains):
                 if requirement_id in source_search.DYNAMIC_RESEARCH_REQUIREMENTS | {EDITORIAL_RESEARCH_ID} and not source_search.candidate_recent_for_article(
-                    candidate, article_date
+                    candidate, article_date,
+                    days=7 if requirement_id == EDITORIAL_RESEARCH_ID else 14,
                 ):
                     continue
                 url = str(candidate.get("url", ""))
@@ -813,8 +855,8 @@ def _research_editorial_sources(
                 if (
                     not isinstance(url, str) or url in seen
                     or not base.eligible_checked_source(source)
-                    or not base.mentions_team(title, team)
-                    or not source_search.candidate_recent_for_article(source, article_date)
+                    or editorial_headline_primary_side(title, context, config) != side
+                    or not source_search.candidate_recent_for_article(source, article_date, days=7)
                     or not any(signal in base.normalize_text(
                         " ".join(str(x) for x in
                             ((source.get("page_evidence") or {}).get("evidence_segments") or [])
