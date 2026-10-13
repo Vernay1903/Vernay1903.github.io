@@ -385,9 +385,14 @@ def validate_draft(
         used_fields = []
 
     required_set = set(required_fields)
+    allowed_fields = contract.get("allowed_fact_fields", required_fields)
+    if not isinstance(allowed_fields, list) or not all(isinstance(x, str) for x in allowed_fields):
+        errors.append("allowed_fact_fields inválido")
+        allowed_fields = required_fields
+    allowed_set = set(allowed_fields)
     used_set = set(used_fields)
     missing = sorted(required_set - used_set)
-    unknown = sorted(used_set - required_set)
+    unknown = sorted(used_set - allowed_set)
     if missing:
         errors.append("campos factuais declarados como não usados: " + ", ".join(missing))
     if unknown:
