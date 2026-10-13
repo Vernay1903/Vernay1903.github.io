@@ -1250,9 +1250,9 @@ def extract_optional_team_news_claims(
                         aliases = set(known.get(normalize_text(team), ()))
                         aliases -= set(known.get(normalize_text(str(other)), ()))
                         for alias in sorted(aliases, key=len, reverse=True):
-                            if alias == "flu" and not re.search(r"\\bFlu\\b", value):
+                            if alias == "flu" and not re.search(r"\bFlu\b", value):
                                 continue
-                            matched = re.search(r"(?<!\\w)" + re.escape(alias) + r"(?!\\w)", folded)
+                            matched = re.search(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", folded)
                             if matched:
                                 position = matched.start()
                                 break
