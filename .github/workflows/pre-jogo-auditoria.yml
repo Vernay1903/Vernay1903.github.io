@@ -105,7 +105,15 @@ jobs:
           ready=[a for a in manifest['articles'] if a['ready_for_drafting'] and not source_depth_errors(a)]
           if not ready:
               raise SystemExit('Nenhuma pauta editorial apta para testar o redator.')
-          chosen=max(ready,key=lambda a: sum(k.startswith(('home_team_news_','away_team_news_')) for k in facts(a)))
+          # Entre pautas aprovadas, testar primeiro a de maior densidade de
+          # informações jornalísticas verificadas sobre AMBOS os clubes.
+          # Serviço, escalação e retrospecto isolados não influem na escolha.
+          def editorial_signal(article):
+              values=facts(article)
+              sides=(sum(k.startswith(('home_team_news_', 'home_stakes_')) for k in values),
+                     sum(k.startswith(('away_team_news_', 'away_stakes_')) for k in values))
+              return (min(sides),sum(sides),len(values))
+          chosen=max(ready,key=editorial_signal)
           slug=Path(chosen['slug']).with_suffix('.json').name
           package=output/f'pacotes-editoriais-{target}'/slug
           assert package.exists()
