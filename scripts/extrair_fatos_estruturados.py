@@ -1266,6 +1266,11 @@ def extract_separate_competitive_context(
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
+        # Histórico de árbitros ou de jogos antigos não é situação competitiva
+        # atual dos clubes; não transformar um juiz em protagonista da pauta.
+        headline = normalize_text(str(source.get("title") or ""))
+        if re.search(r"\b(?:arbitro|arbitragem|juiz|referee|officiating)\b", headline):
+            continue
         segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
         if not isinstance(segments, list):
             continue
@@ -1280,6 +1285,14 @@ def extract_separate_competitive_context(
                 value = clean_value(sentence, max_chars=300)
                 folded = normalize_text(value)
                 if len(folded.split()) < 10 or not stakes_pattern.search(folded):
+                    continue
+                # Estatísticas retrospectivas e atuação do árbitro não comprovam
+                # classificação, liderança ou pressão ATUAL sobre uma equipe.
+                match_year = str(match_context.get("kickoff_brasilia") or "")[:4]
+                years = set(re.findall(r"\b20\d{2}\b", folded))
+                if (match_year and any(y != match_year for y in years)) or re.search(
+                    r"\b(?:arbitro|arbitragem|apitou|apitar|apita|juiz|referee)\b", folded
+                ):
                     continue
                 if "tres pontos" in folded and not any(
                     signal in folded for signal in ("tabela", "lider", "vaga", "queda", "rebaix")
@@ -1673,6 +1686,86 @@ def extract_h2h_requirement(
     )
 
 
+def verified_knockout_first_leg_segment(
+    segment: str, match_context: dict[str, Any], config: dict[str, Any],
+) -> str | None:
+    """Extrai apenas a fase explicitamente descrita para o confronto atual.
+
+    Não infere placar agregado, vantagem, regulamento nem classificação.
+    O texto precisa ligar os DOIS clubes à competição e a 'jogo de ida'.
+    """
+    folded = normalize_text(segment)
+    if not context_mentions_match(segment, match_context, config):
+        return None
+    if "libertador" not in folded or match_context.get("competition_slug") != "libertadores":
+        return None
+    if re.search(r"\b20\d{2}\b", folded) and any(
+        y != str(match_context.get("kickoff_brasilia") or "")[:4]
+        for y in re.findall(r"\b20\d{2}\b", folded)
+    ):
+        return None
+    patterns = (
+        (r"\b(?:ida da semifinal|jogo de ida da semifinal|primeiro jogo da semifinal)\b", "semifinal"),
+        (r"\b(?:ida das quartas|jogo de ida das quartas|primeiro jogo das quartas)\b", "quartas de final"),
+        (r"\b(?:ida das oitavas|jogo de ida das oitavas|primeiro jogo das oitavas)\b", "oitavas de final"),
+    )
+    for pattern, phase in patterns:
+        if re.search(pattern, folded):
+            home = str(match_context.get("home") or "").strip()
+            away = str(match_context.get("away") or "").strip()
+            return f"{home} e {away} disputam o jogo de ida das {phase} da Libertadores" if phase != "semifinal" else (
+                f"{home} e {away} disputam o jogo de ida da semifinal da Libertadores"
+            )
+    return None
+
+
+def include_checked_first_leg_sources(
+    requirements: list[dict[str, Any]], *,
+    match_context: dict[str, Any], config: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Reusa trechos atuais CHECADOS de outro requisito sobre a fase do jogo.
+
+    Evita uma segunda busca desnecessária quando a notícia já chegou no lote,
+    sem usar títulos/snippets RSS como prova factual.
+    """
+    if match_context.get("competition_slug") != "libertadores":
+        return requirements
+    pool: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for req in requirements:
+        for source in eligible_sources(req):
+            url = str(source.get("url") or "")
+            if not url or url in seen or not source_current_for_match(source, match_context):
+                continue
+            segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+            if not isinstance(segments, list):
+                continue
+            if not any(
+                verified_knockout_first_leg_segment(seg, match_context, config)
+                for seg in segments if isinstance(seg, str)
+            ):
+                continue
+            seen.add(url)
+            pool.append(source)
+
+    updated = []
+    for req in requirements:
+        if req.get("id") != "stakes_and_qualification_scenarios_when_applicable":
+            updated.append(req)
+            continue
+        new = deepcopy(req)
+        existing = {
+            str(s.get("url")) for s in new.get("source_candidates", [])
+            if isinstance(s, dict)
+        }
+        new["source_candidates"] = [
+            *[deepcopy(s) for s in pool if s.get("url") not in existing],
+            *new.get("source_candidates", []),
+        ]
+        updated.append(new)
+    return updated
+
+
 def extract_stakes_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -1690,6 +1783,7 @@ def extract_stakes_requirement(
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
+        segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
         for segment in corpus.splitlines():
             value = labeled_value(segment, labels, max_chars=320)
             if value and re.search(
@@ -1699,6 +1793,18 @@ def extract_stakes_requirement(
                 claim = make_claim("qualification_scenario", value, source, segment)
                 if claim:
                     claims.append(claim)
+        # A fase do mata-mata pode aparecer no próprio relato de serviço,
+        # sem o subtítulo literal 'cenário de classificação'.
+        if isinstance(segments, list):
+            for segment in segments:
+                if not isinstance(segment, str):
+                    continue
+                value = verified_knockout_first_leg_segment(segment, match_context, config)
+                if value:
+                    claim = make_claim("qualification_scenario", value, source, segment)
+                    if claim:
+                        claims.append(claim)
+                    break
     return finalize_claims(
         requirement,
         claims,
@@ -1827,6 +1933,9 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
         config=config,
     )
 
+    requirements = include_checked_first_leg_sources(
+        requirements, match_context=match_context, config=config,
+    )
     extracted = [
         extract_requirement(item, match_context=match_context, config=config)
         for item in requirements if isinstance(item, dict)
