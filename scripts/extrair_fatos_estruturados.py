@@ -1262,7 +1262,8 @@ def extract_separate_competitive_context(
     by_side: dict[str, list[dict[str, Any]]] = {"home": [], "away": []}
     stakes_pattern = re.compile(
         r"\b(?:lideranca|lider|rebaixamento|queda|zona de|classificacao|vaga|"
-        r"semifinal|final|estreia|primeiro classico|primeira vitoria|tabela)\b"
+        r"semifinal|final|estreia|primeiro classico|primeira vitoria|tabela|"
+        r"empato?\w*|derrot\w*|vitori\w*|trein\w*|prepar\w*)\b"
     )
     for source in sources:
         corpus = source_corpus(source)
@@ -1986,6 +1987,21 @@ def extract_individual_team_context(
                     if len(folded.split()) < 11:
                         continue
                     if not re.search(EDITORIAL_TEAM_SIGNALS, folded):
+                        continue
+                    # A manchete pode mencionar o clube só como adversário
+                    # (ex.: "Mônaco ameaça PSG"); a frase precisa descrever
+                    # explicitamente o clube-alvo. A única exceção é o
+                    # relato em primeira pessoa de um site OFICIAL do clube.
+                    direct_team = mentions_team(value, team, config)
+                    official_voice = (
+                        source.get("source_type") == "official"
+                        and bool(re.search(
+                            r"\b(?:nosso time|nossa equipe|nosso elenco|"
+                            r"os titulares|a equipe treinou|o time treinou)\b",
+                            folded,
+                        ))
+                    )
+                    if not direct_team and not official_voice:
                         continue
                     if any(noise in folded for noise in EDITORIAL_SERVICE_NOISE):
                         continue
