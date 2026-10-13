@@ -338,6 +338,18 @@ def category_and_third_club_errors(body_html: str, contract: dict[str, Any]) -> 
     return []
 
 
+def dense_fixture_enumeration_errors(body_html: str) -> list[str]:
+    """Cinco jogos com cinco datas no mesmo parágrafo não são análise."""
+    date_pattern = (
+        r"\b\d{1,2} de (?:janeiro|fevereiro|marco|abril|maio|junho|"
+        r"julho|agosto|setembro|outubro|novembro|dezembro)\b"
+    )
+    for paragraph in paragraphs(body_html):
+        if len(re.findall(date_pattern, paragraph)) >= 4:
+            return ["cronologia extensa de placares e datas substitui reportagem sobre a partida atual"]
+    return []
+
+
 def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     """Trava extra, executada somente no lote automático antes da publicação."""
     errors: list[str] = []
@@ -357,6 +369,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
         errors.append("serviço repetido em seções diferentes")
     errors.extend(category_and_third_club_errors(body_html, contract))
     errors.extend(repeated_lineup_errors(body_html, contract))
+    errors.extend(dense_fixture_enumeration_errors(body_html))
     errors.extend(near_duplicate_errors(body_html))
     errors.extend(repeated_stat_summaries_errors(body_html))
     errors.extend(repeated_preparation_hook_errors(body_html, contract))
