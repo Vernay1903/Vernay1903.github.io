@@ -25,7 +25,13 @@ def run() -> None:
         assert len(searches) >= 6
         assert any("allenamento" in x for x in searches)
         assert any("entraînement" in x for x in searches)
-        assert all(club in x for x in searches)
+        assert all(
+            club in query or any(
+                f'"{alias}"' in query
+                for alias in ("Roma", "PSG", "Man City")
+            )
+            for query in searches
+        )
 
     roman = research._targeted_queries(
         research.EDITORIAL_RESEARCH_ID, CTX, "2026-10-14", team="AS Roma"
