@@ -15,6 +15,7 @@ continuam obrigatórios. Redação, HTML e publicação permanecem bloqueados ne
 
 from __future__ import annotations
 
+import os
 import re
 from copy import deepcopy
 from typing import Any
@@ -898,7 +899,7 @@ def check_article(
 
     # Reinicia a cota grátis de RSS POR PARTIDA. Pesquisas exploratórias do
     # jogo anterior não devem consumir a investigação dos dois clubes.
-    if __import__("os").environ.get("CDE_FREE_RESEARCH") == "1":
+    if os.environ.get("CDE_FREE_RESEARCH") == "1":
         from scripts import pesquisa_publica_gratuita as free
         free._RSS_REQUESTS = 0
     updated.append(_research_editorial_sources(
