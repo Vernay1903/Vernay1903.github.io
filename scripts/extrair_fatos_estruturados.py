@@ -1245,6 +1245,9 @@ def extract_optional_team_news_claims(
                         known = {
                             "fluminense": ("tricolor carioca", "tricolor", "flu"),
                             "palmeiras": ("alviverde", "verdao"),
+                            "sao paulo": ("tricolor paulista", "tricolor"),
+                            "gremio": ("tricolor gaucho", "tricolor"),
+                            "bahia": ("tricolor", "esquadrao"),
                         }
                         other = match_context.get("away" if side == "home" else "home")
                         aliases = set(known.get(normalize_text(team), ()))
