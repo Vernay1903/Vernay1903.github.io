@@ -274,6 +274,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "body_html_scope": "article_body_only",
             "minimum_words": int(config["article"]["min_words"]),
             "preferred_word_range": [750, 900],
+            "maximum_words": 960,
             "minimum_strong_subheadings": min(5, max(4, len(section_plan))),
             "internal_link_exactly_once": True,
             "unordered_lists_for_service_blocks": True,
