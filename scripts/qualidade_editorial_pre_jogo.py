@@ -72,7 +72,7 @@ def meaningful_sporting_context(raw: str) -> bool:
         r"recuperacao|lesionado|retornou|convocado|"
         r"derrota|empatou|vitoria|invicto|"
         r"training|trained|standings|unbeaten|"
-        r"injured|returned)\b",
+        r"injured|returned|marcou|hat trick)\b",
         value,
     ))
 
