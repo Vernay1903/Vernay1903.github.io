@@ -208,8 +208,18 @@ def _allowed_stage_domains(
         if not isinstance(team, str):
             continue
         club = source_search.canonical_monitored_club(team, config)
-        if isinstance(club, dict) and isinstance(clubs, dict):
-            rows = clubs.get(club.get("name"), [])
+        if isinstance(clubs, dict):
+            # Clubes não monitorados também têm imprensa oficial confiável.
+            # A regra antiga só consultava domínios de clubes cadastrados
+            # no monitoramento, impedindo chegar à Roma e ao Fluminense.
+            canonical_name = club.get("name") if isinstance(club, dict) else team
+            rows = clubs.get(canonical_name, [])
+            if not rows:
+                normalized = source_search.normalize_text(team)
+                rows = next((
+                    domains for name, domains in clubs.items()
+                    if source_search.normalize_text(str(name)) == normalized
+                ), [])
             if isinstance(rows, list):
                 official_domains.extend(str(item) for item in rows if isinstance(item, str))
 
