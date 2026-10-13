@@ -134,6 +134,49 @@ def near_duplicate_errors(body_html: str) -> list[str]:
                 return ["parágrafos retomam praticamente os mesmos fatos com outras palavras"]
     return []
 
+def repeated_stat_summaries_errors(body_html: str) -> list[str]:
+    """Bloqueia o mesmo balanço de V/E/D recontado em abertura, clube e fim."""
+    numbers = {
+        "um": "1", "uma": "1", "dois": "2", "duas": "2",
+        "tres": "3", "quatro": "4", "cinco": "5", "seis": "6",
+        "sete": "7", "oito": "8", "nove": "9", "dez": "10",
+    }
+    seen: set[tuple[tuple[str, str], ...]] = set()
+    for paragraph in paragraphs(body_html):
+        tally = {
+            category: numbers.get(value, value)
+            for value, category in re.findall(
+                r"\b(\d+|um|uma|dois|duas|tres|quatro|cinco|seis|sete|oito|nove|dez)"
+                r"\s+(vitorias|empates|derrotas)\b",
+                paragraph,
+            )
+        }
+        if len(tally) < 3:
+            continue
+        signature = tuple(sorted(tally.items()))
+        if signature in seen:
+            return ["o mesmo balanço de vitórias, empates e derrotas é repetido em seções diferentes"]
+        seen.add(signature)
+    return []
+
+
+def unrelated_story_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
+    """Impede o desvio visto na matéria real: Neymar/Santos em Palmeiras x Flu."""
+    context = contract.get("match_context") or {}
+    participating = {
+        fold(str(context.get("home") or "")),
+        fold(str(context.get("away") or "")),
+    }
+    for paragraph in paragraphs(body_html):
+        # Neymar não é assunto da partida entre Palmeiras e Fluminense;
+        # a reportagem agregadora do Santos não é notícia dos dois elencos.
+        if "neymar" in paragraph and "santos" in paragraph and not (
+            "santos" in participating or "neymar" in participating
+        ):
+            return ["parágrafo sobre Neymar e Santos não contextualiza as equipes da partida"]
+    return []
+
+
 def repeated_lineup_errors(body_html: str, package: dict[str, Any]) -> list[str]:
     available = facts(package)
     sections = re.split(
@@ -287,6 +330,8 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     errors.extend(category_and_third_club_errors(body_html, contract))
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(near_duplicate_errors(body_html))
+    errors.extend(repeated_stat_summaries_errors(body_html))
+    errors.extend(unrelated_story_errors(body_html, contract))
     errors.extend(rivalry_context_errors(body_html, contract))
     errors.extend(redundant_recent_calendar_errors(body_html))
     errors.extend(unsupported_stakes_closing_errors(body_html, contract))
