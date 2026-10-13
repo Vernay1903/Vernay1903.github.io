@@ -35,6 +35,7 @@ EDITORIAL_SIGNALS = (
     "retorn", "poupad", "convoc", "titular", "tecnic",
     "classific", "lider", "tabela", "semifinal", "quartas",
     "resultado", "vitoria", "derrota", "empat", "pressao",
+    "venceu", "perdeu", "perde", "ganhou", "won", "lost", "beat",
     "injur", "train", "prepar", "return", "coach", "manager",
     "standings", "unbeaten", "defeat", "draw", "winless",
     "entren", "lesion", "baja", "regreso", "clasific",
