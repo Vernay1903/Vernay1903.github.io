@@ -797,7 +797,7 @@ def _search_and_check(
                 recent_team=recent_team,
             )
             if checked is not None:
-                if requirement_id == EDITORIAL_RESEARCH_ID and max_sources > 1:
+                if requirement_id in {EDITORIAL_RESEARCH_ID, "probable_lineups_and_coaches"} and max_sources > 1:
                     domain = str(checked.get("domain") or checked.get("publisher") or "")
                     if domain in seen_domains:
                         continue
