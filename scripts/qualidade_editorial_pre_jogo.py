@@ -135,7 +135,7 @@ def near_duplicate_errors(body_html: str) -> list[str]:
     return []
 
 def repeated_stat_summaries_errors(body_html: str) -> list[str]:
-    """Bloqueia o mesmo balanço de V/E/D recontado em abertura, clube e fim."""
+    """Bloqueia o mesmo V/E/D em dois parágrafos, mesmo com derrota singular."""
     numbers = {
         "um": "1", "uma": "1", "dois": "2", "duas": "2",
         "tres": "3", "quatro": "4", "cinco": "5", "seis": "6",
@@ -143,20 +143,24 @@ def repeated_stat_summaries_errors(body_html: str) -> list[str]:
     }
     seen: set[tuple[tuple[str, str], ...]] = set()
     for paragraph in paragraphs(body_html):
-        tally = {
-            category: numbers.get(value, value)
-            for value, category in re.findall(
-                r"\b(\d+|um|uma|dois|duas|tres|quatro|cinco|seis|sete|oito|nove|dez)"
-                r"\s+(vitorias|empates|derrotas)\b",
-                paragraph,
-            )
-        }
-        if len(tally) < 3:
-            continue
-        signature = tuple(sorted(tally.items()))
-        if signature in seen:
+        tokens = re.findall(
+            r"\b(\d+|um|uma|dois|duas|tres|quatro|cinco|seis|sete|oito|nove|dez)"
+            r"\s+(vitorias?|empates?|derrotas?)\b",
+            paragraph,
+        )
+        current: dict[str, str] = {}
+        observed: set[tuple[tuple[str, str], ...]] = set()
+        for value, category in tokens:
+            singular = category.rstrip("s")
+            if singular in current:
+                current = {}
+            current[singular] = numbers.get(value, value)
+            if len(current) == 3:
+                observed.add(tuple(sorted(current.items())))
+                current = {}
+        if seen & observed:
             return ["o mesmo balanço de vitórias, empates e derrotas é repetido em seções diferentes"]
-        seen.add(signature)
+        seen.update(observed)
     return []
 
 
@@ -174,6 +178,28 @@ def unrelated_story_errors(body_html: str, contract: dict[str, Any]) -> list[str
             "santos" in participating or "neymar" in participating
         ):
             return ["parágrafo sobre Neymar e Santos não contextualiza as equipes da partida"]
+    return []
+
+
+def repeated_preparation_hook_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
+    """Exige aprofundamento, não repetir 'poupou titulares' em cinco blocos."""
+    context = contract.get("match_context") or {}
+    rows = paragraphs(body_html)
+    for side in ("home", "away"):
+        team = fold(str(context.get(side) or ""))
+        if not team:
+            continue
+        hits = sum(
+            1 for row in rows
+            if team in row and re.search(
+                r"\b(?:time misto|formacao alternativa|time alternativo|"
+                r"poupar titulares|poupou titulares|poupando titulares|"
+                r"preservar titulares|preservou titulares)\b",
+                row,
+            )
+        )
+        if hits >= 4:
+            return ["a mesma decisão de poupar titulares é recontada em muitos parágrafos"]
     return []
 
 
@@ -224,6 +250,8 @@ ARTIFICIAL = (
     r"\ba amostra serve\b",
     r"\bno pacote\b",
     r"\bprincipais pontos individuais verificados\b",
+    r"\b(?:no contrato|contrato da partida|contrato editorial|contrato apresentado)\b",
+    r"\b(?:o compromisso desta materia|este texto tem como compromisso)\b",
 )
 
 def redundant_recent_calendar_errors(body_html: str) -> list[str]:
@@ -331,6 +359,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(near_duplicate_errors(body_html))
     errors.extend(repeated_stat_summaries_errors(body_html))
+    errors.extend(repeated_preparation_hook_errors(body_html, contract))
     errors.extend(unrelated_story_errors(body_html, contract))
     errors.extend(rivalry_context_errors(body_html, contract))
     errors.extend(redundant_recent_calendar_errors(body_html))

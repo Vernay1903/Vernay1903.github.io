@@ -1233,10 +1233,34 @@ def extract_optional_team_news_claims(
                 # nomes dos jogadores aparecem apenas nas frases seguintes.
                 mentioned = []
                 for side, team in teams:
-                    if not isinstance(team, str) or not relaxed_mentions_team(value, team, config):
+                    if not isinstance(team, str):
                         continue
                     identifier = normalize_text(team).split()[-1]
                     position = folded.find(identifier)
+                    if position < 0:
+                        # Apelidos só valem em uma página previamente vinculada
+                        # aos DOIS clubes e apenas quando não servem ao rival.
+                        # Assim "O Tricolor... Germán Cano" pertence ao
+                        # Fluminense diante do Palmeiras, nunca ao Palmeiras.
+                        known = {
+                            "fluminense": ("tricolor carioca", "tricolor", "flu"),
+                            "palmeiras": ("alviverde", "verdao"),
+                            "sao paulo": ("tricolor paulista", "tricolor"),
+                            "gremio": ("tricolor gaucho", "tricolor"),
+                            "bahia": ("tricolor", "esquadrao"),
+                        }
+                        other = match_context.get("away" if side == "home" else "home")
+                        aliases = set(known.get(normalize_text(team), ()))
+                        aliases -= set(known.get(normalize_text(str(other)), ()))
+                        for alias in sorted(aliases, key=len, reverse=True):
+                            if alias == "flu" and not re.search(r"\bFlu\b", value):
+                                continue
+                            matched = re.search(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", folded)
+                            if matched:
+                                position = matched.start()
+                                break
+                    if position < 0:
+                        continue
                     if position >= 0:
                         # "Para enfrentar o Palmeiras, Germán Cano é dúvida"
                         # é notícia do ADVERSÁRIO, não do Palmeiras. O nome
