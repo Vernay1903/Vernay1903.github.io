@@ -1066,6 +1066,14 @@ def source_current_for_match(
         if re.search(r"\b(?:feminina|feminino|femininas|women|womens|female|"
                      r"femminile|feminin|femmes|frauen|wsl)\b", headline_category):
             return False
+        # Algumas manchetes omitem "Feminina" embora a PRIMEIRA notícia
+        # verificada diga explicitamente Libertadores Feminina (caso Kate Tapia).
+        first_segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+        opening = normalize_text(str(first_segments[0])[:600]) if first_segments else ""
+        if re.search(r"\b(?:libertadores feminina|champions league feminina|"
+                     r"copa feminina|womens champions|football feminino|"
+                     r"futebol feminino|frauen bundesliga)\b", opening):
+            return False
 
     metadata = (source.get("page_evidence") or {}).get("metadata") or {}
     locator = " ".join(str(value) for value in (
