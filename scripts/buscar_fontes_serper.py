@@ -289,7 +289,9 @@ def team_variants(team: str, config: dict[str, Any]) -> list[str]:
     seen: set[str] = set()
     for item in raw:
         value = normalize_text(item)
-        if len(value) >= 4 and value not in seen:
+        # Sigla oficial conhecida do clube; a regra genérica de quatro
+        # caracteres descartava justamente "PSG" apesar do alias aprovado.
+        if (len(value) >= 4 or value == "psg") and value not in seen:
             seen.add(value)
             result.append(value)
     return result
