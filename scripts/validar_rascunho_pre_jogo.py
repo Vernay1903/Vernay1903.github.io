@@ -311,6 +311,11 @@ def validate_draft(
     minimum = int(contract.get("output_contract", {}).get("minimum_words", 700))
     if count < minimum:
         errors.append(f"rascunho tem {count} palavras; mínimo exigido é {minimum}")
+    maximum = int(contract.get("output_contract", {}).get("maximum_words", 0) or 0)
+    if maximum and count > maximum:
+        errors.append(
+            f"rascunho tem {count} palavras; máximo de {maximum} para evitar alongamento artificial"
+        )
 
     headings = SUBHEADING_RE.findall(body)
     minimum_headings = int(contract.get("output_contract", {}).get("minimum_strong_subheadings", 5))
