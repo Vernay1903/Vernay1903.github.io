@@ -297,6 +297,25 @@ def team_variants(team: str, config: dict[str, Any]) -> list[str]:
     return result
 
 
+def candidate_matches_match_category(candidate: dict[str, Any], context: dict[str, Any]) -> bool:
+    """Uma notícia de futebol feminino não fundamenta um pré-jogo masculino.
+
+    Decisão conservadora baseada no título ou URL, não no snippet dinâmico
+    que pode listar outra notícia no rodapé do portal.
+    """
+    category = normalize_text(str(context.get("competition") or "") + " "
+                              + str(context.get("competition_slug") or "")
+                              + " " + str(context.get("gender") or ""))
+    if any(term in category for term in ("feminina", "feminino", "women", "womens", "femminile", "feminin")):
+        return True
+    headline = normalize_text(str(candidate.get("title") or "") + " "
+                              + str(candidate.get("url") or ""))
+    return not bool(re.search(
+        r"\b(?:feminina|feminino|femininas|women|womens|female|"
+        r"feminine|feminin|femminile|femmes|frauen|wsl)\b", headline
+    ))
+
+
 def candidate_haystack(candidate: dict[str, Any]) -> str:
     return normalize_text(
         " ".join(
