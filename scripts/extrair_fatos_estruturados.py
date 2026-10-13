@@ -2006,7 +2006,7 @@ def extract_individual_team_context(
                         continue
                     index = per_side[side] + 1
                     claim = make_claim(
-                        f"{side}_stakes_{index}", value, source, sentence,
+                        f"{side}_stakes_individual_{index}", value, source, sentence,
                     )
                     if claim:
                         seen_facts.add(folded)
