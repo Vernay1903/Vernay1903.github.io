@@ -351,10 +351,10 @@ def adjusted_service_headline(
     # O nome interno "na competição Libertadores" não é uma chamada
     # jornalística. Converter para a preposição natural antes de publicar.
     def natural_competition_phrase(text: str) -> str:
-        result = re.sub(r"\\bna competição\\s+", "pela ", text, flags=re.IGNORECASE)
+        result = re.sub(r"\bna competição\s+", "pela ", text, flags=re.IGNORECASE)
         return re.sub(
-            r"\\bpela (Brasileirão|Campeonato Brasileiro)\\b",
-            r"pelo \\1", result, flags=re.IGNORECASE,
+            r"\bpela (Brasileirão|Campeonato Brasileiro)\b",
+            r"pelo \1", result, flags=re.IGNORECASE,
         )
     prefix = natural_competition_phrase(prefix)
     # Apenas serviços verificados no título; nunca usar encheção de chamada.
