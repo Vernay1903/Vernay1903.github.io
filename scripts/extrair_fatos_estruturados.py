@@ -1921,6 +1921,138 @@ def apply_fixed_home_stadium(
     return updated
 
 
+# A contextualização factual do pré-jogo exige notícias específicas por clube,
+# inclusive quando uma matéria não menciona seu próximo adversário.
+EDITORIAL_TEAM_SIGNALS = (
+    r"\b(?:trein(?:ou|a|am|amento)|prepar(?:a|ou|acao)|desfalqu\w*|"
+    r"lesionad\w*|lesao|suspens\w*|retorn\w*|recuper\w*|poupad\w*|"
+    r"titular\w*|tecnico|convocad\w*|lider\w*|classific\w*|"
+    r"rebaixamento|semifinal|quartas|oitavas|tabela|pontos|"
+    r"invict\w*|vitorias?|derrotas?|empates?|"
+    r"training|trained|prepar\w*|injur\w*|"
+    r"standings|unbeaten|winless|defeat|"
+    r"entren\w*|lesion\w*|bajas?|regres\w*|clasific\w*)\b"
+)
+EDITORIAL_SERVICE_NOISE = (
+    "onde assistir", "transmissao", "streaming", "ao vivo",
+    "palpite", "aposta", "odds", "prognostico", "escalação provável",
+    "ainda nao foram divulgadas", "nao ha confirmacao",
+    "historico do arbitro", "historico da arbitragem",
+)
+
+
+def extract_individual_team_context(
+    requirements: list[dict[str, Any]], *,
+    match_context: dict[str, Any], config: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Reúne fatos jornalísticos de cada clube, sem exigir o rival na página.
+
+    A fonte tem que estar lida, atual e explicitamente identificada com um
+    lado do confronto. Não inferir preparação nem inventar desfalques.
+    """
+    claims: list[dict[str, Any]] = []
+    seen_facts: set[str] = set()
+    per_side: dict[str, int] = {"home": 0, "away": 0}
+    for requirement in requirements:
+        if requirement.get("id") != "editorial_context_both_teams":
+            continue
+        for source in eligible_sources(requirement):
+            side = source.get("editorial_target_side")
+            if side not in ("home", "away") or per_side[side] >= 3:
+                continue
+            team = match_context.get(side)
+            if not isinstance(team, str) or team != source.get("editorial_target_team"):
+                continue
+            if not source_current_for_match(source, match_context):
+                continue
+            headline = str(source.get("title") or "")
+            if not mentions_team(headline, team, config):
+                continue
+            title_fold = normalize_text(headline)
+            if re.search(r"\b(?:arbitro|arbitragem|referee|juiz|betting|apostas)\b", title_fold):
+                continue
+            evidence = (source.get("page_evidence") or {}).get("evidence_segments", [])
+            if not isinstance(evidence, list):
+                continue
+            # No máximo dois fatos por fonte, mas precisam ser acontecimentos
+            # realmente diferentes, não a mesma informação SEO em frases.
+            count_this_source = 0
+            for segment in evidence:
+                if not isinstance(segment, str):
+                    continue
+                for sentence in re.split(r"(?<=[.!?])\s+", segment):
+                    value = clean_value(sentence, max_chars=390)
+                    folded = normalize_text(value)
+                    if len(folded.split()) < 11:
+                        continue
+                    if not re.search(EDITORIAL_TEAM_SIGNALS, folded):
+                        continue
+                    if any(noise in folded for noise in EDITORIAL_SERVICE_NOISE):
+                        continue
+                    if re.search(r"\b(?:arbitro|arbitragem|apitou|apita|juiz|referee)\b", folded):
+                        continue
+                    # A notícia de 2026 pode relembrar 2025; não transformar
+                    # essa lembrança em preparação ou classificação atual.
+                    years = set(re.findall(r"\b20\d{2}\b", folded))
+                    target = str(match_context.get("kickoff_brasilia") or "")[:4]
+                    if years and any(year != target for year in years):
+                        continue
+                    if folded in seen_facts:
+                        continue
+                    # Não aceitar dados de serviço como notícia esportiva.
+                    if re.search(r"\b(?:horario|estadio|transmissao|referee|onde assistir)\b", folded) and not re.search(
+                        r"\b(?:trein|prepar|desfal|lesion|classific|lider|tabela|vitori|derrota|empate)\w*", folded
+                    ):
+                        continue
+                    index = per_side[side] + 1
+                    claim = make_claim(
+                        f"{side}_stakes_{index}", value, source, sentence,
+                    )
+                    if claim:
+                        seen_facts.add(folded)
+                        claims.append(claim)
+                        per_side[side] += 1
+                        count_this_source += 1
+                    if count_this_source >= 2 or per_side[side] >= 3:
+                        break
+                if count_this_source >= 2 or per_side[side] >= 3:
+                    break
+    if not claims:
+        return None
+    result_rows = []
+    for claim in claims:
+        side = claim["field"].split("_", 1)[0]
+        result_rows.append({
+            "field": claim["field"],
+            "text": f"Contexto esportivo atual verificado do {match_context[side]}: {claim['value']}",
+        })
+    provisional = {
+        "id": "editorial_individual_team_context",
+        "status": "pending", "required_for_drafting": False,
+        "conditional": False, "allow_unavailable_after_check": False,
+        "facts": [], "sources": [],
+    }
+    evidence = {
+        "status": "verified", "facts": result_rows,
+        "sources": unique_validator_sources([x["validator_source"] for x in claims]),
+        "notes": None,
+    }
+    accepted, errors = factual_validator.validate_requirement_evidence(
+        provisional, evidence, config=config,
+    )
+    if errors:
+        return None
+    accepted["fact_extraction_status"] = "verified_individual_team_context"
+    accepted["structured_fact_count"] = len(result_rows)
+    accepted["validator_accepted"] = True
+    accepted["internal_provenance_only"] = True
+    accepted["extracted_claims"] = [
+        group for field_groups in group_claims(claims).values()
+        for group in field_groups.values()
+    ]
+    return accepted
+
+
 def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[str, Any]:
     result = deepcopy(article)
     match_context = article.get("match_context")
@@ -1963,6 +2095,11 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
     )
     if competitive_news is not None:
         extracted.append(competitive_news)
+    individual_context = extract_individual_team_context(
+        requirements, match_context=match_context, config=config,
+    )
+    if individual_context is not None:
+        extracted.append(individual_context)
     # Decisão editorial: o estádio do MANDANTE monitorado é fixo e prevalece
     # sobre lacunas ou estádio diferente encontrado em páginas de pré-jogo.
     # Visitantes monitorados em casa de outro clube continuam na pesquisa normal.
