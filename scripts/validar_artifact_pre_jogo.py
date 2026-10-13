@@ -9,11 +9,39 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 TZ = ZoneInfo("America/Sao_Paulo")
+
+
+def agenda_only_change(source_sha: str, current_sha: str, *, worktree: Path | None = None) -> bool:
+    """Aceita SHA distinto APENAS quando o histórico até a main alterou agenda.json.
+
+    Não usa diff da área de trabalho: compara commits imutáveis. A preparação
+    precisa ser ancestral da publicação; alterações editoriais nunca são ignoradas.
+    Em caso de clone superficial ou erro de Git, a validação falha fechada.
+    """
+    if not all(re.fullmatch(r"[0-9a-f]{40}", value or "", flags=re.IGNORECASE)
+               for value in (source_sha, current_sha)):
+        return False
+    root = worktree or Path(__file__).resolve().parent.parent
+    try:
+        ancestor = subprocess.run(
+            ["git", "-C", str(root), "merge-base", "--is-ancestor", source_sha, current_sha],
+            capture_output=True, check=False,
+        )
+        if ancestor.returncode != 0:
+            return False
+        changed = subprocess.run(
+            ["git", "-C", str(root), "diff", "--name-only", source_sha, current_sha, "--"],
+            capture_output=True, text=True, check=True,
+        ).stdout.splitlines()
+    except (OSError, subprocess.CalledProcessError):
+        return False
+    return bool(changed) and all(path == "agenda.json" for path in changed)
 
 
 def validate_manifest(
@@ -22,6 +50,8 @@ def validate_manifest(
     target_date: str,
     base_main_sha: str,
     now: datetime,
+    allow_agenda_only_update: bool = False,
+    worktree: Path | None = None,
 ) -> None:
     if data.get("step") != 34 or data.get("target_date") != target_date:
         raise ValueError("etapa/data do artifact divergente")
@@ -29,7 +59,10 @@ def validate_manifest(
         raise ValueError("SHA atual da main inválido")
     source_sha = data.get("source_main_sha")
     if source_sha != base_main_sha:
-        raise ValueError("artifact foi preparado sobre outro SHA da main")
+        if not (allow_agenda_only_update and agenda_only_change(
+            source_sha, base_main_sha, worktree=worktree
+        )):
+            raise ValueError("artifact foi preparado sobre outro SHA da main ou houve mudanças além de agenda.json")
 
     raw = data.get("generated_at")
     if not isinstance(raw, str):
@@ -61,6 +94,8 @@ def main() -> None:
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--date", required=True)
     parser.add_argument("--base-main-sha", required=True)
+    parser.add_argument("--allow-agenda-only-update", action="store_true",
+                        help="Aceita SHA diferente só se agenda.json for a única mudança entre os commits.")
     args = parser.parse_args()
 
     data = json.loads(args.manifest.read_text(encoding="utf-8"))
@@ -72,10 +107,11 @@ def main() -> None:
             target_date=args.date,
             base_main_sha=args.base_main_sha,
             now=datetime.now(TZ),
+            allow_agenda_only_update=args.allow_agenda_only_update,
         )
     except ValueError as exc:
         raise SystemExit(f"ERRO: artifact de preparo rejeitado: {exc}") from exc
-    print("OK: artifact fresco e produzido sobre a mesma main da publicação.")
+    print("OK: artifact fresco; mesmo SHA ou atualização comprovadamente restrita a agenda.json.")
 
 
 if __name__ == "__main__":
