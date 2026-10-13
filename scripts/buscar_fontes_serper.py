@@ -11,6 +11,7 @@ import sys
 import time
 import unicodedata
 from datetime import date, datetime, timedelta
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, NoReturn
 from urllib.error import HTTPError, URLError
@@ -184,6 +185,41 @@ def normalize_serper_response(
             }
         )
     return results
+
+
+# Notícias atuais não podem gastar leituras gratuitas com temporadas passadas.
+DYNAMIC_RESEARCH_REQUIREMENTS = {
+    "stadium_and_location", "transmission", "probable_lineups_and_coaches",
+    "officiating", "recent_form_both_teams",
+    "stakes_and_qualification_scenarios_when_applicable",
+}
+
+
+def candidate_recent_for_article(candidate: dict[str, Any], article_date: str | None,
+                                 *, days: int = 14) -> bool:
+    """Triagem por metadado RSS, sem usar snippets como evidência factual."""
+    if not isinstance(article_date, str) or not article_date:
+        return True
+    try:
+        target = date.fromisoformat(article_date)
+    except ValueError:
+        try:
+            target = datetime.strptime(article_date, "%d/%m/%Y").date()
+        except ValueError:
+            return False
+    hint = candidate.get("published_hint")
+    if hint is None or hint == "":
+        return True  # Fonte sem data precisa de validação integral posterior.
+    if not isinstance(hint, str):
+        return False
+    try:
+        published = parsedate_to_datetime(hint.strip())
+        if published.tzinfo is None:
+            return False
+        published_local = published.astimezone(ZoneInfo("America/Sao_Paulo")).date()
+    except (TypeError, ValueError, IndexError):
+        return False
+    return target - timedelta(days=days) <= published_local <= target
 
 
 def normalize_text(value: Any) -> str:
@@ -594,6 +630,10 @@ def discover_candidates_for_plan(
                     allowed_domains=[str(item) for item in domains] if domains else None,
                 )
                 for result in normalized:
+                    if requirement_id in DYNAMIC_RESEARCH_REQUIREMENTS and not candidate_recent_for_article(
+                        result, article_date
+                    ):
+                        continue
                     if result["url"] not in seen_urls:
                         seen_urls.add(result["url"])
                         stage_results.append(result)
