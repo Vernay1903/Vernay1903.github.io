@@ -341,8 +341,8 @@ def category_and_third_club_errors(body_html: str, contract: dict[str, Any]) -> 
 def dense_fixture_enumeration_errors(body_html: str) -> list[str]:
     """Cinco jogos com cinco datas no mesmo parágrafo não são análise."""
     date_pattern = (
-        r"\\b\\d{1,2} de (?:janeiro|fevereiro|marco|abril|maio|junho|"
-        r"julho|agosto|setembro|outubro|novembro|dezembro)\\b"
+        r"\b\d{1,2} de (?:janeiro|fevereiro|marco|abril|maio|junho|"
+        r"julho|agosto|setembro|outubro|novembro|dezembro)\b"
     )
     for paragraph in paragraphs(body_html):
         if len(re.findall(date_pattern, paragraph)) >= 4:
