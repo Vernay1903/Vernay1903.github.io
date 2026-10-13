@@ -1685,6 +1685,8 @@ def extract_stakes_requirement(
     )
     claims: list[dict[str, Any]] = []
     for source in eligible_sources(requirement):
+        if not source_current_for_match(source, match_context):
+            continue
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
