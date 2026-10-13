@@ -1053,6 +1053,20 @@ def source_current_for_match(
             return False
         verified_publication_date = True
 
+    # Uma notícia sobre Libertadores Feminina, WSL ou outra categoria
+    # não pode fundamentar o contexto esportivo de um jogo masculino.
+    competition_category = normalize_text(
+        str(match_context.get("competition") or "") + " "
+        + str(match_context.get("gender") or "")
+    )
+    if not re.search(r"\b(?:feminina|feminino|women|womens|female|femminile|feminin)\b", competition_category):
+        headline_category = normalize_text(
+            str(source.get("title") or "") + " " + str(source.get("url") or "")
+        )
+        if re.search(r"\b(?:feminina|feminino|femininas|women|womens|female|"
+                     r"femminile|feminin|femmes|frauen|wsl)\b", headline_category):
+            return False
+
     metadata = (source.get("page_evidence") or {}).get("metadata") or {}
     locator = " ".join(str(value) for value in (
         source.get("url", ""), source.get("title", ""),
@@ -2074,6 +2088,7 @@ EDITORIAL_TEAM_SIGNALS = (
     r"venceu|perdeu|perde|ganhou|derrotou|won|lost|beat|"
     r"training|trained|prepar\w*|injur\w*|"
     r"standings|unbeaten|winless|defeat|"
+    r"entrain\w*|allenam\w*|infortunat\w*|convocat\w*|"
     r"entren\w*|lesion\w*|bajas?|regres\w*|clasific\w*)\b"
 )
 EDITORIAL_SERVICE_NOISE = (
