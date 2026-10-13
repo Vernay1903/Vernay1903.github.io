@@ -207,6 +207,15 @@ def candidate_recent_for_article(candidate: dict[str, Any], article_date: str | 
             target = datetime.strptime(article_date, "%d/%m/%Y").date()
         except ValueError:
             return False
+    # Republicar/atualizar RSS em 2026 não transforma uma matéria sobre
+    # Copa do Brasil 2025 em notícia da preparação para o jogo de 2026.
+    # Descartar pelo ano EXPLÍCITO no título/URL ANTES de ler a página.
+    locator = " ".join(
+        str(candidate.get(key) or "") for key in ("title", "url")
+    )
+    locator_years = set(re.findall(r"(?<!\d)20[12]\d(?!\d)", locator))
+    if locator_years and str(target.year) not in locator_years:
+        return False
     hint = candidate.get("published_hint")
     if hint is None or hint == "":
         return True  # Fonte sem data precisa de validação integral posterior.

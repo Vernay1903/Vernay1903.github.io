@@ -451,10 +451,18 @@ def resolve_allowed_gap(
         result.get("candidate_status") == "no_candidates"
         and int(result.get("candidate_source_count", 0) or 0) == 0
     )
+    # Evidência não encontrada NÃO significa pesquisa não realizada.
+    # Quando uma candidata foi efetivamente lida, mas sem conteúdo
+    # utilizável, e uma segunda pesquisa dirigida foi executada, pode-se
+    # omitir o serviço opcional; jamais promover escalação não verificada.
+    exhausted_checked_search = (
+        result.get("passo34_9_targeted_search_attempted") is True
+        and int(result.get("page_check_attempt_count", 0) or 0) > 0
+    )
     if (
         isinstance(policy, dict)
         and policy.get("allow_unavailable_after_check") is True
-        and (sources or no_candidates_after_search)
+        and (sources or no_candidates_after_search or exhausted_checked_search)
     ):
         result["status"] = "unavailable_after_check"
         result["facts"] = []
@@ -465,7 +473,11 @@ def resolve_allowed_gap(
         result["fact_extraction_status"] = (
             "automatic_unavailable_after_checked_sources"
             if sources
-            else "automatic_unavailable_after_search_without_candidates"
+            else (
+                "automatic_unavailable_after_targeted_research"
+                if exhausted_checked_search
+                else "automatic_unavailable_after_search_without_candidates"
+            )
         )
         result["validator_accepted"] = True
         result["conflict_detected"] = False
