@@ -38,6 +38,7 @@ EDITORIAL_SIGNALS = (
     "venceu", "perdeu", "perde", "ganhou", "won", "lost", "beat",
     "injur", "train", "prepar", "return", "coach", "manager",
     "standings", "unbeaten", "defeat", "draw", "winless",
+    "entrain", "allenam", "infortunat", "convocat", "squad",
     "entren", "lesion", "baja", "regreso", "clasific",
 )
 
@@ -401,6 +402,8 @@ def _build_checked_source(
     config: dict[str, Any],
     recent_team: str | None = None,
 ) -> dict[str, Any] | None:
+    if not source_search.candidate_matches_match_category(source, context):
+        return None
     normalized = base.normalize_scrape_response(raw)
     content = normalized["content"]
     if not content:
@@ -688,6 +691,8 @@ def _search_and_check(
                 url = str(candidate.get("url", ""))
                 if not url or url in seen:
                     continue
+                if not source_search.candidate_matches_match_category(candidate, context):
+                    continue
                 if not source_search.candidate_matches_team(candidate, str(context.get("home", "")), config):
                     if requirement_id not in {"recent_form_both_teams", EDITORIAL_RESEARCH_ID} or recent_team != context.get("away"):
                         continue
@@ -913,6 +918,7 @@ def _research_editorial_sources(
                 title = str(source.get("title") or "")
                 if (
                     not isinstance(url, str) or url in seen
+                    or not source_search.candidate_matches_match_category(source, context)
                     or not base.eligible_checked_source(source)
                     or editorial_headline_primary_side(title, context, config) != side
                     or not source_search.candidate_recent_for_article(source, article_date, days=7)
