@@ -909,6 +909,30 @@ def extract_officiating_requirement(
             if not isinstance(segment, str):
                 continue
             name = current_referee_assignment(segment, match_context, config)
+            if name is None:
+                # Ficha de serviço atual: o título deve ser EXATAMENTE o duelo.
+                # "Árbitro de X x Y relembra 2025" não é ficha, é notícia
+                # histórica e pode mencionar dezenas de outros profissionais.
+                title = normalize_text(str(source.get("title") or ""))
+                home = str(match_context.get("home") or "")
+                away = str(match_context.get("away") or "")
+                home_aliases = [normalize_text(x) for x in aliases_for_team(home, config)]
+                away_aliases = [normalize_text(x) for x in aliases_for_team(away, config)]
+                fixture_titles = {
+                    f"{h} {versus} {a}"
+                    for h in home_aliases for a in away_aliases
+                    for versus in ("x", "vs")
+                    if len(h) >= 4 and len(a) >= 4
+                } | {
+                    f"{a} {versus} {h}"
+                    for h in home_aliases for a in away_aliases
+                    for versus in ("x", "vs")
+                    if len(h) >= 4 and len(a) >= 4
+                }
+                if title in fixture_titles and re.match(
+                    r"(?i)^\s*[áa]rbitro\s*[:–—-]", segment,
+                ):
+                    name = extract_referee_name(segment)
             if name:
                 claim = make_claim("referee", name, source, segment)
                 if claim:
