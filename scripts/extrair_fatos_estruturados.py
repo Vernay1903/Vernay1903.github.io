@@ -2241,7 +2241,7 @@ def extract_individual_team_context(
                     # Remover crédito editorial do início do parágrafo; a
                     # atribuição ao jornalista não é contexto esportivo.
                     value = re.sub(
-                        r"^Por:\\s*[^.]{0,100}?\\s*/\\s*Licenciado de [^.]{3,90}\\s+",
+                        r"^Por:\s*[^.]{0,100}?\s*/\s*Licenciado de [^.]{3,90}\s+",
                         "", value, flags=re.I,
                     )
                     folded = normalize_text(value)
