@@ -303,6 +303,8 @@ def _search_targeted_sources(
             except Exception:
                 continue
             for candidate in source_search.normalize_serper_response(raw, allowed_domains=domains):
+                if not source_search.candidate_recent_for_article(candidate, article_date):
+                    continue
                 url = str(candidate.get("url", ""))
                 if not url or url in seen:
                     continue
