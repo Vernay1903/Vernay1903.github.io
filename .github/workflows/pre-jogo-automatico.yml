@@ -113,6 +113,7 @@ jobs:
           python tests/pre-jogo/teste_champions_fase_liga.py
           python tests/pre-jogo/teste_profundidade_editorial_sem_desfalque.py
           python tests/pre-jogo/teste_contexto_editorial_individual.py
+          python tests/pre-jogo/teste_arbitragem_atribuicao_atual.py
           python tests/pre-jogo/teste_cenario_semifinal_contexto_factual.py
           python tests/pre-jogo/teste_triagem_rss_recente.py
           python tests/pre-jogo/teste_frescor_fontes_fatos.py
@@ -628,6 +629,7 @@ jobs:
           python tests/pre-jogo/teste_champions_fase_liga.py
           python tests/pre-jogo/teste_profundidade_editorial_sem_desfalque.py
           python tests/pre-jogo/teste_contexto_editorial_individual.py
+          python tests/pre-jogo/teste_arbitragem_atribuicao_atual.py
           python tests/pre-jogo/teste_cenario_semifinal_contexto_factual.py
           python tests/pre-jogo/teste_triagem_rss_recente.py
           python tests/pre-jogo/teste_frescor_fontes_fatos.py
