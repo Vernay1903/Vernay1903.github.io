@@ -139,6 +139,12 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
     unique_fields = list(dict.fromkeys(fields))
     if len(unique_fields) != len(fields):
         fail("required_fact_fields contém duplicatas.")
+    allowed = contract.get("allowed_fact_fields", unique_fields)
+    if not isinstance(allowed, list) or not all(isinstance(x, str) for x in allowed):
+        fail("allowed_fact_fields inválidos.")
+    allowed = list(dict.fromkeys(allowed))
+    if not set(unique_fields).issubset(allowed):
+        fail("Fatos obrigatórios não estão presentes no conjunto permitido.")
 
     return {
         "type": "object",
@@ -147,9 +153,9 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
             "body_html": {"type": "string", "minLength": 4400},
             "fact_fields_used": {
                 "type": "array",
-                "items": {"type": "string", "enum": unique_fields},
+                "items": {"type": "string", "enum": allowed},
                 "minItems": len(unique_fields),
-                "maxItems": len(unique_fields),
+                "maxItems": len(allowed),
             },
         },
         "required": ["slug", "body_html", "fact_fields_used"],
@@ -225,6 +231,8 @@ def system_instructions() -> str:
         "apenas seção com informação verificável, sem um resumo artificial. " "Máximo oito subtítulos informativos; proíba Resumo do encontro, Dados do confronto, Últimas linhas antes da partida, Informações principais, Serviço do jogo ou Fechamento. " "Uma escalação completa só pode aparecer dentro do bloco Prováveis escalações. " "Onde assistir deve ser curto, com emissoras confirmadas e horário, sem repetir data/estádio em várias seções. " "Não repita jogos, balanços ou fichas de serviço com palavras diferentes. "
         "Insira exatamente uma vez o link interno aprovado, com âncora textual natural, e não crie nenhum outro link. "
         "É expressamente proibido citar fontes, sites, portais, veículos, consultas ou processos internos. "
+        "Os required_fact_fields são obrigatórios; os allowed_fact_fields adicionais são opcionais e só devem entrar se realmente acrescentarem informação. "
+        "Não copie a lista de dez placares nem cada dado histórico só para preencher espaço. "
         "Declarar um campo em fact_fields_used não basta: todo campo de required_fact_fields deve aparecer de forma visível e inequívoca no body_html. "
         "Redija entre 700 e 900 palavras APENAS quando os fatos fornecidos sustentarem esse desenvolvimento, sem recapitulá-los. O mínimo editorial é 700. "
         "Antes de escrever, planeje 825 a 875 palavras: abertura factual curta (80 a 100), contexto objetivo e serviço (80 a 100), "

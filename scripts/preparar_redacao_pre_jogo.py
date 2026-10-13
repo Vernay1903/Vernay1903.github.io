@@ -138,6 +138,26 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     fact_fields = collect_fact_fields(clean_package)
     if not fact_fields:
         fail("Pacote editorial sem fatos estruturados para redação.")
+    # Os campos estruturados incluem dez placares, métricas correlatas e
+    # fatos históricos opcionais. Exigir TODOS no texto obrigava repetição
+    # e promovia notícias periféricas. Somente os fatos de serviço, gancho
+    # competitivo, síntese recente e pelo menos um fato de CADA clube
+    # devem aparecer. Os demais continuam disponíveis, mas são opcionais.
+    high_priority = (
+        "stadium", "referee", "transmission", "qualification_scenario",
+        "home_lineup", "away_lineup", "home_coach", "away_coach",
+        "home_recent_form", "away_recent_form",
+    )
+    required_fact_fields = [x for x in high_priority if x in fact_fields]
+    for side in ("home", "away"):
+        specific = next((
+            field for field in fact_fields
+            if field.startswith((f"{side}_team_news_", f"{side}_stakes_"))
+        ), None)
+        if specific and specific not in required_fact_fields:
+            required_fact_fields.append(specific)
+    if not required_fact_fields:
+        required_fact_fields = fact_fields[:2]
 
     # Define um roteiro conforme os dados reais; a referência editorial é
     # estrutura de escrita, jamais uma fonte de fatos de outro confronto.
@@ -246,13 +266,15 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         "match_context": deepcopy(context),
         "facts_by_requirement": deepcopy(clean_package.get("facts_by_requirement", [])),
         "competition_internal_link": deepcopy(internal_link),
-        "required_fact_fields": fact_fields,
+        "required_fact_fields": required_fact_fields,
+        "allowed_fact_fields": fact_fields,
         "output_contract": {
             "format": "json",
             "required_fields": ["slug", "body_html", "fact_fields_used"],
             "body_html_scope": "article_body_only",
             "minimum_words": int(config["article"]["min_words"]),
             "preferred_word_range": [750, 900],
+            "maximum_words": 960,
             "minimum_strong_subheadings": min(5, max(4, len(section_plan))),
             "internal_link_exactly_once": True,
             "unordered_lists_for_service_blocks": True,

@@ -311,6 +311,11 @@ def validate_draft(
     minimum = int(contract.get("output_contract", {}).get("minimum_words", 700))
     if count < minimum:
         errors.append(f"rascunho tem {count} palavras; mínimo exigido é {minimum}")
+    maximum = int(contract.get("output_contract", {}).get("maximum_words", 0) or 0)
+    if maximum and count > maximum:
+        errors.append(
+            f"rascunho tem {count} palavras; máximo de {maximum} para evitar alongamento artificial"
+        )
 
     headings = SUBHEADING_RE.findall(body)
     minimum_headings = int(contract.get("output_contract", {}).get("minimum_strong_subheadings", 5))
@@ -385,9 +390,14 @@ def validate_draft(
         used_fields = []
 
     required_set = set(required_fields)
+    allowed_fields = contract.get("allowed_fact_fields", required_fields)
+    if not isinstance(allowed_fields, list) or not all(isinstance(x, str) for x in allowed_fields):
+        errors.append("allowed_fact_fields inválido")
+        allowed_fields = required_fields
+    allowed_set = set(allowed_fields)
     used_set = set(used_fields)
     missing = sorted(required_set - used_set)
-    unknown = sorted(used_set - required_set)
+    unknown = sorted(used_set - allowed_set)
     if missing:
         errors.append("campos factuais declarados como não usados: " + ", ".join(missing))
     if unknown:
