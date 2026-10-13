@@ -224,11 +224,9 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     )
     if has_direct_history:
         section_plan.append(f"Retrospecto entre {popular_home} e {popular_away}")
-    elif has_results:
-        # São resultados reais de cada clube, não confrontos entre eles.
-        # Uma seção própria permite contextualizar a forma sem repetir
-        # a lista inteira de placares nos dois blocos Como chega.
-        section_plan.append(f"Forma recente na {competition}")
+    # A forma recente pertence aos blocos Como chega; criar outra seção
+    # só para cumprir cinco subtítulos obrigava recontar V/E/D e placares.
+    # Melhor quatro seções informativas do que cinco com duplicação.
     if all(verified_facts.get(field) for field in (
         "home_lineup", "away_lineup", "home_coach", "away_coach",
     )):
