@@ -817,6 +817,78 @@ def extract_referee_name(segment: str) -> str | None:
     return value if len(value.split()) >= 2 else None
 
 
+def current_referee_assignment(
+    segment: str, match_context: dict[str, Any], config: dict[str, Any],
+) -> str | None:
+    """Lê somente nome ligado à DESIGNAÇÃO para este jogo, não históricos.
+
+    Se uma matéria menciona vários árbitros de jogos passados, nunca usa o
+    segundo nome como conflito factual. Prefere ausência a atribuição falsa.
+    """
+    for sentence in re.split(r"(?<=[.!?])\s+", segment):
+        if not context_mentions_match(sentence, match_context, config):
+            continue
+        folded = normalize_text(sentence)
+        year = str(match_context.get("kickoff_brasilia") or "")[:4]
+        if any(y != year for y in re.findall(r"\b20\d{2}\b", folded)):
+            continue
+        name = (
+            r"([A-ZÀ-Ý][a-zà-ÿ'’.-]+"
+            r"(?:\s+[A-ZÀ-Ý][a-zà-ÿ'’.-]+){1,3})"
+        )
+        patterns = (
+            name + r"\s+(?i:será|sera|foi designado|foi escalado)"
+                   r"\s+(?i:(?:o|como|para ser)\s+)?"
+                   r"(?i:árbitro|arbitro|juiz)\b",
+            name + r"\s+(?i:apita|apitará|apitara)\s+",
+        )
+        for pattern in patterns:
+            hit = re.search(pattern, sentence)
+            if hit:
+                return hit.group(1).strip()
+    return None
+
+
+def include_current_referee_sources(
+    requirements: list[dict[str, Any]], *,
+    match_context: dict[str, Any], config: dict[str, Any],
+) -> list[dict[str, Any]]:
+    verified: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for requirement in requirements:
+        for source in eligible_sources(requirement):
+            url = source.get("url")
+            if not isinstance(url, str) or url in seen:
+                continue
+            if not source_current_for_match(source, match_context):
+                continue
+            segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+            if not isinstance(segments, list):
+                continue
+            if any(
+                current_referee_assignment(seg, match_context, config)
+                for seg in segments if isinstance(seg, str)
+            ):
+                seen.add(url)
+                verified.append(source)
+    updated = []
+    for req in requirements:
+        if req.get("id") != "officiating":
+            updated.append(req)
+            continue
+        row = deepcopy(req)
+        existing = {
+            s.get("url") for s in row.get("source_candidates", [])
+            if isinstance(s, dict)
+        }
+        row["source_candidates"] = [
+            *[deepcopy(x) for x in verified if x.get("url") not in existing],
+            *row.get("source_candidates", []),
+        ]
+        updated.append(row)
+    return updated
+
+
 def extract_officiating_requirement(
     requirement: dict[str, Any],
     *,
@@ -830,10 +902,13 @@ def extract_officiating_requirement(
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
-        for segment in corpus.splitlines():
-            if re.search(r"\b(?:var|video assistant|quarto arbitro|fourth official|arbitro assistente)\b", normalize_text(segment)):
+        segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+        if not isinstance(segments, list):
+            continue
+        for segment in segments:
+            if not isinstance(segment, str):
                 continue
-            name = extract_referee_name(segment)
+            name = current_referee_assignment(segment, match_context, config)
             if name:
                 claim = make_claim("referee", name, source, segment)
                 if claim:
@@ -2105,6 +2180,9 @@ def extract_article(article: dict[str, Any], *, config: dict[str, Any]) -> dict[
     )
 
     requirements = include_checked_first_leg_sources(
+        requirements, match_context=match_context, config=config,
+    )
+    requirements = include_current_referee_sources(
         requirements, match_context=match_context, config=config,
     )
     extracted = [
