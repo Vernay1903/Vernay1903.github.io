@@ -196,7 +196,7 @@ def system_instructions() -> str:
         "Os fatos estruturados são matéria-prima: reescreva-os em linguagem jornalística natural. Nunca exponha linguagem de banco de dados ou API como "
         "'jogos concluídos registrados', 'resultados registrados', 'base considerada' ou 'recorte considerado'. "
         "Produza somente o corpo editorial, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
-        "FORMATO OBRIGATÓRIO: body_html deve conter no mínimo cinco subtítulos exatamente no formato <p><strong>...</strong></p>; não use Markdown, <h2> ou <h3>. "
+        "FORMATO OBRIGATÓRIO: body_html deve conter os subtítulos substantivos previstos por editorial_section_plan, respeitando output_contract.minimum_strong_subheadings, exatamente no formato <p><strong>...</strong></p>; não use Markdown, <h2> ou <h3>. "
         "Inclua obrigatoriamente uma lista HTML <ul><li>...</li></ul> para os dados de serviço. "
         "MODELO JORNALÍSTICO APROVADO: a prévia LDU x Palmeiras (16/09/2026) abriu com a situação da eliminatória e seus desdobramentos, explicou a preparação específica dos clubes, incorporou retornos/desfalques ao contexto de cada equipe, reuniu escalações uma única vez, contextualizou o histórico, informou transmissão e fechou com consequência esportiva. " "NÃO copie fatos nem datas dessa referência: ela define apenas estilo e profundidade, e todos os fatos novos devem vir do contrato. " "A estrutura preferencial é: abertura curta; contexto competitivo se houver fato; Como chega o mandante; Como chega o visitante; "
         "prováveis escalações SOMENTE se os 11 jogadores e técnicos de ambos os clubes estiverem nos fatos; retrospecto proporcional à amostra; Onde assistir SOMENTE se houver emissora ou plataforma confirmada; fechamento somente se houver fato novo. "
@@ -262,11 +262,11 @@ def user_payload(contract: dict[str, Any]) -> str:
         "Planeje 825–875 palavras visíveis (não conte tags HTML, título nem JSON), com desenvolvimento maior de Como chega cada equipe por meio dos cinco resultados individuais "
         "e notícias verificadas do elenco quando presentes. Nunca inclua um bloco sem fatos nem substitua detalhes por generalidades. "
         "Use os nomes de seções de editorial_section_plan fornecidos no contrato como roteiro concreto, "
-        "com no mínimo cinco e no máximo oito subtítulos <p><strong>; não omita os blocos específicos "
+        "respeitando output_contract.minimum_strong_subheadings e no máximo oito subtítulos <p><strong>; não omita os blocos específicos "
         "de mandante, visitante, retrospecto e serviço quando houver fatos correspondentes. "
         "Só inclua blocos de transmissão e escalações se os respectivos fatos estiverem verificados. "
         "Nunca crie seções Fechamento, Resumo do encontro nem listas integrais de titulares fora da seção própria. "
-        "Antes de finalizar, confira: cinco <p><strong>subtítulos</strong></p>, lista <ul><li>, "
+        "Antes de finalizar, confira a quantidade de <p><strong>subtítulos</strong></p> exigida pelo contrato, lista <ul><li>, "
         "exatamente um <a href=...> com competition_internal_link.url e todos os fatos obrigatórios no corpo.\n\n"
         + serialized
     )
@@ -387,7 +387,7 @@ def build_revision_request(
                 "evidência. Produza um JSON editorial COMPLETO e novo utilizando SOMENTE "
                 "os fatos do contrato. Corrija: " + "; ".join(errors) + ". " + short +
                 " Mantenha entre 700 e 900 palavras sem repetição, fontes externas ou "
-                "inferências factuais. Siga editorial_section_plan com pelo menos cinco seções "
+                "inferências factuais. Siga editorial_section_plan com todas as seções substantivas indicadas; o mínimo é o número do contrato. "
                 "substantivas: não substitua a seção de um dos clubes por um parágrafo da abertura. "
                 "Use no máximo oito subtítulos e exatamente um link interno. "
                 "Escreva os onze titulares de cada time uma única vez, dentro de Prováveis escalações, "

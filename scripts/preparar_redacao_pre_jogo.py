@@ -198,9 +198,17 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         f"Como chega o {popular_home}",
         f"Como chega o {popular_away}",
     ]
-    if any(key.startswith(("h2h_", "games", "home_wins", "away_wins", "draws"))
-           for key in verified_facts):
+    has_direct_history = any(
+        key.startswith(("h2h_", "games", "home_wins", "away_wins", "draws"))
+        for key in verified_facts
+    )
+    if has_direct_history:
         section_plan.append(f"Retrospecto entre {popular_home} e {popular_away}")
+    elif has_results:
+        # São resultados reais de cada clube, não confrontos entre eles.
+        # Uma seção própria permite contextualizar a forma sem repetir
+        # a lista inteira de placares nos dois blocos Como chega.
+        section_plan.append(f"Forma recente na {competition}")
     if all(verified_facts.get(field) for field in (
         "home_lineup", "away_lineup", "home_coach", "away_coach",
     )):
@@ -245,7 +253,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "body_html_scope": "article_body_only",
             "minimum_words": int(config["article"]["min_words"]),
             "preferred_word_range": [750, 900],
-            "minimum_strong_subheadings": 5,
+            "minimum_strong_subheadings": min(5, max(4, len(section_plan))),
             "internal_link_exactly_once": True,
             "unordered_lists_for_service_blocks": True,
         },
