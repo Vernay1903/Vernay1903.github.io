@@ -348,6 +348,15 @@ def adjusted_service_headline(
     lineups_ok = _verified_lineups(requirement_by_id.get("probable_lineups_and_coaches"), config)
 
     prefix = original_title.rsplit(":", 1)[0].strip() if ":" in original_title else original_title
+    # O nome interno "na competição Libertadores" não é uma chamada
+    # jornalística. Converter para a preposição natural antes de publicar.
+    def natural_competition_phrase(text: str) -> str:
+        result = re.sub(r"\\bna competição\\s+", "pela ", text, flags=re.IGNORECASE)
+        return re.sub(
+            r"\\bpela (Brasileirão|Campeonato Brasileiro)\\b",
+            r"pelo \\1", result, flags=re.IGNORECASE,
+        )
+    prefix = natural_competition_phrase(prefix)
     # Apenas serviços verificados no título; nunca usar encheção de chamada.
     title_items = ["horário"]
     if lineups_ok:
@@ -360,6 +369,7 @@ def adjusted_service_headline(
         r";\s*(?:veja|confira)\s+", original_excerpt,
         maxsplit=1, flags=re.IGNORECASE,
     )[0].rstrip(" .")
+    base_excerpt = natural_competition_phrase(base_excerpt)
     excerpt_items = []
     if lineups_ok:
         excerpt_items.append("prováveis escalações")
