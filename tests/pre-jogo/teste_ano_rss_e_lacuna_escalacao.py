@@ -46,7 +46,7 @@ def check():
     assert resolved["facts"]==[],resolved
     # Uma pesquisa não executada não autoriza omissão silenciosa.
     not_checked=resolve_allowed_gap(pending,competition_slug="libertadores",config=CONFIG)
-    assert not_checked["status"]=="unavailable_after_check",not_checked
+    assert not_checked["status"] != "unavailable_after_check",not_checked
     print("OK: rejeita RSS 2025 e aceita indisponibilidade apenas após busca.")
 
 if __name__=="__main__":
