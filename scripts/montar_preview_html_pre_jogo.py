@@ -376,7 +376,7 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
             if int(last["start"]) <= second_point:
                 fail("Faltou seção editorial após a forma recente para anúncio final.")
             paragraph_ends = [
-                m.end() for m in re.finditer(r"</p\\s*>", body[int(last["start"]):], re.I)
+                m.end() for m in re.finditer(r"</p\s*>", body[int(last["start"]):], re.I)
             ]
             if len(paragraph_ends) < 3:
                 fail("Última seção curta demais para o anúncio final sem prejudicar leitura.")
