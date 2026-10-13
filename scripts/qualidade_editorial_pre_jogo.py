@@ -135,7 +135,7 @@ def near_duplicate_errors(body_html: str) -> list[str]:
     return []
 
 def repeated_stat_summaries_errors(body_html: str) -> list[str]:
-    """Bloqueia o mesmo balanço de V/E/D recontado em abertura, clube e fim."""
+    """Bloqueia o mesmo V/E/D em dois parágrafos, mesmo com derrota singular."""
     numbers = {
         "um": "1", "uma": "1", "dois": "2", "duas": "2",
         "tres": "3", "quatro": "4", "cinco": "5", "seis": "6",
@@ -143,20 +143,24 @@ def repeated_stat_summaries_errors(body_html: str) -> list[str]:
     }
     seen: set[tuple[tuple[str, str], ...]] = set()
     for paragraph in paragraphs(body_html):
-        tally = {
-            category: numbers.get(value, value)
-            for value, category in re.findall(
-                r"\b(\d+|um|uma|dois|duas|tres|quatro|cinco|seis|sete|oito|nove|dez)"
-                r"\s+(vitorias|empates|derrotas)\b",
-                paragraph,
-            )
-        }
-        if len(tally) < 3:
-            continue
-        signature = tuple(sorted(tally.items()))
-        if signature in seen:
+        tokens = re.findall(
+            r"\b(\d+|um|uma|dois|duas|tres|quatro|cinco|seis|sete|oito|nove|dez)"
+            r"\s+(vitorias?|empates?|derrotas?)\b",
+            paragraph,
+        )
+        current: dict[str, str] = {}
+        observed: set[tuple[tuple[str, str], ...]] = set()
+        for value, category in tokens:
+            singular = category.rstrip("s")
+            if singular in current:
+                current = {}
+            current[singular] = numbers.get(value, value)
+            if len(current) == 3:
+                observed.add(tuple(sorted(current.items())))
+                current = {}
+        if seen & observed:
             return ["o mesmo balanço de vitórias, empates e derrotas é repetido em seções diferentes"]
-        seen.add(signature)
+        seen.update(observed)
     return []
 
 
