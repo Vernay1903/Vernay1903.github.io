@@ -564,10 +564,23 @@ def _targeted_queries(
     year = _target_year(article_date)
 
     if requirement_id == EDITORIAL_RESEARCH_ID and isinstance(team, str):
+        # Manchetes podem usar o nome curto (Roma, PSG, Man City) em vez do
+        # nome de cadastro. Usa consultas adicionais, mantendo verificação
+        # posterior do conteúdo e da identidade do clube.
+        normalized_team = base.normalize_text(team)
+        alias = (
+            "PSG" if normalized_team in {"paris saint germain", "paris saint germain fc"} else
+            "Roma" if normalized_team == "as roma" else
+            "Man City" if normalized_team == "manchester city" else team
+        )
         # Variar idioma e assunto: com filtros apenas em português, páginas
         # da Roma, Manchester City e PSG frequentemente não aparecem no RSS.
         # Clube sozinho, não os dois nomes juntos: coleta contexto por lado.
         return [
+            f'"{alias}" "{competition}" preview equipe {year}',
+            f'"{alias}" treino preparação treinamento latest {year}',
+            f'"{alias}" squadra allenamento infortunati {year}',
+            f'"{alias}" entraînement groupe blessés {year}',
             f'"{team}" training team news October {year}',
             f'"{team}" injury squad coach news {year}',
             f'"{team}" allenamento convocati infortunati {year}',
