@@ -84,6 +84,7 @@ jobs:
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           CDE_RSS_MAX_REQUESTS: "60"
+          CDE_EDITORIAL_DIAG: "1"
         run: python scripts/diagnosticar_coleta_pre_jogo.py
       - name: Validar UMA matéria real com OpenAI sem publicar (somente este commit)
         if: ${{ github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Validacao editorial real (1 artigo)') }}
