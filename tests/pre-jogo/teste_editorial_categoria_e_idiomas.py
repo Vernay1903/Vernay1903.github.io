@@ -37,6 +37,14 @@ def test():
     assert not extract_individual_team_context([{
        "id":"editorial_context_both_teams","source_candidates":[feminine],
     }],match_context=ctx,config=cfg)
+    disguised=src(
+      "Palmeiras deixa Kate Tapia fora da Libertadores, e goleira rebate decisão",
+      "O Palmeiras comunicou que a goleira Kate Tapia está fora da disputa "
+      "da Libertadores Feminina por questões disciplinares.",
+      "https://www.terra.com.br/esportes/palmeiras/2026/kate-tapia.html",
+      side="away",
+    )
+    assert not source_current_for_match(disguised,ctx)
     male=src(
       "Flamengo vence Fluminense no Maracanã em clássico",
       "O Fluminense, que poupou alguns titulares de olho na semifinal da Copa Libertadores, parou nos 51 pontos, mas segue na terceira colocação do Brasileirão.",
