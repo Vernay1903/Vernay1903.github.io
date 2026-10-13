@@ -2204,7 +2204,16 @@ def extract_individual_team_context(
             for segment in evidence:
                 if not isinstance(segment, str):
                     continue
-                for sentence in re.split(r"(?<=[.!?])\s+", segment):
+                # O leitor adiciona a manchete antes do trecho checado.
+                # A manchete identifica a reportagem, mas NÃO deve virar
+                # fato de preparação nem obrigação para o redator. Isso
+                # atribuiu ao Fluminense a titularidade de Saúl no Flamengo.
+                clean_segment = segment.strip()
+                if headline and clean_segment.casefold().startswith(headline.strip().casefold()):
+                    clean_segment = clean_segment[len(headline.strip()):].lstrip(" .:;–—")
+                if not clean_segment:
+                    continue
+                for sentence in re.split(r"(?<=[.!?])\s+", clean_segment):
                     value = clean_value(sentence, max_chars=390)
                     folded = normalize_text(value)
                     if len(folded.split()) < 11:
