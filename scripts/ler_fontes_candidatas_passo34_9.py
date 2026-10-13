@@ -44,6 +44,8 @@ CRITICAL_REQUIREMENTS = {
     "stadium_and_location",
     "recent_form_both_teams",
     "competition_specific_head_to_head",
+    # Sem pesquisa exclusiva, a fase de mata-mata nunca era confirmada.
+    "stakes_and_qualification_scenarios_when_applicable",
 }
 ALLOWED_GAP_REQUIREMENTS = {
     "transmission",
@@ -437,6 +439,27 @@ def _build_checked_source(
         )
         # A manchete é indispensável à prova de qual equipe a página cobre.
         # Uma reportagem exclusiva sobre o clube não precisa mencionar o rival.
+    elif requirement_id == "stakes_and_qualification_scenarios_when_applicable":
+        # Classificação só pode ser extraída de matéria INTEGRAL verificada
+        # que realmente identifique fase + confronto e competição. RSS/
+        # manchete isolada não é prova de um cenário de mata-mata.
+        supported = (
+            _match_in_text(f"{source.get('title', '')}\n{content}", context)
+            and content_is_current_enough(content, source, target_year=target_year)
+        )
+        segments = _contextual_segments(
+            content,
+            predicate=lambda line: (
+                any(token in base.normalize_text(line) for token in (
+                    "semifinal", "semi final", "jogo de ida", "primeira partida",
+                    "quartas de final", "oitavas de final", "first leg",
+                    "classific", "vaga na",
+                ))
+                and (base.normalize_text(str(context.get("competition") or ""))
+                     in base.normalize_text(f"{source.get('title', '')} {line}"))
+            ),
+            max_segments=max_segments, max_chars=max_chars,
+        )
     elif requirement_id == "recent_form_both_teams" and isinstance(recent_team, str):
         supported = recent_form_content_support(
             content,
@@ -589,6 +612,13 @@ def _targeted_queries(
             f'"{team}" últimas notícias técnico jogadores {year}',
             f'"{team}" "{competition}" match preview {year}',
             f'"{team}" latest results league standings {year}',
+        ]
+    if requirement_id == "stakes_and_qualification_scenarios_when_applicable":
+        return [
+            f'"{home}" "{away}" "{competition}" {year} semifinal jogo de ida',
+            f'"{home}" "{away}" "{competition}" {year} semifinal ida classificação',
+            f'"{home}" "{away}" "{competition}" {year} quartas oitavas fase jogo de ida',
+            f'"{home}" "{away}" "{competition}" {year} first leg semi final',
         ]
     if requirement_id == "recent_form_both_teams" and isinstance(team, str):
         return [
