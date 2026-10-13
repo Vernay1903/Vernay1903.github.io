@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -2123,6 +2124,22 @@ def extract_individual_team_context(
         if requirement.get("id") != "editorial_context_both_teams":
             continue
         for source in eligible_sources(requirement):
+            if os.environ.get("CDE_EDITORIAL_DIAG") == "1":
+                debug_side = source.get("editorial_target_side")
+                debug_team = match_context.get(debug_side) if debug_side in ("home", "away") else None
+                print(
+                    "EDITORIAL-CANDIDATA: "
+                    + json.dumps({
+                        "title": str(source.get("title") or "")[:130],
+                        "side": debug_side,
+                        "target_match": debug_team == source.get("editorial_target_team"),
+                        "fresh": source_current_for_match(source, match_context),
+                        "team_in_title": isinstance(debug_team, str)
+                        and mentions_team(str(source.get("title") or ""), debug_team, config),
+                        "segments": len((source.get("page_evidence") or {}).get("evidence_segments") or []),
+                    }, ensure_ascii=False),
+                    flush=True,
+                )
             side = source.get("editorial_target_side")
             if side not in ("home", "away") or per_side[side] >= 3:
                 continue
@@ -2198,6 +2215,11 @@ def extract_individual_team_context(
                         break
                 if count_this_source >= 2 or per_side[side] >= 3:
                     break
+    if os.environ.get("CDE_EDITORIAL_DIAG") == "1":
+        print("EDITORIAL-EXTRAÇÃO: "
+              + json.dumps({"home": per_side["home"], "away": per_side["away"],
+                            "fields": [claim["field"] for claim in claims]},
+                           ensure_ascii=False), flush=True)
     if not claims:
         return None
     result_rows = []
@@ -2222,6 +2244,8 @@ def extract_individual_team_context(
         provisional, evidence, config=config,
     )
     if errors:
+        if os.environ.get("CDE_EDITORIAL_DIAG") == "1":
+            print("EDITORIAL-VALIDAÇÃO: " + json.dumps(errors, ensure_ascii=False), flush=True)
         return None
     accepted["fact_extraction_status"] = "verified_individual_team_context"
     accepted["structured_fact_count"] = len(result_rows)
