@@ -44,7 +44,7 @@ def check():
     assert extract(unrelated) is None, "Apelido sozinho sem clube no título deve ser rejeitado"
     english=item(
         "Fluminense se prepara para a Libertadores",
-        "An analyst studied seasonal flu cases while Palmeiras and Fluminense prepared for their next matches.",
+        "An analyst studied seasonal flu cases while club staff prepared training arrangements before the next tournament.",
         "https://ge.globo.com/futebol/fluminense/noticia/2026/10/11/saude.html",
     )
     assert extract(english) is None, "Palavra inglesa flu não é apelido"
