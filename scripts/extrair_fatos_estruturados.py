@@ -933,6 +933,27 @@ def extract_officiating_requirement(
                     r"(?i)^\s*[áa]rbitro\s*[:–—-]", segment,
                 ):
                     name = extract_referee_name(segment)
+            if name is None and source.get("source_type") == "official":
+                # Ficha da própria competição: "Arsenal v Manchester City -
+                # Premier League | Árbitro: Michael Oliver". Aceitar somente
+                # se mandante, visitante e competição surgirem ANTES do campo,
+                # não notícias históricas em que clubes foram apenas citados.
+                separator = re.search(r"(?i)\b[áa]rbitro\s*[:–—-]", segment)
+                if separator:
+                    before = segment[:separator.start()]
+                    simplified = normalize_text(before)
+                    home = str(match_context.get("home") or "")
+                    away = str(match_context.get("away") or "")
+                    competition = str(match_context.get("competition") or "")
+                    if (
+                        home and away and competition
+                        and mentions_team(before, home, config)
+                        and mentions_team(before, away, config)
+                        and normalize_text(competition) in simplified
+                        and re.search(r"\b(?:v|vs|x)\b", simplified)
+                        and len(before.split()) <= 18
+                    ):
+                        name = extract_referee_name(segment[separator.start():])
             if name:
                 claim = make_claim("referee", name, source, segment)
                 if claim:
