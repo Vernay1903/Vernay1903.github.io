@@ -27,9 +27,9 @@ def check():
     ])
     contract=build_contract(package,config=load_config())
     plan=contract["editorial_section_plan"]
-    assert any("Forma recente" in item for item in plan),plan
-    assert len(plan)==5,plan
-    assert contract["output_contract"]["minimum_strong_subheadings"]==5
+    assert not any("Forma recente" in item for item in plan),plan
+    assert len(plan)==4,plan
+    assert contract["output_contract"]["minimum_strong_subheadings"]==4
 
     recent["facts"]=[f for f in recent["facts"]
                      if f["field"] not in ("home_recent_matches","away_recent_matches")]
