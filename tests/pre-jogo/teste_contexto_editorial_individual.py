@@ -83,7 +83,37 @@ def main():
     assert solo is not None and source_depth_errors({"facts_by_requirement":[solo]}), (
         "Não se libera uma pauta sem cobertura factual de ambos"
     )
-    print("OK: notícias individuais atuais desbloqueiam contexto real e bloqueiam histórico/arbitragem.")
+    # A reportagem atual pode mencionar PSG, mas ter o Mônaco como
+    # protagonista. Os pontos e a campanha de Mônaco não são fatos do PSG.
+    psg_ctx = {
+        "home": "Manchester City", "away": "PSG",
+        "competition": "Champions League",
+        "competition_slug": "champions-league",
+        "kickoff_brasilia": "2026-10-14T16:00:00-03:00",
+    }
+    misleading = source(
+        "PSG", "away", "Filipe Luís incomoda PSG em disputa pela Ligue 1",
+        "O elenco do brasileiro é líder isolado e está invicto, com "
+        "quatro vitórias e um empate, somando 13 pontos no campeonato francês.",
+        "https://www.terra.com.br/esportes/futebol/monaco-lider-2026.html",
+    )
+    from scripts.extrair_fatos_estruturados import extract_individual_team_context
+    assert extract_individual_team_context(
+        [{"id": "editorial_context_both_teams", "source_candidates": [misleading]}],
+        match_context=psg_ctx, config=CONFIG,
+    ) is None, "Não atribuir ao PSG os pontos ou a campanha do Mônaco"
+
+    from scripts.ler_fontes_candidatas_passo34_9 import editorial_headline_primary_side
+    assert editorial_headline_primary_side(
+        "Convocação do Real Madrid contra a Roma", CTX, CONFIG
+    ) == "away", "Mencionar Roma como rival não a torna protagonista"
+    assert editorial_headline_primary_side(
+        "Roma x Real Madrid: onde assistir", CTX, CONFIG
+    ) is None
+    assert editorial_headline_primary_side(
+        "Roma x Real Madrid pela Champions: prévia", CTX, CONFIG
+    ) is None
+    print("OK: notícias individuais atuais, protagonismo correto e histórico bloqueado.")
 
 
 if __name__ == "__main__":
