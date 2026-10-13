@@ -1113,10 +1113,10 @@ def source_current_for_match(
                 isinstance(segment, str)
                 and "libertador" in normalize_text(segment)
                 and (
-                    re.search(r"(?<!\\w)" + re.escape(normalize_text(team)) + r"(?!\\w)", normalize_text(segment))
+                    re.search(r"(?<!\w)" + re.escape(normalize_text(team)) + r"(?!\w)", normalize_text(segment))
                     or (
                         normalize_text(team) == "fluminense"
-                        and re.search(r"\\bFlu\\b", segment)
+                        and re.search(r"\bFlu\b", segment)
                     )
                 )
                 for segment in segments
