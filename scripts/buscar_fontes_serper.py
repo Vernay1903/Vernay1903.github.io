@@ -213,7 +213,7 @@ def candidate_recent_for_article(candidate: dict[str, Any], article_date: str | 
     locator = " ".join(
         str(candidate.get(key) or "") for key in ("title", "url")
     )
-    locator_years = set(re.findall(r"(?<!\\d)20[12]\\d(?!\\d)", locator))
+    locator_years = set(re.findall(r"(?<!\d)20[12]\d(?!\d)", locator))
     if locator_years and str(target.year) not in locator_years:
         return False
     hint = candidate.get("published_hint")
