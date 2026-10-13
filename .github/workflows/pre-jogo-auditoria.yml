@@ -165,7 +165,7 @@ jobs:
           path: |
             build/pre-jogo/previews/*.html
             build/pre-jogo/preview-metadata/*.json
-            build/pre-jogo/pacote-publicacao/**/*
+            build/pre-jogo/publication-package/**/*
           if-no-files-found: error
           retention-days: 7
       - name: Preservar texto integral da amostra para avaliacao editorial
