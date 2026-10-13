@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT))
 
 from scripts import ler_fontes_candidatas_passo34_9 as research
 from scripts import pesquisa_publica_gratuita as free
+from scripts import buscar_fontes_serper as search
 
 CTX = {"home": "AS Roma", "away": "Real Madrid", "competition": "Champions League",
        "kickoff_brasilia": "2026-10-14T16:00:00-03:00"}
@@ -25,6 +26,26 @@ def run() -> None:
         assert any("allenamento" in x for x in searches)
         assert any("entraînement" in x for x in searches)
         assert all(club in x for x in searches)
+
+    roman = research._targeted_queries(
+        research.EDITORIAL_RESEARCH_ID, CTX, "2026-10-14", team="AS Roma"
+    )
+    assert any('"Roma"' in q for q in roman)
+    paris_ctx = {"home": "Manchester City", "away": "Paris Saint-Germain",
+                 "competition": "Champions League"}
+    paris = research._targeted_queries(
+        research.EDITORIAL_RESEARCH_ID, paris_ctx, "2026-10-14",
+        team="Paris Saint-Germain",
+    )
+    assert any('"PSG"' in q for q in paris)
+    assert search.candidate_matches_team(
+        {"title": "PSG: groupe, entraînement et blessés", "snippet": "", "url": ""},
+        "Paris Saint-Germain", {},
+    ), "A manchete sobre PSG precisa corresponder ao clube registrado"
+    assert search.candidate_matches_team(
+        {"title": "Roma infortunati e convocati", "snippet": "", "url": ""},
+        "AS Roma", {},
+    )
 
     observed = []
     def mock_search(requirement_id, *, recent_team, **kwargs):

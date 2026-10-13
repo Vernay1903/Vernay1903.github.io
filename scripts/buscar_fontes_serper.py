@@ -251,6 +251,15 @@ def team_variants(team: str, config: dict[str, Any]) -> list[str]:
         raw.extend(str(item) for item in club.get("aliases", []) if isinstance(item, str))
 
     normalized = normalize_text(team)
+    # Manchetes francesas e internacionais usam "PSG", quase nunca o nome
+    # completo do provedor. Sem este alias, notícias recentes verificáveis
+    # são descartadas antes da leitura da página.
+    if normalized in {"paris saint germain", "paris saint germain fc", "psg"}:
+        raw.extend(["PSG", "Paris SG", "Paris Saint-Germain"])
+    if normalized in {"as roma", "roma"}:
+        raw.extend(["Roma", "AS Roma", "Roma 1927"])
+    if normalized == "manchester city":
+        raw.extend(["Man City", "Manchester City"])
     if normalized == "clube do remo":
         raw.append("Remo")
 
