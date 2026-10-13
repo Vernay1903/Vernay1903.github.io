@@ -1238,6 +1238,19 @@ def extract_optional_team_news_claims(
                     identifier = normalize_text(team).split()[-1]
                     position = folded.find(identifier)
                     if position >= 0:
+                        # "Para enfrentar o Palmeiras, Germán Cano é dúvida"
+                        # é notícia do ADVERSÁRIO, não do Palmeiras. O nome
+                        # citado após enfrentar/contra/diante de não estabelece
+                        # a equipe à qual o atleta pertence.
+                        prefix = folded[max(0, position - 54):position]
+                        if re.search(
+                            r"(?:para enfrentar|enfrenta|enfrentara|contra|"
+                            r"diante do|diante da|frente ao|frente a|"
+                            r"against|to face|versus|vs|contro|contre|ante)"
+                            r"\\s+(?:(?:o|a|os|as|the|al|el|la)\\s+)?$",
+                            prefix,
+                        ):
+                            continue
                         mentioned.append((position, side))
                 if mentioned:
                     mentioned.sort()
