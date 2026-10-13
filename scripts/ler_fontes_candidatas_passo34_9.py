@@ -38,6 +38,7 @@ EDITORIAL_SIGNALS = (
     "venceu", "perdeu", "perde", "ganhou", "won", "lost", "beat",
     "injur", "train", "prepar", "return", "coach", "manager",
     "standings", "unbeaten", "defeat", "draw", "winless",
+    "entrain", "allenam", "infortunat", "convocat", "squad",
     "entren", "lesion", "baja", "regreso", "clasific",
 )
 
@@ -401,6 +402,8 @@ def _build_checked_source(
     config: dict[str, Any],
     recent_team: str | None = None,
 ) -> dict[str, Any] | None:
+    if not source_search.candidate_matches_match_category(source, context):
+        return None
     normalized = base.normalize_scrape_response(raw)
     content = normalized["content"]
     if not content:
@@ -490,6 +493,17 @@ def _build_checked_source(
 
     if not supported or not segments:
         return None
+
+    # Título "Palmeiras deixa goleira fora da Libertadores" pode omitir
+    # Feminina, mas o primeiro parágrafo informa a categoria sem ambiguidade.
+    match_category = base.normalize_text(str(context.get("competition") or "")
+                                         + " " + str(context.get("gender") or ""))
+    if not any(x in match_category for x in ("feminina", "feminino", "women")):
+        lead = base.normalize_text(" ".join(segments[:2])[:1000])
+        if re.search(r"\b(?:libertadores feminina|champions league feminina|"
+                     r"futebol feminino|copa feminina|womens champions|"
+                     r"frauen bundesliga)\b", lead):
+            return None
 
     source_title = re.sub(r"\s+", " ", str(source.get("title", ""))).strip()
     if requirement_id in CRITICAL_REQUIREMENTS | {EDITORIAL_RESEARCH_ID} and source_title:
@@ -687,6 +701,8 @@ def _search_and_check(
                     continue
                 url = str(candidate.get("url", ""))
                 if not url or url in seen:
+                    continue
+                if not source_search.candidate_matches_match_category(candidate, context):
                     continue
                 if not source_search.candidate_matches_team(candidate, str(context.get("home", "")), config):
                     if requirement_id not in {"recent_form_both_teams", EDITORIAL_RESEARCH_ID} or recent_team != context.get("away"):
@@ -913,6 +929,7 @@ def _research_editorial_sources(
                 title = str(source.get("title") or "")
                 if (
                     not isinstance(url, str) or url in seen
+                    or not source_search.candidate_matches_match_category(source, context)
                     or not base.eligible_checked_source(source)
                     or editorial_headline_primary_side(title, context, config) != side
                     or not source_search.candidate_recent_for_article(source, article_date, days=7)
