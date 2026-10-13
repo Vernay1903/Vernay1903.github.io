@@ -185,8 +185,8 @@ def load_ad_blocks() -> list[str]:
 
 def section_records(body: str) -> list[dict[str, Any]]:
     matches = list(HEADING_RE.finditer(body))
-    if len(matches) < 5:
-        fail("Rascunho sem subtítulos suficientes para posicionar os anúncios editorialmente.")
+    if len(matches) < 4:
+        fail("Rascunho sem quatro seções substantivas para posicionar os anúncios.")
 
     records: list[dict[str, Any]] = []
     for index, match in enumerate(matches):
@@ -364,11 +364,24 @@ def placement_points(body: str, contract: dict[str, Any]) -> tuple[list[int], di
             int(record["index"]) for record in records
             if int(record["index"]) > form_last_index and int(record["index"]) < len(records) - 1
         ]
-        if not candidates:
-            fail("Sem H2H, o rascunho precisa de uma seção substantiva após a forma recente para o anúncio final.")
-        third_index = candidates[0]
-        third_point = int(records[third_index]["end"])
-        third_heading = records[third_index]["heading"]
+        if candidates:
+            third_index = candidates[0]
+            third_point = int(records[third_index]["end"])
+            third_heading = records[third_index]["heading"]
+        else:
+            # Quando o quarto subtítulo traz a última seção factual,
+            # manter o anúncio 3 DENTRO dela, entre dois parágrafos reais,
+            # em vez de exigir uma quinta seção artificial do redator.
+            last = records[-1]
+            if int(last["start"]) <= second_point:
+                fail("Faltou seção editorial após a forma recente para anúncio final.")
+            paragraph_ends = [
+                m.end() for m in re.finditer(r"</p\s*>", body[int(last["start"]):], re.I)
+            ]
+            if len(paragraph_ends) < 3:
+                fail("Última seção curta demais para o anúncio final sem prejudicar leitura.")
+            third_point = int(last["start"]) + paragraph_ends[1]
+            third_heading = last["heading"]
 
     # A primeira seção pode, legitimamente, trazer a forma dos dois clubes.
     # Nessa situação, posiciona o anúncio inicial após a abertura completa,
