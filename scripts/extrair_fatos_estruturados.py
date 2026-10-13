@@ -23,7 +23,8 @@ import re
 import sys
 import unicodedata
 from copy import deepcopy
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Callable, NoReturn
 from zoneinfo import ZoneInfo
@@ -908,6 +909,28 @@ def source_current_for_match(
     if not target:
         return True  # testes de extração isolada ainda não possuem data-alvo
     target_year = target.group(0)
+
+    # Notícia de preparação precisa ser RECENTE para o jogo-alvo. Uma página
+    # de 2021 não pode virar notícia de elenco ou de classificação em 2026.
+    # Publicado em RSS é metadado de descoberta, nunca o FATO em si;
+    # pode, porém, desqualificar uma página antiga com segurança.
+    try:
+        kickoff_datetime = datetime.fromisoformat(kickoff.replace("Z", "+00:00"))
+        if kickoff_datetime.tzinfo is None:
+            kickoff_datetime = kickoff_datetime.replace(tzinfo=ZoneInfo("America/Sao_Paulo"))
+    except ValueError:
+        return False
+    hint = source.get("published_hint")
+    if isinstance(hint, str) and hint.strip():
+        try:
+            published = parsedate_to_datetime(hint.strip())
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=timezone.utc)
+        except (TypeError, ValueError, IndexError):
+            return False  # Metadado temporal inválido não autoriza notícia atual.
+        if not kickoff_datetime - timedelta(days=14) <= published <= kickoff_datetime + timedelta(hours=4):
+            return False
+
     metadata = (source.get("page_evidence") or {}).get("metadata") or {}
     locator = " ".join(str(value) for value in (
         source.get("url", ""), source.get("title", ""),
@@ -924,15 +947,23 @@ def source_current_for_match(
     league = normalize_text(str(match_context.get("competition_slug") or ""))
     if league == "brasileirao" and "copa do brasil" in headline and "brasileirao" not in headline and "serie a" not in headline:
         return False
+    if league == "libertadores" and not "libertador" in headline and any(
+        token in headline for token in (
+            "brasileirao", "campeonato brasileiro", "brasileiro serie a",
+            "campeonato paulista", "paulistao", "campeonato carioca",
+        )
+    ):
+        return False
+    if league == "champions league" and "champions" not in headline and any(
+        token in headline for token in ("premier league", "bundesliga", "la liga", "ligue 1", "serie a")
+    ):
+        return False
     # Para notícias de elenco, fonte jornalística sem nenhuma referência temporal
     # pode ser matéria histórica ou modelo de cobertura. Não a promover a fato.
     if not years and source.get("source_type") != "official":
         body = " ".join(str(item) for item in
             (source.get("page_evidence") or {}).get("evidence_segments", []))
-        if target_year not in body and not re.search(
-            r"\b(?:\d{1,2} de (?:janeiro|fevereiro|marco|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)|(?:segunda|terca|terça|quarta|quinta|sexta|sabado|sábado|domingo)\s*\(\d{1,2}\))\b",
-            normalize_text(body),
-        ):
+        if target_year not in body:
             return False
     return True
 
