@@ -15,6 +15,7 @@ continuam obrigatórios. Redação, HTML e publicação permanecem bloqueados ne
 
 from __future__ import annotations
 
+import os
 import re
 from copy import deepcopy
 from typing import Any
@@ -26,6 +27,18 @@ from scripts import ler_fontes_candidatas_passo34_8 as step34_8
 from scripts.ler_fontes_candidatas_passo34_8 import *  # noqa: F401,F403
 
 _PREVIOUS_CHECK_ARTICLE = step34_8.check_article
+
+EDITORIAL_RESEARCH_ID = "editorial_context_both_teams"
+
+EDITORIAL_SIGNALS = (
+    "trein", "prepar", "lesion", "desfalq", "suspens", "recuper",
+    "retorn", "poupad", "convoc", "titular", "tecnic",
+    "classific", "lider", "tabela", "semifinal", "quartas",
+    "resultado", "vitoria", "derrota", "empat", "pressao",
+    "injur", "train", "prepar", "return", "coach", "manager",
+    "standings", "unbeaten", "defeat", "draw", "winless",
+    "entren", "lesion", "baja", "regreso", "clasific",
+)
 
 CRITICAL_REQUIREMENTS = {
     "stadium_and_location",
@@ -361,6 +374,28 @@ def _build_checked_source(
     elif requirement_id == "competition_specific_head_to_head":
         supported = h2h_content_support(content, source, context, target_year=target_year)
         segments = _segments_for_h2h(content, max_segments=max_segments, max_chars=max_chars)
+    elif requirement_id == EDITORIAL_RESEARCH_ID and isinstance(recent_team, str):
+        headline = str(source.get("title", ""))
+        supported = (
+            base.mentions_team(f"{headline}\n{content}", recent_team)
+            and content_is_current_enough(content, source, target_year=target_year)
+            and source_search.candidate_recent_for_article(
+                source, str(context.get("kickoff_brasilia") or "")[:10]
+            )
+        )
+        segments = _contextual_segments(
+            content,
+            predicate=lambda line: (
+                any(signal in base.normalize_text(line) for signal in EDITORIAL_SIGNALS)
+                and (
+                    base.mentions_team(line, recent_team)
+                    or base.mentions_team(headline, recent_team)
+                )
+            ),
+            max_segments=max_segments, max_chars=max_chars,
+        )
+        # A manchete é indispensável à prova de qual equipe a página cobre.
+        # Uma reportagem exclusiva sobre o clube não precisa mencionar o rival.
     elif requirement_id == "recent_form_both_teams" and isinstance(recent_team, str):
         supported = recent_form_content_support(
             content,
@@ -392,7 +427,7 @@ def _build_checked_source(
         return None
 
     source_title = re.sub(r"\s+", " ", str(source.get("title", ""))).strip()
-    if requirement_id in CRITICAL_REQUIREMENTS and source_title:
+    if requirement_id in CRITICAL_REQUIREMENTS | {EDITORIAL_RESEARCH_ID} and source_title:
         enriched: list[str] = []
         for segment in segments:
             if base.normalize_text(source_title) not in base.normalize_text(segment):
@@ -416,6 +451,11 @@ def _build_checked_source(
     rebuilt["passo34_9_content_selected"] = True
     if recent_team:
         rebuilt["passo34_9_recent_team"] = recent_team
+        if requirement_id == EDITORIAL_RESEARCH_ID:
+            rebuilt["editorial_target_side"] = (
+                "home" if recent_team == context.get("home") else "away"
+            )
+            rebuilt["editorial_target_team"] = recent_team
     rebuilt["page_evidence"] = {
         "metadata": safe_metadata,
         "evidence_segments": segments,
@@ -482,6 +522,13 @@ def _targeted_queries(
         return []
     year = _target_year(article_date)
 
+    if requirement_id == EDITORIAL_RESEARCH_ID and isinstance(team, str):
+        return [
+            f'"{team}" futebol noticias preparacao treino desfalques {year}',
+            f'"{team}" ultimas noticias treinador equipe {year}',
+            f'"{team}" latest team news injury training {year}',
+            f'"{team}" resultados fase momento temporada {year}',
+        ]
     if requirement_id == "recent_form_both_teams" and isinstance(team, str):
         return [
             f'"{team}" "{competition}" {year} latest result matchday',
@@ -520,6 +567,7 @@ def _search_and_check(
     checked_at: str,
     config: dict[str, Any],
     recent_team: str | None = None,
+    max_sources: int = 1,
 ) -> list[dict[str, Any]]:
     target_year = _target_year(article_date)
     queries = _targeted_queries(
@@ -540,7 +588,7 @@ def _search_and_check(
             except Exception:
                 continue
             for candidate in source_search.normalize_serper_response(raw, allowed_domains=domains):
-                if requirement_id in source_search.DYNAMIC_RESEARCH_REQUIREMENTS and not source_search.candidate_recent_for_article(
+                if requirement_id in source_search.DYNAMIC_RESEARCH_REQUIREMENTS | {EDITORIAL_RESEARCH_ID} and not source_search.candidate_recent_for_article(
                     candidate, article_date
                 ):
                     continue
@@ -548,7 +596,7 @@ def _search_and_check(
                 if not url or url in seen:
                     continue
                 if not source_search.candidate_matches_team(candidate, str(context.get("home", "")), config):
-                    if requirement_id != "recent_form_both_teams" or recent_team != context.get("away"):
+                    if requirement_id not in {"recent_form_both_teams", EDITORIAL_RESEARCH_ID} or recent_team != context.get("away"):
                         continue
                 if requirement_id in {"stadium_and_location", "competition_specific_head_to_head"}:
                     if not source_search.candidate_matches_team(candidate, str(context.get("away", "")), config):
@@ -559,8 +607,16 @@ def _search_and_check(
                 seen.add(url)
                 candidates.append(candidate)
 
-        candidates.sort(key=lambda row: int(row.get("position", 999) or 999))
-        for candidate in candidates[:8]:
+        candidates.sort(key=lambda row: (
+            0 if requirement_id == EDITORIAL_RESEARCH_ID and any(
+                term in base.normalize_text(str(row.get("title", "")))
+                for term in ("trein", "prepar", "lesion", "desfalq", "coach", "tecnic", "classific")
+            ) else 1,
+            int(row.get("position", 999) or 999),
+        ))
+        selected: list[dict[str, Any]] = []
+        seen_domains: set[str] = set()
+        for candidate in candidates[:12]:
             row = deepcopy(candidate)
             row.update(
                 {
@@ -581,7 +637,16 @@ def _search_and_check(
                 recent_team=recent_team,
             )
             if checked is not None:
-                return [checked]
+                if requirement_id == EDITORIAL_RESEARCH_ID and max_sources > 1:
+                    domain = str(checked.get("domain") or checked.get("publisher") or "")
+                    if domain in seen_domains:
+                        continue
+                    seen_domains.add(domain)
+                selected.append(checked)
+                if len(selected) >= max_sources:
+                    return selected
+        if selected:
+            return selected
     return []
 
 
@@ -720,6 +785,78 @@ def _select_critical_requirement(
     return req
 
 
+def _research_editorial_sources(
+    requirements: list[dict[str, Any]], *,
+    context: dict[str, Any], article_date: str, checked_at: str,
+    config: dict[str, Any],
+) -> dict[str, Any]:
+    """Investiga a preparação e a situação de CADA clube separadamente.
+
+    O filtro habitual de dois nomes serve ao serviço do jogo, mas impede
+    reportagens individuais legítimas. Só reusa páginas integralmente checadas
+    e atuais ou obtém novas notícias por RSS público, sem Serper pago.
+    """
+    collected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for side in ("home", "away"):
+        team = context.get(side)
+        if not isinstance(team, str) or not team.strip():
+            continue
+        # Uma fonte sobre o confronto pode ser útil na pauta de uma equipe,
+        # desde que traga notícias esportivas e não apenas horário/TV.
+        for requirement in requirements:
+            for source in requirement.get("source_candidates", []):
+                if not isinstance(source, dict):
+                    continue
+                url = source.get("url")
+                title = str(source.get("title") or "")
+                if (
+                    not isinstance(url, str) or url in seen
+                    or not base.eligible_checked_source(source)
+                    or not base.mentions_team(title, team)
+                    or not source_search.candidate_recent_for_article(source, article_date)
+                    or not any(signal in base.normalize_text(
+                        " ".join(str(x) for x in
+                            ((source.get("page_evidence") or {}).get("evidence_segments") or [])
+                        )
+                    ) for signal in EDITORIAL_SIGNALS)
+                ):
+                    continue
+                row = deepcopy(source)
+                row["editorial_target_side"] = side
+                row["editorial_target_team"] = team
+                collected.append(row)
+                seen.add(url)
+                break
+
+        covered = sum(s.get("editorial_target_side") == side for s in collected)
+        if covered >= 2:
+            continue
+        for source in _search_and_check(
+            EDITORIAL_RESEARCH_ID,
+            context=context, article_date=article_date, checked_at=checked_at,
+            config=config, recent_team=team, max_sources=2 - covered,
+        ):
+            url = source.get("url")
+            if isinstance(url, str) and url not in seen:
+                seen.add(url)
+                collected.append(source)
+    return {
+        "id": EDITORIAL_RESEARCH_ID,
+        "status": "pending",
+        "required_for_drafting": False,
+        "conditional": False,
+        "allow_unavailable_after_check": True,
+        "facts": [], "sources": [],
+        "source_candidates": collected,
+        "ready_for_fact_extraction": bool(collected),
+        "editorial_team_coverage": {
+            side: sum(row.get("editorial_target_side") == side for row in collected)
+            for side in ("home", "away")
+        },
+    }
+
+
 def check_article(
     article: dict[str, Any],
     *,
@@ -759,6 +896,16 @@ def check_article(
             req = deepcopy(requirement)
         selected_total += int(req.get("passo34_9_selected_source_count", 0))
         updated.append(req)
+
+    # Reinicia a cota grátis de RSS POR PARTIDA. Pesquisas exploratórias do
+    # jogo anterior não devem consumir a investigação dos dois clubes.
+    if os.environ.get("CDE_FREE_RESEARCH") == "1":
+        from scripts import pesquisa_publica_gratuita as free
+        free._RSS_REQUESTS = 0
+    updated.append(_research_editorial_sources(
+        updated, context=context, article_date=article_date,
+        checked_at=checked_at, config=config,
+    ))
 
     checked_sources: set[str] = set()
     eligible_sources: set[str] = set()
