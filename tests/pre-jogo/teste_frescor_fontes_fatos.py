@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from scripts.extrair_fatos_estruturados import source_current_for_match
+from scripts.extrair_fatos_estruturados import source_current_for_match, extract_stakes_requirement
 
 
 def row(date: str, title: str, url: str = "https://exemplo.com/jogo") -> dict:
@@ -50,6 +50,28 @@ def main() -> None:
         "Manchester City x PSG, nesta terça-feira (4), vaga na final de 2021."
     ]
     assert not source_current_for_match(undated, champions)
+    # Mesmo fonte marcada content_checked não pode gerar vaga na final de
+    # outra temporada por rótulo "o que está em jogo".
+    outdated = row("Mon, 03 May 2021 12:01:00 GMT", title)
+    outdated.update({
+        "content_checked": True,
+        "eligible_for_factual_validation": True,
+        "publisher": "goal.com",
+        "checked_at": "2026-10-13T07:00:00-03:00",
+    })
+    outdated["page_evidence"]["evidence_segments"] = [
+        "O que está em jogo: Manchester City x PSG pela Champions League valendo vaga na final."
+    ]
+    pending = extract_stakes_requirement(
+        {"id": "stakes_and_qualification_scenarios_when_applicable",
+         "status": "pending", "facts": [], "sources": [],
+         "source_candidates": [outdated]},
+        match_context={
+            **champions, "home": "Manchester City", "away": "PSG",
+            "competition": "Champions League",
+        }, config={},
+    )
+    assert pending["status"] == "pending", pending
     print("OK: rejeitados 2021, fevereiro/agosto/setembro, competições distintas e páginas sem data atual.")
 
 
