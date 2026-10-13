@@ -564,11 +564,18 @@ def _targeted_queries(
     year = _target_year(article_date)
 
     if requirement_id == EDITORIAL_RESEARCH_ID and isinstance(team, str):
+        # Variar idioma e assunto: com filtros apenas em português, páginas
+        # da Roma, Manchester City e PSG frequentemente não aparecem no RSS.
+        # Clube sozinho, não os dois nomes juntos: coleta contexto por lado.
         return [
-            f'"{team}" futebol noticias preparacao treino desfalques {year}',
-            f'"{team}" ultimas noticias treinador equipe {year}',
-            f'"{team}" latest team news injury training {year}',
-            f'"{team}" resultados fase momento temporada {year}',
+            f'"{team}" training team news October {year}',
+            f'"{team}" injury squad coach news {year}',
+            f'"{team}" allenamento convocati infortunati {year}',
+            f'"{team}" entraînement groupe blessés {year}',
+            f'"{team}" treino desfalques preparação {year}',
+            f'"{team}" últimas notícias técnico jogadores {year}',
+            f'"{team}" "{competition}" match preview {year}',
+            f'"{team}" latest results league standings {year}',
         ]
     if requirement_id == "recent_form_both_teams" and isinstance(team, str):
         return [
@@ -844,6 +851,14 @@ def _research_editorial_sources(
         team = context.get(side)
         if not isinstance(team, str) or not team.strip():
             continue
+        # Orçamento gratuito equilibrado: o RSS é limitado por contador
+        # global de processo. Sem reiniciar POR CLUBE, buscas de um lado
+        # podem consumir a cota antes de pesquisar o segundo, o que provocou
+        # repetidos pacotes com contexto só do visitante.
+        # Cache continua ativo para não repetir downloads.
+        if os.environ.get("CDE_FREE_RESEARCH") == "1":
+            from scripts import pesquisa_publica_gratuita as free
+            free._RSS_REQUESTS = 0
         # Uma fonte sobre o confronto pode ser útil na pauta de uma equipe,
         # desde que traga notícias esportivas e não apenas horário/TV.
         for requirement in requirements:
