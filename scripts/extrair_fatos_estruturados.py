@@ -1098,7 +1098,31 @@ def source_current_for_match(
             "campeonato paulista", "paulistao", "campeonato carioca",
         )
     ):
-        return False
+        # Uma matéria do Brasileirão pode comprovar a PREPARAÇÃO para a
+        # Libertadores, mas apenas dentro da coleta editorial individual:
+        # ex. Fluminense poupou titulares no Fla-Flu visando a semifinal.
+        # Nunca usa este desvio para comprovar o serviço/placar/fase do jogo.
+        side = source.get("editorial_target_side")
+        team = match_context.get(side) if side in ("home", "away") else None
+        segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+        if not (
+            isinstance(team, str)
+            and team == source.get("editorial_target_team")
+            and isinstance(segments, list)
+            and any(
+                isinstance(segment, str)
+                and "libertador" in normalize_text(segment)
+                and (
+                    re.search(r"(?<!\\w)" + re.escape(normalize_text(team)) + r"(?!\\w)", normalize_text(segment))
+                    or (
+                        normalize_text(team) == "fluminense"
+                        and re.search(r"\\bFlu\\b", segment)
+                    )
+                )
+                for segment in segments
+            )
+        ):
+            return False
     if league == "champions league" and "champions" not in headline and any(
         token in headline for token in ("premier league", "bundesliga", "la liga", "ligue 1", "serie a")
     ):
