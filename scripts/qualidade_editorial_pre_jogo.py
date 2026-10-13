@@ -174,6 +174,13 @@ ARTIFICIAL = (
     r"\bo duelo coloca frente a frente\b.{0,75}\bdois times\b",
     r"\bde acordo com os dados fornecidos\b",
     r"\bno recorte considerado\b",
+    r"\bno conjunto de informacoes fornecidas\b",
+    r"\b(?:os|nos) (?:dados|fatos|resultados) fornecidos\b",
+    r"\bnos resultados fornecidos\b",
+    r"\bna amostra apresentada\b",
+    r"\ba amostra serve\b",
+    r"\bno pacote\b",
+    r"\bprincipais pontos individuais verificados\b",
 )
 
 def redundant_recent_calendar_errors(body_html: str) -> list[str]:
@@ -239,6 +246,27 @@ def rivalry_context_errors(body_html: str, contract: dict[str, Any]) -> list[str
     return errors
 
 
+def category_and_third_club_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
+    """Bloqueia mistura de categorias e titulares de clubes fora da pauta."""
+    context = contract.get("match_context") or {}
+    competition = fold(" ".join(str(context.get(key) or "") for key in
+                               ("competition", "category", "age_group")))
+    text = fold(body_html)
+    youth_marker = r"\b(?:sub|u|under) (?:15|17|18|19|20|21|23)\b"
+    if not re.search(youth_marker, competition) and re.search(youth_marker, text):
+        return ["resultado ou elenco de categoria de base misturado ao pré-jogo profissional"]
+    home = fold(str(context.get("display_home") or context.get("home") or ""))
+    away = fold(str(context.get("display_away") or context.get("away") or ""))
+    for item in re.finditer(
+        r"\b(?:e|foi|sera|esta) titular (?:no|na|pelo|pela) ([a-z][a-z0-9]*)\b",
+        text,
+    ):
+        other = item.group(1)
+        if other not in ("clube", "time", "confronto", "duelo") and other not in home.split() and other not in away.split():
+            return ["titular de terceiro clube apresentado como contexto do pré-jogo"]
+    return []
+
+
 def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     """Trava extra, executada somente no lote automático antes da publicação."""
     errors: list[str] = []
@@ -256,6 +284,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
         errors.append("subtítulos de repetição/fechamento artificial")
     if "onde assistir" in headings and ("dados do confronto" in headings or "servico do jogo" in headings):
         errors.append("serviço repetido em seções diferentes")
+    errors.extend(category_and_third_club_errors(body_html, contract))
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(near_duplicate_errors(body_html))
     errors.extend(rivalry_context_errors(body_html, contract))

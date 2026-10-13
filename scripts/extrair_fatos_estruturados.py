@@ -1076,6 +1076,23 @@ def source_current_for_match(
                      r"futebol feminino|frauen bundesliga)\b", opening):
             return False
 
+    # Pré-jogo profissional não pode usar fatos do Sub-20, Sub-17 ou de
+    # outras divisões de base como se fossem preparação do time principal.
+    match_category = normalize_text(
+        str(match_context.get("competition") or "") + " "
+        + str(match_context.get("category") or "") + " "
+        + str(match_context.get("age_group") or "")
+    )
+    youth = r"\b(?:sub[ -]?(?:15|17|18|19|20|21|23)|u[ -]?(?:17|19|20|21|23)|under[ -]?(?:17|19|20|21|23))\b"
+    if not re.search(youth, match_category):
+        title_and_url = normalize_text(
+            str(source.get("title") or "") + " " + str(source.get("url") or "")
+        )
+        evidence_segments = (source.get("page_evidence") or {}).get("evidence_segments", [])
+        opening = normalize_text(str(evidence_segments[0])[:700]) if evidence_segments else ""
+        if re.search(youth, title_and_url) or re.search(youth, opening):
+            return False
+
     metadata = (source.get("page_evidence") or {}).get("metadata") or {}
     locator = " ".join(str(value) for value in (
         source.get("url", ""), source.get("title", ""),
