@@ -494,6 +494,17 @@ def _build_checked_source(
     if not supported or not segments:
         return None
 
+    # Título "Palmeiras deixa goleira fora da Libertadores" pode omitir
+    # Feminina, mas o primeiro parágrafo informa a categoria sem ambiguidade.
+    match_category = base.normalize_text(str(context.get("competition") or "")
+                                         + " " + str(context.get("gender") or ""))
+    if not any(x in match_category for x in ("feminina", "feminino", "women")):
+        lead = base.normalize_text(" ".join(segments[:2])[:1000])
+        if re.search(r"\b(?:libertadores feminina|champions league feminina|"
+                     r"futebol feminino|copa feminina|womens champions|"
+                     r"frauen bundesliga)\b", lead):
+            return None
+
     source_title = re.sub(r"\s+", " ", str(source.get("title", ""))).strip()
     if requirement_id in CRITICAL_REQUIREMENTS | {EDITORIAL_RESEARCH_ID} and source_title:
         enriched: list[str] = []
