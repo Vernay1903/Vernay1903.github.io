@@ -177,6 +177,28 @@ def unrelated_story_errors(body_html: str, contract: dict[str, Any]) -> list[str
     return []
 
 
+def repeated_preparation_hook_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
+    """Exige aprofundamento, não repetir 'poupou titulares' em cinco blocos."""
+    context = contract.get("match_context") or {}
+    rows = paragraphs(body_html)
+    for side in ("home", "away"):
+        team = fold(str(context.get(side) or ""))
+        if not team:
+            continue
+        hits = sum(
+            1 for row in rows
+            if team in row and re.search(
+                r"\b(?:time misto|formacao alternativa|time alternativo|"
+                r"poupar titulares|poupou titulares|poupando titulares|"
+                r"preservar titulares|preservou titulares)\b",
+                row,
+            )
+        )
+        if hits >= 4:
+            return ["a mesma decisão de poupar titulares é recontada em muitos parágrafos"]
+    return []
+
+
 def repeated_lineup_errors(body_html: str, package: dict[str, Any]) -> list[str]:
     available = facts(package)
     sections = re.split(
@@ -224,6 +246,8 @@ ARTIFICIAL = (
     r"\ba amostra serve\b",
     r"\bno pacote\b",
     r"\bprincipais pontos individuais verificados\b",
+    r"\b(?:no contrato|contrato da partida|contrato editorial|contrato apresentado)\b",
+    r"\b(?:o compromisso desta materia|este texto tem como compromisso)\b",
 )
 
 def redundant_recent_calendar_errors(body_html: str) -> list[str]:
@@ -331,6 +355,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(near_duplicate_errors(body_html))
     errors.extend(repeated_stat_summaries_errors(body_html))
+    errors.extend(repeated_preparation_hook_errors(body_html, contract))
     errors.extend(unrelated_story_errors(body_html, contract))
     errors.extend(rivalry_context_errors(body_html, contract))
     errors.extend(redundant_recent_calendar_errors(body_html))
