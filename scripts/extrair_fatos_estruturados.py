@@ -1083,7 +1083,7 @@ def source_current_for_match(
         + str(match_context.get("category") or "") + " "
         + str(match_context.get("age_group") or "")
     )
-    youth = r"\\b(?:sub[ -]?(?:15|17|18|19|20|21|23)|u[ -]?(?:17|19|20|21|23)|under[ -]?(?:17|19|20|21|23))\\b"
+    youth = r"\b(?:sub[ -]?(?:15|17|18|19|20|21|23)|u[ -]?(?:17|19|20|21|23)|under[ -]?(?:17|19|20|21|23))\b"
     if not re.search(youth, match_category):
         title_and_url = normalize_text(
             str(source.get("title") or "") + " " + str(source.get("url") or "")
