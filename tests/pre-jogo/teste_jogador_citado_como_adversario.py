@@ -25,6 +25,13 @@ def check():
       "Para enfrentar o Palmeiras, Germán Cano é dúvida, pois está em transição física."
     ])
     assert not any(c["field"].startswith("away") for c in extract([canoe]))
+    contextual=source([
+      "O Tricolor avançou à semifinal da Libertadores depois de eliminar o Platense. "
+      "Para enfrentar o Palmeiras, Germán Cano é dúvida, pois está em transição física."
+    ])
+    linked=extract([contextual])
+    assert any(c["field"].startswith("home") and "Cano" in c["value"] for c in linked),linked
+    assert not any(c["field"].startswith("away") and "Cano" in c["value"] for c in linked),linked
     supported=source([
       "O Palmeiras confirma que Paulinho está lesionado e desfalca a equipe alviverde na semifinal."
     ])
