@@ -84,6 +84,19 @@ def editorial_headline_primary_side(
     if not found:
         return None
     found.sort()
+    # "Flamengo vence o Fluminense" descreve o desempenho do Flamengo,
+    # não transforma a vitória/liderança do Flamengo em notícia individual
+    # do Fluminense. O clube apresentado como objeto da derrota não deve
+    # ser escolhido como protagonista só por ser o único nome monitorado.
+    if len(found) == 1:
+        pos, side, _ = found[0]
+        object_prefix = folded[max(0, pos - 55):pos]
+        if re.search(
+            r"\b(?:venceu|vence|derrotou|superou|bateu|goleou|eliminou)\s+"
+            r"(?:(?:o|a|os|as)\s+)?$",
+            object_prefix,
+        ):
+            return None
     if len(found) > 1:
         # Roma x Real Madrid é chamada do JOGO, não reportagem exclusiva
         # sobre Roma. O par pode ser recuperado no extrator bilateral normal.
