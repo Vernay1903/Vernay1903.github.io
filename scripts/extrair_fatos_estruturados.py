@@ -1247,7 +1247,7 @@ def extract_optional_team_news_claims(
                             r"(?:para enfrentar|enfrenta|enfrentara|contra|"
                             r"diante do|diante da|frente ao|frente a|"
                             r"against|to face|versus|vs|contro|contre|ante)"
-                            r"\\s+(?:(?:o|a|os|as|the|al|el|la)\\s+)?$",
+                            r"\s+(?:(?:o|a|os|as|the|al|el|la)\s+)?$",
                             prefix,
                         ):
                             continue
