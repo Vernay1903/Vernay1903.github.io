@@ -1265,6 +1265,7 @@ def extract_separate_competitive_context(
         r"semifinal|final|estreia|primeiro classico|primeira vitoria|tabela|"
         r"empato?\w*|derrot\w*|vitori\w*|trein\w*|prepar\w*)\b"
     )
+    seen_competitive_facts: set[str] = set()
     for source in sources:
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
@@ -1289,6 +1290,11 @@ def extract_separate_competitive_context(
                 folded = normalize_text(value)
                 if len(folded.split()) < 10 or not stakes_pattern.search(folded):
                     continue
+                if any(
+                    folded in previous or previous in folded
+                    for previous in seen_competitive_facts
+                ):
+                    continue
                 # Estatísticas retrospectivas e atuação do árbitro não comprovam
                 # classificação, liderança ou pressão ATUAL sobre uma equipe.
                 match_year = str(match_context.get("kickoff_brasilia") or "")[:4]
@@ -1307,7 +1313,21 @@ def extract_separate_competitive_context(
                     if not isinstance(team, str):
                         continue
                     markers = relaxed_team_markers(team, config)
-                    places = [folded.find(marker) for marker in markers if len(marker)>3 and marker in folded]
+                    places: list[int] = []
+                    for marker in markers:
+                        if len(marker) <= 3:
+                            continue
+                        for hit in re.finditer(r"(?<!\w)" + re.escape(marker) + r"(?!\w)", folded):
+                            before = folded[max(0, hit.start() - 30):hit.start()]
+                            # "contra o Fluminense" só informa o ADVERSÁRIO;
+                            # não descreve a situação do Fluminense.
+                            if re.search(
+                                r"(?:contra|diante de|enfrenta|recebe|versus|vs)\s+"
+                                r"(?:(?:o|a|os|as)\s+)?$",
+                                before,
+                            ):
+                                continue
+                            places.append(hit.start())
                     if places:
                         mentions.append((min(places), side))
                 if not mentions:
@@ -1321,6 +1341,7 @@ def extract_separate_competitive_context(
                 claim=make_claim(f"{side}_stakes_{len(by_side[side])+1}",value,source,sentence)
                 if claim is not None:
                     by_side[side].append(claim)
+                    seen_competitive_facts.add(folded)
     claims=[*by_side["home"],*by_side["away"]]
     if not claims:
         return None
@@ -1929,7 +1950,7 @@ EDITORIAL_TEAM_SIGNALS = (
     r"lesionad\w*|lesao|suspens\w*|retorn\w*|recuper\w*|poupad\w*|"
     r"titular\w*|tecnico|convocad\w*|lider\w*|classific\w*|"
     r"rebaixamento|semifinal|quartas|oitavas|tabela|pontos|"
-    r"invict\w*|vitori\w*|derrot\w*|empat\w*|"
+    r"invict\w*|vitori\w*|derrot\w*|empat\w*|marcou|hat.trick|"
     r"training|trained|prepar\w*|injur\w*|"
     r"standings|unbeaten|winless|defeat|"
     r"entren\w*|lesion\w*|bajas?|regres\w*|clasific\w*)\b"
