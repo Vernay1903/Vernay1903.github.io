@@ -65,7 +65,7 @@ def check():
     schema=output_schema(contract)["properties"]["fact_fields_used"]
     assert "home_recent_matches" in schema["items"]["enum"]
     assert schema["minItems"] < schema["maxItems"]
-    assert contract["output_contract"]["maximum_words"] == 960
+    assert contract["output_contract"]["maximum_words"] == 1400
     print("OK: artigo com assunto paralelo e estatísticas repetidas é barrado; fatos extras são opcionais.")
 
 if __name__=="__main__":
