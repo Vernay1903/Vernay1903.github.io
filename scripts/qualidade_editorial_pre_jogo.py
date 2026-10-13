@@ -68,11 +68,11 @@ def meaningful_sporting_context(raw: str) -> bool:
     return len(value.split()) >= 10 and bool(re.search(
         r"\b(?:lideranca|lider|rebaixamento|queda|zona|classificacao|vaga|"
         r"semifinal|final|estreia|primeiro classico|pontos|tabela|"
-        r"treinamento|treinou|preparacao|desfalqu\\w*|"
+        r"treinamento|treinou|preparacao|desfalqu\w*|"
         r"recuperacao|lesionado|retornou|convocado|"
         r"derrota|empatou|vitoria|invicto|"
         r"training|trained|standings|unbeaten|"
-        r"injured|returned)\\b",
+        r"injured|returned)\b",
         value,
     ))
 
