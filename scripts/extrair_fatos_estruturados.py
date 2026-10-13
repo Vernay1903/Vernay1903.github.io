@@ -2175,6 +2175,18 @@ def extract_individual_team_context(
                     # explicitamente o clube-alvo. A única exceção é o
                     # relato em primeira pessoa de um site OFICIAL do clube.
                     direct_team = mentions_team(value, team, config)
+                    # A manchete já identificou Fluminense, mas uma frase
+                    # posterior pode chamá-lo apenas de "Flu". Reconhecer
+                    # somente a abreviação com F maiúsculo dentro da própria
+                    # reportagem vinculada ao clube. "flu" genérico em
+                    # inglês ou notícias sem Fluminense no título não servem.
+                    if (
+                        not direct_team
+                        and normalize_text(team) == "fluminense"
+                        and mentions_team(headline, team, config)
+                        and re.search(r"\bFlu\b", value)
+                    ):
+                        direct_team = True
                     official_voice = (
                         source.get("source_type") == "official"
                         and bool(re.search(
