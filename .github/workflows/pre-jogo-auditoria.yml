@@ -140,6 +140,34 @@ jobs:
               raise SystemExit('Redação reprovada na qualidade: '+str(errors))
           print('OK: redação factual real de 700+ palavras aprovada sem HTML, commit ou publicação.')
           PY
+      - name: Montar HTML real e pacote de publicação em dry-run, sem alterar o site
+        if: ${{ github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Validacao editorial real (1 artigo)') }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          SLUG_JSON="$(cat build/pre-jogo/amostra-editorial-slug.txt)"
+          SLUG_HTML="${SLUG_JSON%.json}.html"
+          python scripts/montar_preview_html_pre_jogo.py \
+            --draft "build/pre-jogo/rascunhos-modelo/${SLUG_JSON}" \
+            --contract "build/pre-jogo/contratos-redacao/${SLUG_JSON}" \
+            --force
+          python scripts/preparar_pacote_publicacao_pre_jogo.py \
+            --preview "build/pre-jogo/previews/${SLUG_HTML}" \
+            --metadata "build/pre-jogo/preview-metadata/${SLUG_JSON}" \
+            --contract "build/pre-jogo/contratos-redacao/${SLUG_JSON}" \
+            --force
+          echo "OK: HTML da matéria real, noticiaJSON e sitemap preparadas em build/, sem publicação."
+      - name: Guardar HTML real e pacote de publicação em dry-run
+        if: ${{ github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Validacao editorial real (1 artigo)') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: materia-amostra-html-e-pacote-dry-run
+          path: |
+            build/pre-jogo/previews/*.html
+            build/pre-jogo/preview-metadata/*.json
+            build/pre-jogo/publication-package/**/*
+          if-no-files-found: error
+          retention-days: 7
       - name: Preservar texto integral da amostra para avaliacao editorial
         if: ${{ github.event_name == 'push' && startsWith(github.event.head_commit.message, 'Validacao editorial real (1 artigo)') }}
         uses: actions/upload-artifact@v4
