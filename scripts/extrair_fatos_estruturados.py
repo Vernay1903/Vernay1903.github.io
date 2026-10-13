@@ -2071,6 +2071,7 @@ EDITORIAL_TEAM_SIGNALS = (
     r"titular\w*|tecnico|convocad\w*|lider\w*|classific\w*|"
     r"rebaixamento|semifinal|quartas|oitavas|tabela|pontos|"
     r"invict\w*|vitori\w*|derrot\w*|empat\w*|marcou|hat.trick|"
+    r"venceu|perdeu|perde|ganhou|derrotou|won|lost|beat|"
     r"training|trained|prepar\w*|injur\w*|"
     r"standings|unbeaten|winless|defeat|"
     r"entren\w*|lesion\w*|bajas?|regres\w*|clasific\w*)\b"
