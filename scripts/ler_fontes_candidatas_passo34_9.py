@@ -888,11 +888,16 @@ def _ensure_allowed_gap_check(
         max_sources=3 if req_id == "probable_lineups_and_coaches" else 1,
     )
     combined = _dedupe([*existing, *fresh])
+    # O rastreador anterior marcava "checado" SOMENTE se encontrou fonte.
+    # Se a consulta adicional foi executada e a única página candidata
+    # falhou ao abrir, o pré-jogo ficava eternamente "pending" apesar da
+    # política permitir omitir serviços sem confirmação.
+    req["passo34_9_allowed_gap_check"] = True
+    req["passo34_9_targeted_search_attempted"] = True
+    req["passo34_9_extra_lineup_research_count"] = len(fresh)
     if combined:
         req["source_candidates"] = combined
         req["ready_for_fact_extraction"] = True
-        req["passo34_9_allowed_gap_check"] = True
-        req["passo34_9_extra_lineup_research_count"] = len(fresh)
     return req
 
 
