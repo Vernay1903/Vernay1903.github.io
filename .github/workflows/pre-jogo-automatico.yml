@@ -110,6 +110,7 @@ jobs:
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_recuperacao_publicacao.py
           python tests/pre-jogo/teste_artifact_agenda_only.py
+          python tests/pre-jogo/teste_champions_fase_liga.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
@@ -619,6 +620,7 @@ jobs:
           python tests/pre-jogo/teste_recuperar_preparo.py
           python tests/pre-jogo/teste_recuperacao_publicacao.py
           python tests/pre-jogo/teste_artifact_agenda_only.py
+          python tests/pre-jogo/teste_champions_fase_liga.py
           python tests/pre-jogo/teste_dia_sem_jogos.py
           python tests/pre-jogo/teste_serper_economia.py
           python tests/pre-jogo/teste_pesquisa_gratuita.py
