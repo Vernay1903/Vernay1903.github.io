@@ -74,14 +74,28 @@ def main() -> None:
                     return
         packages = json.loads((BUILD / f"pacotes-editoriais-{target}.json").read_text())
         blocked = pending_issues(packages)
+        planned_articles = [article for article in packages.get("articles", [])
+                            if isinstance(article, dict)]
+        approved = len(planned_articles) - len(blocked)
         if blocked:
+            print(
+                "::warning::PRÉ-JOGOS INDIVIDUAIS BLOQUEADOS (não serão publicados): "
+                + json.dumps(blocked, ensure_ascii=False),
+                flush=True,
+            )
+        # Um jogo sem fontes atuais não pode impedir a auditoria positiva de
+        # OUTRO jogo cujo pacote completo foi verificado. Entretanto, zero
+        # pautas prontas nunca é um resultado verde. O bloqueio editorial
+        # individual permanece idêntico na publicação automática.
+        if approved < 1:
             raise SystemExit(
-                "PRÉ-JOGO FUTURO BLOQUEADO (fatos/qualidade): "
-                + json.dumps(blocked, ensure_ascii=False)
+                f"PRÉ-JOGO FUTURO SEM PAUTA EDITORIAL APTA: {len(blocked)} bloqueada(s), "
+                "nenhuma com contexto jornalístico verificado dos dois clubes."
             )
         print(
-            "COLETA E PROFUNDIDADE EDITORIAL APROVADAS para pré-jogos futuros; "
-            "redação e publicação NÃO foram executadas.",
+            f"COLETA E PROFUNDIDADE EDITORIAL APROVADAS: {approved} pauta(s) apta(s); "
+            f"{len(blocked)} bloqueada(s) sem publicação. "
+            "Redação e publicação NÃO foram executadas.",
             flush=True,
         )
     finally:
