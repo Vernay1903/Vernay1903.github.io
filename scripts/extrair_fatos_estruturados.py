@@ -1053,6 +1053,17 @@ def source_current_for_match(
             kickoff_datetime = kickoff_datetime.replace(tzinfo=ZoneInfo("America/Sao_Paulo"))
     except ValueError:
         return False
+    # Páginas de índice 'Palmeiras news' agrupam chamadas de outros
+    # clubes (Neymar/Santos/Flamengo) numa única página. Não são reportagem
+    # individual e não podem fundamentar contexto atual de um time.
+    headline_index = normalize_text(str(source.get("title") or "")).strip()
+    locator_url = str(source.get("url") or "").casefold()
+    if (
+        re.fullmatch(r"(?:[a-z0-9 ]{3,50} )?(?:news|noticias|ultimas noticias)", headline_index)
+        or re.search(r"/team/[^/]+/news(?:/|$)", locator_url)
+    ):
+        return False
+
     hint = source.get("published_hint")
     verified_publication_date = False
     if isinstance(hint, str) and hint.strip():
@@ -2227,6 +2238,12 @@ def extract_individual_team_context(
                     continue
                 for sentence in re.split(r"(?<=[.!?])\s+", clean_segment):
                     value = clean_value(sentence, max_chars=390)
+                    # Remover crédito editorial do início do parágrafo; a
+                    # atribuição ao jornalista não é contexto esportivo.
+                    value = re.sub(
+                        r"^Por:\\s*[^.]{0,100}?\\s*/\\s*Licenciado de [^.]{3,90}\\s+",
+                        "", value, flags=re.I,
+                    )
                     folded = normalize_text(value)
                     if len(folded.split()) < 11:
                         continue
