@@ -921,6 +921,7 @@ def source_current_for_match(
     except ValueError:
         return False
     hint = source.get("published_hint")
+    verified_publication_date = False
     if isinstance(hint, str) and hint.strip():
         try:
             published = parsedate_to_datetime(hint.strip())
@@ -930,6 +931,7 @@ def source_current_for_match(
             return False  # Metadado temporal inválido não autoriza notícia atual.
         if not kickoff_datetime - timedelta(days=14) <= published <= kickoff_datetime + timedelta(hours=4):
             return False
+        verified_publication_date = True
 
     metadata = (source.get("page_evidence") or {}).get("metadata") or {}
     locator = " ".join(str(value) for value in (
@@ -960,7 +962,7 @@ def source_current_for_match(
         return False
     # Para notícias de elenco, fonte jornalística sem nenhuma referência temporal
     # pode ser matéria histórica ou modelo de cobertura. Não a promover a fato.
-    if not years and source.get("source_type") != "official":
+    if not years and source.get("source_type") != "official" and not verified_publication_date:
         body = " ".join(str(item) for item in
             (source.get("page_evidence") or {}).get("evidence_segments", []))
         if target_year not in body:
