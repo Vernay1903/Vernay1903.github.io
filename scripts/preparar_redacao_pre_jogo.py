@@ -188,15 +188,31 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     other_stakes = sorted(k for k in verified_facts
                           if k.startswith(("stakes_", "qualification_"))
                           or k in {"competitive_context", "standings_context", "qualification_scenario"})
+    # O or anterior parava se houvesse notícia de apenas UM clube,
+    # apagando do gancho de abertura os fatos atuais do adversário.
+    def relevant_stakes(fields: list[str]) -> list[str]:
+        opponent = str(context.get("away") or "")
+        def rank(field: str) -> tuple[int, int, str]:
+            value = str(verified_facts.get(field) or "").casefold()
+            health = any(token in value for token in (
+                "lesion", "exame", "dúvida", "duvida", "trein", "retorn",
+                "poup", "suspens", "desfal"
+            ))
+            continent = "semifinal" in value or "libertadores" in value
+            other_classic = "clássico contra" in value or "classico contra" in value
+            return (0 if health else 1 if continent else 3 if other_classic else 2,
+                    0 if "individual" in field else 1, field)
+        return sorted(fields, key=rank)
+    home_priority = relevant_stakes(home_stakes_fields)
+    away_priority = relevant_stakes(away_stakes_fields)
     hook_fields = (
-        (home_news_fields[:1] + away_news_fields[:1])
-        or (home_stakes_fields[:1] + away_stakes_fields[:1])
-        or other_stakes[:1]
-    )
+        (home_news_fields[:1] or home_priority[:1])
+        + (away_news_fields[:1] or away_priority[:1])
+    ) or other_stakes[:1]
     editorial_fact_hierarchy = {
         "opening_hook_fields": hook_fields,
-        "home_specific_preparation_fields": home_news_fields[:3] + home_stakes_fields[:2],
-        "away_specific_preparation_fields": away_news_fields[:3] + away_stakes_fields[:2],
+        "home_specific_preparation_fields": home_news_fields[:2] + home_priority[:3],
+        "away_specific_preparation_fields": away_news_fields[:2] + away_priority[:3],
         "match_stakes_fields": other_stakes[:2],
         "background_only_fields": ["home_recent_matches", "away_recent_matches",
                                   "home_recent_form", "away_recent_form",
