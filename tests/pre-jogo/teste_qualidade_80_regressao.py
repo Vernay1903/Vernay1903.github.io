@@ -12,6 +12,7 @@ from scripts.qualidade_editorial_pre_jogo import (
 from scripts.preparar_redacao_pre_jogo import build_contract, load_config
 from scripts.redigir_pre_jogo_openai import output_schema
 from teste_redacao_controlada import clean_package
+from scripts.extrair_fatos_estruturados import source_current_for_match
 
 def check():
     context={"home":"Fluminense","away":"Palmeiras","competition":"Libertadores"}
@@ -32,6 +33,21 @@ def check():
     assert unrelated_story_errors(body,{"match_context":context}), "Neymar/Santos passou."
     assert len(draft_quality_errors(body,{"match_context":context,"facts_by_requirement":[]}))>=2
 
+    match={"home":"Fluminense","away":"Palmeiras","competition":"Libertadores",
+           "competition_slug":"libertadores",
+           "kickoff_brasilia":"2026-10-14T21:30:00-03:00"}
+    generic={"title":"Palmeiras news",
+             "url":"https://www.goal.com/en/team/palmeiras/news/b9d2xcvxxcw",
+             "published_hint":"Tue, 13 Oct 2026 12:00:00 GMT",
+             "page_evidence":{"metadata":{},"evidence_segments":[
+               "Palmeiras news. Neymar nets penalty brace for Santos against Flamengo."]}}
+    assert not source_current_for_match(generic,match)
+    match_news={"title":"Paulinho treina com elenco do Palmeiras",
+                "url":"https://www.lance.com.br/palmeiras/paulinho-treina-2026.html",
+                "published_hint":"Tue, 13 Oct 2026 12:00:00 GMT",
+                "page_evidence":{"metadata":{},"evidence_segments":[
+                  "Paulinho treinou com o elenco do Palmeiras antes da semifinal."]}}
+    assert source_current_for_match(match_news,match)
     package=clean_package()
     for row in package["facts_by_requirement"]:
         if row["id"]=="recent_form_both_teams":
