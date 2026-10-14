@@ -377,7 +377,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "Concentrar a emissora/plataforma confirmada no bloco Onde assistir. Se não houver plataforma confirmada, omitir esse bloco. Não repetir toda a ficha de serviço antes e depois."
             ),
             "closing": (
-                "Fechar em um parágrafo curto somente se houver fato novo de consequência esportiva ou próximo jogo. "
+                "Planejar um parágrafo final curto de prosa após o serviço, reservando contexto competitivo confirmado, consequência esportiva ou próximo compromisso. Não terminar somente com uma ficha ou lista; reorganizar os fatos para o encerramento acrescentar informação sem inventar cenários. "
                 "Não recapitular resultados recentes, escalações, transmissão ou retrospecto no encerramento."
             ),
             "internal_link": (
