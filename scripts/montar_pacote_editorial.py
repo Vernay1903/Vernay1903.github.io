@@ -369,6 +369,24 @@ def adjusted_service_headline(
     return title, excerpt
 
 
+def approved_headline_errors(title, requirement_by_id, *, config):
+    """Título completo e serviços confirmados são obrigatórios para publicar."""
+    errors = []
+    pattern = (r"^.+?\s+x\s+.+?\s+pel[ao]\s+.+?:\s*"
+               r"(?=[^:]*\bhorário\b)(?=[^:]*\bprováveis escalações\b)"
+               r"(?=[^:]*\btransmissão\b)[^:]+$")
+    if not re.fullmatch(pattern, str(title or "").strip(), flags=re.IGNORECASE):
+        errors.append("incomplete_approved_headline")
+    transmission = requirement_by_id.get("transmission") or {}
+    if (transmission.get("conflict_detected")
+            or not _fact_map(transmission).get("transmission", "").strip()):
+        errors.append("required_transmission_not_verified")
+    lineups = requirement_by_id.get("probable_lineups_and_coaches") or {}
+    if lineups.get("conflict_detected") or not _verified_lineups(lineups, config):
+        errors.append("required_probable_lineups_not_verified")
+    return errors
+
+
 def contextual_excerpt(article, requirement_by_id, *, config):
     """Complementa o título com dia do jogo e fase verificada, sem chamada de serviço."""
     context = article.get("match_context") or {}
@@ -578,8 +596,10 @@ def build_article_packages(
         article, requirement_by_id, config=config
     )
 
-    # Serviços opcionais ausentes saem da chamada; o que permanecer prometido
-    # continua obrigado a estar verificado e presente no corpo.
+    # O modelo aprovado é obrigatório: nunca publicar uma chamada reduzida.
+    unresolved.extend(approved_headline_errors(
+        effective_title, requirement_by_id, config=config,
+    ))
     unresolved.extend(verified_promised_service_gaps(
         requirement_by_id,
         title=effective_title,

@@ -12,6 +12,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
+from html import unescape
 import sys
 from datetime import date, datetime, time
 from pathlib import Path
@@ -28,6 +30,7 @@ if str(ROOT) not in sys.path:
 
 from scripts import preparar_pacote_publicacao_pre_jogo as package_builder  # noqa: E402
 from scripts import planejar_pre_jogos as planner  # noqa: E402
+from scripts import montar_pacote_editorial as editorial_package  # noqa: E402
 
 
 def fail(message: str) -> NoReturn:
@@ -170,6 +173,18 @@ def main() -> None:
             skipped.append({"slug": slug, "reason": "contract_mismatch"})
             continue
 
+        requirements = {
+            req["id"]: req for req in contract.get("facts_by_requirement", [])
+            if isinstance(req, dict) and isinstance(req.get("id"), str)
+        }
+        headline_errors = editorial_package.approved_headline_errors(
+            contract.get("title"), requirements, config=config,
+        )
+        if headline_errors:
+            skipped.append({"slug": slug, "reason": "incomplete_editorial_headline",
+                            "errors": headline_errors})
+            continue
+
         date_br = contract.get("date")
         if not isinstance(date_br, str) or parse_br_date(date_br) != target_date:
             skipped.append({"slug": slug, "reason": "article_date_mismatch"})
@@ -223,6 +238,12 @@ def main() -> None:
             continue
         if preview_text.count('data-ad-slot="8702501261"') != 3:
             skipped.append({"slug": slug, "reason": "preview_ad_count_invalid"})
+            continue
+
+        h1 = re.search(r"<h1\b[^>]*>(.*?)</h1>", preview_text, flags=re.I | re.S)
+        rendered_title = unescape(re.sub(r"<[^>]+>", "", h1[1])) if h1 else ""
+        if " ".join(rendered_title.split()) != " ".join(str(contract.get("title", "")).split()):
+            skipped.append({"slug": slug, "reason": "preview_headline_mismatch"})
             continue
 
         selected.append({**article, "contract_data": contract, "preview_path": preview})

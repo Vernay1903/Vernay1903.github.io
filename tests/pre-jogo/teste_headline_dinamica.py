@@ -37,6 +37,31 @@ def main():
     assert "informações do jogo" not in title2.casefold()
     assert "informações do confronto" not in excerpt2.casefold()
 
+    # Modelo aprovado em 14/10: chamada reduzida jamais libera publicação.
+    assert pack.approved_headline_errors(title, reqs, config=config)
+    reqs["transmission"] = {"status": "verified", "facts": [
+        {"field": "transmission", "text": "Canal confirmado."}
+    ]}
+    reqs["probable_lineups_and_coaches"] = {
+        "status": "verified", "facts": lineup_facts,
+    }
+    complete, _ = pack.adjusted_service_headline(article, reqs, config=config)
+    assert not pack.approved_headline_errors(complete, reqs, config=config)
+    for tail in ("horário", "horário e transmissão", "horário e prováveis escalações"):
+        incomplete = "Santos FC x Flamengo pelo Brasileirão: " + tail
+        assert "incomplete_approved_headline" in pack.approved_headline_errors(
+            incomplete, reqs, config=config,
+        )
+    reqs["transmission"]["status"] = "unavailable_after_check"
+    assert "required_transmission_not_verified" in pack.approved_headline_errors(
+        complete, reqs, config=config,
+    )
+    reqs["transmission"]["status"] = "verified"
+    reqs["probable_lineups_and_coaches"]["facts"] = []
+    assert "required_probable_lineups_not_verified" in pack.approved_headline_errors(
+        complete, reqs, config=config,
+    )
+
     gap={
       "id":"transmission","status":"pending","facts":[],"sources":[],
       "candidate_status":"no_candidates","candidate_source_count":0,
