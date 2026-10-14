@@ -234,6 +234,8 @@ def repeated_lineup_errors(body_html: str, package: dict[str, Any]) -> list[str]
     return []
 
 ARTIFICIAL = (
+    r"\b(?:o|esse|este) contrato (?:nao )?(?:forne[cs]\w*|inform\w*|apresent\w*|inclu\w*|contem|traz|permite afirmar)\b",
+    r"\ba noticia de elenco e (?:igualmente )?direta\b",
     r"\bsaiba mais sobre este confronto e acompanhe\b",
     r"\bacompanhe todas as informacoes da partida em tempo real\b",
     r"\ba informacao de elenco.{0,130}\bacompanhamento\b",
