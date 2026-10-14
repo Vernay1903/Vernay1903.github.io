@@ -365,20 +365,78 @@ def adjusted_service_headline(
         title_items.append("transmissão")
     title = f"{prefix}: {_join_pt(title_items)}" if prefix else original_title
 
-    base_excerpt = re.split(
-        r";\s*(?:veja|confira)\s+", original_excerpt,
-        maxsplit=1, flags=re.IGNORECASE,
-    )[0].rstrip(" .")
-    base_excerpt = natural_competition_phrase(base_excerpt)
-    excerpt_items = []
-    if lineups_ok:
-        excerpt_items.append("prováveis escalações")
-    if isinstance(transmission, str) and transmission.strip():
-        excerpt_items.append("transmissão")
-    excerpt = base_excerpt + (
-        f"; confira {_join_pt(excerpt_items)}." if excerpt_items else "."
-    ) if base_excerpt else original_excerpt
+    excerpt = contextual_excerpt(article, requirement_by_id, config=config)
     return title, excerpt
+
+
+def contextual_excerpt(article, requirement_by_id, *, config):
+    """Complementa o título com dia do jogo e fase verificada, sem chamada de serviço."""
+    context = article.get("match_context") or {}
+    tz = ZoneInfo(config.get("timezone", "America/Sao_Paulo"))
+    kickoff = context.get("kickoff_brasilia")
+    match_date = None
+    if kickoff:
+        try:
+            instant = datetime.fromisoformat(str(kickoff).replace("Z", "+00:00"))
+            match_date = (instant.astimezone(tz) if instant.tzinfo else instant).date()
+        except ValueError:
+            pass
+    if match_date is None:
+        for fmt in ("%d/%m/%Y", "%Y-%m-%d"):
+            try:
+                match_date = datetime.strptime(str(article.get("date", "")), fmt).date()
+                break
+            except ValueError:
+                pass
+    # Compatibilidade com registros antigos: recuperar a data textual do jogo,
+    # nunca usar o dia em que a automação está sendo executada.
+    if match_date is None:
+        months = ("janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                  "julho", "agosto", "setembro", "outubro", "novembro", "dezembro")
+        found = re.search(r"\b(\d{1,2}) de (\w+) de (\d{4})\b",
+                          str(article.get("excerpt", "")).casefold())
+        if found and found[2] in months:
+            match_date = date(int(found[3]), months.index(found[2]) + 1, int(found[1]))
+    if match_date is None:
+        fail("Excerpt sem data confirmada da partida.")
+    weekdays = ("nesta segunda-feira", "nesta terça-feira", "nesta quarta-feira",
+                "nesta quinta-feira", "nesta sexta-feira", "neste sábado", "neste domingo")
+    opening = f"As equipes se enfrentam {weekdays[match_date.weekday()]} ({match_date:%d/%m})"
+
+    # Aproveitar somente a fase explicitamente confirmada nos fatos do jogo.
+    # Não inferir ida/volta pela data ou pelo nome da competição.
+    phase = None
+    for req in requirement_by_id.values():
+        if req.get("conflict_detected"):
+            continue
+        for field, value in _fact_map(req).items():
+            if not (field.startswith(("qualification_", "stakes_"))
+                    or field == "competitive_context"):
+                continue
+            found = re.search(
+                r"\b(?:jogo de (?:ida|volta) d[ao]s? |(?:ida|volta) d[ao]s? )?"
+                r"(?:semifina(?:l|is)|quartas de final|oitavas de final|final|fase de grupos|fase de liga)\b",
+                value, flags=re.IGNORECASE,
+            )
+            if found:
+                candidate = found[0].lower()
+                if phase is None or re.search(r"\b(?:ida|volta)\b", candidate):
+                    phase = candidate
+    competition = str(context.get("competition") or "").strip()
+    if not competition:
+        found = re.search(r"\bpel[ao] (.+?)(?:;|\.|$)", str(article.get("excerpt", "")))
+        competition = found[1].strip() if found else ""
+    labels = config.get("editorial", {}).get("competition_labels", {})
+    connector = labels.get(context.get("competition_slug"), {}).get("connector")
+    if connector not in {"pela", "pelo"}:
+        connector = "pelo" if competition.startswith(("Brasileirão", "Campeonato")) else "pela"
+    if phase and competition:
+        phase_connector = "pelo" if phase.startswith("jogo") else "pela"
+        competition_article = "do" if connector == "pelo" else "da"
+        return f"{opening}, {phase_connector} {phase} {competition_article} {competition}."
+    if competition:
+        return f"{opening}, {connector} {competition}."
+    return opening + "."
 
 
 def verified_promised_service_gaps(
@@ -663,3 +721,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
