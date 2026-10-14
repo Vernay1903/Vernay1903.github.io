@@ -430,9 +430,37 @@ def contextual_excerpt(article, requirement_by_id, *, config):
     connector = labels.get(context.get("competition_slug"), {}).get("connector")
     if connector not in {"pela", "pelo"}:
         connector = "pelo" if competition.startswith(("Brasileirão", "Campeonato")) else "pela"
+    # Fase e rodada são metadados do fixture vigente, não da data da publicação.
+    stage = str(context.get("competition_stage") or "").strip().upper()
+    stage_labels = {
+        "REGULAR_SEASON": None,
+        "LEAGUE_STAGE": "fase de liga",
+        "GROUP_STAGE": "fase de grupos",
+        "LAST_16": "oitavas de final",
+        "QUARTER_FINALS": "quartas de final",
+        "SEMI_FINALS": "semifinal",
+        "FINAL": "final",
+    }
+    if phase is None:
+        phase = stage_labels.get(stage)
+    raw_matchday = context.get("competition_matchday")
+    matchday = None
+    if not isinstance(raw_matchday, bool) and re.fullmatch(r"[1-9]\d*", str(raw_matchday or "")):
+        matchday = int(raw_matchday)
+    league_slugs = {"premier-league", "la-liga", "ligue-1", "bundesliga",
+                    "serie-a", "brasileirao", "brasileirao-serie-b"}
+    regular = stage == "REGULAR_SEASON" or (
+        not stage and context.get("competition_slug") in league_slugs
+    )
+    competition_article = "do" if connector == "pelo" else "da"
+    if competition and matchday and (
+        (regular and phase is None) or phase in {"fase de grupos", "fase de liga"}
+    ):
+        phase_text = f" da {phase}" if phase else ""
+        return (f"{opening}, pela {matchday}ª rodada{phase_text} "
+                f"{competition_article} {competition}.")
     if phase and competition:
         phase_connector = "pelo" if phase.startswith("jogo") else "pela"
-        competition_article = "do" if connector == "pelo" else "da"
         return f"{opening}, {phase_connector} {phase} {competition_article} {competition}."
     if competition:
         return f"{opening}, {connector} {competition}."
