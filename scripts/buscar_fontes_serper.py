@@ -450,6 +450,13 @@ def filter_results_for_requirement(
                 signal in headline
                 for signal in topical[requirement_id]
             )
+            # Prévia específica do confronto pode conter as escalações no
+            # conteúdo, mas não supera um título diretamente sobre escalações.
+            if requirement_id == "probable_lineups_and_coaches":
+                if any(k in headline for k in ("escalac", "lineup", "alineacion")):
+                    relevant += 2
+                elif "preview" in headline or "previa" in headline:
+                    relevant = max(relevant, 1)
             match_year = str(context.get("kickoff_brasilia", ""))[:4]
             current = bool(match_year and match_year in candidate_haystack(item))
             return (int(bool(relevant)), int(current))
