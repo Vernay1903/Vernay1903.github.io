@@ -78,6 +78,8 @@ def main():
     assert req["stadium_and_location"]["facts"][0]["text"] == "A partida será disputada no Arena Exata."
     assert req["recent_form_both_teams"]["status"] == "verified"
     assert {f["field"] for f in req["recent_form_both_teams"]["facts"]} >= {"home_recent_form", "away_recent_form"}
+    # O calendário por liga não prova a forma geral: rotular amostra.
+    assert "nessa competição (Brasileirão)" in next(f["text"] for f in req["recent_form_both_teams"]["facts"] if f["field"] == "home_recent_form")
     assert req["competition_specific_head_to_head"]["status"] == "verified"
     assert req["competition_specific_head_to_head"]["facts"][0]["text"].endswith("1 jogos.")
     fixed = json.loads(json.dumps(article))
