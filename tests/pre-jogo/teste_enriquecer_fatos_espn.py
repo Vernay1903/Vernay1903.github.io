@@ -82,6 +82,10 @@ def main():
     assert "nessa competição (Brasileirão)" in next(f["text"] for f in req["recent_form_both_teams"]["facts"] if f["field"] == "home_recent_form")
     assert req["competition_specific_head_to_head"]["status"] == "verified"
     assert req["competition_specific_head_to_head"]["facts"][0]["text"].endswith("1 jogos.")
+    dated = [fact["text"] for fact in req["competition_specific_head_to_head"]["facts"]
+             if fact.get("field") == "h2h_recent_games"]
+    assert len(dated) == 1 and "Time 2029 2 x 0 Time 9967" in dated[0], dated
+    assert "/" in dated[0] and "somente jogos encontrados" in dated[0], dated
     fixed = json.loads(json.dumps(article))
     fixed["requirements"][0]["editorial_stadium_override"] = True
     fixed_result = espn.enrich(fixed, fixture, lambda url: urls[url], datetime.now(timezone.utc).isoformat(), config)
