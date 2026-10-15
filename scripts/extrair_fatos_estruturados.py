@@ -35,6 +35,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts import validar_pesquisa_factual as factual_validator  # noqa: E402
+from scripts import qualidade_editorial_pre_jogo as editorial_quality  # noqa: E402
 
 CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
@@ -1545,6 +1546,10 @@ def extract_separate_competitive_context(
                 value = clean_value(sentence, max_chars=300)
                 folded = normalize_text(value)
                 if len(folded.split()) < 10 or not stakes_pattern.search(folded):
+                    continue
+                # Não promover cronograma, credenciamento ou arquibancadas a
+                # contexto esportivo de equipe (falha real de 15/10/2026).
+                if not editorial_quality.meaningful_sporting_context(value):
                     continue
                 if any(
                     folded in previous or previous in folded
