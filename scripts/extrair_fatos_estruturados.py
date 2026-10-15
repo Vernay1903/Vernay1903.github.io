@@ -1067,6 +1067,15 @@ def source_current_for_match(
     ):
         return False
 
+    # Rejeitar esporte errado antes de contar notícia atual de clube
+    # multiesportivo. Ex.: "Sesc RJ Flamengo / vôlei" jamais deve ser
+    # interpretado como contexto competitivo do futebol masculino.
+    other_sports = r"(?:volei|voleibol|volleyball|basquete|basketball|tenis|handebol|futsal)"
+    if re.search(rf"/{other_sports}(?:/|$)", locator_url):
+        return False
+    if re.search(rf"\b{other_sports}\b", headline_index):
+        return False
+
     hint = source.get("published_hint")
     verified_publication_date = False
     if isinstance(hint, str) and hint.strip():
