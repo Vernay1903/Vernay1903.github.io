@@ -391,6 +391,8 @@ def reusable_draft_is_editorially_current(
         return False
     if old_contract.get("editorial_quality_revision") != editorial_contract.EDITORIAL_QUALITY_REVISION:
         return False
+    if old_contract.get("editorial_build_fingerprint") != editorial_contract.editorial_build_fingerprint():
+        return False
     if old_contract.get("match_context") != current_package.get("match_context"):
         return False
     if old_contract.get("facts_by_requirement") != current_package.get("facts_by_requirement"):
