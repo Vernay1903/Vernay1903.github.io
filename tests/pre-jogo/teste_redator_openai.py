@@ -23,6 +23,10 @@ def main() -> None:
     contract = writer.load_json(CONTRACT_PATH)
     assert isinstance(site_config, dict)
     assert isinstance(contract, dict)
+    # O arquivo é um fixture offline estático: só o teste associa a assinatura
+    # corrente. Contratos reais vêm assinados pelo Passo 25.
+    assert contract.get("editorial_build_fingerprint") is None
+    contract["editorial_build_fingerprint"] = writer.prepare.editorial_build_fingerprint()
 
     writer.validate_contract_for_model(contract, site_config)
     request = writer.build_request(contract, provider)
