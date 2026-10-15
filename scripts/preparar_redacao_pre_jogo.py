@@ -241,6 +241,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         "background_only_fields": ["home_recent_matches", "away_recent_matches",
                                   "home_recent_form", "away_recent_form",
                                   "h2h_games", "h2h_home_wins", "h2h_away_wins", "h2h_draws"],
+        "historical_match_examples": ["h2h_recent_games"] if verified_facts.get("h2h_recent_games") else [],
         "editorial_rule": (
             "Começar pela notícia atual priorizada e pelas características específicas da partida. "
             "Usar a cronologia de resultados apenas como apoio, nunca como enredo principal. "
@@ -412,6 +413,8 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "Usar no máximo uma ressalva curta de que as formações são prováveis e podem mudar até a confirmação oficial."
             ),
             "head_to_head": (
+                "Quando existir h2h_recent_games, descreva brevemente no bloco histórico pelo menos um jogo específico, com placar e data verificáveis. "
+                "O balanço de vitórias e empates isolado não explica a história do confronto. "
                 "O retrospecto deve ser proporcional à amostra disponível. Se houver apenas um ou dois jogos no conjunto fornecido, "
                 "usar um bloco curto — um parágrafo ou lista — e deixar claro apenas que se trata de uma amostra limitada, sem "
                 "transformá-la em narrativa histórica ou rivalidade ampla. Nunca expandir números pequenos para preencher texto."
