@@ -10,9 +10,14 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 TZ = ZoneInfo("America/Sao_Paulo")
 
