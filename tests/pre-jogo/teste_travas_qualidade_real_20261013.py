@@ -43,10 +43,12 @@ def check():
     meta2="<p>Não há confrontos diretos disponíveis no pacote.</p>"
     assert any("preenchimento" in x for x in draft_quality_errors(meta2, CONTRACT))
 
-    article={"title":"Fluminense x Palmeiras na competição Libertadores: horário, prováveis escalações e transmissão",
+    article={"match_context":CTX,
+             "title":"Fluminense x Palmeiras na competição Libertadores: horário, prováveis escalações e transmissão",
              "excerpt":"Fluminense e Palmeiras se enfrentam na competição Libertadores; veja escalações e transmissão."}
     title,excerpt=adjusted_service_headline(article,{},config=CONFIG)
     assert "pela Libertadores" in title and "pela Libertadores" in excerpt, (title,excerpt)
+    assert excerpt.startswith("As equipes se enfrentam nesta quarta-feira (14/10)")
     assert "prováveis escalações" not in title and "transmissão" not in title, title
     print("OK: texto real inadequado é bloqueado; título não promete serviços inexistentes.")
 if __name__=="__main__":
