@@ -402,6 +402,22 @@ def filter_results_for_requirement(
     strict_free_services = (
         os.environ.get("CDE_FREE_RESEARCH") == "1" and requirement_id in service
     )
+    if requirement_id == "stakes_and_qualification_scenarios_when_applicable" and os.environ.get("CDE_FREE_RESEARCH") == "1":
+        home = context.get("home")
+        away = context.get("away")
+        if not isinstance(home, str) or not isinstance(away, str):
+            return []
+        # Não parar em resultado oficial só porque menciona um ingresso ou
+        # credenciamento; buscar efetivamente a fase e a vaga em disputa.
+        return [
+            item for item in results
+            if candidate_matches_team_strict(item, home, config)
+            and candidate_matches_team_strict(item, away, config)
+            and any(word in candidate_haystack(item) for word in (
+                "semifinal", "quartas", "oitavas", "classific", "vaga",
+                "final", "mata mata", "jogo de ida", "jogo de volta", "aggregate",
+            ))
+        ]
     if requirement_id not in {"recent_form_both_teams", "competition_specific_head_to_head"} and not strict_free_services:
         return results
 
