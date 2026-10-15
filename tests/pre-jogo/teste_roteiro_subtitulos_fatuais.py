@@ -29,15 +29,15 @@ def check():
     plan=contract["editorial_section_plan"]
     assert not any("Forma recente" in item for item in plan),plan
     assert len(plan)==2,plan  # Sem contexto confirmado, só existem dois assuntos seguros
-    assert contract["output_contract"]["minimum_strong_subheadings"]==4
+    assert contract["output_contract"]["minimum_strong_subheadings"]==2
 
     recent["facts"]=[f for f in recent["facts"]
                      if f["field"] not in ("home_recent_matches","away_recent_matches")]
     short_contract=build_contract(package,config=load_config())
     short_plan=short_contract["editorial_section_plan"]
     assert len(short_plan)==2,short_plan
-    assert short_contract["output_contract"]["minimum_strong_subheadings"]==4
-    print("OK: roteiro não inventa contexto ou serviço; a exigência estrutural continua travada no validador.")
+    assert short_contract["output_contract"]["minimum_strong_subheadings"]==2
+    print("OK: roteiro não inventa contexto ou serviço; o mínimo de subtítulos acompanha a pauta factual.")
 
 if __name__=="__main__":
     check()
