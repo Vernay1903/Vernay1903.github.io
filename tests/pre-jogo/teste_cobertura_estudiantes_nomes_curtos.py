@@ -44,4 +44,17 @@ finally:
         os.environ.pop("CDE_FREE_RESEARCH", None)
     else:
         os.environ["CDE_FREE_RESEARCH"] = previous
+
+# Conteúdo de vôlei pode compartilhar o nome Flamengo, mas jamais ser evidência
+# factual de uma partida de futebol profissional.
+volley = {
+    "title": "Sesc RJ Flamengo faz clássico contra o Fluminense em prévia da final do Carioca",
+    "url": "https://www.flamengo.com.br/noticias/volei/sesc-rj-flamengo-faz-classico",
+    "published_hint": "Fri, 09 Oct 2026 09:14:00 GMT",
+    "page_evidence": {"evidence_segments": ["Já classificado para a decisão, time de Bernardinho enfrenta o Tricolor."]},
+}
+assert facts.source_current_for_match(volley, ctx) is False
+from scripts import pesquisa_publica_gratuita as free
+assert free.MAX_PAGE_BYTES >= 5_000_000
+
 print("OK: titulares abreviados nas manchetes e busca com relevância factual comprovada.")
