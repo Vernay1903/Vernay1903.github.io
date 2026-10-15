@@ -208,6 +208,7 @@ def h2h_facts(data: dict[str, Any], home_id: str, away_id: str, home_name: str, 
               competition: str, competition_code: str, cutoff: datetime) -> list[dict[str, str]] | None:
     rows = _schedule_events(data, home_id, cutoff)
     games = home_wins = away_wins = draws = 0
+    historical_results: list[str] = []
     for _when, event in rows:
         if _league_code(event) != competition_code:
             continue
@@ -219,6 +220,16 @@ def h2h_facts(data: dict[str, Any], home_id: str, away_id: str, home_name: str, 
             continue
         hg, ag = score
         games += 1
+        # Resultados datados dão contexto ao retrospecto sem inferir
+        # conquistas, títulos ou temporadas não presentes na fonte.
+        if len(historical_results) < 2:
+            original_home = _team_name(teams["home"])
+            original_away = _team_name(teams["away"])
+            if original_home and original_away:
+                historical_results.append(
+                    f"{_when.astimezone(TZ).strftime('%d/%m/%Y')}: "
+                    f"{original_home} {hg} x {ag} {original_away}"
+                )
         if hg == ag:
             draws += 1
         else:
@@ -229,12 +240,19 @@ def h2h_facts(data: dict[str, Any], home_id: str, away_id: str, home_name: str, 
                 away_wins += 1
     if games == 0 or games != home_wins + away_wins + draws:
         return None
-    return [
+    result = [
         {"field": "h2h_games", "text": f"Confrontos anteriores disponíveis pela {competition}: {games} jogos."},
         {"field": "h2h_home_wins", "text": f"Vitórias do {home_name} nesses jogos pela {competition}: {home_wins}."},
         {"field": "h2h_away_wins", "text": f"Vitórias do {away_name} nesses jogos pela {competition}: {away_wins}."},
         {"field": "h2h_draws", "text": f"Empates nesses jogos pela {competition}: {draws}."},
     ]
+    if historical_results:
+        result.append({
+            "field": "h2h_recent_games",
+            "text": "Confrontos diretos datados (somente jogos encontrados na fonte): "
+                    + "; ".join(historical_results) + ".",
+        })
+    return result
 
 
 def venue_from_summary(data: dict[str, Any], fixture: dict[str, Any]) -> str | None:
