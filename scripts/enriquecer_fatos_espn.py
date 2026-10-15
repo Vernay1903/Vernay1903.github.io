@@ -175,10 +175,22 @@ def recent_facts(data: dict[str, Any], team_id: str, team_name: str, cutoff: dat
             details.append(f"{when.astimezone(TZ).strftime('%d/%m/%Y')}: {home_name} {hg} x {ag} {away_name}{suffix}")
     if wins + draws + losses != len(rows):
         return None
+    # O calendário ESPN /{competicao}/teams pode conter só aquela competição.
+    # Não apresentar esse recorte como se fossem os últimos jogos GERAIS.
+    leagues = [
+        event.get("league", {}).get("name")
+        for _, event in rows
+        if isinstance(event.get("league"), dict)
+    ]
+    named = {name.strip() for name in leagues if isinstance(name, str) and name.strip()}
+    if len(leagues) == len(rows) and len(named) == 1:
+        sample = f"nos últimos {len(rows)} jogos registrados nessa competição ({next(iter(named))})"
+    else:
+        sample = f"nos {len(rows)} jogos do recorte consultado"
     facts = [{
         "field": f"{field_prefix}_recent_form",
         "text": (
-            f"Forma recente do {team_name}: nos últimos {len(rows)} jogos, "
+            f"Forma recente do {team_name}: {sample}, "
             f"{wins} {'vitória' if wins == 1 else 'vitórias'}, "
             f"{draws} {'empate' if draws == 1 else 'empates'} e "
             f"{losses} {'derrota' if losses == 1 else 'derrotas'}."
