@@ -264,7 +264,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     # Nunca abrir seções vazias para satisfazer contagens artificiais.
     # Cabe ao redator desenvolver apenas fatos que existam no contrato.
     contract = {
-        "editorial_quality_revision": "modelo-aprovado-relevancia-2026-10-15-v2",
+        "editorial_quality_revision": "classicos-contextuais-2026-10-11-v1",
         "editorial_section_plan": section_plan,
         "editorial_fact_hierarchy": editorial_fact_hierarchy,
         "editorial_storyline": (
