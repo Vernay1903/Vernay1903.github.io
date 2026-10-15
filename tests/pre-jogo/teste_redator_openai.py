@@ -74,7 +74,11 @@ def main() -> None:
     assert len(retry["input"]) == 3, "não reenviar resposta anterior como mensagem do assistant"
     assert [entry["role"] for entry in retry["input"]] == ["system", "user", "user"]
     retry_text = json.dumps(retry, ensure_ascii=False)
-    assert "825 e 875 palavras" in retry_text
+    revision_text = retry["input"][-1]["content"][0]["text"]
+    assert "604 palavras, abaixo do mínimo de 700" in revision_text
+    assert "sem cotas de palavras por bloco" in revision_text
+    assert "sem inventar dados" in revision_text
+    assert "825 e 875 palavras" not in retry_text
     assert "<p>palavra " not in retry_text
 
     fake_draft = {
