@@ -9,6 +9,7 @@ externas permanecem fora do contrato.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -30,6 +31,25 @@ DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
 
 # Versão do critério de qualidade: nunca reutilizar rascunhos com prompt antigo.
 EDITORIAL_QUALITY_REVISION = "modelo-narrativo-aprovado-2026-10-15-v3"
+
+# O número de versão manual não impede reaproveitamento quando o prompt
+# ou o validador mudam. Uma assinatura do código torna o controle automático.
+EDITORIAL_BUILD_FILES = (
+    "scripts/preparar_redacao_pre_jogo.py",
+    "scripts/redigir_pre_jogo_openai.py",
+    "scripts/qualidade_editorial_pre_jogo.py",
+    "scripts/validar_rascunho_pre_jogo.py",
+)
+
+
+def editorial_build_fingerprint() -> str:
+    digest = hashlib.sha256()
+    for relative in EDITORIAL_BUILD_FILES:
+        path = ROOT / relative
+        digest.update(relative.encode("utf-8") + b"\0")
+        digest.update(path.read_bytes())
+    return digest.hexdigest()
+
 
 FORBIDDEN_DRAFTER_KEYS = {
     "sources",
@@ -268,6 +288,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     # Cabe ao redator desenvolver apenas fatos que existam no contrato.
     contract = {
         "editorial_quality_revision": EDITORIAL_QUALITY_REVISION,
+        "editorial_build_fingerprint": editorial_build_fingerprint(),
         "editorial_section_plan": section_plan,
         "editorial_fact_hierarchy": editorial_fact_hierarchy,
         "editorial_storyline": (
