@@ -271,6 +271,10 @@ def team_variants(team: str, config: dict[str, Any]) -> list[str]:
         raw.extend(["Man City", "Manchester City"])
     if normalized == "clube do remo":
         raw.append("Remo")
+    # Nomes geográficos longos precisam reconhecer a manchete curta (Estudiantes x Flamengo).
+    # Esse alias é específico do clube e não autoriza fatos sem leitura da página.
+    if normalized in {"estudiantes de la plata", "club estudiantes de la plata"}:
+        raw.extend(["Estudiantes", "Estudiantes LP"])
 
     # Variantes conservadoras de nomes do provedor também entram nas consultas
     # gratuitas; isso não muda a validação factual posterior.
@@ -433,7 +437,11 @@ def filter_results_for_requirement(
             match_year = str(context.get("kickoff_brasilia", ""))[:4]
             current = bool(match_year and match_year in candidate_haystack(item))
             return (int(bool(relevant)), int(current))
-        return sorted(direct, key=priority, reverse=True)
+        ranked = sorted(direct, key=priority, reverse=True)
+        # Um resultado de credenciamento/ingressos não comprova TV ou escalações.
+        # Se a etapa oficial só encontrou isso, pesquisar também a imprensa.
+        # Nenhum título de RSS vale como evidência até a leitura independente.
+        return [item for item in ranked if priority(item)[0] > 0]
 
     if requirement_id == "competition_specific_head_to_head":
         return [
@@ -517,6 +525,14 @@ def expanded_queries(
         extras = [
             f'"{home}" "{away}" "{competition}" head to head record',
             f'"{home}" "{away}" "{competition}" previous meetings results',
+        ]
+    elif requirement_id == "stakes_and_qualification_scenarios_when_applicable":
+        # Consultas diretas sobre fase/vaga: "cenário pontos mata-mata" era
+        # específico demais e omitira notícias reais de semifinal e jogo de ida.
+        short_home = "Estudiantes" if normalize_text(home) == "estudiantes de la plata" else home
+        extras = [
+            f'"{short_home}" "{away}" "{competition}" semifinal quartas final {year}',
+            f'"{short_home}" "{away}" "{competition}" jogo de ida jogo de volta {year}',
         ]
 
     seen = set(result)
