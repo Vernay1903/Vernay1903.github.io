@@ -459,7 +459,7 @@ def filter_results_for_requirement(
                     relevant = max(relevant, 1)
             match_year = str(context.get("kickoff_brasilia", ""))[:4]
             current = bool(match_year and match_year in candidate_haystack(item))
-            return (int(bool(relevant)), int(current))
+            return (int(relevant), int(current))
         ranked = sorted(direct, key=priority, reverse=True)
         # Um resultado de credenciamento/ingressos não comprova TV ou escalações.
         # Se a etapa oficial só encontrou isso, pesquisar também a imprensa.
