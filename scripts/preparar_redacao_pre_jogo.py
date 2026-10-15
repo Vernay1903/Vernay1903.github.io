@@ -28,6 +28,9 @@ from scripts import qualidade_editorial_pre_jogo as editorial_quality  # noqa: E
 CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
 
+# Versão do critério de qualidade: nunca reutilizar rascunhos com prompt antigo.
+EDITORIAL_QUALITY_REVISION = "modelo-narrativo-aprovado-2026-10-15-v2"
+
 FORBIDDEN_DRAFTER_KEYS = {
     "sources",
     "source_candidates",
@@ -264,7 +267,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     # Nunca abrir seções vazias para satisfazer contagens artificiais.
     # Cabe ao redator desenvolver apenas fatos que existam no contrato.
     contract = {
-        "editorial_quality_revision": "classicos-contextuais-2026-10-11-v1",
+        "editorial_quality_revision": EDITORIAL_QUALITY_REVISION,
         "editorial_section_plan": section_plan,
         "editorial_fact_hierarchy": editorial_fact_hierarchy,
         "editorial_storyline": (
@@ -300,7 +303,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "minimum_words": int(config["article"]["min_words"]),
             "preferred_word_range": [950, 1250],
             "maximum_words": 1400,
-            "minimum_strong_subheadings": min(5, max(4, len(section_plan))),
+            "minimum_strong_subheadings": min(5, max(2, len(section_plan))),
             "internal_link_exactly_once": True,
             "unordered_lists_for_service_blocks": True,
         },
