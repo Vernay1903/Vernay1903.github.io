@@ -23,6 +23,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts import montar_pacote_editorial as editorial_package  # noqa: E402
+from scripts import qualidade_editorial_pre_jogo as editorial_quality  # noqa: E402
 
 CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
@@ -229,11 +230,22 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     competition = str(context.get("competition") or "competição")
     rivalry = context.get("editorial_rivalry")
     rivalry = rivalry if isinstance(rivalry, dict) else None
-    section_plan = [
-        (f"{rivalry['name']}: contexto do confronto" if rivalry else "Contexto do confronto"),
+    # Não forçar "Contexto do confronto" quando o pacote só comprova
+    # data/fase/estádio. Foi exatamente o que duplicou a abertura em 15/10.
+    # O subtítulo de contexto precisa de um FATO ESPORTIVO específico.
+    real_stakes_fields = [
+        key for key in (home_stakes_fields + away_stakes_fields + other_stakes)
+        if verified_facts.get(key) and editorial_quality.meaningful_sporting_context(verified_facts[key])
+    ]
+    section_plan = []
+    if rivalry:
+        section_plan.append(f"{rivalry['name']}: o que está em disputa")
+    elif real_stakes_fields:
+        section_plan.append("Contexto competitivo da partida (subtítulo específico a definir)")
+    section_plan.extend([
         f"Como chega o {popular_home}",
         f"Como chega o {popular_away}",
-    ]
+    ])
     has_direct_history = any(
         key.startswith(("h2h_", "games", "home_wins", "away_wins", "draws"))
         for key in verified_facts
@@ -247,13 +259,12 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         "home_lineup", "away_lineup", "home_coach", "away_coach",
     )):
         section_plan.append("Prováveis escalações")
-    section_plan.append("Horário e local da partida")
     if verified_facts.get("transmission"):
         section_plan.append("Onde assistir")
     # Nunca abrir seções vazias para satisfazer contagens artificiais.
     # Cabe ao redator desenvolver apenas fatos que existam no contrato.
     contract = {
-        "editorial_quality_revision": "classicos-contextuais-2026-10-11-v1",
+        "editorial_quality_revision": "modelo-aprovado-relevancia-2026-10-15-v2",
         "editorial_section_plan": section_plan,
         "editorial_fact_hierarchy": editorial_fact_hierarchy,
         "editorial_storyline": (
@@ -287,7 +298,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "required_fields": ["slug", "body_html", "fact_fields_used"],
             "body_html_scope": "article_body_only",
             "minimum_words": int(config["article"]["min_words"]),
-            "preferred_word_range": [750, 900],
+            "preferred_word_range": [950, 1250],
             "maximum_words": 1400,
             "minimum_strong_subheadings": min(5, max(4, len(section_plan))),
             "internal_link_exactly_once": True,
@@ -349,6 +360,9 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "e tratar o retrospecto direto em um único "
                 "bloco proporcional à amostra. Não transformar os dez placares em dez parágrafos iguais. "
                 "Nunca reutilizar informações da matéria LDU x Palmeiras como se fossem deste jogo. "
+                "Uma organização de arquibancadas, credenciamento ou ficha de data não são notícia "
+                "competitiva nem justificam seção própria. A profundidade vem da campanha, "
+                "do momento, dos protagonistas e das consequências verificadas em campo. "
                 "Não inferir estilo de jogo, posse, pressão, transições, estratégia, motivação, comportamento "
                 "tático ou efeito psicológico a partir de nomes, escalações, mando ou resultados. "
                 "Se os dados não sustentarem 700 palavras sem redundância, falhar a validação, não completar com imaginação."
@@ -362,7 +376,12 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "não deve ser recontado em outra seção. Não criar os blocos genéricos Informações confirmadas, O que observar, "
                 "Resumo do pré-jogo ou O cenário antes da bola rolar."
             ),
-            "subheadings": "Usar <p><strong>...</strong></p> ao longo da matéria.",
+            "subheadings": (
+                "Usar <p><strong>...</strong></p> com título próprio e concreto para cada assunto. "
+                "editorial_section_plan indica temas, NÃO os títulos literais: evite Contexto do confronto, "
+                "Horário e local da partida e qualquer bloco que apenas repita o lide. "
+                "Não abrir seção de contexto se o único fato for a data, o mando ou a fase."
+            ),
             "lineups": (
                 "Prováveis escalações dos dois times e técnicos devem aparecer em um único bloco/lista visível. "
                 "Se home_lineup e away_lineup não existem com 11 jogadores e técnicos verificados, omitir o bloco por completo sem falar de informações ausentes. Se existem, é proibido dizer que não há provável escalação disponível. "
