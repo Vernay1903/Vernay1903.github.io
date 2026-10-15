@@ -114,7 +114,7 @@ def source_depth_errors(package: dict[str, Any]) -> list[str]:
     """O padrão aprovado exige NOTÍCIA do jogo, não um resumo de 10 placares.
 
     A liberação automática exige contexto editorial particular dos dois clubes
-    e no mínimo três fatos substantivos verificáveis. Informações de serviço,
+    e no mínimo três fatos substantivos distintos. Informações de serviço,
     H2H, últimos cinco placares e nomes de escalação não contam como pauta.
     """
     available = facts(package)
@@ -133,11 +133,24 @@ def source_depth_errors(package: dict[str, Any]) -> list[str]:
     home = home_news + home_stakes
     away = away_news + away_stakes
     total = home + away + common_stakes
+    # Dois campos verificados podem representar a MESMA notícia reescrita.
+    # Não contar duas versões da mesma suspensão/retorno como duas pautas.
+    unique_stories: list[set[str]] = []
+    for story in total:
+        tokens = {t for t in fold(story.split(":", 1)[-1]).split()
+                  if len(t) >= 4 and t not in STOP}
+        repeated = any(
+            len(tokens & previous) >= 10
+            and len(tokens & previous) / max(1, min(len(tokens), len(previous))) >= .72
+            for previous in unique_stories
+        )
+        if not repeated:
+            unique_stories.append(tokens)
     # Não exigir lesão ou suspensão para justificar uma matéria: times sem
     # desfalques também podem render jornalismo substantivo. Três fatos
     # competitivos *verificados*, com contexto de ambos os clubes, bastam.
     # Placar agregado, H2H e serviço continuam excluídos da contagem.
-    if home and away and len({fold(x) for x in total}) >= 3 and (
+    if home and away and len(unique_stories) >= 3 and (
         home_news or away_news or (home_stakes and away_stakes)
     ):
         return []
