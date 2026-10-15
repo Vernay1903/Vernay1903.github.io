@@ -38,6 +38,8 @@ CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_BUILD = ROOT / "build" / "pre-jogo"
 DEFAULT_OUTPUT = DEFAULT_BUILD / "automatico"
 
+from scripts import preparar_redacao_pre_jogo as editorial_contract  # noqa: E402
+
 
 def fail(message: str) -> NoReturn:
     print(f"ERRO: {message}", file=sys.stderr)
@@ -387,7 +389,7 @@ def reusable_draft_is_editorially_current(
         old_draft = load_json(directory / previous["draft"])
     except (FileNotFoundError, KeyError, TypeError, ValueError, json.JSONDecodeError):
         return False
-    if old_contract.get("editorial_quality_revision") != "classicos-contextuais-2026-10-11-v1":
+    if old_contract.get("editorial_quality_revision") != editorial_contract.EDITORIAL_QUALITY_REVISION:
         return False
     if old_contract.get("match_context") != current_package.get("match_context"):
         return False
