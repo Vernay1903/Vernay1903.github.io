@@ -29,7 +29,7 @@ CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
 
 # Versão do critério de qualidade: nunca reutilizar rascunhos com prompt antigo.
-EDITORIAL_QUALITY_REVISION = "modelo-narrativo-aprovado-2026-10-15-v2"
+EDITORIAL_QUALITY_REVISION = "modelo-narrativo-aprovado-2026-10-15-v3"
 
 FORBIDDEN_DRAFTER_KEYS = {
     "sources",
