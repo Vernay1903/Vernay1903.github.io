@@ -65,7 +65,39 @@ def meaningful_team_news(raw: str) -> bool:
 
 def meaningful_sporting_context(raw: str) -> bool:
     value = fold(raw)
-    return len(value.split()) >= 10 and bool(re.search(
+    if len(value.split()) < 10:
+        return False
+    # Falha real de 15/10/2026: arquibancada/ingressos passaram por
+    # 'situação esportiva'. Serviço de estádio não é pauta sobre o elenco.
+    if re.search(
+        r"\b(?:arquibancad\w*|credenciament\w*|ingress\w*|"
+        r"setores? da torcida|distribuicao de torcedores|"
+        r"acesso ao estadio|bilheteria)\b", value,
+    ):
+        return False
+    # A ficha da partida ("se enfrentam na semifinal nesta quinta")
+    # não é novidade competitiva nem contextualização substancial.
+    has_development = re.search(
+        r"\b(?:lideranc\w*|lider|rebaixament\w*|zona de|pontos?|tabela|"
+        r"posicao|classific\w*|eliminad\w*|vantag\w*|"
+        r"vitori\w*|derrot\w*|empat\w*|invict\w*|"
+        r"trein\w*|prepar\w*|desfalqu\w*|suspens\w*|"
+        r"retorn\w*|lesion\w*|recuper\w*|convoc\w*|"
+        r"gols?|marcou|hat trick|standings|unbeaten|"
+        r"qualified|advanced|training|injured)\b", value,
+    )
+    if not has_development:
+        return False
+    if (
+        re.search(r"\b(?:se enfrentam|disputam|acontece|esta marcado|sera disputad\w*)\b", value)
+        and not re.search(
+            r"\b(?:venceu|perdeu|empatou|conquistou|pontos?|lider|tabela|"
+            r"suspens\w*|retorn\w*|trein\w*|classificou|avancou|"
+            r"jogos anteriores|placar agregado)\b", value,
+        )
+    ):
+        return False
+    return bool(re.search(
         r"\b(?:lideranca|lider|rebaixamento|queda|zona|classificacao|vaga|"
         r"semifinal|final|estreia|primeiro classico|pontos|tabela|"
         r"treinamento|treinou|preparacao|desfalqu\w*|"
@@ -254,6 +286,13 @@ ARTIFICIAL = (
     r"\bprincipais pontos individuais verificados\b",
     r"\b(?:no contrato|contrato da partida|contrato editorial|contrato apresentado)\b",
     r"\b(?:o compromisso desta materia|este texto tem como compromisso)\b",
+    # Regressões de linguagem vazia observadas em 15/10/2026.
+    r"\bo resultado da partida de ida dara o primeiro contorno\b",
+    r"\bsera definido no conjunto da eliminatoria\b",
+    r"\besse e o limite da amostra direta disponivel\b",
+    r"\bo encontro tambem pode ser acompanhado dentro da historia\b",
+    r"\buma eliminatoria de alto peso na competicao\b",
+    r"\bo mando (?:argentino|brasileiro) sera o primeiro elemento\b",
 )
 
 def redundant_recent_calendar_errors(body_html: str) -> list[str]:
