@@ -101,6 +101,22 @@ def main() -> None:
     data = json.loads(args.manifest.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise SystemExit("ERRO: manifesto do artifact não é objeto JSON")
+    # Rejeitar o artifact ANTES de carregá-lo no job de publicação; isso
+    # ativa a recuperação segura na data correta em vez de publicar texto
+    # criado com regras editoriais antigas.
+    if data.get("articles"):
+        from scripts import preparar_redacao_pre_jogo as editorial
+        expected = editorial.editorial_build_fingerprint()
+        for article in data["articles"]:
+            rel = article.get("contract")
+            if not isinstance(rel, str) or not rel.startswith("contracts/"):
+                raise SystemExit("ERRO: arquivo de contrato editorial inválido no artifact")
+            path = (args.manifest.parent / rel).resolve()
+            if not path.is_relative_to(args.manifest.parent.resolve()) or not path.is_file():
+                raise SystemExit("ERRO: contrato editorial fora do artifact")
+            contract = json.loads(path.read_text(encoding="utf-8"))
+            if contract.get("editorial_build_fingerprint") != expected:
+                raise SystemExit("ERRO: preparo editorial antigo. Recuperar com o prompt atual.")
     try:
         validate_manifest(
             data,
