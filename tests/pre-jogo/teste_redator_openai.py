@@ -63,7 +63,7 @@ def main() -> None:
     assert "fact_fields_used não basta" in lowered
     assert "cada emissora/plataforma confirmada" in lowered
     assert "ausência de uma informação no contrato não é um fato" in lowered
-    assert "700 a 900 palavras" in lowered
+    assert "950 a 1.250 palavras" in lowered
     assert "jogos concluídos registrados" in lowered
 
     retry = writer.build_revision_request(
