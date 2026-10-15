@@ -153,7 +153,11 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
     else:
         topic = "prévia"
     if len(quoted) >= 2:
-        compact = f"{quoted[0]} {quoted[1]} {topic} {year}".strip()
+        # A manchete costuma abreviar "Estudiantes de La Plata" para "Estudiantes".
+        # A página final continua obrigada a passar na validação de clubes e data.
+        qhome = "Estudiantes" if quoted[0].casefold().strip() == "estudiantes de la plata" else quoted[0]
+        qaway = "Estudiantes" if quoted[1].casefold().strip() == "estudiantes de la plata" else quoted[1]
+        compact = f"{qhome} {qaway} {topic} {year}".strip()
     else:
         compact = re.sub(r"\s+", " ", re.sub(r"[()\\\"]", " ", q)).split(" site:")[0][:120].strip()
     if len(domains) == 1:
