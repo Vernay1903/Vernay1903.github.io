@@ -29,6 +29,12 @@ def main() -> None:
     )]}
     assert source_depth_errors(one_sided), "Não publicar reportagem sem contexto do adversário."
 
+    duplicated = {"facts_by_requirement": [requirement(
+        ("home_team_news_1", "Andreas Pereira retorna ao Palmeiras depois de cumprir suspensão; seu nome voltou a ficar disponível à comissão técnica para o jogo decisivo desta rodada."),
+        ("home_team_news_2", "Andreas Pereira retorna ao Palmeiras depois de cumprir suspensão; seu nome voltou a ficar disponível à comissão técnica para o jogo decisivo desta rodada."),
+        ("away_team_news_1", "O Bahia conta com o retorno do meia titular após ele cumprir suspensão e voltar a treinar antes da partida.")
+    )]}
+    assert source_depth_errors(duplicated), "A mesma notícia não pode contar como duas pautas."
     score_only = {"facts_by_requirement": [requirement(
         ("home_recent_form", "Dois triunfos no torneio."),
         ("away_recent_form", "Um empate no torneio."),
