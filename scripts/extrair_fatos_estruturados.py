@@ -225,6 +225,9 @@ def unmonitored_team_aliases(team: str) -> list[str]:
     """
     if normalize_text(team) in {"clube do remo", "remo"}:
         return ["Clube do Remo", "Remo"]
+    if normalize_text(team) in {"estudiantes de la plata", "club estudiantes de la plata"}:
+        # O nome editorial nas manchetes é "Estudiantes", sem complemento geográfico.
+        return [team.strip(), "Estudiantes", "Estudiantes LP"]
     variants = [team.strip()]
     raw = team.strip()
     prefix_pattern = (
