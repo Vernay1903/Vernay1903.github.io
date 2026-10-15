@@ -111,7 +111,7 @@ def main():
     assert contract["editorial_storyline"]["rivalry_name"]=="Fla-Flu"
     assert contract["editorial_section_plan"][0].startswith("Fla-Flu")
     assert not quality.source_depth_errors(synthetic), "teste de reuso deve partir de pauta jornalística suficiente"
-    assert contract["editorial_quality_revision"]=="classicos-contextuais-2026-10-11-v1"
+    assert contract["editorial_quality_revision"]==draft_prep.EDITORIAL_QUALITY_REVISION
     # Recuperação não pode reutilizar um contrato antigo sem Fla-Flu / sem pauta.
     with TemporaryDirectory() as tmp:
         tmp_path=Path(tmp)
