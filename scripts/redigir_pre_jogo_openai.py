@@ -108,6 +108,8 @@ def load_provider_config() -> dict[str, Any]:
 def validate_contract_for_model(contract: dict[str, Any], site_config: dict[str, Any]) -> None:
     if contract.get("step") != 25:
         fail("O redator aceita somente contratos do Passo 25.")
+    if contract.get("editorial_build_fingerprint") != prepare.editorial_build_fingerprint():
+        fail("Contrato gerado com outra versão de redator, prompt ou validadores.")
     if contract.get("ready_for_model") is not True:
         fail("Contrato ainda não está pronto para o modelo.")
     if contract.get("ready_for_html") is not False:
