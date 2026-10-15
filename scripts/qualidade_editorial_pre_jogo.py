@@ -391,6 +391,33 @@ def dense_fixture_enumeration_errors(body_html: str) -> list[str]:
     return []
 
 
+def editorial_development_errors(body_html: str) -> list[str]:
+    """Bloqueia matéria que alcança 700 palavras só por listas e parágrafos rasos.
+
+    Medida conservadora de UX: o modelo LDU aprovado possui muitos blocos
+    argumentativos completos; a publicação original Estudiantes x Flamengo
+    tinha somente oito parágrafos minimamente desenvolvidos. Sem um mínimo
+    de desenvolvimento NÃO há reportagem, mesmo com serviços corretos.
+    """
+    words = len(fold(body_html).split())
+    if words < 650:
+        return []  # textos curtos já falham em outras validações
+    developed = 0
+    for paragraph in PARAGRAPHS.findall(body_html):
+        content = fold(paragraph)
+        if HEADINGS.fullmatch("<p>" + paragraph + "</p>"):
+            continue
+        if len(content.split()) >= 45:
+            developed += 1
+    if developed < 9:
+        return [
+            "profundidade narrativa insuficiente: menos de nove parágrafos "
+            "com desenvolvimento jornalístico; não substituir reportagem "
+            "por ficha de serviço, cronologia ou repetição do lide"
+        ]
+    return []
+
+
 def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     """Trava extra, executada somente no lote automático antes da publicação."""
     errors: list[str] = []
@@ -415,6 +442,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
         errors.append("subtítulos de repetição/fechamento artificial")
     if "onde assistir" in headings and ("dados do confronto" in headings or "servico do jogo" in headings):
         errors.append("serviço repetido em seções diferentes")
+    errors.extend(editorial_development_errors(body_html))
     errors.extend(category_and_third_club_errors(body_html, contract))
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(dense_fixture_enumeration_errors(body_html))
