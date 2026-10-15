@@ -402,6 +402,13 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     headings = [fold(h) for h in HEADINGS.findall(body_html)]
     if len(headings) > 8:
         errors.append("matéria fragmentada em mais de oito subtítulos")
+    # Cabeçalhos da primeira versão de Estudiantes x Flamengo serviam apenas
+    # para repetir a ficha do jogo. O modelo aprovado usa títulos com pauta.
+    if any(h in {"contexto do confronto", "horario e local da partida",
+                 "subtitulo especifico a definir",
+                 "contexto competitivo da partida subtitulo especifico a definir"}
+           for h in headings):
+        errors.append("subtítulo genérico/de serviço repetido: criar título jornalístico baseado em fato novo verificado")
     if any(h in {"dados do confronto", "informacoes principais", "resumo do encontro",
                  "fechamento", "servico do jogo", "ultimas linhas antes da partida"}
            for h in headings):
