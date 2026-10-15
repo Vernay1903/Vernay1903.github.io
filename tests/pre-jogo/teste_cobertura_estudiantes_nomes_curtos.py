@@ -2,7 +2,10 @@
 """Regressão 15/10: busca gratuita deve encontrar manchete curta e não priorizar ingresso."""
 import json
 import os
+import sys
 from pathlib import Path
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 from scripts import buscar_fontes_serper as search
 from scripts import extrair_fatos_estruturados as facts
 
