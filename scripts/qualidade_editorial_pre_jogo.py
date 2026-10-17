@@ -328,7 +328,7 @@ def unsupported_stakes_closing_errors(body_html: str, contract: dict[str, Any]) 
         verified=facts(contract)
         real_stakes=any(
             k.startswith(("home_stakes_", "away_stakes_", "stakes_", "qualification_"))
-            or k in {"standings_context","competitive_context","qualification_scenario"}
+            or k in {"standings_context","competitive_context","qualification_scenario","stakes"}
             for k in verified
         )
         if not real_stakes:
