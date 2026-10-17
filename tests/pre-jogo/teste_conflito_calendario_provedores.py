@@ -66,6 +66,33 @@ def main():
     else:
         raise AssertionError("Divergência foi mascarada como dia sem jogos")
 
+    # Regressões observadas na consulta REAL das duas APIs em 17/10/2026.
+    # Horários idênticos e denominação jurídica diferente NÃO são conflito.
+    equivalent = [
+        ("Nottingham Forest FC", "Nottingham Forest"),
+        ("EC Bahia", "Bahia"),
+        ("Cruzeiro EC", "Cruzeiro"),
+        ("Sevilla FC", "Sevilla"),
+        ("Ipswich Town FC", "Ipswich Town"),
+        ("RC Strasbourg Alsace", "Strasbourg"),
+        ("Bologna FC 1909", "Bologna"),
+        ("CA Paranaense", "Athletico Paranaense"),
+        ("Real Betis Balompié", "Real Betis"),
+    ]
+    for i, (formal, short) in enumerate(equivalent, start=100):
+        a = game(i, "Flamengo", formal, "2026-10-17T16:00:00-03:00")
+        b = game(f"espn-{i}", "Flamengo", short, "2026-10-17T16:00:00-03:00", "espn")
+        merged = calendar.merge([a], [b], config)
+        assert len(merged) == 1 and merged[0].get("supplemental_fixture") == b, (formal, short)
+
+    # Denominações equivalentes não podem ocultar um horário divergente real.
+    a = game(222, "Barcelona", "Real Betis Balompié", "2026-10-17T13:30:00-03:00",
+             comp="la-liga")
+    b = game("espn-222", "Barcelona", "Real Betis", "2026-10-17T13:00:00-03:00",
+             "espn", comp="la-liga")
+    merged = calendar.merge([a], [b], config)
+    assert len(merged) == 2 and all(x["status"] == "schedule_conflict" for x in merged)
+
     # Status externo inválido nunca é aceito como partida elegível.
     bad = game(5, "Arsenal", "Chelsea", "2026-10-17T18:00:00-03:00", comp="premier-league")
     bad["status"] = "unknown"

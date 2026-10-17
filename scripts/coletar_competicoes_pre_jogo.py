@@ -93,7 +93,21 @@ def merge(primary, extra, config):
 
     def canonical(value):
         key = normalize(value)
-        return aliases.get(key, key)
+        # Primeiro normalizar os dez clubes monitorados pelo cadastro editorial.
+        if key in aliases:
+            return aliases[key]
+        # Fontes distintas usam siglas jurídicas, anos de fundação e sufixos
+        # geográficos no nome do adversário (não é outra partida por isso).
+        parts = key.split()
+        prefixes = {'fc', 'cf', 'ec', 'sc', 'ac', 'afc', 'rc', 'ca', 'cd'}
+        suffixes = {'fc', 'cf', 'ec', 'sc', '1909', 'fbpa', 'alsace', 'balompie'}
+        while len(parts) > 1 and parts[0] in prefixes:
+            parts.pop(0)
+        while len(parts) > 1 and parts[-1] in suffixes:
+            parts.pop()
+        key = ' '.join(parts)
+        # Nome de uso corrente e denominação jurídica do mesmo clube.
+        return {'athletico paranaense': 'paranaense'}.get(key, key)
 
     def teams(row):
         return canonical(row['home']), canonical(row['away'])
