@@ -370,19 +370,32 @@ def adjusted_service_headline(
 
 
 def approved_headline_errors(title, requirement_by_id, *, config):
-    """Título completo e serviços confirmados são obrigatórios para publicar."""
+    """Exige chamada de serviço verificada, nunca obriga informação inexistente.
+
+    adjusted_service_headline remove promessa não fundamentada; a mesma
+    ausência não pode bloquear um título sem essa promessa.
+    """
     errors = []
-    pattern = (r"^.+?\s+x\s+.+?\s+pel[ao]\s+.+?:\s*"
-               r"(?=[^:]*\bhorário\b)(?=[^:]*\bprováveis escalações\b)"
-               r"(?=[^:]*\btransmissão\b)[^:]+$")
-    if not re.fullmatch(pattern, str(title or "").strip(), flags=re.IGNORECASE):
+    headline = str(title or "").strip()
+    pattern = (
+        r"^.+?\s+x\s+.+?\s+pel[ao]\s+.+?:\s*horário"
+        r"(?:\s+e\s+(?:prováveis escalações|transmissão)"
+        r"|,\s+prováveis escalações\s+e\s+transmissão)?$"
+    )
+    if not re.fullmatch(pattern, headline, flags=re.IGNORECASE):
         errors.append("incomplete_approved_headline")
+
     transmission = requirement_by_id.get("transmission") or {}
-    if (transmission.get("conflict_detected")
-            or not _fact_map(transmission).get("transmission", "").strip()):
+    if "transmissão" in headline.casefold() and (
+        transmission.get("conflict_detected")
+        or not _fact_map(transmission).get("transmission", "").strip()
+    ):
         errors.append("required_transmission_not_verified")
+
     lineups = requirement_by_id.get("probable_lineups_and_coaches") or {}
-    if lineups.get("conflict_detected") or not _verified_lineups(lineups, config):
+    if "prováveis escalações" in headline.casefold() and (
+        lineups.get("conflict_detected") or not _verified_lineups(lineups, config)
+    ):
         errors.append("required_probable_lineups_not_verified")
     return errors
 
@@ -596,7 +609,7 @@ def build_article_packages(
         article, requirement_by_id, config=config
     )
 
-    # O modelo aprovado é obrigatório: nunca publicar uma chamada reduzida.
+    # Modelo aprovado: títulos só prometem os serviços realmente comprovados.
     unresolved.extend(approved_headline_errors(
         effective_title, requirement_by_id, config=config,
     ))
