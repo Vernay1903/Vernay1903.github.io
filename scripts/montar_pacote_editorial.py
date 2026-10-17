@@ -378,9 +378,10 @@ def approved_headline_errors(title, requirement_by_id, *, config):
     errors = []
     headline = str(title or "").strip()
     pattern = (
-        r"^.+?\s+x\s+.+?\s+pel[ao]\s+.+?:\s*horário"
-        r"(?:\s+e\s+(?:prováveis escalações|transmissão)"
-        r"|,\s+prováveis escalações\s+e\s+transmissão)?$"
+        r"^.+?\s+x\s+.+?\s+pel[ao]\s+.+?:\s*"
+        r"(?=[^:]*\bhorário\b)"
+        r"(?:horário|prováveis escalações|transmissão)"
+        r"(?:(?:,\s*|\s+e\s+)(?:horário|prováveis escalações|transmissão))*$"
     )
     if not re.fullmatch(pattern, headline, flags=re.IGNORECASE):
         errors.append("incomplete_approved_headline")
