@@ -28,4 +28,7 @@ assert {"required_transmission_not_verified", "required_probable_lineups_not_ver
 assert "incomplete_approved_headline" in editorial.approved_headline_errors(
     "Título genérico: horário", missing, config=config
 )
+assert "incomplete_approved_headline" not in editorial.approved_headline_errors(
+    prefix + "transmissão, horário e prováveis escalações", missing, config=config
+)
 print("OK: promessa editorial condicional exige somente serviços verificados.")
