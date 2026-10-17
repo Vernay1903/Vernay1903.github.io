@@ -31,6 +31,9 @@ if str(ROOT) not in sys.path:
 from scripts import preparar_pacote_publicacao_pre_jogo as package_builder  # noqa: E402
 from scripts import planejar_pre_jogos as planner  # noqa: E402
 from scripts import montar_pacote_editorial as editorial_package  # noqa: E402
+from scripts import validar_rascunho_pre_jogo as draft_validator  # noqa: E402
+from scripts import qualidade_editorial_pre_jogo as editorial_quality  # noqa: E402
+from scripts import preparar_redacao_pre_jogo as editorial_contract  # noqa: E402
 
 
 def fail(message: str) -> NoReturn:
@@ -167,10 +170,28 @@ def main() -> None:
             skipped.append({"slug": slug, "reason": "final_status_not_approved"})
             continue
 
-        contract_path, _draft_path, _status_path = validate_artifact_files(artifact_root, article)
+        contract_path, draft_path, _status_path = validate_artifact_files(artifact_root, article)
         contract = load_json(contract_path)
         if not isinstance(contract, dict) or contract.get("slug") != slug:
             skipped.append({"slug": slug, "reason": "contract_mismatch"})
+            continue
+
+        draft = load_json(draft_path)
+        if contract.get("editorial_build_fingerprint") != editorial_contract.editorial_build_fingerprint():
+            skipped.append({"slug": slug, "reason": "obsolete_editorial_model"})
+            continue
+        if not isinstance(draft, dict) or draft.get("draft_validated") is not True:
+            skipped.append({"slug": slug, "reason": "unvalidated_editorial_draft"})
+            continue
+        _, drafting_errors = draft_validator.validate_draft(draft, contract, config=config)
+        quality_errors = editorial_quality.draft_quality_errors(
+            str(draft.get("body_html", "")), contract
+        )
+        if drafting_errors or quality_errors:
+            skipped.append({
+                "slug": slug, "reason": "editorial_validation_failed_before_publication",
+                "errors": list(dict.fromkeys(drafting_errors + quality_errors)),
+            })
             continue
 
         requirements = {

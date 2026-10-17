@@ -2,6 +2,7 @@
 import json
 import re
 import time
+import unicodedata
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request, urlopen
@@ -75,19 +76,78 @@ def collect(target, config, query=fetch):
     return list({r['id']:r for batch in batches for r in batch}.values())
 
 def merge(primary, extra, config):
-    def clubs(row):
-        return {c['name'] for c in config['monitored_clubs'] if any(
-            name.casefold() in {row['home'].casefold(), row['away'].casefold()}
-            for name in [c['name'],*c.get('aliases',[])])}
-    result=list(primary)
+    """Reconcilia por confronto completo, isolando divergências sem perder jogos sadios.
+
+    Nenhuma partida com dados contraditórios pode virar notícia nem ser
+    confundida com dia sem jogos. Erros de rede/schema continuam fatais.
+    """
+    def normalize(value):
+        value = unicodedata.normalize('NFKD', str(value).casefold())
+        value = ''.join(c for c in value if not unicodedata.combining(c))
+        return ' '.join(re.sub(r'[^a-z0-9]+', ' ', value).split())
+
+    aliases = {}
+    for club in config['monitored_clubs']:
+        for name in [club['name'], *club.get('aliases', [])]:
+            aliases[normalize(name)] = normalize(club['name'])
+
+    def canonical(value):
+        key = normalize(value)
+        return aliases.get(key, key)
+
+    def teams(row):
+        return canonical(row['home']), canonical(row['away'])
+
+    monitored = {normalize(c['name']) for c in config['monitored_clubs']}
+
+    def shared_club(a, b):
+        return bool((set(teams(a)) & set(teams(b))) & monitored)
+
+    def quarantine(item, counterpart, reason):
+        item['status'] = 'schedule_conflict'
+        item['calendar_conflict'] = {
+            'reason': reason,
+            'fixture': f"{item['home']} x {item['away']}",
+            'competition': item['competition_slug'],
+            'kickoff': item['kickoff'],
+            'other_fixture': f"{counterpart['home']} x {counterpart['away']}",
+            'other_kickoff': counterpart['kickoff'],
+            'other_provider': counterpart.get('provider', 'unknown'),
+        }
+
+    result = list(primary)
     for row in extra:
-        # Mesmo clube na mesma competição/data: mantém o ID principal e verifica o horário.
-        same=[x for x in primary if x['competition_slug']==row['competition_slug'] and clubs(x)&clubs(row)]
-        if same:
-            if len(same)!=1 or datetime.fromisoformat(same[0]['kickoff'])!=datetime.fromisoformat(row['kickoff']):
-                raise ValueError('Divergência de calendário entre provedores')
-            same[0]['supplemental_fixture']=row
-        else: result.append(row)
+        candidates = [
+            item for item in primary
+            if item['competition_slug'] == row['competition_slug']
+            and shared_club(item, row)
+        ]
+        if not candidates:
+            result.append(row)
+            continue
+
+        same_match = [item for item in candidates if teams(item) == teams(row)]
+        if len(candidates) == 1 and len(same_match) == 1 and (
+            datetime.fromisoformat(same_match[0]['kickoff'])
+            == datetime.fromisoformat(row['kickoff'])
+        ):
+            # Identidade de AMBOS os times, competição e instante confirmados.
+            same_match[0]['supplemental_fixture'] = row
+            continue
+
+        reason = ('different_opponents_or_ambiguous_fixture' if len(same_match) != 1
+                  or len(candidates) != 1 else 'different_kickoff')
+        for item in candidates:
+            quarantine(item, row, reason)
+        quarantine(row, candidates[0], reason)
+        result.append(row)
+        print(
+            f"BLOQUEIO_CALENDARIO: {reason}; "
+            f"football-data={[(x['home'], x['away'], x['kickoff']) for x in candidates]}; "
+            f"espn={(row['home'], row['away'], row['kickoff'])}. "
+            "Somente o(s) confronto(s) divergente(s) fica(m) impedido(s)."
+        )
+
     return result
 
 def snapshot(article, package, manifest):

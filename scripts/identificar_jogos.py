@@ -202,13 +202,16 @@ def fixture_key(fixture: dict[str, Any], kickoff_local: datetime) -> str:
 
 
 def ignored_entry(index: int, fixture: dict[str, Any], reason: str) -> dict[str, Any]:
-    return {
+    entry = {
         "source_index": index,
         "id": fixture.get("id"),
         "home": fixture.get("home"),
         "away": fixture.get("away"),
         "reason": reason,
     }
+    if reason == "calendar_conflict":
+        entry["detail"] = fixture.get("calendar_conflict", {})
+    return entry
 
 
 def identify(
@@ -261,8 +264,14 @@ def identify(
             continue
 
         status = normalized_status(fixture.get("status"))
+        if status == "schedule_conflict" or fixture.get("calendar_conflict"):
+            ignored.append(ignored_entry(idx, fixture, "calendar_conflict"))
+            continue
         if status in SKIP_STATUSES:
             ignored.append(ignored_entry(idx, fixture, f"status_{status}"))
+            continue
+        if status != "scheduled":
+            ignored.append(ignored_entry(idx, fixture, f"unverified_status_{status or 'missing'}"))
             continue
 
         competition = fixture.get("competition")
@@ -387,6 +396,7 @@ def main() -> None:
         "input_count": len(fixtures),
         "selected_count": len(selected),
         "ignored_count": len(ignored),
+        "calendar_conflict_count": sum(x["reason"] == "calendar_conflict" for x in ignored),
         "matches": selected,
         "ignored": ignored,
     }

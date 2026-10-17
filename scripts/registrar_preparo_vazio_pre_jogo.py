@@ -34,6 +34,11 @@ def build_empty_manifest(
         raise ValueError("Data dos relatórios não corresponde à data-alvo.")
     if games.get("selected_count") != 0 or games.get("matches") != []:
         raise ValueError("Há jogo elegível: lote vazio não autorizado.")
+    if games.get("calendar_conflict_count", 0) or any(
+        isinstance(row, dict) and row.get("reason") == "calendar_conflict"
+        for row in games.get("ignored", [])
+    ):
+        raise ValueError("Conflito entre calendários: é falha de verificação, NÃO dia sem jogos.")
     if plans.get("planned_count") != 0 or plans.get("planned") != []:
         raise ValueError("Há matéria planejada: lote vazio não autorizado.")
     if plans.get("skipped_count") != 0 or plans.get("skipped") != []:

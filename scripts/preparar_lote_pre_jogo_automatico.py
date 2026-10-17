@@ -465,6 +465,22 @@ def main() -> None:
     prepared: list[dict[str, Any]] = []
     skipped: list[dict[str, Any]] = []
 
+    # Divergência de calendário não desaparece por não gerar pacote de redação.
+    games_path = DEFAULT_BUILD / f"jogos-{args.date}.json"
+    if games_path.is_file():
+        games = load_json(games_path)
+        if games.get("target_date") != args.date:
+            fail("Relatório de calendário com data divergente.")
+        for entry in games.get("ignored", []):
+            if isinstance(entry, dict) and entry.get("reason") == "calendar_conflict":
+                skipped.append({
+                    "slug": None,
+                    "reason": "calendar_conflict",
+                    "home": entry.get("home"),
+                    "away": entry.get("away"),
+                    "detail": entry.get("detail", {}),
+                })
+
     from scripts import qualidade_editorial_pre_jogo as quality
 
     for package in packages:

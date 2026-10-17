@@ -493,6 +493,9 @@ jobs:
         with:
           name: pre-jogo-passo-34-publicacao-dry-run-${{ steps.target.outputs.date }}
           path: |
+            build/pre-jogo/fixtures-normalizados.json
+            build/pre-jogo/jogos-*.json
+            build/pre-jogo/planos-*.json
             build/pre-jogo/automatico-source/
             build/pre-jogo/automatico-publicacao.json
             build/pre-jogo/status-final-*.json
@@ -905,7 +908,7 @@ jobs:
           PY
 
       - name: Solicitar Pages e confirmar publicação pública
-        if: ${{ env.NO_PREP == 'false' && env.NEEDS_PAGES == 'true' }}
+        if: ${{ env.NO_PREP == 'false' && env.PUBLISH_COUNT != '0' }}
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -940,7 +943,7 @@ jobs:
             --manifest "${AUTO_SOURCE}/manifest.json" --report "${APPLY_REPORT}"
 
       - name: Guardar auditoria da publicação automática
-        if: ${{ always() && env.NO_PREP == 'false' }}
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: pre-jogo-passo-34-publicacao-${{ steps.target.outputs.date }}
