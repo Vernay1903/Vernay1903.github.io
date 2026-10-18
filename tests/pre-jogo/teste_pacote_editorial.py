@@ -97,6 +97,17 @@ def complete_article(config: dict) -> dict:
             config,
         ),
         research.build_requirement("competition_internal_link", config=config),
+        {
+            "id": "editorial_match_stakes",
+            "status": "verified",
+            "facts": [
+                {"field": "home_stakes_1", "text": "Na tabela atual da Premier League, Arsenal ocupa a posição 2, com 16 pontos em 8 jogos disputados."},
+                {"field": "away_stakes_1", "text": "Na tabela atual da Premier League, Manchester City ocupa a posição 5, com 12 pontos em 8 jogos disputados."},
+                {"field": "competitive_context", "text": "Arsenal e Manchester City somam pontos distintos e disputam posições na classificação."},
+            ],
+            "sources": [source("https://api.football-data.org/v4/competitions/PL/standings")],
+            "conflict_detected": False,
+        },
         verified_requirement(
             "stakes_and_qualification_scenarios_when_applicable",
             [{"field": "stakes", "text": "Os três pontos têm impacto direto na disputa pelas primeiras posições."}],
