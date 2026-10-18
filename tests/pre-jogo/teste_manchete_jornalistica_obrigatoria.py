@@ -38,6 +38,9 @@ def main():
     assert "31ª rodada" in excerpt, excerpt
     assert not editorial.approved_headline_errors(title, valid, config=config), title
     assert not editorial.approved_excerpt_errors(excerpt), excerpt
+    assert editorial.approved_excerpt_errors(
+        "O Arsenal soma três vitórias nos últimos cinco jogos. O Manchester City também joga pela Premier League."
+    ) == [], "Resumo factual com vitórias verificadas no plural não deve ser reprovado." 
     for bad_title in [
         "Real Madrid x Sevilla pela La Liga: horário",
         "Bahia x Flamengo pelo Brasileirão: horário e transmissão",
