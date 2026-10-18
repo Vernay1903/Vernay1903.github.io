@@ -578,7 +578,7 @@ def approved_excerpt_errors(excerpt: str) -> list[str]:
         return ["excerpt_generico_sem_noticia"]
     # Um preview com somente dia/rodada/TV não é um resumo jornalístico.
     if not re.search(r"\b(?:pontos?|coloca[cç][aã]o|posi[cç][aã]o|"
-                     r"suspens[aã]o|desfalque|les[aã]o|vit[oó]ria|"
+                     r"suspens[aã]o|desfalque|les[aã]o|vit[oó]rias?|venceu|"
                      r"eliminat[oó]ria|vantagem|classifica[cç][aã]o)\b",
                      value, flags=re.IGNORECASE):
         return ["excerpt_sem_contexto_esportivo"]
