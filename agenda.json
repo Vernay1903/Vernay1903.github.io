@@ -1,44 +1,110 @@
 [
-
-
   {
-    "time": "15:45",
-    "desc": "AS Roma x Genoa - Serie A italiana"
+    "time": "07:30",
+    "desc": "Udinese x Lecce - Serie A italiana"
+  },
+  {
+    "time": "09:00",
+    "desc": "Osasuna x Racing Santander - La Liga"
+  },
+  {
+    "time": "10:00",
+    "desc": "AFC Bournemouth x Sunderland - Premier League"
+  },
+  {
+    "time": "10:00",
+    "desc": "Angers x Marseille - Ligue 1"
+  },
+  {
+    "time": "10:00",
+    "desc": "Brighton & Hove Albion x Crystal Palace - Premier League"
+  },
+  {
+    "time": "10:00",
+    "desc": "Fiorentina x Como - Serie A italiana"
+  },
+  {
+    "time": "10:00",
+    "desc": "Leeds United x Manchester United - Premier League"
+  },
+  {
+    "time": "10:30",
+    "desc": "Bayer Leverkusen x Freiburg - Bundesliga"
+  },
+  {
+    "time": "11:15",
+    "desc": "Celta de Vigo x Alavés - La Liga"
+  },
+  {
+    "time": "12:15",
+    "desc": "Le Havre AC x AJ Auxerre - Ligue 1"
+  },
+  {
+    "time": "12:15",
+    "desc": "Lorient x AS Mônaco - Ligue 1"
+  },
+  {
+    "time": "12:15",
+    "desc": "Paris FC x Stade Rennais - Ligue 1"
+  },
+  {
+    "time": "12:30",
+    "desc": "Borussia Monchengladbach x Hoffenheim - Bundesliga"
+  },
+  {
+    "time": "12:30",
+    "desc": "Nottingham Forest x Arsenal - Premier League"
+  },
+  {
+    "time": "13:00",
+    "desc": "AC Milan x Atalanta - Serie A italiana"
+  },
+  {
+    "time": "13:30",
+    "desc": "Málaga x Real Sociedad - La Liga"
   },
   {
     "time": "15:45",
-    "desc": "Lille x Brest - Ligue 1"
+    "desc": "Juventus x Lázio - Serie A italiana"
   },
   {
     "time": "15:45",
-    "desc": "Troyes x Lens - Ligue 1"
+    "desc": "Lyon x Nice - Ligue 1"
   },
   {
     "time": "16:00",
-    "desc": "Valencia x Athletic Club - La Liga"
+    "desc": "Avaí x Athletic - Brasileirão Série B"
   },
   {
-    "time": "16:30",
-    "desc": "Ceará x Juventude - Brasileirão Série B"
+    "time": "16:00",
+    "desc": "CRB x Botafogo-SP - Brasileirão Série B"
+  },
+  {
+    "time": "16:00",
+    "desc": "Fluminense x Santos - Brasileirão Série A"
+  },
+  {
+    "time": "16:00",
+    "desc": "Grêmio x Cruzeiro - Brasileirão Série A"
+  },
+  {
+    "time": "16:00",
+    "desc": "Real Madrid x Sevilla FC - La Liga"
+  },
+  {
+    "time": "16:00",
+    "desc": "São Bernardo x Criciúma - Brasileirão Série B"
   },
   {
     "time": "18:00",
-    "desc": "Botafogo x Chapecoense - Brasileirão Série A"
+    "desc": "Vila Nova x Novorizontino - Brasileirão Série B"
   },
   {
     "time": "18:30",
-    "desc": "América Mineiro x Operário PR - Brasileirão Série B"
-  },
-  {
-    "time": "18:30",
-    "desc": "Atlético-MG x Coritiba - Brasileirão Série A"
+    "desc": "Bahia x Flamengo - Brasileirão Série A"
   },
   {
     "time": "19:30",
-    "desc": "Athletico Paranaense x Palmeiras - Brasileirão Série A"
-  },
-  {
-    "time": "21:00",
-    "desc": "São Paulo x Vasco da Gama - Brasileirão Série A"
+    "desc": "Remo x Red Bull Bragantino - Brasileirão Série A"
   }
 ]
