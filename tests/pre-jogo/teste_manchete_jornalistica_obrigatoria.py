@@ -32,38 +32,59 @@ def main():
             ],
         },
     }
-    title, excerpt = editorial.adjusted_service_headline(article, valid, config=config)
-    assert "vice-líder visita 6º colocado" in title, title
-    assert "49 pontos" in excerpt and "64 pontos" in excerpt, excerpt
-    assert "31ª rodada" in excerpt, excerpt
-    assert not editorial.approved_headline_errors(title, valid, config=config), title
+    target = "Bahia x Flamengo: veja escalações, destaques e onde assistir"
+    # Informações da classificação, por si só, NÃO autorizam a promessa
+    # dos serviços em destaque.
+    blocked, excerpt = editorial.adjusted_service_headline(article, valid, config=config)
+    assert blocked == target
+    errors = editorial.approved_headline_errors(blocked, valid, config=config)
+    assert {"required_transmission_not_verified", "required_probable_lineups_not_verified"} <= set(errors)
+    assert "49 pontos" in excerpt and "64 pontos" in excerpt
     assert not editorial.approved_excerpt_errors(excerpt), excerpt
-    assert editorial.approved_excerpt_errors(
-        "O Arsenal soma três vitórias nos últimos cinco jogos e o Manchester City aparece com quatro no mesmo intervalo. O duelo pela Premier League está marcado para 17 de setembro, às 16h de Brasília."
-    ) == [], "Resumo factual com vitórias verificadas no plural não deve ser reprovado." 
+
+    players_a = "; ".join(f"Jogador Bahia {i}" for i in range(1, 12))
+    players_b = "; ".join(f"Jogador Flamengo {i}" for i in range(1, 12))
+    valid["probable_lineups_and_coaches"] = {
+        "id": "probable_lineups_and_coaches", "status": "verified",
+        "facts": [
+            {"field": "home_lineup", "text": "Bahia: " + players_a + "."},
+            {"field": "away_lineup", "text": "Flamengo: " + players_b + "."},
+            {"field": "home_coach", "text": "Técnico Bahia: Exemplo A."},
+            {"field": "away_coach", "text": "Técnico Flamengo: Exemplo B."},
+        ],
+    }
+    valid["transmission"] = {
+        "id": "transmission", "status": "verified",
+        "facts": [{"field": "transmission", "text": "Transmissão: Plataforma Exemplo."}],
+    }
+    title, excerpt = editorial.adjusted_service_headline(article, valid, config=config)
+    assert title == target
+    assert editorial.approved_headline_errors(title, valid, config=config) == []
+    assert editorial.approved_excerpt_errors(excerpt) == []
+
     for bad_title in [
         "Real Madrid x Sevilla pela La Liga: horário",
         "Bahia x Flamengo pelo Brasileirão: horário e transmissão",
         "Bahia x Flamengo pelo Brasileirão: horário, prováveis escalações e transmissão",
+        "Bahia x Flamengo: veja escalações e onde assistir",
+        "Bahia x Flamengo pelo Brasileirão: vice-líder visita sexto colocado",
     ]:
-        assert "headline_sem_gancho_editorial" in editorial.approved_headline_errors(
+        assert "titulo_fora_do_modelo_fixo" in editorial.approved_headline_errors(
             bad_title, valid, config=config,
         ), bad_title
     bad_excerpt = "As equipes se enfrentam neste domingo (18/10), pela 31ª rodada do Brasileirão."
     assert editorial.approved_excerpt_errors(bad_excerpt)
-    insufficient_title, insufficient_excerpt = editorial.adjusted_service_headline(
-        article, {}, config=config,
+    lacking_facts = json.loads(json.dumps(valid))
+    lacking_facts["transmission"]["facts"] = []
+    assert "required_transmission_not_verified" in editorial.approved_headline_errors(
+        title, lacking_facts, config=config,
     )
-    assert editorial.approved_headline_errors(insufficient_title, {}, config=config)
-    assert editorial.approved_excerpt_errors(insufficient_excerpt)
-    missing_points = json.loads(json.dumps(valid))
-    missing_points["editorial_match_stakes"]["facts"][1]["text"] = "Flamengo tem posição desconhecida."
-    fallback_title, fallback_excerpt = editorial.adjusted_service_headline(
-        article, missing_points, config=config,
+    lacking_facts = json.loads(json.dumps(valid))
+    lacking_facts["probable_lineups_and_coaches"]["facts"][0]["text"] = "Bahia: somente um jogador."
+    assert "required_probable_lineups_not_verified" in editorial.approved_headline_errors(
+        title, lacking_facts, config=config,
     )
-    assert editorial.approved_headline_errors(fallback_title, missing_points, config=config)
-    assert editorial.approved_excerpt_errors(fallback_excerpt)
-    print("OK: título e resumo com pauta e números verificados; chamados genéricos bloqueados.")
+    print("OK: título fixo com escalações e onde assistir só quando ambos os serviços estão verificados.")
 
 
 if __name__ == "__main__":
