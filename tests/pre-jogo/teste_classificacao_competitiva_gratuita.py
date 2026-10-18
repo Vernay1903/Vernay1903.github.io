@@ -20,8 +20,8 @@ def snapshot():
         "season": {"startDate": "2026-08-01", "endDate": "2027-05-31"},
         "standings": [
             {"type": "TOTAL", "table": [
-                {"position": 3, "playedGames": 8, "points": 17, "team": {"id": 57}},
-                {"position": 14, "playedGames": 8, "points": 9, "team": {"id": 66}},
+                {"position": 3, "playedGames": 8, "points": 17, "goalDifference": 11, "team": {"id": 57}},
+                {"position": 14, "playedGames": 8, "points": 9, "goalDifference": -6, "team": {"id": 66}},
             ]}
         ],
     }
@@ -41,7 +41,7 @@ def main():
     facts = extract(data)
     assert facts and len(facts) == 3, facts
     assert "9 pontos" in facts[0]["text"] and "17 pontos" in facts[1]["text"]
-    assert "8 pontos" in facts[2]["text"]
+    assert "8 pontos" in facts[2]["text"] and "saldo de -6 gols" in facts[2]["text"]
     assert extract({**data, "season": {"startDate": "2025-08-01", "endDate": "2026-05-31"}}) is None
     assert extract({**data, "competition": {"code": "SA"}}) is None
     assert extract({**data, "standings": [
