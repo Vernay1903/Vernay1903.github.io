@@ -70,6 +70,21 @@ def main() -> None:
     assert "950 a 1.250 palavras" in lowered
     assert "jogos concluídos registrados" in lowered
 
+    # A personalidade do GPT Criador de Matérias deve chegar à chamada real,
+    # em instruções de sistema e sem consultar o GPT personalizado.
+    persona = writer.editorial_persona_instructions()
+    system_text = request["input"][0]["content"][0]["text"]
+    assert persona in system_text
+    assert "JORNALISMO DE VERDADE" in system_text
+    assert "É proibido inventar, completar" in system_text
+    assert "Não transforme título isolado de notícia" in system_text
+    assert "A apuração é feita ANTES desta etapa" in system_text
+    assert "body_html contendo somente o corpo da matéria" in system_text
+    assert "o mínimo de palavras nesta automação" in system_text.casefold()
+    assert "PERSONALIDADE EDITORIAL PRIORITÁRIA" in system_text
+    assert writer.prepare.editorial_build_fingerprint() == contract["editorial_build_fingerprint"]
+    assert provider["budget"]["monthly_target_usd"] <= 10
+
     retry = writer.build_revision_request(
         contract, provider,
         errors=["rascunho tem 604 palavras; mínimo exigido é 700"],
