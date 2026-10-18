@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Reexecucao real controlada apos reparo da transmissao e da sintese editorial.
 """Proteção offline do serviço factual e do retry editorial, sem chamada OpenAI."""
 import sys
 from pathlib import Path
