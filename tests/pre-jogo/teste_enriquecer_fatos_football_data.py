@@ -59,7 +59,9 @@ def main():
     assert by_id["transmission"]["status"]=="pending"
     assert len(by_id["competition_specific_head_to_head"]["facts"])==4
     assert "recorte de 2" in by_id["competition_specific_head_to_head"]["facts"][0]["text"]
-    assert len(requests)==3
+    assert len(requests)==4, requests
+    assert "/competitions/PL/standings" in requests
+    assert "editorial_match_stakes" not in by_id, "API sem dados válidos não pode inventar a classificação"
     # Nunca substitui evidência conflitante ou já validada.
     article["requirements"][0]["conflict_detected"]=True
     article["requirements"][1]["status"]="verified"
