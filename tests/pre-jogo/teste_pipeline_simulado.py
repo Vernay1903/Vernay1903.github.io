@@ -229,12 +229,12 @@ def main() -> None:
     real_barca_editorial = editorial_records[1]
     assert_equal(
         arsenal_editorial["title"],
-        "Arsenal x Manchester City pela Premier League: horário, prováveis escalações e transmissão",
+        "Arsenal x Manchester City pela Premier League: veja escalações, destaques e onde assistir",
         "Título editorial Arsenal x Manchester City",
     )
     assert_equal(
         real_barca_editorial["title"],
-        "Real Madrid x Barcelona pela La Liga: horário, prováveis escalações e transmissão",
+        "Real Madrid x Barcelona pela La Liga: veja escalações, destaques e onde assistir",
         "Título editorial Real Madrid x Barcelona",
     )
     assert_equal(arsenal_editorial["date"], "17/09/2026", "Data editorial")
