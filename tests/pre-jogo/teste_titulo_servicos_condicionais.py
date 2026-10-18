@@ -14,7 +14,7 @@ missing = {
     "probable_lineups_and_coaches": {"status": "unavailable_after_check", "facts": []},
 }
 prefix = "Flamengo x Grêmio pelo Brasileirão: "
-assert editorial.approved_headline_errors(prefix + "horário", missing, config=config) == []
+assert "headline_sem_gancho_editorial" in editorial.approved_headline_errors(prefix + "horário", missing, config=config)
 assert "required_transmission_not_verified" in editorial.approved_headline_errors(
     prefix + "horário e transmissão", missing, config=config
 )
