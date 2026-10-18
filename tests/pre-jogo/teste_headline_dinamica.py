@@ -26,30 +26,36 @@ def main():
       "transmission":{"id":"transmission","status":"unavailable_after_check","facts":[]},
       "probable_lineups_and_coaches":{"id":"probable_lineups_and_coaches","status":"verified","facts":lineup_facts},
     }
-    title,excerpt=pack.adjusted_service_headline(article,reqs,config=config)
-    assert "transmissão" not in title.casefold()
-    assert "prováveis escalações" in title.casefold()
+    title, excerpt = pack.adjusted_service_headline(article, reqs, config=config)
+    expected = "Santos FC x Flamengo: veja escalações, destaques e onde assistir"
+    assert title == expected, title
     assert "transmissão" not in excerpt.casefold()
-    reqs["probable_lineups_and_coaches"]={"id":"probable_lineups_and_coaches","status":"unavailable_after_check","facts":[]}
-    title2,excerpt2=pack.adjusted_service_headline(article,reqs,config=config)
-    assert "transmissão" not in title2.casefold() and "escala" not in title2.casefold()
-    assert title2 == "Santos FC x Flamengo pelo Brasileirão: horário", title2
-    assert "informações do jogo" not in title2.casefold()
-    assert "informações do confronto" not in excerpt2.casefold()
+    # O formato NÃO deve ser silenciosamente substituído por "horário".
+    assert "required_transmission_not_verified" in pack.approved_headline_errors(
+        title, reqs, config=config,
+    )
+    reqs["probable_lineups_and_coaches"] = {
+        "id": "probable_lineups_and_coaches",
+        "status": "unavailable_after_check", "facts": [],
+    }
+    missing_title, _ = pack.adjusted_service_headline(article, reqs, config=config)
+    assert missing_title == expected
+    assert "required_probable_lineups_not_verified" in pack.approved_headline_errors(
+        missing_title, reqs, config=config,
+    )
 
-    # Modelo aprovado: uma chamada reduzida é válida apenas se não prometer fatos ausentes.
-    assert pack.approved_headline_errors(title, reqs, config=config)
     reqs["transmission"] = {"status": "verified", "facts": [
-        {"field": "transmission", "text": "Canal confirmado."}
+        {"field": "transmission", "text": "Transmissão: Canal confirmado."}
     ]}
     reqs["probable_lineups_and_coaches"] = {
         "status": "verified", "facts": lineup_facts,
     }
     complete, _ = pack.adjusted_service_headline(article, reqs, config=config)
-    assert "headline_sem_gancho_editorial" in pack.approved_headline_errors(complete, reqs, config=config)
-    for tail in ("horário", "horário e transmissão", "horário e prováveis escalações"):
-        incomplete = "Santos FC x Flamengo pelo Brasileirão: " + tail
-        assert "headline_sem_gancho_editorial" in pack.approved_headline_errors(incomplete, reqs, config=config), incomplete
+    assert complete == expected
+    assert not pack.approved_headline_errors(complete, reqs, config=config)
+    assert "titulo_fora_do_modelo_fixo" in pack.approved_headline_errors(
+        "Santos FC x Flamengo pelo Brasileirão: horário", reqs, config=config,
+    )
     reqs["transmission"]["status"] = "unavailable_after_check"
     assert "required_transmission_not_verified" in pack.approved_headline_errors(
         complete, reqs, config=config,
@@ -68,7 +74,7 @@ def main():
     resolved=facts.resolve_allowed_gap(gap,competition_slug="brasileirao",config=config)
     assert resolved["status"]=="unavailable_after_check"
     assert resolved["validator_accepted"] is True
-    print("OK: chamada remove serviços não verificados e ausência opcional pesquisada não bloqueia a matéria.")
+    print("OK: manchete fixa e promessas de escalação/transmissão condicionadas à verificação.")
 
 
 if __name__=="__main__":
