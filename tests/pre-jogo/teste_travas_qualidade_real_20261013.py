@@ -47,9 +47,12 @@ def check():
              "title":"Fluminense x Palmeiras na competição Libertadores: horário, prováveis escalações e transmissão",
              "excerpt":"Fluminense e Palmeiras se enfrentam na competição Libertadores; veja escalações e transmissão."}
     title,excerpt=adjusted_service_headline(article,{},config=CONFIG)
-    assert "pela Libertadores" in title and "pela Libertadores" in excerpt, (title,excerpt)
-    assert excerpt.startswith("As equipes se enfrentam nesta quarta-feira (14/10)")
-    assert "prováveis escalações" not in title and "transmissão" not in title, title
-    print("OK: texto real inadequado é bloqueado; título não promete serviços inexistentes.")
+    assert title == "Fluminense x Palmeiras: veja escalações, destaques e onde assistir", title
+    assert "pela Libertadores" in excerpt and excerpt.startswith("As equipes se enfrentam nesta quarta-feira (14/10)")
+    from scripts.montar_pacote_editorial import approved_headline_errors
+    problems = approved_headline_errors(title, {}, config=CONFIG)
+    assert "required_probable_lineups_not_verified" in problems
+    assert "required_transmission_not_verified" in problems
+    print("OK: texto inadequado bloqueado; título fixo sem serviços verificados não autoriza publicação.")
 if __name__=="__main__":
     check()
