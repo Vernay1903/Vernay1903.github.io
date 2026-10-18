@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Reexecucao controlada do fluxo real: apenas dados oficiais verificados podem destravar a redacao.
 """Regressão offline: classificação oficial complementa a pauta, sem inventar notícias."""
 import json
 import sys
