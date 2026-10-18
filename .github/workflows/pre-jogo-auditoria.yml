@@ -15,6 +15,7 @@ on:
       - "scripts/pesquisa_publica_gratuita.py"
       - "config/pre-jogo.json"
       - "config/redacao-pre-jogo.json"
+      - "config/persona-criador-de-materias-prejogo.txt"
       - "tests/pre-jogo/**"
 
 permissions:
