@@ -213,6 +213,130 @@ def append_verified_recent_results(requirement: dict, facts: list[dict], urls: l
     return validated
 
 
+
+# Apenas ligas de pontos corridos. Copas e torneios em grupos/mata-mata
+# não têm uma classificação comparável que autorize este complemento.
+STANDINGS_LEAGUES = frozenset({"PL", "PD", "FL1", "BL1", "SA", "BSA"})
+
+
+def verified_standings_context(
+    payload: dict, *, code: str, home_id: int, away_id: int,
+    home: str, away: str, competition: str, cutoff: datetime,
+) -> list[dict[str, str]] | None:
+    """Contexto competitivo da tabela oficial; nunca deduz lesões ou escalações.
+
+    Uma classificação é aproveitada apenas se os dois times aparecem na
+    mesma tabela TOTAL, com números válidos e temporada correspondente.
+    """
+    if code not in STANDINGS_LEAGUES or not isinstance(payload, dict):
+        return None
+    comp = payload.get("competition")
+    if isinstance(comp, dict) and comp.get("code") not in (None, code):
+        return None
+    season = payload.get("season")
+    if not isinstance(season, dict):
+        return None
+    try:
+        start = datetime.strptime(season["startDate"], "%Y-%m-%d").date()
+        end = datetime.strptime(season["endDate"], "%Y-%m-%d").date()
+    except (KeyError, ValueError, TypeError):
+        return None
+    match_date = cutoff.astimezone(TZ).date()
+    if not (start <= match_date <= end):
+        return None
+    standings = payload.get("standings")
+    if not isinstance(standings, list):
+        return None
+    matched: list[tuple[dict, dict]] = []
+    for table in standings:
+        if not isinstance(table, dict) or table.get("type") != "TOTAL":
+            continue
+        rows = table.get("table")
+        if not isinstance(rows, list):
+            continue
+        found = {}
+        for row in rows:
+            if not isinstance(row, dict) or not isinstance(row.get("team"), dict):
+                continue
+            team_id = row["team"].get("id")
+            if team_id in (home_id, away_id):
+                found[team_id] = row
+        if len(found) == 2:
+            matched.append((found[home_id], found[away_id]))
+    # Nunca misturar grupos diferentes nem escolher uma tabela ambígua.
+    if len(matched) != 1:
+        return None
+    left, right = matched[0]
+    def numeric(row: dict) -> tuple[int, int, int] | None:
+        values = (row.get("position"), row.get("playedGames"), row.get("points"))
+        if not all(type(n) is int for n in values):
+            return None
+        place, played, points = values
+        if not (1 <= place <= 30 and 1 <= played <= 46 and 0 <= points <= 138):
+            return None
+        return place, played, points
+    h, a = numeric(left), numeric(right)
+    if h is None or a is None or h[1] != a[1] and abs(h[1] - a[1]) > 2:
+        return None
+    # Três informações competitivas verificáveis, sem chamá-las de três
+    # notícias de bastidores: tabela de cada clube e diferença mensurável.
+    diff = abs(h[2] - a[2])
+    return [
+        {"field": "home_stakes_1", "text":
+         f"Na tabela atual da {competition}, {home} ocupa a posição {h[0]}, "
+         f"com {h[2]} pontos em {h[1]} jogos disputados."},
+        {"field": "away_stakes_1", "text":
+         f"Na tabela atual da {competition}, {away} ocupa a posição {a[0]}, "
+         f"com {a[2]} pontos em {a[1]} jogos disputados."},
+        {"field": "competitive_context", "text":
+         f"A classificação da {competition} registra uma diferença de {diff} "
+         f"pontos entre {home} e {away} nesta rodada; na tabela, "
+         f"as equipes ocupam respectivamente as posições {h[0]} e {a[0]}."},
+    ]
+
+
+def attach_standings_context(
+    requirements: list[dict], facts: list[dict[str, str]],
+    url: str, now: str, config: dict,
+) -> list[dict]:
+    """Não apaga informações jornalísticas verificadas por outras fontes."""
+    result = deepcopy(requirements)
+    index = next((i for i, req in enumerate(result)
+                  if isinstance(req, dict) and req.get("id") == "editorial_match_stakes"), None)
+    if index is None:
+        req = {"id": "editorial_match_stakes", "status": "pending",
+               "required_for_drafting": False, "conditional": False,
+               "allow_unavailable_after_check": False, "facts": [], "sources": []}
+        result.append(validated_update(req, facts, [url], now, config))
+        return result
+    req = result[index]
+    if req.get("conflict_detected") is True:
+        return result
+    previous = req.get("facts") if req.get("status") == "verified" else []
+    existing = {item.get("field") for item in previous if isinstance(item, dict)}
+    additions = [fact for fact in facts if fact["field"] not in existing]
+    if not additions:
+        return result
+    if req.get("status") != "verified":
+        result[index] = validated_update(req, additions, [url], now, config)
+        return result
+    sources = [dict(s) for s in req.get("sources", []) if isinstance(s, dict)]
+    if not any(s.get("url") == url for s in sources):
+        sources.append({"publisher": "football-data.org", "url": url,
+                        "source_type": "structured_data_provider", "checked_at": now})
+    evidence = {"status": "verified", "facts": [*previous, *additions],
+                "sources": sources, "notes": req.get("notes")}
+    validated, errors = factual_validator.validate_requirement_evidence(
+        req, evidence, config=config)
+    if not errors:
+        validated["fact_extraction_status"] = "verified_plus_current_league_standings"
+        validated["structured_fact_count"] = len(validated["facts"])
+        validated["validator_accepted"] = True
+        validated["internal_provenance_only"] = True
+        result[index] = validated
+    return result
+
+
 def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
     result = deepcopy(article)
     if fixture.get("provider") not in (None, "football-data.org"):
@@ -244,7 +368,8 @@ def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
             f.get("field") for f in recent_req.get("facts", []) if isinstance(f, dict)
         })
     )
-    if not needed.intersection({"recent_form_both_teams","competition_specific_head_to_head"}) and not recent_needs_details:
+    needs_standings = code in STANDINGS_LEAGUES
+    if not needed.intersection({"recent_form_both_teams","competition_specific_head_to_head"}) and not recent_needs_details and not needs_standings:
         return result
 
     home=ctx.get("home");away=ctx.get("away");competition=ctx.get("competition")
@@ -293,6 +418,21 @@ def enrich(article: dict, fixture: dict, query, now: str, config: dict) -> dict:
                 updated.append(append_verified_recent_results(req,facts,urls,now,config))
             else:
                 updated.append(validated_update(req,facts,urls,now,config))
+    if needs_standings:
+        endpoint = f"/competitions/{code}/standings"
+        try:
+            snapshot = query(endpoint)
+            facts = verified_standings_context(
+                snapshot, code=code, home_id=home_id, away_id=away_id,
+                home=home, away=away, competition=competition, cutoff=cutoff,
+            )
+        except (HTTPError, URLError, TimeoutError, ValueError, KeyError, TypeError) as exc:
+            print(f"AVISO: classificação gratuita não disponível ({type(exc).__name__}); sem inventar contexto.")
+            facts = None
+        if facts:
+            updated = attach_standings_context(
+                updated, facts, API + endpoint, now, config,
+            )
     result["requirements"]=updated
     result["structured_fact_count"]=sum(len(r.get("facts",[])) for r in updated if isinstance(r,dict))
     result["validator_accepted_requirement_ids"]=[r["id"] for r in updated if isinstance(r,dict) and r.get("status")=="verified"]
