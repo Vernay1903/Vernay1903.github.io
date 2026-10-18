@@ -150,7 +150,7 @@
     "suffix": "transmissao-horario-escalacoes.html"
   },
   "editorial": {
-    "title_tail": "horário, prováveis escalações e transmissão",
+    "title_tail": "veja escalações, destaques e onde assistir",
     "competition_labels": {
       "premier-league": {
         "name": "Premier League",
@@ -208,6 +208,8 @@
       ]
     },
     "approved_pre_match_model": {
+      "fixed_title_template": "[Mandante] x [Visitante]: veja escalações, destaques e onde assistir",
+      "fixed_title_rule": "Usar exatamente este formato nos pré-jogos automáticos. Não publicar sem escalações dos 11 jogadores e transmissão confirmada no corpo.",
       "reference": "LDU x Palmeiras, 16/09/2026, fornecido pelo editor em 20/09/2026",
       "promise_rule": "Título e excerpt só podem prometer informações factualmente verificadas e presentes no corpo.",
       "promised_service_requirements": {
