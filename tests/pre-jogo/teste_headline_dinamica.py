@@ -46,10 +46,10 @@ def main():
         "status": "verified", "facts": lineup_facts,
     }
     complete, _ = pack.adjusted_service_headline(article, reqs, config=config)
-    assert not pack.approved_headline_errors(complete, reqs, config=config)
+    assert "headline_sem_gancho_editorial" in pack.approved_headline_errors(complete, reqs, config=config)
     for tail in ("horário", "horário e transmissão", "horário e prováveis escalações"):
         incomplete = "Santos FC x Flamengo pelo Brasileirão: " + tail
-        assert not pack.approved_headline_errors(incomplete, reqs, config=config), incomplete
+        assert "headline_sem_gancho_editorial" in pack.approved_headline_errors(incomplete, reqs, config=config), incomplete
     reqs["transmission"]["status"] = "unavailable_after_check"
     assert "required_transmission_not_verified" in pack.approved_headline_errors(
         complete, reqs, config=config,
