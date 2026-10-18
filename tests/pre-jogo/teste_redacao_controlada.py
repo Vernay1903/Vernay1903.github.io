@@ -26,7 +26,7 @@ DRAFT_OUTPUT = ROOT / "build" / "pre-jogo" / "rascunhos-teste" / "arsenal-manche
 def clean_package() -> dict:
     return {
         "step": 24,
-        "title": "Arsenal x Manchester City pela Premier League: City soma quatro vitórias em cinco jogos",
+        "title": "Arsenal x Manchester City: veja escalações, destaques e onde assistir",
         "excerpt": "O Arsenal soma três vitórias nos últimos cinco jogos e o Manchester City, quatro, antes do duelo da Premier League no Emirates Stadium. O confronto está marcado para 17 de setembro, às 16h de Brasília.",
         "date": "17/09/2026",
         "slug": "arsenal-manchester-city-premier-league-2026-transmissao-horario-escalacoes.html",
