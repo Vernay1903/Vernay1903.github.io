@@ -15,6 +15,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import html
+import re
 import os
 import sys
 import time
@@ -428,6 +430,7 @@ def build_revision_request(
                 "A resposta anterior foi rejeitada, mas não é enviada novamente nem constitui "
                 "evidência. Produza um JSON editorial COMPLETO e novo utilizando SOMENTE "
                 "os fatos do contrato. Corrija: " + "; ".join(errors) + ". " + short +
+                focused_revision_guidance(errors) +
                 " Reescreva com a profundidade suportada pelos fatos, mirando 950 a 1.250 palavras sem repetição, fontes externas ou "
                 "inferências factuais. Siga editorial_section_plan com todas as seções substantivas indicadas; o mínimo é o número do contrato. "
                 "substantivas: não substitua a seção de um dos clubes por um parágrafo da abertura. "
@@ -440,6 +443,84 @@ def build_revision_request(
         }],
     })
     return payload
+
+
+
+def repair_verified_transmission(
+    draft: dict[str, Any] | None,
+    contract: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Inclui somente serviço já validado caso a redação omita a emissora.
+
+    Não cria transmissão, não altera escalações, placares ou contexto. O texto
+    continua sujeito a TODOS os validadores antes de receber aprovação.
+    """
+    if not isinstance(draft, dict) or not isinstance(draft.get("body_html"), str):
+        return None
+    transmission = None
+    for requirement in contract.get("facts_by_requirement", []):
+        if not isinstance(requirement, dict) or requirement.get("status") != "verified":
+            continue
+        for fact in requirement.get("facts", []):
+            if isinstance(fact, dict) and fact.get("field") == "transmission":
+                raw = fact.get("text")
+                if isinstance(raw, str) and raw.strip():
+                    transmission = raw.strip()
+                break
+    if not transmission or len(transmission) > 350:
+        return None
+    body = draft["body_html"]
+    # Serviço fica imediatamente antes do fechamento; não altera sua redação.
+    paragraph = "<p>" + html.escape(transmission, quote=False) + "</p>"
+    heading_match = re.search(
+        r"<p\s*>\s*<strong\s*>(?:Onde assistir|Transmissão)</strong>\s*</p\s*>",
+        body, flags=re.IGNORECASE,
+    )
+    if heading_match:
+        at = heading_match.end()
+        repaired = body[:at] + paragraph + body[at:]
+    else:
+        headings = len(re.findall(r"<p\s*>\s*<strong\s*>.*?</strong>\s*</p\s*>", body, re.I | re.S))
+        if headings >= 8:
+            return None
+        entries = list(re.finditer(r"<p\b[^>]*>", body, flags=re.IGNORECASE))
+        if not entries:
+            return None
+        at = entries[-1].start()
+        repaired = body[:at] + "<p><strong>Onde assistir</strong></p>" + paragraph + body[at:]
+    if repaired == body:
+        return None
+    result = dict(draft)
+    result["body_html"] = repaired
+    fields = draft.get("fact_fields_used")
+    if isinstance(fields, list) and all(isinstance(f, str) for f in fields):
+        result["fact_fields_used"] = list(dict.fromkeys([*fields, "transmission"]))
+    return result
+
+
+def focused_revision_guidance(errors: list[str]) -> str:
+    """Retorno específico dos validadores; só instruções, nunca fatos inventados."""
+    parts: list[str] = []
+    if any("cronologia extensa de placares e datas" in error for error in errors):
+        parts.append(
+            "Uma falha foi a CRONOLOGIA: cite no máximo DOIS resultados anteriores "
+            "concretos por clube, preferencialmente um único por parágrafo. "
+            "Nunca agrupe três ou mais datas/placares na mesma passagem, "
+            "não enumere os cinco jogos e não repita o calendário no retrospecto. "
+            "Desenvolva a situação competitiva ATUAL e as notícias verificadas."
+        )
+    if any("balanço de vitórias, empates e derrotas é repetido" in error for error in errors):
+        parts.append(
+            "Informe o balanço V-E-D uma única vez por equipe dentro do respectivo "
+            "Como chega; suprima balanços do lide, histórico e encerramento."
+        )
+    if any("chamada promete transmissão" in error for error in errors):
+        parts.append(
+            "A manchete promete transmissão: é obrigatório escrever literalmente "
+            "a emissora/plataforma já verificada no campo transmission dos fatos "
+            "em um parágrafo curto sob Onde assistir. Nunca deduza transmissora."
+        )
+    return " ".join(parts)
 
 
 def generate_validated_draft(contract, provider_config, site_config, *, api_key, audit_path):
@@ -467,6 +548,15 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
                 try:
                     draft = parse_draft(response)
                     validated, errors = validate.validate_draft(draft, contract, config=site_config)
+                    if any("chamada promete transmissão" in error for error in errors):
+                        repaired = repair_verified_transmission(draft, contract)
+                        if repaired is not None:
+                            candidate, repair_errors = validate.validate_draft(
+                                repaired, contract, config=site_config,
+                            )
+                            if not repair_errors:
+                                draft, validated, errors = repaired, candidate, []
+                                print("REPARO VERIFICADO: transmissão factual inserida e revalidada.", flush=True)
                     if not errors:
                         # Não desperdiçar matéria tecnicamente válida que a
                         # trava narrativa rejeitaria depois: tentar corrigir
