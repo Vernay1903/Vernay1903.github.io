@@ -38,6 +38,7 @@ from scripts import qualidade_editorial_pre_jogo as editorial_quality  # noqa: E
 PROVIDER_CONFIG_PATH = ROOT / "config" / "redacao-pre-jogo.json"
 SITE_CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
+PERSONA_EDITORIAL_PATH = ROOT / "config" / "persona-criador-de-materias-prejogo.txt"
 
 RETRYABLE_HTTP = {408, 409, 429, 500, 502, 503, 504}
 
@@ -167,9 +168,23 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def editorial_persona_instructions() -> str:
+    """Carrega a personalidade fixada pelo editor, sem acessar GPTs ou fontes externos."""
+    try:
+        personality = PERSONA_EDITORIAL_PATH.read_text(encoding="utf-8").strip()
+    except (FileNotFoundError, UnicodeError) as exc:
+        fail(f"Personalidade editorial obrigatória indisponível: {type(exc).__name__}")
+    if len(personality) < 1800 or "CRIADOR DE MATÉRIAS" not in personality:
+        fail("Personalidade editorial ausente, incompleta ou inválida.")
+    return personality
+
+
 def system_instructions() -> str:
     return (
         "Você é o redator automático de pré-jogo do Corte dos Esportes. "
+        "PERSONALIDADE EDITORIAL PRIORITÁRIA (respeitando os requisitos técnicos e factuais do contrato):\\n"
+        + editorial_persona_instructions()
+        + "\\nFIM DA PERSONALIDADE; mantenha também as travas específicas a seguir. "
         "Use os nomes populares match_context.display_home e match_context.display_away no texto, "
         "subtítulos e serviços. Nunca adicione FC, SC, Clube de Regatas, Sport Club ou outros "
         "sufixos jurídicos quando o nome habitual for simples, como Liverpool, Flamengo "
