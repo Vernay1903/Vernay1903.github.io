@@ -267,19 +267,22 @@ def verified_standings_context(
     if len(matched) != 1:
         return None
     left, right = matched[0]
-    def numeric(row: dict) -> tuple[int, int, int] | None:
-        values = (row.get("position"), row.get("playedGames"), row.get("points"))
+    def numeric(row: dict) -> tuple[int, int, int, int] | None:
+        values = (row.get("position"), row.get("playedGames"),
+                  row.get("points"), row.get("goalDifference"))
         if not all(type(n) is int for n in values):
             return None
-        place, played, points = values
-        if not (1 <= place <= 30 and 1 <= played <= 46 and 0 <= points <= 138):
+        place, played, points, goal_difference = values
+        if not (1 <= place <= 30 and 1 <= played <= 46 and 0 <= points <= 138
+                and -100 <= goal_difference <= 100):
             return None
-        return place, played, points
+        return place, played, points, goal_difference
     h, a = numeric(left), numeric(right)
-    if h is None or a is None or h[1] != a[1] and abs(h[1] - a[1]) > 2:
+    if h is None or a is None or abs(h[1] - a[1]) > 2:
         return None
-    # Três informações competitivas verificáveis, sem chamá-las de três
-    # notícias de bastidores: tabela de cada clube e diferença mensurável.
+    # Três aspectos competitivos distintos da tabela: classificação do
+    # mandante, classificação do visitante e saldos de gols comprovados.
+    # O terceiro não é uma repetição aritmética dos dois primeiros.
     diff = abs(h[2] - a[2])
     return [
         {"field": "home_stakes_1", "text":
@@ -289,9 +292,9 @@ def verified_standings_context(
          f"Na tabela atual da {competition}, {away} ocupa a posição {a[0]}, "
          f"com {a[2]} pontos em {a[1]} jogos disputados."},
         {"field": "competitive_context", "text":
-         f"A classificação da {competition} registra uma diferença de {diff} "
-         f"pontos entre {home} e {away} nesta rodada; na tabela, "
-         f"as equipes ocupam respectivamente as posições {h[0]} e {a[0]}."},
+         f"Além da diferença de {diff} pontos na tabela da {competition}, "
+         f"{home} registra saldo de {h[3]} gols e {away}, saldo de {a[3]} gols; "
+         f"esses são os números registrados na classificação consultada."},
     ]
 
 
