@@ -389,81 +389,62 @@ def _verified_table_hook(article: dict[str, Any], requirement_by_id: dict[str, d
     return hook, excerpt
 
 
+TITLE_TAIL_FIXED = "veja escalações, destaques e onde assistir"
+
+
+def _match_title_teams(article: dict[str, Any]) -> tuple[str, str] | None:
+    """Usa os nomes populares do contexto, jamais rótulos da API no título."""
+    context = article.get("match_context")
+    if isinstance(context, dict):
+        home = str(context.get("display_home") or context.get("home") or "").strip()
+        away = str(context.get("display_away") or context.get("away") or "").strip()
+        if home and away:
+            return home, away
+    # Compatibilidade apenas para testes e registros editoriais antigos.
+    prior = str(article.get("title") or "").split(":", 1)[0]
+    match = re.fullmatch(r"(.+?)\s+x\s+(.+?)(?:\s+pel[ao]\s+.+)?", prior, re.IGNORECASE)
+    if match:
+        return match.group(1).strip(), match.group(2).strip()
+    return None
+
+
 def adjusted_service_headline(
     article: dict[str, Any],
     requirement_by_id: dict[str, dict[str, Any]],
     *,
     config: dict[str, Any],
 ) -> tuple[str, str]:
-    """Remove da chamada somente serviços que não foram realmente verificados."""
-    original_title = str(article.get("title") or "").strip()
-    original_excerpt = str(article.get("excerpt") or "").strip()
-    transmission = _fact_map(requirement_by_id.get("transmission")).get("transmission")
-    lineups_ok = _verified_lineups(requirement_by_id.get("probable_lineups_and_coaches"), config)
+    """Padrão FIXO aprovado pelo editor, com serviço condicionado à verificação.
 
-    prefix = original_title.rsplit(":", 1)[0].strip() if ":" in original_title else original_title
-    # O nome interno "na competição Libertadores" não é uma chamada
-    # jornalística. Converter para a preposição natural antes de publicar.
-    def natural_competition_phrase(text: str) -> str:
-        result = re.sub(r"\bna competição\s+", "pela ", text, flags=re.IGNORECASE)
-        return re.sub(
-            r"\bpela (Brasileirão|Campeonato Brasileiro)\b",
-            r"pelo \1", result, flags=re.IGNORECASE,
-        )
-    prefix = natural_competition_phrase(prefix)
-    # Serviço é informação secundária, NÃO pauta de manchete. A antiga regra
-    # gerava "Jogo x Jogo: horário" e o validador a aprovava, sem notícia.
+    A ausência de emissora ou 11 atletas por equipe NÃO muda silenciosamente
+    o modelo da manchete: a pauta é recusada por approved_headline_errors.
+    Não publica 'horário', título de classificação ou frase genérica.
+    """
+    teams = _match_title_teams(article)
+    if not teams:
+        fail("Nomes dos clubes ausentes para gerar a manchete editorial fixa.")
+    home, away = teams
+    title = f"{home} x {away}: {TITLE_TAIL_FIXED}"
+    # O resumo ainda precisa de contexto esportivo comprovado. A informação
+    # da tabela é separada do título para evitar manchetes mecânicas.
     hook = _verified_table_hook(article, requirement_by_id, config=config)
-    if hook is not None:
-        angle, excerpt = hook
-        return f"{prefix}: {angle}", excerpt
-
-    # Sem gancho atual específico e comprovado, manter metadados internos
-    # apenas para diagnóstico; a validação abaixo impede redação/publicação.
-    title_items = ["horário"]
-    if lineups_ok:
-        title_items.append("prováveis escalações")
-    if isinstance(transmission, str) and transmission.strip():
-        title_items.append("transmissão")
-    title = f"{prefix}: {_join_pt(title_items)}" if prefix else original_title
-    excerpt = contextual_excerpt(article, requirement_by_id, config=config)
+    excerpt = hook[1] if hook else contextual_excerpt(article, requirement_by_id, config=config)
     return title, excerpt
 
 
 def approved_headline_errors(title, requirement_by_id, *, config):
-    """Exige chamada de serviço verificada, nunca obriga informação inexistente.
-
-    adjusted_service_headline remove promessa não fundamentada; a mesma
-    ausência não pode bloquear um título sem essa promessa.
-    """
-    errors = []
+    """Reprova qualquer título automático fora do padrão ou serviço sem provas."""
     headline = str(title or "").strip()
-    pattern = r"^.+?\s+x\s+.+?\s+pel[ao]\s+[^:]+:\s+.+$"
-    if not re.fullmatch(pattern, headline, flags=re.IGNORECASE):
-        errors.append("incomplete_approved_headline")
-    tail = headline.rsplit(":", 1)[-1].strip()
-    # Proíbe exatamente o erro publicado em 18/10: ficha de serviço no
-    # destaque, mesmo com transmissão/escalação verdadeiras.
-    only_services = (
-        r"(?:horário|prováveis escalações|transmissão)"
-        r"(?:(?:,\s*|\s+e\s+)(?:horário|prováveis escalações|transmissão))*"
-    )
-    if re.fullmatch(only_services, tail, flags=re.IGNORECASE):
-        errors.append("headline_sem_gancho_editorial")
-    if len(tail.split()) < 4 and not re.search(r"\b(?:líder|vice-líder)\b", tail, flags=re.IGNORECASE):
-        errors.append("headline_sem_destaque_substantivo")
-
+    errors: list[str] = []
+    tail = re.escape(TITLE_TAIL_FIXED)
+    if not re.fullmatch(rf".+?\s+x\s+.+?:\s+{tail}", headline, re.IGNORECASE):
+        errors.append("titulo_fora_do_modelo_fixo")
     transmission = requirement_by_id.get("transmission") or {}
-    if "transmissão" in headline.casefold() and (
-        transmission.get("conflict_detected")
-        or not _fact_map(transmission).get("transmission", "").strip()
-    ):
+    if (transmission.get("conflict_detected")
+            or not _fact_map(transmission).get("transmission", "").strip()):
         errors.append("required_transmission_not_verified")
-
     lineups = requirement_by_id.get("probable_lineups_and_coaches") or {}
-    if "prováveis escalações" in headline.casefold() and (
-        lineups.get("conflict_detected") or not _verified_lineups(lineups, config)
-    ):
+    if (lineups.get("conflict_detected") or not _verified_lineups(lineups, config)):
         errors.append("required_probable_lineups_not_verified")
     return errors
 
