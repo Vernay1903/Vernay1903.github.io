@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regressão editorial: não exigir serviços ausentes em títulos que não os prometem."""
+"""Título editorial fixo e compromisso obrigatório de serviços comprovados."""
 import json
 import sys
 from pathlib import Path
@@ -9,26 +9,25 @@ sys.path.insert(0, str(ROOT))
 from scripts import montar_pacote_editorial as editorial
 
 config = json.loads((ROOT / "config/pre-jogo.json").read_text(encoding="utf-8"))
+title = "Flamengo x Grêmio: veja escalações, destaques e onde assistir"
 missing = {
     "transmission": {"status": "unavailable_after_check", "facts": []},
     "probable_lineups_and_coaches": {"status": "unavailable_after_check", "facts": []},
 }
-prefix = "Flamengo x Grêmio pelo Brasileirão: "
-assert "headline_sem_gancho_editorial" in editorial.approved_headline_errors(prefix + "horário", missing, config=config)
-assert "required_transmission_not_verified" in editorial.approved_headline_errors(
-    prefix + "horário e transmissão", missing, config=config
+errors = editorial.approved_headline_errors(title, missing, config=config)
+assert "required_transmission_not_verified" in errors
+assert "required_probable_lineups_not_verified" in errors
+for bad in (
+    "Flamengo x Grêmio pelo Brasileirão: horário",
+    "Flamengo x Grêmio pelo Brasileirão: horário e transmissão",
+    "Flamengo x Grêmio: veja horário e escalações",
+    "Flamengo x Grêmio: veja escalações e onde assistir",
+):
+    assert "titulo_fora_do_modelo_fixo" in editorial.approved_headline_errors(
+        bad, missing, config=config,
+    ), bad
+assert "titulo_fora_do_modelo_fixo" in editorial.approved_headline_errors(
+    "Título genérico: horário", missing, config=config,
 )
-assert "required_probable_lineups_not_verified" in editorial.approved_headline_errors(
-    prefix + "horário e prováveis escalações", missing, config=config
-)
-both = editorial.approved_headline_errors(
-    prefix + "horário, prováveis escalações e transmissão", missing, config=config
-)
-assert {"required_transmission_not_verified", "required_probable_lineups_not_verified"} <= set(both)
-assert "incomplete_approved_headline" in editorial.approved_headline_errors(
-    "Título genérico: horário", missing, config=config
-)
-assert "incomplete_approved_headline" not in editorial.approved_headline_errors(
-    prefix + "transmissão, horário e prováveis escalações", missing, config=config
-)
-print("OK: promessa editorial condicional exige somente serviços verificados.")
+assert "titulo_fora_do_modelo_fixo" not in errors
+print("OK: modelo fixo impede manchete de horário e promete apenas serviços verificados.")
