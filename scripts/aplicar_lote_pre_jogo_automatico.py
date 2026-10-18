@@ -201,6 +201,7 @@ def main() -> None:
         headline_errors = editorial_package.approved_headline_errors(
             contract.get("title"), requirements, config=config,
         )
+        headline_errors.extend(editorial_package.approved_excerpt_errors(contract.get("excerpt")))
         if headline_errors:
             skipped.append({"slug": slug, "reason": "incomplete_editorial_headline",
                             "errors": headline_errors})
