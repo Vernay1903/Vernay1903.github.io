@@ -335,6 +335,60 @@ def _join_pt(items: list[str]) -> str:
     return ", ".join(items[:-1]) + " e " + items[-1]
 
 
+
+def _position_label(rank: int) -> str:
+    if rank == 1:
+        return "líder"
+    if rank == 2:
+        return "vice-líder"
+    return f"{rank}º colocado"
+
+
+def _verified_table_hook(article: dict[str, Any], requirement_by_id: dict[str, dict[str, Any]], *, config: dict[str, Any]) -> tuple[str, str] | None:
+    """Produz chamada específica somente com posições e pontos oficialmente verificados.
+
+    Os campos são gerados pelo enriquecimento gratuito da classificação.
+    Sem ambos os lados validados, não há headline automaticamente aprovada.
+    """
+    data = _fact_map(requirement_by_id.get("editorial_match_stakes"))
+    pattern = re.compile(
+        r"\bocupa a posição\s+(\d{1,2}),\s+com\s+(\d{1,3})\s+pontos?\s+em\s+(\d{1,2})\s+jogos?\s+disputados",
+        flags=re.IGNORECASE,
+    )
+    home_match = pattern.search(data.get("home_stakes_1", ""))
+    away_match = pattern.search(data.get("away_stakes_1", ""))
+    if not home_match or not away_match:
+        return None
+    home_rank, home_points, home_games = map(int, home_match.groups())
+    away_rank, away_points, away_games = map(int, away_match.groups())
+    if not (1 <= home_rank <= 30 and 1 <= away_rank <= 30
+            and 0 <= home_points <= 138 and 0 <= away_points <= 138
+            and 1 <= home_games <= 46 and 1 <= away_games <= 46
+            and abs(home_games - away_games) <= 2
+            and home_rank != away_rank):
+        return None
+    context = article.get("match_context") or {}
+    home = str(context.get("display_home") or context.get("home") or "").strip()
+    away = str(context.get("display_away") or context.get("away") or "").strip()
+    if not home or not away:
+        return None
+    home_label, away_label = _position_label(home_rank), _position_label(away_rank)
+    if home_rank > away_rank:
+        hook = f"{away_label} visita {home_label}"
+    else:
+        hook = f"{home_label} recebe {away_label}"
+    # Excerpt próprio, não uma ficha genérica sem pauta.
+    opening = contextual_excerpt(article, requirement_by_id, config=config).replace(
+        "As equipes se enfrentam", "O confronto está marcado"
+    )
+    excerpt = (
+        f"{home} é {home_rank}º na tabela, com {home_points} pontos em {home_games} jogos; "
+        f"{away} ocupa o {away_rank}º lugar, com {away_points} pontos em {away_games}. "
+        + opening
+    )
+    return hook, excerpt
+
+
 def adjusted_service_headline(
     article: dict[str, Any],
     requirement_by_id: dict[str, dict[str, Any]],
@@ -357,14 +411,21 @@ def adjusted_service_headline(
             r"pelo \1", result, flags=re.IGNORECASE,
         )
     prefix = natural_competition_phrase(prefix)
-    # Apenas serviços verificados no título; nunca usar encheção de chamada.
+    # Serviço é informação secundária, NÃO pauta de manchete. A antiga regra
+    # gerava "Jogo x Jogo: horário" e o validador a aprovava, sem notícia.
+    hook = _verified_table_hook(article, requirement_by_id, config=config)
+    if hook is not None:
+        angle, excerpt = hook
+        return f"{prefix}: {angle}", excerpt
+
+    # Sem gancho atual específico e comprovado, manter metadados internos
+    # apenas para diagnóstico; a validação abaixo impede redação/publicação.
     title_items = ["horário"]
     if lineups_ok:
         title_items.append("prováveis escalações")
     if isinstance(transmission, str) and transmission.strip():
         title_items.append("transmissão")
     title = f"{prefix}: {_join_pt(title_items)}" if prefix else original_title
-
     excerpt = contextual_excerpt(article, requirement_by_id, config=config)
     return title, excerpt
 
@@ -377,14 +438,20 @@ def approved_headline_errors(title, requirement_by_id, *, config):
     """
     errors = []
     headline = str(title or "").strip()
-    pattern = (
-        r"^.+?\s+x\s+.+?\s+pel[ao]\s+.+?:\s*"
-        r"(?=[^:]*\bhorário\b)"
-        r"(?:horário|prováveis escalações|transmissão)"
-        r"(?:(?:,\s*|\s+e\s+)(?:horário|prováveis escalações|transmissão))*$"
-    )
+    pattern = r"^.+?\s+x\s+.+?\s+pel[ao]\s+[^:]+:\s+.+$"
     if not re.fullmatch(pattern, headline, flags=re.IGNORECASE):
         errors.append("incomplete_approved_headline")
+    tail = headline.rsplit(":", 1)[-1].strip()
+    # Proíbe exatamente o erro publicado em 18/10: ficha de serviço no
+    # destaque, mesmo com transmissão/escalação verdadeiras.
+    only_services = (
+        r"(?:horário|prováveis escalações|transmissão)"
+        r"(?:(?:,\s*|\s+e\s+)(?:horário|prováveis escalações|transmissão))*"
+    )
+    if re.fullmatch(only_services, tail, flags=re.IGNORECASE):
+        errors.append("headline_sem_gancho_editorial")
+    if len(tail.split()) < 4 and not re.search(r"\b(?:líder|vice-líder)\b", tail, flags=re.IGNORECASE):
+        errors.append("headline_sem_destaque_substantivo")
 
     transmission = requirement_by_id.get("transmission") or {}
     if "transmissão" in headline.casefold() and (
@@ -497,6 +564,25 @@ def contextual_excerpt(article, requirement_by_id, *, config):
     if competition:
         return f"{opening}, {connector} {competition}."
     return opening + "."
+
+
+
+def approved_excerpt_errors(excerpt: str) -> list[str]:
+    """Evita resumo neutro de serviço e exige uma pauta verificável."""
+    value = str(excerpt or "").strip()
+    folded = " ".join(value.casefold().split())
+    if len(value) < 125:
+        return ["excerpt_editorial_insuficiente"]
+    if folded.startswith(("as equipes se enfrentam", "os times se enfrentam", "confira horário",
+                          "saiba horário", "veja horário", "o duelo acontece")):
+        return ["excerpt_generico_sem_noticia"]
+    # Um preview com somente dia/rodada/TV não é um resumo jornalístico.
+    if not re.search(r"\b(?:pontos?|coloca[cç][aã]o|posi[cç][aã]o|"
+                     r"suspens[aã]o|desfalque|les[aã]o|vit[oó]ria|"
+                     r"eliminat[oó]ria|vantagem|classifica[cç][aã]o)\b",
+                     value, flags=re.IGNORECASE):
+        return ["excerpt_sem_contexto_esportivo"]
+    return []
 
 
 def verified_promised_service_gaps(
@@ -614,6 +700,7 @@ def build_article_packages(
     unresolved.extend(approved_headline_errors(
         effective_title, requirement_by_id, config=config,
     ))
+    unresolved.extend(approved_excerpt_errors(effective_excerpt))
     unresolved.extend(verified_promised_service_gaps(
         requirement_by_id,
         title=effective_title,
