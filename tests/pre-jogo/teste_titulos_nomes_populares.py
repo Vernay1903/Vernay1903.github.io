@@ -37,25 +37,28 @@ def test():
     for raw,expected in variants.items():
         assert data.common_editorial_name(raw, config)==expected,(raw,expected)
     article=record("Liverpool FC","Manchester City")
-    assert article["title"] == "Liverpool x Manchester City pela Premier League: horário, prováveis escalações e transmissão"
+    assert article["title"] == "Liverpool x Manchester City pela Premier League: veja escalações, destaques e onde assistir"
     assert "informações do" not in article["excerpt"]
     assert "FC" not in article["title"]
     assert article["match_context"]["home"]=="Liverpool FC", "pesquisa não pode perder identificador do provedor"
     assert article["match_context"]["display_home"]=="Liverpool"
     title,excerpt=package.adjusted_service_headline(article,{},config=config)
-    assert title=="Liverpool x Manchester City pela Premier League: horário"
+    assert title=="Liverpool x Manchester City: veja escalações, destaques e onde assistir"
+    assert "required_probable_lineups_not_verified" in package.approved_headline_errors(title, {}, config=config)
     assert "informações do" not in title+excerpt
     transmission={"id":"transmission","status":"verified","facts":[
        {"field":"transmission","text":"Transmissão: ESPN."}]}
     t,e=package.adjusted_service_headline(article,{"transmission":transmission},config=config)
-    assert t.endswith(": horário e transmissão"),t
+    assert t=="Liverpool x Manchester City: veja escalações, destaques e onde assistir",t
+    assert "required_probable_lineups_not_verified" in package.approved_headline_errors(t, {"transmission":transmission}, config=config)
     lineup={"id":"probable_lineups_and_coaches","status":"verified","facts":[
        {"field":"home_lineup","text":"Liverpool: "+"; ".join("Jogador "+str(i) for i in range(1,12))},
        {"field":"away_lineup","text":"Manchester City: "+"; ".join("Atleta "+str(i) for i in range(1,12))},
        {"field":"home_coach","text":"Técnico do Liverpool: Exemplo A"},
        {"field":"away_coach","text":"Técnico do Manchester City: Exemplo B"}]}
     t,e=package.adjusted_service_headline(article,{"transmission":transmission,"probable_lineups_and_coaches":lineup},config=config)
-    assert t=="Liverpool x Manchester City pela Premier League: horário, prováveis escalações e transmissão",t
+    assert t=="Liverpool x Manchester City: veja escalações, destaques e onde assistir",t
+    assert not package.approved_headline_errors(t, {"transmission":transmission,"probable_lineups_and_coaches":lineup}, config=config)
     assert "informações do" not in e
     # A fonte não mudou: apenas nomes exibidos e chamadas condicionais.
     flamengo=record("Clube de Regatas do Flamengo","Fluminense FC")
