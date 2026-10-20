@@ -632,6 +632,8 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
     },
     ("inter de milao", "fk shakhtar donetsk"): {
         "probable_lineups_and_coaches": [
+            ("https://www.goal.com/it/notizie/formazioni-inter-shakhtar-donetsk-le-ultime-sulla-partita-e-dove-vederla-in-tv-e-streaming/blt0a5383915f83f71e",
+             "Inter Shakhtar Donetsk: probabili formazioni complete e allenatori"),
             ("https://tips.gg/pt/article/inter-milan-vs-fc-shakhtar-donetsk-predicted-lineups-team-news-21-10-2026/",
              "Inter de Milão x Shakhtar: XI projetado e notícias dos dois clubes"),
             ("https://www.eurosport.it/calcio/champions-league/2026-2027/inter-shakhtar-donetsk-quando-si-gioca-e-dove-vederla-probabili-formazioni-statistiche-opta-dove-vederla-in-tv-e-streaming-precedenti-info-utili_sto23346413/story.shtml",
@@ -1120,6 +1122,29 @@ def _ensure_allowed_gap_check(
         max_sources=3 if req_id == "probable_lineups_and_coaches" else 1,
     )
     combined = _dedupe([*existing, *fresh])
+    if req_id == "probable_lineups_and_coaches" and len(fresh) == 1:
+        checked = fresh[0]
+        lines = (checked.get("page_evidence") or {}).get("evidence_segments") or []
+        # A primeira prévia atual que apresenta os DOIS XIs e técnicos não
+        # deve ser misturada a projeções antigas e contraditórias. Mantém
+        # a fonte original e o validador final de onze nomes por equipe.
+        if all(
+            any(
+                isinstance(line, str)
+                and " | Provável escalação:" in line
+                and base.mentions_team(line.split(" | ", 1)[0], club)
+                for line in lines
+            ) and any(
+                isinstance(line, str)
+                and " | Técnico:" in line
+                and base.mentions_team(line.split(" | ", 1)[0], club)
+                for line in lines
+            )
+            for club in (context.get("home"), context.get("away"))
+            if isinstance(club, str)
+        ):
+            combined = [checked]
+            req["passo34_9_complete_bilateral_preview_selected"] = True
     # O rastreador anterior marcava "checado" SOMENTE se encontrou fonte.
     # Se a consulta adicional foi executada e a única página candidata
     # falhou ao abrir, o pré-jogo ficava eternamente "pending" apesar da
