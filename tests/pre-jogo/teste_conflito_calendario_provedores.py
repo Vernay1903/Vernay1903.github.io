@@ -85,6 +85,13 @@ def main():
         merged = calendar.merge([a], [b], config)
         assert len(merged) == 1 and merged[0].get("supplemental_fixture") == b, (formal, short)
 
+    # Regressão real de 20/10: PAE AEK e AEK Athens identificam o mesmo clube.
+    a = game(221, "Manchester City FC", "PAE AEK", "2026-10-20T16:00:00-03:00", comp="champions-league")
+    b = game("espn-221", "Manchester City", "AEK Athens", "2026-10-20T16:00:00-03:00",
+             "espn", comp="champions-league")
+    merged = calendar.merge([a], [b], config)
+    assert len(merged) == 1 and merged[0].get("supplemental_fixture") == b, merged
+
     # Denominações equivalentes não podem ocultar um horário divergente real.
     a = game(222, "Barcelona", "Real Betis Balompié", "2026-10-17T13:30:00-03:00",
              comp="la-liga")
