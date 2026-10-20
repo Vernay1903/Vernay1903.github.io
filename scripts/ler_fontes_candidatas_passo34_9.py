@@ -649,6 +649,8 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
              "Palmeiras x Fluminense: escalações para a volta da Libertadores"),
         ],
         "transmission": [
+            ("https://www.palmeiras.com.br/trasmissao/tv/",
+             "Palmeiras x Fluminense: transmissão oficial Globo ge tv e Paramount+"),
             ("https://www.lance.com.br/onde-assistir/palmeiras-x-fluminense-onde-assistir-horario-e-escalacoes.html",
              "Palmeiras x Fluminense: transmissão da semifinal da Libertadores"),
         ],
