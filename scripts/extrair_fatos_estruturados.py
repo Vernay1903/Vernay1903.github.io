@@ -881,6 +881,23 @@ def eliminate_incomplete_broadcast_claims(claims):
     return cleaned
 
 
+def broadcast_list_from_label(raw: str) -> str | None:
+    """Preserva apenas emissoras explicitamente citadas em serviço do jogo.
+
+    Não aceita "Palmeiras" como canal, nem mantém um comentário sobre o ge
+    após a lista de transmissões. Outros detalhes e conflitos continuam
+    passando pelo validador tradicional.
+    """
+    text = re.split(r"\.\s+(?=[A-ZÀ-Ý])", raw.strip(), maxsplit=1)[0]
+    result = normalize_transmission_broadcasters(text)
+    allowed = {
+        "TV Globo", "ge tv", "Premiere", "SporTV", "ESPN", "Disney+",
+        "TNT", "HBO Max", "CazéTV", "Prime Video", "Paramount+", "Band",
+    }
+    parts = re.split(r"\s*,\s*|\s+e\s+", result, flags=re.I)
+    return result if parts and all(item.strip() in allowed for item in parts) else None
+
+
 def extract_transmission_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -904,15 +921,16 @@ def extract_transmission_requirement(
         if not context_mentions_match(corpus, match_context, config):
             continue
         for segment in corpus.splitlines():
-            value = labeled_value(segment, labels, max_chars=180)
+            raw_label = labeled_value(segment, labels, max_chars=180)
+            value = broadcast_list_from_label(raw_label) if raw_label else None
             if not value and current_fixture_headline_in_order(source, match_context, config):
-                value = broadcast_names_from_prose(segment)
+                # Apenas prova afirmativa de transmissão, nunca card de jogo.
+                from_prose = broadcast_names_from_prose(segment)
+                value = broadcast_list_from_label(from_prose) if from_prose else None
             if value and not re.search(
                 r"\b(?:nao anunciado|a definir|to be announced|tba)\b",
                 normalize_text(value),
             ):
-                # Grafias equivalentes entre fontes não são conflitos factuais.
-                value = normalize_transmission_broadcasters(value)
                 claim = make_claim("transmission", value, source, segment)
                 if claim:
                     claims.append(claim)
