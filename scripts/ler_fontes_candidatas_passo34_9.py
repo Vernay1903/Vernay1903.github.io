@@ -619,6 +619,8 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
     },
     ("inter de milao", "fk shakhtar donetsk"): {
         "probable_lineups_and_coaches": [
+            ("https://www.eurosport.it/calcio/champions-league/2026-2027/inter-shakhtar-donetsk-quando-si-gioca-e-dove-vederla-probabili-formazioni-statistiche-opta-dove-vederla-in-tv-e-streaming-precedenti-info-utili_sto23346413/story.shtml",
+             "Inter x Shakhtar Donetsk: le probabili formazioni Champions League"),
             ("https://www.tuttosport.com/formazione/calcio/serie-a/2026/10/21-2685419/inter-shakhtar",
              "Inter x Shakhtar Donetsk: probabili formazioni Champions League"),
             ("https://www.goal.com/br/not%C3%ADcias/inter-de-milao-x-shakhtar-donetsk-previa-da-champions-league-da-uefa-com-invencibilidade-da-inter-contra-o-shakhtar-em-jogo/bltcf2c0bc69a8c4367",
