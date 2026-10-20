@@ -1120,7 +1120,7 @@ def _ensure_allowed_gap_check(
         if isinstance(item, dict) and base.eligible_checked_source(item)
     ]
     req_id = str(req.get("id"))
-    if req_id == "transmission":
+    if req_id in {"transmission", "officiating"}:
         # Fontes estrangeiras de apostas citam canais espanhóis ou LATAM;
         # o serviço editorial deste site exige emissoras NO BRASIL.
         # Recolher primeiro a página brasileira da partida, verificando
