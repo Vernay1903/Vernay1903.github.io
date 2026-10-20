@@ -107,7 +107,8 @@ def merge(primary, extra, config):
             parts.pop()
         key = ' '.join(parts)
         # Nome de uso corrente e denominação jurídica do mesmo clube.
-        return {'athletico paranaense': 'paranaense'}.get(key, key)
+        return {'athletico paranaense': 'paranaense',
+                'pae aek': 'aek', 'aek athens': 'aek', 'aek athina': 'aek'}.get(key, key)
 
     def teams(row):
         return canonical(row['home']), canonical(row['away'])
