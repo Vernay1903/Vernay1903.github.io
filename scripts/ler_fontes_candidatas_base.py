@@ -273,6 +273,34 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
                 windows.append(f"{current_team} | Provável escalação: {value}")
         if re.match(r"^(?:arbitragem|[aá]rbitro|onde assistir|transmiss[aã]o)\b", row, re.I):
             current_team = None
+    # Prévia editorial corrente: "Provável escalação do Palmeiras" seguido,
+    # na linha posterior, por onze nomes e "Técnico: ...".
+    # Só associar os nomes ao clube quando o cabeçalho tem equipe explícita.
+    headed = re.compile(
+        r"^(?:prov[aá]vel\s+escala[cç][aã]o|escala[cç][aã]o\s+prov[aá]vel)"
+        r"\s+(?:do|da|de)\s+([\wÀ-ÿ .'-]{3,65})\s*:?$", re.I,
+    )
+    for index, heading in enumerate(rows):
+        match = headed.fullmatch(heading)
+        if not match:
+            continue
+        team = match.group(1).strip()
+        following = next((line for line in rows[index + 1:index + 4] if line), "")
+        if not following:
+            continue
+        players_part = re.split(r"\b(?:t[eé]cnico|coach|manager)\s*[:\-–—]", following, 1, re.I)[0]
+        players_part = players_part.strip(" .;")
+        if not (5 <= len(re.split(r"[;,]", players_part)) <= 14):
+            continue
+        # A validação factual posterior ainda exige os 11 atletas nomeados.
+        lineup = f"{team} | Provável escalação: {players_part}."
+        if len(lineup) <= max_segment_chars:
+            windows.append(lineup)
+        coach = re.search(r"\b(?:t[eé]cnico|coach|manager)\s*[:\-–—]\s*([\wÀ-ÿ .'-]{4,80})", following, re.I)
+        if coach:
+            coach_text = f"{team} | Técnico: {coach.group(1).strip(' .')}."
+            if len(coach_text) <= max_segment_chars:
+                windows.append(coach_text)
     for index, heading in enumerate(rows):
         if not marker.search(heading) or len(heading) > 130:
             continue
