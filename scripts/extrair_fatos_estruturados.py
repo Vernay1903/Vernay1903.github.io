@@ -2024,12 +2024,17 @@ def extract_h2h_requirement(
 
 def verified_knockout_first_leg_segment(
     segment: str, match_context: dict[str, Any], config: dict[str, Any],
+    source: dict[str, Any] | None = None,
 ) -> str | None:
     """Extrai apenas a fase explicitamente descrita para o confronto atual.
 
     Não infere placar agregado, vantagem, regulamento nem classificação.
     O texto precisa ligar os DOIS clubes à competição e a 'jogo de ida'.
     """
+    # Para um confronto com mando definido, notícia da ida (mando invertido)
+    # não pode rotular a volta como "jogo de ida".
+    if source is not None and not current_fixture_headline_in_order(source, match_context, config):
+        return None
     folded = normalize_text(segment)
     if not context_mentions_match(segment, match_context, config):
         return None
@@ -2055,6 +2060,30 @@ def verified_knockout_first_leg_segment(
     return None
 
 
+def verified_knockout_second_leg_segment(
+    segment: str, match_context: dict[str, Any], config: dict[str, Any],
+    source: dict[str, Any],
+) -> str | None:
+    """Reconhece volta quando a fonte atual nomeia o confronto e a fase."""
+    if match_context.get("competition_slug") != "libertadores":
+        return None
+    if not current_fixture_headline_in_order(source, match_context, config):
+        return None
+    if not context_mentions_match(segment, match_context, config):
+        return None
+    folded = normalize_text(segment)
+    title = normalize_text(str(source.get("title") or ""))
+    if "libertador" not in (folded + " " + title):
+        return None
+    if not re.search(r"\b(?:jogo|duelo|confronto|partida)\s+de\s+volta\b|\bvolta\s+da\s+semifinal\b", folded):
+        return None
+    if "semifinal" not in (folded + " " + title):
+        return None
+    home = str(match_context.get("home") or "").strip()
+    away = str(match_context.get("away") or "").strip()
+    return f"{home} e {away} disputam o jogo de volta da semifinal da Libertadores"
+
+
 def include_checked_first_leg_sources(
     requirements: list[dict[str, Any]], *,
     match_context: dict[str, Any], config: dict[str, Any],
@@ -2077,7 +2106,8 @@ def include_checked_first_leg_sources(
             if not isinstance(segments, list):
                 continue
             if not any(
-                verified_knockout_first_leg_segment(seg, match_context, config)
+                (verified_knockout_second_leg_segment(seg, match_context, config, source)
+                 or verified_knockout_first_leg_segment(seg, match_context, config, source))
                 for seg in segments if isinstance(seg, str)
             ):
                 continue
@@ -2135,7 +2165,8 @@ def extract_stakes_requirement(
             for segment in segments:
                 if not isinstance(segment, str):
                     continue
-                value = verified_knockout_first_leg_segment(segment, match_context, config)
+                value = (verified_knockout_second_leg_segment(segment, match_context, config, source)
+                         or verified_knockout_first_leg_segment(segment, match_context, config, source))
                 if value:
                     claim = make_claim("qualification_scenario", value, source, segment)
                     if claim:
