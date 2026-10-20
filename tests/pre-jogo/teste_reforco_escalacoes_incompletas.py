@@ -44,6 +44,35 @@ def run():
             checked_at="2026-10-13T11:15:00-03:00",config={},
         )
     assert existing_only["source_candidates"]==[first]
+    # As quatro pautas de 21/10 têm URLs atuais identificadas de forma
+    # determinística, mas a URL continua passando pelo leitor/validador.
+    scheduled = [
+        ("Bayern de Munique", "Arsenal"),
+        ("Inter de Milão", "FK Shakhtar Donetsk"),
+        ("Real Madrid", "RB Leipzig"),
+        ("Palmeiras", "Fluminense"),
+    ]
+    for home, away in scheduled:
+        context = {"home": home, "away": away,
+                   "competition": "Libertadores" if home == "Palmeiras" else "Champions League",
+                   "kickoff_brasilia": "2026-10-21T16:00:00-03:00"}
+        with patch.object(research, "_scrape_candidate", side_effect=lambda row, **_kw: row) as scrape:
+            curated = research.checked_curated_sources(
+                RID, context=context, article_date="2026-10-21",
+                checked_at="2026-10-20T20:00:00-03:00",
+                config={}, max_sources=3,
+            )
+            assert curated and scrape.called, (home, away)
+            assert all(x["url"].startswith("https://") for x in curated)
+            assert all(x["passo34_9_curated_discovery"] is True for x in curated)
+        context["kickoff_brasilia"] = "2026-10-22T16:00:00-03:00"
+        with patch.object(research, "_scrape_candidate") as scrape:
+            assert not research.checked_curated_sources(
+                RID, context=context, article_date="2026-10-22",
+                checked_at="2026-10-20T20:00:00-03:00",
+                config={}, max_sources=3,
+            )
+            scrape.assert_not_called()
     print("OK: pesquisa complementar após fonte parcial e preservação de evidências existentes.")
 
 if __name__=="__main__":
