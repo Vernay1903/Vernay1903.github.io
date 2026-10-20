@@ -440,8 +440,10 @@ def _build_checked_source(
         # adversário na manchete, sem repetir o próprio clube. O domínio
         # EXATO do clube é evidência de autoria, não prova de fatos de elenco.
         official_host = str(source.get("curated_official_team_host") or "")
-        if official_host and base.urlparse(str(source.get("url") or "")).hostname == official_host:
-            primary_side = expected_side
+        if official_host:
+            actual_host = str(base.urlparse(str(source.get("url") or "")).hostname or "")
+            if actual_host == official_host or actual_host.endswith("." + official_host):
+                primary_side = expected_side
         supported = (
             primary_side == expected_side
             and base.mentions_team(f"{headline}\n{content}", recent_team)
@@ -677,6 +679,18 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
 # Pautas e notícias esportivas reais publicadas em 20/10. A presença na
 # lista não autoriza nenhum fato: a página atual precisa ser baixada e lida.
 CURATED_EDITORIAL_2026_10_21 = {
+    ("bayern de munique", "arsenal"): {
+        "home": [
+            ("https://fcbayern.com/en/news/matchpreviews/2026/10/preview-bayern-vs.-arsenal-champions-league-md-3",
+             "Top clash with a bit of history: FC Bayern out to settle score with Arsenal",
+             "fcbayern.com"),
+        ],
+        "away": [
+            ("https://www.theguardian.com/football/2026/oct/20/bayern-munich-arsenal-champions-league",
+             "Arsenal's David Raya hits back at boring label as Arteta defends style of play",
+             None),
+        ],
+    },
     ("inter de milao", "fk shakhtar donetsk"): {
         "home": [
             ("https://www.inter.it/en/news/inter-shakhtar-previous-facts-on-clash",
@@ -920,7 +934,9 @@ def _search_and_check(
                     "url": url, "title": headline,
                     "domain": base.urlparse(url).hostname,
                     "publisher": base.urlparse(url).hostname,
-                    "source_type": "official", "position": 1,
+                    "source_type": (
+                        "official" if authoritative_host else "major_sports_media"
+                    ), "position": 1,
                     # Data editorial deve vir da página, não de horário
                     # artificial atribuído pelo sistema de descoberta.
                     # Somente fontes oficiais do clube proprietário do domínio
