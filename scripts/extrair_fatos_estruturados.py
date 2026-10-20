@@ -826,6 +826,38 @@ def broadcast_names_from_prose(segment):
     return ", ".join(found[:-1]) + " e " + found[-1] if len(found) > 1 else found[0]
 
 
+def eliminate_incomplete_broadcast_claims(claims):
+    """Uma mesma página pode dar resumo parcial e lista completa de canais.
+
+    Elimina apenas lista de emissoras que seja subconjunto ESTRITO de outra
+    na mesma fonte. Fontes/canais realmente conflitantes continuam bloqueados.
+    """
+    names = {
+        "TV Globo", "ge tv", "Premiere", "SporTV", "ESPN", "Disney+",
+        "TNT", "HBO Max", "CazéTV", "Prime Video", "Paramount+", "Band",
+    }
+    allowed = {normalize_text(name) for name in names}
+
+    def channels(row):
+        parts = re.split(r"\s*,\s*|\s+e\s+", str(row.get("value") or ""), flags=re.I)
+        normalized = {normalize_text(part.strip()) for part in parts if part.strip()}
+        return normalized if normalized and normalized <= allowed else None
+
+    cleaned = []
+    for claim in claims:
+        current = channels(claim)
+        if current is not None and any(
+            claim is not other
+            and claim.get("source", {}).get("url") == other.get("source", {}).get("url")
+            and (other_channels := channels(other)) is not None
+            and current < other_channels
+            for other in claims
+        ):
+            continue
+        cleaned.append(claim)
+    return cleaned
+
+
 def extract_transmission_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -857,7 +889,7 @@ def extract_transmission_requirement(
                     claims.append(claim)
     return finalize_claims(
         requirement,
-        claims,
+        eliminate_incomplete_broadcast_claims(claims),
         required_fields=["transmission"],
         fact_builder=lambda v: [{"field": "transmission", "text": f"Transmissão: {v['transmission']}."}],
         config=config,
