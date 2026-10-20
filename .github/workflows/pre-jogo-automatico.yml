@@ -54,6 +54,19 @@ env:
   APPLY_REPORT: build/pre-jogo/automatico-publicacao.json
 
 jobs:
+  validar-regressoes:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testar nomes de clubes e conflitos de calendário
+        run: |
+          python tests/pre-jogo/teste_conflito_calendario_provedores.py
+          python tests/pre-jogo/teste_aliases_adversarios.py
   preparar:
     if: ${{ (github.event_name == 'schedule' && github.event.schedule == '30 2 * * *') || (github.event_name == 'workflow_dispatch' && inputs.mode == 'prepare_dry_run') }}
     runs-on: ubuntu-latest
