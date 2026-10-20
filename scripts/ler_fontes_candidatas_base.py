@@ -250,6 +250,7 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
     marker = re.compile(
         r"prov[aá]vel(?:\s+escala[cç][aã]o)?|probable\s+lineup|predicted\s+(?:lineup|xi)|"
         r"alineaci[oó]n\s+probable",
+        r"|escala[cç][oõ]es?\s+prov[aá]veis|poss[ií]veis\s+escala[cç][oõ]es",
         flags=re.IGNORECASE,
     )
     excluded = re.compile(
@@ -298,6 +299,42 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
                 windows.append(f"{current_team} | Provável escalação: {value}")
         if re.match(r"^(?:arbitragem|[aá]rbitro|onde assistir|transmiss[aã]o)\b", row, re.I):
             current_team = None
+    # Portais jornalísticos também usam "Palmeiras — técnico: Abel Ferreira"
+    # (ou "PALMEIRAS (Técnico: Abel)") com o XI nominal na linha seguinte.
+    # Apenas coletar quando a mesma seção diz ser uma escalação PROVÁVEL.
+    team_coach_header = re.compile(
+        r"^([\\wÀ-ÿ .'-]{3,65})\\s*(?:[-–—]\\s*|\\(\\s*)"
+        r"(?:t[eé]cnico|coach|manager)\\s*:\\s*([^()]{3,85})\\)?\\s*$",
+        re.I,
+    )
+    for index, heading in enumerate(rows):
+        match = team_coach_header.fullmatch(heading)
+        if not match:
+            continue
+        if not any(marker.search(x) for x in rows[max(0, index - 14):index]):
+            continue
+        club, coach = match.group(1).strip(), match.group(2).strip()
+        following = next((x for x in rows[index + 1:index + 4] if x), "")
+        if not following or re.match(
+            r"^(?:desfalques?|d[uú]vidas?|lesionados?|poupados?|suspensos?)\\b",
+            following, re.I,
+        ):
+            continue
+        # Dez a 14 componentes reconhecíveis: a validação factual ainda
+        # exigirá exatamente onze nomes por clube, sem inferir titulares.
+        players = [
+            x.strip(" .")
+            for x in re.split(r"\\s*(?:;|,|\\s+e\\s+)\\s*", following, flags=re.I)
+            if x.strip(" .")
+        ]
+        if not (10 <= len(players) <= 14):
+            continue
+        lineup_text = f"{club} | Provável escalação: {following.rstrip(' .')}."
+        coach_text = f"{club} | Técnico: {coach.rstrip(' .')}."
+        if len(lineup_text) <= max_segment_chars:
+            windows.append(lineup_text)
+        if len(coach_text) <= max_segment_chars:
+            windows.append(coach_text)
     # Prévia editorial corrente: "Provável escalação do Palmeiras" seguido,
     # na linha posterior, por onze nomes e "Técnico: ...".
     # Só associar os nomes ao clube quando o cabeçalho tem equipe explícita.
