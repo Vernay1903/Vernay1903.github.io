@@ -26,6 +26,7 @@ def main():
     b = "Globo (TV aberta), do Premiere (pay-per-view) e da Getv (YouTube)"
     assert extrair.normalize_transmission_broadcasters(a) == "TV Globo, ge tv e Premiere"
     assert extrair.normalize_transmission_broadcasters(b) == "TV Globo, ge tv e Premiere"
+    assert extrair.normalize_transmission_broadcasters("TV Globo, ge TV e Paramount+") == "TV Globo, ge tv e Paramount+"
     assert extrair.normalize_transmission_broadcasters("Canal Desconhecido e Globo") == "Canal Desconhecido e Globo"
     config = extrair.load_config()
     requirement = {
