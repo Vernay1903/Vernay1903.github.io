@@ -600,6 +600,90 @@ def _dedupe(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return result
 
 
+# URLs editoriais encontradas e conferidas para a rodada de 21/10/2026.
+# SÃO APENAS ROTAS DE DESCOBERTA: a URL original ainda será baixada,
+# contextualizada e validada pelos mesmos extratores e travas de publicação.
+# Não autoriza reaproveitar a escalação do jogo de ida da Libertadores.
+CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
+    ("bayern de munique", "arsenal"): {
+        "probable_lineups_and_coaches": [
+            ("https://ge.globo.com/futebol/futebol-internacional/noticia/2026/10/20/bayern-de-munique-x-arsenal-na-champions-onde-assistir-ao-vivo-horario-e-provaveis-escalacoes.ghtml",
+             "Bayern de Munique x Arsenal: escalações e onde assistir"),
+            ("https://jc.uol.com.br/blog-do-torcedor/onde-assistir/2026/10/19/bayern-de-munique-x-arsenal-onde-assistir-horario-e-provaveis-escalacoes-pela-3-rodada-da-champions-league.html",
+             "Bayern de Munique x Arsenal: prováveis escalações pela Champions League"),
+        ],
+        "transmission": [
+            ("https://ge.globo.com/futebol/futebol-internacional/noticia/2026/10/20/bayern-de-munique-x-arsenal-na-champions-onde-assistir-ao-vivo-horario-e-provaveis-escalacoes.ghtml",
+             "Bayern de Munique x Arsenal: onde assistir à Champions League"),
+        ],
+    },
+    ("inter de milao", "fk shakhtar donetsk"): {
+        "probable_lineups_and_coaches": [
+            ("https://www.tuttosport.com/formazione/calcio/serie-a/2026/10/21-2685419/inter-shakhtar",
+             "Inter x Shakhtar Donetsk: probabili formazioni Champions League"),
+            ("https://www.goal.com/br/not%C3%ADcias/inter-de-milao-x-shakhtar-donetsk-previa-da-champions-league-da-uefa-com-invencibilidade-da-inter-contra-o-shakhtar-em-jogo/bltcf2c0bc69a8c4367",
+             "Inter de Milão x Shakhtar Donetsk: prováveis escalações Champions League"),
+        ],
+        "transmission": [
+            ("https://sports.justwatch.com/br/futebol/liga-dos-campeoes-da-uefa/fc-inter-de-milao-fc-shakhtar-donetsk-26-27",
+             "Inter de Milão x Shakhtar Donetsk: onde assistir no Brasil à Champions League"),
+        ],
+    },
+    ("real madrid", "rb leipzig"): {
+        "probable_lineups_and_coaches": [
+            ("https://jc.uol.com.br/blog-do-torcedor/onde-assistir/2026/10/19/real-madrid-x-leipzig-ao-vivo-onde-assistir-horario-e-provaveis-escalacoes-pela-3-rodada-da-champions-league.html",
+             "Real Madrid x RB Leipzig: prováveis escalações Champions League"),
+        ],
+        "transmission": [
+            ("https://jc.uol.com.br/blog-do-torcedor/onde-assistir/2026/10/19/real-madrid-x-leipzig-ao-vivo-onde-assistir-horario-e-provaveis-escalacoes-pela-3-rodada-da-champions-league.html",
+             "Real Madrid x RB Leipzig: onde assistir à Champions League"),
+        ],
+    },
+    ("palmeiras", "fluminense"): {
+        "probable_lineups_and_coaches": [
+            ("https://www.lance.com.br/onde-assistir/palmeiras-x-fluminense-onde-assistir-horario-e-escalacoes.html",
+             "Palmeiras x Fluminense: escalações para a volta da Libertadores"),
+        ],
+        "transmission": [
+            ("https://www.lance.com.br/onde-assistir/palmeiras-x-fluminense-onde-assistir-horario-e-escalacoes.html",
+             "Palmeiras x Fluminense: transmissão da semifinal da Libertadores"),
+        ],
+    },
+}
+
+
+def checked_curated_sources(
+    requirement_id: str, *, context: dict[str, Any], article_date: str,
+    checked_at: str, config: dict[str, Any], max_sources: int,
+) -> list[dict[str, Any]]:
+    """Acesso direto a páginas REAIS e atuais, sem converter a URL em prova."""
+    if str(context.get("kickoff_brasilia", ""))[:10] != "2026-10-21":
+        return []
+    key = (base.normalize_text(context.get("home")),
+           base.normalize_text(context.get("away")))
+    raw_urls = CURATED_2026_10_21.get(key, {}).get(requirement_id, [])
+    selected: list[dict[str, Any]] = []
+    for index, (url, title) in enumerate(raw_urls):
+        candidate = {
+            "url": url, "title": title, "domain": base.urlparse(url).hostname,
+            "publisher": base.urlparse(url).hostname,
+            "source_type": "major_sports_media", "position": index + 1,
+            "passo34_9_curated_discovery": True,
+        }
+        if not source_search.candidate_matches_match_category(candidate, context):
+            continue
+        checked = _scrape_candidate(
+            candidate, requirement_id=requirement_id, context=context,
+            target_year=_target_year(article_date), checked_at=checked_at,
+            config=config,
+        )
+        if checked is not None:
+            selected.append(checked)
+        if len(selected) >= max_sources:
+            break
+    return selected
+
+
 def _targeted_queries(
     requirement_id: str,
     context: dict[str, Any],
@@ -746,6 +830,15 @@ def _search_and_check(
     )
     if not queries:
         return []
+
+    # Consultar primeiro as fontes atuais já localizadas para os quatro jogos
+    # de 21/10. O conteúdo continua sujeito à análise factual habitual.
+    curated = checked_curated_sources(
+        requirement_id, context=context, article_date=article_date,
+        checked_at=checked_at, config=config, max_sources=max_sources,
+    )
+    if curated:
+        return _dedupe(curated)[:max_sources]
 
     cross_stage_lineups: list[dict[str, Any]] = []
     for source_type, domains in _source_stages_for_team(
