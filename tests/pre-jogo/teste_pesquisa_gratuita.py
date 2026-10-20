@@ -147,6 +147,21 @@ def main():
     english_windows = reader.structured_lineup_windows(english, 700)
     assert len(english_windows) == 1, english_windows
     assert english_windows[0].startswith("Arsenal | Provável escalação:"), english_windows
+    # Prova de regressão: ambas as equipes aparecem na mesma notícia ge
+    # publicada para a partida de 21/10; o trecho preserva os técnicos.
+    ge_preview = (
+        "Prováveis escalações\n"
+        "Bayern de Munique: Urbig; Laimer, Upamecano, Kim Min-jae e Nathaniel Brown; "
+        "Pavlovic e Bischof; Gnabry, Saibari e Luis Díaz; Harry Kane. Técnico: Vincent Kompany.\n"
+        "Arsenal: David Raya; Timber, Ezri Konsa, Gabriel Magalhães e Calafiori; "
+        "Declan Rice e Bruno Guimarães; Saka, Odegaard e Madueke; Havertz. "
+        "Técnico: Mikel Arteta."
+    )
+    ge_windows = reader.structured_lineup_windows(ge_preview, 700)
+    assert any(s.startswith("Bayern de Munique | Provável escalação:") for s in ge_windows), ge_windows
+    assert any(s.startswith("Arsenal | Provável escalação:") for s in ge_windows), ge_windows
+    assert any(s.startswith("Bayern de Munique | Técnico: Vincent Kompany") for s in ge_windows), ge_windows
+    assert any(s.startswith("Arsenal | Técnico: Mikel Arteta") for s in ge_windows), ge_windows
     # RSS malformado continua servindo apenas para descobrir URL original.
     malformed = (
         b'<rss><channel><item><title>Arsenal & City</title>'
