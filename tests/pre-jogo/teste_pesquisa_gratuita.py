@@ -122,6 +122,23 @@ def main():
     assert any(x.startswith("FLUMINENSE | Provável escalação:") for x in header_windows), header_windows
     assert any(x.startswith("PALMEIRAS | Técnico: Abel Ferreira") for x in header_windows), header_windows
     assert any(x.startswith("FLUMINENSE | Técnico: Marcão") for x in header_windows), header_windows
+    # Prévia italiana publica onze titulares por clube e abrevia "All."
+    # A expansão de Chivu exige o nome completo presente no texto original.
+    italian = (
+        "Probabili formazioni Inter Shakhtar\n"
+        "Cristian Chivu guida l'Inter contro lo Shakhtar.\n"
+        "INTER (3-5-2): Josep Martínez; Bisseck, Akanji, Bastoni; "
+        "Diouf, Barella, Calhanoglu, Zieliński, Dimarco; "
+        "Pio Esposito, Thuram. All. Chivu.\n"
+        "SHAKHTAR (4-1-4-1): Riznyk; Vinícius Tobias, Bondar, Matviyenko, "
+        "Pedro Henrique; Ocheretko; Santana, Pedrinho, Marlon Gomes, "
+        "Newertton; Kauã Elias. All. Arda Turan."
+    )
+    italian_windows = reader.structured_lineup_windows(italian, 700)
+    assert any("Inter de Milão | Provável escalação:" in x for x in italian_windows), italian_windows
+    assert any("Shakhtar Donetsk | Provável escalação:" in x for x in italian_windows), italian_windows
+    assert any("Inter de Milão | Técnico: Cristian Chivu" in x for x in italian_windows), italian_windows
+    assert any("Shakhtar Donetsk | Técnico: Arda Turan" in x for x in italian_windows), italian_windows
     # RSS malformado continua servindo apenas para descobrir URL original.
     malformed = (
         b'<rss><channel><item><title>Arsenal & City</title>'
