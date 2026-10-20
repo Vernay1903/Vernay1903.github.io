@@ -921,6 +921,10 @@ def extract_transmission_requirement(
         if not context_mentions_match(corpus, match_context, config):
             continue
         for segment in corpus.splitlines():
+            # "Segundo o portal X, ESPN" é atribuição indireta,
+            # não comprovação original do canal do jogo.
+            if contains_attribution_language(segment):
+                continue
             raw_label = labeled_value(segment, labels, max_chars=180)
             value = broadcast_list_from_label(raw_label) if raw_label else None
             if not value and current_fixture_headline_in_order(source, match_context, config):
