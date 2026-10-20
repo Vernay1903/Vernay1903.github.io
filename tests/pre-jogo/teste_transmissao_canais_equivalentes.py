@@ -28,6 +28,11 @@ def main():
     assert extrair.normalize_transmission_broadcasters(b) == "TV Globo, ge tv e Premiere"
     assert extrair.normalize_transmission_broadcasters("TV Globo, ge TV e Paramount+") == "TV Globo, ge tv e Paramount+"
     assert extrair.normalize_transmission_broadcasters("Canal Desconhecido e Globo") == "Canal Desconhecido e Globo"
+    # Regressões extraídas do pacote real de 21/10.
+    assert extrair.broadcast_list_from_label("Palmeiras") is None
+    assert extrair.broadcast_list_from_label("TNT e HBO Max. O ge acompanha em tempo real") == "TNT e HBO Max"
+    assert extrair.broadcast_list_from_label("ge tv e Paramount+") == "ge tv e Paramount+"
+    assert extrair.broadcast_list_from_label("TV Globo, ge TV e Paramount+") == "TV Globo, ge tv e Paramount+"
     config = extrair.load_config()
     requirement = {
         "id": "transmission", "status": "pending",
