@@ -607,6 +607,8 @@ def _dedupe(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
     ("bayern de munique", "arsenal"): {
         "probable_lineups_and_coaches": [
+            ("https://www.standard.co.uk/sport/football/arsenal-fc-xi-vs-bayern-confirmed-team-news-predicted-lineup-injury-latest-2026-champions-league-b1301552.html",
+             "Arsenal XI vs Bayern Munich: predicted lineup and team news"),
             ("https://ge.globo.com/futebol/futebol-internacional/noticia/2026/10/20/bayern-de-munique-x-arsenal-na-champions-onde-assistir-ao-vivo-horario-e-provaveis-escalacoes.ghtml",
              "Bayern de Munique x Arsenal: escalações e onde assistir"),
             ("https://jc.uol.com.br/blog-do-torcedor/onde-assistir/2026/10/19/bayern-de-munique-x-arsenal-onde-assistir-horario-e-provaveis-escalacoes-pela-3-rodada-da-champions-league.html",
