@@ -260,6 +260,25 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
         flags=re.IGNORECASE,
     )
     windows: list[str] = []
+    # The Standard publica "Predicted Arsenal XI: ...": aceitar os
+    # onze nomes literais, sem inferir titular ou treinador ausente.
+    predicted_team = re.compile(
+        r"^(?:predicted|probable)\s+([A-Za-zÀ-ÿ .'-]{3,40})\s+"
+        r"(?:XI|lineup)\s*:\s*(.+)$", re.I,
+    )
+    for row in rows:
+        found = predicted_team.fullmatch(row)
+        if not found:
+            continue
+        club, players_text = found.group(1).strip(), found.group(2).strip(" .")
+        names = [item.strip(" .") for item in re.split(
+            r"\s*(?:;|,|\s+and\s+)\s*", players_text, flags=re.I
+        ) if item.strip(" .")]
+        if len(names) != 11:
+            continue
+        xi = f"{club} | Provável escalação: {players_text}."
+        if len(xi) <= max_segment_chars:
+            windows.append(xi)
     # Eurosport identifica 22 nomes em seções individuais "INTER (3-5-2):"
     # e "SHAKHTAR (4-1-4-1):". Preserve cada XI com seu treinador
     # explicitamente impresso no mesmo parágrafo ("All. Chivu").
