@@ -738,6 +738,22 @@ def checked_curated_sources(
         )
         if checked is not None:
             selected.append(checked)
+            if requirement_id == "probable_lineups_and_coaches":
+                # Um único artigo atual que traz os dois onzes e técnicos
+                # comprovados dispensa agregar previsões divergentes.
+                segments = (checked.get("page_evidence") or {}).get("evidence_segments") or []
+                both_complete = all(
+                    any(" | Provável escalação:" in line
+                        and base.mentions_team(line.split(" | ", 1)[0], team)
+                        for line in segments)
+                    and any(" | Técnico:" in line
+                            and base.mentions_team(line.split(" | ", 1)[0], team)
+                            for line in segments)
+                    for team in (context.get("home"), context.get("away"))
+                    if isinstance(team, str)
+                )
+                if both_complete:
+                    return [checked]
         if len(selected) >= max_sources:
             break
     return selected
