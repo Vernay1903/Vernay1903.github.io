@@ -232,7 +232,7 @@ def unmonitored_team_aliases(team: str) -> list[str]:
     variants = [team.strip()]
     raw = team.strip()
     prefix_pattern = (
-        r"^\s*(?:\d+\.?\s+)?(?:FC|F\.C\.|AFC|A\.F\.C\.|AC|A\.C\.|"
+        r"^\s*(?:\d+\.?\s+)?(?:FC|FK|F\.C\.|AFC|A\.F\.C\.|AC|A\.C\.|"
         r"SSC|S\.S\.C\.|AS|A\.S\.|SC|S\.C\.|RC|R\.C\.|CF|C\.F\.|FSV|TSG)\s+"
     )
     stripped = re.sub(prefix_pattern, "", raw, flags=re.IGNORECASE).strip()
@@ -780,6 +780,9 @@ def normalize_transmission_broadcasters(value: str) -> str:
 def current_fixture_headline_in_order(source, context, config):
     """Evita confundir ida e volta: exige mandante x visitante na manchete."""
     title = normalize_text(str(source.get("title") or ""))
+    # "FC Inter vs FC Shakhtar" e "Inter vs Shakhtar" são o
+    # mesmo mando; prefixos jurídicos não mudam a ordem dos clubes.
+    title = re.sub(r"\b(?:fc|fk|afc|ac|ssc)\s+", "", title)
     home = str(context.get("home") or "")
     away = str(context.get("away") or "")
     if not home or not away or not title:
