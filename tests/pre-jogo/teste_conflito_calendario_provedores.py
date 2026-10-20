@@ -92,6 +92,14 @@ def main():
     merged = calendar.merge([a], [b], config)
     assert len(merged) == 1 and merged[0].get("supplemental_fixture") == b, merged
 
+    # Regressão real 21/10: FK Shakhtar Donetsk é Shakhtar Donetsk.
+    a = game(223, "FC Internazionale Milano", "FK Shakhtar Donetsk",
+             "2026-10-21T16:00:00-03:00", comp="champions-league")
+    b = game("espn-223", "Inter de Milão", "Shakhtar Donetsk",
+             "2026-10-21T16:00:00-03:00", "espn", comp="champions-league")
+    merged = calendar.merge([a], [b], config)
+    assert len(merged) == 1 and merged[0].get("supplemental_fixture") == b, merged
+
     # Denominações equivalentes não podem ocultar um horário divergente real.
     a = game(222, "Barcelona", "Real Betis Balompié", "2026-10-17T13:30:00-03:00",
              comp="la-liga")
