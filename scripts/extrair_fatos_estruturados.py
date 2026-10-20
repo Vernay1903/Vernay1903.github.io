@@ -1087,6 +1087,12 @@ def extract_team_labeled_claims(
     for source in eligible_sources(requirement):
         if not source_current_for_match(source, match_context):
             continue
+        inverse = {**match_context, "home": match_context.get("away"),
+                   "away": match_context.get("home")}
+        if (current_fixture_headline_in_order(source, inverse, config)
+                and not current_fixture_headline_in_order(source, match_context, config)):
+            # A escalação provável da ida NÃO comprova a escalação da volta.
+            continue
         corpus = source_corpus(source)
         for segment in corpus.splitlines():
             for side, team in teams:
