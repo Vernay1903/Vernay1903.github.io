@@ -50,6 +50,7 @@ def main():
     assert "TV Globo" in result["facts"][0]["text"], result
     assert "ge tv" in result["facts"][0]["text"], result
     assert "Paramount+" in result["facts"][0]["text"], result
+    assert result["facts"][0]["text"] == "Transmissão: TV Globo, ge tv e Paramount+.", result
 
     # Outra partida com os mesmos clubes, mas mandos invertidos,
     # nunca fornece canal para o jogo-alvo.
