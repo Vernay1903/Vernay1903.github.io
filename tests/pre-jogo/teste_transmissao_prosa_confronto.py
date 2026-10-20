@@ -21,6 +21,7 @@ def source(title):
             "metadata": {"title": title},
             "evidence_segments": [
                 title,
+                "Transmissão: ge TV e Paramount+.",
                 "A partida tem transmissão ao vivo e com imagem na TV Globo, "
                 "ge TV e Paramount+.",
             ],
@@ -62,6 +63,15 @@ def main():
     assert facts.broadcast_names_from_prose(
         "A transmissão será informada em breve."
     ) is None
+    # A mesma fonte pode ter chamada parcial e lista completa.
+    # Emissoras completamente diferentes continuam sendo conflito.
+    competing = [
+        {"field": "transmission", "value": "TV Globo",
+         "source": {"url": "https://example.org/uma"}},
+        {"field": "transmission", "value": "ESPN",
+         "source": {"url": "https://example.org/uma"}},
+    ]
+    assert len(facts.eliminate_incomplete_broadcast_claims(competing)) == 2
     print("OK: transmissão em prosa verificada, ida/volta segregadas.")
 
 
