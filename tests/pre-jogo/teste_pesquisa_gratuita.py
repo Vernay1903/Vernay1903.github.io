@@ -109,10 +109,10 @@ def main():
     assert any("FLUMINENSE | Técnico: Marcão" in row for row in listed), listed
     # Layout jornalístico atual: equipe + técnico em H3; titulares no P seguinte.
     lineup_headings = (
-        "Escalações prováveis\\n"
-        "PALMEIRAS (Técnico: Abel Ferreira)\\n"
+        "Escalações prováveis\n"
+        "PALMEIRAS (Técnico: Abel Ferreira)\n"
         "Carlos Miguel; Murilo, Gustavo Gómez e Barboza; Giay, Marlon Freitas, "
-        "Lucas Evangelista, Andreas Pereira e Piquerez; Arias e Flaco López.\\n"
+        "Lucas Evangelista, Andreas Pereira e Piquerez; Arias e Flaco López.\n"
         "FLUMINENSE — técnico: Marcão\\n"
         "Fábio; Guga, Thiago Silva, Millán e Renê; Martinelli, Hércules "
         "e Ganso; Canobbio, Savarino e Hulk."
