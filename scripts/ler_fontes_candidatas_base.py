@@ -259,6 +259,31 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
         flags=re.IGNORECASE,
     )
     windows: list[str] = []
+    # Matérias reais também usam bloco em maiúsculas ("PALMEIRAS Carlos
+    # Miguel; ... Técnico: Abel"). Não tratar como um XI sem a lista
+    # nominal e o técnico identificados na própria linha de conteúdo.
+    # O validador posterior ainda confere onze atletas e a data do jogo.
+    for row in rows:
+        inline = re.match(
+            r"^([A-ZÀ-Ý][A-ZÀ-Ý\\s-]{3,35})\\s*[:\\-–]?\\s+"
+            r"([A-ZÀ-Ý][^;]{2,90};.+)$",
+            row,
+        )
+        if not inline:
+            continue
+        club, detail = inline.group(1).strip(), inline.group(2).strip()
+        if detail.count(";") < 2:
+            continue
+        parts = re.split(r"\\b(?:t[eé]cnico|coach|manager)\\s*[:\\-–—]", detail, maxsplit=1, flags=re.I)
+        if len(parts) != 2 or not parts[1].strip():
+            continue
+        players = parts[0].strip(" .;")
+        evidence = f"{club} | Provável escalação: {players}."
+        coach_evidence = f"{club} | Técnico: {parts[1].strip(' .')}."
+        if len(evidence) <= max_segment_chars:
+            windows.append(evidence)
+        if len(coach_evidence) <= max_segment_chars:
+            windows.append(coach_evidence)
     # Seções jornalísticas: "Clube - técnico: Nome", parágrafos, "Escalação provável: ...".
     current_team = None
     for row in rows:
