@@ -966,6 +966,20 @@ def _ensure_allowed_gap_check(
         if isinstance(item, dict) and base.eligible_checked_source(item)
     ]
     req_id = str(req.get("id"))
+    if req_id == "transmission":
+        # Fontes estrangeiras de apostas citam canais espanhóis ou LATAM;
+        # o serviço editorial deste site exige emissoras NO BRASIL.
+        # Recolher primeiro a página brasileira da partida, verificando
+        # o conteúdo real; não converter manchetes ou URLs em prova.
+        localized = checked_curated_sources(
+            req_id, context=context, article_date=article_date,
+            checked_at=checked_at, config=config, max_sources=2,
+        )
+        if localized:
+            req["source_candidates"] = _dedupe(localized)
+            req["ready_for_fact_extraction"] = True
+            req["passo34_9_localized_transmission_sources"] = len(localized)
+            return req
     if existing and req_id != "probable_lineups_and_coaches":
         return req
 
