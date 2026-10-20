@@ -74,6 +74,15 @@ def main():
         ), bad_title
     bad_excerpt = "As equipes se enfrentam neste domingo (18/10), pela 31ª rodada do Brasileirão."
     assert editorial.approved_excerpt_errors(bad_excerpt)
+    # O início com o dia da semana é obrigatório no padrão editorial;
+    # só deve passar quando a chamada também traz contexto esportivo.
+    boa_abertura = (
+        "As equipes se enfrentam neste domingo (18/10), pela 31ª rodada do "
+        "Brasileirão. O Bahia ocupa a sexta colocação com 49 pontos e recebe "
+        "o Flamengo, segundo colocado com 64 pontos, em uma partida que "
+        "pode alterar a disputa pelas primeiras posições."
+    )
+    assert editorial.approved_excerpt_errors(boa_abertura) == [], boa_abertura
     lacking_facts = json.loads(json.dumps(valid))
     lacking_facts["transmission"]["facts"] = []
     assert "required_transmission_not_verified" in editorial.approved_headline_errors(
