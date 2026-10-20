@@ -97,7 +97,7 @@ def main():
     nominal = (
         "PALMEIRAS Carlos Miguel; Murilo, Gustavo Gómez e Barboza; Giay, "
         "Marlon Freitas, Andreas Pereira, Lucas Evangelista e Piquerez; "
-        "Arias e Flaco López. Técnico: Abel Ferreira.\\n"
+        "Arias e Flaco López. Técnico: Abel Ferreira.\n"
         "FLUMINENSE Fábio; Guga, Thiago Silva, Millán e Guilherme Arana; "
         "Martinelli, Nonato e Ganso; Canobbio, Savarino e Hulk. "
         "Técnico: Marcão."
