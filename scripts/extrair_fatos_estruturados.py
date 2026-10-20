@@ -2434,7 +2434,7 @@ EDITORIAL_TEAM_SIGNALS = (
     r"venceu|perdeu|perde|ganhou|derrotou|won|lost|beat|"
     r"training|trained|prepar\w*|injur\w*|"
     r"standings|unbeaten|winless|defeat|draw|victor(?:y|ies)|points|"
-    r"sent\\s+off|suspend\\w*|scored|injured|illness|virus|"
+    r"sent\s+off|suspend\w*|scored|injured|illness|virus|"
     r"entrain\w*|allenam\w*|infortunat\w*|convocat\w*|"
     r"entren\w*|lesion\w*|bajas?|regres\w*|clasific\w*)\b"
 )
