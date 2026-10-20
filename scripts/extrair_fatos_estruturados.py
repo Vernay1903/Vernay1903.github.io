@@ -1105,6 +1105,14 @@ def extract_team_labeled_claims(
                 segment[:scope.start()].rsplit(". ", 1)[-1].strip()
                 if scope else None
             )
+            if scoped_team:
+                # Listas HTML por clube usam cabeçalho "Provável Time | Técnico".
+                scoped_team = re.sub(
+                    r"^(?:prov[aá]vel(?:\s+escala[cç][aã]o)?|"
+                    r"escala[cç][aã]o\s+prov[aá]vel)\s+"
+                    r"(?:(?:do|da|de)\s+)?",
+                    "", scoped_team, flags=re.I,
+                ).strip()
             for side, team in teams:
                 if not isinstance(team, str) or not mentions_team(segment, team, config):
                     continue
