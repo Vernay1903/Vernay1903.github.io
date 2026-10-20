@@ -67,6 +67,7 @@ jobs:
         run: |
           python tests/pre-jogo/teste_conflito_calendario_provedores.py
           python tests/pre-jogo/teste_aliases_adversarios.py
+          python tests/pre-jogo/teste_manchete_jornalistica_obrigatoria.py
   preparar:
     if: ${{ (github.event_name == 'schedule' && github.event.schedule == '30 2 * * *') || (github.event_name == 'workflow_dispatch' && inputs.mode == 'prepare_dry_run') }}
     runs-on: ubuntu-latest
