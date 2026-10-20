@@ -890,7 +890,8 @@ def _search_and_check(
                     "domain": base.urlparse(url).hostname,
                     "publisher": base.urlparse(url).hostname,
                     "source_type": "official", "position": 1,
-                    "published_hint": "Tue, 20 Oct 2026",
+                    # Data editorial deve vir da página, não de horário
+                    # artificial atribuído pelo sistema de descoberta.
                     # Somente fontes oficiais do clube proprietário do domínio
                     # podem atribuir ao clube um título sem seu nome literal.
                     "curated_official_team_host": authoritative_host,
