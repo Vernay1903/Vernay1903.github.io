@@ -78,6 +78,10 @@ def main():
         "fc-inter-de-milao-fc-shakhtar-donetsk-26-27"
     )
     guide["page_evidence"]["metadata"]["title"] = guide_title
+    guide["page_evidence"]["metadata"]["description"] = (
+        "Onde assistir a FC Inter de Milão x FC Shakhtar Donetsk "
+        "em streaming ou na TV: No Prime Video? Descubra agora no JustWatch!"
+    )
     guide["page_evidence"]["evidence_segments"] = [
         guide_title,
         "FC Inter de Milão vs. FC Shakhtar Donetsk é um evento de Futebol "
