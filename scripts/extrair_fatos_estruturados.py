@@ -923,7 +923,12 @@ def extract_transmission_requirement(
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
-        for segment in corpus.splitlines():
+        # Somente conteúdo da página original, não meta description / SEO.
+        # "No Prime Video?" no título do JustWatch não comprova exibição.
+        segments = (source.get("page_evidence") or {}).get("evidence_segments") or []
+        for segment in segments:
+            if not isinstance(segment, str):
+                continue
             # "Segundo o portal X, ESPN" é atribuição indireta,
             # não comprovação original do canal do jogo.
             if contains_attribution_language(segment):
