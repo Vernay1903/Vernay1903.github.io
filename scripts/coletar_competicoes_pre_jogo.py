@@ -108,7 +108,8 @@ def merge(primary, extra, config):
         key = ' '.join(parts)
         # Nome de uso corrente e denominação jurídica do mesmo clube.
         return {'athletico paranaense': 'paranaense',
-                'pae aek': 'aek', 'aek athens': 'aek', 'aek athina': 'aek'}.get(key, key)
+                'pae aek': 'aek', 'aek athens': 'aek', 'aek athina': 'aek',
+                'fk shakhtar donetsk': 'shakhtar donetsk'}.get(key, key)
 
     def teams(row):
         return canonical(row['home']), canonical(row['away'])
