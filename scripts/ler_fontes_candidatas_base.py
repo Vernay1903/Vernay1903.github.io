@@ -260,6 +260,26 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
         flags=re.IGNORECASE,
     )
     windows: list[str] = []
+    # Algumas prévias brasileiras apresentam a escalação em uma única
+    # linha sob "Prováveis escalações": "Clube: 11 nomes. Técnico: Nome".
+    # A fonte fornece atletas e treinador; o leitor não completa elencos.
+    if re.search(r"\bprov[aá]veis\s+escala[cç][oõ]es\b", content, re.I):
+        team_row = re.compile(
+            r"^([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,55}):\s*"
+            r"(.+?)\.\s*(?:T[eé]cnico|Coach):\s*"
+            r"([A-ZÀ-Ý][A-Za-zÀ-ÿ .'-]{3,70})\.?$", re.I
+        )
+        for row in rows:
+            found = team_row.fullmatch(row)
+            if not found or ";" not in found.group(2):
+                continue
+            club, players, coach = (found.group(i).strip(" .") for i in (1, 2, 3))
+            xi = f"{club} | Provável escalação: {players}."
+            responsible = f"{club} | Técnico: {coach}."
+            if len(xi) <= max_segment_chars:
+                windows.append(xi)
+            if len(responsible) <= max_segment_chars:
+                windows.append(responsible)
     # The Standard publica "Predicted Arsenal XI: ...": aceitar os
     # onze nomes literais, sem inferir titular ou treinador ausente.
     predicted_team = re.compile(
