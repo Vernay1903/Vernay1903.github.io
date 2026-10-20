@@ -2432,7 +2432,8 @@ EDITORIAL_TEAM_SIGNALS = (
     r"invict\w*|vitori\w*|derrot\w*|empat\w*|marcou|hat.trick|"
     r"venceu|perdeu|perde|ganhou|derrotou|won|lost|beat|"
     r"training|trained|prepar\w*|injur\w*|"
-    r"standings|unbeaten|winless|defeat|"
+    r"standings|unbeaten|winless|defeat|draw|victor(?:y|ies)|points|"
+    r"sent\\s+off|suspend\\w*|scored|injured|illness|virus|"
     r"entrain\w*|allenam\w*|infortunat\w*|convocat\w*|"
     r"entren\w*|lesion\w*|bajas?|regres\w*|clasific\w*)\b"
 )
@@ -2485,7 +2486,20 @@ def extract_individual_team_context(
             if not source_current_for_match(source, match_context):
                 continue
             headline = str(source.get("title") or "")
-            if not mentions_team(headline, team, config):
+            # O título de uma notícia do portal OFICIAL pode citar o capitão
+            # pelo nome (ex.: "Raum urges RBL to play to their strengths")
+            # sem escrever RB Leipzig. O domínio exato atestado na coleta
+            # identifica somente o clube proprietário, sem autorizar
+            # atribuir a ele frases sobre o adversário.
+            official_host = str(source.get("curated_official_team_host") or "")
+            actual_host = str(urlparse(str(source.get("url") or "")).hostname or "")
+            is_own_official = (
+                source.get("source_type") == "official"
+                and bool(official_host)
+                and (actual_host == official_host
+                     or actual_host.endswith("." + official_host))
+            )
+            if not mentions_team(headline, team, config) and not is_own_official:
                 continue
             title_fold = normalize_text(headline)
             if re.search(r"\b(?:arbitro|arbitragem|referee|juiz|betting|apostas)\b", title_fold):
