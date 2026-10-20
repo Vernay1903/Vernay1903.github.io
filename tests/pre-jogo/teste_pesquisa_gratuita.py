@@ -92,6 +92,21 @@ def main():
     assert any("Palmeiras | Provável escalação:" in row for row in div_windows), div_windows
     assert any("Fluminense | Provável escalação:" in row for row in div_windows), div_windows
     free._PAGE_CACHE.clear()
+    # Regressão factual: jornais rotulam "FLUMINENSE Fábio; ... Técnico".
+    # A fonte fornece os nomes; o parser apenas associa o rótulo existente.
+    nominal = (
+        "PALMEIRAS Carlos Miguel; Murilo, Gustavo Gómez e Barboza; Giay, "
+        "Marlon Freitas, Andreas Pereira, Lucas Evangelista e Piquerez; "
+        "Arias e Flaco López. Técnico: Abel Ferreira.\\n"
+        "FLUMINENSE Fábio; Guga, Thiago Silva, Millán e Guilherme Arana; "
+        "Martinelli, Nonato e Ganso; Canobbio, Savarino e Hulk. "
+        "Técnico: Marcão."
+    )
+    listed = reader.structured_lineup_windows(nominal, 700)
+    assert any("PALMEIRAS | Provável escalação:" in row for row in listed), listed
+    assert any("FLUMINENSE | Provável escalação:" in row for row in listed), listed
+    assert any("PALMEIRAS | Técnico: Abel Ferreira" in row for row in listed), listed
+    assert any("FLUMINENSE | Técnico: Marcão" in row for row in listed), listed
     # RSS malformado continua servindo apenas para descobrir URL original.
     malformed = (
         b'<rss><channel><item><title>Arsenal & City</title>'
