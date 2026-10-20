@@ -1353,7 +1353,22 @@ def source_current_for_match(
         body = " ".join(str(item) for item in
             (source.get("page_evidence") or {}).get("evidence_segments", []))
         if target_year not in body:
-            return False
+            # Guia regional sem ano no texto: JustWatch informa dia/mês
+            # do evento, e a própria URL fixa a temporada 26-27.
+            # Ambos precisam corresponder à data-alvo. Não usa o
+            # horário da consulta como suposta data de publicação.
+            month = ("jan", "fev", "mar", "abr", "mai", "jun",
+                     "jul", "ago", "set", "out", "nov", "dez")
+            season = f"{target_year[-2:]}-{(int(target_year) + 1) % 100:02d}"
+            expected_day = f"{kickoff_datetime.day} de {month[kickoff_datetime.month - 1]}"
+            current_guide = (
+                "sports.justwatch.com" in locator_url
+                and season in locator_url
+                and expected_day in normalize_text(body)
+                and context_mentions_match(source_corpus(source), match_context, load_config())
+            )
+            if not current_guide:
+                return False
     return True
 
 
