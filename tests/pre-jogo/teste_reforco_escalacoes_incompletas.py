@@ -93,7 +93,9 @@ def run():
                     config={}, recent_team=team, max_sources=2,
                 )
                 assert rows and scrape.called, (home, away, team)
-                assert all("2026" in item["url"] for item in rows)
+                assert all(item["url"].startswith("https://") for item in rows)
+                # A notícia oficial pode ter slug permanente sem ano;
+                # a data do conteúdo segue obrigatória no leitor real.
     print("OK: pesquisa complementar após fonte parcial e preservação de evidências existentes.")
 
 if __name__=="__main__":
