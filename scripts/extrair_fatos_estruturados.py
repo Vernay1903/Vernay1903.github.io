@@ -27,6 +27,7 @@ from copy import deepcopy
 from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from urllib.parse import urlparse
 from typing import Any, Callable, NoReturn
 from zoneinfo import ZoneInfo
 
