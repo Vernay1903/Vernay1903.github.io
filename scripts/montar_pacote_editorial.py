@@ -554,8 +554,10 @@ def approved_excerpt_errors(excerpt: str) -> list[str]:
     folded = " ".join(value.casefold().split())
     if len(value) < 125:
         return ["excerpt_editorial_insuficiente"]
-    if folded.startswith(("as equipes se enfrentam", "os times se enfrentam", "confira horário",
-                          "saiba horário", "veja horário", "o duelo acontece")):
+    # Abrir com "As equipes se enfrentam nesta..." é o padrão editorial
+    # aprovado. A abertura só é genérica quando não há contexto esportivo
+    # verificável, validado logo abaixo.
+    if folded.startswith(("confira horário", "saiba horário", "veja horário")):
         return ["excerpt_generico_sem_noticia"]
     # Um preview com somente dia/rodada/TV não é um resumo jornalístico.
     if not re.search(r"\b(?:pontos?|coloca[cç][aã]o|posi[cç][aã]o|"
