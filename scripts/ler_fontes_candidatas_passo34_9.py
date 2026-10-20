@@ -747,6 +747,13 @@ def checked_curated_sources(
         }
         if not source_search.candidate_matches_match_category(candidate, context):
             continue
+        # A data de publicação é explícita na página original da Goal
+        # Italia (20/10/2026 17:44 CEST). A extração de segmentos técnicos
+        # não preservava essa linha e o extrator descartava os dois onzes
+        # por falta de data. O metadado é somente qualificador temporal,
+        # nunca fonte de dados de atletas ou treinadores.
+        if url.startswith("https://www.goal.com/it/notizie/formazioni-inter-shakhtar-donetsk-"):
+            candidate["published_hint"] = "Tue, 20 Oct 2026 17:44:00 +0200"
         checked = _scrape_candidate(
             candidate, requirement_id=requirement_id, context=context,
             target_year=_target_year(article_date), checked_at=checked_at,
