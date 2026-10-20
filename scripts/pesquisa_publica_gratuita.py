@@ -304,7 +304,10 @@ def read_public_page(url: str, config: dict[str, Any] | None = None) -> dict[str
     if title:
         parser.metadata["title"] = title[:300]
     # O conteúdo textual, NÃO a manchete/descrição do RSS, é a evidência.
-    content = "\n".join(dict.fromkeys(parser.article_lines or parser.lines))[:140_000]
+    # Portais podem fechar <article> antes das tabelas de jogadores.
+    # Priorizar o corpo e anexar blocos legíveis restantes da mesma página,
+    # sem duplicar linhas. Os filtros editoriais posteriores permanecem.
+    content = "\n".join(dict.fromkeys([*parser.article_lines, *parser.lines]))[:140_000]
     result = {"markdown": content, "metadata": parser.metadata, "credits": 0}
     _PAGE_CACHE[url] = result
     return result
