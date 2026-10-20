@@ -799,7 +799,16 @@ def broadcast_names_from_prose(segment):
     Nunca usa manchete 'onde assistir' isolada, palpite ou citação de TV sem
     afirmar que a partida terá transmissão por aqueles canais.
     """
-    if not re.search(r"\btransmiss[aã]o\b", segment, re.I):
+    # Agregadores brasileiros frequentemente indicam "você pode assistir
+    # em streaming ao vivo na HBO Max" sem usar a palavra transmissão.
+    # Exigir afirmação explícita de disponibilidade atual, não só logo
+    # ou lista solta de serviços em outras notícias do portal.
+    positive = re.search(
+        r"\btransmiss[aã]o\b|\bstreaming\s+ao\s+vivo\b|"
+        r"\b(?:assistir|assista)\b.{0,80}\b(?:ao\s+vivo|pelo|pela|na|no)\b",
+        segment, re.I,
+    )
+    if not positive:
         return None
     if re.search(r"\b(?:sem|n[aã]o\s+(?:tem|ter[aá]|haver[aá]))\s+transmiss[aã]o\b", segment, re.I):
         return None
