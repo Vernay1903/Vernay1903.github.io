@@ -60,6 +60,15 @@ def main():
     )
     assert blocked["status"] != "verified", blocked
 
+    # JustWatch Brasil publica "streaming ao vivo na HBO Max" em prosa.
+    stream = facts.broadcast_names_from_prose(
+        "Você pode assistir a FC Inter de Milão vs. FC Shakhtar Donetsk "
+        "em streaming ao vivo na HBO Max."
+    )
+    assert stream == "HBO Max", stream
+    assert facts.broadcast_names_from_prose(
+        "HBO Max é um serviço de streaming com filmes e séries."
+    ) is None
     # Nenhuma emissora é deduzida de um texto que apenas promete informar.
     assert facts.broadcast_names_from_prose(
         "A transmissão será informada em breve."
