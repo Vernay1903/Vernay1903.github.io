@@ -69,6 +69,37 @@ def main():
     assert facts.broadcast_names_from_prose(
         "HBO Max é um serviço de streaming com filmes e séries."
     ) is None
+    # JustWatch Brasil tem temporada 26-27 e dia do jogo, mas não ano
+    # explícito no artigo. O calendário da fonte deve coincidir com a pauta.
+    guide_title = "FC Inter de Milão vs. FC Shakhtar Donetsk: Streaming ao vivo e TV hoje"
+    guide = source(guide_title)
+    guide["url"] = (
+        "https://sports.justwatch.com/br/futebol/liga-dos-campeoes-da-uefa/"
+        "fc-inter-de-milao-fc-shakhtar-donetsk-26-27"
+    )
+    guide["page_evidence"]["metadata"]["title"] = guide_title
+    guide["page_evidence"]["evidence_segments"] = [
+        guide_title,
+        "FC Inter de Milão vs. FC Shakhtar Donetsk é um evento de Futebol "
+        "que vai ocorrer em 21 de out. às 04:00 PM. Você pode assistir "
+        "em streaming ao vivo na HBO Max.",
+    ]
+    current_context = {
+        "home": "Inter de Milão", "away": "FK Shakhtar Donetsk",
+        "competition": "Champions League",
+        "kickoff_brasilia": "2026-10-21T16:00:00-03:00",
+    }
+    live = facts.extract_transmission_requirement(
+        requirement(guide), match_context=current_context, config=config,
+    )
+    assert live["status"] == "verified", live
+    assert live["facts"][0]["text"] == "Transmissão: HBO Max."
+    wrong_date = dict(current_context, kickoff_brasilia="2026-11-21T16:00:00-03:00")
+    obsolete = facts.extract_transmission_requirement(
+        requirement(guide), match_context=wrong_date, config=config,
+    )
+    assert obsolete["status"] != "verified", obsolete
+
     # Nenhuma emissora é deduzida de um texto que apenas promete informar.
     assert facts.broadcast_names_from_prose(
         "A transmissão será informada em breve."
