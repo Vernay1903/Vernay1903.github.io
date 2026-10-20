@@ -1095,8 +1095,23 @@ def extract_team_labeled_claims(
             continue
         corpus = source_corpus(source)
         for segment in corpus.splitlines():
+            # Segmentos do leitor incluem a manchete dos DOIS clubes.
+            # "Palmeiras | Provável escalação" deve alimentar apenas Palmeiras.
+            scope = re.search(
+                r"\\|\\s*(?:prov[aá]vel\\s+escala[cç][aã]o|t[eé]cnico)\\s*:",
+                segment, re.I,
+            )
+            scoped_team = (
+                segment[:scope.start()].rsplit(". ", 1)[-1].strip()
+                if scope else None
+            )
             for side, team in teams:
                 if not isinstance(team, str) or not mentions_team(segment, team, config):
+                    continue
+                if scoped_team and not any(
+                    normalize_text(scoped_team) == normalize_text(alias)
+                    for alias in aliases_for_team(team, config)
+                ):
                     continue
                 # Não aceitar prévias do MESMO clube para uma partida anterior.
                 if not context_mentions_match(corpus, match_context, config):
