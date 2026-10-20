@@ -139,6 +139,14 @@ def main():
     assert any("Shakhtar Donetsk | Provável escalação:" in x for x in italian_windows), italian_windows
     assert any("Inter de Milão | Técnico: Cristian Chivu" in x for x in italian_windows), italian_windows
     assert any("Shakhtar Donetsk | Técnico: Arda Turan" in x for x in italian_windows), italian_windows
+    # Prévia inglesa escreve "Predicted Arsenal XI", sem técnico nessa linha.
+    english = (
+        "Predicted Arsenal XI: Raya; Timber, Konsa, Gabriel, Calafiori; "
+        "Rice, Lewis-Skelly; Saka, Odegaard, Madueke; Havertz"
+    )
+    english_windows = reader.structured_lineup_windows(english, 700)
+    assert len(english_windows) == 1, english_windows
+    assert english_windows[0].startswith("Arsenal | Provável escalação:"), english_windows
     # RSS malformado continua servindo apenas para descobrir URL original.
     malformed = (
         b'<rss><channel><item><title>Arsenal & City</title>'
