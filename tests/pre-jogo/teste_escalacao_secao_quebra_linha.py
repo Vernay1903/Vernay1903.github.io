@@ -22,6 +22,7 @@ def main():
     assert any("Fluminense | Provável escalação:" in x and "Hulk" in x for x in rows), rows
     assert any("Palmeiras | Técnico: Abel Ferreira" in x for x in rows), rows
     assert any("Fluminense | Técnico: Marcão" in x for x in rows), rows
+    assert len(rows) == 4, ("Nenhum cabeçalho pode gerar escalação fantasma", rows)
     extracted = base.extract_evidence_segments(
         content, "probable_lineups_and_coaches",
         max_segments=10, max_segment_chars=700,
