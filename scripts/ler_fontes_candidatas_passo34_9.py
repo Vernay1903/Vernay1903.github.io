@@ -663,6 +663,12 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
         ],
     },
     ("palmeiras", "fluminense"): {
+        "officiating": [
+            ("https://www.afa.com.ar/es/posts/cuerpos-arbitrales-para-las-semifinales-de-vuelta-de-libertadores-y-sudamericana",
+             "Árbitro Palmeiras x Fluminense: Esteban Ostojich na semifinal Libertadores"),
+            ("https://ge.globo.com/futebol/times/fluminense/noticia/2026/10/19/arbitro-de-palmeiras-x-fluminense-virou-meme-por-momento-inusitado-com-hulk.ghtml",
+             "Árbitro de Palmeiras x Fluminense: Esteban Ostojich"),
+        ],
         "probable_lineups_and_coaches": [
             ("https://www.terra.com.br/esportes/futebol/libertadores/palmeiras-x-fluminense-onde-assistir-escalacoes-e-arbitragem%2Ca2877ca1816cd9d8f3ef07d0178f16611wjb5x9l.html",
              "Palmeiras x Fluminense: semifinal de volta, escalações e técnicos"),
