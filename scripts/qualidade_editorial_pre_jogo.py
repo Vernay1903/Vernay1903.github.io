@@ -59,6 +59,7 @@ def meaningful_team_news(raw: str) -> bool:
         r"\b(?:fraturou|lesionad[oa]|lesao|suspens[ao]|suspensao|expuls[ao]|desfalqu\w*|"
         r"retorn\w*|voltou|recuper\w*|poupad\w*|fora|ausen\w*|"
         r"reavaliad\w*|convocad\w*|estre\w*|mudan\w*|"
+        r"duvida|incert\w*|questionavel|doubtful|uncertain|"
         r"injur\w*|ruled out|suspended)\b", value,
     ))
 
