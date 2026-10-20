@@ -408,6 +408,47 @@ def _match_title_teams(article: dict[str, Any]) -> tuple[str, str] | None:
     return None
 
 
+def verified_editorial_excerpt(article, requirement_by_id, *, config):
+    """Usa o dia verificado e somente fatos já validados para criar o resumo.
+
+    Evita bloqueio permanente dos confrontos de copa quando não há
+    classificação em pontos corridos. Nunca preenche texto por suposição.
+    """
+    opening = contextual_excerpt(article, requirement_by_id, config=config)
+    candidates = []
+    # Primeiramente, novidades esportivas; depois resultados recentes
+    # confirmados por dados estruturados, com escopo temporal explícito.
+    for rid in ("editorial_match_stakes", "editorial_team_news",
+                "stakes_and_qualification_scenarios_when_applicable",
+                "recent_form_both_teams"):
+        data = _fact_map(requirement_by_id.get(rid))
+        for key, value in data.items():
+            if rid == "recent_form_both_teams":
+                if key not in {"home_recent_form", "away_recent_form"}:
+                    continue
+            elif not (key.startswith(("home_stakes_", "away_stakes_",
+                                      "home_team_news_", "away_team_news_",
+                                      "stakes_", "qualification_"))
+                      or key in {"competitive_context", "standings_context",
+                                 "qualification_scenario"}):
+                continue
+            fact = re.sub(r"\\s+", " ", value).strip()
+            if ":" in fact and len(fact.split(":", 1)[0]) < 42:
+                fact = fact.split(":", 1)[-1].strip()
+            if not 35 <= len(fact) <= 280:
+                continue
+            if re.search(r"https?://|<[^>]+>", fact, re.I):
+                continue
+            fact = fact.rstrip(" .;") + "."
+            if fact.casefold() not in {x.casefold() for x in candidates}:
+                candidates.append(fact)
+            if len(candidates) == 2:
+                break
+        if len(candidates) == 2:
+            break
+    return " ".join([opening, *candidates])
+
+
 def adjusted_service_headline(
     article: dict[str, Any],
     requirement_by_id: dict[str, dict[str, Any]],
@@ -428,7 +469,7 @@ def adjusted_service_headline(
     # O resumo ainda precisa de contexto esportivo comprovado. A informação
     # da tabela é separada do título para evitar manchetes mecânicas.
     hook = _verified_table_hook(article, requirement_by_id, config=config)
-    excerpt = hook[1] if hook else contextual_excerpt(article, requirement_by_id, config=config)
+    excerpt = hook[1] if hook else verified_editorial_excerpt(article, requirement_by_id, config=config)
     return title, excerpt
 
 
