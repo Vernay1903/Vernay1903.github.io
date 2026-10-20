@@ -613,11 +613,13 @@ def _dedupe(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 # Não autoriza reaproveitar a escalação do jogo de ida da Libertadores.
 CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
     ("bayern de munique", "arsenal"): {
+        # A reportagem do ge lista os dois onzes e os dois técnicos na
+        # MESMA página atual, evitando conciliar previsões contraditórias.
         "probable_lineups_and_coaches": [
+            ("https://ge.globo.com/futebol/futebol-internacional/noticia/2026/10/20/bayern-de-munique-x-arsenal-na-champions-onde-assistir-ao-vivo-horario-e-provaveis-escalacoes.ghtml",
+             "Bayern de Munique x Arsenal: prováveis escalações e técnicos (ge)"),
             ("https://www.standard.co.uk/sport/football/arsenal-fc-xi-vs-bayern-confirmed-team-news-predicted-lineup-injury-latest-2026-champions-league-b1301552.html",
              "Arsenal XI vs Bayern Munich: predicted lineup and team news"),
-            ("https://ge.globo.com/futebol/futebol-internacional/noticia/2026/10/20/bayern-de-munique-x-arsenal-na-champions-onde-assistir-ao-vivo-horario-e-provaveis-escalacoes.ghtml",
-             "Bayern de Munique x Arsenal: escalações e onde assistir"),
             ("https://jc.uol.com.br/blog-do-torcedor/onde-assistir/2026/10/19/bayern-de-munique-x-arsenal-onde-assistir-horario-e-provaveis-escalacoes-pela-3-rodada-da-champions-league.html",
              "Bayern de Munique x Arsenal: prováveis escalações pela Champions League"),
         ],
@@ -628,6 +630,8 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
     },
     ("inter de milao", "fk shakhtar donetsk"): {
         "probable_lineups_and_coaches": [
+            ("https://tips.gg/pt/article/inter-milan-vs-fc-shakhtar-donetsk-predicted-lineups-team-news-21-10-2026/",
+             "Inter de Milão x Shakhtar: XI projetado e notícias dos dois clubes"),
             ("https://www.eurosport.it/calcio/champions-league/2026-2027/inter-shakhtar-donetsk-quando-si-gioca-e-dove-vederla-probabili-formazioni-statistiche-opta-dove-vederla-in-tv-e-streaming-precedenti-info-utili_sto23346413/story.shtml",
              "Inter x Shakhtar Donetsk: le probabili formazioni Champions League"),
             ("https://www.tuttosport.com/formazione/calcio/serie-a/2026/10/21-2685419/inter-shakhtar",
@@ -642,22 +646,27 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
     },
     ("real madrid", "rb leipzig"): {
         "probable_lineups_and_coaches": [
+            ("https://ge.globo.com/futebol/futebol-internacional/liga-dos-campeoes/noticia/2026/10/20/real-madrid-x-rb-leipzig-na-champions-onde-assistir-ao-vivo-e-horario.ghtml",
+             "Real Madrid x RB Leipzig: transmissão e dois onzes prováveis (ge)"),
             ("https://jc.uol.com.br/blog-do-torcedor/onde-assistir/2026/10/19/real-madrid-x-leipzig-ao-vivo-onde-assistir-horario-e-provaveis-escalacoes-pela-3-rodada-da-champions-league.html",
              "Real Madrid x RB Leipzig: prováveis escalações Champions League"),
         ],
         "transmission": [
+            ("https://ge.globo.com/futebol/futebol-internacional/liga-dos-campeoes/noticia/2026/10/20/real-madrid-x-rb-leipzig-na-champions-onde-assistir-ao-vivo-e-horario.ghtml",
+             "Real Madrid x RB Leipzig: TNT e HBO Max no Brasil"),
             ("https://jc.uol.com.br/blog-do-torcedor/onde-assistir/2026/10/19/real-madrid-x-leipzig-ao-vivo-onde-assistir-horario-e-provaveis-escalacoes-pela-3-rodada-da-champions-league.html",
              "Real Madrid x RB Leipzig: onde assistir à Champions League"),
         ],
     },
     ("palmeiras", "fluminense"): {
         "probable_lineups_and_coaches": [
+            ("https://www.terra.com.br/esportes/futebol/libertadores/palmeiras-x-fluminense-onde-assistir-escalacoes-e-arbitragem%2Ca2877ca1816cd9d8f3ef07d0178f16611wjb5x9l.html",
+             "Palmeiras x Fluminense: semifinal de volta, escalações e técnicos"),
             ("https://www.lance.com.br/onde-assistir/palmeiras-x-fluminense-onde-assistir-horario-e-escalacoes.html",
              "Palmeiras x Fluminense: escalações para a volta da Libertadores"),
         ],
         "transmission": [
-            ("https://www.palmeiras.com.br/trasmissao/tv/",
-             "Palmeiras x Fluminense: transmissão oficial Globo ge tv e Paramount+"),
+            ("https://www.terra.com.br/esportes/futebol/libertadores/palmeiras-x-fluminense-onde-assistir-escalacoes-e-arbitragem%2Ca2877ca1816cd9d8f3ef07d0178f16611wjb5x9l.html", "Palmeiras x Fluminense: Globo ge tv e Paramount+"),
             ("https://www.lance.com.br/onde-assistir/palmeiras-x-fluminense-onde-assistir-horario-e-escalacoes.html",
              "Palmeiras x Fluminense: transmissão da semifinal da Libertadores"),
         ],
@@ -670,18 +679,24 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
 CURATED_EDITORIAL_2026_10_21 = {
     ("inter de milao", "fk shakhtar donetsk"): {
         "home": [
-            ("https://www.inter.it/en/news/training-inter-shakhtar-champions-league-2026-26",
-             "Ahead of Inter vs. Shakhtar: the Nerazzurri's training session", "inter.it"),
+            ("https://www.inter.it/en/news/inter-shakhtar-previous-facts-on-clash",
+             "Inter vs. Shakhtar, previous meetings and facts about the clash", "inter.it"),
+            ("https://www.inter.it/en/news/press-conference-chivu-inter-shakhtar-champions-league-2026-27",
+             "Chivu and Bastoni's press conference", "inter.it"),
             ("https://www.inter.it/en/news/press-conference-bastoni-inter-shakhtar-champions-league-2026-27",
              'Bastoni: "Limit errors in order to improve"', "inter.it"),
         ],
         "away": [
-            ("https://www.inter.it/en/news/opposition-analysis-shakhtar-donetsk-champions-league-2026-27",
-             "Opposition analysis: Shakhtar Donetsk", None),
+            ("https://shakhtar.com/en/news/2026/october/20_news/20_fc-shakhtar-open-training-session/",
+             "Shakhtar held an open training session at the San Siro", "shakhtar.com"),
         ],
     },
     ("real madrid", "rb leipzig"): {
         "home": [
+            ("https://www.realmadrid.com/en-US/news/football/first-team/press-conference/mourinho-20-10-2026",
+             'Mourinho: "A lot of points will be needed to avoid the playoff"', "realmadrid.com"),
+            ("https://www.realmadrid.com/en-US/news/football/first-team/trainings/el-equipo-se-esta-entrenando-20-10-2026",
+             "Final training session before the match against Leipzig", "realmadrid.com"),
             ("https://www.realmadrid.com/en-US/news/football/first-team/squad-call/convocatoria-del-real-madrid-contra-el-leipzig-20-10-2026",
              "Real Madrid squad announcement against Leipzig", "realmadrid.com"),
             ("https://www.realmadrid.com/en-US/news/football/first-team/press-conference/mourinho-20-10-2026",
