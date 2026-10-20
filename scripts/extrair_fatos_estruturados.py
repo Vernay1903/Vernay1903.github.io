@@ -776,6 +776,55 @@ def normalize_transmission_broadcasters(value: str) -> str:
     return ", ".join(canonical[:-1]) + " e " + canonical[-1] if len(canonical) > 1 else canonical[0]
 
 
+def current_fixture_headline_in_order(source, context, config):
+    """Evita confundir ida e volta: exige mandante x visitante na manchete."""
+    title = normalize_text(str(source.get("title") or ""))
+    home = str(context.get("home") or "")
+    away = str(context.get("away") or "")
+    if not home or not away or not title:
+        return False
+    for a in relaxed_team_markers(home, config):
+        for b in relaxed_team_markers(away, config):
+            if a == b or len(a) < 3 or len(b) < 3:
+                continue
+            if re.search(rf"\b{re.escape(a)}\s+(?:x|vs|contra|v)\s+{re.escape(b)}\b", title):
+                return True
+    return False
+
+
+def broadcast_names_from_prose(segment):
+    """Extrai apenas plataformas literalmente presentes em frase de transmissão.
+
+    Nunca usa manchete 'onde assistir' isolada, palpite ou citação de TV sem
+    afirmar que a partida terá transmissão por aqueles canais.
+    """
+    if not re.search(r"\btransmiss[aã]o\b", segment, re.I):
+        return None
+    if re.search(r"\b(?:sem|n[aã]o\s+(?:tem|ter[aá]|haver[aá]))\s+transmiss[aã]o\b", segment, re.I):
+        return None
+    patterns = (
+        (r"\b(?:TV\s+Globo|Rede\s+Globo)\b", "TV Globo"),
+        (r"\b(?:ge\s*tv|ge\.tv|Getv)\b", "ge tv"),
+        (r"\bPremiere\b", "Premiere"),
+        (r"\bSporTV\b", "SporTV"),
+        (r"\bESPN\b", "ESPN"),
+        (r"\bDisney\s*\+", "Disney+"),
+        (r"\bTNT\b", "TNT"),
+        (r"\bHBO\s+Max\b", "HBO Max"),
+        (r"\bCaz[eé]\s*TV\b", "CazéTV"),
+        (r"\b(?:Amazon\s+)?Prime\s+Video\b", "Prime Video"),
+        (r"\bParamount\s*\+", "Paramount+"),
+        (r"\bBand\b", "Band"),
+    )
+    found = []
+    for pattern, name in patterns:
+        if re.search(pattern, segment, re.I):
+            found.append(name)
+    if not found:
+        return None
+    return ", ".join(found[:-1]) + " e " + found[-1] if len(found) > 1 else found[0]
+
+
 def extract_transmission_requirement(
     requirement: dict[str, Any],
     *, match_context: dict[str, Any],
@@ -794,6 +843,8 @@ def extract_transmission_requirement(
             continue
         for segment in corpus.splitlines():
             value = labeled_value(segment, labels, max_chars=180)
+            if not value and current_fixture_headline_in_order(source, match_context, config):
+                value = broadcast_names_from_prose(segment)
             if value and not re.search(
                 r"\b(?:nao anunciado|a definir|to be announced|tba)\b",
                 normalize_text(value),
