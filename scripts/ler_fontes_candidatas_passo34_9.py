@@ -683,6 +683,12 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
 CURATED_EDITORIAL_2026_10_21 = {
     ("bayern de munique", "arsenal"): {
         "home": [
+            ("https://www.reuters.com/sports/soccer/bayerns-kompany-kimmich-neuer-doubtful-arsenal-clash-says-assistant-coach-2026-10-20/",
+             "Bayern's Kompany, Kimmich, Neuer doubtful for Arsenal clash, says assistant coach",
+             None),
+            ("https://www.bavarianfootballworks.com/bayern-munich-champions-league/270454/bayern-munich-assistant-coach-aaron-danks-will-be-ready-if-called-upon-to-face-arsenal",
+             "Bayern Munich assistant coach Aaron Danks will be ready if called upon to face Arsenal",
+             None),
             ("https://fcbayern.com/en/news/matchpreviews/2026/10/preview-bayern-vs.-arsenal-champions-league-md-3",
              "Top clash with a bit of history: FC Bayern out to settle score with Arsenal",
              "fcbayern.com"),
