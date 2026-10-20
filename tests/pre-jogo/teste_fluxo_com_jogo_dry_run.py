@@ -206,7 +206,7 @@ def main() -> None:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
-        committed = set(git("diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD").splitlines())
+        committed = set(git("diff-tree", "--root", "--no-commit-id", "--name-only", "-r", "HEAD").splitlines())
         assert committed == expected, (committed, expected)
         assert git("show", "HEAD:" + slug) == rendered.strip()
         assert git("status", "--porcelain", "--", *sorted(expected)) == ""
