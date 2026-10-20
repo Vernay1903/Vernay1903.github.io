@@ -871,6 +871,12 @@ def extract_transmission_requirement(
     for source in eligible_sources(requirement):
         if not source_current_for_match(source, match_context):
             continue
+        inverse = {**match_context, "home": match_context.get("away"),
+                   "away": match_context.get("home")}
+        if (current_fixture_headline_in_order(source, inverse, config)
+                and not current_fixture_headline_in_order(source, match_context, config)):
+            # Notícia da ida não é serviço verificável da volta.
+            continue
         corpus = source_corpus(source)
         if not context_mentions_match(corpus, match_context, config):
             continue
