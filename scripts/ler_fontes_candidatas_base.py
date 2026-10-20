@@ -305,7 +305,7 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
     # Não confundir com escalação confirmada de outra data.
     if re.search(r"\bprobabili\s+formazioni\b", content, re.I):
         italian = re.compile(
-            r"^(INTER|SHAKHTAR)\s*\(\d(?:-\d){1,4}\)\s*:\s*"
+            r"^(INTER|SHAKHTAR(?:\s+DONETSK)?)\s*\(\d(?:-\d){1,4}\)\s*:\s*"
             r"(.+?)\s+All\.\s*([A-ZÀ-Ý][A-Za-zÀ-ÿ .'-]{2,50})\.?$",
             re.I,
         )
