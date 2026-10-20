@@ -41,6 +41,17 @@ def main():
     result = extrair.extract_transmission_requirement(requirement, match_context=context, config=config)
     assert result["status"] == "verified", (result.get("fact_extraction_status"), result.get("conflicts"), result.get("validator_errors"))
     assert result["facts"][0]["text"] == "Transmissão: TV Globo, ge tv e Premiere.", result["facts"]
+    # Veículos podem mencionar somente parte dos canais confirmados.
+    partial = dict(requirement, source_candidates=[
+        source("ge", "https://ge.globo.com/palmeiras-bahia", "Transmissão: ge tv."),
+        source("Itatiaia", "https://www.itatiaia.com.br/palmeiras-bahia",
+               "Transmissão: TV Globo, ge tv e Paramount+."),
+        source("Lance", "https://www.lance.com.br/palmeiras-bahia",
+               "Transmissão: ge tv e Paramount+."),
+    ])
+    inferred = extrair.extract_transmission_requirement(partial, match_context=context, config=config)
+    assert inferred["status"] == "verified", inferred
+    assert inferred["facts"][0]["text"] == "Transmissão: TV Globo, ge tv e Paramount+."
     bad = dict(requirement, source_candidates=[
         requirement["source_candidates"][0],
         source("Teste", "https://www.espn.com.br/palmeiras-bahia", "Transmissão: ESPN e Disney+."),
