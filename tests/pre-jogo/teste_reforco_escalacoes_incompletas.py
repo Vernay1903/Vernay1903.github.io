@@ -73,6 +73,27 @@ def run():
                 config={}, max_sources=3,
             )
             scrape.assert_not_called()
+    # Duas equipes precisam receber reportagens recentes, por clube, sem
+    # dependência do RSS. O teste não acessa rede nem valida fatos sintéticos.
+    for home, away in (
+        ("Inter de Milão", "FK Shakhtar Donetsk"),
+        ("Real Madrid", "RB Leipzig"),
+    ):
+        ctx = {
+            "home": home, "away": away, "competition": "Champions League",
+            "kickoff_brasilia": "2026-10-21T16:00:00-03:00",
+        }
+        with patch.object(research, "_scrape_candidate",
+                          side_effect=lambda row, **_kw: row) as scrape:
+            for team in (home, away):
+                rows = research._search_and_check(
+                    research.EDITORIAL_RESEARCH_ID,
+                    context=ctx, article_date="2026-10-21",
+                    checked_at="2026-10-20T20:00:00-03:00",
+                    config={}, recent_team=team, max_sources=2,
+                )
+                assert rows and scrape.called, (home, away, team)
+                assert all("2026" in item["url"] for item in rows)
     print("OK: pesquisa complementar após fonte parcial e preservação de evidências existentes.")
 
 if __name__=="__main__":
