@@ -113,7 +113,7 @@ def main():
         "PALMEIRAS (Técnico: Abel Ferreira)\n"
         "Carlos Miguel; Murilo, Gustavo Gómez e Barboza; Giay, Marlon Freitas, "
         "Lucas Evangelista, Andreas Pereira e Piquerez; Arias e Flaco López.\n"
-        "FLUMINENSE — técnico: Marcão\\n"
+        "FLUMINENSE — técnico: Marcão\n"
         "Fábio; Guga, Thiago Silva, Millán e Renê; Martinelli, Hércules "
         "e Ganso; Canobbio, Savarino e Hulk."
     )
