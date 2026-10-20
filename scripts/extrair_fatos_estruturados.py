@@ -1098,7 +1098,7 @@ def extract_team_labeled_claims(
             # Segmentos do leitor incluem a manchete dos DOIS clubes.
             # "Palmeiras | Provável escalação" deve alimentar apenas Palmeiras.
             scope = re.search(
-                r"\\|\\s*(?:prov[aá]vel\\s+escala[cç][aã]o|t[eé]cnico)\\s*:",
+                r"\|\s*(?:prov[aá]vel\s+escala[cç][aã]o|t[eé]cnico)\s*:",
                 segment, re.I,
             )
             scoped_team = (
