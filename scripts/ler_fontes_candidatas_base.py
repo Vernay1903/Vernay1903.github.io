@@ -249,8 +249,8 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
     rows = [clean_markdown_line(line) for line in content.splitlines()]
     marker = re.compile(
         r"prov[aá]vel(?:\s+escala[cç][aã]o)?|probable\s+lineup|predicted\s+(?:lineup|xi)|"
-        r"alineaci[oó]n\s+probable",
-        r"|escala[cç][oõ]es?\s+prov[aá]veis|poss[ií]veis\s+escala[cç][oõ]es",
+        r"alineaci[oó]n\s+probable|"
+        r"escala[cç][oõ]es?\s+prov[aá]veis|poss[ií]veis\s+escala[cç][oõ]es",
         flags=re.IGNORECASE,
     )
     excluded = re.compile(
