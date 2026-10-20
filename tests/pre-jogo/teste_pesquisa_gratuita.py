@@ -50,6 +50,29 @@ def main():
     assert "Compre nossos produtos" not in page["markdown"]
     assert "Preview oficial" == page["metadata"]["description"]
     assert free._PAGE_CACHE[original] == page
+    # Regressão: vários portais fecham <article> antes do bloco de escalações.
+    # Esses jogadores devem continuar legíveis para a extração posterior.
+    free._PAGE_CACHE.clear()
+    lineup_html = (
+        "<html><body><article><h1>Palmeiras x Fluminense 21/10/2026</h1>"
+        "<p>A decisão da Libertadores será na quarta-feira.</p></article>"
+        "<h3>Provável escalação do Palmeiras</h3>"
+        "<p>Carlos Miguel; Murilo, Gustavo Gómez e Barboza; Giay, Marlon Freitas, "
+        "Andreas Pereira, Lucas Evangelista e Piquerez; Arias e Flaco López. "
+        "Técnico: Abel Ferreira.</p>"
+        "<h3>Provável escalação do Fluminense</h3>"
+        "<p>Fábio; Guga, Thiago Silva, Millán e Guilherme Arana; Nonato, "
+        "Martinelli e Ganso; Canobbio, Savarino e Hulk. Técnico: Marcão.</p>"
+        "</body></html>"
+    ).encode("utf-8")
+    with patch.object(free, "fetch", return_value=(lineup_html, "utf-8")):
+        parsed_lineup = free.read_public_page(original)
+    assert "Carlos Miguel;" in parsed_lineup["markdown"]
+    assert "Thiago Silva" in parsed_lineup["markdown"]
+    windows = reader.structured_lineup_windows(parsed_lineup["markdown"], 700)
+    assert any("Palmeiras | Provável escalação:" in row for row in windows), windows
+    assert any("Fluminense | Provável escalação:" in row for row in windows), windows
+    free._PAGE_CACHE.clear()
     # RSS malformado continua servindo apenas para descobrir URL original.
     malformed = (
         b'<rss><channel><item><title>Arsenal & City</title>'
