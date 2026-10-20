@@ -113,6 +113,50 @@ def main():
     assert editorial_headline_primary_side(
         "Roma x Real Madrid pela Champions: prévia", CTX, CONFIG
     ) is None
+    bayern_ctx = {
+        "home": "Bayern de Munique", "away": "Arsenal",
+        "competition": "Champions League", "competition_slug": "champions-league",
+        "kickoff_brasilia": "2026-10-21T16:00:00-03:00",
+    }
+    bayern_official = source(
+        "Bayern de Munique", "home",
+        "Top clash with a bit of history: FC Bayern out to settle score with Arsenal",
+        "FC Bayern have four points from the first two matches after a "
+        "dramatic 3-3 draw against Viking FK and a previous home victory, "
+        "with Michael Olise suspended after being sent off in Norway.",
+        "https://fcbayern.com/en/news/matchpreviews/2026/10/preview-bayern-vs.-arsenal-champions-league-md-3",
+    )
+    bayern_official["source_type"] = "official"
+    bayern_official["curated_official_team_host"] = "fcbayern.com"
+    bayern_official["published_hint"] = None
+    bayern_news = extract_individual_team_context(
+        [{"id": "editorial_context_both_teams", "source_candidates": [bayern_official]}],
+        match_context=bayern_ctx, config=CONFIG,
+    )
+    assert bayern_news is not None and any(
+        x["field"].startswith("home_stakes_individual_")
+        for x in bayern_news["facts"]
+    ), bayern_news
+
+    leipzig_ctx = {**bayern_ctx, "home": "Real Madrid", "away": "RB Leipzig"}
+    leipzig_official = source(
+        "RB Leipzig", "away",
+        '"Our style of play depends on it" – Raum urges RBL to play to their strengths',
+        "RB Leipzig captain David Raum stressed the importance of preparation "
+        "and explained that the squad trained for its Champions League "
+        "match against Real Madrid on Wednesday.",
+        "https://rbleipzig.com/en/news/press-conference-champions-league-real-madrid-rb-leipzig-20th-october-2026",
+    )
+    leipzig_official["source_type"] = "official"
+    leipzig_official["curated_official_team_host"] = "rbleipzig.com"
+    leipzig_news = extract_individual_team_context(
+        [{"id": "editorial_context_both_teams", "source_candidates": [leipzig_official]}],
+        match_context=leipzig_ctx, config=CONFIG,
+    )
+    assert leipzig_news is not None and any(
+        x["field"].startswith("away_stakes_individual_")
+        for x in leipzig_news["facts"]
+    ), leipzig_news
     print("OK: notícias individuais atuais, protagonismo correto e histórico bloqueado.")
 
 
