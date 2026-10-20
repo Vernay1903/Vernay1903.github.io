@@ -843,6 +843,20 @@ def eliminate_incomplete_broadcast_claims(claims):
         normalized = {normalize_text(part.strip()) for part in parts if part.strip()}
         return normalized if normalized and normalized <= allowed else None
 
+    # Diferentes veículos brasileiros podem anunciar apenas algumas das
+    # plataformas confirmadas. Uma lista estritamente contida em outra
+    # NÃO é uma contradição (ge tv versus Globo + ge tv + Paramount+).
+    # Canais incompatíveis ou sem um conjunto total comum continuam bloqueados.
+    mapped = [channels(item) for item in claims]
+    comparable = len(claims) >= 2 and all(value is not None for value in mapped)
+    if comparable:
+        largest = max(mapped, key=len)
+        if all(value <= largest for value in mapped):
+            return [
+                claim for claim, subset in zip(claims, mapped)
+                if subset == largest
+            ]
+
     cleaned = []
     for claim in claims:
         current = channels(claim)
