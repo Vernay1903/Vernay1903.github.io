@@ -750,6 +750,7 @@ def normalize_transmission_broadcasters(value: str) -> str:
         "premiere": "Premiere", "premiere futebol": "Premiere",
         "espn": "ESPN", "disney": "Disney+", "disney+": "Disney+", "disney plus": "Disney+",
         "sportv": "SporTV", "tnt": "TNT", "hbo max": "HBO Max",
+        "paramount": "Paramount+", "paramount plus": "Paramount+",
         "cazetv": "CazéTV", "caze tv": "CazéTV",
         "prime video": "Prime Video", "amazon prime video": "Prime Video",
         "band": "Band",
@@ -771,7 +772,7 @@ def normalize_transmission_broadcasters(value: str) -> str:
     if not canonical:
         return value
     order = ["TV Globo", "ge tv", "Premiere", "SporTV", "ESPN", "Disney+",
-             "TNT", "HBO Max", "CazéTV", "Prime Video", "Band"]
+             "TNT", "HBO Max", "CazéTV", "Prime Video", "Paramount+", "Band"]
     canonical.sort(key=lambda label: order.index(label))
     return ", ".join(canonical[:-1]) + " e " + canonical[-1] if len(canonical) > 1 else canonical[0]
 
