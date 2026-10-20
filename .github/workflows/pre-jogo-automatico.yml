@@ -335,23 +335,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          data = json.loads(Path('build/pre-jogo/automatico/manifest.json').read_text(encoding='utf-8'))
-          print('PASSO 34 — PREPARO FINALIZADO')
-          print(f"Data-alvo: {data['target_date']}")
-          print(f"Matérias prontas: {data['prepared_count']}")
-          print(f"Bloqueadas/puladas por segurança: {data['skipped_count']}")
-          print('Publicação: não; o artifact aguardará a checagem final das 00:01.')
-          if data['skipped_count']:
-              for item in data['skipped']:
-                  print(f"BLOQUEIO: {item['slug']}: {item.get('unresolved', item.get('reason'))}")
-              if data['prepared_count'] > 0:
-                  print('::warning::Lote misto: artigos aprovados permanecem publicáveis; bloqueios individuais preservados.')
-              else:
-                  raise SystemExit('ERRO: nenhuma matéria pronta; há partidas bloqueadas.')
-          PY
+          python scripts/resumir_preparo_pre_jogo.py
 
   testar-publicacao:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'publish_dry_run' }}
