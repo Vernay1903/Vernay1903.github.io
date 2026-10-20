@@ -9,6 +9,11 @@ import importlib.util
 import json
 import sys
 import tempfile
+import subprocess
+from functools import partial
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from threading import Thread
+from urllib.request import urlopen
 from pathlib import Path
 from unittest import mock
 from datetime import datetime
@@ -183,8 +188,55 @@ def main() -> None:
             assert json.loads(report.read_text())["changed_file_count"] == 0
             assert noticias.read_bytes() == first
 
+        # Teste ponta a ponta do destino: os 4 arquivos efetivamente aplicados
+        # são commitados em um repositório LOCAL e servidos via HTTP loopback.
+        # A main e o GitHub Pages do site real permanecem intactos.
+        expected = {slug, "noticias.json", "sitemap.xml", "noticias-home.json"}
+        def git(*args):
+            return subprocess.check_output(
+                ["git", "-C", str(root), *args], text=True, stderr=subprocess.PIPE
+            ).strip()
+        git("init", "-q")
+        git("add", *sorted(expected))
+        subprocess.run(
+            ["git", "-C", str(root), "-c", "user.name=CDE E2E Test",
+             "-c", "user.email=cde-e2e@example.invalid",
+             "commit", "-qm", "E2E local: pré-jogo aprovado"],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        committed = set(git("diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD").splitlines())
+        assert committed == expected, (committed, expected)
+        assert git("show", "HEAD:" + slug) == rendered.strip()
+        assert git("status", "--porcelain", "--", *sorted(expected)) == ""
+        live_entry = json.loads(noticias.read_text(encoding="utf-8"))[0]
+        assert live_entry["url"] == slug
+        assert live_entry["title"] == contract["title"]
+        assert live_entry["excerpt"] == contract["excerpt"]
+        assert slug in sitemap.read_text(encoding="utf-8")
 
-    print("OK: jogo sintético atravessa contrato, redação, HTML e lote dry-run sem publicar.")
+        class QuietHandler(SimpleHTTPRequestHandler):
+            def log_message(self, *_args):
+                pass
+        server = ThreadingHTTPServer(("127.0.0.1", 0),
+                                     partial(QuietHandler, directory=str(root)))
+        thread = Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            address = f"http://127.0.0.1:{server.server_port}"
+            with urlopen(address + "/" + slug, timeout=5) as response:
+                assert response.status == 200
+                assert response.read().decode("utf-8") == rendered
+            with urlopen(address + "/noticias.json", timeout=5) as response:
+                assert json.loads(response.read().decode("utf-8"))[0]["url"] == slug
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=5)
+
+    print("OK E2E: jogo sintético -> contrato -> redação -> HTML -> "
+          "lote -> commit local -> HTTP 200 -> noticiaJSON/sitemap; sem push remoto.")
 
 
 if __name__ == "__main__":
