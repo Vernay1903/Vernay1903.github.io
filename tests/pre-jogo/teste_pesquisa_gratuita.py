@@ -73,6 +73,25 @@ def main():
     assert any("Palmeiras | Provável escalação:" in row for row in windows), windows
     assert any("Fluminense | Provável escalação:" in row for row in windows), windows
     free._PAGE_CACHE.clear()
+    # Alguns portais apresentam os jogadores em DIVs, sem tags <p> ou <li>.
+    div_html = (
+        "<html><body><article><h1>Palmeiras x Fluminense 21/10/2026</h1>"
+        "<div><h3>Provável escalação do Palmeiras</h3>"
+        "<div>Carlos Miguel; Murilo, Gustavo Gómez e Barboza; Giay, "
+        "Marlon Freitas, Andreas Pereira, Lucas Evangelista e Piquerez; "
+        "Arias e Flaco López. Técnico: Abel Ferreira.</div></div>"
+        "<div><h3>Provável escalação do Fluminense</h3>"
+        "<div>Fábio; Guga, Thiago Silva, Millán e Guilherme Arana; "
+        "Nonato, Martinelli e Ganso; Canobbio, Savarino e Hulk. "
+        "Técnico: Marcão.</div></div>"
+        "</article></body></html>"
+    ).encode("utf-8")
+    with patch.object(free, "fetch", return_value=(div_html, "utf-8")):
+        div_page = free.read_public_page(original)
+    div_windows = reader.structured_lineup_windows(div_page["markdown"], 700)
+    assert any("Palmeiras | Provável escalação:" in row for row in div_windows), div_windows
+    assert any("Fluminense | Provável escalação:" in row for row in div_windows), div_windows
+    free._PAGE_CACHE.clear()
     # RSS malformado continua servindo apenas para descobrir URL original.
     malformed = (
         b'<rss><channel><item><title>Arsenal & City</title>'
