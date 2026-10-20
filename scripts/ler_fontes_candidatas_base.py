@@ -320,6 +320,11 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
             following, re.I,
         ):
             continue
+        # Quando a linha já diz "Escalação provável: ...", o leitor
+        # existente a atribui ao clube. Não criar outra reivindicação com
+        # o prefixo duplicado, pois isso simula conflito entre duas provas.
+        if re.match(r"^(?:prov[aá]vel\b|escala[cç][aã]o\s+prov[aá]vel\b)", following, re.I):
+            continue
         # Dez a 14 componentes reconhecíveis: a validação factual ainda
         # exigirá exatamente onze nomes por clube, sem inferir titulares.
         players = [
