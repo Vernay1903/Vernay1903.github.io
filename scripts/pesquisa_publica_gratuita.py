@@ -213,7 +213,7 @@ def search_rss(query: str, domains: list[str], config: dict[str, Any] | None = N
 
 
 class TextExtractor(HTMLParser):
-    BLOCK = {"p", "h1", "h2", "h3", "h4", "li", "blockquote", "time"}
+    BLOCK = {"p", "h1", "h2", "h3", "h4", "li", "blockquote", "time", "div"}
     IGNORE = {"script", "style", "noscript", "svg", "form", "nav", "footer", "aside"}
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
