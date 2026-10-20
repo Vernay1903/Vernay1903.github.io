@@ -432,7 +432,7 @@ def verified_editorial_excerpt(article, requirement_by_id, *, config):
                       or key in {"competitive_context", "standings_context",
                                  "qualification_scenario"}):
                 continue
-            fact = re.sub(r"\\s+", " ", value).strip()
+            fact = re.sub(r"\s+", " ", value).strip()
             if ":" in fact and len(fact.split(":", 1)[0]) < 42:
                 fact = fact.split(":", 1)[-1].strip()
             if not 35 <= len(fact) <= 280:
