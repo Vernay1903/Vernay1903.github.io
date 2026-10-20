@@ -134,6 +134,13 @@ def main():
         "Pedro Henrique; Ocheretko; Santana, Pedrinho, Marlon Gomes, "
         "Newertton; Kauã Elias. All. Arda Turan."
     )
+    # Goal Italia identifica explicitamente Shakhtar Donetsk, não só Shakhtar.
+    goal_it = italian.replace("SHAKHTAR (4-1-4-1):", "SHAKHTAR DONETSK (4-1-4-1):")
+    complete = reader.structured_lineup_windows(goal_it, 700)
+    assert any("Inter de Milão | Provável escalação:" in x for x in complete), complete
+    assert any("Shakhtar Donetsk | Provável escalação:" in x for x in complete), complete
+    assert any("Inter de Milão | Técnico: Cristian Chivu" in x for x in complete), complete
+    assert any("Shakhtar Donetsk | Técnico: Arda Turan" in x for x in complete), complete
     italian_windows = reader.structured_lineup_windows(italian, 700)
     assert any("Inter de Milão | Provável escalação:" in x for x in italian_windows), italian_windows
     assert any("Shakhtar Donetsk | Provável escalação:" in x for x in italian_windows), italian_windows
