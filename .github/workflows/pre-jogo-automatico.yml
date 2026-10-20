@@ -17,6 +17,10 @@ on:
     # Reservas limitadas: recuperam falhas; planejamento evita republicação.
     - cron: "17 6 * * *"
     - cron: "17 12 * * *"
+    # Novas fontes/escalações podem ser divulgadas após 09h de Brasília.
+    # Recuperações extras não removem travas editoriais nem republicam duplicatas.
+    - cron: "17 15 * * *"
+    - cron: "17 21 * * *"
   workflow_dispatch:
     inputs:
       mode:
