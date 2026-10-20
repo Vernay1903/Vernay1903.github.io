@@ -260,6 +260,37 @@ def structured_lineup_windows(content: str, max_segment_chars: int) -> list[str]
         flags=re.IGNORECASE,
     )
     windows: list[str] = []
+    # Eurosport identifica 22 nomes em seções individuais "INTER (3-5-2):"
+    # e "SHAKHTAR (4-1-4-1):". Preserve cada XI com seu treinador
+    # explicitamente impresso no mesmo parágrafo ("All. Chivu").
+    # Não confundir com escalação confirmada de outra data.
+    if re.search(r"\bprobabili\s+formazioni\b", content, re.I):
+        italian = re.compile(
+            r"^(INTER|SHAKHTAR)\s*\(\d(?:-\d){1,4}\)\s*:\s*"
+            r"(.+?)\s+All\.\s*([A-ZÀ-Ý][A-Za-zÀ-ÿ .'-]{2,50})\.?$",
+            re.I,
+        )
+        for row in rows:
+            found = italian.fullmatch(row)
+            if not found:
+                continue
+            club = "Inter de Milão" if found.group(1).upper() == "INTER" else "Shakhtar Donetsk"
+            lineup = found.group(2).strip(" .")
+            names = [name.strip(" .") for name in re.split(
+                r"\s*(?:;|,|\s+e\s+)\s*", lineup, flags=re.I
+            ) if name.strip(" .")]
+            if len(names) != 11:
+                continue
+            coach = found.group(3).strip(" .")
+            if club == "Inter de Milão" and coach.casefold() == "chivu":
+                if re.search(r"\bCristian\s+Chivu\b", content):
+                    coach = "Cristian Chivu"
+            xi = f"{club} | Provável escalação: {lineup}."
+            coach_line = f"{club} | Técnico: {coach}."
+            if len(xi) <= max_segment_chars:
+                windows.append(xi)
+            if len(coach_line) <= max_segment_chars:
+                windows.append(coach_line)
     # Matérias reais também usam bloco em maiúsculas ("PALMEIRAS Carlos
     # Miguel; ... Técnico: Abel"). Não tratar como um XI sem a lista
     # nominal e o técnico identificados na própria linha de conteúdo.
