@@ -62,6 +62,35 @@ def main():
     assert editorial.approved_headline_errors(title, valid, config=config) == []
     assert editorial.approved_excerpt_errors(excerpt) == []
 
+    # Confrontos de copa sem tabela de pontos devem usar os fatos atuais
+    # efetivamente verificados; excerpt não pode ficar apenas em dia/rodada.
+    cup = json.loads(json.dumps(article))
+    cup["match_context"]["competition"] = "Champions League"
+    cup["match_context"]["competition_slug"] = "champions-league"
+    cup["match_context"]["competition_stage"] = "LEAGUE_STAGE"
+    no_table = {
+        "recent_form_both_teams": {
+            "id": "recent_form_both_teams", "status": "verified",
+            "facts": [
+                {"field": "home_recent_form", "text":
+                 "Forma recente do Bahia: nos últimos cinco jogos da competição, "
+                 "três vitórias, um empate e uma derrota."},
+                {"field": "away_recent_form", "text":
+                 "Forma recente do Flamengo: nos últimos cinco jogos da competição, "
+                 "quatro vitórias e uma derrota."},
+            ],
+        }
+    }
+    _title, factual_excerpt = editorial.adjusted_service_headline(
+        cup, no_table, config=config,
+    )
+    assert factual_excerpt.startswith("As equipes se enfrentam neste domingo"), factual_excerpt
+    assert "três vitórias" in factual_excerpt and "quatro vitórias" in factual_excerpt
+    assert editorial.approved_excerpt_errors(factual_excerpt) == [], factual_excerpt
+    # Sem nenhum dado, permanece curto e bloqueado: jamais inventar contexto.
+    _, empty_excerpt = editorial.adjusted_service_headline(cup, {}, config=config)
+    assert editorial.approved_excerpt_errors(empty_excerpt)
+
     for bad_title in [
         "Real Madrid x Sevilla pela La Liga: horário",
         "Bahia x Flamengo pelo Brasileirão: horário e transmissão",
