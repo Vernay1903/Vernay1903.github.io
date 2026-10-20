@@ -434,9 +434,16 @@ def _build_checked_source(
         segments = _segments_for_h2h(content, max_segments=max_segments, max_chars=max_chars)
     elif requirement_id == EDITORIAL_RESEARCH_ID and isinstance(recent_team, str):
         headline = str(source.get("title", ""))
+        expected_side = "home" if recent_team == context.get("home") else "away"
+        primary_side = editorial_headline_primary_side(headline, context, config)
+        # Matérias oficiais "Treino antes da partida" podem mencionar o
+        # adversário na manchete, sem repetir o próprio clube. O domínio
+        # EXATO do clube é evidência de autoria, não prova de fatos de elenco.
+        official_host = str(source.get("curated_official_team_host") or "")
+        if official_host and base.urlparse(str(source.get("url") or "")).hostname == official_host:
+            primary_side = expected_side
         supported = (
-            editorial_headline_primary_side(headline, context, config) ==
-            ("home" if recent_team == context.get("home") else "away")
+            primary_side == expected_side
             and base.mentions_team(f"{headline}\n{content}", recent_team)
             and content_is_current_enough(content, source, target_year=target_year)
             and source_search.candidate_recent_for_article(
@@ -658,6 +665,37 @@ CURATED_2026_10_21: dict[tuple[str, str], dict[str, list[tuple[str, str]]]] = {
 }
 
 
+# Pautas e notícias esportivas reais publicadas em 20/10. A presença na
+# lista não autoriza nenhum fato: a página atual precisa ser baixada e lida.
+CURATED_EDITORIAL_2026_10_21 = {
+    ("inter de milao", "fk shakhtar donetsk"): {
+        "home": [
+            ("https://www.inter.it/en/news/training-inter-shakhtar-champions-league-2026-26",
+             "Ahead of Inter vs. Shakhtar: the Nerazzurri's training session", "inter.it"),
+            ("https://www.inter.it/en/news/press-conference-bastoni-inter-shakhtar-champions-league-2026-27",
+             'Bastoni: "Limit errors in order to improve"', "inter.it"),
+        ],
+        "away": [
+            ("https://www.inter.it/en/news/opposition-analysis-shakhtar-donetsk-champions-league-2026-27",
+             "Opposition analysis: Shakhtar Donetsk", None),
+        ],
+    },
+    ("real madrid", "rb leipzig"): {
+        "home": [
+            ("https://www.realmadrid.com/en-US/news/football/first-team/squad-call/convocatoria-del-real-madrid-contra-el-leipzig-20-10-2026",
+             "Real Madrid squad announcement against Leipzig", "realmadrid.com"),
+            ("https://www.realmadrid.com/en-US/news/football/first-team/press-conference/mourinho-20-10-2026",
+             'Mourinho: "A lot of points will be needed to avoid the playoff"', "realmadrid.com"),
+        ],
+        "away": [
+            ("https://rbleipzig.com/en/news/press-conference-champions-league-real-madrid-rb-leipzig-20th-october-2026",
+             '"Our style of play depends on it" – Raum urges RBL to play to their strengths',
+             "rbleipzig.com"),
+        ],
+    },
+}
+
+
 def checked_curated_sources(
     requirement_id: str, *, context: dict[str, Any], article_date: str,
     checked_at: str, config: dict[str, Any], max_sources: int,
@@ -836,6 +874,39 @@ def _search_and_check(
     )
     if not queries:
         return []
+
+    # Notícias oficiais atuais: investigação bilateral com uma fonte por time.
+    if requirement_id == EDITORIAL_RESEARCH_ID and recent_team:
+        key = (base.normalize_text(context.get("home")),
+               base.normalize_text(context.get("away")))
+        side = "home" if recent_team == context.get("home") else "away"
+        if str(context.get("kickoff_brasilia", ""))[:10] == "2026-10-21":
+            checked_editorial = []
+            for url, headline, authoritative_host in (
+                CURATED_EDITORIAL_2026_10_21.get(key, {}).get(side, [])
+            ):
+                candidate = {
+                    "url": url, "title": headline,
+                    "domain": base.urlparse(url).hostname,
+                    "publisher": base.urlparse(url).hostname,
+                    "source_type": "official", "position": 1,
+                    "published_hint": "Tue, 20 Oct 2026",
+                    # Somente fontes oficiais do clube proprietário do domínio
+                    # podem atribuir ao clube um título sem seu nome literal.
+                    "curated_official_team_host": authoritative_host,
+                }
+                checked = _scrape_candidate(
+                    candidate, requirement_id=requirement_id,
+                    context=context, target_year=_target_year(article_date),
+                    checked_at=checked_at, config=config,
+                    recent_team=recent_team,
+                )
+                if checked:
+                    checked_editorial.append(checked)
+                if len(checked_editorial) >= max_sources:
+                    return _dedupe(checked_editorial)
+            if checked_editorial:
+                return _dedupe(checked_editorial)
 
     # Consultar primeiro as fontes atuais já localizadas para os quatro jogos
     # de 21/10. O conteúdo continua sujeito à análise factual habitual.
