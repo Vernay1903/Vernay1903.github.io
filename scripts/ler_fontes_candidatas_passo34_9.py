@@ -719,6 +719,9 @@ CURATED_EDITORIAL_2026_10_21 = {
              'Mourinho: "A lot of points will be needed to avoid the playoff"', "realmadrid.com"),
         ],
         "away": [
+            ("https://www.goal.com/br/listas/tecnico-do-rb-leipzig-martin-demichelis-exalta-yan-diomande-antes-de-dificil-confronto-com-o-real-madrid/blt8510105f61789c3b",
+             "Técnico do RB Leipzig Martin Demichelis exalta Yan Diomande antes do Real Madrid",
+             None),
             ("https://rbleipzig.com/en/news/press-conference-champions-league-real-madrid-rb-leipzig-20th-october-2026",
              '"Our style of play depends on it" – Raum urges RBL to play to their strengths',
              "rbleipzig.com"),
@@ -952,6 +955,11 @@ def _search_and_check(
                     # podem atribuir ao clube um título sem seu nome literal.
                     "curated_official_team_host": authoritative_host,
                 }
+                # Data verificada na reportagem original da Goal Brasil,
+                # publicada em 20/10 às 06h15 UTC-4. A data qualifica
+                # somente o frescor: fatos continuam exigindo corpo lido.
+                if url.startswith("https://www.goal.com/br/listas/tecnico-do-rb-leipzig-"):
+                    candidate["published_hint"] = "Tue, 20 Oct 2026 06:15:00 -0400"
                 checked = _scrape_candidate(
                     candidate, requirement_id=requirement_id,
                     context=context, target_year=_target_year(article_date),
