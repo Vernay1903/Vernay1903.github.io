@@ -367,6 +367,40 @@ def validate_draft(
             if not anchor_visible or anchor_visible == allowed_url or len(anchor_visible.split()) < 2:
                 errors.append("o link interno deve usar âncora textual natural, não URL crua")
 
+    excerpt = draft.get("excerpt")
+    if excerpt is not None:
+        if not isinstance(excerpt, str):
+            errors.append("excerpt autoral não é texto válido")
+            excerpt = ""
+        excerpt = " ".join(excerpt.strip().split())
+        if not 125 <= len(excerpt) <= 350:
+            errors.append("excerpt autoral deve ter entre 125 e 350 caracteres")
+        if re.search(r"<[^>]+>|https?://|\{\{|\}\}", excerpt, re.I):
+            errors.append("excerpt autoral contém URL, HTML ou placeholder proibido")
+        # A forma de abertura foi aprovada pelo editor; a segunda frase é livre.
+        if not re.match(r"^(?:As equipes|Os times|Os clubes) se enfrentam\b", excerpt, re.I):
+            errors.append("excerpt autoral precisa abrir com As equipes/Os times/Os clubes se enfrentam")
+        template = folded_text(str(contract.get("excerpt") or ""))
+        day_pattern = r"(segunda-feira|terca-feira|quarta-feira|quinta-feira|sexta-feira|sabado|domingo)"
+        day = re.search(day_pattern, template)
+        if day and day.group(0) not in folded_text(excerpt):
+            errors.append("excerpt autoral não preserva o dia da semana verificado")
+        # Um número novo no excerpt não pode surgir apenas na chamada:
+        # precisa existir no corpo ou nos fatos já aprovados.
+        available = folded_text(visible_text(body) + " " + str(contract.get("excerpt") or ""))
+        for item in contract.get("facts_by_requirement", []):
+            if isinstance(item, dict):
+                available += " " + " ".join(
+                    folded_text(str(fact.get("text") or ""))
+                    for fact in item.get("facts", []) if isinstance(fact, dict)
+                )
+        unsupported = set(re.findall(r"\b\d+\b", folded_text(excerpt))) - set(re.findall(r"\b\d+\b", available))
+        if unsupported:
+            errors.append("excerpt autoral contém número sem suporte no corpo/fatos: " + ", ".join(sorted(unsupported)))
+        if excerpt:
+            from scripts import montar_pacote_editorial as editorial_package
+            errors.extend(editorial_package.approved_excerpt_errors(excerpt))
+
     text = visible_text(body)
     if re.search(r"https?://", text, flags=re.IGNORECASE):
         errors.append("URL crua não pode aparecer no texto visível")
@@ -375,7 +409,7 @@ def validate_draft(
     errors.extend(policy_errors)
     if config.get("editorial", {}).get("approved_pre_match_model"):
         errors.extend(editorial_style_errors(body, contract))
-        errors.extend(required_service_body_errors(body, contract))
+        errors.extend(required_service_body_errors(body, {**contract, "excerpt": excerpt or contract.get("excerpt")}))
 
     if "<ul" not in body.lower() or "<li" not in body.lower():
         errors.append("o rascunho deve usar ao menos uma lista com bolinhas (<ul><li>)")
@@ -418,6 +452,8 @@ def validate_draft(
 
     validated = deepcopy(draft)
     validated["body_html"] = body
+    if excerpt is not None:
+        validated["excerpt"] = excerpt
     validated["word_count"] = count
     validated["strong_subheading_count"] = len(headings)
     validated["internal_link_count"] = len(links)
