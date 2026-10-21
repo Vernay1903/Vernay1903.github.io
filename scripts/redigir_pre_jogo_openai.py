@@ -585,6 +585,7 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
     for attempt in range(1, limit + 1):
         response = {}
         draft = None
+        validated = None
         retryable = True
         try:
             response = post_json(provider["endpoint"], api_key, payload,
@@ -632,6 +633,11 @@ def generate_validated_draft(contract, provider_config, site_config, *, api_key,
             "incomplete_details": response.get("incomplete_details"),
             "usage": usage_summary(response),
             "estimated_cost_usd": estimate_usage_cost_usd(response, provider_config),
+            "editorial_scorecard": (
+                editorial_quality.editorial_scorecard(validated["body_html"], contract)
+                if isinstance(validated, dict) and validated.get("body_html")
+                else None
+            ),
             "validation_errors": errors,
         })
         audit_path.parent.mkdir(parents=True, exist_ok=True)
