@@ -972,7 +972,7 @@ def extract_referee_name(segment: str) -> str | None:
     if not match:
         return None
     value = re.split(
-        r"\s+(?:Historial|Retrospecto|Head|Preview|Alineaciones|Escalações|Confrontos|Arbitragem)\b",
+        r"\s+(?:Historial|Retrospecto|Head|Preview|Alineaciones|Escalações|Confrontos|Arbitragem|Asistente|Assistente|Cuarto|VAR|AVAR)\b",
         match.group(1),
     )[0].strip()
     return value if len(value.split()) >= 2 else None
