@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Teste imutável: proíbe a aprovação da matéria automática reprovada em 15/10."""
 from pathlib import Path
+import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -35,8 +36,20 @@ def main():
     assert quality.draft_quality_errors(rejected, bad), (
         "O texto que o editor avaliou como ruim precisa ser reprovado em vez de publicado."
     )
+    # Regressão das duas matérias automáticas de 21/10: não permitir
+    # contagem zero nem texto "jogos registrados" no corpo publicável.
+    robotic = (
+        "<p>Nos últimos 2 jogos registrados nessa competição, "
+        "1 vitória, 1 empate e 0 derrotas.</p>"
+    )
+    assert "linguagem de preenchimento ou metadados de cobertura no texto" in (
+        quality.draft_quality_errors(robotic, {"facts_by_requirement": []})
+    )
+    assert any(re.search(
+        expression, quality.fold("<p>Situação competitiva verificada do Arsenal</p>")
+    ) for expression in quality.ARTIFICIAL)
+
     approved = (ROOT/"ldu-x-palmeiras-libertadores-onde-assistir-horario-escalacoes.html").read_text(encoding="utf-8")
-    import re
     reference = re.search(r'<article id="articleBody"[\s\S]*?</article>', approved)
     assert reference, "Modelo LDU x Palmeiras não encontrado."
     assert quality.draft_quality_errors(reference.group(0), {"facts_by_requirement": []}) == [], (
