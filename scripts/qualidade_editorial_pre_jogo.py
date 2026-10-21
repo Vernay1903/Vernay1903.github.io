@@ -80,7 +80,7 @@ def meaningful_sporting_context(raw: str) -> bool:
     # não é novidade competitiva nem contextualização substancial.
     has_development = re.search(
         r"\b(?:lideranc\w*|lider|rebaixament\w*|zona de|pontos?|tabela|"
-        r"posicao|classific\w*|eliminad\w*|vantag\w*|"
+        r"posicao|classific\w*|eliminad\w*|vantag\w*|points|wins?|draws?|victor\w*|"
         r"vitori\w*|derrot\w*|empat\w*|invict\w*|"
         r"trein\w*|prepar\w*|desfalqu\w*|suspens\w*|"
         r"retorn\w*|lesion\w*|recuper\w*|convoc\w*|"
@@ -100,7 +100,7 @@ def meaningful_sporting_context(raw: str) -> bool:
         return False
     return bool(re.search(
         r"\b(?:lideranca|lider|rebaixamento|queda|zona|classificacao|vaga|"
-        r"semifinal|final|estreia|primeiro classico|pontos|tabela|"
+        r"semifinal|final|estreia|primeiro classico|pontos|points|wins?|victor\w*|draws?|tabela|"
         r"treinamento|treinou|preparacao|desfalqu\w*|"
         r"recuperacao|lesionado|retornou|convocado|"
         r"derrota|empatou|vitoria|invicto|venceu|perdeu|perde|ganhou|won|lost|beat|"
