@@ -156,6 +156,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
         "properties": {
             "slug": {"type": "string", "enum": [slug]},
             "body_html": {"type": "string", "minLength": 4400},
+            "excerpt": {"type": "string", "minLength": 125, "maxLength": 350},
             "fact_fields_used": {
                 "type": "array",
                 "items": {"type": "string", "enum": allowed},
@@ -163,7 +164,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
                 "maxItems": len(allowed),
             },
         },
-        "required": ["slug", "body_html", "fact_fields_used"],
+        "required": ["slug", "excerpt", "body_html", "fact_fields_used"],
         "additionalProperties": False,
     }
 
@@ -294,7 +295,7 @@ def system_instructions() -> str:
         "Planeje a matéria conforme a relevância e a quantidade dos fatos de cada equipe, sem cotas fixas de palavras por seção. Não estique retrospectos curtos nem transforme cinco resultados em cinco assuntos. "
         "Tags HTML, chaves JSON e fact_fields_used não contam como palavras. Não alongue o texto com generalidades para atingir tamanho. "
         "Se o contrato trouxer apenas placares, retrospecto, escalações e serviço, não é reportagem completa: o pipeline deve bloquear antes da redação. Não preencha com generalidades. "
-        "Retorne somente o objeto JSON exigido pelo schema."
+        "Redija livremente o excerpt (125 a 350 caracteres) como uma chamada jornalística em até duas frases, usando SOMENTE fatos presentes no contrato e no corpo, com dia da semana, fase/rodada quando confirmada e um gancho esportivo objetivo. Não copie o excerpt de referência do contrato literalmente: ele é apenas o resumo factual previamente validado. Preserve a abertura aprovada As equipes se enfrentam nesta/neste, sem citar os clubes duas vezes. Não anuncie dados que o corpo não contem. Retorne somente o objeto JSON exigido pelo schema."
     )
 
 def user_payload(contract: dict[str, Any]) -> str:
@@ -304,7 +305,7 @@ def user_payload(contract: dict[str, Any]) -> str:
     if len(serialized) > limit:
         fail(f"Contrato excede o limite de orçamento: {len(serialized)} > {limit} caracteres.")
     return (
-        "Redija a matéria utilizando somente este contrato editorial limpo. "
+         "Escreva corpo e excerpt em linguagem jornalística própria, com ângulo noticioso e estrutura livre, usando somente este contrato editorial limpo. "
         "Leia editorial_fact_hierarchy antes de compor a abertura: use um fato atual do mandante "
         "e um do visitante, nunca o mesmo gancho duas vezes; toda contagem de vitórias, empates "
         "e derrotas aparece apenas no bloco Como chega da equipe correspondente. "
