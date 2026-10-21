@@ -757,7 +757,7 @@ def checked_curated_sources(
         candidate = {
             "url": url, "title": title, "domain": base.urlparse(url).hostname,
             "publisher": base.urlparse(url).hostname,
-            "source_type": "major_sports_media", "position": index + 1,
+            "source_type": ("official" if base.urlparse(url).hostname == "www.afa.com.ar" else "major_sports_media"), "position": index + 1,
             "passo34_9_curated_discovery": True,
         }
         if not source_search.candidate_matches_match_category(candidate, context):
