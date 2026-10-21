@@ -8,6 +8,7 @@ on:
       - ".github/workflows/pre-jogo-auditoria.yml"
       - ".github/workflows/pre-jogo-automatico.yml"
       - "scripts/*pre_jogo*.py"
+      - "scripts/montar_pacote_editorial.py"
       - "scripts/enriquecer_fatos_football_data.py"
       - "scripts/buscar_fontes_serper.py"
       - "scripts/ler_fontes_candidatas*.py"
