@@ -328,7 +328,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             "minimum_words": int(config["article"]["min_words"]),
             "preferred_word_range": [950, 1250],
             "maximum_words": 1400,
-            "minimum_strong_subheadings": 3,  # mínimo técnico, independentemente do roteiro
+            "minimum_strong_subheadings": min(3, max(2, len(section_plan))),  # duas seções bastam quando só há dois assuntos
             "internal_link_exactly_once": True,
             "unordered_lists_for_service_blocks": True,
         },
