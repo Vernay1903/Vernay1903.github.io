@@ -387,7 +387,7 @@ def validate_draft(
             errors.append("excerpt autoral não preserva o dia da semana verificado")
         # Um número novo no excerpt não pode surgir apenas na chamada:
         # precisa existir no corpo ou nos fatos já aprovados.
-        available = folded_text(visible_text(body) + " " + str(contract.get("excerpt") or ""))
+        available = folded_text(visible_text(body) + " " + str(contract.get("excerpt") or "") + " " + str(contract.get("date") or "") + " " + str((contract.get("match_context") or {}).get("kickoff_brasilia") or ""))
         for item in contract.get("facts_by_requirement", []):
             if isinstance(item, dict):
                 available += " " + " ".join(
