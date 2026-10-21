@@ -183,6 +183,8 @@ def main():
     }
     _, madrid_excerpt = editorial.adjusted_service_headline(real, facts_with_history, config=config)
     assert "Real Madrid encerrou o treinamento" in madrid_excerpt, madrid_excerpt
+    assert madrid_excerpt.count("rodada") == 1, madrid_excerpt
+    assert madrid_excerpt.count("Champions League") == 1, madrid_excerpt
     assert "Na ocasião" not in madrid_excerpt, madrid_excerpt
     assert "Contexto esportivo atual verificado" not in madrid_excerpt
     assert editorial.approved_excerpt_errors(madrid_excerpt) == [], madrid_excerpt
