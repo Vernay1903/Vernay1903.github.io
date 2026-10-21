@@ -269,8 +269,8 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     elif real_stakes_fields:
         section_plan.append("Contexto competitivo da partida (subtítulo específico a definir)")
     section_plan.extend([
-        f"Como chega o {popular_home}",
-        f"Como chega o {popular_away}",
+        f"Notícias, preparação e campanha do {popular_home}",
+        f"Notícias, preparação e campanha do {popular_away}",
     ])
     has_direct_history = any(
         key.startswith(("h2h_", "games", "home_wins", "away_wins", "draws"))
@@ -361,8 +361,8 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "toda a ficha de serviço na abertura."
             ),
             "approved_model": (
-                "Seguir a estrutura da prévia aprovada LDU x Palmeiras (16/09/2026), que explicou a eliminatória, preparação específica e alterações dos times: abertura factual curta; contexto da partida "
-                "somente quando houver fato verificável; Como chega o mandante; Como chega o visitante; prováveis "
+                 "Tomar a prévia aprovada LDU x Palmeiras (16/09/2026) como referência de profundidade e fluidez, nunca como ordem de seções a copiar. Ela explicou eliminatória, preparação e mudanças das equipes: abertura com fato esportivo, contexto da partida "
+                "somente quando houver fato verificável; desenvolvimento específico de cada clube com organização livre; prováveis "
                 "escalações em bloco apenas com 11 nomes por time verificados; retrospecto proporcional ao tamanho real da amostra; Onde assistir apenas com transmissão confirmada; e fechamento "
                 "apenas se houver uma consequência, cenário ou próximo jogo realmente fornecido no contrato."
             ),
