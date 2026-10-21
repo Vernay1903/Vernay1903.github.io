@@ -408,45 +408,91 @@ def _match_title_teams(article: dict[str, Any]) -> tuple[str, str] | None:
     return None
 
 
-def verified_editorial_excerpt(article, requirement_by_id, *, config):
-    """Usa o dia verificado e somente fatos já validados para criar o resumo.
+def _excerpt_news_sentence(raw: str) -> str | None:
+    """Converte SOMENTE fatos já verificados em frase jornalística para chamada.
 
-    Evita bloqueio permanente dos confrontos de copa quando não há
-    classificação em pontos corridos. Nunca preenche texto por suposição.
+    Evita transformar cabeçalhos de proveniência, históricos e balanços
+    parciais de APIs em texto visível. Não cria nenhum fato novo.
+    """
+    text = re.sub(r"\s+", " ", str(raw or "")).strip()
+    text = re.sub(
+        r"^(?:situação competitiva verificada d[oa]|"
+        r"contexto esportivo atual verificado d[oa]|"
+        r"notícia de elenco d[oa])\s+[^:]{2,65}:\s*",
+        "", text, flags=re.I,
+    )
+    # Prefixos internos menores também surgem em outros requisitos.
+    text = re.sub(
+        r"^(?:forma recente|resultados recentes)\s+d[oa]\s+[^:]{2,65}:\s*",
+        "", text, flags=re.I,
+    )
+    if ":" in text and len(text.split(":", 1)[0]) < 42:
+        prefix = text.split(":", 1)[0].casefold()
+        if any(p in prefix for p in ("contexto", "situação", "preparação", "elenco")):
+            text = text.split(":", 1)[1].strip()
+    normalized = " ".join(text.casefold().split())
+    # "Na ocasião" refere-se normalmente a um duelo histórico: não pode
+    # substituir a preparação ATUAL no excerpt de um jogo de hoje.
+    if re.match(r"^(?:na ocasião|naquele encontro|à época|em \d{4}\b)", normalized):
+        return None
+    if re.search(
+        r"\b(?:registrad[oa]s?|recorte consultado|recorte considerado|"
+        r"amostra|dados fornecidos|fatos verificados|"
+        r"situação competitiva verificada|contexto esportivo atual verificado)\b",
+        normalized,
+    ):
+        return None
+    if re.search(r"https?://|<[^>]+>|\b\d+\s+(?:empates?|derrotas?)\s+e\s+0\b", text, re.I):
+        return None
+    if not 38 <= len(text) <= 235:
+        return None
+    return text.rstrip(" .;") + "."
+
+
+def verified_editorial_excerpt(article, requirement_by_id, *, config):
+    """Lide objetivo mais UMA notícia atual, nunca metadados de pesquisa.
+
+    Preserva dia, rodada/fase e o fato confirmado. Não usa episódios
+    históricos isolados nem contagens parciais de jogos da API no resumo.
     """
     opening = contextual_excerpt(article, requirement_by_id, config=config)
-    candidates = []
-    # Primeiramente, novidades esportivas; depois resultados recentes
-    # confirmados por dados estruturados, com escopo temporal explícito.
-    for rid in ("editorial_match_stakes", "editorial_team_news",
-                "stakes_and_qualification_scenarios_when_applicable",
-                "recent_form_both_teams"):
+    ranked: list[tuple[int, str]] = []
+    for rid, priority in (
+        ("editorial_team_news", 0),
+        ("editorial_individual_team_context", 1),
+        ("editorial_match_stakes", 2),
+        ("stakes_and_qualification_scenarios_when_applicable", 3),
+        ("recent_form_both_teams", 4),
+    ):
+        # No caso de um resumo da ESPN composto apenas de 2 jogos
+        # "registrados", não inventar uma campanha total da temporada.
+        if rid == "recent_form_both_teams":
+            continue
         data = _fact_map(requirement_by_id.get(rid))
-        for key, value in data.items():
-            if rid == "recent_form_both_teams":
-                if key not in {"home_recent_form", "away_recent_form"}:
-                    continue
-            elif not (key.startswith(("home_stakes_", "away_stakes_",
-                                      "home_team_news_", "away_team_news_",
-                                      "stakes_", "qualification_"))
-                      or key in {"competitive_context", "standings_context",
-                                 "qualification_scenario"}):
+        for key, raw in data.items():
+            if not (
+                key.startswith(("home_stakes_", "away_stakes_",
+                                "home_team_news_", "away_team_news_",
+                                "stakes_", "qualification_"))
+                or key in {"competitive_context", "standings_context",
+                           "qualification_scenario"}
+            ):
                 continue
-            fact = re.sub(r"\s+", " ", value).strip()
-            if ":" in fact and len(fact.split(":", 1)[0]) < 42:
-                fact = fact.split(":", 1)[-1].strip()
-            if not 35 <= len(fact) <= 280:
+            sentence = _excerpt_news_sentence(raw)
+            if sentence is None:
                 continue
-            if re.search(r"https?://|<[^>]+>", fact, re.I):
-                continue
-            fact = fact.rstrip(" .;") + "."
-            if fact.casefold() not in {x.casefold() for x in candidates}:
-                candidates.append(fact)
-            if len(candidates) == 2:
-                break
-        if len(candidates) == 2:
-            break
-    return " ".join([opening, *candidates])
+            ranked.append((priority, sentence))
+    seen = set()
+    for _, sentence in sorted(ranked, key=lambda x: x[0]):
+        key = sentence.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        if len(opening) + 1 + len(sentence) <= 350:
+            return opening + " " + sentence
+    # Não produzir frase inventada quando só existem históricos e estatísticas
+    # parciais: a chamada curta reprova na trava editorial existente.
+    return opening
 
 
 def adjusted_service_headline(
