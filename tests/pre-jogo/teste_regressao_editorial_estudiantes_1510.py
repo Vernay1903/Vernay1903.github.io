@@ -58,6 +58,23 @@ def main():
         assert "linguagem de preenchimento ou metadados de cobertura no texto" in (
             quality.draft_quality_errors(frase, {"facts_by_requirement": []})
         ), frase
+    contexto = {"match_context": {"home": "Bayern de Munique", "away": "Arsenal"}}
+    base = [
+        "<p>O Bayern soma quatro pontos depois de dois jogos da fase de liga, "
+        "com a equipe alemã agora voltada ao próximo adversário.</p>",
+        "<p>Para o Bayern de Munique, quatro pontos em dois compromissos "
+        "antecedem o jogo da terceira rodada da competição europeia.</p>",
+        "<p>O Bayern chega com quatro pontos, enquanto os demais clubes "
+        "se preparam para a rodada da Champions League.</p>",
+        "<p>O Bayern encerra o retrospecto com quatro pontos na competição, "
+        "depois de resultados que foram apresentados no começo da matéria.</p>",
+    ]
+    assert quality.repeated_team_points_errors("".join(base), contexto), (
+        "A mesma pontuação repetida quatro vezes precisa ser reprovada."
+    )
+    assert not quality.repeated_team_points_errors("".join(base[:2]), contexto), (
+        "Uma ou duas referências justificadas não podem bloquear a reportagem."
+    )
     natural = "<p>O Arsenal venceu Napoli e Lille nas duas primeiras rodadas da Champions.</p>"
     assert quality.draft_quality_errors(natural, {"facts_by_requirement": []}) == [], natural
 
