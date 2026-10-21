@@ -481,6 +481,31 @@ def _excerpt_form_context(raw: str) -> str | None:
     return f"O {team.strip()} soma {record} {period}."
 
 
+def _excerpt_remove_repeated_round(opening: str, sentence: str) -> str:
+    """Evita repetir na notícia do elenco a rodada já informada na abertura.
+
+    A remoção ocorre somente quando o número da rodada é o MESMO; resultados
+    sobre outra rodada não perdem contexto. Não cria nem modifica fatos.
+    """
+    match = re.search(r"\b(\d{1,2})[ªº]\s+rodada\b", opening, flags=re.I)
+    if not match:
+        return sentence
+    round_number = int(match.group(1))
+    ordinal_names = (
+        "primeira", "segunda", "terceira", "quarta", "quinta",
+        "sexta", "sétima", "oitava", "nona", "décima",
+    )
+    same_round = [rf"{round_number}[ªº]"]
+    if 1 <= round_number <= len(ordinal_names):
+        same_round.append(ordinal_names[round_number - 1])
+    suffix = (
+        rf"\s+pel[ao]\s+(?:{'|'.join(same_round)})\s+rodada"
+        r"(?:\s+da\s+fase\s+de\s+liga)?\s+d[ao]\s+[^.;]+(?=\.)"
+    )
+    trimmed = re.sub(suffix, "", sentence, flags=re.I)
+    return trimmed if len(trimmed) >= 38 else sentence
+
+
 def verified_editorial_excerpt(article, requirement_by_id, *, config):
     """Lide objetivo mais UMA notícia atual, nunca metadados de pesquisa.
 
@@ -511,6 +536,8 @@ def verified_editorial_excerpt(article, requirement_by_id, *, config):
             ):
                 continue
             sentence = _excerpt_news_sentence(raw)
+            if sentence is not None:
+                sentence = _excerpt_remove_repeated_round(opening, sentence)
             if sentence is None:
                 continue
             ranked.append((priority, sentence))

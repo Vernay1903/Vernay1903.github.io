@@ -210,6 +210,45 @@ def repeated_stat_summaries_errors(body_html: str) -> list[str]:
     return []
 
 
+def repeated_team_points_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
+    """Evita recontar a mesma pontuação em quatro parágrafos da matéria.
+
+    Critério conservador: exige menções repetidas ao MESMO clube e à MESMA
+    quantidade de pontos. Não penaliza recapitulações isoladas.
+    """
+    context = contract.get("match_context") or {}
+    names = [
+        fold(str(context.get("display_home") or context.get("home") or "")).split(),
+        fold(str(context.get("display_away") or context.get("away") or "")).split(),
+    ]
+    aliases = [name[0] for name in names if name and len(name[0]) >= 5]
+    if len(aliases) != 2 or aliases[0] == aliases[1]:
+        return []
+    number_names = {
+        "um": "1", "uma": "1", "dois": "2", "duas": "2",
+        "tres": "3", "quatro": "4", "cinco": "5", "seis": "6",
+        "sete": "7", "oito": "8", "nove": "9", "dez": "10",
+        "onze": "11", "doze": "12", "treze": "13",
+        "quatorze": "14", "quinze": "15", "dezesseis": "16",
+        "dezessete": "17", "dezoito": "18", "dezenove": "19",
+        "vinte": "20",
+    }
+    seen: dict[tuple[str, str], set[int]] = {}
+    for index, paragraph in enumerate(fold(raw) for raw in PARAGRAPHS.findall(body_html)):
+        numbers = re.findall(r"\b(\d+|[a-z]+)\s+pontos\b", paragraph)
+        for alias in aliases:
+            if not re.search(r"\b" + re.escape(alias) + r"\b", paragraph):
+                continue
+            for raw in numbers:
+                normalized = number_names.get(raw, raw)
+                if not normalized.isdigit():
+                    continue
+                seen.setdefault((alias, normalized), set()).add(index)
+    if any(len(indices) >= 4 for indices in seen.values()):
+        return ["mesma pontuação de um clube repetida em quatro ou mais parágrafos"]
+    return []
+
+
 def unrelated_story_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     """Impede o desvio visto na matéria real: Neymar/Santos em Palmeiras x Flu."""
     context = contract.get("match_context") or {}
@@ -312,6 +351,12 @@ ARTIFICIAL = (
     r"\b(?:0\s+empates?|0\s+derrotas?|0\s+vitorias?)\b",
     r"\bsituacao competitiva verificada\b",
     r"\bcontexto esportivo atual verificado\b",
+    # Regressão de 21/10: zeros escritos por extenso e metalinguagem no histórico.
+    r"\b(?:\d+|uma?|duas?|tres|quatro|cinco|seis|sete|oito|nove|dez)\s+"
+    r"(?:vitorias?|empates?|derrotas?)\b.{0,90}"
+    r"\bnenhum(?:a)?\s+(?:vitorias?|empates?|derrotas?)\b",
+    r"\bo retrospecto considerado\b",
+    r"\ba referencia a historia\b.{0,120}\bajuda a dimensionar\b",
 )
 
 def redundant_recent_calendar_errors(body_html: str) -> list[str]:
@@ -467,6 +512,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     errors.extend(dense_fixture_enumeration_errors(body_html))
     errors.extend(near_duplicate_errors(body_html))
     errors.extend(repeated_stat_summaries_errors(body_html))
+    errors.extend(repeated_team_points_errors(body_html, contract))
     errors.extend(repeated_preparation_hook_errors(body_html, contract))
     errors.extend(unrelated_story_errors(body_html, contract))
     errors.extend(rivalry_context_errors(body_html, contract))

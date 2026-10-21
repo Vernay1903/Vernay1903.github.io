@@ -532,11 +532,19 @@ def focused_revision_guidance(errors: list[str]) -> str:
         )
     if any("linguagem de preenchimento ou metadados de cobertura" in error for error in errors):
         parts.append(
-            "O rascunho vazou linguagem de API: substitua 'jogos registrados', "
-            "rótulos internos e contagens com zero por prosa jornalística. "
+            "O rascunho tem linguagem mecânica: elimine 'jogos registrados', "
+            "'o retrospecto considerado', balanços com zero, inclusive 'nenhum empate' "
+            "ou 'nenhuma derrota', e frases genéricas sobre o peso da história. "
             "Use apenas o período efetivamente confirmado, sem tratar uma "
             "amostra parcial como campanha completa. Cite um resultado ou "
             "notícia de preparação concreta, sem acrescentar fatos novos."
+        )
+    if any("mesma pontuação de um clube repetida" in error for error in errors):
+        parts.append(
+            "A pontuação do mesmo clube foi recontada em muitos parágrafos. "
+            "Apresente a posição e os pontos no contexto competitivo uma vez, "
+            "sem repeti-los na abertura, Como chega e fechamento. Mantenha apenas "
+            "fatos verificados que acrescentem informação."
         )
     if any("chamada promete transmissão" in error for error in errors):
         parts.append(

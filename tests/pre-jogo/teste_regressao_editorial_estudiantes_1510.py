@@ -49,6 +49,35 @@ def main():
         expression, quality.fold("<p>Situação competitiva verificada do Arsenal</p>")
     ) for expression in quality.ARTIFICIAL)
 
+    # Regressoes efetivamente observadas na matéria Bayern x Arsenal de 21/10.
+    for frase in (
+        "<p>O balanço recente é de duas vitórias, nenhum empate e nenhuma derrota.</p>",
+        "<p>O retrospecto considerado reúne três encontros pela competição.</p>",
+        "<p>A referência à história da Champions League ajuda a dimensionar a competição.</p>",
+    ):
+        assert "linguagem de preenchimento ou metadados de cobertura no texto" in (
+            quality.draft_quality_errors(frase, {"facts_by_requirement": []})
+        ), frase
+    contexto = {"match_context": {"home": "Bayern de Munique", "away": "Arsenal"}}
+    base = [
+        "<p>O Bayern soma quatro pontos depois de dois jogos da fase de liga, "
+        "com a equipe alemã agora voltada ao próximo adversário.</p>",
+        "<p>Para o Bayern de Munique, quatro pontos em dois compromissos "
+        "antecedem o jogo da terceira rodada da competição europeia.</p>",
+        "<p>O Bayern chega com quatro pontos, enquanto os demais clubes "
+        "se preparam para a rodada da Champions League.</p>",
+        "<p>O Bayern encerra o retrospecto com quatro pontos na competição, "
+        "depois de resultados que foram apresentados no começo da matéria.</p>",
+    ]
+    assert quality.repeated_team_points_errors("".join(base), contexto), (
+        "A mesma pontuação repetida quatro vezes precisa ser reprovada."
+    )
+    assert not quality.repeated_team_points_errors("".join(base[:2]), contexto), (
+        "Uma ou duas referências justificadas não podem bloquear a reportagem."
+    )
+    natural = "<p>O Arsenal venceu Napoli e Lille nas duas primeiras rodadas da Champions.</p>"
+    assert quality.draft_quality_errors(natural, {"facts_by_requirement": []}) == [], natural
+
     approved = (ROOT/"ldu-x-palmeiras-libertadores-onde-assistir-horario-escalacoes.html").read_text(encoding="utf-8")
     reference = re.search(r'<article id="articleBody"[\s\S]*?</article>', approved)
     assert reference, "Modelo LDU x Palmeiras não encontrado."

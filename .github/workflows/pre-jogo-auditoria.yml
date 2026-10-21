@@ -2,6 +2,15 @@ name: Pré-jogo — auditoria offline
 
 on:
   workflow_dispatch:
+  # Regressões de pré-jogo devem passar ANTES de integrar mudanças editoriais.
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - ".github/workflows/pre-jogo-auditoria.yml"
+      - "scripts/*pre_jogo*.py"
+      - "scripts/montar_pacote_editorial.py"
+      - "config/persona-criador-de-materias-prejogo.txt"
+      - "tests/pre-jogo/**"
   push:
     branches: [main]
     paths:
@@ -63,6 +72,8 @@ jobs:
           echo "OK: auditoria offline concluída sem OpenAI, Serper ou publicação."
 
   verificar-servicos:
+    # PR executa só os testes locais: sem secrets, APIs externas ou publicação.
+    if: ${{ github.event_name != 'pull_request' }}
     needs: auditar
     runs-on: ubuntu-latest
     timeout-minutes: 25
