@@ -96,6 +96,24 @@ def run():
                 assert all(item["url"].startswith("https://") for item in rows)
                 # A notícia oficial pode ter slug permanente sem ano;
                 # a data do conteúdo segue obrigatória no leitor real.
+    # O calendário já normaliza FK Shakhtar Donetsk para Shakhtar Donetsk.
+    # Não deixar esta mudança de grafia perder TODAS as fontes de pesquisa.
+    normalized_context = {
+        "home": "Inter de Milão", "away": "Shakhtar Donetsk",
+        "competition": "Champions League",
+        "kickoff_brasilia": "2026-10-21T16:00:00-03:00",
+    }
+    assert research._fixture_curated_key(normalized_context) == (
+        "inter de milao", "fk shakhtar donetsk"
+    )
+    with patch.object(research, "_scrape_candidate",
+                      side_effect=lambda row, **_kw: row) as scrape:
+        rows = research.checked_curated_sources(
+            RID, context=normalized_context, article_date="2026-10-21",
+            checked_at="2026-10-20T20:00:00-03:00",
+            config={}, max_sources=3,
+        )
+        assert rows and scrape.called, rows
     print("OK: pesquisa complementar após fonte parcial e preservação de evidências existentes.")
 
 if __name__=="__main__":
