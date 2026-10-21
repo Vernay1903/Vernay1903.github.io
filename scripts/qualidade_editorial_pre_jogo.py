@@ -180,15 +180,56 @@ def near_duplicate_errors(body_html: str) -> list[str]:
                 return ["parágrafos retomam praticamente os mesmos fatos com outras palavras"]
     return []
 
-def repeated_stat_summaries_errors(body_html: str) -> list[str]:
-    """Bloqueia o mesmo V/E/D em dois parágrafos, mesmo com derrota singular."""
+def _team_aliases_for_editorial_stats(contract: dict[str, Any] | None) -> dict[str, list[str]]:
+    """Use nomes inequívocos das equipes, sem confundir Real Madrid com Betis."""
+    context = (contract or {}).get("match_context") or {}
+    values = {
+        side: fold(str(context.get(f"display_{side}") or context.get(side) or ""))
+        for side in ("home", "away")
+    }
+    if not values["home"] or not values["away"] or values["home"] == values["away"]:
+        return {}
+    result = {side: [name] for side, name in values.items()}
+    tokens = {side: name.split() for side, name in values.items()}
+    for side, parts in tokens.items():
+        first = parts[0]
+        other = "away" if side == "home" else "home"
+        if (len(first) >= 5 and first not in {"real", "sport", "inter", "atletico"}
+                and first != tokens[other][0]):
+            result[side].append(first)
+    return result
+
+
+def _mentioned_sides(raw: str, aliases: dict[str, list[str]]) -> list[str]:
+    value = fold(raw)
+    return [
+        side for side, variants in aliases.items()
+        if any(re.search(r"\b" + re.escape(name) + r"\b", value) for name in variants)
+    ]
+
+
+def repeated_stat_summaries_errors(
+    body_html: str, contract: dict[str, Any] | None = None,
+) -> list[str]:
+    """Não confunde balanços idênticos de clubes DIFERENTES com duplicação."""
     numbers = {
         "um": "1", "uma": "1", "dois": "2", "duas": "2",
         "tres": "3", "quatro": "4", "cinco": "5", "seis": "6",
         "sete": "7", "oito": "8", "nove": "9", "dez": "10",
     }
-    seen: set[tuple[tuple[str, str], ...]] = set()
-    for paragraph in paragraphs(body_html):
+    aliases = _team_aliases_for_editorial_stats(contract)
+    seen: dict[str, set[tuple[tuple[str, str], ...]]] = {}
+    section_side: str | None = None
+    for node in PARAGRAPHS.finditer(body_html):
+        raw = node.group(1)
+        heading = re.fullmatch(r"\s*<strong(?:\s[^>]*)?>.*?</strong>\s*", raw, re.I | re.S)
+        if heading:
+            owners = _mentioned_sides(raw, aliases)
+            section_side = owners[0] if len(owners) == 1 else None
+            continue
+        paragraph = fold(raw)
+        if len(paragraph.split()) < 23:
+            continue
         tokens = re.findall(
             r"\b(\d+|um|uma|dois|duas|tres|quatro|cinco|seis|sete|oito|nove|dez)"
             r"\s+(vitorias?|empates?|derrotas?)\b",
@@ -204,25 +245,36 @@ def repeated_stat_summaries_errors(body_html: str) -> list[str]:
             if len(current) == 3:
                 observed.add(tuple(sorted(current.items())))
                 current = {}
-        if seen & observed:
+        if not observed:
+            continue
+        if aliases:
+            owners = _mentioned_sides(raw, aliases)
+            if len(owners) > 1:
+                # "Como chega Bayern" pode citar Arsenal como adversário.
+                # Nessa seção, o registro pertence ao clube destacado;
+                # fora dela, não atribuir a mesma estatística aos dois.
+                side = section_side if section_side in owners else None
+            else:
+                side = owners[0] if owners else section_side
+            if side is None:
+                continue  # Estatística sem time atribuível não comprova duplicação.
+        else:
+            side = "legacy"
+        group = seen.setdefault(side, set())
+        if group & observed:
             return ["o mesmo balanço de vitórias, empates e derrotas é repetido em seções diferentes"]
-        seen.update(observed)
+        group.update(observed)
     return []
 
 
 def repeated_team_points_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
-    """Evita recontar a mesma pontuação em quatro parágrafos da matéria.
+    """Rejeita a mesma pontuação do mesmo clube em quatro parágrafos.
 
-    Critério conservador: exige menções repetidas ao MESMO clube e à MESMA
-    quantidade de pontos. Não penaliza recapitulações isoladas.
+    Só atribui números quando uma FRASE se refere inequivocamente a um time,
+    mesmo se outro parágrafo contiver uma comparação com o adversário.
     """
-    context = contract.get("match_context") or {}
-    names = [
-        fold(str(context.get("display_home") or context.get("home") or "")).split(),
-        fold(str(context.get("display_away") or context.get("away") or "")).split(),
-    ]
-    aliases = [name[0] for name in names if name and len(name[0]) >= 5]
-    if len(aliases) != 2 or aliases[0] == aliases[1]:
+    aliases = _team_aliases_for_editorial_stats(contract)
+    if len(aliases) != 2:
         return []
     number_names = {
         "um": "1", "uma": "1", "dois": "2", "duas": "2",
@@ -234,16 +286,16 @@ def repeated_team_points_errors(body_html: str, contract: dict[str, Any]) -> lis
         "vinte": "20",
     }
     seen: dict[tuple[str, str], set[int]] = {}
-    for index, paragraph in enumerate(fold(raw) for raw in PARAGRAPHS.findall(body_html)):
-        numbers = re.findall(r"\b(\d+|[a-z]+)\s+pontos\b", paragraph)
-        for alias in aliases:
-            if not re.search(r"\b" + re.escape(alias) + r"\b", paragraph):
-                continue
-            for raw in numbers:
-                normalized = number_names.get(raw, raw)
-                if not normalized.isdigit():
-                    continue
-                seen.setdefault((alias, normalized), set()).add(index)
+    for index, raw in enumerate(PARAGRAPHS.findall(body_html)):
+        plain = html.unescape(TAGS.sub(" ", raw))
+        for sentence in re.split(r"(?<=[.!?])\s+", plain):
+            owners = _mentioned_sides(sentence, aliases)
+            if len(owners) != 1:
+                continue  # Nunca atribuir os pontos de um clube ao adversário.
+            for raw_number in re.findall(r"\b(\d+|[a-z]+)\s+pontos\b", fold(sentence)):
+                number = number_names.get(raw_number, raw_number)
+                if number.isdigit():
+                    seen.setdefault((owners[0], number), set()).add(index)
     if any(len(indices) >= 4 for indices in seen.values()):
         return ["mesma pontuação de um clube repetida em quatro ou mais parágrafos"]
     return []
@@ -511,7 +563,7 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     errors.extend(repeated_lineup_errors(body_html, contract))
     errors.extend(dense_fixture_enumeration_errors(body_html))
     errors.extend(near_duplicate_errors(body_html))
-    errors.extend(repeated_stat_summaries_errors(body_html))
+    errors.extend(repeated_stat_summaries_errors(body_html, contract))
     errors.extend(repeated_team_points_errors(body_html, contract))
     errors.extend(repeated_preparation_hook_errors(body_html, contract))
     errors.extend(unrelated_story_errors(body_html, contract))

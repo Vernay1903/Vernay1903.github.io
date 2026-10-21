@@ -444,6 +444,13 @@ def _excerpt_news_sentence(raw: str) -> str | None:
         return None
     if re.search(r"https?://|<[^>]+>|\b\d+\s+(?:empates?|derrotas?)\s+e\s+0\b", text, re.I):
         return None
+    if re.search(
+        r"\b(?:\d+|um|uma|dois|duas|tr[eê]s|quatro|cinco)\s+"
+        r"vit[oó]rias?\s*,\s*nenhum(?:a)?\s+empates?\s+e\s+"
+        r"nenhum(?:a)?\s+derrotas?\b",
+        text, re.I,
+    ):
+        return None  # Não transformar balanço com zeros por extenso em notícia do excerpt.
     if not 38 <= len(text) <= 235:
         return None
     return text.rstrip(" .;") + "."
@@ -716,7 +723,10 @@ def approved_excerpt_errors(excerpt: str) -> list[str]:
         r"situa[cç][aã]o competitiva verificada|"
         r"contexto esportivo atual verificado|"
         r"\bnos [uú]ltimos\s+\d+\s+jogos\s+registrados\b|"
-        r"\b0\s+(?:empates?|derrotas?|vit[oó]rias?)\b",
+        r"\b0\s+(?:empates?|derrotas?|vit[oó]rias?)\b|"
+        r"\b(?:\d+|um|uma|dois|duas|tr[eê]s|quatro|cinco)\s+"
+        r"vit[oó]rias?\s*,\s*nenhum(?:a)?\s+empates?\s+e\s+"
+        r"nenhum(?:a)?\s+derrotas?\b",
         value, re.I,
     ):
         return ["excerpt_com_metadados_ou_contagem_mecanica"]
