@@ -312,6 +312,12 @@ ARTIFICIAL = (
     r"\b(?:0\s+empates?|0\s+derrotas?|0\s+vitorias?)\b",
     r"\bsituacao competitiva verificada\b",
     r"\bcontexto esportivo atual verificado\b",
+    # Regressão de 21/10: zeros escritos por extenso e metalinguagem no histórico.
+    r"\b(?:\d+|uma?|duas?|tres|quatro|cinco|seis|sete|oito|nove|dez)\s+"
+    r"(?:vitorias?|empates?|derrotas?)\b.{0,90}"
+    r"\bnenhum(?:a)?\s+(?:vitorias?|empates?|derrotas?)\b",
+    r"\bo retrospecto considerado\b",
+    r"\ba referencia a historia\b.{0,120}\bajuda a dimensionar\b",
 )
 
 def redundant_recent_calendar_errors(body_html: str) -> list[str]:
