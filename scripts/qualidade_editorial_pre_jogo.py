@@ -307,6 +307,11 @@ ARTIFICIAL = (
     r"\bo encontro tambem pode ser acompanhado dentro da historia\b",
     r"\buma eliminatoria de alto peso na competicao\b",
     r"\bo mando (?:argentino|brasileiro) sera o primeiro elemento\b",
+    # Regressão 21/10: estatística parcial de API copiada literalmente.
+    r"\b(?:nos|em)\s+(?:ultimos\s+)?\d+\s+jogos\s+(?:concluidos\s+)?registrados\b",
+    r"\b(?:0\s+empates?|0\s+derrotas?|0\s+vitorias?)\b",
+    r"\bsituacao competitiva verificada\b",
+    r"\bcontexto esportivo atual verificado\b",
 )
 
 def redundant_recent_calendar_errors(body_html: str) -> list[str]:
