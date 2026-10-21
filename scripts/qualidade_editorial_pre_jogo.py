@@ -620,9 +620,22 @@ def editorial_scorecard(body_html: str, contract: dict[str, Any]) -> dict[str, A
             fold(head.group(1)),
         )
     ]
+    verified = facts(contract)
+    # Quando a apuração contém SOMENTE totais, exigir um jogo datado faria
+    # o redator inventar um episódio. Nessa situação, totais específicos
+    # comprovados e claramente delimitados são o melhor histórico possível.
+    totals_verified = all(
+        verified.get(key) for key in ("games", "home_wins", "away_wins", "draws")
+    )
     history_ok = not historical_sections or all(
         bool(re.search(r"\b20\d{2}\b|\b\d{1,2}\s*(?:a|x)\s*\d{1,2}\b",
                        fold(section)))
+        or (
+            totals_verified
+            and re.search(r"\b\d+\s+(?:confrontos|jogos|encontros)\b", fold(section))
+            and len(re.findall(r"\b(?:vitorias?|empates?|jogos|confrontos)\b",
+                               fold(section))) >= 3
+        )
         for section in historical_sections
     )
 
