@@ -201,7 +201,8 @@ def main() -> None:
         headline_errors = editorial_package.approved_headline_errors(
             contract.get("title"), requirements, config=config,
         )
-        headline_errors.extend(editorial_package.approved_excerpt_errors(contract.get("excerpt")))
+        effective_excerpt = str(draft.get("excerpt") or contract.get("excerpt") or "")
+        headline_errors.extend(editorial_package.approved_excerpt_errors(effective_excerpt))
         if headline_errors:
             skipped.append({"slug": slug, "reason": "incomplete_editorial_headline",
                             "errors": headline_errors})
@@ -268,7 +269,7 @@ def main() -> None:
             skipped.append({"slug": slug, "reason": "preview_headline_mismatch"})
             continue
 
-        selected.append({**article, "contract_data": contract, "preview_path": preview})
+        selected.append({**article, "contract_data": contract, "effective_excerpt": effective_excerpt, "preview_path": preview})
 
     selected.sort(key=lambda item: (str(item.get("kickoff_time_brasilia", "")), str(item.get("slug", ""))))
 
@@ -280,7 +281,7 @@ def main() -> None:
         noticias_new = package_builder.build_noticias_copy(
             noticias_new,
             title=str(contract["title"]),
-            excerpt=str(contract["excerpt"]),
+            excerpt=str(article["effective_excerpt"]),
             slug=str(contract["slug"]),
             date_br=str(contract["date"]),
         )

@@ -30,7 +30,7 @@ CONFIG_PATH = ROOT / "config" / "pre-jogo.json"
 DEFAULT_OUTPUT_DIR = ROOT / "build" / "pre-jogo"
 
 # Versão do critério de qualidade: nunca reutilizar rascunhos com prompt antigo.
-EDITORIAL_QUALITY_REVISION = "modelo-narrativo-aprovado-2026-10-15-v3"
+EDITORIAL_QUALITY_REVISION = "liberdade-jornalistica-validada-2026-10-21-v4"
 
 # O número de versão manual não impede reaproveitamento quando o prompt
 # ou o validador mudam. Uma assinatura do código torna o controle automático.
@@ -269,8 +269,8 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     elif real_stakes_fields:
         section_plan.append("Contexto competitivo da partida (subtítulo específico a definir)")
     section_plan.extend([
-        f"Como chega o {popular_home}",
-        f"Como chega o {popular_away}",
+        f"Notícias, preparação e campanha do {popular_home}",
+        f"Notícias, preparação e campanha do {popular_away}",
     ])
     has_direct_history = any(
         key.startswith(("h2h_", "games", "home_wins", "away_wins", "draws"))
@@ -292,7 +292,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
     contract = {
         "editorial_quality_revision": EDITORIAL_QUALITY_REVISION,
         "editorial_build_fingerprint": editorial_build_fingerprint(),
-        "editorial_section_plan": section_plan,
+        "editorial_section_plan": section_plan,  # assuntos opcionais, nunca um índice obrigatório
         "editorial_fact_hierarchy": editorial_fact_hierarchy,
         "editorial_storyline": (
             {
@@ -322,12 +322,13 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         "allowed_fact_fields": fact_fields,
         "output_contract": {
             "format": "json",
-            "required_fields": ["slug", "body_html", "fact_fields_used"],
+            "required_fields": ["slug", "excerpt", "body_html", "fact_fields_used"],
             "body_html_scope": "article_body_only",
+            "excerpt_written_by_model": True,
             "minimum_words": int(config["article"]["min_words"]),
             "preferred_word_range": [950, 1250],
             "maximum_words": 1400,
-            "minimum_strong_subheadings": min(5, max(2, len(section_plan))),
+            "minimum_strong_subheadings": min(3, max(2, len(section_plan))),  # duas seções bastam quando só há dois assuntos
             "internal_link_exactly_once": True,
             "unordered_lists_for_service_blocks": True,
         },
@@ -360,8 +361,8 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "toda a ficha de serviço na abertura."
             ),
             "approved_model": (
-                "Seguir a estrutura da prévia aprovada LDU x Palmeiras (16/09/2026), que explicou a eliminatória, preparação específica e alterações dos times: abertura factual curta; contexto da partida "
-                "somente quando houver fato verificável; Como chega o mandante; Como chega o visitante; prováveis "
+                 "Tomar a prévia aprovada LDU x Palmeiras (16/09/2026) como referência de profundidade e fluidez, nunca como ordem de seções a copiar. Ela explicou eliminatória, preparação e mudanças das equipes: abertura com fato esportivo, contexto da partida "
+                "somente quando houver fato verificável; desenvolvimento específico de cada clube com organização livre; prováveis "
                 "escalações em bloco apenas com 11 nomes por time verificados; retrospecto proporcional ao tamanho real da amostra; Onde assistir apenas com transmissão confirmada; e fechamento "
                 "apenas se houver uma consequência, cenário ou próximo jogo realmente fornecido no contrato."
             ),
@@ -395,7 +396,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "Se os dados não sustentarem 700 palavras sem redundância, falhar a validação, não completar com imaginação."
             ),
             "recent_form": (
-                "Tratar a forma recente de cada equipe em seu próprio bloco, de maneira natural e sem repetir os mesmos placares, "
+                "Tratar a forma recente de cada equipe de maneira natural, em blocos próprios OU em narrativa integrada, sem repetir os mesmos placares, "
                 "balanços de vitórias/empates/derrotas ou sequências no fechamento."
             ),
             "non_repetition": (
@@ -405,7 +406,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
             ),
             "subheadings": (
                 "Usar <p><strong>...</strong></p> com título próprio e concreto para cada assunto. "
-                "editorial_section_plan indica temas, NÃO os títulos literais: evite Contexto do confronto, "
+                "editorial_section_plan é apenas um conjunto de POSSIBILIDADES; o autor escolhe a ordem, a distribuição e os títulos. Evite Contexto do confronto, "
                 "Horário e local da partida e qualquer bloco que apenas repita o lide. "
                 "Não abrir seção de contexto se o único fato for a data, o mando ou a fase."
             ),
@@ -425,7 +426,7 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
                 "Concentrar a emissora/plataforma confirmada no bloco Onde assistir. Se não houver plataforma confirmada, omitir esse bloco. Não repetir toda a ficha de serviço antes e depois."
             ),
             "closing": (
-                "Planejar um parágrafo final curto de prosa após o serviço, reservando contexto competitivo confirmado, consequência esportiva ou próximo compromisso. Não terminar somente com uma ficha ou lista; reorganizar os fatos para o encerramento acrescentar informação sem inventar cenários. "
+                "Escrever um encerramento jornalístico conciso, com contexto competitivo, consequência esportiva ou próximo compromisso comprovado. Não terminar em ficha ou lista; organizar fatos para que a conclusão acrescente significado sem inventar cenários. "
                 "Não recapitular resultados recentes, escalações, transmissão ou retrospecto no encerramento."
             ),
             "internal_link": (

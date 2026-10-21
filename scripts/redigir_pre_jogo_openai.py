@@ -156,6 +156,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
         "properties": {
             "slug": {"type": "string", "enum": [slug]},
             "body_html": {"type": "string", "minLength": 4400},
+            "excerpt": {"type": "string", "minLength": 125, "maxLength": 350},
             "fact_fields_used": {
                 "type": "array",
                 "items": {"type": "string", "enum": allowed},
@@ -163,7 +164,7 @@ def output_schema(contract: dict[str, Any]) -> dict[str, Any]:
                 "maxItems": len(allowed),
             },
         },
-        "required": ["slug", "body_html", "fact_fields_used"],
+        "required": ["slug", "excerpt", "body_html", "fact_fields_used"],
         "additionalProperties": False,
     }
 
@@ -205,7 +206,7 @@ def system_instructions() -> str:
         
         "RETROSPECTO: diferencie explicitamente os últimos N confrontos do histórico completo. Diga 'nos cinco encontros mais recentes', quando esse for o limite dos fatos, e não sugira que só houve cinco jogos. Informe o balanço uma única vez, omita categorias com zero e não traduza a ausência de empates em 'não há resultados iguais'. Não deduza 'equilíbrio competitivo' apenas das contagens nem explique que 'a amostra é exclusivamente continental'. Um episódio marcante deve trazer temporada/data confirmada e aparecer uma única vez, no bloco histórico. Não encerre o retrospecto repetindo retornos e dúvidas médicas já tratados. ENCERRAMENTO: planeje desde o início um parágrafo final curto de prosa, após os blocos de serviço, sem subtítulo 'Fechamento'. Reserve para ele um desdobramento esportivo confirmado: objetivo na tabela, cenário da eliminatória, próximo compromisso ou significado concreto da rodada. Não termine somente com uma lista de data, horário e local, nem repita essa lista em prosa. Não invente classificação ou consequência; use um fato pertinente do contrato e distribua-o para que o último parágrafo acrescente informação. Se não houver um desdobramento novo, encerre com o contexto competitivo confirmado mais relevante, reorganizando o texto para não repeti-lo. "
         "Nunca publique referências ao material interno de redação: 'o contrato não fornece uma escalação confirmada', 'o contrato não informa' e variantes são vazamentos do processo editorial, não notícias. Não anuncie a própria escrita com 'a notícia de elenco é igualmente direta'. Informe o retorno ou a disponibilidade do jogador diretamente; não acrescente 'amplia as opções do grupo', 'dá mais alternativas' ou outra consequência genérica apenas para prolongar o parágrafo. Uma consequência esportiva específica só entra se estiver sustentada nos fatos, sem suposição. Não confunda provável escalação com escalação oficial confirmada e não use a ausência desta para qualificar ou desvalorizar as informações disponíveis. "
-        "META EDITORIAL OBRIGATÓRIA: alcançar no mínimo 80/100 na régua automática baseada em cinco dimensões: abertura esportiva com fato, desenvolvimento específico dos dois clubes, profundidade sem enchimento, histórico concreto quando houver fatos e fechamento que acrescente informação NOVA. Fechamento repetitivo reprova independentemente da nota. Não acrescente fatos nem parágrafos vazios para melhorar a pontuação; caso os dados não sustentem reportagem consistente, aceite o bloqueio. "
+        "META EDITORIAL: mínimo 80/100 pela qualidade dos fatos, cobertura dos dois clubes, profundidade útil, histórico pertinente e conclusão sem repetição — NÃO por títulos fixos ou cotas por seção. A composição, a ordem e o enfoque são decisões do jornalista. Nunca invente dados para melhorar a nota. "
         "NATURALIDADE E INFORMAÇÃO NOVA: não comente a organização dos dados com frases como 'esse resultado aparece como o antecedente continental mais recente do conjunto de partidas apresentado', 'ajuda a localizar a equipe' ou 'sequência que reúne compromissos nacionais e europeus'. Informe diretamente o resultado relevante, sua competição e a data somente quando necessária. Depois de informar uma vitória, não acrescente uma frase apenas para dizer que ela consta no recorte ou é um antecedente. Não retome em outro parágrafo uma vitória já citada, como a partida mais recente, apenas para reapresentar adversário, placar ou proximidade temporal. O intervalo entre partidas só merece destaque quando houver relevância factual específica, sem inferir desgaste, recuperação ou efeito físico. Use como critério informação nova e utilidade para compreender o confronto, não uma fórmula fixa nem número obrigatório de frases. Se retirar uma frase não eliminar informação esportiva relevante, prefira cortá-la. "
         "Apresente notícias de elenco diretamente, com sujeito e ação: quem retorna, quem é dúvida e por qual motivo confirmado. Não introduza esses fatos com rótulos como 'duas equipes com notícias distintas de elenco' ou comparações artificiais entre situações sem relação. Não transforme ausência de informação sobre lesões em afirmação de que não há novas baixas. Um episódio histórico específico deve informar a temporada (AAAA/AA), o ano ou a data confirmados e explicar objetivamente o que aconteceu e sua relação com o confronto. Se a referência temporal não estiver nos fatos, omita o episódio; nunca complete pela memória nem use 'na ocasião recordada' ou 'em uma lembrança ligada a' para esconder a falta de data. Não use metáforas ou comentários sobre a própria narrativa, como 'o passado serve como moldura' ou 'a preparação atual coloca a condição física dos jogadores no centro da véspera'. Não imponha ligação causal entre um resultado antigo e a preparação atual. Preserve a abertura factual que funciona, acrescente apenas contexto concreto e deixe os detalhes de elenco para o bloco de cada equipe quando alongarem a introdução. "
         "O contrato contém editorial_storyline, se for clássico ou rivalidade reconhecida. "
@@ -239,13 +240,13 @@ def system_instructions() -> str:
         "Os fatos estruturados são matéria-prima: reescreva-os em linguagem jornalística natural. Nunca exponha linguagem de banco de dados ou API como "
         "'jogos concluídos registrados', 'resultados registrados', 'base considerada' ou 'recorte considerado'. "
         "Produza somente o corpo editorial, sem <html>, <head>, <body>, <article>, imagens, anúncios, scripts ou estilos. "
-        "FORMATO OBRIGATÓRIO: body_html deve conter subtítulos realmente jornalísticos, no formato <p><strong>...</strong></p>, respeitando output_contract.minimum_strong_subheadings. editorial_section_plan é somente um ROTEIRO DE ASSUNTOS, NÃO uma lista literal de subtítulos. Transforme cada tema em título específico baseado em informação factual; jamais copie '(subtítulo específico a definir)' nem abra Contexto do confronto para repetir data e fase. Não use Markdown, <h2> ou <h3>. "
+        "FORMATO TÉCNICO: subtítulos jornalísticos em <p><strong>...</strong></p>, com pelo menos output_contract.minimum_strong_subheadings e no máximo oito. Escolha livremente assuntos, ordem e títulos conforme os fatos; editorial_section_plan não obriga blocos. Não copie '(subtítulo específico a definir)' nem abra seção só para repetir serviço. Não use Markdown, <h2> ou <h3>. "
         "Inclua obrigatoriamente uma lista HTML <ul><li>...</li></ul> para os dados de serviço. "
-        "MODELO JORNALÍSTICO APROVADO: a prévia LDU x Palmeiras (16/09/2026) abriu com a situação da eliminatória e seus desdobramentos, explicou a preparação específica dos clubes, incorporou retornos/desfalques ao contexto de cada equipe, reuniu escalações uma única vez, contextualizou o histórico, informou transmissão e fechou com consequência esportiva. " "PADRÃO NARRATIVO: no modelo aprovado, o início já explica POR QUE a partida é relevante, o próximo parágrafo entrega um desdobramento confirmado, e os blocos seguintes aprofundam com fatos diferentes. Compare mentalmente cada parágrafo com a abertura: se repetir o placar, horário, estádio, fase, ou a mesma notícia de elenco, reescreva ou retire. Nomeie o episódio histórico apenas quando houver data e resultado comprovados. A seção Como chega deve priorizar preparo/esporte, não logística de arquibancadas. Não crie um bloco apenas para informação de horário já presente no primeiro parágrafo. O padrão não é uma lista de checagem com 700 palavras: é uma reportagem orgânica em que cada parágrafo acrescenta um fato verificável ou explica seu impacto esportivo. " "NÃO copie fatos nem datas dessa referência: ela define apenas estilo e profundidade, e todos os fatos novos devem vir do contrato. " "A estrutura preferencial é: abertura curta; contexto competitivo se houver fato; Como chega o mandante; Como chega o visitante; "
+        "MODELO JORNALÍSTICO APROVADO: a prévia LDU x Palmeiras (16/09/2026) abriu com a situação da eliminatória e seus desdobramentos, explicou a preparação específica dos clubes, incorporou retornos/desfalques ao contexto de cada equipe, reuniu escalações uma única vez, contextualizou o histórico, informou transmissão e fechou com consequência esportiva. " "PADRÃO NARRATIVO: no modelo aprovado, o início já explica POR QUE a partida é relevante, o próximo parágrafo entrega um desdobramento confirmado, e os blocos seguintes aprofundam com fatos diferentes. Compare mentalmente cada parágrafo com a abertura: se repetir o placar, horário, estádio, fase, ou a mesma notícia de elenco, reescreva ou retire. Nomeie o episódio histórico apenas quando houver data e resultado comprovados. A seção Como chega deve priorizar preparo/esporte, não logística de arquibancadas. Não crie um bloco apenas para informação de horário já presente no primeiro parágrafo. O padrão não é uma lista de checagem com 700 palavras: é uma reportagem orgânica em que cada parágrafo acrescenta um fato verificável ou explica seu impacto esportivo. " "NÃO copie fatos nem datas dessa referência: ela define apenas estilo e profundidade, e todos os fatos novos devem vir do contrato. " "A estrutura não é uma sequência fixa: o editor escolhe a abertura, a ordem dos dois clubes e os temas que melhor explicam o encontro, sempre com fatos verificados; "
         "prováveis escalações SOMENTE se os 11 jogadores e técnicos de ambos os clubes estiverem nos fatos; retrospecto proporcional à amostra; Onde assistir SOMENTE se houver emissora ou plataforma confirmada; fechamento somente se houver fato novo. "
         "ECONOMIA NA FORMA RECENTE: quando todos os jogos do recorte tiverem o mesmo resultado, informe apenas esse resultado e o total. 'Cinco vitórias nos últimos cinco jogos' já informa que não houve empates nem derrotas; nunca acrescente 'sem empates e sem derrotas', '100% de aproveitamento' ou outra reformulação equivalente à mesma informação. A mesma regra vale para sequências só de empates ou só de derrotas. Em campanhas mistas, omita categorias com zero e escreva apenas as contagens relevantes. Depois do balanço, selecione preferencialmente um resultado recente relevante e no máximo dois quando o segundo acrescentar contexto distinto; não desfile três, quatro ou cinco adversários e placares. Desenvolva o restante do bloco com notícias atuais confirmadas de preparação, retornos, dúvidas ou desfalques, sem repetir fatos da abertura e sem inventar material para completar extensão. "
         "REGRAS DE REPETIÇÃO: o balanço de vitórias, empates e derrotas de cada clube deve aparecer "
-        "EXATAMENTE UMA VEZ, dentro do bloco Como chega daquele clube; não repita esse balanço "
+        "uma única vez no desenvolvimento do clube correspondente, sem exigir bloco Como chega; não repita esse balanço "
         "na abertura, no contexto, no histórico nem na conclusão. Se apresentar um placar, "
         "não reescreva o mesmo placar em outra seção. "
         "A decisão de poupar titulares ou usar time misto deve ser explicada uma vez na abertura "
@@ -255,10 +256,10 @@ def system_instructions() -> str:
         "efetivamente verificados em editorial_fact_hierarchy; não crie explicações genéricas. "
         "Siga editorial_fact_hierarchy do contrato: opening_hook_fields contém a notícia verificada "
         "prioritária para os dois primeiros parágrafos; use os fatos dos campos indicados literalmente "
-        "como base, em linguagem própria. As seções Como chega precisam aprofundar os campos "
-        "home_specific_preparation_fields e away_specific_preparation_fields, respectivamente. "
+        "como base, em linguagem própria. O desenvolvimento de cada clube deve aprofundar os campos "
+        "home_specific_preparation_fields e away_specific_preparation_fields, mesmo quando integrados em seções autorais. "
         "Os campos background_only_fields servem de apoio, nunca de pauta. "
-        "Nos blocos Como chega, integre notícias verificadas sobre cada equipe quando o contrato as fornecer, "
+        "No desenvolvimento jornalístico, integre notícias verificadas sobre cada equipe quando o contrato as fornecer, "
         "independentemente de haver escalações completas. "
         "Se houver apenas os dez placares recentes e o confronto direto, não se trata de reportagem: "
         "a automação deve reprovar antes da redação, e o redator não deve encher páginas de estatísticas. "
@@ -294,7 +295,7 @@ def system_instructions() -> str:
         "Planeje a matéria conforme a relevância e a quantidade dos fatos de cada equipe, sem cotas fixas de palavras por seção. Não estique retrospectos curtos nem transforme cinco resultados em cinco assuntos. "
         "Tags HTML, chaves JSON e fact_fields_used não contam como palavras. Não alongue o texto com generalidades para atingir tamanho. "
         "Se o contrato trouxer apenas placares, retrospecto, escalações e serviço, não é reportagem completa: o pipeline deve bloquear antes da redação. Não preencha com generalidades. "
-        "Retorne somente o objeto JSON exigido pelo schema."
+        "Redija livremente o excerpt (125 a 350 caracteres) como uma chamada jornalística em até duas frases, usando SOMENTE fatos presentes no contrato e no corpo, com dia da semana, fase/rodada quando confirmada e um gancho esportivo objetivo. Não copie o excerpt de referência do contrato literalmente: ele é apenas o resumo factual previamente validado. Preserve a abertura aprovada As equipes se enfrentam nesta/neste, sem citar os clubes duas vezes. Não anuncie dados que o corpo não contem. Retorne somente o objeto JSON exigido pelo schema."
     )
 
 def user_payload(contract: dict[str, Any]) -> str:
@@ -304,10 +305,10 @@ def user_payload(contract: dict[str, Any]) -> str:
     if len(serialized) > limit:
         fail(f"Contrato excede o limite de orçamento: {len(serialized)} > {limit} caracteres.")
     return (
-        "Redija a matéria utilizando somente este contrato editorial limpo. "
+         "Escreva corpo e excerpt em linguagem jornalística própria, com ângulo noticioso e estrutura livre, usando somente este contrato editorial limpo. "
         "Leia editorial_fact_hierarchy antes de compor a abertura: use um fato atual do mandante "
         "e um do visitante, nunca o mesmo gancho duas vezes; toda contagem de vitórias, empates "
-        "e derrotas aparece apenas no bloco Como chega da equipe correspondente. "
+        "e derrotas aparece uma única vez na análise da equipe correspondente, sem seção obrigatória. "
         "Dê prioridade a notícias individuais concretas sobre o momento atual, especialmente "
         "quando se referirem ao próximo jogo da Libertadores. "
         "Destaque os fatos verificáveis "
@@ -323,10 +324,10 @@ def user_payload(contract: dict[str, Any]) -> str:
         "Se houver transmission, cada emissora/plataforma confirmada deve aparecer explicitamente em Onde assistir; caso contrário, omita Onde assistir por completo. "
         "Se houver home_lineup e away_lineup, mostre todos os jogadores e técnicos; se faltarem, não crie seção Prováveis escalações e não explique a ausência. "
         "Alvo editorial: 950 a 1.250 palavras somente com material factual suficiente; mínimo técnico de 700 NÃO garante aprovação, e a ausência de pauta rica deve bloquear. "
-        "Desenvolva Como chega com fatos atuais distintos de cada equipe, sem cotas por bloco ou enumeração dos cinco resultados. Nunca inclua um bloco sem fatos nem substitua detalhes por generalidades. "
-        "Use os nomes de seções de editorial_section_plan fornecidos no contrato como roteiro concreto, "
-        "respeitando output_contract.minimum_strong_subheadings e no máximo oito subtítulos <p><strong>; não omita os blocos específicos "
-        "de mandante, visitante, retrospecto e serviço quando houver fatos correspondentes. "
+        "Desenvolva os dois clubes com fatos atuais distintos, sem cotas por bloco ou enumeração dos cinco resultados. Escolha livremente os subtítulos, sem seções só para cumprir roteiro. "
+        "editorial_section_plan contém apenas sugestões de assuntos, sem determinar cabeçalhos, ordem nem quantidade de blocos. Escolha a linha narrativa como editor: comece pelo fato esportivo mais importante e organize livremente os temas verificados. "
+        "Use pelo menos output_contract.minimum_strong_subheadings e no máximo oito subtítulos <p><strong> realmente úteis, com nomes jornalísticos originais. Desenvolva os fatos "
+        "de ambos os clubes sem obrigar duas seções Como chega: uma reportagem pode integrar assuntos quando isso melhorar a leitura. Retrospecto só quando pertinente; dados de serviço continuam claros. "
         "Só inclua blocos de transmissão e escalações se os respectivos fatos estiverem verificados. "
         "Nunca crie seções Fechamento, Resumo do encontro nem listas integrais de titulares fora da seção própria. "
         "Antes de finalizar, confira a quantidade de <p><strong>subtítulos</strong></p> exigida pelo contrato, lista <ul><li>, "
@@ -449,8 +450,8 @@ def build_revision_request(
                 "os fatos do contrato. Corrija: " + "; ".join(errors) + ". " + short +
                 focused_revision_guidance(errors) +
                 " Reescreva com a profundidade suportada pelos fatos, mirando 950 a 1.250 palavras sem repetição, fontes externas ou "
-                "inferências factuais. Siga editorial_section_plan com todas as seções substantivas indicadas; o mínimo é o número do contrato. "
-                "substantivas: não substitua a seção de um dos clubes por um parágrafo da abertura. "
+                "inferências factuais. Trate editorial_section_plan como pauta OPCIONAL: escolha livremente ordem, subtítulos e extensão conforme a notícia, sem cumprir um índice mecânico. "
+                "Não substitua o desenvolvimento esportivo dos dois clubes por generalidades da abertura. "
                 "Use no máximo oito subtítulos e exatamente um link interno. "
                 "Escreva os onze titulares de cada time uma única vez, dentro de Prováveis escalações, "
                 "e evite a linguagem 'dados fornecidos', 'recorte considerado' ou 'registro'. "

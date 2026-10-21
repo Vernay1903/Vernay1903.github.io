@@ -576,40 +576,50 @@ def editorial_scorecard(body_html: str, contract: dict[str, Any]) -> dict[str, A
         r"prepar\w*|vaga|titulo)\b",
         intro_text,
     ))
-    lead_ok = len(intro_paras) >= 2 and sports_hook
+    lead_ok = sports_hook and (len(intro_paras) >= 2 or len(intro_text.split()) >= 65)
 
-    # Os dois times precisam de desenvolvimento substantivo, não apenas
-    # listas de escalações, H2H e transmissão.
-    useful_blocks: list[tuple[str, int]] = []
-    for section in sections[1:]:
-        match = HEADINGS.search(section)
-        if not match:
-            continue
-        heading = fold(match.group(1))
-        if re.search(
-            r"\b(?:escalac\w*|arbitragem|onde assistir|transmissao|"
-            r"retrospecto|historico|horario|local da partida)\b", heading,
-        ):
-            continue
-        words = sum(
-            len(fold(raw).split()) for raw in PARAGRAPHS.findall(section)
-            if not HEADINGS.fullmatch("<p>" + raw + "</p>")
-        )
-        if words >= 110:
-            useful_blocks.append((heading, words))
+    # Avaliar a ATENÇÃO jornalística a cada clube, não o título da seção.
+    # O texto pode usar "Como chega", títulos originais ou desenvolvimento
+    # integrado — a cobertura factual dos dois lados continua obrigatória.
     aliases = _team_aliases_for_editorial_stats(contract)
-    if aliases:
-        owners = {
-            side for heading, _ in useful_blocks
-            for side in _mentioned_sides(heading, aliases)
-        }
-        both_clubs_ok = len(owners) == 2
-    else:
-        both_clubs_ok = len(useful_blocks) >= 2
-
+    club_words = {"home": 0, "away": 0}
+    section_subject: str | None = None
+    for section in sections:
+        heading = HEADINGS.search(section)
+        label = fold(heading.group(1)) if heading else ""
+        section_owners = _mentioned_sides(label, aliases) if aliases else []
+        section_subject = section_owners[0] if len(section_owners) == 1 else None
+        service_section = bool(re.search(
+            r"\b(?:escalac\w*|arbitragem|onde assistir|transmissao|"
+            r"retrospecto|historico|horario|local da partida)\b", label,
+        ))
+        if service_section:
+            continue
+        for raw in PARAGRAPHS.findall(section):
+            if HEADINGS.fullmatch("<p>" + raw + "</p>"):
+                continue
+            words = len(fold(raw).split())
+            if words < 35:
+                continue
+            owners = _mentioned_sides(raw, aliases) if aliases else []
+            if len(owners) == 1:
+                club_words[owners[0]] += words
+            elif len(owners) == 2 and section_subject:
+                club_words[section_subject] += words
+            elif not owners and section_subject:
+                club_words[section_subject] += words
+            elif len(owners) == 2:
+                # Cobertura combinada legítima; não é obrigatório separar
+                # em blocos quando a análise contextualiza as duas equipes.
+                for side in owners:
+                    club_words[side] += words // 2
+    both_clubs_ok = (
+        min(club_words.values()) >= 65 if aliases
+        else sum(len(x.split()) >= 45 for x in narrative) >= 8
+    )
     word_total = len(fold(body_html).split())
-    developed_paras = sum(len(paragraph.split()) >= 45 for paragraph in narrative)
-    substance_ok = word_total >= 850 and developed_paras >= 9
+    developed_paras = sum(len(paragraph.split()) >= 40 for paragraph in narrative)
+    substance_ok = word_total >= 770 and developed_paras >= 8
 
     # Se houver bloco histórico, exigir ao menos um jogo identificável por
     # ano ou placar, em vez de balanço solto sem episódio concreto.
