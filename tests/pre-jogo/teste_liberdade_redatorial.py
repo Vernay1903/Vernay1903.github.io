@@ -23,7 +23,7 @@ def main():
     assert "pauta OPCIONAL" in prompt or "apenas sugestões" in prompt, "Roteiro ainda obrigatório."
     instructions = redactor.system_instructions()
     assert "Escolha livremente assuntos, ordem e títulos" in instructions
-    assert "não determina cabeçalhos" in instructions
+    assert "sem determinar cabeçalhos" in instructions
     assert "PERSONALIDADE EDITORIAL PRIORITÁRIA" in instructions
 
     original = (ROOT / "ldu-x-palmeiras-libertadores-onde-assistir-horario-escalacoes.html").read_text()
