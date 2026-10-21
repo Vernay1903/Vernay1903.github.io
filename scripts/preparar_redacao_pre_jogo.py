@@ -322,8 +322,9 @@ def build_contract(clean_package: dict[str, Any], *, config: dict[str, Any]) -> 
         "allowed_fact_fields": fact_fields,
         "output_contract": {
             "format": "json",
-            "required_fields": ["slug", "body_html", "fact_fields_used"],
+            "required_fields": ["slug", "excerpt", "body_html", "fact_fields_used"],
             "body_html_scope": "article_body_only",
+            "excerpt_written_by_model": True,
             "minimum_words": int(config["article"]["min_words"]),
             "preferred_word_range": [950, 1250],
             "maximum_words": 1400,
