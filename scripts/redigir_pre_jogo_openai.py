@@ -539,6 +539,13 @@ def focused_revision_guidance(errors: list[str]) -> str:
             "amostra parcial como campanha completa. Cite um resultado ou "
             "notícia de preparação concreta, sem acrescentar fatos novos."
         )
+    if any("mesma pontuação de um clube repetida" in error for error in errors):
+        parts.append(
+            "A pontuação do mesmo clube foi recontada em muitos parágrafos. "
+            "Apresente a posição e os pontos no contexto competitivo uma vez, "
+            "sem repeti-los na abertura, Como chega e fechamento. Mantenha apenas "
+            "fatos verificados que acrescentem informação."
+        )
     if any("chamada promete transmissão" in error for error in errors):
         parts.append(
             "A manchete promete transmissão: é obrigatório escrever literalmente "
