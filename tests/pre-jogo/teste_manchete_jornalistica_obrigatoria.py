@@ -195,6 +195,24 @@ def main():
         "nessa competição, 1 vitória, 1 empate e 0 derrotas."
     )
     assert "excerpt_com_metadados_ou_contagem_mecanica" in editorial.approved_excerpt_errors(stale_meta)
+    robotic_text = (
+        "O Arsenal teve duas vitórias, nenhum empate e nenhuma derrota "
+        "antes do duelo com o Bayern."
+    )
+    assert editorial._excerpt_news_sentence(robotic_text) is None
+    robotic_excerpt = (
+        "As equipes se enfrentam nesta quarta-feira (21/10), "
+        "pela 3ª rodada da fase de liga da Champions League. " + robotic_text
+    )
+    assert "excerpt_com_metadados_ou_contagem_mecanica" in (
+        editorial.approved_excerpt_errors(robotic_excerpt)
+    ), robotic_excerpt
+    natural_excerpt = (
+        "As equipes se enfrentam nesta quarta-feira (21/10), "
+        "pela 3ª rodada da fase de liga da Champions League. "
+        "O Arsenal venceu o Napoli por 1 a 0 na estreia."
+    )
+    assert editorial.approved_excerpt_errors(natural_excerpt) == [], natural_excerpt
     print("OK: título fixo com escalações e onde assistir só quando ambos os serviços estão verificados.")
 
 
