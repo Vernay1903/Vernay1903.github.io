@@ -122,6 +122,77 @@ def main():
     assert "required_probable_lineups_not_verified" in editorial.approved_headline_errors(
         title, lacking_facts, config=config,
     )
+    # Regressão de publicações reais em 21/10: o excerpt jamais exibe
+    # "Situação competitiva verificada do X" nem balanço parcial da ESPN.
+    europe = json.loads(json.dumps(cup))
+    europe["match_context"].update({
+        "home": "Bayern de Munique", "away": "Arsenal",
+        "display_home": "Bayern de Munique", "display_away": "Arsenal",
+        "competition": "Champions League", "competition_matchday": 3,
+        "kickoff_brasilia": "2026-10-21T16:00:00-03:00",
+    })
+    public_facts = {
+        "editorial_match_stakes": {
+            "id": "editorial_match_stakes", "status": "verified",
+            "facts": [
+                {"field": "away_stakes_1", "text":
+                 "Situação competitiva verificada do Arsenal: "
+                 "O Arsenal venceu o Nottingham Forest por 1 a 0 no Inglês "
+                 "e chegou à décima vitória em 11 jogos da temporada."}
+            ],
+        },
+        "recent_form_both_teams": {
+            "id": "recent_form_both_teams", "status": "verified",
+            "facts": [{"field": "away_recent_form", "text":
+                       "Forma recente do Arsenal: nos últimos 2 jogos registrados "
+                       "nessa competição (UEFA Champions League), 1 vitória, "
+                       "1 empate e 0 derrotas."}],
+        },
+    }
+    _, natural_excerpt = editorial.adjusted_service_headline(europe, public_facts, config=config)
+    assert natural_excerpt.startswith("As equipes se enfrentam nesta quarta-feira"), natural_excerpt
+    assert "O Arsenal venceu o Nottingham Forest" in natural_excerpt, natural_excerpt
+    assert "Situação competitiva verificada" not in natural_excerpt
+    assert "jogos registrados" not in natural_excerpt
+    assert "0 derrotas" not in natural_excerpt
+    assert editorial.approved_excerpt_errors(natural_excerpt) == [], natural_excerpt
+
+    real = json.loads(json.dumps(europe))
+    real["match_context"].update({
+        "home": "Real Madrid", "away": "RB Leipzig",
+        "display_home": "Real Madrid", "display_away": "RB Leipzig",
+    })
+    facts_with_history = {
+        "editorial_individual_team_context": {
+            "id": "editorial_individual_team_context", "status": "verified",
+            "facts": [
+                {"field": "home_stakes_individual_1", "text":
+                 "Contexto esportivo atual verificado do Real Madrid: "
+                 "O Real Madrid encerrou o treinamento antes de enfrentar "
+                 "o RB Leipzig pela terceira rodada da Champions League."},
+            ],
+        },
+        "editorial_match_stakes": {
+            "id": "editorial_match_stakes", "status": "verified",
+            "facts": [
+                {"field": "home_stakes_1", "text":
+                 "Situação competitiva verificada do Real Madrid: Na ocasião, "
+                 "o time venceu por 1 a 0 na Alemanha e empatou por 1 a 1 na volta."},
+            ],
+        },
+    }
+    _, madrid_excerpt = editorial.adjusted_service_headline(real, facts_with_history, config=config)
+    assert "Real Madrid encerrou o treinamento" in madrid_excerpt, madrid_excerpt
+    assert "Na ocasião" not in madrid_excerpt, madrid_excerpt
+    assert "Contexto esportivo atual verificado" not in madrid_excerpt
+    assert editorial.approved_excerpt_errors(madrid_excerpt) == [], madrid_excerpt
+
+    stale_meta = (
+        "As equipes se enfrentam nesta quarta-feira (21/10) pela Champions League. "
+        "Situação competitiva verificada do Arsenal: nos últimos 2 jogos registrados "
+        "nessa competição, 1 vitória, 1 empate e 0 derrotas."
+    )
+    assert "excerpt_com_metadados_ou_contagem_mecanica" in editorial.approved_excerpt_errors(stale_meta)
     print("OK: título fixo com escalações e onde assistir só quando ambos os serviços estão verificados.")
 
 
