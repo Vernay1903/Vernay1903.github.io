@@ -534,6 +534,152 @@ def editorial_development_errors(body_html: str) -> list[str]:
     return []
 
 
+EDITORIAL_MINIMUM_SCORE = 80
+
+# Pontuação determinística de CONFORMIDADE ao modelo aprovado: não é a
+# avaliação subjetiva de um editor humano. A verificação de fatos é separada
+# e continua obrigatória mesmo para matérias com 100 pontos.
+SCORE_STOP = STOP | {
+    "time", "times", "clube", "clubes", "equipe", "equipes", "partida",
+    "confronto", "duelo", "jogo", "jogos", "campeonato", "competicao",
+    "champions", "league", "fase", "rodada", "torneio", "adversario",
+}
+
+
+def editorial_scorecard(body_html: str, contract: dict[str, Any]) -> dict[str, Any]:
+    """Régua objetiva 5 x 20, calibrada com casos editoriais aprovados/reprovados.
+
+    Penaliza texto de serviço em vez de reportagem, desenvolvimento desigual,
+    cronologia estatística vazia e conclusão que apenas repete a abertura.
+    Não substitui fact-checking, revisão humana ou as outras travas.
+    """
+    raw_paragraphs = PARAGRAPHS.findall(body_html)
+    narrative = [
+        fold(raw) for raw in raw_paragraphs
+        if not HEADINGS.fullmatch("<p>" + raw + "</p>")
+        and len(fold(raw).split()) >= 20
+    ]
+    sections = re.split(
+        r"(?=<p\s*>\s*<strong\s*>[^<]+</strong>\s*</p\s*>)",
+        body_html, flags=re.I,
+    )
+    intro = sections[0] if sections else body_html
+    intro_paras = [
+        fold(raw) for raw in PARAGRAPHS.findall(intro)
+        if len(fold(raw).split()) >= 20
+    ]
+    intro_text = " ".join(intro_paras[:2])
+    sports_hook = bool(re.search(
+        r"\b(?:venceu|empato\w*|derrot\w*|vitori\w*|"
+        r"vantag\w*|classific\w*|lider\w*|suspens\w*|"
+        r"desfalqu\w*|retorn\w*|gols?|marcou|trein\w*|"
+        r"prepar\w*|vaga|titulo)\b",
+        intro_text,
+    ))
+    lead_ok = len(intro_paras) >= 2 and sports_hook
+
+    # Os dois times precisam de desenvolvimento substantivo, não apenas
+    # listas de escalações, H2H e transmissão.
+    useful_blocks: list[tuple[str, int]] = []
+    for section in sections[1:]:
+        match = HEADINGS.search(section)
+        if not match:
+            continue
+        heading = fold(match.group(1))
+        if re.search(
+            r"\b(?:escalac\w*|arbitragem|onde assistir|transmissao|"
+            r"retrospecto|historico|horario|local da partida)\b", heading,
+        ):
+            continue
+        words = sum(
+            len(fold(raw).split()) for raw in PARAGRAPHS.findall(section)
+            if not HEADINGS.fullmatch("<p>" + raw + "</p>")
+        )
+        if words >= 110:
+            useful_blocks.append((heading, words))
+    aliases = _team_aliases_for_editorial_stats(contract)
+    if aliases:
+        owners = {
+            side for heading, _ in useful_blocks
+            for side in _mentioned_sides(heading, aliases)
+        }
+        both_clubs_ok = len(owners) == 2
+    else:
+        both_clubs_ok = len(useful_blocks) >= 2
+
+    word_total = len(fold(body_html).split())
+    developed_paras = sum(len(paragraph.split()) >= 45 for paragraph in narrative)
+    substance_ok = word_total >= 850 and developed_paras >= 9
+
+    # Se houver bloco histórico, exigir ao menos um jogo identificável por
+    # ano ou placar, em vez de balanço solto sem episódio concreto.
+    historical_sections = [
+        section for section in sections[1:]
+        if (head := HEADINGS.search(section)) and re.search(
+            r"\b(?:retrospecto|historico|confrontos anteriores)\b",
+            fold(head.group(1)),
+        )
+    ]
+    verified = facts(contract)
+    # Quando a apuração contém SOMENTE totais, exigir um jogo datado faria
+    # o redator inventar um episódio. Nessa situação, totais específicos
+    # comprovados e claramente delimitados são o melhor histórico possível.
+    totals_verified = all(
+        verified.get(key) for key in ("games", "home_wins", "away_wins", "draws")
+    )
+    history_ok = not historical_sections or all(
+        bool(re.search(r"\b20\d{2}\b|\b\d{1,2}\s*(?:a|x)\s*\d{1,2}\b",
+                       fold(section)))
+        or (
+            totals_verified
+            and re.search(r"\b\d+\s+(?:confrontos|jogos|encontros)\b", fold(section))
+            and len(re.findall(r"\b(?:vitorias?|empates?|jogos|confrontos)\b",
+                               fold(section))) >= 3
+        )
+        for section in historical_sections
+    )
+
+    # Sem conclusão informativa, não há mínimo editorial — mesmo se os
+    # outros critérios somarem 80 pontos.
+    opening_words = {
+        w for w in intro_text.split() if len(w) >= 4 and w not in SCORE_STOP
+    }
+    last = narrative[-1] if narrative else ""
+    closing_words = {w for w in last.split() if len(w) >= 4 and w not in SCORE_STOP}
+    denominator = min(len(opening_words), len(closing_words))
+    closing_overlap = (
+        len(opening_words & closing_words) / denominator if denominator else 1.0
+    )
+    closing_sport = bool(re.search(
+        r"\b(?:vaga|classific\w*|titulo|vantag\w*|"
+        r"eliminat\w*|semifinal|final|pontos|lider\w*|"
+        r"proxim\w*|disputa|retorn\w*|desfalqu\w*|"
+        r"decis\w*|resultado|vitori\w*)\b", last,
+    ))
+    closing_ok = (
+        len(last.split()) >= 28
+        and closing_overlap <= .42
+        and closing_sport
+        and not re.search(r"\b(?:transmissao|onde assistir|horario|tv)\b", last)
+    )
+
+    criteria = {
+        "abertura_com_fato_esportivo": 20 if lead_ok else 0,
+        "desenvolvimento_dos_dois_clubes": 20 if both_clubs_ok else 0,
+        "profundidade_sem_enchimento": 20 if substance_ok else 0,
+        "historico_especifico_ou_omitido": 20 if history_ok else 0,
+        "fechamento_informativo_e_original": 20 if closing_ok else 0,
+    }
+    score = sum(criteria.values())
+    return {
+        "score": score,
+        "minimum": EDITORIAL_MINIMUM_SCORE,
+        "criteria": criteria,
+        "closing_overlap": round(closing_overlap, 3),
+        "passed": score >= EDITORIAL_MINIMUM_SCORE and closing_ok,
+    }
+
+
 def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     """Trava extra, executada somente no lote automático antes da publicação."""
     errors: list[str] = []
@@ -570,4 +716,22 @@ def draft_quality_errors(body_html: str, contract: dict[str, Any]) -> list[str]:
     errors.extend(rivalry_context_errors(body_html, contract))
     errors.extend(redundant_recent_calendar_errors(body_html))
     errors.extend(unsupported_stakes_closing_errors(body_html, contract))
+    # Só aplicável a REPORTAGENS completas; trechos de testes continuam
+    # passando pelas travas pontuais, sem exigir 850 palavras isoladamente.
+    if len(fold(body_html).split()) >= 650:
+        assessment = editorial_scorecard(body_html, contract)
+        if assessment["score"] < EDITORIAL_MINIMUM_SCORE:
+            failed = ", ".join(
+                key for key, points in assessment["criteria"].items()
+                if not points
+            )
+            errors.append(
+                f"nota editorial {assessment['score']}/100 abaixo do mínimo "
+                f"{EDITORIAL_MINIMUM_SCORE}/100: {failed}"
+            )
+        if not assessment["criteria"]["fechamento_informativo_e_original"]:
+            errors.append(
+                "fechamento repetitivo ou sem desdobramento esportivo novo "
+                f"(sobreposição com abertura: {assessment['closing_overlap']:.0%})"
+            )
     return list(dict.fromkeys(errors))
