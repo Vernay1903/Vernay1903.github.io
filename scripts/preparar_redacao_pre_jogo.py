@@ -37,6 +37,7 @@ EDITORIAL_QUALITY_REVISION = "modelo-narrativo-aprovado-2026-10-15-v3"
 EDITORIAL_BUILD_FILES = (
     "scripts/preparar_redacao_pre_jogo.py",
     "scripts/redigir_pre_jogo_openai.py",
+    "scripts/montar_pacote_editorial.py",
     "config/persona-criador-de-materias-prejogo.txt",
     "scripts/qualidade_editorial_pre_jogo.py",
     "scripts/validar_rascunho_pre_jogo.py",
