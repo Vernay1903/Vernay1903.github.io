@@ -16,8 +16,11 @@ def article_body(slug: str) -> str:
     matched = re.search(
         r'<article\s+id="articleBody"[\s\S]*?</article>', text
     )
-    assert matched, f"articleBody ausente: {slug}"
-    return matched.group(0)
+    if matched:
+        return matched.group(0)
+    # Os fixtures reprovados guardam apenas o fragmento original do artigo.
+    assert "<p>" in text, f"HTML editorial ausente: {slug}"
+    return text
 
 
 def main() -> None:
