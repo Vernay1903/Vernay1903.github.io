@@ -683,6 +683,16 @@ def approved_excerpt_errors(excerpt: str) -> list[str]:
     folded = " ".join(value.casefold().split())
     if len(value) < 125:
         return ["excerpt_editorial_insuficiente"]
+    # Proteção contra vazamento de rótulos internos e amostras incompletas.
+    # Mesmo se outra etapa voltar a montar o resumo, ele não será publicado.
+    if re.search(
+        r"situa[cç][aã]o competitiva verificada|"
+        r"contexto esportivo atual verificado|"
+        r"\bnos [uú]ltimos\s+\d+\s+jogos\s+registrados\b|"
+        r"\b0\s+(?:empates?|derrotas?|vit[oó]rias?)\b",
+        value, re.I,
+    ):
+        return ["excerpt_com_metadados_ou_contagem_mecanica"]
     # Abrir com "As equipes se enfrentam nesta..." é o padrão editorial
     # aprovado. A abertura só é genérica quando não há contexto esportivo
     # verificável, validado logo abaixo.
