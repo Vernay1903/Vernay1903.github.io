@@ -449,6 +449,38 @@ def _excerpt_news_sentence(raw: str) -> str | None:
     return text.rstrip(" .;") + "."
 
 
+def _excerpt_form_context(raw: str) -> str | None:
+    """Resumo de campanha APENAS quando a fonte delimita >=3 partidas.
+
+    Sem placares inventados, zeros repetidos ou linguagem 'registrados na API'.
+    O melhor uso do excerpt continua sendo uma notícia atual de preparação.
+    """
+    found = re.match(
+        r"^Forma recente d[oa]\s+(.{2,65}?):\s*"
+        r"(nos últimos\s+(\d+|três|quatro|cinco|seis)\s+jogos"
+        r"\s+(?:da competição|em todas as competições)),?\s*(.+)$",
+        str(raw or "").strip(), re.I,
+    )
+    if not found:
+        return None
+    team, period, count, record = found.groups()
+    if {"3": 3, "três": 3, "4": 4, "quatro": 4, "5": 5,
+        "cinco": 5, "6": 6, "seis": 6}.get(count.casefold(), 0) < 3:
+        return None
+    record = record.rstrip(" .;")
+    if "registrad" in record.casefold() or "recorte" in record.casefold():
+        return None
+    record = re.sub(
+        r"(?:,\s*|\s+e\s+)?0\s+(?:vitórias?|empates?|derrotas?)\b",
+        "", record, flags=re.I,
+    ).strip(" ,;")
+    if not record:
+        return None
+    # Ex.: "O Bahia soma três vitórias, um empate e uma derrota nos últimos
+    # cinco jogos da competição." Sem repetir 'sem empates/derrotas'.
+    return f"O {team.strip()} soma {record} {period}."
+
+
 def verified_editorial_excerpt(article, requirement_by_id, *, config):
     """Lide objetivo mais UMA notícia atual, nunca metadados de pesquisa.
 
@@ -490,8 +522,18 @@ def verified_editorial_excerpt(article, requirement_by_id, *, config):
         seen.add(key)
         if len(opening) + 1 + len(sentence) <= 350:
             return opening + " " + sentence
-    # Não produzir frase inventada quando só existem históricos e estatísticas
-    # parciais: a chamada curta reprova na trava editorial existente.
+    # Sem notícias de preparação, aceitar somente resultados delimitados
+    # por >=3 jogos reais e formular uma chamada factual dos dois lados.
+    form = _fact_map(requirement_by_id.get("recent_form_both_teams"))
+    safe_rows = [
+        _excerpt_form_context(form.get(key, ""))
+        for key in ("home_recent_form", "away_recent_form")
+    ]
+    safe_rows = [x for x in safe_rows if x]
+    if safe_rows and len(opening + " " + " ".join(safe_rows)) <= 380:
+        return opening + " " + " ".join(safe_rows)
+    # Caso só existam históricos ou amostras parciais de dois jogos,
+    # prefere-se bloquear a chamada a fingir que são campanha completa.
     return opening
 
 
