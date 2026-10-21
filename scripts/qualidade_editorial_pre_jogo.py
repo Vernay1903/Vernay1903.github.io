@@ -234,7 +234,7 @@ def repeated_team_points_errors(body_html: str, contract: dict[str, Any]) -> lis
         "vinte": "20",
     }
     seen: dict[tuple[str, str], set[int]] = {}
-    for index, paragraph in enumerate(paragraphs(body_html)):
+    for index, paragraph in enumerate(fold(raw) for raw in PARAGRAPHS.findall(body_html)):
         numbers = re.findall(r"\b(\d+|[a-z]+)\s+pontos\b", paragraph)
         for alias in aliases:
             if not re.search(r"\b" + re.escape(alias) + r"\b", paragraph):
