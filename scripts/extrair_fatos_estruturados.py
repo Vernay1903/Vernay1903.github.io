@@ -1095,6 +1095,43 @@ def extract_officiating_requirement(
                 ):
                     name = extract_referee_name(segment)
             if name is None and source.get("source_type") == "official":
+                # Súmulas de designação da federação incluem vários jogos:
+                # "21.30 Palmeiras - Fluminense, ... Árbitro: Esteban Ostojich".
+                # Restringir à dupla exata (mando incluído) e ao árbitro
+                # IMEDIATAMENTE após esse jogo; nunca aproveitar juiz de
+                # partida vizinha ou de histórico citado no mesmo texto.
+                home = str(match_context.get("home") or "")
+                away = str(match_context.get("away") or "")
+                for h in aliases_for_team(home, config):
+                    if name:
+                        break
+                    for a in aliases_for_team(away, config):
+                        marker = re.search(
+                            r"(?<!\\w)" + re.escape(h)
+                            + r"\\s*[-–]\\s*" + re.escape(a)
+                            + r"\\s*(?:,|\\.|\\s)",
+                            segment, re.I,
+                        )
+                        if not marker:
+                            continue
+                        remainder = segment[marker.end():marker.end() + 150]
+                        referee_marker = re.search(
+                            r"(?i)\\b[áa]rbitro\\s*[:–—-]",
+                            remainder,
+                        )
+                        # Campo do árbitro deve vir antes de outra designação.
+                        if referee_marker and not re.search(
+                            r"(?i)\\b(?:jueves|quinta|viernes|sexta|"
+                            r"s[aá]bado|domingo|lunes|segunda|"
+                            r"martes|ter[cç]a|mi[eé]rcoles|quarta)\\b",
+                            remainder[:referee_marker.start()],
+                        ):
+                            name = extract_referee_name(
+                                remainder[referee_marker.start():]
+                            )
+                        if name:
+                            break
+            if name is None and source.get("source_type") == "official":
                 # Ficha da própria competição: "Arsenal v Manchester City -
                 # Premier League | Árbitro: Michael Oliver". Aceitar somente
                 # se mandante, visitante e competição surgirem ANTES do campo,
