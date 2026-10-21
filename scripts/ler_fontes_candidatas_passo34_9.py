@@ -742,6 +742,15 @@ CURATED_EDITORIAL_2026_10_21 = {
 }
 
 
+def _fixture_curated_key(context: dict[str, Any]) -> tuple[str, str]:
+    """Estabiliza aliases reais do calendário entre Football-Data e ESPN."""
+    home = base.normalize_text(context.get("home"))
+    away = base.normalize_text(context.get("away"))
+    if away == "shakhtar donetsk":
+        away = "fk shakhtar donetsk"
+    return home, away
+
+
 def checked_curated_sources(
     requirement_id: str, *, context: dict[str, Any], article_date: str,
     checked_at: str, config: dict[str, Any], max_sources: int,
@@ -749,8 +758,7 @@ def checked_curated_sources(
     """Acesso direto a páginas REAIS e atuais, sem converter a URL em prova."""
     if str(context.get("kickoff_brasilia", ""))[:10] != "2026-10-21":
         return []
-    key = (base.normalize_text(context.get("home")),
-           base.normalize_text(context.get("away")))
+    key = _fixture_curated_key(context)
     raw_urls = CURATED_2026_10_21.get(key, {}).get(requirement_id, [])
     selected: list[dict[str, Any]] = []
     for index, (url, title) in enumerate(raw_urls):
@@ -946,8 +954,7 @@ def _search_and_check(
 
     # Notícias oficiais atuais: investigação bilateral com uma fonte por time.
     if requirement_id == EDITORIAL_RESEARCH_ID and recent_team:
-        key = (base.normalize_text(context.get("home")),
-               base.normalize_text(context.get("away")))
+        key = _fixture_curated_key(context)
         side = "home" if recent_team == context.get("home") else "away"
         if str(context.get("kickoff_brasilia", ""))[:10] == "2026-10-21":
             checked_editorial = []
