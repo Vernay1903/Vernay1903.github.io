@@ -250,8 +250,12 @@ def repeated_stat_summaries_errors(
         if aliases:
             owners = _mentioned_sides(raw, aliases)
             if len(owners) > 1:
-                continue  # Frase comparativa: não atribuir o mesmo V/E/D aos dois lados.
-            side = owners[0] if owners else section_side
+                # "Como chega Bayern" pode citar Arsenal como adversário.
+                # Nessa seção, o registro pertence ao clube destacado;
+                # fora dela, não atribuir a mesma estatística aos dois.
+                side = section_side if section_side in owners else None
+            else:
+                side = owners[0] if owners else section_side
             if side is None:
                 continue  # Estatística sem time atribuível não comprova duplicação.
         else:
