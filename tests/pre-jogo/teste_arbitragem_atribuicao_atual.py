@@ -56,6 +56,38 @@ def main():
     assert result["status"] == "verified",result
     assert result["facts"][0]["text"] == "Árbitro: Facundo Tello."
 
+    # Designação oficial reúne mais de um confronto no mesmo parágrafo.
+    # A automação deve extrair Ostojich, sem capturar Tejera do dia seguinte.
+    official_ctx = {
+        "home": "Palmeiras", "away": "Fluminense",
+        "competition": "Libertadores",
+        "competition_slug": "libertadores",
+        "kickoff_brasilia": "2026-10-21T21:30:00-03:00",
+    }
+    official_source = {
+        "title": "Cuerpos arbitrales para las semifinales de vuelta de Libertadores",
+        "url": "https://www.afa.com.ar/es/posts/cuerpos-arbitrales-para-las-semifinales-de-vuelta-de-libertadores-y-sudamericana",
+        "publisher": "Asociación del Fútbol Argentino", "source_type": "official",
+        "checked_at": "2026-10-20T21:00:00-03:00",
+        "content_checked": True, "eligible_for_factual_validation": True,
+        "page_evidence": {"metadata": {}, "evidence_segments": [
+            "Miércoles 21 de octubre 21.30 Palmeiras - Fluminense, en Estadio "
+            "NuBank Parque, São Paulo Árbitro: Esteban Ostojich Asistente 1: "
+            "Martín Soppi Asistente 2: Horacio Ferreiro Jueves 22 de octubre "
+            "Flamengo - Estudiantes Árbitro: Gustavo Tejera",
+        ]},
+    }
+    official_req = {
+        "id": "officiating", "status": "pending",
+        "required_for_drafting": True, "conditional": False,
+        "allow_unavailable_after_check": True, "facts": [], "sources": [],
+        "source_candidates": [official_source],
+    }
+    official_result = extract_officiating_requirement(
+        official_req, match_context=official_ctx, config=CFG,
+    )
+    assert official_result["status"] == "verified", official_result
+    assert official_result["facts"][0]["text"] == "Árbitro: Esteban Ostojich."
     other_side = (
         "O treinador, porém, será novamente desfalque na partida de ida "
         "da semifinal da Libertadores, contra o Fluminense, no Maracanã."
