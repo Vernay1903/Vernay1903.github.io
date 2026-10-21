@@ -532,8 +532,9 @@ def focused_revision_guidance(errors: list[str]) -> str:
         )
     if any("linguagem de preenchimento ou metadados de cobertura" in error for error in errors):
         parts.append(
-            "O rascunho vazou linguagem de API: substitua 'jogos registrados', "
-            "rótulos internos e contagens com zero por prosa jornalística. "
+            "O rascunho tem linguagem mecânica: elimine 'jogos registrados', "
+            "'o retrospecto considerado', balanços com zero, inclusive 'nenhum empate' "
+            "ou 'nenhuma derrota', e frases genéricas sobre o peso da história. "
             "Use apenas o período efetivamente confirmado, sem tratar uma "
             "amostra parcial como campanha completa. Cite um resultado ou "
             "notícia de preparação concreta, sem acrescentar fatos novos."
