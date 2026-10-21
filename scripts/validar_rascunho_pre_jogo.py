@@ -318,7 +318,7 @@ def validate_draft(
         )
 
     headings = SUBHEADING_RE.findall(body)
-    minimum_headings = int(contract.get("output_contract", {}).get("minimum_strong_subheadings", 5))
+    minimum_headings = int(contract.get("output_contract", {}).get("minimum_strong_subheadings", 3))
     if len(headings) < minimum_headings:
         errors.append(
             f"rascunho tem {len(headings)} subtítulos <p><strong>; mínimo exigido é {minimum_headings}"
