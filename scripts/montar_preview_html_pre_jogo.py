@@ -465,7 +465,7 @@ def build_preview(
     validated = validate_source_draft(draft, contract, config)
 
     title = page_builder.require_text(contract, "title")
-    excerpt = page_builder.require_text(contract, "excerpt")
+    excerpt = str(validated.get("excerpt") or page_builder.require_text(contract, "excerpt"))
     date = page_builder.require_text(contract, "date")
     slug = page_builder.require_text(contract, "slug")
     page_builder.validate_date(date)
