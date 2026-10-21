@@ -120,7 +120,8 @@ def valid_body() -> str:
     link = "https://cortedosesportes.com.br/premier-league-historia-campeoes.html"
     intro = (
         "<p>Arsenal e Manchester City se enfrentam pela Premier League em um duelo que reúne dois dos principais clubes ingleses. "
-        "A partida será disputada no Emirates Stadium e terá transmissão de ESPN e Disney+. O encontro coloca frente a frente equipes "
+        "O Arsenal soma três vitórias nos últimos cinco jogos e o Manchester City venceu quatro no mesmo período.</p>"
+        "<p>A partida será disputada no Emirates Stadium e terá transmissão de ESPN e Disney+. O encontro coloca frente a frente equipes "
         "que chegam com campanhas recentes fortes e com necessidade de somar pontos na disputa pelas primeiras posições. O horário em "
         "Brasília é 16h, e o confronto concentra atenção tanto pelo momento dos times quanto pelo histórico recente entre eles.</p>"
     )
