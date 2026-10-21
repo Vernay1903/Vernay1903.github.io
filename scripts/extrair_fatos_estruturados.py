@@ -1107,23 +1107,23 @@ def extract_officiating_requirement(
                         break
                     for a in aliases_for_team(away, config):
                         marker = re.search(
-                            r"(?<!\\w)" + re.escape(h)
-                            + r"\\s*[-–]\\s*" + re.escape(a)
-                            + r"\\s*(?:,|\\.|\\s)",
+                            r"(?<!\w)" + re.escape(h)
+                            + r"\s*[-–]\s*" + re.escape(a)
+                            + r"\s*(?:,|\.|\s)",
                             segment, re.I,
                         )
                         if not marker:
                             continue
                         remainder = segment[marker.end():marker.end() + 150]
                         referee_marker = re.search(
-                            r"(?i)\\b[áa]rbitro\\s*[:–—-]",
+                            r"(?i)\b[áa]rbitro\s*[:–—-]",
                             remainder,
                         )
                         # Campo do árbitro deve vir antes de outra designação.
                         if referee_marker and not re.search(
-                            r"(?i)\\b(?:jueves|quinta|viernes|sexta|"
+                            r"(?i)\b(?:jueves|quinta|viernes|sexta|"
                             r"s[aá]bado|domingo|lunes|segunda|"
-                            r"martes|ter[cç]a|mi[eé]rcoles|quarta)\\b",
+                            r"martes|ter[cç]a|mi[eé]rcoles|quarta)\b",
                             remainder[:referee_marker.start()],
                         ):
                             name = extract_referee_name(
