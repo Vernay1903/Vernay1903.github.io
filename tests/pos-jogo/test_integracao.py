@@ -17,6 +17,7 @@ class IntegrationTests(unittest.TestCase):
   self.summary=read(p/'summary.json');self.schedules={i:read(p/f'schedule-{i}.json') for i in ['86','11420']}
   self.now=datetime.fromisoformat('2026-10-22T12:00:00-03:00')
   self.calls=[]
+  (ROOT/'build/pos-jogo').mkdir(parents=True,exist_ok=True)
   self.temp=tempfile.TemporaryDirectory(dir=ROOT/'build/pos-jogo')
   self.out=Path(self.temp.name)
  def tearDown(self):self.temp.cleanup()

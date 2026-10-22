@@ -47,3 +47,4 @@ jobs:
       - name: Conferir que arquivos do site não foram modificados
         if: always()
         run: git diff --exit-code
+# Testes também preparam saída em checkout limpo.
