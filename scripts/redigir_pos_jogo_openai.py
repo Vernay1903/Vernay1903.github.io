@@ -6,7 +6,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from editorial_pos_jogo import ROOT, prepare, validate, render
-from revisar_pos_jogo import review_request, validate_review
+from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units
 
 
 def build_request(package, provider):
@@ -90,12 +90,16 @@ def main():
     if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
     article=None; issues=[]; passed=False
     for attempt in range(1,4):
-        request=build_request(package,provider)
-        if article is not None:
-            request['input'].append({'role':'user','content':json.dumps({
-                'revision_instruction':'Corrija somente os problemas apontados. Preserve informações corretas e o estilo. Não acrescente fatos; mantenha pelo menos 600 palavras com desenvolvimento dos fatos disponíveis. Retorne a matéria completa.',
-                'draft':article,'issues':issues},ensure_ascii=False)})
-        article=parse_response(call(request,f'write_{attempt}'))
+        if article is not None and all(s.split(':',1)[0] in units(article) for s in issues):
+            patch=response_object(call(patch_request(package,article,issues,provider),f'patch_{attempt}'))
+            save(f'correcao-{attempt}.json',patch)
+            article=apply_patch(article,patch,issues)
+        else:
+            request=build_request(package,provider)
+            if article is not None:
+                request['input'].append({'role':'user','content':json.dumps({'draft':article,'issues':issues,
+                    'instruction':'Corrija as falhas de formato mantendo fatos e narrativa corretos. Retorne texto completo.'},ensure_ascii=False)})
+            article=parse_response(call(request,f'write_{attempt}'))
         save(f'artigo-{attempt}.json',article)
         checks=validate(article,package['allowed_internal_urls'])
         review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))

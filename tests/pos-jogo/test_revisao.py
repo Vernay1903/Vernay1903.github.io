@@ -20,3 +20,15 @@ class ReviewTests(unittest.TestCase):
  def test_rejection_reaches_writer(self):
   self.checks[2].update(supported=False,issues=['Mando invertido'])
   self.assertEqual(validate_review({'checks':self.checks},self.p,self.a),['block_0: Mando invertido'])
+
+class PatchTests(unittest.TestCase):
+ def test_preserves_approved_units(self):
+  from revisar_pos_jogo import apply_patch
+  a={'title':'Título','excerpt':'Chamada','blocks':[{'type':'paragraph','text':'Correto'},{'type':'paragraph','text':'Erro'}]}
+  b=apply_patch(a,{'replacements':[{'unit':'block_1','text':'Corrigido'}]},['block_1: erro factual'])
+  self.assertEqual(b['blocks'][0],a['blocks'][0]);self.assertEqual(b['title'],a['title'])
+  self.assertEqual(a['blocks'][1]['text'],'Erro')
+ def test_unrequested_edit_blocks(self):
+  from revisar_pos_jogo import apply_patch
+  a={'title':'Título','excerpt':'Chamada','blocks':[]}
+  with self.assertRaises(ValueError):apply_patch(a,{'replacements':[{'unit':'title','text':'Outro'}]},['excerpt: erro'])
