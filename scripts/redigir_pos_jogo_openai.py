@@ -1,4 +1,4 @@
-"""Teste isolado: uma chamada, sem publicação ou alteração de arquivos do site."""
+"""Redação, revisão factual e correção limitada; publicação permanece bloqueada."""
 import argparse
 import json
 import os
@@ -6,6 +6,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from editorial_pos_jogo import ROOT, prepare, validate, render
+from revisar_pos_jogo import review_request, validate_review
 
 
 def build_request(package, provider):
@@ -22,7 +23,7 @@ def build_request(package, provider):
         'text':{'format':{'type':'json_schema','name':'pos_jogo','strict':True,'schema':schema}}}
 
 
-def parse_response(response):
+def response_object(response):
     if response.get('status') != 'completed' or response.get('error'):
         raise ValueError('Resposta incompleta ou com erro; não liberada')
     chunks=[]
@@ -32,6 +33,11 @@ def parse_response(response):
             if part.get('type') == 'refusal': raise ValueError('Recusa do modelo')
             if part.get('type') == 'output_text': chunks.append(part['text'])
     article=json.loads(''.join(chunks))
+    return article
+
+
+def parse_response(response):
+    article=response_object(response)
     if not isinstance(article,dict) or set(article) != {'title','excerpt','blocks'}:
         raise ValueError('Objeto editorial inválido')
     return article
@@ -54,23 +60,45 @@ def main():
     out=ROOT/'build/pos-jogo/api';out.mkdir(parents=True,exist_ok=True)
     marker=out/'tentativa.json'
     if marker.exists(): raise ValueError('Teste já iniciado neste diretório; repetição bloqueada')
-    marker.write_text(json.dumps({'attempts':1,'publication_enabled':False}))
-    req=urllib.request.Request('https://api.openai.com/v1/responses',
-        data=json.dumps(request).encode(),headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},method='POST')
-    try:
-        with urllib.request.urlopen(req,timeout=180) as response: result=json.load(response)
-    except urllib.error.HTTPError as exc:
-        raise ValueError(f'API retornou HTTP {exc.code}; sem repetição automática') from None
-    metadata={'model':provider['model'],'response_id':result.get('id'),'status':result.get('status'),
-        'usage':result.get('usage'),'automatic_model_run':True,'publication_enabled':False,
-        'human_review_required':True,'fixture_id':package['facts']['fixture_id']}
-    (out/'metadata.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2))
-    article=parse_response(result)
-    checks=validate(article,package['allowed_internal_urls'])
-    (out/'artigo.json').write_text(json.dumps(article,ensure_ascii=False,indent=2))
-    (out/'validacao.json').write_text(json.dumps(checks,ensure_ascii=False,indent=2))
+    marker.write_text(json.dumps({'max_calls':6,'publication_enabled':False}))
+    calls=[]
+    def save(name,obj): (out/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2))
+    def call(payload, stage):
+        if len(calls)>=6: raise ValueError('Limite total de chamadas atingido')
+        req=urllib.request.Request('https://api.openai.com/v1/responses',
+            data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},method='POST')
+        calls.append({'stage':stage,'status':'started'})
+        save('chamadas.json',calls)
+        try:
+            with urllib.request.urlopen(req,timeout=180) as response: result=json.load(response)
+        except urllib.error.HTTPError as exc:
+            calls[-1]['status']=f'http_{exc.code}';save('chamadas.json',calls)
+            raise ValueError(f'API retornou HTTP {exc.code}; sem repetição automática') from None
+        calls[-1].update({'response_id':result.get('id'),'status':result.get('status'),'usage':result.get('usage')})
+        save('chamadas.json',calls)
+        return result
+    article=None; issues=[]; passed=False
+    for attempt in range(1,4):
+        request=build_request(package,provider)
+        if article is not None:
+            request['input'].append({'role':'user','content':json.dumps({
+                'revision_instruction':'Corrija somente os problemas apontados. Preserve informações corretas e o estilo. Não acrescente fatos; mantenha pelo menos 600 palavras com desenvolvimento dos fatos disponíveis. Retorne a matéria completa.',
+                'draft':article,'issues':issues},ensure_ascii=False)})
+        article=parse_response(call(request,f'write_{attempt}'))
+        save(f'artigo-{attempt}.json',article)
+        checks=validate(article,package['allowed_internal_urls'])
+        review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))
+        save(f'revisao-{attempt}.json',review)
+        issues=checks['errors']+validate_review(review,package,article)
+        print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
+        if not issues:
+            passed=True;break
+    metadata={'model':provider['model'],'automatic_model_run':True,'publication_enabled':False,
+        'human_review_required':True,'fixture_id':package['facts']['fixture_id'],
+        'semantic_review_passed':passed,'calls':calls}
+    save('metadata.json',metadata);save('artigo.json',article);save('validacao.json',checks)
     print(json.dumps({'metadata':metadata,'validation':checks},ensure_ascii=False))
     print('INICIO DO RASCUNHO\n'+render(article)+'FIM DO RASCUNHO')
-    if not checks['format_passed']: raise ValueError('Rascunho reprovado no formato; preservado para diagnóstico')
+    if not passed:raise ValueError('Revisão factual/editorial reprovada após limite de correções')
 
 if __name__=='__main__':main()
