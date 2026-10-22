@@ -25,6 +25,8 @@ def prepare(facts, narrative, allowed_urls):
         if not claim.get('source_ids') or any(i not in sources or sources[i].get('opened') is not True for i in claim['source_ids']):
             raise ValueError('Fato sem página efetivamente consultada')
     clean = {k: copy.deepcopy(facts[k]) for k in ['fixture_id','match','venue','score','goals','campaign','competition_context','upcoming']}
+    # Notas de restrição não são fatos esportivos e não devem virar reportagem.
+    clean['competition_context'].pop('note', None)
     # Valores em conflito e links de pesquisa não são entregues ao redator.
     return {'instructions': (ROOT/'prompts/pos-jogo-editorial.txt').read_text(),
             'facts': clean, 'narrative_facts': [c['text'] for c in narrative['claims']],
@@ -61,7 +63,7 @@ def validate(article, allowed_urls):
     if words<600: errors.append('Corpo com menos de 600 palavras')
     full='\n'.join([title,excerpt,body])
     if re.search(r'(?m)^\s*(#{1,6}\s|>|```)|\*\*|\[[^\]]+\]\(',full): errors.append('Formatação proibida')
-    if re.search(r'placeholder|\bTODO\b|dados verificados|jogos registrados|recorte consultado',full,re.I): errors.append('Marca de bastidor')
+    if re.search(r'placeholder|\bTODO\b|dados verificados|jogos registrados|recorte consultado|conclusão independente|avaliação é do próprio|não representa, por si só|não permite afirmar|sem antecipar o resultado',full,re.I): errors.append('Marca de bastidor')
     parser=Anchors(allowed_urls); parser.feed(full)
     errors.extend(parser.errors)
     if parser.depth: errors.append('Âncora não fechada')

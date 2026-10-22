@@ -24,6 +24,10 @@ class EditorialTest(unittest.TestCase):
  def test_html_and_markdown(self):
   for text in ['<p>texto</p>','## título','**negrito**','<!-- nota -->']:
    a=copy.deepcopy(self.a);a['blocks'][0]['text']=text;self.assertFalse(validate(a,self.links)['format_passed'])
+ def test_editorial_process_leaks(self):
+  for text in ['A avaliação é do próprio jogador e não representa, por si só, uma conclusão independente.', 'O resultado não permite afirmar que haja vaga garantida.']:
+   a=copy.deepcopy(self.a);a['blocks'].append({'type':'paragraph','text':text})
+   self.assertFalse(validate(a,self.links)['format_passed'])
  def test_source_gate(self):
   f={'ready_for_drafting':True,'fixture_id':'a'}
   n={'fixture_id':'a','reviewed':True,'sources':[{'id':'x','opened':False}],'claims':[{'text':'x','source_ids':['x']}]}
