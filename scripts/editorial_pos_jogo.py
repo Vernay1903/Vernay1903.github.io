@@ -27,6 +27,9 @@ def prepare(facts, narrative, allowed_urls):
     clean = {k: copy.deepcopy(facts[k]) for k in ['fixture_id','match','venue','score','goals','campaign','competition_context','upcoming']}
     # Notas de restrição não são fatos esportivos e não devem virar reportagem.
     clean['competition_context'].pop('note', None)
+    from datetime import date
+    weekdays=['segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo']
+    clean['match']['weekday_brasilia']=weekdays[date.fromisoformat(clean['match']['match_date']).weekday()]
     # Valores em conflito e links de pesquisa não são entregues ao redator.
     return {'instructions': (ROOT/'prompts/pos-jogo-editorial.txt').read_text(),
             'facts': clean, 'narrative_facts': [c['text'] for c in narrative['claims']],
