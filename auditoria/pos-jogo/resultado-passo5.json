@@ -1,0 +1,44 @@
+{
+  "step": 5,
+  "run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/39808813804",
+  "run_conclusion": "success",
+  "metadata": {
+    "model": "gpt-5.6-luna",
+    "response_id": "resp_073c21c270e2eef5016ada3135611487d2910fa5e439a4b579",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 2257,
+      "input_tokens_details": {
+        "cache_write_tokens": 2254,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1167,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3424
+    },
+    "automatic_model_run": true,
+    "publication_enabled": false,
+    "human_review_required": true,
+    "fixture_id": "espn-401915313"
+  },
+  "validation": {
+    "format_passed": true,
+    "title_chars": 58,
+    "body_words": 720,
+    "errors": [],
+    "factual_accuracy_validated_by_this_script": false,
+    "publication_enabled": false
+  },
+  "editorial_approved": false,
+  "review_notes": [
+    "Texto gerado contém comentários de bastidor: avaliação independente, vaga não garantida e ressalva sobre declarações.",
+    "Repete campanha e pontuação; não incluiu link interno autorizado.",
+    "Trecho sobre Güler no primeiro gol é impreciso: o rebote foi aproveitado por Bernardo; Güler fez a finalização anterior.",
+    "Geração pela API comprovada; apuração deste caso foi revisada previamente por assistente, não coletada autonomamente nesta execução."
+  ],
+  "publication_enabled": false,
+  "automatic_schedule_enabled": false,
+  "raw_rendered_article": "Real Madrid goleia Leipzig e vence a terceira na Champions\n\nCom gols de Bernardo Silva, Güler, Mbappé e Diomande, Real Madrid faz 4 a 1 no Santiago Bernabéu pela fase de liga.\n\nO Real Madrid venceu o RB Leipzig por 4 a 1 nesta quarta-feira, 21 de outubro de 2026, no Santiago Bernabéu, pela terceira rodada da fase de liga da Champions League 2026/27. Bernardo Silva, Arda Güler, Kylian Mbappé e Yan Diomande marcaram para a equipe espanhola, enquanto Tidiam Gomis descontou para os alemães. O resultado foi a terceira vitória do Real Madrid na competição, que chegou a nove pontos em três partidas. O Leipzig soma três pontos, com uma vitória e duas derrotas.\n\nCourtois aparece antes do primeiro gol\n\nO início da partida teve Thibaut Courtois como um dos protagonistas do Real Madrid. O goleiro defendeu finalizações de Rômulo e Nkunku antes de a equipe da casa abrir o placar. Do outro lado, Vandevoordt também evitou o gol em uma conclusão de Vinicius Junior, mantendo o Leipzig na disputa durante parte do primeiro tempo.\n\nBernardo Silva marcou antes do intervalo, no rebote de uma finalização de Arda Güler. A jogada começou com passe de Valverde e terminou com o meia português aproveitando a sobra para colocar o Real Madrid em vantagem. Em sua avaliação após a partida, Courtois destacou as duas defesas realizadas antes do gol e afirmou que sair na frente era importante para o time.\n\nGüler amplia após jogada pelo lado\n\nO Real Madrid ampliou aos 52 minutos. Bellingham cruzou, Mbappé cabeceou e Güler completou a jogada antes de Raum afastar. O lance confirmou a participação do jovem turco em dois dos primeiros gols do time, depois de ele ter aparecido no rebote que originou a abertura do placar.\n\nCourtois afirmou que o técnico pediu uma melhora defensiva no intervalo. Segundo o goleiro, a equipe voltou com mais intensidade e aproveitou melhor as oportunidades na segunda etapa. A avaliação é do próprio jogador e não representa, por si só, uma conclusão independente sobre o desempenho coletivo.\n\nMbappé e Diomande definem a goleada\n\nO terceiro gol do Real Madrid saiu aos 83 minutos, quando Mbappé acertou uma finalização de fora da área. Dois minutos depois, o Leipzig respondeu com Gomis, que marcou aos 85 e reduziu a diferença momentaneamente para dois gols.\n\nA reação alemã, porém, durou pouco. Diomande fechou o placar aos 87 minutos, com um voleio. O atacante havia entrado aos 70 minutos no lugar de Vinicius Junior e marcou pouco depois da substituição. Gomis também havia saído do banco, substituindo Nusa aos 73 minutos, antes de balançar as redes para o Leipzig.\n\nTerceira vitória mantém campanha perfeita\n\nCom o triunfo, o Real Madrid chegou a três vitórias em três rodadas da fase de liga da Champions League. A campanha soma nove pontos, sem empates ou derrotas até aqui. O resultado reforça o início positivo do clube no torneio, mas não permite afirmar que a equipe já tenha vaga garantida na próxima fase.\n\nO Leipzig, por sua vez, permanece com três pontos após três jogos, resultado de uma vitória e duas derrotas. A equipe terá de buscar recuperação nas próximas rodadas da competição, enquanto tenta equilibrar a campanha europeia com o calendário nacional.\n\nCourtois também falou sobre a concorrência dentro do elenco e afirmou que a disputa por espaço favorece o trabalho da equipe. O goleiro ainda manifestou confiança para o clássico seguinte. Essas declarações refletem a avaliação do jogador sobre o ambiente do grupo, sem antecipar o resultado do próximo compromisso.\n\nReal Madrid encara o Barcelona no domingo\n\nO próximo desafio do Real Madrid será de peso. O time visitará o Barcelona no domingo, 25 de outubro, pela décima rodada de LaLiga. A partida está marcada para as 17h no horário de Brasília, equivalente às 21h no horário local anunciado, no Spotify Camp Nou.\n\nNa Champions League, o próximo compromisso do Real Madrid será contra o AEK Athens, em 4 de novembro, às 14h45, fora de casa. O Leipzig também voltará a campo pela competição continental na mesma data, às 17h, para receber o Manchester City.\n\nAntes disso, o clube alemão terá compromisso pela Bundesliga. O Leipzig receberá o SV Elversberg em 24 de outubro, na Red Bull Arena. A equipe venceu os três primeiros jogos em casa no campeonato alemão, com 14 gols marcados e nenhum sofrido, mas perdeu os três compromissos disputados como visitante. O Elversberg chegou ao confronto com dez pontos nas seis primeiras partidas de sua temporada inaugural na Bundesliga."
+}
