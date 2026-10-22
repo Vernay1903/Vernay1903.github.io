@@ -35,3 +35,4 @@ jobs:
       - name: Conferir ausência de alterações no site
         if: always()
         run: git diff --exit-code
+# Segunda execução revisada do passo 6.
