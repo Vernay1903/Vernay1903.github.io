@@ -1,0 +1,105 @@
+{
+  "fixture_id": "espn-401915313",
+  "method": "source_review",
+  "score": {
+    "home": 4,
+    "away": 1
+  },
+  "venue": "Santiago Bernabéu",
+  "goals": [
+    {
+      "side": "home",
+      "scorer": "Bernardo Silva",
+      "minute": null,
+      "minute_conflict": {
+        "ESPN_DFB": "43'",
+        "Real_Madrid_report": "44'"
+      }
+    },
+    {
+      "side": "home",
+      "scorer": "Arda Güler",
+      "minute": "52'"
+    },
+    {
+      "side": "home",
+      "scorer": "Kylian Mbappé",
+      "minute": "83'"
+    },
+    {
+      "side": "away",
+      "scorer": "Tidiam Gomis",
+      "minute": "85'"
+    },
+    {
+      "side": "home",
+      "scorer": "Yan Diomande",
+      "minute": "87'"
+    }
+  ],
+  "campaign": {
+    "home": {
+      "gamesPlayed": 3,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "points": 9
+    },
+    "away": {
+      "gamesPlayed": 3,
+      "wins": 1,
+      "ties": 0,
+      "losses": 2,
+      "points": 3
+    }
+  },
+  "competition_context": {
+    "season": "2026/27",
+    "stage": "fase de liga",
+    "matchday": 3,
+    "note": "Terceira vitória do Real Madrid na competição; sem inferência de vaga garantida."
+  },
+  "sources": [
+    {
+      "url": "https://www.realmadrid.com/en-US/news/football/first-team/reports/cronica-real-madrid-leipzig-j3-champions-21-10-2026",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "score",
+        "scorers",
+        "venue",
+        "third_win",
+        "matchday"
+      ],
+      "note": "Relato oficial consultado; minuto do primeiro gol diverge da ficha."
+    },
+    {
+      "url": "https://datencenter.dfb.de/en/data-center/champions-league/2026-2027/matchday/2429562",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "score",
+        "scorers",
+        "goal_order",
+        "goal_minutes",
+        "venue",
+        "date"
+      ]
+    },
+    {
+      "url": "https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/actualidad/el-barcelona-real-madrid-se-jugara-el-domingo-25-de-octubre-a-las-21-00-h-01-09-2026",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "upcoming.home.next_match.date",
+        "upcoming.home.next_match.opponent"
+      ],
+      "note": "Anúncio oficial do clássico; hora de Brasília calculada do instante UTC do calendário."
+    },
+    {
+      "url": "https://www.bundesliga.com/en/bundesliga/matchday/2026-2027/7/rb-leipzig-vs-sv-elversberg/accessibility",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "upcoming.away.next_match.date",
+        "upcoming.away.next_match.opponent"
+      ]
+    }
+  ]
+}

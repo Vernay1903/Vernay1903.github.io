@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "fixture_id": "espn-401915313",
+  "generated_at": "2026-10-22T08:51:24.172948-03:00",
+  "mode": "facts_only",
+  "ready_for_drafting": true,
+  "ready_for_publication": false,
+  "validation_method": "structured_checks_plus_explicit_source_review",
+  "match": {
+    "home": "Real Madrid",
+    "away": "RB Leipzig",
+    "match_date": "2026-10-21",
+    "competition": "Champions League",
+    "kickoff": "2026-10-21T16:00:00-03:00"
+  },
+  "venue": "Santiago Bernabéu",
+  "score": {
+    "home": 4,
+    "away": 1
+  },
+  "goals": [
+    {
+      "side": "home",
+      "scorer": "Bernardo Silva",
+      "minute": null
+    },
+    {
+      "side": "home",
+      "scorer": "Arda Güler",
+      "minute": "52'"
+    },
+    {
+      "side": "home",
+      "scorer": "Kylian Mbappé",
+      "minute": "83'"
+    },
+    {
+      "side": "away",
+      "scorer": "Tidiam Gomis",
+      "minute": "85'"
+    },
+    {
+      "side": "home",
+      "scorer": "Yan Diomande",
+      "minute": "87'"
+    }
+  ],
+  "campaign": {
+    "home": {
+      "gamesPlayed": 3,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "points": 9
+    },
+    "away": {
+      "gamesPlayed": 3,
+      "wins": 1,
+      "ties": 0,
+      "losses": 2,
+      "points": 3
+    }
+  },
+  "competition_context": {
+    "season": "2026/27",
+    "stage": "fase de liga",
+    "matchday": 3,
+    "note": "Terceira vitória do Real Madrid na competição; sem inferência de vaga garantida."
+  },
+  "upcoming": {
+    "home": {
+      "next_match": {
+        "fixture_id": "espn-401882832",
+        "home": "Barcelona",
+        "away": "Real Madrid",
+        "date_brasilia": "2026-10-25",
+        "time_brasilia": "17:00",
+        "competition_code": "esp.1",
+        "competition": "Spanish LALIGA"
+      },
+      "next_in_competition": {
+        "fixture_id": "espn-401915383",
+        "home": "AEK Athens",
+        "away": "Real Madrid",
+        "date_brasilia": "2026-11-04",
+        "time_brasilia": "14:45",
+        "competition_code": "uefa.champions",
+        "competition": "UEFA Champions League"
+      }
+    },
+    "away": {
+      "next_match": {
+        "fixture_id": "espn-401884762",
+        "home": "RB Leipzig",
+        "away": "SV Elversberg",
+        "date_brasilia": "2026-10-24",
+        "time_brasilia": "10:30",
+        "competition_code": "ger.1",
+        "competition": "German Bundesliga"
+      },
+      "next_in_competition": {
+        "fixture_id": "espn-401915306",
+        "home": "RB Leipzig",
+        "away": "Manchester City",
+        "date_brasilia": "2026-11-04",
+        "time_brasilia": "17:00",
+        "competition_code": "uefa.champions",
+        "competition": "UEFA Champions League"
+      }
+    }
+  },
+  "sources": [
+    {
+      "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/summary?event=401915313",
+      "checked_at": "2026-10-22T08:51:24.172948-03:00",
+      "supports": [
+        "identity",
+        "score",
+        "goals",
+        "venue",
+        "campaign"
+      ]
+    },
+    {
+      "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/86/schedule?fixture=true&season=2026",
+      "checked_at": "2026-10-22T08:51:24.172948-03:00",
+      "supports": [
+        "upcoming.home"
+      ]
+    },
+    {
+      "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/11420/schedule?fixture=true&season=2026",
+      "checked_at": "2026-10-22T08:51:24.172948-03:00",
+      "supports": [
+        "upcoming.away"
+      ]
+    },
+    {
+      "url": "https://www.realmadrid.com/en-US/news/football/first-team/reports/cronica-real-madrid-leipzig-j3-champions-21-10-2026",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "score",
+        "scorers",
+        "venue",
+        "third_win",
+        "matchday"
+      ],
+      "note": "Relato oficial consultado; minuto do primeiro gol diverge da ficha."
+    },
+    {
+      "url": "https://datencenter.dfb.de/en/data-center/champions-league/2026-2027/matchday/2429562",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "score",
+        "scorers",
+        "goal_order",
+        "goal_minutes",
+        "venue",
+        "date"
+      ]
+    },
+    {
+      "url": "https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/actualidad/el-barcelona-real-madrid-se-jugara-el-domingo-25-de-octubre-a-las-21-00-h-01-09-2026",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "upcoming.home.next_match.date",
+        "upcoming.home.next_match.opponent"
+      ],
+      "note": "Anúncio oficial do clássico; hora de Brasília calculada do instante UTC do calendário."
+    },
+    {
+      "url": "https://www.bundesliga.com/en/bundesliga/matchday/2026-2027/7/rb-leipzig-vs-sv-elversberg/accessibility",
+      "checked_at": "2026-10-22T08:50:06.770636-03:00",
+      "supports": [
+        "upcoming.away.next_match.date",
+        "upcoming.away.next_match.opponent"
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "field": "goal_minute",
+      "scorer": "Bernardo Silva",
+      "action": "omit",
+      "provider_value": "43'",
+      "review": {
+        "side": "home",
+        "scorer": "Bernardo Silva",
+        "minute": null,
+        "minute_conflict": {
+          "ESPN_DFB": "43'",
+          "Real_Madrid_report": "44'"
+        }
+      }
+    }
+  ],
+  "gaps": [],
+  "editorial_rules": [
+    "Não inferir domínio ou qualidade de atuação a partir de placar/estatísticas.",
+    "Não publicar minutos omitidos nem posição final ou classificação não verificadas.",
+    "Horários futuros são de Brasília e devem ser revalidados antes de publicar."
+  ]
+}

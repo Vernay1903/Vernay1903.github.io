@@ -1,0 +1,219 @@
+{
+  "team": {
+    "id": "11420"
+  },
+  "events": [
+    {
+      "id": "401884762",
+      "date": "2026-10-24T13:30Z",
+      "timeValid": true,
+      "league": {
+        "id": "720",
+        "alternateId": "10",
+        "name": "German Bundesliga",
+        "abbreviation": "Bundesliga",
+        "shortName": "Bundesliga",
+        "midsizeName": "GER.1",
+        "slug": "ger.1",
+        "isTournament": false
+      },
+      "competitions": [
+        {
+          "date": "2026-10-24T13:30Z",
+          "status": {
+            "clock": 0.0,
+            "addedClock": 0.0,
+            "displayClock": "0'",
+            "period": 0,
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "Sat, October 24th at 9:30 AM EDT",
+              "shortDetail": "10/24 - 9:30 AM EDT"
+            }
+          },
+          "competitors": [
+            {
+              "homeAway": "home",
+              "score": null,
+              "team": {
+                "id": "11420",
+                "displayName": "RB Leipzig"
+              }
+            },
+            {
+              "homeAway": "away",
+              "score": null,
+              "team": {
+                "id": "10388",
+                "displayName": "SV Elversberg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401917027",
+      "date": "2026-10-27T17:00Z",
+      "timeValid": true,
+      "league": {
+        "id": "3954",
+        "alternateId": "2061",
+        "name": "German Cup",
+        "abbreviation": "German Cup",
+        "shortName": "German Cup",
+        "midsizeName": "GER.DFB_POKAL",
+        "slug": "ger.dfb_pokal",
+        "isTournament": true
+      },
+      "competitions": [
+        {
+          "date": "2026-10-27T17:00Z",
+          "status": {
+            "clock": 0.0,
+            "addedClock": 0.0,
+            "displayClock": "0'",
+            "period": 0,
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "Tue, October 27th at 1:00 PM EDT",
+              "shortDetail": "10/27 - 1:00 PM EDT"
+            }
+          },
+          "competitors": [
+            {
+              "homeAway": "home",
+              "score": null,
+              "team": {
+                "id": "9705",
+                "displayName": "Rot-Weiss Essen"
+              }
+            },
+            {
+              "homeAway": "away",
+              "score": null,
+              "team": {
+                "id": "11420",
+                "displayName": "RB Leipzig"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401884747",
+      "date": "2026-10-31T14:30Z",
+      "timeValid": true,
+      "league": {
+        "id": "720",
+        "alternateId": "10",
+        "name": "German Bundesliga",
+        "abbreviation": "Bundesliga",
+        "shortName": "Bundesliga",
+        "midsizeName": "GER.1",
+        "slug": "ger.1",
+        "isTournament": false
+      },
+      "competitions": [
+        {
+          "date": "2026-10-31T14:30Z",
+          "status": {
+            "clock": 0.0,
+            "addedClock": 0.0,
+            "displayClock": "0'",
+            "period": 0,
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "Sat, October 31st at 10:30 AM EDT",
+              "shortDetail": "10/31 - 10:30 AM EDT"
+            }
+          },
+          "competitors": [
+            {
+              "homeAway": "home",
+              "score": null,
+              "team": {
+                "id": "133",
+                "displayName": "Schalke 04"
+              }
+            },
+            {
+              "homeAway": "away",
+              "score": null,
+              "team": {
+                "id": "11420",
+                "displayName": "RB Leipzig"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401915306",
+      "date": "2026-11-04T20:00Z",
+      "timeValid": true,
+      "league": {
+        "id": "775",
+        "alternateId": "2",
+        "name": "UEFA Champions League",
+        "abbreviation": "UEFA Champions League",
+        "shortName": "UEFA Champions League",
+        "midsizeName": "UEFA.CHAMPIONS",
+        "slug": "uefa.champions",
+        "isTournament": true
+      },
+      "competitions": [
+        {
+          "date": "2026-11-04T20:00Z",
+          "status": {
+            "clock": 0.0,
+            "addedClock": 0.0,
+            "displayClock": "0'",
+            "period": 0,
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "Wed, November 4th at 3:00 PM EST",
+              "shortDetail": "11/4 - 3:00 PM EST"
+            }
+          },
+          "competitors": [
+            {
+              "homeAway": "home",
+              "score": null,
+              "team": {
+                "id": "11420",
+                "displayName": "RB Leipzig"
+              }
+            },
+            {
+              "homeAway": "away",
+              "score": null,
+              "team": {
+                "id": "382",
+                "displayName": "Manchester City"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
