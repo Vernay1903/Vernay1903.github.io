@@ -1,0 +1,57 @@
+{
+  "step": 6,
+  "status": "editorial_review_failed",
+  "technical_generation_passed": true,
+  "editorial_approved": false,
+  "publication_enabled": false,
+  "tests_passed": 37,
+  "attempts": [
+    {
+      "run_id": 39826712224,
+      "result": "rejected",
+      "reason": "Inverteu efeito do gol de Mbappé em passagem sobre Gomis; inferiu administração da vantagem e estádio futuro."
+    },
+    {
+      "run_id": 39826913205,
+      "result": "rejected",
+      "reason": "Fechamento relaciona próxima partida em casa à interrupção de sequência fora; chamada afirma abrir vantagem sem especificar comparação; acrescenta recebimento da bola fora da área não constante no pacote."
+    }
+  ],
+  "corrections_implemented": [
+    "Separação de nota de restrição da informação esportiva.",
+    "Sequência explícita de Güler e Bernardo no rebote.",
+    "Bloqueio de comentários de bastidor observados.",
+    "Instruções para atribuição de opiniões, campanha sem repetição e sequência dos gols."
+  ],
+  "remaining_requirement": "Revisão semântica de cada afirmação contra evidências antes de liberar conteúdo; os testes de formato não realizam essa revisão.",
+  "metadata": {
+    "model": "gpt-5.6-luna",
+    "response_id": "resp_05792345dfd7b079016ada4e343ab887d08c0092f2a7b5602d",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 2582,
+      "input_tokens_details": {
+        "cache_write_tokens": 2579,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1053,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3635
+    },
+    "automatic_model_run": true,
+    "publication_enabled": false,
+    "human_review_required": true,
+    "fixture_id": "espn-401915313"
+  },
+  "validation": {
+    "format_passed": true,
+    "title_chars": 53,
+    "body_words": 634,
+    "errors": [],
+    "factual_accuracy_validated_by_this_script": false,
+    "publication_enabled": false
+  },
+  "raw_rendered_article": "Real Madrid goleia Leipzig e mantém 100% na Champions\n\nTime espanhol vence por 4 a 1 no Bernabéu, chega a nove pontos e abre vantagem na fase de liga da Champions League.\n\nO Real Madrid venceu o Leipzig por 4 a 1 nesta quarta-feira, no Santiago Bernabéu, pela terceira rodada da fase de liga da Champions League 2026/27. Bernardo Silva, Arda Güler, Kylian Mbappé e Yan Diomande marcaram para o time espanhol, enquanto Tidiam Gomis descontou para os alemães.\n\nReal Madrid constrói a vitória ainda no primeiro tempo\n\nO Leipzig teve oportunidades antes de sofrer o primeiro gol, mas parou em Thibaut Courtois. O goleiro do Real Madrid defendeu finalizações de Rômulo e Nkunku, intervenções que mantiveram o placar sem gols durante a etapa inicial. Do outro lado, Vandevoordt também trabalhou e defendeu um chute de Vini Jr.\n\nA abertura do placar saiu a partir de uma finalização de Arda Güler. Valverde encontrou o meia, que chutou, mas Bernardo Silva aproveitou o rebote e colocou o Real Madrid em vantagem antes do intervalo. O lance deu ao time da casa a dianteira depois de uma sequência em que os dois goleiros já haviam sido acionados.\n\nNa avaliação pós-jogo, Courtois destacou as duas defesas realizadas antes do gol e a importância de a equipe sair na frente. O goleiro também relatou que o técnico pediu uma melhora defensiva no intervalo. Segundo Courtois, o Real Madrid voltou para a segunda etapa com mais intensidade e melhor aproveitamento.\n\nGüler e Mbappé participam da definição\n\nO segundo gol do Real Madrid saiu aos 52 minutos. Bellingham cruzou, Mbappé cabeceou e Güler completou a jogada. Raum ainda tentou afastar a bola, mas a intervenção não evitou que o meia turco marcasse e ampliasse a vantagem do time espanhol.\n\nO Leipzig tentou permanecer na partida, mas o Real Madrid voltou a marcar aos 83 minutos. Mbappé recebeu fora da área e acertou a finalização para fazer o terceiro gol da equipe da casa. Dois minutos depois, aos 85, Tidiam Gomis descontou para os visitantes.\n\nA resposta do Real Madrid foi imediata. Aos 87 minutos, Yan Diomande fechou o placar com um voleio. O jogador havia entrado aos 70 minutos, no lugar de Vinicius Junior, e marcou na reta final. Gomis também havia saído do banco: substituiu Nusa aos 73 minutos antes de balançar as redes.\n\nCampanhas opostas na fase de liga\n\nCom a vitória, o Real Madrid chegou a nove pontos em três partidas, com três triunfos. O Leipzig permaneceu com três pontos, resultado de uma vitória e duas derrotas nas três rodadas disputadas. O placar no Bernabéu reforçou a diferença entre as campanhas das equipes no início da competição europeia.\n\nA atuação também deixou Courtois confiante para o próximo compromisso do calendário. O goleiro avaliou que a concorrência no elenco favorece o trabalho da equipe e manifestou confiança antes do clássico contra o Barcelona.\n\nPróximos jogos de Real Madrid e Leipzig\n\nO Real Madrid volta a campo em 25 de outubro, contra o Barcelona, pela décima rodada de LaLiga. A partida será disputada no Spotify Camp Nou, com início marcado para 17h no horário de Brasília, equivalente às 21h no horário local anunciado. Pela Champions League, o próximo compromisso do time será contra o AEK Atenas, em 4 de novembro, às 14h45, fora de casa.\n\nO Leipzig terá compromisso pela Bundesliga em 24 de outubro, quando recebe o Elversberg na Red Bull Arena, às 10h30 de Brasília. O time venceu seus três primeiros jogos em casa no campeonato alemão, com 14 gols marcados e nenhum sofrido, mas perdeu as três partidas disputadas como visitante. O Elversberg chegou ao confronto com dez pontos nas seis primeiras rodadas de sua primeira temporada de Bundesliga.\n\nNa Champions League, o Leipzig enfrentará o Manchester City em 4 de novembro, em casa, às 17h de Brasília. Antes do duelo europeu, a equipe alemã tentará interromper a sequência negativa fora de casa e aproveitar o desempenho positivo que tem apresentado diante de sua torcida."
+}
