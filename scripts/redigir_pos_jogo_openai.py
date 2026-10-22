@@ -51,7 +51,7 @@ def main():
     package=prepare(read('auditoria/pos-jogo/fatos-real-leipzig-20261021.json'),
         read('auditoria/pos-jogo/narrativa-real-leipzig-20261021.json'),
         read('auditoria/pos-jogo/links-autorizados-piloto.json'))
-    provider=read('config/redacao-pre-jogo.json')['provider']
+    provider=read('config/redacao-pos-jogo.json')['provider']
     request=build_request(package,provider)
     if len(json.dumps(package,ensure_ascii=False))>20000: raise ValueError('Pacote acima do limite')
     if not args.execute: print('Preparo validado; nenhuma chamada realizada');return
@@ -60,11 +60,11 @@ def main():
     out=ROOT/'build/pos-jogo/api';out.mkdir(parents=True,exist_ok=True)
     marker=out/'tentativa.json'
     if marker.exists(): raise ValueError('Teste já iniciado neste diretório; repetição bloqueada')
-    marker.write_text(json.dumps({'max_calls':6,'publication_enabled':False}))
+    marker.write_text(json.dumps({'max_calls':7,'publication_enabled':False}))
     calls=[]
     def save(name,obj): (out/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2))
     def call(payload, stage):
-        if len(calls)>=6: raise ValueError('Limite total de chamadas atingido')
+        if len(calls)>=7: raise ValueError('Limite total de chamadas atingido')
         req=urllib.request.Request('https://api.openai.com/v1/responses',
             data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},method='POST')
         calls.append({'stage':stage,'status':'started'})
@@ -77,6 +77,17 @@ def main():
         calls[-1].update({'response_id':result.get('id'),'status':result.get('status'),'usage':result.get('usage')})
         save('chamadas.json',calls)
         return result
+    calibration={'title':'Real Madrid 4 x 1 Leipzig', 'excerpt':'Bernardo Silva abriu o placar antes do intervalo.', 'blocks':[
+        {'type':'paragraph','text':'Mbappé descontou para o Leipzig aos 83 minutos.'},
+        {'type':'paragraph','text':'O Leipzig recebe o Elversberg em casa e, nessa partida, poderá encerrar sua sequência de derrotas fora de casa.'},
+        {'type':'paragraph','text':'O Barcelona recebe o Real Madrid em 25 de outubro, no Spotify Camp Nou, pela décima rodada de LaLiga.'}]}
+    calibration_review=response_object(call(review_request(package,calibration,provider),'calibration'))
+    validate_review(calibration_review,package,calibration)
+    mapped={c['unit']:c['supported'] for c in calibration_review['checks']}
+    calibration_passed=(mapped=={'title':True,'excerpt':True,'block_0':False,'block_1':False,'block_2':True})
+    save('calibracao.json',{'passed':calibration_passed,'review':calibration_review})
+    print('Calibração factual: '+str(calibration_passed),flush=True)
+    if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
     article=None; issues=[]; passed=False
     for attempt in range(1,4):
         request=build_request(package,provider)
@@ -98,7 +109,7 @@ def main():
         'semantic_review_passed':passed,'calls':calls}
     save('metadata.json',metadata);save('artigo.json',article);save('validacao.json',checks)
     print(json.dumps({'metadata':metadata,'validation':checks},ensure_ascii=False))
-    print('INICIO DO RASCUNHO\n'+render(article)+'FIM DO RASCUNHO')
+    print('INICIO DO RASCUNHO\n'+render(article)+'FIM DO RASCUNHO',flush=True)
     if not passed:raise ValueError('Revisão factual/editorial reprovada após limite de correções')
 
 if __name__=='__main__':main()

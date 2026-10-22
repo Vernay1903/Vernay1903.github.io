@@ -37,3 +37,4 @@ jobs:
         run: git diff --exit-code
 
 # Passo 6: revisão semântica e correção limitada antes de aprovação.
+# Configuração própria do piloto com análise factual detalhada.

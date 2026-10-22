@@ -1,0 +1,9 @@
+{
+  "provider": {
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "medium"
+  },
+  "scope": "pilot_only",
+  "max_calls_per_test": 7,
+  "publication_enabled": false
+}
