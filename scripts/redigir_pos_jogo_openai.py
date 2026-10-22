@@ -43,21 +43,17 @@ def parse_response(response):
     return article
 
 
-def main():
-    parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--execute',action='store_true')
-    args=parser.parse_args()
+def generate(package, out, *, execute=False, calibrate=False):
     read=lambda p:json.loads((ROOT/p).read_text())
-    package=prepare(read('auditoria/pos-jogo/fatos-real-leipzig-20261021.json'),
-        read('auditoria/pos-jogo/narrativa-real-leipzig-20261021.json'),
-        read('auditoria/pos-jogo/links-autorizados-piloto.json'))
     provider=read('config/redacao-pos-jogo.json')['provider']
     request=build_request(package,provider)
     if len(json.dumps(package,ensure_ascii=False))>20000: raise ValueError('Pacote acima do limite')
-    if not args.execute: print('Preparo validado; nenhuma chamada realizada');return
+    if not execute: print('Preparo validado; nenhuma chamada realizada');return
     key=os.environ.get('OPENAI_API_KEY','').strip()
     if not key: raise ValueError('OPENAI_API_KEY ausente no ambiente')
-    out=ROOT/'build/pos-jogo/api';out.mkdir(parents=True,exist_ok=True)
+    out=Path(out).resolve()
+    if not out.is_relative_to((ROOT/'build/pos-jogo').resolve()):raise ValueError('Saída fora do diretório do piloto')
+    out.mkdir(parents=True,exist_ok=True)
     marker=out/'tentativa.json'
     if marker.exists(): raise ValueError('Teste já iniciado neste diretório; repetição bloqueada')
     marker.write_text(json.dumps({'max_calls':7,'publication_enabled':False}))
@@ -77,17 +73,18 @@ def main():
         calls[-1].update({'response_id':result.get('id'),'status':result.get('status'),'usage':result.get('usage')})
         save('chamadas.json',calls)
         return result
-    calibration={'title':'Real Madrid 4 x 1 Leipzig', 'excerpt':'Bernardo Silva abriu o placar antes do intervalo.', 'blocks':[
-        {'type':'paragraph','text':'Mbappé descontou para o Leipzig aos 83 minutos.'},
-        {'type':'paragraph','text':'O Leipzig recebe o Elversberg em casa e, nessa partida, poderá encerrar sua sequência de derrotas fora de casa.'},
-        {'type':'paragraph','text':'O Barcelona recebe o Real Madrid em 25 de outubro, no Spotify Camp Nou, pela décima rodada de LaLiga.'}]}
-    calibration_review=response_object(call(review_request(package,calibration,provider),'calibration'))
-    validate_review(calibration_review,package,calibration)
-    mapped={c['unit']:c['supported'] for c in calibration_review['checks']}
-    calibration_passed=(mapped=={'title':True,'excerpt':True,'block_0':False,'block_1':False,'block_2':True})
-    save('calibracao.json',{'passed':calibration_passed,'review':calibration_review})
-    print('Calibração factual: '+str(calibration_passed),flush=True)
-    if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
+    if calibrate:
+        calibration={'title':'Real Madrid 4 x 1 Leipzig', 'excerpt':'Bernardo Silva abriu o placar antes do intervalo.', 'blocks':[
+            {'type':'paragraph','text':'Mbappé descontou para o Leipzig aos 83 minutos.'},
+            {'type':'paragraph','text':'O Leipzig recebe o Elversberg em casa e, nessa partida, poderá encerrar sua sequência de derrotas fora de casa.'},
+            {'type':'paragraph','text':'O Barcelona recebe o Real Madrid em 25 de outubro, no Spotify Camp Nou, pela décima rodada de LaLiga.'}]}
+        calibration_review=response_object(call(review_request(package,calibration,provider),'calibration'))
+        validate_review(calibration_review,package,calibration)
+        mapped={c['unit']:c['supported'] for c in calibration_review['checks']}
+        calibration_passed=(mapped=={'title':True,'excerpt':True,'block_0':False,'block_1':False,'block_2':True})
+        save('calibracao.json',{'passed':calibration_passed,'review':calibration_review})
+        print('Calibração factual: '+str(calibration_passed),flush=True)
+        if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
     article=None; issues=[]; passed=False
     for attempt in range(1,4):
         if article is not None and all(s.split(':',1)[0] in units(article) for s in issues):
@@ -115,5 +112,18 @@ def main():
     print(json.dumps({'metadata':metadata,'validation':checks},ensure_ascii=False))
     print('INICIO DO RASCUNHO\n'+render(article)+'FIM DO RASCUNHO',flush=True)
     if not passed:raise ValueError('Revisão factual/editorial reprovada após limite de correções')
+    return metadata
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    for name in ['facts','narrative','links']:parser.add_argument('--'+name,type=Path,required=True)
+    parser.add_argument('--output-dir',type=Path,default=ROOT/'build/pos-jogo/api')
+    parser.add_argument('--execute',action='store_true')
+    parser.add_argument('--calibrate',action='store_true',help='Somente com o pacote de calibração Real x Leipzig')
+    args=parser.parse_args()
+    read=lambda p:json.loads(p.read_text())
+    package=prepare(read(args.facts),read(args.narrative),read(args.links))
+    if args.calibrate and package['facts']['fixture_id']!='espn-401915313':raise ValueError('Calibração com partida incompatível')
+    generate(package,args.output_dir,execute=args.execute,calibrate=args.calibrate)
 
 if __name__=='__main__':main()

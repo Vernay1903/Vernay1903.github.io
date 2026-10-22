@@ -1,0 +1,7 @@
+{
+  "espn-401915313": {
+    "review": "tests/pos-jogo/fixtures/revisao-real-leipzig-20261021.json",
+    "narrative": "auditoria/pos-jogo/narrativa-real-leipzig-20261021.json",
+    "reference_facts": "auditoria/pos-jogo/fatos-real-leipzig-20261021.json"
+  }
+}

@@ -23,7 +23,7 @@ jobs:
       - name: Gerar uma matéria de teste
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/redigir_pos_jogo_openai.py --execute
+        run: python scripts/redigir_pos_jogo_openai.py --execute --calibrate --facts auditoria/pos-jogo/fatos-real-leipzig-20261021.json --narrative auditoria/pos-jogo/narrativa-real-leipzig-20261021.json --links auditoria/pos-jogo/links-autorizados-piloto.json
       - name: Guardar rascunho e diagnóstico
         if: always()
         uses: actions/upload-artifact@v4
