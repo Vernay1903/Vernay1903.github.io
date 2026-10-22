@@ -1,0 +1,106 @@
+{
+  "fixture_id": "espn-401915313",
+  "reviewed": true,
+  "review_method": "assistant_opened_sources",
+  "sources": [
+    {
+      "id": "relato",
+      "url": "https://www.realmadrid.com/en-US/news/football/first-team/reports/cronica-real-madrid-leipzig-j3-champions-21-10-2026",
+      "opened": true,
+      "checked_on": "2026-10-22"
+    },
+    {
+      "id": "courtois",
+      "url": "https://www.realmadrid.com/en-US/news/football/first-team/latest-news/courtois-ha-sido-una-buena-victoria-21-10-2026",
+      "opened": true,
+      "checked_on": "2026-10-22"
+    },
+    {
+      "id": "ficha",
+      "url": "https://datencenter.dfb.de/en/data-center/champions-league/2026-2027/matchday/2429562",
+      "opened": true,
+      "checked_on": "2026-10-22"
+    },
+    {
+      "id": "classico",
+      "url": "https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/actualidad/el-barcelona-real-madrid-se-jugara-el-domingo-25-de-octubre-a-las-21-00-h-01-09-2026",
+      "opened": true,
+      "checked_on": "2026-10-22"
+    },
+    {
+      "id": "bundesliga",
+      "url": "https://www.bundesliga.com/en/bundesliga/matchday/2026-2027/7/rb-leipzig-vs-sv-elversberg/accessibility",
+      "opened": true,
+      "checked_on": "2026-10-22"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Courtois defendeu finalizações de Rômulo e Nkunku antes do primeiro gol; Vandevoordt defendeu chute de Vini Jr.",
+      "source_ids": [
+        "relato"
+      ]
+    },
+    {
+      "text": "Bernardo Silva abriu o placar antes do intervalo, no rebote de uma finalização de Arda Güler, após passe de Valverde. O minuto exato deve ser omitido.",
+      "source_ids": [
+        "relato"
+      ]
+    },
+    {
+      "text": "No segundo gol, Bellingham cruzou, Mbappé cabeceou e Güler completou antes de Raum afastar.",
+      "source_ids": [
+        "relato"
+      ]
+    },
+    {
+      "text": "Mbappé marcou de fora da área; Diomande fechou o placar com um voleio.",
+      "source_ids": [
+        "relato"
+      ]
+    },
+    {
+      "text": "Em sua avaliação pós-jogo, Courtois destacou duas defesas antes do intervalo e a importância de sair na frente.",
+      "source_ids": [
+        "courtois"
+      ]
+    },
+    {
+      "text": "Courtois relatou orientação do técnico no intervalo para melhorar defensivamente e avaliou que a equipe voltou com mais intensidade e melhor aproveitamento.",
+      "source_ids": [
+        "courtois"
+      ]
+    },
+    {
+      "text": "Courtois declarou que a concorrência no elenco favorece o trabalho e manifestou confiança para o clássico; apresentar essas avaliações como opinião dele, não como constatação independente.",
+      "source_ids": [
+        "courtois"
+      ]
+    },
+    {
+      "text": "Diomande entrou no lugar de Vinicius Junior aos 70 minutos; Gomis substituiu Nusa aos 73. Ambos marcaram depois.",
+      "source_ids": [
+        "ficha"
+      ]
+    },
+    {
+      "text": "Barcelona recebe o Real Madrid em 25 de outubro, no Spotify Camp Nou, pela décima rodada de LaLiga. Horário local anunciado: 21h.",
+      "source_ids": [
+        "classico"
+      ]
+    },
+    {
+      "text": "Leipzig recebe o Elversberg em 24 de outubro na Red Bull Arena. O Leipzig ganhou seus três primeiros jogos em casa nesta Bundesliga, com 14 gols marcados e nenhum sofrido; perdeu os três jogos fora.",
+      "source_ids": [
+        "bundesliga"
+      ]
+    },
+    {
+      "text": "Elversberg chegou ao compromisso com dez pontos nos primeiros seis jogos de sua primeira temporada de Bundesliga.",
+      "source_ids": [
+        "bundesliga"
+      ]
+    }
+  ],
+  "internal_link_provenance": "URL e texto Bayern x Arsenal fornecidos pelo usuário nesta conversa."
+}

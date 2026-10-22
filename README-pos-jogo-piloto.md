@@ -40,3 +40,15 @@ Conflito real: primeiro gol em 43 minutos na ficha ESPN/DFB e em 44 no relato do
 `ready_for_drafting` significa apenas que a base factual deste passo está completa; não aprova estilo, extensão, linkagem, imagem ou publicação. Esses controles pertencem às etapas seguintes. Prorrogação, disputa de pênaltis e gols contra são bloqueados até haver tratamento específico, sem confundir esses casos com dia sem jogos.
 
 Validação: 11 testes de fatos e 13 testes de seleção. Nenhuma chamada de redação nem workflow de publicação foi adicionado.
+
+## Passo 4 — modelo editorial
+
+Prompt em `prompts/pos-jogo-editorial.txt`: instruções do editor incorporadas com mínimo de 600 palavras e título de até 70 caracteres (espaços e pontuação incluídos, Unicode NFC). Liberdade narrativa, fatos comprovados e somente links fornecidos pelo usuário. O exemplo Bayern x Arsenal é referência de composição, não fonte factual de outro jogo.
+
+`editorial_pos_jogo.py` prepara o pacote para redação e valida a estrutura de uma amostra. Não chama API. O pacote exclui valores conflitantes e proveniência do conteúdo enviado ao redator; a auditoria conserva as fontes. A validação de formato NÃO comprova exatidão factual ou qualidade jornalística.
+
+Amostra Real x Leipzig redigida pelo assistente no chat e armazenada como referência de teste; NÃO é saída de execução do modelo via API. O ambiente não disponibilizou OPENAI_API_KEY. Geração automática e validação editorial independente continuam pendentes, assim como aprovação do editor. Nenhuma publicação ou mudança de cron foi realizada.
+
+Apuração narrativa acrescentou páginas abertas do relato do Real, declarações de Courtois, ficha DFB, clássico e Bundesliga. O relatório registra a origem assistida. Link interno foi fornecido explicitamente pelo usuário nesta conversa; não foi buscado no site. A entrega ao editor é texto comum no chat, sem download ou arquivo de leitura.
+
+Verificação do passo: 8 testes de formato/proveniência; amostra com 58 caracteres no título e 689 palavras no corpo. A contagem de extensão não é nota de qualidade. Não promete aproveitamento editorial de 80% sem avaliação humana.

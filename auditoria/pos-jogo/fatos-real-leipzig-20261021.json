@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "fixture_id": "espn-401915313",
-  "generated_at": "2026-10-22T08:51:24.172948-03:00",
+  "generated_at": "2026-10-22T10:36:43.903104-03:00",
   "mode": "facts_only",
   "ready_for_drafting": true,
   "ready_for_publication": false,
@@ -112,7 +112,7 @@
   "sources": [
     {
       "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/summary?event=401915313",
-      "checked_at": "2026-10-22T08:51:24.172948-03:00",
+      "checked_at": "2026-10-22T10:36:43.903104-03:00",
       "supports": [
         "identity",
         "score",
@@ -123,14 +123,14 @@
     },
     {
       "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/86/schedule?fixture=true&season=2026",
-      "checked_at": "2026-10-22T08:51:24.172948-03:00",
+      "checked_at": "2026-10-22T10:36:43.903104-03:00",
       "supports": [
         "upcoming.home"
       ]
     },
     {
       "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/11420/schedule?fixture=true&season=2026",
-      "checked_at": "2026-10-22T08:51:24.172948-03:00",
+      "checked_at": "2026-10-22T10:36:43.903104-03:00",
       "supports": [
         "upcoming.away"
       ]

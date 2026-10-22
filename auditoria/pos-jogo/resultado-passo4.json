@@ -1,0 +1,11 @@
+{
+  "step": 4,
+  "sample_origin": "assistant_in_chat_using_reviewed_sources",
+  "automatic_model_run": false,
+  "reason": "OPENAI_API_KEY unavailable in this environment",
+  "title_chars": 58,
+  "body_words": 689,
+  "format_tests_passed": 8,
+  "human_editor_approval": "pending",
+  "publication_enabled": false
+}
