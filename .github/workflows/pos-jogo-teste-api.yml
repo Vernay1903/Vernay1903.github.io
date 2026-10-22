@@ -1,0 +1,37 @@
+name: Pós-jogo — teste isolado da API
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-teste-api.yml]
+permissions:
+  contents: read
+concurrency:
+  group: pos-jogo-teste-api
+  cancel-in-progress: false
+jobs:
+  rascunho:
+    if: github.event.head_commit.message == 'Passo 5: executar teste isolado da API'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testar cliente e regras editoriais
+        run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - name: Gerar uma matéria de teste
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/redigir_pos_jogo_openai.py --execute
+      - name: Guardar rascunho e diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pos-jogo-api-${{ github.run_id }}
+          path: build/pos-jogo/api/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Conferir ausência de alterações no site
+        if: always()
+        run: git diff --exit-code
