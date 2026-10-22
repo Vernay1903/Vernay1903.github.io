@@ -52,3 +52,11 @@ Amostra Real x Leipzig redigida pelo assistente no chat e armazenada como refer�
 Apuração narrativa acrescentou páginas abertas do relato do Real, declarações de Courtois, ficha DFB, clássico e Bundesliga. O relatório registra a origem assistida. Link interno foi fornecido explicitamente pelo usuário nesta conversa; não foi buscado no site. A entrega ao editor é texto comum no chat, sem download ou arquivo de leitura.
 
 Verificação do passo: 8 testes de formato/proveniência; amostra com 58 caracteres no título e 689 palavras no corpo. A contagem de extensão não é nota de qualidade. Não promete aproveitamento editorial de 80% sem avaliação humana.
+
+## Passos 5 e 6 — redação e revisão pela API
+
+O teste de API usa o Secret OPENAI_API_KEY no GitHub Actions, com conteúdo somente de leitura e saídas em build/pos-jogo/api. Não publica HTML, não atualiza notícias e não tem agendamento. O gatilho push está restrito à branch do piloto, ao arquivo do workflow e à mensagem exata de execução. Os relatórios anteriores preservam reprovações; sucesso técnico de uma chamada não significa aprovação editorial.
+
+A configuração config/redacao-pos-jogo.json é própria do piloto. O fluxo valida o revisor com duas contradições conhecidas e uma informação correta, gera a matéria e revisa todas as unidades contra o pacote factual previamente conferido. Revisão incompleta, evidências inexistentes ou aprovação inconsistente bloqueiam o teste. Correções são aplicadas somente às unidades reprovadas, com conferência de que nenhuma outra foi alterada. Cada versão volta à validação de formato e à revisão semântica. Limite de sete chamadas por execução (calibração e até três ciclos de redação/correção e revisão), sem repetição automática de erro HTTP.
+
+A revisão por modelo reduz erros, mas não prova veracidade absoluta. A apuração de Real Madrid x Leipzig continua sendo a base previamente revisada pelo assistente; este teste não automatiza descoberta e leitura das fontes de todos os jogos. Publicação, integração com o site e cron permanecem bloqueados. O número de chamadas é limitado, mas não existe ainda um contador mensal de gastos compartilhado com as prévias.
