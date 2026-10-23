@@ -87,3 +87,15 @@ Limitações atuais: apuração de prorrogação, disputa de pênaltis e gols co
 
 
 Validação controlada de 23/10/2026: execução 39995915646 aprovada, 65 testes e pacote de Real Madrid x Leipzig preparado com dez fatos narrativos. Busca, abertura e revisão ocorreram sem reutilizar o cadastro manual. Três chamadas de API; nenhuma chamada de redação ou publicação. A aprovação não demonstra ainda cobertura completa dos quatro clubes nem de todas as competições.
+
+## Passo 9 — espera de 50 minutos
+
+Regra aprovada pelo editor: iniciar o processo 50 minutos após o término. O provedor não oferece aqui um instante confiável de apito final: usa-se a primeira observação de status final como referência conservadora, nunca início + duas horas. A espera começa antes da apuração e da redação com API. Consulta feita tarde pode, portanto, atrasar a liberação; não há promessa de execução exata ao minuto.
+
+`config/tempo-pos-jogo.json` define 50 minutos e America/Sao_Paulo. `tempo_pos_jogo.py` registra a primeira confirmação em estado persistente identificado pelo jogo; uma mudança de placar/status reinicia a espera. Retorno ao jogo em andamento invalida a observação anterior. O CLI sem --date consulta ontem e hoje em Brasília, inclusive na virada de mês/ano, com limite compartilhado de uma apuração/matéria por teste. A data da partida permanece a do início, e o instante de liberação pode cair no dia seguinte.
+
+Exemplos testados: encerramento observado às 18h libera às 18h50; às 23h30 libera às 00h20; às 00h libera às 00h50. Um jogo iniciado às 16h e encerrado às 18h14 só libera às 19h04. Teste também impede API aos 49min59s e permite aos 50min.
+
+Estado padrão: build/pos-jogo/estado-tempo.json, substituível por --timing-state. A ativação futura deve restaurar e persistir esse estado entre runners e serializar as execuções; sem restauração, a espera recomeça conservadoramente. Cron e persistência entre runners serão ligados no teste completo de publicação, não neste passo. Os antigos testes pagos dos passos 7/8 agora também respeitam a espera, caso sejam disparados novamente.
+
+Validação: 74 testes aprovados localmente e na execução 39999571859. Não houve chamadas de apuração/redação, publicação nem alteração da agenda ou prévias.
