@@ -28,7 +28,7 @@ jobs:
           sparse-checkout: noticias.json
           sparse-checkout-cone-mode: false
           persist-credentials: false
-      - name: Coletar jogos do dia sem gerar matéria
+      - name: Coletar jogos de 22 de outubro e registrar pendências
         run: python scripts/executar_pos_jogo.py --date 2026-10-22 --noticias current-main/noticias.json --output-dir build/pos-jogo/integracao-hoje
       - name: Coletar jogo encerrado e redigir com revisão
         env:
@@ -47,4 +47,4 @@ jobs:
       - name: Conferir que arquivos do site não foram modificados
         if: always()
         run: git diff --exit-code
-# Testes também preparam saída em checkout limpo.
+# Correções preservam unidades aprovadas e calculam orçamento de palavras.

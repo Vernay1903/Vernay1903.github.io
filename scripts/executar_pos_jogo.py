@@ -101,5 +101,5 @@ def main():
     a=p.parse_args()
     result=run(a.date,read(a.noticias),a.output_dir,execute=a.execute)
     print(json.dumps(result,ensure_ascii=False,indent=2))
-    if result['status'] in {'pending','collection_failed'}:raise SystemExit(1)
+    if result['status']=='collection_failed' or (a.execute and result['status']=='pending'):raise SystemExit(1)
 if __name__=='__main__':main()

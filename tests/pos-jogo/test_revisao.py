@@ -32,3 +32,13 @@ class PatchTests(unittest.TestCase):
   from revisar_pos_jogo import apply_patch
   a={'title':'Título','excerpt':'Chamada','blocks':[]}
   with self.assertRaises(ValueError):apply_patch(a,{'replacements':[{'unit':'title','text':'Outro'}]},['excerpt: erro'])
+ def test_patch_budget_excludes_title_and_unchanged_blocks(self):
+  import json
+  from revisar_pos_jogo import patch_request
+  p={'facts':{},'narrative_facts':[],'instructions':''}
+  a={'title':'Titulo longo aqui','excerpt':'Chamada aqui','blocks':[{'type':'paragraph','text':'palavra '*500},{'type':'paragraph','text':'erro '*90}]}
+  request=patch_request(p,a,['block_1: corrigir'],{'model':'test','reasoning_effort':'medium'})
+  data=json.loads(request['input'][1]['content'])
+  self.assertEqual(data['word_budget']['unchanged_body_words'],500)
+  self.assertEqual(data['word_budget']['minimum_words_in_replaced_body_units'],100)
+  self.assertEqual(data['word_budget']['preferred_words_in_replaced_body_units'],180)
