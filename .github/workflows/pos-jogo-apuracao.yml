@@ -42,3 +42,5 @@ jobs:
         run: git diff --exit-code
 
 # Priorizar fontes citadas e diversidade de domínios.
+
+# Buscar também ficha alternativa quando fontes usam JavaScript ou expiram.

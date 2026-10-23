@@ -6,7 +6,7 @@ import re
 import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 from preparar_fatos_pos_jogo import ROOT, build, pair, integer
 from redigir_pos_jogo_openai import response_object
 
@@ -67,9 +67,12 @@ def discovered_urls(response):
             cited += [a['url'] for a in part.get('annotations',[]) if a.get('type')=='url_citation']
     allowed=[]
     for url in dict.fromkeys(cited+urls):
+        parsed=urlparse(url)
+        if (parsed.hostname or '').startswith(('assets.','publish.')) or parsed.path.lower().endswith('.pdf'):continue
+        url=urlunparse(parsed._replace(query=urlencode([(k,v) for k,v in parse_qsl(parsed.query) if not k.startswith('utm_')]),fragment=''))
         try:safe_url(url)
         except ValueError:continue
-        allowed.append(url)
+        if url not in allowed:allowed.append(url)
     groups={}
     for url in allowed:
         host=urlparse(url).hostname.removeprefix('www.')
@@ -150,7 +153,7 @@ def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page):
     discovery=call({'model':provider['model'],'store':False,'max_output_tokens':1800,
       'tools':[{'type':'web_search','filters':{'allowed_domains':DOMAINS}}],
       'tool_choice':'required','max_tool_calls':1,'include':['web_search_call.action.sources'],
-      'input':'Encontre relatos completos e ficha oficial desta partida encerrada: '+json.dumps(core,ensure_ascii=False)+'. Busque páginas da data correta em pelo menos dois domínios, preferindo clube e organizador. Não busque Corte dos Esportes. Retorne links para relatos com lances, autores dos gols e contexto. Uma busca apenas.'},'discover')
+      'input':'Encontre relatos completos e ficha oficial desta partida encerrada: '+json.dumps(core,ensure_ascii=False)+'. Inclua obrigatoriamente na busca uma ficha em datencenter.dfb.de ou ESPN, além do relato do clube. UEFA pode estar indisponível e Leipzig pode exigir JavaScript. Busque páginas da data correta em pelo menos dois domínios, preferindo clube e organizador. Não busque Corte dos Esportes. Retorne links para relatos com lances, autores dos gols e contexto. Uma busca apenas.'},'discover')
     save('descoberta.json',discovery)
     pages={};failures=[]; remaining=60000
     for url in discovered_urls(discovery):
