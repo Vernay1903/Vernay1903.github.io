@@ -50,3 +50,5 @@ jobs:
 # Enviar apenas as entradas originais de campanha dos dois participantes.
 
 # Diagnóstico explícito e tratamento de divergências apenas nos campos utilizados.
+
+# Omitir narrativa sem trecho literal antes da revisão independente.
