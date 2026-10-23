@@ -102,6 +102,10 @@ def generate(package, out, *, execute=False, calibrate=False):
         review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))
         save(f'revisao-{attempt}.json',review)
         issues=checks['errors']+validate_review(review,package,article)
+        if attempt==1 and not calibrate:
+            second=response_object(call(review_request(package,article,provider),'review_1_second_pass'))
+            save('revisao-1-segunda-leitura.json',second)
+            issues=list(dict.fromkeys(issues+validate_review(second,package,article)))
         print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
         if not issues:
             passed=True;break

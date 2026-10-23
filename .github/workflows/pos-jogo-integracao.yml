@@ -50,3 +50,5 @@ jobs:
 # Correções preservam unidades aprovadas e calculam orçamento de palavras.
 
 # Referências do revisor restritas aos IDs existentes no pacote.
+
+# Duas leituras iniciais, mantendo o teto de sete chamadas.
