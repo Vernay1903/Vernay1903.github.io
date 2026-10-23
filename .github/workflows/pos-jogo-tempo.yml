@@ -1,0 +1,21 @@
+name: Pós-jogo — intervalo após encerramento
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-tempo.yml]
+permissions:
+  contents: read
+jobs:
+  validar:
+    if: "github.event.head_commit.message == 'Passo 9: validar espera de 50 minutos'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validar horários, virada de dia e bloqueios
+        run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - name: Conferir integridade dos arquivos
+        run: git diff --exit-code

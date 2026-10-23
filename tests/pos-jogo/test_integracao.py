@@ -3,7 +3,7 @@ import json
 import sys
 import tempfile
 import unittest
-from datetime import date,datetime
+from datetime import date,datetime,timedelta
 from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[2]
@@ -20,6 +20,10 @@ class IntegrationTests(unittest.TestCase):
   (ROOT/'build/pos-jogo').mkdir(parents=True,exist_ok=True)
   self.temp=tempfile.TemporaryDirectory(dir=ROOT/'build/pos-jogo')
   self.out=Path(self.temp.name)
+  self.state=self.out/'tempo.json'
+  state={'version':1,'fixtures':{}}
+  pipeline.observe(self.selection['selected'][0],self.summary,state,self.now-timedelta(minutes=50))
+  pipeline.save_state(self.state,state)
  def tearDown(self):self.temp.cleanup()
  def query(self,url):
   if '/summary?' in url:return self.summary
@@ -30,7 +34,7 @@ class IntegrationTests(unittest.TestCase):
   return {'semantic_review_passed':True,'fixture_id':package['facts']['fixture_id']}
  def run_pipeline(self,**kw):
   with patch.object(pipeline,'select',return_value=self.selection):
-   return pipeline.run(date(2026,10,21),[],self.out,query=self.query,writer=self.writer,now=self.now,**kw)
+   return pipeline.run(date(2026,10,21),[],self.out,query=self.query,writer=self.writer,now=self.now,timing_state=self.state,**kw)
  def test_live_packet_to_writer_and_repeat(self):
   r=self.run_pipeline(execute=True)
   self.assertEqual(r['results'][0]['status'],'draft_reviewed');self.assertEqual(self.calls,['espn-401915313'])
@@ -66,4 +70,12 @@ class IntegrationTests(unittest.TestCase):
   def research(*args):raise ValueError('Fonte indisponível')
   r=self.run_pipeline(execute=True,registry={},auto_research=True,researcher=research)
   self.assertEqual(r['results'][0]['status'],'blocked')
+  self.assertEqual(self.calls,[])
+
+ def test_fresh_final_waits_before_research_and_writing(self):
+  self.state.unlink()
+  def research(*args):raise AssertionError('Não deve pesquisar antes de 50 minutos')
+  r=self.run_pipeline(execute=True,auto_research=True,researcher=research)
+  self.assertEqual(r['status'],'waiting')
+  self.assertEqual(r['results'][0]['status'],'waiting_after_final')
   self.assertEqual(self.calls,[])
