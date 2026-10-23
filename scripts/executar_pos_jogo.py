@@ -37,13 +37,16 @@ def reviewed_packet(candidate, summary, schedules, entry, now):
     return facts,narrative
 
 
-def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer=generate, now=None, registry=None):
+def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer=generate, now=None, registry=None, auto_research=False, researcher=None):
     now=now or datetime.now(TZ)
     if max_articles!=1:raise ValueError('Teste integrado limitado a uma matéria por execução')
     out=Path(out).resolve()
     if not out.is_relative_to((ROOT/'build/pos-jogo').resolve()):raise ValueError('Saída fora do piloto')
     if not isinstance(news,list) or not all(isinstance(x,dict) for x in news):raise ValueError('Notícias inválidas')
     registry=read(ROOT/'config/apuracoes-pos-jogo.json') if registry is None else registry
+    if auto_research and researcher is None:
+        from apurar_pos_jogo import apurar
+        researcher=apurar
     seen={}
     def capture(url):
         if url not in seen:
@@ -52,7 +55,7 @@ def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer
         return seen[url]
     selection=select(target,news,capture,now)
     report={'step':7,'target_date':target.isoformat(),'mode':'generate' if execute else 'collect_only',
-        'selection':selection,'results':[],'publication_enabled':False,'api_articles_attempted':0}
+        'selection':selection,'results':[],'publication_enabled':False,'api_articles_attempted':0,'research_attempted':0}
     save(out/'selecao.json',selection)
     if not selection['collection_complete']:
         report['status']='collection_failed';save(out/'relatorio.json',report);return report
@@ -64,11 +67,17 @@ def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer
             ids=[str(t['team']['id']) for t in pair(summary['header']['competitions'][0]).values()]
             if not all(t.isdigit() for t in ids):raise ValueError('ID de equipe inválido')
             schedules={t:capture(f'{BASE}/all/teams/{t}/schedule?fixture=true&season={target.year}') for t in ids}
-            if fid not in registry:
+            directory=out/fid
+            if auto_research:
+                if report['research_attempted']>=1:
+                    row['status']='research_test_limit';continue
+                report['research_attempted']+=1
+                facts,narrative=researcher(candidate,summary,schedules,directory/'apuracao',now)
+            elif fid in registry:
+                facts,narrative=reviewed_packet(candidate,summary,schedules,registry[fid],now)
+            else:
                 row.update(status='needs_source_review',reason='Coleta recebida; faltam conferência externa e apuração narrativa deste jogo')
                 continue
-            facts,narrative=reviewed_packet(candidate,summary,schedules,registry[fid],now)
-            directory=out/fid
             save(directory/'fatos.json',facts);save(directory/'narrativa.json',narrative)
             links=read(ROOT/'auditoria/pos-jogo/links-autorizados-piloto.json')
             package=prepare(facts,narrative,links)
@@ -98,8 +107,9 @@ def main():
     p.add_argument('--noticias',type=Path,required=True)
     p.add_argument('--output-dir',type=Path,required=True)
     p.add_argument('--execute',action='store_true')
+    p.add_argument('--auto-research',action='store_true',help='Apurar uma partida com páginas abertas; usa API mesmo sem --execute')
     a=p.parse_args()
-    result=run(a.date,read(a.noticias),a.output_dir,execute=a.execute)
+    result=run(a.date,read(a.noticias),a.output_dir,execute=a.execute,auto_research=a.auto_research)
     print(json.dumps(result,ensure_ascii=False,indent=2))
-    if result['status']=='collection_failed' or (a.execute and result['status']=='pending'):raise SystemExit(1)
+    if result['status']=='collection_failed' or ((a.execute or a.auto_research) and result['status']=='pending'):raise SystemExit(1)
 if __name__=='__main__':main()

@@ -1,0 +1,42 @@
+name: Pós-jogo — apuração automática controlada
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-apuracao.yml]
+permissions:
+  contents: read
+concurrency:
+  group: pos-jogo-apuracao
+  cancel-in-progress: false
+jobs:
+  apurar:
+    if: "github.event.head_commit.message == 'Passo 8: testar apuração automática'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testes de fontes e integração
+        run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          sparse-checkout: noticias.json
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - name: Buscar e abrir fontes sem apuração cadastrada
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/executar_pos_jogo.py --date 2026-10-21 --noticias current-main/noticias.json --output-dir build/pos-jogo/apuracao-automatica --auto-research
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pos-jogo-apuracao-${{ github.run_id }}
+          path: build/pos-jogo/apuracao-automatica/
+          retention-days: 7
+      - name: Conferir integridade do site
+        if: always()
+        run: git diff --exit-code
