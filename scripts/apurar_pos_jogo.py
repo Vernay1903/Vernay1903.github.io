@@ -167,7 +167,7 @@ def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page):
     # Resumo ESPN foi consultado diretamente pelo coletor, não é snippet nem proposta.
     # Conservar apenas campos originais relevantes, sem calcular ou completar dados.
     structured={'header':summary['header'],'gameInfo':summary.get('gameInfo',{}),
-                'standings':summary.get('standings',{})}
+                'campaign_entries':[e for e in entries if str(e['id']) in {str(t['team']['id']) for t in teams.values()}]}
     source_text=json.dumps(structured,ensure_ascii=False,separators=(',',':'))
     if len(source_text)>50000:raise ValueError('Resumo estruturado acima do limite de apuração')
     pages['espn_summary']={'url':candidate['source_url'],'text':source_text,'opened':True,
