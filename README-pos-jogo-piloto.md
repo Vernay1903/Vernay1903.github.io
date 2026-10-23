@@ -72,3 +72,18 @@ A execução permite uma matéria e até sete chamadas por teste, sem publicaç�
 O workflow pos-jogo-integracao lê a main, mas só grava saídas temporárias e artefatos do Actions. Não altera notícias, HTML, agenda nem automação de prévias. O teste com dados ao vivo cobre coleta, duplicata já publicada, pendência de apuração e redação da partida previamente conferida. A descoberta automática de fontes para partidas novas e a publicação seguem fora desta etapa.
 
 Resultado controlado em 23/10/2026: execução 39951024418 aprovada, 53 testes, uma matéria de 606 palavras e título de 55 caracteres. A redação passou após duas correções, dentro de sete chamadas. A coleta também registrou Flamengo pendente de apuração e bloqueou Bayern x Arsenal já publicado. O texto mantém revisão humana obrigatória; não se trata de liberação para publicação automática.
+
+## Passo 8 — apuração automática (piloto)
+
+`--auto-research` em `executar_pos_jogo.py` substitui a apuração cadastrada por descoberta e leitura das fontes para uma partida. O parâmetro usa API mesmo sem `--execute`; sem este último, prepara o pacote, mas não redige. O workflow `pos-jogo-apuracao.yml` exercita essa separação e não publica nem agenda.
+
+A descoberta usa web_search com domínios permitidos. URLs descobertas são abertas diretamente por HTTP, com validação de domínio também em redirecionamentos, limites de tempo/tamanho e remoção de scripts. Falhas e conteúdo indisponível são registrados; snippets não são aceitos como prova. O resumo estruturado ESPN consultado pelo coletor é preservado como fonte distinta, junto de ao menos um relato oficial aberto. URLs internas do Corte dos Esportes não são pesquisadas.
+
+O código divide o conteúdo recebido em trechos identificados. O modelo apenas seleciona IDs existentes; o código anexa o texto original, sem solicitar ao modelo que o recopie. Identidade e placar exigem fontes em dois domínios. Autores, ordem dos gols, estádio e campanha passam por conferência, seguida de uma segunda revisão por modelo contra as fontes. Fatos narrativos sem apoio são omitidos; insuficiência de narrativa, contradição essencial ou revisão reprovada bloqueiam o pacote. Essa revisão não constitui garantia absoluta nem substitui a supervisão editorial.
+
+Limites de teste: uma partida, três chamadas de API e uma busca solicitada, sem repetição automática no mesmo diretório. Paginas, trechos, extração, revisão, falhas e consumo de tokens ficam nos artefatos do Actions por sete dias. Isso não implementa controle mensal compartilhado de gastos.
+
+Limitações atuais: apuração de prorrogação, disputa de pênaltis e gols contra não suportada; campanha estruturada e calendários futuros ainda obrigatórios. No caminho automático, minutos dos gols ficam omitidos; a identidade e ordem dos autores são verificadas separadamente. Fase/rodada podem constar na narrativa somente se encontradas nas fontes. Não há busca de imagens, vídeo ou links internos adicionais. A etapa seguinte define a espera após encerramento; HTML, noticias.json, sitemap e publicação permanecem fora deste passo.
+
+
+Validação controlada de 23/10/2026: execução 39995915646 aprovada, 65 testes e pacote de Real Madrid x Leipzig preparado com dez fatos narrativos. Busca, abertura e revisão ocorreram sem reutilizar o cadastro manual. Três chamadas de API; nenhuma chamada de redação ou publicação. A aprovação não demonstra ainda cobertura completa dos quatro clubes nem de todas as competições.
