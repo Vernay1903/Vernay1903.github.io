@@ -1,6 +1,6 @@
-# Pós-jogo — passo 2
+# Pós-jogo — piloto de quatro clubes
 
-Piloto limitado a Flamengo, Real Madrid, Arsenal e Manchester City. Implementa somente seleção de partidas encerradas e triagem de duplicatas. Não há workflow, agendamento, redação, chamada OpenAI ou publicação.
+Piloto limitado a Flamengo, Real Madrid, Arsenal e Manchester City. Integra seleção, triagem de duplicatas, preparação factual e redação com revisão pela API. Ainda exige apuração externa cadastrada por jogo. Há workflows de teste na branch do piloto; não há agendamento nem publicação. As seções abaixo registram a evolução por etapa.
 
 Executar testes:
 
@@ -60,3 +60,15 @@ O teste de API usa o Secret OPENAI_API_KEY no GitHub Actions, com conteúdo some
 A configuração config/redacao-pos-jogo.json é própria do piloto. O fluxo valida o revisor com duas contradições conhecidas e uma informação correta, gera a matéria e revisa todas as unidades contra o pacote factual previamente conferido. Revisão incompleta, evidências inexistentes ou aprovação inconsistente bloqueiam o teste. Correções são aplicadas somente às unidades reprovadas, com conferência de que nenhuma outra foi alterada. Cada versão volta à validação de formato e à revisão semântica. Limite de sete chamadas por execução (calibração e até três ciclos de redação/correção e revisão), sem repetição automática de erro HTTP.
 
 A revisão por modelo reduz erros, mas não prova veracidade absoluta. A apuração de Real Madrid x Leipzig continua sendo a base previamente revisada pelo assistente; este teste não automatiza descoberta e leitura das fontes de todos os jogos. Publicação, integração com o site e cron permanecem bloqueados. O número de chamadas é limitado, mas não existe ainda um contador mensal de gastos compartilhado com as prévias.
+
+## Passo 7 — integração controlada
+
+`scripts/executar_pos_jogo.py` consulta os quatro calendários e usa as notícias atuais da main somente para detectar duplicatas. Coleta resumo e próximos jogos, conserva snapshots e exige entrada em `config/apuracoes-pos-jogo.json`. A apuração cadastrada deve corresponder ao jogo, ter menos de 24 horas e continuar compatível com os calendários consultados. Atualmente apenas Real Madrid x Leipzig tem apuração cadastrada.
+
+Sem apuração, o evento fica `needs_source_review`, sem chamada de redação. Coleta incompleta bloqueia o lote. O modo somente coleta registra pendências editoriais sem tratá-las como erro de conexão; o modo de execução termina com erro quando há pendências. Partidas com pênaltis/prorrogação continuam sem suporte para redação.
+
+A execução permite uma matéria e até sete chamadas por teste, sem publicação. O revisor só pode referenciar IDs efetivamente enviados; correções preservam as unidades não apontadas e recebem a contagem de palavras necessária para manter o mínimo editorial. A revisão por modelo não substitui apuração nem aprovação humana.
+
+O workflow pos-jogo-integracao lê a main, mas só grava saídas temporárias e artefatos do Actions. Não altera notícias, HTML, agenda nem automação de prévias. O teste com dados ao vivo cobre coleta, duplicata já publicada, pendência de apuração e redação da partida previamente conferida. A descoberta automática de fontes para partidas novas e a publicação seguem fora desta etapa.
+
+Resultado controlado em 23/10/2026: execução 39951024418 aprovada, 53 testes, uma matéria de 606 palavras e título de 55 caracteres. A redação passou após duas correções, dentro de sete chamadas. A coleta também registrou Flamengo pendente de apuração e bloqueou Bayern x Arsenal já publicado. O texto mantém revisão humana obrigatória; não se trata de liberação para publicação automática.
