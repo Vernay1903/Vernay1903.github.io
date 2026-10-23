@@ -48,3 +48,5 @@ jobs:
         if: always()
         run: git diff --exit-code
 # Correções preservam unidades aprovadas e calculam orçamento de palavras.
+
+# Referências do revisor restritas aos IDs existentes no pacote.

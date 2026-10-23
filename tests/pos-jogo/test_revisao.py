@@ -42,3 +42,12 @@ class PatchTests(unittest.TestCase):
   self.assertEqual(data['word_budget']['unchanged_body_words'],500)
   self.assertEqual(data['word_budget']['minimum_words_in_replaced_body_units'],100)
   self.assertEqual(data['word_budget']['preferred_words_in_replaced_body_units'],180)
+
+class ReviewSchemaTests(unittest.TestCase):
+ def test_references_are_restricted_to_supplied_evidence(self):
+  from revisar_pos_jogo import review_request
+  p={'facts':{'score':{}},'narrative_facts':['Fato']}
+  a={'title':'T','excerpt':'C','blocks':[]}
+  r=review_request(p,a,{'model':'test','reasoning_effort':'medium'})
+  refs=r['text']['format']['schema']['properties']['checks']['items']['properties']['evidence_ids']['items']['enum']
+  self.assertEqual(refs,['score','narrative_0'])
