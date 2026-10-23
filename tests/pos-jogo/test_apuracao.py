@@ -29,3 +29,31 @@ class SourceTests(unittest.TestCase):
   sources=[{'url':f'https://www.realmadrid.com/{i}'} for i in range(10)]+[{'url':'https://rbleipzig.com/report'}]
   r={'output':[{'type':'web_search_call','action':{'sources':sources}}]}
   self.assertEqual(discovered_urls(r)[1],'https://rbleipzig.com/report')
+
+class ResearchFlowTests(unittest.TestCase):
+ def test_semantic_rejection_never_releases_facts(self):
+  import json,tempfile
+  from datetime import datetime
+  from apurar_pos_jogo import apurar
+  root=Path(__file__).resolve().parents[2]
+  base=root/'tests/pos-jogo/fixtures/real-leipzig-20261021'
+  read=lambda p:json.loads(p.read_text())
+  candidate=read(base/'selection.json')['selected'][0]
+  summary=read(base/'summary.json')
+  schedules={i:read(base/f'schedule-{i}.json') for i in ['86','11420']}
+  quote='Trecho fictício exclusivo do teste automatizado.'
+  refs=[{'source_id':'page_0','quote':quote},{'source_id':'page_1','quote':quote}]
+  extraction={'checks':[{'id':i,'supported':True,'evidence':refs} for i in ['identity','score','venue','goals','campaign']],
+    'claims':[{'text':f'Afirmação de teste {i}','evidence':refs} for i in range(6)]}
+  stages=[]
+  def response(value):return {'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps(value)}]}]}
+  def caller(payload):
+   stages.append(payload)
+   if len(stages)==1:return {'status':'completed','output':[{'type':'web_search_call','action':{'sources':[{'url':'https://realmadrid.com/test'},{'url':'https://dfb.de/test'}]}}]}
+   if len(stages)==2:return response(extraction)
+   return response({'checks':[{'id':i,'supported':False,'reason':'Trecho não sustenta o fato'} for i in ['identity','score','venue','goals','campaign']+[f'claim_{n}' for n in range(6)]]})
+  with tempfile.TemporaryDirectory() as tmp:
+   with self.assertRaisesRegex(ValueError,'revisão independente'):
+    apurar(candidate,summary,schedules,Path(tmp),datetime.fromisoformat('2026-10-22T12:00:00-03:00'),caller=caller,opener=lambda u:{'url':u,'text':quote,'opened':True})
+   self.assertFalse((Path(tmp)/'fatos.json').exists())
+   self.assertEqual(len(stages),3)
