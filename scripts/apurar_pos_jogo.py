@@ -59,18 +59,23 @@ def open_page(url):
 
 
 def discovered_urls(response):
-    urls=[]
+    urls=[];cited=[]
     for item in response.get('output',[]):
         if item.get('type')=='web_search_call':
             urls += [s['url'] for s in item.get('action',{}).get('sources',[]) if s.get('url')]
         for part in item.get('content',[]):
-            urls += [a['url'] for a in part.get('annotations',[]) if a.get('type')=='url_citation']
+            cited += [a['url'] for a in part.get('annotations',[]) if a.get('type')=='url_citation']
     allowed=[]
-    for url in dict.fromkeys(urls):
+    for url in dict.fromkeys(cited+urls):
         try:safe_url(url)
         except ValueError:continue
         allowed.append(url)
-    return allowed[:8]
+    groups={}
+    for url in allowed:
+        host=urlparse(url).hostname.removeprefix('www.')
+        groups.setdefault(host,[]).append(url)
+    # Diversidade antes de traduções ou páginas repetidas do mesmo veículo.
+    return [group[i] for i in range(2) for group in groups.values() if len(group)>i][:8]
 
 
 def schema_request(provider,instructions,data,schema):

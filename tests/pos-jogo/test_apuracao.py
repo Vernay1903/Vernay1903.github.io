@@ -24,3 +24,8 @@ class SourceTests(unittest.TestCase):
  def test_search_sources_allowlist(self):
   r={'output':[{'type':'web_search_call','action':{'sources':[{'url':'https://www.realmadrid.com/a'},{'url':'https://cortedosesportes.com.br/a'}]}}]}
   self.assertEqual(discovered_urls(r),['https://www.realmadrid.com/a'])
+
+ def test_source_diversity_before_translations(self):
+  sources=[{'url':f'https://www.realmadrid.com/{i}'} for i in range(10)]+[{'url':'https://rbleipzig.com/report'}]
+  r={'output':[{'type':'web_search_call','action':{'sources':sources}}]}
+  self.assertEqual(discovered_urls(r)[1],'https://rbleipzig.com/report')

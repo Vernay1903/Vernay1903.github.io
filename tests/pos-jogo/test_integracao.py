@@ -52,3 +52,18 @@ class IntegrationTests(unittest.TestCase):
   self.assertEqual(self.run_pipeline(execute=True)['results'][0]['status'],'blocked');self.assertEqual(self.calls,[])
  def test_collect_only_no_api(self):
   self.assertEqual(self.run_pipeline()['results'][0]['status'],'ready_for_drafting');self.assertEqual(self.calls,[])
+ def test_auto_research_replaces_missing_registry(self):
+  seen=[]
+  def research(candidate,summary,schedules,out,now):
+   seen.append(candidate['fixture_id'])
+   entry=pipeline.read(ROOT/'config/apuracoes-pos-jogo.json')[candidate['fixture_id']]
+   return pipeline.reviewed_packet(candidate,summary,schedules,entry,now)
+  r=self.run_pipeline(registry={},auto_research=True,researcher=research)
+  self.assertEqual(seen,['espn-401915313'])
+  self.assertEqual(r['results'][0]['status'],'ready_for_drafting')
+  self.assertEqual(self.calls,[])
+ def test_auto_research_failure_blocks_writer(self):
+  def research(*args):raise ValueError('Fonte indisponível')
+  r=self.run_pipeline(execute=True,registry={},auto_research=True,researcher=research)
+  self.assertEqual(r['results'][0]['status'],'blocked')
+  self.assertEqual(self.calls,[])

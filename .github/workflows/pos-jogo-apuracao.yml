@@ -40,3 +40,5 @@ jobs:
       - name: Conferir integridade do site
         if: always()
         run: git diff --exit-code
+
+# Priorizar fontes citadas e diversidade de domínios.
