@@ -42,7 +42,7 @@ class ResearchFlowTests(unittest.TestCase):
   summary=read(base/'summary.json')
   schedules={i:read(base/f'schedule-{i}.json') for i in ['86','11420']}
   quote='Trecho fictício exclusivo do teste automatizado.'
-  refs=[{'source_id':'page_0','quote':quote},{'source_id':'page_1','quote':quote}]
+  refs=[{'passage_id':'page_0:0'},{'passage_id':'page_1:0'}]
   extraction={'checks':[{'id':i,'supported':True,'evidence':refs} for i in ['identity','score','venue','goals','campaign']],
     'claims':[{'text':f'Afirmação de teste {i}','evidence':refs} for i in range(6)]}
   stages=[]
@@ -57,3 +57,11 @@ class ResearchFlowTests(unittest.TestCase):
     apurar(candidate,summary,schedules,Path(tmp),datetime.fromisoformat('2026-10-22T12:00:00-03:00'),caller=caller,opener=lambda u:{'url':u,'text':quote,'opened':True})
    self.assertFalse((Path(tmp)/'fatos.json').exists())
    self.assertEqual(len(stages),3)
+
+class PassageTests(unittest.TestCase):
+ def test_only_original_passages_can_be_attached(self):
+  from apurar_pos_jogo import source_passages,attach_passages
+  p=source_passages({'s':{'text':'Trecho original da página aberta.'}})
+  r={'checks':[],'claims':[{'evidence':[{'passage_id':'s:0'}]}]}
+  self.assertEqual(attach_passages(r,p)['claims'][0]['evidence'][0]['quote'],'Trecho original da página aberta.')
+  with self.assertRaises(ValueError):attach_passages({'checks':[],'claims':[{'evidence':[{'passage_id':'inventado'}]}]},p)

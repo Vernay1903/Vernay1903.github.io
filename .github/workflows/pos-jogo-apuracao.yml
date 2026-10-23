@@ -52,3 +52,5 @@ jobs:
 # Diagnóstico explícito e tratamento de divergências apenas nos campos utilizados.
 
 # Omitir narrativa sem trecho literal antes da revisão independente.
+
+# Evidências selecionadas por IDs de trechos preservados pelo código.
