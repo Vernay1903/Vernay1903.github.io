@@ -1,0 +1,23 @@
+name: Pós-jogo — HTML padrão do editor
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-html.yml]
+permissions:
+  contents: read
+jobs:
+  validar:
+    if: "github.event.head_commit.message == 'Passo 10: validar HTML padrão do editor'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validar preservação do modelo e distribuição de anúncios
+        run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - name: Montar amostra sem publicar
+        run: python scripts/montar_html_pos_jogo.py --article auditoria/pos-jogo/amostra-editorial-real-leipzig.json --links auditoria/pos-jogo/links-autorizados-piloto.json --date 24/10/2026 --output build/pos-jogo/html-teste/modelo-validado.html
+      - name: Conferir integridade dos arquivos
+        run: git diff --exit-code

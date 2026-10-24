@@ -1,0 +1,16 @@
+{
+  "template": "templates/materia-validada.html",
+  "sha256": "e42afd8e04252a93fa1bf624c5b4ca7ed505bba41040ad6ae582985d7072aefc",
+  "source": "HTML padrão enviado pelo editor em 24/10/2026",
+  "category": "Futebol",
+  "category_slug": "futebol",
+  "publication_enabled": false,
+  "ads": {
+    "max_body_ads": 3,
+    "two_ads_from_words": 900,
+    "three_ads_from_words": 1500,
+    "minimum_intro_words": 200,
+    "minimum_gap_words": 250,
+    "minimum_tail_words": 150
+  }
+}
