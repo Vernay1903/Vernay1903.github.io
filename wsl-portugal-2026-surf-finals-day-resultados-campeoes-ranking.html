@@ -707,7 +707,7 @@ const ta = String(a.time || "").trim();
 const tb = String(b.time || "").trim();
 return ta.localeCompare(tb);
 });
-list.innerHTML = ordered.slice(0, 12).map(it => `
+list.innerHTML = ordered.map(it => `
 <li>
 <div class="time">${escapeHtml(it.time || "--:--")}</div>
 <div class="desc">${escapeHtml(it.desc || "")}</div>
@@ -742,3 +742,4 @@ loadAgenda();
 <script src="share.js"></script>
 </body>
 </html>
+
