@@ -99,3 +99,13 @@ Exemplos testados: encerramento observado às 18h libera às 18h50; às 23h30 li
 Estado padrão: build/pos-jogo/estado-tempo.json, substituível por --timing-state. A ativação futura deve restaurar e persistir esse estado entre runners e serializar as execuções; sem restauração, a espera recomeça conservadoramente. Cron e persistência entre runners serão ligados no teste completo de publicação, não neste passo. Os antigos testes pagos dos passos 7/8 agora também respeitam a espera, caso sejam disparados novamente.
 
 Validação: 74 testes aprovados localmente e na execução 39999571859. Não houve chamadas de apuração/redação, publicação nem alteração da agenda ou prévias.
+
+## Passo 10 — HTML padrão fornecido pelo editor (parte HTML)
+
+Em 24/10/2026 o editor forneceu HMTL PADRÃO VALIDADO PARA MATERIAS.txt e autorizou somente campos pertinentes à matéria e distribuição dos anúncios. A cópia em templates/materia-validada.html preserva os bytes do arquivo (BOM, CRLF e conteúdo). Hash esperado em config/html-pos-jogo.json; alterações no padrão bloqueiam o montador até nova validação explícita.
+
+scripts/montar_html_pos_jogo.py muda somente título da página, meta description, título, chamada, data, categoria e suas constantes JS, e conteúdo de articleBody. Preserva CSS, ordem do menu, cabeçalho, agenda completa, compartilhamento, rodapé, scripts e anúncio lateral. Subtítulos seguem p/strong como no modelo. Somente âncoras internas autorizadas são preservadas; outros textos são escapados. Links, vídeos e conteúdo de surf do exemplo não são reaproveitados na nova matéria. Não acrescenta canonical, dados estruturados ou outros componentes não presentes no padrão sem autorização.
+
+Os blocos AdSense do corpo são copiados literalmente do modelo, mantendo cliente e slot. Política inicial de UX: até um bloco entre 600–899 palavras, dois entre 900–1499 e três a partir de 1500. Posicionamento aproximadamente proporcional, com pelo menos 250 palavras antes/entre anúncios e 150 após o último; somente entre parágrafos completos, sem separar subtítulo do texto nem introdução de lista. Usa menos anúncios quando não houver fronteiras adequadas. O anúncio lateral e seu comportamento responsivo permanecem intactos. Essa política é escolha de implementação para UX, não declaração de conformidade ou garantia de receita do AdSense.
+
+A montagem grava somente em build/pos-jogo; não está ligada à publicação. news JSON e sitemap continuam pendentes no passo 10. Execução 40101518666 aprovada: 83 testes, amostra de 689 palavras, título de 58 caracteres e um anúncio no corpo. Estrutura fixa comparada exatamente; nada publicado.

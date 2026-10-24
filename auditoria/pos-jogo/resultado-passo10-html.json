@@ -1,0 +1,17 @@
+{
+  "step": 10,
+  "part": "html_template",
+  "status": "validated",
+  "run_id": 40101518666,
+  "tested_commit": "fdd5e2753516c148f43bab97085075b247400456",
+  "test_count": 83,
+  "template_sha256": "e42afd8e04252a93fa1bf624c5b4ca7ed505bba41040ad6ae582985d7072aefc",
+  "fixed_shell_unchanged": true,
+  "sample_body_words": 689,
+  "sample_body_ads": 1,
+  "publication_enabled": false,
+  "pending": [
+    "Definir e validar noticias.json e sitemap",
+    "Ligar montador à publicação somente na etapa autorizada"
+  ]
+}
