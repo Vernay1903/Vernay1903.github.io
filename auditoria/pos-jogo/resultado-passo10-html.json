@@ -2,10 +2,10 @@
   "step": 10,
   "part": "html_template",
   "status": "validated",
-  "run_id": 40101518666,
-  "tested_commit": "fdd5e2753516c148f43bab97085075b247400456",
+  "run_id": 40104740646,
+  "tested_commit": "9bbe9e08bdf09fb0ce89ccce2a032e4f79d820c6",
   "test_count": 83,
-  "template_sha256": "e42afd8e04252a93fa1bf624c5b4ca7ed505bba41040ad6ae582985d7072aefc",
+  "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
   "fixed_shell_unchanged": true,
   "sample_body_words": 689,
   "sample_body_ads": 1,
@@ -13,5 +13,8 @@
   "pending": [
     "Definir e validar noticias.json e sitemap",
     "Ligar montador à publicação somente na etapa autorizada"
-  ]
+  ],
+  "previous_validation_run_id": 40101518666,
+  "source_file": "HTML PADRÃO MATERIA USAR ESSE.txt",
+  "menu_correction": "Tênis antes de Vôlei e Vôlei de Praia"
 }
