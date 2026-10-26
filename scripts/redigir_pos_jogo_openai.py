@@ -45,7 +45,7 @@ def parse_response(response):
     return article
 
 
-def generate(package, out, *, execute=False, calibrate=False):
+def generate(package, out, *, execute=False, calibrate=False, caller=None):
     read=lambda p:json.loads((ROOT/p).read_text())
     provider=read('config/redacao-pos-jogo.json')['provider']
     request=build_request(package,provider)
@@ -68,7 +68,9 @@ def generate(package, out, *, execute=False, calibrate=False):
         calls.append({'stage':stage,'status':'started'})
         save('chamadas.json',calls)
         try:
-            with urllib.request.urlopen(req,timeout=180) as response: result=json.load(response)
+            if caller:result=caller(payload)
+            else:
+                with urllib.request.urlopen(req,timeout=180) as response: result=json.load(response)
         except urllib.error.HTTPError as exc:
             calls[-1]['status']=f'http_{exc.code}';save('chamadas.json',calls)
             raise ValueError(f'API retornou HTTP {exc.code}; sem repetição automática') from None

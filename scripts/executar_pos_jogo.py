@@ -39,7 +39,7 @@ def reviewed_packet(candidate, summary, schedules, entry, now):
     return facts,narrative
 
 
-def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer=generate, now=None, registry=None, auto_research=False, researcher=None, timing_state=None, work_budget=None, site_root=None):
+def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer=generate, now=None, registry=None, auto_research=False, researcher=None, timing_state=None, work_budget=None, site_root=None, processed=None):
     if site_root is not None and not execute:raise ValueError('Pacote requer --execute')
     now=now or datetime.now(TZ)
     budget=work_budget if work_budget is not None else {'research':0,'articles':0}
@@ -72,6 +72,8 @@ def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer
     for candidate in selection['selected']:
         fid=candidate['fixture_id']; row={'fixture_id':fid};report['results'].append(row)
         try:
+            if processed is not None and fid in processed:
+                row['status']='already_attempted';continue
             if not re.fullmatch(r'espn-\d+',fid):raise ValueError('ID inválido')
             summary=capture(candidate['source_url'])
             if execute or auto_research:

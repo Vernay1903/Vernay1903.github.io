@@ -1,0 +1,25 @@
+{
+  "publication_enabled": false,
+  "schedule_enabled": false,
+  "proposed_cron_utc": "*/10 * * * *",
+  "timezone": "America/Sao_Paulo",
+  "state_branch": "estado-pos-jogo-piloto",
+  "monthly_pilot_cap_usd": "10.00",
+  "budget_scope": "post_match_calls_through_persistent_controller_only",
+  "shared_pre_match_budget_reconciled": false,
+  "max_paid_calls_per_fixture": 10,
+  "price_checked_on": "2026-10-26",
+  "price_valid_until": "2026-11-25",
+  "model": "gpt-5.6-terra",
+  "input_usd_per_million": "2.00",
+  "cached_input_usd_per_million": "0.20",
+  "cache_write_usd_per_million": "2.50",
+  "output_usd_per_million": "12.00",
+  "web_search_usd_per_call": "0.01",
+  "context_window": 1050000,
+  "long_context_threshold": 272000,
+  "pricing_sources": [
+    "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+    "https://developers.openai.com/api/docs/pricing"
+  ]
+}
