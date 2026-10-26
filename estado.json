@@ -22,7 +22,14 @@
       }
     }
   },
-  "jobs": {},
+  "jobs": {
+    "espn-401882832": {
+      "status": "running",
+      "started_at": "2026-10-26T14:10:53.090468-03:00",
+      "run_id": "40358859504",
+      "api_calls": 0
+    }
+  },
   "months": {},
   "publication_enabled": false,
   "scheduled_activation_enabled": false,
