@@ -1,5 +1,7 @@
 """Redação, revisão factual e correção limitada; publicação permanece bloqueada."""
 import argparse
+from datetime import datetime, timezone
+from empacotar_redacao_pos_jogo import digest
 import json
 import os
 import urllib.request
@@ -97,6 +99,7 @@ def generate(package, out, *, execute=False, calibrate=False):
                 request['input'].append({'role':'user','content':json.dumps({'draft':article,'issues':issues,
                     'instruction':'Corrija as falhas de formato mantendo fatos e narrativa corretos. Retorne texto completo.'},ensure_ascii=False)})
             article=parse_response(call(request,f'write_{attempt}'))
+        written_at=datetime.now(timezone.utc).isoformat()
         save(f'artigo-{attempt}.json',article)
         checks=validate(article,package['allowed_internal_urls'])
         review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))
@@ -111,7 +114,9 @@ def generate(package, out, *, execute=False, calibrate=False):
             passed=True;break
     metadata={'model':provider['model'],'automatic_model_run':True,'publication_enabled':False,
         'human_review_required':True,'fixture_id':package['facts']['fixture_id'],
-        'semantic_review_passed':passed,'calls':calls}
+        'semantic_review_passed':passed,'calls':calls,
+        'format_passed':checks['format_passed'],'written_at':written_at,
+        'article_sha256':digest(article),'package_sha256':digest(package)}
     save('metadata.json',metadata);save('artigo.json',article);save('validacao.json',checks)
     print(json.dumps({'metadata':metadata,'validation':checks},ensure_ascii=False))
     print('INICIO DO RASCUNHO\n'+render(article)+'FIM DO RASCUNHO',flush=True)

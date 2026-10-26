@@ -13,6 +13,7 @@ from preparar_fatos_pos_jogo import build, when, pair
 from coletar_competicoes_pre_jogo import BASE, fetch
 from editorial_pos_jogo import prepare
 from redigir_pos_jogo_openai import generate
+from empacotar_redacao_pos_jogo import package_reviewed
 from tempo_pos_jogo import load_state,save_state,observe,dates_to_check
 
 
@@ -38,7 +39,8 @@ def reviewed_packet(candidate, summary, schedules, entry, now):
     return facts,narrative
 
 
-def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer=generate, now=None, registry=None, auto_research=False, researcher=None, timing_state=None, work_budget=None):
+def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer=generate, now=None, registry=None, auto_research=False, researcher=None, timing_state=None, work_budget=None, site_root=None):
+    if site_root is not None and not execute:raise ValueError('Pacote requer --execute')
     now=now or datetime.now(TZ)
     budget=work_budget if work_budget is not None else {'research':0,'articles':0}
     if max_articles!=1:raise ValueError('Teste integrado limitado a uma matéria por execução')
@@ -106,6 +108,9 @@ def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer
             if not meta or meta.get('semantic_review_passed') is not True or meta.get('fixture_id')!=fid:
                 raise ValueError('Redação não confirmou revisão do jogo selecionado')
             row['status']='draft_reviewed'
+            if site_root is not None:
+                row['package']=package_reviewed(directory,site_root,links)
+                row['status']='package_ready'
         except (ValueError,KeyError,TypeError,OSError) as exc:
             row.update(status='blocked',reason=str(exc))
         finally:
@@ -126,15 +131,16 @@ def main():
     p.add_argument('--execute',action='store_true')
     p.add_argument('--auto-research',action='store_true',help='Apurar uma partida com páginas abertas; usa API mesmo sem --execute')
     p.add_argument('--timing-state',type=Path,default=ROOT/'build/pos-jogo/estado-tempo.json')
+    p.add_argument('--site-root',type=Path,help='Gerar pacote de teste com os destinos deste checkout; não publica')
     a=p.parse_args()
     now=datetime.now(TZ)
     if a.date is None:
         budget={'research':0,'articles':0}
-        results=[run(day,read(a.noticias),a.output_dir/day.isoformat(),execute=a.execute,auto_research=a.auto_research,timing_state=a.timing_state,now=now,work_budget=budget) for day in dates_to_check(now)]
+        results=[run(day,read(a.noticias),a.output_dir/day.isoformat(),execute=a.execute,auto_research=a.auto_research,timing_state=a.timing_state,now=now,work_budget=budget,site_root=a.site_root) for day in dates_to_check(now)]
         print(json.dumps(results,ensure_ascii=False,indent=2))
         if any(r['status'] in {'collection_failed','pending'} for r in results):raise SystemExit(1)
         return
-    result=run(a.date,read(a.noticias),a.output_dir,execute=a.execute,auto_research=a.auto_research,timing_state=a.timing_state,now=now)
+    result=run(a.date,read(a.noticias),a.output_dir,execute=a.execute,auto_research=a.auto_research,timing_state=a.timing_state,now=now,site_root=a.site_root)
     print(json.dumps(result,ensure_ascii=False,indent=2))
     if result['status']=='collection_failed' or ((a.execute or a.auto_research) and result['status']=='pending'):raise SystemExit(1)
 if __name__=='__main__':main()

@@ -1,0 +1,41 @@
+name: Pós-jogo — fluxo até pacote sem publicação
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-fluxo.yml]
+permissions:
+  contents: read
+concurrency:
+  group: pos-jogo-fluxo-teste
+  cancel-in-progress: false
+jobs:
+  testar:
+    if: "github.event.head_commit.message == 'Passo 11: testar redação até pacote'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          persist-credentials: false
+      - name: Reproduzir coleta histórica e redigir pela API sem publicar
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/testar_fluxo_pos_jogo.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pos-jogo-fluxo-${{ github.run_id }}
+          path: build/pos-jogo/fluxo-passo11/
+          retention-days: 7
+      - name: Conferir que nenhum arquivo do site foi alterado
+        if: always()
+        run: |
+          git diff --exit-code
+          git -C current-main diff --exit-code
