@@ -46,6 +46,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Disponibilizar modulo independente de coleta NBA
+        if: ${{ inputs.verificar_credencial != true }}
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Coletar as 13 competições e validar a data de Brasília
         if: ${{ inputs.verificar_credencial != true }}
         env:
@@ -174,6 +179,21 @@ jobs:
                   raise SystemExit('Data alternativa permitida somente em simulação sem escrita.')
               target = dt.date.fromisoformat(requested) if requested else today
               result = collect(target)
+              # Futebol: mantido intacto e obrigatorio (13 competicoes).
+              # NBA: fonte isolada; indisponibilidade nao bloqueia a coleta do futebol.
+              import sys
+              sys.path.insert(0, '.github/scripts')
+              try:
+                  from agenda_nba import collect_nba
+                  nba_games = collect_nba(target)
+                  combined = sorted(result['agenda'] + nba_games, key=lambda row: (row['time'], row['desc']))
+                  if len({(item['time'], item['desc']) for item in combined}) != len(combined):
+                      raise ValueError('Jogo duplicado entre futebol e NBA')
+                  result['agenda'] = combined
+                  result['nba'] = {'status': 'ok', 'count': len(nba_games)}
+              except Exception as error:
+                  result['nba'] = {'status': 'unavailable', 'count': 0, 'error': str(error)[:300]}
+                  print('AVISO: consulta NBA indisponivel; coleta das 13 competicoes de futebol preservada: ' + str(error))
               if not requested and dt.datetime.now(TZ).date() != target:
                   raise SystemExit('A data mudou durante a coleta; tentar novamente.')
               path = os.path.join(os.environ.get('RUNNER_TEMP', '/tmp'), 'agenda-coleta.json')
@@ -303,9 +323,15 @@ jobs:
             if (!Array.isArray(collection.coverage) || collection.coverage.length !== 13 || !Array.isArray(collection.agenda)) {
               throw new Error('Coleta ausente ou incompleta; nenhuma alteração permitida.');
             }
+            if (!collection.nba || !['ok', 'unavailable'].includes(collection.nba.status)) {
+              throw new Error('Status de coleta NBA ausente ou invalido.');
+            }
             const collected = collection.agenda;
+            const nbaInfo = collection.nba.status === 'ok'
+              ? 'NBA: ' + collection.nba.count + ' jogo(s) coletado(s).'
+              : 'NBA: indisponivel (futebol preservado).';
             await core.summary.addHeading('Agenda de ' + collection.date)
-              .addRaw('Coleta ESPN: 13 competições confirmadas. ' + collected.length + ' jogo(s).\n')
+              .addRaw('Coleta ESPN: 13 competições de futebol confirmadas. ' + nbaInfo + ' ' + collected.length + ' jogo(s).\n')
               .addTable([
                 [{data: 'Competição', header: true}, {data: 'Jogos', header: true}],
                 ...collection.coverage.map(row => [row.competition, String(row.count)])
@@ -322,8 +348,39 @@ jobs:
             if (Array.isArray(mainSource)) throw new Error('agenda.json não é arquivo.');
             let currentAgenda = null;
             try { currentAgenda = JSON.parse(Buffer.from(mainSource.content, 'base64').toString('utf8')); } catch {}
+
+            // Se a NBA falhar depois de ja publicada HOJE, manter seus jogos na agenda.
+            // Nunca trazer partidas do dia anterior para a agenda do dia seguinte.
+            if (collection.nba.status === 'unavailable' && Array.isArray(currentAgenda)) {
+              const existingNBA = currentAgenda.filter(entry =>
+                entry && typeof entry.desc === 'string' && entry.desc.endsWith(' - NBA'));
+              if (existingNBA.length) {
+                const history = (await github.rest.repos.listCommits({
+                  owner, repo, path: 'agenda.json', sha: mainSnapshot, per_page: 1
+                })).data;
+                const timestamp = history[0]?.commit?.committer?.date;
+                if (!timestamp) throw new Error('Impossivel verificar a data da ultima agenda para proteger NBA.');
+                const dateParts = Object.fromEntries(
+                  new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/Sao_Paulo',
+                    year: 'numeric', month: '2-digit', day: '2-digit'
+                  }).formatToParts(new Date(timestamp)).map(({type, value}) => [type, value])
+                );
+                const agendaCommitDate = dateParts.year + '-' + dateParts.month + '-' + dateParts.day;
+                if (agendaCommitDate === date) {
+                  const keys = new Set(collected.map(entry => entry.time + '|' + entry.desc));
+                  for (const entry of existingNBA) {
+                    const key = entry.time + '|' + entry.desc;
+                    if (!keys.has(key)) { collected.push(entry); keys.add(key); }
+                  }
+                  collected.sort((a,b) => a.time.localeCompare(b.time) || a.desc.localeCompare(b.desc));
+                  core.warning('ESPN NBA indisponivel: mantidos ' + existingNBA.length +
+                    ' jogos NBA ja publicados hoje; 13 competicoes de futebol continuam atualizaveis.');
+                }
+              }
+            }
             if (canonicalAgenda(currentAgenda) === canonicalAgenda(collected)) {
-              core.notice('Agenda de ' + date + ' conferida nas 13 competições, sem alteração: ' + collected.length + ' jogo(s).');
+              core.notice('Agenda de ' + date + ' conferida no futebol e NBA; sem alteracao: ' + collected.length + ' jogo(s).');
               await core.summary.addRaw('\nResultado: agenda conferida, sem alteração.\n').write();
               return;
             }
@@ -421,7 +478,7 @@ jobs:
                 base: 'main',
                 title: 'Atualiza agenda de ' + date,
                 body:
-                  'Agenda de ' + date + ' coletada diretamente da ESPN. As 13 competições foram consultadas com sucesso; ' +
+                  'Agenda de ' + date + ' coletada diretamente da ESPN. As 13 competições de futebol foram consultadas com sucesso; coleta NBA independente; ' +
                   'horários convertidos para America/Sao_Paulo. Somente agenda.json foi alterado. ' +
                   'Relatório: https://github.com/' + repoName + '/actions/runs/' + context.runId
               })).data;
@@ -488,7 +545,7 @@ jobs:
             const agenda = JSON.parse(source);
             if (!Array.isArray(agenda)) throw new Error('agenda.json deve ser uma lista.');
             if (canonicalAgenda(agenda) !== canonicalAgenda(collected)) {
-              throw new Error('Agenda do PR diverge da coleta atual das 13 competições; merge recusado.');
+              throw new Error('Agenda do PR diverge da coleta validada de futebol e NBA; merge recusado.');
             }
 
             let last = '';

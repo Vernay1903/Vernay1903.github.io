@@ -73,6 +73,7 @@ jobs:
               re.compile(r'^(?:Copa |CONMEBOL )?Sul-Americana$'),
               re.compile(r'^Brasileirão Série A$'),
               re.compile(r'^Brasileirão Série B$'),
+              re.compile(r'^NBA$'),
           ]
           previous = None
           seen = set()
