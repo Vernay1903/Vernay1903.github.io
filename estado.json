@@ -32,7 +32,7 @@
     },
     "validation-luna-20261026-real-leipzig": {
       "status": "running",
-      "api_calls": 5,
+      "api_calls": 6,
       "kind": "controlled_historical_evaluation",
       "fixture_id": "espn-401915313",
       "run_id": "40410687634",
@@ -345,6 +345,16 @@
             "total_tokens": 3870
           },
           "response_id": "resp_091cbe709f31a70d016adfd101b65087d0a113400b0aa279d7"
+        },
+        {
+          "id": "458603f220fa4b2b8d5e3f13fd12165d",
+          "fixture_id": "validation-luna-20261026-real-leipzig",
+          "started_at": "2026-10-26T19:15:56.855575-03:00",
+          "status": "reserved",
+          "charged_usd": "0.003277625",
+          "reserved_usd": "0.003277625",
+          "model": "gpt-6-luna",
+          "counted_input_tokens": 2221
         }
       ],
       "blocked": false
