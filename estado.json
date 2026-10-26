@@ -121,9 +121,22 @@
           "id": "2215a0af6d864feeb2d66dda756bc429",
           "fixture_id": "espn-401882832",
           "started_at": "2026-10-26T14:12:01.591920-03:00",
-          "status": "reserved",
-          "charged_usd": "5.358",
-          "reserved_usd": "5.358"
+          "status": "settled",
+          "charged_usd": "0.0265315",
+          "reserved_usd": "5.358",
+          "usage": {
+            "input_tokens": 2434,
+            "input_tokens_details": {
+              "cache_write_tokens": 2431,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1704,
+            "output_tokens_details": {
+              "reasoning_tokens": 1011
+            },
+            "total_tokens": 4138
+          },
+          "response_id": "resp_0c79d9528b487287016adf89e31cac87d1b572439f1570fe85"
         }
       ],
       "blocked": false
