@@ -1,0 +1,47 @@
+name: Pós-jogo — correções finais com o mesmo saldo
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-custo-correcao.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: pos-jogo-estado-piloto
+  cancel-in-progress: false
+jobs:
+  testar:
+    if: "github.event.head_commit.message == 'Passo 12: corrigir trechos dentro do mesmo orçamento'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          persist-credentials: false
+      - name: Apurar e redigir amostra histórica com teto de US$ 0,10
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          gh run download 40411772773 --repo Vernay1903/Vernay1903.github.io --name pos-jogo-custo-40411772773 --dir build/pos-jogo/custo-continuacao-anterior
+          python scripts/corrigir_teste_custo_pos_jogo.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pos-jogo-custo-${{ github.run_id }}
+          path: build/pos-jogo/custo-passo12-final/
+          retention-days: 7
+      - name: Verificar integridade dos arquivos do site
+        if: always()
+        run: |
+          git diff --exit-code
+          git -C current-main diff --exit-code
