@@ -27,10 +27,24 @@
       "status": "running",
       "started_at": "2026-10-26T14:10:53.090468-03:00",
       "run_id": "40358859504",
-      "api_calls": 0
+      "api_calls": 1
     }
   },
-  "months": {},
+  "months": {
+    "2026-10": {
+      "calls": [
+        {
+          "id": "4b69e8463cc24365a6eaac34851484fa",
+          "fixture_id": "espn-401882832",
+          "started_at": "2026-10-26T14:10:54.433647-03:00",
+          "status": "reserved",
+          "charged_usd": "5.2924",
+          "reserved_usd": "5.2924"
+        }
+      ],
+      "blocked": false
+    }
+  },
   "publication_enabled": false,
   "scheduled_activation_enabled": false,
   "external_spend_reconciled": false,
