@@ -1,0 +1,161 @@
+{
+  "step": 11,
+  "status": "validated_controlled_replay",
+  "run_id": 40356893002,
+  "tested_commit": "bca90478c4feada655d4ec0f5aa63056d6ccfde3",
+  "test_count": 109,
+  "artifact_id": 12667665309,
+  "failed_attempt": {
+    "run_id": 40356248183,
+    "commit": "57858c1579268e47ad9b495c02e9e1c07c75d460",
+    "calls": 7,
+    "reason": "Revisor bloqueou atribuição ampliada a Courtois após limite de correções; pacote não liberado"
+  },
+  "successful_attempt": {
+    "calls": 5,
+    "correction_cycles": 1,
+    "metadata": {
+      "model": "gpt-5.6-terra",
+      "automatic_model_run": true,
+      "publication_enabled": false,
+      "human_review_required": true,
+      "fixture_id": "espn-401915313",
+      "semantic_review_passed": true,
+      "calls": [
+        {
+          "stage": "write_1",
+          "status": "completed",
+          "response_id": "resp_081880160115101c016adf7c232a4887d19a9d2b5dbe0e187e",
+          "usage": {
+            "input_tokens": 2894,
+            "input_tokens_details": {
+              "cache_write_tokens": 2891,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1297,
+            "output_tokens_details": {
+              "reasoning_tokens": 249
+            },
+            "total_tokens": 4191
+          }
+        },
+        {
+          "stage": "review_1",
+          "status": "completed",
+          "response_id": "resp_09cc56f74e646dc1016adf7c35444087d1b2fa5f90cb2f00a2",
+          "usage": {
+            "input_tokens": 2668,
+            "input_tokens_details": {
+              "cache_write_tokens": 2665,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1389,
+            "output_tokens_details": {
+              "reasoning_tokens": 816
+            },
+            "total_tokens": 4057
+          }
+        },
+        {
+          "stage": "review_1_second_pass",
+          "status": "completed",
+          "response_id": "resp_01a4224e0c0f7f7d016adf7c44b71087d1a5ca47873db0787c",
+          "usage": {
+            "input_tokens": 2668,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 2665
+            },
+            "output_tokens": 1428,
+            "output_tokens_details": {
+              "reasoning_tokens": 838
+            },
+            "total_tokens": 4096
+          }
+        },
+        {
+          "stage": "patch_2",
+          "status": "completed",
+          "response_id": "resp_0728723fb4425f27016adf7c54e9a087d19d65845766fdb135",
+          "usage": {
+            "input_tokens": 4301,
+            "input_tokens_details": {
+              "cache_write_tokens": 4298,
+              "cached_tokens": 0
+            },
+            "output_tokens": 138,
+            "output_tokens_details": {
+              "reasoning_tokens": 67
+            },
+            "total_tokens": 4439
+          }
+        },
+        {
+          "stage": "review_2",
+          "status": "completed",
+          "response_id": "resp_0b37393b2bd45cae016adf7c56f83c87d18572a084f66f62da",
+          "usage": {
+            "input_tokens": 2630,
+            "input_tokens_details": {
+              "cache_write_tokens": 2627,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1051,
+            "output_tokens_details": {
+              "reasoning_tokens": 562
+            },
+            "total_tokens": 3681
+          }
+        }
+      ],
+      "format_passed": true,
+      "written_at": "2026-10-26T16:14:14.874755+00:00",
+      "article_sha256": "9719ca44e2bf33ec3e5e339cb172b22a791666756e072a236df3abf1f7ea72d2",
+      "package_sha256": "45f1f082e2aa40463a0edb9e1fbc63362067da8139330d78f230f551af04f054"
+    },
+    "validation": {
+      "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+      "fixed_shell_unchanged": true,
+      "title_chars": 54,
+      "body_words": 605,
+      "body_ad_count": 1,
+      "ad_after_blocks": [
+        5
+      ],
+      "publication_enabled": false,
+      "filename": "real-madrid-rb-leipzig-champions-league-2026-resultado.html",
+      "written_at": "2026-10-26T16:14:14.874755+00:00",
+      "article_date": "26/10/2026",
+      "sitemap_lastmod": "2026-10-26",
+      "news_position": 0,
+      "old_news_preserved": true,
+      "old_sitemap_preserved": true,
+      "fixture_id": "espn-401915313",
+      "article_sha256": "9719ca44e2bf33ec3e5e339cb172b22a791666756e072a236df3abf1f7ea72d2",
+      "human_review_required": true,
+      "semantic_review_passed": true
+    }
+  },
+  "test_scope": {
+    "snapshot_collection": true,
+    "simulated_match_clock": true,
+    "first_final_wait_verified": true,
+    "live_writer_api": true,
+    "current_main_destinations": true,
+    "automatic_source_discovery_exercised": false,
+    "no_site_modifications": true
+  },
+  "publication_enabled": false,
+  "human_review_required": true,
+  "limitations": [
+    "Matéria histórica de teste não serve para publicação atual: próximos jogos pertencem ao pacote arquivado",
+    "Revisão por modelo não garante exatidão absoluta",
+    "Não comprova operação agendada nem coleta/apuração de uma partida nova"
+  ],
+  "pending": [
+    "Teste com apuração recente",
+    "Persistir estado e serializar execuções agendadas",
+    "Controle mensal de gastos compartilhado",
+    "Publicação e agendamento somente na etapa autorizada"
+  ]
+}

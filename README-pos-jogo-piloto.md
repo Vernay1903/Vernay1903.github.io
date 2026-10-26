@@ -121,3 +121,13 @@ Nome do arquivo: mandante-visitante-competicao-ano-do-jogo-resultado.html, sem a
 CLI grava somente em pasta nova de build/pos-jogo e prepara tudo antes de gravar. Não publica nem altera os arquivos originais. A etapa não liga o pacote ao redator: a integração seguinte deve registrar o instante real da redação, reaproveitá-lo em tentativas posteriores e reler os arquivos de destino antes de qualquer publicação concorrente.
 
 Validação: 93 testes locais e execução 40355305916 aprovada no GitHub. Teste local adicional utilizou cópias atuais de noticias.json e sitemap.xml da main. Cobertos virada de dia/ano em Brasília, preservação, correspondência de campos, duplicatas em cada destino, normalização e entradas inválidas. Publicação segue desativada.
+
+## Passo 11 — redator conectado ao pacote de teste
+
+executar_pos_jogo.py aceita --site-root junto com --execute. Após o redator aprovar o texto, empacotar_redacao_pos_jogo.py relê noticias.json, sitemap.xml e nomes HTML do checkout de destino e monta publicacao-teste. Não grava no site. metadata.json registra written_at real da última versão redigida/corrigida, aprovação de formato/revisão e hashes do artigo e pacote editorial. O empacotador reconstrói o pacote e bloqueia alterações posteriores. Reempacotamento sem API preserva a data original; pacote idêntico é reutilizado, divergência preserva a versão anterior e bloqueia. Uma pasta temporária é renomeada somente após completar todos os arquivos.
+
+Teste controlado scripts/testar_fluxo_pos_jogo.py: calendários reconstruídos da ficha arquivada, relógio histórico simulado, primeira observação bloqueada e segunda liberada aos 50 minutos, preparação factual cadastrada e redação REAL via API. A descoberta automática de fontes não é exercitada neste replay. Destinos são checkout atual da main somente para leitura. O texto de teste contém próximos jogos históricos e NÃO pode ser publicado como notícia atual.
+
+Execução inicial 40356248183 bloqueada pelo revisor após sete chamadas. Orientação do redator reforçada para preservar o alcance de declarações e evitar comparações/qualificações sem suporte; critérios do revisor mantidos. Execução 40356893002 aprovada: 109 testes, cinco chamadas de API, uma correção, 605 palavras, título de 54 caracteres, um anúncio no corpo. Data real da versão final: 26/10/2026 em Brasília, igual no HTML/JSON/sitemap. Nenhuma mudança nos arquivos do site. Resultados completos em auditoria/pos-jogo/resultado-passo11.json.
+
+Próxima etapa ainda precisa validar uma partida com apuração recente e preparar persistência entre runners, concorrência, custos e publicação autorizada. Este passo não ativa cron, não publica e não garante cobertura dos quatro clubes em produção.
