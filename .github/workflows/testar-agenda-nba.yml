@@ -54,4 +54,28 @@ jobs:
           guard = pathlib.Path('.github/workflows/agenda-guard.yml').read_text()
           assert "re.compile(r'^NBA$')" in guard
           print('Simulacao integral: 13 competicoes de futebol preservadas, 9 jogos NBA, horario e ordem validos.')
+          # Injetar indisponibilidade artificial da NBA para confirmar que futebol continua.
+          nba_path = pathlib.Path('.github/scripts/agenda_nba.py')
+          original = nba_path.read_text()
+          try:
+              nba_path.write_text('def collect_nba(date):\n    raise RuntimeError("Falha de rede simulada")\n')
+              subprocess.run([sys.executable, '-c', script], env=env, check=True, capture_output=True, text=True)
+              fallback = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'agenda-coleta.json').read_text())
+              assert fallback['nba']['status'] == 'unavailable', fallback['nba']
+              assert len(fallback['coverage']) == 13
+              assert not any(x['desc'].endswith(' - NBA') for x in fallback['agenda'])
+              print('Falha NBA simulada: as 13 competicoes de futebol continuaram funcionando.')
+          finally:
+              nba_path.write_text(original)
           PY
+      - name: Validar sintaxe do script JavaScript de publicacao
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          lines = Path('.github/workflows/publicar-agenda-validada.yml').read_text().splitlines()
+          start = lines.index('          script: |') + 1
+          code = '\n'.join(x[12:] for x in lines[start:]) + '\n'
+          Path('/tmp/publicador_agenda.js').write_text(code)
+          PY
+          node --check /tmp/publicador_agenda.js
