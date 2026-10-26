@@ -31,12 +31,13 @@
       "finished_at": "2026-10-26T14:13:04.296819-03:00"
     },
     "validation-luna-20261026-real-leipzig": {
-      "status": "running",
+      "status": "blocked",
       "api_calls": 10,
       "kind": "controlled_historical_evaluation",
       "fixture_id": "espn-401915313",
       "run_id": "40410687634",
-      "started_at": "2026-10-26T19:13:43.340685-03:00"
+      "started_at": "2026-10-26T19:13:43.340685-03:00",
+      "finished_at": "2026-10-26T19:18:43.751969-03:00"
     }
   },
   "months": {
