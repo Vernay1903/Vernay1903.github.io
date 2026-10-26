@@ -24,7 +24,14 @@ def usage_cost(response,config):
  return cost
 
 
+def model_rates(config,model):
+ if model==config['model']:return config
+ extra=config.get('additional_models',{}).get(model)
+ if extra is None:raise ValueError('Modelo sem tarifa validada')
+ return dict(config,**extra,model=model)
+
 def reserve_bound(payload,config,input_tokens=None):
+ config=model_rates(config,payload.get('model'))
  if payload.get('model')!=config['model']:raise ValueError('Modelo sem tarifa validada')
  output=payload.get('max_output_tokens')
  if type(output) is not int or not 0<output<=7000:raise ValueError('Limite de saída inválido')
@@ -94,8 +101,8 @@ class BudgetCaller:
    result=self.transport(request)
    if result.get('service_tier')!='default':raise ValueError('Tarifa da resposta não confirmada')
    model=result.get('model','')
-   if model!=self.config['model'] and not model.startswith(self.config['model']+'-'):raise ValueError('Modelo retornado divergente')
-   cost=usage_cost(result,self.config)
+   if model!=request['model'] and not model.startswith(request['model']+'-'):raise ValueError('Modelo retornado divergente')
+   cost=usage_cost(result,model_rates(self.config,request['model']))
    if cost>bound:raise ValueError('Custo excedeu reserva; revisar preços')
    entry.update(status='settled',charged_usd=str(cost),usage=result['usage'],response_id=result.get('id'))
    self.remote.save()

@@ -5,5 +5,10 @@
   },
   "scope": "pilot_only",
   "max_calls_per_test": 7,
-  "publication_enabled": false
+  "publication_enabled": false,
+  "writer_provider": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "medium",
+    "max_output_tokens": 4000
+  }
 }

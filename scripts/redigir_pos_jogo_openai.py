@@ -18,7 +18,7 @@ def build_request(package, provider):
         'properties':{'type':{'type':'string','enum':['paragraph','subtitle','list']},'text':{'type':'string'}},
         'required':['type','text']}}},'required':['title','excerpt','blocks']}
     facts = {k:v for k,v in package.items() if k != 'instructions'}
-    return {'model':provider['model'],'store':False,'max_output_tokens':6000,
+    return {'model':provider['model'],'store':False,'max_output_tokens':provider.get('max_output_tokens',6000),
         'reasoning':{'effort':provider['reasoning_effort']},
         'input':[{'role':'system','content':package['instructions'] + '\nProtocolo interno: devolva title, excerpt e blocks no JSON exigido. O renderizador entregará texto comum ao leitor. Não acrescente fatos fora do pacote.'},
                  {'role':'user','content':json.dumps(facts,ensure_ascii=False)}],
@@ -47,8 +47,9 @@ def parse_response(response):
 
 def generate(package, out, *, execute=False, calibrate=False, caller=None):
     read=lambda p:json.loads((ROOT/p).read_text())
-    provider=read('config/redacao-pos-jogo.json')['provider']
-    request=build_request(package,provider)
+    cfg=read('config/redacao-pos-jogo.json')
+    provider=cfg['provider'];writer_provider=cfg.get('writer_provider',provider)
+    request=build_request(package,writer_provider)
     if len(json.dumps(package,ensure_ascii=False))>20000: raise ValueError('Pacote acima do limite')
     if not execute: print('Preparo validado; nenhuma chamada realizada');return
     if caller is None:raise ValueError('Redação paga exige controlador persistente de orçamento')
@@ -93,11 +94,11 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
     article=None; issues=[]; passed=False
     for attempt in range(1,4):
         if article is not None and all(s.split(':',1)[0] in units(article) for s in issues):
-            patch=response_object(call(patch_request(package,article,issues,provider),f'patch_{attempt}'))
+            patch=response_object(call(patch_request(package,article,issues,writer_provider),f'patch_{attempt}'))
             save(f'correcao-{attempt}.json',patch)
             article=apply_patch(article,patch,issues)
         else:
-            request=build_request(package,provider)
+            request=build_request(package,writer_provider)
             if article is not None:
                 request['input'].append({'role':'user','content':json.dumps({'draft':article,'issues':issues,
                     'instruction':'Corrija as falhas de formato mantendo fatos e narrativa corretos. Retorne texto completo.'},ensure_ascii=False)})
@@ -115,7 +116,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
         if not issues:
             passed=True;break
-    metadata={'model':provider['model'],'automatic_model_run':True,'publication_enabled':False,
+    metadata={'model':writer_provider['model'],'review_model':provider['model'],'automatic_model_run':True,'publication_enabled':False,
         'human_review_required':True,'fixture_id':package['facts']['fixture_id'],
         'semantic_review_passed':passed,'calls':calls,
         'format_passed':checks['format_passed'],'written_at':written_at,

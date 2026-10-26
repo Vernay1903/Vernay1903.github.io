@@ -112,6 +112,18 @@ class BudgetTests(unittest.TestCase):
   with self.assertRaises(ValueError):self.caller()(self.payload)
   self.assertEqual(self.sent,[])
 
+ def test_writer_uses_separate_validated_tariff(self):
+  p=dict(self.payload,model='gpt-5.6-terra',max_output_tokens=4000)
+  self.assertEqual(reserve_bound(p,self.config,1000),D('0.0505'))
+  self.response['model']='gpt-5.6-terra'
+  self.caller()(p)
+  self.assertEqual(D(self.remote.data['months']['2026-10']['calls'][0]['charged_usd']),D('0.00299'))
+ def test_writer_reservation_accounts_for_prior_research(self):
+  self.remote.data['months']['2026-10']={'calls':[{'fixture_id':'espn-1','status':'settled','charged_usd':'0.06'}]}
+  with self.assertRaisesRegex(ValueError,'Saldo da matéria'):
+   self.caller()(dict(self.payload,model='gpt-5.6-terra',max_output_tokens=4000))
+  self.assertEqual(self.sent,[])
+
 class OperationalTests(unittest.TestCase):
  def test_remote_save_targets_only_state_branch_with_sha(self):
   r=object.__new__(RemoteState);r.sha='old';r.data={'example':True}
