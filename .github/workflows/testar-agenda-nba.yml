@@ -76,6 +76,9 @@ jobs:
           lines = Path('.github/workflows/publicar-agenda-validada.yml').read_text().splitlines()
           start = lines.index('          script: |') + 1
           code = '\n'.join(x[12:] for x in lines[start:]) + '\n'
+          # github-script executa o conteudo dentro de uma funcao async.
+          # Reproduz este contexto para validar await e return.
+          code = 'async function validar() {\n' + code + '\n}\n'
           Path('/tmp/publicador_agenda.js').write_text(code)
           PY
           node --check /tmp/publicador_agenda.js
