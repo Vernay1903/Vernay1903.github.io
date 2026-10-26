@@ -1,0 +1,32 @@
+{
+  "step": 12,
+  "status": "in_progress_waiting_for_real_interval",
+  "code_commit": "ed397ad8725b1a89b2a6a5c43f3af7b6a27d149c",
+  "observation_run_id": 40358115852,
+  "live_test_run_id": 40358859504,
+  "tests_passed": 123,
+  "fixture_id": "espn-401882832",
+  "first_final_seen_at": "2026-10-26T13:20:52.261134-03:00",
+  "eligible_at": "2026-10-26T14:10:52.261134-03:00",
+  "state_branch": "estado-pos-jogo-piloto",
+  "publication_enabled": false,
+  "recurring_schedule_enabled": false,
+  "implemented": [
+    "Estado remoto com SHA condicional; estado ausente/corrompido bloqueia",
+    "Registro da tentativa antes da apuração paga, sem repetição automática após falha",
+    "Reserva de orçamento persistida antes de cada chamada; cobrança incerta bloqueia continuidade",
+    "Uma partida por execução, até três chamadas de apuração e sete de redação/revisão",
+    "Tarifas verificadas em documentação oficial; estimativa inclui cache-write, contexto longo e web search",
+    "Cadência proposta de dez minutos registrada, ainda desativada"
+  ],
+  "budget_scope": "Somente chamadas do pós-jogo feitas pelo novo controlador; não representa o total faturado da conta",
+  "unresolved": [
+    "Resultado do teste recente ainda pendente",
+    "Consumo de prévias e testes anteriores não conciliado; não há teto global compartilhado comprovado",
+    "Ativação contínua e publicação bloqueadas"
+  ],
+  "pricing_sources": [
+    "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+    "https://developers.openai.com/api/docs/pricing"
+  ]
+}
