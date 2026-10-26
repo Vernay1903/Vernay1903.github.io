@@ -51,3 +51,16 @@ class ReviewSchemaTests(unittest.TestCase):
   r=review_request(p,a,{'model':'test','reasoning_effort':'medium'})
   refs=r['text']['format']['schema']['properties']['checks']['items']['properties']['evidence_ids']['items']['enum']
   self.assertEqual(refs,['score','narrative_0'])
+
+class DeletionTests(unittest.TestCase):
+ def test_deletes_only_rejected_blocks_without_index_shift(self):
+  from revisar_pos_jogo import apply_patch
+  a={'title':'T','excerpt':'E','blocks':[{'type':'paragraph','text':str(i)} for i in range(4)]}
+  b=apply_patch(a,{'replacements':[{'unit':'block_1','text':'','delete':True},{'unit':'block_3','text':'Novo','delete':False}]},['block_1: repetição','block_3: erro'])
+  self.assertEqual([x['text'] for x in b['blocks']],['0','2','Novo'])
+  self.assertEqual(len(a['blocks']),4)
+ def test_empty_replacement_is_not_silent_deletion(self):
+  from revisar_pos_jogo import apply_patch
+  a={'title':'T','excerpt':'E','blocks':[{'text':'Texto'}]}
+  for change in [{'unit':'block_0','text':'','delete':False},{'unit':'title','text':'','delete':True}]:
+   with self.assertRaises(ValueError):apply_patch(a,{'replacements':[change]},[change['unit']+': erro'])

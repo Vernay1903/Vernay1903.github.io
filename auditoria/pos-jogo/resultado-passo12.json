@@ -1,6 +1,6 @@
 {
   "step": 12,
-  "status": "in_progress_waiting_for_real_interval",
+  "status": "in_progress_cost_revalidation",
   "code_commit": "ed397ad8725b1a89b2a6a5c43f3af7b6a27d149c",
   "observation_run_id": 40358115852,
   "live_test_run_id": 40358859504,
@@ -21,12 +21,27 @@
   ],
   "budget_scope": "Somente chamadas do pós-jogo feitas pelo novo controlador; não representa o total faturado da conta",
   "unresolved": [
-    "Resultado do teste recente ainda pendente",
-    "Consumo de prévias e testes anteriores não conciliado; não há teto global compartilhado comprovado",
+    "Validação real do novo modelo econômico e limite de US$ 0,10 em andamento",
+    "Consumo das prévias e testes anteriores não conciliado globalmente",
     "Ativação contínua e publicação bloqueadas"
   ],
   "pricing_sources": [
     "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
     "https://developers.openai.com/api/docs/pricing"
-  ]
+  ],
+  "previous_live_test": {
+    "run_id": 40358859504,
+    "result": "blocked",
+    "reason": "Correção vazia",
+    "estimated_cost_usd": "0.2895742",
+    "api_calls": 9,
+    "publication": false
+  },
+  "cost_validation": {
+    "per_article_cap_usd": "0.10",
+    "model": "gpt-6-luna",
+    "local_tests_passed": 133,
+    "historical_evaluation": true,
+    "paid_result_pending": true
+  }
 }

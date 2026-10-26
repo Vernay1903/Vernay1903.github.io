@@ -1,6 +1,6 @@
 {
   "provider": {
-    "model": "gpt-5.6-terra",
+    "model": "gpt-6-luna",
     "reasoning_effort": "medium"
   },
   "scope": "pilot_only",

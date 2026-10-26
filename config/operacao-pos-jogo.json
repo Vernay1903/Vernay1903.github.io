@@ -10,16 +10,18 @@
   "max_paid_calls_per_fixture": 10,
   "price_checked_on": "2026-10-26",
   "price_valid_until": "2026-11-25",
-  "model": "gpt-5.6-terra",
-  "input_usd_per_million": "2.00",
-  "cached_input_usd_per_million": "0.20",
-  "cache_write_usd_per_million": "2.50",
-  "output_usd_per_million": "12.00",
+  "model": "gpt-6-luna",
+  "input_usd_per_million": "0.10",
+  "cached_input_usd_per_million": "0.01",
+  "cache_write_usd_per_million": "0.125",
+  "output_usd_per_million": "0.50",
   "web_search_usd_per_call": "0.01",
   "context_window": 1050000,
   "long_context_threshold": 272000,
   "pricing_sources": [
-    "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
-    "https://developers.openai.com/api/docs/pricing"
-  ]
+    "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "https://developers.openai.com/api/docs/guides/tools-web-search"
+  ],
+  "per_article_cap_usd": "0.10",
+  "web_search_context_window": 128000
 }

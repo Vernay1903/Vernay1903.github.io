@@ -17,17 +17,17 @@ class BudgetTests(unittest.TestCase):
  def setUp(self):
   self.remote=MemoryState();self.config=json.loads((ROOT/'config/operacao-pos-jogo.json').read_text())
   self.now=datetime.fromisoformat('2026-10-26T13:00:00-03:00')
-  self.payload={'model':'gpt-5.6-terra','max_output_tokens':6000,'input':'Teste'}
-  self.response={'model':'gpt-5.6-terra','service_tier':'default','usage':{'input_tokens':1000,'output_tokens':100,'input_tokens_details':{'cached_tokens':200,'cache_write_tokens':300}},'output':[]}
+  self.payload={'model':'gpt-6-luna','max_output_tokens':6000,'input':'Teste'}
+  self.response={'model':'gpt-6-luna','service_tier':'default','usage':{'input_tokens':1000,'output_tokens':100,'input_tokens_details':{'cached_tokens':200,'cache_write_tokens':300}},'output':[]}
   self.sent=[]
  def transport(self,p):
   self.assertEqual(self.remote.saved[-1]['months']['2026-10']['calls'][-1]['status'],'reserved')
   self.sent.append(p);return self.response
- def caller(self):return BudgetCaller(self.remote,'espn-1',config=self.config,clock=lambda:self.now,transport=self.transport)
+ def caller(self):return BudgetCaller(self.remote,'espn-1',config=self.config,clock=lambda:self.now,transport=self.transport,counter=lambda p:1000)
  def test_reserve_before_call_and_settle(self):
   self.caller()(self.payload)
   row=self.remote.data['months']['2026-10']['calls'][0]
-  self.assertEqual(row['status'],'settled');self.assertEqual(D(row['charged_usd']),D('0.00299'))
+  self.assertEqual(row['status'],'settled');self.assertEqual(D(row['charged_usd']),D('0.0001395'))
  def test_timeout_keeps_reservation_and_blocks_next(self):
   self.response=None
   with self.assertRaises(AttributeError):self.caller()(self.payload)
@@ -39,7 +39,7 @@ class BudgetTests(unittest.TestCase):
   with self.assertRaises(ValueError):self.caller()(self.payload)
   self.assertTrue(self.remote.data['months']['2026-10']['blocked'])
  def test_insufficient_budget_no_api(self):
-  self.remote.data['months']['2026-10']={'calls':[{'status':'settled','charged_usd':'5'}],'blocked':False}
+  self.remote.data['months']['2026-10']={'calls':[{'status':'settled','charged_usd':'9.999'}],'blocked':False}
   with self.assertRaises(ValueError):self.caller()(self.payload)
   self.assertEqual(self.sent,[])
  def test_persistence_failure_no_api(self):
@@ -60,7 +60,7 @@ class BudgetTests(unittest.TestCase):
  def test_long_context_and_search(self):
   self.response['usage']={'input_tokens':300000,'output_tokens':1000}
   self.response['output']=[{'type':'web_search_call'}]
-  self.assertEqual(usage_cost(self.response,self.config),D('1.228'))
+  self.assertEqual(usage_cost(self.response,self.config),D('0.07075'))
  def test_ten_call_limit(self):
   self.remote.data['jobs']['espn-1']['api_calls']=10
   with self.assertRaises(ValueError):self.caller()(self.payload)
@@ -72,8 +72,45 @@ class BudgetTests(unittest.TestCase):
  def test_new_runner_keeps_settled_usage(self):
   self.caller()(self.payload)
   restored=MemoryState();restored.data=copy.deepcopy(self.remote.saved[-1])
-  BudgetCaller(restored,'espn-1',config=self.config,clock=lambda:self.now,transport=lambda p:self.response)(self.payload)
+  BudgetCaller(restored,'espn-1',config=self.config,clock=lambda:self.now,transport=lambda p:self.response,counter=lambda p:1000)(self.payload)
   self.assertEqual(len(restored.data['months']['2026-10']['calls']),2)
+
+
+ def test_article_cap_accumulates_across_months_and_restarts(self):
+  self.remote.data['months']['2026-09']={'calls':[{'fixture_id':'espn-1','status':'settled','charged_usd':'0.099'}]}
+  with self.assertRaisesRegex(ValueError,'Saldo da matéria'):self.caller()(self.payload)
+  self.assertEqual(self.sent,[])
+ def test_previous_expensive_fixture_cannot_reset_budget(self):
+  self.remote.data['months']['2026-10']={'calls':[{'fixture_id':'espn-1','status':'settled','charged_usd':'0.2895742'}]}
+  with self.assertRaisesRegex(ValueError,'já atingido'):self.caller()(self.payload)
+  self.assertEqual(self.sent,[])
+ def test_other_fixture_spend_does_not_consume_article_cap(self):
+  self.remote.data['months']['2026-10']={'calls':[{'fixture_id':'espn-other','status':'settled','charged_usd':'0.29'}]}
+  self.caller()(self.payload);self.assertEqual(len(self.sent),1)
+ def test_exact_article_boundary_allowed(self):
+  bound=reserve_bound(self.payload,self.config,1000)
+  self.remote.data['months']['2026-10']={'calls':[{'fixture_id':'espn-1','status':'settled','charged_usd':str(D('0.1')-bound)}]}
+  self.caller()(self.payload);self.assertEqual(len(self.sent),1)
+ def test_search_reservation_includes_tool_and_both_contexts(self):
+  p=dict(self.payload,max_output_tokens=1800,tools=[{'type':'web_search'}],max_tool_calls=1)
+  self.assertEqual(reserve_bound(p,self.config),D('0.07535'))
+  self.response['output']=[{'type':'web_search_call'}]
+  self.caller()(p)
+  row=self.remote.data['months']['2026-10']['calls'][0]
+  self.assertEqual(D(row['charged_usd']),D('0.0101395'))
+ def test_invalid_token_count_blocks_generation(self):
+  for n in [None,-1,True,2000000]:
+   with self.assertRaises(ValueError):
+    BudgetCaller(self.remote,'espn-1',config=self.config,clock=lambda:self.now,transport=self.transport,counter=lambda p:n)(self.payload)
+  self.assertEqual(self.sent,[])
+ def test_counter_failure_blocks_generation(self):
+  def fail(p):raise OSError('count unavailable')
+  with self.assertRaises(OSError):BudgetCaller(self.remote,'espn-1',config=self.config,clock=lambda:self.now,transport=self.transport,counter=fail)(self.payload)
+  self.assertEqual(self.sent,[])
+ def test_price_config_cannot_raise_user_cap(self):
+  self.config['per_article_cap_usd']='0.11'
+  with self.assertRaises(ValueError):self.caller()(self.payload)
+  self.assertEqual(self.sent,[])
 
 class OperationalTests(unittest.TestCase):
  def test_remote_save_targets_only_state_branch_with_sha(self):

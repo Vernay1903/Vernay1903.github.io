@@ -126,6 +126,7 @@ def validate_evidence(rows, expected, pages):
 
 
 def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page):
+    if caller is None:raise ValueError('Apuração paga exige controlador persistente de orçamento')
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     def save(name,data):(out/name).write_text(json.dumps(data,ensure_ascii=False,indent=2))
     if (out/'tentativa.json').exists():raise ValueError('Apuração já iniciada; repetição automática bloqueada')

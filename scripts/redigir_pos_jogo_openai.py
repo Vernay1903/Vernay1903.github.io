@@ -51,6 +51,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
     request=build_request(package,provider)
     if len(json.dumps(package,ensure_ascii=False))>20000: raise ValueError('Pacote acima do limite')
     if not execute: print('Preparo validado; nenhuma chamada realizada');return
+    if caller is None:raise ValueError('Redação paga exige controlador persistente de orçamento')
     key=os.environ.get('OPENAI_API_KEY','').strip()
     if not key: raise ValueError('OPENAI_API_KEY ausente no ambiente')
     out=Path(out).resolve()
