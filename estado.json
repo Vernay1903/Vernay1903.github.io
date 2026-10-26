@@ -2,11 +2,30 @@
   "version": 1,
   "timing": {
     "version": 1,
-    "fixtures": {}
+    "fixtures": {
+      "espn-401882832": {
+        "signature": {
+          "kickoff": "2026-10-25T17:00:00-03:00",
+          "competition": "esp.1",
+          "teams": {
+            "home": "83",
+            "away": "86"
+          },
+          "score": {
+            "home": 1,
+            "away": 2
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-10-25",
+        "first_final_seen_at": "2026-10-26T13:20:52.261134-03:00"
+      }
+    }
   },
   "jobs": {},
   "months": {},
   "publication_enabled": false,
   "scheduled_activation_enabled": false,
-  "external_spend_reconciled": false
+  "external_spend_reconciled": false,
+  "last_observed_at": "2026-10-26T13:20:52.261134-03:00"
 }
