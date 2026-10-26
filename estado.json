@@ -396,11 +396,24 @@
           "id": "70581a1876de4d7b8075aedee3ba53bd",
           "fixture_id": "validation-luna-20261026-real-leipzig",
           "started_at": "2026-10-26T19:16:53.627487-03:00",
-          "status": "reserved",
-          "charged_usd": "0.00331175",
+          "status": "settled",
+          "charged_usd": "0.001448175",
           "reserved_usd": "0.00331175",
           "model": "gpt-6-luna",
-          "counted_input_tokens": 2494
+          "counted_input_tokens": 2494,
+          "usage": {
+            "input_tokens": 2494,
+            "input_tokens_details": {
+              "cache_write_tokens": 2491,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2273,
+            "output_tokens_details": {
+              "reasoning_tokens": 1552
+            },
+            "total_tokens": 4767
+          },
+          "response_id": "resp_013234ed3aa4ef25016adfd157438c87d092ea7a534ef987d0"
         }
       ],
       "blocked": false
