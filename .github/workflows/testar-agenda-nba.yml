@@ -1,0 +1,26 @@
+name: Testar coleta NBA (sem publicacao)
+
+on:
+  pull_request:
+    paths:
+      - ".github/scripts/agenda_nba.py"
+      - ".github/scripts/test_agenda_nba.py"
+      - ".github/workflows/testar-agenda-nba.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar-nba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Obter codigo somente para leitura
+        uses: actions/checkout@v4
+      - name: Testar horarios brasileiros, dados invalidos e duplicacoes
+        run: python -m unittest discover -s .github/scripts -p 'test_agenda_nba.py' -v
+      - name: Simular coleta ESPN da NBA em 26 de outubro
+        run: python .github/scripts/agenda_nba.py --date 2026-10-26
+      - name: Simular coleta ESPN da NBA em 27 de outubro
+        run: python .github/scripts/agenda_nba.py --date 2026-10-27
