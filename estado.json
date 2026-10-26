@@ -24,10 +24,11 @@
   },
   "jobs": {
     "espn-401882832": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-10-26T14:10:53.090468-03:00",
       "run_id": "40358859504",
-      "api_calls": 9
+      "api_calls": 9,
+      "finished_at": "2026-10-26T14:13:04.296819-03:00"
     }
   },
   "months": {
