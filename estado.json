@@ -27,7 +27,7 @@
       "status": "running",
       "started_at": "2026-10-26T14:10:53.090468-03:00",
       "run_id": "40358859504",
-      "api_calls": 2
+      "api_calls": 3
     }
   },
   "months": {
@@ -74,6 +74,14 @@
             "total_tokens": 20390
           },
           "response_id": "resp_00cc5287f5f70f42016adf89b1950c87d19ce38753326c43c9"
+        },
+        {
+          "id": "81fedda5a92a41968ed9ff4b2ee6b01e",
+          "fixture_id": "espn-401882832",
+          "started_at": "2026-10-26T14:11:26.620365-03:00",
+          "status": "reserved",
+          "charged_usd": "5.376",
+          "reserved_usd": "5.376"
         }
       ],
       "blocked": false
