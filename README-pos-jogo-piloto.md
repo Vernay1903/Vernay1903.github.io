@@ -111,3 +111,13 @@ Os blocos AdSense do corpo são copiados literalmente do modelo, mantendo client
 A montagem grava somente em build/pos-jogo; não está ligada à publicação. news JSON e sitemap continuam pendentes no passo 10. Execução 40101518666 aprovada: 83 testes, amostra de 689 palavras, título de 58 caracteres e um anúncio no corpo. Estrutura fixa comparada exatamente; nada publicado.
 
 Correção autorizada em 24/10/2026: o arquivo HTML PADRÃO MATERIA USAR ESSE.txt substitui integralmente o modelo anterior, preservando seus bytes. Tênis agora aparece antes de Vôlei e Vôlei de Praia. As únicas outras diferenças são linhas em branco no corpo. Hash atualizado; execução 40104740646 aprovada com 83 testes e montagem da amostra. Regras de anúncios e campos variáveis preservadas; nenhuma publicação.
+
+## Passo 10 — pacote HTML, noticias.json e sitemap
+
+Regras aprovadas em 26/10/2026 implementadas em scripts/preparar_publicacao_pos_jogo.py. Recebe artigo, fatos do jogo, links autorizados, instante explícito da redação com fuso, notícias e sitemap existentes. Data única convertida para Brasília; HTML e JSON usam DD/MM/AAAA, sitemap AAAA-MM-DD. O instante do teste é simulado: a amostra antiga não foi novamente redigida.
+
+Nome do arquivo: mandante-visitante-competicao-ano-do-jogo-resultado.html, sem acentos. Título e chamada copiados sem reescrita. Nova notícia na primeira posição, exatamente cinco campos e categoria Futebol. Inserção textual preserva os registros anteriores e sua formatação. Sitemap insere URL absoluta, mesma data e prioridade 0.9 após o marcador MATÉRIAS, preservando o restante. URL existente no JSON, sitemap ou HTML bloqueia o pacote, inclusive colisões de dois confrontos no mesmo ano; não adiciona sufixo não autorizado nem sobrescreve matéria.
+
+CLI grava somente em pasta nova de build/pos-jogo e prepara tudo antes de gravar. Não publica nem altera os arquivos originais. A etapa não liga o pacote ao redator: a integração seguinte deve registrar o instante real da redação, reaproveitá-lo em tentativas posteriores e reler os arquivos de destino antes de qualquer publicação concorrente.
+
+Validação: 93 testes locais e execução 40355305916 aprovada no GitHub. Teste local adicional utilizou cópias atuais de noticias.json e sitemap.xml da main. Cobertos virada de dia/ano em Brasília, preservação, correspondência de campos, duplicatas em cada destino, normalização e entradas inválidas. Publicação segue desativada.
