@@ -6,6 +6,8 @@ on:
       - ".github/scripts/agenda_nba.py"
       - ".github/scripts/test_agenda_nba.py"
       - ".github/workflows/testar-agenda-nba.yml"
+      - ".github/workflows/publicar-agenda-validada.yml"
+      - ".github/workflows/agenda-guard.yml"
   workflow_dispatch:
 
 permissions:
@@ -24,3 +26,32 @@ jobs:
         run: python .github/scripts/agenda_nba.py --date 2026-10-26
       - name: Simular coleta ESPN da NBA em 27 de outubro
         run: python .github/scripts/agenda_nba.py --date 2026-10-27
+      - name: Simular o coletor integrado sem criar PR nem modificar agenda.json
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import subprocess
+          import sys
+
+          workflow = pathlib.Path('.github/workflows/publicar-agenda-validada.yml').read_text()
+          lines = workflow.splitlines()
+          start = lines.index("          python - <<'PY'") + 1
+          end = lines.index("          PY", start)
+          script = '\n'.join(line[10:] for line in lines[start:end]) + '\n'
+          compile(script, 'agenda_embutida.py', 'exec')
+          env = dict(os.environ, SIMULAR='true', DATA_TESTE='2026-10-26')
+          subprocess.run([sys.executable, '-c', script], env=env, check=True, capture_output=True, text=True)
+          result = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'agenda-coleta.json').read_text())
+          assert result['date'] == '2026-10-26'
+          assert len(result['coverage']) == 13, result['coverage']
+          assert result['nba']['status'] == 'ok', result['nba']
+          assert result['nba']['count'] == 9, result['nba']
+          assert len([x for x in result['agenda'] if x['desc'].endswith(' - NBA')]) == 9
+          assert result['agenda'] == sorted(result['agenda'], key=lambda e: (e['time'], e['desc']))
+          guard = pathlib.Path('.github/workflows/agenda-guard.yml').read_text()
+          assert "re.compile(r'^NBA$')" in guard
+          print('Simulacao integral: 13 competicoes de futebol preservadas, 9 jogos NBA, horario e ordem validos.')
+          PY
