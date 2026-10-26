@@ -39,3 +39,5 @@ jobs:
         run: |
           git diff --exit-code
           git -C current-main diff --exit-code
+
+# Segunda execução após orientação de atribuições e sequência; mantém sete chamadas.
