@@ -107,3 +107,17 @@ class RewriteBudgetTests(unittest.TestCase):
   data=json.loads(request['input'][-1]['content'])
   self.assertEqual(data['draft'],article);self.assertEqual(data['issues'],issues)
   self.assertEqual(provider['max_output_tokens'],4000)
+
+class ShortBodyPatchTests(unittest.TestCase):
+ def test_short_body_keeps_semantic_issues_and_generates_valid_patch_targets(self):
+  from revisar_pos_jogo import targeted_issues,patch_request
+  a={'title':'T','excerpt':'E','blocks':[{'type':'paragraph','text':'Texto.'},{'type':'subtitle','text':'Subtítulo'}]}
+  original=['Corpo com menos de 600 palavras','block_0: Remova inferência']
+  issues=targeted_issues(a,original)
+  self.assertIn('block_0: Remova inferência',issues)
+  p=patch_request({'instructions':'Não invente','facts':{},'narrative_facts':[]},a,issues,{'model':'gpt-6-luna','reasoning_effort':'medium','patch_max_output_tokens':3000})
+  self.assertEqual(p['text']['format']['schema']['properties']['replacements']['items']['properties']['unit']['enum'],['block_0'])
+ def test_other_format_errors_cannot_be_hidden_by_patch(self):
+  from revisar_pos_jogo import targeted_issues
+  a={'title':'T','excerpt':'E','blocks':[{'type':'paragraph','text':'Texto.'}]}
+  self.assertIsNone(targeted_issues(a,['Link não autorizado','Corpo com menos de 600 palavras']))

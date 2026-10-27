@@ -48,6 +48,23 @@ def validate_review(review, package, article):
     return issues
 
 
+def targeted_issues(article,issues):
+    """Traduz somente falta de extensão em orçamento de palavras dos blocos."""
+    short='Corpo com menos de 600 palavras'
+    known=units(article)
+    if any(x!=short and x.split(':',1)[0] not in known for x in issues):return None
+    result=[x for x in issues if x!=short]
+    if short in issues:
+        targets={x.split(':',1)[0] for x in result if x.startswith('block_')}
+        targets={u for u in targets if article['blocks'][int(u[6:])]['type']!='subtitle'}
+        if not targets:
+            targets={f'block_{i}' for i,b in enumerate(article['blocks']) if b['type']=='paragraph'}
+        if not targets:return None
+        for u in sorted(targets):
+            result.append(u+': Corpo abaixo de 600 palavras. Desenvolva somente detalhes verificados ainda não narrados, respeitando o word_budget conjunto, sem repetições nem inferências. Se faltarem fatos, não preencha lacunas.')
+    return result
+
+
 def patch_request(package, article, issues, provider):
     target_ids=sorted({s.split(':',1)[0] for s in issues})
     if not set(target_ids)<=set(units(article)):raise ValueError('Correção sem unidade identificada')

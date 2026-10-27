@@ -8,7 +8,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from editorial_pos_jogo import ROOT, prepare, validate, render
-from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units
+from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units, targeted_issues
 
 
 def build_request(package, provider):
@@ -101,8 +101,10 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
     article=None; issues=[]; passed=False
     for attempt in range(1,4):
-        if article is not None and all(s.split(':',1)[0] in units(article) for s in issues):
-            patch=response_object(call(patch_request(package,article,issues,writer_provider),f'patch_{attempt}'))
+        mapped=targeted_issues(article,issues) if article is not None else None
+        if article is not None and mapped is not None:
+            issues=mapped
+            patch=response_object(call(patch_request(package,article,issues,cfg.get('patch_provider',writer_provider)),f'patch_{attempt}'))
             save(f'correcao-{attempt}.json',patch)
             article=apply_patch(article,patch,issues)
         else:
@@ -123,7 +125,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
         if not issues:
             passed=True;break
-    metadata={'model':writer_provider['model'],'review_model':provider['model'],'automatic_model_run':True,'publication_enabled':False,
+    metadata={'model':writer_provider['model'],'review_model':provider['model'],'patch_model':cfg.get('patch_provider',writer_provider)['model'],'automatic_model_run':True,'publication_enabled':False,
         'human_review_required':True,'fixture_id':package['facts']['fixture_id'],
         'semantic_review_passed':passed,'calls':calls,
         'format_passed':checks['format_passed'],'written_at':written_at,
