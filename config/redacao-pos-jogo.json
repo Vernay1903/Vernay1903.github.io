@@ -12,10 +12,5 @@
     "max_output_tokens": 4000,
     "patch_max_output_tokens": 1500,
     "rewrite_max_output_tokens": 2500
-  },
-  "patch_provider": {
-    "model": "gpt-6-luna",
-    "reasoning_effort": "medium",
-    "patch_max_output_tokens": 3000
   }
 }
