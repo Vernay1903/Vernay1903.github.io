@@ -1,0 +1,21 @@
+{
+  "step": 13,
+  "status": "running_waiting_real_interval",
+  "run_id": 40518351945,
+  "job_id": 122238003640,
+  "code_commit": "a14b54c8dc4e634caa25043bc9b07c73784369b4",
+  "fixture_id": "espn-401841286",
+  "home": "Flamengo",
+  "away": "Atlético-MG",
+  "match_date": "2026-10-26",
+  "first_final_seen_at": "2026-10-27T11:10:04.288670-03:00",
+  "eligible_at": "2026-10-27T12:00:04.288670-03:00",
+  "cap_usd": "0.10",
+  "tests_passed": 135,
+  "publication_enabled": false,
+  "recurring_schedule_enabled": false,
+  "historical_replay": false,
+  "paid_calls_at_record": 0,
+  "followup_notification_scheduled": false,
+  "followup_blocker": "ChatGPT task limit: 5 active tasks; existing tasks unchanged"
+}
