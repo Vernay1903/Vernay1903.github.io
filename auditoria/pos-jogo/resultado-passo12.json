@@ -1,10 +1,10 @@
 {
   "step": 12,
-  "status": "in_progress_cost_revalidation",
+  "status": "cost_control_validated_with_historical_replay",
   "code_commit": "ed397ad8725b1a89b2a6a5c43f3af7b6a27d149c",
   "observation_run_id": 40358115852,
   "live_test_run_id": 40358859504,
-  "tests_passed": 123,
+  "tests_passed": 135,
   "fixture_id": "espn-401882832",
   "first_final_seen_at": "2026-10-26T13:20:52.261134-03:00",
   "eligible_at": "2026-10-26T14:10:52.261134-03:00",
@@ -17,17 +17,24 @@
     "Reserva de orçamento persistida antes de cada chamada; cobrança incerta bloqueia continuidade",
     "Uma partida por execução, até três chamadas de apuração e sete de redação/revisão",
     "Tarifas verificadas em documentação oficial; estimativa inclui cache-write, contexto longo e web search",
-    "Cadência proposta de dez minutos registrada, ainda desativada"
+    "Cadência proposta de dez minutos registrada, ainda desativada",
+    "Teto persistente US$0,10 por matéria, agregado entre chamadas e meses; chamadas sem controlador bloqueadas",
+    "Contagem de tokens antes da reserva; preço específico por modelo; busca também contabilizada",
+    "Exclusão explícita de blocos reprovados seguida de validação de extensão e nova revisão",
+    "Continuações de avaliação preservaram todas as cobranças no mesmo saldo; política operacional continua dez chamadas"
   ],
   "budget_scope": "Somente chamadas do pós-jogo feitas pelo novo controlador; não representa o total faturado da conta",
   "unresolved": [
-    "Validação real do novo modelo econômico e limite de US$ 0,10 em andamento",
+    "Validar fluxo econômico em partida recente antes de ativação contínua",
     "Consumo das prévias e testes anteriores não conciliado globalmente",
-    "Ativação contínua e publicação bloqueadas"
+    "Publicação e agendamento recorrente permanecem desativados"
   ],
   "pricing_sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6-luna",
     "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
-    "https://developers.openai.com/api/docs/pricing"
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/guides/tools-web-search",
+    "https://developers.openai.com/api/docs/guides/token-counting"
   ],
   "previous_live_test": {
     "run_id": 40358859504,
@@ -38,10 +45,48 @@
     "publication": false
   },
   "cost_validation": {
+    "status": "passed",
     "per_article_cap_usd": "0.10",
-    "model": "gpt-6-luna",
-    "local_tests_passed": 133,
+    "total_including_failed_attempt_and_continuations_usd": "0.062876675",
+    "api_calls": 15,
+    "all_settled": true,
+    "research_and_review_model": "gpt-6-luna",
+    "writer_model": "gpt-5.6-terra",
+    "writer_max_output_tokens": 4000,
+    "patch_max_output_tokens": 1500,
+    "runs": [
+      40410687634,
+      40411772773,
+      40412269029
+    ],
+    "successful_run": 40412269029,
     "historical_evaluation": true,
-    "paid_result_pending": true
-  }
+    "paid_result_pending": false,
+    "package_report": {
+      "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+      "fixed_shell_unchanged": true,
+      "title_chars": 55,
+      "body_words": 615,
+      "body_ad_count": 1,
+      "ad_after_blocks": [
+        5
+      ],
+      "publication_enabled": false,
+      "filename": "real-madrid-rb-leipzig-champions-league-2026-resultado.html",
+      "written_at": "2026-10-26T22:25:57.566209+00:00",
+      "article_date": "26/10/2026",
+      "sitemap_lastmod": "2026-10-26",
+      "news_position": 0,
+      "old_news_preserved": true,
+      "old_sitemap_preserved": true,
+      "fixture_id": "espn-401915313",
+      "article_sha256": "cdcaf84a8adb700673f33dfff716a21a71365a255b405949fe48c3f7024bba82",
+      "human_review_required": true,
+      "semantic_review_passed": true
+    },
+    "previous_live_test_cost_included": false,
+    "previous_live_test_cost_usd": "0.2895742"
+  },
+  "validated_code_commit": "f1b0e562b1ad244431e3904680d212001dc607b4",
+  "historical_replay_caveat": "Calendários e relógio de coleta do replay eram de 22/10. Compromissos futuros no texto são históricos e não constituem agenda atual em 26/10. Pacote exclusivo de teste, impróprio para publicação atual."
 }

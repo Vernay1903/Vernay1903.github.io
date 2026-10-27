@@ -1,0 +1,461 @@
+{
+  "test_only": true,
+  "historical_replay": true,
+  "publication_enabled": false,
+  "cost": {
+    "total_including_previous_attempts_usd": "0.062876675",
+    "cap_usd": "0.10",
+    "calls": [
+      {
+        "id": "3b0c81cc1d3b4a07887fbb2f1d6cb886",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:13:44.386673-03:00",
+        "status": "settled",
+        "charged_usd": "0.011932625",
+        "reserved_usd": "0.07535",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": null,
+        "usage": {
+          "input_tokens": 13188,
+          "input_tokens_details": {
+            "cache_write_tokens": 4673,
+            "cached_tokens": 0
+          },
+          "output_tokens": 994,
+          "output_tokens_details": {
+            "reasoning_tokens": 625
+          },
+          "total_tokens": 14182
+        },
+        "response_id": "resp_0c8a7dcfdf0adba2016adfd09a0b6c87d098dca5c56c1ec668"
+      },
+      {
+        "id": "20a7d6b82ead467ea28b70d88cf52a15",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:14:30.613166-03:00",
+        "status": "settled",
+        "charged_usd": "0.001654925",
+        "reserved_usd": "0.004108",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 4864,
+        "usage": {
+          "input_tokens": 4864,
+          "input_tokens_details": {
+            "cache_write_tokens": 4861,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2094,
+          "output_tokens_details": {
+            "reasoning_tokens": 1148
+          },
+          "total_tokens": 6958
+        },
+        "response_id": "resp_06d9a121a5e673d2016adfd0c7fb1487d08d36120adbef382e"
+      },
+      {
+        "id": "00c9f0c3474b46fd80f3ec34a441c691",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:14:56.426946-03:00",
+        "status": "settled",
+        "charged_usd": "0.002151675",
+        "reserved_usd": "0.00519225",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 13538,
+        "usage": {
+          "input_tokens": 13538,
+          "input_tokens_details": {
+            "cache_write_tokens": 13535,
+            "cached_tokens": 0
+          },
+          "output_tokens": 919,
+          "output_tokens_details": {
+            "reasoning_tokens": 244
+          },
+          "total_tokens": 14457
+        },
+        "response_id": "resp_086a789d8f43e61e016adfd0e2089487d08995010326815836"
+      },
+      {
+        "id": "584f897c4b8b4d12824e1194d641255d",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:15:08.468525-03:00",
+        "status": "settled",
+        "charged_usd": "0.000956925",
+        "reserved_usd": "0.003349",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2792,
+        "usage": {
+          "input_tokens": 2792,
+          "input_tokens_details": {
+            "cache_write_tokens": 2789,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1216,
+          "output_tokens_details": {
+            "reasoning_tokens": 516
+          },
+          "total_tokens": 4008
+        },
+        "response_id": "resp_0f806e6b9250d0d8016adfd0edfb5c87d0a7533a3c9fe5fc13"
+      },
+      {
+        "id": "e6b8a55fa7d54dde96ea7c0ce02cc4d6",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:15:28.096329-03:00",
+        "status": "settled",
+        "charged_usd": "0.00110205",
+        "reserved_usd": "0.003277625",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2221,
+        "usage": {
+          "input_tokens": 2221,
+          "input_tokens_details": {
+            "cache_write_tokens": 2218,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1649,
+          "output_tokens_details": {
+            "reasoning_tokens": 1179
+          },
+          "total_tokens": 3870
+        },
+        "response_id": "resp_091cbe709f31a70d016adfd101b65087d0a113400b0aa279d7"
+      },
+      {
+        "id": "458603f220fa4b2b8d5e3f13fd12165d",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:15:56.855575-03:00",
+        "status": "settled",
+        "charged_usd": "0.00090548",
+        "reserved_usd": "0.003277625",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2221,
+        "usage": {
+          "input_tokens": 2221,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 2218
+          },
+          "output_tokens": 1766,
+          "output_tokens_details": {
+            "reasoning_tokens": 1313
+          },
+          "total_tokens": 3987
+        },
+        "response_id": "resp_03bb0c6f78039aba016adfd11e912087d08033f2cd71e34943"
+      },
+      {
+        "id": "ed2354e344744e8dafbb86d6080c37a2",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:16:26.348556-03:00",
+        "status": "settled",
+        "charged_usd": "0.001065565",
+        "reserved_usd": "0.003469375",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3755,
+        "usage": {
+          "input_tokens": 3755,
+          "input_tokens_details": {
+            "cache_write_tokens": 963,
+            "cached_tokens": 2789
+          },
+          "output_tokens": 1834,
+          "output_tokens_details": {
+            "reasoning_tokens": 859
+          },
+          "total_tokens": 5589
+        },
+        "response_id": "resp_06248128ce01f4ff016adfd13bbdbc87d09537364c29f78947"
+      },
+      {
+        "id": "70581a1876de4d7b8075aedee3ba53bd",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:16:53.627487-03:00",
+        "status": "settled",
+        "charged_usd": "0.001448175",
+        "reserved_usd": "0.00331175",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2494,
+        "usage": {
+          "input_tokens": 2494,
+          "input_tokens_details": {
+            "cache_write_tokens": 2491,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2273,
+          "output_tokens_details": {
+            "reasoning_tokens": 1552
+          },
+          "total_tokens": 4767
+        },
+        "response_id": "resp_013234ed3aa4ef25016adfd157438c87d092ea7a534ef987d0"
+      },
+      {
+        "id": "862939fd4187433fa36bf5f4aa31b0ad",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:17:31.613303-03:00",
+        "status": "settled",
+        "charged_usd": "0.001306065",
+        "reserved_usd": "0.003519375",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 4155,
+        "usage": {
+          "input_tokens": 4155,
+          "input_tokens_details": {
+            "cache_write_tokens": 1363,
+            "cached_tokens": 2789
+          },
+          "output_tokens": 2215,
+          "output_tokens_details": {
+            "reasoning_tokens": 1015
+          },
+          "total_tokens": 6370
+        },
+        "response_id": "resp_0d722982bb260137016adfd17d3e4c87d08cc67460e4578c89"
+      },
+      {
+        "id": "7c238721c3df40bf92ab5ea768d42ca8",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:18:09.184831-03:00",
+        "status": "settled",
+        "charged_usd": "0.00141705",
+        "reserved_usd": "0.003323625",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2589,
+        "usage": {
+          "input_tokens": 2589,
+          "input_tokens_details": {
+            "cache_write_tokens": 2586,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2187,
+          "output_tokens_details": {
+            "reasoning_tokens": 1478
+          },
+          "total_tokens": 4776
+        },
+        "response_id": "resp_00b828e5142359e8016adfd1a2b5c087d0918c1379f1ff7328"
+      },
+      {
+        "id": "7c7da43dd3b841009cbd7bca1646afde",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:21:52.347138-03:00",
+        "status": "settled",
+        "charged_usd": "0.0221105",
+        "reserved_usd": "0.05498",
+        "model": "gpt-5.6-terra",
+        "counted_input_tokens": 2792,
+        "usage": {
+          "input_tokens": 2792,
+          "input_tokens_details": {
+            "cache_write_tokens": 2789,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1261,
+          "output_tokens_details": {
+            "reasoning_tokens": 127
+          },
+          "total_tokens": 4053
+        },
+        "response_id": "resp_0a801f739e280c85016adfd282a74487d18284db37d033d848"
+      },
+      {
+        "id": "56df3554704a44439d9d4ea06fccb241",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:22:13.686832-03:00",
+        "status": "settled",
+        "charged_usd": "0.001531925",
+        "reserved_usd": "0.0033315",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2652,
+        "usage": {
+          "input_tokens": 2652,
+          "input_tokens_details": {
+            "cache_write_tokens": 2649,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2401,
+          "output_tokens_details": {
+            "reasoning_tokens": 1690
+          },
+          "total_tokens": 5053
+        },
+        "response_id": "resp_0ba11216ee7556c6016adfd297281087d19f54ca03eb98f621"
+      },
+      {
+        "id": "63a766a0a4ec4025bc5e4049788e5d5a",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:22:51.065005-03:00",
+        "status": "settled",
+        "charged_usd": "0.00122529",
+        "reserved_usd": "0.0033315",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2652,
+        "usage": {
+          "input_tokens": 2652,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 2649
+          },
+          "output_tokens": 2397,
+          "output_tokens_details": {
+            "reasoning_tokens": 1796
+          },
+          "total_tokens": 5049
+        },
+        "response_id": "resp_0d22789c7765c40d016adfd2bca51c87d1a3af93b110789c6a"
+      },
+      {
+        "id": "52f59cd464e547e79bcd7f2c405f4ce3",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:25:51.625940-03:00",
+        "status": "settled",
+        "charged_usd": "0.012810",
+        "reserved_usd": "0.0288675",
+        "model": "gpt-5.6-terra",
+        "counted_input_tokens": 4347,
+        "usage": {
+          "input_tokens": 4347,
+          "input_tokens_details": {
+            "cache_write_tokens": 4344,
+            "cached_tokens": 0
+          },
+          "output_tokens": 162,
+          "output_tokens_details": {
+            "reasoning_tokens": 59
+          },
+          "total_tokens": 4509
+        },
+        "response_id": "resp_02b4ea4d45ec0301016adfd371d82487d1850863a07bb4b7e0"
+      },
+      {
+        "id": "a026bbe459f04746997e03c03d5d2605",
+        "fixture_id": "validation-luna-20261026-real-leipzig",
+        "started_at": "2026-10-26T19:25:57.566531-03:00",
+        "status": "settled",
+        "charged_usd": "0.001258425",
+        "reserved_usd": "0.003319",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2552,
+        "usage": {
+          "input_tokens": 2552,
+          "input_tokens_details": {
+            "cache_write_tokens": 2549,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1879,
+          "output_tokens_details": {
+            "reasoning_tokens": 1374
+          },
+          "total_tokens": 4431
+        },
+        "response_id": "resp_0f336cd2cc5d3043016adfd377255487d1bbba1ddc78b6bb1e"
+      }
+    ],
+    "all_settled": true,
+    "package_ready": true,
+    "historical_evaluation": true,
+    "publication_enabled": false
+  },
+  "package": {
+    "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+    "fixed_shell_unchanged": true,
+    "title_chars": 55,
+    "body_words": 615,
+    "body_ad_count": 1,
+    "ad_after_blocks": [
+      5
+    ],
+    "publication_enabled": false,
+    "filename": "real-madrid-rb-leipzig-champions-league-2026-resultado.html",
+    "written_at": "2026-10-26T22:25:57.566209+00:00",
+    "article_date": "26/10/2026",
+    "sitemap_lastmod": "2026-10-26",
+    "news_position": 0,
+    "old_news_preserved": true,
+    "old_sitemap_preserved": true,
+    "fixture_id": "espn-401915313",
+    "article_sha256": "cdcaf84a8adb700673f33dfff716a21a71365a255b405949fe48c3f7024bba82",
+    "human_review_required": true,
+    "semantic_review_passed": true
+  },
+  "article": {
+    "title": "Real Madrid vence Leipzig por 4 a 1 na Champions League",
+    "excerpt": "Bernardo Silva, Arda Güler, Kylian Mbappé e Yan Diomande marcaram no Bernabéu; Tidiam Gomis fez o gol do Leipzig.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "O Real Madrid venceu o RB Leipzig por 4 a 1 no Santiago Bernabéu, pela Champions League, em 21 de outubro de 2026. Bernardo Silva, Arda Güler, Kylian Mbappé e Yan Diomande marcaram para o Real Madrid, enquanto Tidiam Gomis fez o gol do Leipzig. A partida teve intervenções importantes de Courtois no início, um rebote decisivo na abertura do placar e lances de diferentes características para construir o resultado."
+      },
+      {
+        "type": "paragraph",
+        "text": "Com a terceira vitória consecutiva na competição, o Real Madrid chegou a nove pontos em três jogos. O Leipzig soma três pontos após três partidas, com uma vitória e duas derrotas. O confronto no Bernabéu colocou frente a frente equipes que encontraram momentos para ameaçar antes de o Real Madrid transformar suas ações ofensivas em gols."
+      },
+      {
+        "type": "subtitle",
+        "text": "Defesas de Courtois marcam o início equilibrado"
+      },
+      {
+        "type": "paragraph",
+        "text": "O começo foi equilibrado, antes de o Real Madrid passar a pressionar e alcançar a área adversária com frequência. O Leipzig também levou perigo. Rómulo recebeu dentro da área e ameaçou a defesa madridista, mas Courtois fez uma defesa importante para evitar o gol. A intervenção manteve o placar em branco em um trecho no qual os visitantes conseguiram se aproximar da meta."
+      },
+      {
+        "type": "paragraph",
+        "text": "O Real Madrid respondeu com Vini Jr. O jogador conduziu uma jogada individual e finalizou de fora da área, exigindo defesa de Vandevoordt. O goleiro do Leipzig voltaria a participar diretamente do lance que abriu o marcador, mas antes Courtois teve mais uma atuação decisiva: Nkunku ficou em situação de um contra um, e o goleiro do Real Madrid impediu a finalização."
+      },
+      {
+        "type": "paragraph",
+        "text": "A mudança no placar surgiu em uma jogada construída com participação de Valverde e Arda Güler."
+      },
+      {
+        "type": "subtitle",
+        "text": "Rebote abre caminho para a vantagem do Real Madrid"
+      },
+      {
+        "type": "paragraph",
+        "text": "Bernardo Silva marcou o primeiro gol do Real Madrid depois que Vandevoordt rebateu uma finalização de Arda Güler. A tentativa de Güler havia sido preparada por um passe para trás de Valverde. Bernardo Silva aproveitou o rebote e colocou o Real Madrid em vantagem, em um lance no qual a finalização inicial e a segunda bola tiveram peso na definição."
+      },
+      {
+        "type": "paragraph",
+        "text": "Depois do intervalo, Vandevoordt voltou a impedir um gol do Real Madrid ao defender uma tentativa de Valverde dentro da área. A ação antecedeu outro movimento ofensivo do time da casa, desta vez desenvolvido pelo lado do cruzamento e pela disputa aérea. O Leipzig ainda buscava conter as chegadas à sua área, mas não conseguiu afastar a bola no lance seguinte."
+      },
+      {
+        "type": "subtitle",
+        "text": "Güler e Mbappé ampliam; Diomande fecha o placar"
+      },
+      {
+        "type": "paragraph",
+        "text": "Arda Güler fez o segundo gol após cruzamento de Bellingham e cabeçada de Mbappé. A bola ficou em condição para o turco, que a colocou na rede antes que Raum pudesse afastá-la. O gol reuniu o cruzamento de Bellingham, o desvio de Mbappé e a presença de Güler na área para concluir a jogada."
+      },
+      {
+        "type": "paragraph",
+        "text": "Kylian Mbappé marcou o terceiro com um chute de direita da entrada da área. A finalização acrescentou uma solução diferente aos gols anteriores do Real Madrid e ampliou a produção ofensiva da equipe no Bernabéu. O Leipzig, porém, ainda encontrou um gol na partida: Tidiam Gomis reduziu a diferença no placar para os visitantes."
+      },
+      {
+        "type": "paragraph",
+        "text": "O último gol foi de Yan Diomande, que fechou o resultado com um voleio de direita no ângulo. A conclusão definiu o placar de 4 a 1."
+      },
+      {
+        "type": "subtitle",
+        "text": "Agenda após a rodada europeia"
+      },
+      {
+        "type": "paragraph",
+        "text": "O Real Madrid volta a campo em 25 de outubro, às 17h, contra o Barcelona, pela LALIGA. Na Champions League, o próximo compromisso será diante do AEK Atenas, em 4 de novembro, às 14h45. O Leipzig enfrenta o Elversberg em 24 de outubro, às 10h30, pela Bundesliga, antes de receber o Manchester City em 4 de novembro, às 17h, pela competição europeia."
+      }
+    ]
+  },
+  "metadata": {
+    "model": "gpt-5.6-terra",
+    "review_model": "gpt-6-luna",
+    "semantic_review_passed": true,
+    "format_passed": true,
+    "fixture_id": "espn-401915313",
+    "written_at": "2026-10-26T22:25:57.566209+00:00",
+    "article_sha256": "cdcaf84a8adb700673f33dfff716a21a71365a255b405949fe48c3f7024bba82",
+    "package_sha256": "7f6f016edc76de4799bbfc3f98d1055241a119a684d201031a59d8b0997ff4a8",
+    "human_review_required": true,
+    "publication_enabled": false,
+    "continued_from_run": "40411772773"
+  }
+}
