@@ -74,6 +74,7 @@ jobs:
               re.compile(r'^Brasileirão Série A$'),
               re.compile(r'^Brasileirão Série B$'),
               re.compile(r'^NBA$'),
+              re.compile(r'^NFL$'),
           ]
           previous = None
           seen = set()

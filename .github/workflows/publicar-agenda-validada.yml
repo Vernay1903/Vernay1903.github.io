@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Disponibilizar modulo independente de coleta NBA
+      - name: Disponibilizar modulos independentes de coleta NBA e NFL
         if: ${{ inputs.verificar_credencial != true }}
         uses: actions/checkout@v4
         with:
@@ -194,6 +194,18 @@ jobs:
               except Exception as error:
                   result['nba'] = {'status': 'unavailable', 'count': 0, 'error': str(error)[:300]}
                   print('AVISO: consulta NBA indisponivel; coleta das 13 competicoes de futebol preservada: ' + str(error))
+              # NFL: fonte independente de futebol e NBA, sem escrita na agenda.
+              try:
+                  from agenda_nfl import collect_nfl
+                  nfl_games = collect_nfl(target)
+                  combined = sorted(result['agenda'] + nfl_games, key=lambda row: (row['time'], row['desc']))
+                  if len({(item['time'], item['desc']) for item in combined}) != len(combined):
+                      raise ValueError('Jogo duplicado entre futebol, NBA e NFL')
+                  result['agenda'] = combined
+                  result['nfl'] = {'status': 'ok', 'count': len(nfl_games)}
+              except Exception as error:
+                  result['nfl'] = {'status': 'unavailable', 'count': 0, 'error': str(error)[:300]}
+                  print('AVISO: consulta NFL indisponivel; futebol e NBA preservados: ' + str(error))
               if not requested and dt.datetime.now(TZ).date() != target:
                   raise SystemExit('A data mudou durante a coleta; tentar novamente.')
               path = os.path.join(os.environ.get('RUNNER_TEMP', '/tmp'), 'agenda-coleta.json')
@@ -326,12 +338,18 @@ jobs:
             if (!collection.nba || !['ok', 'unavailable'].includes(collection.nba.status)) {
               throw new Error('Status de coleta NBA ausente ou invalido.');
             }
+            if (!collection.nfl || !['ok', 'unavailable'].includes(collection.nfl.status)) {
+              throw new Error('Status de coleta NFL ausente ou invalido.');
+            }
             const collected = collection.agenda;
             const nbaInfo = collection.nba.status === 'ok'
               ? 'NBA: ' + collection.nba.count + ' jogo(s) coletado(s).'
               : 'NBA: indisponivel (futebol preservado).';
+            const nflInfo = collection.nfl.status === 'ok'
+              ? 'NFL: ' + collection.nfl.count + ' jogo(s) coletado(s).'
+              : 'NFL: indisponivel (futebol e NBA preservados).';
             await core.summary.addHeading('Agenda de ' + collection.date)
-              .addRaw('Coleta ESPN: 13 competições de futebol confirmadas. ' + nbaInfo + ' ' + collected.length + ' jogo(s).\n')
+              .addRaw('Coleta ESPN: 13 competições de futebol confirmadas. ' + nbaInfo + ' ' + nflInfo + ' ' + collected.length + ' jogo(s).\n')
               .addTable([
                 [{data: 'Competição', header: true}, {data: 'Jogos', header: true}],
                 ...collection.coverage.map(row => [row.competition, String(row.count)])
@@ -349,17 +367,24 @@ jobs:
             let currentAgenda = null;
             try { currentAgenda = JSON.parse(Buffer.from(mainSource.content, 'base64').toString('utf8')); } catch {}
 
-            // Se a NBA falhar depois de ja publicada HOJE, manter seus jogos na agenda.
-            // Nunca trazer partidas do dia anterior para a agenda do dia seguinte.
-            if (collection.nba.status === 'unavailable' && Array.isArray(currentAgenda)) {
-              const existingNBA = currentAgenda.filter(entry =>
-                entry && typeof entry.desc === 'string' && entry.desc.endsWith(' - NBA'));
-              if (existingNBA.length) {
+            // Preservar partidas NBA/NFL ja publicadas HOJE se a fonte falhar.
+            // Nunca transportar partidas da agenda do dia anterior.
+            const failedLeagues = [
+              {slug: 'nba', suffix: ' - NBA'},
+              {slug: 'nfl', suffix: ' - NFL'}
+            ].filter(item => collection[item.slug].status === 'unavailable');
+            if (failedLeagues.length && Array.isArray(currentAgenda)) {
+              const snapshots = failedLeagues.map(item => ({
+                ...item,
+                games: currentAgenda.filter(entry =>
+                  entry && typeof entry.desc === 'string' && entry.desc.endsWith(item.suffix))
+              }));
+              if (snapshots.some(item => item.games.length > 0)) {
                 const history = (await github.rest.repos.listCommits({
                   owner, repo, path: 'agenda.json', sha: mainSnapshot, per_page: 1
                 })).data;
                 const timestamp = history[0]?.commit?.committer?.date;
-                if (!timestamp) throw new Error('Impossivel verificar a data da ultima agenda para proteger NBA.');
+                if (!timestamp) throw new Error('Impossivel verificar a data da ultima agenda para proteger NBA/NFL.');
                 const dateParts = Object.fromEntries(
                   new Intl.DateTimeFormat('en-US', {
                     timeZone: 'America/Sao_Paulo',
@@ -369,18 +394,22 @@ jobs:
                 const agendaCommitDate = dateParts.year + '-' + dateParts.month + '-' + dateParts.day;
                 if (agendaCommitDate === date) {
                   const keys = new Set(collected.map(entry => entry.time + '|' + entry.desc));
-                  for (const entry of existingNBA) {
-                    const key = entry.time + '|' + entry.desc;
-                    if (!keys.has(key)) { collected.push(entry); keys.add(key); }
+                  for (const item of snapshots) {
+                    for (const entry of item.games) {
+                      const key = entry.time + '|' + entry.desc;
+                      if (!keys.has(key)) { collected.push(entry); keys.add(key); }
+                    }
+                    if (item.games.length) core.warning(
+                      item.slug.toUpperCase() + ' indisponivel: ' + item.games.length +
+                      ' jogo(s) ja publicado(s) hoje preservado(s).'
+                    );
                   }
                   collected.sort((a,b) => a.time.localeCompare(b.time) || a.desc.localeCompare(b.desc));
-                  core.warning('ESPN NBA indisponivel: mantidos ' + existingNBA.length +
-                    ' jogos NBA ja publicados hoje; 13 competicoes de futebol continuam atualizaveis.');
                 }
               }
             }
             if (canonicalAgenda(currentAgenda) === canonicalAgenda(collected)) {
-              core.notice('Agenda de ' + date + ' conferida no futebol e NBA; sem alteracao: ' + collected.length + ' jogo(s).');
+              core.notice('Agenda de ' + date + ' conferida em futebol, NBA e NFL; sem alteracao: ' + collected.length + ' jogo(s).');
               await core.summary.addRaw('\nResultado: agenda conferida, sem alteração.\n').write();
               return;
             }
@@ -478,7 +507,7 @@ jobs:
                 base: 'main',
                 title: 'Atualiza agenda de ' + date,
                 body:
-                  'Agenda de ' + date + ' coletada diretamente da ESPN. As 13 competições de futebol foram consultadas com sucesso; coleta NBA independente; ' +
+                  'Agenda de ' + date + ' coletada diretamente da ESPN. As 13 competições de futebol foram consultadas com sucesso; coletas NBA e NFL independentes; ' +
                   'horários convertidos para America/Sao_Paulo. Somente agenda.json foi alterado. ' +
                   'Relatório: https://github.com/' + repoName + '/actions/runs/' + context.runId
               })).data;
@@ -545,7 +574,7 @@ jobs:
             const agenda = JSON.parse(source);
             if (!Array.isArray(agenda)) throw new Error('agenda.json deve ser uma lista.');
             if (canonicalAgenda(agenda) !== canonicalAgenda(collected)) {
-              throw new Error('Agenda do PR diverge da coleta validada de futebol e NBA; merge recusado.');
+              throw new Error('Agenda do PR diverge da coleta validada de futebol, NBA e NFL; merge recusado.');
             }
 
             let last = '';
