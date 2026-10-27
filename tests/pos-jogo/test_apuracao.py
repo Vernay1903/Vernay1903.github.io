@@ -65,3 +65,32 @@ class PassageTests(unittest.TestCase):
   r={'checks':[],'claims':[{'evidence':[{'passage_id':'s:0'}]}]}
   self.assertEqual(attach_passages(r,p)['claims'][0]['evidence'][0]['quote'],'Trecho original da página aberta.')
   with self.assertRaises(ValueError):attach_passages({'checks':[],'claims':[{'evidence':[{'passage_id':'inventado'}]}]},p)
+
+class OptionalNarrativeTests(unittest.TestCase):
+ def fixture(self,count=7):
+  core={'identity':{},'score':{},'venue':{},'goals':{},'campaign':{}}
+  claims=[{'text':str(i),'evidence':[{'source_id':'s','quote':'literal'}]} for i in range(count)]
+  audit={'checks':[{'id':k,'supported':True,'reason':''} for k in list(core)+[f'claim_{i}' for i in range(count)]]}
+  return core,claims,audit
+ def test_optional_rejection_omits_whole_claim_without_rewriting(self):
+  from apurar_pos_jogo import approved_claims
+  core,claims,audit=self.fixture();audit['checks'][6].update(supported=False,reason='Local não sustentado')
+  kept,omitted=approved_claims(core,claims,audit)
+  self.assertEqual(kept,[claims[i] for i in [0,2,3,4,5,6]])
+  self.assertEqual(omitted[0]['claim'],claims[1]);self.assertEqual(omitted[0]['reason'],'Local não sustentado')
+ def test_mandatory_rejection_blocks(self):
+  from apurar_pos_jogo import approved_claims
+  for index in range(5):
+   core,claims,audit=self.fixture();audit['checks'][index]['supported']=False
+   with self.assertRaises(ValueError):approved_claims(core,claims,audit)
+ def test_insufficient_approved_claims_blocks(self):
+  from apurar_pos_jogo import approved_claims
+  core,claims,audit=self.fixture(6);audit['checks'][-1]['supported']=False
+  with self.assertRaises(ValueError):approved_claims(core,claims,audit)
+ def test_missing_duplicate_or_unknown_review_id_blocks(self):
+  from apurar_pos_jogo import approved_claims
+  for mode in ['missing','duplicate','unknown']:
+   core,claims,audit=self.fixture()
+   if mode=='missing':audit['checks'].pop()
+   else:audit['checks'][-1]['id']='score' if mode=='duplicate' else 'unexpected'
+   with self.assertRaises(ValueError):approved_claims(core,claims,audit)

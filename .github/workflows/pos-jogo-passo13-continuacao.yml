@@ -1,0 +1,51 @@
+name: Pós-jogo — passo 13 — continuação até US$ 0,10
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-passo13-continuacao.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: pos-jogo-estado-piloto
+  cancel-in-progress: false
+jobs:
+  testar:
+    if: "github.event.head_commit.message == 'Passo 13: retomar redacao revisada'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: pos-jogo-passo13-40518351945
+          run-id: 40518351945
+          github-token: ${{ github.token }}
+          path: build/pos-jogo/passo13-anterior
+      - name: Retomar redação com apuração revisada e saldo preservado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/continuar_partida_recente_pos_jogo.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pos-jogo-passo13-continuacao-${{ github.run_id }}
+          path: build/pos-jogo/passo13-continuacao/
+          retention-days: 7
+      - name: Verificar integridade dos arquivos do site
+        if: always()
+        run: |
+          git diff --exit-code
+          git -C current-main diff --exit-code
