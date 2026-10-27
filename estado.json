@@ -751,11 +751,24 @@
           "id": "3c2d94a1a9f646e1858c202a0f3030ca",
           "fixture_id": "espn-401841286",
           "started_at": "2026-10-27T15:09:34.816895-03:00",
-          "status": "reserved",
-          "charged_usd": "0.0415575",
+          "status": "settled",
+          "charged_usd": "0.027156",
           "reserved_usd": "0.0415575",
           "model": "gpt-5.6-terra",
-          "counted_input_tokens": 4623
+          "counted_input_tokens": 4623,
+          "usage": {
+            "input_tokens": 4623,
+            "input_tokens_details": {
+              "cache_write_tokens": 4620,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1300,
+            "output_tokens_details": {
+              "reasoning_tokens": 320
+            },
+            "total_tokens": 5923
+          },
+          "response_id": "resp_0c0ab82f5d5012b3016ae0e8e0ee2087d1a3defb68ea157ea4"
         }
       ],
       "blocked": false
