@@ -47,3 +47,82 @@ jobs:
           print('NFL na segunda:', monday['agenda'])
           print('Terça sem NFL confirmada')
           PY
+
+      - name: Simular agenda completa sem publicacao (13 futebol, NBA, NFL)
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          workflow = Path('.github/workflows/publicar-agenda-validada.yml').read_text()
+          lines = workflow.splitlines()
+          start = lines.index("          python - <<'PY'") + 1
+          end = lines.index("          PY", start)
+          script = '\n'.join(line[10:] for line in lines[start:end]) + '\n'
+          compile(script, 'coletor_completo.py', 'exec')
+
+          def simulate(day):
+              env = dict(os.environ, SIMULAR='true', DATA_TESTE=day)
+              test = subprocess.run([sys.executable, '-c', script], env=env, capture_output=True, text=True)
+              if test.returncode:
+                  raise AssertionError(test.stderr + '\n' + test.stdout)
+              return json.loads((Path(os.environ['RUNNER_TEMP']) / 'agenda-coleta.json').read_text())
+
+          result = simulate('2026-10-26')
+          assert len(result['coverage']) == 13
+          assert result['nba']['status'] == 'ok' and result['nba']['count'] == 9, result['nba']
+          assert result['nfl']['status'] == 'ok' and result['nfl']['count'] >= 1, result['nfl']
+          assert len([x for x in result['agenda'] if x['desc'].endswith(' - NFL')]) == result['nfl']['count']
+          assert result['agenda'] == sorted(result['agenda'], key=lambda x: (x['time'], x['desc']))
+          assert len({(x['time'], x['desc']) for x in result['agenda']}) == len(result['agenda'])
+          next_day = simulate('2026-10-27')
+          assert len(next_day['coverage']) == 13
+          assert next_day['nba']['status'] == 'ok', next_day['nba']
+          assert next_day['nfl']['status'] == 'ok' and next_day['nfl']['count'] == 0, next_day['nfl']
+          print('Agenda completa validada: futebol + NBA + NFL, incluindo dia sem jogos NFL.')
+
+          nfl = Path('.github/scripts/agenda_nfl.py')
+          orig_nfl = nfl.read_text()
+          try:
+              nfl.write_text('def collect_nfl(date):\n    raise RuntimeError("Erro artificial NFL")\n')
+              fallback = simulate('2026-10-26')
+              assert fallback['nfl']['status'] == 'unavailable'
+              assert fallback['nba']['status'] == 'ok' and fallback['nba']['count'] == 9
+              assert len(fallback['coverage']) == 13
+              assert not any(x['desc'].endswith(' - NFL') for x in fallback['agenda'])
+              print('Falha NFL simulada: NBA e as 13 competicoes de futebol preservadas.')
+          finally:
+              nfl.write_text(orig_nfl)
+
+          nba = Path('.github/scripts/agenda_nba.py')
+          orig_nba = nba.read_text()
+          try:
+              nba.write_text('def collect_nba(date):\n    raise RuntimeError("Erro artificial NBA")\n')
+              fallback = simulate('2026-10-26')
+              assert fallback['nba']['status'] == 'unavailable'
+              assert fallback['nfl']['status'] == 'ok' and fallback['nfl']['count'] >= 1
+              assert len(fallback['coverage']) == 13
+              print('Falha NBA simulada: NFL e as 13 competicoes de futebol preservadas.')
+          finally:
+              nba.write_text(orig_nba)
+
+          guard = Path('.github/workflows/agenda-guard.yml').read_text()
+          assert "re.compile(r'^NBA$')" in guard
+          assert "re.compile(r'^NFL$')" in guard
+          assert 'America/Sao_Paulo' in workflow
+          PY
+      - name: Conferir sintaxe do script de publicacao existente
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          lines = Path('.github/workflows/publicar-agenda-validada.yml').read_text().splitlines()
+          start = lines.index('          script: |') + 1
+          code = '\n'.join(line[12:] for line in lines[start:])
+          Path('/tmp/agenda-publicador-nfl.js').write_text('async function validate() {\n' + code + '\n}\n')
+          PY
+          node --check /tmp/agenda-publicador-nfl.js
