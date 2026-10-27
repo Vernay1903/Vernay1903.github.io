@@ -1,0 +1,49 @@
+name: Testar coleta NFL (sem publicacao)
+
+on:
+  pull_request:
+    paths:
+      - ".github/scripts/agenda_nfl.py"
+      - ".github/scripts/test_agenda_nfl.py"
+      - ".github/workflows/testar-agenda-nfl.yml"
+      - ".github/workflows/publicar-agenda-validada.yml"
+      - ".github/workflows/agenda-guard.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar-nfl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout somente leitura
+        uses: actions/checkout@v4
+      - name: Testes unitarios de horarios, falhas e duplicacoes NFL
+        run: python -m unittest discover -s .github/scripts -p 'test_agenda_nfl.py' -v
+      - name: Confirmar jogos reais do domingo 25 outubro
+        shell: bash
+        run: |
+          python .github/scripts/agenda_nfl.py --date 2026-10-25 > /tmp/nfl-domingo.json
+          python - <<'PY'
+          import json
+          data = json.load(open('/tmp/nfl-domingo.json'))
+          assert data['games'] >= 10, data
+          assert all(x['desc'].endswith(' - NFL') for x in data['agenda'])
+          print('Coleta NFL domingo: ', data['games'], 'jogos')
+          PY
+      - name: Confirmar Monday Night e dia vazio
+        shell: bash
+        run: |
+          python .github/scripts/agenda_nfl.py --date 2026-10-26 > /tmp/nfl-segunda.json
+          python .github/scripts/agenda_nfl.py --date 2026-10-27 > /tmp/nfl-terca.json
+          python - <<'PY'
+          import json
+          monday = json.load(open('/tmp/nfl-segunda.json'))
+          tuesday = json.load(open('/tmp/nfl-terca.json'))
+          assert monday['games'] >= 1, monday
+          assert tuesday['games'] == 0, tuesday
+          print('NFL na segunda:', monday['agenda'])
+          print('Terça sem NFL confirmada')
+          PY
