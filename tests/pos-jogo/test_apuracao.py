@@ -94,3 +94,16 @@ class OptionalNarrativeTests(unittest.TestCase):
    if mode=='missing':audit['checks'].pop()
    else:audit['checks'][-1]['id']='score' if mode=='duplicate' else 'unexpected'
    with self.assertRaises(ValueError):approved_claims(core,claims,audit)
+
+class RewriteBudgetTests(unittest.TestCase):
+ def test_rewrite_uses_separate_limit_and_preserves_diagnostics(self):
+  import json
+  from redigir_pos_jogo_openai import rewrite_request
+  provider={'model':'gpt-5.6-terra','reasoning_effort':'medium','max_output_tokens':4000,'rewrite_max_output_tokens':2500}
+  article={'title':'Teste','excerpt':'Chamada','blocks':[]}
+  issues=['Corpo com menos de 600 palavras','block_0: Informação sem apoio']
+  request=rewrite_request({'instructions':'Não invente','facts':{}},article,issues,provider)
+  self.assertEqual(request['max_output_tokens'],2500)
+  data=json.loads(request['input'][-1]['content'])
+  self.assertEqual(data['draft'],article);self.assertEqual(data['issues'],issues)
+  self.assertEqual(provider['max_output_tokens'],4000)

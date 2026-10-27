@@ -25,6 +25,14 @@ def build_request(package, provider):
         'text':{'format':{'type':'json_schema','name':'pos_jogo','strict':True,'schema':schema}}}
 
 
+def rewrite_request(package,article,issues,provider):
+    correction=dict(provider,max_output_tokens=provider.get('rewrite_max_output_tokens',2500))
+    request=build_request(package,correction)
+    request['input'].append({'role':'user','content':json.dumps({'draft':article,'issues':issues,
+        'instruction':'Corrija todas as falhas, preservando apenas fatos sustentados. Produza de 650 a 700 palavras no corpo, sem repetição para preencher extensão. Retorne texto completo.'},ensure_ascii=False)})
+    return request
+
+
 def response_object(response):
     if response.get('status') != 'completed' or response.get('error'):
         raise ValueError('Resposta incompleta ou com erro; não liberada')
@@ -100,8 +108,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         else:
             request=build_request(package,writer_provider)
             if article is not None:
-                request['input'].append({'role':'user','content':json.dumps({'draft':article,'issues':issues,
-                    'instruction':'Corrija as falhas de formato mantendo fatos e narrativa corretos. Retorne texto completo.'},ensure_ascii=False)})
+                request=rewrite_request(package,article,issues,writer_provider)
             article=parse_response(call(request,f'write_{attempt}'))
         written_at=datetime.now(timezone.utc).isoformat()
         save(f'artigo-{attempt}.json',article)

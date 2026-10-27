@@ -1,0 +1,51 @@
+name: Pós-jogo — passo 13 — correção editorial até US$ 0,10
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-passo13-final.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: pos-jogo-estado-piloto
+  cancel-in-progress: false
+jobs:
+  testar:
+    if: "github.event.head_commit.message == 'Passo 13: corrigir redacao no mesmo saldo'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: pos-jogo-passo13-continuacao-40556193998
+          run-id: 40556193998
+          github-token: ${{ github.token }}
+          path: build/pos-jogo/passo13-redacao-anterior
+      - name: Retomar redação com apuração revisada e saldo preservado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/corrigir_partida_recente_pos_jogo.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pos-jogo-passo13-final-${{ github.run_id }}
+          path: build/pos-jogo/passo13-final/
+          retention-days: 7
+      - name: Verificar integridade dos arquivos do site
+        if: always()
+        run: |
+          git diff --exit-code
+          git -C current-main diff --exit-code
