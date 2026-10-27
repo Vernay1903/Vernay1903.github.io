@@ -7,10 +7,10 @@
   "max_calls_per_test": 7,
   "publication_enabled": false,
   "writer_provider": {
-    "model": "gpt-5.6-terra",
+    "model": "gpt-6-luna",
     "reasoning_effort": "medium",
-    "max_output_tokens": 4000,
-    "patch_max_output_tokens": 1500,
-    "rewrite_max_output_tokens": 2500
+    "max_output_tokens": 4500,
+    "patch_max_output_tokens": 3000,
+    "rewrite_max_output_tokens": 4500
   }
 }

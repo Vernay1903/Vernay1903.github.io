@@ -99,7 +99,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         save('calibracao.json',{'passed':calibration_passed,'review':calibration_review})
         print('Calibração factual: '+str(calibration_passed),flush=True)
         if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
-    article=None; issues=[]; passed=False
+    article=None; issues=[]; passed=False; reviewed_once=False
     for attempt in range(1,4):
         mapped=targeted_issues(article,issues) if article is not None else None
         if article is not None and mapped is not None:
@@ -115,13 +115,19 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         written_at=datetime.now(timezone.utc).isoformat()
         save(f'artigo-{attempt}.json',article)
         checks=validate(article,package['allowed_internal_urls'])
+        save(f'formato-{attempt}.json',checks)
+        if not checks['format_passed']:
+            issues=checks['errors']+[f"Formato: corpo medido em {checks['body_words']} palavras; entregue 700 a 800 palavras no corpo sem repetir nem inventar."]
+            print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
+            continue
         review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))
         save(f'revisao-{attempt}.json',review)
         issues=checks['errors']+validate_review(review,package,article)
-        if attempt==1 and not calibrate:
+        if not reviewed_once and not calibrate:
             second=response_object(call(review_request(package,article,provider),'review_1_second_pass'))
             save('revisao-1-segunda-leitura.json',second)
             issues=list(dict.fromkeys(issues+validate_review(second,package,article)))
+        reviewed_once=True
         print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
         if not issues:
             passed=True;break
