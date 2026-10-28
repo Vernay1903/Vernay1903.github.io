@@ -1,432 +1,54 @@
 {
   "step": 13,
-  "status": "blocked_editorial_validation",
+  "status": "validated_recent_match",
   "fixture_id": "espn-401841286",
   "fixture": "Flamengo x Atlético-MG",
-  "runs": [
-    "40518351945",
-    "40556193998",
-    "40557096943",
-    "40557767577"
-  ],
-  "final_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/40557767577",
+  "final_run_id": "40610075120",
+  "final_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/40610075120",
+  "validated_code_commit": "d8b66ec548de873b6f371481d22590000344e8f1",
+  "artifact_id": 12782940131,
   "actual_clock": true,
   "historical_replay": false,
   "first_final_seen_at": "2026-10-27T11:10:04.288670-03:00",
   "eligible_at": "2026-10-27T12:00:04.288670-03:00",
-  "research_claims_approved": 9,
-  "research_claims_omitted": 1,
-  "cost": {
-    "total_including_previous_attempts_usd": "0.075944035",
-    "cap_usd": "0.10",
-    "calls": [
-      {
-        "id": "d1af321b473b40d28d058c3c0de9ce94",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T12:00:06.558048-03:00",
-        "status": "settled",
-        "charged_usd": "0.011847125",
-        "reserved_usd": "0.07535",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": null,
-        "usage": {
-          "input_tokens": 13181,
-          "input_tokens_details": {
-            "cache_write_tokens": 4681,
-            "cached_tokens": 0
-          },
-          "output_tokens": 824,
-          "output_tokens_details": {
-            "reasoning_tokens": 511
-          },
-          "total_tokens": 14005
-        },
-        "response_id": "resp_0d92c9ec83988e34016ae0bc79152c87d1941f84755eab2074"
-      },
-      {
-        "id": "1cd8ee6d48d344d5a9dbf0ab0ff11365",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T12:00:31.101151-03:00",
-        "status": "settled",
-        "charged_usd": "0.002422425",
-        "reserved_usd": "0.0048835",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": 11068,
-        "usage": {
-          "input_tokens": 11068,
-          "input_tokens_details": {
-            "cache_write_tokens": 11065,
-            "cached_tokens": 0
-          },
-          "output_tokens": 2078,
-          "output_tokens_details": {
-            "reasoning_tokens": 782
-          },
-          "total_tokens": 13146
-        },
-        "response_id": "resp_02509e598017e7a9016ae0bc90baa087d1ac985507603adbdb"
-      },
-      {
-        "id": "8e82a7fb684f43789b7c28014695eb8c",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T12:00:57.829416-03:00",
-        "status": "settled",
-        "charged_usd": "0.00339405",
-        "reserved_usd": "0.006393625",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": 23149,
-        "usage": {
-          "input_tokens": 23149,
-          "input_tokens_details": {
-            "cache_write_tokens": 23146,
-            "cached_tokens": 0
-          },
-          "output_tokens": 1001,
-          "output_tokens_details": {
-            "reasoning_tokens": 364
-          },
-          "total_tokens": 24150
-        },
-        "response_id": "resp_0778605072ba14c2016ae0bcabc1b087d19b35d0e55db1b791"
-      },
-      {
-        "id": "31e711b6d3f14572b00934aa9a3ecfa4",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T15:04:38.716398-03:00",
-        "status": "settled",
-        "charged_usd": "0.024055",
-        "reserved_usd": "0.0549325",
-        "model": "gpt-5.6-terra",
-        "counted_input_tokens": 2773,
-        "usage": {
-          "input_tokens": 2773,
-          "input_tokens_details": {
-            "cache_write_tokens": 2770,
-            "cached_tokens": 0
-          },
-          "output_tokens": 1427,
-          "output_tokens_details": {
-            "reasoning_tokens": 442
-          },
-          "total_tokens": 4200
-        },
-        "response_id": "resp_0b7398f70a6e3676016ae0e7b9141887d28f628b8efa86c5b5"
-      },
-      {
-        "id": "0f4edd38744441b087c1585f0ea9df54",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T15:05:03.736950-03:00",
-        "status": "settled",
-        "charged_usd": "0.0017093",
-        "reserved_usd": "0.003307375",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": 2459,
-        "usage": {
-          "input_tokens": 2459,
-          "input_tokens_details": {
-            "cache_write_tokens": 2456,
-            "cached_tokens": 0
-          },
-          "output_tokens": 2804,
-          "output_tokens_details": {
-            "reasoning_tokens": 1923
-          },
-          "total_tokens": 5263
-        },
-        "response_id": "resp_0fbb5d6fce5f37d4016ae0e7d122d087d2a3fe0866a22e2535"
-      },
-      {
-        "id": "a883e42d1ede4edfba9859272670b1a0",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T15:05:34.148095-03:00",
-        "status": "settled",
-        "charged_usd": "0.00113386",
-        "reserved_usd": "0.003307375",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": 2459,
-        "usage": {
-          "input_tokens": 2459,
-          "input_tokens_details": {
-            "cache_write_tokens": 0,
-            "cached_tokens": 2456
-          },
-          "output_tokens": 2218,
-          "output_tokens_details": {
-            "reasoning_tokens": 1442
-          },
-          "total_tokens": 4677
-        },
-        "response_id": "resp_0af90522eb15d859016ae0e7efac8887d2b16f77dd763c9bb3"
-      },
-      {
-        "id": "3c2d94a1a9f646e1858c202a0f3030ca",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T15:09:34.816895-03:00",
-        "status": "settled",
-        "charged_usd": "0.027156",
-        "reserved_usd": "0.0415575",
-        "model": "gpt-5.6-terra",
-        "counted_input_tokens": 4623,
-        "usage": {
-          "input_tokens": 4623,
-          "input_tokens_details": {
-            "cache_write_tokens": 4620,
-            "cached_tokens": 0
-          },
-          "output_tokens": 1300,
-          "output_tokens_details": {
-            "reasoning_tokens": 320
-          },
-          "total_tokens": 5923
-        },
-        "response_id": "resp_0c0ab82f5d5012b3016ae0e8e0ee2087d1a3defb68ea157ea4"
-      },
-      {
-        "id": "d310e181ec9a443b816fa65d35337b3c",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T15:09:57.121211-03:00",
-        "status": "settled",
-        "charged_usd": "0.001563175",
-        "reserved_usd": "0.00330675",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": 2454,
-        "usage": {
-          "input_tokens": 2454,
-          "input_tokens_details": {
-            "cache_write_tokens": 2451,
-            "cached_tokens": 0
-          },
-          "output_tokens": 2513,
-          "output_tokens_details": {
-            "reasoning_tokens": 1740
-          },
-          "total_tokens": 4967
-        },
-        "response_id": "resp_0c21213bbfad2738016ae0e8f6c5a887d1a5c9c2e3a7745796"
-      },
-      {
-        "id": "6173656a729942cd9e4a8d3567d85268",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T15:13:10.542139-03:00",
-        "status": "settled",
-        "charged_usd": "0.0013858",
-        "reserved_usd": "0.002058375",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": 4467,
-        "usage": {
-          "input_tokens": 4467,
-          "input_tokens_details": {
-            "cache_write_tokens": 4464,
-            "cached_tokens": 0
-          },
-          "output_tokens": 1655,
-          "output_tokens_details": {
-            "reasoning_tokens": 1310
-          },
-          "total_tokens": 6122
-        },
-        "response_id": "resp_02c0318ca3e58489016ae0e9b8ab8487d0be34980403ed216f"
-      },
-      {
-        "id": "150953bc4f6948fa8c182914028b4479",
-        "fixture_id": "espn-401841286",
-        "started_at": "2026-10-27T15:13:37.194209-03:00",
-        "status": "settled",
-        "charged_usd": "0.0012773",
-        "reserved_usd": "0.003301875",
-        "model": "gpt-6-luna",
-        "counted_input_tokens": 2415,
-        "usage": {
-          "input_tokens": 2415,
-          "input_tokens_details": {
-            "cache_write_tokens": 2412,
-            "cached_tokens": 0
-          },
-          "output_tokens": 1951,
-          "output_tokens_details": {
-            "reasoning_tokens": 1263
-          },
-          "total_tokens": 4366
-        },
-        "response_id": "resp_0c70e942dcbf200b016ae0e9d2c64087d0a6f547602c145d39"
-      }
+  "first_paid_processing_at": "2026-10-27T12:00:05.092766-03:00",
+  "tests_passed": 148,
+  "cost_total_including_all_failed_attempts_usd": "0.097975160",
+  "cap_usd": "0.10",
+  "paid_calls": 25,
+  "package": {
+    "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+    "fixed_shell_unchanged": true,
+    "title_chars": 51,
+    "body_words": 606,
+    "body_ad_count": 1,
+    "ad_after_blocks": [
+      8
     ],
-    "all_settled": true,
-    "package_ready": false,
-    "historical_evaluation": false,
-    "actual_clock": true,
-    "step": 13,
-    "schedule_enabled": false,
-    "publication_enabled": false
+    "publication_enabled": false,
+    "filename": "flamengo-atletico-mg-campeonato-brasileiro-serie-a-2026-resultado.html",
+    "written_at": "2026-10-28T00:39:29.483553+00:00",
+    "article_date": "27/10/2026",
+    "sitemap_lastmod": "2026-10-27",
+    "news_position": 0,
+    "old_news_preserved": true,
+    "old_sitemap_preserved": true,
+    "fixture_id": "espn-401841286",
+    "article_sha256": "e9fd8a660d574cc45afaaebd26fa8e5cef601eb1e3d3df2d8b72825411513d95",
+    "human_review_required": true,
+    "semantic_review_passed": true
   },
-  "last_format_validation": {
-    "format_passed": false,
-    "title_chars": 57,
-    "body_words": 539,
-    "errors": [
-      "Corpo com menos de 600 palavras"
-    ],
-    "factual_accuracy_validated_by_this_script": false,
-    "publication_enabled": false
-  },
-  "last_semantic_review": {
-    "checks": [
-      {
-        "unit": "title",
-        "supported": true,
-        "evidence_ids": [
-          "score",
-          "goals"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "excerpt",
-        "supported": true,
-        "evidence_ids": [
-          "narrative_0",
-          "narrative_8"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_0",
-        "supported": true,
-        "evidence_ids": [
-          "match",
-          "score",
-          "goals",
-          "narrative_0",
-          "narrative_2",
-          "narrative_4",
-          "narrative_5",
-          "narrative_7",
-          "narrative_8"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_1",
-        "supported": true,
-        "evidence_ids": [
-          "campaign",
-          "narrative_2",
-          "narrative_5",
-          "narrative_7"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_2",
-        "supported": true,
-        "evidence_ids": [
-          "narrative_1",
-          "narrative_2"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_3",
-        "supported": false,
-        "evidence_ids": [
-          "narrative_1"
-        ],
-        "issues": [
-          "A evidência identifica Gabriel Delfim defendendo a finalização, mas não confirma que ele seja goleiro do Atlético-MG; retire essa atribuição. O bloco também repete a mesma defesa e a participação de Arrascaeta em duas frases consecutivas; elimine a repetição."
-        ]
-      },
-      {
-        "unit": "block_4",
-        "supported": false,
-        "evidence_ids": [
-          "narrative_2"
-        ],
-        "issues": [
-          "A evidência confirma o contra-ataque, o passe de Victor Hugo para Preciado, o cruzamento e a conclusão de Bernard, mas não caracteriza o passe como “passe de saída”. Além disso, a frase final repete a sequência e o fato de o Atlético-MG abrir vantagem; corte a repetição."
-        ]
-      },
-      {
-        "unit": "block_5",
-        "supported": true,
-        "evidence_ids": [
-          "narrative_3",
-          "narrative_4"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_6",
-        "supported": true,
-        "evidence_ids": [
-          "narrative_5"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_7",
-        "supported": true,
-        "evidence_ids": [
-          "narrative_5"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_8",
-        "supported": true,
-        "evidence_ids": [
-          "match",
-          "venue",
-          "narrative_6"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_9",
-        "supported": true,
-        "evidence_ids": [
-          "narrative_7",
-          "narrative_8"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_10",
-        "supported": false,
-        "evidence_ids": [
-          "narrative_2",
-          "narrative_7"
-        ],
-        "issues": [
-          "Os fatos estão apoiados, mas o bloco repete a jogada de Victor Hugo para Renan Lodi, a finalização de primeira e o empate em frases sucessivas. Condense o relato para evitar repetição mecânica."
-        ]
-      },
-      {
-        "unit": "block_11",
-        "supported": true,
-        "evidence_ids": [
-          "narrative_8",
-          "goals",
-          "score"
-        ],
-        "issues": []
-      },
-      {
-        "unit": "block_12",
-        "supported": false,
-        "evidence_ids": [
-          "match",
-          "upcoming"
-        ],
-        "issues": [
-          "Data, competição, adversários e horários estão apoiados. Porém, o bloco repete a mesma data e os mesmos adversários várias vezes, inclusive reiterando que o jogo do Atlético-MG começa meia hora antes. Remova as repetições."
-        ]
-      }
-    ]
-  },
-  "tests_passed": 142,
-  "package_ready": false,
   "publication_enabled": false,
   "schedule_enabled": false,
-  "next_required": "Melhorar redação e revisão para atingir 600 palavras sem repetição nem dados sem suporte; nenhum teste foi aprovado para ativação.",
-  "experimental_luna_patch_promoted": false
+  "validation_method": "Complete factual review followed by reviewed corrections; identical approved units retained with full context and hash provenance.",
+  "next_step": {
+    "number": 14,
+    "status": "awaiting_user_authorization",
+    "scope": "Conferir orçamento compartilhado e configurar/ativar piloto agendado somente para Flamengo, Real Madrid, Arsenal e Manchester City, gerando rascunhos após a espera de 50 minutos, sem publicação automática."
+  },
+  "limitations": [
+    "Validação de uma partida recente; não constitui garantia para todos os jogos.",
+    "Publicação automática e rotina contínua permanecem desativadas.",
+    "Conciliação de orçamento com a prévia permanece pendente para passo 14."
+  ]
 }

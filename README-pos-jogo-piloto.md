@@ -149,3 +149,14 @@ IMPORTANTE: coleta/calendários do replay representam 22/10; os próximos jogos 
 Estado permanece em estado-pos-jogo-piloto/estado.json, com SHA condicional e concorrência serializada. Não houve modificação da main, da agenda ou das prévias. Publicação e cron permanecem desativados.
 
 O teto mensal US$10 cobre somente chamadas do controlador do piloto. Consumo das prévias e testes anteriores não está conciliado: não constitui teto global comprovado da conta OpenAI. Preços têm validade operacional até 25/11/2026. Antes de ativar operação contínua, resolver a conciliação e a validação recente.
+
+
+## Passo 13 — validado em partida recente
+
+A execução 40610075120 aprovou o pacote de Flamengo x Atlético-MG: 606 palavras, título de 51 caracteres, HTML com estrutura fixa preservada, um anúncio no corpo, notícia na primeira posição e datas coerentes no HTML/noticias.json/sitemap (27/10/2026 em Brasília). Custo acumulado do mesmo fixture, incluindo todas as tentativas e correções: US$ 0,097975160. Nenhum débito foi zerado.
+
+A apuração passou a conservar detalhes úteis das fontes, e textos curtos são corrigidos antes de gastar com revisão semântica. A primeira revisão abrange o texto inteiro; correções posteriores são verificadas contra as mesmas evidências e o contexto completo, mantendo apenas aprovações de unidades literalmente inalteradas. Mudança de evidências ou estrutura impede esse reaproveitamento. Há hashes e cadeia de revisão na auditoria.
+
+148 testes passaram. A rotina contínua e a publicação continuam desativadas. A validação é de uma partida recente, não uma garantia de sucesso para todas. O passo 14 aguarda autorização: conciliação do orçamento compartilhado e ativação controlada do piloto agendado para os quatro clubes, em modo de rascunho. As automações de agenda e prévias não foram alteradas.
+
+Relatórios duráveis: `auditoria/pos-jogo/resultado-passo13.json` e `auditoria/pos-jogo/validacao-recente-flamengo-20261027.json`.

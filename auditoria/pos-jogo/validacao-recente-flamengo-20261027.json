@@ -1,0 +1,1635 @@
+{
+  "validation": {
+    "step": 13,
+    "status": "validated_recent_match",
+    "fixture_id": "espn-401841286",
+    "fixture": "Flamengo x Atlético-MG",
+    "final_run_id": "40610075120",
+    "final_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/40610075120",
+    "validated_code_commit": "d8b66ec548de873b6f371481d22590000344e8f1",
+    "artifact_id": 12782940131,
+    "actual_clock": true,
+    "historical_replay": false,
+    "first_final_seen_at": "2026-10-27T11:10:04.288670-03:00",
+    "eligible_at": "2026-10-27T12:00:04.288670-03:00",
+    "first_paid_processing_at": "2026-10-27T12:00:05.092766-03:00",
+    "tests_passed": 148,
+    "cost_total_including_all_failed_attempts_usd": "0.097975160",
+    "cap_usd": "0.10",
+    "paid_calls": 25,
+    "package": {
+      "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+      "fixed_shell_unchanged": true,
+      "title_chars": 51,
+      "body_words": 606,
+      "body_ad_count": 1,
+      "ad_after_blocks": [
+        8
+      ],
+      "publication_enabled": false,
+      "filename": "flamengo-atletico-mg-campeonato-brasileiro-serie-a-2026-resultado.html",
+      "written_at": "2026-10-28T00:39:29.483553+00:00",
+      "article_date": "27/10/2026",
+      "sitemap_lastmod": "2026-10-27",
+      "news_position": 0,
+      "old_news_preserved": true,
+      "old_sitemap_preserved": true,
+      "fixture_id": "espn-401841286",
+      "article_sha256": "e9fd8a660d574cc45afaaebd26fa8e5cef601eb1e3d3df2d8b72825411513d95",
+      "human_review_required": true,
+      "semantic_review_passed": true
+    },
+    "publication_enabled": false,
+    "schedule_enabled": false,
+    "validation_method": "Complete factual review followed by reviewed corrections; identical approved units retained with full context and hash provenance.",
+    "next_step": {
+      "number": 14,
+      "status": "awaiting_user_authorization",
+      "scope": "Conferir orçamento compartilhado e configurar/ativar piloto agendado somente para Flamengo, Real Madrid, Arsenal e Manchester City, gerando rascunhos após a espera de 50 minutos, sem publicação automática."
+    },
+    "limitations": [
+      "Validação de uma partida recente; não constitui garantia para todos os jogos.",
+      "Publicação automática e rotina contínua permanecem desativadas.",
+      "Conciliação de orçamento com a prévia permanece pendente para passo 14."
+    ]
+  },
+  "cost_ledger": {
+    "step": 13,
+    "fixture_id": "espn-401841286",
+    "actual_clock": true,
+    "historical_replay": false,
+    "total_including_all_previous_attempts_usd": "0.097975160",
+    "cap_usd": "0.10",
+    "calls": [
+      {
+        "id": "d1af321b473b40d28d058c3c0de9ce94",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T12:00:06.558048-03:00",
+        "status": "settled",
+        "charged_usd": "0.011847125",
+        "reserved_usd": "0.07535",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": null,
+        "usage": {
+          "input_tokens": 13181,
+          "input_tokens_details": {
+            "cache_write_tokens": 4681,
+            "cached_tokens": 0
+          },
+          "output_tokens": 824,
+          "output_tokens_details": {
+            "reasoning_tokens": 511
+          },
+          "total_tokens": 14005
+        },
+        "response_id": "resp_0d92c9ec83988e34016ae0bc79152c87d1941f84755eab2074"
+      },
+      {
+        "id": "1cd8ee6d48d344d5a9dbf0ab0ff11365",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T12:00:31.101151-03:00",
+        "status": "settled",
+        "charged_usd": "0.002422425",
+        "reserved_usd": "0.0048835",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 11068,
+        "usage": {
+          "input_tokens": 11068,
+          "input_tokens_details": {
+            "cache_write_tokens": 11065,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2078,
+          "output_tokens_details": {
+            "reasoning_tokens": 782
+          },
+          "total_tokens": 13146
+        },
+        "response_id": "resp_02509e598017e7a9016ae0bc90baa087d1ac985507603adbdb"
+      },
+      {
+        "id": "8e82a7fb684f43789b7c28014695eb8c",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T12:00:57.829416-03:00",
+        "status": "settled",
+        "charged_usd": "0.00339405",
+        "reserved_usd": "0.006393625",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 23149,
+        "usage": {
+          "input_tokens": 23149,
+          "input_tokens_details": {
+            "cache_write_tokens": 23146,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1001,
+          "output_tokens_details": {
+            "reasoning_tokens": 364
+          },
+          "total_tokens": 24150
+        },
+        "response_id": "resp_0778605072ba14c2016ae0bcabc1b087d19b35d0e55db1b791"
+      },
+      {
+        "id": "31e711b6d3f14572b00934aa9a3ecfa4",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T15:04:38.716398-03:00",
+        "status": "settled",
+        "charged_usd": "0.024055",
+        "reserved_usd": "0.0549325",
+        "model": "gpt-5.6-terra",
+        "counted_input_tokens": 2773,
+        "usage": {
+          "input_tokens": 2773,
+          "input_tokens_details": {
+            "cache_write_tokens": 2770,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1427,
+          "output_tokens_details": {
+            "reasoning_tokens": 442
+          },
+          "total_tokens": 4200
+        },
+        "response_id": "resp_0b7398f70a6e3676016ae0e7b9141887d28f628b8efa86c5b5"
+      },
+      {
+        "id": "0f4edd38744441b087c1585f0ea9df54",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T15:05:03.736950-03:00",
+        "status": "settled",
+        "charged_usd": "0.0017093",
+        "reserved_usd": "0.003307375",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2459,
+        "usage": {
+          "input_tokens": 2459,
+          "input_tokens_details": {
+            "cache_write_tokens": 2456,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2804,
+          "output_tokens_details": {
+            "reasoning_tokens": 1923
+          },
+          "total_tokens": 5263
+        },
+        "response_id": "resp_0fbb5d6fce5f37d4016ae0e7d122d087d2a3fe0866a22e2535"
+      },
+      {
+        "id": "a883e42d1ede4edfba9859272670b1a0",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T15:05:34.148095-03:00",
+        "status": "settled",
+        "charged_usd": "0.00113386",
+        "reserved_usd": "0.003307375",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2459,
+        "usage": {
+          "input_tokens": 2459,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 2456
+          },
+          "output_tokens": 2218,
+          "output_tokens_details": {
+            "reasoning_tokens": 1442
+          },
+          "total_tokens": 4677
+        },
+        "response_id": "resp_0af90522eb15d859016ae0e7efac8887d2b16f77dd763c9bb3"
+      },
+      {
+        "id": "3c2d94a1a9f646e1858c202a0f3030ca",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T15:09:34.816895-03:00",
+        "status": "settled",
+        "charged_usd": "0.027156",
+        "reserved_usd": "0.0415575",
+        "model": "gpt-5.6-terra",
+        "counted_input_tokens": 4623,
+        "usage": {
+          "input_tokens": 4623,
+          "input_tokens_details": {
+            "cache_write_tokens": 4620,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1300,
+          "output_tokens_details": {
+            "reasoning_tokens": 320
+          },
+          "total_tokens": 5923
+        },
+        "response_id": "resp_0c0ab82f5d5012b3016ae0e8e0ee2087d1a3defb68ea157ea4"
+      },
+      {
+        "id": "d310e181ec9a443b816fa65d35337b3c",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T15:09:57.121211-03:00",
+        "status": "settled",
+        "charged_usd": "0.001563175",
+        "reserved_usd": "0.00330675",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2454,
+        "usage": {
+          "input_tokens": 2454,
+          "input_tokens_details": {
+            "cache_write_tokens": 2451,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2513,
+          "output_tokens_details": {
+            "reasoning_tokens": 1740
+          },
+          "total_tokens": 4967
+        },
+        "response_id": "resp_0c21213bbfad2738016ae0e8f6c5a887d1a5c9c2e3a7745796"
+      },
+      {
+        "id": "6173656a729942cd9e4a8d3567d85268",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T15:13:10.542139-03:00",
+        "status": "settled",
+        "charged_usd": "0.0013858",
+        "reserved_usd": "0.002058375",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 4467,
+        "usage": {
+          "input_tokens": 4467,
+          "input_tokens_details": {
+            "cache_write_tokens": 4464,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1655,
+          "output_tokens_details": {
+            "reasoning_tokens": 1310
+          },
+          "total_tokens": 6122
+        },
+        "response_id": "resp_02c0318ca3e58489016ae0e9b8ab8487d0be34980403ed216f"
+      },
+      {
+        "id": "150953bc4f6948fa8c182914028b4479",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T15:13:37.194209-03:00",
+        "status": "settled",
+        "charged_usd": "0.0012773",
+        "reserved_usd": "0.003301875",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2415,
+        "usage": {
+          "input_tokens": 2415,
+          "input_tokens_details": {
+            "cache_write_tokens": 2412,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1951,
+          "output_tokens_details": {
+            "reasoning_tokens": 1263
+          },
+          "total_tokens": 4366
+        },
+        "response_id": "resp_0c70e942dcbf200b016ae0e9d2c64087d0a6f547602c145d39"
+      },
+      {
+        "id": "6b3614bdc29d47fdb4554c0d48039eb6",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:26:18.982324-03:00",
+        "status": "settled",
+        "charged_usd": "0.002919425",
+        "reserved_usd": "0.004899",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 11192,
+        "usage": {
+          "input_tokens": 11192,
+          "input_tokens_details": {
+            "cache_write_tokens": 11189,
+            "cached_tokens": 0
+          },
+          "output_tokens": 3041,
+          "output_tokens_details": {
+            "reasoning_tokens": 1000
+          },
+          "total_tokens": 14233
+        },
+        "response_id": "resp_0c90609bd6b4ec2f016ae108ed7f0487d09af0d4eecbdaf01d"
+      },
+      {
+        "id": "cee79a0aca6f461c96eb2b7122615712",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:26:53.665445-03:00",
+        "status": "settled",
+        "charged_usd": "0.0041878",
+        "reserved_usd": "0.006919375",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 27355,
+        "usage": {
+          "input_tokens": 27355,
+          "input_tokens_details": {
+            "cache_write_tokens": 27352,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1537,
+          "output_tokens_details": {
+            "reasoning_tokens": 360
+          },
+          "total_tokens": 28892
+        },
+        "response_id": "resp_0398114fc51a9aab016ae1090f6b7c87d0b0dbbec1f181a7a3"
+      },
+      {
+        "id": "bc0563dff9ed44a9b6ec8ce3d0af3745",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:27:11.646909-03:00",
+        "status": "settled",
+        "charged_usd": "0.0015233",
+        "reserved_usd": "0.002524375",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 2195,
+        "usage": {
+          "input_tokens": 2195,
+          "input_tokens_details": {
+            "cache_write_tokens": 2192,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2498,
+          "output_tokens_details": {
+            "reasoning_tokens": 1034
+          },
+          "total_tokens": 4693
+        },
+        "response_id": "resp_00fbd257c5f81b98016ae10921599c87d091221afdcaafe727"
+      },
+      {
+        "id": "bf1d6c500b694a74a7283bc63ac01e9a",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:27:40.052852-03:00",
+        "status": "settled",
+        "charged_usd": "0.00173005",
+        "reserved_usd": "0.003419125",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3353,
+        "usage": {
+          "input_tokens": 3353,
+          "input_tokens_details": {
+            "cache_write_tokens": 3350,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2622,
+          "output_tokens_details": {
+            "reasoning_tokens": 1552
+          },
+          "total_tokens": 5975
+        },
+        "response_id": "resp_0fc52fec211fe869016ae1093da91487d0ab602ea73e850a9e"
+      },
+      {
+        "id": "bddf69f26e3a4eb497a3857d5446592e",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:28:06.377356-03:00",
+        "status": "settled",
+        "charged_usd": "0.0016023",
+        "reserved_usd": "0.003419125",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3353,
+        "usage": {
+          "input_tokens": 3353,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 3350
+          },
+          "output_tokens": 3137,
+          "output_tokens_details": {
+            "reasoning_tokens": 2139
+          },
+          "total_tokens": 6490
+        },
+        "response_id": "resp_0b433c371f1edc9b016ae109581bb087d0b1f1263c1a23a280"
+      },
+      {
+        "id": "d304c423a5284134a6152c9e6344de65",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:28:39.109115-03:00",
+        "status": "settled",
+        "charged_usd": "0.00105755",
+        "reserved_usd": "0.002051125",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 4409,
+        "usage": {
+          "input_tokens": 4409,
+          "input_tokens_details": {
+            "cache_write_tokens": 4406,
+            "cached_tokens": 0
+          },
+          "output_tokens": 1013,
+          "output_tokens_details": {
+            "reasoning_tokens": 499
+          },
+          "total_tokens": 5422
+        },
+        "response_id": "resp_09dd5a8fdba9ba37016ae10978aafc87d0ba00f09a8649cec1"
+      },
+      {
+        "id": "458f0e6cc19348c2aefa98cecc8132e5",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:28:53.419651-03:00",
+        "status": "settled",
+        "charged_usd": "0.0015308",
+        "reserved_usd": "0.003407875",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3263,
+        "usage": {
+          "input_tokens": 3263,
+          "input_tokens_details": {
+            "cache_write_tokens": 3260,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2246,
+          "output_tokens_details": {
+            "reasoning_tokens": 1491
+          },
+          "total_tokens": 5509
+        },
+        "response_id": "resp_0304fcc057548bf1016ae1098726f087d090ce19cbf0ac779b"
+      },
+      {
+        "id": "9e9143d245aa4ae1ad6cb8716aaff820",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:29:17.847622-03:00",
+        "status": "settled",
+        "charged_usd": "0.00054755",
+        "reserved_usd": "0.001964625",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3717,
+        "usage": {
+          "input_tokens": 3717,
+          "input_tokens_details": {
+            "cache_write_tokens": 3714,
+            "cached_tokens": 0
+          },
+          "output_tokens": 166,
+          "output_tokens_details": {
+            "reasoning_tokens": 81
+          },
+          "total_tokens": 3883
+        },
+        "response_id": "resp_044d58482487dd8d016ae1099fd08087d0a9bc4ca7df989b89"
+      },
+      {
+        "id": "1a7fea9353f342e29337c66116a3c746",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T17:29:24.144076-03:00",
+        "status": "settled",
+        "charged_usd": "0.0014703",
+        "reserved_usd": "0.003406875",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3255,
+        "usage": {
+          "input_tokens": 3255,
+          "input_tokens_details": {
+            "cache_write_tokens": 3252,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2127,
+          "output_tokens_details": {
+            "reasoning_tokens": 1312
+          },
+          "total_tokens": 5382
+        },
+        "response_id": "resp_079f9b98f2d33a33016ae109a5fb2c87d0ab63b079f4a677f2"
+      },
+      {
+        "id": "199ab6dfe4c74473beb32de2082ef560",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T21:33:26.840917-03:00",
+        "status": "settled",
+        "charged_usd": "0.0005308",
+        "reserved_usd": "0.001963875",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3711,
+        "usage": {
+          "input_tokens": 3711,
+          "input_tokens_details": {
+            "cache_write_tokens": 3708,
+            "cached_tokens": 0
+          },
+          "output_tokens": 134,
+          "output_tokens_details": {
+            "reasoning_tokens": 60
+          },
+          "total_tokens": 3845
+        },
+        "response_id": "resp_0bdfa6b8607f9867016ae142d92e7887d0abbc0a3ccf300514"
+      },
+      {
+        "id": "53e6510bb48347f693b1cde5fcbfff1f",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T21:33:33.024749-03:00",
+        "status": "settled",
+        "charged_usd": "0.00167255",
+        "reserved_usd": "0.003404625",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3237,
+        "usage": {
+          "input_tokens": 3237,
+          "input_tokens_details": {
+            "cache_write_tokens": 3234,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2536,
+          "output_tokens_details": {
+            "reasoning_tokens": 1606
+          },
+          "total_tokens": 5773
+        },
+        "response_id": "resp_0370f14418c68fd9016ae142df03b487d0a5d1be117ec00380"
+      },
+      {
+        "id": "ac630015caef400d9a30516b387ece3c",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T21:34:01.573476-03:00",
+        "status": "settled",
+        "charged_usd": "0.00074255",
+        "reserved_usd": "0.001982125",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3857,
+        "usage": {
+          "input_tokens": 3857,
+          "input_tokens_details": {
+            "cache_write_tokens": 3854,
+            "cached_tokens": 0
+          },
+          "output_tokens": 521,
+          "output_tokens_details": {
+            "reasoning_tokens": 353
+          },
+          "total_tokens": 4378
+        },
+        "response_id": "resp_05ad664e963d1457016ae142fb9bd887d0a9df13c36665d60e"
+      },
+      {
+        "id": "3a3cfab88c1040c889f67dd92b9c90ed",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T21:34:11.681347-03:00",
+        "status": "settled",
+        "charged_usd": "0.00143855",
+        "reserved_usd": "0.003398125",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3185,
+        "usage": {
+          "input_tokens": 3185,
+          "input_tokens_details": {
+            "cache_write_tokens": 3182,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2081,
+          "output_tokens_details": {
+            "reasoning_tokens": 1330
+          },
+          "total_tokens": 5266
+        },
+        "response_id": "resp_0b61ce1570cb8e71016ae1430564dc87d080f0548d1ebcfd61"
+      },
+      {
+        "id": "afe69ba66d3c40ea8b7b3b5ca1c669cd",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T21:39:23.603780-03:00",
+        "status": "settled",
+        "charged_usd": "0.00057155",
+        "reserved_usd": "0.000953125",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3625,
+        "usage": {
+          "input_tokens": 3625,
+          "input_tokens_details": {
+            "cache_write_tokens": 3622,
+            "cached_tokens": 0
+          },
+          "output_tokens": 237,
+          "output_tokens_details": {
+            "reasoning_tokens": 140
+          },
+          "total_tokens": 3862
+        },
+        "response_id": "resp_03e66a9800308eb2016ae1443dc43087d2b6811ede0b4defb2"
+      },
+      {
+        "id": "09caaf043cf7425d8dbace60dac493ea",
+        "fixture_id": "espn-401841286",
+        "started_at": "2026-10-27T21:39:29.484811-03:00",
+        "status": "settled",
+        "charged_usd": "0.00050605",
+        "reserved_usd": "0.001318125",
+        "model": "gpt-6-luna",
+        "counted_input_tokens": 3345,
+        "usage": {
+          "input_tokens": 3345,
+          "input_tokens_details": {
+            "cache_write_tokens": 3342,
+            "cached_tokens": 0
+          },
+          "output_tokens": 176,
+          "output_tokens_details": {
+            "reasoning_tokens": 124
+          },
+          "total_tokens": 3521
+        },
+        "response_id": "resp_024eef04b6721718016ae14442e58887d2a25e0ce63104b989"
+      }
+    ],
+    "all_settled": true,
+    "package_ready": true,
+    "publication_enabled": false,
+    "schedule_enabled": false
+  },
+  "facts": {
+    "schema_version": 1,
+    "fixture_id": "espn-401841286",
+    "generated_at": "2026-10-27T21:33:23.790386-03:00",
+    "mode": "facts_only",
+    "ready_for_drafting": true,
+    "ready_for_publication": false,
+    "validation_method": "structured_checks_plus_explicit_source_review",
+    "match": {
+      "home": "Flamengo",
+      "away": "Atlético-MG",
+      "match_date": "2026-10-26",
+      "competition": "Campeonato Brasileiro Série A",
+      "kickoff": "2026-10-26T20:00:00-03:00"
+    },
+    "venue": "Estadio do Maracana",
+    "score": {
+      "home": 3,
+      "away": 2
+    },
+    "goals": [
+      {
+        "side": "away",
+        "scorer": "Bernard",
+        "minute": null
+      },
+      {
+        "side": "home",
+        "scorer": "Gonzalo Plata",
+        "minute": null
+      },
+      {
+        "side": "home",
+        "scorer": "Giorgian de Arrascaeta",
+        "minute": null
+      },
+      {
+        "side": "away",
+        "scorer": "Renan Lodi",
+        "minute": null
+      },
+      {
+        "side": "home",
+        "scorer": "Jorge Carrascal",
+        "minute": null
+      }
+    ],
+    "campaign": {
+      "home": {
+        "gamesPlayed": 32,
+        "wins": 21,
+        "ties": 7,
+        "losses": 4,
+        "points": 70
+      },
+      "away": {
+        "gamesPlayed": 32,
+        "wins": 14,
+        "ties": 8,
+        "losses": 10,
+        "points": 50
+      }
+    },
+    "competition_context": {},
+    "upcoming": {
+      "home": {
+        "next_match": {
+          "fixture_id": "espn-401841292",
+          "home": "Vasco da Gama",
+          "away": "Flamengo",
+          "date_brasilia": "2026-10-29",
+          "time_brasilia": "20:00",
+          "competition_code": "bra.1",
+          "competition": "Brazilian Serie A"
+        },
+        "next_in_competition": {
+          "fixture_id": "espn-401841292",
+          "home": "Vasco da Gama",
+          "away": "Flamengo",
+          "date_brasilia": "2026-10-29",
+          "time_brasilia": "20:00",
+          "competition_code": "bra.1",
+          "competition": "Brazilian Serie A"
+        }
+      },
+      "away": {
+        "next_match": {
+          "fixture_id": "espn-401841288",
+          "home": "Atlético-MG",
+          "away": "Cruzeiro",
+          "date_brasilia": "2026-10-29",
+          "time_brasilia": "19:30",
+          "competition_code": "bra.1",
+          "competition": "Brazilian Serie A"
+        },
+        "next_in_competition": {
+          "fixture_id": "espn-401841288",
+          "home": "Atlético-MG",
+          "away": "Cruzeiro",
+          "date_brasilia": "2026-10-29",
+          "time_brasilia": "19:30",
+          "competition_code": "bra.1",
+          "competition": "Brazilian Serie A"
+        }
+      }
+    },
+    "sources": [
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/summary?event=401841286",
+        "checked_at": "2026-10-27T21:33:23.790386-03:00",
+        "supports": [
+          "identity",
+          "score",
+          "goals",
+          "venue",
+          "campaign"
+        ]
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/819/schedule?fixture=true&season=2026",
+        "checked_at": "2026-10-27T21:33:23.790386-03:00",
+        "supports": [
+          "upcoming.home"
+        ]
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/7632/schedule?fixture=true&season=2026",
+        "checked_at": "2026-10-27T21:33:23.790386-03:00",
+        "supports": [
+          "upcoming.away"
+        ]
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/summary?event=401841286",
+        "checked_at": "2026-10-27T17:26:10.423659-03:00",
+        "supports": [
+          "automatic_source_review"
+        ]
+      },
+      {
+        "url": "https://www.flamengo.com.br/flamengo/noticias/futebol/com-emocao-ate-o-fim-flamengo-vira-sobre-o-atletico-mg-e-volta-a-lideranca-do-brasileirao",
+        "checked_at": "2026-10-27T17:26:10.423659-03:00",
+        "supports": [
+          "automatic_source_review"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "field": "goal_minute",
+        "scorer": "Bernard",
+        "action": "omit",
+        "provider_value": "7'",
+        "review": {
+          "side": "away",
+          "scorer": "Bernard",
+          "minute": null
+        }
+      },
+      {
+        "field": "goal_minute",
+        "scorer": "Gonzalo Plata",
+        "action": "omit",
+        "provider_value": "34'",
+        "review": {
+          "side": "home",
+          "scorer": "Gonzalo Plata",
+          "minute": null
+        }
+      },
+      {
+        "field": "goal_minute",
+        "scorer": "Giorgian de Arrascaeta",
+        "action": "omit",
+        "provider_value": "41'",
+        "review": {
+          "side": "home",
+          "scorer": "Giorgian de Arrascaeta",
+          "minute": null
+        }
+      },
+      {
+        "field": "goal_minute",
+        "scorer": "Renan Lodi",
+        "action": "omit",
+        "provider_value": "59'",
+        "review": {
+          "side": "away",
+          "scorer": "Renan Lodi",
+          "minute": null
+        }
+      },
+      {
+        "field": "goal_minute",
+        "scorer": "Jorge Carrascal",
+        "action": "omit",
+        "provider_value": "90'+9'",
+        "review": {
+          "side": "home",
+          "scorer": "Jorge Carrascal",
+          "minute": null
+        }
+      }
+    ],
+    "gaps": [],
+    "editorial_rules": [
+      "Não inferir domínio ou qualidade de atuação a partir de placar/estatísticas.",
+      "Não publicar minutos omitidos nem posição final ou classificação não verificadas.",
+      "Horários futuros são de Brasília e devem ser revalidados antes de publicar."
+    ]
+  },
+  "narrative": {
+    "fixture_id": "espn-401841286",
+    "reviewed": true,
+    "review_method": "automatic_opened_pages_plus_model_review",
+    "sources": [
+      {
+        "id": "espn_summary",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/summary?event=401841286",
+        "opened": true,
+        "checked_on": "2026-10-27"
+      },
+      {
+        "id": "page_0",
+        "url": "https://www.flamengo.com.br/flamengo/noticias/futebol/com-emocao-ate-o-fim-flamengo-vira-sobre-o-atletico-mg-e-volta-a-lideranca-do-brasileirao",
+        "opened": true,
+        "checked_on": "2026-10-27"
+      }
+    ],
+    "claims": [
+      {
+        "text": "A partida da 32ª rodada do Campeonato Brasileiro foi disputada no Maracanã, no Rio de Janeiro, em 26 de outubro de 2026.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Logo no começo, Arrascaeta encontrou Pedro atrás da defesa; o atacante chegou à bola, mas finalizou de carrinho e Delfim defendeu.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "O Atlético-MG abriu o placar em contra-ataque: Victor Hugo escapou da marcação e lançou Preciado, que entrou na área e cruzou rasteiro para Bernard concluir no canto.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Em escanteio cobrado por Arrascaeta, Pulgar cabeceou para baixo; a bola quicou, mas Delfim saltou e a espalmou no canto.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Plata recebeu pela direita da área e cruzou; a bola desviou na trave e entrou, deixando o Flamengo em igualdade.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "A virada começou com Jorginho desarmando no meio e acionando Pulgar; este encontrou Samuel Lino, que ajeitou para Arrascaeta driblar Vitão e bater cruzado, na saída do goleiro.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "O Flamengo foi para o intervalo em vantagem, após construir a virada ainda no primeiro tempo sob o comando de Leonardo Jardim.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Na volta para a segunda etapa, Ayrton Lucas entrou no lugar de Alex Sandro pelo Flamengo.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "O Atlético-MG empatou em uma escapada: Victor Hugo lançou Renan Lodi, que finalizou de primeira no canto oposto de Rossi.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Na resposta rubro-negra, Arrascaeta cruzou e Léo Ortiz cabeceou forte; Delfim se esticou para espalmar a bola para escanteio.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Leonardo Jardim reforçou o ataque colocando Carrascal por Plata e Bruno Henrique por Pedro.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Também pelo Flamengo, Lucas Paquetá e Joaquín Freitas entraram, respectivamente, nas vagas de Jorginho e Arrascaeta.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Já perto do fim, Freitas arriscou da entrada da área e Delfim voltou a defender, desta vez no canto.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "O Flamengo manteve a pressão nos instantes finais e seguiu buscando o gol da vitória.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "No lance decisivo, Léo Pereira avançou e Renan Lodi o derrubou dentro da área; o árbitro marcou pênalti.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "Carrascal cobrou a penalidade rasteira no canto esquerdo de Delfim e marcou o gol que definiu a vitória do Flamengo.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "A escalação oficial do Flamengo relaciona Rossi; Varela, Léo Ortiz, Léo Pereira e Alex Sandro; Erick Pulgar, Jorginho e Arrascaeta; Plata, Samuel Lino e Pedro, com Leonardo Jardim como técnico.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "A ficha do Atlético-MG relaciona Gabriel Delfim; Natanael, Vitão, Lyanco e Renan Lodi; Alan Franco, Maycon, Preciado, Igor Gomes, Bernard e Victor Hugo, sob o comando de Eduardo Domínguez.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "A ficha registra ainda as entradas de Castaño por Maycon, Minda por Preciado, Reinier por Igor Gomes, Alexander por Bernard e Vitor Hugo por Victor Hugo pelo Atlético-MG.",
+        "source_ids": [
+          "page_0"
+        ]
+      },
+      {
+        "text": "O resultado final foi uma vitória do Flamengo por 3 a 2, construída de virada e definida no último lance.",
+        "source_ids": [
+          "page_0"
+        ]
+      }
+    ]
+  },
+  "article": {
+    "title": "Flamengo vence Atlético-MG por 3 a 2 com gol no fim",
+    "excerpt": "Após sair atrás e sofrer o empate na etapa final, o Rubro-Negro decidiu a partida no Maracanã em cobrança de pênalti de Carrascal.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "O Flamengo venceu o Atlético-MG por 3 a 2 na segunda-feira, 26 de outubro de 2026, no Maracanã, no Rio de Janeiro, pela 32ª rodada do Campeonato Brasileiro Série A. A equipe rubro-negra saiu atrás, virou ainda no primeiro tempo e, depois de sofrer o empate, confirmou o resultado com um pênalti de Carrascal perto do fim."
+      },
+      {
+        "type": "subtitle",
+        "text": "Bernard abre o placar, mas Flamengo reage antes do intervalo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Logo no começo, Arrascaeta encontrou Pedro atrás da defesa. O atacante chegou à bola e tentou finalizar de carrinho, mas Gabriel Delfim fez a defesa. A partida teve mudanças no placar ainda na primeira etapa."
+      },
+      {
+        "type": "paragraph",
+        "text": "O Atlético-MG marcou primeiro em um contra-ataque. Victor Hugo escapou da marcação e lançou Preciado, que entrou na área e cruzou rasteiro. Bernard concluiu no canto e colocou a equipe visitante em vantagem."
+      },
+      {
+        "type": "paragraph",
+        "text": "O Flamengo respondeu em um escanteio cobrado por Arrascaeta. Pulgar cabeceou para baixo e a bola quicou antes de Delfim saltar e espalmá-la no canto. Na sequência, Plata recebeu pela direita da área e cruzou; a bola desviou na trave e entrou, deixando o placar igual."
+      },
+      {
+        "type": "paragraph",
+        "text": "A virada começou com Jorginho desarmando no meio e acionando Pulgar. Pulgar encontrou Samuel Lino, que ajeitou para Arrascaeta. Ele driblou Vitão e bateu cruzado, na saída do goleiro, para fazer o segundo gol rubro-negro. Com a vantagem, o Flamengo foi para o intervalo à frente."
+      },
+      {
+        "type": "paragraph",
+        "text": "No retorno para a segunda etapa, Ayrton Lucas entrou no lugar de Alex Sandro pelo Flamengo."
+      },
+      {
+        "type": "subtitle",
+        "text": "Renan Lodi empata e Delfim evita novo gol"
+      },
+      {
+        "type": "paragraph",
+        "text": "Victor Hugo lançou Renan Lodi, que concluiu de primeira no canto oposto de Rossi. O gol igualou o placar. Na resposta rubro-negra, Arrascaeta cruzou para Léo Ortiz cabecear forte, mas Delfim se esticou e desviou a bola para escanteio."
+      },
+      {
+        "type": "paragraph",
+        "text": "Leonardo Jardim promoveu mudanças no ataque ao colocar Carrascal no lugar de Plata e Bruno Henrique na vaga de Pedro. Também pelo Flamengo, Lucas Paquetá entrou por Jorginho, enquanto Joaquín Freitas substituiu Arrascaeta. As alterações ocorreram antes do lance que definiu o placar."
+      },
+      {
+        "type": "paragraph",
+        "text": "Pelo Atlético-MG, a ficha registra as entradas de Castaño por Maycon, Minda por Preciado, Reinier por Igor Gomes, Alexander por Bernard e Vitor Hugo por Victor Hugo. O empate persistia no marcador antes do lance decisivo."
+      },
+      {
+        "type": "paragraph",
+        "text": "Já perto do fim, Freitas arriscou da entrada da área e Delfim defendeu no canto. O Flamengo manteve a pressão nos instantes finais e seguiu em busca do gol da vitória. O lance decisivo começou com uma chegada de Léo Pereira."
+      },
+      {
+        "type": "subtitle",
+        "text": "Carrascal converte pênalti e decide no fim"
+      },
+      {
+        "type": "paragraph",
+        "text": "Léo Pereira avançou e foi derrubado por Renan Lodi dentro da área. O árbitro marcou pênalti, e Carrascal assumiu a cobrança. Ele bateu rasteiro no canto esquerdo de Delfim e marcou o terceiro gol do Flamengo, que definiu a vitória por 3 a 2."
+      },
+      {
+        "type": "paragraph",
+        "text": "O resultado levou o Flamengo, após 32 partidas, a 21 vitórias, sete empates, quatro derrotas e 70 pontos. O Atlético-MG também completou 32 jogos: soma 14 vitórias, oito empates, dez derrotas e 50 pontos. Os números registram a campanha de cada equipe até este confronto."
+      },
+      {
+        "type": "paragraph",
+        "text": "A escalação inicial do Flamengo teve Rossi; Varela, Léo Ortiz, Léo Pereira e Alex Sandro; Erick Pulgar, Jorginho e Arrascaeta; Plata, Samuel Lino e Pedro. Leonardo Jardim comandou a equipe."
+      },
+      {
+        "type": "paragraph",
+        "text": "O Atlético-MG começou com Gabriel Delfim; Natanael, Vitão, Lyanco e Renan Lodi; Alan Franco, Maycon, Preciado, Igor Gomes, Bernard e Victor Hugo. Eduardo Domínguez comandou o time."
+      },
+      {
+        "type": "paragraph",
+        "text": "Os dois times voltam a campo em 29 de outubro pelo Campeonato Brasileiro Série A. O Flamengo visita o Vasco da Gama às 20h. Às 19h30, o Atlético-MG recebe o Cruzeiro."
+      }
+    ]
+  },
+  "metadata": {
+    "model": "gpt-6-luna",
+    "review_model": "gpt-6-luna",
+    "semantic_review_passed": true,
+    "format_passed": true,
+    "fixture_id": "espn-401841286",
+    "written_at": "2026-10-28T00:39:29.483553+00:00",
+    "article_sha256": "e9fd8a660d574cc45afaaebd26fa8e5cef601eb1e3d3df2d8b72825411513d95",
+    "package_sha256": "d0c7a25f7d00c670353a3d541adb36da6889457b1da49a47f5006818715e55a7",
+    "review_sha256": "58dd65cafc5d60f1aeec5906377d207af482f952208392c1c4824da58644150f",
+    "review_method": "full_review_plus_changed_unit_review_with_global_context",
+    "human_review_required": true,
+    "publication_enabled": false,
+    "continued_from_run": "40609431440"
+  },
+  "review": {
+    "checks": [
+      {
+        "unit": "title",
+        "supported": true,
+        "evidence_ids": [
+          "match",
+          "score",
+          "goals",
+          "narrative_15",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "excerpt",
+        "supported": true,
+        "evidence_ids": [
+          "venue",
+          "score",
+          "goals",
+          "narrative_8",
+          "narrative_14",
+          "narrative_15",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_0",
+        "supported": true,
+        "evidence_ids": [
+          "match",
+          "venue",
+          "score",
+          "goals",
+          "narrative_0",
+          "narrative_6",
+          "narrative_8",
+          "narrative_14",
+          "narrative_15"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_1",
+        "supported": true,
+        "evidence_ids": [
+          "goals",
+          "narrative_2",
+          "narrative_4",
+          "narrative_5",
+          "narrative_6"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_2",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_1",
+          "narrative_17",
+          "goals",
+          "narrative_4",
+          "narrative_5"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_3",
+        "supported": true,
+        "evidence_ids": [
+          "match",
+          "goals",
+          "narrative_2"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_4",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_3",
+          "narrative_4"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_5",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_5",
+          "narrative_6"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_6",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_7"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_7",
+        "supported": true,
+        "evidence_ids": [
+          "goals",
+          "narrative_8",
+          "narrative_9"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_8",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_8",
+          "narrative_9",
+          "score",
+          "goals"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_9",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_10",
+          "narrative_11",
+          "narrative_14",
+          "narrative_15"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_10",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_18",
+          "narrative_14",
+          "narrative_15"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_11",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_12",
+          "narrative_13",
+          "narrative_14"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_12",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_15",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_13",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_14",
+          "narrative_15",
+          "score",
+          "goals",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_14",
+        "supported": true,
+        "evidence_ids": [
+          "campaign"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_15",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_16"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_16",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_17"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_17",
+        "supported": true,
+        "evidence_ids": [
+          "upcoming"
+        ],
+        "issues": []
+      }
+    ],
+    "provenance": {
+      "method": "changed_units_with_full_article_context",
+      "before_article_sha256": "5b0148243bc0b50b2877e8caf836183241a2e68189bf30bc5a23afc2040a2487",
+      "after_article_sha256": "e9fd8a660d574cc45afaaebd26fa8e5cef601eb1e3d3df2d8b72825411513d95",
+      "previous_review_sha256": "5a2a3b47783b87927b33b2e73f1eb23e619c6cfc02c107e2deb2b51bd35b55d2",
+      "package_sha256": "d0c7a25f7d00c670353a3d541adb36da6889457b1da49a47f5006818715e55a7",
+      "rechecked_units": [
+        "block_8"
+      ],
+      "unchanged_approved_units": [
+        "block_0",
+        "block_1",
+        "block_10",
+        "block_11",
+        "block_12",
+        "block_13",
+        "block_14",
+        "block_15",
+        "block_16",
+        "block_17",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6",
+        "block_7",
+        "block_9",
+        "excerpt",
+        "title"
+      ]
+    }
+  },
+  "previous_review": {
+    "checks": [
+      {
+        "unit": "title",
+        "supported": true,
+        "evidence_ids": [
+          "match",
+          "score",
+          "goals",
+          "narrative_15",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "excerpt",
+        "supported": true,
+        "evidence_ids": [
+          "venue",
+          "score",
+          "goals",
+          "narrative_8",
+          "narrative_14",
+          "narrative_15",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_0",
+        "supported": true,
+        "evidence_ids": [
+          "match",
+          "venue",
+          "score",
+          "goals",
+          "narrative_0",
+          "narrative_6",
+          "narrative_8",
+          "narrative_14",
+          "narrative_15"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_1",
+        "supported": true,
+        "evidence_ids": [
+          "goals",
+          "narrative_2",
+          "narrative_4",
+          "narrative_5",
+          "narrative_6"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_2",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_1",
+          "narrative_17",
+          "goals",
+          "narrative_4",
+          "narrative_5"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_3",
+        "supported": true,
+        "evidence_ids": [
+          "match",
+          "goals",
+          "narrative_2"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_4",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_3",
+          "narrative_4"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_5",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_5",
+          "narrative_6"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_6",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_7"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_7",
+        "supported": true,
+        "evidence_ids": [
+          "goals",
+          "narrative_8",
+          "narrative_9"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_8",
+        "supported": false,
+        "evidence_ids": [
+          "narrative_8",
+          "narrative_9"
+        ],
+        "issues": [
+          "A igualdade do placar e a defesa de Delfim são sustentadas, mas dizer que o empate «mudou o cenário da etapa final» é uma interpretação não confirmada pelas evidências. Limite a frase a informar que o gol igualou o placar."
+        ]
+      },
+      {
+        "unit": "block_9",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_10",
+          "narrative_11",
+          "narrative_14",
+          "narrative_15"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_10",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_18",
+          "narrative_14",
+          "narrative_15"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_11",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_12",
+          "narrative_13",
+          "narrative_14"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_12",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_15",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_13",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_14",
+          "narrative_15",
+          "score",
+          "goals",
+          "narrative_19"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_14",
+        "supported": true,
+        "evidence_ids": [
+          "campaign"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_15",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_16"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_16",
+        "supported": true,
+        "evidence_ids": [
+          "narrative_17"
+        ],
+        "issues": []
+      },
+      {
+        "unit": "block_17",
+        "supported": true,
+        "evidence_ids": [
+          "upcoming"
+        ],
+        "issues": []
+      }
+    ]
+  },
+  "previous_article": {
+    "title": "Flamengo vence Atlético-MG por 3 a 2 com gol no fim",
+    "excerpt": "Após sair atrás e sofrer o empate na etapa final, o Rubro-Negro decidiu a partida no Maracanã em cobrança de pênalti de Carrascal.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "O Flamengo venceu o Atlético-MG por 3 a 2 na segunda-feira, 26 de outubro de 2026, no Maracanã, no Rio de Janeiro, pela 32ª rodada do Campeonato Brasileiro Série A. A equipe rubro-negra saiu atrás, virou ainda no primeiro tempo e, depois de sofrer o empate, confirmou o resultado com um pênalti de Carrascal perto do fim."
+      },
+      {
+        "type": "subtitle",
+        "text": "Bernard abre o placar, mas Flamengo reage antes do intervalo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Logo no começo, Arrascaeta encontrou Pedro atrás da defesa. O atacante chegou à bola e tentou finalizar de carrinho, mas Gabriel Delfim fez a defesa. A partida teve mudanças no placar ainda na primeira etapa."
+      },
+      {
+        "type": "paragraph",
+        "text": "O Atlético-MG marcou primeiro em um contra-ataque. Victor Hugo escapou da marcação e lançou Preciado, que entrou na área e cruzou rasteiro. Bernard concluiu no canto e colocou a equipe visitante em vantagem."
+      },
+      {
+        "type": "paragraph",
+        "text": "O Flamengo respondeu em um escanteio cobrado por Arrascaeta. Pulgar cabeceou para baixo e a bola quicou antes de Delfim saltar e espalmá-la no canto. Na sequência, Plata recebeu pela direita da área e cruzou; a bola desviou na trave e entrou, deixando o placar igual."
+      },
+      {
+        "type": "paragraph",
+        "text": "A virada começou com Jorginho desarmando no meio e acionando Pulgar. Pulgar encontrou Samuel Lino, que ajeitou para Arrascaeta. Ele driblou Vitão e bateu cruzado, na saída do goleiro, para fazer o segundo gol rubro-negro. Com a vantagem, o Flamengo foi para o intervalo à frente."
+      },
+      {
+        "type": "paragraph",
+        "text": "No retorno para a segunda etapa, Ayrton Lucas entrou no lugar de Alex Sandro pelo Flamengo."
+      },
+      {
+        "type": "subtitle",
+        "text": "Renan Lodi empata e Delfim evita novo gol"
+      },
+      {
+        "type": "paragraph",
+        "text": "Victor Hugo lançou Renan Lodi, que concluiu de primeira no canto oposto de Rossi. O gol deixou novamente iguais as equipes e mudou o cenário da etapa final. O Flamengo buscou responder, e Arrascaeta cruzou para Léo Ortiz cabecear forte, mas Delfim se esticou e desviou a bola para escanteio."
+      },
+      {
+        "type": "paragraph",
+        "text": "Leonardo Jardim promoveu mudanças no ataque ao colocar Carrascal no lugar de Plata e Bruno Henrique na vaga de Pedro. Também pelo Flamengo, Lucas Paquetá entrou por Jorginho, enquanto Joaquín Freitas substituiu Arrascaeta. As alterações ocorreram antes do lance que definiu o placar."
+      },
+      {
+        "type": "paragraph",
+        "text": "Pelo Atlético-MG, a ficha registra as entradas de Castaño por Maycon, Minda por Preciado, Reinier por Igor Gomes, Alexander por Bernard e Vitor Hugo por Victor Hugo. O empate persistia no marcador antes do lance decisivo."
+      },
+      {
+        "type": "paragraph",
+        "text": "Já perto do fim, Freitas arriscou da entrada da área e Delfim defendeu no canto. O Flamengo manteve a pressão nos instantes finais e seguiu em busca do gol da vitória. O lance decisivo começou com uma chegada de Léo Pereira."
+      },
+      {
+        "type": "subtitle",
+        "text": "Carrascal converte pênalti e decide no fim"
+      },
+      {
+        "type": "paragraph",
+        "text": "Léo Pereira avançou e foi derrubado por Renan Lodi dentro da área. O árbitro marcou pênalti, e Carrascal assumiu a cobrança. Ele bateu rasteiro no canto esquerdo de Delfim e marcou o terceiro gol do Flamengo, que definiu a vitória por 3 a 2."
+      },
+      {
+        "type": "paragraph",
+        "text": "O resultado levou o Flamengo, após 32 partidas, a 21 vitórias, sete empates, quatro derrotas e 70 pontos. O Atlético-MG também completou 32 jogos: soma 14 vitórias, oito empates, dez derrotas e 50 pontos. Os números registram a campanha de cada equipe até este confronto."
+      },
+      {
+        "type": "paragraph",
+        "text": "A escalação inicial do Flamengo teve Rossi; Varela, Léo Ortiz, Léo Pereira e Alex Sandro; Erick Pulgar, Jorginho e Arrascaeta; Plata, Samuel Lino e Pedro. Leonardo Jardim comandou a equipe."
+      },
+      {
+        "type": "paragraph",
+        "text": "O Atlético-MG começou com Gabriel Delfim; Natanael, Vitão, Lyanco e Renan Lodi; Alan Franco, Maycon, Preciado, Igor Gomes, Bernard e Victor Hugo. Eduardo Domínguez comandou o time."
+      },
+      {
+        "type": "paragraph",
+        "text": "Os dois times voltam a campo em 29 de outubro pelo Campeonato Brasileiro Série A. O Flamengo visita o Vasco da Gama às 20h. Às 19h30, o Atlético-MG recebe o Cruzeiro."
+      }
+    ]
+  },
+  "noticiaJSON": {
+    "title": "Flamengo vence Atlético-MG por 3 a 2 com gol no fim",
+    "excerpt": "Após sair atrás e sofrer o empate na etapa final, o Rubro-Negro decidiu a partida no Maracanã em cobrança de pênalti de Carrascal.",
+    "url": "flamengo-atletico-mg-campeonato-brasileiro-serie-a-2026-resultado.html",
+    "date": "27/10/2026",
+    "category": "Futebol"
+  },
+  "sitemap_entry": "<ns0:url xmlns:ns0=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n    <ns0:loc>https://cortedosesportes.com.br/flamengo-atletico-mg-campeonato-brasileiro-serie-a-2026-resultado.html</ns0:loc>\n    <ns0:lastmod>2026-10-27</ns0:lastmod>\n    <ns0:priority>0.9</ns0:priority>\n  </ns0:url>\n\n ",
+  "output_sha256": {
+    "noticias.json": "65318e0f41fb1747dc4cf1c221facc74921e8618936004768faaf202e9f1609e",
+    "flamengo-atletico-mg-campeonato-brasileiro-serie-a-2026-resultado.html": "82ac9e541c36395fe3fbe5010edf5f6748e65ab48dac8fe3e7c9bc179daed905",
+    "validacao.json": "22b69ce9d356863b35750c56c357513fcfa9abb8c5f1b52ebf0e48f5cae14ec8",
+    "sitemap.xml": "f57a4ae8f38d69a4cb7e7c7200434b8c3899df4ebc8669bbe0ffc21728e42b88"
+  }
+}
