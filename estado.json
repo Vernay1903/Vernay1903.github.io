@@ -99,14 +99,14 @@
       "incremental_completion_run_id": "40610075120"
     },
     "espn-401921835": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-10-28T09:12:05.235299-03:00",
       "run_id": "40685735443",
       "api_calls": 12,
       "operation_mode": "authorized_step15_validation",
-      "finished_at": "2026-10-28T09:23:07.931307-03:00",
+      "finished_at": "2026-10-28T09:28:54.877730-03:00",
       "continuation_run_id": "40687696901",
-      "reason": "Fato não confirmado: outcome A classificação do Fleetwood nos pênaltis e a vitória por 5–3 aparecem no resumo estruturado da ESPN; o relato oficial confirma a defesa de Jay Lynch e a cobrança convertida por Conor Haughey, mas não informa o placar total da disputa. Portanto, o componente 5–3 não está corroborado pelos dois domínios."
+      "reason": "Limite de chamadas da partida"
     }
   },
   "months": {
