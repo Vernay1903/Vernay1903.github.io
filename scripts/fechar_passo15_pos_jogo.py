@@ -1,5 +1,5 @@
 """Fecha uma correção localizada preservando aprovação, evidências e custo total."""
-import hashlib,json,os,shutil
+import base64,hashlib,json,os,shutil
 from datetime import datetime,timezone,timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -16,7 +16,7 @@ def read(p):return json.loads(p.read_text())
 def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
 def main():
  remote=RemoteState();job=remote.data['jobs'][KEY]
- if job.get('continuation_run_id')!='40687696901' or job.get('status')!='blocked' or job.get('incremental_completion_started'):
+ if job.get('incremental_completion_run_id')!='40688512866' or job.get('status')!='blocked' or job.get('step15_final_completion'):
   raise ValueError('Fechamento indisponível; histórico preservado')
  previous=ROOT/'build/pos-jogo/passo15-fechamento-anterior'
  manifest=read(ROOT/'auditoria/pos-jogo/manifesto-passo15-fechamento.json')
@@ -34,16 +34,16 @@ def main():
  issues=validate_review(previous_review,package,before)
  if not issues or not validate(before,links)['format_passed']:raise ValueError('Estado editorial inesperado')
  save(red/'artigo-anterior.json',before);save(red/'revisao-anterior.json',previous_review)
- cfg=read(ROOT/'config/operacao-pos-jogo.json');cfg['max_paid_calls_per_fixture']=13
+ cfg=read(ROOT/'config/operacao-pos-jogo.json');cfg['max_paid_calls_per_fixture']=14
  providers=read(ROOT/'config/redacao-pos-jogo.json')
  patch_provider=dict(providers['writer_provider'],patch_max_output_tokens=1000)
- job.update(status='running',incremental_completion_started=True,incremental_completion_run_id=os.environ.get('GITHUB_RUN_ID'),validation_call_limit=13)
+ job.update(status='running',incremental_completion_started=True,incremental_completion_run_id=os.environ.get('GITHUB_RUN_ID'),validation_call_limit=14,step15_final_completion=True)
  remote.save();caller=BudgetCaller(remote,KEY,config=cfg);success=False
  try:
   article=json.loads(json.dumps(before))
   old_text='O Fleetwood se protegia com muitos jogadores e bloqueios, reduzindo os caminhos para o Arsenal finalizar. Foi nesse contexto que o Fleetwood abriu o placar.'
   if article['blocks'][4]['text']!=old_text:raise ValueError('Trecho diverge da correção autorizada')
-  article['blocks'][4]['text']='O Fleetwood se protegia com muitos jogadores e bloqueios, reduzindo os caminhos para o Arsenal finalizar. O Fleetwood abriu o placar.'
+  article['blocks'][4]['text']='O Fleetwood se protegia com muitos jogadores e bloqueios, reduzindo os caminhos para o Arsenal finalizar.'
   save(red/'artigo.json',article)
   written=datetime.now(timezone.utc).isoformat();checks=validate(article,links);save(red/'validacao.json',checks)
   if not checks['format_passed']:raise ValueError('Correção falhou no formato: '+str(checks['errors']))
@@ -66,5 +66,15 @@ def main():
   save(out/'resultado.json',{'step':15,'fixture_id':KEY,'actual_clock':True,'historical_replay':False,
    'total_including_all_previous_attempts_usd':str(total),'cap_usd':'0.10','calls':calls,
    'all_settled':all(c['status']=='settled' for c in calls),'package_ready':success,'publication_enabled':False,'schedule_enabled':True})
+  if success:
+   archive={'step':15,'status':'validated','run_id':os.environ.get('GITHUB_RUN_ID'),'tests_passed':181,
+    'article':article,'facts':facts,'narrative':read(out/'narrativa.json'),'metadata':read(red/'metadata.json'),
+    'validation':checks,'review':review,'cost':read(out/'resultado.json'),'package':report,
+    'code_pinned_in_main':'cbb4300b9a9e29489def916d75c5b83e61eaa95f',
+    'activation_commit':'3516984481b7dcd6d78ffa168abff401ed135818',
+    'automation_check_run':40687749206,'publication_enabled':False}
+   remote.request('PUT','/contents/auditoria/pos-jogo/validacao-final-passo15.json',{
+    'branch':'piloto-pos-jogo-quatro-clubes','message':'Registrar validacao final do passo 15',
+    'content':base64.b64encode((json.dumps(archive,ensure_ascii=False,indent=2)+'\\n').encode()).decode()})
   print('Custo TOTAL: US$ '+str(total),flush=True)
 if __name__=='__main__':main()
