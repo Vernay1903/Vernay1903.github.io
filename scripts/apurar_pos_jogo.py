@@ -158,6 +158,7 @@ def candidate_proposal(candidate,summary):
     core={'identity':{k:candidate[k] for k in ['home','away','match_date','competition']},
           'score':proposal['score'],'venue':proposal['venue'],
           'goals':[{'side':g['side'],'scorer':g['scorer']} for g in goals],'campaign':campaign}
+    if not campaign: core.pop('campaign')
     if outcome['decided_by'] != 'match':
         proposal['outcome']=outcome
         core['outcome']=outcome

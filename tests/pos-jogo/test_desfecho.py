@@ -51,7 +51,7 @@ class OutcomeTest(unittest.TestCase):
  def test_cup_without_campaign(self):
   f=test_fatos.FactsTest();f.setUp();f.s.pop('standings',None);f.r['campaign']={}
   self.assertEqual(f.run_build()['campaign'],{})
-  proposal,core,_,_=candidate_proposal(f.c,f.s);self.assertEqual(core['campaign'],{})
+  proposal,core,_,_=candidate_proposal(f.c,f.s);self.assertNotIn('campaign',core)
  def test_extra_time_requires_external_review(self):
   f=test_fatos.FactsTest();f.setUp();c=f.s['header']['competitions'][0];c['status']['type']['name']='STATUS_FINAL_AET'
   with self.assertRaises(ValueError):f.run_build()
