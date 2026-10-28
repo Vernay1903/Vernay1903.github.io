@@ -1538,13 +1538,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-10-28T10:25:16.861958-03:00",
     "last_run_id": "40696228005",
-    "last_finished_at": "2026-10-28T09:29:19.136190-03:00",
+    "last_finished_at": "2026-10-28T10:25:23.078343-03:00",
     "last_status": "idle",
     "last_report": {
-      "run_id": "40687749206",
+      "run_id": "40696228005",
       "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.486594595"
+      "pilot_month_charged_usd": "0.487173270"
     }
   },
   "step15_retry": {
