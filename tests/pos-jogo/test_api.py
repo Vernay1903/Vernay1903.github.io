@@ -40,3 +40,25 @@ class FormatBeforePaidReviewTests(unittest.TestCase):
             result=generate(package,out,execute=True,caller=caller)
         self.assertTrue(result['semantic_review_passed'])
         self.assertEqual(stages,['pos_jogo','pos_jogo','review_pos_jogo','review_pos_jogo'])
+
+class BoundedCorrectionTests(unittest.TestCase):
+    def test_unresolved_reviews_stop_at_nine_calls_without_approval(self):
+        import json,os,tempfile,contextlib,io
+        from unittest.mock import patch
+        from redigir_pos_jogo_openai import generate,ROOT
+        from revisar_pos_jogo import units
+        package={'instructions':'Teste sintético','facts':{'fixture_id':'test-1','match':{}},'narrative_facts':[],'allowed_internal_urls':[]}
+        article={'title':'Teste','excerpt':'Chamada','blocks':[{'type':'subtitle','text':'Subtítulo'},{'type':'paragraph','text':'palavra '*650}]}
+        calls=[]
+        def response(x):return {'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps(x)}]}]}
+        def caller(payload):
+            name=payload['text']['format']['name'];calls.append(name)
+            if name=='pos_jogo':return response(article)
+            if name=='patch_pos_jogo':return response({'replacements':[{'unit':'block_1','text':article['blocks'][1]['text'],'delete':False}]})
+            return response({'checks':[{'unit':u,'supported':u!='block_1','evidence_ids':['match'],'issues':['Fato sem apoio'] if u=='block_1' else []} for u in units(article)]})
+        with tempfile.TemporaryDirectory(dir=ROOT/'build/pos-jogo') as out,patch.dict(os.environ,{'OPENAI_API_KEY':'test-only'}),contextlib.redirect_stdout(io.StringIO()):
+            with self.assertRaisesRegex(ValueError,'reprovada após limite'):
+                generate(package,out,execute=True,caller=caller)
+            self.assertFalse(json.loads((Path(out)/'metadata.json').read_text())['semantic_review_passed'])
+        self.assertEqual(len(calls),9)
+        self.assertEqual(calls.count('patch_pos_jogo'),3)

@@ -61,8 +61,8 @@ class BudgetTests(unittest.TestCase):
   self.response['usage']={'input_tokens':300000,'output_tokens':1000}
   self.response['output']=[{'type':'web_search_call'}]
   self.assertEqual(usage_cost(self.response,self.config),D('0.07075'))
- def test_ten_call_limit(self):
-  self.remote.data['jobs']['espn-1']['api_calls']=10
+ def test_configured_call_limit(self):
+  self.remote.data['jobs']['espn-1']['api_calls']=self.config['max_paid_calls_per_fixture']
   with self.assertRaises(ValueError):self.caller()(self.payload)
   self.assertEqual(self.sent,[])
  def test_unknown_model_or_unbounded_tools_block(self):

@@ -56,6 +56,8 @@ def parse_response(response):
 def generate(package, out, *, execute=False, calibrate=False, caller=None):
     read=lambda p:json.loads((ROOT/p).read_text())
     cfg=read('config/redacao-pos-jogo.json')
+    max_calls=cfg['max_calls_per_test']
+    if type(max_calls) is not int or not 1<=max_calls<=9:raise ValueError('Limite de redação inválido')
     provider=cfg['provider'];writer_provider=cfg.get('writer_provider',provider)
     request=build_request(package,writer_provider)
     if len(json.dumps(package,ensure_ascii=False))>20000: raise ValueError('Pacote acima do limite')
@@ -68,11 +70,11 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
     out.mkdir(parents=True,exist_ok=True)
     marker=out/'tentativa.json'
     if marker.exists(): raise ValueError('Teste já iniciado neste diretório; repetição bloqueada')
-    marker.write_text(json.dumps({'max_calls':7,'publication_enabled':False}))
+    marker.write_text(json.dumps({'max_calls':max_calls,'publication_enabled':False}))
     calls=[]
     def save(name,obj): (out/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2))
     def call(payload, stage):
-        if len(calls)>=7: raise ValueError('Limite total de chamadas atingido')
+        if len(calls)>=max_calls: raise ValueError('Limite total de chamadas atingido')
         req=urllib.request.Request('https://api.openai.com/v1/responses',
             data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},method='POST')
         calls.append({'stage':stage,'status':'started'})
@@ -100,7 +102,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         print('Calibração factual: '+str(calibration_passed),flush=True)
         if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
     article=None; issues=[]; passed=False; reviewed_once=False
-    for attempt in range(1,4):
+    for attempt in range(1,5):
         mapped=targeted_issues(article,issues) if article is not None else None
         if article is not None and mapped is not None:
             issues=mapped

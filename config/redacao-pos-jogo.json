@@ -4,7 +4,7 @@
     "reasoning_effort": "medium"
   },
   "scope": "pilot_only",
-  "max_calls_per_test": 7,
+  "max_calls_per_test": 9,
   "publication_enabled": false,
   "writer_provider": {
     "model": "gpt-6-luna",

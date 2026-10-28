@@ -7,7 +7,7 @@
   "monthly_pilot_cap_usd": "10.00",
   "budget_scope": "post_match_calls_through_persistent_controller_only",
   "shared_pre_match_budget_reconciled": false,
-  "max_paid_calls_per_fixture": 10,
+  "max_paid_calls_per_fixture": 12,
   "price_checked_on": "2026-10-26",
   "price_valid_until": "2026-11-25",
   "model": "gpt-6-luna",
