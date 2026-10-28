@@ -1,0 +1,73 @@
+name: Pós-jogo — piloto automático de rascunhos
+on:
+  schedule:
+    - cron: '3,13,23,33,43,53 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pos-jogo-automatico.yml]
+permissions:
+  contents: write
+concurrency:
+  group: pos-jogo-estado-piloto
+  cancel-in-progress: false
+jobs:
+  rascunhos:
+    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      POS_JOGO_ARTIFACT_NAME: pos-jogo-rascunhos-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - name: Carregar versão validada do piloto
+        uses: actions/checkout@v4
+        with:
+          ref: ce84710d826b233d53ee40a0ec9077020f565577
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/
+            /config/
+            /prompts/
+            /templates/
+            /tests/pos-jogo/
+            /auditoria/pos-jogo/
+            /.gitignore
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar controles do piloto
+        run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - name: Ler destinos atuais sem modificar o site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /noticias.json
+            /sitemap.xml
+            /*.html
+      - name: Monitorar quatro clubes e preparar rascunhos elegíveis
+        id: cycle
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/agendar_pos_jogo.py --site-root current-main --output build/pos-jogo/agendado
+      - name: Disponibilizar rascunhos e diagnóstico para revisão
+        if: ${{ always() && (failure() || steps.cycle.outputs.has_drafts == 'true' || github.event_name != 'schedule') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.POS_JOGO_ARTIFACT_NAME }}
+          path: build/pos-jogo/agendado/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Confirmar integridade dos arquivos
+        if: always()
+        run: |
+          git diff --exit-code
+          if [ -d current-main/.git ]; then
+            git -C current-main diff --exit-code
+          fi
