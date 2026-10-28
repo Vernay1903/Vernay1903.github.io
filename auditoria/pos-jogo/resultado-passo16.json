@@ -1,0 +1,18 @@
+{
+  "step": 16,
+  "status": "awaiting_first_autonomous_scheduled_draft",
+  "tests_passed": 192,
+  "publication_enabled": false,
+  "per_article_cap_usd": "0.10",
+  "acceptance_record": "estado-pos-jogo-piloto/estado.json: validation_step16",
+  "checks": [
+    "schedule event",
+    "current run only",
+    "no assisted continuation",
+    "fresh source discovery",
+    "50 minutes including date rollover",
+    "all paid calls settled and total <= 0.10",
+    "independent review",
+    "reconstructed identical HTML/news/sitemap"
+  ]
+}
