@@ -44,6 +44,20 @@ class VisibleText(HTMLParser):
 def normalized(text):return ' '.join(text.split())
 
 
+def page_text(raw, url):
+    parser=VisibleText();parser.feed(raw)
+    text=normalized(' '.join(parser.parts))
+    # EFL embeds article widgets as JSON string literals in its Nuxt payload.
+    # Decode only content strings; never execute JavaScript from a source page.
+    if (urlparse(url).hostname or '').removeprefix('www.') == 'efl.com':
+        for literal in re.findall(r'widgetData:\{content:("(?:\\.|[^"\\])*")', raw):
+            try: html=json.loads(literal)
+            except (ValueError,TypeError): continue
+            body=VisibleText();body.feed(html)
+            text+=' '+normalized(' '.join(body.parts))
+    return normalized(text)
+
+
 def open_page(url):
     safe_url(url)
     req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (compatible; CDE research pilot)'})
@@ -52,8 +66,7 @@ def open_page(url):
         if 'html' not in res.headers.get('Content-Type',''):raise ValueError('Fonte não é página HTML')
         raw=res.read(2_000_001)
         if len(raw)>2_000_000:raise ValueError('Página acima do limite')
-        parser=VisibleText();parser.feed(raw.decode(res.headers.get_content_charset() or 'utf-8',errors='replace'))
-    text=normalized(' '.join(parser.parts))
+        text=page_text(raw.decode(res.headers.get_content_charset() or 'utf-8',errors='replace'),final)
     if len(text)<500:raise ValueError('Página sem conteúdo suficiente')
     return {'url':final,'text':text[:24000],'sha256':hashlib.sha256(raw).hexdigest(),'opened':True}
 
@@ -193,6 +206,9 @@ def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page,di
     # Conservar apenas campos originais relevantes, sem calcular ou completar dados.
     structured={'header':summary['header'],'gameInfo':summary.get('gameInfo',{}),
                 'campaign_entries':[e for e in entries if str(e['id']) in {str(t['team']['id']) for t in teams.values()}]}
+    article=summary.get('article',{})
+    if str(article.get('gameId')) == candidate['fixture_id'][5:] and article.get('type') == 'Recap':
+        structured['match_recap']={k:article[k] for k in ['gameId','headline','published','story'] if k in article}
     source_text=json.dumps(structured,ensure_ascii=False,separators=(',',':'))
     if len(source_text)>50000:raise ValueError('Resumo estruturado acima do limite de apuração')
     pages['espn_summary']={'url':candidate['source_url'],'text':source_text,'opened':True,

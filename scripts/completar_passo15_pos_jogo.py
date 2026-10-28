@@ -13,9 +13,9 @@ from empacotar_redacao_pos_jogo import package_reviewed
 
 def main():
  fid='espn-401921835';remote=RemoteState();job=remote.data['jobs'][fid]
- if job.get('run_id')!='40685735443' or job.get('status')!='blocked' or remote.data.get('step15_sources_retry'):
+ if job.get('run_id')!='40685735443' or job.get('status')!='blocked' or remote.data.get('step15_efl_reader_retry') or job.get('continuation_run_id')!='40686400641':
   raise ValueError('Continuação não autorizada ou já usada')
- remote.data['step15_sources_retry']={'run_id':os.environ['GITHUB_RUN_ID'],'previous_job':dict(job)}
+ remote.data['step15_efl_reader_retry']={'run_id':os.environ['GITHUB_RUN_ID'],'previous_job':dict(job)}
  remote.save()
  old=ROOT/'build/pos-jogo/passo15-anterior/2026-10-27'
  c=next(c for c in read(old/'selecao.json')['selected'] if c['fixture_id']==fid)

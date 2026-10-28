@@ -88,6 +88,17 @@ class CupFutureTest(unittest.TestCase):
   self.assertIsNone(out['upcoming']['home']['next_in_competition'])
   self.assertIn('home.next_in_competition',out['gaps'])
 
+class EmbeddedPageTest(unittest.TestCase):
+ def test_efl_content_decoded_without_execution(self):
+  from apurar_pos_jogo import page_text
+  literal=json.dumps('<p>Texto oficial com <strong>detalhes</strong>.</p>')
+  raw='<html><script>window.test={widgetData:{content:'+literal+'}};throw 1;</script></html>'
+  self.assertEqual(page_text(raw,'https://www.efl.com/news/test'),'Texto oficial com detalhes .')
+  self.assertEqual(page_text(raw,'https://example.org/news/test'),'')
+ def test_malformed_embedded_data_not_executed(self):
+  from apurar_pos_jogo import page_text
+  self.assertEqual(page_text('<script>widgetData:{content:"bad\\x"}</script>','https://www.efl.com/test'),'')
+
 class RetryTest(unittest.TestCase):
  def state(self):
   from types import SimpleNamespace
