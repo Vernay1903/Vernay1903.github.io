@@ -1225,6 +1225,14 @@
     "mode": "scheduled_drafts",
     "publication_enabled": false,
     "last_started_at": "2026-10-27T21:51:42.829362-03:00",
-    "last_run_id": "40611435664"
+    "last_run_id": "40611435664",
+    "last_finished_at": "2026-10-27T21:51:49.289564-03:00",
+    "last_status": "waiting",
+    "last_report": {
+      "run_id": "40611435664",
+      "status": "waiting",
+      "has_drafts": false,
+      "pilot_month_charged_usd": "0.450426035"
+    }
   }
 }
