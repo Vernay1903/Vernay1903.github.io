@@ -180,3 +180,10 @@ Prorrogação e pênaltis têm desfecho separado dos gols da partida, sem inferi
 181 testes passaram. Validação real assistida de Fleetwood Town x Arsenal concluída no run 40743571734: 664 palavras, título de 55 caracteres, HTML fixo preservado, um anúncio no corpo, notícia na primeira posição e datas 28/10/2026 no HTML/JSON e 2026-10-28 no sitemap. Custo acumulado de todas as 14 chamadas: US$ 0.037242410. A validação teve continuações únicas autorizadas; o limite normal permanece 12 chamadas e US$ 0,10 por partida. Não houve publicação.
 
 A main carrega o código cbb4300b9a9e29489def916d75c5b83e61eaa95f pelo acionador; verificação do run 40687749206 aprovada. Prorrogação foi coberta por testes, pênaltis por partida real. A descoberta de fontes e a conclusão editorial desse teste tiveram assistência: o primeiro rascunho totalmente autônomo por agendamento ainda precisa ser validado. Auditoria durável: auditoria/pos-jogo/validacao-final-passo15.json e resultado-passo15.json.
+
+
+## Passo 16 — verificação autônoma ativada; resultado esportivo pendente
+
+Verificador sem chamadas de IA instalado no acionador, código 0fc209cefbe5b522869775e9491475c1d2c74eb9. Os 192 testes e a execução de instalação 40777391918 passaram. Somente eventos schedule podem aprovar a etapa: exige descoberta nova de fontes, revisão aprovada, pacote reconstruído idêntico, espera de 50 minutos, chamadas liquidadas da mesma execução e teto acumulado US$ 0,10. Continuações assistidas e execução manual não qualificam. Registro persistente em validation_step16 na branch de estado; artefato passo16.json acompanha o ciclo. A primeira aprovação é preservada.
+
+Manchester City x Brighton (espn-401921834) observado encerrado em 28/10 às 19:06:52 -03:00; elegível após 19:56:52 -03:00. A execução depende do próximo ciclo real do GitHub. Instalação sem novas chamadas pagas; nada publicado. A etapa permanece aguardando o primeiro rascunho autônomo e não é declarada concluída.

@@ -2,17 +2,27 @@
   "step": 16,
   "status": "awaiting_first_autonomous_scheduled_draft",
   "tests_passed": 192,
+  "code_commit": "0fc209cefbe5b522869775e9491475c1d2c74eb9",
+  "activation_commit": "edd73cb09edd009fae7ec550de1179c2cda83fb2",
+  "installation_run": 40777391918,
+  "installation_conclusion": "success",
+  "acceptance_record": "estado-pos-jogo-piloto/estado.json: validation_step16",
+  "waiting": [
+    {
+      "fixture_id": "espn-401921834",
+      "timing": {
+        "eligible": false,
+        "status": "waiting_after_final",
+        "first_final_seen_at": "2026-10-28T19:06:52.579495-03:00",
+        "eligible_at": "2026-10-28T19:56:52.579495-03:00",
+        "basis": "first_observed_final",
+        "wait_minutes": 50
+      },
+      "status": "waiting_after_final"
+    }
+  ],
+  "installation_paid_spend_usd": "0",
   "publication_enabled": false,
   "per_article_cap_usd": "0.10",
-  "acceptance_record": "estado-pos-jogo-piloto/estado.json: validation_step16",
-  "checks": [
-    "schedule event",
-    "current run only",
-    "no assisted continuation",
-    "fresh source discovery",
-    "50 minutes including date rollover",
-    "all paid calls settled and total <= 0.10",
-    "independent review",
-    "reconstructed identical HTML/news/sitemap"
-  ]
+  "scheduled_validation_not_yet_approved": true
 }
