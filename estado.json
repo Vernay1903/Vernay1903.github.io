@@ -141,11 +141,36 @@
       "step15_final_completion": true
     },
     "espn-401921834": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-10-28T20:06:59.748335-03:00",
       "run_id": "40784987236",
       "api_calls": 8,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-10-28T20:10:50.762018-03:00",
+      "package": {
+        "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+        "fixed_shell_unchanged": true,
+        "title_chars": 54,
+        "body_words": 730,
+        "body_ad_count": 1,
+        "ad_after_blocks": [
+          8
+        ],
+        "publication_enabled": false,
+        "filename": "manchester-city-brighton-hove-albion-english-carabao-cup-2026-resultado.html",
+        "written_at": "2026-10-28T23:10:41.893250+00:00",
+        "article_date": "28/10/2026",
+        "sitemap_lastmod": "2026-10-28",
+        "news_position": 0,
+        "old_news_preserved": true,
+        "old_sitemap_preserved": true,
+        "fixture_id": "espn-401921834",
+        "article_sha256": "85b329458da83f42a6ba85661e6af2c0419c010c08316b39fc4448bc8215d82b",
+        "human_review_required": true,
+        "semantic_review_passed": true
+      },
+      "artifact_name": "pos-jogo-rascunhos-40784987236-1",
+      "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/40784987236"
     }
   },
   "months": {
