@@ -1661,5 +1661,11 @@
       "continuation_run_id": "40687122808",
       "reason": "Fato não confirmado: outcome A classificação do Fleetwood nos pênaltis e a vitória por 5–3 aparecem no resumo estruturado da ESPN; o relato oficial confirma a defesa de Jay Lynch e a cobrança convertida por Conor Haughey, mas não informa o placar total da disputa. Portanto, o componente 5–3 não está corroborado pelos dois domínios."
     }
+  },
+  "validation_step16": {
+    "step": 16,
+    "status": "waiting_for_schedule",
+    "run_id": "40777391918",
+    "publication_enabled": false
   }
 }
