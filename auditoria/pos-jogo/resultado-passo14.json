@@ -1,6 +1,6 @@
 {
   "step": 14,
-  "status": "prepared_for_activation",
+  "status": "activated_with_known_match_format_limitation",
   "tests_passed": 158,
   "publication_enabled": false,
   "schedule": "3,13,23,33,43,53 * * * *",
@@ -11,5 +11,34 @@
     "Manchester City"
   ],
   "budget_scope": "post_match_only",
-  "global_account_cap_verified": false
+  "global_account_cap_verified": false,
+  "code_commit": "ce84710d826b233d53ee40a0ec9077020f565577",
+  "activation_commit": "07a0136c557c6603e6d1eb4522fe4d4727d3e6dc",
+  "main_files_changed": [
+    ".github/workflows/pos-jogo-automatico.yml"
+  ],
+  "initial_run": {
+    "id": 40611435664,
+    "conclusion": "success",
+    "status": "waiting"
+  },
+  "scheduled_run": {
+    "id": 40643743077,
+    "conclusion": "failure",
+    "status": "needs_review",
+    "tests_passed": 158,
+    "fixture_id": "espn-401921835",
+    "reason": "Apuração de prorrogação/pênaltis ainda não suportada",
+    "first_final_seen_at": "2026-10-27T21:51:44.028557-03:00",
+    "eligible_at": "2026-10-27T22:41:44.028557-03:00",
+    "started_at": "2026-10-28T03:25:25.542192-03:00",
+    "new_paid_calls": 0,
+    "has_drafts": false
+  },
+  "pilot_month_charged_usd": "0.450426035",
+  "pending": [
+    "Validar primeiro rascunho produzido por agendamento",
+    "Tratar prorrogação e pênaltis antes de ampliar cobertura"
+  ],
+  "schedule_note": "Cron configurado a cada dez minutos; execução observada não comprova pontualidade. Espera mínima de 50 minutos desde a primeira confirmação do encerramento."
 }
