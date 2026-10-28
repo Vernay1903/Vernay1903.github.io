@@ -97,14 +97,6 @@
       "completion_patch_run_id": "40609431440",
       "incremental_completion_started": true,
       "incremental_completion_run_id": "40610075120"
-    },
-    "espn-401921835": {
-      "status": "blocked",
-      "started_at": "2026-10-28T03:25:27.657777-03:00",
-      "run_id": "40643743077",
-      "api_calls": 0,
-      "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-10-28T03:25:28.675650-03:00"
     }
   },
   "months": {
@@ -1242,5 +1234,17 @@
       "has_drafts": false,
       "pilot_month_charged_usd": "0.450426035"
     }
+  },
+  "step15_retry": {
+    "original_job": {
+      "status": "blocked",
+      "started_at": "2026-10-28T03:25:27.657777-03:00",
+      "run_id": "40643743077",
+      "api_calls": 0,
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-10-28T03:25:28.675650-03:00"
+    },
+    "run_id": "40685735443",
+    "authorized": true
   }
 }
