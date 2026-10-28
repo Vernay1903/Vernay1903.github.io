@@ -99,14 +99,13 @@
       "incremental_completion_run_id": "40610075120"
     },
     "espn-401921835": {
-      "status": "running",
+      "status": "completed",
       "started_at": "2026-10-28T09:12:05.235299-03:00",
       "run_id": "40685735443",
       "api_calls": 14,
       "operation_mode": "authorized_step15_validation",
-      "finished_at": "2026-10-28T09:32:25.413668-03:00",
+      "finished_at": "2026-10-28T15:22:16.288050-03:00",
       "continuation_run_id": "40687696901",
-      "reason": "Limite de chamadas da partida",
       "incremental_completion_started": true,
       "incremental_completion_run_id": "40743571734",
       "validation_call_limit": 14,
