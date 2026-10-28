@@ -8,7 +8,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from editorial_pos_jogo import ROOT, prepare, validate, render
-from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units, targeted_issues
+from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units, targeted_issues, merge_reviews, review_changed
 
 
 def build_request(package, provider):
@@ -101,8 +101,9 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         save('calibracao.json',{'passed':calibration_passed,'review':calibration_review})
         print('Calibração factual: '+str(calibration_passed),flush=True)
         if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
-    article=None; issues=[]; passed=False; reviewed_once=False
+    article=None; issues=[]; passed=False; reviewed_once=False; previous_review=None
     for attempt in range(1,5):
+        before=article
         mapped=targeted_issues(article,issues) if article is not None else None
         if article is not None and mapped is not None:
             issues=mapped
@@ -119,16 +120,24 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         checks=validate(article,package['allowed_internal_urls'])
         save(f'formato-{attempt}.json',checks)
         if not checks['format_passed']:
+            previous_review=None
             issues=checks['errors']+[f"Formato: corpo medido em {checks['body_words']} palavras; entregue 700 a 800 palavras no corpo sem repetir nem inventar."]
             print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
             continue
-        review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))
+        compatible=before is not None and previous_review is not None and len(before['blocks'])==len(article['blocks']) and [b['type'] for b in before['blocks']]==[b['type'] for b in article['blocks']]
+        if compatible:
+            review=review_changed(package,before,previous_review,article,provider,lambda payload:call(payload,f'review_{attempt}'),package)
+        else:
+            review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))
         save(f'revisao-{attempt}.json',review)
         issues=checks['errors']+validate_review(review,package,article)
         if not reviewed_once and not calibrate:
             second=response_object(call(review_request(package,article,provider),'review_1_second_pass'))
             save('revisao-1-segunda-leitura.json',second)
             issues=list(dict.fromkeys(issues+validate_review(second,package,article)))
+            review=merge_reviews([review,second],package,article)
+            save('revisao-inicial-consolidada.json',review)
+        previous_review=review
         reviewed_once=True
         print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
         if not issues:

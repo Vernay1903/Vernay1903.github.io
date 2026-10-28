@@ -55,8 +55,8 @@ class BoundedCorrectionTests(unittest.TestCase):
         def caller(payload):
             name=payload['text']['format']['name'];calls.append(name)
             if name=='pos_jogo':return response(article)
-            if name=='patch_pos_jogo':return response({'replacements':[{'unit':'block_1','text':article['blocks'][1]['text'],'delete':False}]})
-            return response({'checks':[{'unit':u,'supported':u!='block_1','evidence_ids':['match'],'issues':['Fato sem apoio'] if u=='block_1' else []} for u in units(article)]})
+            if name=='patch_pos_jogo':return response({'replacements':[{'unit':'block_1','text':article['blocks'][1]['text']+str(len(calls)),'delete':False}]})
+            return response({'checks':[{'unit':u,'supported':u!='block_1','evidence_ids':['match'],'issues':['Fato sem apoio'] if u=='block_1' else []} for u in json.loads(payload['input'][-1]['content'])['units']]})
         (ROOT/'build/pos-jogo').mkdir(parents=True,exist_ok=True)
         with tempfile.TemporaryDirectory(dir=ROOT/'build/pos-jogo') as out,patch.dict(os.environ,{'OPENAI_API_KEY':'test-only'}),contextlib.redirect_stdout(io.StringIO()):
             with self.assertRaisesRegex(ValueError,'reprovada após limite'):

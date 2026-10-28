@@ -64,3 +64,43 @@ class DeletionTests(unittest.TestCase):
   a={'title':'T','excerpt':'E','blocks':[{'text':'Texto'}]}
   for change in [{'unit':'block_0','text':'','delete':False},{'unit':'title','text':'','delete':True}]:
    with self.assertRaises(ValueError):apply_patch(a,{'replacements':[change]},[change['unit']+': erro'])
+
+class IncrementalReviewTests(unittest.TestCase):
+ def setup_case(self):
+  self.package={'facts':{'fixture_id':'x','match':{}},'narrative_facts':[]}
+  self.before={'title':'Título','excerpt':'Chamada','blocks':[{'type':'paragraph','text':'Fato certo. Interpretação.'},{'type':'paragraph','text':'Outro fato certo.'}]}
+  self.after=__import__('copy').deepcopy(self.before);self.after['blocks'][0]['text']='Fato certo.'
+  from revisar_pos_jogo import units
+  self.previous={'checks':[{'unit':u,'supported':u!='block_0','evidence_ids':['match'],'issues':['Retirar interpretação'] if u=='block_0' else []} for u in units(self.before)]}
+  self.provider={'model':'gpt-6-luna','reasoning_effort':'medium'}
+ def test_context_is_complete_and_unchanged_approvals_are_preserved(self):
+  import json
+  from revisar_pos_jogo import review_changed,validate_review
+  self.setup_case();seen=[]
+  def caller(payload):
+   data=json.loads(payload['input'][-1]['content']);seen.append(data)
+   result={'checks':[{'unit':'block_0','supported':True,'evidence_ids':['match'],'issues':[]}]}
+   return {'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps(result)}]}]}
+  result=review_changed(self.package,self.before,self.previous,self.after,self.provider,caller,self.package)
+  self.assertEqual(set(seen[0]['units']),{'block_0'})
+  self.assertEqual(seen[0]['whole_article_context']['block_1'],'Outro fato certo.')
+  self.assertEqual(validate_review(result,self.package,self.after),[])
+  self.assertIn('block_1',result['provenance']['unchanged_approved_units'])
+ def test_changed_evidence_blocks_reuse_without_api(self):
+  import copy
+  from revisar_pos_jogo import review_changed
+  self.setup_case();new=copy.deepcopy(self.package);new['facts']['match']={'score':'alterado'}
+  with self.assertRaisesRegex(ValueError,'revisão integral'):
+   review_changed(new,self.before,self.previous,self.after,self.provider,lambda p:self.fail('API não deveria ser chamada'),self.package)
+ def test_unfixed_rejection_blocks_without_api(self):
+  from revisar_pos_jogo import review_changed
+  self.setup_case()
+  with self.assertRaisesRegex(ValueError,'não foi corrigido'):
+   review_changed(self.package,self.before,self.previous,self.before,self.provider,lambda p:self.fail('API indevida'),self.package)
+ def test_missing_partial_checks_cannot_release_article(self):
+  import json
+  from revisar_pos_jogo import review_changed
+  self.setup_case()
+  def caller(p):return {'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps({'checks':[]})}]}]}
+  with self.assertRaisesRegex(ValueError,'incompleta'):
+   review_changed(self.package,self.before,self.previous,self.after,self.provider,caller,self.package)
