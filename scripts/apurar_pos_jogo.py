@@ -10,7 +10,7 @@ from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 from preparar_fatos_pos_jogo import ROOT, build, pair, integer, match_outcome, match_goals
 from redigir_pos_jogo_openai import response_object
 
-DOMAINS=['efl.com','fleetwoodtownfc.com','realmadrid.com','flamengo.com.br','arsenal.com','mancity.com','uefa.com',
+DOMAINS=['skysports.com','efl.com','fleetwoodtownfc.com','realmadrid.com','flamengo.com.br','arsenal.com','mancity.com','uefa.com',
          'conmebol.com','libertadores.com','cbf.com.br','premierleague.com','laliga.com',
          'bundesliga.com','dfb.de','rbleipzig.com','espn.com','espn.com.br']
 

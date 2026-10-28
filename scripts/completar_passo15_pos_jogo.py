@@ -13,9 +13,9 @@ from empacotar_redacao_pos_jogo import package_reviewed
 
 def main():
  fid='espn-401921835';remote=RemoteState();job=remote.data['jobs'][fid]
- if job.get('run_id')!='40685735443' or job.get('status')!='blocked' or remote.data.get('step15_cup_campaign_retry') or job.get('continuation_run_id')!='40686776616':
+ if job.get('run_id')!='40685735443' or job.get('status')!='blocked' or remote.data.get('step15_score_confirmation_retry') or job.get('continuation_run_id')!='40687122808':
   raise ValueError('Continuação não autorizada ou já usada')
- remote.data['step15_cup_campaign_retry']={'run_id':os.environ['GITHUB_RUN_ID'],'previous_job':dict(job)}
+ remote.data['step15_score_confirmation_retry']={'run_id':os.environ['GITHUB_RUN_ID'],'previous_job':dict(job)}
  remote.save()
  old=ROOT/'build/pos-jogo/passo15-anterior/2026-10-27'
  c=next(c for c in read(old/'selecao.json')['selected'] if c['fixture_id']==fid)
@@ -28,6 +28,7 @@ def main():
  schedules={str(t['team']['id']):fetch(f"{BASE}/all/teams/{t['team']['id']}/schedule?fixture=true&season={now.year}") for t in pair(summary['header']['competitions'][0]).values()}
  out=ROOT/'build/pos-jogo/passo15-completo';out.mkdir(parents=True,exist_ok=False)
  discovery={'output':[{'type':'web_search_call','action':{'sources':[{'url':u} for u in [
+  'https://www.skysports.com/football/fleetwood-town-vs-arsenal/5392900173048033232',
   'https://www.efl.com/news/2026/october/28/carabao-cup--fleetwood-town-shock-arsenal-in-shootout-win/',
   'https://www.espn.com/soccer/report/_/gameId/401921835']]}}]}
  save(out/'fontes-adicionadas.json',{'method':'explicit_sources_opened_again','discovery':discovery})

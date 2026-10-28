@@ -1,0 +1,52 @@
+name: Pós-jogo — passo 15 — prorrogação e pênaltis
+on:
+  push:
+    branches: [piloto-pos-jogo-quatro-clubes]
+    paths: [.github/workflows/pos-jogo-passo15-placar.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: pos-jogo-estado-piloto
+  cancel-in-progress: false
+jobs:
+  testar:
+    if: "github.event.head_commit.message == 'Passo 15: conferir placar dos penaltis em duas fontes'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: pos-jogo-passo15-40685735443
+          run-id: 40685735443
+          github-token: ${{ github.token }}
+          path: build/pos-jogo/passo15-anterior
+      - name: Retomar redação com apuração revisada e saldo preservado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/completar_passo15_pos_jogo.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pos-jogo-passo15-completo-${{ github.run_id }}
+          path: build/pos-jogo/passo15-completo/
+          retention-days: 30
+      - name: Verificar integridade dos arquivos do site
+        if: always()
+        run: |
+          git diff --exit-code
+          git -C current-main diff --exit-code
+# Reexecução após tornar o teste independente da existência prévia de build.
