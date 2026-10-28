@@ -1337,5 +1337,18 @@
       "operation_mode": "authorized_step15_validation",
       "finished_at": "2026-10-28T09:12:54.690326-03:00"
     }
+  },
+  "step15_efl_reader_retry": {
+    "run_id": "40686776616",
+    "previous_job": {
+      "status": "blocked",
+      "started_at": "2026-10-28T09:12:05.235299-03:00",
+      "run_id": "40685735443",
+      "api_calls": 3,
+      "operation_mode": "authorized_step15_validation",
+      "finished_at": "2026-10-28T09:17:08.077619-03:00",
+      "continuation_run_id": "40686400641",
+      "reason": "Fato não confirmado: score O resumo ESPN informa 1–1, mas a página oficial fornecida só apresenta o título sobre a vitória nos pênaltis e não confirma o placar da partida. Falta confirmação do placar pelos dois domínios exigidos."
+    }
   }
 }
