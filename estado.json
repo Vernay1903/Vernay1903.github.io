@@ -1301,5 +1301,16 @@
     "run_id": "40685735443",
     "authorized": true,
     "finished": true
+  },
+  "step15_sources_retry": {
+    "run_id": "40686400641",
+    "previous_job": {
+      "status": "blocked",
+      "started_at": "2026-10-28T09:12:05.235299-03:00",
+      "run_id": "40685735443",
+      "api_calls": 2,
+      "operation_mode": "authorized_step15_validation",
+      "finished_at": "2026-10-28T09:12:54.690326-03:00"
+    }
   }
 }
