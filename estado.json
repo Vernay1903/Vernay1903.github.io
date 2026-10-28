@@ -1234,11 +1234,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-10-28T03:25:25.542192-03:00",
     "last_run_id": "40643743077",
-    "last_finished_at": "2026-10-27T21:51:49.289564-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-10-28T03:25:32.419648-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "40611435664",
-      "status": "waiting",
+      "run_id": "40643743077",
+      "status": "needs_review",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.450426035"
     }
