@@ -1,30 +1,94 @@
 [
   {
+    "time": "00:00",
+    "desc": "Los Angeles Lakers x Portland Trail Blazers - NBA"
+  },
+  {
     "time": "14:30",
-    "desc": "Sassuolo x Lázio - Serie A italiana"
+    "desc": "AC Milan x Bolonha - Serie A italiana"
+  },
+  {
+    "time": "14:30",
+    "desc": "Parma x Udinese - Serie A italiana"
+  },
+  {
+    "time": "14:30",
+    "desc": "Venezia x Internazionale - Serie A italiana"
   },
   {
     "time": "16:45",
-    "desc": "AS Roma x Cagliari - Serie A italiana"
+    "desc": "Genoa x Juventus - Serie A italiana"
   },
   {
     "time": "16:45",
-    "desc": "Torino x Como - Serie A italiana"
+    "desc": "Monza x Napoli - Serie A italiana"
+  },
+  {
+    "time": "19:30",
+    "desc": "Fluminense x Internacional - Brasileirão Série A"
+  },
+  {
+    "time": "19:30",
+    "desc": "Red Bull Bragantino x Chapecoense - Brasileirão Série A"
+  },
+  {
+    "time": "19:30",
+    "desc": "Santos x Palmeiras - Brasileirão Série A"
   },
   {
     "time": "20:00",
-    "desc": "Ceará x Goiás - Brasileirão Série B"
+    "desc": "Atlanta Hawks x Miami Heat - NBA"
+  },
+  {
+    "time": "20:00",
+    "desc": "Cleveland Cavaliers x Washington Wizards - NBA"
+  },
+  {
+    "time": "20:00",
+    "desc": "Detroit Pistons x Charlotte Hornets - NBA"
+  },
+  {
+    "time": "20:00",
+    "desc": "Indiana Pacers x Philadelphia 76ers - NBA"
   },
   {
     "time": "20:30",
-    "desc": "Boston Celtics x Brooklyn Nets - NBA"
+    "desc": "Toronto Raptors x Orlando Magic - NBA"
   },
   {
     "time": "21:00",
-    "desc": "New York Knicks x Detroit Pistons - NBA"
+    "desc": "Chicago Bulls x New York Knicks - NBA"
   },
   {
     "time": "21:00",
-    "desc": "San Antonio Spurs x Sacramento Kings - NBA"
+    "desc": "Milwaukee Bucks x Houston Rockets - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Minnesota Timberwolves x Golden State Warriors - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "New Orleans Pelicans x Denver Nuggets - NBA"
+  },
+  {
+    "time": "21:30",
+    "desc": "Bahia x São Paulo - Brasileirão Série A"
+  },
+  {
+    "time": "21:30",
+    "desc": "Remo x Botafogo - Brasileirão Série A"
+  },
+  {
+    "time": "22:00",
+    "desc": "Utah Jazz x San Antonio Spurs - NBA"
+  },
+  {
+    "time": "22:30",
+    "desc": "Dallas Mavericks x Oklahoma City Thunder - NBA"
+  },
+  {
+    "time": "23:30",
+    "desc": "LA Clippers x Los Angeles Lakers - NBA"
   }
 ]
