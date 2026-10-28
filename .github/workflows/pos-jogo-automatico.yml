@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   rascunhos:
-    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' }}
+    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -23,7 +23,7 @@ jobs:
       - name: Carregar versão validada do piloto
         uses: actions/checkout@v4
         with:
-          ref: ce84710d826b233d53ee40a0ec9077020f565577
+          ref: cbb4300b9a9e29489def916d75c5b83e61eaa95f
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
