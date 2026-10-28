@@ -75,6 +75,6 @@ def main():
     'automation_check_run':40687749206,'publication_enabled':False}
    remote.request('PUT','/contents/auditoria/pos-jogo/validacao-final-passo15.json',{
     'branch':'piloto-pos-jogo-quatro-clubes','message':'Registrar validacao final do passo 15',
-    'content':base64.b64encode((json.dumps(archive,ensure_ascii=False,indent=2)+'\\n').encode()).decode()})
+    'content':base64.b64encode((json.dumps(archive,ensure_ascii=False,indent=2)+'\n').encode()).decode()})
   print('Custo TOTAL: US$ '+str(total),flush=True)
 if __name__=='__main__':main()

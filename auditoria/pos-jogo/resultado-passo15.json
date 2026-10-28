@@ -1,0 +1,26 @@
+{
+  "step": 15,
+  "status": "validated_and_enabled",
+  "tests_passed": 181,
+  "validation_run": "40743571734",
+  "automatic_code_commit": "cbb4300b9a9e29489def916d75c5b83e61eaa95f",
+  "activation_commit": "3516984481b7dcd6d78ffa168abff401ed135818",
+  "automatic_wrapper_run": 40687749206,
+  "automatic_wrapper_conclusion": "success",
+  "title_chars": 55,
+  "body_words": 664,
+  "total_including_all_attempts_usd": "0.037242410",
+  "per_article_cap_usd": "0.10",
+  "validation_calls": 14,
+  "normal_call_limit": 12,
+  "publication_enabled": false,
+  "template_preserved": true,
+  "news_position": 0,
+  "article_date": "28/10/2026",
+  "sitemap_lastmod": "2026-10-28",
+  "coverage": {
+    "penalties": "real_match_with_assisted_source_discovery_and_editorial_completion",
+    "extra_time": "automated_tests"
+  },
+  "pending": "Validate first fully autonomous scheduled draft; publication remains disabled"
+}

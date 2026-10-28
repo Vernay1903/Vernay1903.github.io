@@ -171,3 +171,12 @@ Modo exclusivo de rascunhos: gera pacote de HTML/noticias.json/sitemap em build 
 A conferência de orçamento constatou controles separados. O teto persistente é US$ 0,10 por matéria (todas as tentativas) e US$ 10/mês somente para o pós-jogo. Não há teto global da conta comprovado, nem consolidação com a prévia; nenhuma configuração de prévia foi alterada. Conferência em auditoria/pos-jogo/conferencia-orcamento-passo14.json. Tarifas devem ser revalidadas ao vencer a validade configurada; cobrança incerta impede novo consumo.
 
 Ativação efetivada no commit 07a0136c557c6603e6d1eb4522fe4d4727d3e6dc da main, adicionando somente o acionador. Execução inicial 40611435664 aprovada. Execução agendada 40643743077 comprovou acionamento e preservação do relógio entre dias, com 158 testes aprovados, mas terminou needs_review: partida espn-401921835 em STATUS_FINAL_PEN bloqueada pelo suporte ainda ausente a prorrogação/pênaltis. Nenhuma chamada paga nova e nenhuma publicação. Total histórico do piloto preservado em US$ 0,450426035. Primeiro rascunho por cron ainda não validado; a frequência configurada não garante pontualidade do serviço. Resultado completo em auditoria/pos-jogo/resultado-passo14.json.
+
+
+## Passo 15 — validado e habilitado
+
+Prorrogação e pênaltis têm desfecho separado dos gols da partida, sem inferir placar aos 90 minutos. Resultado dos pênaltis alterado reinicia a espera de 50 minutos. Campanha ausente e próximo jogo de copa indisponível são omitidos. Fontes incluem a EFL, com leitura do corpo embutido sem executar JavaScript, e Sky Sports como complemento. O desfecho exige apuração e revisão independente.
+
+181 testes passaram. Validação real assistida de Fleetwood Town x Arsenal concluída no run 40743571734: 664 palavras, título de 55 caracteres, HTML fixo preservado, um anúncio no corpo, notícia na primeira posição e datas 28/10/2026 no HTML/JSON e 2026-10-28 no sitemap. Custo acumulado de todas as 14 chamadas: US$ 0.037242410. A validação teve continuações únicas autorizadas; o limite normal permanece 12 chamadas e US$ 0,10 por partida. Não houve publicação.
+
+A main carrega o código cbb4300b9a9e29489def916d75c5b83e61eaa95f pelo acionador; verificação do run 40687749206 aprovada. Prorrogação foi coberta por testes, pênaltis por partida real. A descoberta de fontes e a conclusão editorial desse teste tiveram assistência: o primeiro rascunho totalmente autônomo por agendamento ainda precisa ser validado. Auditoria durável: auditoria/pos-jogo/validacao-final-passo15.json e resultado-passo15.json.
