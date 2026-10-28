@@ -49,3 +49,4 @@ jobs:
         run: |
           git diff --exit-code
           git -C current-main diff --exit-code
+# Reexecução após tornar o teste independente da existência prévia de build.

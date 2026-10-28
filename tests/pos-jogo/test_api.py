@@ -36,6 +36,7 @@ class FormatBeforePaidReviewTests(unittest.TestCase):
             self.assertEqual(len(written),2)
             return response({'checks':[{'unit':u,'supported':True,'evidence_ids':['match'],'issues':[]} for u in units(articles[1])]})
         (ROOT/'build/pos-jogo').mkdir(parents=True,exist_ok=True)
+        (ROOT/'build/pos-jogo').mkdir(parents=True,exist_ok=True)
         with tempfile.TemporaryDirectory(dir=ROOT/'build/pos-jogo') as out,patch.dict(os.environ,{'OPENAI_API_KEY':'test-only'}),contextlib.redirect_stdout(io.StringIO()):
             result=generate(package,out,execute=True,caller=caller)
         self.assertTrue(result['semantic_review_passed'])
@@ -56,6 +57,7 @@ class BoundedCorrectionTests(unittest.TestCase):
             if name=='pos_jogo':return response(article)
             if name=='patch_pos_jogo':return response({'replacements':[{'unit':'block_1','text':article['blocks'][1]['text'],'delete':False}]})
             return response({'checks':[{'unit':u,'supported':u!='block_1','evidence_ids':['match'],'issues':['Fato sem apoio'] if u=='block_1' else []} for u in units(article)]})
+        (ROOT/'build/pos-jogo').mkdir(parents=True,exist_ok=True)
         with tempfile.TemporaryDirectory(dir=ROOT/'build/pos-jogo') as out,patch.dict(os.environ,{'OPENAI_API_KEY':'test-only'}),contextlib.redirect_stdout(io.StringIO()):
             with self.assertRaisesRegex(ValueError,'reprovada após limite'):
                 generate(package,out,execute=True,caller=caller)
