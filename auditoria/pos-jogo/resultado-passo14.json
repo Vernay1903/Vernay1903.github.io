@@ -1,0 +1,15 @@
+{
+  "step": 14,
+  "status": "prepared_for_activation",
+  "tests_passed": 158,
+  "publication_enabled": false,
+  "schedule": "3,13,23,33,43,53 * * * *",
+  "scope": [
+    "Flamengo",
+    "Real Madrid",
+    "Arsenal",
+    "Manchester City"
+  ],
+  "budget_scope": "post_match_only",
+  "global_account_cap_verified": false
+}

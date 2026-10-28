@@ -12,7 +12,7 @@ from tempo_pos_jogo import dates_to_check,load_state,save_state
 TZ=ZoneInfo('America/Sao_Paulo')
 
 
-def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,writer=generate,caller_factory=BudgetCaller):
+def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,writer=generate,caller_factory=BudgetCaller,operation_mode="test"):
  clock=clock or (lambda:datetime.now(TZ));now=clock();out=Path(out).resolve();site=Path(site).resolve()
  if not out.is_relative_to((pipeline.ROOT/'build/pos-jogo').resolve()):raise ValueError('Saída fora do piloto')
  if out.exists():raise ValueError('Diretório de execução já utilizado')
@@ -23,7 +23,7 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
   fid=candidate['fixture_id']
   if fid in remote.data['jobs']:raise ValueError('Tentativa já registrada; não repetir API')
   remote.data['jobs'][fid]={'status':'running','started_at':clock().isoformat(),
-    'run_id':os.environ.get('GITHUB_RUN_ID'),'api_calls':0}
+    'run_id':os.environ.get('GITHUB_RUN_ID'),'api_calls':0,'operation_mode':operation_mode}
   remote.data['timing']=load_state(state);remote.save()
   active[fid]=caller_factory(remote,fid)
   return researcher(candidate,summary,schedules,directory,observed_at,caller=active[fid])
@@ -40,9 +40,15 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
     fid=row['fixture_id']
     if fid in active:
      remote.data['jobs'][fid].update(status=row['status'],finished_at=clock().isoformat())
-     if 'package' in row:remote.data['jobs'][fid]['package']=row['package']
+     if 'package' in row:
+      remote.data['jobs'][fid]['package']=row['package']
+      remote.data['jobs'][fid]['artifact_name']=os.environ.get('POS_JOGO_ARTIFACT_NAME')
+      remote.data['jobs'][fid]['review_run_url']='https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/'+os.environ.get('GITHUB_RUN_ID','')
    remote.data['timing']=load_state(state);remote.save()
  finally:
+  for fid in active:
+   if remote.data['jobs'][fid].get('status')=='running':
+    remote.data['jobs'][fid].update(status='interrupted',finished_at=clock().isoformat(),reason='Execução interrompida; repetição automática bloqueada')
   remote.data['timing']=load_state(state);remote.save()
   pipeline.save(out/'operacao.json',{'reports':reports,'publication_enabled':False,
     'shared_pre_match_budget_reconciled':False,'state_branch':'estado-pos-jogo-piloto'})

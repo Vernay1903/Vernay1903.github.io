@@ -1,0 +1,33 @@
+{
+  "step": 14,
+  "status": "reviewed_separate_controls",
+  "audited_main_commit": "8aec5ca6f4e0913479fa57ba2b8ed52bd2738802",
+  "pre_match": {
+    "config_path": "config/redacao-pre-jogo.json",
+    "config_git_sha": "1f30aeb425b63e8626eef26ed26fd6def0339aa8",
+    "writer_git_sha": "856c4af37ad10d6ccebbc8264a1f9ea81157fd84",
+    "workflow_git_sha": "a3e0d8c62b0d0a0db940d0bcc556327a4e81a503",
+    "monthly_target_usd": "10.00",
+    "persistent_shared_ledger_found": false,
+    "controls_modified": false,
+    "price_estimates_not_revalidated_or_used_for_post_match_limits": true
+  },
+  "post_match": {
+    "monthly_hard_cap_usd": "10.00",
+    "article_hard_cap_usd": "0.10",
+    "ledger_branch": "estado-pos-jogo-piloto",
+    "ledger_file": "estado.json",
+    "observed_month": "2026-10",
+    "observed_charged_usd": "0.450426035",
+    "observed_paid_calls": 49,
+    "uncertain_charges": false,
+    "all_historical_attempts_preserved": true
+  },
+  "account": {
+    "global_hard_cap_verified": false,
+    "aggregate_spend_reconciled": false,
+    "reason": "Prévias usam metadados de execução e guardrails próprios; não há livro compartilhado persistente nem acesso ao faturamento global nesta integração."
+  },
+  "decision": "Ativar o piloto com controle rígido de US$ 0,10 por matéria e US$ 10/mês exclusivo do pós-jogo. Não somar nem apresentar os limites separados como teto global da conta. Prévia e agenda preservadas.",
+  "authorization": "Usuário autorizou o passo 14 após aprovação da matéria recente no passo 13."
+}

@@ -1,7 +1,7 @@
 {
   "publication_enabled": false,
-  "schedule_enabled": false,
-  "proposed_cron_utc": "*/10 * * * *",
+  "schedule_enabled": true,
+  "proposed_cron_utc": "3,13,23,33,43,53 * * * *",
   "timezone": "America/Sao_Paulo",
   "state_branch": "estado-pos-jogo-piloto",
   "monthly_pilot_cap_usd": "10.00",
@@ -34,5 +34,12 @@
       "cache_write_usd_per_million": "2.50",
       "output_usd_per_million": "12.00"
     }
+  },
+  "budget_review": {
+    "status": "reviewed_separate_controls",
+    "global_account_cap_verified": false,
+    "pre_match_monthly_target_usd": "10.00",
+    "pre_match_controls_modified": false,
+    "audit": "auditoria/pos-jogo/conferencia-orcamento-passo14.json"
   }
 }

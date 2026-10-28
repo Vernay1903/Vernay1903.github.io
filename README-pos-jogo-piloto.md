@@ -160,3 +160,12 @@ A apuração passou a conservar detalhes úteis das fontes, e textos curtos são
 148 testes passaram. A rotina contínua e a publicação continuam desativadas. A validação é de uma partida recente, não uma garantia de sucesso para todas. O passo 14 aguarda autorização: conciliação do orçamento compartilhado e ativação controlada do piloto agendado para os quatro clubes, em modo de rascunho. As automações de agenda e prévias não foram alteradas.
 
 Relatórios duráveis: `auditoria/pos-jogo/resultado-passo13.json` e `auditoria/pos-jogo/validacao-recente-flamengo-20261027.json`.
+
+
+## Passo 14 — agendamento autorizado
+
+Acionador próprio em main executa código fixado por SHA da branch do piloto. Consulta a cada dez minutos, nos minutos 03, 13, 23, 33, 43 e 53 UTC. Considera ontem e hoje em Brasília e exige pelo menos 50 minutos desde a primeira confirmação de encerramento. Filas/atrasos do GitHub podem postergar o início; nunca antecipa a espera. Processa no máximo uma matéria por ciclo; as demais continuam elegíveis nos ciclos seguintes.
+
+Modo exclusivo de rascunhos: gera pacote de HTML/noticias.json/sitemap em build e disponibiliza artefato por 30 dias apenas quando há rascunho ou erro. Não altera páginas, agenda, prévias, noticias.json nem sitemap na branch principal. Estado, histórico de custos e marcador de execução ficam em estado-pos-jogo-piloto/estado.json. Uma partida tentada não é cobrada de novo automaticamente. Erros factuais exigem revisão e a chave operation.enabled=false pausa o piloto sem mexer nas outras automações.
+
+A conferência de orçamento constatou controles separados. O teto persistente é US$ 0,10 por matéria (todas as tentativas) e US$ 10/mês somente para o pós-jogo. Não há teto global da conta comprovado, nem consolidação com a prévia; nenhuma configuração de prévia foi alterada. Conferência em auditoria/pos-jogo/conferencia-orcamento-passo14.json. Tarifas devem ser revalidadas ao vencer a validade configurada; cobrança incerta impede novo consumo.
