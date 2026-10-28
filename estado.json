@@ -1512,13 +1512,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-10-28T09:29:13.883829-03:00",
     "last_run_id": "40687749206",
-    "last_finished_at": "2026-10-28T03:25:32.419648-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-10-28T09:29:19.136190-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "40643743077",
-      "status": "needs_review",
+      "run_id": "40687749206",
+      "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.450426035"
+      "pilot_month_charged_usd": "0.486594595"
     }
   },
   "step15_retry": {
