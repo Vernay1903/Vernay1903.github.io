@@ -62,6 +62,23 @@ class OutcomeTest(unittest.TestCase):
   o=match_outcome(c);self.assertEqual(o['match_score'],{'home':1,'away':1});self.assertEqual(o['shootout_score'],{'home':5,'away':3})
   self.assertEqual(len(match_goals(c)),2)
 
+class OutcomeEditorialTest(unittest.TestCase):
+ def test_penalty_outcome_reaches_writer(self):
+  from editorial_pos_jogo import prepare
+  f=test_fatos.FactsTest();f.setUp();c=f.s['header']['competitions'][0]
+  c['status']['type']['name']='STATUS_FINAL_PEN'
+  for t in c['competitors']:
+   t['shootoutScore']=5 if t['homeAway']=='home' else 3
+   t['winner']=t['homeAway']=='home'
+  f.r['outcome']=match_outcome(c)
+  facts=f.run_build()
+  narrative={'fixture_id':f.c['fixture_id'],'reviewed':True,'sources':[{'id':'test','opened':True}],
+             'claims':[{'text':'Synthetic test only','source_ids':['test']}]}
+  package=prepare(facts,narrative,[])
+  self.assertEqual(package['facts']['outcome']['shootout_score'],{'home':5,'away':3})
+  self.assertEqual(package['facts']['score'],f.c['score'])
+  self.assertFalse(package['publication_enabled'])
+
 class CupFutureTest(unittest.TestCase):
  def test_missing_next_in_competition_is_optional(self):
   f=test_fatos.FactsTest();f.setUp()
