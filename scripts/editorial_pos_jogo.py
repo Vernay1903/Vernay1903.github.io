@@ -25,6 +25,7 @@ def prepare(facts, narrative, allowed_urls):
         if not claim.get('source_ids') or any(i not in sources or sources[i].get('opened') is not True for i in claim['source_ids']):
             raise ValueError('Fato sem página efetivamente consultada')
     clean = {k: copy.deepcopy(facts[k]) for k in ['fixture_id','match','venue','score','goals','campaign','competition_context','upcoming']}
+    if 'outcome' in facts: clean['outcome'] = copy.deepcopy(facts['outcome'])
     # Notas de restrição não são fatos esportivos e não devem virar reportagem.
     clean['competition_context'].pop('note', None)
     from datetime import date

@@ -61,6 +61,53 @@ def upcoming(data, team_id, cutoff, competition_code):
             'next_in_competition': next((r for r in rows if r['competition_code'] == competition_code), None)}
 
 
+def match_outcome(comp):
+    """Separate match goals from shootout; never infer regulation/extra-time splits."""
+    status = comp['status']['type']
+    if status.get('completed') is not True or status.get('name') not in FINAL:
+        raise ValueError('Partida não encerrada')
+    teams = pair(comp)
+    score = {k: integer(t['score']) for k, t in teams.items()}
+    result = {'decided_by': 'extra_time' if status['name'] == 'STATUS_FINAL_AET' else 'match',
+              'match_score': score}
+    if status['name'] == 'STATUS_FINAL_PEN':
+        penalties = {k: integer(t.get('shootoutScore')) for k, t in teams.items()}
+        if penalties['home'] == penalties['away']:
+            raise ValueError('Disputa de pênaltis sem vencedor')
+        winner = max(penalties, key=penalties.get)
+        if any(t.get('winner') is not (k == winner) for k, t in teams.items()):
+            raise ValueError('Vencedor dos pênaltis divergente')
+        result.update(decided_by='penalties', shootout_score=penalties, winner=winner)
+    elif any(t.get('shootoutScore') not in (None, 0, '0') for t in teams.values()):
+        raise ValueError('Pênaltis incompatíveis com status')
+    return result
+
+
+def match_goals(comp):
+    teams = pair(comp)
+    ids = {str(t['team']['id']): k for k, t in teams.items()}
+    goals = []
+    for detail in comp.get('details', []):
+        # Explicit shootout markers only: an in-game penalty is still a goal.
+        period = detail.get('period', {})
+        if detail.get('shootout') is True or (isinstance(period, dict) and period.get('number') == 5):
+            continue
+        if detail.get('scoringPlay') is not True:
+            continue
+        tid = str(detail['team']['id'])
+        if tid not in ids or detail.get('ownGoal') is True:
+            raise ValueError('Gol contra/equipe desconhecida requer conferência específica')
+        participants = detail.get('participants', [])
+        if not participants:
+            raise ValueError('Gol sem autor')
+        goals.append({'side': ids[tid], 'scorer': participants[0]['athlete']['displayName'],
+                      'minute': detail.get('clock', {}).get('displayValue')})
+    counts = Counter(g['side'] for g in goals)
+    if any(counts[k] != integer(t['score']) for k, t in teams.items()):
+        raise ValueError('Lista de gols não fecha com o placar')
+    return goals
+
+
 def build(candidate, summary, schedules, review, now=None):
     now = now or datetime.now(TZ)
     if not {candidate['home'], candidate['away']} & PILOT:
@@ -82,25 +129,11 @@ def build(candidate, summary, schedules, review, now=None):
     score = {k: integer(r['score']) for k, r in teams.items()}
     if score != candidate['score']:
         raise ValueError('Placar diverge da seleção')
-    # Prorrogação e pênaltis exigem separação de placares, ainda fora deste passo.
-    if c['status']['type']['name'] not in {'STATUS_FULL_TIME', 'STATUS_FINAL'}:
-        raise ValueError('Placar de prorrogação/pênaltis requer validador específico')
+    outcome = match_outcome(c)
     ids = {str(r['team']['id']): side for side, r in teams.items()}
-    goals = []
-    for detail in c.get('details', []):
-        if detail.get('scoringPlay') is not True:
-            continue
-        tid = str(detail['team']['id'])
-        if tid not in ids or detail.get('ownGoal') is True:
-            raise ValueError('Gol contra/equipe desconhecida requer conferência específica')
-        participants = detail.get('participants', [])
-        if not participants:
-            raise ValueError('Gol sem autor')
-        goals.append({'side': ids[tid], 'scorer': participants[0]['athlete']['displayName'],
-                      'minute': detail.get('clock', {}).get('displayValue')})
-    counts = Counter(g['side'] for g in goals)
-    if any(counts[k] != score[k] for k in score):
-        raise ValueError('Lista de gols não fecha com o placar')
+    goals = match_goals(c)
+    if outcome['decided_by'] != 'match' and review.get('outcome') != outcome:
+        raise ValueError('Desfecho diverge da conferência externa')
     if review.get('fixture_id') != candidate['fixture_id'] or review.get('method') != 'source_review':
         raise ValueError('Conferência externa ausente/divergente')
     if review.get('score') != score:
@@ -122,7 +155,7 @@ def build(candidate, summary, schedules, review, now=None):
             goal['minute'] = None
     context = {}
     entries = [e for g in summary.get('standings', {}).get('groups', []) for e in g.get('standings', {}).get('entries', [])]
-    for tid, side in ids.items():
+    for tid, side in ids.items() if entries else []:
         found = [e for e in entries if str(e['id']) == tid]
         if len(found) != 1:
             raise ValueError('Campanha ausente/ambígua')
@@ -143,7 +176,7 @@ def build(candidate, summary, schedules, review, now=None):
             'mode': 'facts_only', 'ready_for_drafting': not gaps, 'ready_for_publication': False,
             'validation_method': 'structured_checks_plus_explicit_source_review',
             'match': {k: candidate[k] for k in ['home', 'away', 'match_date', 'competition', 'kickoff']},
-            'venue': venue, 'score': score, 'goals': goals, 'campaign': context,
+            'venue': venue, 'score': score, 'outcome': outcome, 'goals': goals, 'campaign': context,
             'competition_context': review['competition_context'], 'upcoming': future,
             'sources': [{'url': candidate['source_url'], 'checked_at': now.isoformat(),
                          'supports': ['identity', 'score', 'goals', 'venue', 'campaign']},
@@ -151,7 +184,8 @@ def build(candidate, summary, schedules, review, now=None):
                            'checked_at': now.isoformat(), 'supports': [f'upcoming.{side}']} for tid, side in ids.items()],
                         *review['sources']],
             'conflicts': conflicts, 'gaps': gaps,
-            'editorial_rules': ['Não inferir domínio ou qualidade de atuação a partir de placar/estatísticas.',
+            'editorial_rules': ['Placar de pênaltis é separado dos gols da partida; não inferir placar aos 90 minutos nem ocorrência de prorrogação em disputa de pênaltis.',
+                                'Não inferir domínio ou qualidade de atuação a partir de placar/estatísticas.',
                                 'Não publicar minutos omitidos nem posição final ou classificação não verificadas.',
                                 'Horários futuros são de Brasília e devem ser revalidados antes de publicar.']}
 
