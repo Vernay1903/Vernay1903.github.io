@@ -2,7 +2,7 @@
 import json
 from datetime import datetime,timedelta
 from pathlib import Path
-from preparar_fatos_pos_jogo import when,pair
+from preparar_fatos_pos_jogo import when,pair,match_outcome
 from selecionar_pos_jogos import TZ,FINAL,integer
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -44,6 +44,8 @@ def observe(candidate,summary,state,now):
     if score!=candidate['score']:raise ValueError('Placar mudou entre coleta e confirmação')
     signature={'kickoff':kickoff.isoformat(),'competition':h['league']['slug'],
         'teams':{s:str(t['team']['id']) for s,t in teams.items()},'score':score,'status':status['name']}
+    if status['name'] in {'STATUS_FINAL_PEN','STATUS_FINAL_AET'}:
+        signature['outcome']=match_outcome(c)
     previous=state['fixtures'].get(fid)
     if previous is None or previous.get('signature')!=signature:
         previous={'signature':signature,'match_date':kickoff.date().isoformat(),'first_final_seen_at':now.isoformat()}

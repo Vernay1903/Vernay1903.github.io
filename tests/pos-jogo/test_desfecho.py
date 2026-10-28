@@ -62,4 +62,44 @@ class OutcomeTest(unittest.TestCase):
   o=match_outcome(c);self.assertEqual(o['match_score'],{'home':1,'away':1});self.assertEqual(o['shootout_score'],{'home':5,'away':3})
   self.assertEqual(len(match_goals(c)),2)
 
+class CupFutureTest(unittest.TestCase):
+ def test_missing_next_in_competition_is_optional(self):
+  f=test_fatos.FactsTest();f.setUp()
+  for data in f.cal.values():
+   for e in data['events']:e['league']['slug']='other.league'
+  out=f.run_build();self.assertTrue(out['ready_for_drafting'])
+  self.assertIsNone(out['upcoming']['home']['next_in_competition'])
+  self.assertIn('home.next_in_competition',out['gaps'])
+
+class RetryTest(unittest.TestCase):
+ def state(self):
+  from types import SimpleNamespace
+  return SimpleNamespace(data={'jobs':{'espn-401921835':{'status':'blocked','run_id':'40643743077','api_calls':0}},'months':{'2026-10':{'calls':[]}}},save=lambda:None)
+ def test_once_and_history(self):
+  from testar_passo15_pos_jogo import authorize_retry
+  r=self.state();authorize_retry(r)
+  self.assertEqual(r.data['step15_retry']['original_job']['run_id'],'40643743077')
+  with self.assertRaises(ValueError):authorize_retry(r)
+ def test_paid_call_prevents_retry(self):
+  from testar_passo15_pos_jogo import authorize_retry
+  r=self.state();r.data['months']['2026-10']['calls']=[{'fixture_id':'espn-401921835','charged_usd':'0.01'}]
+  with self.assertRaises(ValueError):authorize_retry(r)
+ def test_different_job_prevents_retry(self):
+  from testar_passo15_pos_jogo import authorize_retry
+  r=self.state();r.data['jobs']['espn-401921835']['run_id']='other'
+  with self.assertRaises(ValueError):authorize_retry(r)
+
+class PenaltyTimingTest(unittest.TestCase):
+ def test_changed_shootout_restarts_wait(self):
+  from tempo_pos_jogo import observe
+  from datetime import datetime,timedelta
+  h=json.loads((ROOT/'tests/pos-jogo/fixtures/penalties-provider-header.json').read_text())
+  c={'fixture_id':'espn-'+h['id'],'kickoff':h['competitions'][0]['date'],'score':{'home':1,'away':1}}
+  state={'fixtures':{}};now=datetime.fromisoformat('2026-10-27T23:40:00-03:00')
+  first=observe(c,{'header':h},state,now)
+  self.assertEqual(first['eligible_at'],'2026-10-28T00:30:00-03:00')
+  h['competitions'][0]['competitors'][0]['shootoutScore']=4
+  changed=observe(c,{'header':h},state,now+timedelta(minutes=40))
+  self.assertFalse(changed['eligible']);self.assertEqual(changed['eligible_at'],'2026-10-28T01:10:00-03:00')
+
 if __name__=='__main__':unittest.main()

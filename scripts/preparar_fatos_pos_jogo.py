@@ -173,7 +173,7 @@ def build(candidate, summary, schedules, review, now=None):
     if not venue or norm(venue) != norm(review.get('venue', '')):
         raise ValueError('Estádio divergente')
     return {'schema_version': 1, 'fixture_id': candidate['fixture_id'], 'generated_at': now.isoformat(),
-            'mode': 'facts_only', 'ready_for_drafting': not gaps, 'ready_for_publication': False,
+            'mode': 'facts_only', 'ready_for_drafting': not any(g.endswith('.next_match') for g in gaps), 'ready_for_publication': False,
             'validation_method': 'structured_checks_plus_explicit_source_review',
             'match': {k: candidate[k] for k in ['home', 'away', 'match_date', 'competition', 'kickoff']},
             'venue': venue, 'score': score, 'outcome': outcome, 'goals': goals, 'campaign': context,
