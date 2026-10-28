@@ -99,7 +99,7 @@
       "incremental_completion_run_id": "40610075120"
     },
     "espn-401921835": {
-      "status": "blocked",
+      "status": "running",
       "started_at": "2026-10-28T09:12:05.235299-03:00",
       "run_id": "40685735443",
       "api_calls": 13,
@@ -108,8 +108,9 @@
       "continuation_run_id": "40687696901",
       "reason": "Limite de chamadas da partida",
       "incremental_completion_started": true,
-      "incremental_completion_run_id": "40688512866",
-      "validation_call_limit": 13
+      "incremental_completion_run_id": "40743571734",
+      "validation_call_limit": 14,
+      "step15_final_completion": true
     }
   },
   "months": {
