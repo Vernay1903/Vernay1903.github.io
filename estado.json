@@ -53,6 +53,35 @@
         },
         "match_date": "2026-10-27",
         "first_final_seen_at": "2026-10-27T21:51:44.028557-03:00"
+      },
+      "espn-401921834": {
+        "signature": {
+          "kickoff": "2026-10-28T16:30:00-03:00",
+          "competition": "eng.league_cup",
+          "teams": {
+            "home": "382",
+            "away": "331"
+          },
+          "score": {
+            "home": 2,
+            "away": 2
+          },
+          "status": "STATUS_FINAL_PEN",
+          "outcome": {
+            "decided_by": "penalties",
+            "match_score": {
+              "home": 2,
+              "away": 2
+            },
+            "shootout_score": {
+              "home": 4,
+              "away": 3
+            },
+            "winner": "home"
+          }
+        },
+        "match_date": "2026-10-28",
+        "first_final_seen_at": "2026-10-28T19:06:52.579495-03:00"
       }
     }
   },
