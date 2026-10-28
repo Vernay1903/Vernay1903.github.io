@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   rascunhos:
-    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' }}
+    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' || github.event.head_commit.message == 'Ativar verificacao autonoma do passo 16' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -23,7 +23,7 @@ jobs:
       - name: Carregar versão validada do piloto
         uses: actions/checkout@v4
         with:
-          ref: cbb4300b9a9e29489def916d75c5b83e61eaa95f
+          ref: 0fc209cefbe5b522869775e9491475c1d2c74eb9
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -56,6 +56,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/agendar_pos_jogo.py --site-root current-main --output build/pos-jogo/agendado
+      - name: Verificar primeiro rascunho autônomo do passo 16
+        if: ${{ always() && steps.cycle.outcome != 'skipped' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/validar_passo16_pos_jogo.py --site-root current-main --output build/pos-jogo/agendado
       - name: Disponibilizar rascunhos e diagnóstico para revisão
         if: ${{ always() && (failure() || steps.cycle.outputs.has_drafts == 'true' || github.event_name != 'schedule') }}
         uses: actions/upload-artifact@v4
