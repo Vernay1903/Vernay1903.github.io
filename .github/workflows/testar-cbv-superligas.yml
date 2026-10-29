@@ -1,0 +1,111 @@
+name: Testar integracao Superligas (sem publicacao)
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/testar-cbv-superligas.yml"
+      - ".github/scripts/agenda_superliga.py"
+      - ".github/scripts/test_agenda_superliga.py"
+      - ".github/workflows/publicar-agenda-validada.yml"
+      - ".github/workflows/agenda-guard.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar-fonte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Executar 15 testes de leitura e integridade
+        run: python -m unittest discover -s .github/scripts -p 'test_agenda_superliga.py' -v
+      - name: Coleta real das duas Superligas em 29 e 30 outubro
+        shell: bash
+        run: |
+          python .github/scripts/agenda_superliga.py --date 2026-10-29 > /tmp/cbv29.json
+          python .github/scripts/agenda_superliga.py --date 2026-10-30 > /tmp/cbv30.json
+          python - <<'PY'
+          import json
+          a=json.load(open('/tmp/cbv29.json'))
+          b=json.load(open('/tmp/cbv30.json'))
+          assert a['superligas']['masculina']['status']=='ok',a
+          assert a['superligas']['feminina']['status']=='ok',a
+          assert b['superligas']['masculina']['status']=='ok',b
+          assert b['superligas']['feminina']['status']=='ok',b
+          assert a['superligas']['masculina']['count']==1, a
+          assert b['superligas']['feminina']['count']==3, b
+          assert a['agenda']==sorted(a['agenda'], key=lambda x:(x['time'],x['desc']))
+          assert b['agenda']==sorted(b['agenda'], key=lambda x:(x['time'],x['desc']))
+          print("29 outubro:",a['agenda'])
+          print("30 outubro:",b['agenda'])
+          PY
+      - name: Simular producao completa futebol NBA NFL e duas Superligas
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          lines=Path('.github/workflows/publicar-agenda-validada.yml').read_text().splitlines()
+          start=lines.index("          python - <<'PY'")+1
+          end=lines.index("          PY",start)
+          script='\n'.join(line[10:] for line in lines[start:end])+'\n'
+          compile(script,'agenda_complete.py','exec')
+
+          def sim(day):
+              env=dict(os.environ,SIMULAR='true',DATA_TESTE=day)
+              p=subprocess.run([sys.executable,'-c',script],env=env,capture_output=True,text=True)
+              if p.returncode: raise AssertionError(p.stderr[-3500:]+' '+p.stdout[-3500:])
+              return json.loads((Path(os.environ['RUNNER_TEMP'])/'agenda-coleta.json').read_text())
+
+          for day, gender, expected in [('2026-10-29','masculina',1),
+                                        ('2026-10-30','feminina',3)]:
+              data=sim(day)
+              assert len(data['coverage'])==13,data['coverage']
+              assert data['nba']['status']=='ok',data['nba']
+              assert data['nfl']['status']=='ok',data['nfl']
+              assert data['superliga_'+gender]['status']=='ok',data['superliga_'+gender]
+              assert data['superliga_'+gender]['count']==expected,data['superliga_'+gender]
+              assert data['agenda']==sorted(data['agenda'],key=lambda e:(e['time'],e['desc']))
+              assert len({(e['time'],e['desc']) for e in data['agenda']})==len(data['agenda'])
+              print('Agenda unificada',day,'validada, total',len(data['agenda']),'jogos.')
+
+          cbv=Path('.github/scripts/agenda_superliga.py')
+          original=cbv.read_text()
+          needle='def collect_one(gender, target, loader=download):\n    return parse_superliga(loader(gender), gender, target)'
+          assert needle in original
+          try:
+              for failing,passing in [('masculina','feminina'),('feminina','masculina')]:
+                  injected=needle.replace(
+                      '    return parse_superliga',
+                      "    if gender == '"+failing+"':\n        raise RuntimeError('Falha CBV simulada')\n    return parse_superliga")
+                  cbv.write_text(original.replace(needle,injected))
+                  v=sim('2026-10-30')
+                  assert len(v['coverage'])==13
+                  assert v['nba']['status']=='ok' and v['nfl']['status']=='ok'
+                  assert v['superliga_'+failing]['status']=='unavailable'
+                  assert v['superliga_'+passing]['status']=='ok'
+                  print('Falha CBV',failing,'isolada; futebol, NBA, NFL e',passing,'preservados.')
+          finally:
+              cbv.write_text(original)
+
+          guard=Path('.github/workflows/agenda-guard.yml').read_text()
+          assert "re.compile(r'^Superliga Feminina$')" in guard
+          assert "re.compile(r'^Superliga Masculina$')" in guard
+          PY
+      - name: Verificar sintaxe do publicador JS
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          lines=Path('.github/workflows/publicar-agenda-validada.yml').read_text().splitlines()
+          start=lines.index('          script: |')+1
+          code='\n'.join(line[12:] for line in lines[start:])
+          Path('/tmp/publicador-superliga.js').write_text('async function main() {\n'+code+'\n}\n')
+          PY
+          node --check /tmp/publicador-superliga.js

@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Disponibilizar modulos independentes de coleta NBA e NFL
+      - name: Disponibilizar modulos independentes de NBA, NFL e Superligas
         if: ${{ inputs.verificar_credencial != true }}
         uses: actions/checkout@v4
         with:
@@ -206,6 +206,20 @@ jobs:
               except Exception as error:
                   result['nfl'] = {'status': 'unavailable', 'count': 0, 'error': str(error)[:300]}
                   print('AVISO: consulta NFL indisponivel; futebol e NBA preservados: ' + str(error))
+              # Superligas CBV: coletores separados por genero; falhas nao bloqueiam outras fontes.
+              for gender in ('masculina', 'feminina'):
+                  key = 'superliga_' + gender
+                  try:
+                      from agenda_superliga import collect_one
+                      entries = collect_one(gender, target)
+                      combined = sorted(result['agenda'] + entries, key=lambda x: (x['time'], x['desc']))
+                      if len({(x['time'], x['desc']) for x in combined}) != len(combined):
+                          raise ValueError('Jogo duplicado na coleta CBV')
+                      result['agenda'] = combined
+                      result[key] = {'status': 'ok', 'count': len(entries)}
+                  except Exception as error:
+                      result[key] = {'status': 'unavailable', 'count': 0, 'error': str(error)[:300]}
+                      print('AVISO: consulta ' + key + ' indisponivel; futebol, NBA, NFL e outra Superliga preservados: ' + str(error))
               if not requested and dt.datetime.now(TZ).date() != target:
                   raise SystemExit('A data mudou durante a coleta; tentar novamente.')
               path = os.path.join(os.environ.get('RUNNER_TEMP', '/tmp'), 'agenda-coleta.json')
@@ -341,6 +355,11 @@ jobs:
             if (!collection.nfl || !['ok', 'unavailable'].includes(collection.nfl.status)) {
               throw new Error('Status de coleta NFL ausente ou invalido.');
             }
+            for (const key of ['superliga_masculina', 'superliga_feminina']) {
+              if (!collection[key] || !['ok', 'unavailable'].includes(collection[key].status)) {
+                throw new Error('Status de coleta CBV ausente ou invalido: ' + key);
+              }
+            }
             const collected = collection.agenda;
             const nbaInfo = collection.nba.status === 'ok'
               ? 'NBA: ' + collection.nba.count + ' jogo(s) coletado(s).'
@@ -348,8 +367,13 @@ jobs:
             const nflInfo = collection.nfl.status === 'ok'
               ? 'NFL: ' + collection.nfl.count + ' jogo(s) coletado(s).'
               : 'NFL: indisponivel (futebol e NBA preservados).';
+            const volleyballInfo = ['superliga_masculina', 'superliga_feminina'].map(key =>
+              key + ': ' + (collection[key].status === 'ok'
+                ? collection[key].count + ' jogo(s).'
+                : 'indisponivel (outras fontes preservadas).')
+            ).join(' ');
             await core.summary.addHeading('Agenda de ' + collection.date)
-              .addRaw('Coleta ESPN: 13 competições de futebol confirmadas. ' + nbaInfo + ' ' + nflInfo + ' ' + collected.length + ' jogo(s).\n')
+              .addRaw('Coleta ESPN/CBV: 13 competições de futebol confirmadas. ' + nbaInfo + ' ' + nflInfo + ' ' + volleyballInfo + ' ' + collected.length + ' jogo(s).\n')
               .addTable([
                 [{data: 'Competição', header: true}, {data: 'Jogos', header: true}],
                 ...collection.coverage.map(row => [row.competition, String(row.count)])
@@ -367,11 +391,13 @@ jobs:
             let currentAgenda = null;
             try { currentAgenda = JSON.parse(Buffer.from(mainSource.content, 'base64').toString('utf8')); } catch {}
 
-            // Preservar partidas NBA/NFL ja publicadas HOJE se a fonte falhar.
+            // Preservar partidas NBA/NFL/Superligas ja publicadas HOJE se a fonte falhar.
             // Nunca transportar partidas da agenda do dia anterior.
             const failedLeagues = [
               {slug: 'nba', suffix: ' - NBA'},
-              {slug: 'nfl', suffix: ' - NFL'}
+              {slug: 'nfl', suffix: ' - NFL'},
+              {slug: 'superliga_masculina', suffix: ' - Superliga Masculina'},
+              {slug: 'superliga_feminina', suffix: ' - Superliga Feminina'}
             ].filter(item => collection[item.slug].status === 'unavailable');
             if (failedLeagues.length && Array.isArray(currentAgenda)) {
               const snapshots = failedLeagues.map(item => ({
@@ -384,7 +410,7 @@ jobs:
                   owner, repo, path: 'agenda.json', sha: mainSnapshot, per_page: 1
                 })).data;
                 const timestamp = history[0]?.commit?.committer?.date;
-                if (!timestamp) throw new Error('Impossivel verificar a data da ultima agenda para proteger NBA/NFL.');
+                if (!timestamp) throw new Error('Impossivel verificar a data da ultima agenda para proteger fontes esportivas.');
                 const dateParts = Object.fromEntries(
                   new Intl.DateTimeFormat('en-US', {
                     timeZone: 'America/Sao_Paulo',
@@ -409,7 +435,7 @@ jobs:
               }
             }
             if (canonicalAgenda(currentAgenda) === canonicalAgenda(collected)) {
-              core.notice('Agenda de ' + date + ' conferida em futebol, NBA e NFL; sem alteracao: ' + collected.length + ' jogo(s).');
+              core.notice('Agenda de ' + date + ' conferida em futebol, NBA, NFL e Superligas; sem alteracao: ' + collected.length + ' jogo(s).');
               await core.summary.addRaw('\nResultado: agenda conferida, sem alteração.\n').write();
               return;
             }
@@ -507,7 +533,7 @@ jobs:
                 base: 'main',
                 title: 'Atualiza agenda de ' + date,
                 body:
-                  'Agenda de ' + date + ' coletada diretamente da ESPN. As 13 competições de futebol foram consultadas com sucesso; coletas NBA e NFL independentes; ' +
+                  'Agenda de ' + date + ' coletada diretamente da ESPN. As 13 competições de futebol foram consultadas com sucesso; coletas NBA, NFL e Superligas independentes; ' +
                   'horários convertidos para America/Sao_Paulo. Somente agenda.json foi alterado. ' +
                   'Relatório: https://github.com/' + repoName + '/actions/runs/' + context.runId
               })).data;
@@ -574,7 +600,7 @@ jobs:
             const agenda = JSON.parse(source);
             if (!Array.isArray(agenda)) throw new Error('agenda.json deve ser uma lista.');
             if (canonicalAgenda(agenda) !== canonicalAgenda(collected)) {
-              throw new Error('Agenda do PR diverge da coleta validada de futebol, NBA e NFL; merge recusado.');
+              throw new Error('Agenda do PR diverge da coleta validada de futebol, NBA, NFL e Superligas; merge recusado.');
             }
 
             let last = '';
