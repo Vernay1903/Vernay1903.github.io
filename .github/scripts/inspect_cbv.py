@@ -89,3 +89,20 @@ for gender in ("masculina","feminina"):
     for needle in ['href="/jogo/', 'Jogo<!-- -->', 'Rodada<!-- -->', '29/10', '30/10','2026-10-30','datetime=']:
         pos=raw.find(needle)
         print("RAW NEEDLE",needle,"INDEX",pos,"CONTEXT",repr(raw[pos-320:pos+1000])[:1350] if pos>0 else None)
+
+    # Parse somente a serializacao publica React/Next embutida no HTML.
+    import json
+    scripts = re.findall(r'<script>(self\.__next_f\.push\(\[1,.*?\]\))</script>',raw,re.S)
+    textblocks=[]
+    for script in scripts:
+        encoded=script.split("push(",1)[1].rsplit(")",1)[0]
+        try:
+            v=json.loads(encoded)
+            if len(v)>1 and isinstance(v[1],str):
+                textblocks.append(v[1])
+        except Exception as e:
+            print("RSC parse warning",repr(e)[:80])
+    alltext="".join(textblocks)
+    print("RSC decoded",len(alltext),"matches",alltext.count('"Match_ID"'),"dates",alltext.count('"MatchDateTime"'))
+    for m in list(re.finditer(r'"Match_ID":(\d+)',alltext))[:8]:
+        print("RSC GAME",repr(alltext[m.start():m.start()+1350])[:1600])
