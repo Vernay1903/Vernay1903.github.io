@@ -106,3 +106,11 @@ for gender in ("masculina","feminina"):
     print("RSC decoded",len(alltext),"matches",alltext.count('"Match_ID"'),"dates",alltext.count('"MatchDateTime"'))
     for m in list(re.finditer(r'"Match_ID":(\d+)',alltext))[:8]:
         print("RSC GAME",repr(alltext[m.start():m.start()+1350])[:1600])
+
+    for field in ["Match_ID","MatchDateTime","postponed","HomeTeam","GuestTeam"]:
+        ii=alltext.find(field)
+        print("STRUCT",field,"count",alltext.count(field),"first",ii,"repr",repr(alltext[max(0,ii-70):ii+230]))
+    decoded=alltext.replace('\\"','"')
+    print("DECODED MATCHES",decoded.count('"Match_ID"'))
+    for m in list(re.finditer(r'"Match_ID":(\d+)',decoded))[:4]:
+        print("DECODED GAME",repr(decoded[m.start():m.start()+1500])[:1700])
