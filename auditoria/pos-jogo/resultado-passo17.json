@@ -1,0 +1,49 @@
+{
+  "step": 17,
+  "status": "draft_publication_proposal_ready",
+  "pr": "https://github.com/Vernay1903/Vernay1903.github.io/pull/107",
+  "pr_number": 107,
+  "draft": true,
+  "merged": false,
+  "main_base_sha": "7058177ea4e7247eda8150ea7dd13a74e6a44431",
+  "head_sha": "29d99c716fd0361b4c5820f94c75d4c3e2f46c68",
+  "changed_files": [
+    "manchester-city-brighton-hove-albion-english-carabao-cup-2026-resultado.html",
+    "noticias.json",
+    "sitemap.xml"
+  ],
+  "validation": {
+    "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+    "fixed_shell_unchanged": true,
+    "title_chars": 54,
+    "body_words": 730,
+    "body_ad_count": 1,
+    "ad_after_blocks": [
+      8
+    ],
+    "publication_enabled": false,
+    "filename": "manchester-city-brighton-hove-albion-english-carabao-cup-2026-resultado.html",
+    "written_at": "2026-10-28T23:10:41.893250+00:00",
+    "article_date": "28/10/2026",
+    "sitemap_lastmod": "2026-10-28",
+    "news_position": 0,
+    "old_news_preserved": true,
+    "old_sitemap_preserved": true,
+    "fixture_id": "espn-401921834",
+    "article_sha256": "85b329458da83f42a6ba85661e6af2c0419c010c08316b39fc4448bc8215d82b",
+    "human_review_required": true,
+    "semantic_review_passed": true
+  },
+  "remote_hashes_match_validated_package": true,
+  "source_run": 40784987236,
+  "source_artifact": 12859715786,
+  "source_artifact_sha256": "sha256:bd2670f0afdf6f9c4a366d0ab9d3d06ea78970ce8d361a2a6b6d86c21b5b0cd1",
+  "new_ai_calls": 0,
+  "new_ai_cost_usd": "0",
+  "publication_enabled": false,
+  "pending": [
+    "Human editorial review of original generated article",
+    "Approval and controlled publication",
+    "Verification of live page and feeds before enabling automatic publication"
+  ]
+}
