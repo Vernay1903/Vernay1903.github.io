@@ -20,3 +20,25 @@ jobs:
       - uses: actions/checkout@v4
       - name: Inspecionar paginas oficiais em leitura
         run: python .github/scripts/inspect_cbv.py
+      - name: Executar 15 testes de leitura e integridade
+        run: python -m unittest discover -s .github/scripts -p 'test_agenda_superliga.py' -v
+      - name: Coleta real das duas Superligas em 29 e 30 outubro
+        shell: bash
+        run: |
+          python .github/scripts/agenda_superliga.py --date 2026-10-29 > /tmp/cbv29.json
+          python .github/scripts/agenda_superliga.py --date 2026-10-30 > /tmp/cbv30.json
+          python - <<'PY'
+          import json
+          a=json.load(open('/tmp/cbv29.json'))
+          b=json.load(open('/tmp/cbv30.json'))
+          assert a['superligas']['masculina']['status']=='ok',a
+          assert a['superligas']['feminina']['status']=='ok',a
+          assert b['superligas']['masculina']['status']=='ok',b
+          assert b['superligas']['feminina']['status']=='ok',b
+          assert a['superligas']['masculina']['count']==1, a
+          assert b['superligas']['feminina']['count']==3, b
+          assert a['agenda']==sorted(a['agenda'], key=lambda x:(x['time'],x['desc']))
+          assert b['agenda']==sorted(b['agenda'], key=lambda x:(x['time'],x['desc']))
+          print("29 outubro:",a['agenda'])
+          print("30 outubro:",b['agenda'])
+          PY
