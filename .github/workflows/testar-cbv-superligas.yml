@@ -1,0 +1,22 @@
+name: Diagnosticar calendario Superligas (sem publicacao)
+
+on:
+  pull_request:
+    paths:
+      - ".github/scripts/inspect_cbv.py"
+      - ".github/workflows/testar-cbv-superligas.yml"
+      - ".github/scripts/agenda_superliga.py"
+      - ".github/scripts/test_agenda_superliga.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar-fonte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspecionar paginas oficiais em leitura
+        run: python .github/scripts/inspect_cbv.py
