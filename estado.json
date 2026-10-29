@@ -1806,12 +1806,12 @@
     "publication_enabled": false,
     "last_started_at": "2026-10-28T23:24:05.172198-03:00",
     "last_run_id": "40806104080",
-    "last_finished_at": "2026-10-28T20:10:53.128630-03:00",
-    "last_status": "draft_ready",
+    "last_finished_at": "2026-10-28T23:24:10.766842-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "40784987236",
-      "status": "draft_ready",
-      "has_drafts": true,
+      "run_id": "40806104080",
+      "status": "idle",
+      "has_drafts": false,
       "pilot_month_charged_usd": "0.515045400"
     }
   },
