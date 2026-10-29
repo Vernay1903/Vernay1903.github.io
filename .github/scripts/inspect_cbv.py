@@ -53,3 +53,39 @@ for gender in ("masculina","feminina"):
             if at>=0: print("CONTEXT",repr(raw[max(at-400,0):at+600])[:1000])
     except Exception as exc:
         print("ERROR",type(exc).__name__,str(exc)[:500])
+
+    # Dados de cartões HTML renderizados, sem depender de scripts privados.
+    class Cards(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.depth=0
+            self.active=None
+            self.cards=[]
+            self.inscript=False
+            self.times=[]
+        def handle_starttag(self,tag,attrs):
+            if tag=="script": self.inscript=True
+            if self.active is not None:
+                self.depth+=1
+                if tag=="time": self.active["time_tags"].append(dict(attrs))
+                if tag=="a": self.active["links"].append(dict(attrs).get("href",""))
+            elif tag=="article":
+                self.active={"attrs":dict(attrs),"text":[],"time_tags":[],"links":[]}
+                self.depth=1
+        def handle_endtag(self,tag):
+            if self.active:
+                self.depth-=1
+                if self.depth==0:
+                    self.cards.append(self.active)
+                    self.active=None
+            if tag=="script": self.inscript=False
+        def handle_data(self,d):
+            if self.active is not None and d.strip():self.active["text"].append(d.strip())
+    cards=Cards()
+    cards.feed(raw)
+    print("CARDS",len(cards.cards))
+    for ix,c in enumerate(cards.cards[:20]):
+        print("CARD",ix,"ATTR",repr(c["attrs"])[:400],"TEXT",repr(c["text"][:35])[:750],"TIME",c["time_tags"][:4],"LINKS",c["links"][:5])
+    for needle in ['href="/jogo/', 'Jogo<!-- -->', 'Rodada<!-- -->', '29/10', '30/10','2026-10-30','datetime=']:
+        pos=raw.find(needle)
+        print("RAW NEEDLE",needle,"INDEX",pos,"CONTEXT",repr(raw[pos-320:pos+1000])[:1350] if pos>0 else None)
