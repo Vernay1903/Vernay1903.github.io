@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Executar 15 testes de leitura e integridade
+      - name: Executar 16 testes de leitura, integridade e apresentacao
         run: python -m unittest discover -s .github/scripts -p 'test_agenda_superliga.py' -v
       - name: Coleta real das duas Superligas em 29 e 30 outubro
         shell: bash
@@ -36,6 +36,9 @@ jobs:
           assert b['superligas']['feminina']['status']=='ok',b
           assert a['superligas']['masculina']['count']==1, a
           assert b['superligas']['feminina']['count']==3, b
+          assert a['agenda'][0]['desc'] == 'Sada Cruzeiro Vôlei x Azulim/Sicoob/Monte - Superliga Masculina', a
+          assert any(e['desc']=='Dentil Praia Clube x Paulistano Barueri - Superliga Feminina' for e in b['agenda']), b
+          assert any(e['desc']=='E.C. Pinheiros x Brusque Vôlei - Superliga Feminina' for e in b['agenda']), b
           assert a['agenda']==sorted(a['agenda'], key=lambda x:(x['time'],x['desc']))
           assert b['agenda']==sorted(b['agenda'], key=lambda x:(x['time'],x['desc']))
           print("29 outubro:",a['agenda'])
