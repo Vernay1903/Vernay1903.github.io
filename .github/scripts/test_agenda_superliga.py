@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from agenda_superliga import parse_superliga, collect_both
+from agenda_superliga import parse_superliga, collect_both, format_team_name
 
 D = dt.date(2026, 10, 30)
 
@@ -33,12 +33,29 @@ class TestSuperliga(unittest.TestCase):
     def test_female_real_timezone(self):
         games = parse_superliga(html(), "feminina", D)
         self.assertEqual(games, [{"time": "18:30",
-            "desc": "DENTIL PRAIA CLUBE x PAULISTANO BARUERI - Superliga Feminina"}])
+            "desc": "Dentil Praia Clube x Paulistano Barueri - Superliga Feminina"}])
 
     def test_male_identity(self):
         games = parse_superliga(html("masculina"), "masculina", D)
         self.assertEqual(len(games), 1)
         self.assertTrue(games[0]["desc"].endswith(" - Superliga Masculina"))
+
+    def test_names_normalized_every_time(self):
+        checks = {
+            "DENTIL PRAIA CLUBE": "Dentil Praia Clube",
+            "PAULISTANO  BARUERI": "Paulistano Barueri",
+            "E.C. PINHEIROS": "E.C. Pinheiros",
+            "BRUSQUE VÔLEI": "Brusque Vôlei",
+            "SESI VOLEI BAURU": "Sesi Vôlei Bauru",
+            "FLUMINENSE F.C.": "Fluminense F.C.",
+            "SADA CRUZEIRO VOLEI": "Sada Cruzeiro Vôlei",
+            "AZULIM/SICOOB/MONTE": "Azulim/Sicoob/Monte",
+            "SESC RJ FLAMENGO": "Sesc RJ Flamengo",
+            "BRASÍLIA VÔLEI / BRB": "Brasília Vôlei / BRB",
+        }
+        for raw, expected in checks.items():
+            with self.subTest(raw=raw):
+                self.assertEqual(format_team_name(raw), expected)
 
     def test_gender_mismatch_rejected(self):
         with self.assertRaises(ValueError):

@@ -100,6 +100,16 @@ def _read_matches_by_round(html):
     return entries
 
 
+
+def format_team_name(name):
+    """Padroniza os nomes da CBV sem alterar as demais competições."""
+    formatted = " ".join(name.split()).title()
+    formatted = re.sub(r"\bVolei\b", "Vôlei", formatted)
+    # Siglas que devem continuar em maiúsculas.
+    formatted = re.sub(r"\b(Rj|Brb)\b", lambda m: m.group(1).upper(), formatted)
+    return formatted
+
+
 def parse_superliga(html, gender, target):
     if gender not in GENDERS or not isinstance(html, str) or not isinstance(target, dt.date):
         raise ValueError("Parâmetros da coleta CBV inválidos")
@@ -129,8 +139,8 @@ def parse_superliga(html, gender, target):
             continue
         if item.get("postponed") is not False:
             raise ValueError("Situação de adiamento CBV indefinida")
-        home = " ".join(home.split())
-        away = " ".join(away.split())
+        home = format_team_name(home)
+        away = format_team_name(away)
         if any(ch in home + away for ch in "\r\n\x00"):
             raise ValueError("Nome de equipe CBV inválido")
         entry = {"time": start.strftime("%H:%M"), "desc": f"{home} x {away} - {NAMES[gender]}"}
