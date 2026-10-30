@@ -1,38 +1,82 @@
 [
   {
-    "time": "14:30",
-    "desc": "Frosinone x Lecce - Serie A italiana"
+    "time": "15:00",
+    "desc": "Le Havre AC x Paris Saint-Germain - Ligue 1"
   },
   {
-    "time": "16:45",
-    "desc": "Fiorentina x Atalanta - Serie A italiana"
+    "time": "15:00",
+    "desc": "Nice x Stade Rennais - Ligue 1"
+  },
+  {
+    "time": "16:30",
+    "desc": "SV Elversberg x Mainz - Bundesliga"
+  },
+  {
+    "time": "17:00",
+    "desc": "Villareal x Espanyol - La Liga"
+  },
+  {
+    "time": "17:05",
+    "desc": "Lille x Lens - Ligue 1"
+  },
+  {
+    "time": "18:30",
+    "desc": "DENTIL PRAIA CLUBE x PAULISTANO BARUERI - Superliga Feminina"
+  },
+  {
+    "time": "18:30",
+    "desc": "E.C. PINHEIROS x BRUSQUE VÔLEI - Superliga Feminina"
   },
   {
     "time": "19:30",
-    "desc": "Atlético-MG x Cruzeiro - Brasileirão Série A"
+    "desc": "Criciúma x Ponte Preta - Brasileirão Série B"
   },
   {
     "time": "20:00",
-    "desc": "Vasco da Gama x Flamengo - Brasileirão Série A"
+    "desc": "Corinthians x Mirassol - Brasileirão Série A"
+  },
+  {
+    "time": "20:00",
+    "desc": "Washington Wizards x Charlotte Hornets - NBA"
+  },
+  {
+    "time": "20:30",
+    "desc": "Boston Celtics x Chicago Bulls - NBA"
+  },
+  {
+    "time": "20:30",
+    "desc": "Brooklyn Nets x Detroit Pistons - NBA"
+  },
+  {
+    "time": "20:30",
+    "desc": "Philadelphia 76ers x New York Knicks - NBA"
+  },
+  {
+    "time": "20:30",
+    "desc": "Toronto Raptors x Orlando Magic - NBA"
   },
   {
     "time": "21:00",
-    "desc": "Atlanta Hawks x Cleveland Cavaliers - NBA"
+    "desc": "Dallas Mavericks x Houston Rockets - NBA"
   },
   {
     "time": "21:00",
-    "desc": "New Orleans Pelicans x Sacramento Kings - NBA"
+    "desc": "Miami Heat x Indiana Pacers - NBA"
   },
   {
-    "time": "21:15",
-    "desc": "Green Bay Packers x Carolina Panthers - NFL"
+    "time": "21:00",
+    "desc": "Minnesota Timberwolves x LA Clippers - NBA"
   },
   {
-    "time": "21:30",
-    "desc": "Grêmio x Athletico Paranaense - Brasileirão Série A"
+    "time": "21:00",
+    "desc": "SESI VOLEI BAURU x FLUMINENSE F.C. - Superliga Feminina"
   },
   {
     "time": "23:00",
-    "desc": "Portland Trail Blazers x Memphis Grizzlies - NBA"
+    "desc": "Golden State Warriors x Los Angeles Lakers - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Phoenix Suns x Denver Nuggets - NBA"
   }
 ]
