@@ -1823,11 +1823,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-10-30T03:05:06.960659-03:00",
     "last_run_id": "41011983679",
-    "last_finished_at": "2026-10-29T21:21:38.056564-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-10-30T03:05:12.751683-03:00",
+    "last_status": "waiting",
     "last_report": {
-      "run_id": "40979158785",
-      "status": "idle",
+      "run_id": "41011983679",
+      "status": "waiting",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.515045400"
     }
