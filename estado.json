@@ -190,11 +190,12 @@
       "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/40784987236"
     },
     "espn-401841292": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-10-30T09:47:37.302122-03:00",
       "run_id": "41058009989",
       "api_calls": 2,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-10-30T09:48:35.899881-03:00"
     }
   },
   "months": {
