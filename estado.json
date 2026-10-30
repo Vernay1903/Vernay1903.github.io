@@ -82,6 +82,23 @@
         },
         "match_date": "2026-10-28",
         "first_final_seen_at": "2026-10-28T19:06:52.579495-03:00"
+      },
+      "espn-401841292": {
+        "signature": {
+          "kickoff": "2026-10-29T20:00:00-03:00",
+          "competition": "bra.1",
+          "teams": {
+            "home": "3454",
+            "away": "819"
+          },
+          "score": {
+            "home": 1,
+            "away": 4
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-10-29",
+        "first_final_seen_at": "2026-10-30T03:05:08.083879-03:00"
       }
     }
   },
