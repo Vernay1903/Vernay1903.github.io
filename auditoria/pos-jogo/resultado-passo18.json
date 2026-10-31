@@ -1,0 +1,50 @@
+{
+  "step": 18,
+  "status": "completed_controlled_publication",
+  "fixture_id": "espn-401921834",
+  "publication_commit": "118ecaf669aec0e63e2d73b79f4e70646b9c0e3d",
+  "pages_run_id": 41227449570,
+  "pages_conclusion": "success",
+  "closed_superseded_pr": 107,
+  "validation": {
+    "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+    "fixed_shell_unchanged": true,
+    "title_chars": 62,
+    "body_words": 641,
+    "body_ad_count": 1,
+    "ad_after_blocks": [
+      9
+    ],
+    "publication_enabled": false,
+    "filename": "manchester-city-brighton-copa-da-liga-inglesa-2026-resultado.html",
+    "written_at": "2026-10-31T15:01:45.372822-03:00",
+    "article_date": "31/10/2026",
+    "sitemap_lastmod": "2026-10-31",
+    "news_position": 0,
+    "old_news_preserved": true,
+    "old_sitemap_preserved": true,
+    "manual_editorial_revision": true,
+    "automatic_editorial_validation_passed": false,
+    "publication_mode": "authorized_controlled_publication",
+    "new_paid_api_calls": 0,
+    "git_blob_sha": {
+      "manchester-city-brighton-copa-da-liga-inglesa-2026-resultado.html": "ab441873f6289e032888c19c4b4f8afe491cf6e0",
+      "noticias.json": "19336856e6554989ebac041d3d702d9a4853b105",
+      "sitemap.xml": "9db3752076f8566581d65734223039e1df9cac85"
+    }
+  },
+  "live": {
+    "live_verified": true,
+    "page_http": 200,
+    "html_byte_exact": true,
+    "news_first_entry_matches": true,
+    "sitemap_date_priority_match": true,
+    "url": "https://cortedosesportes.com.br/manchester-city-brighton-copa-da-liga-inglesa-2026-resultado.html"
+  },
+  "automatic_publication_enabled": false,
+  "autonomous_editorial_validation": "rejected_step17_not_overridden",
+  "new_paid_api_calls": 0,
+  "fixture_cumulative_cost_usd": "0.043257370",
+  "next_step": 19,
+  "next_scope": "Corrigir extração de sujeitos e revisão da organização editorial; validar geração autônoma antes de autorizar publicação automática."
+}
