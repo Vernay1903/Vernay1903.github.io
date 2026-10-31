@@ -1,0 +1,56 @@
+name: Pós-jogo — validação editorial do passo 17
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pos-jogo-validacao-editorial-17.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: pos-jogo-estado-piloto
+  cancel-in-progress: false
+jobs:
+  validar:
+    if: ${{ github.event.head_commit.message == 'Executar validacao editorial unica do passo 17' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: d8d6801094d4584c9cc4b39aa5a90341d4e59441
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/
+            /config/
+            /prompts/
+            /templates/
+            /tests/pos-jogo/
+            /auditoria/pos-jogo/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar controles
+        run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - name: Recuperar fontes do rascunho original
+        uses: actions/download-artifact@v4
+        with:
+          name: pos-jogo-rascunhos-40784987236-1
+          run-id: 40784987236
+          github-token: ${{ github.token }}
+          path: build/pos-jogo/passo17-original
+      - name: Reapurar e redigir sem edicao manual
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/testar_editorial_passo17.py
+      - name: Disponibilizar resultado para avaliacao
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pos-jogo-editorial-17-${{ github.run_id }}
+          path: build/pos-jogo/passo17-editorial/
+          retention-days: 30
+          if-no-files-found: warn
