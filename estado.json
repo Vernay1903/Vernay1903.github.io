@@ -2178,13 +2178,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-10-31T18:48:36.599868-03:00",
     "last_run_id": "41245288934",
-    "last_finished_at": "2026-10-31T15:23:26.269368-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-10-31T18:50:50.263723-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "41229155245",
-      "status": "waiting",
+      "run_id": "41245288934",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.546505115"
+      "pilot_month_charged_usd": "0.571776315"
     }
   },
   "step15_retry": {
