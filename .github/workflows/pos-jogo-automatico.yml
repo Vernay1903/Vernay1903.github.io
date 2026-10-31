@@ -23,7 +23,7 @@ jobs:
       - name: Carregar versão validada do piloto
         uses: actions/checkout@v4
         with:
-          ref: f100687487562b0bd24288cf406e3fa2eaf9e56a
+          ref: 86e6e2d0df135cddee1fe71831c8d759de046ee4
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
