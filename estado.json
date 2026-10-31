@@ -1981,11 +1981,24 @@
           "id": "d454a647a55443b4a4b0ec4988c0622a",
           "fixture_id": "espn-401921834",
           "started_at": "2026-10-31T14:49:25.153862-03:00",
-          "status": "reserved",
-          "charged_usd": "0.00210975",
+          "status": "settled",
+          "charged_usd": "0.000801175",
           "reserved_usd": "0.00210975",
           "model": "gpt-6-luna",
-          "counted_input_tokens": 4878
+          "counted_input_tokens": 4878,
+          "usage": {
+            "input_tokens": 4878,
+            "input_tokens_details": {
+              "cache_write_tokens": 4875,
+              "cached_tokens": 0
+            },
+            "output_tokens": 383,
+            "output_tokens_details": {
+              "reasoning_tokens": 209
+            },
+            "total_tokens": 5261
+          },
+          "response_id": "resp_045908db05cab319016ae62a26bf1c87d0be9d275a97a72ad4"
         }
       ],
       "blocked": false
