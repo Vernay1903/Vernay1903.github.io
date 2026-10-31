@@ -1,0 +1,47 @@
+{
+  "step": 17,
+  "status": "editorial_validation_rejected",
+  "run_id": 41226180064,
+  "run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41226180064",
+  "source_run_id": 40784987236,
+  "mode": "historical_source_replay",
+  "manual_article_edits": false,
+  "technical_run_conclusion": "success",
+  "automatic_semantic_review_passed": true,
+  "editorial_assessment_passed": false,
+  "publication_enabled": false,
+  "production_code_pin_updated": false,
+  "body_words": 682,
+  "title_chars": 55,
+  "additional_calls": 7,
+  "additional_cost_usd": "0.015880415",
+  "fixture_total_cost_usd": "0.043257370",
+  "fixture_cap_usd": "0.10",
+  "improvements": [
+    "Competição em português no título, chamada e abertura",
+    "Data com nesta quarta-feira",
+    "Classificação às quartas e próximo adversário Bradford City"
+  ],
+  "blocking_findings": [
+    {
+      "type": "factual_subject_swap",
+      "stage": "extraction_and_source_review",
+      "source": "page_0",
+      "source_text": "before teeing up Phil Foden’s whose low cross deserved a touch",
+      "generated_claim": "depois, cruzou rasteiro para Phil Foden",
+      "reason": "O cruzamento é de Foden após receber de Cherki; extração atribuiu o cruzamento a Cherki e a revisão independente aprovou."
+    },
+    {
+      "type": "editorial_structure",
+      "reason": "Após a seção de próximos jogos, o último parágrafo volta às substituições da partida, quebrando sequência e fechamento."
+    },
+    {
+      "type": "editorial_redundancy",
+      "reason": "Expressões como manteve a partida aberta até as cobranças finais e jogada pelo lado visitante continuam artificiais."
+    }
+  ],
+  "next_action": "Corrigir extração/revisão de sujeitos e organização do texto, repetir validação dentro do saldo cumulativo. Não avançar para publicação com este rascunho.",
+  "artifact_id": 13051564644,
+  "artifact_sha256": "28d9fe011034a2286cd6baf69334c1893ad3061daffef3ea481a12c1ce5d8718",
+  "article_sha256": "364ed3a8a1a266a04d5cab0ba26b010d424f3e962f2af3eb8ac814539eecd47a"
+}
