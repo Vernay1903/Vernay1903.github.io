@@ -1,0 +1,78 @@
+name: Diagnostico de credencial da agenda - sem publicacao
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/verificar-token-agenda.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validar-token:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Verificar token e permissao de criar PR sem criar nada
+        shell: bash
+        env:
+          AGENDA_PR_TOKEN: ${{ secrets.AGENDA_PR_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          import urllib.error
+
+          token = os.environ.get("AGENDA_PR_TOKEN", "").strip()
+          if not token:
+              raise SystemExit("FALHA: secret AGENDA_PR_TOKEN ausente ou vazio")
+          root = "https://api.github.com"
+          headers = {
+              "Authorization": "Bearer " + token,
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "CorteDosEsportes-Diagnostico",
+          }
+
+          def get(path):
+              req = urllib.request.Request(root + path, headers=headers)
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  return json.load(response)
+
+          try:
+              user = get("/user")
+              login = user.get("login", "")
+              if login.lower() != "vernay1903":
+                  raise SystemExit("FALHA: token autentica usuario inesperado")
+              print("APROVADO: token valido, conta confirmada (sem divulgar credencial)")
+              get("/repos/Vernay1903/Vernay1903.github.io/pulls?state=open&per_page=1")
+              print("APROVADO: permissao de leitura do repositorio e PRs")
+          except urllib.error.HTTPError as error:
+              raise SystemExit("FALHA: autenticacao/consulta HTTP " + str(error.code))
+
+          # Teste seguro da permissão POST /pulls: HEAD propositalmente
+          # impossivel (não pode existir nem criar PR). Espera 422, sem escrita.
+          payload = json.dumps({
+              "title": "Teste sem criacao",
+              "head": "__token_test_invalid_branch_<>!",
+              "base": "main"
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              root + "/repos/Vernay1903/Vernay1903.github.io/pulls",
+              data=payload,
+              headers={**headers, "Content-Type": "application/json"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=25):
+                  raise SystemExit("FALHA: POST inesperadamente criou recurso")
+          except urllib.error.HTTPError as error:
+              if error.code == 422:
+                  print("APROVADO: endpoint de criacao de PR autenticou; corpo invalido foi rejeitado (422)")
+              else:
+                  raise SystemExit("FALHA: POST /pulls respondeu HTTP " + str(error.code))
+
+          print("SUCESSO: AGENDA_PR_TOKEN autenticado; teste nao criou PR nem alterou agenda")
+          PY
