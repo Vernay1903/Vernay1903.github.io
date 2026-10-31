@@ -53,23 +53,22 @@ def inline(text):
 
 
 def ad_positions(blocks,policy):
+    from itertools import combinations
+    required=policy['required_body_ads']
+    if required != 3:raise ValueError('Padrão exige exatamente três anúncios no corpo')
     counts=[words(b['text']) for b in blocks];total=sum(counts)
-    desired=3 if total>=policy['three_ads_from_words'] else 2 if total>=policy['two_ads_from_words'] else 1
-    desired=min(desired,policy['max_body_ads'])
     candidates=[];cumulative=0
     for i,(block,count) in enumerate(zip(blocks,counts)):
         cumulative+=count
-        # Não inserir dentro de parágrafos/listas nem após um subtítulo.
+        # Preserva parágrafos, subtítulos e introduções de listas inteiros.
         if block['type']!='paragraph' or i==len(blocks)-1 or blocks[i+1]['type']=='list':continue
-        if cumulative>=policy['minimum_intro_words'] and total-cumulative>=policy['minimum_tail_words']:
-            candidates.append((i,cumulative))
-    selected=[];previous=0
-    for n in range(1,desired+1):
-        eligible=[p for p in candidates if p[1]-previous>=policy['minimum_gap_words']]
-        if not eligible:break
-        pos=min(eligible,key=lambda p:abs(p[1]-total*n/(desired+1)))
-        selected.append(pos[0]);previous=pos[1]
-    return selected
+        if 0<cumulative<total:candidates.append((i,cumulative))
+    if len(candidates)<required:
+        raise ValueError('Texto precisa de três intervalos seguros para anúncios; reorganizar os blocos antes de publicar')
+    # Quartis do corpo: três inserções distribuídas conforme o tamanho real.
+    selected=min(combinations(candidates,required),
+        key=lambda positions:sum(abs(pos[1]-total*n/4) for n,pos in enumerate(positions,1)))
+    return [pos[0] for pos in selected]
 
 
 def render_html(article,published_on,allowed_urls):

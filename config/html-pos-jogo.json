@@ -6,11 +6,8 @@
   "category_slug": "futebol",
   "publication_enabled": false,
   "ads": {
-    "max_body_ads": 3,
-    "two_ads_from_words": 900,
-    "three_ads_from_words": 1500,
-    "minimum_intro_words": 200,
-    "minimum_gap_words": 250,
-    "minimum_tail_words": 150
+    "required_body_ads": 3,
+    "placement": "nearest_safe_paragraph_boundaries_at_body_quartiles",
+    "sidebar": "desktop_only_above_1024px"
   }
 }

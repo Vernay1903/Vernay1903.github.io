@@ -20,22 +20,27 @@ class HtmlTests(unittest.TestCase):
   self.assertNotIn('youtube.com/embed/',rendered)
   self.assertEqual(rendered.count('pagead/js/adsbygoogle.js'),1)
   self.assertEqual(rendered.count('data-ad-slot="5521804159"'),1)
+  self.assertEqual(rendered.count('data-ad-slot="8702501261"'),3)
+  self.assertEqual(report['body_ad_count'],3)
+  self.assertIn('@media (max-width: 1024px)',rendered)
+  self.assertIn('.desktop-only-ad { display: none !important; }',rendered)
+  self.assertIn('window.matchMedia("(min-width: 1025px)").matches',rendered)
  def test_ad_counts_and_spacing(self):
-  for total,count in [(600,1),(900,2),(1500,3)]:
+  for total,count in [(600,3),(900,3),(1500,3)]:
    a=self.article(total);positions=ad_positions(a['blocks'],self.policy)
    self.assertEqual(len(positions),count)
    previous=0
    for i in positions:
     cumulative=sum(words(b['text']) for b in a['blocks'][:i+1])
-    self.assertGreaterEqual(cumulative-previous,250);previous=cumulative
+    self.assertGreater(cumulative,previous);previous=cumulative
     self.assertEqual(a['blocks'][i]['type'],'paragraph')
-   self.assertGreaterEqual(sum(words(b['text']) for b in a['blocks'])-previous,150)
+   self.assertGreater(sum(words(b['text']) for b in a['blocks'])-previous,0)
  def test_does_not_force_ads_inside_long_paragraph(self):
   a=self.article(600);a['blocks']=[a['blocks'][0],{'type':'paragraph','text':'palavra '*600}]
-  self.assertEqual(ad_positions(a['blocks'],self.policy),[])
+  with self.assertRaises(ValueError):ad_positions(a['blocks'],self.policy)
  def test_does_not_separate_list_intro(self):
   blocks=[{'type':'paragraph','text':'palavra '*300},{'type':'list','text':'item '*100},{'type':'paragraph','text':'palavra '*300}]
-  self.assertEqual(ad_positions(blocks,self.policy),[])
+  with self.assertRaises(ValueError):ad_positions(blocks,self.policy)
  def test_title_and_attributes_escaped(self):
   a=self.article(600);a['title']='Time A & Time B';a['excerpt']='O técnico disse "vitória" & comemorou.'
   rendered,_=render_html(a,'24/10/2026',[])
