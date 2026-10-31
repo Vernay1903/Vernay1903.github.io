@@ -158,7 +158,7 @@
       "step15_final_completion": true
     },
     "espn-401921834": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-10-28T20:06:59.748335-03:00",
       "run_id": "40784987236",
       "api_calls": 15,
@@ -2146,7 +2146,7 @@
     "manual_adjustments": false
   },
   "validation_step17_editorial": {
-    "status": "running",
+    "status": "generated_pending_editorial_assessment",
     "run_id": "41226180064",
     "original_job": {
       "status": "package_ready",
@@ -2186,6 +2186,111 @@
     "publication_enabled": false,
     "fixture_cost_before_usd": "0.027376955",
     "max_additional_calls": 11,
-    "per_fixture_total_cap_usd": "0.10"
+    "per_fixture_total_cap_usd": "0.10",
+    "metadata": {
+      "model": "gpt-6-luna",
+      "review_model": "gpt-6-luna",
+      "patch_model": "gpt-6-luna",
+      "automatic_model_run": true,
+      "publication_enabled": false,
+      "human_review_required": true,
+      "fixture_id": "espn-401921834",
+      "semantic_review_passed": true,
+      "calls": [
+        {
+          "stage": "write_1",
+          "status": "completed",
+          "response_id": "resp_0e5202a624b95b60016ae629dbad1887d0b0cd55d16c1048ec",
+          "usage": {
+            "input_tokens": 3218,
+            "input_tokens_details": {
+              "cache_write_tokens": 3215,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2739,
+            "output_tokens_details": {
+              "reasoning_tokens": 1377
+            },
+            "total_tokens": 5957
+          }
+        },
+        {
+          "stage": "review_1",
+          "status": "completed",
+          "response_id": "resp_0d5413ed78adb06e016ae629f24a7c87d09b63b6ce4dcd1db7",
+          "usage": {
+            "input_tokens": 3347,
+            "input_tokens_details": {
+              "cache_write_tokens": 3344,
+              "cached_tokens": 0
+            },
+            "output_tokens": 3007,
+            "output_tokens_details": {
+              "reasoning_tokens": 2263
+            },
+            "total_tokens": 6354
+          }
+        },
+        {
+          "stage": "review_1_second_pass",
+          "status": "completed",
+          "response_id": "resp_06fbfaa3560edbc3016ae62a0eef3087d0aa3a1f9e3dc468b9",
+          "usage": {
+            "input_tokens": 3347,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 3344
+            },
+            "output_tokens": 2491,
+            "output_tokens_details": {
+              "reasoning_tokens": 1817
+            },
+            "total_tokens": 5838
+          }
+        },
+        {
+          "stage": "patch_2",
+          "status": "completed",
+          "response_id": "resp_045908db05cab319016ae62a26bf1c87d0be9d275a97a72ad4",
+          "usage": {
+            "input_tokens": 4878,
+            "input_tokens_details": {
+              "cache_write_tokens": 4875,
+              "cached_tokens": 0
+            },
+            "output_tokens": 383,
+            "output_tokens_details": {
+              "reasoning_tokens": 209
+            },
+            "total_tokens": 5261
+          }
+        },
+        {
+          "stage": "review_2",
+          "status": "completed",
+          "response_id": "resp_08f921b52a5357eb016ae62a2d822887d0ac2ad83a08ef7f65",
+          "usage": {
+            "input_tokens": 3582,
+            "input_tokens_details": {
+              "cache_write_tokens": 3579,
+              "cached_tokens": 0
+            },
+            "output_tokens": 750,
+            "output_tokens_details": {
+              "reasoning_tokens": 643
+            },
+            "total_tokens": 4332
+          }
+        }
+      ],
+      "format_passed": true,
+      "written_at": "2026-10-31T17:49:31.995122+00:00",
+      "article_sha256": "364ed3a8a1a266a04d5cab0ba26b010d424f3e962f2af3eb8ac814539eecd47a",
+      "package_sha256": "ad132b61ca611678cca705a86fc8f3b95bee1fbc148f358307a684b9239b4f12"
+    },
+    "fixture_cost_total_usd": "0.043257370",
+    "additional_cost_usd": "0.015880415",
+    "additional_calls": 7,
+    "finished_at": "2026-10-31T17:49:42.383047+00:00"
   }
 }
