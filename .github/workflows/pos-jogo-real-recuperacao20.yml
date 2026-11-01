@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: cf390142e1445874e95dfb0fc22300b60bd65ee0
+          ref: c63010e7fbc4bdcadb5c69f290e949dd047ef601
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -51,5 +51,5 @@ jobs:
         if: always()
         with:
           name: pos-jogo-real-recuperacao20-${{ github.run_id }}
-          path: build/pos-jogo/real-recuperacao20/
+          path: build/pos-jogo/real-recuperacao20-v2/
           retention-days: 30
