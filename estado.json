@@ -116,6 +116,40 @@
         },
         "match_date": "2026-10-31",
         "first_final_seen_at": "2026-10-31T15:23:20.722802-03:00"
+      },
+      "espn-401879246": {
+        "signature": {
+          "kickoff": "2026-11-01T13:30:00-03:00",
+          "competition": "eng.1",
+          "teams": {
+            "home": "364",
+            "away": "359"
+          },
+          "score": {
+            "home": 0,
+            "away": 1
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-01",
+        "first_final_seen_at": "2026-11-01T15:37:22.213398-03:00"
+      },
+      "espn-401882819": {
+        "signature": {
+          "kickoff": "2026-11-01T12:15:00-03:00",
+          "competition": "esp.1",
+          "teams": {
+            "home": "87",
+            "away": "86"
+          },
+          "score": {
+            "home": 0,
+            "away": 3
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-01",
+        "first_final_seen_at": "2026-11-01T15:37:22.213398-03:00"
       }
     }
   },
