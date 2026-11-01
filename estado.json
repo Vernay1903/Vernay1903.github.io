@@ -276,7 +276,9 @@
       "run_id": "41344445496",
       "api_calls": 1,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-01T17:00:26.197882-03:00"
+      "finished_at": "2026-11-01T17:00:26.197882-03:00",
+      "source_recovery_started": true,
+      "source_recovery_run_id": "41344759598"
     }
   },
   "months": {
