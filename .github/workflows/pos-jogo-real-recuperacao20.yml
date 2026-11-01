@@ -1,0 +1,55 @@
+name: Pós-jogo — recuperar Real passo 20
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pos-jogo-real-recuperacao20.yml]
+permissions:
+  contents: write
+concurrency:
+  group: pos-jogo-estado-piloto
+  cancel-in-progress: false
+jobs:
+  recuperar:
+    if: ${{ github.event.head_commit.message == 'Executar recuperacao assistida do Real passo 20' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cf390142e1445874e95dfb0fc22300b60bd65ee0
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/
+            /config/
+            /prompts/
+            /templates/
+            /tests/pos-jogo/
+            /auditoria/pos-jogo/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-main
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /noticias.json
+            /sitemap.xml
+            /*.html
+      - name: Recuperar com revisao e orcamento persistente
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/recuperar_real_passo20.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pos-jogo-real-recuperacao20-${{ github.run_id }}
+          path: build/pos-jogo/real-recuperacao20/
+          retention-days: 30
