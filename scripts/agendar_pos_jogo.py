@@ -74,7 +74,7 @@ def main():
   with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('has_drafts='+str(report['has_drafts']).lower()+'\n')
  if os.environ.get('GITHUB_STEP_SUMMARY'):
   with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
-   f.write('### Piloto de pós-jogo — rascunhos\n\nEstado: **'+report['status']+'**.\n\nClubes: '+', '.join(report['clubs'])+'.\n\nEspera mínima: 50 minutos desde a confirmação do encerramento; fuso do Brasil.\n\nCusto acumulado do piloto neste mês: US$ '+report['pilot_month_charged_usd']+'. Teto: US$ 0,10/matéria e US$ 10/mês, exclusivo do pós-jogo.\n\nPublicação automática: **desativada**. Rascunhos aprovados ficam no artefato desta execução.\n')
+   f.write('### Piloto de pós-jogo — rascunhos\n\nEstado: **'+report['status']+'**.\n\nClubes: '+', '.join(report['clubs'])+'.\n\nEspera mínima: 50 minutos desde o encerramento registrado (ou primeira confirmação quando faltar horário); fuso do Brasil.\n\nCusto acumulado do piloto neste mês: US$ '+report['pilot_month_charged_usd']+'. Teto: US$ 0,10/matéria e US$ 10/mês, exclusivo do pós-jogo.\n\nPublicação automática: **desativada**. Rascunhos aprovados ficam no artefato desta execução.\n')
  print(json.dumps(report,ensure_ascii=False),flush=True)
  if report['status'] in {'needs_review','budget_blocked','error'}:raise SystemExit(1)
 if __name__=='__main__':main()

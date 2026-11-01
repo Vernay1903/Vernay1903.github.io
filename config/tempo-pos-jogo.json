@@ -1,7 +1,7 @@
 {
   "timezone": "America/Sao_Paulo",
   "wait_minutes": 50,
-  "basis": "first_observed_final",
+  "basis": "source_recorded_final_with_observation_fallback",
   "check_today_and_previous_day": true,
   "schedule_enabled": false,
   "publication_enabled": false
