@@ -1,0 +1,39 @@
+{
+  "step": 19,
+  "status": "blocked_editorial_validation_failed",
+  "run_id": 41308414285,
+  "code_sha": "21c8097333b57fd199f02e43309c8ff890ce6b88",
+  "fixture_id": "espn-401921834",
+  "mode": "historical_source_replay",
+  "subject_regression_passed": true,
+  "technical_tests_passed": 203,
+  "automatic_publication_enabled": false,
+  "production_pin_changed": false,
+  "published_article_unchanged": true,
+  "fixture_cumulative_cost_usd": "0.079050915",
+  "per_fixture_cap_usd": "0.10",
+  "manual_article_edits": false,
+  "blocking_findings": [
+    "O redator omitiu o gol de Kovacic apesar de constar no núcleo factual.",
+    "Contexto da classificação e próximo adversário não aparece no texto final.",
+    "Revisão reprovou recapitulação mecânica e dia da semana de compromisso futuro sem campo explícito."
+  ],
+  "improvements": [
+    "Regressão rejeita cruzamento atribuído a Cherki e aceita Foden.",
+    "Trechos de evidência selecionados por identificador, sem citações reescritas.",
+    "Validador bloqueia retorno a lances/substituições após próximos jogos.",
+    "Política de três anúncios no corpo e sidebar desktop mantida."
+  ],
+  "remaining_work": [
+    "Exigir cobertura dos gols e consequência competitiva confirmada, sem apagar fatos essenciais.",
+    "Fornecer dia da semana calculado a partir de datas confirmadas ao revisor.",
+    "Validar texto completo sem edição manual antes de ativar nova versão."
+  ],
+  "attempt_keys": [
+    "validation_step19_editorial",
+    "validation_step19_editorial_v2",
+    "validation_step19_editorial_v3",
+    "validation_step19_editorial_v4",
+    "validation_step19_editorial_v5"
+  ]
+}
