@@ -278,7 +278,7 @@
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-01T17:03:03.017892-03:00",
       "source_recovery_started": true,
-      "source_recovery_run_id": "41344759598",
+      "source_recovery_run_id": "41344947385",
       "source_recovery_result": {
         "fixture_id": "espn-401882819",
         "timing": {
@@ -292,7 +292,8 @@
         },
         "status": "blocked",
         "reason": "Fato não confirmado: venue Há divergência na grafia: a ESPN informa “El Sardineros”, como no candidato, enquanto a página oficial chama o estádio de “El Sardinero”."
-      }
+      },
+      "source_recovery_v2_started": true
     }
   },
   "months": {
