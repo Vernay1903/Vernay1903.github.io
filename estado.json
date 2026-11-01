@@ -175,7 +175,7 @@
       "step15_final_completion": true
     },
     "espn-401921834": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-10-28T20:06:59.748335-03:00",
       "run_id": "40784987236",
       "api_calls": 19,
@@ -2574,7 +2574,7 @@
     "finished_at": "2026-11-01T00:16:54.457233+00:00"
   },
   "validation_step19_editorial_v2": {
-    "status": "running",
+    "status": "blocked",
     "run_id": "41256112037",
     "original_job": {
       "status": "package_ready",
@@ -2615,6 +2615,11 @@
     "fixture_cost_before_usd": "0.043983970",
     "max_additional_calls": 12,
     "per_fixture_total_cap_usd": "0.10",
-    "subject_regression_passed": true
+    "subject_regression_passed": true,
+    "reason": "Apuração incompleta na API",
+    "fixture_cost_total_usd": "0.055792220",
+    "additional_cost_usd": "0.011808250",
+    "additional_calls": 3,
+    "finished_at": "2026-11-01T00:20:01.748581+00:00"
   }
 }
