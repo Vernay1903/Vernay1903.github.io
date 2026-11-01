@@ -1,16 +1,24 @@
 {
   "step": 20,
-  "status": "live_cycle_requested",
+  "status": "waiting_for_new_eligible_match",
+  "run_id": "41312119435",
+  "run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41312119435",
+  "execution_conclusion": "success",
+  "checked_at": "2026-11-01T10:37:10.927322-03:00",
   "validated_code": "8df1dc893f737b17cc5d4f95da35df1855618f9c",
-  "scope": [
-    "Flamengo",
-    "Real Madrid",
-    "Arsenal",
-    "Manchester City"
-  ],
-  "wait_minutes": 50,
+  "collection_complete": true,
+  "new_eligible_matches": 0,
+  "previous_fixture_skipped": {
+    "fixture_id": "espn-401879245",
+    "reason": "already_attempted"
+  },
+  "new_paid_calls": 0,
+  "additional_cost_usd": "0",
   "publication_enabled": false,
+  "wait_minutes": 50,
   "per_fixture_cap_usd": "0.10",
-  "previous_fixture_replay_excluded": "espn-401921834",
-  "description": "Executar coleta atual e aguardar nova partida elegível; não reinicializar jobs anteriores nem custos."
+  "scheduled_monitoring_enabled": true,
+  "full_article_validation_complete": false,
+  "artifact_id": 13085866597,
+  "artifact_sha256": "318459526d495d6a585d5fbb2fdfa9e2c9962c0a158f3c5c5d109a729280729f"
 }
