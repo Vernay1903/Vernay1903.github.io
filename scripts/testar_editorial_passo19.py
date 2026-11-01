@@ -15,7 +15,7 @@ from editorial_pos_jogo import prepare
 from redigir_pos_jogo_openai import generate
 
 FID='espn-401921834'
-KEY='validation_step19_editorial_v5'
+KEY='validation_step19_editorial_v6'
 HASHES={
  'execucao/2026-10-28/selecao.json':'23de004d102f5c5399cead8ade7acdbfc0e35f22a1900647655a46300c582281',
  'execucao/2026-10-28/espn-401921834/apuracao/paginas.json':'24e7f74958b8aaf61f855ae3eb09f040a2008916866fd001d26766ef01a47d5c',
@@ -31,7 +31,7 @@ def total(data):
 def reserve_test(remote):
  if KEY in remote.data: raise ValueError('Teste editorial já iniciado; repetição bloqueada')
  job=remote.data['jobs'].get(FID,{})
- if job.get('status')!='package_ready' or job.get('run_id')!='40784987236' or job.get('api_calls')!=21:
+ if job.get('status')!='package_ready' or job.get('run_id')!='40784987236' or job.get('api_calls')!=30:
   raise ValueError('Estado original divergente')
  original=copy.deepcopy(job)
  remote.data[KEY]={'status':'running','run_id':os.environ.get('GITHUB_RUN_ID'),'original_job':original,
@@ -68,28 +68,25 @@ def main():
   # O mesmo fixture_id inclui TODAS as chamadas do primeiro rascunho no teto de US$0,10.
   config['max_paid_calls_per_fixture']=original['api_calls']+record['max_additional_calls']
   caller=BudgetCaller(remote,FID,config=config)
-  from conferir_sujeitos_pos_jogo import audit_request,validate_actor_audit
-  from redigir_pos_jogo_openai import response_object
-  source=next(p for p in archived_pages.values() if 'Firstly, earning a dangerous free-kick' in p['text'])
-  source_text=source['text']
-  start=source_text.index('Rayan Cherki, one of only two')
-  end=source_text.index('Brighton, who knocked out',start)
-  regression_pages={'official':dict(source,text=source_text[start:end])}
-  regression_items={'claim_0':'Cherki cruzou rasteiro para Foden.',
-                    'claim_1':'Cherki serviu Foden, que cruzou rasteiro.'}
+  from apurar_pos_jogo import recover_rejected_claims,candidate_proposal,finalize_review
+  cached=ROOT/'build/pos-jogo/passo19-v5'
+  hashes={'apuracao/extracao.json': '5e6852c8ee944950b97183e82c223d8090d19128c6e99dc9f2082768d3371803', 'apuracao/revisao.json': '653d8a3752a94671cbbfaf4a3a6c534edb4f9745bd4f182d7734034271ca8ad5', 'apuracao/paginas.json': '24e7f74958b8aaf61f855ae3eb09f040a2008916866fd001d26766ef01a47d5c', 'regressao-sujeitos.json': 'b1586b6f498840d6cc7c74756184da9bb095cf5790f409e05b3c8999297f7f8d'}
+  for path,expected in hashes.items():
+   if hashlib.sha256((cached/path).read_bytes()).hexdigest()!=expected:raise ValueError('Cache de apuração divergente')
   provider=read(ROOT/'config/redacao-pos-jogo.json')['provider']
-  regression=response_object(caller(audit_request(provider,regression_items,{},regression_pages)))
-  regression=validate_actor_audit(regression,regression_items,regression_pages)
-  checks={r['id']:r['supported'] for r in regression['checks']}
-  save(out/'regressao-sujeitos.json',regression)
-  if checks!={'claim_0':False,'claim_1':True}:raise ValueError('Revisor não distinguiu a troca de sujeitos do relato correto')
+  result=read(cached/'apuracao/extracao.json');audit=read(cached/'apuracao/revisao.json')
+  pages=read(cached/'apuracao/paginas.json')
+  checks={r['id']:r['supported'] for r in read(cached/'regressao-sujeitos.json')['checks']}
+  if checks!={'claim_0':False,'claim_1':True}:raise ValueError('Calibração arquivada divergente')
   record['subject_regression_passed']=True
+  record['reused_verified_source_run']='41308414285'
   remote.save()
+  proposal,core,_,_=candidate_proposal(candidate,summary)
+  research=out/'apuracao';research.mkdir()
+  result,audit=recover_rejected_claims(provider,core,result,pages,audit,lambda payload,stage:caller(payload),lambda name,data:save(research/name,data))
   snapshot_time=datetime.fromisoformat(candidate['checked_at'])
-  facts,narrative=apurar(candidate,summary,schedules,out/'apuracao',snapshot_time,
-   caller=caller,opener=opener,discovery=discovery)
-  save(out/'apuracao/proveniencia-descoberta.json',{'reused':True,'fresh_pages_required':False,
-   'historical_source_replay':True,'source_run_id':'40784987236','archive_hashes_checked':True})
+  facts,narrative=finalize_review(candidate,summary,schedules,proposal,core,result,pages,audit,research,snapshot_time)
+  save(research/'proveniencia.json',{'source_run_id':'41308414285','original_source_run_id':'40784987236','cache_sha256':hashes,'historical_source_replay':True})
   save(out/'fatos.json',facts);save(out/'narrativa.json',narrative)
   package=prepare(facts,narrative,read(ROOT/'auditoria/pos-jogo/links-autorizados-piloto.json'))
   save(out/'pacote.json',package)

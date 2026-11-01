@@ -31,6 +31,10 @@ def prepare(facts, narrative, allowed_urls):
     from datetime import date
     weekdays=['segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo']
     clean['match']['weekday_brasilia']=weekdays[date.fromisoformat(clean['match']['match_date']).weekday()]
+    for side in clean['upcoming'].values():
+        for game in side.values():
+            if isinstance(game,dict) and game.get('date_brasilia'):
+                game['weekday_brasilia']=weekdays[date.fromisoformat(game['date_brasilia']).weekday()]
     # Valores em conflito e links de pesquisa não são entregues ao redator.
     return {'instructions': (ROOT/'prompts/pos-jogo-editorial.txt').read_text(),
             'facts': clean, 'narrative_facts': [c['text'] for c in narrative['claims']],
@@ -98,3 +102,16 @@ def main():
         if not result['format_passed']:raise SystemExit(1)
     else:print(json.dumps(request,ensure_ascii=False,indent=2))
 if __name__=='__main__': main()
+
+
+def coverage_errors(article,package):
+    """Gate mínimo de cobertura; revisão semântica confirma ação e ordem dos gols."""
+    def canon(t):
+        return ''.join(c for c in unicodedata.normalize('NFKD',t) if not unicodedata.combining(c)).casefold().replace('’',"'")
+    body=canon(' '.join(b['text'] for b in article['blocks'] if b['type']=='paragraph'))
+    errors=[]
+    for goal in package['facts'].get('goals',[]):
+        name=goal['scorer'];surname=canon(name).split()[-1]
+        if not re.search(r'(?<!\w)'+re.escape(surname)+r'(?!\w)',body):
+            errors.append('Cobertura: falta o gol de '+name+' no corpo; narrar todos os gols confirmados na ordem fornecida')
+    return errors

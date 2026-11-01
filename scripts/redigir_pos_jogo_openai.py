@@ -7,7 +7,7 @@ import os
 import urllib.request
 import urllib.error
 from pathlib import Path
-from editorial_pos_jogo import ROOT, prepare, validate, render
+from editorial_pos_jogo import ROOT, prepare, validate, render, coverage_errors
 from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units, targeted_issues, merge_reviews, review_changed
 
 
@@ -29,7 +29,7 @@ def rewrite_request(package,article,issues,provider):
     correction=dict(provider,max_output_tokens=provider.get('rewrite_max_output_tokens',2500))
     request=build_request(package,correction)
     request['input'].append({'role':'user','content':json.dumps({'draft':article,'issues':issues,
-        'instruction':'Corrija todas as falhas, preservando apenas fatos sustentados. Produza de 650 a 700 palavras no corpo, sem repetição para preencher extensão. Retorne texto completo.'},ensure_ascii=False)})
+        'instruction':'Corrija todas as falhas, preservando apenas fatos sustentados. Produza de 750 a 850 palavras no corpo, sem repetição para preencher extensão. Retorne texto completo.'},ensure_ascii=False)})
     return request
 
 
@@ -118,6 +118,8 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         written_at=datetime.now(timezone.utc).isoformat()
         save(f'artigo-{attempt}.json',article)
         checks=validate(article,package['allowed_internal_urls'])
+        checks['errors']+=coverage_errors(article,package)
+        checks['format_passed']=not checks['errors']
         save(f'formato-{attempt}.json',checks)
         if not checks['format_passed']:
             previous_review=None

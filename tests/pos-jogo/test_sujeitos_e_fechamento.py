@@ -36,3 +36,19 @@ class ClosingTests(unittest.TestCase):
   a=self.article();a['blocks'].insert(2,{'type':'paragraph','text':'O jogador entrou no lugar do atacante.'})
   self.assertTrue(validate(a,[])['format_passed'])
 if __name__=='__main__':unittest.main()
+
+class CoverageTests(unittest.TestCase):
+ def test_missing_goal_blocked_and_accent_variants_allowed(self):
+  from editorial_pos_jogo import coverage_errors
+  package={'facts':{'goals':[{'scorer':'Mateo Kovačić'}]}}
+  article={'blocks':[{'type':'paragraph','text':'Vitor Reis empatou.'}]}
+  self.assertTrue(coverage_errors(article,package))
+  article['blocks'][0]['text']='Kovacic empatou.'
+  self.assertEqual(coverage_errors(article,package),[])
+ def test_title_only_does_not_cover_goal(self):
+  from editorial_pos_jogo import coverage_errors
+  self.assertTrue(coverage_errors({'title':'Kovacic marca','blocks':[]},{'facts':{'goals':[{'scorer':'Kovacic'}]}}))
+ def test_hosting_team_does_not_require_personal_actor(self):
+  from conferir_sujeitos_pos_jogo import validate_actor_audit
+  audit={'checks':[{'id':'claim_0','supported':True,'reason':'','actor_checks':[]}]}
+  self.assertTrue(validate_actor_audit(audit,{'claim_0':'O clube recebeu o adversário na semifinal.'},{})['checks'][0]['supported'])
