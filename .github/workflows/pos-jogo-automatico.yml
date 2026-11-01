@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   rascunhos:
-    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' || github.event.head_commit.message == 'Ativar verificacao autonoma do passo 16' }}
+    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' || github.event.head_commit.message == 'Ativar verificacao autonoma do passo 16' || github.event.head_commit.message == 'Executar ciclo real do passo 20' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:

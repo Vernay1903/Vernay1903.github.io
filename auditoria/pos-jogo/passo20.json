@@ -1,0 +1,16 @@
+{
+  "step": 20,
+  "status": "live_cycle_requested",
+  "validated_code": "8df1dc893f737b17cc5d4f95da35df1855618f9c",
+  "scope": [
+    "Flamengo",
+    "Real Madrid",
+    "Arsenal",
+    "Manchester City"
+  ],
+  "wait_minutes": 50,
+  "publication_enabled": false,
+  "per_fixture_cap_usd": "0.10",
+  "previous_fixture_replay_excluded": "espn-401921834",
+  "description": "Executar coleta atual e aguardar nova partida elegível; não reinicializar jobs anteriores nem custos."
+}
