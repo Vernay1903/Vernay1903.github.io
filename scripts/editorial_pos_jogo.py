@@ -67,7 +67,14 @@ def validate(article, allowed_urls):
     if words<600: errors.append('Corpo com menos de 600 palavras')
     full='\n'.join([title,excerpt,body])
     if re.search(r'(?m)^\s*(#{1,6}\s|>|```)|\*\*|\[[^\]]+\]\(',full): errors.append('Formatação proibida')
-    if re.search(r'placeholder|\bTODO\b|dados verificados|jogos registrados|recorte consultado|conclusão independente|avaliação é do próprio|não representa, por si só|não permite afirmar|sem antecipar o resultado',full,re.I): errors.append('Marca de bastidor')
+    if re.search(r'placeholder|\bTODO\b|dados verificados|jogos registrados|recorte consultado|conclusão independente|avaliação é do próprio|não representa, por si só|não permite afirmar|sem antecipar o resultado|o resumo (?:da partida )?registra|com a mudança de funções descrita',full,re.I): errors.append('Marca de bastidor')
+    closing=False
+    for block in blocks:
+        if block.get('type')=='subtitle' and re.search(r'próximos? (?:jogos?|compromissos?)|voltam? a se enfrentar|agenda',block.get('text',''),re.I):
+            closing=True
+        elif closing and re.search(r'\b(?:substituiu|substituições|entrou no lugar|entraram nos lugares|cruzou|finalizou|defendeu|cobrou)\b',block.get('text',''),re.I):
+            errors.append('Organização: após a seção de próximos jogos, não retomar lances ou substituições; reorganize o texto completo cronologicamente')
+            break
     parser=Anchors(allowed_urls); parser.feed(full)
     errors.extend(parser.errors)
     if parser.depth: errors.append('Âncora não fechada')

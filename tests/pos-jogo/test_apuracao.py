@@ -51,7 +51,7 @@ class ResearchFlowTests(unittest.TestCase):
    stages.append(payload)
    if len(stages)==1:return {'status':'completed','output':[{'type':'web_search_call','action':{'sources':[{'url':'https://realmadrid.com/test'},{'url':'https://dfb.de/test'}]}}]}
    if len(stages)==2:return response(extraction)
-   return response({'checks':[{'id':i,'supported':False,'reason':'Trecho não sustenta o fato'} for i in ['identity','score','venue','goals','campaign']+[f'claim_{n}' for n in range(6)]]})
+   return response({'checks':[{'id':i,'supported':False,'reason':'Trecho não sustenta o fato','actor_checks':[]} for i in ['identity','score','venue','goals','campaign']+[f'claim_{n}' for n in range(6)]]})
   with tempfile.TemporaryDirectory() as tmp:
    with self.assertRaisesRegex(ValueError,'revisão independente'):
     apurar(candidate,summary,schedules,Path(tmp),datetime.fromisoformat('2026-10-22T12:00:00-03:00'),caller=caller,opener=lambda u:{'url':u,'text':quote,'opened':True})
