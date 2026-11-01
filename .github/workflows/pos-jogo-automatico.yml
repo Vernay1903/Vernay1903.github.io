@@ -3,6 +3,10 @@ on:
   schedule:
     - cron: '3,13,23,33,43,53 * * * *'
   workflow_dispatch:
+  workflow_run:
+    workflows: ['Pré-jogo — automático diário (Passo 34)']
+    types: [completed]
+    branches: [main]
   push:
     branches: [main]
     paths: [.github/workflows/pos-jogo-automatico.yml]
@@ -13,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   rascunhos:
-    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' || github.event.head_commit.message == 'Ativar verificacao autonoma do passo 16' || github.event.head_commit.message == 'Executar ciclo real do passo 20' }}
+    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' || github.event.head_commit.message == 'Ativar verificacao autonoma do passo 16' || github.event.head_commit.message == 'Executar ciclo real do passo 20' || github.event.head_commit.message == 'Corrigir espera e recuperar pos-jogo pendente' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -23,7 +27,7 @@ jobs:
       - name: Carregar versão validada do piloto
         uses: actions/checkout@v4
         with:
-          ref: cee6105878b4063c7caef5141455ac3da7fbc0c3
+          ref: fe5e8066417f0889f91ada6ff9929d29f0553384
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
