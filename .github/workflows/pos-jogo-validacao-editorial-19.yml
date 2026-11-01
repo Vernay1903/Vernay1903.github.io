@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 21c8097333b57fd199f02e43309c8ff890ce6b88
+          ref: 4ac69df464369b9968306da89a7b2264497b410b
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -41,6 +41,13 @@ jobs:
           run-id: 40784987236
           github-token: ${{ github.token }}
           path: build/pos-jogo/passo19-original
+      - name: Recuperar apuracao ja revisada
+        uses: actions/download-artifact@v4
+        with:
+          name: pos-jogo-editorial-19-41308414285
+          run-id: 41308414285
+          github-token: ${{ github.token }}
+          path: build/pos-jogo/passo19-v5
       - name: Reapurar e redigir sem edicao manual
         env:
           GH_TOKEN: ${{ github.token }}
