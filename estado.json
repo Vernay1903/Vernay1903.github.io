@@ -2833,6 +2833,7 @@
     "publication_enabled": false,
     "fixture_cost_before_usd": "0.056252220",
     "max_additional_calls": 12,
-    "per_fixture_total_cap_usd": "0.10"
+    "per_fixture_total_cap_usd": "0.10",
+    "subject_regression_passed": true
   }
 }
