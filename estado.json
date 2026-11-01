@@ -175,7 +175,7 @@
       "step15_final_completion": true
     },
     "espn-401921834": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-10-28T20:06:59.748335-03:00",
       "run_id": "40784987236",
       "api_calls": 37,
@@ -3187,7 +3187,7 @@
     "finished_at": "2026-11-01T12:55:02.348403+00:00"
   },
   "validation_step19_editorial_v6": {
-    "status": "running",
+    "status": "generated_pending_editorial_assessment",
     "run_id": "41310004551",
     "original_job": {
       "status": "package_ready",
@@ -3229,6 +3229,124 @@
     "max_additional_calls": 12,
     "per_fixture_total_cap_usd": "0.10",
     "subject_regression_passed": true,
-    "reused_verified_source_run": "41308414285"
+    "reused_verified_source_run": "41308414285",
+    "metadata": {
+      "model": "gpt-6-luna",
+      "review_model": "gpt-6-luna",
+      "patch_model": "gpt-6-luna",
+      "automatic_model_run": true,
+      "publication_enabled": false,
+      "human_review_required": true,
+      "fixture_id": "espn-401921834",
+      "semantic_review_passed": true,
+      "calls": [
+        {
+          "stage": "write_1",
+          "status": "completed",
+          "response_id": "resp_01d451a07c3db057016ae73a8c4da887d1a7fae5e21d348f2a",
+          "usage": {
+            "input_tokens": 3655,
+            "input_tokens_details": {
+              "cache_write_tokens": 3652,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2052,
+            "output_tokens_details": {
+              "reasoning_tokens": 761
+            },
+            "total_tokens": 5707
+          }
+        },
+        {
+          "stage": "review_1",
+          "status": "completed",
+          "response_id": "resp_0c56c46c06c8a01b016ae73aa3388487d1b4cd86767739c42f",
+          "usage": {
+            "input_tokens": 3556,
+            "input_tokens_details": {
+              "cache_write_tokens": 3553,
+              "cached_tokens": 0
+            },
+            "output_tokens": 3854,
+            "output_tokens_details": {
+              "reasoning_tokens": 3106
+            },
+            "total_tokens": 7410
+          }
+        },
+        {
+          "stage": "review_1_second_pass",
+          "status": "completed",
+          "response_id": "resp_039e3e8efb11f676016ae73ac7a9fc87d183d98621590e95a7",
+          "usage": {
+            "input_tokens": 3556,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 3553
+            },
+            "output_tokens": 4647,
+            "output_tokens_details": {
+              "reasoning_tokens": 3776
+            },
+            "total_tokens": 8203
+          }
+        },
+        {
+          "stage": "patch_2",
+          "status": "completed",
+          "response_id": "resp_04c647544a739b53016ae73af266a487d1b21c5eb9ff731a0f",
+          "usage": {
+            "input_tokens": 5478,
+            "input_tokens_details": {
+              "cache_write_tokens": 5475,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1916,
+            "output_tokens_details": {
+              "reasoning_tokens": 1629
+            },
+            "total_tokens": 7394
+          }
+        },
+        {
+          "stage": "review_2",
+          "status": "completed",
+          "response_id": "resp_0f8327451b9b8a3d016ae73b04a92887d1a1b30458990998af",
+          "usage": {
+            "input_tokens": 3875,
+            "input_tokens_details": {
+              "cache_write_tokens": 3872,
+              "cached_tokens": 0
+            },
+            "output_tokens": 487,
+            "output_tokens_details": {
+              "reasoning_tokens": 344
+            },
+            "total_tokens": 4362
+          }
+        }
+      ],
+      "format_passed": true,
+      "written_at": "2026-11-01T13:13:39.389730+00:00",
+      "article_sha256": "9f717b790a99e39e4d4147bf3815b0281208ccfb333262f7d0be2c070072f657",
+      "package_sha256": "0e8af230d2fe8be704c04483a3a132abaabe43e99269d2cf9e329beb18e3a09d"
+    },
+    "html_report": {
+      "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+      "fixed_shell_unchanged": true,
+      "title_chars": 60,
+      "body_words": 614,
+      "body_ad_count": 3,
+      "ad_after_blocks": [
+        4,
+        8,
+        12
+      ],
+      "publication_enabled": false
+    },
+    "fixture_cost_total_usd": "0.094352295",
+    "additional_cost_usd": "0.015301380",
+    "additional_calls": 7,
+    "finished_at": "2026-11-01T13:13:47.229465+00:00"
   }
 }
