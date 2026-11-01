@@ -52,3 +52,25 @@ class CoverageTests(unittest.TestCase):
   from conferir_sujeitos_pos_jogo import validate_actor_audit
   audit={'checks':[{'id':'claim_0','supported':True,'reason':'','actor_checks':[]}]}
   self.assertTrue(validate_actor_audit(audit,{'claim_0':'O clube recebeu o adversário na semifinal.'},{})['checks'][0]['supported'])
+
+class RecoveryTests(unittest.TestCase):
+ def test_repaired_claim_is_not_promoted_when_second_review_rejects(self):
+  from apurar_pos_jogo import recover_rejected_claims,approved_claims
+  core={'score':{'home':1,'away':0}}
+  claims=[{'text':str(i),'evidence':[{'source_id':'p','quote':'Fonte literal.'}]} for i in range(7)]
+  result={'checks':[],'claims':claims}
+  audit={'checks':[{'id':'score','supported':True}]+[{'id':f'claim_{i}','supported':i!=6,'reason':'incerto'} for i in range(7)]}
+  pages={'p':{'text':'Fonte literal.','opened':True}}
+  calls=[]
+  def call(payload,stage):
+   calls.append(stage)
+   value={'claims':[{'text':'Detalhe recuperado','evidence':[{'passage_id':'p:0'}]}]} if stage=='recover' else {'checks':[{'id':'claim_7','supported':False,'reason':'Sem suporte','actor_checks':[]}]}
+   return {'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps(value)}]}]}
+  out,review=recover_rejected_claims({'model':'test','reasoning_effort':'medium'},core,result,pages,audit,call,lambda *args:None)
+  kept,omitted=approved_claims(core,out['claims'],review)
+  self.assertEqual(len(kept),6);self.assertEqual(len(omitted),2)
+  self.assertEqual(calls,['recover','recover_verify']);self.assertEqual(len(result['claims']),7)
+ def test_core_rejection_cannot_trigger_paid_recovery(self):
+  from apurar_pos_jogo import recover_rejected_claims
+  with self.assertRaises(ValueError):
+   recover_rejected_claims({}, {'score':{}},{'claims':[]},{},{'checks':[{'id':'score','supported':False}]},lambda *args:self.fail('Called API'),lambda *args:None)

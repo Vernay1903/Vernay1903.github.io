@@ -1,39 +1,39 @@
 {
   "step": 19,
-  "status": "blocked_editorial_validation_failed",
-  "run_id": 41308414285,
-  "code_sha": "21c8097333b57fd199f02e43309c8ff890ce6b88",
+  "status": "validated_historical_replay_draft_mode",
+  "run_id": "41310004551",
+  "run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41310004551",
   "fixture_id": "espn-401921834",
-  "mode": "historical_source_replay",
-  "subject_regression_passed": true,
-  "technical_tests_passed": 203,
-  "automatic_publication_enabled": false,
-  "production_pin_changed": false,
-  "published_article_unchanged": true,
-  "fixture_cumulative_cost_usd": "0.079050915",
-  "per_fixture_cap_usd": "0.10",
+  "source_run_id": "41308414285",
+  "artifact_id": 13084024465,
+  "artifact_sha256": "b2461a34e7b609e5ce8f7da27a3e3852d09ced0f7329da9bedd8f91827d04ab4",
   "manual_article_edits": false,
-  "blocking_findings": [
-    "O redator omitiu o gol de Kovacic apesar de constar no núcleo factual.",
-    "Contexto da classificação e próximo adversário não aparece no texto final.",
-    "Revisão reprovou recapitulação mecânica e dia da semana de compromisso futuro sem campo explícito."
+  "checks": {
+    "all_four_goals_in_body": true,
+    "competition_in_title_excerpt_opening": true,
+    "quarterfinal_and_bradford_context": true,
+    "subject_regression_passed": true,
+    "semantic_review_passed": true,
+    "fixed_shell_unchanged": true,
+    "body_ad_count": 3,
+    "sidebar_ad_count": 1,
+    "sidebar_hidden_at_max_1024px": true,
+    "body_words": 614,
+    "title_chars": 60,
+    "local_unit_tests": 208
+  },
+  "fixture_cost_total_usd": "0.094352295",
+  "additional_cost_usd": "0.015301380",
+  "additional_calls": 7,
+  "article_sha256": "9f717b790a99e39e4d4147bf3815b0281208ccfb333262f7d0be2c070072f657",
+  "package_sha256": "0e8af230d2fe8be704c04483a3a132abaabe43e99269d2cf9e329beb18e3a09d",
+  "publication_enabled": false,
+  "scope": "Validated cached-source recovery, drafting, independent review and HTML assembly. Scheduled routine remains draft-only.",
+  "limitations": [
+    "Historical replay uses match-day agenda; must not publish as a current article.",
+    "No new live match or live-source discovery was exercised in this replay.",
+    "Ad units and responsive CSS verified; actual AdSense filling is external.",
+    "Minor prose improvements remain possible; no human edits applied to the generated text."
   ],
-  "improvements": [
-    "Regressão rejeita cruzamento atribuído a Cherki e aceita Foden.",
-    "Trechos de evidência selecionados por identificador, sem citações reescritas.",
-    "Validador bloqueia retorno a lances/substituições após próximos jogos.",
-    "Política de três anúncios no corpo e sidebar desktop mantida."
-  ],
-  "remaining_work": [
-    "Exigir cobertura dos gols e consequência competitiva confirmada, sem apagar fatos essenciais.",
-    "Fornecer dia da semana calculado a partir de datas confirmadas ao revisor.",
-    "Validar texto completo sem edição manual antes de ativar nova versão."
-  ],
-  "attempt_keys": [
-    "validation_step19_editorial",
-    "validation_step19_editorial_v2",
-    "validation_step19_editorial_v3",
-    "validation_step19_editorial_v4",
-    "validation_step19_editorial_v5"
-  ]
+  "published_article_modified": false
 }
