@@ -8,7 +8,7 @@ class ActorTests(unittest.TestCase):
  def fixture(self):
   items={'claim_0':'A cruzou para B.'}
   pages={'p':{'opened':True,'text':'A passed to B, whose cross found nobody.'}}
-  row={'id':'claim_0','supported':True,'reason':'','actor_checks':[{'action':'cruzar','claimed_actor':'A','source_actor':'B','source_id':'p','quote':pages['p']['text'],'matches':True}]}
+  row={'id':'claim_0','supported':True,'reason':'','actor_checks':[{'action':'cruzar','claimed_actor':'A','source_actor':'B','passage_id':'p:0','matches':True}]}
   return items,pages,{'checks':[row]}
  def test_subject_mismatch_overrides_approval(self):
   i,p,a=self.fixture();out=validate_actor_audit(a,i,p)
@@ -17,8 +17,11 @@ class ActorTests(unittest.TestCase):
   i,p,a=self.fixture();i['claim_0']='B cruzou.';a['checks'][0]['actor_checks'][0]['claimed_actor']='B'
   self.assertTrue(validate_actor_audit(a,i,p)['checks'][0]['supported'])
  def test_invented_quote_rejected(self):
-  i,p,a=self.fixture();a['checks'][0]['actor_checks'][0].update(claimed_actor='B',quote='B crossed to A.')
+  i,p,a=self.fixture();a['checks'][0]['actor_checks'][0].update(claimed_actor='B',passage_id='invented:0')
   self.assertFalse(validate_actor_audit(a,i,p)['checks'][0]['supported'])
+ def test_short_name_matches_full_name(self):
+  i,p,a=self.fixture();a['checks'][0]['actor_checks'][0].update(claimed_actor='Cherki',source_actor='Rayan Cherki')
+  self.assertTrue(validate_actor_audit(a,i,p)['checks'][0]['supported'])
  def test_missing_action_checks_rejected(self):
   i,p,a=self.fixture();a['checks'][0]['actor_checks']=[]
   self.assertFalse(validate_actor_audit(a,i,p)['checks'][0]['supported'])
