@@ -13,10 +13,10 @@ FID='espn-401882819'
 URLS=['https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/cronicas/cronica-racing-rm-j11-liga-01-11-2026','https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/actualidad/once-inicial-del-real-madrid-frente-al-racing-01-11-2026']
 def main():
  remote=RemoteState();job=remote.data['jobs'][FID]
- if job.get('status')!='blocked' or job.get('run_id')!='41344445496' or job.get('api_calls')!=1 or job.get('source_recovery_started'):raise ValueError('Recuperação repetida ou estado divergente')
- out=pipeline.ROOT/'build/pos-jogo/real-recuperacao20';out.mkdir(parents=True,exist_ok=False)
+ if job.get('status')!='blocked' or job.get('run_id')!='41344445496' or job.get('api_calls')!=2 or job.get('source_recovery_v2_started'):raise ValueError('Recuperação repetida ou estado divergente')
+ out=pipeline.ROOT/'build/pos-jogo/real-recuperacao20-v2';out.mkdir(parents=True,exist_ok=False)
  state=out/'tempo.json';save_state(state,remote.data['timing'])
- original=copy.deepcopy(job);job.update(source_recovery_started=True,source_recovery_run_id=os.environ['GITHUB_RUN_ID'])
+ original=copy.deepcopy(job);job.update(source_recovery_v2_started=True,source_recovery_run_id=os.environ['GITHUB_RUN_ID'])
  remote.save();caller=BudgetCaller(remote,FID)
  def research(candidate,summary,schedules,directory,now):
   if candidate['fixture_id']!=FID:raise ValueError('Jogo fora da recuperação')

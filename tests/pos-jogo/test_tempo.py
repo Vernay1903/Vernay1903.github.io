@@ -77,3 +77,12 @@ class RecordedTimingTests(TimingTests):
  def test_later_event_invalidates_early_finish(self):
   self.end('2026-10-21T21:00:00Z');self.s['keyEvents'].append({'type':{'type':'goal'},'wallclock':'2026-10-21T21:05:00Z'})
   self.assertFalse(observe(self.c,self.s,self.state,self.at('2026-10-21T19:10:00-03:00'))['eligible'])
+
+class VenueResolutionTests(unittest.TestCase):
+ def test_correction_is_exact_and_fixture_scoped(self):
+  from preparar_fatos_pos_jogo import venue_name
+  s={'header':{'id':'401882819'},'gameInfo':{'venue':{'fullName':'El Sardineros'}}}
+  self.assertEqual(venue_name(s),'El Sardinero')
+  s['header']['id']='another';self.assertEqual(venue_name(s),'El Sardineros')
+  s['header']['id']='401882819';s['gameInfo']['venue']['fullName']='Other Stadium'
+  self.assertEqual(venue_name(s),'Other Stadium')

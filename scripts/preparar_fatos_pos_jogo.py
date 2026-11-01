@@ -14,6 +14,14 @@ from scripts.selecionar_pos_jogos import TZ, FINAL, PILOT, integer, norm
 from scripts.coletar_competicoes_pre_jogo import BASE, fetch
 
 
+def venue_name(summary):
+    raw=summary.get('gameInfo',{}).get('venue',{}).get('fullName')
+    config=ROOT/'config/venue-names-pos-jogo.json'
+    mapping=json.loads(config.read_text()) if config.exists() else {}
+    correction=mapping.get('espn-'+str(summary.get('header',{}).get('id')), {})
+    return correction['canonical'] if raw and raw==correction.get('observed') else raw
+
+
 def when(value):
     parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
     if parsed.tzinfo is None:
@@ -169,7 +177,7 @@ def build(candidate, summary, schedules, review, now=None):
         raise ValueError('Campanha diverge da conferência')
     future = {side: upcoming(schedules[tid], tid, now, candidate['competition_code']) for tid, side in ids.items()}
     gaps = [f'{side}.{key}' for side, rows in future.items() for key, value in rows.items() if value is None]
-    venue = summary.get('gameInfo', {}).get('venue', {}).get('fullName')
+    venue = venue_name(summary)
     if not venue or norm(venue) != norm(review.get('venue', '')):
         raise ValueError('Estádio divergente')
     return {'schema_version': 1, 'fixture_id': candidate['fixture_id'], 'generated_at': now.isoformat(),
