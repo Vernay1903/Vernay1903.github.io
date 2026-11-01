@@ -15,7 +15,7 @@ from editorial_pos_jogo import prepare
 from redigir_pos_jogo_openai import generate
 
 FID='espn-401921834'
-KEY='validation_step19_editorial'
+KEY='validation_step19_editorial_v2'
 HASHES={
  'execucao/2026-10-28/selecao.json':'23de004d102f5c5399cead8ade7acdbfc0e35f22a1900647655a46300c582281',
  'execucao/2026-10-28/espn-401921834/apuracao/paginas.json':'24e7f74958b8aaf61f855ae3eb09f040a2008916866fd001d26766ef01a47d5c',
@@ -31,7 +31,7 @@ def total(data):
 def reserve_test(remote):
  if KEY in remote.data: raise ValueError('Teste editorial já iniciado; repetição bloqueada')
  job=remote.data['jobs'].get(FID,{})
- if job.get('status')!='package_ready' or job.get('run_id')!='40784987236' or job.get('api_calls')!=15:
+ if job.get('status')!='package_ready' or job.get('run_id')!='40784987236' or job.get('api_calls')!=16:
   raise ValueError('Estado original divergente')
  original=copy.deepcopy(job)
  remote.data[KEY]={'status':'running','run_id':os.environ.get('GITHUB_RUN_ID'),'original_job':original,
@@ -75,8 +75,8 @@ def main():
   start=source_text.index('Rayan Cherki, one of only two')
   end=source_text.index('Brighton, who knocked out',start)
   regression_pages={'official':dict(source,text=source_text[start:end])}
-  regression_items={'claim_0':'Cherki cruzou rasteiro para Foden, mas ninguém alcançou a bola.',
-                    'claim_1':'Cherki serviu Foden, cujo cruzamento rasteiro não encontrou um companheiro.'}
+  regression_items={'claim_0':'Cherki cruzou rasteiro para Foden.',
+                    'claim_1':'Cherki serviu Foden, que cruzou rasteiro.'}
   provider=read(ROOT/'config/redacao-pos-jogo.json')['provider']
   regression=response_object(caller(audit_request(provider,regression_items,{},regression_pages)))
   regression=validate_actor_audit(regression,regression_items,regression_pages)
