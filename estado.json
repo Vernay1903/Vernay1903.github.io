@@ -271,14 +271,28 @@
       "finished_at": "2026-11-01T16:59:46.177442-03:00"
     },
     "espn-401882819": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-01T17:00:08.862109-03:00",
       "run_id": "41344445496",
       "api_calls": 2,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-01T17:00:26.197882-03:00",
+      "finished_at": "2026-11-01T17:03:03.017892-03:00",
       "source_recovery_started": true,
-      "source_recovery_run_id": "41344759598"
+      "source_recovery_run_id": "41344759598",
+      "source_recovery_result": {
+        "fixture_id": "espn-401882819",
+        "timing": {
+          "eligible": true,
+          "status": "eligible",
+          "first_final_seen_at": "2026-11-01T15:37:22.213398-03:00",
+          "finished_at": "2026-11-01T14:15:03-03:00",
+          "eligible_at": "2026-11-01T15:05:03-03:00",
+          "basis": "source_recorded_final",
+          "wait_minutes": 50
+        },
+        "status": "blocked",
+        "reason": "Fato não confirmado: venue Há divergência na grafia: a ESPN informa “El Sardineros”, como no candidato, enquanto a página oficial chama o estádio de “El Sardinero”."
+      }
     }
   },
   "months": {
