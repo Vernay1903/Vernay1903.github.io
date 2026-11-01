@@ -1,0 +1,15 @@
+{
+  "status": "configured_pending_live_editorial_validation",
+  "scope": "naturalidade, transicoes e distribuicao das informacoes",
+  "base_validated_code": "8df1dc893f737b17cc5d4f95da35df1855618f9c",
+  "checks": {
+    "unit_tests": 208,
+    "unit_tests_passed": true,
+    "fixture_package_chars": 16599,
+    "package_max_chars": 20000,
+    "request_construction_passed": true
+  },
+  "new_paid_api_calls": 0,
+  "publication_enabled": false,
+  "note": "Technical checks passed; improvement in generated prose remains to be assessed on next eligible match. No existing article changed."
+}
