@@ -3224,13 +3224,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-02T13:47:53.353136-03:00",
     "last_run_id": "41484694117",
-    "last_finished_at": "2026-11-02T13:44:14.082930-03:00",
+    "last_finished_at": "2026-11-02T13:48:00.170580-03:00",
     "last_status": "idle",
     "last_report": {
-      "run_id": "41484260368",
+      "run_id": "41484694117",
       "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.101305580"
+      "pilot_month_charged_usd": "0.110471235"
     }
   },
   "step15_retry": {
