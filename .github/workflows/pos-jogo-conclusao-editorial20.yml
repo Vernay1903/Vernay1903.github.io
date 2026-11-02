@@ -1,4 +1,5 @@
 name: Pós-jogo — conclusão revisada do passo 20
+# Retomada pontual após corrigir gravação de arquivos no script; publicacao desligada.
 on:
   push:
     branches: [main]
