@@ -1,5 +1,6 @@
 name: Pós-jogo — validação final com modelo reforçado (passo 20)
 # Ensaio único sob saldo residual do teto de US$ 0,10; sem publicação.
+# Correção sintática no script antes da primeira chamada faturável.
 on:
   push:
     branches: [main]
