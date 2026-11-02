@@ -94,7 +94,7 @@ def main():
             request["input"][1]["content"]=json.dumps(user,ensure_ascii=False)
             request["input"][0]["content"] += (
                 "\\nRevisao final do passo 20. O artigo como um todo deve ter entre 630 e "
-                760 palavras no CORPO depois da substituicao, com informacoes reais "
+                "760 palavras no CORPO depois da substituicao, com informacoes reais "
                 "dos 19 fatos narrativos e dados dos jogos. Corrija as pendencias "
                 "listadas, preserve a sequencia dos lances e evite repetir o mesmo "
                 "lance em diferentes blocos. Nao invente estatisticas ou conclusoes "
