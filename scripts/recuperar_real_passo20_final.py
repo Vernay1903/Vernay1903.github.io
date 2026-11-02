@@ -42,7 +42,7 @@ def fixture_cost(state):
 def main():
     if not SOURCE.is_dir() or DEST.exists():
         raise ValueError("Arquivo de origem ausente ou tentativa final duplicada")
-    game=SOURCE/"execucao/2026-11-01"/FID
+    game=SOURCE/"execucao"/FID
     links=read(ROOT/"auditoria/pos-jogo/links-autorizados-piloto.json")
     facts=read(game/"fatos.json")
     narrative=read(game/"narrativa.json")
@@ -86,7 +86,24 @@ def main():
     try:
         cfg["max_paid_calls_per_fixture"]=max(int(cfg["max_paid_calls_per_fixture"]),int(job.get("api_calls",0))+12)
         caller=BudgetCaller(remote,FID,config=cfg)
-        meta=generate(package,DEST/"redacao",execute=True,caller=caller)
+        def guarded_caller(payload):
+            # Orientacoes da revisao anterior dirigidas SO a redacao; revisor independente nao e enviesado.
+            name=payload.get("text",{}).get("format",{}).get("name")
+            if name in ("pos_jogo","patch_pos_jogo"):
+                payload=copy.deepcopy(payload)
+                payload["input"][0]["content"] += (
+                    "\\nConferencia editorial adicional deste jogo: Mbappe abriu o placar ANTES "
+                    "da jogada de Arda Guler para Bellingham no segundo gol. Nao inverta "
+                    "a sequencia temporal nos subtitulos. Evite antecipar no paragrafo "
+                    "de escalacoes lances descritos depois. Nao recapitule defesas e "
+                    "chances ja narradas em outro bloco. Elimine fechamentos vazios "
+                    "como 'sem alterar o desfecho'. Meta: 700 a 780 palavras UTEIS "
+                    "no corpo, com fatos distintos confirmados nas evidencias, sem "
+                    "inventar lances nem inflar o texto. Conserve ao menos 620 palavras "
+                    "apos revisoes e nao use sinonimos para repetir as mesmas jogadas."
+                )
+            return caller(payload)
+        meta=generate(package,DEST/"redacao",execute=True,caller=guarded_caller)
         if meta.get("semantic_review_passed") is not True or meta.get("format_passed") is not True:
             raise ValueError("Revisao nao aprovou a nova redacao")
         report=package_reviewed(DEST,current,links)
