@@ -50,8 +50,8 @@ def main():
     issues=validate_review(prior_review,package,article)
     if not issues:raise ValueError("Revisao arquivada nao apresenta as pendencias esperadas")
     remote=RemoteState();job=remote.data["jobs"].get(FID,{})
-    if (job.get("status")!="blocked" or job.get("final_step20_run_id")!=SOURCE_RUN or
-        job.get("second_step20_retry_started")):raise ValueError("Estado da recuperacao divergente")
+    if (job.get("status")!="blocked" or job.get("final_step20_run_id")!=SOURCE_RUN or job.get("second_step20_run_id")!="41485408285" or
+        job.get("second_step20_bugfix_started")):raise ValueError("Estado da recuperacao divergente")
     prior_cost=spent(remote.data)
     if prior_cost>=Decimal("0.10"):raise ValueError("Sem saldo de US$ 0,10 no jogo")
     cfg=read(ROOT/"config/operacao-pos-jogo.json")
@@ -67,7 +67,7 @@ def main():
             "fixture_id":FID,"publication_enabled":False,"status":"running",
             "before_cost_usd":str(prior_cost),"started_at":datetime.now(TZ).isoformat(),
             "attempts":[]}
-    job.update(status="running",second_step20_retry_started=True,second_step20_run_id=record["run_id"])
+    job.update(status="running",second_step20_bugfix_started=True,second_step20_bugfix_run_id=record["run_id"])
     remote.save()
     cfg["max_paid_calls_per_fixture"]=int(job.get("api_calls",0))+10
     caller=BudgetCaller(remote,FID,config=cfg)
@@ -101,9 +101,9 @@ def main():
                 "para aumentar a extensao. Entregue apenas as unidades solicitadas."
             )
             patch=paid(request,"patch_"+str(attempt))
-            save(out/"patch-"+str(attempt)+".json",patch)
+            save(out/("patch-"+str(attempt)+".json"),patch)
             article=apply_patch(article,patch,issues)
-            save(out/"artigo-"+str(attempt)+".json",article)
+            save(out/("artigo-"+str(attempt)+".json"),article)
             check=validate(article,package["allowed_internal_urls"])
             if not check["format_passed"] or check["body_words"]<620:
                 # Se a extensao ainda estiver insuficiente, apontar blocos explicitos
@@ -118,7 +118,7 @@ def main():
             reviews=[]
             for n in (1,2):
                 review=paid(review_request(package,article,provider),"review_"+str(attempt)+"_"+str(n))
-                save(out/"revisao-"+str(attempt)+"-"+str(n)+".json",review)
+                save(out/("revisao-"+str(attempt)+"-"+str(n)+".json"),review)
                 reviews.append(review)
             merged=merge_reviews(reviews,package,article)
             issues=validate_review(merged,package,article)
