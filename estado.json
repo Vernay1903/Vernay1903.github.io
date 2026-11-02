@@ -271,7 +271,7 @@
       "finished_at": "2026-11-01T16:59:46.177442-03:00"
     },
     "espn-401882819": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-11-01T17:00:08.862109-03:00",
       "run_id": "41344445496",
       "api_calls": 27,
@@ -303,7 +303,33 @@
       "third_step20_retry_started": true,
       "third_step20_retry_run_id": "41486397895",
       "fourth_step20_started": true,
-      "fourth_step20_run_id": "41486930098"
+      "fourth_step20_run_id": "41486930098",
+      "package": {
+        "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+        "fixed_shell_unchanged": true,
+        "title_chars": 55,
+        "body_words": 619,
+        "body_ad_count": 3,
+        "ad_after_blocks": [
+          3,
+          7,
+          11
+        ],
+        "publication_enabled": false,
+        "filename": "racing-santander-real-madrid-la-liga-2026-resultado.html",
+        "written_at": "2026-11-02T17:01:23.490048+00:00",
+        "article_date": "02/11/2026",
+        "sitemap_lastmod": "2026-11-02",
+        "news_position": 0,
+        "old_news_preserved": true,
+        "old_sitemap_preserved": true,
+        "fixture_id": "espn-401882819",
+        "article_sha256": "843fa0ae77b70a780a47a0cd97562a9b71ac813d37c951ab38fa0fc1d88fa926",
+        "human_review_required": true,
+        "semantic_review_passed": true
+      },
+      "artifact_name": "pos-jogo-passo20-validado-41486930098",
+      "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41486930098"
     }
   },
   "months": {
