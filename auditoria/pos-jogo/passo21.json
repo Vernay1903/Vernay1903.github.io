@@ -1,0 +1,45 @@
+{
+  "step": 21,
+  "status": "integrated_and_smoke_test_passed_waiting_for_new_match",
+  "validation_date": "2026-11-02",
+  "pilot_branch": "piloto-pos-jogo-passo21",
+  "pinned_source_commit": "493dd3e67e9e277cde0c7a9f6bb9f497d9503ab1",
+  "main_workflow": ".github/workflows/pos-jogo-automatico.yml",
+  "main_workflow_commit": "ee9346616654625814b0379337f9232e78bf8298",
+  "full_unit_test_run": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41510748178",
+  "full_unit_test_status": "success",
+  "production_workflow_smoke_run": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41510970388",
+  "production_workflow_smoke_status": "success",
+  "scheduled_cycle_status": "idle",
+  "scheduled_cycle_has_new_drafts": false,
+  "autonomous_new_match_e2e_validated": false,
+  "source_failure_recovery": {
+    "enabled": true,
+    "max_automatic_source_retries_per_fixture": 1,
+    "minimum_wait_hours": 2,
+    "requires_recorded_source_failure": true,
+    "does_not_reset_prior_api_costs": true,
+    "requires_available_conservative_search_budget": true,
+    "does_not_auto_retry_editorial_rejections": true
+  },
+  "editorial_gates": {
+    "body_min_words": 600,
+    "required_body_ads": 3,
+    "required_sidebar_ad_slot": "5521804159",
+    "required_body_ad_slot": "8702501261",
+    "require_fixed_html_shell": true,
+    "require_news_json_and_sitemap": true
+  },
+  "scope": [
+    "Flamengo",
+    "Real Madrid",
+    "Arsenal",
+    "Manchester City"
+  ],
+  "publication_enabled": false,
+  "per_article_cost_cap_usd": "0.10",
+  "pilot_monthly_cost_cap_usd": "10.00",
+  "shared_account_cap_verified": false,
+  "next_validation": "Confirm a full new match from initial discovery through editorial review and generation of a complete HTML/noticias.json/sitemap package, without manual correction or publication",
+  "existing_agenda_automations_modified": false
+}
