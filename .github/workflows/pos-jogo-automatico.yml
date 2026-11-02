@@ -24,10 +24,10 @@ jobs:
       PYTHONDONTWRITEBYTECODE: '1'
       POS_JOGO_ARTIFACT_NAME: pos-jogo-rascunhos-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
-      - name: Carregar versão validada do piloto
+      - name: Carregar versão validada do piloto (passo 21)
         uses: actions/checkout@v4
         with:
-          ref: fe5e8066417f0889f91ada6ff9929d29f0553384
+          ref: 493dd3e67e9e277cde0c7a9f6bb9f497d9503ab1
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -43,6 +43,20 @@ jobs:
           python-version: '3.12'
       - name: Verificar controles do piloto
         run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
+      - name: Confirmar travas de publicação e orçamento do passo 21
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg=json.loads(Path('config/operacao-pos-jogo.json').read_text())
+          scope=json.loads(Path('config/pos-jogo-piloto.json').read_text())
+          assert cfg['publication_enabled'] is False
+          assert scope['publication_enabled'] is False
+          assert cfg['per_article_cap_usd']=='0.10'
+          assert cfg['monthly_pilot_cap_usd']=='10.00'
+          assert set(scope['monitored_clubs'])=={'Flamengo','Real Madrid','Arsenal','Manchester City'}
+          print('Passo 21: geração apenas de rascunhos, quatro clubes, orçamento protegido')
+          PY
       - name: Ler destinos atuais sem modificar o site
         uses: actions/checkout@v4
         with:
