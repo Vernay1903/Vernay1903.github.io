@@ -63,6 +63,10 @@ jobs:
           run-id: 41344947385
           github-token: ${{ github.token }}
           path: build/pos-jogo/real-recuperacao20-original
+      - name: Conferir apuração arquivada
+        run: |
+          test -f build/pos-jogo/real-recuperacao20-original/execucao/espn-401882819/fatos.json
+          test -f build/pos-jogo/real-recuperacao20-original/execucao/espn-401882819/pacote.json
       - name: Rerredigir e validar pacote completo sem publicação
         env:
           GH_TOKEN: ${{ github.token }}
