@@ -3311,11 +3311,24 @@
           "id": "76d400610633438aa58d776ad583792c",
           "fixture_id": "espn-401882819",
           "started_at": "2026-11-02T13:57:11.450838-03:00",
-          "status": "reserved",
-          "charged_usd": "0.0318875",
+          "status": "settled",
+          "charged_usd": "0.020642",
           "reserved_usd": "0.0318875",
           "model": "gpt-5.6-terra",
-          "counted_input_tokens": 5555
+          "counted_input_tokens": 5555,
+          "usage": {
+            "input_tokens": 5555,
+            "input_tokens_details": {
+              "cache_write_tokens": 5552,
+              "cached_tokens": 0
+            },
+            "output_tokens": 563,
+            "output_tokens_details": {
+              "reasoning_tokens": 231
+            },
+            "total_tokens": 6118
+          },
+          "response_id": "resp_0b89d94e56ad25bc016ae8c0e975bc87d1b67379089da44b23"
         }
       ],
       "blocked": false
