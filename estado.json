@@ -156,6 +156,26 @@
         "finished_at": "2026-11-01T14:15:03-03:00",
         "timing_basis": "source_recorded_final",
         "eligible_at": "2026-11-01T15:05:03-03:00"
+      },
+      "espn-401915383": {
+        "signature": {
+          "kickoff": "2026-11-04T14:45:00-03:00",
+          "competition": "uefa.champions",
+          "teams": {
+            "home": "887",
+            "away": "86"
+          },
+          "score": {
+            "home": 2,
+            "away": 3
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-04",
+        "first_final_seen_at": "2026-11-04T16:55:35.046665-03:00",
+        "finished_at": "2026-11-04T16:39:36-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-04T17:29:36-03:00"
       }
     }
   },
