@@ -3747,11 +3747,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-04T18:58:27.831196-03:00",
     "last_run_id": "41920991953",
-    "last_finished_at": "2026-11-04T18:28:39.974292-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-04T18:58:34.751415-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "41915412355",
-      "status": "needs_review",
+      "run_id": "41920991953",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.178672785"
     }
