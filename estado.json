@@ -3465,11 +3465,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-04T07:12:42.749749-03:00",
     "last_run_id": "41812638139",
-    "last_finished_at": "2026-11-04T06:37:56.091445-03:00",
-    "last_status": "error",
+    "last_finished_at": "2026-11-04T07:12:56.240771-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "41808978721",
-      "status": "error",
+      "run_id": "41812638139",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.141262920"
     }
