@@ -3747,13 +3747,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-04T18:22:06.916417-03:00",
     "last_run_id": "41915412355",
-    "last_finished_at": "2026-11-04T16:55:41.253050-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-11-04T18:28:39.974292-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "41901594738",
-      "status": "waiting",
+      "run_id": "41915412355",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.141262920"
+      "pilot_month_charged_usd": "0.178672785"
     }
   },
   "step15_retry": {
