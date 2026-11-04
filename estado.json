@@ -3642,11 +3642,24 @@
           "id": "9d8ba053973c41ac9a08e995392307d7",
           "fixture_id": "espn-401915383",
           "started_at": "2026-11-04T18:26:55.179034-03:00",
-          "status": "reserved",
-          "charged_usd": "0.00289875",
+          "status": "settled",
+          "charged_usd": "0.00114896",
           "reserved_usd": "0.00289875",
           "model": "gpt-6-luna",
-          "counted_input_tokens": 5190
+          "counted_input_tokens": 5190,
+          "usage": {
+            "input_tokens": 5190,
+            "input_tokens_details": {
+              "cache_write_tokens": 1146,
+              "cached_tokens": 4041
+            },
+            "output_tokens": 1930,
+            "output_tokens_details": {
+              "reasoning_tokens": 866
+            },
+            "total_tokens": 7120
+          },
+          "response_id": "resp_0cdd61266bd2f6cb016aeba320a7ac87d2a507974d3e812481"
         }
       ],
       "blocked": false
