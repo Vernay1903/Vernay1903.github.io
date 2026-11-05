@@ -16,6 +16,8 @@ RECOVERABLE_SOURCE_ERRORS=(
  'Nenhum relato oficial efetivamente aberto',
  'Menos de dois domínios com páginas efetivamente abertas',
  'Fato não confirmado: identity',
+ 'Fato não confirmado: score',
+ 'Gol contra/equipe desconhecida',
 )
 # Reserva conservadora atual de uma busca única na API. Não pode gastar acima do teto.
 SEARCH_MIN_RESERVE=Decimal('0.07535')
@@ -102,7 +104,7 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
   for day in dates_to_check(now):
    # Destinos atuais lidos novamente por data e pelo empacotador.
    report=runner(day,pipeline.read(site/'noticias.json'),out/day.isoformat(),
-    execute=True,auto_research=True,query=pipeline.fetch,writer=draft,researcher=research,
+    execute=True,max_articles=4 if operation_mode=='scheduled_drafts' else 1,auto_research=True,query=pipeline.fetch,writer=draft,researcher=research,
     now=now,timing_state=state,work_budget=budget,site_root=site,processed=set(remote.data['jobs'])-allowed(now))
    reports.append(report)
    for row in report['results']:

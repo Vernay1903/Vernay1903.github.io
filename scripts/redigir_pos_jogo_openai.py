@@ -20,10 +20,27 @@ def build_request(package, provider):
     facts = {k:v for k,v in package.items() if k != 'instructions'}
     return {'model':provider['model'],'store':False,'max_output_tokens':provider.get('max_output_tokens',6000),
         'reasoning':{'effort':provider['reasoning_effort']},
-        'input':[{'role':'system','content':package['instructions'] + '\nProtocolo interno: devolva title, excerpt e blocks no JSON exigido. O renderizador entregará texto comum ao leitor. Não acrescente fatos fora do pacote.'},
+        'input':[{'role':'system','content':package['instructions'] + '\nProtocolo interno: devolva title, excerpt e blocks no JSON exigido. O renderizador entregará texto comum ao leitor. Não acrescente fatos fora do pacote. Planeje doze a quinze parágrafos de reportagem, distribuídos conforme a riqueza dos lances, visando aproximadamente 720 palavras no corpo; não conte o título nem a chamada e nunca infle por repetição.'},
                  {'role':'user','content':json.dumps(facts,ensure_ascii=False)}],
         'text':{'format':{'type':'json_schema','name':'pos_jogo','strict':True,'schema':schema}}}
 
+
+def expansion_request(package,article,words,provider):
+    request=build_request(package,provider)
+    schema={'type':'object','additionalProperties':False,'required':['additions'],'properties':{'additions':{'type':'array','items':{'type':'object','additionalProperties':False,'required':['after','text'],'properties':{'after':{'type':'integer'},'text':{'type':'string'}}}}}}
+    request['text']['format'].update(name='expand_verified_details',schema=schema)
+    request['input'].append({'role':'user','content':json.dumps({'draft':article,'body_words':words,'desired_new_words':max(75,710-words),'instruction':'O texto só falhou em extensão. Preserve todos os blocos. Insira um a três parágrafos com episódios distintos do pacote ainda não narrados, no momento correto, sem repetir nem inferir. after é o índice do bloco anterior, começando em zero. Se faltarem fatos, não preencha com generalidades.'},ensure_ascii=False)})
+    return request
+
+def apply_expansion(article,delta):
+    import copy
+    result=copy.deepcopy(article);blocks=result['blocks'];extra=delta['additions']
+    if not isinstance(extra,list) or not 1<=len(extra)<=3:raise ValueError('Expansão sem fatos suficientes')
+    for x in extra:
+        if type(x['after'])!=int or not 0<=x['after']<len(article['blocks']) or not x['text'].strip():raise ValueError('Expansão inválida')
+    for x in sorted(extra,key=lambda r:r['after'],reverse=True):
+        blocks.insert(x['after']+1,{'type':'paragraph','text':x['text']})
+    return result
 
 def rewrite_request(package,article,issues,provider):
     correction=dict(provider,max_output_tokens=provider.get('rewrite_max_output_tokens',2500))
@@ -102,10 +119,14 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         print('Calibração factual: '+str(calibration_passed),flush=True)
         if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
     article=None; issues=[]; passed=False; reviewed_once=False; previous_review=None
-    for attempt in range(1,5):
+    for attempt in range(1,7):
+        if len(calls)>=max_calls:break
         before=article
         mapped=targeted_issues(article,issues) if article is not None else None
-        if article is not None and mapped is not None:
+        if article is not None and checks['body_words']>=400 and checks['errors']==['Corpo com menos de 600 palavras']:
+            delta=response_object(call(expansion_request(package,article,checks['body_words'],writer_provider),f'expand_{attempt}'))
+            article=apply_expansion(article,delta);previous_review=None
+        elif article is not None and mapped is not None:
             issues=mapped
             patch=response_object(call(patch_request(package,article,issues,cfg.get('patch_provider',writer_provider)),f'patch_{attempt}'))
             save(f'correcao-{attempt}.json',patch)

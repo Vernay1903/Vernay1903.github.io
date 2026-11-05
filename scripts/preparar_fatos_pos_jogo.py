@@ -95,12 +95,12 @@ def match_goals(comp):
         if detail.get('scoringPlay') is not True:
             continue
         tid = str(detail['team']['id'])
-        if tid not in ids or detail.get('ownGoal') is True:
+        if tid not in ids:
             raise ValueError('Gol contra/equipe desconhecida requer conferência específica')
         participants = detail.get('participants', [])
         if not participants:
             raise ValueError('Gol sem autor')
-        goals.append({'side': ids[tid], 'scorer': participants[0]['athlete']['displayName'],
+        goals.append({**({'own_goal':True} if detail.get('ownGoal') is True else {}),'side': ids[tid], 'scorer': participants[0]['athlete']['displayName'],
                       'minute': detail.get('clock', {}).get('displayValue')})
     counts = Counter(g['side'] for g in goals)
     if any(counts[k] != integer(t['score']) for k, t in teams.items()):
@@ -147,6 +147,8 @@ def build(candidate, summary, schedules, review, now=None):
     expected = review.get('goals', [])
     if [(g['side'], norm(g['scorer'])) for g in goals] != [(g['side'], norm(g['scorer'])) for g in expected]:
         raise ValueError('Conflito de autores/ordem dos gols')
+    if any(bool(g.get('own_goal'))!=bool(e.get('own_goal')) for g,e in zip(goals,expected)):
+        raise ValueError('Gol contra não confirmado na revisão')
     conflicts = []
     for goal, external in zip(goals, expected):
         if external.get('minute_conflict') or goal['minute'] != external.get('minute'):
@@ -170,6 +172,12 @@ def build(candidate, summary, schedules, review, now=None):
     future = {side: upcoming(schedules[tid], tid, now, candidate['competition_code']) for tid, side in ids.items()}
     gaps = [f'{side}.{key}' for side, rows in future.items() for key, value in rows.items() if value is None]
     venue = summary.get('gameInfo', {}).get('venue', {}).get('fullName')
+    resolution=review.get('venue_resolution',{})
+    if (resolution.get('fixture_id')==candidate['fixture_id'] and resolution.get('observed')==venue
+            and resolution.get('canonical')==review.get('venue') and resolution.get('official_url') in {x['url'] for x in review.get('sources',[])}
+            and re.fullmatch(r'https://match\.uefa\.com/v5/matches/\d+',resolution.get('official_url',''))):
+        conflicts.append({'field':'venue','provider_value':venue,'official_url':resolution['official_url'],'action':'use_verified_official_name'})
+        venue=resolution['canonical']
     if not venue or norm(venue) != norm(review.get('venue', '')):
         raise ValueError('Estádio divergente')
     return {'schema_version': 1, 'fixture_id': candidate['fixture_id'], 'generated_at': now.isoformat(),

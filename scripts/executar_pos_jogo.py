@@ -43,7 +43,7 @@ def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer
     if site_root is not None and not execute:raise ValueError('Pacote requer --execute')
     now=now or datetime.now(TZ)
     budget=work_budget if work_budget is not None else {'research':0,'articles':0}
-    if max_articles!=1:raise ValueError('Teste integrado limitado a uma matéria por execução')
+    if type(max_articles) is not int or not 1<=max_articles<=4:raise ValueError('Limite de matérias fora do piloto')
     out=Path(out).resolve()
     if not out.is_relative_to((ROOT/'build/pos-jogo').resolve()):raise ValueError('Saída fora do piloto')
     if not isinstance(news,list) or not all(isinstance(x,dict) for x in news):raise ValueError('Notícias inválidas')
@@ -87,7 +87,7 @@ def run(target, news, out, *, execute=False, max_articles=1, query=fetch, writer
             schedules={t:capture(f'{BASE}/all/teams/{t}/schedule?fixture=true&season={target.year}') for t in ids}
             directory=out/fid
             if auto_research:
-                if budget['research']>=1:
+                if budget['research']>=max_articles:
                     row['status']='research_test_limit';continue
                 report['research_attempted']+=1
                 budget['research']+=1
