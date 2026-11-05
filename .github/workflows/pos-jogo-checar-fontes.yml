@@ -1,0 +1,30 @@
+name: Pós-jogo — diagnóstico de fontes oficiais
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pos-jogo-checar-fontes.yml]
+permissions: {contents: read}
+jobs:
+  fontes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: eb7de7f28fe22ff4a81ec2be17cb752247d3d764
+          persist-credentials: false
+          sparse-checkout: scripts
+      - name: Verificar disponibilidade sem API paga
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import json
+          from concurrent.futures import ThreadPoolExecutor
+          from fontes_oficiais_pos_jogo import read_url,links,uefa_record
+          def check(url):
+              try:
+                  raw=read_url(url)
+                  print(url,len(raw),[p for p in links(raw) if '/match/' in p][:14] if raw[:1]!=b'{' else str(json.loads(raw).get('score')),flush=True)
+              except Exception as exc:print(url,type(exc).__name__,str(exc),flush=True)
+          urls=['https://www.uefa.com/uefachampionsleague/clubs/52280--arsenal/matches/','https://www.uefa.com/uefachampionsleague/clubs/52919--man-city/matches/','https://match.uefa.com/v5/matches/2049621','https://match.uefa.com/v5/matches/2049619','https://www.mancity.com/news/mens','https://www.flamengo.com.br/noticias/futebol']
+          with ThreadPoolExecutor() as pool:list(pool.map(check,urls))
+          PY
