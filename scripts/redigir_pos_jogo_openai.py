@@ -25,6 +25,18 @@ def build_request(package, provider):
         'text':{'format':{'type':'json_schema','name':'pos_jogo','strict':True,'schema':schema}}}
 
 
+def remove_collective_recap(article):
+    """Remove só a recapitulação vazia depois de lances já narrados; nunca acrescenta texto."""
+    import copy,re
+    out=copy.deepcopy(article)
+    for b in out['blocks']:
+        if b['type']!='paragraph':continue
+        parts=re.split(r'(?<=[.!?])\s+',b['text'])
+        # Frases individuais sobre cada chute e defesa permanecem literais.
+        kept=[t for t in parts if not re.fullmatch(r'(?:Os dois lances|As duas finalizações|As duas jogadas) (?:levaram perigo|ameaçaram)[^.!?;]{0,100}, mas não (?:mudaram|alteraram) o placar[.]',t,re.I)]
+        if kept and len(kept)!=len(parts):b['text']=' '.join(kept)
+    return out
+
 def expansion_request(package,article,words,provider):
     request=build_request(package,provider)
     schema={'type':'object','additionalProperties':False,'required':['additions'],'properties':{'additions':{'type':'array','maxItems':3,'items':{'type':'object','additionalProperties':False,'required':['after','text'],'properties':{'after':{'type':'integer'},'text':{'type':'string'}}}}}}
@@ -70,7 +82,7 @@ def parse_response(response):
     return article
 
 
-def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_article=None):
+def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_article=None, review_seed=False):
     read=lambda p:json.loads((ROOT/p).read_text())
     cfg=read('config/redacao-pos-jogo.json')
     max_calls=cfg['max_calls_per_test']
@@ -122,7 +134,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
     if article is not None:
         checks=validate(article,package['allowed_internal_urls'])
         checks['errors']+=coverage_errors(article,package)
-        if checks['errors']!=['Corpo com menos de 600 palavras'] or checks['body_words']<400:
+        if (checks['errors']!=['Corpo com menos de 600 palavras'] and not (review_seed and not checks['errors'])) or checks['body_words']<400:
             raise ValueError('Retomada só permite rascunho curto com o restante do formato íntegro')
         save('origem-rascunho.json',{'article_sha256':digest(article),'requires_full_new_reviews':True})
     issues=[]; passed=False; reviewed_once=False; previous_review=None
@@ -134,6 +146,8 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
             delta=response_object(call(expansion_request(package,article,checks['body_words'],writer_provider),f'expand_{attempt}'))
             save(f'expansao-{attempt}.json',delta)
             article=apply_expansion(article,delta);previous_review=None
+        elif review_seed and attempt==1 and not checks['errors']:
+            pass  # texto candidato íntegro: segue para duas revisões integrais
         elif article is not None and mapped is not None:
             issues=mapped
             patch=response_object(call(patch_request(package,article,issues,cfg.get('patch_provider',writer_provider)),f'patch_{attempt}'))
@@ -144,6 +158,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
             if article is not None:
                 request=rewrite_request(package,article,issues,writer_provider)
             article=parse_response(call(request,f'write_{attempt}'))
+        article=remove_collective_recap(article)
         written_at=datetime.now(timezone.utc).isoformat()
         save(f'artigo-{attempt}.json',article)
         checks=validate(article,package['allowed_internal_urls'])

@@ -16,3 +16,11 @@ class IdentityTests(unittest.TestCase):
   b=apply_expansion(a,{'additions':[{'after':0,'text':'Outro fato verificado.'}]})
   self.assertEqual([x['text'] for x in b['blocks']],['Primeiro.','Outro fato verificado.','Fechamento.'])
   self.assertEqual(len(a['blocks']),2)
+
+class CollectiveRecapTests(unittest.TestCase):
+ def test_keeps_both_shots_and_removes_only_shared_target_claim(self):
+  from redigir_pos_jogo_openai import remove_collective_recap
+  facts='Raum acertou o travessão. Cherki também acertou o travessão.'
+  a={'blocks':[{'type':'paragraph','text':facts+' Os dois lances levaram perigo à meta do City, mas não mudaram o placar.'}]}
+  self.assertEqual(remove_collective_recap(a)['blocks'][0]['text'],facts)
+  self.assertNotEqual(a['blocks'][0]['text'],facts)
