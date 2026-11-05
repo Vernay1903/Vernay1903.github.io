@@ -70,7 +70,7 @@ def parse_response(response):
     return article
 
 
-def generate(package, out, *, execute=False, calibrate=False, caller=None):
+def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_article=None):
     read=lambda p:json.loads((ROOT/p).read_text())
     cfg=read('config/redacao-pos-jogo.json')
     max_calls=cfg['max_calls_per_test']
@@ -118,7 +118,14 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None):
         save('calibracao.json',{'passed':calibration_passed,'review':calibration_review})
         print('Calibração factual: '+str(calibration_passed),flush=True)
         if not calibration_passed:raise ValueError('Revisor não distinguiu erros conhecidos de fatos sustentados')
-    article=None; issues=[]; passed=False; reviewed_once=False; previous_review=None
+    article=seed_article
+    if article is not None:
+        checks=validate(article,package['allowed_internal_urls'])
+        checks['errors']+=coverage_errors(article,package)
+        if checks['errors']!=['Corpo com menos de 600 palavras'] or checks['body_words']<400:
+            raise ValueError('Retomada só permite rascunho curto com o restante do formato íntegro')
+        save('origem-rascunho.json',{'article_sha256':digest(article),'requires_full_new_reviews':True})
+    issues=[]; passed=False; reviewed_once=False; previous_review=None
     for attempt in range(1,7):
         if len(calls)>=max_calls:break
         before=article

@@ -35,10 +35,14 @@ def official_pages(c,opener):
  club=next((t for t in (c['home'],c['away']) if t in CLUBS),None)
  if c['competition_code']=='uefa.champions' and club:
   index='https://www.uefa.com/uefachampionsleague/clubs/'+CLUBS[club]+'/matches/'
-  for path in links(read_url(index)):
+  try:uefa_links=links(read_url(index))
+  except (OSError,ValueError):uefa_links=[]
+  for path in uefa_links:
    m=re.fullmatch(r'/uefachampionsleague/match/(\d+)--([a-z0-9-]+)-vs-([a-z0-9-]+)/',path)
    if not m or [team(m[2]),team(m[3])]!=[team(c['home']),team(c['away'])]:continue
-   url='https://match.uefa.com/v5/matches/'+m[1];raw=read_url(url);d=json.loads(raw)
+   url='https://match.uefa.com/v5/matches/'+m[1]
+   try:raw=read_url(url);d=json.loads(raw)
+   except (OSError,ValueError):continue
    if str(d['id'])!=m[1]:continue
    row=uefa_record(c,d)
    if row:
