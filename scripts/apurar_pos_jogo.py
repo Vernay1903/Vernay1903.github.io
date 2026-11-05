@@ -165,7 +165,7 @@ def candidate_proposal(candidate,summary):
     return proposal,core,entries,teams
 
 
-def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page,discovery=None):
+def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page,discovery=None,direct_only=False):
     if caller is None:raise ValueError('Apuração paga exige controlador persistente de orçamento')
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     def save(name,data):(out/name).write_text(json.dumps(data,ensure_ascii=False,indent=2))
@@ -199,6 +199,8 @@ def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page,di
                 proposal['venue_resolution']={'official_url':page['url'],'fixture_id':candidate['fixture_id'],'observed':proposal['venue'],'canonical':v}
                 proposal['venue']=core['venue']=v
     save('fontes-diretas.json',{'urls':[p['url'] for p in direct],'error':discovery_error})
+    if direct_only and not any(p.get('format')=='official_match_record' for p in direct):
+        raise ValueError('Recuperação sem ficha oficial correspondente; nenhuma busca paga')
     if discovery is None and not direct:
         discovery=call({'model':provider['model'],'store':False,'max_output_tokens':1800,
           'tools':[{'type':'web_search','filters':{'allowed_domains':DOMAINS}}],

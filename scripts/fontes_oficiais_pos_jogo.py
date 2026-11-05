@@ -3,6 +3,7 @@ import hashlib,json,re,urllib.request,unicodedata
 from html.parser import HTMLParser
 from urllib.parse import urljoin,urlparse
 from datetime import datetime
+from pathlib import Path
 
 CLUBS={'Manchester City':'52919--man-city','Arsenal':'52280--arsenal','Real Madrid':'50051--real-madrid'}
 ALIASES={'slavia prague':'slavia praha','rb leipzig':'leipzig','manchester city':'man city','aek athens fc':'aek athens'}
@@ -35,9 +36,18 @@ def official_pages(c,opener):
  club=next((t for t in (c['home'],c['away']) if t in CLUBS),None)
  if c['competition_code']=='uefa.champions' and club:
   index='https://www.uefa.com/uefachampionsleague/clubs/'+CLUBS[club]+'/matches/'
-  try:uefa_links=links(read_url(index))
-  except (OSError,ValueError):uefa_links=[]
-  for path in uefa_links:
+  cached=Path(__file__).resolve().parents[1]/'config/indice-uefa.json'
+  seed=json.loads(cached.read_text()).get(CLUBS[club],{}) if cached.exists() else {}
+  uefa_links=list(seed.get('links',[])) if seed.get('index')==index else []
+  # O índice é só um localizador. A ficha oficial precisa ser aberta ao vivo
+  # e coincidir em clubes, mando, competição, horário e placar.
+  def paths():
+   yield from uefa_links
+   try:fresh=links(read_url(index))
+   except (OSError,ValueError):fresh=[]
+   yield from (p for p in fresh if p not in uefa_links)
+
+  for path in paths():
    m=re.fullmatch(r'/uefachampionsleague/match/(\d+)--([a-z0-9-]+)-vs-([a-z0-9-]+)/',path)
    if not m or [team(m[2]),team(m[3])]!=[team(c['home']),team(c['away'])]:continue
    url='https://match.uefa.com/v5/matches/'+m[1]

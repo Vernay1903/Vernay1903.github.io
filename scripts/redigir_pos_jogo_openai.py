@@ -27,7 +27,7 @@ def build_request(package, provider):
 
 def expansion_request(package,article,words,provider):
     request=build_request(package,provider)
-    schema={'type':'object','additionalProperties':False,'required':['additions'],'properties':{'additions':{'type':'array','items':{'type':'object','additionalProperties':False,'required':['after','text'],'properties':{'after':{'type':'integer'},'text':{'type':'string'}}}}}}
+    schema={'type':'object','additionalProperties':False,'required':['additions'],'properties':{'additions':{'type':'array','maxItems':3,'items':{'type':'object','additionalProperties':False,'required':['after','text'],'properties':{'after':{'type':'integer'},'text':{'type':'string'}}}}}}
     request['text']['format'].update(name='expand_verified_details',schema=schema)
     request['input'].append({'role':'user','content':json.dumps({'draft':article,'body_words':words,'desired_new_words':max(75,710-words),'instruction':'O texto só falhou em extensão. Preserve todos os blocos. Insira um a três parágrafos com episódios distintos do pacote ainda não narrados, no momento correto, sem repetir nem inferir. after é o índice do bloco anterior, começando em zero. Se faltarem fatos, não preencha com generalidades.'},ensure_ascii=False)})
     return request
@@ -132,6 +132,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
         mapped=targeted_issues(article,issues) if article is not None else None
         if article is not None and checks['body_words']>=400 and checks['errors']==['Corpo com menos de 600 palavras']:
             delta=response_object(call(expansion_request(package,article,checks['body_words'],writer_provider),f'expand_{attempt}'))
+            save(f'expansao-{attempt}.json',delta)
             article=apply_expansion(article,delta);previous_review=None
         elif article is not None and mapped is not None:
             issues=mapped

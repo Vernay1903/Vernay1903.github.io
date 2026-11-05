@@ -1,0 +1,44 @@
+{
+  "52280--arsenal": {
+    "index": "https://www.uefa.com/uefachampionsleague/clubs/52280--arsenal/matches/",
+    "sha256": "e10f28b3ff8ceb5986e9ce1742215204759d073d7049413837d4604e990d29c5",
+    "links": [
+      "/uefachampionsleague/match/2049563--napoli-vs-arsenal/",
+      "/uefachampionsleague/match/2049572--arsenal-vs-lille/",
+      "/uefachampionsleague/match/2049598--bayern-munchen-vs-arsenal/",
+      "/uefachampionsleague/match/2049621--slavia-praha-vs-arsenal/",
+      "/uefachampionsleague/match/2049627--arsenal-vs-b-dortmund/",
+      "/uefachampionsleague/match/2049653--arsenal-vs-real-madrid/",
+      "/uefachampionsleague/match/2049672--real-betis-vs-arsenal/",
+      "/uefachampionsleague/match/2049683--arsenal-vs-sabah/"
+    ]
+  },
+  "52919--man-city": {
+    "index": "https://www.uefa.com/uefachampionsleague/clubs/52919--man-city/matches/",
+    "sha256": "74af1e173f302f4e4f1bcc31f9d5d2c76db2abca76ee0074096172ea21242e70",
+    "links": [
+      "/uefachampionsleague/match/2049555--porto-vs-man-city/",
+      "/uefachampionsleague/match/2049580--man-city-vs-paris/",
+      "/uefachampionsleague/match/2049591--man-city-vs-aek-athens/",
+      "/uefachampionsleague/match/2049619--leipzig-vs-man-city/",
+      "/uefachampionsleague/match/2049626--man-city-vs-napoli/",
+      "/uefachampionsleague/match/2049644--barcelona-vs-man-city/",
+      "/uefachampionsleague/match/2049676--lens-vs-man-city/",
+      "/uefachampionsleague/match/2049682--man-city-vs-sporting-cp/"
+    ]
+  },
+  "50051--real-madrid": {
+    "index": "https://www.uefa.com/uefachampionsleague/clubs/50051--real-madrid/matches/",
+    "sha256": "485a7bbe5a660d0fa381d30de21493ee72098d0b498eb026ecc8847ebb73e1c1",
+    "links": [
+      "/uefachampionsleague/match/2049553--real-madrid-vs-inter/",
+      "/uefachampionsleague/match/2049581--roma-vs-real-madrid/",
+      "/uefachampionsleague/match/2049599--real-madrid-vs-leipzig/",
+      "/uefachampionsleague/match/2049622--aek-athens-vs-real-madrid/",
+      "/uefachampionsleague/match/2049625--real-madrid-vs-psv/",
+      "/uefachampionsleague/match/2049653--arsenal-vs-real-madrid/",
+      "/uefachampionsleague/match/2049661--real-madrid-vs-lask/",
+      "/uefachampionsleague/match/2049693--shakhtar-vs-real-madrid/"
+    ]
+  }
+}

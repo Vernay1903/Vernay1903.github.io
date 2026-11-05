@@ -26,10 +26,12 @@ def eligible_source_retry(job,months,now,config):
  """Apenas uma nova apuração após falha de fontes, sem apagar gastos nem falsificar provas."""
  if job.get('status')!='blocked' or job.get('operation_mode')!='scheduled_drafts':
   return False
- if job.get('source_retry_count',0)>=1:
-  return False
+ exact_retry=(job.get('source_retry_count',0)==1 and not job.get('official_index_retry') and
+              any(x in (job.get('reason') or '') for x in ('Fato não confirmado: goals','Fato não confirmado: score')) and
+              job.get('api_calls',0)<=5)
+ if job.get('source_retry_count',0)>=1 and not exact_retry:return False
  reason=job.get('reason','')
- if not isinstance(reason,str) or not any(term in reason for term in RECOVERABLE_SOURCE_ERRORS):
+ if not exact_retry and (not isinstance(reason,str) or not any(term in reason for term in RECOVERABLE_SOURCE_ERRORS)):
   return False
  if job.get('api_calls',0)>=config['max_paid_calls_per_fixture']:
   return False
@@ -44,8 +46,9 @@ def eligible_source_retry(job,months,now,config):
  if not fid:return False
  used=sum((Decimal(c['charged_usd']) for m in months.values() for c in m.get('calls',[]) if c.get('fixture_id')==fid),Decimal(0))
  monthly=sum((Decimal(c['charged_usd']) for c in months.get(now.strftime('%Y-%m'),{}).get('calls',[])),Decimal(0))
- return (Decimal(config['per_article_cap_usd'])-used>=SEARCH_MIN_RESERVE
-         and Decimal(config['monthly_pilot_cap_usd'])-monthly>=SEARCH_MIN_RESERVE)
+ required=Decimal('0.025') if exact_retry else SEARCH_MIN_RESERVE
+ return (Decimal(config['per_article_cap_usd'])-used>=required
+         and Decimal(config['monthly_pilot_cap_usd'])-monthly>=required)
 
 def validate_generated_package(directory,report):
  """Bloqueia aprovação com anúncios ou sidebar ausentes; não altera site."""
@@ -88,6 +91,8 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
   fid=candidate['fixture_id'];previous=remote.data['jobs'].get(fid)
   if previous is not None:
    if fid not in allowed(now):raise ValueError('Repetição não autorizada')
+   exact=previous.get('source_retry_count',0)==1
+   if exact:previous['official_index_retry']=True
    previous.update(status='running',started_at=clock().isoformat(),
      run_id=os.environ.get('GITHUB_RUN_ID'),
      source_retry_count=previous.get('source_retry_count',0)+1,
@@ -97,7 +102,8 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
      'run_id':os.environ.get('GITHUB_RUN_ID'),'api_calls':0,'operation_mode':operation_mode}
   remote.data['timing']=load_state(state);remote.save()
   active[fid]=caller_factory(remote,fid)
-  return researcher(candidate,summary,schedules,directory,observed_at,caller=active[fid])
+  kw={'direct_only':True} if previous and previous.get('official_index_retry') else {}
+  return researcher(candidate,summary,schedules,directory,observed_at,caller=active[fid],**kw)
  def draft(package,directory,**kwargs):
   return writer(package,directory,**kwargs,caller=active[package['facts']['fixture_id']])
  try:
