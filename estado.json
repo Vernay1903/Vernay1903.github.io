@@ -196,6 +196,46 @@
         "finished_at": "2026-11-04T21:31:02-03:00",
         "timing_basis": "source_recorded_final",
         "eligible_at": "2026-11-04T22:21:02-03:00"
+      },
+      "espn-401915306": {
+        "signature": {
+          "kickoff": "2026-11-04T17:00:00-03:00",
+          "competition": "uefa.champions",
+          "teams": {
+            "home": "11420",
+            "away": "382"
+          },
+          "score": {
+            "home": 2,
+            "away": 3
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-04",
+        "first_final_seen_at": "2026-11-04T22:30:38.703543-03:00",
+        "finished_at": "2026-11-04T18:54:19-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-04T19:44:19-03:00"
+      },
+      "espn-401915381": {
+        "signature": {
+          "kickoff": "2026-11-04T17:00:00-03:00",
+          "competition": "uefa.champions",
+          "teams": {
+            "home": "494",
+            "away": "359"
+          },
+          "score": {
+            "home": 1,
+            "away": 2
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-04",
+        "first_final_seen_at": "2026-11-04T22:30:38.703543-03:00",
+        "finished_at": "2026-11-04T18:54:10-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-04T19:44:10-03:00"
       }
     }
   },
@@ -381,11 +421,13 @@
       "reason": "Revisão factual/editorial reprovada após limite de correções"
     },
     "espn-401841307": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-04T22:30:41.897742-03:00",
       "run_id": "41948977815",
       "api_calls": 2,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-04T22:31:36.182789-03:00",
+      "reason": "Fato não confirmado: score A ESPN registra o placar de 3 a 1. O conteúdo oficial do Flamengo confirma a vitória, mas não informa esse placar; portanto, o placar exato não está corroborado pelos dois domínios exigidos."
     }
   },
   "months": {
