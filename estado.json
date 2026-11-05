@@ -4972,13 +4972,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-05T19:50:22.425095-03:00",
     "last_run_id": "42124818361",
-    "last_finished_at": "2026-11-05T19:34:06.364219-03:00",
+    "last_finished_at": "2026-11-05T19:50:28.534609-03:00",
     "last_status": "idle",
     "last_report": {
-      "run_id": "42122338219",
+      "run_id": "42124818361",
       "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.337311050"
+      "pilot_month_charged_usd": "0.343957070"
     }
   },
   "step15_retry": {
