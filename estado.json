@@ -413,7 +413,7 @@
       "status": "running",
       "started_at": "2026-11-05T13:50:11.323223-03:00",
       "run_id": "42068495177",
-      "api_calls": 0,
+      "api_calls": 1,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-04T22:44:38.630538-03:00",
       "reason": "Gol contra/equipe desconhecida requer conferência específica",
@@ -3892,6 +3892,16 @@
             "total_tokens": 18375
           },
           "response_id": "resp_0098b4fb95abf888016aebe09d933087d0a9710b8ab95faf2f"
+        },
+        {
+          "id": "2c38441c4b9f48d4afb4f80214d58242",
+          "fixture_id": "espn-401915306",
+          "started_at": "2026-11-05T13:50:24.895378-03:00",
+          "status": "reserved",
+          "charged_usd": "0.07535",
+          "reserved_usd": "0.07535",
+          "model": "gpt-6-luna",
+          "counted_input_tokens": null
         }
       ],
       "blocked": false
