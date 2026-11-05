@@ -395,7 +395,7 @@
       "status": "running",
       "started_at": "2026-11-05T19:28:27.533900-03:00",
       "run_id": "42121549455",
-      "api_calls": 14,
+      "api_calls": 15,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-05T19:22:27.908061-03:00",
       "reason": "Fato não confirmado: venue Há divergência concreta: a página oficial informa AEK Arena, enquanto o resumo ESPN identifica o local como OPAP Arena. Portanto, o campo do candidato não fica confirmado sem conflito.",
@@ -4529,6 +4529,16 @@
             "total_tokens": 19049
           },
           "response_id": "resp_0f5123a180b52d36016aed030f8e9087d19d0427d8d64bc21c"
+        },
+        {
+          "id": "012e08888b994f4a90709b627598dbfe",
+          "fixture_id": "espn-401915383",
+          "started_at": "2026-11-05T19:29:24.968747-03:00",
+          "status": "reserved",
+          "charged_usd": "0.0101795",
+          "reserved_usd": "0.0101795",
+          "model": "gpt-6-luna",
+          "counted_input_tokens": 53436
         }
       ],
       "blocked": false
