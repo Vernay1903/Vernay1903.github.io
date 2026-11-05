@@ -173,12 +173,15 @@ def build(candidate, summary, schedules, review, now=None):
     gaps = [f'{side}.{key}' for side, rows in future.items() for key, value in rows.items() if value is None]
     venue = summary.get('gameInfo', {}).get('venue', {}).get('fullName')
     resolution=review.get('venue_resolution',{})
-    if (resolution.get('fixture_id')==candidate['fixture_id'] and resolution.get('observed')==venue
-            and resolution.get('canonical')==review.get('venue') and resolution.get('official_url') in {x['url'] for x in review.get('sources',[])}
-            and re.fullmatch(r'https://match\.uefa\.com/v5/matches/\d+',resolution.get('official_url',''))):
-        conflicts.append({'field':'venue','provider_value':venue,'official_url':resolution['official_url'],'action':'use_verified_official_name'})
-        venue=resolution['canonical']
-    if not venue or norm(venue) != norm(review.get('venue', '')):
+    official=(resolution.get('fixture_id')==candidate['fixture_id'] and resolution.get('observed')==venue
+              and resolution.get('official_url') in {x['url'] for x in review.get('sources',[])}
+              and bool(re.fullmatch(r'https://match\.uefa\.com/v5/matches/\d+',resolution.get('official_url',''))))
+    omitted=bool(official and resolution.get('action')=='omit' and review.get('venue') is None and resolution.get('canonical') and resolution['canonical']!=venue)
+    if omitted:
+        conflicts.append(dict(resolution,field='venue'));venue=None
+    elif official and resolution.get('canonical')==review.get('venue'):
+        conflicts.append(dict(resolution,field='venue',action='use_verified_official_name'));venue=resolution['canonical']
+    if not omitted and (not venue or norm(venue)!=norm(review.get('venue',''))):
         raise ValueError('Estádio divergente')
     return {'schema_version': 1, 'fixture_id': candidate['fixture_id'], 'generated_at': now.isoformat(),
             'mode': 'facts_only', 'ready_for_drafting': not any(g.endswith('.next_match') for g in gaps), 'ready_for_publication': False,
@@ -187,7 +190,7 @@ def build(candidate, summary, schedules, review, now=None):
             'venue': venue, 'score': score, 'outcome': outcome, 'goals': goals, 'campaign': context,
             'competition_context': review['competition_context'], 'upcoming': future,
             'sources': [{'url': candidate['source_url'], 'checked_at': now.isoformat(),
-                         'supports': ['identity', 'score', 'goals', 'venue', 'campaign']},
+                         'supports': ['identity','score','goals','campaign']+([] if omitted else ['venue'])},
                         *[{'url': f'{BASE}/all/teams/{tid}/schedule?fixture=true&season={kickoff.year}',
                            'checked_at': now.isoformat(), 'supports': [f'upcoming.{side}']} for tid, side in ids.items()],
                         *review['sources']],

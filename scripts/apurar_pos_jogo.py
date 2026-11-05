@@ -197,7 +197,8 @@ def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page,di
             v=json.loads(page['text']).get('venue')
             if v and v!=proposal['venue']:
                 proposal['venue_resolution']={'official_url':page['url'],'fixture_id':candidate['fixture_id'],'observed':proposal['venue'],'canonical':v}
-                proposal['venue']=core['venue']=v
+                proposal['venue_resolution']['action']='omit'
+                proposal['venue']=None;core.pop('venue',None)
     save('fontes-diretas.json',{'urls':[p['url'] for p in direct],'error':discovery_error})
     if direct_only and not any(p.get('format')=='official_match_record' for p in direct):
         raise ValueError('Recuperação sem ficha oficial correspondente; nenhuma busca paga')
@@ -306,6 +307,13 @@ def finalize_review(candidate,summary,schedules,proposal,core,result,pages,audit
     for claim in result['claims']:
         validate_evidence([{'id':'claim','supported':True,'evidence':claim['evidence']}],['claim'],pages)
     kept,omitted=approved_claims(core,result['claims'],audit)
+    resolution=proposal.get('venue_resolution',{})
+    if resolution.get('action')=='omit':
+        names=[str(resolution[k]).casefold() for k in ('observed','canonical') if resolution.get(k)]
+        removed=[c for c in kept if any(n in c['text'].casefold() for n in names)]
+        kept=[c for c in kept if c not in removed]
+        omitted += [{'claim':c,'reason':'Estádio com denominação conflitante'} for c in removed]
+        if len(kept)<6:raise ValueError('Apuração insuficiente sem estádio conflitante')
     save('narrativas-omitidas-revisao.json',omitted)
     used={r['source_id'] for c in result['checks']+kept for r in c['evidence']}
     proposal['sources']=[{'url':pages[i]['url'],'checked_at':pages[i]['checked_at'],'supports':['automatic_source_review']} for i in used]
