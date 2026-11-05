@@ -30,7 +30,7 @@ def uefa_record(c,d):
  score=d.get('score',{}).get('regular')
  if score!=c['score']:return None
  def en(o,key):return o.get('translations',{}).get(key,{}).get('EN')
- return {'competition':en(d['competition'],'name') or d['competition']['code'],'date':d['kickOffTime']['dateTime'],'home':d['homeTeam']['internationalName'],'away':d['awayTeam']['internationalName'],'status':d['status'],'score':d['score'],'venue':en(d['stadium'],'name'),'matchday':d['matchday']['longName'],'scorers':[{'player':x['player']['internationalName'],'type':x.get('goalType'),'time':x.get('time'),'teamId':x.get('teamId'),'playerClubId':x['player'].get('clubId')} for x in d.get('playerEvents',{}).get('scorers',[])]}
+ return {'competition':en(d['competition'],'name') or d['competition']['code'],'date':d['kickOffTime']['dateTime'],'home':d['homeTeam']['internationalName'],'homeTeamId':d['homeTeam'].get('id'),'away':d['awayTeam']['internationalName'],'awayTeamId':d['awayTeam'].get('id'),'status':d['status'],'score':d['score'],'venue':en(d['stadium'],'name'),'matchday':d['matchday']['longName'],'scorers':[{'player':x['player']['internationalName'],'type':x.get('goalType'),'time':x.get('time'),'teamId':x.get('teamId'),'playerClubId':x['player'].get('clubId')} for x in d.get('playerEvents',{}).get('scorers',[])]}
 def official_pages(c,opener):
  pages=[]
  club=next((t for t in (c['home'],c['away']) if t in CLUBS),None)

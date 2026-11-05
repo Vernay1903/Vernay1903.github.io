@@ -22,6 +22,10 @@ RECOVERABLE_SOURCE_ERRORS=(
 # Reserva conservadora atual de uma busca única na API. Não pode gastar acima do teto.
 SEARCH_MIN_RESERVE=Decimal('0.07535')
 
+def needs_new_evidence(job):
+ return (job.get('length_retry') is True and job.get('reason')=='Expansão sem fatos suficientes'
+         and not job.get('official_index_retry') and job.get('api_calls',0)<=12)
+
 def eligible_source_retry(job,months,now,config):
  """Apenas uma nova apuração após falha de fontes, sem apagar gastos nem falsificar provas."""
  if job.get('status')!='blocked' or job.get('operation_mode')!='scheduled_drafts':
@@ -29,11 +33,12 @@ def eligible_source_retry(job,months,now,config):
  exact_retry=(job.get('source_retry_count',0)==1 and not job.get('official_index_retry') and
               any(x in (job.get('reason') or '') for x in ('Fato não confirmado: goals','Fato não confirmado: score')) and
               job.get('api_calls',0)<=5)
+ exact_retry=exact_retry or needs_new_evidence(job)
  if job.get('source_retry_count',0)>=1 and not exact_retry:return False
  reason=job.get('reason','')
  if not exact_retry and (not isinstance(reason,str) or not any(term in reason for term in RECOVERABLE_SOURCE_ERRORS)):
   return False
- if job.get('api_calls',0)>=config['max_paid_calls_per_fixture']:
+ if not needs_new_evidence(job) and job.get('api_calls',0)>=config['max_paid_calls_per_fixture']:
   return False
  try:
   finished=datetime.fromisoformat(job['finished_at'])
@@ -91,7 +96,9 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
   fid=candidate['fixture_id'];previous=remote.data['jobs'].get(fid)
   if previous is not None:
    if fid not in allowed(now):raise ValueError('Repetição não autorizada')
-   exact=previous.get('source_retry_count',0)==1
+   fresh_evidence=needs_new_evidence(previous)
+   exact=previous.get('source_retry_count',0)==1 or fresh_evidence
+   if fresh_evidence:previous['evidence_retry_call_limit']=previous['api_calls']+9
    if exact:previous['official_index_retry']=True
    previous.update(status='running',started_at=clock().isoformat(),
      run_id=os.environ.get('GITHUB_RUN_ID'),
@@ -101,7 +108,9 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
    remote.data['jobs'][fid]={'status':'running','started_at':clock().isoformat(),
      'run_id':os.environ.get('GITHUB_RUN_ID'),'api_calls':0,'operation_mode':operation_mode}
   remote.data['timing']=load_state(state);remote.save()
-  active[fid]=caller_factory(remote,fid)
+  if previous and previous.get('evidence_retry_call_limit'):
+   active[fid]=caller_factory(remote,fid,config=dict(config,max_paid_calls_per_fixture=previous['evidence_retry_call_limit']))
+  else:active[fid]=caller_factory(remote,fid)
   kw={'direct_only':True} if previous and previous.get('official_index_retry') else {}
   return researcher(candidate,summary,schedules,directory,observed_at,caller=active[fid],**kw)
  def draft(package,directory,**kwargs):
