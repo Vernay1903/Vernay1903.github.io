@@ -4521,13 +4521,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-05T19:23:46.638746-03:00",
     "last_run_id": "42121106749",
-    "last_finished_at": "2026-11-05T19:22:53.830618-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-05T19:28:08.264049-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "42120925970",
-      "status": "idle",
+      "run_id": "42121106749",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.278114670"
+      "pilot_month_charged_usd": "0.305651690"
     }
   },
   "step15_retry": {
