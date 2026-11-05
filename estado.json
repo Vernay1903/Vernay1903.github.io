@@ -424,15 +424,16 @@
       "official_index_retry": true
     },
     "espn-401915381": {
-      "status": "blocked",
-      "started_at": "2026-11-05T13:53:42.079840-03:00",
-      "run_id": "42068495177",
+      "status": "running",
+      "started_at": "2026-11-05T19:19:59.782722-03:00",
+      "run_id": "42119951409",
       "api_calls": 4,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-05T13:56:21.937677-03:00",
       "reason": "Fato não confirmado: score A ESPN confirma o placar de 1–2 para o Slavia como mandante; a página da Premier League diz que o Arsenal venceu em Praga, mas não informa o placar numérico. Assim, falta confirmação do placar exato em um segundo domínio.",
-      "source_retry_count": 1,
-      "source_retry_started_at": "2026-11-05T13:53:42.079854-03:00"
+      "source_retry_count": 2,
+      "source_retry_started_at": "2026-11-05T19:19:59.782739-03:00",
+      "official_index_retry": true
     }
   },
   "months": {
