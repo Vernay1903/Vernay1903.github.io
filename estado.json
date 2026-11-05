@@ -457,7 +457,7 @@
       "status": "running",
       "started_at": "2026-11-05T19:23:49.376192-03:00",
       "run_id": "42121106749",
-      "api_calls": 8,
+      "api_calls": 9,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-05T19:21:11.470715-03:00",
       "reason": "Fato não confirmado: venue Há conflito concreto: a ficha oficial indica Eden Arena, mas o campo venue do resumo ESPN indica Fortuna Arena. Assim, Eden Arena não fica confirmado pelas duas fontes.",
@@ -4367,6 +4367,16 @@
             "total_tokens": 14915
           },
           "response_id": "resp_0efe11714d0712ec016aed026a915487d18fc421df28a381bb"
+        },
+        {
+          "id": "01d4b9aa50a44b8b8c64cd1c2799383d",
+          "fixture_id": "espn-401915381",
+          "started_at": "2026-11-05T19:25:52.088609-03:00",
+          "status": "reserved",
+          "charged_usd": "0.0066955",
+          "reserved_usd": "0.0066955",
+          "model": "gpt-6-luna",
+          "counted_input_tokens": 25564
         }
       ],
       "blocked": false
