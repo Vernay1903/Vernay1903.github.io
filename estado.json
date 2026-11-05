@@ -4027,13 +4027,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-05T14:35:17.551608-03:00",
     "last_run_id": "42076051708",
-    "last_finished_at": "2026-11-05T13:56:49.105113-03:00",
+    "last_finished_at": "2026-11-05T14:35:24.969137-03:00",
     "last_status": "idle",
     "last_report": {
-      "run_id": "42069541466",
+      "run_id": "42076051708",
       "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.240759370"
+      "pilot_month_charged_usd": "0.241598795"
     }
   },
   "step15_retry": {
