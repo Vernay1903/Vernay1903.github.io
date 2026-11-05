@@ -17,9 +17,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   rascunhos:
-    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' || github.event.head_commit.message == 'Ativar verificacao autonoma do passo 16' || github.event.head_commit.message == 'Executar ciclo real do passo 20' || github.event.head_commit.message == 'Corrigir espera e recuperar pos-jogo pendente' }}
+    if: ${{ github.event_name != 'push' || github.event.head_commit.message == 'Ativar piloto pos-jogo em modo rascunho' || github.event.head_commit.message == 'Atualizar piloto pos-jogo para prorrogacao e penaltis' || github.event.head_commit.message == 'Ativar verificacao autonoma do passo 16' || github.event.head_commit.message == 'Executar ciclo real do passo 20' || github.event.head_commit.message == 'Corrigir espera e recuperar pos-jogo pendente' || github.event.head_commit.message == 'Validar fontes oficiais nos resultados de novembro' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 45
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       POS_JOGO_ARTIFACT_NAME: pos-jogo-rascunhos-${{ github.run_id }}-${{ github.run_attempt }}
@@ -27,7 +27,7 @@ jobs:
       - name: Carregar versão validada do piloto (passo 21)
         uses: actions/checkout@v4
         with:
-          ref: 493dd3e67e9e277cde0c7a9f6bb9f497d9503ab1
+          ref: 009130b069f9df0dd0c06d66a28bd4afb4702760
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
