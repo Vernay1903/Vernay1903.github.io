@@ -4312,13 +4312,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-05T19:21:34.694222-03:00",
     "last_run_id": "42120246755",
-    "last_finished_at": "2026-11-05T19:21:15.887561-03:00",
+    "last_finished_at": "2026-11-05T19:22:32.361108-03:00",
     "last_status": "needs_review",
     "last_report": {
-      "run_id": "42119951409",
+      "run_id": "42120246755",
       "status": "needs_review",
-      "has_drafts": true,
-      "pilot_month_charged_usd": "0.273860620"
+      "has_drafts": false,
+      "pilot_month_charged_usd": "0.278114670"
     }
   },
   "step15_retry": {
