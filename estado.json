@@ -428,6 +428,13 @@
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-04T22:31:36.182789-03:00",
       "reason": "Fato não confirmado: score A ESPN registra o placar de 3 a 1. O conteúdo oficial do Flamengo confirma a vitória, mas não informa esse placar; portanto, o placar exato não está corroborado pelos dois domínios exigidos."
+    },
+    "espn-401915306": {
+      "status": "running",
+      "started_at": "2026-11-04T22:44:36.796180-03:00",
+      "run_id": "41950536036",
+      "api_calls": 0,
+      "operation_mode": "scheduled_drafts"
     }
   },
   "months": {
