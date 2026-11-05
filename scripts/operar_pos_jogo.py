@@ -28,7 +28,7 @@ def needs_new_evidence(job):
 
 def needs_venue_omission(j):
  return (j.get('official_index_retry') and not j.get('venue_retry') and
-         str(j.get('reason','')).startswith('Fato não confirmado: venue') and j.get('api_calls',0)<=12)
+         str(j.get('reason','')).startswith('Fato não confirmado: venue') and j.get('api_calls',0)<=14)
 
 def eligible_source_retry(job,months,now,config):
  """Apenas uma nova apuração após falha de fontes, sem apagar gastos nem falsificar provas."""
@@ -145,6 +145,7 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
      if row.get('reason'):values['reason']=row['reason']
      remote.data['jobs'][fid].update(values)
      if row['status']=='package_ready':
+      remote.data['jobs'][fid].pop('reason',None)
       remote.data['jobs'][fid]['package']=row['package']
       remote.data['jobs'][fid]['artifact_name']=os.environ.get('POS_JOGO_ARTIFACT_NAME')
       remote.data['jobs'][fid]['review_run_url']='https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/'+os.environ.get('GITHUB_RUN_ID','')
