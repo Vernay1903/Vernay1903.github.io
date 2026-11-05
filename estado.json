@@ -415,7 +415,7 @@
       "status": "running",
       "started_at": "2026-11-05T19:15:49.369671-03:00",
       "run_id": "42119951409",
-      "api_calls": 8,
+      "api_calls": 9,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-05T13:56:21.937653-03:00",
       "reason": "Fato não confirmado: goals O resumo estruturado e o relato da ESPN confirmam os cinco eventos, seus autores, equipes, ordem e o gol contra de Lukeba. Porém, as páginas oficiais fornecidas apenas listam o placar e não incluem um relato oficial que confirme os autores; portanto, o campo não pode ser confirmado integralmente com as fontes abertas.",
@@ -4150,6 +4150,16 @@
             "total_tokens": 6968
           },
           "response_id": "resp_0d3d290461a831a2016aed00bdde8087d09922eee7de68605c"
+        },
+        {
+          "id": "6d6bbb268eeb4f44a89ef2d16c99d05c",
+          "fixture_id": "espn-401915306",
+          "started_at": "2026-11-05T19:19:16.473635-03:00",
+          "status": "reserved",
+          "charged_usd": "0.003490375",
+          "reserved_usd": "0.003490375",
+          "model": "gpt-6-luna",
+          "counted_input_tokens": 3923
         }
       ],
       "blocked": false
