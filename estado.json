@@ -412,25 +412,51 @@
       "reason": "Fato não confirmado: score A ESPN registra o placar de 3 a 1. O conteúdo oficial do Flamengo confirma a vitória, mas não informa esse placar; portanto, o placar exato não está corroborado pelos dois domínios exigidos."
     },
     "espn-401915306": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-11-05T19:15:49.369671-03:00",
       "run_id": "42119951409",
       "api_calls": 11,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-05T13:56:21.937653-03:00",
+      "finished_at": "2026-11-05T19:21:11.470688-03:00",
       "reason": "Fato não confirmado: goals O resumo estruturado e o relato da ESPN confirmam os cinco eventos, seus autores, equipes, ordem e o gol contra de Lukeba. Porém, as páginas oficiais fornecidas apenas listam o placar e não incluem um relato oficial que confirme os autores; portanto, o campo não pode ser confirmado integralmente com as fontes abertas.",
       "source_retry_count": 2,
       "source_retry_started_at": "2026-11-05T19:15:49.369688-03:00",
-      "official_index_retry": true
+      "official_index_retry": true,
+      "package": {
+        "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+        "fixed_shell_unchanged": true,
+        "title_chars": 49,
+        "body_words": 626,
+        "body_ad_count": 3,
+        "ad_after_blocks": [
+          2,
+          7,
+          12
+        ],
+        "publication_enabled": false,
+        "filename": "rb-leipzig-manchester-city-champions-league-2026-resultado.html",
+        "written_at": "2026-11-05T22:19:50.814726+00:00",
+        "article_date": "05/11/2026",
+        "sitemap_lastmod": "2026-11-05",
+        "news_position": 0,
+        "old_news_preserved": true,
+        "old_sitemap_preserved": true,
+        "fixture_id": "espn-401915306",
+        "article_sha256": "0512dbbef139db648038fe39017060c9ef54cdf197cae35b458aa17cbf31a653",
+        "human_review_required": true,
+        "semantic_review_passed": true
+      },
+      "artifact_name": "pos-jogo-rascunhos-42119951409-1",
+      "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/42119951409"
     },
     "espn-401915381": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-05T19:19:59.782722-03:00",
       "run_id": "42119951409",
       "api_calls": 5,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-05T13:56:21.937677-03:00",
-      "reason": "Fato não confirmado: score A ESPN confirma o placar de 1–2 para o Slavia como mandante; a página da Premier League diz que o Arsenal venceu em Praga, mas não informa o placar numérico. Assim, falta confirmação do placar exato em um segundo domínio.",
+      "finished_at": "2026-11-05T19:21:11.470715-03:00",
+      "reason": "Fato não confirmado: venue Há conflito concreto: a ficha oficial indica Eden Arena, mas o campo venue do resumo ESPN indica Fortuna Arena. Assim, Eden Arena não fica confirmado pelas duas fontes.",
       "source_retry_count": 2,
       "source_retry_started_at": "2026-11-05T19:19:59.782739-03:00",
       "official_index_retry": true
