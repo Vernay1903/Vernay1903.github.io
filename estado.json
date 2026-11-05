@@ -4002,13 +4002,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-05T13:50:08.175769-03:00",
     "last_run_id": "42068495177",
-    "last_finished_at": "2026-11-05T11:39:44.151444-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-05T13:56:26.533307-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "42047120245",
-      "status": "idle",
+      "run_id": "42068495177",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.209865510"
+      "pilot_month_charged_usd": "0.240759370"
     }
   },
   "step15_retry": {
