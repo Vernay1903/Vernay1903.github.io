@@ -437,6 +437,13 @@
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-04T22:44:38.630538-03:00",
       "reason": "Gol contra/equipe desconhecida requer conferência específica"
+    },
+    "espn-401915381": {
+      "status": "running",
+      "started_at": "2026-11-04T22:46:21.798635-03:00",
+      "run_id": "41950731784",
+      "api_calls": 0,
+      "operation_mode": "scheduled_drafts"
     }
   },
   "months": {
