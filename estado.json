@@ -392,13 +392,12 @@
       "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41486930098"
     },
     "espn-401915383": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-11-05T19:28:27.533900-03:00",
       "run_id": "42122338219",
       "api_calls": 24,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-05T19:33:01.871545-03:00",
-      "reason": "Limite de chamadas da partida",
+      "finished_at": "2026-11-05T19:34:59.325243-03:00",
       "length_retry": true,
       "previous_editorial_run": "42121549455",
       "evidence_retry_call_limit": 22,
@@ -406,7 +405,34 @@
       "source_retry_count": 2,
       "source_retry_started_at": "2026-11-05T19:28:27.533917-03:00",
       "venue_retry": true,
-      "last_review_retry": true
+      "last_review_retry": true,
+      "package": {
+        "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+        "fixed_shell_unchanged": true,
+        "title_chars": 52,
+        "body_words": 772,
+        "body_ad_count": 3,
+        "ad_after_blocks": [
+          4,
+          8,
+          11
+        ],
+        "publication_enabled": false,
+        "filename": "aek-athens-real-madrid-champions-league-2026-resultado.html",
+        "written_at": "2026-11-05T22:34:10.657330+00:00",
+        "article_date": "05/11/2026",
+        "sitemap_lastmod": "2026-11-05",
+        "news_position": 0,
+        "old_news_preserved": true,
+        "old_sitemap_preserved": true,
+        "fixture_id": "espn-401915383",
+        "article_sha256": "fbe37c73581a85769f1c9ee277beb019b25600caee21f56afbf5e2aa45c24c01",
+        "human_review_required": true,
+        "semantic_review_passed": true
+      },
+      "artifact_name": "pos-jogo-rascunhos-42122338219-1",
+      "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/42122338219",
+      "collective_recap_checked": true
     },
     "espn-401841307": {
       "status": "blocked",
