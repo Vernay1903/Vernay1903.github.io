@@ -410,24 +410,24 @@
       "reason": "Fato não confirmado: score A ESPN registra o placar de 3 a 1. O conteúdo oficial do Flamengo confirma a vitória, mas não informa esse placar; portanto, o placar exato não está corroborado pelos dois domínios exigidos."
     },
     "espn-401915306": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-05T13:50:11.323223-03:00",
       "run_id": "42068495177",
       "api_calls": 2,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-04T22:44:38.630538-03:00",
-      "reason": "Gol contra/equipe desconhecida requer conferência específica",
+      "finished_at": "2026-11-05T13:56:21.937653-03:00",
+      "reason": "Fato não confirmado: goals O resumo estruturado e o relato da ESPN confirmam os cinco eventos, seus autores, equipes, ordem e o gol contra de Lukeba. Porém, as páginas oficiais fornecidas apenas listam o placar e não incluem um relato oficial que confirme os autores; portanto, o campo não pode ser confirmado integralmente com as fontes abertas.",
       "source_retry_count": 1,
       "source_retry_started_at": "2026-11-05T13:50:11.323233-03:00"
     },
     "espn-401915381": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-05T13:53:42.079840-03:00",
       "run_id": "42068495177",
       "api_calls": 4,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-04T22:50:04.878046-03:00",
-      "reason": "Fato não confirmado: score O ESPN confirma 1–2 para o Slavia Prague e o Arsenal, respectivamente, mas não há um relato oficial do resultado deste jogo entre as páginas fornecidas. O relato oficial disponível é de outra partida: Slavia Prague 0–4 Arsenal, pela Europa League, e não pode corroborar este placar.",
+      "finished_at": "2026-11-05T13:56:21.937677-03:00",
+      "reason": "Fato não confirmado: score A ESPN confirma o placar de 1–2 para o Slavia como mandante; a página da Premier League diz que o Arsenal venceu em Praga, mas não informa o placar numérico. Assim, falta confirmação do placar exato em um segundo domínio.",
       "source_retry_count": 1,
       "source_retry_started_at": "2026-11-05T13:53:42.079854-03:00"
     }
