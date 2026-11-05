@@ -417,13 +417,13 @@
       "reason": "Fato não confirmado: score A ESPN registra o placar de 3 a 1. O conteúdo oficial do Flamengo confirma a vitória, mas não informa esse placar; portanto, o placar exato não está corroborado pelos dois domínios exigidos."
     },
     "espn-401915306": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-05T19:15:49.369671-03:00",
       "run_id": "42121549455",
       "api_calls": 13,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-05T19:21:11.470688-03:00",
-      "reason": "Fato não confirmado: goals O resumo estruturado e o relato da ESPN confirmam os cinco eventos, seus autores, equipes, ordem e o gol contra de Lukeba. Porém, as páginas oficiais fornecidas apenas listam o placar e não incluem um relato oficial que confirme os autores; portanto, o campo não pode ser confirmado integralmente com as fontes abertas.",
+      "finished_at": "2026-11-05T19:33:45.345346-03:00",
+      "reason": "Revisão incompleta ou unidades duplicadas",
       "source_retry_count": 2,
       "source_retry_started_at": "2026-11-05T19:15:49.369688-03:00",
       "official_index_retry": true,
