@@ -392,13 +392,15 @@
       "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/41486930098"
     },
     "espn-401915383": {
-      "status": "blocked",
+      "status": "running",
       "started_at": "2026-11-04T18:22:10.834850-03:00",
-      "run_id": "41915412355",
+      "run_id": "42069541466",
       "api_calls": 11,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-04T18:28:37.608555-03:00",
-      "reason": "Revisão factual/editorial reprovada após limite de correções"
+      "reason": "Revisão factual/editorial reprovada após limite de correções",
+      "length_retry": true,
+      "previous_editorial_run": "41915412355"
     },
     "espn-401841307": {
       "status": "blocked",
