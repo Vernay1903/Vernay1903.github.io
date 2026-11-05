@@ -12,6 +12,7 @@ on:
     paths: [.github/workflows/pos-jogo-automatico.yml]
 permissions:
   contents: write
+  actions: read
 concurrency:
   group: pos-jogo-estado-piloto
   cancel-in-progress: false
@@ -27,7 +28,7 @@ jobs:
       - name: Carregar versão validada do piloto (passo 21)
         uses: actions/checkout@v4
         with:
-          ref: 009130b069f9df0dd0c06d66a28bd4afb4702760
+          ref: eb7de7f28fe22ff4a81ec2be17cb752247d3d764
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -79,8 +80,15 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/validar_passo16_pos_jogo.py --site-root current-main --output build/pos-jogo/agendado
+      - name: Recuperar texto curto com apuracao revisada
+        id: retomar
+        if: ${{ !cancelled() && steps.cycle.outcome != 'skipped' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/retomar_extensao_pos_jogo.py
       - name: Disponibilizar rascunhos e diagnóstico para revisão
-        if: ${{ always() && (failure() || steps.cycle.outputs.has_drafts == 'true' || github.event_name != 'schedule') }}
+        if: ${{ always() && (failure() || steps.cycle.outputs.has_drafts == 'true' || steps.retomar.outputs.has_drafts == 'true' || github.event_name != 'schedule') }}
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.POS_JOGO_ARTIFACT_NAME }}
