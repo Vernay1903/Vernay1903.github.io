@@ -3926,13 +3926,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-04T22:46:17.576596-03:00",
     "last_run_id": "41950731784",
-    "last_finished_at": "2026-11-04T22:44:41.504620-03:00",
+    "last_finished_at": "2026-11-04T22:50:07.650743-03:00",
     "last_status": "needs_review",
     "last_report": {
-      "run_id": "41950536036",
+      "run_id": "41950731784",
       "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.193143960"
+      "pilot_month_charged_usd": "0.209865510"
     }
   },
   "step15_retry": {
