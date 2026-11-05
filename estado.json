@@ -4002,11 +4002,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-05T13:56:42.743204-03:00",
     "last_run_id": "42069541466",
-    "last_finished_at": "2026-11-05T13:56:26.533307-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-05T13:56:49.105113-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "42068495177",
-      "status": "needs_review",
+      "run_id": "42069541466",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.240759370"
     }
