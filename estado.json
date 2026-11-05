@@ -424,7 +424,7 @@
       "status": "running",
       "started_at": "2026-11-05T13:53:42.079840-03:00",
       "run_id": "42068495177",
-      "api_calls": 3,
+      "api_calls": 4,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-04T22:50:04.878046-03:00",
       "reason": "Fato não confirmado: score O ESPN confirma 1–2 para o Slavia Prague e o Arsenal, respectivamente, mas não há um relato oficial do resultado deste jogo entre as páginas fornecidas. O relato oficial disponível é de outra partida: Slavia Prague 0–4 Arsenal, pela Europa League, e não pode corroborar este placar.",
@@ -3963,6 +3963,16 @@
             "total_tokens": 14018
           },
           "response_id": "resp_0a8829e77ebe6e8e016aecb4a51fa087d190d4dd84b4c82f04"
+        },
+        {
+          "id": "e0d93424794f49668e87005920013e3c",
+          "fixture_id": "espn-401915381",
+          "started_at": "2026-11-05T13:55:31.513591-03:00",
+          "status": "reserved",
+          "charged_usd": "0.00488525",
+          "reserved_usd": "0.00488525",
+          "model": "gpt-6-luna",
+          "counted_input_tokens": 11082
         }
       ],
       "blocked": false
