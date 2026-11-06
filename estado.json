@@ -5726,5 +5726,10 @@
     "additional_cost_usd": "0.015301380",
     "additional_calls": 7,
     "finished_at": "2026-11-01T13:13:47.229465+00:00"
+  },
+  "automatic_publication": {
+    "enabled": true,
+    "from_match_date": "2026-11-06",
+    "last_checked_at": "2026-11-06T12:02:07.380737-03:00"
   }
 }
