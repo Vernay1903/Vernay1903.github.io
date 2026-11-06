@@ -52,3 +52,17 @@ class AutomaticPublicationTests(unittest.TestCase):
  def test_duplicate_match_is_skipped(self):
   r=FakeRemote();r.files['noticias.json']=json.dumps([{'title':'Real Madrid vence Visitante','url':'outro.html','date':'06/11/2026','category':'Futebol'}])
   self.assertEqual(self.run_publish(r)['status'],'skipped');self.assertFalse(r.patches)
+
+class CandidateRecoveryTests(unittest.TestCase):
+ def test_selects_approved_version_among_failed_and_recovered_outputs(self):
+  import tempfile
+  from unittest.mock import patch
+  import publicar_pos_jogo as module
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);fid='espn-1'
+   for folder,passed,sha in [('execucao',False,'old'),('retomada',True,'final')]:
+    p=root/'build/pos-jogo/agendado'/folder/fid;(p/'redacao').mkdir(parents=True)
+    for n in ['fatos.json','narrativa.json','redacao/artigo.json']:(p/n).write_text('{"version":"'+sha+'"}')
+    (p/'redacao/metadata.json').write_text(json.dumps({'semantic_review_passed':passed,'article_sha256':sha}))
+   with patch.object(module,'ROOT',root):data=module.load_data(None,fid,{'package':{'article_sha256':'final'}})
+   self.assertEqual(data['redacao/artigo.json']['version'],'final')

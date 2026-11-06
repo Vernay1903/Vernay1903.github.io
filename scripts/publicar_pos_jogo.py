@@ -38,7 +38,12 @@ def validate_candidate(data,fid,job,config,now,months):
 def load_data(remote,fid,job):
     required=('fatos.json','narrativa.json','redacao/artigo.json','redacao/metadata.json')
     root=ROOT/'build/pos-jogo/agendado'
-    candidates=[p.parent for p in root.rglob('fatos.json') if p.parent.name==fid]
+    def matching_meta(meta):
+        return meta.get('semantic_review_passed') is True and meta.get('article_sha256')==job['package']['article_sha256']
+    candidates=[]
+    for p in root.rglob('fatos.json'):
+        meta=p.parent/'redacao/metadata.json'
+        if p.parent.name==fid and meta.exists() and matching_meta(json.loads(meta.read_text())):candidates.append(p.parent)
     if len(candidates)==1:return {n:json.loads((candidates[0]/n).read_text()) for n in required}
     artifacts=remote.request('GET',f'/actions/runs/{job["run_id"]}/artifacts')['artifacts']
     selected=[a for a in artifacts if a['name']==job['artifact_name'] and not a['expired']]
@@ -47,6 +52,7 @@ def load_data(remote,fid,job):
     if 'sha256:'+hashlib.sha256(raw).hexdigest()!=a['digest']:raise ValueError('Artefato corrompido')
     with zipfile.ZipFile(io.BytesIO(raw)) as z:
         prefix=[n[:-len('fatos.json')] for n in z.namelist() if n.endswith('/'+fid+'/fatos.json')]
+        prefix=[p for p in prefix if p+'redacao/metadata.json' in z.namelist() and matching_meta(json.loads(z.read(p+'redacao/metadata.json')))]
         if len(prefix)!=1:raise ValueError('Candidato ambíguo no artefato')
         if any(z.getinfo(prefix[0]+n).file_size>4000000 for n in required):raise ValueError('Entrada excede limite')
         return {n:json.loads(z.read(prefix[0]+n)) for n in required}
