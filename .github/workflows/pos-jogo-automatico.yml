@@ -1,4 +1,4 @@
-name: Pós-jogo — piloto automático de rascunhos
+name: Pós-jogo — resultados e publicação automática
 on:
   schedule:
     - cron: '3,13,23,33,43,53 * * * *'
@@ -13,6 +13,7 @@ on:
 permissions:
   contents: write
   actions: read
+  pages: write
 concurrency:
   group: pos-jogo-estado-piloto
   cancel-in-progress: false
@@ -28,7 +29,7 @@ jobs:
       - name: Carregar versão validada do piloto (passo 21)
         uses: actions/checkout@v4
         with:
-          ref: 757e084db55ff1713de78365336be70da736d362
+          ref: e29ac3064113f9e6c8d7e79046f397a534efffc0
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -44,7 +45,7 @@ jobs:
           python-version: '3.12'
       - name: Verificar controles do piloto
         run: python -m unittest discover -s tests/pos-jogo -p 'test_*.py'
-      - name: Confirmar travas de publicação e orçamento do passo 21
+      - name: Confirmar autorização de publicação e orçamento
         run: |
           python - <<'PY'
           import json
@@ -56,7 +57,10 @@ jobs:
           assert cfg['per_article_cap_usd']=='0.10'
           assert cfg['monthly_pilot_cap_usd']=='10.00'
           assert set(scope['monitored_clubs'])=={'Flamengo','Real Madrid','Arsenal','Manchester City'}
-          print('Passo 21: geração apenas de rascunhos, quatro clubes, orçamento protegido')
+          publication=json.loads(Path('config/publicacao-pos-jogo.json').read_text())
+          assert publication['enabled'] is True
+          assert set(publication['clubs'])==set(scope['monitored_clubs'])
+          print('Publicação automática autorizada; preparo isolado, quatro clubes e orçamento protegido')
           PY
       - name: Ler destinos atuais sem modificar o site
         uses: actions/checkout@v4
@@ -87,8 +91,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/retomar_extensao_pos_jogo.py
+      - name: Publicar resultados aprovados e confirmar acesso no site
+        id: publicar
+        if: ${{ !cancelled() && steps.cycle.outcome != 'skipped' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/publicar_pos_jogo.py
       - name: Disponibilizar rascunhos e diagnóstico para revisão
-        if: ${{ always() && (failure() || steps.cycle.outputs.has_drafts == 'true' || steps.retomar.outputs.has_drafts == 'true' || github.event_name != 'schedule') }}
+        if: ${{ always() && (failure() || steps.cycle.outputs.has_drafts == 'true' || steps.retomar.outputs.has_drafts == 'true' || steps.publicar.outcome == 'success' || github.event_name != 'schedule') }}
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.POS_JOGO_ARTIFACT_NAME }}
