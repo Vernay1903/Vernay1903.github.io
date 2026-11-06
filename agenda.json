@@ -1,102 +1,70 @@
 [
   {
     "time": "00:00",
-    "desc": "Sacramento Kings x Los Angeles Lakers - NBA"
+    "desc": "Golden State Warriors x Miami Heat - NBA"
   },
   {
-    "time": "00:30",
-    "desc": "LA Clippers x Miami Heat - NBA"
+    "time": "16:30",
+    "desc": "Hamburg SV x Borussia Monchengladbach - Bundesliga"
   },
   {
-    "time": "14:45",
-    "desc": "AC Milan x Ferencvaros - UEFA Europa League"
+    "time": "16:45",
+    "desc": "Toulouse x Strasbourg - Ligue 1"
   },
   {
-    "time": "14:45",
-    "desc": "Anderlecht x RB Salzburg - UEFA Europa League"
-  },
-  {
-    "time": "14:45",
-    "desc": "Crystal Palace x Hoffenheim - UEFA Europa League"
-  },
-  {
-    "time": "14:45",
-    "desc": "Levski Sofia x Jagiellonia Bialystok - UEFA Europa League"
-  },
-  {
-    "time": "14:45",
-    "desc": "Lillestrom x Viktoria Plzen - UEFA Europa League"
-  },
-  {
-    "time": "14:45",
-    "desc": "NEC Nijmegen x Omonia Nicosia - UEFA Europa League"
-  },
-  {
-    "time": "14:45",
-    "desc": "Real Sociedad x Lyon - UEFA Europa League"
-  },
-  {
-    "time": "14:45",
-    "desc": "Sparta Prague x AFC Bournemouth - UEFA Europa League"
+    "time": "16:45",
+    "desc": "Venezia x Udinese - Serie A italiana"
   },
   {
     "time": "17:00",
-    "desc": "AZ Alkmaar x Juventus - UEFA Europa League"
+    "desc": "Everton x Conventry City - Premier League"
   },
   {
     "time": "17:00",
-    "desc": "Bayer Leverkusen x Marseille - UEFA Europa League"
-  },
-  {
-    "time": "17:00",
-    "desc": "Benfica x Lech Poznan - UEFA Europa League"
-  },
-  {
-    "time": "17:00",
-    "desc": "Celta de Vigo x Union St.-Gilloise - UEFA Europa League"
-  },
-  {
-    "time": "17:00",
-    "desc": "Celtic x Besiktas - UEFA Europa League"
-  },
-  {
-    "time": "17:00",
-    "desc": "Hapoel Be'er x OFI Crete - UEFA Europa League"
-  },
-  {
-    "time": "17:00",
-    "desc": "SK Sturm Graz x NK Celje - UEFA Europa League"
-  },
-  {
-    "time": "17:00",
-    "desc": "Sunderland x Dinamo Zagreb - UEFA Europa League"
-  },
-  {
-    "time": "17:00",
-    "desc": "Torreense x Ararat-Armenia - UEFA Europa League"
+    "desc": "Sevilla FC x Alavés - La Liga"
   },
   {
     "time": "18:30",
-    "desc": "Batavo Mackenzie x Gerdau Minas - Superliga Feminina"
+    "desc": "Sancor Seguros Vôlei x Sesc RJ Flamengo - Superliga Feminina"
   },
   {
     "time": "19:30",
-    "desc": "Botafogo-SP x Londrina - Brasileirão Série B"
+    "desc": "Operário PR x Sport - Brasileirão Série B"
   },
   {
-    "time": "19:30",
-    "desc": "Palmeiras x Remo - Brasileirão Série A"
+    "time": "20:00",
+    "desc": "Vitória x Fluminense - Brasileirão Série A"
+  },
+  {
+    "time": "21:00",
+    "desc": "Atlanta Hawks x Washington Wizards - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Charlotte Hornets x Boston Celtics - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Fluminense F.C. x Osasco São Cristóvão Saúde - Superliga Feminina"
   },
   {
     "time": "21:30",
-    "desc": "Cruzeiro x Bahia - Brasileirão Série A"
+    "desc": "Cleveland Cavaliers x Philadelphia 76ers - NBA"
   },
   {
-    "time": "22:15",
-    "desc": "Baltimore Ravens x Jacksonville Jaguars - NFL"
+    "time": "22:00",
+    "desc": "Dallas Mavericks x Utah Jazz - NBA"
   },
   {
-    "time": "23:00",
-    "desc": "Phoenix Suns x Orlando Magic - NBA"
+    "time": "22:00",
+    "desc": "Memphis Grizzlies x Oklahoma City Thunder - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "Milwaukee Bucks x Toronto Raptors - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "New Orleans Pelicans x Minnesota Timberwolves - NBA"
   }
 ]
