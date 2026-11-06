@@ -5018,13 +5018,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-06T11:33:18.841875-03:00",
     "last_run_id": "42234820722",
-    "last_finished_at": "2026-11-06T11:32:17.480774-03:00",
+    "last_finished_at": "2026-11-06T11:33:24.508315-03:00",
     "last_status": "idle",
     "last_report": {
-      "run_id": "42234747064",
+      "run_id": "42234820722",
       "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.343957070"
+      "pilot_month_charged_usd": "0.346154230"
     }
   },
   "step15_retry": {
