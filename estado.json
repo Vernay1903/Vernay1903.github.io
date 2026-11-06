@@ -483,7 +483,8 @@
       "collective_recap_checked": true,
       "length_retry": true,
       "previous_editorial_run": "42121549455",
-      "schema_retry": true
+      "schema_retry": true,
+      "assist_attribution_checked": true
     },
     "espn-401915381": {
       "status": "package_ready",
