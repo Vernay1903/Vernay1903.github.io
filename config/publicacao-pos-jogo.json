@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "from_match_date": "2026-11-06",
+  "clubs": ["Flamengo", "Real Madrid", "Arsenal", "Manchester City"],
+  "authorization": "Usuário autorizou a automação completa, incluindo publicação, em 06/11/2026.",
+  "require_factual_review": true,
+  "overwrite_existing_articles": false
+}
