@@ -49,13 +49,15 @@ def main():
     out=ROOT/'build/pos-jogo/agendado/retomada';cfg=read(ROOT/'config/operacao-pos-jogo.json')
     if cfg['publication_enabled'] or budget_status(remote.data,cfg,now):raise ValueError('Operação ou orçamento bloqueado')
     for fid,j in list(remote.data['jobs'].items()):
+        schema_retry=(j.get('status')=='blocked' and j.get('reason')=='Revisão incompleta ou unidades duplicadas' and j.get('previous_editorial_run') and not j.get('schema_retry'))
         approved=(j.get('status')=='package_ready' and not j.get('collective_recap_checked') and j.get('operation_mode')=='scheduled_drafts')
         checkpoint=(j.get('status')=='blocked' and j.get('reason')=='Limite de chamadas da partida' and not j.get('last_review_retry'))
-        if not approved and not checkpoint and (j.get('status')!='blocked' or j.get('length_retry') or j.get('reason')!='Revisão factual/editorial reprovada após limite de correções'):continue
+        if not schema_retry and not approved and not checkpoint and (j.get('status')!='blocked' or j.get('length_retry') or j.get('reason')!='Revisão factual/editorial reprovada após limite de correções'):continue
         timing=remote.data['timing']['fixtures'].get(fid,{})
         day=timing.get('match_date','')
-        if day not in {(now.date()-timedelta(days=v)).isoformat() for v in (0,1)}:continue
-        c,facts,narr,a=load_previous(remote,j['run_id'],fid,day,approved=approved,checkpoint=checkpoint)
+        if day not in {(now.date()-timedelta(days=v)).isoformat() for v in ((0,1,2) if schema_retry else (0,1))}:continue
+        c,facts,narr,a=load_previous(remote,j['previous_editorial_run'] if schema_retry else j['run_id'],fid,day,approved=approved or bool(schema_retry),checkpoint=checkpoint)
+        if schema_retry:a=remove_collective_recap(a)
         if approved:
             cleaned=remove_collective_recap(a)
             if cleaned==a:
@@ -70,7 +72,8 @@ def main():
         if any(game and game.get('date_brasilia','')<=now.date().isoformat() for side in facts['upcoming'].values() for game in side.values()):continue
         urls=read(ROOT/'auditoria/pos-jogo/links-autorizados-piloto.json')
         package=prepare(facts,narr,urls);checks=validate(a,urls)
-        if (checks['errors']!=['Corpo com menos de 600 palavras'] and not ((approved or checkpoint) and not checks['errors'])) or checks['body_words']<400 or coverage_errors(a,package):continue
+        if (checks['errors']!=['Corpo com menos de 600 palavras'] and not ((approved or checkpoint or schema_retry) and not checks['errors'])) or checks['body_words']<400 or coverage_errors(a,package):continue
+        if schema_retry:j['schema_retry']=True
         if checkpoint:j['last_review_retry']=True
         if approved:j['collective_recap_checked']=True
         previous=j['run_id'];j.update(status='running',length_retry=True,previous_editorial_run=previous,run_id=os.environ['GITHUB_RUN_ID']);remote.save()
@@ -78,7 +81,7 @@ def main():
             directory=out/fid;save(directory/'fatos.json',facts);save(directory/'narrativa.json',narr)
             save(directory/'pacote.json',package)
             caller=BudgetCaller(remote,fid,config=dict(cfg,max_paid_calls_per_fixture=min(28,j['api_calls']+6)))
-            generate(package,directory/'redacao',execute=True,caller=caller,seed_article=a,review_seed=approved or checkpoint)
+            generate(package,directory/'redacao',execute=True,caller=caller,seed_article=a,review_seed=approved or checkpoint or bool(schema_retry))
             report=package_reviewed(directory,site,urls);validate_generated_package(directory,report)
             j.update(status='package_ready',package=report,artifact_name=os.environ['POS_JOGO_ARTIFACT_NAME'],review_run_url=f'https://github.com/{REPO}/actions/runs/'+j['run_id'])
             j.pop('reason',None);j['collective_recap_checked']=True

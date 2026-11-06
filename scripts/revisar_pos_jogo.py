@@ -34,6 +34,9 @@ Em cada unidade, confira explicitamente nacionalidades de clubes e atletas, nome
         context={'whole_article_context':selected}
         selected={u:t for u,t in selected.items() if u in only_units}
         instructions+='\nNesta revisão incremental, as unidades fora de units foram preservadas literalmente e já aprovadas contra estas mesmas evidências. Reavalie TODAS as afirmações de units. Use whole_article_context para detectar duplicação, contradição e efeitos das alterações sobre o restante da matéria; atribua qualquer problema à unidade alterada responsável. Retorne apenas as unidades de units. Não trate aprovações anteriores como evidência para uma afirmação nova.'
+    rows=schema['properties']['checks']
+    rows.update(minItems=len(selected),maxItems=len(selected))
+    rows['items']['properties']['unit']['enum']=list(selected)
     return {'model':provider['model'],'store':False,'max_output_tokens':min(6000,1800+400*(len(only_units)-1)) if only_units is not None else 6000,
       'reasoning':{'effort':provider['reasoning_effort']},
       'input':[{'role':'system','content':instructions},

@@ -118,6 +118,17 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
         calls[-1].update({'response_id':result.get('id'),'status':result.get('status'),'usage':result.get('usage')})
         save('chamadas.json',calls)
         return result
+    def full_review(article, stage):
+        for retry in range(2):
+            result=response_object(call(review_request(package,article,provider),stage+('_schema_retry' if retry else '')))
+            save(stage+f'-schema-{retry}.json',result)
+            try:
+                validate_review(result,package,article)
+                return result
+            except ValueError as exc:
+                if str(exc)!='Revisão incompleta ou unidades duplicadas' or retry:
+                    raise
+        raise ValueError('Revisão incompleta ou unidades duplicadas')
     if calibrate:
         calibration={'title':'Real Madrid 4 x 1 Leipzig', 'excerpt':'Bernardo Silva abriu o placar antes do intervalo.', 'blocks':[
             {'type':'paragraph','text':'Mbappé descontou para o Leipzig aos 83 minutos.'},
@@ -174,11 +185,11 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
         if compatible:
             review=review_changed(package,before,previous_review,article,provider,lambda payload:call(payload,f'review_{attempt}'),package)
         else:
-            review=response_object(call(review_request(package,article,provider),f'review_{attempt}'))
+            review=full_review(article,f'review_{attempt}')
         save(f'revisao-{attempt}.json',review)
         issues=checks['errors']+validate_review(review,package,article)
         if not reviewed_once and not calibrate:
-            second=response_object(call(review_request(package,article,provider),'review_1_second_pass'))
+            second=full_review(article,'review_1_second_pass')
             save('revisao-1-segunda-leitura.json',second)
             issues=list(dict.fromkeys(issues+validate_review(second,package,article)))
             review=merge_reviews([review,second],package,article)

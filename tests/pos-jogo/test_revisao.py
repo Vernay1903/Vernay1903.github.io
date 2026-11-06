@@ -104,3 +104,20 @@ class IncrementalReviewTests(unittest.TestCase):
   def caller(p):return {'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps({'checks':[]})}]}]}
   with self.assertRaisesRegex(ValueError,'incompleta'):
    review_changed(self.package,self.before,self.previous,self.after,self.provider,caller,self.package)
+
+class CompleteUnitSchemaTests(unittest.TestCase):
+ def test_exact_count_and_allowed_units_for_full_and_partial_review(self):
+  from revisar_pos_jogo import review_request
+  p={'facts':{'score':{}},'narrative_facts':[]}
+  a={'title':'T','excerpt':'E','blocks':[{'text':'P'}]}
+  for selected,expected in [(None,{'title','excerpt','block_0'}),({'block_0'},{'block_0'})]:
+   r=review_request(p,a,{'model':'test','reasoning_effort':'medium'},only_units=selected)
+   rows=r['text']['format']['schema']['properties']['checks']
+   self.assertEqual(rows['minItems'],len(expected))
+   self.assertEqual(rows['maxItems'],len(expected))
+   self.assertEqual(set(rows['items']['properties']['unit']['enum']),expected)
+ def test_duplicate_units_still_fail_closed(self):
+  p={'facts':{'score':{}},'narrative_facts':[]}
+  a={'title':'T','excerpt':'E','blocks':[]}
+  c={'unit':'title','supported':True,'evidence_ids':['score'],'issues':[]}
+  with self.assertRaisesRegex(ValueError,'duplicadas'):validate_review({'checks':[c,c]},p,a)
