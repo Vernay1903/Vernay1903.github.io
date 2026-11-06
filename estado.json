@@ -444,9 +444,9 @@
       "reason": "Fato não confirmado: score A ESPN registra o placar de 3 a 1. O conteúdo oficial do Flamengo confirma a vitória, mas não informa esse placar; portanto, o placar exato não está corroborado pelos dois domínios exigidos."
     },
     "espn-401915306": {
-      "status": "blocked",
+      "status": "running",
       "started_at": "2026-11-05T19:15:49.369671-03:00",
-      "run_id": "42121549455",
+      "run_id": "42234747064",
       "api_calls": 13,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-05T19:33:45.345346-03:00",
@@ -482,7 +482,8 @@
       "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/42119951409",
       "collective_recap_checked": true,
       "length_retry": true,
-      "previous_editorial_run": "42119951409"
+      "previous_editorial_run": "42121549455",
+      "schema_retry": true
     },
     "espn-401915381": {
       "status": "package_ready",
