@@ -5067,13 +5067,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-06T11:36:17.616747-03:00",
     "last_run_id": "42235284896",
-    "last_finished_at": "2026-11-06T11:35:07.443403-03:00",
+    "last_finished_at": "2026-11-06T11:36:23.655197-03:00",
     "last_status": "idle",
     "last_report": {
-      "run_id": "42235180447",
+      "run_id": "42235284896",
       "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.346154230"
+      "pilot_month_charged_usd": "0.348745515"
     }
   },
   "step15_retry": {
