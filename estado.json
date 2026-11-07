@@ -5354,11 +5354,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T16:09:53.547215-03:00",
     "last_run_id": "42404557104",
-    "last_finished_at": "2026-11-07T16:09:39.617079-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-07T16:09:58.831182-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "42404520671",
-      "status": "needs_review",
+      "run_id": "42404557104",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.390456060"
     }
