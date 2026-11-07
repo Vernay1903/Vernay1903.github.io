@@ -551,13 +551,13 @@
       "assist_attribution_checked": true
     },
     "espn-401878760": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-07T16:05:58.427880-03:00",
       "run_id": "42404520671",
       "api_calls": 11,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-07T14:48:54.558917-03:00",
-      "reason": "Fato não confirmado: score O resumo estruturado ESPN confirma o placar de 1–0, mas as páginas oficiais fornecidas não trazem um relato desse jogo que confirme o resultado; as páginas de relatos do Arsenal são de partidas antigas e diferentes.",
+      "finished_at": "2026-11-07T16:09:37.572755-03:00",
+      "reason": "Trecho reprovado não foi corrigido",
       "located_report_retry": true,
       "evidence_retry_call_limit": 11,
       "official_index_retry": true,
