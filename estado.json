@@ -648,11 +648,13 @@
       "publication_error": "Pages não confirmado dentro do prazo: Build ainda não concluído."
     },
     "espn-401882808": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-07T19:59:28.960528-03:00",
       "run_id": "42423124222",
       "api_calls": 3,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-07T20:02:01.413792-03:00",
+      "reason": "Apuração incompleta na API"
     }
   },
   "months": {
