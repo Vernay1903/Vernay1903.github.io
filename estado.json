@@ -551,9 +551,9 @@
       "assist_attribution_checked": true
     },
     "espn-401878760": {
-      "status": "blocked",
+      "status": "running",
       "started_at": "2026-11-07T16:05:58.427880-03:00",
-      "run_id": "42404520671",
+      "run_id": "42404981378",
       "api_calls": 11,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-07T16:09:37.572755-03:00",
@@ -562,7 +562,10 @@
       "evidence_retry_call_limit": 11,
       "official_index_retry": true,
       "source_retry_count": 1,
-      "source_retry_started_at": "2026-11-07T16:05:58.427893-03:00"
+      "source_retry_started_at": "2026-11-07T16:05:58.427893-03:00",
+      "last_review_retry": true,
+      "length_retry": true,
+      "previous_editorial_run": "42404520671"
     }
   },
   "months": {
