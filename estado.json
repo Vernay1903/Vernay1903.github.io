@@ -5485,10 +5485,10 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T17:01:31.851972-03:00",
     "last_run_id": "42409000236",
-    "last_finished_at": "2026-11-07T16:59:45.013944-03:00",
+    "last_finished_at": "2026-11-07T17:01:38.639398-03:00",
     "last_status": "waiting",
     "last_report": {
-      "run_id": "42408830557",
+      "run_id": "42409000236",
       "status": "waiting",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.396289225"
