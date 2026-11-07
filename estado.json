@@ -551,7 +551,7 @@
       "assist_attribution_checked": true
     },
     "espn-401878760": {
-      "status": "package_ready",
+      "status": "publication_pending",
       "started_at": "2026-11-07T16:05:58.427880-03:00",
       "run_id": "42404981378",
       "api_calls": 15,
@@ -591,7 +591,16 @@
       },
       "artifact_name": "pos-jogo-rascunhos-42404981378-1",
       "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/42404981378",
-      "collective_recap_checked": true
+      "collective_recap_checked": true,
+      "publication": {
+        "fixture_id": "espn-401878760",
+        "article_sha256": "8e494d956bece8dc7dfd42f0482115ded477499a4c260c1ab46ea48939c422de",
+        "url": "arsenal-hull-city-premier-league-2026-resultado.html",
+        "written_at": "2026-11-07T19:12:53.763817+00:00",
+        "status": "publication_pending",
+        "commit": "f5e501939580716b020af6bb92c983b89e66f474",
+        "recovered": false
+      }
     }
   },
   "months": {
