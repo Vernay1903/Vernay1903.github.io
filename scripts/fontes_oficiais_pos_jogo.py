@@ -72,3 +72,23 @@ def official_pages(c,opener):
    if not fla and ('match-report' not in url or not re.search(rf'\b0?{int(day)} {datetime.fromisoformat(c["match_date"]).strftime("%b").lower()}[a-z]* {y}\b',t)):continue
    pages.append(dict(page,format='official_club_report'));break
  return pages
+
+def trusted_report_matches(c,page):
+ if urlparse(page.get('url','')).hostname not in ('www.skysports.com','skysports.com') or '/report/' not in page['url']:return False
+ t=norm(page.get('text',''));d=datetime.fromisoformat(c['match_date'])
+ stamp=rf'\b0?{d.day}(?:st|nd|rd|th)? {d.strftime("%B").lower()} {d.year}\b'
+ score=norm(c['home'])+' '+str(c['score']['home'])+' '+str(c['score']['away'])+' '+norm(c['away'])
+ competition={'eng.1':'premier league','esp.1':'la liga'}.get(c['competition_code'])
+ return bool(competition and competition in t and re.search(stamp,t) and score in t)
+
+def located_reports(c,opener):
+ path=Path(__file__).resolve().parents[1]/'config/relatos-localizados-pos-jogo.json'
+ records=json.loads(path.read_text()) if path.exists() else {}
+ item=records.get(c['fixture_id'],{})
+ if item.get('match_date')!=c['match_date']:return []
+ pages=[]
+ for url in item.get('urls',[]):
+  try:page=opener(url)
+  except (OSError,ValueError):continue
+  if trusted_report_matches(c,page):pages.append(dict(page,format='independent_match_report'))
+ return pages

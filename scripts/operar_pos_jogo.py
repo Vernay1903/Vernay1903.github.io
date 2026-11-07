@@ -30,6 +30,11 @@ def needs_venue_omission(j):
  return (j.get('official_index_retry') and not j.get('venue_retry') and
          str(j.get('reason','')).startswith('Fato não confirmado: venue') and j.get('api_calls',0)<=14)
 
+def has_located_report(job):
+ path=pipeline.ROOT/'config/relatos-localizados-pos-jogo.json'
+ records=json.loads(path.read_text()) if path.exists() else {}
+ return bool(job.get('fixture_id') in records and not job.get('located_report_retry') and job.get('api_calls',0)<=5 and str(job.get('reason','')).startswith('Fato não confirmado: score'))
+
 def eligible_source_retry(job,months,now,config):
  """Apenas uma nova apuração após falha de fontes, sem apagar gastos nem falsificar provas."""
  if job.get('status')!='blocked' or job.get('operation_mode')!='scheduled_drafts':
@@ -37,7 +42,7 @@ def eligible_source_retry(job,months,now,config):
  exact_retry=(job.get('source_retry_count',0)==1 and not job.get('official_index_retry') and
               any(x in (job.get('reason') or '') for x in ('Fato não confirmado: goals','Fato não confirmado: score')) and
               job.get('api_calls',0)<=5)
- exact_retry=exact_retry or needs_new_evidence(job) or needs_venue_omission(job)
+ exact_retry=exact_retry or needs_new_evidence(job) or needs_venue_omission(job) or has_located_report(job)
  if job.get('source_retry_count',0)>=1 and not exact_retry:return False
  reason=job.get('reason','')
  if not exact_retry and (not isinstance(reason,str) or not any(term in reason for term in RECOVERABLE_SOURCE_ERRORS)):
@@ -46,7 +51,7 @@ def eligible_source_retry(job,months,now,config):
   return False
  try:
   finished=datetime.fromisoformat(job['finished_at'])
-  if finished.tzinfo is None or (not needs_venue_omission(job) and now-finished<timedelta(hours=2)):return False
+  if finished.tzinfo is None or (not (needs_venue_omission(job) or has_located_report(job)) and now-finished<timedelta(hours=2)):return False
  except (KeyError,TypeError,ValueError):
   return False
  if any(m.get('blocked') or any(c.get('status')!='settled' for c in m.get('calls',[])) for m in months.values()):
@@ -102,7 +107,9 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
    if fid not in allowed(now):raise ValueError('Repetição não autorizada')
    venue_retry=needs_venue_omission(previous)
    if venue_retry:previous['venue_retry']=True
-   fresh_evidence=needs_new_evidence(previous) or venue_retry
+   located=has_located_report(dict(previous,fixture_id=fid))
+   if located:previous['located_report_retry']=True
+   fresh_evidence=needs_new_evidence(previous) or venue_retry or located
    exact=previous.get('source_retry_count',0)==1 or fresh_evidence
    if fresh_evidence:previous['evidence_retry_call_limit']=previous['api_calls']+9
    if exact:previous['official_index_retry']=True
