@@ -5087,11 +5087,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T14:18:46.978726-03:00",
     "last_run_id": "42395667699",
-    "last_finished_at": "2026-11-07T13:10:19.311108-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-07T14:18:53.738181-03:00",
+    "last_status": "waiting",
     "last_report": {
-      "run_id": "42389906069",
-      "status": "idle",
+      "run_id": "42395667699",
+      "status": "waiting",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.348745515"
     }
