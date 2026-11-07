@@ -216,26 +216,6 @@
         "finished_at": "2026-11-04T18:54:10-03:00",
         "timing_basis": "source_recorded_final",
         "eligible_at": "2026-11-04T19:44:10-03:00"
-      },
-      "espn-401878757": {
-        "signature": {
-          "kickoff": "2026-11-07T14:30:00-03:00",
-          "competition": "eng.1",
-          "teams": {
-            "home": "393",
-            "away": "382"
-          },
-          "score": {
-            "home": 3,
-            "away": 1
-          },
-          "status": "STATUS_FULL_TIME"
-        },
-        "match_date": "2026-11-07",
-        "first_final_seen_at": "2026-11-07T16:36:50.797060-03:00",
-        "finished_at": "2026-11-07T16:25:50-03:00",
-        "timing_basis": "source_recorded_final",
-        "eligible_at": "2026-11-07T17:15:50-03:00"
       }
     }
   },
