@@ -5814,13 +5814,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T19:59:24.497737-03:00",
     "last_run_id": "42423124222",
-    "last_finished_at": "2026-11-07T17:32:32.883295-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-07T20:02:03.483525-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "42411214048",
-      "status": "idle",
+      "run_id": "42423124222",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.424413420"
+      "pilot_month_charged_usd": "0.455935195"
     }
   },
   "step15_retry": {
