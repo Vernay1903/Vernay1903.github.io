@@ -5716,12 +5716,12 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T17:32:26.595656-03:00",
     "last_run_id": "42411214048",
-    "last_finished_at": "2026-11-07T17:26:47.419648-03:00",
-    "last_status": "draft_ready",
+    "last_finished_at": "2026-11-07T17:32:32.883295-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "42410760969",
-      "status": "draft_ready",
-      "has_drafts": true,
+      "run_id": "42411214048",
+      "status": "idle",
+      "has_drafts": false,
       "pilot_month_charged_usd": "0.424413420"
     }
   },
