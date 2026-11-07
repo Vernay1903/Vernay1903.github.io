@@ -644,7 +644,8 @@
         "status": "publication_pending",
         "commit": "ca366bc7e18d190f2044a12bad5ce17917add70f",
         "recovered": false
-      }
+      },
+      "publication_error": "Pages não confirmado dentro do prazo: Build ainda não concluído."
     }
   },
   "months": {
