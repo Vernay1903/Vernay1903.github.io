@@ -604,7 +604,7 @@
       "published_at": "2026-11-07T16:14:50.032520-03:00"
     },
     "espn-401878757": {
-      "status": "package_ready",
+      "status": "publication_pending",
       "started_at": "2026-11-07T17:22:51.530049-03:00",
       "run_id": "42410760969",
       "api_calls": 9,
@@ -635,7 +635,16 @@
         "semantic_review_passed": true
       },
       "artifact_name": "pos-jogo-rascunhos-42410760969-1",
-      "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/42410760969"
+      "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/42410760969",
+      "publication": {
+        "fixture_id": "espn-401878757",
+        "article_sha256": "22860cbcc2234cb0e5f6ece38916a8bdc79b5c82dca28c7551139879cf7b29cd",
+        "url": "nottingham-forest-manchester-city-premier-league-2026-resultado.html",
+        "written_at": "2026-11-07T20:26:35.962217+00:00",
+        "status": "publication_pending",
+        "commit": "ca366bc7e18d190f2044a12bad5ce17917add70f",
+        "recovered": false
+      }
     }
   },
   "months": {
