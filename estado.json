@@ -551,7 +551,7 @@
       "assist_attribution_checked": true
     },
     "espn-401878760": {
-      "status": "publication_pending",
+      "status": "published",
       "started_at": "2026-11-07T16:05:58.427880-03:00",
       "run_id": "42404981378",
       "api_calls": 15,
@@ -600,7 +600,8 @@
         "status": "publication_pending",
         "commit": "f5e501939580716b020af6bb92c983b89e66f474",
         "recovered": false
-      }
+      },
+      "published_at": "2026-11-07T16:14:50.032520-03:00"
     }
   },
   "months": {
