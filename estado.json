@@ -551,13 +551,12 @@
       "assist_attribution_checked": true
     },
     "espn-401878760": {
-      "status": "running",
+      "status": "package_ready",
       "started_at": "2026-11-07T16:05:58.427880-03:00",
       "run_id": "42404981378",
       "api_calls": 15,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-07T16:09:37.572755-03:00",
-      "reason": "Trecho reprovado não foi corrigido",
+      "finished_at": "2026-11-07T16:13:03.122347-03:00",
       "located_report_retry": true,
       "evidence_retry_call_limit": 11,
       "official_index_retry": true,
@@ -565,7 +564,34 @@
       "source_retry_started_at": "2026-11-07T16:05:58.427893-03:00",
       "last_review_retry": true,
       "length_retry": true,
-      "previous_editorial_run": "42404520671"
+      "previous_editorial_run": "42404520671",
+      "package": {
+        "template_sha256": "3a074790b67c485da2dc987e57467868b7d0f424cb8462b2122f3d99d6f0395a",
+        "fixed_shell_unchanged": true,
+        "title_chars": 41,
+        "body_words": 677,
+        "body_ad_count": 3,
+        "ad_after_blocks": [
+          3,
+          7,
+          11
+        ],
+        "publication_enabled": false,
+        "filename": "arsenal-hull-city-premier-league-2026-resultado.html",
+        "written_at": "2026-11-07T19:12:53.763817+00:00",
+        "article_date": "07/11/2026",
+        "sitemap_lastmod": "2026-11-07",
+        "news_position": 0,
+        "old_news_preserved": true,
+        "old_sitemap_preserved": true,
+        "fixture_id": "espn-401878760",
+        "article_sha256": "8e494d956bece8dc7dfd42f0482115ded477499a4c260c1ab46ea48939c422de",
+        "human_review_required": true,
+        "semantic_review_passed": true
+      },
+      "artifact_name": "pos-jogo-rascunhos-42404981378-1",
+      "review_run_url": "https://github.com/Vernay1903/Vernay1903.github.io/actions/runs/42404981378",
+      "collective_recap_checked": true
     }
   },
   "months": {
