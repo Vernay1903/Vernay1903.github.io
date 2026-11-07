@@ -1,70 +1,142 @@
 [
   {
     "time": "00:00",
-    "desc": "Golden State Warriors x Miami Heat - NBA"
+    "desc": "Los Angeles Lakers x Portland Trail Blazers - NBA"
   },
   {
-    "time": "16:30",
-    "desc": "Hamburg SV x Borussia Monchengladbach - Bundesliga"
+    "time": "00:00",
+    "desc": "Sacramento Kings x San Antonio Spurs - NBA"
+  },
+  {
+    "time": "09:30",
+    "desc": "Leeds United x Tottenham Hotspur - Premier League"
+  },
+  {
+    "time": "10:00",
+    "desc": "Málaga x Racing Santander - La Liga"
+  },
+  {
+    "time": "11:00",
+    "desc": "Cagliari x Frosinone - Serie A italiana"
+  },
+  {
+    "time": "11:00",
+    "desc": "Torino x Lecce - Serie A italiana"
+  },
+  {
+    "time": "11:30",
+    "desc": "Borussia Dortmund x SV Elversberg - Bundesliga"
+  },
+  {
+    "time": "11:30",
+    "desc": "Mainz x Bayern Munich - Bundesliga"
+  },
+  {
+    "time": "11:30",
+    "desc": "Paderborn x Eintracht Frankfurt - Bundesliga"
+  },
+  {
+    "time": "11:30",
+    "desc": "RB Leipzig x Augsburg - Bundesliga"
+  },
+  {
+    "time": "12:00",
+    "desc": "Arsenal x Hull City - Premier League"
+  },
+  {
+    "time": "12:00",
+    "desc": "Fulham x Newcastle United - Premier League"
+  },
+  {
+    "time": "12:15",
+    "desc": "Espanyol x Deportivo La Coruña - La Liga"
+  },
+  {
+    "time": "14:00",
+    "desc": "Parma x Bolonha - Serie A italiana"
+  },
+  {
+    "time": "14:30",
+    "desc": "Nottingham Forest x Manchester City - Premier League"
+  },
+  {
+    "time": "14:30",
+    "desc": "Osasuna x Athletic Club - La Liga"
+  },
+  {
+    "time": "14:30",
+    "desc": "VfB Stuttgart x Werder Bremen - Bundesliga"
+  },
+  {
+    "time": "15:00",
+    "desc": "AJ Auxerre x Paris FC - Ligue 1"
+  },
+  {
+    "time": "16:00",
+    "desc": "Avaí x São Bernardo - Brasileirão Série B"
+  },
+  {
+    "time": "16:10",
+    "desc": "Novorizontino x Fortaleza - Brasileirão Série B"
   },
   {
     "time": "16:45",
-    "desc": "Toulouse x Strasbourg - Ligue 1"
-  },
-  {
-    "time": "16:45",
-    "desc": "Venezia x Udinese - Serie A italiana"
+    "desc": "AS Roma x Sassuolo - Serie A italiana"
   },
   {
     "time": "17:00",
-    "desc": "Everton x Conventry City - Premier League"
+    "desc": "Valencia x Real Madrid - La Liga"
   },
   {
-    "time": "17:00",
-    "desc": "Sevilla FC x Alavés - La Liga"
+    "time": "17:05",
+    "desc": "Paris Saint-Germain x Troyes - Ligue 1"
+  },
+  {
+    "time": "18:00",
+    "desc": "Atlético-MG x Grêmio - Copa do Brasil"
   },
   {
     "time": "18:30",
-    "desc": "Sancor Seguros Vôlei x Sesc RJ Flamengo - Superliga Feminina"
+    "desc": "Brasília Vôlei / BRB x Dentil Praia Clube - Superliga Feminina"
   },
   {
-    "time": "19:30",
-    "desc": "Operário PR x Sport - Brasileirão Série B"
+    "time": "19:00",
+    "desc": "Indiana Pacers x Denver Nuggets - NBA"
   },
   {
     "time": "20:00",
-    "desc": "Vitória x Fluminense - Brasileirão Série A"
+    "desc": "Cuiabá x Juventude - Brasileirão Série B"
+  },
+  {
+    "time": "20:00",
+    "desc": "Vila Nova x Criciúma - Brasileirão Série B"
   },
   {
     "time": "21:00",
-    "desc": "Atlanta Hawks x Washington Wizards - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Charlotte Hornets x Boston Celtics - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Fluminense F.C. x Osasco São Cristóvão Saúde - Superliga Feminina"
+    "desc": "Sesi Vôlei Bauru x E.C. Pinheiros - Superliga Feminina"
   },
   {
     "time": "21:30",
-    "desc": "Cleveland Cavaliers x Philadelphia 76ers - NBA"
+    "desc": "Atlanta Hawks x Brooklyn Nets - NBA"
+  },
+  {
+    "time": "21:30",
+    "desc": "Náutico x CRB - Brasileirão Série B"
   },
   {
     "time": "22:00",
-    "desc": "Dallas Mavericks x Utah Jazz - NBA"
+    "desc": "Cleveland Cavaliers x New York Knicks - NBA"
   },
   {
     "time": "22:00",
-    "desc": "Memphis Grizzlies x Oklahoma City Thunder - NBA"
+    "desc": "Oklahoma City Thunder x Washington Wizards - NBA"
   },
   {
-    "time": "22:00",
-    "desc": "Milwaukee Bucks x Toronto Raptors - NBA"
+    "time": "22:30",
+    "desc": "Golden State Warriors x Orlando Magic - NBA"
   },
   {
-    "time": "22:00",
-    "desc": "New Orleans Pelicans x Minnesota Timberwolves - NBA"
+    "time": "23:00",
+    "desc": "Phoenix Suns x Houston Rockets - NBA"
   }
 ]
