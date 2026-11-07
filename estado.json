@@ -5354,13 +5354,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T16:05:55.078506-03:00",
     "last_run_id": "42404520671",
-    "last_finished_at": "2026-11-07T14:48:57.168774-03:00",
+    "last_finished_at": "2026-11-07T16:09:39.617079-03:00",
     "last_status": "needs_review",
     "last_report": {
-      "run_id": "42398043079",
+      "run_id": "42404520671",
       "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.364683890"
+      "pilot_month_charged_usd": "0.390456060"
     }
   },
   "step15_retry": {
