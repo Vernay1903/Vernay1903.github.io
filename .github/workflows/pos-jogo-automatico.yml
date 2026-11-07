@@ -29,7 +29,7 @@ jobs:
       - name: Carregar versão validada do piloto (passo 21)
         uses: actions/checkout@v4
         with:
-          ref: a43551f10b905b6a5f97914db2381c7e8e2959ae
+          ref: ce65a377c9f5c1771d53a7f934ba526d15f395b7
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
