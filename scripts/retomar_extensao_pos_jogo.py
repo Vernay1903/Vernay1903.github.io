@@ -56,7 +56,7 @@ def main():
         assist_check=(j.get('status')=='package_ready' and not j.get('assist_attribution_checked') and j.get('operation_mode')=='scheduled_drafts')
         schema_retry=(j.get('status')=='blocked' and j.get('reason')=='Revisão incompleta ou unidades duplicadas' and j.get('previous_editorial_run') and not j.get('schema_retry'))
         approved=(j.get('status')=='package_ready' and not j.get('collective_recap_checked') and j.get('operation_mode')=='scheduled_drafts')
-        checkpoint=(j.get('status')=='blocked' and j.get('reason')=='Limite de chamadas da partida' and not j.get('last_review_retry'))
+        checkpoint=(j.get('status')=='blocked' and j.get('reason') in ('Limite de chamadas da partida','Trecho reprovado não foi corrigido') and not j.get('last_review_retry'))
         if not assist_check and not schema_retry and not approved and not checkpoint and (j.get('status')!='blocked' or j.get('length_retry') or j.get('reason')!='Revisão factual/editorial reprovada após limite de correções'):continue
         timing=remote.data['timing']['fixtures'].get(fid,{})
         day=timing.get('match_date','')

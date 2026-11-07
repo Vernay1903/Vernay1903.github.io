@@ -183,6 +183,10 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
             continue
         compatible=before is not None and previous_review is not None and len(before['blocks'])==len(article['blocks']) and [b['type'] for b in before['blocks']]==[b['type'] for b in article['blocks']]
         if compatible:
+            changed={u for u,t in units(article).items() if units(before).get(u)!=t}
+            rejected={c['unit'] for c in previous_review['checks'] if c['supported'] is not True}
+            compatible=bool(changed) and rejected<=changed
+        if compatible:
             review=review_changed(package,before,previous_review,article,provider,lambda payload:call(payload,f'review_{attempt}'),package)
         else:
             review=full_review(article,f'review_{attempt}')
