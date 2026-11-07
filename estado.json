@@ -5142,13 +5142,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T14:47:45.596878-03:00",
     "last_run_id": "42398043079",
-    "last_finished_at": "2026-11-07T14:29:27.176460-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-11-07T14:48:57.168774-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "42396535650",
-      "status": "waiting",
+      "run_id": "42398043079",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.348745515"
+      "pilot_month_charged_usd": "0.364683890"
     }
   },
   "step15_retry": {
