@@ -7,7 +7,7 @@ import os
 import urllib.request
 import urllib.error
 from pathlib import Path
-from editorial_pos_jogo import ROOT, prepare, validate, render, coverage_errors
+from editorial_pos_jogo import ROOT, prepare, validate, render, coverage_errors, competition_names
 from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units, targeted_issues, merge_reviews, review_changed
 
 
@@ -169,7 +169,7 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
             if article is not None:
                 request=rewrite_request(package,article,issues,writer_provider)
             article=parse_response(call(request,f'write_{attempt}'))
-        article=remove_collective_recap(article)
+        article=competition_names(remove_collective_recap(article))
         written_at=datetime.now(timezone.utc).isoformat()
         save(f'artigo-{attempt}.json',article)
         checks=validate(article,package['allowed_internal_urls'])

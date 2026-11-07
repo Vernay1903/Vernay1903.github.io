@@ -56,6 +56,28 @@ class Anchors(HTMLParser):
     def handle_comment(self, data): self.errors.append('Comentário HTML proibido')
 
 
+
+def competition_names(article):
+    """Padronização editorial aplicada antes da revisão, preservando URLs."""
+    result=copy.deepcopy(article)
+    def clean(text):
+        def replace(m):
+            pre=(m.group(1) or '').lower()
+            forms={'no':'na','pelo':'pela','do':'da','ao':'à','o':'a'}
+            prefix=forms.get(pre,'')
+            if prefix and m.group(1)[0].isupper():prefix=prefix.capitalize()
+            return (prefix+' ' if prefix else '')+'Premier League'
+        parts=re.split(r'(<[^>]*>)',text)
+        for i in range(0,len(parts),2):
+            parts[i]=re.sub(r'\b(?:(no|pelo|do|ao|o)\s+)?campeonato\s+ingl[eê]s\b',replace,parts[i],flags=re.I)
+            parts[i]=re.sub(r'\bpremiere\s+league\b','Premier League',parts[i],flags=re.I)
+        return ''.join(parts)
+    for key in ('title','excerpt'):
+        if key in result:result[key]=clean(result[key])
+    for block in result.get('blocks',[]):block['text']=clean(block['text'])
+    return result
+
+
 def validate(article, allowed_urls):
     errors=[]
     title=normalized(article.get('title','')); excerpt=article.get('excerpt',''); blocks=article.get('blocks',[])
@@ -70,6 +92,7 @@ def validate(article, allowed_urls):
     words=len(re.findall(r'\b[\wÀ-ÿ]+\b', re.sub('<[^>]+>','',body)))
     if words<600: errors.append('Corpo com menos de 600 palavras')
     full='\n'.join([title,excerpt,body])
+    if re.search(r'\bcampeonato\s+ingl[eê]s\b|\bpremiere\s+league\b',re.sub('<[^>]+>','',full),re.I):errors.append('Nomenclatura obrigatória: Premier League')
     if re.search(r'(?m)^\s*(#{1,6}\s|>|```)|\*\*|\[[^\]]+\]\(',full): errors.append('Formatação proibida')
     if re.search(r'placeholder|\bTODO\b|dados verificados|jogos registrados|recorte consultado|conclusão independente|avaliação é do próprio|não representa, por si só|não permite afirmar|sem antecipar o resultado|o resumo (?:da partida )?registra|com a mudança de funções descrita',full,re.I): errors.append('Marca de bastidor')
     closing=False
