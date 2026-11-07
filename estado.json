@@ -5726,13 +5726,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T17:22:47.162954-03:00",
     "last_run_id": "42410760969",
-    "last_finished_at": "2026-11-07T17:01:38.639398-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-11-07T17:26:47.419648-03:00",
+    "last_status": "draft_ready",
     "last_report": {
-      "run_id": "42409000236",
-      "status": "waiting",
-      "has_drafts": false,
-      "pilot_month_charged_usd": "0.396289225"
+      "run_id": "42410760969",
+      "status": "draft_ready",
+      "has_drafts": true,
+      "pilot_month_charged_usd": "0.424413420"
     }
   },
   "step15_retry": {
