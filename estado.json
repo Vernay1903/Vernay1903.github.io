@@ -216,6 +216,26 @@
         "finished_at": "2026-11-04T18:54:10-03:00",
         "timing_basis": "source_recorded_final",
         "eligible_at": "2026-11-04T19:44:10-03:00"
+      },
+      "espn-401882808": {
+        "signature": {
+          "kickoff": "2026-11-07T17:00:00-03:00",
+          "competition": "esp.1",
+          "teams": {
+            "home": "94",
+            "away": "86"
+          },
+          "score": {
+            "home": 0,
+            "away": 3
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-07",
+        "first_final_seen_at": "2026-11-07T19:59:25.567895-03:00",
+        "finished_at": "2026-11-07T18:58:41-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-07T19:48:41-03:00"
       }
     }
   },
@@ -626,6 +646,13 @@
         "recovered": false
       },
       "publication_error": "Pages não confirmado dentro do prazo: Build ainda não concluído."
+    },
+    "espn-401882808": {
+      "status": "running",
+      "started_at": "2026-11-07T19:59:28.960528-03:00",
+      "run_id": "42423124222",
+      "api_calls": 0,
+      "operation_mode": "scheduled_drafts"
     }
   },
   "months": {
