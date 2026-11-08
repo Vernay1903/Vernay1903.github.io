@@ -5814,11 +5814,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-07T21:43:38.235437-03:00",
     "last_run_id": "42431052516",
-    "last_finished_at": "2026-11-07T20:02:03.483525-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-07T21:43:44.934890-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "42423124222",
-      "status": "needs_review",
+      "run_id": "42431052516",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.455935195"
     }
