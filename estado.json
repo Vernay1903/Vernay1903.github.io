@@ -652,12 +652,12 @@
       }
     },
     "espn-401882808": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-08T14:58:51.382369-03:00",
       "run_id": "42512398323",
       "api_calls": 19,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-08T15:05:09.773154-03:00",
+      "finished_at": "2026-11-08T15:59:48.974563-03:00",
       "reason": "Limite de chamadas da partida",
       "incomplete_retry": true,
       "evidence_retry_call_limit": 13,
