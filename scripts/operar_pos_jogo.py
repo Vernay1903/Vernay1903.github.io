@@ -35,6 +35,27 @@ def has_located_report(job):
  records=json.loads(path.read_text()) if path.exists() else {}
  return bool(job.get('fixture_id') in records and not job.get('located_report_retry') and job.get('api_calls',0)<=5 and str(job.get('reason','')).startswith('Fato não confirmado: score'))
 
+def needs_incomplete_retry(job):
+ return (job.get('reason')=='Apuração incompleta na API' and not job.get('incomplete_retry')
+         and job.get('api_calls',0)<=5 and bool(job.get('run_id')))
+
+def previous_discovery(remote,fid,job):
+ """Reutiliza só os localizadores; a apuração reabre todas as fontes ao vivo."""
+ import hashlib,io,subprocess,zipfile
+ from estado_operacao_pos_jogo import REPO
+ rows=remote.request('GET',f'/actions/runs/{job["run_id"]}/artifacts')['artifacts']
+ selected=[a for a in rows if a['name'].startswith('pos-jogo-rascunhos-'+str(job['run_id'])+'-') and not a['expired']]
+ if len(selected)!=1 or selected[0]['size_in_bytes']>10000000:raise ValueError('Artefato da apuração ausente ou ambíguo')
+ a=selected[0]
+ raw=subprocess.check_output(['gh','api',f'repos/{REPO}/actions/artifacts/{a["id"]}/zip'],timeout=60)
+ if 'sha256:'+hashlib.sha256(raw).hexdigest()!=a['digest']:raise ValueError('Artefato da apuração corrompido')
+ with zipfile.ZipFile(io.BytesIO(raw)) as z:
+  names=[n for n in z.namelist() if n.endswith('/'+fid+'/apuracao/descoberta.json')]
+  if len(names)!=1 or z.getinfo(names[0]).file_size>2000000:raise ValueError('Descoberta anterior ausente ou ambígua')
+  discovery=json.loads(z.read(names[0]))
+ if not isinstance(discovery.get('output'),list):raise ValueError('Descoberta anterior inválida')
+ return discovery
+
 def eligible_source_retry(job,months,now,config):
  """Apenas uma nova apuração após falha de fontes, sem apagar gastos nem falsificar provas."""
  if job.get('status')!='blocked' or job.get('operation_mode')!='scheduled_drafts':
@@ -42,7 +63,7 @@ def eligible_source_retry(job,months,now,config):
  exact_retry=(job.get('source_retry_count',0)==1 and not job.get('official_index_retry') and
               any(x in (job.get('reason') or '') for x in ('Fato não confirmado: goals','Fato não confirmado: score')) and
               job.get('api_calls',0)<=5)
- exact_retry=exact_retry or needs_new_evidence(job) or needs_venue_omission(job) or has_located_report(job)
+ exact_retry=exact_retry or needs_new_evidence(job) or needs_venue_omission(job) or has_located_report(job) or needs_incomplete_retry(job)
  if job.get('source_retry_count',0)>=1 and not exact_retry:return False
  reason=job.get('reason','')
  if not exact_retry and (not isinstance(reason,str) or not any(term in reason for term in RECOVERABLE_SOURCE_ERRORS)):
@@ -103,16 +124,21 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
           if eligible_source_retry(dict(j,fixture_id=fid),remote.data['months'],now,config)}
  def research(candidate,summary,schedules,directory,observed_at):
   fid=candidate['fixture_id'];previous=remote.data['jobs'].get(fid)
+  recovery_discovery=None
   if previous is not None:
    if fid not in allowed(now):raise ValueError('Repetição não autorizada')
+   incomplete=needs_incomplete_retry(previous)
+   if incomplete:
+    recovery_discovery=previous_discovery(remote,fid,previous)
+    previous['incomplete_retry']=True
    venue_retry=needs_venue_omission(previous)
    if venue_retry:previous['venue_retry']=True
    located=has_located_report(dict(previous,fixture_id=fid))
    if located:previous['located_report_retry']=True
-   fresh_evidence=needs_new_evidence(previous) or venue_retry or located
+   fresh_evidence=needs_new_evidence(previous) or venue_retry or located or incomplete
    exact=previous.get('source_retry_count',0)==1 or fresh_evidence
    if fresh_evidence:previous['evidence_retry_call_limit']=previous['api_calls']+9
-   if exact:previous['official_index_retry']=True
+   if exact and not incomplete:previous['official_index_retry']=True
    previous.update(status='running',started_at=clock().isoformat(),
      run_id=os.environ.get('GITHUB_RUN_ID'),
      source_retry_count=previous.get('source_retry_count',0)+1,
@@ -125,6 +151,7 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
    active[fid]=caller_factory(remote,fid,config=dict(config,max_paid_calls_per_fixture=previous['evidence_retry_call_limit']))
   else:active[fid]=caller_factory(remote,fid)
   kw={'direct_only':True} if previous and previous.get('official_index_retry') else {}
+  if recovery_discovery is not None:kw={'discovery':recovery_discovery}
   return researcher(candidate,summary,schedules,directory,observed_at,caller=active[fid],**kw)
  def draft(package,directory,**kwargs):
   return writer(package,directory,**kwargs,caller=active[package['facts']['fixture_id']])

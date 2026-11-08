@@ -110,7 +110,9 @@ def main():
     for fid,job in list(remote.data['jobs'].items()):
         if job.get('status') not in ('package_ready','publication_pending'):continue
         match_date=remote.data['timing']['fixtures'].get(fid,{}).get('match_date','')
-        if match_date<cfg['from_match_date']:continue
+        # Um commit pendente já passou pelas regras de vigência.
+        # A seleção pode remover o jogo após encontrá-lo em noticias.json.
+        if job.get('status')!='publication_pending' and match_date<cfg['from_match_date']:continue
         try:
             if job.get('status')=='publication_pending':
                 receipt=job['publication']

@@ -182,7 +182,7 @@ def apurar(candidate,summary,schedules,out,now,*,caller=None,opener=open_page,di
             if not key:raise ValueError('OPENAI_API_KEY ausente')
             req=urllib.request.Request('https://api.openai.com/v1/responses',data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},method='POST')
             with urllib.request.urlopen(req,timeout=180) as response:res=json.load(response)
-        calls[-1].update(status=res.get('status'),usage=res.get('usage'));save('chamadas.json',calls)
+        calls[-1].update(status=res.get('status'),usage=res.get('usage'),incomplete_details=res.get('incomplete_details'));save('chamadas.json',calls)
         if res.get('status')!='completed':raise ValueError('Apuração incompleta na API')
         return res
     proposal,core,entries,teams=candidate_proposal(candidate,summary)
