@@ -34,7 +34,8 @@ def reserve_bound(payload,config,input_tokens=None):
  config=model_rates(config,payload.get('model'))
  if payload.get('model')!=config['model']:raise ValueError('Modelo sem tarifa validada')
  output=payload.get('max_output_tokens')
- if type(output) is not int or not 0<output<=7000:raise ValueError('Limite de saída inválido')
+ limit=10000 if payload.get('text',{}).get('format',{}).get('name')=='source_subject_review' else 7000
+ if type(output) is not int or not 0<output<=limit:raise ValueError('Limite de saída inválido')
  tools=payload.get('tools',[])
  if tools and (len(tools)!=1 or tools[0].get('type')!='web_search' or payload.get('max_tool_calls')!=1):
   raise ValueError('Ferramenta fora do orçamento')

@@ -36,7 +36,8 @@ def has_located_report(job):
  return bool(job.get('fixture_id') in records and not job.get('located_report_retry') and job.get('api_calls',0)<=5 and str(job.get('reason','')).startswith('Fato não confirmado: score'))
 
 def needs_incomplete_retry(job):
- return (job.get('reason')=='Apuração incompleta na API' and not job.get('incomplete_retry')
+ return (((job.get('reason')=='Apuração incompleta na API' and not job.get('incomplete_retry'))
+          or (job.get('reason')=='Limite de saída inválido' and job.get('incomplete_retry') and not job.get('output_limit_retry')))
          and job.get('api_calls',0)<=5 and bool(job.get('run_id')))
 
 def previous_discovery(remote,fid,job):
@@ -130,6 +131,7 @@ def run_once(remote,site,out,*,clock=None,runner=pipeline.run,researcher=apurar,
    incomplete=needs_incomplete_retry(previous)
    if incomplete:
     recovery_discovery=previous_discovery(remote,fid,previous)
+    if previous.get('reason')=='Limite de saída inválido':previous['output_limit_retry']=True
     previous['incomplete_retry']=True
    venue_retry=needs_venue_omission(previous)
    if venue_retry:previous['venue_retry']=True

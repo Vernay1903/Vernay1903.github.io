@@ -116,6 +116,23 @@ def main():
         try:
             if job.get('status')=='publication_pending':
                 receipt=job['publication']
+                # Não restaurar índice que o proprietário retirou após o commit.
+                head=remote.request('GET','/git/ref/heads/main')['object']['sha']
+                news=json.loads(read_file(remote,'noticias.json',head))
+                if not any(item.get('url')==receipt['url'] for item in news):
+                    history=remote.request('GET','/commits?path=noticias.json&per_page=30')
+                    removal=None
+                    for entry in history:
+                        if entry['sha']==receipt['commit']:break
+                        if entry.get('author',{}).get('login')!='Vernay1903':continue
+                        detail=remote.request('GET','/commits/'+entry['sha'])
+                        if any(f.get('filename')=='noticias.json' and any(line.startswith('-') and receipt['url'] in line for line in f.get('patch','').splitlines()) for f in detail.get('files',[])):
+                            removal=entry['sha'];break
+                    if removal:
+                        job.update(status='removed_by_owner',publication_resolution={'reason':'news_entry_removed_by_owner','commit':removal,'checked_at':now.isoformat()})
+                        job.pop('publication_error',None);remote.save()
+                        results.append({'fixture_id':fid,'status':'removed_by_owner','commit':removal});continue
+
             else:
                 data=load_data(remote,fid,job)
                 facts,article,meta,urls=validate_candidate(data,fid,job,cfg,now,remote.data['months'])

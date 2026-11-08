@@ -13,6 +13,12 @@ class PendingRecoveryTests(unittest.TestCase):
    def __init__(self):
     self.data={'jobs':{'espn-1':{'status':'publication_pending','publication':{'commit':'already-written','url':'article.html'}}},'timing':{'fixtures':{}}}
    def save(self):pass
+   def request(self,method,path):
+    if path=='/git/ref/heads/main':return {'object':{'sha':'main'}}
+    if path.startswith('/contents/noticias.json'):
+     import base64
+     return {'content':base64.b64encode(b'[{"url":"article.html"}]').decode()}
+    raise AssertionError(path)
   remote=Remote()
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);(root/'config').mkdir()
@@ -40,3 +46,11 @@ class PendingRecoveryTests(unittest.TestCase):
   self.assertNotIn('text',data['pages']['p'])
   self.assertNotIn('extraction',data)
   self.assertEqual(request['max_output_tokens'],10000)
+
+ def test_audit_token_budget_uses_actual_reservation(self):
+  from custos_pos_jogo import reserve_bound
+  cfg=json.loads((publication.ROOT/'config/operacao-pos-jogo.json').read_text())
+  request=audit_request({'model':cfg['model'],'reasoning_effort':'medium'},{},{},{})
+  self.assertGreater(reserve_bound(request,cfg,10000),0)
+  request['text']['format']['name']='unrelated'
+  with self.assertRaisesRegex(ValueError,'Limite de saída'):reserve_bound(request,cfg,10000)
