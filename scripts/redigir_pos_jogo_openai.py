@@ -8,7 +8,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from editorial_pos_jogo import ROOT, prepare, validate, render, coverage_errors, competition_names
-from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, units, targeted_issues, merge_reviews, review_changed
+from revisar_pos_jogo import review_request, validate_review, patch_request, apply_patch, targeted_issues, merge_reviews, requires_editorial_rewrite
 
 
 def build_request(package, provider):
@@ -20,7 +20,7 @@ def build_request(package, provider):
     facts = {k:v for k,v in package.items() if k != 'instructions'}
     return {'model':provider['model'],'store':False,'max_output_tokens':provider.get('max_output_tokens',6000),
         'reasoning':{'effort':provider['reasoning_effort']},
-        'input':[{'role':'system','content':package['instructions'] + '\nProtocolo interno: devolva title, excerpt e blocks no JSON exigido. O renderizador entregará texto comum ao leitor. Não acrescente fatos fora do pacote. Planeje doze a quinze parágrafos de reportagem, distribuídos conforme a riqueza dos lances, visando aproximadamente 720 palavras no corpo; não conte o título nem a chamada e nunca infle por repetição.'},
+        'input':[{'role':'system','content':package['instructions'] + '\nProtocolo interno: devolva title, excerpt e blocks no JSON exigido. O renderizador entregará texto comum ao leitor. Não acrescente fatos fora do pacote. Selecione os episódios decisivos e organize a reportagem por desenvolvimento do jogo e consequência competitiva, visando aproximadamente 720 palavras úteis no corpo; não transforme a ficha de eventos em sequência de chutes nem force quantidade de parágrafos; não conte o título nem a chamada e nunca infle por repetição.'},
                  {'role':'user','content':json.dumps(facts,ensure_ascii=False)}],
         'text':{'format':{'type':'json_schema','name':'pos_jogo','strict':True,'schema':schema}}}
 
@@ -58,7 +58,7 @@ def rewrite_request(package,article,issues,provider):
     correction=dict(provider,max_output_tokens=provider.get('rewrite_max_output_tokens',2500))
     request=build_request(package,correction)
     request['input'].append({'role':'user','content':json.dumps({'draft':article,'issues':issues,
-        'instruction':'Corrija todas as falhas, preservando apenas fatos sustentados. Produza de 750 a 850 palavras no corpo, sem repetição para preencher extensão. Retorne texto completo.'},ensure_ascii=False)})
+        'instruction':'Corrija todas as falhas, preservando apenas fatos sustentados. Se houver [EDITORIAL_GLOBAL], refaça o plano e reescreva a reportagem inteira: pode reorganizar, condensar e substituir blocos. Não preserve uma estrutura de lance a lance só porque as frases são factuais. Desenvolva destaque, momentos decisivos e contexto competitivo com as evidências disponíveis; omita ações secundárias. Produza de 700 a 800 palavras úteis, mínimo 600, sem preenchimento. Retorne texto completo.'},ensure_ascii=False)})
     return request
 
 
@@ -148,15 +148,14 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
         if (checks['errors']!=['Corpo com menos de 600 palavras'] and not (review_seed and not checks['errors'])) or checks['body_words']<400:
             raise ValueError('Retomada só permite rascunho curto com o restante do formato íntegro')
         save('origem-rascunho.json',{'article_sha256':digest(article),'requires_full_new_reviews':True})
-    issues=[]; passed=False; reviewed_once=False; previous_review=None
+    issues=[]; passed=False; reviewed_once=False
     for attempt in range(1,7):
         if len(calls)>=max_calls:break
-        before=article
         mapped=targeted_issues(article,issues) if article is not None else None
-        if article is not None and checks['body_words']>=400 and checks['errors']==['Corpo com menos de 600 palavras']:
+        if article is not None and not requires_editorial_rewrite(issues) and checks['body_words']>=400 and checks['errors']==['Corpo com menos de 600 palavras']:
             delta=response_object(call(expansion_request(package,article,checks['body_words'],writer_provider),f'expand_{attempt}'))
             save(f'expansao-{attempt}.json',delta)
-            article=apply_expansion(article,delta);previous_review=None
+            article=apply_expansion(article,delta)
         elif review_seed and attempt==1 and not checks['errors']:
             pass  # texto candidato íntegro: segue para duas revisões integrais
         elif article is not None and mapped is not None:
@@ -177,19 +176,12 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
         checks['format_passed']=not checks['errors']
         save(f'formato-{attempt}.json',checks)
         if not checks['format_passed']:
-            previous_review=None
             issues=checks['errors']+[f"Formato: corpo medido em {checks['body_words']} palavras; entregue 700 a 800 palavras no corpo sem repetir nem inventar."]
             print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
             continue
-        compatible=before is not None and previous_review is not None and len(before['blocks'])==len(article['blocks']) and [b['type'] for b in before['blocks']]==[b['type'] for b in article['blocks']]
-        if compatible:
-            changed={u for u,t in units(article).items() if units(before).get(u)!=t}
-            rejected={c['unit'] for c in previous_review['checks'] if c['supported'] is not True}
-            compatible=bool(changed) and rejected<=changed
-        if compatible:
-            review=review_changed(package,before,previous_review,article,provider,lambda payload:call(payload,f'review_{attempt}'),package)
-        else:
-            review=full_review(article,f'review_{attempt}')
+        # A qualidade narrativa pertence ao conjunto, inclusive após reparos locais.
+        # Reusa a chamada de revisão existente, sem adicionar uma etapa paga.
+        review=full_review(article,f'review_{attempt}')
         save(f'revisao-{attempt}.json',review)
         issues=checks['errors']+validate_review(review,package,article)
         if not reviewed_once and not calibrate:
@@ -198,7 +190,6 @@ def generate(package, out, *, execute=False, calibrate=False, caller=None, seed_
             issues=list(dict.fromkeys(issues+validate_review(second,package,article)))
             review=merge_reviews([review,second],package,article)
             save('revisao-inicial-consolidada.json',review)
-        previous_review=review
         reviewed_once=True
         print(json.dumps({'attempt':attempt,'issues':issues},ensure_ascii=False),flush=True)
         if not issues:

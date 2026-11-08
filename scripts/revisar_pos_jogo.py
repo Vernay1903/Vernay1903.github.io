@@ -3,6 +3,14 @@ import json
 import re
 
 
+EDITORIAL_GLOBAL = '[EDITORIAL_GLOBAL]'
+
+
+def requires_editorial_rewrite(issues):
+    """Falhas do conjunto não podem ser reparadas preservando sua estrutura."""
+    return any(EDITORIAL_GLOBAL in issue for issue in issues)
+
+
 def evidence(package):
     f=package['facts']
     result={k:v for k,v in f.items() if k!='fixture_id'}
@@ -27,6 +35,9 @@ Em cada unidade, confira explicitamente nacionalidades de clubes e atletas, nome
     instructions+='''\nRegras editoriais obrigatórias do Corte dos Esportes: título, chamada e primeira frase devem identificar a competição pelo nome usual em português; preserve limite de 70 caracteres no título. Na referência ao dia do jogo, use nesta/neste com a data real. Reprove frases de bastidor como o resumo registra. A narrativa deve conectar mudanças de assunto por transição ou subtítulo, sem criar fatos. Se as evidências confirmarem classificação, próxima fase ou próximo adversário do mata-mata, o corpo precisa explicar esse contexto competitivo; não basta narrar lances e citar um próximo jogo em outro torneio. Quando uma informação obrigatória estiver ausente, atribua a falha à unidade mais adequada para recebê-la (por exemplo, o último parágrafo), indique as evidências existentes e peça a incorporação. Não exija dados ausentes da apuração, não presuma sorteio, fase ou adversário. Prefira omitir uma lacuna a inventar. Essas regras são exigências editoriais, não preferências cosméticas. weekday_brasilia é calculado a partir da data verificada e confirma o dia da semana. Confira diferenças entre sobrenomes parecidos: O’Riley e O’Reilly não são intercambiáveis. Não coloque lances iniciais depois do primeiro gol se isso contrariar a ordem fornecida.'''
     instructions+='''\nRevisão de organização: confira se a ordem indicada por depois, na sequência ou logo em seguida está sustentada. Conectivos não podem inventar causalidade. Uma frase sobre passe deve deixar claro se recuou a bola ou se o jogador recuou; peça correção quando a ambiguidade alterar o fato. Substituições de momentos diferentes não devem parecer simultâneas nem ser narradas novamente em bloco depois de seus efeitos. Reprove duplicação material de um lance no desenvolvimento, agenda duplicada do mesmo confronto e fechamento que apenas repete o resumo. Preserve a repetição normal de informações essenciais entre título, chamada, abertura e desenvolvimento. Não reprove por preferência de sinônimo, comprimento de frase ou por faltar subtítulo quando um parágrafo já conecta claramente os assuntos. Contexto breve pode integrar a seção da decisão. Quando houver falha concreta, indique a unidade e a correção necessária, preservando detalhes confirmados e a cobertura de todos os gols; não peça cortar informação essencial apenas para encurtar.'''
     instructions+='\nTambém confira orações coletivas: se jogadores adversários chutam, as duas finalizações não ameaçam o mesmo gol sem evidência explícita. Não aprove um resumo que inverte o time atacado. Confira cada sujeito e destino da ação.'
+    instructions+='''\nAVALIAÇÃO EDITORIAL DO CONJUNTO (obrigatória, além da checagem factual): leia a reportagem inteira como editor do Corte dos Esportes. Reprove uma transcrição de lance a lance mesmo quando cada ação estiver correta. Identifique concretamente: parágrafos consecutivos que apenas enumeram passes/chutes/defesas; substituições secundárias usadas para completar extensão; abertura burocrática que lista técnicos sem desenvolver o destaque; subtítulos que apenas enumeram jogadores/finalizações; saltos de assunto; contexto competitivo disponível reduzido a uma ficha de pontos sem conexão com o resultado. Uma reportagem deve selecionar os acontecimentos decisivos, desenvolver suas relações comprovadas e dar espaço ao significado do resultado. Não exija domínio, emoção, causalidade ou posição na tabela sem evidência. Não basta trocar sinônimos ou adicionar conectivos a uma lista de lances.
+Se a falha exigir reorganizar mais de um parágrafo, marque supported=false na unidade concreta onde ela começa e inicie issues com [EDITORIAL_GLOBAL]. Explique quais trechos devem ser condensados, quais fatos confirmados devem ganhar destaque e quais evidências permitem isso. Essa marca exige reescrita completa; nunca a use para um erro factual isolado. Julgue qualidade narrativa separadamente de veracidade: texto factual, com 600 palavras e subtítulos ainda pode reprovar. Não marque supported=true em todas as unidades se o conjunto continuar parecendo um relato automático de eventos. Exemplo negativo apenas de forma: 'A passou para B, que chutou de pé direito. C passou para D, que finalizou de pé esquerdo. E entrou no lugar de F.' Repetir essa construção em vários parágrafos não é uma reportagem desenvolvida. Os nomes desse exemplo nunca são evidências.
+Nomenclatura obrigatória: Premier League, inclusive chamada e corpo. Ao analisar pontos corridos, procure contexto em TODAS as evidências, sem inferir liderança ou calcular diferenças. Se só houver pontuação confirmada, conecte-a ao resultado sem inventar consequências.'''
     selected=units(article)
     context={}
     if only_units is not None:
@@ -63,6 +74,7 @@ def validate_review(review, package, article):
 
 def targeted_issues(article,issues):
     """Traduz somente falta de extensão em orçamento de palavras dos blocos."""
+    if requires_editorial_rewrite(issues):return None
     short='Corpo com menos de 600 palavras'
     known=units(article)
     if any(x!=short and x.split(':',1)[0] not in known for x in issues):return None
