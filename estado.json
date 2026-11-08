@@ -652,9 +652,9 @@
       }
     },
     "espn-401882808": {
-      "status": "blocked",
+      "status": "running",
       "started_at": "2026-11-08T14:58:51.382369-03:00",
-      "run_id": "42507610321",
+      "run_id": "42512398323",
       "api_calls": 13,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-08T15:05:09.773154-03:00",
@@ -663,7 +663,10 @@
       "evidence_retry_call_limit": 13,
       "source_retry_count": 2,
       "source_retry_started_at": "2026-11-08T14:58:51.382391-03:00",
-      "output_limit_retry": true
+      "output_limit_retry": true,
+      "last_review_retry": true,
+      "length_retry": true,
+      "previous_editorial_run": "42507610321"
     }
   },
   "months": {
