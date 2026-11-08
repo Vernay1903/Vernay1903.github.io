@@ -6053,13 +6053,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-08T14:58:46.759296-03:00",
     "last_run_id": "42507610321",
-    "last_finished_at": "2026-11-08T14:29:00.897446-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-08T15:05:14.725799-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "42505154093",
-      "status": "idle",
+      "run_id": "42507610321",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.462153495"
+      "pilot_month_charged_usd": "0.489740765"
     }
   },
   "step15_retry": {
