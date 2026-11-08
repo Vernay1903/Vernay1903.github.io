@@ -6053,11 +6053,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-08T15:55:35.950140-03:00",
     "last_run_id": "42512398323",
-    "last_finished_at": "2026-11-08T15:05:14.725799-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-08T15:55:42.839805-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "42507610321",
-      "status": "needs_review",
+      "run_id": "42512398323",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.489740765"
     }
