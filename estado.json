@@ -6194,13 +6194,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-08T16:00:06.406951-03:00",
     "last_run_id": "42512524703",
-    "last_finished_at": "2026-11-08T15:55:42.839805-03:00",
+    "last_finished_at": "2026-11-08T16:00:19.372964-03:00",
     "last_status": "idle",
     "last_report": {
-      "run_id": "42512398323",
+      "run_id": "42512524703",
       "status": "idle",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.489740765"
+      "pilot_month_charged_usd": "0.503801190"
     }
   },
   "step15_retry": {
