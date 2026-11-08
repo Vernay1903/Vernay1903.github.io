@@ -5841,11 +5841,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-08T12:52:30.946602-03:00",
     "last_run_id": "42496671334",
-    "last_finished_at": "2026-11-08T12:47:02.730379-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-08T12:52:36.699790-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "42496437754",
-      "status": "needs_review",
+      "run_id": "42496671334",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.462153495"
     }
