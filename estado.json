@@ -652,17 +652,18 @@
       }
     },
     "espn-401882808": {
-      "status": "blocked",
-      "started_at": "2026-11-08T12:45:55.046643-03:00",
-      "run_id": "42496437754",
+      "status": "running",
+      "started_at": "2026-11-08T14:58:51.382369-03:00",
+      "run_id": "42507610321",
       "api_calls": 4,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-08T12:46:58.629319-03:00",
       "reason": "Limite de saída inválido",
       "incomplete_retry": true,
-      "evidence_retry_call_limit": 12,
-      "source_retry_count": 1,
-      "source_retry_started_at": "2026-11-08T12:45:55.046665-03:00"
+      "evidence_retry_call_limit": 13,
+      "source_retry_count": 2,
+      "source_retry_started_at": "2026-11-08T14:58:51.382391-03:00",
+      "output_limit_retry": true
     }
   },
   "months": {
