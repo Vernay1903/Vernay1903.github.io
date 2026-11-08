@@ -604,7 +604,7 @@
       "published_at": "2026-11-07T16:14:50.032520-03:00"
     },
     "espn-401878757": {
-      "status": "publication_pending",
+      "status": "removed_by_owner",
       "started_at": "2026-11-07T17:22:51.530049-03:00",
       "run_id": "42410760969",
       "api_calls": 9,
@@ -645,7 +645,11 @@
         "commit": "ca366bc7e18d190f2044a12bad5ce17917add70f",
         "recovered": false
       },
-      "publication_error": "Pages não confirmado dentro do prazo: Matérias ainda ausentes de noticias.json público."
+      "publication_resolution": {
+        "reason": "news_entry_removed_by_owner",
+        "commit": "c129d35f5a03356db677e1f95796a8a7214e4c84",
+        "checked_at": "2026-11-08T12:52:38.997405-03:00"
+      }
     },
     "espn-401882808": {
       "status": "blocked",
