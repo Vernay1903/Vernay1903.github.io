@@ -648,13 +648,13 @@
       "publication_error": "Pages não confirmado dentro do prazo: Build ainda não concluído."
     },
     "espn-401882808": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-08T12:45:55.046643-03:00",
       "run_id": "42496437754",
       "api_calls": 4,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-07T20:02:01.413792-03:00",
-      "reason": "Apuração incompleta na API",
+      "finished_at": "2026-11-08T12:46:58.629319-03:00",
+      "reason": "Limite de saída inválido",
       "incomplete_retry": true,
       "evidence_retry_call_limit": 12,
       "source_retry_count": 1,
