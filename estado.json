@@ -5841,13 +5841,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-08T12:45:51.298888-03:00",
     "last_run_id": "42496437754",
-    "last_finished_at": "2026-11-08T12:16:13.414124-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-08T12:47:02.730379-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "42493920155",
-      "status": "idle",
+      "run_id": "42496437754",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.455935195"
+      "pilot_month_charged_usd": "0.462153495"
     }
   },
   "step15_retry": {
