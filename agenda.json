@@ -1,42 +1,30 @@
 [
   {
+    "time": "00:00",
+    "desc": "Golden State Warriors x New Orleans Pelicans - NBA"
+  },
+  {
     "time": "18:30",
-    "desc": "Itambé Minas x Azulim/Sicoob/Monte - Superliga Masculina"
+    "desc": "Viapol Vôlei São José x Montes Claros Vôlei - Superliga Masculina"
   },
   {
     "time": "21:00",
-    "desc": "Atlanta Hawks x Los Angeles Lakers - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Charlotte Hornets x Cleveland Cavaliers - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Detroit Pistons x Washington Wizards - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Vôlei Renata x Sesi Bauru - Superliga Masculina"
+    "desc": "Norde Vôlei x Sada Cruzeiro Vôlei - Superliga Masculina"
   },
   {
     "time": "21:30",
-    "desc": "Toronto Raptors x Memphis Grizzlies - NBA"
+    "desc": "New York Knicks x Milwaukee Bucks - NBA"
   },
   {
     "time": "22:00",
-    "desc": "Dallas Mavericks x Indiana Pacers - NBA"
-  },
-  {
-    "time": "22:15",
-    "desc": "Minnesota Vikings x Buffalo Bills - NFL"
-  },
-  {
-    "time": "22:30",
-    "desc": "Houston Rockets x Denver Nuggets - NBA"
+    "desc": "Philadelphia 76ers x Boston Celtics - NBA"
   },
   {
     "time": "23:00",
-    "desc": "Phoenix Suns x San Antonio Spurs - NBA"
+    "desc": "Phoenix Suns x LA Clippers - NBA"
+  },
+  {
+    "time": "23:00",
+    "desc": "Utah Jazz x Miami Heat - NBA"
   }
 ]
