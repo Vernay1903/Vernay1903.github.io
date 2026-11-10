@@ -6194,11 +6194,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-10T15:33:59.219233-03:00",
     "last_run_id": "42876457140",
-    "last_finished_at": "2026-11-10T13:29:44.928536-03:00",
-    "last_status": "error",
+    "last_finished_at": "2026-11-10T15:34:04.582857-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "42855024038",
-      "status": "error",
+      "run_id": "42876457140",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.503801190"
     }
