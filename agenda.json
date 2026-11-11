@@ -1,30 +1,58 @@
 [
   {
     "time": "00:00",
-    "desc": "Golden State Warriors x New Orleans Pelicans - NBA"
+    "desc": "Sacramento Kings x Orlando Magic - NBA"
+  },
+  {
+    "time": "01:00",
+    "desc": "Portland Trail Blazers x Oklahoma City Thunder - NBA"
   },
   {
     "time": "18:30",
-    "desc": "Viapol Vôlei São José x Montes Claros Vôlei - Superliga Masculina"
+    "desc": "Praia Clube Uberlandia Vôlei x Saneago Goiás Vôlei - Superliga Masculina"
+  },
+  {
+    "time": "19:00",
+    "desc": "Londrina x Náutico - Brasileirão Série B"
   },
   {
     "time": "21:00",
-    "desc": "Norde Vôlei x Sada Cruzeiro Vôlei - Superliga Masculina"
+    "desc": "Indiana Pacers x Washington Wizards - NBA"
   },
   {
-    "time": "21:30",
-    "desc": "New York Knicks x Milwaukee Bucks - NBA"
+    "time": "21:00",
+    "desc": "New York Knicks x Cleveland Cavaliers - NBA"
+  },
+  {
+    "time": "21:00",
+    "desc": "Suzano Vôlei x Sil Vôlei Guarulhos - Superliga Masculina"
+  },
+  {
+    "time": "21:00",
+    "desc": "Toronto Raptors x Boston Celtics - NBA"
   },
   {
     "time": "22:00",
-    "desc": "Philadelphia 76ers x Boston Celtics - NBA"
+    "desc": "Chicago Bulls x San Antonio Spurs - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "Memphis Grizzlies x Denver Nuggets - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "Milwaukee Bucks x Los Angeles Lakers - NBA"
+  },
+  {
+    "time": "22:00",
+    "desc": "New Orleans Pelicans x Brooklyn Nets - NBA"
   },
   {
     "time": "23:00",
-    "desc": "Phoenix Suns x LA Clippers - NBA"
+    "desc": "Utah Jazz x Orlando Magic - NBA"
   },
   {
-    "time": "23:00",
-    "desc": "Utah Jazz x Miami Heat - NBA"
+    "time": "23:30",
+    "desc": "Houston Rockets x Golden State Warriors - NBA"
   }
 ]
