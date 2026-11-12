@@ -1,58 +1,78 @@
 [
   {
     "time": "00:00",
-    "desc": "Sacramento Kings x Orlando Magic - NBA"
-  },
-  {
-    "time": "01:00",
     "desc": "Portland Trail Blazers x Oklahoma City Thunder - NBA"
   },
   {
+    "time": "14:00",
+    "desc": "Armênia x Chipre - Liga das Nações"
+  },
+  {
+    "time": "14:00",
+    "desc": "Turquia x Bélgica - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "Albania x Finlândia - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "Inglaterra x Croácia - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "Itália x França - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "Montenegro x Letônia - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "República Tcheca x Espanha - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "San Marino x Bielorússia - Liga das Nações"
+  },
+  {
     "time": "18:30",
-    "desc": "Praia Clube Uberlandia Vôlei x Saneago Goiás Vôlei - Superliga Masculina"
+    "desc": "E.C. Pinheiros x Paulistano Barueri - Superliga Feminina"
+  },
+  {
+    "time": "18:30",
+    "desc": "Gerdau Minas x Sancor Seguros Vôlei - Superliga Feminina"
   },
   {
     "time": "19:00",
-    "desc": "Londrina x Náutico - Brasileirão Série B"
+    "desc": "Ponte Preta x Operário PR - Brasileirão Série B"
+  },
+  {
+    "time": "20:00",
+    "desc": "São Bernardo x Athletic - Brasileirão Série B"
   },
   {
     "time": "21:00",
-    "desc": "Indiana Pacers x Washington Wizards - NBA"
+    "desc": "Philadelphia 76ers x Toronto Raptors - NBA"
   },
   {
     "time": "21:00",
-    "desc": "New York Knicks x Cleveland Cavaliers - NBA"
+    "desc": "Sesc RJ Flamengo x Fluminense F.C. - Superliga Feminina"
   },
   {
     "time": "21:00",
-    "desc": "Suzano Vôlei x Sil Vôlei Guarulhos - Superliga Masculina"
-  },
-  {
-    "time": "21:00",
-    "desc": "Toronto Raptors x Boston Celtics - NBA"
+    "desc": "Washington Wizards x Detroit Pistons - NBA"
   },
   {
     "time": "22:00",
-    "desc": "Chicago Bulls x San Antonio Spurs - NBA"
+    "desc": "Minnesota Timberwolves x Dallas Mavericks - NBA"
   },
   {
-    "time": "22:00",
-    "desc": "Memphis Grizzlies x Denver Nuggets - NBA"
-  },
-  {
-    "time": "22:00",
-    "desc": "Milwaukee Bucks x Los Angeles Lakers - NBA"
-  },
-  {
-    "time": "22:00",
-    "desc": "New Orleans Pelicans x Brooklyn Nets - NBA"
+    "time": "22:15",
+    "desc": "New York Giants x Washington Commanders - NFL"
   },
   {
     "time": "23:00",
-    "desc": "Utah Jazz x Orlando Magic - NBA"
-  },
-  {
-    "time": "23:30",
-    "desc": "Houston Rockets x Golden State Warriors - NBA"
+    "desc": "Phoenix Suns x Charlotte Hornets - NBA"
   }
 ]
