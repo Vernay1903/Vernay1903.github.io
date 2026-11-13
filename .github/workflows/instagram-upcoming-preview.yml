@@ -22,7 +22,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /agenda.json
-            /logo-mobile.webp
+            /apple-touch-icon.png
             /scripts/instagram/
             /tests/instagram/
       - uses: actions/setup-node@v4
