@@ -26,7 +26,6 @@ function html(rows, date, page, pages, logo) {
   const label = new Intl.DateTimeFormat('pt-BR', {day:'2-digit',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));
   return `<!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>
   *{box-sizing:border-box}body{margin:0;width:1080px;height:1920px;background:#f4f7fc;color:#102540;font-family:Arial,Helvetica,sans-serif}
-  body:before{content:'';position:absolute;top:0;left:0;width:1080px;height:16px;background:#145be3}
   header{height:288px;padding:120px 72px 32px;background:#fff}header img{display:block;width:936px;height:136px;object-fit:contain}
   h1{font-size:88px;line-height:1.05;margin:40px 64px 20px;letter-spacing:-3px;font-weight:900}
   .date{margin:0 64px;color:#2459a6;font-size:34px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
