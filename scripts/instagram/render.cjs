@@ -42,11 +42,25 @@ function html(rows, date, page, pages, logo) {
   ${rows.map(row => {const [fixture, league] = parts(row);return `<div class="row"><div class="time">${esc(row.time)}</div><div class="details"><div class="fixture">${esc(fixture)}</div><div class="league">${esc(league)}</div></div></div>`;}).join('')}
   </main><footer><strong>cortedosesportes.com.br</strong><p>Acesse o site pelo link na bio</p></footer></html>`;
 }
+function upcoming(rows, date, now=new Date()) {
+  const fields = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {
+    timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit',
+    hour:'2-digit',minute:'2-digit',hourCycle:'h23'
+  }).formatToParts(now).map(p=>[p.type,p.value]));
+  const today = fields.year+'-'+fields.month+'-'+fields.day;
+  if (date!==today) throw Error('A agenda precisa ser do dia atual para filtrar os próximos eventos.');
+  const cutoff=fields.hour+':'+fields.minute;
+  const selected=rows.filter(row=>row.time>cutoff);
+  if (!selected.length) throw Error('Não há eventos futuros na agenda de hoje.');
+  return {rows:selected,cutoff};
+}
 async function render() {
   const date = process.env.AGENDA_DATE;
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '') || new Date(date+'T12:00:00Z').toISOString().slice(0,10)!==date) throw Error('Defina AGENDA_DATE como YYYY-MM-DD.');
   const source = fs.readFileSync(path.join(root,'agenda.json'));
-  const rows = JSON.parse(source); validate(rows);
+  const allRows = JSON.parse(source); validate(allRows);
+  const selection=process.env.STORY_UPCOMING_ONLY==='true' ? upcoming(allRows,date) : {rows:allRows,cutoff:null};
+  const rows=selection.rows;
   const out = path.resolve(process.env.STORY_OUTPUT || path.join(root,'out/instagram'));
   fs.mkdirSync(out,{recursive:true});
   // Remove only previous renderer outputs, so upload-artifact never includes stale pages.
@@ -77,9 +91,9 @@ async function render() {
       const file=`story-${String(i+1).padStart(2,'0')}.jpg`;
       await page.screenshot({path:path.join(out,file),type:'jpeg',quality:95});files.push(file);
     }
-    fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify({date,agenda_sha256:crypto.createHash('sha256').update(source).digest('hex'),events:rows.length,pages:groups.map((events,i)=>({file:files[i],events})),mode:'preview'},null,2)+'\n');
+    fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify({date,agenda_sha256:crypto.createHash('sha256').update(source).digest('hex'),events:rows.length,selected_after:selection.cutoff,pages:groups.map((events,i)=>({file:files[i],events})),mode:'preview'},null,2)+'\n');
     console.log(`${rows.length} eventos em ${files.length} Stories. Prévia: nenhuma publicação.`);
   } finally {await browser.close();}
 }
-module.exports={validate,parts,html};
+module.exports={validate,parts,html,upcoming};
 if(require.main===module)render().catch(e=>{console.error(e.message);process.exitCode=1;});
