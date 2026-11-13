@@ -1,8 +1,9 @@
 {
-  "status": "publishing",
+  "status": "published",
   "date": "2026-11-13",
   "account": "17841446409607682",
   "image_sha256": "385b05687def0bb5e87b719e4babf3905dbeca6c302364db453a8a42e041a17e",
   "run_id": "43527731547",
-  "container_id": "18072325772546987"
+  "container_id": "18072325772546987",
+  "media_id": "18136468348736162"
 }
