@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       publicar:
-        description: 'Publicar a primeira tela aprovada de 13/11/2026 em @cortedosesportes'
+        description: 'Publicar 1 Story com os jogos das 21h de 13/11/2026 (antes das 21h)'
         type: boolean
         default: false
 

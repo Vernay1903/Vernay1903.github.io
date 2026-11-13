@@ -62,5 +62,27 @@ class PublishingTests(unittest.TestCase):
             p.publish_once(api, lambda *a: 'sha', {'status': 'claimed'})
         self.assertEqual(posts, [p.ACCOUNT + '/media'])
 
+class WindowTests(unittest.TestCase):
+    def test_sao_paulo_cutoff_and_day(self):
+        from datetime import datetime
+        p.ensure_window(datetime.fromisoformat('2026-11-13T23:59:59+00:00'))
+        for instant in ['2026-11-14T00:00:00+00:00', '2026-11-14T23:00:00+00:00']:
+            with self.assertRaises(p.SafeError):
+                p.ensure_window(datetime.fromisoformat(instant))
+
+    def test_deadline_reached_during_processing_prevents_publish(self):
+        calls = []
+        checks = []
+        def window():
+            checks.append(True)
+            if len(checks) == 2:
+                raise p.SafeError('deadline')
+        def api(path, body=None):
+            calls.append(path)
+            return {'id': '123'} if path.endswith('/media') else {'status_code': 'FINISHED'}
+        with self.assertRaises(p.SafeError):
+            p.publish_once(api, lambda *a: 'sha', {'status': 'claimed'}, check_window=window)
+        self.assertNotIn(p.ACCOUNT + '/media_publish', calls)
+
 if __name__ == '__main__':
     unittest.main()

@@ -15,9 +15,10 @@ REPO = 'Vernay1903/Vernay1903.github.io'
 ACCOUNT = '17841446409607682'
 DAY = '2026-11-13'
 AGENDA_HASH = 'ad13f7443aaf3ce088f26c401544bf17a64a60e5efadcc661fc4f88a68725351'
-IMAGE_HASH = '1e392eb39955b10693441d33f83e4605be006e6bf0c73cc8290ae3bbd245af38'
+IMAGE_HASH = '385b05687def0bb5e87b719e4babf3905dbeca6c302364db453a8a42e041a17e'
 IMAGE_URL = ('https://raw.githubusercontent.com/' + REPO +
-             '/626799019c3165dfe7dd6066ff29ed141dd9cb53/2026-11-13/story-01.jpg')
+             '/fbbc9182441d8ec999830abfe00ef2e77ddcc660/2026-11-13/night-story-01.jpg')
+FIRST_EVENT_TIME = '21:00'
 STATE_BRANCH = 'instagram-story-media'
 STATE_PATH = 'state/' + ACCOUNT + '/' + DAY + '-story-01.json'
 
@@ -73,6 +74,13 @@ def verify_inputs(today, agenda, image, account):
         raise SafeError('Imagem pública diferente da prévia aprovada.')
 
 
+def ensure_window(now=None):
+    now = now or datetime.now(ZoneInfo('America/Sao_Paulo'))
+    local = now.astimezone(ZoneInfo('America/Sao_Paulo'))
+    if local.date().isoformat() != DAY or local.strftime('%H:%M') >= FIRST_EVENT_TIME:
+        raise SafeError('A primeira partida da imagem já chegou ao horário previsto. Gere uma nova prévia.')
+
+
 def save_state(state, sha=None):
     body = {'message': 'Registra estado do teste manual de Story', 'branch': STATE_BRANCH,
             'content': base64.b64encode((json.dumps(state, indent=2) + '\n').encode()).decode()}
@@ -82,7 +90,8 @@ def save_state(state, sha=None):
     return gh('contents/' + STATE_PATH, body, 'PUT')['content']['sha']
 
 
-def publish_once(api, persist, state, sleep=time.sleep):
+def publish_once(api, persist, state, sleep=time.sleep, check_window=lambda: None):
+    check_window()
     sha = persist(state)
     container = api(ACCOUNT + '/media', {'media_type': 'STORIES', 'image_url': IMAGE_URL})
     cid = container.get('id', '')
@@ -99,6 +108,7 @@ def publish_once(api, persist, state, sleep=time.sleep):
         if attempt == 5:
             raise SafeError('Processamento excedeu cinco minutos; publicação não iniciada.')
         sleep(60)
+    check_window()
     # Persist intent BEFORE the non-idempotent request. A timeout remains blocked for manual review.
     state['status'] = 'publishing'
     sha = persist(state, sha)
@@ -123,6 +133,7 @@ def main():
     # Cheap date check first, before any external mutation or expensive work.
     if today != DAY:
         raise SafeError('Prévia expirada: teste limitado a ' + DAY + '.')
+    ensure_window()
     source = gh('contents/agenda.json?ref=main')
     agenda = base64.b64decode(source['content'])
     image = request(IMAGE_URL)
@@ -135,7 +146,7 @@ def main():
         raise SafeError('A credencial não identifica @cortedosesportes.')
     state = {'status': 'claimed', 'date': DAY, 'account': ACCOUNT,
              'image_sha256': IMAGE_HASH, 'run_id': os.environ.get('GITHUB_RUN_ID')}
-    mid = publish_once(meta, save_state, state)
+    mid = publish_once(meta, save_state, state, check_window=ensure_window)
     print('Meta confirmou a publicação de UM Story. ID da mídia: ' + mid)
     summary = os.environ.get('GITHUB_STEP_SUMMARY')
     if summary:
