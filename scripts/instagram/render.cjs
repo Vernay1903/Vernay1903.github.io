@@ -25,16 +25,19 @@ function parts(row) {
 function html(rows, date, page, pages, logo) {
   const label = new Intl.DateTimeFormat('pt-BR', {day:'2-digit',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));
   return `<!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>
-  *{box-sizing:border-box}body{margin:0;width:1080px;height:1920px;background:#fff;color:#0b203b;font-family:Arial,Helvetica,sans-serif}
-  header{height:330px;background:#0b203b;padding:150px 60px 40px}header img{display:block;width:960px;height:137px;object-fit:contain;background:white}
-  h1{font-size:76px;margin:38px 0 22px;text-align:center;letter-spacing:-2px}
-  .date{width:max-content;max-width:960px;margin:auto;border:2px solid #244eaa;border-radius:60px;padding:16px 40px;color:#244eaa;font-size:33px;font-weight:700;text-transform:uppercase;background:#f7f9ff}
-  .count{text-align:right;font-size:23px;color:#244eaa;margin:22px 62px 14px}
-  main{height:925px;margin:0 48px;border:2px solid #c6d4ee;border-radius:30px;padding:0 28px;display:flex;flex-direction:column}
-  .row{flex:1;min-height:0;display:grid;grid-template-columns:158px 1fr;gap:20px;align-items:center;padding:22px 0;border-bottom:1px solid #dce4f1}
-  .row:last-child{border:0}.time{font-size:45px;font-weight:700;color:#244eaa}.fixture{font-size:38px;line-height:1.16;font-weight:700;overflow-wrap:anywhere}.league{font-size:28px;line-height:1.2;margin-top:8px}
-  footer{position:absolute;top:1590px;left:0;width:1080px;height:330px;background:#0b203b;text-align:center;padding:42px 40px;color:white}
-  footer strong{font-size:39px}footer p{font-size:31px;margin:16px 0}
+  *{box-sizing:border-box}body{margin:0;width:1080px;height:1920px;background:#f4f7fc;color:#102540;font-family:Arial,Helvetica,sans-serif}
+  body:before{content:'';position:absolute;top:0;left:0;width:1080px;height:16px;background:#145be3}
+  header{height:288px;padding:120px 72px 32px;background:#fff}header img{display:block;width:936px;height:136px;object-fit:contain}
+  h1{font-size:88px;line-height:1.05;margin:40px 64px 20px;letter-spacing:-3px;font-weight:900}
+  .date{margin:0 64px;color:#2459a6;font-size:34px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .count{text-align:right;font-size:28px;font-weight:700;color:#5a6d86;margin:24px 64px 20px}
+  main{height:1032px;margin:0 56px;display:flex;flex-direction:column;gap:20px}
+  .row{flex:1;min-height:0;display:grid;grid-template-columns:174px 1fr;gap:28px;align-items:center;padding:22px 30px;background:#fff;border:1px solid #dfe7f2;border-left:8px solid #145be3;border-radius:20px}
+  .time{font-size:48px;line-height:1;font-weight:800;color:#145be3;font-variant-numeric:tabular-nums}
+  .fixture{font-size:46px;line-height:1.18;font-weight:700;overflow-wrap:anywhere;letter-spacing:-.7px}
+  .league{font-size:31px;line-height:1.25;margin-top:14px;color:#52637a}
+  footer{position:absolute;top:1634px;left:64px;width:952px;height:156px;border-top:2px solid #d6e1ef;text-align:left;padding:28px 0;color:#102540}
+  footer strong{font-size:40px;letter-spacing:-.5px}footer p{font-size:32px;margin:14px 0;color:#52637a}
   </style><header><img alt="Corte dos Esportes" src="data:image/webp;base64,${logo}"></header>
   <h1>AGENDA DO DIA</h1><div class="date">${esc(label)}</div><div class="count">${page} / ${pages}</div><main>
   ${rows.map(row => {const [fixture, league] = parts(row);return `<div class="row"><div class="time">${esc(row.time)}</div><div class="details"><div class="fixture">${esc(fixture)}</div><div class="league">${esc(league)}</div></div></div>`;}).join('')}
@@ -63,7 +66,7 @@ async function render() {
       }));
     }
     for(const row of rows) {
-      if(current.length && (current.length===5 || !await fits([...current,row]))) { groups.push(current);current=[]; }
+      if(current.length && (current.length===4 || !await fits([...current,row]))) { groups.push(current);current=[]; }
       current.push(row);
       if(!await fits(current)) throw Error('Evento não cabe no Story; revisão necessária.');
     }
