@@ -1,0 +1,55 @@
+name: Instagram - publicar 1 Story de teste
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/instagram/publish_test.py'
+      - 'tests/instagram/test_publish.py'
+      - '.github/workflows/instagram-story-test.yml'
+  workflow_dispatch:
+    inputs:
+      publicar:
+        description: 'Publicar a primeira tela aprovada de 13/11/2026 em @cortedosesportes'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: instagram-story-manual-test
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/instagram/
+            /tests/instagram/
+      - run: python -m unittest discover -s tests/instagram -p 'test_publish.py' -v
+  publish:
+    needs: tests
+    if: github.event_name == 'workflow_dispatch' && inputs.publicar && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /scripts/instagram/
+      - name: Publicar somente a imagem aprovada, uma vez
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          CONFIRM_PUBLISH: ${{ inputs.publicar }}
+        run: python scripts/instagram/publish_test.py
