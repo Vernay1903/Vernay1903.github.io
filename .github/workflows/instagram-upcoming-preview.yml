@@ -1,0 +1,51 @@
+name: Instagram - previa dos eventos restantes
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/instagram/**'
+      - 'tests/instagram/**'
+      - '.github/workflows/instagram-upcoming-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /agenda.json
+            /logo-mobile.webp
+            /scripts/instagram/
+            /tests/instagram/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar renderizador isolado
+        run: |
+          npm install --prefix "$RUNNER_TEMP/cde-story-deps" --no-audit --no-fund playwright@1.58.2
+          echo "NODE_PATH=$RUNNER_TEMP/cde-story-deps/node_modules" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/cde-story-deps/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Validar o renderizador
+        run: node --test tests/instagram/*.test.cjs
+      - name: Identificar a data da agenda
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/instagram/provenance.py
+      - name: Gerar os Stories restantes sem publicar
+        env:
+          STORY_UPCOMING_ONLY: 'true'
+        run: node scripts/instagram/render.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: previa-stories-restantes
+          path: out/instagram/
+          retention-days: 7
+          if-no-files-found: error
