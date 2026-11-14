@@ -1,0 +1,107 @@
+name: Instagram - Stories diarios
+
+on:
+  schedule:
+    - cron: '40,45,50,55 0 * * *'
+      timezone: 'America/Sao_Paulo'
+  workflow_dispatch:
+    inputs:
+      publicar:
+        description: 'Publicar a agenda de hoje (somente 00h40–00h59 Brasília); desligado = simulação'
+        type: boolean
+        default: false
+  pull_request:
+    paths:
+      - 'scripts/instagram/**'
+      - 'tests/instagram/**'
+      - '.github/workflows/instagram-daily.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/instagram/daily.py'
+      - '.github/workflows/instagram-daily.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/instagram
+            tests/instagram
+      - run: python -m unittest discover -s tests/instagram -p 'test_*.py' -v
+
+  daily:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    permissions:
+      contents: write
+    concurrency:
+      group: instagram-daily-publisher
+      cancel-in-progress: false
+    env:
+      PUBLISH_DAILY: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.publicar) }}
+    steps:
+      - name: Respeitar janela de Brasília
+        id: window
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          clock = datetime.now(ZoneInfo('America/Sao_Paulo')).strftime('%H:%M')
+          proceed = os.environ['PUBLISH_DAILY'] != 'true' or '00:40' <= clock < '00:59'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('proceed=' + str(proceed).lower() + '\n')
+          print('Prosseguir.' if proceed else 'Execução atrasada: nenhuma publicação após o limite.')
+          PY
+      - uses: actions/checkout@v4
+        if: steps.window.outputs.proceed == 'true'
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /agenda.json
+            /apple-touch-icon.png
+            /scripts/instagram/
+      - name: Conferir agenda de hoje e registro de publicação
+        if: steps.window.outputs.proceed == 'true'
+        id: prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/instagram/daily.py prepare
+      - uses: actions/setup-node@v4
+        if: steps.window.outputs.proceed == 'true' && steps.prepare.outputs.resume != 'true'
+        with:
+          node-version: '22'
+      - name: Instalar renderizador
+        if: steps.window.outputs.proceed == 'true' && steps.prepare.outputs.resume != 'true'
+        run: |
+          npm install --prefix "$RUNNER_TEMP/cde-story-deps" --no-audit --no-fund playwright@1.58.2
+          echo "NODE_PATH=$RUNNER_TEMP/cde-story-deps/node_modules" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/cde-story-deps/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Gerar todas as páginas com o modelo aprovado
+        if: steps.window.outputs.proceed == 'true' && steps.prepare.outputs.resume != 'true'
+        run: node scripts/instagram/render.cjs
+      - uses: actions/upload-artifact@v4
+        if: steps.window.outputs.proceed == 'true' && steps.prepare.outputs.resume != 'true'
+        with:
+          name: stories-diarios-${{ github.run_id }}
+          path: out/instagram/
+          retention-days: 7
+          if-no-files-found: error
+      - name: Publicar ou simular com proteção contra duplicação
+        if: steps.window.outputs.proceed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+        run: python scripts/instagram/daily.py
