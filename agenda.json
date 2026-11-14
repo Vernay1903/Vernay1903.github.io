@@ -1,82 +1,110 @@
 [
   {
+    "time": "00:00",
+    "desc": "Sacramento Kings x Portland Trail Blazers - NBA"
+  },
+  {
+    "time": "00:30",
+    "desc": "LA Clippers x Oklahoma City Thunder - NBA"
+  },
+  {
+    "time": "11:00",
+    "desc": "Kosovo x Israel - Liga das Nações"
+  },
+  {
     "time": "14:00",
-    "desc": "Moldávia x Cazaquistão - Liga das Nações"
+    "desc": "Georgia x Hungria - Liga das Nações"
+  },
+  {
+    "time": "14:00",
+    "desc": "Noruega x País de Gales - Liga das Nações"
+  },
+  {
+    "time": "16:00",
+    "desc": "Norde Vôlei x Viapol Vôlei São José - Superliga Masculina"
+  },
+  {
+    "time": "16:30",
+    "desc": "América Mineiro x Avaí - Brasileirão Série B"
+  },
+  {
+    "time": "16:30",
+    "desc": "Atlético Goianiense x Cuiabá - Brasileirão Série B"
+  },
+  {
+    "time": "16:30",
+    "desc": "CRB x Ceará - Brasileirão Série B"
+  },
+  {
+    "time": "16:30",
+    "desc": "Criciúma x Novorizontino - Brasileirão Série B"
+  },
+  {
+    "time": "16:30",
+    "desc": "Fortaleza x Vila Nova - Brasileirão Série B"
+  },
+  {
+    "time": "16:30",
+    "desc": "Juventude x Botafogo-SP - Brasileirão Série B"
+  },
+  {
+    "time": "16:30",
+    "desc": "Sport x Goiás - Brasileirão Série B"
   },
   {
     "time": "16:45",
-    "desc": "Andorra x Gibraltar - Liga das Nações"
+    "desc": "Irlanda do Norte x Ucrânia - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Bulgária x Islândia - Liga das Nações"
+    "desc": "Portugal x Dinamarca - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Escócia x Macedônia do Norte - Liga das Nações"
+    "desc": "Romênia x Polônia - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Eslováquia x Ilhas Faroe - Liga das Nações"
+    "desc": "Suécia x Bósnia e Herzegovina - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Eslovênia x Suíça - Liga das Nações"
-  },
-  {
-    "time": "16:45",
-    "desc": "Holanda x Grécia - Liga das Nações"
-  },
-  {
-    "time": "16:45",
-    "desc": "Liechtenstein x Azerbaijão - Liga das Nações"
-  },
-  {
-    "time": "16:45",
-    "desc": "Luxemburgo x Estonia - Liga das Nações"
-  },
-  {
-    "time": "16:45",
-    "desc": "Sérvia x Alemanha - Liga das Nações"
+    "desc": "Áustria x Irlanda - Liga das Nações"
   },
   {
     "time": "18:30",
-    "desc": "Dentil Praia Clube x Batavo Mackenzie - Superliga Feminina"
+    "desc": "Mirassol x Atlético-MG - Brasileirão Série A"
   },
   {
     "time": "18:30",
-    "desc": "Vôlei Renata x Sada Cruzeiro Vôlei - Superliga Masculina"
+    "desc": "Montes Claros Vôlei x Sesi Bauru - Superliga Masculina"
+  },
+  {
+    "time": "20:30",
+    "desc": "Chapecoense x Vasco da Gama - Brasileirão Série A"
   },
   {
     "time": "21:00",
-    "desc": "Indiana Pacers x New York Knicks - NBA"
+    "desc": "Brusque Vôlei x Brasília Vôlei / BRB - Superliga Feminina"
   },
   {
     "time": "21:00",
-    "desc": "Orlando Magic x Milwaukee Bucks - NBA"
+    "desc": "New Orleans Pelicans x Denver Nuggets - NBA"
   },
   {
-    "time": "21:00",
-    "desc": "Osasco São Cristóvão Saúde x Sesi Vôlei Bauru - Superliga Feminina"
-  },
-  {
-    "time": "22:00",
-    "desc": "Chicago Bulls x Atlanta Hawks - NBA"
+    "time": "21:30",
+    "desc": "Cleveland Cavaliers x Dallas Mavericks - NBA"
   },
   {
     "time": "22:00",
-    "desc": "Miami Heat x Cleveland Cavaliers - NBA"
+    "desc": "Memphis Grizzlies x Brooklyn Nets - NBA"
   },
   {
     "time": "22:00",
-    "desc": "New Orleans Pelicans x Memphis Grizzlies - NBA"
+    "desc": "Miami Heat x Detroit Pistons - NBA"
   },
   {
-    "time": "22:30",
-    "desc": "Houston Rockets x Utah Jazz - NBA"
-  },
-  {
-    "time": "23:30",
-    "desc": "San Antonio Spurs x Golden State Warriors - NBA"
+    "time": "22:00",
+    "desc": "Minnesota Timberwolves x Chicago Bulls - NBA"
   }
 ]
