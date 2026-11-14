@@ -26,9 +26,9 @@ function html(rows, date, page, pages, logo) {
   const label = new Intl.DateTimeFormat('pt-BR', {day:'2-digit',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));
   return `<!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>
   *{box-sizing:border-box}body{margin:0;width:1080px;height:1920px;background:#f4f7fc;color:#102540;font-family:Arial,Helvetica,sans-serif}
-  header{height:288px;padding:120px 72px 32px;background:#fff}header img{display:block;width:936px;height:136px;object-fit:contain}
+  header{height:288px;padding:120px 72px 32px;background:#fff}header img{display:block;width:136px;height:136px;object-fit:contain;margin:0 auto}
   h1{font-size:88px;line-height:1.05;margin:40px 64px 20px;letter-spacing:-3px;font-weight:900}
-  .date{margin:0 64px;color:#2459a6;font-size:34px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .date{margin:0 64px;color:#145be3;font-size:34px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
   .count{text-align:right;font-size:28px;font-weight:700;color:#5a6d86;margin:24px 64px 20px}
   main{height:1032px;margin:0 56px;display:flex;flex-direction:column;gap:20px}
   .row{flex:1;min-height:0;display:grid;grid-template-columns:174px 1fr;gap:28px;align-items:center;padding:22px 30px;background:#fff;border:1px solid #dfe7f2;border-left:8px solid #145be3;border-radius:20px}
@@ -37,7 +37,7 @@ function html(rows, date, page, pages, logo) {
   .league{font-size:31px;line-height:1.25;margin-top:14px;color:#52637a}
   footer{position:absolute;top:1634px;left:64px;width:952px;height:156px;border-top:2px solid #d6e1ef;text-align:left;padding:28px 0;color:#102540}
   footer strong{font-size:40px;letter-spacing:-.5px}footer p{font-size:32px;margin:14px 0;color:#52637a}
-  </style><header><img alt="Corte dos Esportes" src="data:image/webp;base64,${logo}"></header>
+  </style><header><img alt="Corte dos Esportes" src="data:image/png;base64,${logo}"></header>
   <h1>AGENDA DO DIA</h1><div class="date">${esc(label)}</div><div class="count">${page} / ${pages}</div><main>
   ${rows.map(row => {const [fixture, league] = parts(row);return `<div class="row"><div class="time">${esc(row.time)}</div><div class="details"><div class="fixture">${esc(fixture)}</div><div class="league">${esc(league)}</div></div></div>`;}).join('')}
   </main><footer><strong>cortedosesportes.com.br</strong><p>Acesse o site pelo link na bio</p></footer></html>`;
@@ -65,7 +65,7 @@ async function render() {
   fs.mkdirSync(out,{recursive:true});
   // Remove only previous renderer outputs, so upload-artifact never includes stale pages.
   for(const file of fs.readdirSync(out)) if (/^story-\d+\.jpg$/.test(file) || file==='manifest.json') fs.unlinkSync(path.join(out,file));
-  const logo = fs.readFileSync(path.join(root,'logo-mobile.webp')).toString('base64');
+  const logo = fs.readFileSync(path.join(root,'apple-touch-icon.png')).toString('base64');
   const browser = await chromium.launch({headless:true, ...(process.env.CHROMIUM_PATH ? {executablePath:process.env.CHROMIUM_PATH} : {})});
   try {
     const page = await browser.newPage({viewport:{width:1080,height:1920},deviceScaleFactor:1});
