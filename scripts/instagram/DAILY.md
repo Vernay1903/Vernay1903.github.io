@@ -13,3 +13,11 @@ Execução manual tem publicar=false por padrão: gera artefato e simula sem esc
 Secrets existentes: INSTAGRAM_ACCESS_TOKEN, INSTAGRAM_USER_ID. Não colocar tokens em arquivos, logs, artefatos ou prompts. GITHUB_TOKEN escreve apenas mídia/estado na branch separada; nenhum código do site ou agenda é alterado por este fluxo. Não modifica horários ou funcionamento das automações existentes.
 
 Diagnóstico: conferir resumo e artefato no Actions. Falhas antes de media_publish podem recuperar nos próximos disparos. Estado publishing sem confirmação PUBLISHED requer conferência manual no Instagram para evitar duplicação. Nunca repetir o teste fixo de 13/11 para substituir o fluxo diário.
+
+## Correção de 15/11/2026
+
+A agenda foi mesclada às 00h24, mas o cron dos Stories só criou uma execução às 08h29; a janela barrou corretamente a publicação. O disparo principal passa a ser a conclusão bem-sucedida de `Publicar agenda validada` (workflow_run). O novo job usa apenas código da main, aguarda localmente até 00h40 e então gera/publica a agenda. Não altera o publicador da agenda ou suas tarefas. Os quatro crons permanecem como reserva.
+
+O job pode aguardar até 40 minutos, com timeout total de 60 minutos, e mantém a mesma exclusão mútua. Após 00h40, falhas recuperáveis na preparação ou publicação são reavaliadas a cada 30 segundos dentro do mesmo runner; não dependem de outro cron. O registro por página continua impedindo duplicação, inclusive respostas inconclusivas. Às 00h59 param os envios. Eventos recebidos após o prazo não aguardam o dia seguinte nem publicam tarde; deixam registro explícito no resumo.
+
+Validação: 21 testes, incluindo conclusão da agenda às 00h24, espera até 00h40, disparo tardio às 08h29, recuperação no mesmo runner e interrupção às 00h59. A confirmação real de ponta a ponta depende da próxima madrugada; não há garantia absoluta de disponibilidade dos runners ou da Meta.

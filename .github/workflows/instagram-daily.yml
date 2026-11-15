@@ -1,6 +1,9 @@
 name: Instagram - Stories diarios
 
 on:
+  workflow_run:
+    workflows: [Publicar agenda validada]
+    types: [completed]
   schedule:
     - cron: '40,45,50,55 0 * * *'
       timezone: 'America/Sao_Paulo'
@@ -38,33 +41,19 @@ jobs:
       - run: python -m unittest discover -s tests/instagram -p 'test_*.py' -v
 
   daily:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
     needs: tests
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 60
     permissions:
       contents: write
     concurrency:
       group: instagram-daily-publisher
       cancel-in-progress: false
     env:
-      PUBLISH_DAILY: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.publicar) }}
+      PUBLISH_DAILY: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_run' || (github.event_name == 'workflow_dispatch' && inputs.publicar) }}
     steps:
-      - name: Respeitar janela de Brasília
-        id: window
-        run: |
-          python - <<'PY'
-          import os
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-          clock = datetime.now(ZoneInfo('America/Sao_Paulo')).strftime('%H:%M')
-          proceed = os.environ['PUBLISH_DAILY'] != 'true' or '00:40' <= clock < '00:59'
-          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
-              output.write('proceed=' + str(proceed).lower() + '\n')
-          print('Prosseguir.' if proceed else 'Execução atrasada: nenhuma publicação após o limite.')
-          PY
       - uses: actions/checkout@v4
-        if: steps.window.outputs.proceed == 'true'
         with:
           persist-credentials: false
           sparse-checkout-cone-mode: false
@@ -72,12 +61,15 @@ jobs:
             /agenda.json
             /apple-touch-icon.png
             /scripts/instagram/
+      - name: Aguardar 00h40 e respeitar o limite
+        id: window
+        run: python scripts/instagram/launch_window.py
       - name: Conferir agenda de hoje e registro de publicação
         if: steps.window.outputs.proceed == 'true'
         id: prepare
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python scripts/instagram/daily.py prepare
+        run: python scripts/instagram/daily.py retry-prepare
       - uses: actions/setup-node@v4
         if: steps.window.outputs.proceed == 'true' && steps.prepare.outputs.resume != 'true'
         with:
@@ -104,4 +96,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
-        run: python scripts/instagram/daily.py
+        run: python scripts/instagram/daily.py retry-publish
