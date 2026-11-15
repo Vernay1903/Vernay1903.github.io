@@ -212,7 +212,7 @@ def run():
         print('SIMULAÇÃO: ' + str(len(plan['pages'])) + ' páginas conferidas; nenhuma chamada de publicação ou escrita remota.')
         return
     if (os.environ.get('GITHUB_REF') != 'refs/heads/main'
-            or os.environ.get('GITHUB_EVENT_NAME') not in ('schedule', 'workflow_dispatch')):
+            or os.environ.get('GITHUB_EVENT_NAME') not in ('schedule', 'workflow_dispatch', 'workflow_run')):
         raise SafeError('Publicação permitida apenas pelo agendamento ou execução manual na main.')
     check_window(day)
     if os.environ.get('INSTAGRAM_USER_ID', '').strip() != ACCOUNT:
@@ -247,9 +247,27 @@ def run():
             out.write(message + '\n')
 
 
+def retry(operation, clock=now, sleep=time.sleep):
+    if os.environ.get('PUBLISH_DAILY') != 'true':
+        return operation()
+    day = clock().date().isoformat()
+    while True:
+        check_window(day, clock())
+        try:
+            return operation()
+        except SafeError as exc:
+            print(str(exc), flush=True)
+            check_window(day, clock())
+            sleep(30)
+
+
 if __name__ == '__main__':
     try:
-        prepare() if len(sys.argv) > 1 and sys.argv[1] == 'prepare' else run()
+        command = sys.argv[1] if len(sys.argv) > 1 else ''
+        if command.startswith('retry-'):
+            retry(prepare if command == 'retry-prepare' else run)
+        else:
+            prepare() if command == 'prepare' else run()
     except SafeError as exc:
         print(str(exc), file=sys.stderr)
         sys.exit(1)
