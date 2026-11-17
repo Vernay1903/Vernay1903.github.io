@@ -1,75 +1,47 @@
 [
   {
-    "time": "12:00",
-    "desc": "Cazaquistão x Eslováquia - Liga das Nações"
-  },
-  {
-    "time": "12:00",
-    "desc": "Ilhas Faroe x Moldávia - Liga das Nações"
-  },
-  {
-    "time": "14:00",
-    "desc": "Estonia x Bulgária - Liga das Nações"
-  },
-  {
-    "time": "14:00",
-    "desc": "Islândia x Luxemburgo - Liga das Nações"
-  },
-  {
-    "time": "14:00",
-    "desc": "Lituânia x Liechtenstein - Liga das Nações"
+    "time": "16:45",
+    "desc": "Bósnia e Herzegovina x Romênia - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Alemanha x Holanda - Liga das Nações"
+    "desc": "Dinamarca x Noruega - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Gibraltar x Malta - Liga das Nações"
+    "desc": "Hungria x Irlanda do Norte - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Grécia x Sérvia - Liga das Nações"
+    "desc": "Irlanda x Kosovo - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Macedônia do Norte x Eslovênia - Liga das Nações"
+    "desc": "Israel x Áustria - Liga das Nações"
   },
   {
     "time": "16:45",
-    "desc": "Suíça x Escócia - Liga das Nações"
+    "desc": "País de Gales x Portugal - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "Polônia x Suécia - Liga das Nações"
+  },
+  {
+    "time": "16:45",
+    "desc": "Ucrânia x Georgia - Liga das Nações"
   },
   {
     "time": "18:30",
-    "desc": "Saneago Goiás Vôlei x Vôlei Renata - Superliga Masculina"
-  },
-  {
-    "time": "18:30",
-    "desc": "Sil Vôlei Guarulhos x Itambé Minas - Superliga Masculina"
-  },
-  {
-    "time": "21:00",
-    "desc": "Boston Celtics x Orlando Magic - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Cleveland Cavaliers x Chicago Bulls - NBA"
-  },
-  {
-    "time": "21:00",
-    "desc": "Sada Cruzeiro Vôlei x Suzano Vôlei - Superliga Masculina"
-  },
-  {
-    "time": "21:00",
-    "desc": "Washington Wizards x Memphis Grizzlies - NBA"
+    "desc": "Fluminense F.C. x Gerdau Minas - Superliga Feminina"
   },
   {
     "time": "21:30",
-    "desc": "Brooklyn Nets x Philadelphia 76ers - NBA"
+    "desc": "Sesi Vôlei Bauru x Sesc RJ Flamengo - Superliga Feminina"
   },
   {
     "time": "21:30",
-    "desc": "Miami Heat x Houston Rockets - NBA"
+    "desc": "Toronto Raptors x New York Knicks - NBA"
   },
   {
     "time": "22:00",
@@ -77,14 +49,6 @@
   },
   {
     "time": "22:00",
-    "desc": "New Orleans Pelicans x Golden State Warriors - NBA"
-  },
-  {
-    "time": "22:15",
-    "desc": "Baltimore Ravens x Los Angeles Chargers - NFL"
-  },
-  {
-    "time": "23:00",
-    "desc": "Denver Nuggets x Phoenix Suns - NBA"
+    "desc": "San Antonio Spurs x Detroit Pistons - NBA"
   }
 ]
