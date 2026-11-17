@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-17",
+  "account": "17841446409607682",
+  "agenda_sha256": "83d8ed6e1009ad7def4dd60a450197b1f82fcaaa7ccfedceabdb6d14b468f978",
+  "source_commit": "b4e8278562cdc7b2eff643ad5fd231cf1b6d7ed5",
+  "pages": [
+    {
+      "file": "story-01.jpg",
+      "image_sha256": "849b5abda4f22aee56c7127b9ddbf62fe22cf5b4ba86971ffb6608d10eca9329",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/927158b39f7fd37658f6ca4d9f033ad703213dc2/2026-11-17/daily/story-01.jpg"
+    },
+    {
+      "file": "story-02.jpg",
+      "image_sha256": "332e2f2a4d9df8b08473be0ab9b6cda58c4fe5f1ec28c5b73f53dfeab0dd5523",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/927158b39f7fd37658f6ca4d9f033ad703213dc2/2026-11-17/daily/story-02.jpg"
+    },
+    {
+      "file": "story-03.jpg",
+      "image_sha256": "78c5d400b5ba35aae35c47601b5ab40b2cc9d971fce0115b56d13ba9e876915a",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/927158b39f7fd37658f6ca4d9f033ad703213dc2/2026-11-17/daily/story-03.jpg"
+    },
+    {
+      "file": "story-04.jpg",
+      "image_sha256": "37ecaaa664607b02abe89f01ef8306563da3f5677096fc667a91b2c82b57ee9b",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/927158b39f7fd37658f6ca4d9f033ad703213dc2/2026-11-17/daily/story-04.jpg"
+    }
+  ]
+}
