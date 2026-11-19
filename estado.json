@@ -236,6 +236,26 @@
         "finished_at": "2026-11-07T18:58:41-03:00",
         "timing_basis": "source_recorded_final",
         "eligible_at": "2026-11-07T19:48:41-03:00"
+      },
+      "espn-401841313": {
+        "signature": {
+          "kickoff": "2026-11-18T20:30:00-03:00",
+          "competition": "bra.1",
+          "teams": {
+            "home": "819",
+            "away": "3458"
+          },
+          "score": {
+            "home": 2,
+            "away": 1
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-18",
+        "first_final_seen_at": "2026-11-18T23:04:19.661074-03:00",
+        "finished_at": "2026-11-18T22:27:24-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-18T23:17:24-03:00"
       }
     }
   },
