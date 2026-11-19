@@ -6214,11 +6214,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-18T23:04:18.442052-03:00",
     "last_run_id": "44441563121",
-    "last_finished_at": "2026-11-18T19:39:25.297638-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-18T23:04:23.851323-03:00",
+    "last_status": "waiting",
     "last_report": {
-      "run_id": "44413583582",
-      "status": "idle",
+      "run_id": "44441563121",
+      "status": "waiting",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.503801190"
     }
