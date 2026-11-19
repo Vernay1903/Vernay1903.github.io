@@ -687,6 +687,13 @@
       "last_review_retry": true,
       "length_retry": true,
       "previous_editorial_run": "42507610321"
+    },
+    "espn-401841313": {
+      "status": "running",
+      "started_at": "2026-11-18T23:38:30.937357-03:00",
+      "run_id": "44445772136",
+      "api_calls": 0,
+      "operation_mode": "scheduled_drafts"
     }
   },
   "months": {
