@@ -689,11 +689,13 @@
       "previous_editorial_run": "42507610321"
     },
     "espn-401841313": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-18T23:38:30.937357-03:00",
       "run_id": "44445772136",
       "api_calls": 2,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-18T23:39:36.605403-03:00",
+      "reason": "Fato não confirmado: goals A sequência e os autores propostos coincidem com os eventos da ESPN: Kerwin Vargas pelo Athletico Paranaense, depois Jorge Carrascal e Jorginho pelo Flamengo; o evento de Jorginho está marcado como pênalti e nenhum dos três como gol contra. Porém, nas páginas oficiais abertas, os posts identificam Carrascal e Jorginho, mas não corroboram Kerwin Vargas como autor do gol do Athletico. Como falta confirmação independente de um dos autores, o campo completo não fica confirmado."
     }
   },
   "months": {
