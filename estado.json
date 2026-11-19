@@ -6277,13 +6277,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-18T23:38:27.052030-03:00",
     "last_run_id": "44445772136",
-    "last_finished_at": "2026-11-18T23:04:23.851323-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-11-18T23:39:38.888233-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "44441563121",
-      "status": "waiting",
+      "run_id": "44445772136",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.503801190"
+      "pilot_month_charged_usd": "0.518954440"
     }
   },
   "step15_retry": {
