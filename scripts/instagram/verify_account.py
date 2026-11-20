@@ -26,8 +26,10 @@ def main():
         headers={'Authorization': 'Bearer ' + token})
     try:
         with urllib.request.urlopen(probe, timeout=30) as response:
-            _ = json.load(response)
+            profile = json.load(response)
         print('Diagnóstico do token (/me): consulta autenticada.')
+        print('O endpoint /me identifica a conta de Instagram aprovada? ' +
+              ('sim' if str(profile.get('id')) == account else 'não'))
     except urllib.error.HTTPError as error:
         try:
             info = json.loads(error.read()).get('error', {})
