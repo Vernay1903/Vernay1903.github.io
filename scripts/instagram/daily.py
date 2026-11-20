@@ -197,6 +197,23 @@ def publish_pages(state, persist, api, check, sleep=time.sleep):
     return sum(page['status'] == 'published' for page in state['pages'])
 
 
+def verify_meta_identity():
+    """Identity must match exactly; alternate Graph version is read-only."""
+    try:
+        identity = meta(ACCOUNT + '?fields=id,username')
+    except SafeError as exc:
+        if str(exc) != 'HTTP 400 code=100 subcode=33':
+            raise
+        print('Meta v27 recusou a consulta de identidade (100/33); verificando v26 sem publicar.', flush=True)
+        identity = json.loads(request(
+            'https://graph.facebook.com/v26.0/' + ACCOUNT + '?fields=id,username',
+            os.environ['INSTAGRAM_ACCESS_TOKEN']))
+    if (not isinstance(identity, dict) or str(identity.get('id')) != ACCOUNT
+            or identity.get('username') != 'cortedosesportes'):
+        raise SafeError('Credencial não identifica a conta aprovada.')
+    print('Identidade de @cortedosesportes confirmada.', flush=True)
+
+
 def run():
     receipt = json.loads(OUT.joinpath('receipt.json').read_text())
     day = receipt['date']
@@ -220,9 +237,7 @@ def run():
     if state and all(page['status'] == 'published' for page in state['pages']):
         print('Todos os Stories de hoje já publicados; nenhuma duplicação.')
         return
-    identity = meta(ACCOUNT + '?fields=id,username')
-    if identity.get('id') != ACCOUNT or identity.get('username') != 'cortedosesportes':
-        raise SafeError('Credencial não identifica a conta aprovada.')
+    verify_meta_identity()
     raw, _ = source(day)
     if digest(raw) != receipt['agenda_sha256']:
         raise SafeError('Agenda mudou após a renderização; tentar novamente.')
