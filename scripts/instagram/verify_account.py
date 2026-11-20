@@ -28,8 +28,11 @@ def main():
         with urllib.request.urlopen(probe, timeout=30) as response:
             profile = json.load(response)
         print('Diagnóstico do token (/me): consulta autenticada.')
-        print('O endpoint /me identifica a conta de Instagram aprovada? ' +
-              ('sim' if str(profile.get('id')) == account else 'não'))
+        if isinstance(profile, dict):
+            print('O endpoint /me identifica a conta de Instagram aprovada? ' +
+                  ('sim' if str(profile.get('id')) == account else 'não'))
+        else:
+            print('Consulta /me: estrutura não individual; não utilizar para validação da identidade.')
     except urllib.error.HTTPError as error:
         try:
             info = json.loads(error.read()).get('error', {})
