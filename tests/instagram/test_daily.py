@@ -1,17 +1,50 @@
 import copy
+import json
 import sys
 import unittest
+from unittest.mock import patch
 from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts/instagram'))
-from daily import ACCOUNT, SafeError, check_plan, check_window, dated_source, publish_pages
+from daily import ACCOUNT, SafeError, check_plan, check_window, dated_source, publish_pages, verify_meta_identity
 
 
 class DailyTests(unittest.TestCase):
     def state(self, count=1):
         return {'date': '2026-11-15', 'account': ACCOUNT, 'agenda_sha256': 'abc',
                 'pages': [{'status': 'pending', 'image_url': 'https://example.com/' + str(i)} for i in range(count)]}
+
+    def test_meta_identity_primary_success_no_fallback(self):
+        with patch('daily.meta', return_value={'id': ACCOUNT, 'username': 'cortedosesportes'}) as primary, \
+             patch('daily.request') as alternative:
+            verify_meta_identity()
+            primary.assert_called_once_with(ACCOUNT + '?fields=id,username')
+            alternative.assert_not_called()
+
+    def test_meta_identity_100_33_fallback_validates_same_account(self):
+        identity = {'id': ACCOUNT, 'username': 'cortedosesportes'}
+        with patch('daily.meta', side_effect=SafeError('HTTP 400 code=100 subcode=33')), \
+             patch('daily.request', return_value=json.dumps(identity).encode()) as alternative, \
+             patch.dict('daily.os.environ', {'INSTAGRAM_ACCESS_TOKEN': 'token-de-teste'}):
+            verify_meta_identity()
+            self.assertIn('/v26.0/' + ACCOUNT + '?fields=id,username', alternative.call_args.args[0])
+            self.assertEqual(alternative.call_args.args[1], 'token-de-teste')
+
+    def test_meta_identity_no_fallback_for_other_errors(self):
+        with patch('daily.meta', side_effect=SafeError('HTTP 400 code=190')), \
+             patch('daily.request') as alternative:
+            with self.assertRaises(SafeError):
+                verify_meta_identity()
+            alternative.assert_not_called()
+
+    def test_meta_identity_fallback_never_accepts_different_account(self):
+        identity = {'id': '123456789', 'username': 'outroperfil'}
+        with patch('daily.meta', side_effect=SafeError('HTTP 400 code=100 subcode=33')), \
+             patch('daily.request', return_value=json.dumps(identity).encode()), \
+             patch.dict('daily.os.environ', {'INSTAGRAM_ACCESS_TOKEN': 'token-de-teste'}):
+            with self.assertRaises(SafeError):
+                verify_meta_identity()
 
     def test_window_uses_brazil_and_reserves_response_time(self):
         for hhmm in ['03:40', '03:58']:
