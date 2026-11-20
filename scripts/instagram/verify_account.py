@@ -19,6 +19,28 @@ def main():
     account = os.environ.get('INSTAGRAM_USER_ID', '').strip()
     if not token or not re.fullmatch(r'\d+', account):
         raise SystemExit('Secrets INSTAGRAM_ACCESS_TOKEN ou INSTAGRAM_USER_ID ausentes/inválidos.')
+    # Diagnóstico passivo: distingue token que autentica de acesso à conta.
+    # Nunca divulgar valores de token, IDs retornados, URLs ou respostas integrais.
+    probe = urllib.request.Request(
+        'https://graph.facebook.com/v27.0/me?fields=id',
+        headers={'Authorization': 'Bearer ' + token})
+    try:
+        with urllib.request.urlopen(probe, timeout=30) as response:
+            _ = json.load(response)
+        print('Diagnóstico do token (/me): consulta autenticada.')
+    except urllib.error.HTTPError as error:
+        try:
+            info = json.loads(error.read()).get('error', {})
+        except (ValueError, AttributeError):
+            info = {}
+        code, subcode = info.get('code'), info.get('error_subcode')
+        print(f'Diagnóstico do token (/me): HTTP {error.code}, '
+              f'código {code if isinstance(code, int) else "desconhecido"}, '
+              f'subcódigo {subcode if isinstance(subcode, int) else "ausente"}.')
+        print('Explicação da Meta (/me): ' + safe_message(info, token))
+    except (urllib.error.URLError, TimeoutError, ValueError):
+        print('Diagnóstico do token (/me): consulta inconclusiva.')
+    print('Diagnóstico da conta: verificando acesso a @cortedosesportes.')
     url = f'https://graph.facebook.com/v27.0/{account}?fields=id,username'
     req = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + token})
     try:
