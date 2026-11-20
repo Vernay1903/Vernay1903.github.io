@@ -68,6 +68,24 @@ def main():
     if str(result.get('id')) != account or result.get('username') != 'cortedosesportes':
         raise SystemExit('Credencial não corresponde à conta esperada; interrompido.')
     print('Consulta autenticada confirmou @cortedosesportes. Nenhuma publicação realizada.')
+    # Testa uma versao anterior apenas para leitura; nao realiza publicacao.
+    alternative = f'https://graph.facebook.com/v26.0/{account}?fields=id,username'
+    try:
+        req = urllib.request.Request(alternative, headers={'Authorization': 'Bearer ' + token})
+        with urllib.request.urlopen(req, timeout=30) as response:
+            candidate = json.load(response)
+        if isinstance(candidate, dict) and str(candidate.get('id')) == account and candidate.get('username') == 'cortedosesportes':
+            print('Consulta alternativa v26.0: conta confirmada, sem publicar.')
+        else:
+            print('Consulta alternativa v26.0: resposta nao confirmou a conta; fallback proibido.')
+    except urllib.error.HTTPError as error:
+        try:
+            info = json.loads(error.read()).get('error', {})
+        except (ValueError, AttributeError):
+            info = {}
+        print(f'Consulta alternativa v26.0: HTTP {error.code}, código {info.get("code") if isinstance(info.get("code"), int) else "ausente"}, subcódigo {info.get("error_subcode") if isinstance(info.get("error_subcode"), int) else "ausente"}.')
+    except (urllib.error.URLError, TimeoutError, ValueError):
+        print('Consulta alternativa v26.0: inconclusiva; fallback proibido.')
     print('Este teste não comprova permissão de publicação nem validade futura do token.')
 
 
