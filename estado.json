@@ -273,9 +273,9 @@
         },
         "match_date": "2026-11-21",
         "first_final_seen_at": "2026-11-21T11:29:29.114547-03:00",
-        "finished_at": null,
-        "timing_basis": "first_observed_final_fallback",
-        "eligible_at": "2026-11-21T12:19:29.114547-03:00"
+        "finished_at": "2026-11-21T11:21:23-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-21T12:11:23-03:00"
       }
     }
   },
