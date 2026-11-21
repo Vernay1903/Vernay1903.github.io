@@ -803,6 +803,13 @@
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-21T19:35:20.840507-03:00",
       "reason": "Nenhum relato oficial efetivamente aberto"
+    },
+    "espn-401882798": {
+      "status": "running",
+      "started_at": "2026-11-21T20:26:07.012599-03:00",
+      "run_id": "44961760531",
+      "api_calls": 0,
+      "operation_mode": "scheduled_drafts"
     }
   },
   "months": {
