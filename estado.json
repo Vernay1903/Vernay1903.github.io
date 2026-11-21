@@ -6762,13 +6762,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-21T19:34:06.782665-03:00",
     "last_run_id": "44957396533",
-    "last_finished_at": "2026-11-21T17:55:15.088042-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-11-21T19:35:22.657501-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "44948767292",
-      "status": "waiting",
+      "run_id": "44957396533",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.555448620"
+      "pilot_month_charged_usd": "0.580794420"
     }
   },
   "step15_retry": {
