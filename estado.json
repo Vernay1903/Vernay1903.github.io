@@ -7075,11 +7075,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-21T20:33:11.960082-03:00",
     "last_run_id": "44961851178",
-    "last_finished_at": "2026-11-21T20:32:48.086510-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-21T20:33:17.757936-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "44961760531",
-      "status": "needs_review",
+      "run_id": "44961851178",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.622614005"
     }
