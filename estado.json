@@ -7095,13 +7095,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-21T20:26:03.327162-03:00",
     "last_run_id": "44961760531",
-    "last_finished_at": "2026-11-21T19:38:34.206558-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-11-21T20:32:48.086510-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "44957779374",
-      "status": "waiting",
+      "run_id": "44961760531",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.580794420"
+      "pilot_month_charged_usd": "0.622614005"
     }
   },
   "step15_retry": {
