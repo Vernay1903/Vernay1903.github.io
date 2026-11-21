@@ -805,11 +805,13 @@
       "reason": "Nenhum relato oficial efetivamente aberto"
     },
     "espn-401882798": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-21T20:26:07.012599-03:00",
       "run_id": "44961760531",
       "api_calls": 12,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-21T20:32:46.151120-03:00",
+      "reason": "Limite de chamadas da partida"
     }
   },
   "months": {
