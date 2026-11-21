@@ -6630,11 +6630,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-21T14:38:53.166939-03:00",
     "last_run_id": "44931029601",
-    "last_finished_at": "2026-11-21T14:38:35.241619-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-21T14:38:58.906097-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "44930605083",
-      "status": "needs_review",
+      "run_id": "44931029601",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.555448620"
     }
