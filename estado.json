@@ -6297,11 +6297,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-21T11:29:27.643083-03:00",
     "last_run_id": "44914174591",
-    "last_finished_at": "2026-11-21T11:25:36.088446-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-21T11:29:34.690299-03:00",
+    "last_status": "waiting",
     "last_report": {
-      "run_id": "44913843036",
-      "status": "idle",
+      "run_id": "44914174591",
+      "status": "waiting",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.518954440"
     }
