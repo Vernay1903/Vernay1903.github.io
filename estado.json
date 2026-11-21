@@ -296,6 +296,26 @@
         "finished_at": null,
         "timing_basis": "first_observed_final_fallback",
         "eligible_at": "2026-11-21T18:45:09.115158-03:00"
+      },
+      "espn-401841322": {
+        "signature": {
+          "kickoff": "2026-11-21T16:30:00-03:00",
+          "competition": "bra.1",
+          "teams": {
+            "home": "2029",
+            "away": "819"
+          },
+          "score": {
+            "home": 1,
+            "away": 1
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-21",
+        "first_final_seen_at": "2026-11-21T19:34:07.711022-03:00",
+        "finished_at": "2026-11-21T18:28:23-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-21T19:18:23-03:00"
       }
     }
   },
@@ -745,6 +765,13 @@
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-21T14:38:32.657109-03:00",
       "reason": "Revisão factual/editorial reprovada após limite de correções"
+    },
+    "espn-401841322": {
+      "status": "running",
+      "started_at": "2026-11-21T19:34:09.669093-03:00",
+      "run_id": "44957396533",
+      "api_calls": 0,
+      "operation_mode": "scheduled_drafts"
     }
   },
   "months": {
