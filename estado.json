@@ -316,6 +316,26 @@
         "finished_at": "2026-11-21T18:28:23-03:00",
         "timing_basis": "source_recorded_final",
         "eligible_at": "2026-11-21T19:18:23-03:00"
+      },
+      "espn-401882798": {
+        "signature": {
+          "kickoff": "2026-11-21T17:00:00-03:00",
+          "competition": "esp.1",
+          "teams": {
+            "home": "86",
+            "away": "85"
+          },
+          "score": {
+            "home": 2,
+            "away": 1
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-21",
+        "first_final_seen_at": "2026-11-21T19:34:07.711022-03:00",
+        "finished_at": "2026-11-21T19:02:07-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-21T19:52:07-03:00"
       }
     }
   },
@@ -767,18 +787,22 @@
       "reason": "Revisão factual/editorial reprovada após limite de correções"
     },
     "espn-401841322": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-21T19:34:09.669093-03:00",
       "run_id": "44957396533",
       "api_calls": 1,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-21T19:35:20.840485-03:00",
+      "reason": "Fato não confirmado: venue Há conflito: o resumo da ESPN identifica o Allianz Parque, mas o relato do Flamengo e sua ficha técnica nomeiam o Nubank Parque."
     },
     "espn-401879232": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-21T19:35:08.803216-03:00",
       "run_id": "44957396533",
       "api_calls": 1,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-21T19:35:20.840507-03:00",
+      "reason": "Nenhum relato oficial efetivamente aberto"
     }
   },
   "months": {
