@@ -7,8 +7,9 @@
     {
       "file": "story-01.jpg",
       "image_sha256": "13fbe6a4066d4e7ab4bf7d6835093519abc5341e436cff54b4820c405471efd5",
-      "status": "pending",
-      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/3af70738da01ad82b6001af060370e1d41cc9485/2026-11-22/daily/story-01.jpg"
+      "status": "container_created",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/3af70738da01ad82b6001af060370e1d41cc9485/2026-11-22/daily/story-01.jpg",
+      "container_id": "18074584550546987"
     },
     {
       "file": "story-02.jpg",
