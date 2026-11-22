@@ -7539,11 +7539,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-22T02:56:01.505817-03:00",
     "last_run_id": "44991487201",
-    "last_finished_at": "2026-11-21T22:29:54.600191-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-22T02:56:06.653036-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "44971310824",
-      "status": "needs_review",
+      "run_id": "44991487201",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.675972140"
     }
