@@ -776,12 +776,12 @@
       "reason": "Fato não confirmado: venue Há conflito: o resumo da ESPN identifica o Allianz Parque, mas o relato do Flamengo e sua ficha técnica nomeiam o Nubank Parque."
     },
     "espn-401879232": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-21T22:24:37.633713-03:00",
       "run_id": "44991487201",
       "api_calls": 18,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-21T22:29:52.416811-03:00",
+      "finished_at": "2026-11-22T02:59:09.035936-03:00",
       "reason": "Limite de chamadas da partida",
       "source_retry_count": 1,
       "source_retry_started_at": "2026-11-21T22:24:37.633727-03:00",
