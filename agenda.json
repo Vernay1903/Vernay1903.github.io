@@ -1,162 +1,74 @@
 [
   {
-    "time": "00:00",
-    "desc": "Sacramento Kings x Boston Celtics - NBA"
-  },
-  {
-    "time": "08:30",
-    "desc": "Juventus x Venezia - Serie A italiana"
-  },
-  {
-    "time": "10:00",
-    "desc": "Barcelona x Villareal - La Liga"
-  },
-  {
-    "time": "11:00",
-    "desc": "Bolonha x Udinese - Serie A italiana"
-  },
-  {
-    "time": "11:00",
-    "desc": "Hull City x Brighton & Hove Albion - Premier League"
-  },
-  {
-    "time": "11:00",
-    "desc": "Paris FC x Angers - Ligue 1"
-  },
-  {
-    "time": "11:00",
-    "desc": "Sassuolo x Genoa - Serie A italiana"
-  },
-  {
-    "time": "11:30",
-    "desc": "Augsburg x Mainz - Bundesliga"
-  },
-  {
-    "time": "12:15",
-    "desc": "Racing Santander x Real Sociedad - La Liga"
-  },
-  {
-    "time": "13:15",
-    "desc": "Lorient x Stade Rennais - Ligue 1"
-  },
-  {
-    "time": "13:30",
-    "desc": "Liverpool x Manchester United - Premier League"
-  },
-  {
-    "time": "13:30",
-    "desc": "Werder Bremen x Hamburg SV - Bundesliga"
-  },
-  {
-    "time": "14:00",
-    "desc": "AC Milan x Frosinone - Serie A italiana"
-  },
-  {
-    "time": "14:30",
-    "desc": "Osasuna x Málaga - La Liga"
-  },
-  {
-    "time": "15:00",
-    "desc": "Buffalo Bills x Miami Dolphins - NFL"
-  },
-  {
-    "time": "15:00",
-    "desc": "Carolina Panthers x Baltimore Ravens - NFL"
-  },
-  {
-    "time": "15:00",
-    "desc": "Chicago Bears x New Orleans Saints - NFL"
-  },
-  {
-    "time": "15:00",
-    "desc": "Dallas Cowboys x Tennessee Titans - NFL"
-  },
-  {
-    "time": "15:00",
-    "desc": "Detroit Lions x Tampa Bay Buccaneers - NFL"
-  },
-  {
-    "time": "15:00",
-    "desc": "Kansas City Chiefs x Arizona Cardinals - NFL"
-  },
-  {
-    "time": "15:00",
-    "desc": "Philadelphia Eagles x Pittsburgh Steelers - NFL"
-  },
-  {
-    "time": "16:00",
-    "desc": "Athletico-PR x Remo - Brasileirão Série A"
-  },
-  {
-    "time": "16:00",
-    "desc": "Criciúma x Fortaleza - Brasileirão Série B"
-  },
-  {
     "time": "16:45",
-    "desc": "Atalanta x Internazionale - Serie A italiana"
-  },
-  {
-    "time": "16:45",
-    "desc": "Marseille x Le Mans - Ligue 1"
+    "desc": "Monza x Fiorentina - Serie A italiana"
   },
   {
     "time": "17:00",
-    "desc": "Getafe x Atlético de Madrid - La Liga"
+    "desc": "Brentford x Everton - Premier League"
   },
   {
-    "time": "17:30",
-    "desc": "Atlanta Hawks x Detroit Pistons - NBA"
-  },
-  {
-    "time": "18:05",
-    "desc": "Los Angeles Chargers x New York Jets - NFL"
-  },
-  {
-    "time": "18:25",
-    "desc": "Denver Broncos x Las Vegas Raiders - NFL"
-  },
-  {
-    "time": "18:25",
-    "desc": "New York Giants x Jacksonville Jaguars - NFL"
+    "time": "17:00",
+    "desc": "Levante x Elche - La Liga"
   },
   {
     "time": "18:30",
-    "desc": "Atlético Goianiense x Vila Nova - Brasileirão Série B"
+    "desc": "Gerdau Minas x Sesi Vôlei Bauru - Superliga Feminina"
   },
   {
     "time": "18:30",
-    "desc": "Fluminense x Mirassol - Brasileirão Série A"
+    "desc": "Sesi Bauru x Norde Vôlei - Superliga Masculina"
   },
   {
     "time": "19:30",
-    "desc": "Red Bull Bragantino x Vasco da Gama - Brasileirão Série A"
+    "desc": "Internacional x Vitória - Brasileirão Série A"
   },
   {
     "time": "20:00",
-    "desc": "Miami Heat x Oklahoma City Thunder - NBA"
+    "desc": "Botafogo x São Paulo - Brasileirão Série A"
   },
   {
     "time": "21:00",
-    "desc": "Chicago Bulls x Denver Nuggets - NBA"
+    "desc": "Charlotte Hornets x Memphis Grizzlies - NBA"
   },
   {
     "time": "21:00",
-    "desc": "Utah Jazz x Dallas Mavericks - NBA"
+    "desc": "Philadelphia 76ers x Portland Trail Blazers - NBA"
   },
   {
     "time": "21:00",
-    "desc": "Washington Wizards x Orlando Magic - NBA"
+    "desc": "Santos x Grêmio - Brasileirão Série A"
+  },
+  {
+    "time": "21:00",
+    "desc": "Sesc RJ Flamengo x Osasco São Cristóvão Saúde - Superliga Feminina"
+  },
+  {
+    "time": "21:30",
+    "desc": "Indiana Pacers x Oklahoma City Thunder - NBA"
+  },
+  {
+    "time": "21:30",
+    "desc": "Minnesota Timberwolves x Brooklyn Nets - NBA"
+  },
+  {
+    "time": "21:30",
+    "desc": "Toronto Raptors x Milwaukee Bucks - NBA"
   },
   {
     "time": "22:00",
-    "desc": "New York Knicks x Indiana Pacers - NBA"
+    "desc": "Chicago Bulls x Cleveland Cavaliers - NBA"
   },
   {
-    "time": "22:20",
-    "desc": "San Francisco 49ers x Minnesota Vikings - NFL"
+    "time": "22:00",
+    "desc": "New Orleans Pelicans x Phoenix Suns - NBA"
+  },
+  {
+    "time": "22:15",
+    "desc": "Washington Commanders x Cincinnati Bengals - NFL"
   },
   {
     "time": "22:30",
-    "desc": "Golden State Warriors x Boston Celtics - NBA"
+    "desc": "Houston Rockets x LA Clippers - NBA"
   }
 ]
