@@ -316,6 +316,66 @@
         "finished_at": "2026-11-21T19:02:07-03:00",
         "timing_basis": "source_recorded_final",
         "eligible_at": "2026-11-21T19:52:07-03:00"
+      },
+      "espn-401915295": {
+        "signature": {
+          "kickoff": "2026-11-24T17:00:00-03:00",
+          "competition": "uefa.champions",
+          "teams": {
+            "home": "359",
+            "away": "124"
+          },
+          "score": {
+            "home": 1,
+            "away": 1
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-24",
+        "first_final_seen_at": "2026-11-24T19:32:42.952274-03:00",
+        "finished_at": "2026-11-24T18:50:14-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-24T19:40:14-03:00"
+      },
+      "espn-401915298": {
+        "signature": {
+          "kickoff": "2026-11-24T17:00:00-03:00",
+          "competition": "uefa.champions",
+          "teams": {
+            "home": "86",
+            "away": "148"
+          },
+          "score": {
+            "home": 5,
+            "away": 1
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-24",
+        "first_final_seen_at": "2026-11-24T19:32:42.952274-03:00",
+        "finished_at": "2026-11-24T18:52:20-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-24T19:42:20-03:00"
+      },
+      "espn-401915379": {
+        "signature": {
+          "kickoff": "2026-11-24T17:00:00-03:00",
+          "competition": "uefa.champions",
+          "teams": {
+            "home": "382",
+            "away": "114"
+          },
+          "score": {
+            "home": 2,
+            "away": 2
+          },
+          "status": "STATUS_FULL_TIME"
+        },
+        "match_date": "2026-11-24",
+        "first_final_seen_at": "2026-11-24T19:32:42.952274-03:00",
+        "finished_at": "2026-11-24T18:49:49-03:00",
+        "timing_basis": "source_recorded_final",
+        "eligible_at": "2026-11-24T19:39:49-03:00"
       }
     }
   },
