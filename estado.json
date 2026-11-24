@@ -865,7 +865,7 @@
       "status": "running",
       "started_at": "2026-11-24T20:54:25.409571-03:00",
       "run_id": "45513795846",
-      "api_calls": 4,
+      "api_calls": 5,
       "operation_mode": "scheduled_drafts"
     }
   },
@@ -7863,6 +7863,16 @@
             "total_tokens": 5278
           },
           "response_id": "resp_02b021cda0f527e6016b06247f926487d2b607db60d541157a"
+        },
+        {
+          "id": "9810fb414ac54351a801aeedb1404126",
+          "fixture_id": "espn-401915295",
+          "started_at": "2026-11-24T20:57:54.452995-03:00",
+          "status": "reserved",
+          "charged_usd": "0.005627",
+          "reserved_usd": "0.005627",
+          "model": "gpt-6-luna",
+          "counted_input_tokens": 5016
         }
       ],
       "blocked": false
