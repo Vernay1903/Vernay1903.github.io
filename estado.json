@@ -7814,11 +7814,28 @@
           "id": "154726de81964dada250836eaa5598ad",
           "fixture_id": "espn-401915295",
           "started_at": "2026-11-24T20:57:27.995594-03:00",
-          "status": "reserved",
-          "charged_usd": "0.007466625",
+          "status": "settled",
+          "charged_usd": "0.00414305",
           "reserved_usd": "0.007466625",
           "model": "gpt-6-luna",
-          "counted_input_tokens": 19733
+          "counted_input_tokens": 19733,
+          "usage": {
+            "input_tokens": 19733,
+            "input_tokens_details": {
+              "cache_write_tokens": 19730,
+              "cache_write_tokens_details": {
+                "ttl_12h_tokens": 0,
+                "ttl_30m_tokens": 19730
+              },
+              "cached_tokens": 0
+            },
+            "output_tokens": 3353,
+            "output_tokens_details": {
+              "reasoning_tokens": 1437
+            },
+            "total_tokens": 23086
+          },
+          "response_id": "resp_0cedab9ab852e056016b06246974dc87d284b068eac02aee35"
         }
       ],
       "blocked": false
