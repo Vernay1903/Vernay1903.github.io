@@ -7764,11 +7764,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-24T19:32:41.566293-03:00",
     "last_run_id": "45501890722",
-    "last_finished_at": "2026-11-24T18:15:32.700615-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-24T19:32:47.745472-03:00",
+    "last_status": "waiting",
     "last_report": {
-      "run_id": "45489200926",
-      "status": "idle",
+      "run_id": "45501890722",
+      "status": "waiting",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.687632130"
     }
