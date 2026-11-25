@@ -8876,11 +8876,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-25T06:08:21.685194-03:00",
     "last_run_id": "45582521434",
-    "last_finished_at": "2026-11-25T01:26:22.505513-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-25T06:08:28.396427-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "45546104211",
-      "status": "needs_review",
+      "run_id": "45582521434",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.814549760"
     }
