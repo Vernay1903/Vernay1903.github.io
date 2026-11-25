@@ -8876,13 +8876,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-25T01:20:35.887179-03:00",
     "last_run_id": "45546104211",
-    "last_finished_at": "2026-11-24T21:33:26.099045-03:00",
-    "last_status": "idle",
+    "last_finished_at": "2026-11-25T01:26:22.505513-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "45518952959",
-      "status": "idle",
+      "run_id": "45546104211",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.766676055"
+      "pilot_month_charged_usd": "0.814549760"
     }
   },
   "step15_retry": {
