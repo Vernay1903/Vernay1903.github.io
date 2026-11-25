@@ -862,25 +862,31 @@
       "previous_editorial_run": "44961760531"
     },
     "espn-401915295": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-24T20:54:25.409571-03:00",
       "run_id": "45513795846",
       "api_calls": 10,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-24T21:04:47.463076-03:00",
+      "reason": "Expansão sem fatos suficientes"
     },
     "espn-401915298": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-24T20:59:45.371818-03:00",
       "run_id": "45513795846",
       "api_calls": 1,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-24T21:04:47.463104-03:00",
+      "reason": "Nenhum relato oficial efetivamente aberto"
     },
     "espn-401915379": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-24T21:00:07.596494-03:00",
       "run_id": "45513795846",
       "api_calls": 12,
-      "operation_mode": "scheduled_drafts"
+      "operation_mode": "scheduled_drafts",
+      "finished_at": "2026-11-24T21:04:47.463111-03:00",
+      "reason": "Limite de chamadas da partida"
     }
   },
   "months": {
