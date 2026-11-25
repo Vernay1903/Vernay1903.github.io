@@ -880,13 +880,16 @@
       "reason": "Nenhum relato oficial efetivamente aberto"
     },
     "espn-401915379": {
-      "status": "blocked",
+      "status": "running",
       "started_at": "2026-11-24T21:00:07.596494-03:00",
-      "run_id": "45513795846",
+      "run_id": "45518952959",
       "api_calls": 12,
       "operation_mode": "scheduled_drafts",
       "finished_at": "2026-11-24T21:04:47.463111-03:00",
-      "reason": "Limite de chamadas da partida"
+      "reason": "Limite de chamadas da partida",
+      "last_review_retry": true,
+      "length_retry": true,
+      "previous_editorial_run": "45513795846"
     }
   },
   "months": {
