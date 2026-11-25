@@ -8412,13 +8412,13 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-24T20:54:17.523179-03:00",
     "last_run_id": "45513795846",
-    "last_finished_at": "2026-11-24T19:32:47.745472-03:00",
-    "last_status": "waiting",
+    "last_finished_at": "2026-11-24T21:04:49.881352-03:00",
+    "last_status": "needs_review",
     "last_report": {
-      "run_id": "45501890722",
-      "status": "waiting",
+      "run_id": "45513795846",
+      "status": "needs_review",
       "has_drafts": false,
-      "pilot_month_charged_usd": "0.687632130"
+      "pilot_month_charged_usd": "0.766676055"
     }
   },
   "step15_retry": {
