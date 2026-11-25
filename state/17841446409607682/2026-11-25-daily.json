@@ -39,9 +39,10 @@
     {
       "file": "story-05.jpg",
       "image_sha256": "1a763ce28cd14c14dab1eb1b940931abf357c58b893d3951cae950c628acdad7",
-      "status": "publishing",
+      "status": "published",
       "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/06d85a8bccb6941de801026e869920fe814e8733/2026-11-25/daily/story-05.jpg",
-      "container_id": "18075256997546987"
+      "container_id": "18075256997546987",
+      "media_id": "18073817621608849"
     },
     {
       "file": "story-06.jpg",
