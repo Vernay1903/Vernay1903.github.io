@@ -8412,11 +8412,11 @@
     "publication_enabled": false,
     "last_started_at": "2026-11-24T21:33:20.164596-03:00",
     "last_run_id": "45518952959",
-    "last_finished_at": "2026-11-24T21:04:49.881352-03:00",
-    "last_status": "needs_review",
+    "last_finished_at": "2026-11-24T21:33:26.099045-03:00",
+    "last_status": "idle",
     "last_report": {
-      "run_id": "45513795846",
-      "status": "needs_review",
+      "run_id": "45518952959",
+      "status": "idle",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.766676055"
     }
