@@ -871,12 +871,12 @@
       "reason": "Expansão sem fatos suficientes"
     },
     "espn-401915298": {
-      "status": "running",
+      "status": "blocked",
       "started_at": "2026-11-25T01:20:38.241921-03:00",
       "run_id": "45582521434",
       "api_calls": 18,
       "operation_mode": "scheduled_drafts",
-      "finished_at": "2026-11-25T01:26:18.564001-03:00",
+      "finished_at": "2026-11-25T06:11:16.019885-03:00",
       "reason": "Limite de chamadas da partida",
       "source_retry_count": 1,
       "source_retry_started_at": "2026-11-25T01:20:38.241931-03:00",
