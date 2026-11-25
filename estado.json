@@ -8071,11 +8071,28 @@
           "id": "c4265dee484c4257892e4b8b195ee366",
           "fixture_id": "espn-401915379",
           "started_at": "2026-11-24T21:00:11.189858-03:00",
-          "status": "reserved",
-          "charged_usd": "0.005418",
+          "status": "settled",
+          "charged_usd": "0.004719425",
           "reserved_usd": "0.005418",
           "model": "gpt-6-luna",
-          "counted_input_tokens": 15344
+          "counted_input_tokens": 15344,
+          "usage": {
+            "input_tokens": 15344,
+            "input_tokens_details": {
+              "cache_write_tokens": 15341,
+              "cache_write_tokens_details": {
+                "ttl_12h_tokens": 0,
+                "ttl_30m_tokens": 15341
+              },
+              "cached_tokens": 0
+            },
+            "output_tokens": 5603,
+            "output_tokens_details": {
+              "reasoning_tokens": 2943
+            },
+            "total_tokens": 20947
+          },
+          "response_id": "resp_0edb96dbdf0b90dd016b06250cc41887d28d22d249c9dd84df"
         }
       ],
       "blocked": false
