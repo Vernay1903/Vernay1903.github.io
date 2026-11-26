@@ -9040,11 +9040,11 @@
     "mode": "scheduled_drafts",
     "publication_enabled": false,
     "last_started_at": "2026-11-25T23:12:29.765475-03:00",
-    "last_run_id": "45815247403",
-    "last_finished_at": "2026-11-26T08:58:00.288355-03:00",
+    "last_run_id": "45816128366",
+    "last_finished_at": "2026-11-26T09:03:46.482838-03:00",
     "last_status": "budget_blocked",
     "last_report": {
-      "run_id": "45815247403",
+      "run_id": "45816128366",
       "status": "budget_blocked",
       "has_drafts": false,
       "pilot_month_charged_usd": "0.827337450"
