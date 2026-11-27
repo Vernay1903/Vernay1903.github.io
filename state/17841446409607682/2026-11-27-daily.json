@@ -23,8 +23,9 @@
     {
       "file": "story-03.jpg",
       "image_sha256": "34b7118b0315c30123728ae719be83bd3132c271b12b31f2201727e75dff8970",
-      "status": "pending",
-      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-03.jpg"
+      "status": "container_created",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-03.jpg",
+      "container_id": "18075705686546987"
     },
     {
       "file": "story-04.jpg",
