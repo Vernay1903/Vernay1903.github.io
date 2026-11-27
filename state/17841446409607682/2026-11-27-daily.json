@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-27",
+  "account": "17841446409607682",
+  "agenda_sha256": "a5866806fa0d708b3ad5fd56ebb622c5c0d39db33d2b3bb9f1b1b106aace2d13",
+  "source_commit": "c7d60d17d472c9c7341ae8a2855a9a247dc4e662",
+  "pages": [
+    {
+      "file": "story-01.jpg",
+      "image_sha256": "2279deb6b358317dc46f108742c2270d351d2bfba1c59c2901da2353374bf261",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-01.jpg"
+    },
+    {
+      "file": "story-02.jpg",
+      "image_sha256": "643ea03eef7139189f39c026fa6737bc9c01378626167468cdcb6200ec8fcea0",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-02.jpg"
+    },
+    {
+      "file": "story-03.jpg",
+      "image_sha256": "34b7118b0315c30123728ae719be83bd3132c271b12b31f2201727e75dff8970",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-03.jpg"
+    },
+    {
+      "file": "story-04.jpg",
+      "image_sha256": "fdce6b41a9087c6094ee5f1969116ceb5ecc97396b2293e38a6fa01602607fca",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-04.jpg"
+    },
+    {
+      "file": "story-05.jpg",
+      "image_sha256": "351005e765ef5250e37f2f0269f570815b34565505d429dc1311f472350fc3ef",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-05.jpg"
+    },
+    {
+      "file": "story-06.jpg",
+      "image_sha256": "0560831c61381807ad90fe6d636518ba40a8ed9def021ce3ffa607b5a9693a0f",
+      "status": "pending",
+      "image_url": "https://raw.githubusercontent.com/Vernay1903/Vernay1903.github.io/ce30aacac0581bf053a8cc004063b0e467ec3263/2026-11-27/daily/story-06.jpg"
+    }
+  ]
+}
